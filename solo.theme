@@ -1,0 +1,677 @@
+<?php
+
+/**
+ * @file
+ * Solo Theme.
+ *
+ * Filename:     solo.theme
+ * Website:      http://www.flashwebcenter.com
+ * Description:  template
+ * Author:       Alaa Haddad http://www.alaahaddad.com.
+ */
+
+use Drupal\block\Entity\Block;
+use Drupal\comment\CommentInterface;
+use Drupal\Component\Utility\Html;
+use Drupal\Core\Datetime\DrupalDateTime;
+use Drupal\Core\Entity\EntityBase;
+use Drupal\Core\Entity\EntityInterface;
+use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\Routing\RouteMatchInterface;
+
+/**
+ * Implements hook_preprocess_HOOK() for HTML document templates.
+ */
+function solo_preprocess_html(&$variables) {
+  $route_match = \Drupal::routeMatch();
+  $route_name = $route_match->getRouteName();
+
+  // Add node id to the body class.
+  if ($route_name === 'entity.node.canonical') {
+    _add_node_id_to_body_class($route_match, $variables);
+  }
+
+  // Add vocabulary name and term id to the body class.
+  if ($route_name === 'entity.taxonomy_term.canonical') {
+    _add_taxonomy_term_to_body_class($route_match, $variables);
+  }
+
+  // If the user is logged in use ID if not use second word after user/login.
+  _add_user_path_to_body_class($variables);
+
+  // Add view id name to the body class.
+  _add_view_id_to_body_class($route_match, $variables);
+
+  // Add admin context to the body class.
+  _add_admin_context_to_body_class($variables);
+}
+
+/**
+ * Helper function.
+ */
+function _add_node_id_to_body_class($route_match, &$variables): void {
+  $node_id = $route_match->getParameter('node')->id();
+  if ($node_id) {
+    $variables['attributes']['class'][] = 'path-node-' . $node_id;
+  }
+}
+
+/**
+ * Helper function.
+ */
+function _add_taxonomy_term_to_body_class($route_match, &$variables): void {
+  $term = $route_match->getParameter('taxonomy_term');
+  if ($term->id()) {
+    $variables['attributes']['class'][] = 'path-taxonomy-term-' . $term->id();
+  }
+  if ($term->bundle()) {
+    $variables['attributes']['class'][] = 'path-vocabulary-' . Html::cleanCssIdentifier($term->bundle());
+  }
+}
+
+/**
+ * Helper function.
+ */
+function _add_user_path_to_body_class(&$variables): void {
+  $curr_path = \Drupal::service('path.current')->getPath();
+  $curr_path = ltrim($curr_path, '/');
+  $user_url = explode('/', $curr_path);
+  if (isset($user_url[0], $user_url[1]) && ($user_url[0] == 'user')) {
+    $variables['attributes']['class'][] = 'path-user-' . $user_url[1];
+  }
+}
+
+/**
+ * Helper function.
+ */
+function _add_view_id_to_body_class($route_match, &$variables): void {
+  $view_id = $route_match->getParameter('view_id');
+  if ($view_id) {
+    $variables['attributes']['class'][] = 'path-view-' . Html::cleanCssIdentifier($view_id);
+  }
+}
+
+/**
+ * Helper function.
+ */
+function _add_admin_context_to_body_class(&$variables): void {
+  /** @var \Drupal\Core\Routing\AdminContext $admin_context */
+  $admin_context = \Drupal::service('router.admin_context');
+  if ($admin_context->isAdminRoute()) {
+    $variables['attributes']['class'][] = 'admin-context';
+  }
+}
+
+/**
+ * Implements hook_preprocess_page() for page templates.
+ */
+function solo_preprocess_page(&$variables) {
+  // Top regions variables.
+  $regions = [
+    'top' => ['first', 'second', 'third'],
+    'sidebar' => ['first', 'content', 'second'],
+    'bottom' => ['first', 'second', 'third', 'fourth'],
+    'footer' => ['first', 'second', 'third'],
+  ];
+
+  // Loop through each region.
+  foreach ($regions as $region => $subregions) {
+
+    // Loop through each subregion.
+    foreach ($subregions as $subregion) {
+
+      // Ff the subregion is 'content' and if it exists in the 'page' array.
+      if ($subregion == 'content' && !empty($variables['page'][$subregion])) {
+        ${"has_{$subregion}"} = TRUE;
+      }
+
+      // Check if the region and subregion exist in the 'page' array.
+      if (!empty($variables['page']["{$region}_{$subregion}"])) {
+        ${"has_{$region}_{$subregion}"} = TRUE;
+      }
+      else {
+        ${"has_{$region}_{$subregion}"} = FALSE;
+      }
+    }
+  }
+
+  // Add W3.CSS Responsive classes to left, content and right sidebar.
+  $content_count = (int) $has_sidebar_first + (int) $has_content + (int) $has_sidebar_second;
+  // Add 3col stacked equal width.
+  $variables['equal_width'] = theme_get_setting('equal_width');
+  if ($variables['equal_width'] != NULL) {
+    switch ($content_count) {
+      case 3:
+        $variables['content_solo'] = 'w3-third';
+        $variables['sidebarfirst'] = 'w3-third';
+        $variables['sidebarsecond'] = 'w3-third';
+        break;
+
+      case 2:
+        $variables['content_solo'] = 'w3-twothird';
+        $variables['sidebarfirst'] = 'w3-third';
+        $variables['sidebarsecond'] = 'w3-third';
+        break;
+
+      default:
+        $variables['content_solo'] = 'w3-col';
+    }
+  }
+  else {
+    switch ($content_count) {
+      case 3:
+        $variables['content_solo'] = 'w3-half';
+        $variables['sidebarfirst'] = 'w3-quarter';
+        $variables['sidebarsecond'] = 'w3-quarter';
+        break;
+
+      case 2:
+        $variables['content_solo'] = 'w3-threequarter';
+        $variables['sidebarfirst'] = 'w3-quarter';
+        $variables['sidebarsecond'] = 'w3-quarter';
+        break;
+
+      default:
+        $variables['content_solo'] = 'w3-col';
+    }
+  }
+
+  // Add W3.CSS Responsive classes to Top Container.
+  $top_count = (int) $has_top_first + (int) $has_top_second + (int) $has_top_third;
+  switch ($top_count) {
+    case 3:
+      $variables['top_solo'] = 'w3-third';
+      break;
+
+    case 2:
+      $variables['top_solo'] = 'w3-half';
+      break;
+
+    default:
+      $variables['top_solo'] = 'w3-col';
+  }
+
+  // Add W3.CSS Responsive classes to Bottom Container.
+  $bottom_count = (int) $has_bottom_first + (int) $has_bottom_second + (int) $has_bottom_third + (int) $has_bottom_fourth;
+
+  switch ($bottom_count) {
+    case 4:
+      $variables['bottom_solo'] = 'w3-quarter';
+      break;
+
+    case 3:
+      $variables['bottom_solo'] = 'w3-third';
+      break;
+
+    case 2:
+      $variables['bottom_solo'] = 'w3-half';
+      break;
+
+    default:
+      $variables['bottom_solo'] = 'w3-col';
+  }
+
+  // Add W3.CSS Responsive classes to Footer Container.
+  $footer_count = (int) $has_footer_first + (int) $has_footer_second + (int) $has_footer_third;
+
+  switch ($footer_count) {
+    case 3:
+      $variables['footer_solo'] = 'w3-third';
+      break;
+
+    case 2:
+      $variables['footer_solo'] = 'w3-half';
+      break;
+
+    default:
+      $variables['footer_solo'] = 'w3-col';
+  }
+
+  $variables_lists = [
+    'mvar' => [
+      'solo_site_gfs',
+      'solo_site_gfh',
+      'solo_site_gf',
+      'solo_google_font_local',
+      'solo_font_awesome',
+      'full_opacity_onscroll',
+      'layout_user_login_custom',
+      'pagetitle_animation',
+      'breadcrumb_page_title',
+      'sitename_animation',
+      'border_animation',
+      'top_region',
+      'main_region',
+      'bottom_region',
+      'footer_region',
+      'website_width',
+    ],
+    'svar' => [
+      'social_media_size',
+      'show_social_icon',
+      'facebook_url',
+      'twitter_url',
+      'pinterest_url',
+      'linkedin_url',
+      'instagram_url',
+      'youtube_url',
+      'drupal_url',
+      'rss_url',
+      'mastodon_url',
+      'copyright_text',
+      'show_credit_link',
+    ],
+    'cvar' => [
+      'color_page_wrapper',
+      'color_header',
+      'color_primary_menu',
+      'color_welcome_text',
+      'color_highlighted',
+      'color_top_container',
+      'color_top_first',
+      'color_top_second',
+      'color_top_third',
+      'color_page_title',
+      'color_main',
+      'color_breadcrumb',
+      'color_sidebar_first',
+      'color_sidebar_second',
+      'color_content',
+      'color_bottom_container',
+      'color_bottom_first',
+      'color_bottom_second',
+      'color_bottom_third',
+      'color_bottom_fourth',
+      'color_footer_container',
+      'color_footer_first',
+      'color_footer_second',
+      'color_footer_third',
+      'color_footer_menu',
+      'color_copyright',
+    ],
+  ];
+
+  foreach ($variables_lists as $variables_list) {
+    foreach ($variables_list as $variable_list_value) {
+      $variables[$variable_list_value] = theme_get_setting($variable_list_value);
+    }
+  }
+
+  // Check if the curren user on login/register or reset.
+  if (theme_get_setting('layout_user_login_custom')) {
+    $curr_path = \Drupal::service('path.current')->getPath();
+    $curr_path = ltrim($curr_path, '/');
+    if ($curr_path == 'user/login' || $curr_path == 'user/register' || $curr_path == 'user/password') {
+      unset($variables['page']['sidebar_first'], $variables['page']['sidebar_second']);
+      $variables['#attached']['library'][] = 'solo/solo-user-login-custom';
+    }
+  }
+}
+
+/**
+ * Implements hook_preprocess_HOOK() for node.html.twig.
+ */
+function solo_preprocess_node(&$variables) {
+  $is_teaser = $variables['teaser'];
+  $is_comment_form_present = !empty($variables['content']['comments']['comment_form']);
+
+  if ($is_teaser || $is_comment_form_present) {
+    unset($variables['content']['links']['comment']['#links']['comment-add']);
+  }
+}
+
+/**
+ * Implements hook_preprocess_breadcrumb().
+ */
+function solo_preprocess_breadcrumb(&$variables) {
+  if ($variables['breadcrumb'] && !theme_get_setting('breadcrumb_page_title')) {
+    $is_request = \Drupal::request();
+    $route_match = \Drupal::routeMatch();
+    $page_title = \Drupal::service('title_resolver')
+      ->getTitle($is_request, $route_match->getRouteObject());
+    if (!empty($page_title)) {
+      $variables['breadcrumb'][] = [
+        'text' => $page_title,
+      ];
+      // Add cache context based on url.
+      $variables['#cache']['contexts'][] = 'url';
+    }
+  }
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function solo_preprocess_field__node__created(&$variables) {
+  array_walk($variables['items'], function (&$item) {
+    if (isset($item['content']['#prefix'])) {
+      unset($item['content']['#prefix']);
+    }
+  });
+}
+
+/**
+ * Implements hook_preprocess_HOOK() for setting classes.
+ */
+function solo_preprocess_filter_caption(&$variables) {
+  $variables['classes'] = $variables['classes'] ?? '';
+  $variables['classes'] .= ' caption';
+}
+
+/**
+ * Implements hook_preprocess_HOOK() for comment.html.twig.
+ */
+function solo_preprocess_comment(&$variables) {
+  // Getting the node creation time stamp from the comment object.
+  $date = $variables['comment']->getCreatedTime();
+
+  // Getting the current request time.
+  $request_time = DrupalDateTime::createFromTimestamp(\Drupal::time()->getRequestTime());
+
+  // Getting the date formatter service.
+  $date_formatter = \Drupal::service('date.formatter');
+
+  // Formatting "created" as "X days ago".
+  $variables['created'] = t('@time ago', [
+    '@time' => $date_formatter->formatInterval($request_time->getTimestamp() - $date),
+  ]);
+}
+
+/**
+ * Implements hook_preprocess_HOOK() for maintenance-page.html.twig.
+ */
+function solo_preprocess_maintenance_page(&$variables) {
+  _set_site_name($variables);
+  _maintenance_library($variables);
+}
+
+/**
+ * Helper functions.
+ */
+function _set_site_name(&$variables): void {
+  // By default, site_name is set to Drupal if no db connection is available
+  // or during site installation. Setting site_name to an empty string makes
+  // the site and update pages look cleaner.
+  // @see template_preprocess_maintenance_page
+  if (!$variables['db_is_active']) {
+    $variables['site_name'] = '';
+  }
+}
+
+/**
+ * Helper functions.
+ */
+function _maintenance_library(&$variables): void {
+  // solo has custom styling for the maintenance page.
+  $variables['#attached']['library'][] = 'solo/templates/layout/maintenance_page';
+}
+
+/**
+ * Implements hook_page_attachments_alter().
+ */
+function solo_page_attachments_alter(array &$attachments) {
+  _load_google_fonts($attachments);
+  _load_special_fonts($attachments);
+  _load_color_theme($attachments);
+  _load_font_awesome($attachments);
+  _load_full_opacity($attachments);
+  _load_social_icon_size($attachments);
+}
+
+/**
+ * Helper function.
+ */
+function _load_google_fonts(array &$attachments): void {
+  $fonts = ['solo_site_gf', 'solo_site_gfh'];
+  foreach ($fonts as $font) {
+    if (theme_get_setting($font)) {
+      $font_setting = theme_get_setting($font);
+      $font_path = 'solo/solo-gf' . (theme_get_setting('solo_google_font_local') ? 'in' : 'ex') . substr($font_setting, 4);
+      $attachments['#attached']['library'][] = $font_path;
+    }
+  }
+}
+
+/**
+ * Helper function.
+ */
+function _load_special_fonts(array &$attachments): void {
+  if (theme_get_setting('solo_site_gfs')) {
+    $ex_font_s = theme_get_setting('solo_site_gfs');
+    $current_exgfs = 'solo/solo-gfex' . substr($ex_font_s, 4);
+    $attachments['#attached']['library'][] = $current_exgfs;
+  }
+}
+
+/**
+ * Helper function.
+ */
+function _load_color_theme(array &$attachments): void {
+  $is_theme = theme_get_setting('current_theme') ?: 'none';
+ // $theme_path = 'solo/' . ($is_theme == 'none' ? 'solo-predefined-00052' : $is_theme);
+  $theme_path = 'solo/' . $is_theme;
+  $attachments['#attached']['library'][] = $theme_path;
+}
+
+/**
+ * Helper function.
+ */
+function _load_font_awesome(array &$attachments): void {
+  $font_awesome_versions = [
+    1 => 'font-awesome-4-in',
+    2 => 'font-awesome-4-ex',
+    3 => 'font-awesome-5-ex',
+    4 => 'font-awesome-6-ex',
+  ];
+  $fw_version = theme_get_setting('solo_font_awesome');
+  if (isset($font_awesome_versions[$fw_version])) {
+    $attachments['#attached']['library'][] = 'solo/' . $font_awesome_versions[$fw_version];
+  }
+}
+
+/**
+ * Helper function.
+ */
+function _load_social_icon_size(array &$attachments): void {
+
+  $show_icons = theme_get_setting('show_social_icon');
+
+  if ($show_icons) {
+    $social_media_size = [
+      1 => 'social-media-icon-size-m',
+      2 => 'social-media-icon-size-l',
+    ];
+    $smi = theme_get_setting('social_media_size');
+    if (isset($social_media_size[$smi])) {
+      $attachments['#attached']['library'][] = 'solo/' . $social_media_size[$smi];
+    }
+  }
+
+}
+
+/**
+ * Helper function.
+ */
+function _load_full_opacity(array &$attachments): void {
+  /** @var \Drupal\Core\Routing\AdminContext $admin_context */
+  $admin_context = \Drupal::service('router.admin_context');
+  if (theme_get_setting('full_opacity_onscroll') && !$admin_context->isAdminRoute()) {
+    $attachments['#attached']['library'][] = 'solo/solo-full-opacity';
+  }
+}
+
+/**
+ * Implements hook_theme_suggestions_HOOK_alter().
+ */
+function solo_theme_suggestions_form_alter(array &$suggestions, array $variables) {
+  // Check if form_id exists in variables.
+  if (isset($variables['element']['#form_id'])) {
+    // Get the form ID.
+    $form_id = $variables['element']['#form_id'];
+
+    // Suggest the name for the search block.
+    if ($form_id == 'search_block_form') {
+      $suggestions[] = 'form__search_block_form';
+    }
+  }
+}
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ */
+function solo_form_search_form_alter(&$form, &$form_state) {
+  if (isset($form['help_link'])) {
+    unset($form['help_link']);
+  }
+}
+
+/**
+ * Implements hook_form_FORM_ID_alter() for search_block_form.
+ */
+function solo_form_search_block_form_alter(&$form, FormStateInterface $form_state) {
+  // Add a placeholder to the search input field.
+  $form['keys']['#attributes']['placeholder'] = t('Search');
+
+  // Change the value of the submit button.
+  $form['actions']['submit']['#value'] = t('.');
+
+  // Add a class to the submit button.
+  $form['actions']['submit']['#attributes']['class'][] = 'search-button-block';
+}
+
+/**
+ * Implements hook_form_FORM_ID_alter() for node_form.
+ */
+function solo_form_node_form_alter(&$form, FormStateInterface $form_state) {
+  // Set the theme for the form.
+  $form['#theme'] = ['node_edit_form'];
+
+  // Define the 'advanced' and 'meta' containers.
+  $form['advanced']['#type'] = 'container';
+  $form['meta']['#type'] = 'container';
+
+  // Set access for the 'meta' container.
+  $form['meta']['#access'] = TRUE;
+
+  // Add 'container-inline' class to 'changed' and 'author' wrappers.
+  $form['meta']['changed']['#wrapper_attributes']['class'][] = 'container-inline';
+  $form['meta']['author']['#wrapper_attributes']['class'][] = 'container-inline';
+
+  // Define the 'revision_information' container and group it under 'meta'.
+  $form['revision_information']['#type'] = 'container';
+  $form['revision_information']['#group'] = 'meta';
+}
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ */
+function solo_form_comment_form_alter(&$form, FormStateInterface $form_state, $form_id) {
+  $is_comment = $form_state->getFormObject()->getEntity();
+
+  if ($is_comment instanceof CommentInterface) {
+    $form['actions']['submit']['#value'] = $is_comment->hasParentComment() ? t('Reply to comment') : t('Post comment');
+  }
+}
+
+/**
+ * Implements hook_theme_suggestions_HOOK_alter() for form templates.
+ * @param array $suggestions
+ * @param array $variables
+ */
+function solo_theme_suggestions_block_alter(array &$suggestions, array $variables) {
+  if (isset($variables['elements']['content']['#block_content'])) {
+    array_splice($suggestions, 1, 0, 'block__bundle__' . $variables['elements']['content']['#block_content']->bundle());
+  }
+}
+
+/**
+ * Implements hook_preprocess_HOOK() for block.html.twig.
+ */
+function solo_preprocess_block(&$variables) {
+  if (!empty($variables['elements']['#id'])) {
+    /** @var \Drupal\block\BlockInterface $block */
+    $block = \Drupal::entityTypeManager()
+      ->getStorage('block')
+      ->load($variables['elements']['#id']);
+    if ($block) {
+      $region = $block->getRegion();
+
+      if ($variables['base_plugin_id'] === 'system_menu_block') {
+        $variables['content']['#attributes']['region'] = $region;
+      }
+    }
+  }
+}
+
+/**
+ * Implements hook_theme_suggestions_HOOK_alter() for menu.
+ */
+function solo_theme_suggestions_menu_alter(&$suggestions, array $variables) {
+  if (isset($variables['attributes']['region'])) {
+    $suggestions[] = 'menu__' . $variables['attributes']['region'];
+  }
+}
+
+/**
+ * Implements hook_theme_suggestions_page_alter().
+ */
+function solo_theme_suggestions_page_alter(array &$suggestions, array $variables) {
+  $route_match = \Drupal::service('current_route_match');
+  _add_node_suggestions($route_match, $suggestions);
+  _add_taxonomy_suggestions($route_match, $suggestions);
+  _add_view_suggestions($route_match, $suggestions);
+}
+
+/**
+ * Helper function.
+ */
+function _add_node_suggestions(RouteMatchInterface $route_match, array &$suggestions): void {
+  if ($route_match->getRouteName() === 'entity.node.canonical') {
+    $node_bundle = $route_match->getParameter('node')->bundle();
+    array_splice($suggestions, 1, 0, 'page__' . $node_bundle);
+  }
+}
+
+/**
+ * Helper function.
+ */
+function _add_taxonomy_suggestions(RouteMatchInterface $route_match, array &$suggestions): void {
+  if ($route_match->getRouteName() === 'entity.taxonomy_term.canonical') {
+    $taxonomy_bundle = $route_match->getParameter('taxonomy_term')->bundle();
+    array_splice($suggestions, 1, 0, 'page__taxonomy__' . $taxonomy_bundle);
+  }
+}
+
+/**
+ * Helper function.
+ */
+function _add_view_suggestions(RouteMatchInterface $route_match, array &$suggestions): void {
+  if ($view_name = $route_match->getRouteObject()->getDefault('view_id')) {
+    $suggestions[] = 'page__' . $view_name;
+  }
+}
+
+/**
+ * Implements hook_theme_suggestions_HOOK_alter().
+ */
+function solo_theme_suggestions_user_alter(&$suggestions, $variables) {
+
+  $viewModeKey = '#view_mode';
+  $elements = $variables['elements'] ?? [];
+
+  if (!isset($elements[$viewModeKey])) {
+    return NULL;
+  }
+
+  $viewMode = str_replace('.', '_', $elements[$viewModeKey]);
+  $userId = \Drupal::service('current_user')->id();
+
+  $suggestions = [
+    "user__{$viewMode}",
+    "user__{$userId}",
+    "user__{$userId}__{$viewMode}",
+  ];
+
+  return $suggestions;
+
+}

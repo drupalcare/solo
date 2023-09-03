@@ -1,0 +1,164 @@
+/* Base styles that apply to all menus */
+
+
+.d-inner button.mBtn,
+.d-inner .navigation__menubar a,
+.d-inner .navigation__menubar button {
+  all: unset;
+  outline: revert;
+  box-sizing: border-box;
+  cursor: pointer;
+}
+.navigation__menubar:before,
+.navigation__menubar:after {
+  content: " ";
+  display: table;
+}
+
+.navigation__menubar:after {
+  clear: both;
+}
+
+.d-inner .navigation__menubar li button:hover {
+  background-color: yellowgreen;
+}
+
+.d-inner .navigation__menubar li a:hover {
+  background-color: orange;
+}
+
+.d-inner .navigation__menubar,
+.d-inner .sub__menu,
+.d-inner .nav__menu-item,
+.d-inner .nav__menu-link {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  border: none;
+  background-color: inherit;
+  font-size: 16px;
+}
+
+.d-inner .navigation__menubar li a {
+  text-decoration: none;
+  -webkit-text-decoration: none;
+}
+
+.page-wrapper #main-navigation-h {
+  z-index: 1000;
+}
+
+.d-inner .navigation__menubar {
+  z-index: 2000 !important;
+}
+
+.d-inner .navigation__menubar li ul.sub__menu {
+  z-index: 3000 !important;
+}
+
+.d-inner .navigation__menubar li ul.sub__menu li .sub__menu {
+  z-index: 4000 !important;
+}
+
+.d-inner .navigation__menubar>li ul {
+  min-width: 200px;
+  display: none;
+  white-space: nowrap;
+}
+
+.d-inner .navigation__menubar li a,
+.d-inner .navigation__menubar li button {
+  padding: 12px;
+  transition: 0.4s;
+}
+
+.d-inner .navigation__menubar li button.ds-link .menu__link-title {
+  flex-grow: 1;
+  margin-right: 12px;
+}
+
+.d-inner button.mBtn,
+.d-inner .navigation__menubar li {
+  vertical-align: middle;
+}
+
+.d-inner .navigation__menubar .toggler-icon svg {
+  transition: all 0.5s 0.2s;
+}
+
+.d-inner .navigation__menubar li .dropdown-toggler {
+  cursor: context-menu !important;
+}
+
+.d-inner .navigation__menubar a,
+.d-inner .navigation__menubar li,
+.d-inner .navigation__menubar button {
+  display: flex;
+}
+
+.d-inner .navigation__menubar button>span {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.d-inner .mobile-menubar-toggler-button {
+  padding: 6px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-grow: 1;
+  flex-basis: 100% !important;
+  flex-direction: column;
+}
+
+.d-inner .navigation__menubar {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.d-inner .navigation__menubar li .has-sub__menu ul {
+  left: 100%;
+  top: 0;
+}
+
+.d-inner  .navigation__menubar li ul {
+  position: absolute;
+}
+
+.d-inner .navigation__menubar li {
+  flex-wrap: wrap;
+  position: relative;
+}
+
+.d-inner .navigation__menubar li.nav__menu-item a,
+.d-inner .navigation__menubar li.has-sub__menu ul,
+.d-inner .navigation__menubar li.nav__menu-item button {
+  flex-basis: 100%;
+}
+
+.d-inner .navigation__menubar .ds-link span.menu__link-title,
+.d-inner .navigation__menubar li.has-sub__menu a.url-added {
+  flex-basis: calc(100% - 50px);
+  width: calc(100% - 50px);
+  position: relative;
+  flex-grow: 1;
+}
+
+.d-inner .navigation__menubar li.has-sub__menu button.en-link {
+  position: relative;
+  flex-basis: 50px;
+  width: 50px;
+}
+
+
+.d-inner .navigation__menubar li.has-sub__menu {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: stretch;
+}
+.responsive-navigation {
+  display: block;
+  width: 100%;
+}
+

@@ -5,8 +5,8 @@ input,
 select,
 optgroup,
 textarea,
-.ul-parent-account,
-.ul-parent-footer {
+.navigation__menubar-account,
+.navigation__menubar-footer {
   color: #1c2450;
 }
 
@@ -48,7 +48,7 @@ a,
   background-color: #1c2450 !important;
 }
 
-.ul-parent-account {
+.navigation__menubar-account {
   color: inherit;
 }
 

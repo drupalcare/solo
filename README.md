@@ -23,7 +23,7 @@ INSTALLATION:
 --------------------------------------------------------------------------------
 
 Download the theme to your-drupal-site-name/themes/ and go to
-your-site-domain/admin/appearance and scroll to the bottom until you see W3CSS
+your-site-domain/admin/appearance and scroll to the bottom until you see Solo
 Theme and click on Install and set as default and click save.
 
 
@@ -134,7 +134,7 @@ The new version was added with all new featuers. If you are using V1 and you did
 
 You can build any website layout with the w3.css library. I try to add the most
 well-known templates/layouts. I added some sub-themes to include different
-layouts. If you see a w3css template that you want to have available in this
+layouts. If you see a Solo template that you want to have available in this
 theme then let me know and I'll customize it and add it to the collection as a
 sub-theme.
 
@@ -234,8 +234,8 @@ this font to a paragraph, here is how it's done;
 
 In Solo Theme was changed to a dropdown select list.
 Go to your-drupal-site-name/admin/appearance/settings/solo and
-click on  w3css predefined color themes to expand it.  Copy and paste any of
-your desired w3css color theme and click save.  FYI: if you have any w3
+click on  Solo predefined color themes to expand it.  Copy and paste any of
+your desired Solo color theme and click save.  FYI: if you have any w3
 classes in Advanced Site Color Section they will not override the uploaded
 color theme because of the CSS order.  Any predefined theme file it will be
 loaded after w3.css.

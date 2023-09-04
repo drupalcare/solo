@@ -4,7 +4,7 @@ a,
   transition: 0.4s !important;
 }
 
-.ul-parent-account {
+.navigation__menubar-account {
   color: inherit;
 }
 
@@ -34,7 +34,7 @@ textarea,
 #top-container,
 #main-container,
 #footer-container,
-.ul-parent-footer,
+.navigation__menubar-footer,
 .search-slide-wrapper,
 .pager__item.w3-light-gray a,
 #top-container .top-box>div,

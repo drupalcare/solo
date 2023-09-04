@@ -1,5 +1,5 @@
 .navigation__menubar-footer li a,
-.ul-parent-footer li a {
+.navigation__menubar-footer li a {
   padding: 7px 14px;
 }
 
@@ -9,13 +9,13 @@
 }
 
 .navigation__menubar-footer,
-.ul-parent-footer {
+.navigation__menubar-footer {
   width: 100%;
   clear: both;
 }
 
 .navigation__menubar-footer li,
-.ul-parent-footer li {
+.navigation__menubar-footer li {
   float: none;
   width: auto;
   display: inline-block;

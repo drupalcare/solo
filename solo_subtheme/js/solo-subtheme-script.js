@@ -1,6 +1,6 @@
 /**
  * @file
- * This file is to add any custom js for the drupal8 Solo Sub-theme.
+ * This file is to add any custom js for the Solo Sub-theme.
  */
 
 (function ($) {

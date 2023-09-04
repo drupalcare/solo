@@ -1,4 +1,3 @@
-.ul-parent-account,
 .navigation__menubar-account {
   justify-self: end;
   float: right;
@@ -7,15 +6,13 @@
   z-index: 1!important;
 }
 
-.ul-parent-account li,
 .navigation__menubar-account li {
   float: none;
   width: auto;
   display: inline-block;
 }
 
-.ul-parent-account li a,
-.navigation__menubar-account li a, {
+.navigation__menubar-account li a {
   padding: 7px 14px;
 }
 

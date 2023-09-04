@@ -10,12 +10,9 @@
  * Author:       Alaa Haddad http://www.alaahaddad.com.
  */
 
-use Drupal\block\Entity\Block;
 use Drupal\comment\CommentInterface;
 use Drupal\Component\Utility\Html;
 use Drupal\Core\Datetime\DrupalDateTime;
-use Drupal\Core\Entity\EntityBase;
-use Drupal\Core\Entity\EntityInterface;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Routing\RouteMatchInterface;
 
@@ -402,7 +399,7 @@ function _set_site_name(&$variables): void {
  * Helper functions.
  */
 function _maintenance_library(&$variables): void {
-  // solo has custom styling for the maintenance page.
+  // Solo has custom styling for the maintenance page.
   $variables['#attached']['library'][] = 'solo/templates/layout/maintenance_page';
 }
 
@@ -448,7 +445,8 @@ function _load_special_fonts(array &$attachments): void {
  */
 function _load_color_theme(array &$attachments): void {
   $is_theme = theme_get_setting('current_theme') ?: 'none';
- // $theme_path = 'solo/' . ($is_theme == 'none' ? 'solo-predefined-00052' : $is_theme);
+  // $theme_path = 'solo/' . ($is_theme == 'none' ?
+  // 'solo-predefined-00052' : $is_theme);
   $theme_path = 'solo/' . $is_theme;
   $attachments['#attached']['library'][] = $theme_path;
 }
@@ -575,8 +573,6 @@ function solo_form_comment_form_alter(&$form, FormStateInterface $form_state, $f
 
 /**
  * Implements hook_theme_suggestions_HOOK_alter() for form templates.
- * @param array $suggestions
- * @param array $variables
  */
 function solo_theme_suggestions_block_alter(array &$suggestions, array $variables) {
   if (isset($variables['elements']['content']['#block_content'])) {

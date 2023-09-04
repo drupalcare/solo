@@ -6,13 +6,6 @@
 ((Drupal, once) => {
   'use strict';
 
-  // Cache the selectors
-  const socialMediaIcons = [...document.querySelectorAll(
-    '.d-inner .social-media > a > i')];
-  socialMediaIcons.forEach(icon => {
-    icon.classList.remove('fa');
-  });
-
   // In case the admin toolbar search installed.
   const adminToolbarSearchTab = document.querySelector(
     '#admin-toolbar-search-tab > div');
@@ -70,36 +63,6 @@
 
   };
 
-  const addClassAccordingToDepth = (element, depth) => {
-
-    element.classList.add(`ul-${depth}`);
-    Array.from(element.children)
-      .forEach(child => child.classList.add(`li-${depth}`));
-  };
-
-  const calculateDepth = (element) => {
-    let depth = 1;
-    let parent = element.parentElement;
-
-    while (parent) {
-      if (parent.tagName.toLowerCase() === 'ul') {
-        depth++;
-      }
-      parent = parent.parentElement;
-    }
-    return depth;
-  };
-
-  Drupal.behaviors.soloMenuDepth = {
-    attach: (settings) => {
-      Array.from(document.querySelectorAll('.d-inner ul'))
-        .forEach((element) => {
-          const depth = calculateDepth(element);
-          addClassAccordingToDepth(element, depth);
-        });
-    }
-  };
-
   Drupal.behaviors.soloTheme = {
     attach: function(context, settings) {
       // Change the form color to match the footer color.
@@ -118,64 +81,6 @@
         footerMenuForm.style.color = footerFormTxt;
       }
 
-      // apply background and color to opened dialog.
-      let layoutBuilderBox = function() {
-        if (document.querySelector('.ui-dialog') !== null && document
-          .querySelector('.ui-dialog')
-          .style.display !== 'none') {
-
-          const pageTitle = document.querySelector('#page-title');
-          const pageTitleBg = window.getComputedStyle(pageTitle)
-            .getPropertyValue('background-color');
-
-          const pageTitleH1 = document.querySelector('#page-title h1');
-          const pageTitleTxt = window.getComputedStyle(pageTitleH1)
-            .getPropertyValue('color');
-
-          const mainContainer = document.querySelector(
-            '#main-container');
-          const mainContainerBg = window.getComputedStyle(mainContainer)
-            .getPropertyValue('background-color');
-
-          const mainContainerP = document.querySelector(
-            '#main-container p');
-          const mainContainerTxt = window.getComputedStyle(
-              mainContainerP)
-            .getPropertyValue('color');
-
-          let dialogTitlebar = document.querySelector(
-            '.ui-dialog .ui-dialog-titlebar');
-
-          if (dialogTitlebar) {
-            dialogTitlebar.style.background = pageTitleBg;
-            dialogTitlebar.style.color = pageTitleTxt;
-          }
-
-          let body = document.querySelector('body .ui-dialog');
-
-          if (body) {
-            body.style.background = mainContainerBg;
-            body.style.color = mainContainerTxt;
-          }
-
-          let dialogContent = document.querySelector(
-            '.ui-dialog .ui-dialog-content');
-
-          if (dialogContent) {
-            dialogContent.style.background = mainContainerBg;
-            dialogContent.style.color = mainContainerTxt;
-          }
-
-          let dialogButtonpane = document.querySelector(
-            '.ui-dialog .ui-dialog-buttonpane');
-
-          if (dialogButtonpane) {
-            dialogButtonpane.style.background = footerFormBg;
-            dialogButtonpane.style.color = footerFormTxt;
-          }
-
-        }
-      } // End of layoutBuilderBox
 
       function addClasses(selector, childSelector, classes, context) {
 

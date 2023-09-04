@@ -59,20 +59,7 @@ abbr.ajax-changed {
 }
 
 .form-required:after {
-/*  content: "\f069" !important;
-  font-family: FontAwesome;
-  color: red;
-  vertical-align: super;
-  display: inline-block !important;
-  background-size: 10px 10px;
-  width: 10px;
-  height: 10px;
-  margin: 0 0.3em;
-  font-size: 10px;
-  font-style: normal;
-  font-variant: normal;
-  text-rendering: auto;
-  line-height: 1;*/
+
   display: inline-block;
   width: 10px;
   height: 10px;
@@ -87,12 +74,6 @@ abbr.ajax-changed {
 
 /* Inline Error Message. */
 .form-item--error-message:before {
-/*  font-family: FontAwesome;
-  content: "\f00d";
-  display: inline-block;
-  vertical-align: baseline;
-  color: red;
-  background-size: contain;*/
   display: inline-block;
   width: 16px;
   height: 16px;

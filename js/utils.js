@@ -99,12 +99,7 @@
   const getCurrentWidth = () => window.innerWidth || document.documentElement
     .clientWidth || document.body.clientWidth;
 
-  const addClassAccordingToDepth = (element, depth) => {
 
-    element.classList.add(`ul-${depth}`);
-    Array.from(element.children)
-      .forEach(child => child.classList.add(`li-${depth}`));
-  };
 
   const calculateDepth = (element) => {
     let depth = 1;
@@ -118,6 +113,13 @@
     }
     return depth;
   };
+  const addClassAccordingToDepth = (element, depth) => {
+
+    element.classList.add(`ul-${depth}`);
+    Array.from(element.children)
+      .forEach(child => child.classList.add(`li-${depth}`));
+  };
+
 
   Drupal.solo.calculateDepth = calculateDepth;
 

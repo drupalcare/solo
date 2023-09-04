@@ -3,14 +3,12 @@
  * Defines Javascript behaviors for the Solo Theme.
  * https://www.drupal.org/node/3158256
  */
-((Drupal, once) => {
+((Drupal) => {
 
   'use strict';
 
   let isClicked = false;
   let currentWidth;
-  let origOffsetY;
-
   const querySelectorElements = (selector) => document.querySelectorAll(selector) ?? null;
   const siteMenuBars = querySelectorElements('.d-inner nav .navigation__menubar');
   const siteSubMenus = querySelectorElements('.d-inner nav .navigation__menubar ul');
@@ -22,54 +20,35 @@
   const getCurrentWidth = () => window.innerWidth || document.documentElement
     .clientWidth || document.body.clientWidth;
 
-  // Apply background color to all site submenus. The region background color
-  // will be used. Ex. if the submenu in header region then the heaser background
-  // color will be applied to this submenu.
-  const getParentBg = (el) => {
-    const closestParent = el.closest('.page-wrapper>div') ?? el.closest('.page-wrapper>header');
-    if (closestParent) {
-      let parentBg = window.getComputedStyle(closestParent).backgroundColor;
-      return parentBg;
-    }
-  }
-  siteSubMenus.forEach(el => el.style.backgroundColor = getParentBg(el));
-
-  // Apply static position to the main menu on scroll so it will be sticky
-  // on the top.
-  const mainNavigation = document.querySelector('#main-navigation-h');
-  if (mainNavigation && mainNavigation.querySelector('.d-inner .navigation__menubar')) {
-    origOffsetY = mainNavigation.offsetTop;
-  }
-
-  const scrollWindow = () => {
-    if (mainNavigation) {
-      mainNavigation.classList.toggle('w3-sticky', window.scrollY >
-        origOffsetY);
-    }
-  };
-
   // Function to handle the click, so don't click fast twice.
-  const clickedHandler = (callback) => {
+  const delay = (duration) => new Promise(resolve => setTimeout(resolve, duration));
+
+  const clickedHandler = async (callback) => {
     if (!isClicked) {
       isClicked = true;
-      callback();
-      setTimeout(() => {
-        isClicked = false;
-      }, 500);
+      await callback();
+      await delay(500);
+      isClicked = false;
     }
   }
+  Drupal.solo.clickedHandler = clickedHandler;
 
   const hideSubMenus = (childElement) => {
     Drupal.solo.slideUp(childElement, 300);
   }
+  Drupal.solo.hideSubMenus = hideSubMenus;
 
   const getNavigationMenubarClass = (menuBar) => {
     return document.querySelector(`.d-inner #${menuBar} .navigation__menubar`);
   }
+  Drupal.solo.getNavigationMenubarClass = getNavigationMenubarClass;
 
   const getSubMenuClasses = (subMenus) => {
     return document.querySelectorAll(`.d-inner #${subMenus} .navigation__menubar ul`);
   }
+  Drupal.solo.getSubMenuClasses = getSubMenuClasses;
+
+  const hasParentWithClass = (element, className) => !!element.closest(`.${className}`);
 
   const getNavTagId = (dropdownTogglerButton) => {
     const {
@@ -86,18 +65,17 @@
   }
 
   // Change the arrow direction on close.
-  const revertIcon = (navId) => {
+  const revertIcons = (navId) => {
     let svgIcons = document.querySelectorAll(`.d-inner #${navId} .toggler-icon svg`);
     svgIcons.forEach((svgIcon) => {
       svgIcon.style.removeProperty('transform');
     });
   }
-
-  // click anywhere to close the nav
+  Drupal.solo.revertIcons = revertIcons
+  //click anywhere to close the nav
   const removesiteMenuBarsStyles = (siteMenuBars) => {
     siteMenuBars.forEach((siteMenuBar) => {
       siteMenuBar.removeAttribute('style');
-
     });
   }
 
@@ -116,6 +94,7 @@
     rotated.style.removeProperty('transform');
     dropdownTogglerButton.setAttribute('aria-expanded', 'false');
     dropdownTogglerButton.setAttribute('aria-hidden', 'true');
+    dropdownTogglerButton.setAttribute('tabindex', '-1');
     Drupal.solo.slideUp(subMenu, 400);
 
   }
@@ -125,6 +104,7 @@
     Drupal.solo.slideDown(subMenu);
     dropdownTogglerButton.setAttribute('aria-expanded', 'true');
     dropdownTogglerButton.setAttribute('aria-hidden', 'false');
+    dropdownTogglerButton.setAttribute('tabindex', '0');
 
   }
 
@@ -170,7 +150,7 @@
     subMenuClasses?.forEach((subMenuClass) => {
       if (subMenuClass !== subMenu) {
         hideSubMenus(subMenuClass);
-        revertIcon(navTagId);
+        revertIcons(navTagId);
       }
     });
 
@@ -192,7 +172,7 @@
 
     subMenuClasses?.forEach((subMenuClass) => {
       hideSubMenus(subMenuClass);
-      revertIcon(navTagId);
+      revertIcons(navTagId);
     });
 
     closeMenuHelper(rotated, dropdownTogglerButton, subMenu);
@@ -203,7 +183,7 @@
   const openSubMenu = (dropdownTogglerButton, subMenu) => {
     const [nestedSubMenus, nestedTogglers] = getDropdownElements(dropdownTogglerButton);
     const rotated = getRotated(dropdownTogglerButton);
-    const verticalNav = subMenu.closest('#main-navigation-v') ?? null;
+    const verticalNav = subMenu.closest('#main-navigation-v') ?? subMenu.closest('.side-navigation');
     // close all opened sibling menu
     nestedSubMenus.forEach((nestedSubMenu) => {
       if (nestedSubMenu !== subMenu) {
@@ -236,7 +216,7 @@
   const dropdownTogglerButtonIsClicked = (dropdownTogglerButton, subMenu) => {
     clickedHandler(() => {
       // Let get the menu type menubar or submenu.
-      let isClassPresent = dropdownTogglerButton.parentElement.classList.contains('navigation__menubar-item');
+      let isClassPresent = dropdownTogglerButton.parentElement.classList.contains('nav__menubar-item');
 
       if (isClassPresent) {
 
@@ -259,132 +239,42 @@
     });
   }
 
+
+
+  // Add focus class once you click on menubar.
+  siteMenuBars.forEach((siteMenuBar) => {
+    siteMenuBar.addEventListener('click', (event) => {
+
+      const mainMenu = ('main-navigation-inner-v');
+      const sideMenu = ('side-navigation');
+      if (hasParentWithClass(siteMenuBar, mainMenu) || hasParentWithClass(siteMenuBar, sideMenu) || currentWidth < 992) {
+        siteMenuBar.classList.remove('focus-in');
+      } else {
+        siteMenuBar.classList.add('focus-in');
+      }
+
+    });
+  });
+
+
   // When a toggler is clicked, we need to know if it is submenu or menubar.
   dropdownTogglerButtons.forEach((dropdownTogglerButton) => {
+
     dropdownTogglerButton.addEventListener('click', (event) => {
       const subMenu = dropdownTogglerButton.nextElementSibling;
       const eventTarget = event.target;
       dropdownTogglerButtonIsClicked(dropdownTogglerButton, subMenu);
     });
+
   });
 
-  //////////////////////////////////////////////////////////////////////
-  // Steps when click hamburger icon.
-  // hamburgerIconIsClicked >> closeMobileMenuHandler >> closeMobileMenu
-  // hamburgerIconIsClicked >> openMobileMenuHandler >> openMobileMenu
-  const openMobileMenu = navTagId => {
-    const navigationMenubarClass = getNavigationMenubarClass(navTagId);
-    const subMenuClasses = getSubMenuClasses(navTagId);
 
-    subMenuClasses?.forEach((subMenu) => {
-      hideSubMenus(subMenu);
-      revertIcon(navTagId);
-    });
-    Drupal.solo.slideDown(navigationMenubarClass, 'flex');
-
-  };
-
-  const closeMobileMenu = navTagId => {
-    const navigationMenubarClass = getNavigationMenubarClass(navTagId);
-    const subMenuClasses = getSubMenuClasses(navTagId);
-
-    subMenuClasses?.forEach((subMenu) => {
-      hideSubMenus(subMenu);
-      revertIcon(navTagId);
-    });
-
-    Drupal.solo.slideUp(navigationMenubarClass, 400);
-
-  };
-
-  const getMobileNavType = (hamburgerIcon) => {
-    const hamburgerIconChild = hamburgerIcon.children[0];
-    const navTagId = hamburgerIcon.parentElement.classList.contains('responsive-navigation') ?
-      hamburgerIcon.closest('nav').id :
-      hamburgerIcon.nextElementSibling.id;
-    return [hamburgerIconChild, navTagId];
-  };
-
-  const hamburgerIconIsClicked = (hamburgerIcon) => {
-    const [hamburgerIconChild, navTagId] = getMobileNavType(hamburgerIcon);
-
-    if (!hamburgerIcon.classList.contains('toggled')) {
-      hamburgerIconChild.setAttribute('aria-expanded', 'true');
-      hamburgerIconChild.setAttribute('aria-hidden', 'false');
-      hamburgerIcon.classList.add('toggled');
-      openMobileMenu(navTagId);
-    } else {
-      hamburgerIconChild.setAttribute('aria-expanded', 'false');
-      hamburgerIconChild.setAttribute('aria-hidden', 'true');
-      hamburgerIcon.classList.remove('toggled');
-      closeMobileMenu(navTagId);
-    }
-  };
-
-  const adIdToMenubars = (hamburgerIcon) => {
-    const [hamburgerIconChild, navTagId] = getMobileNavType(hamburgerIcon);
-    let ariaControl = document.querySelector(`#${navTagId} .navigation__menubar`).getAttribute('id');
-    if (currentWidth <= 992) {
-      hamburgerIconChild.setAttribute('aria-controls', ariaControl);
-    } else {
-      hamburgerIconChild.removeAttribute('aria-controls');
-    }
-  };
-
-  // Hamburger icon is clicked
-  hamburgerIconButtons.forEach((hamburgerIcon) => {
-    adIdToMenubars(hamburgerIcon);
-    hamburgerIcon.addEventListener('click', () => {
-      clickedHandler(() => {
-        hamburgerIconIsClicked(hamburgerIcon);
-      });
-    });
-  });
-
-  ////////////////////////////////////////////////
-  // Main menu vertical nav start Close or Open.
-  const navClickListener = (selector, callback) => {
-    const element = document.querySelector(selector);
-    if (element) {
-      element.addEventListener('click', callback);
-    }
-  };
-
-  // Close nav button found in page.html.twig in vertical menu region.
-  navClickListener('#main-navigation-v #close-nav', () => {
-    const verticalNav = document.getElementById('main-navigation-v');
-    let cosBtns = document.querySelectorAll('.cos-btn');
-    cosBtns?.forEach((cosBtn) => {
-      cosBtn.setAttribute('aria-expanded', 'false');
-      cosBtn.setAttribute('aria-hidden', 'true');
-
-    })
-
-    verticalNav.style.display = 'none';
-    const subMenus = document.querySelectorAll(
-      '#main-navigation-v .navigation__menubar li ul.sub__menu');
-    subMenus.forEach(hideSubMenus);
-  });
-
-  // Open nav button found in page.html.twig in header region.
-  navClickListener('#open-nav-inner', () => {
-
-    let cosBtns = document.querySelectorAll('.cos-btn');
-    cosBtns?.forEach((cosBtn) => {
-      cosBtn.setAttribute('aria-expanded', 'true');
-      cosBtn.setAttribute('aria-hidden', 'false');
-
-    })
-
-    const verticalNav = document.getElementById('main-navigation-v');
-    verticalNav.style.display = 'flex';
-  });
 
   Drupal.behaviors.menuAction = {
     attach: function(settings) {
 
       currentWidth = getCurrentWidth();
-      window.addEventListener('scroll', scrollWindow);
+
       window.addEventListener('resize', () => {
 
         resetSubMenus(siteSubMenus, svgIcons);
@@ -402,4 +292,4 @@
     }
   };
 
-})(Drupal, once);
+})(Drupal);

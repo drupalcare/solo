@@ -1,9 +1,9 @@
 /* Base styles that apply to all menus */
 
 
-.d-inner button.mBtn,
-.d-inner .navigation__menubar a,
-.d-inner .navigation__menubar button {
+.d-inner button.global-menu-button,
+.d-inner .navigation__menubar li.nav__menu-item>a,
+.d-inner .navigation__menubar li.nav__menu-item>button {
   all: unset;
   outline: revert;
   box-sizing: border-box;
@@ -39,7 +39,7 @@
   font-size: 16px;
 }
 
-.d-inner .navigation__menubar li a {
+.d-inner .navigation__menubar li.nav__menu-item>a {
   text-decoration: none;
   -webkit-text-decoration: none;
 }
@@ -52,47 +52,53 @@
   z-index: 2000 !important;
 }
 
-.d-inner .navigation__menubar li ul.sub__menu {
+.d-inner .navigation__menubar li.nav__menu-item>ul.sub__menu {
   z-index: 3000 !important;
 }
 
-.d-inner .navigation__menubar li ul.sub__menu li .sub__menu {
+.d-inner .navigation__menubar li.nav__menu-item>ul.sub__menu>li.nav__menu-item>ul.sub__menu {
   z-index: 4000 !important;
 }
 
-.d-inner .navigation__menubar>li ul {
+.d-inner .navigation__menubar>li.nav__menu-item ul.sub__menu {
   min-width: 200px;
   display: none;
   white-space: nowrap;
 }
 
-.d-inner .navigation__menubar li a,
-.d-inner .navigation__menubar li button {
+.d-inner .navigation__menubar li.nav__menu-item>a,
+.d-inner .navigation__menubar li.nav__menu-item>button {
   padding: 12px;
   transition: 0.4s;
 }
 
-.d-inner .navigation__menubar li button.ds-link .menu__link-title {
+.d-inner .navigation__menubar li.link-and-button>button {
+  justify-content: center;
+  padding: 0;
+  min-height: 50px;
+}
+
+.d-inner .navigation__menubar li.nav__menu-item>button.ds-link .menu__link-title {
   flex-grow: 1;
   margin-right: 12px;
 }
 
-.d-inner button.mBtn,
-.d-inner .navigation__menubar li {
+.d-inner button.global-menu-button,
+.d-inner .navigation__menubar li.nav__menu-item {
   vertical-align: middle;
 }
 
-.d-inner .navigation__menubar .toggler-icon svg {
+.d-inner .navigation__menubar li.nav__menu-item>.dropdown-toggler .toggler-icon svg {
   transition: all 0.5s 0.2s;
 }
 
-.d-inner .navigation__menubar li .dropdown-toggler {
+.d-inner .navigation__menubar li.nav__menu-item .dropdown-toggler {
   cursor: context-menu !important;
 }
 
-.d-inner .navigation__menubar a,
-.d-inner .navigation__menubar li,
-.d-inner .navigation__menubar button {
+.d-inner .navigation__menubar li.nav__menu-item,
+.d-inner .navigation__menubar li.nav__menu-item>a,
+.d-inner .navigation__menubar li.nav__menu-item>button {
   display: flex;
 }
 
@@ -117,23 +123,23 @@
   flex-wrap: wrap;
 }
 
-.d-inner .navigation__menubar li .has-sub__menu ul {
+.d-inner .navigation__menubar li.nav__menu-item li.has-sub__menu ul.sub__menu {
   left: 100%;
   top: 0;
 }
 
-.d-inner  .navigation__menubar li ul {
+.d-inner  .navigation__menubar li.nav__menu-item ul.sub__menu {
   position: absolute;
 }
 
-.d-inner .navigation__menubar li {
+.d-inner .navigation__menubar li.nav__menu-item {
   flex-wrap: wrap;
   position: relative;
 }
 
-.d-inner .navigation__menubar li.nav__menu-item a,
-.d-inner .navigation__menubar li.has-sub__menu ul,
-.d-inner .navigation__menubar li.nav__menu-item button {
+.d-inner .navigation__menubar li.nav__menu-item>a,
+.d-inner .navigation__menubar li.has-sub__menu>ul,
+.d-inner .navigation__menubar li.nav__menu-item>button {
   flex-basis: 100%;
 }
 
@@ -145,20 +151,23 @@
   flex-grow: 1;
 }
 
-.d-inner .navigation__menubar li.has-sub__menu button.en-link {
+.d-inner .navigation__menubar li.has-sub__menu>button.en-link {
   position: relative;
   flex-basis: 50px;
   width: 50px;
 }
 
-
 .d-inner .navigation__menubar li.has-sub__menu {
-  display: flex;
   flex-wrap: wrap;
   justify-content: stretch;
 }
+
 .responsive-navigation {
   display: block;
   width: 100%;
 }
 
+.d-inner .navigation__menubar.focus-in li.has-sub__menu:hover>ul.sub__menu {
+  top: 50;
+  display: block;
+}

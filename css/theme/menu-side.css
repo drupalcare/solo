@@ -1,0 +1,105 @@
+/* SideNav */
+#main-navigation-v {
+  z-index: 1000;
+  display: none;
+  flex-direction: column;
+  min-width: 360px;
+}
+
+#open-nav-inner {
+  background-color: transparent !important;
+  margin: 10px 20px 0 0;
+  z-index: 1;
+  text-align: center !important;
+}
+
+#close-nav button,
+#open-nav-inner button {
+  min-width: 70px;
+  min-height: 60px;
+  display: block;
+}
+
+#close-nav button span,
+#open-nav-inner button span {
+  display: flex;
+  width: 100%;
+}
+
+#close-nav {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.d-inner .side-navigation .navigation__menubar li.nav__menu-item ul.sub__menu,
+#main-navigation-v  .d-inner .navigation__menubar li.nav__menu-item ul.sub__menu {
+  position: initial;
+}
+
+.d-inner .side-navigation .navigation__menubar li.nav__menu-item,
+#main-navigation-v .d-inner .navigation__menubar li.nav__menu-item {
+  flex-basis: 100%;
+}
+
+.d-inner .side-navigation .navigation__menubar li.has-sub__menu ul.sub__menu,
+#main-navigation-v .d-inner .navigation__menubar li.has-sub__menu ul.sub__menu {
+  overflow: hidden;
+}
+
+.d-inner .side-navigation .navigation__menubar>li.nav__menu-item>ul.sub__menu>li.nav__menu-item,
+#main-navigation-v .d-inner .navigation__menubar>li.nav__menu-item>ul.sub__menu>li.nav__menu-item {
+  padding-left: 12px;
+}
+
+.d-inner .side-navigation .navigation__menubar>li.nav__menu-item>ul.sub__menu>li.nav__menu-item>ul.sub__menu>li.nav__menu-item,
+#main-navigation-v .d-inner .navigation__menubar>li.nav__menu-item>ul.sub__menu>li.nav__menu-item>ul.sub__menu>li.nav__menu-item {
+  padding-left: 24px;
+}
+
+.d-inner .side-navigation li.nav__menu-item span.menu__link-title,
+#main-navigation-v .d-inner .navigation__menubar li.nav__menu-item span.menu__link-title {
+  justify-content: left;
+}
+
+.d-inner .side-navigation li.nav__menu-item ul.sub__menu,
+#main-navigation-v .d-inner .navigation__menubar ul.sub__menu {
+  box-shadow: none;
+}
+
+.d-inner .side-navigation li.nav__menu-item ul.sub__menu,
+#main-navigation-v li.nav__menu-item ul.sub__menu {
+  transform: translateY(0) !important;
+}
+
+.d-inner .side-navigation .navigation__menubar li.nav__menu-item ul.sub__menu ,
+#main-navigation-v  .d-inner .navigation__menubar li.nav__menu-item ul.sub__menu {
+  position: initial !important;
+}
+.slide-out {
+  animation-duration: 400ms;
+  animation-name: slide-out;
+}
+@keyframes slide-out {
+  0% {
+    transform: translateX(0%);
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+}
+.slide-in {
+  animation-duration: 400ms;
+  animation-name: slide-in;
+}
+@keyframes slide-in {
+  0% {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0%);
+    opacity: 1;
+  }
+}

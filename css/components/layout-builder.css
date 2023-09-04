@@ -158,11 +158,6 @@
 }
 
 .layout-builder__link--add:before {
-/*  content: "\f196";
-  font-family: FontAwesome;
-  font-size: 16px;
-  margin-right: 10px;
-  background-color: transparent;*/
   display: inline-block;
   width: 16px;
   height: 16px;

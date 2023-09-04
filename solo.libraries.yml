@@ -68,7 +68,7 @@ solo-global:
       css/theme/sitename-animation.css: { weight: 10 }
   js:
     js/utils.js: { }
-    js/extra.js: { }
+    js/custom-scripts.js: { }
   dependencies:
     - core/drupal
     - core/drupal.ajax
@@ -79,12 +79,16 @@ solo-menu:
   Version: VERSION
   css:
     theme:
-      css/theme/aria-button-animation.css: { weight: -11 }
-      css/theme/aria-menu-base.css: { weight: -11 }
-      css/theme/aria-menu-horizontal.css: { weight: -10 }
-      css/theme/aria-menu-vertical.css: { weight: -10 }
+      css/theme/menu-animation.css: { weight: -11 }
+      css/theme/menu-base.css: { weight: -11 }
+      css/theme/menu-main.css: { weight: -10 }
+      css/theme/menu-side.css: { weight: -10 }
   js:
-    js/menu.js: { }
+    js/menu-scripts.js: { }
+    js/menu-main.js: { }
+    js/menu-keyboard.js: { }
+    js/menu-mobile.js: { }
+    js/menu-side.js: { }
   dependencies:
     - core/drupal
     - core/drupal.ajax
@@ -96,7 +100,7 @@ solo-full-opacity:
   version: VERSION
   header: true
   js:
-    js/full.opacity.on.scroll.js: { }
+    js/scrolling-animation.js: { }
   dependencies:
     - core/drupal
     - core/once

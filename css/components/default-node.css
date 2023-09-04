@@ -40,13 +40,6 @@ div.item-list > ol.item-list > li article::before {
   padding-left: 0 !important;
 }
 
-/*.node--view-mode-full .node__content .field--type-text-long,
-.node--view-mode-full .node__content .field--type-string-long,
-.node--view-mode-full .node__content .field--type-text-with-summary {
-  font-size: 22px;
-  line-height: 190%;
-}*/
-
 /* Multi items field */
 .field.field__items > .field__item,
 .field > .field__items > .field__item {

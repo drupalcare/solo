@@ -125,7 +125,7 @@
 
   Drupal.behaviors.soloMenuDepth = {
     attach: (settings) => {
-      Array.from(document.querySelectorAll('.d-inner ul'))
+      Array.from(document.querySelectorAll('.solo-inner ul'))
         .forEach((element) => {
           const depth = calculateDepth(element);
           addClassAccordingToDepth(element, depth);

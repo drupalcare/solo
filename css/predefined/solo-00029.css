@@ -48,7 +48,7 @@ ul.primary > li,
 .w3-hover-over:hover,
 .w3-button:hover,
 #open-search:hover,
-#open-nav-inner:hover {
+#sidebar-button-open:hover {
   color: #637381 !important;
   background-color: #e6e9ec !important;
 }
@@ -85,7 +85,7 @@ textarea:focus {
 }
 
 #header,
-.close-nav,
+.sidebar-button-close,
 #copyright,
 .mobile-nav,
 #page-title,

@@ -10,7 +10,7 @@
 
   const fadeBox = () => {
     scrollOn = true;
-    const fadeElements = document.querySelectorAll('.d8-fade');
+    const fadeElements = document.querySelectorAll('.fade-inner');
     fadeElements.forEach((element) => {
       const objectTop = element.getBoundingClientRect().top + window.pageYOffset;
       const windowBottom = window.pageYOffset + window.innerHeight;
@@ -31,7 +31,7 @@
   Drupal.behaviors.soloFullOpacity = {
     attach: function (context, settings) {
       if (!document.getElementById("layout-builder")) {
-        const fadeElements = document.querySelectorAll('.d8-fade');
+        const fadeElements = document.querySelectorAll('.fade-inner');
         fadeElements.forEach((element) => {
           element.style.opacity = 0;
         });

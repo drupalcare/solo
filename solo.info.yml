@@ -22,7 +22,7 @@ ckeditor5-stylesheets:
 regions:
   fixed_search_bar: 'Fixed Search Bar'
   header: 'Header'
-  primary_menu_vertical: 'Primary Menu Vertical'
+  primary_sidebar_menu: 'Primary Sidebar Menu'
   primary_menu: 'Primary Menu'
   welcome_text: 'Welcome Text'
   top_first: 'Top First Container'

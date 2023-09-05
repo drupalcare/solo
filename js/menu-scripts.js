@@ -10,7 +10,7 @@
   // will be used. Ex. if the submenu in header region then the heaser background
   // color will be applied to this submenu.
 
-  const siteSubMenus = document.querySelectorAll('.d-inner nav .navigation__menubar ul');
+  const siteSubMenus = document.querySelectorAll('.solo-inner nav .navigation__menubar ul');
   const getParentBg = (el) => {
     const closestParent = el.closest('.page-wrapper>div') ?? el.closest('.page-wrapper>header');
     if (closestParent) {
@@ -23,8 +23,8 @@
   // Apply static position to the main menu on scroll so it will be sticky
   // on the top.
   let origOffsetY;
-  const mainNavigation = document.querySelector('#main-navigation-h');
-  if (mainNavigation && mainNavigation.querySelector('.d-inner .navigation__menubar')) {
+  const mainNavigation = document.querySelector('#primary-menu');
+  if (mainNavigation && mainNavigation.querySelector('.solo-inner .navigation__menubar')) {
     origOffsetY = mainNavigation.offsetTop;
   }
 

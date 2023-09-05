@@ -1,80 +1,85 @@
 /* SideNav */
-#main-navigation-v {
+#primary-sidebar-menu {
   z-index: 1000;
   display: none;
   flex-direction: column;
-  min-width: 360px;
+  min-width: 600px;
 }
 
-#open-nav-inner {
+#sidebar-button-open {
   background-color: transparent !important;
   margin: 10px 20px 0 0;
   z-index: 1;
   text-align: center !important;
 }
 
-#close-nav button,
-#open-nav-inner button {
+#sidebar-button-close button,
+#sidebar-button-open button {
   min-width: 70px;
   min-height: 60px;
   display: block;
 }
 
-#close-nav button span,
-#open-nav-inner button span {
+#sidebar-button-close button span,
+#sidebar-button-open button span {
   display: flex;
   width: 100%;
 }
 
-#close-nav {
+#sidebar-button-close {
   display: flex;
   justify-content: flex-end;
 }
 
-.d-inner .side-navigation .navigation__menubar li.nav__menu-item ul.sub__menu,
-#main-navigation-v  .d-inner .navigation__menubar li.nav__menu-item ul.sub__menu {
+.solo-inner .navigation-sidebar .navigation__menubar li.nav__menu-item ul.sub__menu,
+#primary-sidebar-menu  .solo-inner .navigation__menubar li.nav__menu-item ul.sub__menu {
   position: initial;
 }
 
-.d-inner .side-navigation .navigation__menubar li.nav__menu-item,
-#main-navigation-v .d-inner .navigation__menubar li.nav__menu-item {
+.solo-inner .navigation-sidebar .navigation__menubar li.nav__menu-item,
+#primary-sidebar-menu .solo-inner .navigation__menubar li.nav__menu-item {
   flex-basis: 100%;
 }
 
-.d-inner .side-navigation .navigation__menubar li.has-sub__menu ul.sub__menu,
-#main-navigation-v .d-inner .navigation__menubar li.has-sub__menu ul.sub__menu {
+.solo-inner .navigation-sidebar .navigation__menubar li.has-sub__menu ul.sub__menu,
+#primary-sidebar-menu .solo-inner .navigation__menubar li.has-sub__menu ul.sub__menu {
   overflow: hidden;
 }
 
-.d-inner .side-navigation .navigation__menubar>li.nav__menu-item>ul.sub__menu>li.nav__menu-item,
-#main-navigation-v .d-inner .navigation__menubar>li.nav__menu-item>ul.sub__menu>li.nav__menu-item {
+.solo-inner .navigation-sidebar .navigation__menubar>li.nav__menu-item>ul.sub__menu>li.nav__menu-item,
+#primary-sidebar-menu .solo-inner .navigation__menubar>li.nav__menu-item>ul.sub__menu>li.nav__menu-item {
   padding-left: 12px;
 }
 
-.d-inner .side-navigation .navigation__menubar>li.nav__menu-item>ul.sub__menu>li.nav__menu-item>ul.sub__menu>li.nav__menu-item,
-#main-navigation-v .d-inner .navigation__menubar>li.nav__menu-item>ul.sub__menu>li.nav__menu-item>ul.sub__menu>li.nav__menu-item {
+.solo-inner .navigation-sidebar .navigation__menubar>li.nav__menu-item>ul.sub__menu>li.nav__menu-item>ul.sub__menu>li.nav__menu-item,
+#primary-sidebar-menu .solo-inner .navigation__menubar>li.nav__menu-item>ul.sub__menu>li.nav__menu-item>ul.sub__menu>li.nav__menu-item {
   padding-left: 24px;
 }
 
-.d-inner .side-navigation li.nav__menu-item span.menu__link-title,
-#main-navigation-v .d-inner .navigation__menubar li.nav__menu-item span.menu__link-title {
+.solo-inner .navigation-sidebar li.nav__menu-item span.menu__link-title,
+#primary-sidebar-menu .solo-inner .navigation__menubar li.nav__menu-item span.menu__link-title {
   justify-content: left;
 }
 
-.d-inner .side-navigation li.nav__menu-item ul.sub__menu,
-#main-navigation-v .d-inner .navigation__menubar ul.sub__menu {
+.solo-inner .navigation-sidebar li.nav__menu-item ul.sub__menu,
+#primary-sidebar-menu .solo-inner .navigation__menubar ul.sub__menu {
   box-shadow: none;
 }
 
-.d-inner .side-navigation li.nav__menu-item ul.sub__menu,
-#main-navigation-v li.nav__menu-item ul.sub__menu {
+.solo-inner .navigation-sidebar li.nav__menu-item ul.sub__menu,
+#primary-sidebar-menu li.nav__menu-item ul.sub__menu {
   transform: translateY(0) !important;
 }
 
-.d-inner .side-navigation .navigation__menubar li.nav__menu-item ul.sub__menu ,
-#main-navigation-v  .d-inner .navigation__menubar li.nav__menu-item ul.sub__menu {
+.solo-inner .navigation-sidebar .navigation__menubar li.nav__menu-item ul.sub__menu ,
+#primary-sidebar-menu  .solo-inner .navigation__menubar li.nav__menu-item ul.sub__menu {
   position: initial !important;
 }
+
+.solo-inner .navigation-sidebar .navigation__menubar li.nav__menu-item {
+  flex-wrap: wrap;
+}
+
 .slide-out {
   animation-duration: 400ms;
   animation-name: slide-out;

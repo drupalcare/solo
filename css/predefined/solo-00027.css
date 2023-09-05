@@ -71,7 +71,7 @@ h6 a {
 }
 
 #copyright,
-.close-nav,
+.sidebar-button-close,
 .mobile-nav,
 #footer-menu,
 #footer-menu h1,
@@ -116,7 +116,7 @@ textarea,
   background-color: #161819;
 }
 
-.close-nav,
+.sidebar-button-close,
 .mobile-nav,
 .main-navigation-wrapper {
   background-color: #0e0f10;
@@ -155,7 +155,7 @@ ul.primary > li {
 .w3-hover-over:hover,
 .w3-button:hover,
 #open-search:hover,
-#open-nav-inner:hover,
+#sidebar-button-open:hover,
 #footer-menu a.w3-button:hover {
   color: #d4f7ff !important;
   background-color: #003f4c !important;

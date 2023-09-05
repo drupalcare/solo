@@ -9,7 +9,7 @@ libraries:
 #Regions
 regions:
   header: 'Header'
-  primary_menu_vertical: 'Primary Menu Vertical'
+  primary_sidebar_menu: 'Primary Menu Vertical'
   primary_menu: 'Primary Menu'
   welcome_text: 'Welcome Text'
   top_first: 'Top First Container'

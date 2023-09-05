@@ -41,7 +41,7 @@ a,
 }
 
 .w3-hover-over:hover,
-#open-nav-inner:hover,
+#sidebar-button-open:hover,
 #open-search:hover,
 .w3-button:hover {
   color: #cde9ce !important;
@@ -72,7 +72,7 @@ a,
 }
 
 .main-navigation-wrapper,
-.close-nav,
+.sidebar-button-close,
 .mobile-nav {
   background-color: #4caf50;
   color: white;

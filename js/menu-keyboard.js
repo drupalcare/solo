@@ -7,8 +7,8 @@
 
   'use strict';
 
-  const onStartFocusedElement = document.querySelectorAll(".d-inner nav .navigation__menubar>li:first-child>[role='menuitem']");
-  const siteMenuBars = document.querySelectorAll('.d-inner nav .navigation__menubar');
+  const onStartFocusedElement = document.querySelectorAll(".solo-inner nav .navigation__menubar>li:first-child>[role='menuitem']");
+  const siteMenuBars = document.querySelectorAll('.solo-inner nav .navigation__menubar');
 
 
 

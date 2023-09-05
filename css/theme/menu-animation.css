@@ -1,62 +1,62 @@
-.d-inner .close-nav span,
-.d-inner .open-nav-inner span,
-.d-inner .mobile-menubar-toggler-button span {
+.solo-inner .sidebar-button-close span,
+.solo-inner .sidebar-button-open span,
+.solo-inner .mobile-menubar-toggler-button span {
   display: flex;
   justify-content: center;
 }
 
-.d-inner .close-nav svg,
-.d-inner .open-nav-inner svg,
-.d-inner .mobile-menubar-toggler-button svg {
+.solo-inner .sidebar-button-close svg,
+.solo-inner .sidebar-button-open svg,
+.solo-inner .mobile-menubar-toggler-button svg {
   width: 50px;
 }
 
-.d-inner .close-nav #svg-top,
-.d-inner .close-nav #svg-bottom,
-.d-inner .close-nav #svg-middle,
-.d-inner .open-nav-inner #svg-top,
-.d-inner .open-nav-inner #svg-bottom,
-.d-inner .open-nav-inner #svg-middle,
-.d-inner .mobile-menubar-toggler-button #svg-top,
-.d-inner .mobile-menubar-toggler-button #svg-bottom,
-.d-inner .mobile-menubar-toggler-button #svg-middle {
+.solo-inner .sidebar-button-close #svg-top,
+.solo-inner .sidebar-button-close #svg-bottom,
+.solo-inner .sidebar-button-close #svg-middle,
+.solo-inner .sidebar-button-open #svg-top,
+.solo-inner .sidebar-button-open #svg-bottom,
+.solo-inner .sidebar-button-open #svg-middle,
+.solo-inner .mobile-menubar-toggler-button #svg-top,
+.solo-inner .mobile-menubar-toggler-button #svg-bottom,
+.solo-inner .mobile-menubar-toggler-button #svg-middle {
   transform-box: fill-box;
   transform-origin: center;
 }
 
-.d-inner .close-nav #svg-top,
-.d-inner .open-nav-inner:hover #svg-top,
-.d-inner .mobile-nav.toggled #svg-top,
-.d-inner .mobile-nav:hover #svg-top {
+.solo-inner .sidebar-button-close #svg-top,
+.solo-inner .sidebar-button-open:hover #svg-top,
+.solo-inner .mobile-nav.toggled #svg-top,
+.solo-inner .mobile-nav:hover #svg-top {
   animation: rotate-down 0.7s ease-out both;
 }
 
-.d-inner .close-nav #svg-bottom,
-.d-inner .open-nav-inner:hover #svg-bottom,
-.d-inner .mobile-nav.toggled #svg-bottom,
-.d-inner .mobile-nav:hover #svg-bottom {
+.solo-inner .sidebar-button-close #svg-bottom,
+.solo-inner .sidebar-button-open:hover #svg-bottom,
+.solo-inner .mobile-nav.toggled #svg-bottom,
+.solo-inner .mobile-nav:hover #svg-bottom {
   animation: rotate-up 0.7s ease-out both;
 }
 
-.d-inner .close-nav #svg-middle,
-.d-inner .open-nav-inner:hover #svg-middle,
-.d-inner .mobile-nav.toggled #svg-middle,
+.solo-inner .sidebar-button-close #svg-middle,
+.solo-inner .sidebar-button-open:hover #svg-middle,
+.solo-inner .mobile-nav.toggled #svg-middle,
 .mobile-nav:hover #svg-middle {
   animation: hide-line 0.7s ease-out forwards;
 }
 
-.d-inner .close-nav:hover #svg-top,
-.d-inner .mobile-nav.toggled:hover #svg-top {
+.solo-inner .sidebar-button-close:hover #svg-top,
+.solo-inner .mobile-nav.toggled:hover #svg-top {
   animation: rotate-line-top 0.7s ease-out both !important;
 }
 
-.d-inner .close-nav:hover #svg-bottom,
-.d-inner .mobile-nav.toggled:hover #svg-bottom {
+.solo-inner .sidebar-button-close:hover #svg-bottom,
+.solo-inner .mobile-nav.toggled:hover #svg-bottom {
   animation: rotate-line-bottom 0.7s ease-out both !important;
 }
 
-.d-inner .close-nav:hover #svg-middle,
-.d-inner .mobile-nav.toggled:hover #svg-middle {
+.solo-inner .sidebar-button-close:hover #svg-middle,
+.solo-inner .mobile-nav.toggled:hover #svg-middle {
   animation: show-line 0.7s ease-out forwards !important;
 }
 

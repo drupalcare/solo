@@ -11,7 +11,7 @@
   // hamburgerIconIsClicked >> closeMobileMenuHandler >> closeMobileMenu
   // hamburgerIconIsClicked >> openMobileMenuHandler >> openMobileMenu
 
-  const hamburgerIconButtons = document.querySelectorAll('.d-inner .mobile-nav');
+  const hamburgerIconButtons = document.querySelectorAll('.solo-inner .mobile-nav');
   // Get current width
   const getCurrentWidth = () => window.innerWidth || document.documentElement
     .clientWidth || document.body.clientWidth;
@@ -44,7 +44,7 @@
 
   const getMobileNavType = (hamburgerIcon) => {
     const hamburgerIconChild = hamburgerIcon.children[0];
-    const navTagId = hamburgerIcon.parentElement.classList.contains('responsive-navigation') ?
+    const navTagId = hamburgerIcon.parentElement.classList.contains('navigation-primary-template') ?
       hamburgerIcon.closest('nav').id :
       hamburgerIcon.nextElementSibling.id;
     return [hamburgerIconChild, navTagId];

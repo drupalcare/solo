@@ -10,11 +10,24 @@
   let isClicked = false;
   let currentWidth;
   const querySelectorElements = (selector) => document.querySelectorAll(selector) ?? null;
-  const siteMenuBars = querySelectorElements('.d-inner nav .navigation__menubar');
-  const siteSubMenus = querySelectorElements('.d-inner nav .navigation__menubar ul');
-  const svgIcons = querySelectorElements('.d-inner nav .navigation__menubar .toggler-icon>svg');
-  const dropdownTogglerButtons = querySelectorElements('.d-inner .navigation__menubar .dropdown-toggler');
-  const hamburgerIconButtons = querySelectorElements('.d-inner .mobile-nav');
+  const siteMenuBars = querySelectorElements('.solo-inner nav .navigation__menubar');
+  const siteSubMenus = querySelectorElements('.solo-inner nav .navigation__menubar ul');
+  const svgIcons = querySelectorElements('.solo-inner nav .navigation__menubar .toggler-icon>svg');
+
+  const dropdownTogglerButtons = querySelectorElements('.solo-inner .navigation__menubar .dropdown-toggler');
+
+
+
+
+const navigationSidebarTemplate = querySelectorElements('.navigation-sidebar>.navigation__sidebar_template .dropdown-toggler');
+const navigationPrimaryTemplate = querySelectorElements('.navigation-primary-template>.navigation__primary_template .dropdown-toggler');
+const navigationPrimary = querySelectorElements('#primary-menu .solo-inner .navigation__primary  .dropdown-toggler');
+const navigationSidebar = querySelectorElements('#primary-sidebar-menu .solo-inner .navigation__sidebar .dropdown-toggler');
+
+
+
+
+  const hamburgerIconButtons = querySelectorElements('.solo-inner .mobile-nav');
 
   // Get current width
   const getCurrentWidth = () => window.innerWidth || document.documentElement
@@ -39,12 +52,12 @@
   Drupal.solo.hideSubMenus = hideSubMenus;
 
   const getNavigationMenubarClass = (menuBar) => {
-    return document.querySelector(`.d-inner #${menuBar} .navigation__menubar`);
+    return document.querySelector(`.solo-inner #${menuBar} .navigation__menubar`);
   }
   Drupal.solo.getNavigationMenubarClass = getNavigationMenubarClass;
 
   const getSubMenuClasses = (subMenus) => {
-    return document.querySelectorAll(`.d-inner #${subMenus} .navigation__menubar ul`);
+    return document.querySelectorAll(`.solo-inner #${subMenus} .navigation__menubar ul`);
   }
   Drupal.solo.getSubMenuClasses = getSubMenuClasses;
 
@@ -66,7 +79,7 @@
 
   // Change the arrow direction on close.
   const revertIcons = (navId) => {
-    let svgIcons = document.querySelectorAll(`.d-inner #${navId} .toggler-icon svg`);
+    let svgIcons = document.querySelectorAll(`.solo-inner #${navId} .toggler-icon svg`);
     svgIcons.forEach((svgIcon) => {
       svgIcon.style.removeProperty('transform');
     });
@@ -81,9 +94,9 @@
 
   const getDropdownElements = (dropdownTogglerButton) => {
 
-    const togglerSibling = dropdownTogglerButton.closest('.d-inner ul');
-    const nestedSubMenus = [...togglerSibling.querySelectorAll('.d-inner ul')];
-    const nestedTogglers = [...togglerSibling.querySelectorAll('.d-inner ul .dropdown-toggler svg')];
+    const togglerSibling = dropdownTogglerButton.closest('.solo-inner ul');
+    const nestedSubMenus = [...togglerSibling.querySelectorAll('.solo-inner ul')];
+    const nestedTogglers = [...togglerSibling.querySelectorAll('.solo-inner ul .dropdown-toggler svg')];
 
     return [nestedSubMenus, nestedTogglers];
   }
@@ -122,7 +135,7 @@
   //click any where to close any submenu.
   document.addEventListener('click', (event) => {
     clickedHandler(() => {
-      const navMenu = '.d-inner nav .navigation__menubar';
+      const navMenu = '.solo-inner nav .navigation__menubar';
       if (!event.target.closest(navMenu)) {
         resetSubMenus(siteSubMenus, svgIcons);
       }
@@ -183,7 +196,7 @@
   const openSubMenu = (dropdownTogglerButton, subMenu) => {
     const [nestedSubMenus, nestedTogglers] = getDropdownElements(dropdownTogglerButton);
     const rotated = getRotated(dropdownTogglerButton);
-    const verticalNav = subMenu.closest('#main-navigation-v') ?? subMenu.closest('.side-navigation');
+    const verticalNav = subMenu.closest('#primary-sidebar-menu') ?? subMenu.closest('.navigation-sidebar');
     // close all opened sibling menu
     nestedSubMenus.forEach((nestedSubMenu) => {
       if (nestedSubMenu !== subMenu) {
@@ -245,8 +258,8 @@
   siteMenuBars.forEach((siteMenuBar) => {
     siteMenuBar.addEventListener('click', (event) => {
 
-      const mainMenu = ('main-navigation-inner-v');
-      const sideMenu = ('side-navigation');
+      const mainMenu = ('primary-sidebar-menu-inner');
+      const sideMenu = ('navigation-sidebar');
       if (hasParentWithClass(siteMenuBar, mainMenu) || hasParentWithClass(siteMenuBar, sideMenu) || currentWidth < 992) {
         siteMenuBar.classList.remove('focus-in');
       } else {
@@ -267,7 +280,15 @@
     });
 
   });
+  navigationPrimary.forEach((dropdownTogglerButton) => {
 
+    dropdownTogglerButton.addEventListener('mouseover', (event) => {
+      const subMenu = dropdownTogglerButton.nextElementSibling;
+      const eventTarget = event.target;
+      dropdownTogglerButtonIsClicked(dropdownTogglerButton, subMenu);
+    });
+
+  });
 
 
   Drupal.behaviors.menuAction = {

@@ -16,9 +16,9 @@
   };
 
   // Close nav button found in page.html.twig in vertical menu region.
-  navClickListener('#main-navigation-v #close-nav', () => {
-    const verticalNav = document.getElementById('main-navigation-v');
-    let cosBtns = document.querySelectorAll('.cos-btn');
+  navClickListener('#primary-sidebar-menu #sidebar-button-close', () => {
+    const verticalNav = document.getElementById('primary-sidebar-menu');
+    let cosBtns = document.querySelectorAll('.sidebar-button-close-inner');
     cosBtns?.forEach((cosBtn) => {
       cosBtn.setAttribute('aria-expanded', 'false');
       cosBtn.setAttribute('aria-hidden', 'true');
@@ -27,21 +27,21 @@
 
     verticalNav.style.display = 'none';
     const subMenus = document.querySelectorAll(
-      '#main-navigation-v .navigation__menubar li ul.sub__menu');
+      '#primary-sidebar-menu .navigation__menubar li ul.sub__menu');
     subMenus.forEach(Drupal.solo.hideSubMenus);
   });
 
   // Open nav button found in page.html.twig in header region.
-  navClickListener('#open-nav-inner', () => {
+  navClickListener('#sidebar-button-open', () => {
 
-    let cosBtns = document.querySelectorAll('.cos-btn');
+    let cosBtns = document.querySelectorAll('.sidebar-button-close-inner');
     cosBtns?.forEach((cosBtn) => {
       cosBtn.setAttribute('aria-expanded', 'true');
       cosBtn.setAttribute('aria-hidden', 'false');
 
     })
 
-    const verticalNav = document.getElementById('main-navigation-v');
+    const verticalNav = document.getElementById('primary-sidebar-menu');
     verticalNav.style.display = 'flex';
   });
 

@@ -424,13 +424,13 @@ you are done.
 
 1- Create a sub-theme.
 2- copy page .../solo/templates/layout/page.html.twig to the sub-theme.
-3- Open page.html.twig in the sub-theme and find the words "main-navigation-v".
+3- Open page.html.twig in the sub-theme and find the words "primary-sidebar-menu".
 On the same line, change "w3-animate-left" to "w3-animate-right".
-4- Find the word "open-nav-inner". On the same line, change "w3-left"
+4- Find the word "sidebar-button-open". On the same line, change "w3-left"
 to "w3-right".
 5- Copy and paste the following css in the sub-theme css style file:
-#main-navigation-v.w3-sidebar{right:0;}
-#open-nav-inner {margin:0 0 0 10px!important;}
+#primary-sidebar-menu.w3-sidebar{right:0;}
+#sidebar-button-open {margin:0 0 0 10px!important;}
 
   * How to remove background colors and use an image as a background.
   ....................................................

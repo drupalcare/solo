@@ -1,69 +1,74 @@
 @media (max-width:992px) {
-  .responsive-navigation ul.sub__menu,
-  #main-navigation-h ul.sub__menu {
+  .navigation-primary-template ul.sub__menu,
+  #primary-menu ul.sub__menu {
     transform: translateY(0) !important;
   }
 
-  .responsive-navigation .navigation__menubar,
-  .responsive-navigation .navigation__menubar ul.sub__menu,
-  #main-navigation-h .navigation__menubar,
-  #main-navigation-h .navigation__menubar ul.sub__menu {
+  .navigation-primary-template .navigation__menubar,
+  .navigation-primary-template .navigation__menubar ul.sub__menu,
+  #primary-menu .navigation__menubar,
+  #primary-menu .navigation__menubar ul.sub__menu {
     display: none;
     flex-shrink: 0
   }
 
-  .responsive-navigation .navigation__menubar li.nav__menu-item ul.sub__menu,
-  #main-navigation-h .d-inner .navigation__menubar li.nav__menu-item ul.sub__menu {
+  .navigation-primary-template .navigation__menubar li.nav__menu-item,
+  #primary-menu .solo-inner .navigation__menubar li.nav__menu-item {
+    flex-wrap: wrap;
+  }
+
+  .navigation-primary-template .navigation__menubar li.nav__menu-item ul.sub__menu,
+  #primary-menu .solo-inner .navigation__menubar li.nav__menu-item ul.sub__menu {
     position: initial !important;
   }
 
-  .responsive-navigation .navigation__menubar li.nav__menu-item,
-  #main-navigation-h .navigation__menubar li.nav__menu-item {
+  .navigation-primary-template .navigation__menubar li.nav__menu-item,
+  #primary-menu .navigation__menubar li.nav__menu-item {
     flex-basis: 100%;
     display: flex;
   }
 
-  .responsive-navigation .navigation__menubar li.has-sub__menu>ul.sub__menu,
-  #main-navigation-h .navigation__menubar li.has-sub__menu>ul.sub__menu {
+  .navigation-primary-template .navigation__menubar li.has-sub__menu>ul.sub__menu,
+  #primary-menu .navigation__menubar li.has-sub__menu>ul.sub__menu {
     overflow: hidden;
   }
 
-  .responsive-navigation .navigation__menubar>li.nav__menu-item>ul.sub__menu>li.nav__menu-item,
-  #main-navigation-h .navigation__menubar>li.nav__menu-item>ul.sub__menu>li.nav__menu-item {
+  .navigation-primary-template .navigation__menubar>li.nav__menu-item>ul.sub__menu>li.nav__menu-item,
+  #primary-menu .navigation__menubar>li.nav__menu-item>ul.sub__menu>li.nav__menu-item {
     padding-left: 12px;
   }
 
-  .responsive-navigation .navigation__menubar>li.nav__menu-item>ul.sub__menu>li.nav__menu-item>ul.sub__menu>li.nav__menu-item,
-  #main-navigation-h .navigation__menubar>li.nav__menu-item>ul.sub__menu>li.nav__menu-item>ul.sub__menu>li.nav__menu-item {
+  .navigation-primary-template .navigation__menubar>li.nav__menu-item>ul.sub__menu>li.nav__menu-item>ul.sub__menu>li.nav__menu-item,
+  #primary-menu .navigation__menubar>li.nav__menu-item>ul.sub__menu>li.nav__menu-item>ul.sub__menu>li.nav__menu-item {
     padding-left: 24px;
   }
 
-  .responsive-navigation .navigation__menubar span.menu__link-title,
-  #main-navigation-h .navigation__menubar span.menu__link-title {
+  .navigation-primary-template .navigation__menubar span.menu__link-title,
+  #primary-menu .navigation__menubar span.menu__link-title {
     justify-content: left;
   }
 
 }
 
 @media (min-width:993px) {
-  .responsive-navigation .navigation__menubar,
-  #main-navigation-h .navigation__menubar {
+  .navigation-primary-template .navigation__menubar,
+  #primary-menu .navigation__menubar {
     display: flex;
     align-items: center;
     justify-content: center;
     flex-wrap: wrap;
   }
 
-  .responsive-navigation .navigation__menubar>li.nav__menu-item ul.sub__menu,
-  #main-navigation-h .navigation__menubar>li.nav__menu-item li.nav__menu-item,
-  .responsive-navigation .navigation__menubar>li.nav__menu-item ul.sub__menu,
-  #main-navigation-h .navigation__menubar>li.nav__menu-item li.nav__menu-item {
+  .navigation-primary-template .navigation__menubar>li.nav__menu-item ul.sub__menu,
+  #primary-menu .navigation__menubar>li.nav__menu-item li.nav__menu-item,
+  .navigation-primary-template .navigation__menubar>li.nav__menu-item ul.sub__menu,
+  #primary-menu .navigation__menubar>li.nav__menu-item li.nav__menu-item {
     flex-grow: 1;
     flex-basis: 100%;
   }
 
-  .responsive-navigation .navigation__menubar .sub__menu,
-  #main-navigation-h .navigation__menubar .sub__menu {
+  .navigation-primary-template .navigation__menubar .sub__menu,
+  #primary-menu .navigation__menubar .sub__menu {
     box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
   }
 

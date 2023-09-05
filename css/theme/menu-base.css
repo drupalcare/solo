@@ -1,9 +1,9 @@
 /* Base styles that apply to all menus */
 
 
-.d-inner button.global-menu-button,
-.d-inner .navigation__menubar li.nav__menu-item>a,
-.d-inner .navigation__menubar li.nav__menu-item>button {
+.solo-inner button.global-menu-button,
+.solo-inner .navigation__menubar li.nav__menu-item>a,
+.solo-inner .navigation__menubar li.nav__menu-item>button {
   all: unset;
   outline: revert;
   box-sizing: border-box;
@@ -19,18 +19,18 @@
   clear: both;
 }
 
-.d-inner .navigation__menubar li button:hover {
+.solo-inner .navigation__menubar li button:hover {
   background-color: yellowgreen;
 }
 
-.d-inner .navigation__menubar li a:hover {
+.solo-inner .navigation__menubar li a:hover {
   background-color: orange;
 }
 
-.d-inner .navigation__menubar,
-.d-inner .sub__menu,
-.d-inner .nav__menu-item,
-.d-inner .nav__menu-link {
+.solo-inner ul.navigation__menubar,
+.solo-inner ul.sub__menu,
+.solo-inner li.nav__menu-item,
+.solo-inner a.nav__menu-link {
   margin: 0;
   padding: 0;
   list-style: none;
@@ -39,76 +39,76 @@
   font-size: 16px;
 }
 
-.d-inner .navigation__menubar li.nav__menu-item>a {
+.solo-inner .navigation__menubar li.nav__menu-item>a {
   text-decoration: none;
   -webkit-text-decoration: none;
 }
 
-.page-wrapper #main-navigation-h {
+.page-wrapper #primary-menu {
   z-index: 1000;
 }
 
-.d-inner .navigation__menubar {
+.solo-inner .navigation__menubar {
   z-index: 2000 !important;
 }
 
-.d-inner .navigation__menubar li.nav__menu-item>ul.sub__menu {
+.solo-inner .navigation__menubar li.nav__menu-item>ul.sub__menu {
   z-index: 3000 !important;
 }
 
-.d-inner .navigation__menubar li.nav__menu-item>ul.sub__menu>li.nav__menu-item>ul.sub__menu {
+.solo-inner .navigation__menubar li.nav__menu-item>ul.sub__menu>li.nav__menu-item>ul.sub__menu {
   z-index: 4000 !important;
 }
 
-.d-inner .navigation__menubar>li.nav__menu-item ul.sub__menu {
+.solo-inner .navigation__menubar>li.nav__menu-item ul.sub__menu {
   min-width: 200px;
   display: none;
   white-space: nowrap;
 }
 
-.d-inner .navigation__menubar li.nav__menu-item>a,
-.d-inner .navigation__menubar li.nav__menu-item>button {
+.solo-inner .navigation__menubar li.nav__menu-item>a,
+.solo-inner .navigation__menubar li.nav__menu-item>button {
   padding: 12px;
   transition: 0.4s;
 }
 
-.d-inner .navigation__menubar li.link-and-button>button {
+.solo-inner .navigation__menubar li.link-and-button>button {
   justify-content: center;
   padding: 0;
   min-height: 50px;
 }
 
-.d-inner .navigation__menubar li.nav__menu-item>button.ds-link .menu__link-title {
+.solo-inner .navigation__menubar li.nav__menu-item>button.ds-link .menu__link-title {
   flex-grow: 1;
   margin-right: 12px;
 }
 
-.d-inner button.global-menu-button,
-.d-inner .navigation__menubar li.nav__menu-item {
+.solo-inner button.global-menu-button,
+.solo-inner .navigation__menubar li.nav__menu-item {
   vertical-align: middle;
 }
 
-.d-inner .navigation__menubar li.nav__menu-item>.dropdown-toggler .toggler-icon svg {
+.solo-inner .navigation__menubar li.nav__menu-item>.dropdown-toggler .toggler-icon svg {
   transition: all 0.5s 0.2s;
 }
 
-.d-inner .navigation__menubar li.nav__menu-item .dropdown-toggler {
+.solo-inner .navigation__menubar li.nav__menu-item .dropdown-toggler {
   cursor: context-menu !important;
 }
 
-.d-inner .navigation__menubar li.nav__menu-item,
-.d-inner .navigation__menubar li.nav__menu-item>a,
-.d-inner .navigation__menubar li.nav__menu-item>button {
+.solo-inner .navigation__menubar li.nav__menu-item,
+.solo-inner .navigation__menubar li.nav__menu-item>a,
+.solo-inner .navigation__menubar li.nav__menu-item>button {
   display: flex;
 }
 
-.d-inner .navigation__menubar button>span {
+.solo-inner .navigation__menubar button>span {
   display: inline-flex;
   align-items: center;
   justify-content: center;
 }
 
-.d-inner .mobile-menubar-toggler-button {
+.solo-inner .mobile-menubar-toggler-button {
   padding: 6px;
   display: flex;
   justify-content: center;
@@ -118,56 +118,51 @@
   flex-direction: column;
 }
 
-.d-inner .navigation__menubar {
+.solo-inner .navigation__menubar {
   display: flex;
   flex-wrap: wrap;
 }
 
-.d-inner .navigation__menubar li.nav__menu-item li.has-sub__menu ul.sub__menu {
+.solo-inner .navigation__menubar li.nav__menu-item li.has-sub__menu ul.sub__menu {
   left: 100%;
   top: 0;
 }
 
-.d-inner  .navigation__menubar li.nav__menu-item ul.sub__menu {
+.solo-inner  .navigation__menubar li.nav__menu-item ul.sub__menu {
   position: absolute;
 }
 
-.d-inner .navigation__menubar li.nav__menu-item {
-  flex-wrap: wrap;
+.solo-inner .navigation__menubar li.nav__menu-item {
+/*  flex-wrap: wrap;*/
   position: relative;
 }
 
-.d-inner .navigation__menubar li.nav__menu-item>a,
-.d-inner .navigation__menubar li.has-sub__menu>ul,
-.d-inner .navigation__menubar li.nav__menu-item>button {
+.solo-inner .navigation__menubar li.nav__menu-item>a,
+.solo-inner .navigation__menubar li.has-sub__menu>ul,
+.solo-inner .navigation__menubar li.nav__menu-item>button {
   flex-basis: 100%;
 }
 
-.d-inner .navigation__menubar .ds-link span.menu__link-title,
-.d-inner .navigation__menubar li.has-sub__menu a.url-added {
+.solo-inner .navigation__menubar li.has-sub__menu button.en-link {
+  position: relative;
+  flex-basis: 50px;
+  width: 50px;
+}
+
+
+.solo-inner .navigation__menubar li.ds-link span.menu__link-title,
+.solo-inner .navigation__menubar li.has-sub__menu a.url-added {
   flex-basis: calc(100% - 50px);
   width: calc(100% - 50px);
   position: relative;
   flex-grow: 1;
 }
 
-.d-inner .navigation__menubar li.has-sub__menu>button.en-link {
-  position: relative;
-  flex-basis: 50px;
-  width: 50px;
-}
-
-.d-inner .navigation__menubar li.has-sub__menu {
-  flex-wrap: wrap;
+.solo-inner .navigation__menubar li.nav__menu-item.has-sub__menu {
   justify-content: stretch;
 }
 
-.responsive-navigation {
+.navigation-primary-template {
   display: block;
   width: 100%;
-}
-
-.d-inner .navigation__menubar.focus-in li.has-sub__menu:hover>ul.sub__menu {
-  top: 50;
-  display: block;
 }

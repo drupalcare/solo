@@ -68,7 +68,7 @@ h6 a {
 #header a,
 #header p,
 #copyright,
-.close-nav,
+.sidebar-button-close,
 .mobile-nav,
 .main-navigation-wrapper {
   color: white !important;
@@ -114,7 +114,7 @@ h6 a {
   background-color: #c75542;
 }
 
-.close-nav,
+.sidebar-button-close,
 .mobile-nav,
 .main-navigation-wrapper {
   background-color: #00cbf6;
@@ -150,7 +150,7 @@ ul.primary > li,
 .w3-hover-over:hover,
 .w3-button:hover,
 #open-search:hover,
-#open-nav-inner:hover {
+#sidebar-button-open:hover {
   color: #fff !important;
   background-color: #004d5d !important;
 }

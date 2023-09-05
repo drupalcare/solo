@@ -11,7 +11,7 @@
   // hamburgerIconIsClicked >> closeMobileMenuHandler >> closeMobileMenu
   // hamburgerIconIsClicked >> openMobileMenuHandler >> openMobileMenu
 
-  const hamburgerIconButtons = document.querySelectorAll('.solo-inner .mobile-nav');
+  const hamburgerIconButtons = document.querySelectorAll('.solo-inner .navigation-responsive .mobile-nav');
   // Get current width
   const getCurrentWidth = () => window.innerWidth || document.documentElement
     .clientWidth || document.body.clientWidth;
@@ -44,9 +44,8 @@
 
   const getMobileNavType = (hamburgerIcon) => {
     const hamburgerIconChild = hamburgerIcon.children[0];
-    const navTagId = hamburgerIcon.parentElement.classList.contains('navigation-primary-template') ?
-      hamburgerIcon.closest('nav').id :
-      hamburgerIcon.nextElementSibling.id;
+    const navTagId = hamburgerIcon.closest('nav').id;
+// page tempalte
     return [hamburgerIconChild, navTagId];
   };
 
@@ -68,7 +67,7 @@
 
   const addAriaControlToButton = (hamburgerIcon) => {
     const [hamburgerIconChild, navTagId] = getMobileNavType(hamburgerIcon);
-    let ariaControl = document.querySelector(`#${navTagId} .navigation__menubar`).getAttribute('id');
+    let ariaControl = document.querySelector(`#${navTagId} .navigation__responsive`).getAttribute('id');
 
     if (currentWidth < 993) {
       hamburgerIconChild.setAttribute('aria-controls', ariaControl);

@@ -23,7 +23,7 @@
   <svg aria-hidden="true" role="img" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="butt" stroke-linejoin="bevel"><path d="{{ icon_value }}"/></svg>
 {% endmacro %}
 
-<div class="w3-row navigation-sidebar">
+<div class="w3-row solo-menu navigation-sidebar navigation-primary-sidebar">
 
 {% import _self as menus %}
 {#
@@ -36,7 +36,7 @@ We call a macro which calls itself to render the full tree.
 
 {% set menu_level = menu_level + 1 %}
 {% set menu_classes = [
-'navigation__menubar navigation__sidebar navigation__menubar-' ~ menu_name|clean_class,
+'navigation__menubar navigation__sidebar navigation__primary__sidebar navigation__menubar-' ~ menu_name|clean_class,
 ]
 %}
 

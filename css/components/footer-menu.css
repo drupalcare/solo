@@ -1,3 +1,6 @@
+.navigation__menubar-footer {
+  justify-content: center;
+}
 .navigation__menubar-footer li a,
 .navigation__menubar-footer li a {
   padding: 7px 14px;
@@ -8,17 +11,9 @@
   margin-bottom: 16px;
 }
 
-.navigation__menubar-footer,
-.navigation__menubar-footer {
-  width: 100%;
-  clear: both;
-}
-
 .navigation__menubar-footer li,
 .navigation__menubar-footer li {
-  float: none;
-  width: auto;
-  display: inline-block;
+  display: inline-flex;
 }
 
 /* label form in the footer */
@@ -91,13 +86,14 @@
 }
 
 .social-media {
-  display: flex !important;
+  display: flex;
+  flex-wrap: wrap;
   align-items: center;
   justify-content: center;
 }
 
 .social-media a {
-  display: flex !important;
+  display: flex;
   align-items: center;
   justify-content: center;
 }

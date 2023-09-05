@@ -27,7 +27,7 @@
 
     verticalNav.style.display = 'none';
     const subMenus = document.querySelectorAll(
-      '#primary-sidebar-menu .navigation__menubar li ul.sub__menu');
+      '.navigation__primary__sidebar li ul.sub__menu');
     subMenus.forEach(Drupal.solo.hideSubMenus);
   });
 

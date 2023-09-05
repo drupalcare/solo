@@ -32,6 +32,7 @@
 {% endmacro %}
 
 {% import _self as menus %}
+<div class="w3-row solo-menu navigation-default">
 {#
 We call a macro which calls itself to render the full tree.
 @see http://twig.sensiolabs.org/doc/tags/macro.html
@@ -42,7 +43,7 @@ We call a macro which calls itself to render the full tree.
 
 {% set menu_level = menu_level + 1 %}
 {% set menu_classes = [
-'navigation__menubar navigation__menubar-' ~ menu_name|clean_class,
+'navigation__menubar navigation__default navigation__menubar-' ~ menu_name|clean_class,
 ]
 %}
 
@@ -188,3 +189,4 @@ We call a macro which calls itself to render the full tree.
 </ul>
 {% endif %}
 {% endmacro %}
+</div>

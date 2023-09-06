@@ -1,6 +1,7 @@
 .navigation-responsive {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  justify-content: left;
 }
 
 @media (max-width:992px) {
@@ -47,7 +48,7 @@
 
 @media (min-width:993px) {
   .navigation-responsive .navigation__responsive {
-    display: flex;
+    display: flex!important;
     align-items: center;
     justify-content: center;
     flex-wrap: wrap;

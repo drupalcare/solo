@@ -106,7 +106,7 @@ We call a macro which calls itself to render the full tree.
           {# The parent link is clickable and it has children #}
           {% set c_link = 'nav__menu-link nav__menu-link-' ~ menu_name|clean_class %}
           <a href='{{ item.url }}' class='{{ c_link }} url-added' tabindex='-1'>
-            {{ item.title }}
+            <span class='menu__url-title-enabled'>{{ item.title }}</span>
           </a>
           <button class='en-link dropdown-toggler dropdown-toggler-parent' {{ dorpdown_toggler_attributes }}>
           <span class='visually-hidden'>{{ '@title sub-navigation'|t({'@title': item.title}) }}</span>
@@ -115,7 +115,7 @@ We call a macro which calls itself to render the full tree.
         {% else %}
           {# The parent link is NOT clickable and it has children #}
           <button class='ds-link dropdown-toggler dropdown-toggler-parent' {{ dorpdown_toggler_attributes }}>
-          <span class='menu__link-title'>{{ item.title }}</span>
+          <span class='menu__url-title-disabled'>{{ item.title }}</span>
           <span class='visually-hidden'>{{ '@title sub-navigation'|t({'@title': item.title}) }}</span>
           <span class='toggler-icon dropdown-arrow'>{{ macros.svg_icon('M6 9l6 6 6-6') }}</span>
           </button>
@@ -145,7 +145,7 @@ We call a macro which calls itself to render the full tree.
           {# The parent link is clickable and it has children #}
           {% set c_link = 'nav__menu-link nav__menu-link-' ~ menu_name|clean_class %}
           <a href='{{ item.url }}' class='{{ c_link }} url-added' tabindex='-1'>
-          {{ item.title }}
+          <span class='menu__url-title-enabled'>{{ item.title }}</span>
           </a>
           <button class='en-link dropdown-toggler dropdown-toggler-child' {{ dorpdown_toggler_attributes }}>
           <span class='visually-hidden'>{{ '@title sub-navigation'|t({'@title': item.title}) }}</span>
@@ -155,7 +155,7 @@ We call a macro which calls itself to render the full tree.
         {% else %}
           {# The parent link is NOT clickable and it has children #}
           <button class='ds-link dropdown-toggler dropdown-toggler-child' {{ dorpdown_toggler_attributes }}>
-          <span class='menu__link-title'>{{ item.title }}</span>
+          <span class='menu__url-title-disabled'>{{ item.title }}</span>
           <span class='visually-hidden'>{{ '@title sub-navigation'|t({'@title': item.title}) }}</span>
           <span class='toggler-icon dropdown-arrow'>{{ macros.svg_icon('M6 9l6 6 6-6') }}</span>
 
@@ -170,9 +170,12 @@ We call a macro which calls itself to render the full tree.
         'nav__menu-link nav__menu-link-' ~ menu_name|clean_class,
         ]
         %}
+        {% set link_title %}
+          <span class="menu__url-title">{{ item.title }}</span>
+        {% endset %}
       <li{{ item.attributes.addClass(item_classes) }} role='none' data-drupal-selector='{{ menu_name }}-item-without-children'>
           {{ link(
-          item.title,
+          link_title,
           item.url,
           item.attributes.removeClass(item_classes).addClass(link_classes),
           item.attributes.setAttribute('role', 'menuitem').setAttribute('tabindex', '-1')

@@ -1,9 +1,9 @@
-/* SideNav */
+/* For Primary Sidenav menu and any sidenav menu. */
 #primary-sidebar-menu {
-  z-index: 1000;
+  z-index: 10000;
   display: none;
   flex-direction: column;
-  min-width: 600px;
+  min-width: 100%;
 }
 
 #sidebar-button-open {
@@ -39,10 +39,19 @@
   flex-direction: column;
 }
 
-.solo-inner .navigation-sidebar .navigation__sidebar li.nav__menu-item ul.sub__menu {
-  position: initial;
+.solo-inner .navigation-sidebar .navigation__sidebar,
+.solo-inner .navigation-sidebar .navigation__sidebar ul.sub__menu {
+  display: flex;
+  justify-content: left;
+  align-items: stretch;
+  flex-direction: column;
+  flex-basis: 100%;
+  flex-grow: 1;
+  flex-wrap: wrap;
+  transform: translateY(0) !important;
 }
 
+.solo-inner .navigation-sidebar .navigation__sidebar li.button-only>button,
 .solo-inner .navigation-sidebar .navigation__sidebar li.nav__menu-item {
   flex-basis: 100%;
 }
@@ -51,7 +60,7 @@
   overflow: hidden;
 }
 
-.solo-inner .navigation-sidebar .navigation__sidebar>li.nav__menu-item>ul.sub__menu>li.nav__menu-item {
+.solo-inner .navigation-sidebar .navigation__sidebar >li.nav__menu-item>ul.sub__menu>li.nav__menu-item {
   padding-left: 12px;
 }
 
@@ -59,24 +68,17 @@
   padding-left: 24px;
 }
 
-.solo-inner .navigation-sidebar .navigation__sidebar li.nav__menu-item span.menu__link-title {
-  justify-content: left;
+.solo-inner .navigation-sidebar .navigation__sidebar li.has-sub__menu {
+  justify-content: space-between;
+  flex-wrap: wrap;
 }
 
 .solo-inner .navigation-sidebar .navigation__sidebar ul.sub__menu {
-  box-shadow: none;
+  display: none;
 }
 
-.solo-inner .navigation-sidebar .navigation__sidebar li.nav__menu-item ul.sub__menu {
-  transform: translateY(0) !important;
-}
-
-.solo-inner .navigation-sidebar .navigation__sidebar li.nav__menu-item ul.sub__menu {
-  position: initial !important;
-}
-
-.solo-inner .navigation-sidebar .navigation__sidebar li.nav__menu-item {
-  flex-wrap: wrap;
+.solo-inner .navigation-sidebar .navigation__sidebar li.link-and-button>button {
+  margin-left: auto;
 }
 
 .slide-out {

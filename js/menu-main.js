@@ -15,11 +15,16 @@
     const siteMenuBars = querySelectorElements('.solo-inner .solo-menu .navigation__menubar');
     const siteSubMenus = querySelectorElements('.solo-inner .solo-menu .navigation__menubar ul');
     const svgIcons = querySelectorElements('.solo-inner .solo-menu .navigation__menubar .toggler-icon>svg');
-
     // Default menu
     const navigationDefault = querySelectorElements('.solo-inner .solo-menu .navigation__default .dropdown-toggler');
+    // Default top
+    const navigationDefaultTop = querySelectorElements('.solo-inner .solo-menu .navigation__default>li.has-sub__menu>button');
+    // All responsive menus (Primary rempsonsive, responsive hover and responsive click)
+    const navigationResponsiveTop = querySelectorElements('.solo-inner .solo-menu .navigation__responsive>li.has-sub__menu>button');
     // Default menu mouse click
-    const navigationResponsiveTemplate = querySelectorElements('.solo-inner .solo-menu .navigation__responsive__template .dropdown-toggler');
+    const navigationResponsiveClick = querySelectorElements('.solo-inner .solo-menu .navigation__responsive__click .dropdown-toggler');
+    // Default menu mouse hover
+    const navigationResponsiveHover = querySelectorElements('.solo-inner .solo-menu .navigation__responsive__hover .dropdown-toggler');
     // Default menu sidebar
     const navigationSidebarTemplate = querySelectorElements('.solo-inner .solo-menu .navigation__sidebar__template .dropdown-toggler');
     // Main Menu responsive.
@@ -72,7 +77,7 @@
     }
 
     const getArrowDirection = (verticalNav) => {
-        return (currentWidth > 992 && !verticalNav) ? 'rotate(-90deg)' : 'rotate(180deg)';
+        return (currentWidth >= 993 && !verticalNav) ? 'rotate(-90deg)' : 'rotate(180deg)';
     }
 
     // Change the arrow direction on close.
@@ -153,11 +158,7 @@
             }
         });
 
-        const dropdownTogglerButtonHeight = dropdownTogglerButton.offsetHeight - 1;
-        subMenu.style.transform = `translateY(${dropdownTogglerButtonHeight}px)`;
-
         rotated.style.transform = 'rotate(180deg)';
-
         openMenuHelper(dropdownTogglerButton, subMenu);
 
     }
@@ -212,7 +213,7 @@
     }
 
     // Toggler handle, according to the menu type functions will be called.
-    const dropdownTogglerButtonIsClicked = (dropdownTogglerButton, subMenu, eventType, delay) => {
+    const dropdownTogglerButtonIsClicked = (dropdownTogglerButton, subMenu) => {
         clickedHandler(() => {
             // Let get the menu type menubar or submenu.
             let isClassPresent = dropdownTogglerButton.parentElement.classList.contains('nav__menubar-item');
@@ -223,29 +224,7 @@
                     openMenubar(dropdownTogglerButton, subMenu);
                 } else {
 
-                    if (eventType === 'mouseover') {
-
-                        let buttonChildren = dropdownTogglerButton.nextElementSibling;
-                        timeoutId = setTimeout(() => {
-                            closeMenubar(dropdownTogglerButton, subMenu);
-                        }, delay);
-
-                        const clearTimer = () => clearTimeout(timeoutId);
-                        const addMouseLeaveListener = (element) => {
-                            element.addEventListener('mouseleave', () => {
-                                timeoutId = setTimeout(() => {
-                                    closeMenubar(dropdownTogglerButton, subMenu);
-                                }, delay);
-                            });
-                        }
-                        dropdownTogglerButton.addEventListener('mouseenter', clearTimer);
-                        buttonChildren.addEventListener('mouseenter', clearTimer);
-                        addMouseLeaveListener(buttonChildren);
-
-                    } else {
-                        closeMenubar(dropdownTogglerButton, subMenu);
-
-                    }
+                    closeMenubar(dropdownTogglerButton, subMenu);
 
                 }
 
@@ -255,31 +234,7 @@
                     openSubMenu(dropdownTogglerButton, subMenu);
                 } else {
 
-                    if (eventType === 'mouseover') {
-                        let buttonChildren = dropdownTogglerButton.nextElementSibling;
-
-                        timeoutId = setTimeout(() => {
-                            closeSubMenu(dropdownTogglerButton, subMenu);
-                        }, delay);
-
-                        const clearTimer = () => clearTimeout(timeoutId);
-
-                        const addMouseLeaveListener = (element) => {
-                            element.addEventListener('mouseleave', () => {
-                                timeoutId = setTimeout(() => {
-                                    closeSubMenu(dropdownTogglerButton, subMenu);
-                                }, delay);
-                            });
-                        }
-                        dropdownTogglerButton.addEventListener('mouseenter', clearTimer);
-                        buttonChildren.addEventListener('mouseenter', clearTimer);
-                        addMouseLeaveListener(buttonChildren);
-                        addMouseLeaveListener(dropdownTogglerButton);
-
-                    } else {
-                        closeSubMenu(dropdownTogglerButton, subMenu);
-
-                    }
+                    closeSubMenu(dropdownTogglerButton, subMenu);
 
                 }
 
@@ -293,7 +248,7 @@
         siteMenuBar.addEventListener('click', (event) => {
 
             const sideMenu = ('navigation-sidebar');
-            if (hasParentWithClass(siteMenuBar, sideMenu) || currentWidth < 992) {
+            if (hasParentWithClass(siteMenuBar, sideMenu) || currentWidth <= 992) {
                 siteMenuBar.classList.remove('focus-in');
             } else {
                 siteMenuBar.classList.add('focus-in');
@@ -302,70 +257,58 @@
         });
     });
 
-    // When a toggler is clicked, we need to know if it is submenu or menubar.
-    // navigationDefault.forEach((dropdownTogglerButton) => {
-
-    //   dropdownTogglerButton.addEventListener('mouseover', (event) => {
-    //     const subMenu = dropdownTogglerButton.nextElementSibling;
-    //     const eventTarget = event.target;
-    //     dropdownTogglerButtonIsClicked(dropdownTogglerButton, subMenu, 600);
-    //   });
-
-    // });
-
-    // navigationPrimary.forEach((dropdownTogglerButton) => {
-
-    //   dropdownTogglerButton.addEventListener('click', (event) => {
-    //     const subMenu = dropdownTogglerButton.nextElementSibling;
-    //     const eventTarget = event.target;
-    //     dropdownTogglerButtonIsClicked(dropdownTogglerButton, subMenu, 50);
-    //   });
-
-    // });
-
-    // navigationSidebar.forEach((dropdownTogglerButton) => {
-
-    //   dropdownTogglerButton.addEventListener('click', (event) => {
-    //     const subMenu = dropdownTogglerButton.nextElementSibling;
-    //     const eventTarget = event.target;
-    //     dropdownTogglerButtonIsClicked(dropdownTogglerButton, subMenu, 50);
-    //   });
-
-    // });
-
-    function addEventListenerToButtons(buttons, eventType, delay) {
+    function addEventListenerToButtons(buttons) {
         buttons.forEach((button) => {
 
-            button.addEventListener(eventType, (event) => {
+            button.addEventListener('click', (event) => {
                 const subMenu = button.nextElementSibling;
-                dropdownTogglerButtonIsClicked(button, subMenu, eventType, delay);
+                dropdownTogglerButtonIsClicked(button, subMenu);
             });
 
         });
     }
 
-    addEventListenerToButtons(navigationDefault, 'mouseover', 3000);
-    addEventListenerToButtons(navigationResponsiveTemplate, 'click', 100);
-    addEventListenerToButtons(navigationSidebarTemplate, 'click', 100);
-    addEventListenerToButtons(navigationSidebar, 'click', 100);
-    addEventListenerToButtons(navigationPrimary, 'click', 100);
+    function addTopToResponsiveSubMenus(menubars) {
+        menubars.forEach((menubar) => {
 
-    getCurrentWidth();
+            menubar.addEventListener('mouseover', (event) => {
+                const menubarHeight = menubar.offsetHeight - 1;
+                menubar.nextElementSibling.style.transform = `translateY(${menubarHeight}px)`;
+            });
+
+        });
+    }
+
     Drupal.behaviors.menuAction = {
         attach: function(settings) {
 
             currentWidth = getCurrentWidth();
+            if (currentWidth >= 993) {
+                addTopToResponsiveSubMenus(navigationResponsiveTop);
+            }
+
+            addEventListenerToButtons(navigationDefault);
+            addEventListenerToButtons(navigationResponsiveHover);
+            addEventListenerToButtons(navigationResponsiveClick);
+            addEventListenerToButtons(navigationSidebarTemplate);
+
+            addEventListenerToButtons(navigationSidebar);
+            addEventListenerToButtons(navigationPrimary);
+
+            addTopToResponsiveSubMenus(navigationDefaultTop);
 
             window.addEventListener('resize', () => {
                 currentWidth = getCurrentWidth();
 
                 resetSubMenus(siteSubMenus, svgIcons);
 
-                if (currentWidth < 992) {
+                if (currentWidth <= 992) {
 
                 } else {
                     // To revert the navigation.
+                    addTopToResponsiveSubMenus(navigationResponsiveTop);
                     removesiteMenuBarsStyles(siteMenuBars);
+
                 }
 
             });

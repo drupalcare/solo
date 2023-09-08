@@ -42,7 +42,7 @@
     })
 
     const verticalNav = document.getElementById('primary-sidebar-menu');
-    verticalNav.style.display = 'flex';
+    verticalNav.style.display = 'block'
   });
 
 })(Drupal, once);

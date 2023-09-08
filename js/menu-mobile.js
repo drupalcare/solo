@@ -24,7 +24,7 @@
             Drupal.solo.hideSubMenus(subMenu);
             Drupal.solo.revertIcons(navTagId);
         });
-        Drupal.solo.slideDown(navigationMenubarClass, 'flex');
+        Drupal.solo.slideDown(navigationMenubarClass);
 
     };
 
@@ -68,7 +68,7 @@
         const [hamburgerIconChild, navTagId] = getMobileNavType(hamburgerIcon);
         let ariaControl = document.querySelector(`#${navTagId} .navigation__responsive`).getAttribute('id');
 
-        if (currentWidth < 993) {
+        if (currentWidth <= 992) {
             hamburgerIconChild.setAttribute('aria-controls', ariaControl);
         } else {
             hamburgerIconChild.removeAttribute('aria-controls');
@@ -106,9 +106,7 @@
     // resolution over 992 px and it is called in resize event listner.
     const resetMenusOnResize = () => {
         hamburgerIconButtons?.forEach((hamburgerIconButton) => {
-
             closeOnResize(hamburgerIconButton);
-
         });
     }
 
@@ -120,7 +118,7 @@
                 processHamburgerIcons(hamburgerIconButtons);
                 currentWidth = getCurrentWidth();
 
-                if (currentWidth < 992) {
+                if (currentWidth <= 992) {
                     resetMenusOnResize();
                 }
             });

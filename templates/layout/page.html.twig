@@ -93,14 +93,16 @@
 
 {% if page.primary_sidebar_menu %}
   <!-- Start: Main Navigation - Vertical -->
-  <div id="primary-sidebar-menu" class="main-navigation-wrapper w3-sidebar w3-bar-block w3-animate-left w3-theme {{ color_primary_menu }}" role="navigation"  aria-label="{{ 'Main Navigation'|t }}">
+  <div id="primary-sidebar-menu" class="main-navigation-wrapper primary-sidebar-menu hamburger-icon w3-sidebar w3-bar-block w3-theme {{ color_primary_menu }}" role="navigation"  aria-label="{{ 'Main Navigation'|t }}">
     <div id="primary-sidebar-menu-inner" class="primary-sidebar-menu-inner solo-inner">
-      <div id="sidebar-button-close" class="sidebar-button-close w3-button w3-bar-block w3-large w3-theme {{ color_primary_menu }}">
+
+      <div id="sidebar-button-close" class="sidebar-button-close w3-bar-block w3-theme {{ color_primary_menu }}">
         {# <i class="fa fa-close"></i> #}
-          <button class="global-menu-button sidebar-button-close-inner" data-drupal-selector="sidebar-button-close-inner" aria-label="Close" aria-controls="primary-sidebar-menu-inner" aria-expanded="false" aria-hidden="hidden">
+          <button class="global-menu-button hamburger-icon hamburger-icon-close" data-drupal-selector="sidebar-hamburger-icon" aria-label="Close" aria-controls="primary-sidebar-menu" aria-expanded="false" aria-hidden="hidden">
               <span>{{ svg_bars|raw }}</span>
           </button>
       </div>
+
       {{ page.primary_sidebar_menu }}
     </div>
   </div>
@@ -114,7 +116,7 @@
   <div id="search-slide" class="w3-col w3-clear  w3-theme-l5 search-slide-wrapper" role="search" aria-label="{{ 'Search Bar'|t }}">
     <div id="search-slide-inner" class="w3-row search-slide-inner {{ website_width }}">
       {{ page.fixed_search_bar }}
-      <div class="close-search search-block-button-close">
+      <div class="close-search hamburger-icon hamburger-icon-close search-block-button-close">
       {# <i class="fa fa-close"></i> #}
         <button class="global-menu-button search-block-button-close-inner" data-drupal-selector="search-block-button-close-inner" aria-label="Close" aria-controls="search-slide-inner" aria-expanded="false" aria-hidden="hidden">
             <span>{{ svg_bars|raw }}</span>
@@ -129,17 +131,20 @@
     <!-- Start: Header -->
     <header id="header" class="w3-col w3-clear w3-theme-l4 {{ sitename_animation }} {{ color_header }}" role="banner" aria-label="{{ 'Site header'|t }}">
       <div id="header-inner" class="w3-container header-inner solo-inner {{ website_width }}">
+
+        {% if page.header %}
+          {{ page.header }}
+        {% endif %}
+
         {% if page.primary_sidebar_menu %}
-          <div id="sidebar-button-open" class="sidebar-button-open w3-opacity w3-hover-opacity-off w3-left w3-button w3-left-align w3-large w3-theme {{ color_primary_menu }}">
+          <div id="sidebar-button-open" class="hamburger-icon sidebar-button-open w3-theme {{ color_primary_menu }}">
             {# <i class="fa fa-bars"></i> #}
-            <button class="global-menu-button sidenav-menubar-open-button sidebar-button-close-inner" data-drupal-selector="sidenav-menubar-open-button" aria-label="Open" aria-controls="primary-sidebar-menu-inner" aria-expanded="false" aria-hidden="true">
+            <button class="global-menu-button sidebar-hamburger-icon" data-drupal-selector="sidebar-hamburger-icon" aria-label="Open" aria-controls="primary-sidebar-menu" aria-expanded="false" aria-hidden="true">
               <span>{{ svg_bars|raw }}</span>
             </button>
           </div>
         {% endif %}
-        {% if page.header %}
-          {{ page.header }}
-        {% endif %}
+
       </div>
     </header>
     <!-- End: Header -->
@@ -147,7 +152,7 @@
 
   {% if page.primary_menu %}
     <!-- Start: Main Navigation - Horizontal -->
-    <div id="primary-menu" class="w3-col w3-clear main-navigation-wrapper w3-theme {{ color_primary_menu }}" role="navigation" aria-label="{{ 'Main Navigation'|t }}">
+    <div id="primary-menu" class="w3-col w3-clear main-navigation-wrapper primary-menu w3-theme {{ color_primary_menu }}" role="navigation" aria-label="{{ 'Main Navigation'|t }}">
       <div id="primary-menu-inner" class="w3-row primary-menu-inner solo-inner {{ website_width }}">
         {{ page.primary_menu }}
       </div>

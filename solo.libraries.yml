@@ -95,6 +95,11 @@ solo-menu:
     - core/drupalSettings
     - core/once
 
+menu-right-open-sidebar:
+  Version: VERSION
+  css:
+    theme:
+      css/theme/menu-right-open-sidebar.css: { weight: 10 }
 # Full Opacity on Scroll.
 solo-full-opacity:
   version: VERSION

@@ -1,29 +1,59 @@
 /* For Primary Sidenav menu and any sidenav menu. */
 #primary-sidebar-menu {
   z-index: 10000;
-  display: none;
+  display: flex;
+  justify-content: space-between;
   flex-direction: column;
-  min-width: 100%;
+  min-width: 600px;
+}
+
+.primary-sidebar-menu {
+  inset-block-start: 0;
+  inset-inline-start: -600px;
+  visibility: hidden;
+  overflow: auto;
+  width: 100%;
+  max-width: 600px;
+  height: 100%;
+  transition: visibility 0.2s, transform 0.2s;
+  box-shadow: 50px 0 55px -30px rgba(0, 0, 0, 0.2);
+}
+
+.primary-sidebar-menu.toggled {
+  visibility: visible;
+  transform: translateX(600px);
 }
 
 #sidebar-button-open {
-  background-color: transparent !important;
-  margin: 10px 20px 0 0;
+  width: 100%!important;
   z-index: 1;
   text-align: center !important;
 }
 
 #sidebar-button-close button,
 #sidebar-button-open button {
-  min-width: 70px;
-  min-height: 60px;
-  display: block;
+  display: flex;
+  padding: 4px 12px;
+  flex-grow: 1;
+  flex-direction: column;
+  flex-basis: 100%;
+}
+
+#sidebar-button-close button {
+  justify-content: flex-end;
+  align-items: flex-end;
+  padding: 12px;
+}
+
+#sidebar-button-open button {
+  justify-content: flex-start;
+  align-items: flex-start;
+  padding: 2px;
 }
 
 #sidebar-button-close button span,
 #sidebar-button-open button span {
   display: flex;
-  width: 100%;
 }
 
 #sidebar-button-close {

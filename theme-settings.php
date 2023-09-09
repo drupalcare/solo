@@ -20,6 +20,7 @@ function solo_form_system_theme_settings_alter(&$form, FormStateInterface $form_
   // Theme settings files.
   require_once __DIR__ . '/includes/website_width.inc';
   require_once __DIR__ . '/includes/equal_width.inc';
+  require_once __DIR__ . '/includes/load_sidebar_menu.inc';
   require_once __DIR__ . '/includes/layout_user_login.inc';
   require_once __DIR__ . '/includes/full_opacity_onscroll.inc';
   require_once __DIR__ . '/includes/breadcrumb_page_title.inc';
@@ -27,6 +28,7 @@ function solo_form_system_theme_settings_alter(&$form, FormStateInterface $form_
   require_once __DIR__ . '/includes/external_libraries.inc';
   require_once __DIR__ . '/includes/sitename_animation.inc';
   require_once __DIR__ . '/includes/predefined_themes.inc';
+  require_once __DIR__ . '/includes/internal_css.inc';
   require_once __DIR__ . '/includes/advanced_site_colors.inc';
   require_once __DIR__ . '/includes/social_links.inc';
   require_once __DIR__ . '/includes/copyright.inc';

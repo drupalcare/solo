@@ -41,6 +41,11 @@ function solo_preprocess_html(&$variables) {
 
   // Add admin context to the body class.
   _add_admin_context_to_body_class($variables);
+
+  // Color's variables.
+  $cssInternal = 'internal_css';
+  $variables[$cssInternal] = theme_get_setting($cssInternal);
+
 }
 
 /**
@@ -242,6 +247,7 @@ function solo_preprocess_page(&$variables) {
       'bottom_region',
       'footer_region',
       'website_width',
+      'primary_sidebar_right',
     ],
     'svar' => [
       'social_media_size',
@@ -259,6 +265,7 @@ function solo_preprocess_page(&$variables) {
       'show_credit_link',
     ],
     'cvar' => [
+      'internal_css',
       'color_page_wrapper',
       'color_header',
       'color_primary_menu',
@@ -413,6 +420,7 @@ function solo_page_attachments_alter(array &$attachments) {
   _load_font_awesome($attachments);
   _load_full_opacity($attachments);
   _load_social_icon_size($attachments);
+  _load_primary_sidebar_from_right($attachments);
 }
 
 /**
@@ -495,6 +503,15 @@ function _load_full_opacity(array &$attachments): void {
   $admin_context = \Drupal::service('router.admin_context');
   if (theme_get_setting('full_opacity_onscroll') && !$admin_context->isAdminRoute()) {
     $attachments['#attached']['library'][] = 'solo/solo-full-opacity';
+  }
+}
+
+/**
+ * Helper function.
+ */
+function _load_primary_sidebar_from_right(array &$attachments): void {
+  if (theme_get_setting('primary_sidebar_right')) {
+    $attachments['#attached']['library'][] = 'solo/menu-right-open-sidebar';
   }
 }
 

@@ -91,7 +91,7 @@ a,
 .page-wrapper,
 #top-container,
 #footer-container,
-.search-slide-wrapper,
+.fixed-search-block,
 #top-container .top-box>div,
 #main-container .main-box > div,
 #footer-container .footer-box>div,
@@ -110,7 +110,7 @@ a,
 }
 
 /* Four panels - light color */
-.search-slide-wrapper,
+.fixed-search-block,
 .pager__item.is-active {
   background-color: #fefffa !important;
 }

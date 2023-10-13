@@ -26,7 +26,7 @@
  */
 #}
 {% set classes = [
-    'w3-container',
+    'solo-clear',
     'js-form-item',
     'form-item',
     'js-form-wrapper',
@@ -35,7 +35,7 @@
 %}
 <fieldset{{ attributes.addClass(classes) }}>
   {% set legend_span_classes = [
-      'w3-bar',
+      'solo-clear',
       'fieldset-legend',
       required ? 'js-form-required',
       required ? 'form-required',
@@ -45,12 +45,12 @@
   <legend{{ legend.attributes }}>
     <span{{ legend_span.attributes.addClass(legend_span_classes) }}>{{ legend.title }}</span>
   </legend>
-  <div class="fieldset-wrapper w3-panel">
+  <div class="fieldset-wrapper solo-clear">
     {% if description_display == 'before' and description.content %}
-      <div{{ description.attributes.addClass('w3-panel w3-small description') }}>{{ description.content }}</div>
+      <div{{ description.attributes.addClass('solo-clear solo-small description') }}>{{ description.content }}</div>
     {% endif %}
     {% if errors %}
-      <div class="w3-section w3-pale-red w3-leftbar w3-border w3-border-red form-item--error-message">
+      <div class="solo-clear form-item--error-message">
         <strong>{{ errors }}</strong>
       </div>
     {% endif %}
@@ -62,7 +62,7 @@
       <span class="field-suffix">{{ suffix }}</span>
     {% endif %}
     {% if description_display in ['after', 'invisible'] and description.content %}
-      <div{{ description.attributes.addClass('w3-panel w3-small description') }}>{{ description.content }}</div>
+      <div{{ description.attributes.addClass('solo-clear solo-small description') }}>{{ description.content }}</div>
     {% endif %}
   </div>
 </fieldset>

@@ -45,7 +45,6 @@
  */
 #}
 {% set classes = [
-    'w3-section',
     'js-form-item',
     'form-item',
     'js-form-type-' ~ type|clean_class,
@@ -58,8 +57,7 @@
   ]
 %}
 {% set description_classes = [
-    'w3-small',
-    'w3-row',
+    'solo-small',
     'description',
     description_display == 'invisible' ? 'visually-hidden',
   ]
@@ -84,7 +82,7 @@
     {{ label }}
   {% endif %}
   {% if errors %}
-    <div class="w3-panel w3-pale-red w3-leftbar w3-border w3-border-red form-item--error-message">
+    <div class="solo-clear form-item--error-message">
       <strong>{{ errors }}</strong>
     </div>
   {% endif %}

@@ -1,0 +1,382 @@
+html,
+body {
+  min-height: 100%;
+  overflow-wrap: break-word;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: var(--solo-16);
+  line-height: calc(2 * var(--solo-16));
+  font-weight: normal;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+html {
+  overflow-x: hidden;
+}
+
+/* HTML tags */
+h1 {
+  font-size: var(--solo-36);/* 36px */
+}
+
+h2 {
+  font-size: var(--solo-32);/* 32px */
+}
+
+h3 {
+  font-size: var(--solo-24);/* 24px */
+}
+
+h4 {
+  font-size: var(--solo-20);/* 20px */
+}
+
+h5 {
+  font-size: var(--solo-18);/* 18px */
+}
+
+h6 {
+  font-size: var(--solo-16);/* 16px */
+}
+
+h1,
+h2,
+h3 {
+  font-weight: 700;
+  margin: 12px 0;
+}
+
+h4,
+h5,
+h6 {
+  font-weight: normal;
+  margin: 8px 0;
+}
+
+hr {
+  border: 0;
+  border-top: 1px solid #eee;
+  margin: 20px 0;
+}
+
+.solo-image {
+  max-width: 100%;
+  height: auto;
+}
+
+img {
+  vertical-align: middle;
+}
+
+a {
+  color: inherit;
+}
+
+.solo-container:after,
+.solo-container:before,
+.solo-panel:after,
+.solo-panel:before,
+.solo-clear:after,
+.solo-clear:before {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Table */
+.solo-table,
+.solo-table-all {
+  border-collapse: collapse;
+  border-spacing: 0;
+  width: 100%;
+  display: table;
+}
+
+.solo-table-all {
+  border: 1px solid #eee;
+}
+
+.solo-table-all tr {
+  border-bottom: 1px solid #eee;
+}
+
+.solo-table-all tr:nth-child(odd) {
+  background-color: #fff;
+}
+
+.solo-table-all tr:nth-child(even) {
+  background-color: #fafafa;
+}
+
+.solo-table td,
+.solo-table th,
+.solo-table-all td,
+.solo-table-all th {
+  padding: 8px 8px;
+  display: table-cell;
+  text-align: left;
+  vertical-align: top;
+}
+
+.solo-table th:first-child,
+.solo-table td:first-child,
+.solo-table-all th:first-child,
+.solo-table-all td:first-child {
+  padding-left: 16px;
+}
+
+/*Unordered list */
+.solo-ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.solo-ul li {
+  padding: 8px 16px;
+}
+
+/* Button */
+.solo-button {
+  border: 1px solid #ddd;
+  display: inline-block;
+  padding: 16px 32px;
+  vertical-align: middle;
+  overflow: hidden;
+  text-decoration: none;
+  color: inherit;
+  background-color: inherit;
+  text-align: center;
+  cursor: pointer;
+  white-space: nowrap;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/*.btn,
+.solo-button,
+.button--primary  {
+  display: inline-block;
+  font-weight: 400;
+  color: #212529;
+  text-align: center;
+  vertical-align: middle;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  background-color: transparent;
+  border: 1px solid transparent;
+  padding: .375rem .75rem;
+  font-size: 1rem;
+  line-height: 1.5;
+  border-radius: .25rem;
+  -webkit-transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, -webkit-box-shadow .15s ease-in-out;
+  transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, -webkit-box-shadow .15s ease-in-out;
+  transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+  transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out, -webkit-box-shadow .15s ease-in-out
+}*/
+.solo-button:disabled {
+  cursor: not-allowed;
+  opacity: 0.3;
+}
+
+/* Forms Elements */
+.solo-check,
+.solo-radio {
+  width: 24px;
+  height: 24px;
+  position: relative;
+  top: 6px;
+  border: 1px solid #ddd;
+}
+
+.solo-input {
+  padding: 16px 8px;
+  display: block;
+  width: 100%;
+  border: 1px solid #ddd;
+}
+
+.form-type-date > input {
+  max-height: 55px;
+}
+
+a.form-submit,
+.solo-button.form-submit {
+  padding: 16px 24px;
+  margin: 6px auto;
+  float: none;
+  text-align: center;
+  border: 1px solid #ddd;
+}
+
+.solo-select {
+  padding: 16px 12px;
+  width: 100%;
+}
+
+select {
+  max-width: 100%;
+  border: 1px solid #ddd;
+  background-image: var(--solo-select-arrow-icon);
+  background-repeat: no-repeat;
+  background-position: right 10px center; /* LTR */
+  font-family: inherit;
+  font-size: inherit;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+select[disabled] {
+  color: var(--solo-white);
+  background-color: var(--solo-dark-gray);
+}
+
+select.error {
+  border: solid 2px var(--solo-red);
+}
+
+select.error:focus {
+  outline-color: var(--solo-green);
+}
+
+select[multiple] {
+  height: auto;
+  background-image: none;
+  line-height: 1;
+}
+
+select[multiple] option {
+  padding: 16px 12px;
+}
+
+.form-type-number>label {
+  width: 100%;
+}
+
+.field-prefix,
+.field-suffix {
+  padding: 16px 8px;
+  vertical-align: middle;
+}
+
+.solo-padding {
+  padding: 8px 16px;
+}
+
+.solo-container,
+.solo-panel {
+  padding: 0.01em 16px;
+}
+
+.solo-panel {
+  margin-top: 16px;
+  margin-bottom: 16px;
+}
+
+.solo-small {
+  font-size: 14px;
+}
+
+.solo-bar {
+  width: 100%;
+  overflow: hidden;
+}
+
+.solo-bar .solo-bar-item {
+  padding: 8px 16px;
+  float: left;
+  width: auto;
+  border: none;
+  display: block;
+  outline: 0;
+}
+
+.solo-section {
+  margin-top: 16px;
+  margin-bottom: 16px;
+}
+
+.solo-block {
+  display: block;
+  width: 100%;
+}
+
+.solo-responsive {
+  display: block;
+  overflow-x: auto;
+}
+
+.links.inline {
+  display: flex;
+  justify-content: right;
+  font-size: 14px;
+}
+
+form fieldset {
+  border: 1px solid #eaeaea !important;
+  margin-top: 12px;
+}
+
+/* Global Classes */
+.sol-animate-opacity-disabled {
+  animation: none !important;
+}
+
+.solo-fixed {
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+
+.solo-sticky {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  width: 100%;
+}
+
+.solo-relative {
+  position: relative;
+  width: 100%;
+}
+
+ol {
+  display: block;
+}
+
+.visuallyhidden {
+  opacity: 0;
+}
+
+.solo-padding-0 {
+  padding: 0 !important;
+}
+
+.solo-margin-0 {
+  margin: 0 !important;
+}
+
+.solo-box-shadow-0 {
+  box-shadow: none !important;
+}
+
+.solo-border-0 {
+  border: none !important;
+}
+
+.solo-round-0 {
+  border-radius: 0 !important;
+}
+
+.solo-card {
+  -webkit-box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.12);
+  -moz-box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.12);
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.12);
+}

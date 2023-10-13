@@ -1,0 +1,46 @@
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+tr {
+  border-bottom: 1px solid #eaeaea;
+}
+
+tr.region-title {
+  background-color: #d2d2d2 !important;
+}
+
+.region-title td {
+  font-weight: bold !important;
+  text-transform: uppercase;
+}
+
+.region-title td a {
+  text-transform: capitalize;
+}
+
+table td ul {
+  margin: 0;
+}
+
+table td li {
+  list-style: none;
+}
+
+.solo-table-all {
+  border-color: #eaeaea !important;
+}
+
+.solo-table td,
+.solo-table th,
+.solo-table-all td,
+.solo-table-all th {
+  vertical-align: middle;
+  text-align: initial;
+}
+
+td .form-type-radio,
+td .form-type-checkbox {
+  margin: 0 !important;
+}

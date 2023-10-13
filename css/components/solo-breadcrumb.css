@@ -1,0 +1,21 @@
+.breadcrumb-nav {
+  display: grid;
+}
+
+ul.breadcrumb-menu {
+  display: flex;
+  flex-wrap: wrap;
+  padding: var(--solo-8) var(--solo-6);
+  list-style: none;
+}
+
+ul.breadcrumb-menu li {
+  display: inline;
+  border-bottom: none;
+  padding: var(--solo-5) var(--solo-3) var(--solo-5);
+}
+
+ul.breadcrumb-menu li+li:before {
+  padding: 8px 0;
+  content: "/\00a0";
+}

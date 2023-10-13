@@ -26,7 +26,6 @@
  */
 #}
 {% set classes = [
-    'w3-row',
     'field',
     'field--name-' ~ field_name|clean_class,
     'field--type-' ~ field_type|clean_class,
@@ -39,18 +38,33 @@
     label_display == 'visually_hidden' ? 'visually-hidden',
   ]
 %}
-<section{{ attributes.addClass(classes) }}>
-  {% if comments and not label_hidden %}
+<section{{ attributes.setAttribute('data-drupal-selector', 'comments').addClass(classes) }}>
+  {% if not label_hidden %}
     {{ title_prefix }}
-    <h2{{ title_attributes.addClass(title_classes) }}>{{ label }}</h2>
+    <h2{{ title_attributes.addClass('comments__title') }}>
+      {{- label -}}
+      {%- if comments -%}
+        <span class="comments__count">{{ comment_count }}</span>
+      {%- endif -%}
+    </h2>
     {{ title_suffix }}
   {% endif %}
 
-  {{ comments }}
-
   {% if comment_form %}
-    <h2 class="comment-form__title">{{ 'Add new comment'|t }}</h2>
-    {{ comment_form }}
+    <div class="add-comment">
+      {% if user_picture %}
+      <div class="add-comment__picture-wrapper">
+        <div class="add-comment__picture">
+          {{ user_picture }}
+        </div>
+      </div>
+      {% endif %}
+      <div class="add-comment__form">
+        {{ comment_form }}
+      </div>
+    </div>
   {% endif %}
+
+  {{ comments }}
 
 </section>

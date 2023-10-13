@@ -21,7 +21,7 @@
 #}
 {% if multiple %}
 {% set classes = [
-    'w3-block',
+    'solo-block',
     'js-form-item',
     'form-item'
   ]
@@ -29,7 +29,7 @@
   <div{{ attributes.addClass(classes) }}>
     {{ table }}
     {% if description.content %}
-      <div{{ description.attributes.addClass('w3-small description') }} >{{ description.content }}</div>
+      <div{{ description.attributes.addClass('solo-small description') }} >{{ description.content }}</div>
     {% endif %}
     {% if button %}
       <div class="clearfix">{{ button }}</div>

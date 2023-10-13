@@ -30,9 +30,9 @@
   {% import _self as book_tree %}
   {% if items %}
     {% if menu_level == 0 %}
-      <ul{{ attributes.addClass('menu w3-ul') }}>
+      <ul{{ attributes.addClass('book-menubar solo-ul') }}>
     {% else %}
-      <ul class="menu w3-ul">
+      <ul class="book-menu solo-ul">
     {% endif %}
     {% for item in items %}
       {%

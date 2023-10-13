@@ -8,7 +8,10 @@
  * - link: A rendered link element.
  *
  * @see template_preprocess_menu_local_action()
+ *
+ * @ingroup themeable
  */
 #}
+{{ attach_library('solo/solo-action-links') }}
 
-<li{{ attributes.addClasses('w3-button') }}>{{ link }}</li>
+<li{{ attributes }} class="action-links-item">{{ link }}</li>

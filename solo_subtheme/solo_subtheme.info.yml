@@ -8,18 +8,21 @@ libraries:
 
 #Regions
 regions:
+  popup_login_block: 'Popup Login Block'
+  fixed_search_block: 'Fixed Search Block'
   header: 'Header'
-  primary_sidebar_menu: 'Primary Menu Vertical'
+  primary_sidebar_menu: 'Primary Sidebar Menu'
   primary_menu: 'Primary Menu'
   welcome_text: 'Welcome Text'
   top_first: 'Top First Container'
   top_second: 'Top Second Container'
   top_third: 'Top Third Container'
   highlighted: 'Highlighted'
+  system_messages: 'System Messages'
   page_title: 'Page Title'
   breadcrumb: 'Breadcrumb'
-  content: 'Content'
   sidebar_first: 'Left Sidebar'
+  content: 'Content'
   sidebar_second: 'Right Sidebar'
   bottom_first: 'Bottom First Container'
   bottom_second: 'Bottom Second Container'

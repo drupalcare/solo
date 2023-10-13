@@ -1,0 +1,84 @@
+/* For the repsonsive menus (Primary, Click and Hover) */
+@media (min-width:993px) {
+
+  .solo-inner .navigation__responsive {
+    display: flex !important;
+    flex-wrap: wrap;
+  }
+
+  .solo-inner .navigation__responsive>li.nav__menu-item ul.sub__menu {
+    min-width: 200px;
+    display: none;
+  }
+
+  .solo-inner .navigation__reponsive {
+    justify-content: center;
+  }
+
+  .solo-inner .navigation__responsive {
+    justify-content: center;
+  }
+
+  .solo-inner .navigation__responsive>li.nav__menu-item ul.sub__menu {
+    position: absolute;
+  }
+
+  /* For the third tier */
+  .solo-inner .navigation__responsive>li.nav__menu-item li.has-sub__menu ul.sub__menu {
+    left: 100%;
+    top: 0;
+  }
+
+  .solo-inner .navigation__responsive__hover li:hover>ul.sub__menu {
+    display: flex !important;
+  }
+
+}
+/* For the repsonsive menus (Primary, Click and Hover) */
+@media (max-width:992px) {
+  .solo-inner .navigation__responsive,
+  .solo-inner .navigation__responsive ul.sub__menu {
+    justify-content: left;
+    align-items: stretch;
+    flex-direction: column;
+    flex-basis: 100%;
+    flex-grow: 1;
+    flex-wrap: wrap;
+    transform: translateY(0) !important;
+  }
+
+  .solo-inner .navigation__responsive {
+    display: none;
+  }
+
+  .solo-inner .navigation__responsive  li.button-only>button,
+  .solo-inner .navigation__responsive  li.nav__menu-item {
+    flex-basis: 100%;
+  }
+
+  .solo-inner .navigation__responsive  li.has-sub__menu ul.sub__menu {
+    overflow: hidden;
+  }
+
+  .solo-inner .navigation__responsive >li.nav__menu-item>ul.sub__menu>li.nav__menu-item {
+    padding-left: 12px;
+  }
+
+  .solo-inner .navigation__responsive>li.nav__menu-item>ul.sub__menu>li.nav__menu-item>ul.sub__menu>li.nav__menu-item {
+    padding-left: 24px;
+  }
+
+  .solo-inner .navigation__responsive li.has-sub__menu {
+    justify-content: flex-end;
+    flex-wrap: wrap;
+  }
+
+  .solo-inner .navigation__responsive ul.sub__menu {
+    display: none;
+  }
+
+  .solo-inner .navigation__responsive li.link-and-button>button {
+    margin-left: auto;
+  }
+
+}

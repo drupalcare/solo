@@ -1,0 +1,137 @@
+/* For all site menus */
+.solo-inner .mobile-menubar-toggler-button {
+  padding: 6px;
+  display: flex;
+  align-items: flex-end;
+  flex-grow: 1;
+  flex-basis: 100% !important;
+  flex-direction: column;
+}
+
+.solo-inner ul.sub__menu,
+.solo-inner a.nav__menu-link,
+.solo-inner li.nav__menu-item,
+.solo-inner ul.navigation__menubar {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  border: none;
+  background-color: inherit;
+  font-size: 16px;
+  white-space: nowrap;
+}
+
+.solo-inner .navigation__menubar li.nav__menu-item>a {
+  text-decoration: none;
+  -webkit-text-decoration: none;
+  white-space: nowrap;
+}
+
+.page-wrapper #primary-menu {
+  z-index: 1000;
+}
+
+.solo-inner .navigation__menubar {
+  z-index: 2000 !important;
+}
+
+.solo-inner .navigation__menubar li.nav__menu-item>ul.sub__menu {
+  z-index: 3000 !important;
+}
+
+.solo-inner .navigation__menubar li.nav__menu-item>ul.sub__menu>li.nav__menu-item>ul.sub__menu {
+  z-index: 4000 !important;
+}
+
+.solo-inner .navigation__menubar li.nav__menu-item>a,
+.solo-inner .navigation__menubar li.nav__menu-item>button {
+  padding: 12px;
+  transition: 0.4s;
+}
+
+.solo-inner .navigation__menubar li.nav__menu-item>button.ds-link>span.menu__url-title-disabled {
+  flex-grow: 1;
+  margin-right: 12px;
+}
+
+.solo-inner .navigation__menubar li.nav__menu-item>.dropdown-toggler .toggler-icon svg {
+  transition: all 0.5s 0.2s;
+}
+
+.solo-inner .navigation__menubar li.nav__menu-item .dropdown-toggler {
+  cursor: context-menu !important;
+}
+
+.solo-inner .navigation__menubar,
+.solo-inner .navigation__menubar ul.sub__menu,
+.solo-inner .navigation__menubar li.nav__menu-item,
+.solo-inner .navigation__menubar li.nav__menu-item>a,
+.solo-inner .navigation__menubar li.nav__menu-item>button {
+  display: flex;
+}
+
+.solo-inner .navigation__menubar li.nav__menu-item {
+  position: relative;
+}
+
+.solo-inner .navigation__menubar ul.sub__menu,
+.solo-inner .navigation__menubar li.link-only {
+  flex-direction: column;
+  flex-wrap: wrap;
+}
+
+.solo-inner .navigation__menubar li.link-and-button>button {
+  position: relative;
+  flex-basis: 50px;
+  width: 50px;
+}
+
+.solo-inner .navigation__menubar li.link-and-button>a {
+  position: relative;
+  flex-basis: calc(100% - 50px);
+  width: calc(100% - 50px);
+  flex-grow: 1;
+}
+
+.solo-inner .navigation__menubar li.button-only>button>span.menu__url-title-disabled {
+  flex-basis: calc(100% - 26px);
+  position: relative;
+  flex-grow: 1;
+}
+
+.solo-inner .navigation__menubar li.button-only>button>span.toggler-icon {
+  flex-basis: 26px;
+  margin-left: 12px;
+}
+
+.solo-inner .navigation__menubar li.button-only>button>span.toggler-icon,
+.solo-inner .navigation__menubar li.link-and-button>button>span.toggler-icon {
+  align-items: center;
+  display: flex;
+}
+
+/* For the default menu */
+.solo-inner .navigation__default {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.solo-inner .navigation__default>li.nav__menu-item ul.sub__menu {
+  min-width: 200px;
+  display: none;
+}
+
+.solo-inner .navigation__default>li.nav__menu-item ul.sub__menu {
+  position: absolute;
+}
+
+/* For the third tier */
+.solo-inner .navigation__default>li.nav__menu-item li.has-sub__menu ul.sub__menu {
+  left: 100%;
+  top: 0;
+}
+
+.solo-inner .navigation__default li:hover>ul.sub__menu {
+  display: flex !important;
+}

@@ -25,7 +25,7 @@
  */
 #}
 {% set classes = [
-    'w3-row',
+    'solo-clear',
     'views-view-grid',
     options.alignment,
     'cols-' ~ options.columns,
@@ -34,7 +34,7 @@
 %}
 {% if options.row_class_default %}
   {% set row_classes = [
-      'w3-row',
+      'solo-clear',
       'views-row',
       options.alignment == 'horizontal' ? 'clearfix',
   ]
@@ -42,7 +42,7 @@
 {% endif %}
 {% if options.col_class_default %}
   {% set col_classes = [
-      'w3-padding',
+      'solo-padding',
       'views-col',
       options.alignment == 'vertical' ? 'clearfix',
   ]

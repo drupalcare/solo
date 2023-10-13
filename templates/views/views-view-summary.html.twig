@@ -18,7 +18,7 @@
  * @see template_preprocess_views_view_summary()
  */
 #}
-  <ul class="w3-ul views-summary">
+  <ul class="solo-ul views-summary">
   {% for row in rows %}
     <li><a href="{{ row.url }}"{{ row.attributes.addClass(row.active ? 'is-active')|without('href') }}>{{ row.link }}</a>
       {% if options.count %}

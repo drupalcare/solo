@@ -39,9 +39,9 @@
       <h2{{ heading.attributes }}>{{ heading.text }}</h2>
     {%- endif -%}
   {%- endif -%}
-  <ul{{ attributes.addClass('w3-ul') }}>
+  <ul{{ attributes.addClass('solo-ul') }}>
     {%- for item in links -%}
-      <li{{ item.attributes.addClass('w3-left w3-small') }}>
+      <li{{ item.attributes.addClass('solo-small') }}>
         {%- if item.link -%}
           {{ item.link }}
         {%- elseif item.text_attributes -%}

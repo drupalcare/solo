@@ -16,14 +16,14 @@
  */
 #}
 {{ attach_library('solo/solo-node-edit-form') }}
-<div class="layout-node-form w3-row">
-  <div class="layout-region layout-region-node-main w3-row w3-padding">
+<div class="layout-node-form solo-clear">
+  <div class="layout-region layout-region-node-main solo-clear solo-padding">
     {{ form|without('advanced', 'footer', 'actions') }}
   </div>
-  <div class="layout-region layout-region-node-secondary w3-row w3-padding">
+  <div class="layout-region layout-region-node-secondary solo-clear solo-padding">
     {{ form.advanced }}
   </div>
-  <div class="layout-region layout-region-node-footer w3-row w3-padding">
+  <div class="layout-region layout-region-node-footer solo-clear solo-padding">
     <div class="layout-region-node-footer__content">
       {{ form.footer }}
       {{ form.actions }}

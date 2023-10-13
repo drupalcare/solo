@@ -31,10 +31,10 @@
 <div{{ attributes.setAttribute('id', 'taxonomy-term-' ~ term.id).addClass(classes) }}>
   {{ title_prefix }}
   {% if name and not page %}
-    <h2 class="w3-opacity w3-margin-left"><a href="{{ url }}">{{ name }}</a></h2>
+    <h2 class="term-title"><a href="{{ url }}">{{ name }}</a></h2>
   {% endif %}
   {{ title_suffix }}
-  <div class="w3-row-padding content">
+  <div class="solo-clear content">
     {{ content }}
   </div>
 </div>

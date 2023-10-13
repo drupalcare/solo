@@ -1,0 +1,46 @@
+nav.tabs {
+  margin: 10px 0 !important;
+  display: grid;
+}
+
+ul.tabs li,
+.action-links > li {
+  padding: 0 !important;
+}
+
+nav.action-links,
+ul.secondary,
+ul.primary {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+ul.primary {
+  border-bottom: 1px solid #ddd;
+}
+ul.secondary li.is-active > a,
+ul.primary li.is-active > a {
+  font-weight: bold;
+}
+
+ul.primary > li {
+  border: none;
+  border-right: 1px dotted #ddd;
+  float: left;
+}
+
+ul.primary > li:last-child {
+  border-right: none !important;
+}
+
+ul.primary > li > a,
+nav.action-links > li > a {
+  text-align: center;
+  padding: 12px 16px;
+  display: block;
+}
+
+ul.secondary > li > a {
+  padding: 8px 12px;
+  display: block;
+}

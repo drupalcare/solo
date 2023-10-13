@@ -1,0 +1,153 @@
+/* Custom animation */
+.solo-animate-opacity {
+  animation: opac 0.6s;
+  animation-timing-function: cubic-bezier(0.1, 0.9, 2, 0.1);
+}
+
+@keyframes opac {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+
+}
+
+.solo-animate-top {
+  position: relative;
+  animation: animatetop 0.6s;
+  animation-timing-function: cubic-bezier(0.1, 0.9, 1.5, 0.1);
+}
+
+@keyframes animatetop {
+  from {
+    top: -300px;
+    opacity: 0;
+  }
+
+  to {
+    top: 0;
+    opacity: 1;
+  }
+
+}
+
+.solo-animate-left {
+  position: relative;
+  animation: animateleft 0.6s;
+  animation-timing-function: cubic-bezier(0.1, 0.9, 1.5, 0.1);
+}
+
+@keyframes animateleft {
+  from {
+    left: -300px;
+    opacity: 0;
+  }
+
+  to {
+    left: 0;
+    opacity: 1;
+  }
+
+}
+
+.solo-animate-right {
+  position: relative;
+  animation: animateright 0.6s;
+  animation-timing-function: cubic-bezier(0.1, 0.9, 1.5, 0.1);
+}
+
+@keyframes animateright {
+  from {
+    right: -300px;
+    opacity: 0;
+  }
+
+  to {
+    right: 0;
+    opacity: 1;
+  }
+
+}
+
+.solo-animate-bottom {
+  position: relative;
+  animation: animatebottom 0.6s;
+  animation-timing-function: cubic-bezier(0.1, 0.9, 1.5, 0.1);
+}
+
+@keyframes animatebottom {
+  from {
+    bottom: -300px;
+    opacity: 0;
+  }
+
+  to {
+    bottom: 0;
+    opacity: 1;
+  }
+
+}
+
+.solo-animate-zoom {
+  animation: animatezoom 0.6s;
+  animation-timing-function: cubic-bezier(0.1, 0.5, 2, 0.1);
+}
+
+@keyframes animatezoom {
+  from {
+    transform: scale(0);
+  }
+
+  to {
+    transform: scale(1);
+  }
+
+}
+
+.solo-animate-input {
+  transition: width 0.4s ease-in-out;
+}
+
+.solo-animate-input:focus {
+  width: 100% !important;
+}
+
+form input.button.form-submit:hover {
+  animation: wiggle 0.3s;
+}
+
+@keyframes wiggle {
+  0%,
+  7% {
+    transform: rotateZ(0);
+  }
+
+  15% {
+    transform: rotateZ(-15deg);
+  }
+
+  20% {
+    transform: rotateZ(10deg);
+  }
+
+  25% {
+    transform: rotateZ(-10deg);
+  }
+
+  30% {
+    transform: rotateZ(6deg);
+  }
+
+  35% {
+    transform: rotateZ(-4deg);
+  }
+
+  40%,
+  100% {
+    transform: rotateZ(0);
+  }
+
+}

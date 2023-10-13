@@ -32,13 +32,13 @@
  */
 #}
 {% set classes = [
-    'w3-table-all',
+    'solo-table-all',
     'cols-' ~ header|length,
     responsive ? 'responsive-enabled',
     sticky ? 'sticky-enabled',
   ]
 %}
-<div class="w3-responsive">
+<div class="solo-responsive">
   <table{{ attributes.addClass(classes) }}>
   {% if caption_needed %}
     <caption>

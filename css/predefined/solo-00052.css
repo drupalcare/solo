@@ -1,114 +1,128 @@
 /* The region colors */
-.page-wrapper {
-  background-color: #f8f8f8;
-  color: #3a3a3a;
+.page-wrapper,
+.solo-outer,
+.region-inner {
+  background-color: var(--solo-region-color-bg);
+  color: var(--solo-region-color-text);
 }
 
-#header {
-  background-color: #bebebe;
+.page-wrapper,
+.fixed-search-block {
+  --solo-region-color-bg: #f8f8f8;
+  --solo-region-color-text: #3a3a3a;
 }
 
-.main-navigation-wrapper,
-.sidebar-button-close,
+.header {
+  --solo-region-color-bg: #bebebe;
+}
+
+.system-messages {
+  --solo-region-color-bg: var(--solo-black);
+}
+
+.primary-menu,
 .mobile-nav {
-  background-color: #222;
-  color: #efefef;
+  --solo-region-color-bg: #222;
+  --solo-region-color-text: #efefef;
 }
 
-#welcome-text {
-  background-color: white;
-  color: #3a3a3a;
+.welcome-text {
+  --solo-region-color-bg: var(--solo-white);
+  --solo-region-color-text: #3a3a3a;
 }
 
-#highlighted {
-  background-color: #efefef;
-  color: #3a3a3a;
+.highlighted,
+.popup-login-block-inner {
+  --solo-region-color-bg: #efefef;
+  --solo-region-color-text: #3a3a3a;
 }
 
-#top-container {
-  background-color: #e4e4e4;
+.top-container {
+  --solo-region-color-bg: #e4e4e4;
 }
 
-#top-container .first-top > div {
-  background-color: #ededed;
-  color: #3a3a3a;
+.top-container .top-box-first-inner {
+  --solo-region-color-bg: #ededed;
+  --solo-region-color-text: #3a3a3a;
 }
 
-#top-container .second-top > div {
-  background-color: #ddd;
-  color: #3a3a3a;
+.top-container .top-box-second-inner {
+  --solo-region-color-bg: #ddd;
+  --solo-region-color-text: #3a3a3a;
 }
 
-#top-container .third-top > div {
-  background-color: #ededed;
-  color: #3a3a3a;
+.top-container .top-box-third-inner {
+  --solo-region-color-bg: #ededed;
+  --solo-region-color-text: #3a3a3a;
 }
 
-#page-title {
-  background-color: #4e4e4e;
-  color: #efefef;
+.page-title {
+  --solo-region-color-bg: #4e4e4e;
+  --solo-region-color-text: #efefef;
 }
 
-#main-container {
-  background-color: #f4f4f4;
-  color: #3a3a3a;
+.main-container {
+  --solo-region-color-bg: #f4f4f4;
+  --solo-region-color-text: #3a3a3a;
 }
 
-#main-container .main-box > div {
-  background-color: #ffffff;
+.main-container .main-box-inner {
+  --solo-region-color-bg: var(--solo-white);
 }
 
-#bottom-container {
-  background-color: #4d4d4d;
+.bottom-container {
+  --solo-region-color-bg: #4d4d4d;
 }
 
-#bottom-container .first-bottom > div {
-  background-color: #636363;
-  color: #efefef;
+.bottom-container .bottom-box-first-inner {
+  --solo-region-color-bg: #636363;
+  --solo-region-color-text: #efefef;
 }
 
-#bottom-container .second-bottom > div {
-  background-color: #525252;
-  color: #efefef;
+.bottom-container .bottom-box-second-inner {
+  --solo-region-color-bg: #525252;
+  --solo-region-color-text: #efefef;
 }
 
-#bottom-container .third-bottom > div {
-  background-color: #525252;
-  color: #efefef;
+.bottom-container .bottom-box-third-inner {
+  --solo-region-color-bg: #525252;
+  --solo-region-color-text: #efefef;
 }
 
-#bottom-container .fourth-bottom > div {
-  background-color: #636363;
-  color: #efefef;
+.bottom-container .bottom-box-fourth-inner {
+  --solo-region-color-bg: #636363;
+  --solo-region-color-text: #efefef;
 }
 
-#footer-container {
-  background-color: #3a3a3a;
+.footer-container {
+  --solo-region-color-bg: #3a3a3a;
 }
 
-#footer-container .first-footer > div {
-  background-color: #494949;
-  color: #9f9f9f;
+.footer-container .footer-box-first-inner {
+  --solo-region-color-bg: #494949;
+  --solo-region-color-text: #9f9f9f;
 }
 
-#footer-container .second-footer > div {
-  background-color: #313131;
-  color: #bebebe;
+.footer-container .footer-box-second-inner {
+  --solo-region-color-bg: #313131;
+  --solo-region-color-text: #bebebe;
 }
 
-#footer-container .third-footer > div {
-  background-color: #494949;
-  color: #9f9f9f;
+.footer-container .footer-box-third-inner {
+  --solo-region-color-bg: #494949;
+  --solo-region-color-text: #9f9f9f;
 }
 
-#footer-menu {
-  background-color: #1e1e1e;
-  color: #bebebe;
+.footer-menu {
+  --solo-region-color-bg: #1e1e1e;
+  --solo-region-color-text: #bebebe;
 }
 
-#copyright {
-  background-color: #141414;
-  color: #bebebe;
+.copyright,
+.sidebar-button-close,
+.primary-sidebar-menu {
+  --solo-region-color-bg: #141414;
+  --solo-region-color-text: #bebebe;
 }
 
 /* button animation  */

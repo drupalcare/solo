@@ -1,0 +1,35 @@
+@keyframes animateimg {
+  from {
+    transform: scale(1);
+  }
+
+  to {
+    transform: scale(1.1);
+  }
+
+}
+
+a.img--is-clickable {
+  overflow: hidden;
+  display: block;
+  height: 100%;
+  min-width: 100%;
+}
+
+a.img--is-clickable > img.solo-image {
+  width: 100%;
+  float: left;
+}
+
+.solo-reset-img-width a.img--is-clickable > img.solo-image {
+  width: auto;
+}
+
+a:hover > img.solo-image {
+  animation: animateimg 5s;
+}
+
+a,
+button {
+  transition: 0.4s;
+}

@@ -12,7 +12,7 @@
  * - empty: Text to display if there are no links.
  */
 #}
-<div class="w3-row-padding clearfix">
+<div class="solo-clear clearfix">
   <h2>{{ title }}</h2>
   <p>{{ description }}</p>
   {% if links %}
@@ -27,7 +27,7 @@
     {% for link in links %}
       {% if count == 0 %}
         {# Start a new column. #}
-        <div class="layout-column layout-column--quarter"><ul class="w3-ul">
+        <div class="layout-column layout-column--quarter"><ul class="solo-ul">
       {% endif %}
       <li>{{ link }}</li>
       {% set count = count + 1 %}

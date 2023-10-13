@@ -35,7 +35,7 @@ textarea,
 #main-container,
 #footer-container,
 .navigation__menubar-footer,
-.search-slide-wrapper,
+.fixed-search-block,
 #top-container .top-box>div,
 #footer-container .footer-box>div,
 #bottom-container .bottom-box>div,
@@ -88,7 +88,7 @@ h6 a {
 .page-wrapper,
 #top-container,
 #footer-container,
-.search-slide-wrapper,
+.fixed-search-block,
 #top-container .top-box>div,
 #main-container .main-box > div,
 #footer-container .footer-box>div,
@@ -97,7 +97,7 @@ h6 a {
 }
 
 #main-container,
-.search-slide-wrapper,
+.fixed-search-block,
 .pager__item.is-active {
   background-color: #f2f7fb !important;
 }

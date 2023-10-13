@@ -1,0 +1,31 @@
+.page-wrapper.solo-site-width-100>.solo-outer>.solo-inner:not(.primary-sidebar-menu-inner) {
+  max-width: 100%;
+}
+
+.page-wrapper.solo-site-width-2560>.solo-outer>.solo-inner:not(.primary-sidebar-menu-inner) {
+  max-width: var(--solo-2560);
+}
+
+.page-wrapper.solo-site-width-1920>.solo-outer>.solo-inner:not(.primary-sidebar-menu-inner) {
+  max-width: var(--solo-1920);
+}
+
+.page-wrapper.solo-site-width-1600>.solo-outer>.solo-inner:not(.primary-sidebar-menu-inner) {
+  max-width: var(--solo-1600);
+}
+
+.page-wrapper.solo-site-width-1440>.solo-outer>.solo-inner:not(.primary-sidebar-menu-inner) {
+  max-width: var(--solo-1440);
+}
+
+.page-wrapper.solo-site-width-1280>.solo-outer>.solo-inner:not(.primary-sidebar-menu-inner) {
+  max-width: var(--solo-1280);
+}
+
+.page-wrapper.solo-site-width-1024>.solo-outer>.solo-inner:not(.primary-sidebar-menu-inner) {
+  max-width: var(--solo-1024);
+}
+
+.page-wrapper.solo-site-width-800>.solo-outer>.solo-inner:not(.primary-sidebar-menu-inner) {
+  max-width: var(--solo-800);
+}

@@ -8,19 +8,19 @@ core_version_requirement: ^10
 
 #Libraries
 libraries:
-  - solo/w3-css
   - solo/solo-global
   - solo/solo-menu
 
 ckeditor_stylesheets:
-  - css/theme/w3-ckeditor-iframe.css
+  - css/theme/solo-ckeditor-iframe.css
 
 ckeditor5-stylesheets:
-  - css/theme/w3-ckeditor5.css
+  - css/theme/solo-ckeditor5.css
 
 #Regions
 regions:
-  fixed_search_bar: 'Fixed Search Bar'
+  popup_login_block: 'Popup Login Block'
+  fixed_search_block: 'Fixed Search Block'
   header: 'Header'
   primary_sidebar_menu: 'Primary Sidebar Menu'
   primary_menu: 'Primary Menu'
@@ -29,6 +29,7 @@ regions:
   top_second: 'Top Second Container'
   top_third: 'Top Third Container'
   highlighted: 'Highlighted'
+  system_messages: 'System Messages'
   page_title: 'Page Title'
   breadcrumb: 'Breadcrumb'
   sidebar_first: 'Left Sidebar'

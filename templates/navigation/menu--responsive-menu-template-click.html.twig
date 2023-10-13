@@ -34,11 +34,11 @@
   <svg aria-hidden="true" role="img" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="butt" stroke-linejoin="bevel"><path d="{{ icon_value }}"/></svg>
 {% endmacro %}
 
-<div class="w3-row solo-menu navigation-responsive navigation-responsive-click">
+<div class="solo-clear solo-menu navigation-responsive navigation-responsive-click">
 
-  <div class="mobile-nav hamburger-icon w3-hide-large w3-button w3-block w3-right-align w3-large">
+  <div class="mobile-nav hamburger-icon solo-block">
     {# <i class="fa fa-bars"></i> #}
-    <button class="global-menu-button mobile-menubar-toggler-button" data-drupal-selector="mobile-menubar-toggler-button" aria-label='Close Or Open' aria-expanded="false" aria-expanded="true">
+    <button class="solo-button-menu mobile-menubar-toggler-button" data-drupal-selector="mobile-menubar-toggler-button" aria-label='Close Or Open' aria-expanded="false" aria-expanded="true">
       <span>
         {{ svg_bars|raw }}
       </span>

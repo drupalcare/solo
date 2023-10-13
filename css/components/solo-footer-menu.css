@@ -1,0 +1,118 @@
+.navigation__menubar-footer {
+  justify-content: center;
+}
+
+.navigation__menubar-footer li a {
+  padding: 7px 14px;
+}
+
+.footer-menu-first {
+  margin: 16px auto;
+}
+
+.footer-menu-second>* {
+  margin: 16px auto;
+}
+
+.navigation__menubar-footer li {
+  display: inline-flex;
+}
+
+/* label form in the footer */
+.footer-menu-inner form label {
+  text-align: left;
+  float: left;
+}
+
+.sm-icons a > span:before {
+  content: "" !important;
+}
+
+.sm-icons a > span {
+  font-family: inherit !important;
+  transition: transform .2s;
+  width: 30px;
+  height: 30px;
+  margin: 0 5px;
+  display: inline-block;
+  background-repeat: no-repeat;
+  background-size: 30px;
+  -webkit-filter: grayscale(0.8);
+  filter: grayscale(0.8);
+}
+
+.sm-icons.sm-icons-medium a > span {
+  background-size: 40px;
+  width: 40px;
+  height: 40px;
+}
+
+.sm-icons.sm-icons-large a > span {
+  background-size: 65px;
+  width: 65px;
+  height: 65px;
+}
+
+.sm-icons a > span:hover {
+  -webkit-filter: grayscale(0);
+  filter: grayscale(0);
+  transform: scale(1.3);
+}
+
+.sm-icons a > span.sm-icon-facebook {
+  background-image: url(../../images/icons/facebook-circle.svg);
+}
+
+.sm-icons a > span.sm-icon-twitter {
+  background-image: url(../../images/icons/twitter-circle.svg);
+}
+
+.sm-icons a > span.sm-icon-pinterest {
+  background-image: url(../../images/icons/pinterest-circle.svg);
+}
+
+.sm-icons a > span.sm-icon-google-plus {
+  background-image: url(../../images/icons/google-plus-circle.svg);
+}
+
+.sm-icons a > span.sm-icon-linkedin {
+  background-image: url(../../images/icons/linkedin-circle.svg);
+}
+
+.sm-icons a > span.sm-icon-instagram {
+  background-image: url(../../images/icons/instagram-circle.svg);
+}
+
+.sm-icons a > span.sm-icon-youtube {
+  background-image: url(../../images/icons/youtube-circle.svg);
+}
+
+.sm-icons a > span.sm-icon-drupal {
+  background-image: url(../../images/icons/drupal-circle.svg);
+}
+
+.sm-icons a > span.sm-icon-mastodon {
+  background-image: url(../../images/icons/mastodon-circle.svg);
+}
+
+.sm-icons a > span.sm-icon-rss {
+  background-image: url(../../images/icons/rss.svg);
+}
+
+.sm-icons {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+}
+
+.sm-icons a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.sm-icons a > .fa-ext {
+  font-weight: normal;
+  font-size: 16px;
+}

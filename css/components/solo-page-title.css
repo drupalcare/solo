@@ -1,0 +1,32 @@
+.block-page-title-block {
+  display: grid;
+}
+
+h1.page-title {
+  display: grid;
+  padding: var(--solo-32) 0;
+  font-size: calc(3 * var(--solo-16));
+  line-height: calc(4 * var(--solo-14));
+}
+
+h1.page-title span {
+  display: inline-flex;
+}
+
+@media (max-width:62rem) {
+  h1.page-title {
+    font-size: var(--solo-32);
+    line-height: var(--solo-36);
+    padding: var(--solo-16) 0;
+  }
+
+}
+
+@media (max-width:37.5rem) {
+  h1.page-title {
+    font-size: var(--solo-18);
+    line-height: var(--solo-24);
+    padding: var(--solo-8) 0;
+  }
+
+}

@@ -1,0 +1,131 @@
+form.system-theme-settings {
+  background-color: whitesmoke;
+  display: grid;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+form.system-theme-settings  input[teyp="text"] {
+  width: 100%;
+}
+
+form.system-theme-settings #edit-site-regions-layout .form-radios,
+form.system-theme-settings #edit-sm-icon-size--wrapper .form-radios,
+form.system-theme-settings #edit-theme-settings .details-wrapper,
+form.system-theme-settings #edit-solo-site-width .form-radios {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+form.system-theme-settings #edit-site-regions-layout .form-radios>*,
+form.system-theme-settings #edit-sm-icon-size--wrapper .form-radios>*,
+form.system-theme-settings #edit-theme-settings .details-wrapper>*,
+form.system-theme-settings #edit-solo-site-width .form-radios>* {
+  margin-right: 24px;
+}
+
+form.system-theme-settings .form-boolean--type-radio:checked {
+  border-style: double;
+}
+
+form.system-theme-settings .form-type--textfield [type="text"] {
+  width: 100%;
+}
+
+form.system-theme-settings .form-type--select select {
+  width: 50%;
+}
+
+form.system-theme-settings .form-radio[value="solo-col-1"],
+form.system-theme-settings .form-radio[value="disabled"] {
+  display: none;
+}
+
+/*form.system-theme-settings #edit-regions-color-mix [data-drupal-selector="solo-color-picker"],
+form.system-theme-settings #edit-regions-color-top [data-drupal-selector="solo-color-picker"],
+form.system-theme-settings #edit-regions-color-main [data-drupal-selector="solo-color-picker"],
+form.system-theme-settings #edit-regions-color-bottom [data-drupal-selector="solo-color-picker"],
+form.system-theme-settings #edit-regions-color-footer [data-drupal-selector="solo-color-picker"] {
+  display: inline-block;
+  max-width: 200px;
+}
+
+form.system-theme-settings #edit-regions-color-mix [data-drupal-selector="solo-color-picker"] .form-text,
+form.system-theme-settings #edit-regions-color-top [data-drupal-selector="solo-color-picker"] .form-text,
+form.system-theme-settings #edit-regions-color-main [data-drupal-selector="solo-color-picker"] .form-text,
+form.system-theme-settings #edit-regions-color-bottom [data-drupal-selector="solo-color-picker"] .form-text,
+form.system-theme-settings #edit-regions-color-footer [data-drupal-selector="solo-color-picker"] .form-text {
+  display: inline-block;
+  width: 100px;
+}
+
+form.system-theme-settings #edit-regions-color-mix [data-drupal-selector="solo-color-picker"] .form-color,
+form.system-theme-settings #edit-regions-color-top [data-drupal-selector="solo-color-picker"] .form-color,
+form.system-theme-settings #edit-regions-color-main [data-drupal-selector="solo-color-picker"] .form-color,
+form.system-theme-settings #edit-regions-color-bottom [data-drupal-selector="solo-color-picker"] .form-color,
+form.system-theme-settings #edit-regions-color-footer [data-drupal-selector="solo-color-picker"] .form-color {
+  display: inline-block;
+  width: 30px;
+}
+
+form.system-theme-settings #edit-regions-color-mix [data-drupal-selector="solo-color-picker"] label,
+form.system-theme-settings #edit-regions-color-top [data-drupal-selector="solo-color-picker"] label,
+form.system-theme-settings #edit-regions-color-main [data-drupal-selector="solo-color-picker"] label,
+form.system-theme-settings #edit-regions-color-bottom [data-drupal-selector="solo-color-picker"] label,
+form.system-theme-settings #edit-regions-color-footer [data-drupal-selector="solo-color-picker"]label,
+form.system-theme-settings #edit-regions-color-mix [data-drupal-selector="solo-color-picker"] div,
+form.system-theme-settings #edit-regions-color-top [data-drupal-selector="solo-color-picker"] div,
+form.system-theme-settings #edit-regions-color-main [data-drupal-selector="solo-color-picker"] div,
+form.system-theme-settings #edit-regions-color-bottom [data-drupal-selector="solo-color-picker"] div,
+form.system-theme-settings #edit-regions-color-footer [data-drupal-selector="solo-color-picker"] div {
+  display: block;
+  width: 100%;
+}
+
+form.system-theme-settings #edit-regions-color-mix [data-drupal-selector="solo-color-picker"]  label,
+form.system-theme-settings #edit-regions-color-top [data-drupal-selector="solo-color-picker"]  label,
+form.system-theme-settings #edit-regions-color-main [data-drupal-selector="solo-color-picker"]  label,
+form.system-theme-settings #edit-regions-color-bottom [data-drupal-selector="solo-color-picker"]  label,
+form.system-theme-settings #edit-regions-color-footer [data-drupal-selector="solo-color-picker"] label {
+  min-height: 50px;
+}*/
+
+
+
+form.system-theme-settings [data-drupal-selector="solo-color-picker"] {
+  display: inline-block;
+  max-width: 200px;
+  border-radius: 5px;
+}
+
+
+form.system-theme-settings [data-drupal-selector="solo-color-picker"] .form-text {
+  display: inline-block;
+  width: 100px;
+  border-radius: 10px 0 0 10px;
+  border-right: none;
+}
+
+
+form.system-theme-settings [data-drupal-selector="solo-color-picker"] .form-color {
+  display: inline-block;
+  width: 30px;
+  margin-right: 20px;
+  vertical-align: bottom;
+  border-radius: 0 10px 10px 0;
+  border-left: none;
+}
+
+
+form.system-theme-settings [data-drupal-selector="solo-color-picker"]label,
+form.system-theme-settings [data-drupal-selector="solo-color-picker"] div {
+  display: block;
+  width: 100%;
+}
+
+
+form.system-theme-settings [data-drupal-selector="solo-color-picker"] label {
+  width: 100%;
+  padding-left: 12px;
+}

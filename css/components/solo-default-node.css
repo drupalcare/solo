@@ -1,0 +1,149 @@
+.node__header,
+.node__content {
+  margin-bottom: var(--solo-18);
+}
+
+label,
+.field__label {
+  font-weight: bold;
+}
+
+article.node {
+  display: grid;
+}
+
+article.node>* {
+  width: 100%;
+}
+
+article.node .node__header {
+  display: grid;
+}
+
+article.node .node__header .node__meta {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.path-node article.node .node__content {
+  display: grid;
+}
+
+.path-node article.node .node__content>* {
+  width: 100%;
+}
+
+.field:not(:last-child) {
+  margin-block-end: var(--solo-18);
+}
+
+.field--label-above {
+  display: grid;
+}
+
+.node--view-mode-teaser .field {
+  margin-block-end: var(--solo-16);
+}
+
+.node--view-mode-teaser .field:last-child {
+  margin-block-end: 0;
+}
+
+.field--label-inline .field__label,
+.field--label-inline .field__items {
+  float: left;
+}
+
+[dir="rtl"] .field--label-inline .field__label,
+[dir="rtl"] .field--label-inline .field__items {
+  float: right;
+}
+
+.field--label-inline .field__label,
+.field--label-inline > .field__item,
+.field--label-inline .field__items {
+  padding-inline-end: var(--solo-8);
+}
+
+.field--label-inline .field__label::after {
+  content: ":";
+}
+
+.field--type-text-long>*>p:first-child,
+.field--type-text-with-summary>*>p:first-child,
+.field--type-text-long>*>*>p:first-child,
+.field--type-text-with-summary>*>*>p:first-child,
+.node--view-mode-full > .node__content > .field--type-image + .field--type-text-with-summary > p:first-child {
+  margin-top: 0 !important;
+}
+
+.node__meta .node__author-image {
+  margin-right: 12px;
+  overflow: hidden;
+}
+
+.node__meta .node__author-info {
+  font-size: 90%;
+}
+
+.node__meta .node__author-image img {
+  border-radius: 50%;
+}
+
+.node__content ul.links li:last-child {
+  margin-right: 0 !important;
+  padding-right: 0 !important;
+}
+
+.field--name-field-tags.field__items,
+.field--name-field-tags>.field__items {
+  display: inline-flex;
+  flex-wrap: wrap;
+}
+.field--name-field-tags.field__items>.field__item,
+.field--name-field-tags>.field__items>.field__item {
+  margin-right: 16px;
+}
+.field--name-field-tags.field__items>.field__item:last-child,
+.field--name-field-tags>.field__items>.field__item:last-child {
+  margin-right: 0;
+}
+
+/* To show multi fields in one line */
+
+.solo__inline-items .field.field__items,
+.solo__inline-items .field>.field__items {
+  display: inline-flex;
+  flex-wrap: wrap;
+}
+.solo__inline-items .field.field__items>.field__item,
+.solo__inline-items .field>.field__items>.field__item {
+  margin-right: 16px;
+}
+
+.solo__inline-items .field.field__items>.field__item:last-child,
+.solo__inline-items .field>.field__items>.field__item:last-child {
+  margin-right: 0;
+}
+
+.solo__inline-items .field--type-text.field__items,
+.solo__inline-items .field--type-text>.field__items,
+.solo__inline-items .field--type-string.field__items,
+.solo__inline-items .field--type-string>.field__items,
+.solo__inline-items .field--type-string-long.field__items,
+.solo__inline-items .field--type-string-long>.field__items,
+.solo__inline-items .field--type-text-with-summary.field__items,
+.solo__inline-items .field--type-text-with-summary>.field__items {
+  display: grid;
+}
+
+.solo__inline-items .field--type-text.field__items>*,
+.solo__inline-items .field--type-text>.field__items>*,
+.solo__inline-items .field--type-string.field__items>*,
+.solo__inline-items .field--type-string>.field__items>*,
+.solo__inline-items .field--type-string-long.field__items>*,
+.solo__inline-items .field--type-string-long>.field__items>*,
+.solo__inline-items .field--type-text-with-summary.field__items>*,
+.solo__inline-items .field--type-text-with-summary>.field__items>* {
+  width: 100%;
+}

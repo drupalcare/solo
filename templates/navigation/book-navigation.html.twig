@@ -30,11 +30,11 @@
 #}
 {{ attach_library('claro/classy.book-navigation') }}
 {% if tree or has_links %}
-  <nav id="book-navigation-{{ book_id }}" class="w3-row book-navigation" role="navigation" aria-labelledby="book-label-{{ book_id }}">
+  <nav id="book-navigation-{{ book_id }}" class="solo-clear book-navigation" role="navigation" aria-labelledby="book-label-{{ book_id }}">
     {{ tree }}
     {% if has_links %}
       <h2 class="visually-hidden" id="book-label-{{ book_id }}">{{ 'Book traversal links for'|t }} {{ book_title }}</h2>
-      <ul class="w3-ul book-pager">
+      <ul class="solo-ul book-pager">
       {% if prev_url %}
         <li class="book-pager__item book-pager__item--previous">
           <a href="{{ prev_url }}" rel="prev" title="{{ 'Go to previous page'|t }}"><b>{{ '‹'|t }}</b> {{ prev_title }}</a>

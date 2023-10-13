@@ -27,8 +27,8 @@
 #}
 
 {% set classes = [
-    'w3-block',
-    'w3-block-wrapper',
+    'solo-clear',
+    'solo-block',
     'block-' ~ configuration.provider|clean_class,
     'block-' ~ plugin_id|clean_class,
   ]
@@ -36,7 +36,7 @@
 <section{{ attributes.addClass(classes) }}>
   {{ title_prefix }}
   {% if label %}
-    <h2{{ title_attributes.addClass('w3-block-title') }}>{{ label }}</h2>
+    <h2{{ title_attributes.addClass('solo-block-title') }}>{{ label }}</h2>
   {% endif %}
   {{ title_suffix }}
   {% block content %}

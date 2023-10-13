@@ -1,0 +1,17 @@
+#fixed-search-block {
+  width: 100%;
+  z-index: 5000;
+  height: 0;
+  position: fixed;
+  top: 0;
+  left: 0;
+  overflow-y: hidden;
+  transition: 0.5s;
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+  background-color: white;
+}
+
+#fixed-search-block .fixed-search-block-inner {
+  position: relative;
+  padding: 60px 16px;
+}

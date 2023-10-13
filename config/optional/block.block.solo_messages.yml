@@ -7,7 +7,7 @@ dependencies:
     - solo
 id: solo_messages
 theme: solo
-region: highlighted
+region: system_messages
 weight: -50
 provider: null
 plugin: system_messages_block

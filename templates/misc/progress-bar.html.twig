@@ -12,11 +12,11 @@
  */
 #}
 {{ attach_library('claro/classy.progress') }}
-<div class="w3-light-grey w3-border w3-rounded progress" data-drupal-progress>
+<div class="solo-clear progress" data-drupal-progress>
   {% if label %}
     <div class="progress__label">{{ label }}</div>
   {% endif %}
-  <div class="progress__track"><div class="w3-container w3-center progress__bar" style="width: {{ percent }}%"></div></div>
-  <div class="w3-large progress__percentage">{{ percent }}%</div>
-  <div class="w3-small progress__description">{{ message }}</div>
+  <div class="progress__track"><div class="solo-clear progress__bar" style="width: {{ percent }}%"></div></div>
+  <div class="progress__percentage">{{ percent }}%</div>
+  <div class="progress__description">{{ message }}</div>
 </div>

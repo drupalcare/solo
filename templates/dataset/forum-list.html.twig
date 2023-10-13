@@ -32,8 +32,8 @@
  * @ingroup themeable
  */
 #}
-<div class="w3-responsive">
-  <table class="w3-table-all" id="forum-{{ forum_id }}">
+<div class="solo-responsive">
+  <table class="solo-table-all" id="forum-{{ forum_id }}">
     <thead>
       <tr>
         <th>{{ 'Forum'|t }}</th>
@@ -61,7 +61,7 @@
             </div>
             <div class="forum__name-{{ forum.depth }}"><a href="{{ forum.link }}">{{ forum.label }}</a></div>
             {% if forum.description.value %}
-              <div class="w3-small forum__description">{{ forum.description.value }}</div>
+              <div class="solo-small forum__description">{{ forum.description.value }}</div>
             {% endif %}
           {% if forum.depth > 0 %}{% for i in 1..forum.depth %}</div>{% endfor %}{% endif %}
         </td>

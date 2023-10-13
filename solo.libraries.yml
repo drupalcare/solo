@@ -7,19 +7,19 @@ w3-css:
     gpl-compatible: true
   css:
     base:
-      css/w3-css/w3.css: { weight: -11 }
-      css/w3-css/w3css-extended-classes.css: { weight: -10 }
-      css/w3-css/w3css-color-libraries-camouflage.css: { }
-      css/w3-css/w3css-color-libraries-european-signal.css: { }
-      css/w3-css/w3css-color-libraries-fashion.css: { }
-      css/w3-css/w3css-color-libraries-flat-ui.css: { }
-      css/w3-css/w3css-color-libraries-food.css: { }
-      css/w3-css/w3css-color-libraries-ios.css: { }
-      css/w3-css/w3css-color-libraries-metro-ui.css: { }
-      css/w3-css/w3css-color-libraries-us-highway.css: { }
-      css/w3-css/w3css-color-libraries-us-safety.css: { }
-      css/w3-css/w3css-color-libraries-vivid.css: { }
-      css/w3-css/w3css-color-libraries-win8.css: { }
+      css/w3-css/w3.css: { weight: -202 }
+      css/w3-css/w3css-extended-classes.css: { weight: -201 }
+      css/w3-css/w3css-color-libraries-camouflage.css:  { weight: -201 }
+      css/w3-css/w3css-color-libraries-european-signal.css:  { weight: -201 }
+      css/w3-css/w3css-color-libraries-fashion.css:  { weight: -201 }
+      css/w3-css/w3css-color-libraries-flat-ui.css:  { weight: -201 }
+      css/w3-css/w3css-color-libraries-food.css:  { weight: -201 }
+      css/w3-css/w3css-color-libraries-ios.css:  { weight: -201 }
+      css/w3-css/w3css-color-libraries-metro-ui.css:  { weight: -201 }
+      css/w3-css/w3css-color-libraries-us-highway.css:  { weight: -201 }
+      css/w3-css/w3css-color-libraries-us-safety.css:  { weight: -201 }
+      css/w3-css/w3css-color-libraries-vivid.css:  { weight: -201 }
+      css/w3-css/w3css-color-libraries-win8.css:  { weight: -201 }
 
 # Theme CSS.
 
@@ -27,48 +27,58 @@ solo-global:
   Version: VERSION
   css:
     base:
-      css/base/base.css: { weight: -9 }
+      css/base/solo-normalize.8.0.1.css: { weight: -200 }
+      css/base/solo-variables.css: { weight: -200 }
+      css/base/solo-animation.css: { weight: -200 }
+      css/base/solo-hamburger.css: { weight: -200 }
+      css/base/solo-global.css: { weight: -200 }
     layout:
-      css/layout/layout-regions.css: { weight: -8 }
-      css/layout/layout-width.css: { weight: -7 }
+      css/layout/solo-layout.css: { weight: -100 }
+      css/layout/solo-site-width.css: { weight: -99 }
     component:
-      css/components/system-messages.css: { }
-      css/components/forms.css: { }
-      css/components/breadcrumb.css: { }
-      css/components/system-tabs.css: { }
-      css/components/maintenance-page.css: { }
-      css/components/system-admin.css: { }
-      css/components/w3css-tables.css: { }
-      css/components/site-branding.css: { }
-      css/components/user-menu.css: { }
-      css/components/user-login.css: { }
-      css/components/footer-menu.css: { }
-      css/components/default-node.css: { }
-      css/components/page-title.css: { }
-      css/components/search-page.css: { }
-      css/components/search-block.css: { }
-      css/components/pager.css: { }
-      css/components/comments.css: { }
-      css/components/default-views.css: { }
-      css/components/layout-builder.css: { }
-      css/components/webform.css: { }
-      css/components/node-form.css: { }
-      css/components/teaser-mode.css: { }
-      css/components/sitemap.css: { }
-      css/components/contact-form.css: { }
-      css/components/ckeditor.css: { }
+      css/components/solo-breadcrumb.css: { weight: 0 }
+      css/components/solo-ckeditor.css: { weight: 0 }
+      css/components/solo-comments.css: { weight: 0 }
+      css/components/solo-contact-form.css: { weight: 0 }
+      css/components/solo-default-node.css: { weight: 0 }
+      css/components/solo-default-views.css: { weight: 0 }
+      css/components/solo-fixed-search-block.css: { weight: 0 }
+      css/components/solo-popup-login-block.css: { weight: 0 }
+      css/components/solo-forms.css: { weight: 0 }
+      css/components/solo-footer-menu.css: { weight: 0 }
+      css/components/solo-header.css: { weight: 0 }
+      css/components/solo-layout-builder.css: { weight: 0 }
+      css/components/solo-maintenance-page.css: { weight: 0 }
+      css/components/solo-node-form.css: { weight: 0 }
+      css/components/solo-page-title.css: { weight: 0 }
+      css/components/solo-pager.css: { weight: 0 }
+      css/components/solo-search-block.css: { weight: 0 }
+      css/components/solo-search-page.css: { weight: 0 }
+      css/components/solo-sitemap.css: { weight: 0 }
+      css/components/solo-system-admin.css: { weight: 0 }
+      css/components/solo-system-messages.css: { weight: 0 }
+      css/components/solo-system-tabs.css: { weight: 0 }
+      css/components/solo-tables.css: { weight: 0 }
+      css/components/solo-teaser-mode.css: { weight: 0 }
+      css/components/solo-user-login.css: { weight: 0 }
+      css/components/solo-user-menu.css: { weight: 0 }
+      css/components/solo-webform.css: { weight: 0 }
     theme:
-      css/theme/a-image.css: { weight: -10 }
-      css/theme/min-width-993.css: { weight: -10 }
-      css/theme/max-width-992.css: { weight: -10 }
-      css/theme/max-min-width-992-601.css: { weight: -10 }
-      css/theme/max-width-767.css: { weight: -10 }
-      css/theme/max-width-600.css: { weight: -10 }
-      css/theme/border-animation.css: { weight: -10 }
-      css/theme/sitename-animation.css: { weight: 10 }
+      css/theme/solo-border-animation.css: { weight: 200 }
+      css/theme/solo-sitename-animation.css: { weight: 200 }
+      css/theme/solo-clickable-image.css: { weight: 200 }
+      css/media-query/solo-min-width-993.css: { weight: 200 }
+      css/media-query/solo-max-width-992.css: { weight: 200 }
+      css/media-query/solo-max-min-width-992-601.css: { weight: 200 }
+      css/media-query/solo-max-width-767.css: { weight: 200 }
+      # css/media-query/solo-max-width-600.css: { weight: -10 }
   js:
-    js/utils.js: { }
-    js/custom-scripts.js: { }
+    js/solo-utils.js: { }
+    js/solo-scripts.js: { }
+    js/solo-messages.js: { }
+    js/solo-fixed-search-block.js: { }
+    js/solo-popup-login-block.js: { }
+
   dependencies:
     - core/drupal
     - core/drupal.ajax
@@ -78,34 +88,44 @@ solo-global:
 solo-menu:
   Version: VERSION
   css:
+    component:
+      css/components/solo-menu-base.css: { weight: 0 }
     theme:
-      css/theme/menu-animation.css: { weight: -11 }
-      css/theme/menu-base.css: { weight: -11 }
-      css/theme/menu-main.css: { weight: -10 }
-      css/theme/menu-side.css: { weight: -10 }
+      css/theme/solo-menu-main.css: { weight: 200 }
+      css/theme/solo-menu-side.css: { weight: 200 }
   js:
-    js/menu-scripts.js: { }
-    js/menu-main.js: { }
-    js/menu-keyboard.js: { }
-    js/menu-mobile.js: { }
-    js/menu-side.js: { }
+    js/solo-menu-scripts.js: { }
+    js/solo-menu-main.js: { }
+    js/solo-menu-keyboard.js: { }
+    js/solo-menu-mobile.js: { }
+    js/solo-menu-side.js: { }
   dependencies:
     - core/drupal
     - core/drupal.ajax
     - core/drupalSettings
     - core/once
 
-menu-right-open-sidebar:
+# Color Picker.
+solo-form-theme-settings:
   Version: VERSION
   css:
     theme:
-      css/theme/menu-right-open-sidebar.css: { weight: 10 }
+      css/theme/solo-form-theme-settings.css: { weight: 200 }
+  js:
+    js/solo-form-theme-settings.js: { }
+    js/solo-color-picker.js: { }
+  dependencies:
+    - core/drupal
+    - core/drupalSettings
+    - core/once
+
+
 # Full Opacity on Scroll.
 solo-full-opacity:
   version: VERSION
   header: true
   js:
-    js/scrolling-animation.js: { }
+    js/solo-full-opacity.js: { }
   dependencies:
     - core/drupal
     - core/once
@@ -116,7 +136,7 @@ solo-user-login-custom:
   Version: VERSION
   css:
     layout:
-      css/layout/layout-user-login.css: { }
+      css/layout/solo-layout-user-login.css: { weight: 200 }
 
 # use when node edit.
 
@@ -124,24 +144,16 @@ solo-node-edit-form:
   Version: VERSION
   css:
     layout:
-      css/layout/layout-node-edit.css: { }
+      css/layout/solo-layout-node-edit.css: { weight: 200 }
 
-# change the icon media size.
-
-social-media-icon-size-m:
+# Local actions.
+solo-action-links:
   Version: VERSION
   css:
     theme:
-      css/theme/social-media-icon-size-m.css: { }
-
-social-media-icon-size-l:
-  Version: VERSION
-  css:
-    theme:
-      css/theme/social-media-icon-size-l.css: { }
+      css/components/solo-action-links.css: { weight: 0 }
 
 # Font Awesome.
-
 font-awesome-4-ex:
   remote: https://github.com/FortAwesome/Font-Awesome
   version: 4.7.0
@@ -156,7 +168,7 @@ font-awesome-4-in:
   Version: 4.7.0
   css:
     base:
-      fonts/font-awesome.4.7.0.css: { }
+      fonts/font-awesome.4.7.0.css: { weight: -200 }
 
 font-awesome-5-ex:
   remote: https://use.fontawesome.com/releases/v5.15.4/fontawesome-free-5.15.4-web.zip

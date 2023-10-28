@@ -1,0 +1,9 @@
+  {% if is_front and page.welcome_text %}
+    <!-- Start: Welcome Text -->
+    <div id="welcome-text" class="solo-outer lone welcome-text {{ classes_welcome_text }}"{{ attributes_welcome_text }}>
+      <div id="welcome-text-inner" class="solo-inner solo-col solo-col-1 welcome-text-inner">
+        {{ page.welcome_text }}
+      </div>
+    </div>
+    <!-- End: Welcome Text -->
+  {% endif %}

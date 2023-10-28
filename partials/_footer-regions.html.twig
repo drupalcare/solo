@@ -1,0 +1,37 @@
+  {% if page.footer_first or page.footer_second or page.footer_third %}
+  <!-- start: Footer -->
+   <div id="footer-container" class="solo-outer multi footer-container {{ classes_footer_container }}"{{ attributes_footer_container }}>
+      <div id="footer-container-inner" class="solo-inner solo-col {{ footer_layout }} footer-container-inner">
+
+      {% if page.footer_first %}
+      <!-- Start: Footer First  -->
+      <div id="footer-box-first" class="region-outer footer-box footer-box-first">
+        <div class="region-inner footer-box-inner footer-box-first-inner fade-inner {{ site_regions_rounded_footer }} {{ site_regions_animate_footer ? 'animate-border' }} {{ classes_footer_first }}"{{ attributes_footer_first }}>
+          {{ page.footer_first }}
+        </div>
+      </div>
+      <!-- End: Footer First -->
+      {% endif %}
+      {% if page.footer_second %}
+      <!-- Start: Footer Second Region -->
+      <div id="footer-box-second" class="region-outer footer-box footer-box-second">
+        <div class="region-inner footer-box-inner footer-box-second-inner fade-inner {{ site_regions_rounded_footer }} {{ site_regions_animate_footer ? 'animate-border' }} {{ classes_footer_second }}"{{ attributes_footer_second }}>
+          {{ page.footer_second }}
+        </div>
+      </div>
+    <!-- End: Footer Second -->
+      {% endif %}
+      {% if page.footer_third %}
+      <!-- Start: Footer Third -->
+      <div id="footer-box-third" class="region-outer footer-box footer-box-third">
+        <div class="region-inner footer-box-inner footer-box-third-inner fade-inner {{ site_regions_rounded_footer }} {{ site_regions_animate_footer ? 'animate-border' }} {{ classes_footer_third }}"{{ attributes_footer_third }}>
+          {{ page.footer_third }}
+        </div>
+      </div>
+      <!-- End: Footer Third -->
+      {% endif %}
+    </div>
+  </div>
+  <!-- End: Footer -->
+  {% endif %}
+

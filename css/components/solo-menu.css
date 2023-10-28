@@ -1,0 +1,167 @@
+/* For all site menus */
+.solo-inner .mobile-menubar-toggler-button {
+  padding: var(--solo-6);
+  display: flex;
+  align-items: flex-end;
+  flex-grow: 1;
+  flex-basis: 100% !important;
+  flex-direction: column;
+}
+
+.solo-inner ul.sub__menu,
+.solo-inner a.nav__menu-link,
+.solo-inner li.nav__menu-item,
+.solo-inner ul.navigation__menubar {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  border: none;
+  white-space: nowrap;
+}
+
+.solo-inner ul.sub__menu,
+.solo-inner li.nav__menu-item,
+.solo-inner ul.navigation__menubar {
+  background-color: inherit;
+}
+
+.solo-inner .navigation__menubar li.nav__menu-item>a {
+  text-decoration: none;
+  -webkit-text-decoration: none;
+  white-space: nowrap;
+}
+
+.page-wrapper #primary-menu {
+  z-index: 1000;
+}
+
+.solo-inner .navigation__menubar {
+  z-index: 2000 !important;
+}
+
+.solo-inner .navigation__menubar li.nav__menu-item>ul.sub__menu {
+  z-index: 3000 !important;
+}
+
+.solo-inner .navigation__menubar li.nav__menu-item>ul.sub__menu>li.nav__menu-item>ul.sub__menu {
+  z-index: 4000 !important;
+}
+
+.solo-inner .navigation__menubar li.nav__menu-item>a,
+.solo-inner .navigation__menubar li.nav__menu-item>button {
+  padding: var(--solo-12);
+}
+
+.solo-inner .navigation__menubar li.nav__menu-item>button.ds-link>span.menu__url-title-disabled {
+  flex-grow: 1;
+  margin-right: var(--solo-12);
+}
+
+.solo-inner .navigation__menubar li.nav__menu-item>.dropdown-toggler .toggler-icon svg {
+  transition: 0.2s;
+}
+
+.solo-inner .navigation__menubar li.nav__menu-item .dropdown-toggler {
+  cursor: context-menu !important;
+}
+
+.solo-inner .navigation__menubar,
+.solo-inner .navigation__menubar ul.sub__menu,
+.solo-inner .navigation__menubar li.nav__menu-item,
+.solo-inner .navigation__menubar li.nav__menu-item>a,
+.solo-inner .navigation__menubar li.nav__menu-item>button {
+  display: flex;
+}
+
+.solo-inner .navigation__menubar li.has-sub__menu {
+  position: relative;
+}
+
+.solo-inner .navigation__menubar ul.sub__menu,
+.solo-inner .navigation__menubar li.link-only {
+  flex-direction: column;
+  flex-wrap: wrap;
+}
+
+.solo-inner .navigation__menubar li.link-and-button>button {
+  position: relative;
+  flex-basis: 50px;
+  width: 50px;
+  justify-content: center;
+  align-items: center;
+}
+
+.solo-inner .navigation__menubar li.link-and-button>a {
+  position: relative;
+  flex-basis: calc(100% - 50px);
+  width: calc(100% - 50px);
+  flex-grow: 1;
+}
+
+.solo-inner .navigation__menubar li.button-only>button>span.menu__url-title-disabled {
+  flex-basis: calc(100% - 24px);
+  position: relative;
+  flex-grow: 1;
+}
+
+.solo-inner .navigation__menubar li.button-only>button>span.toggler-icon {
+  flex-basis: 24px;
+  margin-left: var(--solo-12);
+}
+
+.solo-inner .navigation__menubar li.button-only>button>span.toggler-icon,
+.solo-inner .navigation__menubar li.link-and-button>button>span.toggler-icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* For the default menu */
+.solo-inner .navigation__default {
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.solo-inner .navigation__default>li.nav__menu-item ul.sub__menu {
+  min-width: 12.5rem;
+  display: none;
+  position: absolute;
+}
+
+/* For the second tier */
+.solo-inner .navigation__default>li>ul.sub__menu {
+  left: 0;
+  top: 100%;
+}
+
+/* For the third tier */
+.solo-inner .navigation__default>li>ul>li>ul.sub__menu {
+  left: 100%;
+  top: 0;
+}
+
+.solo-inner .navigation__default li:hover>ul.sub__menu {
+  display: flex !important;
+}
+
+.solo-inner .navigation__default>li.has-sub__menu:hover .dropdown-arrow {
+  transition: all 0.3s ease;
+  transform: rotate(180deg);
+}
+
+.solo-inner .navigation__default>li>ul>li.has-sub__menu:hover .dropdown-arrow {
+  transition: all 0.3s ease;
+  transform: rotate(-90deg);
+}
+
+.page-wrapper .navigation__default li.has-sub__menu>a:hover,
+.page-wrapper .navigation__default li.has-sub__menu>button:hover {
+  color: inherit !important;
+  background-color: inherit !important;
+}
+
+.page-wrapper .navigation__default li.has-sub__menu:hover>a,
+.page-wrapper .navigation__default li.has-sub__menu:hover>button {
+  color: var(--r-tx-lk-h) !important;
+  background-color: var(--r-bg-lk-h) !important;
+}

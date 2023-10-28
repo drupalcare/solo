@@ -1,16 +1,16 @@
 #views-entity-list {
-  padding: 0.01em 16px;
+  padding: 0.01em var(--solo-16);
 }
 
 .views-ui-view-displays ul li {
   display: inline-block;
-  margin-right: 16px;
+  margin-right: var(--solo-16);
 }
 
 .view-filters details.form-wrapper {
-  margin: 16px 0;
-  padding: 8px;
-  border: 1px solid #ccc;
+  margin: var(--solo-16) 0;
+  padding: var(--solo-8);
+  border: var(--solo-1) solid var(--r-br, var(--r-br-b));
 }
 
 .view-filters details.form-wrapper:hover {
@@ -18,11 +18,11 @@
 }
 
 .view-header {
-  padding: 0 16px;
+  padding: 0 var(--solo-16);
 }
 
 #view-edit-form  .dropbutton li a {
-  padding: 3px 9px;
+  padding: var(--solo-4) var(--solo-10);
 }
 
 .views-ui-display-tab-bucket {
@@ -34,17 +34,17 @@
 .views-display-setting input,
 .views-display-setting .label,
 .views-display-extra-actions a {
-  font-size: 14px !important;
+  font-size: var(--solo-14) !important;
 }
 
 .views-preview-wrapper {
-  border-color: #eaeaea;
-  padding: 10px;
-  margin: 0 16px 8px 16px;
+  border-color: var(--r-br, var(--r-br-b));
+  padding: var(--solo-10);
+  margin: 0 var(--solo-16) var(--solo-8) var(--solo-16);
 }
 
 .js .views-edit-view .dropbutton-wrapper .dropbutton .dropbutton-action input {
-  margin: 2px 0 !important;
+  margin: var(--solo-2) 0 !important;
   border: none !important;
   float: right;
   width: 100%;
@@ -64,12 +64,12 @@
 }
 
 .views-ui-display-tab-bucket .views-display-setting {
-  padding-top: 5px;
-  padding-bottom: 5px;
+  padding-top: var(--solo-5);
+  padding-bottom: var(--solo-5);
 }
 
 .views-ui-display-tab-bucket .dropbutton-wrapper {
-  top: 1px;
+  top: var(--solo-1);
 }
 
 .views-align-left {

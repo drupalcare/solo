@@ -1,3 +1,8 @@
+.breadcrumb>.breadcrumb-inner {
+  padding-bottom: 0 !important;
+  padding-top: 0 !important;
+}
+
 .breadcrumb-nav {
   display: grid;
 }
@@ -16,6 +21,6 @@ ul.breadcrumb-menu li {
 }
 
 ul.breadcrumb-menu li+li:before {
-  padding: 8px 0;
+  padding: var(--solo-8) 0;
   content: "/\00a0";
 }

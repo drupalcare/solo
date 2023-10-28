@@ -1,6 +1,6 @@
 .solo-col,
-.solo-outer,
-.page-wrapper {
+.page-wrapper,
+.solo-outer {
   display: grid;
   margin: 0 auto;
 }
@@ -23,27 +23,33 @@
   width: 100%;
 }
 
-.solo-outer .region-inner {
-  height: 100%;
-}
-
-.solo-inner:not(.header-inner,
-.primary-sidebar-menu-inner,
-.primary-menu-inner) {
-  overflow-x: auto;
-}
-
-
-.solo-col:not(.header-inner,
+.lone>.solo-col:not(.header-inner,
 .primary-menu-inner,
 .fixed-search-block-inner) {
   grid-auto-flow: row;
 }
 
-.solo-col:not(.primary-menu-inner,
-.header-inner,
-.fixed-search-block-inner,
-.system-messages-inner)>* {
+.solo-outer .region-inner {
+  height: 100%;
+}
+
+/*.solo-inner:not(.header-inner, .primary-sidebar-menu-inner, .primary-menu-inner) {
+  overflow-x: hidden;
+}
+
+.top-container-inner>div,
+.main-container-inner>div,
+.bottom-container-inner>div,
+.footer-container-inner>div {
+  overflow-x: auto;
+}*/
+.solo-inner:empty {
+  padding: 0 !important;
+}
+
+.solo-inner:not(.primary-menu-inner,
+.primary-sidebar-menu-inner,
+.system-messages-inner) {
   padding: var(--solo-16);
 }
 
@@ -51,33 +57,26 @@
   padding: var(--solo-16);
 }
 
-/* Extra small devices (phones, 600px and down) */
-@media only screen and (max-width:992px) {
-  #primary-sidebar-menu {
-    min-width: 300px;
-  }
-  .region-outer:not(:last-child) {
-    padding-bottom: 0;
-  }
+/* We change it in small screen */
+.multi>.solo-col {
+  gap: var(--solo-16);
+  grid-auto-flow: column;
 }
 
-@media only screen and (min-width:993px) {
-
-  .solo-col:not(.header-inner,
-  .primary-menu-inner,
-  .fixed-search-block-inner) {
-    row-gap: var(--solo-16);
-  }
-  .region-outer:not(:last-child) {
-    padding-right: 0;
-  }
-  .solo-col.top-container-inner,
-  .solo-col.main-container-inner,
-  .solo-col.bottom-container-inner,
-  .solo-col.footer-container-inner {
-    grid-auto-flow: column;
+/* Max width 992 */
+@media only screen and (max-width:62rem) {
+  #primary-sidebar-menu {
+    min-width: 18.75rem;
   }
 
+  .multi>.solo-inner {
+    grid-auto-flow: row !important;
+  }
+
+}
+
+/* min width 992.01 */
+@media only screen and (min-width:62.001rem) {
   .solo-col-1 {
     grid-auto-flow: row;
     grid-template-rows: 1fr;

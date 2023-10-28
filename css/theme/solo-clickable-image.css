@@ -21,15 +21,10 @@ a.img--is-clickable > img.solo-image {
   float: left;
 }
 
-.solo-reset-img-width a.img--is-clickable > img.solo-image {
-  width: auto;
+.image-auto a.img--is-clickable > img.solo-image {
+  width: auto !important;
 }
 
 a:hover > img.solo-image {
   animation: animateimg 5s;
-}
-
-a,
-button {
-  transition: 0.4s;
 }

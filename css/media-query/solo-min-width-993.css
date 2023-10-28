@@ -1,6 +1,6 @@
-@media (min-width:993px) {
+@media (min-width:62.001rem) {
   .mobile-nav {
-    display: none!important;
+    display: none !important;
   }
 
   .copyright-first {
@@ -37,7 +37,7 @@
   }
 
   body:not(.path-frontpage).main-container-inner {
-    padding-top: 12px;
+    padding-top: var(--solo-12);
   }
 
 }

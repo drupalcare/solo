@@ -16,8 +16,9 @@ ul.primary {
 }
 
 ul.primary {
-  border-bottom: 1px solid #ddd;
+  border-bottom: 1px solid var(--r-br, var(--r-br-b));
 }
+
 ul.secondary li.is-active > a,
 ul.primary li.is-active > a {
   font-weight: bold;
@@ -25,7 +26,7 @@ ul.primary li.is-active > a {
 
 ul.primary > li {
   border: none;
-  border-right: 1px dotted #ddd;
+  border-right: 1px dotted var(--r-br, var(--r-br-b));
   float: left;
 }
 

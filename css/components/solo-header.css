@@ -4,13 +4,14 @@
 }
 
 .header-inner nav.contextual-region .contextual {
-  top: 50px !important;
+  top: 3.125rem !important;
 }
 
 .header-inner {
   display: flex;
   flex-wrap: wrap;
   justify-content: right;
+  align-items: flex-start;
   flex-direction: row-reverse;
 }
 
@@ -23,20 +24,26 @@
 /* Site name, slogan and logo */
 .header-inner .block-system-branding-block {
   flex-grow: 1;
-  clear: both;
-  margin: 8px auto;
-  justify-content: left;
 }
 
 .branding-wrapper h1.site-name,
 .branding-wrapper h3.site-slogan {
-  margin: 12px auto;
+  margin: 0;
   display: flex;
   justify-content: flex-start;
 }
 
+.branding-wrapper h1.site-name {
+  flex-grow: 1;
+}
+
 .branding-wrapper {
   display: flex;
+}
+
+.branding-second {
+  display: flex;
+  flex-flow: column nowrap;
 }
 
 .branding-wrapper .branding-first a {
@@ -44,7 +51,7 @@
 }
 
 .branding-wrapper .branding-first {
-  margin-right: 12px;
+  margin-right: var(--solo-12);
   display: flex;
 }
 
@@ -56,12 +63,12 @@
 
 #sidebar-button-close svg,
 #sidebar-button-open svg {
-  height: 40px;
+  height: calc(2 * var(--solo-20));
 }
 
 #search-button-open svg {
-  width: 32px;
-  height: 32px;
+  width: var(--solo-32);
+  height: var(--solo-32);
 }
 
 #sidebar-button-close button,
@@ -69,7 +76,6 @@
 #search-button-open button {
   display: flex;
   justify-content: center;
-  background-color: red;
 }
 
 #sidebar-button-close button span,
@@ -78,16 +84,16 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-width: 90px;
+  min-width: 5.625rem;
 }
 
 #sidebar-button-close button span,
 #search-button-open button span {
-  padding: 8px 16px !important;
+  padding: var(--solo-8) var(--solo-16) !important;
 }
 
 #sidebar-button-open button span {
-  padding: 4px 16px !important;
+  padding: var(--solo-4) var(--solo-16) !important;
 }
 
 #sidebar-button-close button {
@@ -98,11 +104,6 @@
   justify-content: left;
 }
 
-#search-button-close {
-  background-color: red;
-  margin: 5px auto;
-}
-
 /* Add class to switch the header icon and site name */
 .header-inner.hs-icons-left {
   justify-content: left;
@@ -111,7 +112,7 @@
 
 .primary-sidebar-menu.hs-icons-left {
   inset-inline-start: -600px;
-  box-shadow: 50px 0 55px -30px rgba(0, 0, 0, 0.2);
+  box-shadow: 3.125rem 0 3.125rem -1.875rem rgba(0, 0, 0, 0.2);
 }
 
 .primary-sidebar-menu.hs-icons-left.toggled {
@@ -127,25 +128,62 @@
   flex-basis: 100%;
 }
 
-.header-inner.hs-sitename-center .block-system-branding-block {
+.header-inner.header-sitename-center .block-system-branding-block {
+  margin: 0 auto;
+  width: 100%;
   justify-content: center;
 }
 
-.header-inner.hs-sitename-center .branding-wrapper {
+.header-inner.header-sitename-center .branding-wrapper {
   display: grid;
 }
 
-.header-inner.hs-sitename-center .branding-wrapper>* {
+.header-inner.header-sitename-center .branding-wrapper>* {
   width: 100%;
 }
 
-.header-inner.hs-sitename-center .branding-wrapper .branding-first,
-.header-inner.hs-sitename-center .branding-wrapper .branding-first a,
-.header-inner.hs-sitename-center .branding-wrapper h1.site-name,
-.header-inner.hs-sitename-center .branding-wrapper h3.site-slogan {
-  margin: 12px auto;
+.header-inner.header-sitename-center .branding-wrapper .branding-first,
+.header-inner.header-sitename-center .branding-wrapper .branding-first a,
+.header-inner.header-sitename-center .branding-wrapper h1.site-name,
+.header-inner.header-sitename-center .branding-wrapper h3.site-slogan {
   justify-content: center;
+  text-align: center;
 }
+
 .user-logged-in .toolbar-bar {
   z-index: 1300;
+}
+
+@media (max-width:62rem) {
+  .header-inner .block-system-branding-block {
+    justify-content: center;
+  }
+
+}
+
+@media (max-width:37.5rem) {
+  .header-inner .branding-wrapper {
+    display: grid;
+  }
+
+  .site-name {
+    font-size: calc(2 * var(--solo-16));
+  }
+
+  .site-slogan {
+    font-size: var(--solo-24) !important;
+  }
+
+  .header-inner .branding-wrapper>* {
+    width: 100%;
+  }
+
+  .header-inner .branding-wrapper .branding-first,
+  .header-inner .branding-wrapper .branding-first a,
+  .header-inner .branding-wrapper h1.site-name,
+  .header-inner .branding-wrapper h3.site-slogan {
+    justify-content: center;
+    text-align: center;
+  }
+
 }

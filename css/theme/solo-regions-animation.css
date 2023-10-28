@@ -1,0 +1,68 @@
+/* Border animation  */
+.page-wrapper .region-inner.animate-border:not(.main-box-inner) {
+  position: relative;
+}
+
+.page-wrapper .region-inner.animate-border:not(.main-box-inner):before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 0;
+  background-color: transparent;
+  border: 4px solid transparent;
+}
+
+.page-wrapper .region-inner.animate-border:not(.main-box-inner):hover:before {
+  animation: borderLeftColors 1s linear forwards;
+}
+
+.page-wrapper .region-inner.animate-border:not(.main-box-inner):after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 0;
+  height: 0;
+  background-color: transparent;
+  border: 4px solid transparent;
+}
+
+.page-wrapper .region-inner.animate-border:not(.main-box-inner):hover:after {
+  animation: borderRightColors 1s linear forwards;
+}
+
+/* Shadows */
+.page-wrapper .region-inner.animate-border:not(.main-box-inner) {
+  transition: 0.4s !important;
+}
+
+.page-wrapper .region-inner.animate-border:not(.main-box-inner):hover {
+  box-shadow: 0 25px 57px 0 rgba(0, 0, 0, .25);
+}
+
+/* Radios */
+.page-wrapper .region-inner.radios-4,
+.page-wrapper .region-inner.radios-4.animate-border:not(.main-box-inner):before,
+.page-wrapper .region-inner.radios-4.animate-border:not(.main-box-inner):after {
+  border-radius: 4px;
+}
+
+.page-wrapper .region-inner.radios-8,
+.page-wrapper .region-inner.radios-8.animate-border:not(.main-box-inner):before,
+.page-wrapper .region-inner.radios-8.animate-border:not(.main-box-inner):after {
+  border-radius: 8px;
+}
+
+.page-wrapper .region-inner.radios-16,
+.page-wrapper .region-inner.radios-16.animate-border:not(.main-box-inner):before,
+.page-wrapper .region-inner.radios-16.animate-border:not(.main-box-inner):after {
+  border-radius: 16px;
+}
+
+.page-wrapper .region-inner.radios-24,
+.page-wrapper .region-inner.radios-24.animate-border:not(.main-box-inner):before,
+.page-wrapper .region-inner.radios-24.animate-border:not(.main-box-inner):after {
+  border-radius: 24px;
+}

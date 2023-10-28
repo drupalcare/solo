@@ -78,7 +78,7 @@ article.node .node__header .node__meta {
 }
 
 .node__meta .node__author-image {
-  margin-right: 12px;
+  margin-right: var(--solo-12);
   overflow: hidden;
 }
 
@@ -100,25 +100,27 @@ article.node .node__header .node__meta {
   display: inline-flex;
   flex-wrap: wrap;
 }
+
 .field--name-field-tags.field__items>.field__item,
 .field--name-field-tags>.field__items>.field__item {
-  margin-right: 16px;
+  margin-right: var(--solo-16);
 }
+
 .field--name-field-tags.field__items>.field__item:last-child,
 .field--name-field-tags>.field__items>.field__item:last-child {
   margin-right: 0;
 }
 
 /* To show multi fields in one line */
-
 .solo__inline-items .field.field__items,
 .solo__inline-items .field>.field__items {
   display: inline-flex;
   flex-wrap: wrap;
 }
+
 .solo__inline-items .field.field__items>.field__item,
 .solo__inline-items .field>.field__items>.field__item {
-  margin-right: 16px;
+  margin-right: var(--solo-16);
 }
 
 .solo__inline-items .field.field__items>.field__item:last-child,

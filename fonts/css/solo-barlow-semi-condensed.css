@@ -6,7 +6,7 @@ p,
 div,
 li,
 span,
-body,
+body .page-wrapper,
 html,
 .barlow-semi-condensed {
   font-family: 'Barlow Semi Condensed', sans-serif;

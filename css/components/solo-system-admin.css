@@ -1,11 +1,11 @@
 dl dd {
-  margin-bottom: 8px;
-  margin-left: 8px;
+  margin-bottom: var(--solo-8);
+  margin-left: var(--solo-8);
 }
 
 .panel__title {
   margin: 0;
-  padding-bottom: 9px;
+  padding-bottom: var(--solo-10);
   text-transform: uppercase;
   font-size: 1em;
 }
@@ -20,7 +20,7 @@ ul.admin-list {
   padding: 0;
   list-style-type: none;
   list-style-image: none;
-  border-top: 1px solid #bfbfbf;
+  border-top: var(--solo-1) solid #bfbfbf;
 }
 
 .admin-list li a {
@@ -43,12 +43,12 @@ ul.admin-list {
 }
 
 .winnow-clear {
-  top: 4px;
+  top: var(--solo-4);
 }
 
 .system-modules label,
 .system-modules-uninstall label {
-  font-size: 16px;
+  font-size: var(--solo-16);
 }
 
 .modules-tabs__pane table col.checkbox {
@@ -82,18 +82,6 @@ form .field--widget-entity-reference-paragraphs td.field-multiple-drag {
   padding-left: 0;
 }
 
-/*.ui-dialog-content .solo-responsive,
-.admin-context .block-system-main-block .solo-responsive {
-  max-width: 100%;
-  width: 100%;
-  display: block;
-  clear: both;
-  overflow-x: initial;
-}*/
-/*.admin-context .block-system-main-block {
-  padding: 0 16px;
-}
-*/
 .admin-context .block-system-main-block > div,
 .admin-context .block-system-main-block > form {
   padding: 0 !important;
@@ -101,7 +89,7 @@ form .field--widget-entity-reference-paragraphs td.field-multiple-drag {
 
 .admin-context nav.action-links {
   list-style: none;
-  margin-left: 16px;
+  margin-left: var(--solo-1);
 }
 
 .admin-context nav.action-links li {
@@ -118,37 +106,37 @@ form .field--widget-entity-reference-paragraphs td.field-multiple-drag {
 
 .admin-context .region-title__action a,
 .admin-context form .form-actions > a {
-  margin: 16px 10px;
-  padding: 9px 16px;
+  margin: var(--solo-16) var(--solo-12);
+  padding: var(--solo-12) var(--solo-16);
   display: inline-block;
 }
 
 .admin-context .region-title__action a {
-  margin: 5px;
+  margin: var(--solo-6);
 }
 
 .admin-context form .form-actions button,
 .admin-context form .form-actions input {
-  margin: 16px 10px 16px 0;
+  margin: var(--solo-16) var(--solo-12) var(--solo-16) 0;
 }
 
 /* admin pages  */
 .admin-context .block-system-main-block .modules-tabs {
-  margin-right: 16px;
-  margin-left: 16px;
+  margin-right: var(--solo-16);
+  margin-left: var(--solo-16);
   border-color: #eaeaea;
 }
 
 .admin-context .modules-tabs__pane {
   margin: 0 0 0 240px !important;
-  padding: 8px 16px !important;
+  padding: var(--solo-12) var(--solo-16) !important;
   background: #f8f8f8;
   border-left: 1px solid #eaeaea;
   width: auto;
 }
 
 .admin-context .block-system-main-block .modules-tabs tr td {
-  padding: 5px;
+  padding: var(--solo-6);
 }
 
 .admin-context .system-modules td details {
@@ -156,7 +144,7 @@ form .field--widget-entity-reference-paragraphs td.field-multiple-drag {
 }
 
 .admin-context .system-modules td details summary {
-  padding: 6px 0 !important;
+  padding: var(--solo-6) 0 !important;
 }
 
 .admin-context .modules-wrapper .requirements {
@@ -184,14 +172,14 @@ form .field--widget-entity-reference-paragraphs td.field-multiple-drag {
 }
 
 .admin-context .item-list--comma-list li {
-  padding: 8px 5px;
+  padding: var(--solo-8) var(--solo-4);
 }
 
 .admin-context .system-status-report__status-title {
-  padding: 8px !important;
+  padding: var(--solo-8) !important;
 }
 
-@media screen and (min-width:993px) {
+@media screen and (min-width:62.001rem) {
   .admin-context .system-status-general-info__items {
     display: flex;
     overflow-x: hidden;
@@ -199,7 +187,7 @@ form .field--widget-entity-reference-paragraphs td.field-multiple-drag {
   }
 
   .admin-context .system-status-general-info__item {
-    border-color: #eaeaea;
+    border-color: var(--solo-br);
     flex: 1;
     flex-basis: 33%;
     width: 33%;
@@ -211,7 +199,7 @@ form .field--widget-entity-reference-paragraphs td.field-multiple-drag {
   }
 
   .admin-context .system-status-general-info__run-cron {
-    margin: 15px 0 5px;
+    margin: var(--solo-16) 0 var(--solo-16);
   }
 
 }
@@ -226,14 +214,13 @@ form .field--widget-entity-reference-paragraphs td.field-multiple-drag {
 }
 
 .admin-context .system-status-report__status-icon:before {
-  top: 15px;
+  top: var(--solo-15);
   left: -15px;
 }
 
 .admin-context .system-status-report__requirements-group details {
-  margin-bottom: 5px !important;
+  margin-bottom: var(--solo-5) !important;
 }
-
 
 /**
  * Reusable colors.

@@ -1,7 +1,7 @@
 {#
 /**
  * @file
- * solo's theme implementation for the main menu.
+ * solo's theme implementation for the default menu.
  *
  * Available variables:
  * - menu_name: The machine name of the menu.
@@ -28,7 +28,7 @@
 #}
 
 {% macro svg_icon(icon_value) %}
-<svg aria-hidden='true' role='img' xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewbox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='butt' stroke-linejoin='bevel'><path d='{{ icon_value }}'/></svg>
+{% include '@solo/partials/svg/_svg-menu-arrow.html.twig' %}
 {% endmacro %}
 
 {% import _self as menus %}
@@ -71,7 +71,7 @@ We call a macro which calls itself to render the full tree.
       {% set rendered_url = item.url|render %}
 
       {% set item_classes = [
-      'nav__menu-item nav__menu-item-' ~ menu_name|clean_class,
+      'btn-animate nav__menu-item nav__menu-item-' ~ menu_name|clean_class,
       (item and menu_level == 1 ) ? 'nav__menubar-item',
       (item and menu_level > 1 ) ? 'nav__submenu-item',
       item.is_expanded ? 'has-sub__menu',

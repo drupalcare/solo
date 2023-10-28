@@ -1,0 +1,149 @@
+/* Font zie 18 */
+html.fs-18,
+html.fs-18 body {
+  font-size: var(--solo-18);
+}
+
+html.fs-18 #sidebar-button-close button span,
+html.fs-18 #search-button-open button span {
+  padding-top: var(--solo-10) !important;
+  padding-bottom: var(--solo-10) !important;
+}
+
+html.fs-18 #sidebar-button-open button span {
+  padding-top: var(--solo-6) !important;
+  padding-bottom: var(--solo-6) !important;
+}
+
+html.fs-18 .solo-inner .hamburger-icon span>svg {
+  height: 59px;
+}
+
+html.fs-18 .solo-search-block-form .form-type-search:before {
+  top: 25px;
+  left: 7px;
+}
+
+html.fs-18 .solo-inner .login-button-open>button,
+html.fs-18 .solo-inner .navigation__menubar-account li a {
+  padding: var(--solo-10) !important;
+}
+
+/* Font zie 20 */
+html.fs-20,
+html.fs-20 body {
+  font-size: var(--solo-20);
+}
+
+html.fs-20 #sidebar-button-close button span,
+html.fs-20 #search-button-open button span {
+  padding-top: var(--solo-12) !important;
+  padding-bottom: var(--solo-12) !important;
+}
+
+html.fs-20 #sidebar-button-open button span {
+  padding-top: var(--solo-8) !important;
+  padding-bottom: var(--solo-8) !important;
+}
+
+/*html.fs-20 .solo-inner .hamburger-icon span>svg {
+  height: 68px;
+}
+*/
+html.fs-20 .solo-search-block-form .form-type-search:before {
+  top: 30px;
+  left: 8px;
+}
+
+html.fs-20 .solo-inner .login-button-open>button,
+html.fs-20 .solo-inner .navigation__menubar-account li a {
+  padding: var(--solo-12) !important;
+}
+
+/* Region gabs 24 */
+html.gab-24 .solo-inner:not(.primary-menu-inner,
+.primary-sidebar-menu-inner,
+.system-messages-inner) {
+  padding: var(--solo-24);
+}
+
+html.gab-24 .solo-outer .region-inner {
+  padding: var(--solo-24);
+}
+
+html.gab-24 .multi>.solo-col {
+  gap: var(--solo-24);
+  grid-auto-flow: column;
+}
+
+html.gab-24 .solo-inner .navigation__menubar li.nav__menu-item>a,
+html.gab-24 .solo-inner .navigation__menubar li.nav__menu-item>button {
+  padding-top: var(--solo-18);
+  padding-bottom: var(--solo-18);
+}
+
+/* Region gabs 36 */
+html.gab-36 .solo-inner:not(.primary-menu-inner,
+.primary-sidebar-menu-inner,
+.system-messages-inner) {
+  padding: var(--solo-36);
+}
+
+html.gab-36 .solo-outer .region-inner {
+  padding: var(--solo-36);
+}
+
+html.gab-36 .multi>.solo-col {
+  gap: var(--solo-36);
+  grid-auto-flow: column;
+}
+
+html.gab-36 .solo-inner .navigation__menubar li.nav__menu-item>a,
+html.gab-36 .solo-inner .navigation__menubar li.nav__menu-item>button {
+  padding-top: var(--solo-20);
+  padding-bottom: var(--solo-20);
+}
+
+/* Region gabs 48 */
+html.gab-48 .solo-inner:not(.primary-menu-inner,
+.primary-sidebar-menu-inner,
+.system-messages-inner) {
+  padding: var(--solo-48);
+}
+
+html.gab-48 .solo-outer .region-inner {
+  padding: var(--solo-48);
+}
+
+html.gab-48 .multi>.solo-col {
+  gap: var(--solo-48);
+  grid-auto-flow: column;
+}
+
+html.gab-48 .solo-inner .navigation__menubar li.nav__menu-item>a,
+html.gab-48 .solo-inner .navigation__menubar li.nav__menu-item>button {
+  padding-top: var(--solo-24);
+  padding-bottom: var(--solo-24);
+}
+
+/* Region gabs 64 */
+html.gab-64 .solo-inner:not(.primary-menu-inner,
+.primary-sidebar-menu-inner,
+.system-messages-inner) {
+  padding: var(--solo-64);
+}
+
+html.gab-64 .solo-outer .region-inner {
+  padding: var(--solo-64);
+}
+
+html.gab-64 .multi>.solo-col {
+  gap: var(--solo-64);
+  grid-auto-flow: column;
+}
+
+html.gab-64 .solo-inner .navigation__menubar li.nav__menu-item>a,
+html.gab-64 .solo-inner .navigation__menubar li.nav__menu-item>button {
+  padding-top: var(--solo-32);
+  padding-bottom: var(--solo-32);
+}

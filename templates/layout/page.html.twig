@@ -57,410 +57,59 @@
  * @see html.html.twig
  */
 #}
-
-{% set svg_search %}
-<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
-  <circle cx="11" cy="11" r="8"></circle>
-  <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-</svg>
-{% endset %}
 {% set svg_bars %}
-      <svg viewbox="0 0 60 40">
-        <g stroke="#fff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
-          <path id="svg-top" d="M10,10 L50,10 Z"></path>
-          <path id="svg-middle" d="M10,20 L50,20 Z"></path>
-          <path id="svg-bottom" d="M10,30 L50,30 Z"></path>
-        </g>
-      </svg>
+{% include '@solo/partials/svg/_svg-bars.html.twig' %}
 {% endset %}
-
-{% set svg_close %}
-  <svg aria-hidden="true" role="img" xmlns="http://www.w3.org/2000/svg"
-       width="28" height="28" viewbox="0 0 24 24" fill="none"
-       stroke="currentColor" stroke-width="2" stroke-linecap="butt"
-       stroke-linejoin="bevel">
-    <line x1="18" y1="6" x2="6" y2="18"></line>
-    <line x1="6" y1="6" x2="18" y2="18"></line>
-  </svg>
+{% set svg_search %}
+{% include '@solo/partials/svg/_svg-search.html.twig' %}
 {% endset %}
-
 <!-- Start: Page Wrapper -->
 <div id="page-wrapper" class="page-wrapper solo-animate-opacity {{ site_global_width }} {{ classes_page_wrapper }} {{ site_inline_items_on ? 'solo__inline-items' }}"{{ attributes_page_wrapper }}>
-{% if page.primary_sidebar_menu %}
-  <!-- Start: Main Navigation - Vertical -->
-  <div id="primary-sidebar-menu" class="solo-outer main-navigation-wrapper primary-sidebar-menu hamburger-icon {{ header_change_icons ? 'hs-icons-left' }} {{ classes_primary_sidebar_menu }}" role="navigation"  aria-label="{{ 'Main Navigation'|t }}"{{ attributes_primary_sidebar_menu }}>
-    <div id="primary-sidebar-menu-inner" class="solo-inner primary-sidebar-menu-inner">
+  {% include '@solo/partials/_primary-sidebar-menu.html.twig' %}
+  {% include '@solo/partials/_fixed-search-block.html.twig' %}
+  {% include '@solo/partials/_popup-login-block.html.twig' %}
+  {% include '@solo/partials/_header.html.twig' %}
+  {% include '@solo/partials/_primary-menu.html.twig' %}
+  {% include '@solo/partials/_welcome-text.html.twig' %}
+  {% include '@solo/partials/_system-messages.html.twig' %}
 
-      <div id="sidebar-button-close" class="sidebar-button-close {{ header_change_icons ? 'hs-icons-left' }}">
-        {# <i class="fa fa-close"></i> #}
-          <button class="solo-button-menu hamburger-icon hamburger-icon-close" data-drupal-selector="sidebar-hamburger-icon" aria-label="Close" aria-controls="primary-sidebar-menu" aria-expanded="false" aria-hidden="hidden">
-              <span>{{ svg_bars|raw }}</span>
-          </button>
-      </div>
-
-      {{ page.primary_sidebar_menu }}
-    </div>
-  </div>
-  <!-- End: Main Navigation - Vertical -->
-{% endif %}
-
-  {% if page.fixed_search_block %}
-  <!-- Start: Fixed Search Bar -->
-  <div id="fixed-search-block" class="solo-outer fixed-search-block {{ classes_fixed_search_block }}" role="search" aria-label="{{ 'Search Bar'|t }}"{{ attributes_fixed_search_block }}>
-    <div id="fixed-search-block-inner" class="solo-inner solo-col fixed-search-block-inner">
-      {{ page.fixed_search_block }}
-      <div id="search-button-close" class="hamburger-icon hamburger-icon-close search-button-close">
-      {# <i class="fa fa-close"></i> #}
-        <button class="solo-button-menu search-block-button-close-inner" data-drupal-selector="search-block-button-close-inner" aria-label="Close" aria-controls="fixed-search-block-inner" aria-expanded="false" aria-hidden="hidden">
-            <span>{{ svg_bars|raw }}</span>
-        </button>
-      </div>
-    </div>
-  </div>
-  <!-- End: Fixed Search Bar -->
+  {% if site_regions_disable_top == 0 %}
+  {% include '@solo/partials/_top-regions.html.twig' %}
+  {% endif %}
+  {% if site_regions_disable_top == 1 and is_front %}
+  {% include '@solo/partials/_top-regions.html.twig' %}
+  {% endif %}
+  {% if site_regions_disable_top == 2 and not is_front %}
+  {% include '@solo/partials/_top-regions.html.twig' %}
   {% endif %}
 
-  {% if page.popup_login_block %}
-  <!-- Start: Popup Login Block -->
-  <div id="popup-login-block" class="solo-outer popup-login-block solo-animate-opacity" role="login" aria-label="{{ 'Login'|t }}"{{ attributes_popup_login_block }}>
-    <div id="popup-login-block-inner" class="solo-inner solo-col popup-login-block-inner {{ classes_popup_login_block }}">
-      <div id="login-button-close" class="hamburger-icon hamburger-icon-close login-button-close">
-      {# <i class="fa fa-close"></i> #}
-        <button class="solo-button-menu login-block-button-close-inner" data-drupal-selector="login-block-button-close-inner" aria-label="Close" aria-controls="popup-login-block-inner" aria-expanded="false" aria-hidden="hidden">
-            <span>{{ svg_bars|raw }}</span>
-        </button>
-      </div>
-    {{ page.popup_login_block }}
-    </div>
-  </div>
-  <!-- End: Popup Login Block -->
+  {% include '@solo/partials/_highlighted.html.twig' %}
+  {% include '@solo/partials/_page-title.html.twig' %}
+  {% include '@solo/partials/_breadcrumb.html.twig' %}
+  {% include '@solo/partials/_main-regions.html.twig' %}
+
+  {% if site_regions_disable_bottom == 0 %}
+  {% include '@solo/partials/_bottom-regions.html.twig' %}
+  {% endif %}
+  {% if site_regions_disable_bottom == 1 and is_front %}
+  {% include '@solo/partials/_bottom-regions.html.twig' %}
+  {% endif %}
+  {% if site_regions_disable_bottom == 2 and not is_front %}
+  {% include '@solo/partials/_bottom-regions.html.twig' %}
   {% endif %}
 
-  {% if page.header or page.primary_sidebar_menu %}
-    <!-- Start: Header -->
-    <header id="header" class="solo-outer header {{ site_header_colors }} {{ site_name_animate_on }} {{ classes_header }}" role="banner" aria-label="{{ 'Site header'|t }}"{{ attributes_header }}>
-      <div id="header-inner" class="solo-inner solo-col solo-col-1 header-inner {{ header_change_icons ? 'hs-icons-left' }} {{ header_change_sitename ? 'hs-sitename-center' }}">
-
-        {% if page.primary_sidebar_menu %}
-          <div id="sidebar-button-open" class="hamburger-icon sidebar-button-open">
-            {# <i class="fa fa-bars"></i> #}
-            <button class="solo-button-menu sidebar-hamburger-icon" data-drupal-selector="sidebar-hamburger-icon" aria-label="Open" aria-controls="primary-sidebar-menu" aria-expanded="false" aria-hidden="true">
-              <span>{{ svg_bars|raw }}</span>
-            </button>
-          </div>
-        {% endif %}
-
-        {% if page.fixed_search_block %}
-          <div id="search-button-open" class="hamburger-icon search-button-open">
-            {# <i class="fa fa-bars"></i> #}
-            <button class="solo-button-menu sidebar-hamburger-icon" data-drupal-selector="sidebar-hamburger-icon" aria-label="Open" aria-controls="primary-sidebar-menu" aria-expanded="false" aria-hidden="true">
-              <span>{{ svg_search|raw }}</span>
-            </button>
-          </div>
-        {% endif %}
-
-        {% if page.header %}
-          {{ page.header }}
-        {% endif %}
-
-      </div>
-    </header>
-    <!-- End: Header -->
+  {% if site_regions_disable_footer == 0 %}
+  {% include '@solo/partials/_footer-regions.html.twig' %}
+  {% endif %}
+  {% if site_regions_disable_footer == 1 and is_front %}
+  {% include '@solo/partials/_footer-regions.html.twig' %}
+  {% endif %}
+  {% if site_regions_disable_footer == 2 and not is_front %}
+  {% include '@solo/partials/_footer-regions.html.twig' %}
   {% endif %}
 
-  {% if page.primary_menu %}
-    <!-- Start: Main Navigation - Horizontal -->
-    <div id="primary-menu" class="solo-outer main-navigation-wrapper primary-menu {{ classes_primary_menu }}" role="navigation" aria-label="{{ 'Main Navigation'|t }}"{{ attributes_primary_menu }}>
-      <div id="primary-menu-inner" class="solo-inner solo-col solo-col-1 primary-menu-inner">
-        {{ page.primary_menu }}
-      </div>
-    </div>
-    <!-- End: Main Navigation - Horizontal -->
-  {% endif %}
+  {% include '@solo/partials/_footer-menu.html.twig' %}
+  {% include '@solo/partials/_copyright.html.twig' %}
 
-  {% if is_front and page.welcome_text %}
-    <!-- Start: Welcome Text -->
-    <div id="welcome-text" class="solo-outer welcome-text {{ classes_welcome_text }}"{{ attributes_welcome_text }}>
-      <div id="welcome-text-inner" class="solo-inner solo-col solo-col-1 welcome-text-inner">
-        {{ page.welcome_text }}
-      </div>
-    </div>
-    <!-- End: Welcome Text -->
-  {% endif %}
-
-  {% if page.highlighted %}
-    <!-- Start: Highlighted -->
-    <div id="highlighted" class="solo-outer highlighted {{ classes_highlighted }}"{{ attributes_highlighted }}>
-      <div id="highlighted-inner" class="solo-inner solo-col solo-col-1 fade-inner highlighted-inner">
-        {{ page.highlighted }}
-      </div>
-    </div>
-    <!-- End: Highlighted -->
-  {% endif %}
-
-  {% if page.system_messages %}
-    <!-- Start: System Messages -->
-    <div id="system-messages" class="solo-outer system-messages {{ classes_system_messages }}"{{ attributes_system_messages }}>
-      <div id="system-messages-inner" class="solo-inner solo-col solo-col-1 fade-inner system-messages-inner">
-        {{ page.system_messages }}
-      </div>
-    </div>
-    <!-- End: System Messages -->
-  {% endif %}
-
-  {% if is_front %}
-    {% if page.top_first or page.top_second or page.top_third %}
-  <!-- Start: Top Container -->
-  <div id="top-container" class="solo-outer top-container {{ classes_top_container }}"{{ attributes_top_container }}>
-    <div id="top-container-inner" class="solo-inner solo-col {{ site_regions_layout_top }} top-container-inner">
-      {% if page.top_first %}
-      <!-- Start: Top container first region -->
-      <div id="top-box-first" class="region-outer top-box top-box-first">
-        <div class="region-inner top-box-inner top-box-first-inner fade-inner {{ site_regions_animate_top ? 'animate-border' }} {{ classes_top_first}}"{{ attributes_top_first }}>
-         {{ page.top_first }}
-        </div>
-      </div>
-      <!-- End: Top Container First -->
-      {% endif %}
-      {% if page.top_second %}
-      <!-- Start: Top Container Second  -->
-      <div id="top-box-second" class="region-outer top-box top-box-second">
-        <div class="region-inner top-box-inner top-box-second-inner fade-inner {{ site_regions_animate_top ? 'animate-border' }} {{ classes_top_second }}"{{ attributes_top_second }}>
-         {{ page.top_second }}
-        </div>
-      </div>
-      <!-- End: Top Container Second -->
-      {% endif %}
-      {% if page.top_third %}
-      <!-- Start: Top Container Third -->
-      <div id="top-box-third" class="region-outer top-box top-box-third">
-        <div class="region-inner top-box-inner top-box-third-inner fade-inner {{ site_regions_animate_top ? 'animate-border' }} {{ classes_top_third }}"{{ attributes_top_third }}>
-          {{ page.top_third }}
-        </div>
-      </div>
-      <!-- End: Top Container Third -->
-      {% endif %}
-    </div>
-  </div>
-  <!-- End: Top container -->
-    {% endif %}
-  {% endif %}
-
-  {% if page.page_title and not is_front %}
-    <!-- Start: Page Title -->
-    <div id="page-title" class="solo-outer page-title {{ site_pagetitle_animate_on }} {{ classes_page_title }}"{{ attributes_page_title }}>
-      <div id="page-title-inner" class="solo-inner solo-col solo-col-1 fade-inner page-title-inner">
-        {{ page.page_title }}
-      </div>
-    </div>
-    <!-- End: Page Title -->
-  {% endif %}
-
-  {% if page.breadcrumb|render|striptags|trim and not is_front %}
-    <!-- Start: Page Title -->
-    <div id="breadcrumb" class="solo-outer breadcrumb {{ classes_breadcrumb }}"{{ attributes_breadcrumb }}>
-      <div id="breadcrumb-inner" class="solo-inner solo-col solo-col-1 fade-inner breadcrumb-inner">
-        {{ page.breadcrumb }}
-      </div>
-    </div>
-    <!-- End: Page Title -->
-  {% endif %}
-
-  <!-- Start: Main -->
-  <div id="main-container" class="solo-outer main-container {{ classes_main_container }}"{{ attributes_main_container }}>
-    <div id="main-container-inner"  class="solo-inner solo-col {{ site_regions_layout_main }} main-container-inner">
-      <!-- Start Main Container -->
-
-        {% if page.sidebar_first %}
-          <!-- Start Left SideBar -->
-          <div id="sidebar-box-first" class="region-outer main-box sidebar-box-first" role="complementary">
-            <div class="region-inner main-box-inner sidebar-box-first-inner fade-inner {{ classes_sidebar_first }}"{{ attributes_sidebar_first }}>
-              {{ page.sidebar_first }}
-            </div>
-          </div>
-          <!-- End: Left SideBar -->
-        {% endif %}
-
-        {% if page.content %}
-          <!-- Start: Main Content -->
-          <div id="sidebar-box-main" class="region-outer main-box sidebar-box-main" role="main">
-            <div class="region-inner main-box-inner sidebar-box-main-inner fade-inner {{ classes_content }}"{{ attributes_content }}>
-              {{ page.content }}
-            </div>
-          </div>
-          <!-- End: Main Content -->
-        {% endif %}
-
-        {% if page.sidebar_second %}
-          <!-- Start: Right SideBar -->
-          <div id="sidebar-box-second" class="region-outer main-box sidebar-box-second" role="complementary">
-            <div class="region-inner main-box-inner sidebar-box-second-inner fade-inner {{ classes_sidebar_second }}"{{ attributes_sidebar_second }}>
-              {{ page.sidebar_second }}
-            </div>
-          </div>
-          <!-- End: Right SideBar -->
-        {% endif %}
-
-      <!-- End: Main Container -->
-
-    </div>
-  </div>
-  <!-- End: Main -->
-
-  {% if is_front %}
-    {% if page.bottom_first or page.bottom_second or page.bottom_third or page.bottom_forth %}
-      <!-- Start: Bottom -->
-  <div id="bottom-container" class="solo-outer bottom-container {{ classes_bottom_container }}"{{ attributes_bottom_container }}>
-    <div id="bottom-container-inner" class="solo-inner solo-col {{ site_regions_layout_bottom }} bottom-container-inner">
-      {% if page.bottom_first %}
-      <!-- Start: Bottom First -->
-      <div id="bottom-box-first" class="region-outer bottom-box bottom-box-first">
-        <div class="region-inner bottom-box-inner bottom-box-first-inner fade-inner {{ site_regions_animate_bottom ? 'animate-border' }} {{ classes_bottom_first }}"{{ attributes_bottom_first }}>
-          {{ page.bottom_first }}
-        </div>
-      </div>
-      <!-- End: Bottom First -->
-      {% endif %}
-      {% if page.bottom_second %}
-      <!-- Start: Bottom Second -->
-      <div id="bottom-box-second" class="region-outer bottom-box bottom-box-second">
-        <div class="region-inner bottom-box-inner bottom-box-second-inner fade-inner {{ site_regions_animate_bottom ? 'animate-border' }} {{ classes_bottom_second }}"{{ attributes_bottom_second }}>
-          {{ page.bottom_second }}
-        </div>
-      </div>
-      <!-- End: Bottom Second -->
-      {% endif %}
-      {% if page.bottom_third %}
-      <!-- Start: Bottom Third  -->
-      <div id="bottom-box-third" class="region-outer bottom-box bottom-box-third">
-        <div class="region-inner bottom-box-inner bottom-box-third-inner fade-inner {{ site_regions_animate_bottom ? 'animate-border' }} {{ classes_bottom_third }}"{{ attributes_bottom_third }}>
-          {{ page.bottom_third }}
-        </div>
-      </div>
-      <!-- End: Bottom Third -->
-      {% endif %}
-      {% if page.bottom_fourth %}
-      <!-- Start: Bottom Forth  -->
-      <div id="bottom-box-fourth" class ="region-outer bottom-box bottom-box-fourth">
-        <div class="region-inner bottom-box-inner bottom-box-fourth-inner fade-inner {{ site_regions_animate_bottom ? 'animate-border' }} {{ classes_bottom_fourth }}"{{ attributes_bottom_fourth }}>
-          {{ page.bottom_fourth }}
-        </div>
-      </div>
-      <!-- End: Bottom Forth -->
-      {% endif %}
-    </div>
-  </div>
-  <!-- End: Bottom -->
-    {% endif %}
-  {% endif %}
-
-  {% if page.footer_first or page.footer_second or page.footer_third %}
-  <!-- start: Footer -->
-   <div id="footer-container" class="solo-outer footer-container {{ classes_footer_container }}"{{ attributes_footer_container }}>
-      <div id="footer-container-inner" class="solo-inner solo-col {{ site_regions_layout_footer }} footer-container-inner">
-
-      {% if page.footer_first %}
-      <!-- Start: Footer First  -->
-      <div id="footer-box-first" class="region-outer footer-box footer-box-first">
-        <div class="region-inner footer-box-inner footer-box-first-inner fade-inner {{ site_regions_animate_footer ? 'animate-border' }} {{ classes_footer_first }}"{{ attributes_footer_first }}>
-          {{ page.footer_first }}
-        </div>
-      </div>
-      <!-- End: Footer First -->
-      {% endif %}
-      {% if page.footer_second %}
-      <!-- Start: Footer Second Region -->
-      <div id="footer-box-second" class="region-outer footer-box footer-box-second">
-        <div class="region-inner footer-box-inner footer-box-second-inner fade-inner {{ site_regions_animate_footer ? 'animate-border' }} {{ classes_footer_second }}"{{ attributes_footer_second }}>
-          {{ page.footer_second }}
-        </div>
-      </div>
-    <!-- End: Footer Second -->
-      {% endif %}
-      {% if page.footer_third %}
-      <!-- Start: Footer Third -->
-      <div id="footer-box-third" class="region-outer footer-box footer-box-third">
-        <div class="region-inner footer-box-inner footer-box-third-inner fade-inner {{ site_regions_animate_footer ? 'animate-border' }} {{ classes_footer_third }}"{{ attributes_footer_third }}>
-          {{ page.footer_third }}
-        </div>
-      </div>
-      <!-- End: Footer Third -->
-      {% endif %}
-    </div>
-  </div>
-  <!-- End: Footer -->
-  {% endif %}
-
-  {% if page.footer_menu or sm_show_icons %}
-    <!-- Start: Footer Menu -->
-    <div id="footer-menu" class="solo-outer footer-menu {{ classes_footer_menu }}"{{ attributes_footer_menu }}>
-      <div id="footer-menu-inner" class="solo-inner solo-col solo-col-1 footer-menu-inner">
-
-        {% if sm_show_icons %}
-          <!-- Start: Social Media -->
-          <div class="solo-clear fade-inner footer-menu-first sm-icons {{ sm_icon_size }}">
-            {% set socials = {
-              'facebook': {'url': sm_icon_facebook, 'color': 'blue'},
-              'twitter': {'url': sm_icon_twitter, 'color': 'black'},
-              'pinterest': {'url': sm_icon_pinterest, 'color': 'red'},
-              'linkedin': {'url': sm_icon_linkedin, 'color': 'blue'},
-              'instagram': {'url': sm_icon_instagram, 'color': 'red'},
-              'youtube': {'url': sm_icon_youtube, 'color': 'red'},
-              'drupal': {'url': sm_icon_drupal, 'color': 'blue'},
-              'mastodon': {'url': sm_icon_mastodon, 'color': 'blue'},
-              'rss': {'url': sm_icon_rss, 'color': 'orange'}
-            } %}
-            {% for key, social in socials %}
-              {% if social.url %}
-                <a href="{{ social.url }}" title="{{ key|capitalize }}" class="solo-clear" target="_blank">
-                  <span class="sm-icon sm-icon-{{ key }}"></span>
-                </a>
-              {% endif %}
-            {% endfor %}
-          </div>
-          <!-- End: Social Media -->
-        {% endif %}
-
-        <!-- Start: Bottom Menu -->
-        {% if page.footer_menu %}
-          <div class="solo-clear footer-menu-second fade-inner">
-            {{ page.footer_menu }}
-          </div>
-          <!-- End: Bottom Menu -->
-        {% endif %}
-      </div>
-    </div>
-    <!-- End: Footer Menu -->
-  {% endif %}
-
-  {% if footer_copyright or footer_credit_link %}
-    <!-- Start: Copyright -->
-    <div id="copyright" class="solo-outer copyright {{ classes_credit_copyright }}"{{ attributes_credit_copyright }}>
-      <div id="copyright-inner" class="solo-inner solo-col solo-col-2 copyright-inner">
-        {% if footer_copyright %}
-          <!-- Start: Copyright -->
-
-            <p class="copyright-first">
-              {% set current_date = "now"|date("Y") %}
-              {{ footer_copyright|replace({"%year%": current_date}) }}
-            </p>
-
-          <!-- End: Copyright -->
-        {% endif %}
-        {% if footer_credit_link %}
-          <!-- Start: Credit Link -->
-
-            <p class="copyright-second">Developed &#38; Designed by
-              <a href="https://www.alaahaddad.com" title="Alaa Haddad" target="_blank">
-                Alaa Haddad
-              </a>
-            </p>
-
-          <!-- End: Credit Link -->
-        {% endif %}
-      </div>
-    </div>
-    <!-- End: Copyright -->
-  {% endif %}
 </div>
 <!-- End: Page Wrapper -->

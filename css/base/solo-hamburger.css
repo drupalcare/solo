@@ -6,8 +6,8 @@
 }
 
 .solo-inner .hamburger-icon span>svg {
-  width: 50px;
-  height: 50px;
+  min-width: 3.25rem;
+  height: 3.25rem;
 }
 
 .solo-inner .hamburger-icon #svg-top,
@@ -31,17 +31,17 @@
 
 .solo-inner .hamburger-icon-close #svg-top,
 .solo-inner .hamburger-icon.toggled #svg-top {
-  animation: rotate-down 0.7s ease-out both!important;
+  animation: rotate-down 0.7s ease-out both !important;
 }
 
 .solo-inner .hamburger-icon-close #svg-bottom,
 .solo-inner .hamburger-icon.toggled #svg-bottom {
-  animation: rotate-up 0.7s ease-out both!important;
+  animation: rotate-up 0.7s ease-out both !important;
 }
 
 .solo-inner .hamburger-icon-close #svg-middle,
 .solo-inner .hamburger-icon.toggled #svg-middle {
-  animation: hide-line 0.7s ease-out both!important;
+  animation: hide-line 0.7s ease-out both !important;
 }
 
 @keyframes rotate-up {

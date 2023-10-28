@@ -1,0 +1,17 @@
+  {% if page.primary_sidebar_menu %}
+  <!-- Start: Primary Sidebar Menu  -->
+  <div id="primary-sidebar-menu" class="solo-outer lone main-navigation-wrapper primary-sidebar-menu hamburger-icon {{ header_change_icons ? 'hs-icons-left' }} {{ classes_primary_sidebar_menu }}" role="navigation"  aria-label="{{ 'Main Navigation'|t }}"{{ attributes_primary_sidebar_menu }}>
+    <div id="primary-sidebar-menu-inner" class="solo-inner primary-sidebar-menu-inner">
+
+      <div id="sidebar-button-close" class="sidebar-button-close {{ header_change_icons ? 'hs-icons-left' }}">
+        {# <i class="fa fa-close"></i> #}
+          <button class="btn-animate solo-button-menu hamburger-icon hamburger-icon-close" data-drupal-selector="sidebar-hamburger-icon" aria-label="Close" aria-controls="primary-sidebar-menu" aria-expanded="false" aria-hidden="hidden">
+              <span>{{ svg_bars|raw }}</span>
+          </button>
+      </div>
+
+      {{ page.primary_sidebar_menu }}
+    </div>
+  </div>
+  <!-- End: Primary Sidebar Menu -->
+{% endif %}

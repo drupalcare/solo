@@ -1,8 +1,10 @@
 .maintenance-page {
-  background-color: #a0a0a0 !important;
+  color: var(--r-tx);
+  background-color: var(--r-bg);
 }
 
 .maintenance-page main {
-  min-height: 700px;
-  margin-top: 30px !important;
+  min-height: 43.75rem;
+  margin-top: calc(2* var(--solo-16));
+  !important;
 }

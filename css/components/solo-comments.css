@@ -30,7 +30,7 @@
 }
 
 .comment__attribution img {
-  border: 1px solid #d3d7d9;
+  border: var(--solo-1) solid var(--r-br, var(--r-br-b));
 }
 
 /* This is required to win over specificity of .field--type-image img */
@@ -43,12 +43,12 @@
 }
 
 .comment__author {
-  margin: 4px 0;
+  margin: var(--solo-4) 0;
   line-height: var(--solo-18);
 }
 
 .comment__time {
-  margin-bottom: 4px;
+  margin-bottom: var(--solo-4);
   font-size: var(--solo-14);
   line-height: var(--solo-18);
 }
@@ -68,28 +68,30 @@
   padding: var(--solo-24);
   vertical-align: top;
   width: 100%;
-  border: 1px solid #f4f4f4;
+  border: var(--solo-1) solid var(--r-br, var(--r-br-b));
   word-break: break-all;
   hyphens: auto;
 }
+
 .comment__content > h3 {
   margin-top: 0;
 }
+
 [dir="rtl"] .comment__content:before {
   right: auto;
   left: 100%;
   border-right: none;
-  border-left: 20px solid #f4f4f4;
+  border-left: var(--solo-20) solid var(--r-br, var(--r-br-b));
 }
 
 .comment__content:after {
   content: '';
   position: absolute;
   right: 100%; /* LTR */
-  top: 20px;
-  border-top: 20px solid transparent;
-  border-right: 20px solid transparent; /* LTR */
-  border-bottom: 20px solid transparent;
+  top: var(--solo-20);
+  border-top: var(--solo-20) solid transparent;
+  border-right: var(--solo-20) solid transparent; /* LTR */
+  border-bottom: var(--solo-20) solid transparent;
   margin-right: -1px; /* LTR */
 }
 
@@ -97,13 +99,13 @@
   right: auto;
   left: 100%;
   border-right: none;
-  border-left: 20px solid transparent;
+  border-left: var(--solo-20) solid transparent;
   margin-right: 0;
   margin-left: -1px;
 }
 
 .indented {
-  margin-left: 40px; /* LTR */
+  margin-left: calc(2 * var(--solo-20)); /* LTR */
 }
 
 [dir="rtl"] .indented {
@@ -112,40 +114,39 @@
 }
 
 .comment .links {
-  padding: 0 0 0.25em 0;
+  padding: 0 0 var(--solo-4) 0;
 }
 
 .comment .links li {
-  padding: 0 0.5em 0 0; /* LTR */
-  font-size: 1.08em;
+  padding: 0 var(--solo-8) 0 0; /* LTR */
+  font-size: var(--solo-16);
 }
 
 [dir="rtl"] .comment .links li {
-  padding: 0 0 0 0.5em;
+  padding: 0 0 0 var(--solo-8);
 }
 
 .comment--unpublished {
-  margin-right: 5px; /* LTR */
-  padding: 5px 2px 5px 5px; /* LTR */
-  background: #fff4f4;
+  margin-right: var(--solo-5); /* LTR */
+  padding: var(--solo-5) var(--solo-2) var(--solo-5); /* LTR */
 }
 
 [dir="rtl"] .comment--unpublished {
-  margin-left: 5px;
+  margin-left: var(--solo-5);
   margin-right: 0;
-  padding: 5px 5px 5px 2px;
+  padding: var(--solo-5) var(--solo-5) var(--solo-5) var(--solo-2);
 }
 
 /**
  * change this to .comment--unpublished.
  */
 .unpublished .comment-text .comment-arrow {
-  border-left: 1px solid #fff4f4;
-  border-right: 1px solid #fff4f4;
+  border-left: var(--solo-1) solid var(--r-br, var(--r-br-b));
+  border-right: var(--solo-1) solid var(--r-br, var(--r-br-b));
 }
 
 .unpublished {
-  padding: 20px 15px 0;
+  padding: var(--solo-20) var(--solo-15) 0;
 }
 
 .comment-footer {
@@ -154,10 +155,10 @@
 
 .comment--unpublished .comment__text:after,
 .node--unpublished .comment__text:after {
-  border-right-color: #fff4f4; /* LTR */
+  border-right-color: var(--r-br, var(--r-br-b)); /* LTR */
 }
 
 [dir="rtl"] .comment--unpublished .comment__content:after,
 [dir="rtl"] .node--unpublished .comment__content:after {
-  border-left-color: #fff4f4;
+  border-left-color: var(--r-br, var(--r-br-b));
 }

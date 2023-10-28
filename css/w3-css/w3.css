@@ -753,7 +753,7 @@ a {
 
 }
 
-@media (min-width:993px) {
+@media (min-width:62.001rem) {
   .w3-col.l1 {
     width: 8.33333%;
   }
@@ -920,7 +920,7 @@ a {
 
 }
 
-@media (min-width:993px) {
+@media (min-width:62.001rem) {
   .w3-modal-content {
     width: 900px;
   }
@@ -935,14 +935,14 @@ a {
 
 }
 
-@media (max-width:992px) and (min-width:601px) {
+@media (max-width:62rem) and (min-width:601px) {
   .w3-hide-medium {
     display: none !important;
   }
 
 }
 
-@media (max-width:992px) {
+@media (max-width:62rem) {
   .w3-sidebar.w3-collapse {
     display: none;
   }

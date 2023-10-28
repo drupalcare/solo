@@ -4,11 +4,12 @@ table {
 }
 
 tr {
-  border-bottom: 1px solid #eaeaea;
+  border-bottom: 1px solid var(--r-br, var(--r-br-b));
 }
 
 tr.region-title {
-  background-color: #d2d2d2 !important;
+  color: var(--r-tx);
+  background-color: var(--r-bg);
 }
 
 .region-title td {
@@ -29,7 +30,7 @@ table td li {
 }
 
 .solo-table-all {
-  border-color: #eaeaea !important;
+  border-color: var(--r-br, var(--r-br-b)) !important;
 }
 
 .solo-table td,

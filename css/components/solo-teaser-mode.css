@@ -3,7 +3,7 @@
 }
 
 .view .node--view-mode-teaser .node__content .field--name-field-image {
-  margin: 24px 16px 0 0;
+  margin: var(--solo-24) var(--solo-16) 0 0;
   float: left;
 }
 

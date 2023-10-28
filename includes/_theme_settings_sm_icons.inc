@@ -1,0 +1,75 @@
+<?php
+
+/**
+ * @file
+ * Solo Theme.
+ *
+ * Filename:     solo.theme
+ * Website:      http://www.flashwebcenter.com
+ * Description:  template
+ * Author:       Alaa Haddad http://www.alaahaddad.com.
+ */
+
+/**
+ * The theme settings.
+ */
+
+$form['solo_settings']['settings_social_icons'] = [
+  '#type' => 'details',
+  '#title' => t("<strong class='purple'>Social Media Links</strong> Settings - Solo Theme"),
+  '#collapsible' => TRUE,
+  '#collapsed' => FALSE,
+];
+
+$form['solo_settings']['settings_social_icons']['sm_icon_size'] = [
+  '#type' => 'radios',
+  '#title' => t('The size of the social media icons can be altered from here.'),
+  '#default_value' => theme_get_setting('sm_icon_size'),
+  '#options' => [
+    'sm-icons-small' => t('Small - Default'),
+    'sm-icons-medium'  => t('Medium icons'),
+    'sm-icons-large'   => t('Large icons'),
+  ],
+];
+
+$form['solo_settings']['settings_social_icons']['sm_icon_colors'] = [
+  '#type' => 'textfield',
+  '#maxlength' => 7,
+  '#size' => 10,
+  '#title' => t('Change Social Media Default Colors'),
+  '#description' => t("Select this option if you wish to alter the color of the social media icons."),
+  '#default_value' => theme_get_setting('sm_icon_colors'),
+  '#attributes' => [
+    'pattern' => '^#[a-fA-F0-9]{6}',
+  ],
+  '#wrapper_attributes' => [
+    'data-drupal-selector' => 'solo-color-picker',
+  ],
+];
+
+$form['solo_settings']['settings_social_icons']['sm_show_icons'] = [
+  '#type' => 'checkbox',
+  '#title' => t('Show Social Icons'),
+  '#default_value' => theme_get_setting('sm_show_icons'),
+  '#description' => t("Select this option to display the Social Icon. Deselect it to conceal."),
+];
+
+$social_icons = [
+  'facebook' => 'Facebook Page',
+  'twitter' => 'Twitter Profile',
+  'pinterest' => 'Pinterest Profile',
+  'linkedin' => 'Linkedin Profile',
+  'instagram' => 'Instagram Profile',
+  'youtube' => 'Youtube Profile',
+  'mastodon' => 'Mastodon Profile',
+  'drupal' => 'Drupal Profile',
+  'rss' => 'RSS Link',
+];
+
+foreach ($social_icons as $key => $value) {
+  $form['solo_settings']['settings_social_icons']['sm_icon_' . $key] = [
+    '#type' => 'textfield',
+    '#title' => t($value),
+    '#default_value' => theme_get_setting('sm_icon_' . $key),
+  ];
+}

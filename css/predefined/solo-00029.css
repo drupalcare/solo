@@ -108,7 +108,7 @@ textarea:focus {
   padding: 0 16px!important;
 }
 
-@media (max-width:992px) {
+@media (max-width:62rem) {
   #footer-menu-inner {
     padding: 0 12px!important;
   }

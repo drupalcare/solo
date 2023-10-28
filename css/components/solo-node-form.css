@@ -6,14 +6,14 @@ details.form-wrapper::after {
 
 details.form-wrapper {
   padding: 0 !important;
-  margin-bottom: 8px !important;
+  margin-bottom: var(--solo-8) !important;
   line-height: inherit;
   color: inherit;
 }
 
 details.form-wrapper > summary {
   cursor: pointer;
-  padding: 8px 16px;
+  padding: var(--solo-8) var(--solo-16);
 }
 
 .details-wrapper {
@@ -22,7 +22,7 @@ details.form-wrapper > summary {
 }
 
 .modules-wrapper details[open] {
-  padding: 8px 16px !important;
+  padding: var(--solo-8) var(--solo-16) !important;
 }
 
 .vertical-tabs details[open] {
@@ -176,8 +176,6 @@ table ul.dropbutton li.solo-left.dropbutton-action {
 
 table ul.dropbutton,
 .js .dropbutton-widget .dropbutton {
-  background-color: white;
-  border: 1px solid #e8e8e8;
   padding: 0 !important;
 }
 
@@ -192,9 +190,7 @@ table ul.dropbutton,
 }
 
 .dropbutton button {
-  border: 1px solid #e8e8e8;
   border-left: none;
-  background-color: white;
 }
 
 .js td .dropbutton-wrapper {

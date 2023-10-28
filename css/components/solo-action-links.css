@@ -7,12 +7,11 @@
   padding-inline-end: 0;
   list-style: none;
 }
+
 .action-links li {
   display: inline-block;
 }
-.action-links li a {
-  color: var(--solo-gray);
-}
+
 .action-links-item {
   display: inline-block;
 }

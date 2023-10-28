@@ -1,35 +1,31 @@
 INTRODUCTION:
 --------------------------------------------------------------------------------
 
-When building this theme, I focused on ease of use and a fast load time. Now,
-you have the power to create unlimited UI design by using the W3CSS Paragraphs.
-- Smaller and faster than other CSS frameworks.
-- Easier to learn, and easier to use than other CSS frameworks.
-- Uses standard CSS only (No jQuery or JavaScript library).
-- Speeds up and simplifies web development.
-- Supports modern responsive design (mobile first) by default.
-- Provides CSS equality for all browsers. Chrome, Firefox, IE, Safari, and more.
-- Provides CSS equality for all devices. PC, laptop, tablet, and mobile.
-- Learn more about W3.CSS https://www.w3schools.com/w3css/
+The development of this theme was centered around user-friendliness and quick loading times. With the W3CSS Paragraphs, you now possess the capability to generate an infinite number of UI designs.
+
+This CSS framework is not only smaller and quicker than its counterparts, but it's also simpler to learn and utilize. It exclusively employs standard CSS, eliminating the need for jQuery or JavaScript libraries. This accelerates and streamlines web development. By default, it supports contemporary responsive design with a mobile-first approach. It ensures CSS uniformity across all browsers, including Chrome, Firefox, IE, Safari, and more. Additionally, it guarantees CSS consistency across all devices, such as PCs, laptops, tablets, and mobiles. To learn more about W3.CSS, visit W3.CSS.
 
 
 REQUIREMENTS:
 --------------------------------------------------------------------------------
 
-This theme does not require any moduels to be installed.
+No modules need to be installed for this theme.
 
 
 INSTALLATION:
 --------------------------------------------------------------------------------
 
-Download the theme to your-drupal-site-name/themes/ and go to
-your-site-domain/admin/appearance and scroll to the bottom until you see Solo
-Theme and click on Install and set as default and click save.
+Follow these steps to download and install the Solo Theme on your Drupal site:
 
+1. Download the Solo Theme and save it to the themes/ directory of your Drupal site. The path should look like this: your-drupal-site-name/themes/.
+2. Navigate to the Appearance settings of your site by going to your-site-domain/admin/appearance.
+3. Scroll down the page until you find the Solo Theme.
+4. Click on 'Install and set as default'.
+5. Click 'Save' to apply the changes.
 
 FEATURES:
 --------------------------------------------------------------------------------
-) Solo Theme is using the modern W3.CSS framework with built-in responsiveness
+) Solo Theme is modern Drupal with built-in responsiveness
 
 ) Solo Theme has 22 regions. Check README.txt for more details.
 

@@ -4,7 +4,7 @@ body {
   overflow-wrap: break-word;
   font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
   font-size: var(--solo-16);
-  line-height: calc(2 * var(--solo-16));
+  line-height: var(--solo-32);
   font-weight: normal;
   font-style: normal;
   -webkit-font-smoothing: antialiased;
@@ -56,8 +56,8 @@ h6 {
 
 hr {
   border: 0;
-  border-top: 1px solid #eee;
-  margin: 20px 0;
+  border-top: 1px solid var(--r-br, var(--r-br-b));
+  margin: var(--solo-20) 0;
 }
 
 .solo-image {
@@ -69,10 +69,7 @@ img {
   vertical-align: middle;
 }
 
-a {
-  color: inherit;
-}
-
+/* End Var tags */
 .solo-container:after,
 .solo-container:before,
 .solo-panel:after,
@@ -82,6 +79,17 @@ a {
   content: "";
   display: table;
   clear: both;
+}
+
+::placeholder {
+  color: var(--r-tx);
+  opacity: 0.7;
+  font-size: 90%;
+}
+
+::-ms-input-placeholder {
+  color: var(--r-tx);
+  opacity: 0.7;
 }
 
 /* Table */
@@ -94,26 +102,26 @@ a {
 }
 
 .solo-table-all {
-  border: 1px solid #eee;
+  border: var(--solo-1) solid var(--r-br, var(--r-br-b));
 }
 
 .solo-table-all tr {
-  border-bottom: 1px solid #eee;
+  border-bottom: var(--solo-1) solid var(--r-br, var(--r-br-b));
 }
 
 .solo-table-all tr:nth-child(odd) {
-  background-color: #fff;
+  background-color: var(--solo-odd);
 }
 
 .solo-table-all tr:nth-child(even) {
-  background-color: #fafafa;
+  background-color: var(--solo-even);
 }
 
 .solo-table td,
 .solo-table th,
 .solo-table-all td,
 .solo-table-all th {
-  padding: 8px 8px;
+  padding: var(--solo-8);
   display: table-cell;
   text-align: left;
   vertical-align: top;
@@ -123,7 +131,7 @@ a {
 .solo-table td:first-child,
 .solo-table-all th:first-child,
 .solo-table-all td:first-child {
-  padding-left: 16px;
+  padding-left: var(--solo-16);
 }
 
 /*Unordered list */
@@ -131,17 +139,19 @@ a {
   list-style-type: none;
   padding: 0;
   margin: 0;
+  line-height: inherit;
 }
 
 .solo-ul li {
-  padding: 8px 16px;
+  padding: var(--solo-8) var(--solo-16);
 }
 
 /* Button */
+.button,
 .solo-button {
-  border: 1px solid #ddd;
   display: inline-block;
-  padding: 16px 32px;
+  padding: var(--solo-8);
+  line-height: inherit;
   vertical-align: middle;
   overflow: hidden;
   text-decoration: none;
@@ -158,75 +168,62 @@ a {
   user-select: none;
 }
 
-/*.btn,
-.solo-button,
-.button--primary  {
-  display: inline-block;
-  font-weight: 400;
-  color: #212529;
+.form-submit,
+.solo-button.button--primary,
+.block-user-login-block form+.item-list ul li a {
+  border-width: var(--solo-1);
+  border-style: solid;
+  padding: var(--solo-10) var(--solo-24);
+  margin: var(--solo-6) auto;
+  float: none;
   text-align: center;
-  vertical-align: middle;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  background-color: transparent;
-  border: 1px solid transparent;
-  padding: .375rem .75rem;
-  font-size: 1rem;
-  line-height: 1.5;
-  border-radius: .25rem;
-  -webkit-transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, -webkit-box-shadow .15s ease-in-out;
-  transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, -webkit-box-shadow .15s ease-in-out;
-  transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
-  transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out, -webkit-box-shadow .15s ease-in-out
-}*/
+}
+
 .solo-button:disabled {
   cursor: not-allowed;
   opacity: 0.3;
 }
 
+.solo-button.button--small {
+  padding: var(--solo-8);
+  margin: var(--solo-2) auto;
+}
+
 /* Forms Elements */
 .solo-check,
 .solo-radio {
-  width: 24px;
-  height: 24px;
+  width: var(--solo-24);
+  height: var(--solo-24);
   position: relative;
-  top: 6px;
-  border: 1px solid #ddd;
+  top: var(--solo-66);
+  border: var(--solo-1) solid var(--r-br, var(--r-br-b));
+  line-height: inherit;
 }
 
-.solo-input {
-  padding: 16px 8px;
+.solo-input,
+.solo-textarea {
+  padding: var(--solo-10) var(--solo-8);
   display: block;
   width: 100%;
-  border: 1px solid #ddd;
+  border: var(--solo-1) solid var(--r-br, var(--r-br-b));
+  line-height: inherit;
 }
 
 .form-type-date > input {
-  max-height: 55px;
-}
-
-a.form-submit,
-.solo-button.form-submit {
-  padding: 16px 24px;
-  margin: 6px auto;
-  float: none;
-  text-align: center;
-  border: 1px solid #ddd;
+  max-height: 3.438rem;
 }
 
 .solo-select {
-  padding: 16px 12px;
+  padding: var(--solo-16) var(--solo-12);
   width: 100%;
 }
 
 select {
   max-width: 100%;
-  border: 1px solid #ddd;
+  border: var(--solo-1) solid var(--r-br, var(--r-br-b));
   background-image: var(--solo-select-arrow-icon);
   background-repeat: no-repeat;
-  background-position: right 10px center; /* LTR */
+  background-position: right var(--solo-10) center;
   font-family: inherit;
   font-size: inherit;
   -webkit-appearance: none;
@@ -239,7 +236,7 @@ select[disabled] {
 }
 
 select.error {
-  border: solid 2px var(--solo-red);
+  border: solid var(--solo-2) var(--solo-red);
 }
 
 select.error:focus {
@@ -249,11 +246,14 @@ select.error:focus {
 select[multiple] {
   height: auto;
   background-image: none;
-  line-height: 1;
 }
 
 select[multiple] option {
-  padding: 16px 12px;
+  padding: var(--solo-16) var(--solo-12);
+}
+
+ol {
+  display: block;
 }
 
 .form-type-number>label {
@@ -262,26 +262,26 @@ select[multiple] option {
 
 .field-prefix,
 .field-suffix {
-  padding: 16px 8px;
+  padding: var(--solo-16) var(--solo-8);
   vertical-align: middle;
 }
 
 .solo-padding {
-  padding: 8px 16px;
+  padding: var(--solo-8) var(--solo-16);
 }
 
 .solo-container,
 .solo-panel {
-  padding: 0.01em 16px;
+  padding: var(--solo-3) var(--solo-16);
 }
 
 .solo-panel {
-  margin-top: 16px;
-  margin-bottom: 16px;
+  margin-top: var(--solo-16);
+  margin-bottom: var(--solo-16);
 }
 
 .solo-small {
-  font-size: 14px;
+  font-size: var(--solo-13);
 }
 
 .solo-bar {
@@ -290,7 +290,7 @@ select[multiple] option {
 }
 
 .solo-bar .solo-bar-item {
-  padding: 8px 16px;
+  padding: var(--solo-8) var(--solo-16);
   float: left;
   width: auto;
   border: none;
@@ -299,8 +299,8 @@ select[multiple] option {
 }
 
 .solo-section {
-  margin-top: 16px;
-  margin-bottom: 16px;
+  margin-top: var(--solo-16);
+  margin-bottom: var(--solo-16);
 }
 
 .solo-block {
@@ -316,19 +316,15 @@ select[multiple] option {
 .links.inline {
   display: flex;
   justify-content: right;
-  font-size: 14px;
+  font-size: var(--solo-14);
 }
 
 form fieldset {
-  border: 1px solid #eaeaea !important;
-  margin-top: 12px;
+  border: 1px solid var(--r-br, var(--r-br-b)) !important;
+  margin-top: var(--solo-12);
 }
 
 /* Global Classes */
-.sol-animate-opacity-disabled {
-  animation: none !important;
-}
-
 .solo-fixed {
   position: fixed;
   top: 0;
@@ -347,36 +343,40 @@ form fieldset {
   width: 100%;
 }
 
-ol {
-  display: block;
-}
-
 .visuallyhidden {
   opacity: 0;
 }
 
-.solo-padding-0 {
-  padding: 0 !important;
-}
-
-.solo-margin-0 {
-  margin: 0 !important;
-}
-
-.solo-box-shadow-0 {
+.dis-box-shadow {
   box-shadow: none !important;
 }
 
-.solo-border-0 {
-  border: none !important;
+.dis-border {
+  border: 0 !important;
 }
 
-.solo-round-0 {
+.dis-border-radius {
   border-radius: 0 !important;
 }
 
+.dis-margin {
+  margin: 0 !important;
+}
+
+.dis-padding {
+  padding: 0 !important;
+}
+
+.dis-opacity {
+  animation: none !important;
+}
+
+.dis-text-transform {
+  text-transform: none !important;
+}
+
 .solo-card {
-  -webkit-box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.12);
-  -moz-box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.12);
-  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.12);
+  -webkit-box-shadow: 0 var(--solo-1) var(--solo-3) 0 rgba(0, 0, 0, 0.12);
+  -moz-box-shadow: 0 var(--solo-1) var(--solo-3) 0 rgba(0, 0, 0, 0.12);
+  box-shadow: 0 var(--solo-1) var(--solo-3) 0 rgba(0, 0, 0, 0.12);
 }

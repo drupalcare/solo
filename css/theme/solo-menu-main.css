@@ -1,9 +1,9 @@
 /* For the repsonsive menus (Primary, Click and Hover) */
-@media (min-width:993px) {
-
+@media (min-width:62.001rem) {
   .solo-inner .navigation__responsive {
     display: flex !important;
     flex-wrap: wrap;
+    justify-content: center;
   }
 
   .solo-inner .navigation__responsive>li.nav__menu-item ul.sub__menu {
@@ -23,19 +23,48 @@
     position: absolute;
   }
 
+  /* For the second tier */
+  .solo-inner .navigation__responsive>li>ul.sub__menu {
+    left: 0;
+    top: 100%;
+  }
+
   /* For the third tier */
-  .solo-inner .navigation__responsive>li.nav__menu-item li.has-sub__menu ul.sub__menu {
+  .solo-inner .navigation__responsive>li>ul>li>ul.sub__menu {
     left: 100%;
     top: 0;
   }
 
-  .solo-inner .navigation__responsive__hover li:hover>ul.sub__menu {
+  .solo-inner .navigation-responsive-hover .navigation__responsive li:hover>ul.sub__menu {
     display: flex !important;
   }
 
+  .solo-inner .navigation-responsive-hover .navigation__responsive>li.has-sub__menu:hover .dropdown-arrow {
+    transition: all 0.3s ease;
+    transform: rotate(180deg);
+  }
+
+  .solo-inner .navigation-responsive-hover .navigation__responsive>li>ul>li.has-sub__menu:hover .dropdown-arrow {
+    transition: all 0.3s ease;
+    transform: rotate(-90deg);
+  }
+
+  .page-wrapper .navigation-responsive-hover .navigation__responsive li.has-sub__menu>a:hover,
+  .page-wrapper .navigation-responsive-hover .navigation__responsive li.has-sub__menu>button:hover {
+    color: inherit !important;
+    background-color: inherit !important;
+  }
+
+  .page-wrapper .navigation-responsive-hover .navigation__responsive li.has-sub__menu:hover>a,
+  .page-wrapper .navigation-responsive-hover .navigation__responsive li.has-sub__menu:hover>button {
+    color: var(--r-tx-lk-h, var(--r-tx)) !important;
+    background-color: var(--r-bg-lk-h, var(--r-bg)) !important;
+  }
+
 }
+
 /* For the repsonsive menus (Primary, Click and Hover) */
-@media (max-width:992px) {
+@media (max-width:62rem) {
   .solo-inner .navigation__responsive,
   .solo-inner .navigation__responsive ul.sub__menu {
     justify-content: left;
@@ -60,12 +89,14 @@
     overflow: hidden;
   }
 
-  .solo-inner .navigation__responsive >li.nav__menu-item>ul.sub__menu>li.nav__menu-item {
-    padding-left: 12px;
+  .solo-inner .navigation__responsive>li.nav__menu-item>ul.sub__menu>li.nav__menu-item>a:first-child,
+  .solo-inner .navigation__responsive>li.nav__menu-item>ul.sub__menu>li.nav__menu-item>button:first-child {
+    padding-left: 24px;
   }
 
-  .solo-inner .navigation__responsive>li.nav__menu-item>ul.sub__menu>li.nav__menu-item>ul.sub__menu>li.nav__menu-item {
-    padding-left: 24px;
+  .solo-inner .navigation__responsive>li.nav__menu-item>ul.sub__menu>li.nav__menu-item>ul.sub__menu>li.nav__menu-item>a:first-child,
+  .solo-inner .navigation__responsive>li.nav__menu-item>ul.sub__menu>li.nav__menu-item>ul.sub__menu>li.nav__menu-item>button:first-child {
+    padding-left: 32px;
   }
 
   .solo-inner .navigation__responsive li.has-sub__menu {
@@ -79,6 +110,10 @@
 
   .solo-inner .navigation__responsive li.link-and-button>button {
     margin-left: auto;
+  }
+
+  .mobile-nav > button {
+    padding: 0 16px !important;
   }
 
 }

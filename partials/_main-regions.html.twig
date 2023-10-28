@@ -1,0 +1,40 @@
+  <!-- Start: Main -->
+  <div id="main-container" class="solo-outer multi main-container {{ classes_main_container }}"{{ attributes_main_container }}>
+    <div id="main-container-inner"  class="solo-inner solo-col {{ main_layout }} main-container-inner">
+      <!-- Start Main Container -->
+
+        {% if page.sidebar_first %}
+          <!-- Start Left SideBar -->
+          <div id="sidebar-box-first" class="region-outer main-box sidebar-box-first" role="complementary">
+            <div class="region-inner main-box-inner sidebar-box-first-inner fade-inner {{ site_regions_rounded_main }} {{ classes_sidebar_first }}"{{ attributes_sidebar_first }}>
+              {{ page.sidebar_first }}
+            </div>
+          </div>
+          <!-- End: Left SideBar -->
+        {% endif %}
+
+        {% if page.content %}
+          <!-- Start: Main Content -->
+          <div id="sidebar-box-main" class="region-outer main-box sidebar-box-main" role="main">
+            <div class="region-inner main-box-inner sidebar-box-main-inner fade-inner {{ site_regions_rounded_main }} {{ classes_content }}"{{ attributes_content }}>
+              {{ page.content }}
+            </div>
+          </div>
+          <!-- End: Main Content -->
+        {% endif %}
+
+        {% if page.sidebar_second %}
+          <!-- Start: Right SideBar -->
+          <div id="sidebar-box-second" class="region-outer main-box sidebar-box-second" role="complementary">
+            <div class="region-inner main-box-inner sidebar-box-second-inner fade-inner {{ site_regions_rounded_main }} {{ classes_sidebar_second }}"{{ attributes_sidebar_second }}>
+              {{ page.sidebar_second }}
+            </div>
+          </div>
+          <!-- End: Right SideBar -->
+        {% endif %}
+
+      <!-- End: Main Container -->
+
+    </div>
+  </div>
+  <!-- End: Main -->

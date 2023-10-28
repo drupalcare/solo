@@ -21,31 +21,22 @@
 {% import _self as menus %}
 
 {% set svg_bars %}
-      <svg viewbox="0 0 60 40">
-        <g stroke="#fff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
-          <path id="svg-top" d="M10,10 L50,10 Z"></path>
-          <path id="svg-middle" d="M10,20 L50,20 Z"></path>
-          <path id="svg-bottom" d="M10,30 L50,30 Z"></path>
-        </g>
-      </svg>
+{% include '@solo/partials/svg/_svg-bars.html.twig' %}
 {% endset %}
 
 {% macro svg_icon(icon_value) %}
-  <svg aria-hidden="true" role="img" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="butt" stroke-linejoin="bevel"><path d="{{ icon_value }}"/></svg>
+{% include '@solo/partials/svg/_svg-menu-arrow.html.twig' %}
 {% endmacro %}
 
-<div class="solo-clear solo-menu navigation-responsive navigation-primary-responsive">
-
+{% import _self as menus %}
+<div class="solo-clear solo-menu navigation-responsive {{ click_hover }} navigation-primary-responsive">
   <div class="mobile-nav hamburger-icon solo-block">
-    {# <i class="fa fa-bars"></i> #}
     <button class="solo-button-menu mobile-menubar-toggler-button" data-drupal-selector="mobile-menubar-toggler-button" aria-label='Close Or Open' aria-expanded="false" aria-expanded="true">
       <span>
         {{ svg_bars|raw }}
       </span>
     </button>
   </div>
-
-{% import _self as menus %}
 {#
 We call a macro which calls itself to render the full tree.
 @see http://twig.sensiolabs.org/doc/tags/macro.html
@@ -85,7 +76,7 @@ We call a macro which calls itself to render the full tree.
       {% set rendered_url = item.url|render %}
 
       {% set item_classes = [
-      'nav__menu-item nav__menu-item-' ~ menu_name|clean_class,
+      'btn-animate nav__menu-item nav__menu-item-' ~ menu_name|clean_class,
       (item and menu_level == 1 ) ? 'nav__menubar-item',
       (item and menu_level > 1 ) ? 'nav__submenu-item',
       item.is_expanded ? 'has-sub__menu',

@@ -36,8 +36,8 @@
 }
 
 #drupal-off-canvas .details-wrapper ul li a {
-  line-height: 24px;
-  font-size: 14px;
+  line-height: var(--solo-24);
+  font-size: var(--solo-14);
 }
 
 .layout-builder-block .solo-left.field__item {
@@ -46,8 +46,8 @@
 }
 
 #drupal-off-canvas .form-item {
-  margin-top: 10px;
-  margin-bottom: 10px;
+  margin-top: var(--solo-10);
+  margin-bottom: var(--solo-10);
 }
 
 #drupal-off-canvas input[type="checkbox"],
@@ -57,7 +57,7 @@
 
 #drupal-off-canvas .form-type-radio label,
 #drupal-off-canvas .form-type-checkbox label {
-  height: 24px;
+  height: var(--solo-24);
   display: inline-block;
 }
 
@@ -80,9 +80,9 @@
   clear: none;
   display: inline-block;
   text-align: center;
-  padding: 10px 15px;
-  margin: 0 20px 0 0;
-  border-radius: 20px 0 20px 0;
+  padding: var(--solo-8) var(--solo-16);
+  margin: 0 var(--solo-20) 0 0;
+  border-radius: var(--solo-20) 0;
 }
 
 .node-layout-builder-form {
@@ -92,12 +92,13 @@
 }
 
 .node-layout-builder-form .messages {
-  padding-left: 30px !important;
-  margin-left: 10px;
+  padding-left: calc(2 * var(--solo-16));
+  !important;
+  margin-left: var(--solo-10);
 }
 
 .node-layout-builder-form .vertical-tabs__panes {
-  margin: 20px;
+  margin: var(--solo-20);
 }
 
 .layout-builder__region {
@@ -105,7 +106,7 @@
 }
 
 .layout-builder-block {
-  padding: 5px 15px;
+  padding: var(--solo-5) var(--solo-16);
   background-color: transparent;
   clear: both;
 }
@@ -124,8 +125,8 @@
 }
 
 .layout-builder {
-  margin: 10px;
-  padding: 10px 15px;
+  margin: var(--solo-10);
+  padding: var(--solo-10) var(--solo-15);
   border: 1px solid rgb(55, 170, 220);
 }
 
@@ -135,12 +136,12 @@
 
 .layout-builder__link--configure,
 .layout-builder__link--remove {
-  font-size: 13px;
+  font-size: var(--solo-13);
   clear: none;
   display: inline-block;
   text-align: center;
-  padding: 7px 15px;
-  margin: 0 10px 0 0;
+  padding: var(--solo-8) var(--solo-16);
+  margin: 0 var(--solo-10) 0 0;
   text-indent: unset;
   width: auto;
   height: auto;
@@ -148,30 +149,30 @@
 
 .layout-builder__link--remove,
 .layout-builder__link--configure {
-  border-radius: 15px 0 15px 0;
+  border-radius: var(--solo-20) 0;
 }
 
 .layout-builder__add-block,
 .layout-builder__link--add,
 .layout-builder__add-section {
-  border-radius: 20px 0 20px 0;
+  border-radius: var(--solo-20) 0;
 }
 
 .layout-builder__link--add:before {
   display: inline-block;
-  width: 16px;
-  height: 16px;
-  margin: 0 10px 0 0;
+  width: var(--solo-16);
+  height: var(--solo-16);
+  margin: 0 var(--solo-10) 0 0;
   content: "";
   vertical-align: middle;
   background-image: url(../../images/icons/plus-circle.svg);
   background-repeat: no-repeat;
-  background-size: 16px 16px;
+  background-size: var(--solo-16) var(--solo-16);
   background-color: transparent;
 }
 
 .layout-builder__add-section {
-  margin-bottom: 15px;
+  margin-bottom: var(--solo-16);
   padding: 0;
   border: none;
   outline: none;
@@ -179,20 +180,21 @@
 
 .layout-builder__add-block {
   padding: 0;
-  margin: 10px !important;
+  margin: var(--solo-10) !important;
   display: inline-block;
 }
 
 .layout-builder__link--add {
-  padding: 10px 20px;
+  padding: var(--solo-10) var(--solo-20);
   width: 100%;
   display: block;
   text-align: left;
 }
 
 .layout-builder__add-block>a {
-  padding: 7px 22px !important;
-  font-size: 14px;
+  padding: var(--solo-8) var(--solo-24);
+  !important;
+  font-size: var(--solo-14);
 }
 
 .layout-builder__link--remove:hover {
@@ -200,7 +202,7 @@
 }
 
 .layout-builder__link--configure {
-  margin: 0 0 20px 0;
+  margin: 0 0 var(--solo-20) 0;
   color: #0b3e6f;
 }
 
@@ -214,7 +216,7 @@
 
 .layout-builder .field>img {
   width: 100%;
-  margin-top: 10px;
+  margin-top: var(--solo-10);
 }
 
 .layout-builder__add-block.is-layout-builder-highlighted,
@@ -222,7 +224,7 @@
 .layout-builder__layout.is-layout-builder-highlighted:before,
 .layout-builder__layout.is-layout-builder-highlighted,
 .layout-builder-block.is-layout-builder-highlighted {
-  border: 2px solid #a2ceef;
+  border: var(--solo-2)solid #a2ceef;
 }
 
 .ui-dialog.ui-dialog-off-canvas .ui-dialog-titlebar {

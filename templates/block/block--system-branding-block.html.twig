@@ -14,11 +14,16 @@
  */
 #}
 {% block content %}
+
 <div class="branding-wrapper">
   <div class="branding-first">
     {% if site_logo %}
       <a class="site-logo" href="{{ path('<front>') }}" title="{{ 'Home'|t }}" rel="home">
-        <img class="site-logo-img" src="{{ site_logo }}" alt="{{ 'Home'|t }}" />
+      {% if logo_default %}
+      {% include '@solo/partials/svg/_svg-logo.html.twig' with { solo_path: solo_path } only %}
+      {% else %}
+      <img class="site-logo-img" src="{{ site_logo }}" alt="{{ 'Home'|t }}" />
+      {% endif %}
       </a>
     {% endif %}
   </div>

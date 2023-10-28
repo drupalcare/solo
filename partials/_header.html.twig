@@ -1,0 +1,31 @@
+  {% if page.header or page.primary_sidebar_menu %}
+    <!-- Start: Header -->
+    <header id="header" class="solo-outer lone header {{ site_header_colors }} {{ site_name_animate_on }} {{ classes_header }}" role="banner" aria-label="{{ 'Site header'|t }}"{{ attributes_header }}>
+      <div id="header-inner" class="solo-inner solo-col solo-col-1 header-inner {{ header_change_icons ? 'hs-icons-left' }} {{ header_sitename_center ? 'header-sitename-center' }}">
+
+        {% if page.primary_sidebar_menu %}
+          <div id="sidebar-button-open" class="hamburger-icon sidebar-button-open">
+            {# <i class="fa fa-bars"></i> #}
+            <button class="btn-animate solo-button-menu sidebar-hamburger-icon" data-drupal-selector="sidebar-hamburger-icon" aria-label="Open" aria-controls="primary-sidebar-menu" aria-expanded="false" aria-hidden="true">
+              <span>{{ svg_bars|raw }}</span>
+            </button>
+          </div>
+        {% endif %}
+
+        {% if page.fixed_search_block %}
+          <div id="search-button-open" class="hamburger-icon search-button-open">
+            {# <i class="fa fa-bars"></i> #}
+            <button class="btn-animate solo-button-menu sidebar-hamburger-icon" data-drupal-selector="sidebar-hamburger-icon" aria-label="Open" aria-controls="primary-sidebar-menu" aria-expanded="false" aria-hidden="true">
+              <span>{{ svg_search|raw }}</span>
+            </button>
+          </div>
+        {% endif %}
+
+        {% if page.header %}
+          {{ page.header }}
+        {% endif %}
+
+      </div>
+    </header>
+    <!-- End: Header -->
+  {% endif %}

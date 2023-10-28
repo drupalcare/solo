@@ -9,31 +9,33 @@
 .layout-region-node-secondary,
 .layout-region-node-footer,
 .layout-region-node-main {
-  border: 1px solid #eaeaea;
+  border: 1px solid var(--r-br, var(--r-br-b));
   border-radius: 10px;
-  background-color: #fff;
+  background-color: var(--r-bg);
   width: 100%;
-  margin: 20px 0;
+  margin: var(--solo-20) 0;
   padding: 0;
   -webkit-box-shadow: 0px 0px 19px 19px rgba(180, 180, 180, 0.1);
   box-shadow: 0px 0px 19px 19px rgba(180, 180, 180, 0.1);
 }
 
 .layout-region-node-footer {
-  padding-top: 20px;
-  padding-bottom: 20px;
-  background-color: #fff;
+  padding-top: var(--solo-20);
+  padding-bottom: var(--solo-20);
+  background-color: var(--r-bg);
 }
 
 .layout-region-node-footer__content {
   padding: var(--solo-16);
   margin: var(--solo-16) 0;
-  background-color: #f8f9fa;
+  background-color: var(--r-bg);
 }
+
 .layout-region-node-main>div,
 .layout-region-node-secondary>div {
   padding: var(--solo-16);
 }
+
 .page-content {
   margin-bottom: 80px;
 }
@@ -44,7 +46,7 @@
 }
 
 .layout__region--content .solo-table-all {
-  border-color: #eaeaea !important;
+  border-color: var(--r-br, var(--r-br-b)) !important;
 }
 
 .layout-node-form .solo-row > fieldset > div,
@@ -54,8 +56,8 @@
 }
 
 .layout__region--content > .solo-row > fieldset {
-  margin-bottom: 16px !important;
-  padding-bottom: 16px !important;
+  margin-bottom: var(--solo-16) !important;
+  padding-bottom: var(--solo-16) !important;
 }
 
 .admin-context .block-local-tasks-block,
@@ -73,7 +75,7 @@
 .layout-node-form .form-item label,
 .layout-node-form .form-item .label {
   display: inline-block;
-  padding-bottom: 8px;
+  padding-bottom: var(--solo-8);
   font-weight: normal;
 }
 
@@ -110,7 +112,7 @@
 }
 
 .layout-node-form .paragraphs-actions > .button + .paragraphs-dropdown {
-  margin: 0 8px !important;
+  margin: 0 var(--solo-8) !important;
 }
 
 .layout-node-form .form-wrapper .paragraphs-dropdown-action.button,
@@ -129,9 +131,8 @@
 .layout-node-form div.description,
 .layout-node-form .form-item .solo-small,
 .layout-node-form .form-item .description {
-  padding: 5px !important;
-  margin: 5px 0 !important;
-  display: block;
+  padding: var(--solo-3) !important;
+  margin: var(--solo-1) 0 !important;
 }
 
 .layout-node-form .description ul,
@@ -178,8 +179,8 @@
 }
 
 .layout-region-node-secondary .entity-meta > details[open] {
-  padding: 8px !important;
-  background-color: #f8f8f8 !important;
+  padding: var(--solo-8) !important;
+  background-color: var(--r-bg) !important;
 }
 
 .layout-region-node-secondary .entity-meta > details[open] summary ~ * {

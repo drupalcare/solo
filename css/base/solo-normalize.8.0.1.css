@@ -2,6 +2,7 @@ html {
   line-height: 1.15;
   -webkit-text-size-adjust: 100%;
 }
+
 *,
 *::before,
 *::after {
@@ -218,9 +219,25 @@ h3 a,
 h4 a,
 h5 a,
 li a {
-  font-size: inherit;
+  font-family: inherit;
   line-height: inherit;
   font-weight: inherit;
+  font-size: inherit;
+  text-decoration: none;
+  color: inherit;
+  outline: none;
+}
+
+h1 a span,
+h2 a span,
+h3 a span,
+h4 a span,
+h5 a span,
+li a span {
+  font-family: inherit;
+  line-height: inherit;
+  font-weight: inherit;
+  font-size: inherit;
   text-decoration: none;
   color: inherit;
   outline: none;
@@ -272,6 +289,7 @@ input[type=textfield] {
   appearance: none;
   outline: none;
 }
+
 a,
 button {
   all: unset;

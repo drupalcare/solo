@@ -9,13 +9,13 @@
 }
 
 .pager__items li a {
-  padding: 6px 12px;
+  padding: var(--solo-6) var(--solo-12);
   display: inline-flex;
 }
 
 .pager__items li.solo-active-pager,
 .pager__items li.is-active {
-  padding: 6px 12px;
+  padding: var(--solo-6) var(--solo-12);
   font-weight: bold;
   scale: 1.1;
 }

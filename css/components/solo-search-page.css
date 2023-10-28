@@ -9,7 +9,7 @@ form.search-form>.form-wrapper {
   display: grid;
   grid-template-columns: minmax(250px, auto) minmax(50px, 160px);
   grid-template-rows: 1fr;
-  gap: 0px 0px;
+  gap: 0 0;
   grid-auto-flow: row;
   row-gap: var(--solo-8);
   grid-template-areas: "form-item form-submit";
@@ -26,13 +26,18 @@ form.search-form>.form-wrapper>.form-submit {
   width: 100%;
 }
 
+form.search-form .form-wrapper>.button--primary {
+  padding-right: var(--solo-3) !important;
+  padding-left: var(--solo-3) !important;
+}
+
 form.search-form>* {
   width: 100%;
 }
 
 .path-search .solo-row.item-list>h3 {
-  padding: 0 20px;
-  font-size: 20px;
+  padding: 0 var(--solo-16);
+  font-size: var(--solo-18);
 }
 
 .path-search .search-form .search-advanced summary.solo-button {

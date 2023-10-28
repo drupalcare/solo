@@ -29,6 +29,7 @@ solo-global:
     base:
       css/base/solo-normalize.8.0.1.css: { weight: -200 }
       css/base/solo-variables.css: { weight: -200 }
+      css/base/solo-variables-regions.css: { weight: -200 }
       css/base/solo-animation.css: { weight: -200 }
       css/base/solo-hamburger.css: { weight: -200 }
       css/base/solo-global.css: { weight: -200 }
@@ -64,13 +65,14 @@ solo-global:
       css/components/solo-user-menu.css: { weight: 0 }
       css/components/solo-webform.css: { weight: 0 }
     theme:
-      css/theme/solo-border-animation.css: { weight: 200 }
+      css/theme/solo-regions-animation.css: { weight: 200 }
       css/theme/solo-sitename-animation.css: { weight: 200 }
       css/theme/solo-clickable-image.css: { weight: 200 }
       css/media-query/solo-min-width-993.css: { weight: 200 }
       css/media-query/solo-max-width-992.css: { weight: 200 }
       css/media-query/solo-max-min-width-992-601.css: { weight: 200 }
       css/media-query/solo-max-width-767.css: { weight: 200 }
+      css/theme/solo-global-settings.css: { weight: 200 }
       # css/media-query/solo-max-width-600.css: { weight: -10 }
   js:
     js/solo-utils.js: { }
@@ -89,13 +91,13 @@ solo-menu:
   Version: VERSION
   css:
     component:
-      css/components/solo-menu-base.css: { weight: 0 }
+      css/components/solo-menu.css: { weight: 0 }
     theme:
       css/theme/solo-menu-main.css: { weight: 200 }
       css/theme/solo-menu-side.css: { weight: 200 }
   js:
     js/solo-menu-scripts.js: { }
-    js/solo-menu-main.js: { }
+    js/solo-menu.js: { }
     js/solo-menu-keyboard.js: { }
     js/solo-menu-mobile.js: { }
     js/solo-menu-side.js: { }
@@ -304,6 +306,12 @@ solo-gfin-oswald:
       fonts/google-font-oswald.css: { }
       fonts/css/solo-oswald.css: { }
 
+
+
+
+
+
+
 solo-gfex-playfair-display:
   Version: VERSION
   css:
@@ -464,13 +472,13 @@ solo-gfex-arvo:
   css:
     base:
       'https://fonts.googleapis.com/css2?family=Arvo:ital,wght@0,400;0,700;1,400&display=swap': { type: external, minified: true }
-      fonts/css/solo-arvo.css: { }
+      fonts/css/solo-arvo.css: { weight: -200 }
 solo-gfin-arvo:
   Version: VERSION
   css:
     base:
-      fonts/google-font-arvo.css: { }
-      fonts/css/solo-arvo.css: { }
+      fonts/google-font-arvo.css: { weight: -200 }
+      fonts/css/solo-arvo.css: { weight: -200 }
 
 solo-gfex-barlow:
   Version: VERSION

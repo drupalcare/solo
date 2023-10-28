@@ -5,7 +5,7 @@
 (function (Drupal, once) {
   'use strict';
   let scrollOn = false;
-  const animationHeight = window.innerHeight * 0.25;
+  const animationHeight = window.innerHeight * 0.20;
   const ratio = Math.round((1 / animationHeight) * 10000) / 10000;
 
   const fadeBox = () => {
@@ -40,4 +40,5 @@
       }
     }
   };
+
 })(Drupal, once);

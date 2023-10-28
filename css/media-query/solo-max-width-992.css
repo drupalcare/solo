@@ -1,19 +1,8 @@
 @media (max-width:62rem) {
-  .mobile-nav {
-    display: flex!important;
-  }
-
   .copyright-first,
   .copyright-second {
     text-align: center;
-  }
-
-  .site-name {
-    font-size: 28px;
-  }
-
-  .site-slogan {
-    font-size: 20px !important;
+    margin: 0;
   }
 
   .ui-dialog {

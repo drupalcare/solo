@@ -1,0 +1,116 @@
+/* Start Var tags */
+.page-wrapper {
+  --r-br: #cbced7;
+  --r-br-b: #94a2b8;
+  --r-bg: #f0f2f5;
+  --r-tx: #262d38;
+}
+
+.page-wrapper,
+.solo-outer,
+.region-inner {
+  border-color: var(--r-br, var(--r-br-b));
+  background-color: var(--r-bg);
+  color: var(--r-tx);
+}
+
+.page-wrapper tr,
+.page-wrapper td,
+.page-wrapper th,
+.page-wrapper hr,
+.page-wrapper table,
+.page-wrapper  ul,
+.page-wrapper li {
+  border-color: var(--r-br, var(--r-br-b));
+  background-color: var(--r-bg);
+  color: var(--r-tx);
+}
+
+.page-wrapper .solo-select,
+.page-wrapper .solo-radio,
+.page-wrapper .solo-check,
+.page-wrapper .solo-input,
+.page-wrapper .solo-textarea {
+  background-color: var(--r-bg-fr, var(--r-bg));
+  border-color: var(--r-br, var(--r-br-b));
+  color: var(--r-tx);
+}
+
+/* Link only */
+.page-wrapper a:not(.nav__menu-link, .button, .site-name-link, .site-logo, h1 a, h2 a, h3 a) {
+  color: var(--r-lk, var(--r-tx));
+}
+
+.page-wrapper a:hover:not(.nav__menu-link, .button, .site-name-link, .site-logo, h1 a, h2 a, h3 a) {
+  color: var(--r-lk-h, var(--r-tx));
+}
+
+.page-wrapper h1,
+.page-wrapper h2,
+.page-wrapper h3,
+.page-wrapper h1 a,
+.page-wrapper h2 a,
+.page-wrapper h3 a,
+.page-wrapper h1 a span,
+.page-wrapper h2 a span,
+.page-wrapper h3 a span {
+  color: var(--r-h1, var(--r-tx));
+}
+
+/* Button */
+.page-wrapper a.button,
+.page-wrapper input.button,
+.page-wrapper .search-button-close button {
+  border-color: var(--r-br, var(--r-br-b));
+  color: var(--r-tx-bt, var(--r-tx));
+  background-color: var(--r-bg-bt, var(--r-bg));
+}
+
+.page-wrapper a.button:hover,
+.page-wrapper input.button:hover,
+.page-wrapper .search-button-close button:hover {
+  color: var(--r-tx-bt-h, var(--r-tx));
+  background-color: var(--r-bg-bt-h, var(--r-bg));
+}
+
+/* Menu Link */
+.page-wrapper li.nav__menu-item>a,
+.page-wrapper li.nav__menu-item>button,
+.page-wrapper .login-button-open,
+.page-wrapper .hamburger-icon button,
+.block-user-login-block form+.item-list ul li a {
+  border-color: var(--r-br, var(--r-br-b));
+  color: var(--r-tx-lk, var(--r-tx));
+  background-color: var(--r-bg-lk, var(--r-bg));
+}
+
+.page-wrapper li.nav__menu-item>a:hover,
+.page-wrapper li.nav__menu-item>button:hover,
+.page-wrapper .login-button-open:hover,
+.page-wrapper .hamburger-icon button:hover,
+.block-user-login-block form+.item-list ul li a:hover {
+  color: var(--r-tx-lk-h, var(--r-tx));
+  background-color: var(--r-bg-lk-h, var(--r-bg));
+}
+
+.page-wrapper .solo-logo .path-update,
+.page-wrapper .dis-icon-colors .svg-icon .path-update {
+  color: var(--r-tx) !important;
+  fill: var(--r-tx) !important;
+}
+
+.page-wrapper svg.ext path,
+.page-wrapper svg.mailto path {
+  color: var(--r-tx) !important;
+  stroke: var(--r-tx) !important;
+}
+
+.page-wrapper .ck-focused,
+.page-wrapper .solo-select:focus,
+.page-wrapper .solo-ckeck:focus,
+.page-wrapper .solo-radio:focus,
+.page-wrapper .solo-input:focus,
+.page-wrapper .solo-textarea:focus {
+  border-color: var(--r-tx) !important;
+  border-style: double;
+}

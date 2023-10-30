@@ -10,6 +10,8 @@ div.action,
 div.form-actions {
   align-items: center;
   width: 100%;
+  flex-grow: 1;
+  justify-content: center;
 }
 
 .form-radios .form-item,
@@ -28,12 +30,14 @@ div.form-actions {
   width: 100%;
   justify-content: left;
   align-items: self-start;
+  flex-grow: 1;
 }
 
 .form-type-checkbox {
   margin-top: 12px;
   display: inline-flex;
   width: 100%;
+  flex-grow: 1;
   justify-content: left;
   align-items: self-start;
   flex-wrap: wrap;

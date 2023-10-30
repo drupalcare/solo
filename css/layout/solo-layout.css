@@ -57,7 +57,7 @@
   padding: var(--solo-16);
 }
 
-/* We change it in small screen */
+/* We change it in big screen */
 .multi>.solo-col {
   gap: var(--solo-16);
   grid-auto-flow: column;

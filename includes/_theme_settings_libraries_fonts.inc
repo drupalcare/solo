@@ -23,7 +23,7 @@ $form['solo_settings']['settings_libraries_fonts'] = [
 
 $form['solo_settings']['settings_libraries_fonts']['site_load_w3css_on'] = [
   '#type' => 'checkbox',
-  '#title' => t('<strong>Tick this box to load the W3.CSS library locally.</strong>.'),
+  '#title' => t('<strong>Tick this box to load the W3.CSS library locally</strong>.'),
   '#default_value' => theme_get_setting('site_load_w3css_on'),
 ];
 

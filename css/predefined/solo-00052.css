@@ -176,6 +176,10 @@ h3 a) {
 
 .breadcrumb,
 .page-wrapper .breadcrumb a,
+.page-wrapper .footer-menu a,
+.page-wrapper .footer-menu h1,
+.page-wrapper .footer-menu h2,
+.page-wrapper .footer-menu h3,
 .footer-menu {
   --r-bg: #0a0c10;
   --r-tx: #fafbfc;

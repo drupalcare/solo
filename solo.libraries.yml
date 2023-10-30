@@ -40,7 +40,6 @@ solo-global:
       css/components/solo-breadcrumb.css: { weight: 0 }
       css/components/solo-ckeditor.css: { weight: 0 }
       css/components/solo-comments.css: { weight: 0 }
-      css/components/solo-contact-form.css: { weight: 0 }
       css/components/solo-default-node.css: { weight: 0 }
       css/components/solo-default-views.css: { weight: 0 }
       css/components/solo-fixed-search-block.css: { weight: 0 }

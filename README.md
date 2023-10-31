@@ -36,8 +36,8 @@ FEATURES:
 
 ) Solo Theme comes with ability to change the website width. Just insert any
 of the predefined classes into website width in theme settings.
-(solo-site-width-100-percent, solo-site-width-2560, solo-site-width-1920, solo-site-width-1600,
-solo-site-width-1440, solo-site-width-1280, solo-site-width-1024 and solo-site-width-800).
+(sw-100-percent, sw-2560, sw-1920, sw-1600,
+sw-1440, sw-1280, sw-1024 and sw-800).
 
 ) Solo Theme comes with horizontal main menu or vertical side nav. Simply add
  the main menu to the horizontal region or the vertical region.

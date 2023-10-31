@@ -15,14 +15,14 @@
  */
 function _get_site_width_options() {
   return [
-    'solo-site-width-1600' => t('1600px / 100rem'),
-    'solo-site-width-2560' => t('2560px / 160rem'),
-    'solo-site-width-1920' => t('1920px / 120rem'),
-    'solo-site-width-1440' => t('1440px / 90rem'),
-    'solo-site-width-1280' => t('1280px / 80rem'),
-    'solo-site-width-1024' => t('1024px / 64rem'),
-    'solo-site-width-800' => t('800px / 50rem'),
-    'solo-site-width-100' => t('100%'),
+    'sw-1600' => t('1600px / 100rem'),
+    'sw-2560' => t('2560px / 160rem'),
+    'sw-1920' => t('1920px / 120rem'),
+    'sw-1440' => t('1440px / 90rem'),
+    'sw-1280' => t('1280px / 80rem'),
+    'sw-1024' => t('1024px / 64rem'),
+    'sw-800' => t('800px / 50rem'),
+    'sw-100' => t('100%'),
   ];
 }
 

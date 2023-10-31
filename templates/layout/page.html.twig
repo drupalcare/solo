@@ -68,8 +68,15 @@
   {% include '@solo/partials/_primary-sidebar-menu.html.twig' %}
   {% include '@solo/partials/_fixed-search-block.html.twig' %}
   {% include '@solo/partials/_popup-login-block.html.twig' %}
+
+  {% if site_flip_header_menu %}
+  {% include '@solo/partials/_primary-menu.html.twig' %}
+  {% include '@solo/partials/_header.html.twig' %}
+  {% else %}
   {% include '@solo/partials/_header.html.twig' %}
   {% include '@solo/partials/_primary-menu.html.twig' %}
+  {% endif %}
+
   {% include '@solo/partials/_welcome-text.html.twig' %}
   {% include '@solo/partials/_system-messages.html.twig' %}
 

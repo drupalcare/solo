@@ -33,16 +33,6 @@
   height: 100%;
 }
 
-/*.solo-inner:not(.header-inner, .primary-sidebar-menu-inner, .primary-menu-inner) {
-  overflow-x: hidden;
-}
-
-.top-container-inner>div,
-.main-container-inner>div,
-.bottom-container-inner>div,
-.footer-container-inner>div {
-  overflow-x: auto;
-}*/
 .solo-inner:empty {
   padding: 0 !important;
 }

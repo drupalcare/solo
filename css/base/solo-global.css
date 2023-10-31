@@ -74,6 +74,8 @@ img {
 .solo-container:before,
 .solo-panel:after,
 .solo-panel:before,
+.solo-row:after,
+.solo-row:before,
 .solo-clear:after,
 .solo-clear:before {
   content: "";

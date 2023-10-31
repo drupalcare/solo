@@ -25,6 +25,10 @@ div.form-actions {
   display: grid;
 }
 
+fieldset {
+  width: 100%;
+}
+
 .form-type-radio {
   display: inline-flex;
   width: 100%;

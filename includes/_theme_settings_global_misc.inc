@@ -52,6 +52,12 @@ $form['solo_settings']['settings_global_misc']['site_login_page_on'] = [
   '#default_value' => theme_get_setting('site_login_page_on'),
 ];
 
+$form['solo_settings']['settings_global_misc']['site_flip_header_menu'] = [
+  '#type' => 'checkbox',
+  '#title' => t('Tick this box to flip the main menu order. It will be displayed before the header.'),
+  '#default_value' => theme_get_setting('site_flip_header_menu'),
+];
+
 $form['solo_settings']['settings_global_misc']['site_opacity_onscroll_on'] = [
   '#type' => 'checkbox',
   '#title' => t('Tick this box to animate opacity while scrolling down.'),

@@ -31,9 +31,10 @@ site_regions_animate_top: 1
 site_regions_animate_bottom: 1
 site_regions_animate_footer: 1
 site_regions_disable_top: 0
+site_flip_header_menu: 0
 site_regions_disable_bottom: 0
 site_regions_disable_footer: 0
-site_global_width: solo-site-width-1600
+site_global_width: sw-1600
 site_load_w3css_on: 0
 header_change_icons: 0
 header_sitename_center: 0

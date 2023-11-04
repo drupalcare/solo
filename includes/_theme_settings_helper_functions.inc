@@ -628,3 +628,36 @@ function _create_region_layout_radio_two($region, &$variables) {
     ],
   ];
 }
+
+/**
+ * Helper function.
+ */
+function _create_megamenu_layout() {
+  return [
+    '#type' => 'radios',
+    '#title' => t('Megamenu Layout (2, 3 or 4 Columns).'),
+    '#default_value' => theme_get_setting('main_menu_megamenu_layout') ?? 'm-1-1',
+    '#options' => [
+      'm-1' => t('1 Column - 100%'),
+      'm-1-1' => t('2 Columns - 50%, 50%'),
+      'm-2-1' => t('2 Columns - 67%, 33%'),
+      'm-3-1' => t('2 Columns - 75%, 25%'),
+      'm-4-1' => t('2 Columns - 80%, 20%'),
+      'm-1-2' => t('2 Columns - 33%, 67%'),
+      'm-1-3' => t('2 Columns - 25%, 75%'),
+      'm-1-4' => t('2 Columns - 20%, 80%'),
+      'm-1-1-1' => t('3 Columns - 33.3%, 33.3%, 33.3%'),
+      'm-1-2-1' => t('3 Columns - 25%, 50%, 25%'),
+      'm-1-3-1' => t('3 Columns - 20%, 60%, 20%'),
+      'm-1-1-1-1' => t('4 Columns - 25%, 25%, 25%, 25%'),
+      'm-1-2-2-1' => t('4 Columns - 16.6%, 33.3%, 33.3%, 16.6%'),
+      'm-2-1-1-2' => t('4 Columns - 33.3%, 16.6%, 16.6%, 33.3%'),
+      'm-1-2-1-2' => t('4 Columns - 16.6%, 33.3%, 16.6%, 33.3%'),
+    ],
+    '#states' => [
+      'visible' => [
+        ':input[name="main_menu_megamenu"]' => ['checked' => TRUE],
+      ],
+    ],
+  ];
+}

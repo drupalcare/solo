@@ -16,12 +16,12 @@
   position: relative;
   padding-top: 3.125rem;
   padding-bottom: 3.125rem;
-}
-
-.fixed-search-block-inner {
   display: flex;
   flex-wrap: nowrap;
   row-gap: 0;
+  justify-content: center;
+  align-items: center;
+  min-height: 300px;
 }
 
 .fixed-search-block-inner .search-button-close {

@@ -553,12 +553,23 @@ function solo_preprocess_block(&$variables): void {
  * Implements hook_preprocess_menu().
  */
 function solo_preprocess_menu__primary_menu(&$variables): void {
+
   if (theme_get_setting('main_menu_on_hover')) {
     $variables['click_hover'] = 'navigation-responsive-hover';
   }
   else {
     $variables['click_hover'] = 'navigation-responsive-click';
   }
+
+  if (theme_get_setting('main_menu_megamenu')) {
+    $variables['megamenu'] = 'navigation__megamenu';
+    $variables['sub_mega'] = 'sub-mega';
+    $variables['megamenu_layout'] = (theme_get_setting('main_menu_megamenu_layout'));
+    if (theme_get_setting('main_menu_submenu_header')) {
+      $variables['sub_menu_header'] = 'sub__menu-header';
+    }
+  }
+
 }
 
 /**

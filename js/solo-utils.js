@@ -23,7 +23,7 @@
     marginBottom: '0'
   };
 
-  const slideUp = (target, duration = 500) => {
+  const slideUp = (target, duration = 600) => {
     target.style.transitionProperty = 'height, margin, padding';
     target.style.transitionDuration = `${duration}ms`;
     target.style.boxSizing = 'border-box';
@@ -58,7 +58,7 @@
 
     target.style.display = menuDisplay;
     let height = target.offsetHeight;
-
+    height = Math.round(height);
     Object.keys(cssStyles)
       .forEach(style => {
         target.style[style] = cssStyles[style];
@@ -81,6 +81,7 @@
         property => target.style.removeProperty(property));
     }, duration);
   }
+
   Drupal.solo.slideDown = slideDown;
 
   const slideToggle = (target, duration = 500) => {

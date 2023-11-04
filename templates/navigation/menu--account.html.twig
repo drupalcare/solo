@@ -45,13 +45,15 @@
 We call a macro which calls itself to render the full tree.
 @see http://twig.sensiolabs.org/doc/tags/macro.html
 #}
-{{ menus.menu_links(items, attributes, 0, menu_name) }}
+{{ menus.menu_links(items, attributes, 0, menu_name, aria_id ) }}
 {% macro menu_links(items, attributes, menu_level, menu_name, aria_id) %}
 {% import _self as menus %}
 
 {% set menu_level = menu_level + 1 %}
 {% set menu_classes = [
-'navigation__menubar navigation__default navigation__menubar-' ~ menu_name|clean_class,
+  'navigation__menubar',
+  'navigation__default',
+  'navigation__menubar-' ~ menu_name|clean_class,
 ]
 %}
 
@@ -89,8 +91,6 @@ We call a macro which calls itself to render the full tree.
       item.in_active_trail ? 'is-active',
       ]
       %}
-
-
 
       {# The parent menu and it has children #}
       {% if menu_level == 1 and item.is_expanded %}
@@ -131,8 +131,6 @@ We call a macro which calls itself to render the full tree.
         {# The children menu and it has children #}
 
 
-
-
       {% elseif menu_level != 1 and item.is_expanded %}
       <li{{ item.attributes.addClass(item_classes) }} role='none' data-drupal-selector='{{ menu_name }}-item-with-children'>
 
@@ -169,9 +167,6 @@ We call a macro which calls itself to render the full tree.
 
           </button>
         {% endif %}
-
-
-
 
       {% else %}
         {% set link_classes = [

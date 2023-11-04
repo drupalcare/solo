@@ -93,6 +93,7 @@ solo-menu:
       css/components/solo-menu.css: { weight: 0 }
     theme:
       css/theme/solo-menu-main.css: { weight: 200 }
+      css/theme/solo-megamenu.css: { weight: 200 }
       css/theme/solo-menu-side.css: { weight: 200 }
   js:
     js/solo-menu-scripts.js: { }

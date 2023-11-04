@@ -8,24 +8,54 @@
   let isClicked = false;
   let currentWidth;
   let timeoutId;
-  const querySelectorElements = (selector) => document.querySelectorAll(selector) ?? null;
-  const hamburgerIconButtons = querySelectorElements('.solo-inner .navigation-responsive .mobile-nav');
-  const siteMenuBars = querySelectorElements('.solo-inner .solo-menu .navigation__menubar');
-  const siteSubMenus = querySelectorElements('.solo-inner .solo-menu .navigation__menubar ul');
-  const svgIcons = querySelectorElements('.solo-inner .solo-menu .navigation__menubar .toggler-icon>svg');
-  // Default menu
-  const navigationDefault = querySelectorElements('.solo-inner .solo-menu .navigation__default .dropdown-toggler');
-  // Default menu mouse hover
-  const navigationResponsiveHover = querySelectorElements('.solo-inner .solo-menu.navigation-responsive-hover .dropdown-toggler');
+  const querySelectorElements = (selector) => document.querySelectorAll(
+    selector) ?? null;
+  const hamburgerIconButtons = querySelectorElements(
+    '.solo-inner .navigation-responsive .mobile-nav');
+  const siteMenuBars = querySelectorElements(
+    '.solo-inner .solo-menu .navigation__menubar');
+  const siteSubMenus = querySelectorElements(
+    '.solo-inner .solo-menu .navigation__menubar ul');
+  const svgIcons = querySelectorElements(
+    '.solo-inner .solo-menu .navigation__menubar .toggler-icon>svg');
+
+  // On mega menu click we select the first level for the big screen.
+  const mmClickBig = querySelectorElements(
+    '.solo-inner .solo-menu.navigation-responsive-click .navigation__megamenu>li>.dropdown-toggler'
+    );
+  // On mega menu click we select all level for the small screen.
+  const mmClickSmall = querySelectorElements(
+    '.solo-inner .solo-menu.navigation-responsive-click .navigation__megamenu li .dropdown-toggler'
+    );
+  const mmHoverSmall = querySelectorElements(
+    '.solo-inner .solo-menu.navigation-responsive-hover .navigation__megamenu li .dropdown-toggler'
+    );
+  // ON mega menu hover we select all ULs
+  const navigationMegamenuHover = querySelectorElements(
+    '.solo-inner .solo-menu.navigation-responsive-hover .navigation__megamenu li .dropdown-toggler'
+    );
+  // Default menu mouse over
+  const navigationResponsiveHover = querySelectorElements(
+    '.solo-inner .solo-menu.navigation-responsive-hover .navigation__menubar:not(.navigation__megamenu) .dropdown-toggler'
+    );
   // Default menu mouse click
-  const navigationResponsiveClick = querySelectorElements('.solo-inner .solo-menu.navigation-responsive-click .dropdown-toggler');
-  // Main menu Sidebar.
-  const navigationSidebar = querySelectorElements('.solo-inner .solo-menu.navigation-sidebar .dropdown-toggler');
+  const navigationResponsiveClick = querySelectorElements(
+    '.solo-inner .solo-menu.navigation-responsive-click .navigation__menubar:not(.navigation__megamenu) .dropdown-toggler'
+    );
+
+  // Default menu
+  const navigationDefault = querySelectorElements(
+    '.solo-inner .solo-menu .navigation__default .dropdown-toggler');
+  //  Sidebar Menus.
+  const navigationSidebar = querySelectorElements(
+    '.solo-inner .solo-menu.navigation-sidebar .dropdown-toggler');
   // Get current width
-  const getCurrentWidth = () => window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
+  const getCurrentWidth = () => window.innerWidth || document.documentElement
+    .clientWidth || document.body.clientWidth;
   currentWidth = getCurrentWidth();
   // Function to handle the click, so don't click fast twice.
-  const delay = (duration) => new Promise(resolve => setTimeout(resolve, duration));
+  const delay = (duration) => new Promise(resolve => setTimeout(resolve,
+    duration));
   const clickedHandler = async (callback) => {
     if (!isClicked) {
       isClicked = true;
@@ -40,14 +70,17 @@
   }
   Drupal.solo.hideSubMenus = hideSubMenus;
   const getNavigationMenubarClass = (menuBar) => {
-    return document.querySelector(`.solo-inner #${menuBar} .navigation__menubar`);
+    return document.querySelector(
+      `.solo-inner #${menuBar} .navigation__menubar`);
   }
   Drupal.solo.getNavigationMenubarClass = getNavigationMenubarClass;
   const getSubMenuClasses = (subMenus) => {
-    return document.querySelectorAll(`.solo-inner #${subMenus} .navigation__menubar ul.sub__menu`);
+    return document.querySelectorAll(
+      `.solo-inner #${subMenus} .navigation__menubar ul.sub__menu`);
   }
   Drupal.solo.getSubMenuClasses = getSubMenuClasses;
-  const hasParentWithClass = (element, className) => !!element.closest(`.${className}`);
+  const hasParentWithClass = (element, className) => !!element.closest(
+    `.${className}`);
   const getNavTagId = (dropdownTogglerButton) => {
     const {
       id: navId
@@ -58,11 +91,13 @@
     return dropdownTogglerButton.querySelector('.toggler-icon svg');
   }
   const getArrowDirection = (verticalNav) => {
-    return (currentWidth >= 993 && !verticalNav) ? 'rotate(-90deg)' : 'rotate(180deg)';
+    return (currentWidth >= 993 && !verticalNav) ? 'rotate(-90deg)' :
+      'rotate(180deg)';
   }
   // Change the arrow direction on close.
   const revertIcons = (navId) => {
-    let svgIcons = document.querySelectorAll(`.solo-inner #${navId} .toggler-icon svg`);
+    let svgIcons = document.querySelectorAll(
+      `.solo-inner #${navId} .toggler-icon svg`);
     svgIcons.forEach((svgIcon) => {
       svgIcon.style.removeProperty('transform');
     });
@@ -75,9 +110,12 @@
     });
   }
   const getDropdownElements = (dropdownTogglerButton) => {
-    const togglerSibling = dropdownTogglerButton.closest('.solo-inner .solo-menu ul');
-    const nestedSubMenus = [...togglerSibling.querySelectorAll('.solo-inner .solo-menu ul')];
-    const nestedTogglers = [...togglerSibling.querySelectorAll('.solo-inner .solo-menu ul .dropdown-toggler svg')];
+    const togglerSibling = dropdownTogglerButton.closest(
+      '.solo-inner .solo-menu ul');
+    const nestedSubMenus = [...togglerSibling.querySelectorAll(
+      '.solo-inner .solo-menu ul')];
+    const nestedTogglers = [...togglerSibling.querySelectorAll(
+      '.solo-inner .solo-menu ul .dropdown-toggler svg')];
     return [nestedSubMenus, nestedTogglers];
   }
   // This function handle the attributes
@@ -89,7 +127,13 @@
     Drupal.solo.slideUp(subMenu, 400);
   }
   const openMenuHelper = (dropdownTogglerButton, subMenu) => {
-    Drupal.solo.slideDown(subMenu);
+    if (subMenu.classList.contains('sub-mega')) {
+      Drupal.solo.slideDown(subMenu, 'grid', 1000);
+      //subMenu.style.display = "grid";
+    } else {
+      Drupal.solo.slideDown(subMenu);
+    }
+    // Drupal.solo.slideDown(subMenu);
     dropdownTogglerButton.setAttribute('aria-expanded', 'true');
     dropdownTogglerButton.setAttribute('aria-hidden', 'false');
     dropdownTogglerButton.setAttribute('tabindex', '0');
@@ -140,7 +184,8 @@
   }
   // Open submenu get called by dropdownTogglerButtonIsClicked();
   const openSubMenu = (dropdownTogglerButton, subMenu) => {
-    const [nestedSubMenus, nestedTogglers] = getDropdownElements(dropdownTogglerButton);
+    const [nestedSubMenus, nestedTogglers] = getDropdownElements(
+      dropdownTogglerButton);
     const rotated = getRotated(dropdownTogglerButton);
     const verticalNav = subMenu.closest('.navigation-sidebar');
     // close all opened sibling menu
@@ -170,7 +215,8 @@
   const dropdownTogglerButtonIsClicked = (dropdownTogglerButton, subMenu) => {
     clickedHandler(() => {
       // Let get the menu type menubar or submenu.
-      let isClassPresent = dropdownTogglerButton.parentElement.classList.contains('nav__menubar-item');
+      let isClassPresent = dropdownTogglerButton.parentElement.classList
+        .contains('nav__menubar-item');
       if (isClassPresent) {
         if (!subMenu.classList.contains('toggled')) {
           openMenubar(dropdownTogglerButton, subMenu);
@@ -190,7 +236,8 @@
   siteMenuBars.forEach((siteMenuBar) => {
     siteMenuBar.addEventListener('click', (event) => {
       const sideMenu = ('navigation-sidebar');
-      if (hasParentWithClass(siteMenuBar, sideMenu) || currentWidth <= 992) {
+      if (hasParentWithClass(siteMenuBar, sideMenu) || currentWidth <=
+        992) {
         siteMenuBar.classList.remove('focus-in');
       } else {
         siteMenuBar.classList.add('focus-in');
@@ -198,59 +245,71 @@
     });
   });
 
-  function addEventListenerToButtons(buttons) {
-    buttons.forEach((button) => {
-      button.addEventListener('click', (event) => {
-        const subMenu = button.nextElementSibling;
-        dropdownTogglerButtonIsClicked(button, subMenu);
-      });
-    });
-  }
 
-  function disableClickForHover(menubars) {
-    menubars.forEach((menubar) => {
-      menubar.addEventListener('click', (event) => {
-        event.preventDefault();
-        event.stopPropagation();
+    function addRemoveListener(event) {
+      const button = event.currentTarget;
+      const subMenu = button.nextElementSibling;
+      dropdownTogglerButtonIsClicked(button, subMenu);
+    }
+
+    function addEventListenerToButtons(buttons) {
+      buttons.forEach((button) => {
+        button.addEventListener('click', addRemoveListener);
       });
-    });
-  }
+    }
+
+    function removeEventListenerToButtons(buttons) {
+      buttons.forEach((button) => {
+        button.removeEventListener('click', addRemoveListener);
+      });
+    }
+
+
+  // function disableClickForHover(menubars) {
+  //   menubars.forEach((menubar) => {
+  //     menubar.addEventListener('click', (event) => {
+  //       event.preventDefault();
+  //       event.stopPropagation();
+  //     });
+  //   });
+  // }
+
+    function menusHelper(currentWidth) {
+        if (currentWidth >= 993) {
+          // remove the first level menu styles.
+          removesiteMenuBarsStyles(siteMenuBars);
+          // menus.
+          removeEventListenerToButtons(mmClickSmall);
+          addEventListenerToButtons(mmClickBig);
+
+          removeEventListenerToButtons(mmHoverSmall);
+          removeEventListenerToButtons(navigationResponsiveHover);
+        } else {
+          // call the hover type only on small screen.
+          removeEventListenerToButtons(mmClickBig);
+          addEventListenerToButtons(mmClickSmall);
+
+          addEventListenerToButtons(mmHoverSmall);
+          addEventListenerToButtons(navigationResponsiveHover);
+        }
+    }
 
   Drupal.behaviors.menuAction = {
     attach: function (settings) {
       addEventListenerToButtons(navigationDefault);
       addEventListenerToButtons(navigationResponsiveClick);
-
       addEventListenerToButtons(navigationSidebar);
-
-
+      // We only call main menu click and hvoer type when hover is disabled.
+      currentWidth = getCurrentWidth();
+      menusHelper(currentWidth)
 
       window.addEventListener('resize', () => {
         currentWidth = getCurrentWidth();
-        if (currentWidth >= 993) {
-          // remove the first level menu styles.
-          removesiteMenuBarsStyles(siteMenuBars);
-        } else {
-          // call the hover type only on small screen.
-
-          addEventListenerToButtons(navigationResponsiveHover);
-        }
+        menusHelper(currentWidth)
         // reset menu styles on resize.
         resetSubMenus(siteSubMenus, svgIcons);
-
       });
 
-
-       // We only call main menu click and hvoer type when hover is disabled.
-      currentWidth = getCurrentWidth();
-      if (currentWidth >= 993) {
-          // remove the first level menu styles.
-          removesiteMenuBarsStyles(siteMenuBars);
-        }else {
-        // call the hover type only on small screen.
-
-        addEventListenerToButtons(navigationResponsiveHover);
-      }
 
     }
   };

@@ -19,7 +19,7 @@ if (array_key_exists('popup_login_block', $updated_regions['mix'])) {
 
   $form['solo_settings']["settings_{$region}"]['header_popup_login'] = [
     '#type' => 'checkbox',
-    '#title' => t("<p>Check this box to login in a popup block. <strong><a class='error' href='/admin/structure/block'>The User Login Block Must Be Enabled</a></strong></p>"),
+    '#title' => t("Check this box to login in a popup block. <strong><a class='error' href='/admin/structure/block'>The User Login Block Must Be Enabled</a></strong>"),
     '#default_value' => theme_get_setting('header_popup_login'),
   ];
 

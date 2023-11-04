@@ -64,6 +64,7 @@ form.system-theme-settings  input[teyp="text"] {
   color: #3f51b5 !important;
 }
 
+form.system-theme-settings #edit-settings-primary-menu .form-radios,
 form.system-theme-settings #edit-settings-top-container .form-radios,
 form.system-theme-settings #edit-settings-main-container .form-radios,
 form.system-theme-settings #edit-settings-bottom-container .form-radios,
@@ -75,6 +76,7 @@ form.system-theme-settings #edit-settings-global-misc .form-radios {
   flex-wrap: wrap;
 }
 
+form.system-theme-settings #edit-settings-primary-menu .form-radios>*,
 form.system-theme-settings #edit-settings-top-container .form-radios>*,
 form.system-theme-settings #edit-settings-main-container .form-radios>*,
 form.system-theme-settings #edit-settings-bottom-container .form-radios>*,
@@ -82,7 +84,7 @@ form.system-theme-settings #edit-settings-footer-container .form-radios>*,
 form.system-theme-settings #edit-settings-social-icons .form-radios>*,
 form.system-theme-settings #edit-theme-settings .details-wrapper>*,
 form.system-theme-settings #edit-settings-global-misc .form-radios>* {
-  margin-right: 24px;
+  margin-right: 60px;
   width: auto;
 }
 

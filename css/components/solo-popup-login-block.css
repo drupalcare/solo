@@ -41,6 +41,7 @@
 .login-button-open {
   display: flex;
   height: 100%;
+  float: right;
 }
 
 .login-button-open button {

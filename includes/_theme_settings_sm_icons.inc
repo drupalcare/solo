@@ -51,7 +51,7 @@ $form['solo_settings']['settings_social_icons']['sm_show_icons'] = [
   '#type' => 'checkbox',
   '#title' => t('Show Social Icons'),
   '#default_value' => theme_get_setting('sm_show_icons'),
-  '#description' => t("Select this option to display the Social Icon. Deselect it to conceal."),
+  '#description' => t("Select this option to display the Social Icon. Deselect it to conceal it."),
 ];
 
 $social_icons = [

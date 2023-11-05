@@ -31,7 +31,7 @@ foreach ($attributes as $attribute_key => $attribute_label) {
 $form['solo_settings']["settings_{$region}"]['footer_copyright'] = [
   '#type' => 'textfield',
   '#title' => t('Enter Copyright Text'),
-  '#description' => t("Type %year% instead of an actual year number for dynamic copyright. (Copyright © %year% Company Name - All rights reserved)."),
+  '#description' => t("Type %year% instead of an actual number for a dynamic copyright year. (Copyright © %year% Company Name - All rights reserved)."),
   '#default_value' => theme_get_setting('footer_copyright'),
 ];
 

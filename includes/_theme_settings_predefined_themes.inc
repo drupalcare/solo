@@ -19,7 +19,7 @@ $form['solo_settings']['settings_predefined_theme'] = [
   '#title' => t("<strong class='warning'>Predefined Color Themes</strong> Settings - Solo Theme"),
   '#collapsible' => TRUE,
   '#collapsed' => FALSE,
-  '#description'   => t('<p><strong><a target="_blank" href="https://drupal8-w3css-theme.flashwebcenter.com/w3css-predefined-color-themes">The demo site provides examples for all color themes.</a>.</strong></p>'),
+  '#description'   => t('<p><strong><a target="_blank" href="https://drupal8-w3css-theme.flashwebcenter.com/w3css-predefined-color-themes">The demo site provides examples for all of the color themes.</a>.</strong></p>'),
 ];
 
 $form['solo_settings']['settings_predefined_theme']['predefined_current_theme'] = [

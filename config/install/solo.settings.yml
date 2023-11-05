@@ -11,7 +11,6 @@ logo:
   use_default: 1
 favicon:
   use_default: 1
-predefined_current_theme: solo-predefined-00052
 sm_icon_facebook: 'https://www.facebook.com/flashwebcenter'
 sm_icon_twitter: 'https://twitter.com/flashwebcenter'
 sm_icon_pinterest: 'https://www.pinterest.com/alaahaddad'
@@ -26,27 +25,7 @@ sm_show_icons: 1
 sm_icon_size: 'sm-icons-small'
 footer_credit_link: 1
 count_main: 2
-site_opacity_onscroll_on: 1
-site_regions_animate_top: 1
-site_regions_animate_bottom: 1
-site_regions_animate_footer: 1
-site_regions_disable_top: 0
-site_flip_header_menu: 0
-site_regions_disable_bottom: 0
-site_regions_disable_footer: 0
 site_global_width: sw-1600
-site_load_w3css_on: 0
-header_change_icons: 0
-header_sitename_center: 0
-header_popup_login: 1
 header_login_links: Login
-site_login_page_on: 1
-site_breadcrumb_pagetitle_off: 1
-import_google_font: ''
-site_font_awesome_on: '4'
-site_font_google_local_on: 0
-site_font_google_global_on: solo-arvo
-site_font_google_heading_on: solo-anton
-site_font_google_special_on: solo-creepster
-site_name_animate_on: animate-name-01
-site_pagetitle_animate_on: animate-title-23
+predefined_current_theme: solo-predefined-00052
+

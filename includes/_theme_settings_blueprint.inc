@@ -28,7 +28,7 @@ $form['solo_settings']['settings_blueprint'] = [
     <tr>
       <td style='text-align: center;'>
       <h1 class='error'>Page Wrapper</h1>
-      <p>You can have the css class applied to one region or the whole site.</p>
+      <p>You can have the CSS class applied to one region or to the whole site.</p>
       <table cellpadding='6' style='width: 100%;'>
         <tbody>
 
@@ -39,7 +39,7 @@ $form['solo_settings']['settings_blueprint'] = [
                 <tr>
                   <td style='text-align: center;'>
                   <h1 class='info'>Sidebar Main Menu</h1>
-                  <p>Visible on all pages</p>
+                  <p>Visible on all of the pages.</p>
                   </td>
                 </tr>
               </tbody>
@@ -54,7 +54,7 @@ $form['solo_settings']['settings_blueprint'] = [
                 <tr>
                   <td style='text-align: center;'>
                   <h1 class='info'>Fixed Search Block</h1>
-                  <p>Visible on all pages</p>
+                  <p>Visible on all of the pages.</p>
                   </td>
                 </tr>
               </tbody>
@@ -70,7 +70,7 @@ $form['solo_settings']['settings_blueprint'] = [
                 <tr>
                   <td style='text-align: center;'>
                   <h1 class='info'>Fixed Login Block Form</h1>
-                  <p>Visible on all pages</p>
+                  <p>Visible on all of the pages.</p>
                   </td>
                 </tr>
               </tbody>
@@ -86,7 +86,7 @@ $form['solo_settings']['settings_blueprint'] = [
                 <tr>
                   <td style='text-align: center;'>
                   <h1 class='info'>Header</h1>
-                  <p>Visible on all pages</p>
+                  <p>Visible on all of the pages.</p>
                   </td>
                 </tr>
               </tbody>
@@ -103,7 +103,7 @@ $form['solo_settings']['settings_blueprint'] = [
                 <tr>
                   <td style='text-align: center;'>
                   <h1 class='info'>Main Navigation - Horizontal</h1>
-                  <p>Visible on all pages</p>
+                  <p>Visible on all of the pages.</p>
                   </td>
                 </tr>
               </tbody>
@@ -117,7 +117,7 @@ $form['solo_settings']['settings_blueprint'] = [
                 <tr>
                   <td style='text-align: center;'>
                   <h1 class='info'>Welcome Text</h1>
-                  <p>Visible on front page only</p>
+                  <p>Visible on the front page only.</p>
                   </td>
                 </tr>
               </tbody>
@@ -131,7 +131,7 @@ $form['solo_settings']['settings_blueprint'] = [
                 <tr>
                   <td style='text-align: center;'>
                   <h1 class='info'>Highlighted</h1>
-                  <p>Visible on all pages</p>
+                  <p>Visible on all of the pages.</p>
                   </td>
                 </tr>
               </tbody>
@@ -145,7 +145,7 @@ $form['solo_settings']['settings_blueprint'] = [
                 <tr>
                   <td style='text-align: center;'>
                   <h1 class='info'>System Messages</h1>
-                  <p>Visible on all pages</p>
+                  <p>Visible on all of the pages.</p>
                   </td>
                 </tr>
               </tbody>
@@ -184,7 +184,7 @@ $form['solo_settings']['settings_blueprint'] = [
                 <tr>
                   <td style='text-align: center;'>
                   <h1 class='info'>Page Title</h1>
-                  <p>Visible on all pages except front page</p>
+                  <p>Visible on all of the pages except for the front page.</p>
                   </td>
                 </tr>
               </tbody>
@@ -199,7 +199,7 @@ $form['solo_settings']['settings_blueprint'] = [
                 <tr>
                   <td style='text-align: center;'>
                   <h1 class='info'>Breadcrumb</h1>
-                  <p>Visible on all pages except front page</p>
+                  <p>Visible on all of the pages except for the front page.</p>
                   </td>
                 </tr>
               </tbody>
@@ -210,7 +210,7 @@ $form['solo_settings']['settings_blueprint'] = [
           <tr>
             <td style='text-align: center;'>
             <h1 class='status'>Main Container Wrapper</h1>
-            <p>Visible on all pages</p>
+            <p>Visible on all of the pages.</p>
             <p>Main Container (Contains three regions).</p>
             <table cellpadding='5' style='width: 100%;border-collapse: collapse; border:3px solid LightBlue'>
               <tbody>
@@ -233,7 +233,7 @@ $form['solo_settings']['settings_blueprint'] = [
             <td style='text-align: center;'>
             <h1 class='status'>Bottom Container Wrapper</h1>
             <p>Optional</p>
-            <p>Bottom Container (Contain four regions).</p>
+            <p>Bottom Container (Contains four regions).</p>
             <table cellpadding='5' style='width: 100%;border-collapse: collapse; border:3px solid LightBlue'>
               <tbody>
                 <tr>
@@ -290,7 +290,7 @@ $form['solo_settings']['settings_blueprint'] = [
                 <tr>
                   <td style='text-align: center;'>
                   <h1 class='info'>Footer Menu</h1>
-                  <p>Visible on all pages</p>
+                  <p>Visible on all of the pages.</p>
                   </td>
                 </tr>
               </tbody>
@@ -304,7 +304,7 @@ $form['solo_settings']['settings_blueprint'] = [
                 <tr>
                   <td style='text-align: center;'>
                   <h1 class='info'>Copyright</h1>
-                  <p>Visible on all pages</p>
+                  <p>Visible on all of the pages.</p>
                   </td>
                 </tr>
               </tbody>

@@ -356,7 +356,7 @@ function _generate_css_classes($region, $label) {
   return [
     '#type' => 'textfield',
     '#title' => t('CSS Classes Only'),
-    '#description' => t('Insert any css classee here. The CSS is likely being input by a trusted user (an admin or developer)'),
+    '#description' => t('Insert any CSS classes here. The CSS should be input by a trusted user (an admin or developer).'),
     '#default_value' => theme_get_setting("classes_{$region}"),
   ];
 
@@ -379,7 +379,7 @@ function _animate_region($region) {
 function _rounded_region($region) {
   return [
     '#type' => 'radios',
-    '#title' => t("Check this box to round the inside regions corners."),
+    '#title' => t("Check this box to round the inside regions' corners."),
     '#default_value' => theme_get_setting("site_regions_rounded_$region") ?? '',
     '#options' => [
       '' => t('None'),
@@ -577,7 +577,7 @@ function _create_region_layout_radio_three($region) {
   }
   return [
     '#type' => 'radios',
-    '#title' => t("The three columns settings for $region region"),
+    '#title' => t("The three columns' settings for the $region region."),
     '#default_value' => theme_get_setting("{$region}_3col") ?? $def,
     '#options' => [
       'solo-col-1-1-1' => t('33.3%, 33.3%, 33.3%'),
@@ -615,7 +615,7 @@ function _create_region_layout_radio_two($region, &$variables) {
   }
   return [
     '#type' => 'radios',
-    '#title' => t("The two columns settings for $region region"),
+    '#title' => t("The two columns' settings for the $region region."),
     '#default_value' => theme_get_setting("{$region}_2col") ?? $def,
     '#options' => [
       'solo-col-1-1' => t('50%, 50%'),
@@ -635,7 +635,7 @@ function _create_region_layout_radio_two($region, &$variables) {
 function _create_megamenu_layout() {
   return [
     '#type' => 'radios',
-    '#title' => t('Megamenu Layout (2, 3 or 4 Columns).'),
+    '#title' => t('Megamenu Layout (1, 2, 3 or 4 Columns).'),
     '#default_value' => theme_get_setting('main_menu_megamenu_layout') ?? 'm-1-1',
     '#options' => [
       'm-1' => t('1 Column - 100%'),

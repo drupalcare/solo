@@ -61,3 +61,7 @@
 .webform-multiple-table td input[type="image"] + input[type="image"] {
   margin: var(--solo-2) 0 0 0;
 }
+.webform-has-field-prefix,
+.webform-has-field-suffix {
+  display: inline-flex;
+}

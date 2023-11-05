@@ -178,7 +178,7 @@ form.system-theme-settings .details-wrapper .form-element--api-color {
 }
 
 .form-wrapper {
-  align-items: baseline;
+  align-items: start;
 }
 
 .dropbutton-toggle button {

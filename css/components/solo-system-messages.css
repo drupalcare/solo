@@ -28,8 +28,9 @@
   background-image: none;
 }
 
+.webform-message--close a.webform-message__link,
 .webform-message .messages.messages--webform .messages__button {
-  display: none;
+  display: none!important;
 }
 
 .messages__list {

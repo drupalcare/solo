@@ -47,6 +47,7 @@ We call a macro which calls itself to render the full tree.
 {% import _self as menus %}
 
 {% set menu_level = menu_level + 1 %}
+
 {% set menu_classes = [
   'navigation__menubar',
   'navigation__responsive',
@@ -54,7 +55,6 @@ We call a macro which calls itself to render the full tree.
    megamenu|clean_class,
    megamenu_layout|clean_class,
   'navigation__menubar-' ~ menu_name|clean_class,
-
 ]
 %}
 
@@ -71,17 +71,30 @@ We call a macro which calls itself to render the full tree.
   'aria-level': menu_level,
 }) %}
 
+{% set submenu_attributes = create_attribute({
+  'id': menu_name ~'__submenu'|clean_unique_id,
+  'role': 'menu',
+  'aria-level': menu_level,
+  'tabindex': '-1',
+}) %}
+
 {% if items %}
 
   {% if menu_level == 1 %}
-  <ul{{ attributes.addClass(menu_classes).removeAttribute('region') }} {{ menubar_attributes }} >
+  <ul{{ attributes.addClass(menu_classes).removeAttribute('region') }} {{ menubar_attributes }}>
   {% else %}
-  <ul {{ attributes.removeClass(menu_classes).addClass(submenu_classes).setAttribute('role', 'menu' ).setAttribute('aria-level', menu_level ).setAttribute('tabindex', '-1') }}>
+  <ul{{ attributes.removeClass(menu_classes).addClass(submenu_classes) }} {{ submenu_attributes }}>
   {% endif %}
 
+    {# The same in all menus #}
     {% for item in items %}
 
+      {% import _self as macros %}
+      {% set aria_id = (menu_name ~ '-sub__menu-' ~ loop.index )|clean_unique_id %}
+      {% set dropdown_toggler_class = (menu_level == 1) ? 'dropdown-toggler-parent' : 'dropdown-toggler-child' %}
+      {% set dropdown_toggler_role = (menu_level == 1) ? 'menuitem' : 'menu' %}
       {% set rendered_url = item.url|render %}
+
       {% set item_classes = [
       'btn-animate nav__menu-item nav__menu-item-' ~ menu_name|clean_class,
       (item and menu_level == 1 ) ? 'nav__menubar-item',
@@ -94,77 +107,36 @@ We call a macro which calls itself to render the full tree.
       ]
       %}
 
-      {# The parent menu and it has children #}
-      {% if menu_level == 1 and item.is_expanded %}
-      <li{{ item.attributes.addClass(item_classes) }} role='none' data-drupal-selector='{{ menu_name }}-item-with-children'>
-          {% import _self as macros %}
-
-          {% set aria_id = (menu_name ~ '-sub__menu-' ~ loop.index )|clean_unique_id %}
-
-          {% set dorpdown_toggler_attributes = create_attribute({
-
-          'data-drupal-selector': menu_name ~ '__level-' ~ (menu_level + 1),
-          'role': 'menuitem',
-          'aria-controls': aria_id,
-          'aria-haspopup': 'true',
-          'aria-expanded': 'false',
-          'aria-hidden': 'true',
-          'tabindex': '-1',
-          }) %}
-
-        {% if rendered_url starts with '/' or rendered_url starts with 'http' %}
-            {# The parent link is clickable and it has children #}
-            {% set c_link = 'nav__menu-link nav__menu-link-' ~ menu_name|clean_class %}
-            <a href='{{ item.url }}' class='{{ c_link }} url-added' tabindex='-1'>
-              <span class='menu__url-title-enabled'>{{ item.title }}</span>
-            </a>
-            <button class='en-link dropdown-toggler dropdown-toggler-parent' {{ dorpdown_toggler_attributes }}>
-            <span class='visually-hidden'>{{ '@title sub-navigation'|t({'@title': item.title}) }}</span>
-            <span class='toggler-icon dropdown-arrow'>{{ macros.svg_icon('M6 9l6 6 6-6') }}</span>
-            </button>
-        {% else %}
-            {# The parent link is NOT clickable and it has children #}
-            <button class='ds-link dropdown-toggler dropdown-toggler-parent' {{ dorpdown_toggler_attributes }}>
-            <span class='menu__url-title-disabled'>{{ item.title }}</span>
-            <span class='visually-hidden'>{{ '@title sub-navigation'|t({'@title': item.title}) }}</span>
-            <span class='toggler-icon dropdown-arrow'>{{ macros.svg_icon('M6 9l6 6 6-6') }}</span>
-            </button>
-        {% endif %}
-        {# The children menu and it has children #}
-
-      {% elseif menu_level != 1 and item.is_expanded %}
-      <li{{ item.attributes.addClass(item_classes) }} role='none' data-drupal-selector='{{ menu_name }}-item-with-children'>
-
-        {% import _self as macros %}
-        {% set aria_id = (menu_name ~ '-sub__menu-' ~ loop.index )|clean_unique_id %}
-        {% set dorpdown_toggler_attributes = create_attribute({
-
-        'data-drupal-selector': menu_name ~ '__level-' ~ menu_level,
-        'role': 'menu',
+      {% set dorpdown_toggler_attributes = create_attribute({
+        'data-drupal-selector': menu_name ~ '__level-' ~ (menu_level + 1),
+        'role': dropdown_toggler_role,
         'aria-controls': aria_id,
         'aria-haspopup': 'true',
         'aria-expanded': 'false',
         'aria-hidden': 'true',
         'tabindex': '-1',
-        }) %}
+      }) %}
 
+      {# The parent menu and it has children #}
+      {% if item.is_expanded %}
+        <li{{ item.attributes.addClass(item_classes) }} role='none' data-drupal-selector='{{ menu_name }}-item-with-children'>
         {% if rendered_url starts with '/' or rendered_url starts with 'http' %}
-            {# The parent link is clickable and it has children #}
-            {% set c_link = 'nav__menu-link nav__menu-link-' ~ menu_name|clean_class %}
-            <a href='{{ item.url }}' class='{{ c_link }} url-added' tabindex='-1'>
+          {# The parent link is clickable and it has children #}
+          {% set c_link = 'nav__menu-link nav__menu-link-' ~ menu_name|clean_class %}
+          <a href='{{ item.url }}' class='{{ c_link }} url-added' tabindex='-1'>
             <span class='menu__url-title-enabled'>{{ item.title }}</span>
-            </a>
-            <button class='en-link dropdown-toggler dropdown-toggler-child' {{ dorpdown_toggler_attributes }}>
+          </a>
+          <button class='en-link dropdown-toggler {{ dropdown_toggler_class }}' {{ dorpdown_toggler_attributes }}>
             <span class='visually-hidden'>{{ '@title sub-navigation'|t({'@title': item.title}) }}</span>
             <span class='toggler-icon dropdown-arrow'>{{ macros.svg_icon('M6 9l6 6 6-6') }}</span>
-            </button>
+          </button>
         {% else %}
-            {# The parent link is NOT clickable and it has children #}
-            <button class='ds-link dropdown-toggler dropdown-toggler-child' {{ dorpdown_toggler_attributes }}>
+          {# The parent link is NOT clickable and it has children #}
+          <button class='ds-link dropdown-toggler {{ dropdown_toggler_class }}' {{ dorpdown_toggler_attributes }}>
             <span class='menu__url-title-disabled'>{{ item.title }}</span>
             <span class='visually-hidden'>{{ '@title sub-navigation'|t({'@title': item.title}) }}</span>
             <span class='toggler-icon dropdown-arrow'>{{ macros.svg_icon('M6 9l6 6 6-6') }}</span>
-            </button>
+          </button>
         {% endif %}
 
       {% else %}
@@ -183,7 +155,7 @@ We call a macro which calls itself to render the full tree.
           item.attributes.setAttribute('role', 'menuitem').setAttribute('tabindex', '-1')
           )
           }}
-      {% endif %}
+      {% endif %}{# End for the if item.is_expanded #}
 
       {% if item.below %}
         {% set attributes = attributes.setAttribute('id', aria_id).setAttribute('tabindex', '-1') %}

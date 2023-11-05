@@ -321,7 +321,7 @@ ol {
   font-size: var(--solo-14);
 }
 
-form fieldset {
+form fieldset:not(td fieldset) {
   border: 1px solid var(--r-br, var(--r-br-b)) !important;
   margin-top: var(--solo-12);
 }

@@ -6,14 +6,24 @@ details.form-wrapper::after {
 
 details.form-wrapper {
   padding: 0 !important;
-  margin-bottom: var(--solo-8) !important;
+  margin-bottom: var(--solo-16) !important;
   line-height: inherit;
   color: inherit;
+  box-shadow: 0 1px 4px var(--r-br, var(--r-br-b));
 }
 
 details.form-wrapper > summary {
   cursor: pointer;
   padding: var(--solo-8) var(--solo-16);
+}
+
+form div.container-inline>* {
+  margin: var(--solo-8) var(--solo-8) var(--solo-8) 0;
+}
+
+form .fieldset-wrapper .form-item {
+  margin-top: var(--solo-8);
+  margin-bottom: var(--solo-8);
 }
 
 .details-wrapper {
@@ -277,6 +287,7 @@ span.field-edit-link button {
 form .form--inline {
   display: flex;
   flex-wrap: wrap;
+  justify-content: flex-start;
 }
 
 form .form--inline .form-actions {

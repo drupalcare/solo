@@ -28,7 +28,6 @@ form.solo-search-block-form {
 }
 
 .solo-search-block-form .form-type-search input {
-  border-right: none !important;
   text-indent: 24px;
   background-color: transparent;
 }

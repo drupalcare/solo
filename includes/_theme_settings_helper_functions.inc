@@ -133,7 +133,6 @@ function _get_animate_page_title() {
 function _get_predefined_theme() {
   return [
     '' => t('None'),
-    'solo-predefined-00000' => t('00000 - Plain No Colors'),
     'solo-predefined-00001' => t('00001 - Blue Gray'),
     'solo-predefined-00002' => t('00002 - Blue'),
     'solo-predefined-00003' => t('00003 - Green'),
@@ -163,10 +162,10 @@ function _get_predefined_theme() {
     'solo-predefined-00027' => t('00027 - Dark Theme - BlackLightBlue'),
     'solo-predefined-00028' => t('00028 - DarkRed LightBlue'),
     'solo-predefined-00029' => t('00029 - Colorfull Image Background'),
-    'solo-predefined-00030' => t('00030 - Amber'),
-    'solo-predefined-00031' => t('00031 - Black'),
-    'solo-predefined-00032' => t('00032 - Blue Gray'),
-    'solo-predefined-00033' => t('00033 - Blue'),
+    'solo-predefined-00030' => t('00030 - Amber + White'),
+    'solo-predefined-00031' => t('00031 - Black + White'),
+    'solo-predefined-00032' => t('00032 - Blue-Gray + White'),
+    'solo-predefined-00033' => t('00033 - Blue + White'),
     'solo-predefined-00034' => t('00034 - Brown'),
     'solo-predefined-00035' => t('00035 - Cyan'),
     'solo-predefined-00036' => t('00036 - Dark Gray'),

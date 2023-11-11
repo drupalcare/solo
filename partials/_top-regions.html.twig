@@ -1,12 +1,12 @@
 
     {% if page.top_first or page.top_second or page.top_third %}
   <!-- Start: Top Container -->
-  <div id="top-container" class="solo-outer multi top-container {{ site_regions_top_border ? 'has-border' }} {{ classes_top_container }}"{{ attributes_top_container }}>
+  <div id="top-container" class="solo-outer multi top-container {{ site_regions_top_border ? 'has-border' }} {{ site_regions_top_rounded }} {{ site_regions_top_animate ? 'animate-border' }} {{ classes_top_container }}"{{ attributes_top_container }}>
     <div id="top-container-inner" class="solo-inner solo-col {{ top_layout }} top-container-inner">
       {% if page.top_first %}
       <!-- Start: Top container first region -->
       <div id="top-box-first" class="region-outer top-box top-box-first">
-        <div class="region-inner top-box-inner top-box-first-inner fade-inner {{ site_regions_top_rounded }} {{ site_regions_top_animate ? 'animate-border' }} {{ classes_top_first}}"{{ attributes_top_first }}>
+        <div class="region-inner top-box-inner top-box-first-inner fade-inner {{ classes_top_first}}"{{ attributes_top_first }}>
          {{ page.top_first }}
         </div>
       </div>
@@ -15,7 +15,7 @@
       {% if page.top_second %}
       <!-- Start: Top Container Second  -->
       <div id="top-box-second" class="region-outer top-box top-box-second">
-        <div class="region-inner top-box-inner top-box-second-inner fade-inner {{ site_regions_top_rounded }} {{ site_regions_top_animate ? 'animate-border' }} {{ classes_top_second }}"{{ attributes_top_second }}>
+        <div class="region-inner top-box-inner top-box-second-inner fade-inner {{ classes_top_second }}"{{ attributes_top_second }}>
          {{ page.top_second }}
         </div>
       </div>
@@ -24,7 +24,7 @@
       {% if page.top_third %}
       <!-- Start: Top Container Third -->
       <div id="top-box-third" class="region-outer top-box top-box-third">
-        <div class="region-inner top-box-inner top-box-third-inner fade-inner {{ site_regions_top_rounded }} {{ site_regions_top_animate ? 'animate-border' }} {{ classes_top_third }}"{{ attributes_top_third }}>
+        <div class="region-inner top-box-inner top-box-third-inner fade-inner {{ classes_top_third }}"{{ attributes_top_third }}>
           {{ page.top_third }}
         </div>
       </div>

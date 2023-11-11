@@ -1,7 +1,7 @@
 /* Start Var tags */
 .page-wrapper {
-  --r-br: #cbced7;
   --r-br-b: #94a2b8;
+  --r-br: #cbced7;
   --r-bg: #f0f2f5;
   --r-tx: #262d38;
 }
@@ -37,11 +37,23 @@
 }
 
 /* Link only */
-.page-wrapper a:not(.nav__menu-link, .button, .site-name-link, .site-logo, h1 a, h2 a, h3 a) {
+.page-wrapper a:not(.nav__menu-link,
+.button,
+.site-name-link,
+.site-logo,
+h1 a,
+h2 a,
+h3 a) {
   color: var(--r-lk, var(--r-tx));
 }
 
-.page-wrapper a:hover:not(.nav__menu-link, .button, .site-name-link, .site-logo, h1 a, h2 a, h3 a) {
+.page-wrapper a:hover:not(.nav__menu-link,
+.button,
+.site-name-link,
+.site-logo,
+h1 a,
+h2 a,
+h3 a) {
   color: var(--r-lk-h, var(--r-tx));
 }
 

@@ -78,7 +78,7 @@ h3 a) {
 .page-wrapper .main-navigation-wrapper li>a,
 .page-wrapper .header li.nav__menu-item>button,
 .page-wrapper .main-navigation-wrapper li>button {
-  --r-br: #CDD8FC;
+  --r-br: #cdd8fc;
   --r-bg: #edf1fe;
   --r-tx: #02081e;
 }
@@ -113,11 +113,11 @@ h3 a) {
   .page-wrapper .solo-inner .navigation__responsive>li>ul,
   .page-wrapper .solo-inner .navigation__responsive:not(.navigation__megamenu)>li>ul>li>ul {
     box-shadow: 0 2.8px 2.2px rgba(var(--solo-shadow), .034),
-                0 6.7px 5.3px rgba(var(--solo-shadow), .048),
-                0 12.5px 10px rgba(var(--solo-shadow), .06),
-                0 22.3px 17.9px rgba(var(--solo-shadow), .072),
-                0 41.8px 33.4px rgba(var(--solo-shadow), .086),
-                0 100px 80px rgba(var(--solo-shadow), .12);
+    0 6.7px 5.3px rgba(var(--solo-shadow), .048),
+    0 12.5px 10px rgba(var(--solo-shadow), .06),
+    0 22.3px 17.9px rgba(var(--solo-shadow), .072),
+    0 41.8px 33.4px rgba(var(--solo-shadow), .086),
+    0 100px 80px rgba(var(--solo-shadow), .12);
   }
 
 }

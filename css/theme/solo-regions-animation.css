@@ -1,9 +1,9 @@
 /* Border animation  */
-.page-wrapper .region-inner.animate-border:not(.main-box-inner) {
+.page-wrapper .solo-outer.animate-border .region-inner:not(.main-box-inner) {
   position: relative;
 }
 
-.page-wrapper .region-inner.animate-border:not(.main-box-inner):before {
+.page-wrapper .solo-outer.animate-border .region-inner:not(.main-box-inner):before {
   content: '';
   position: absolute;
   top: 0;
@@ -11,14 +11,14 @@
   width: 0;
   height: 0;
   background-color: transparent;
-  border: 4px solid transparent;
+  border: var(--solo-4) solid transparent;
 }
 
-.page-wrapper .region-inner.animate-border:not(.main-box-inner):hover:before {
-  animation: borderLeftColors 1s linear forwards;
+.page-wrapper .solo-outer.animate-border .region-inner:not(.main-box-inner):hover:before {
+  animation: borderLeftColors 1.5s linear forwards;
 }
 
-.page-wrapper .region-inner.animate-border:not(.main-box-inner):after {
+.page-wrapper .solo-outer.animate-border .region-inner:not(.main-box-inner):after {
   content: '';
   position: absolute;
   bottom: 0;
@@ -26,40 +26,119 @@
   width: 0;
   height: 0;
   background-color: transparent;
-  border: 4px solid transparent;
+  border: var(--solo-4) solid transparent;
 }
 
-.page-wrapper .region-inner.animate-border:not(.main-box-inner):hover:after {
-  animation: borderRightColors 1s linear forwards;
+.page-wrapper .solo-outer.animate-border .region-inner:not(.main-box-inner):hover:after {
+  animation: borderRightColors 1.5s linear forwards;
 }
 
 /* Shadows */
-.page-wrapper .region-inner.animate-border:not(.main-box-inner) {
+.page-wrapper .solo-outer.animate-border .region-inner:not(.main-box-inner) {
   transition: 0.4s !important;
   overflow: hidden !important;
 }
 
 /* Radios */
-.page-wrapper .region-inner.radius-4,
-.page-wrapper .region-inner.radius-4.animate-border:not(.main-box-inner):before,
-.page-wrapper .region-inner.radius-4.animate-border:not(.main-box-inner):after {
-  border-radius: 4px;
+.page-wrapper .solo-outer.radius-4 .region-inner,
+.page-wrapper .solo-outer.animate-border.radius-4 .region-inner:not(.main-box-inner):before,
+.page-wrapper .solo-outer.animate-border.radius-4 .region-inner:not(.main-box-inner):after {
+  border-radius: var(--solo-4);
 }
 
-.page-wrapper .region-inner.radius-8,
-.page-wrapper .region-inner.radius-8.animate-border:not(.main-box-inner):before,
-.page-wrapper .region-inner.radius-8.animate-border:not(.main-box-inner):after {
-  border-radius: 8px;
+.page-wrapper .solo-outer.radius-8 .region-inner,
+.page-wrapper .solo-outer.animate-border.radius-8 .region-inner:not(.main-box-inner):before,
+.page-wrapper .solo-outer.animate-border.radius-8 .region-inner:not(.main-box-inner):after {
+  border-radius: var(--solo-8);
 }
 
-.page-wrapper .region-inner.radius-16,
-.page-wrapper .region-inner.radius-16.animate-border:not(.main-box-inner):before,
-.page-wrapper .region-inner.radius-16.animate-border:not(.main-box-inner):after {
-  border-radius: 16px;
+.page-wrapper .solo-outer.radius-16 .region-inner,
+.page-wrapper .solo-outer.animate-border.radius-16 .region-inner:not(.main-box-inner):before,
+.page-wrapper .solo-outer.animate-border.radius-16 .region-inner:not(.main-box-inner):after {
+  border-radius: var(--solo-16);
 }
 
-.page-wrapper .region-inner.radius-24,
-.page-wrapper .region-inner.radius-24.animate-border:not(.main-box-inner):before,
-.page-wrapper .region-inner.radius-24.animate-border:not(.main-box-inner):after {
-  border-radius: 24px;
+.page-wrapper .solo-outer.radius-24 .region-inner,
+.page-wrapper .solo-outer.animate-border.radius-24 .region-inner:not(.main-box-inner):before,
+.page-wrapper .solo-outer.animate-border.radius-24 .region-inner:not(.main-box-inner):after {
+  border-radius: var(--solo-24);
+}
+
+/* Border animation  */
+@keyframes borderLeftColors {
+  0% {
+    width: 0;
+    height: 0;
+    border-top-color: var(--r-br, var(--r-br-b));
+    border-right-color: transparent;
+    border-bottom-color: transparent;
+    border-left-color: transparent;
+  }
+
+  50% {
+    width: 100%;
+    height: 0;
+    border-top-color: var(--r-br, var(--r-br-b));
+    border-right-color: var(--r-br, var(--r-br-b));
+    border-bottom-color: transparent;
+    border-left-color: transparent;
+  }
+
+  99.9999% {
+    width: 100%;
+    height: 100%;
+    border-top-color: var(--r-br, var(--r-br-b));
+    border-right-color: var(--r-br, var(--r-br-b));
+    border-bottom-color: transparent;
+    border-left-color: transparent;
+  }
+
+  100% {
+    width: 0;
+    height: 0;
+    border-top-color: transparent;
+    border-right-color: transparent;
+    border-bottom-color: transparent;
+    border-left-color: transparent;
+  }
+
+}
+
+@keyframes borderRightColors {
+  0% {
+    width: 0;
+    height: 0;
+    border-top-color: transparent;
+    border-right-color: transparent;
+    border-bottom-color: var(--r-br, var(--r-br-b));
+    border-left-color: transparent;
+  }
+
+  50% {
+    width: 100%;
+    height: 0;
+    border-top-color: transparent;
+    border-right-color: transparent;
+    border-bottom-color: var(--r-br, var(--r-br-b));
+    border-left-color: var(--r-br, var(--r-br-b));
+  }
+
+  99.9999% {
+    width: 100%;
+    height: 100%;
+    border-top-color: transparent;
+    border-right-color: transparent;
+    border-bottom-color: var(--r-br, var(--r-br-b));
+    border-left-color: var(--r-br, var(--r-br-b));
+  }
+
+  100% {
+    width: 0;
+    height: 0;
+    border-top-color: transparent;
+    border-right-color: transparent;
+    border-bottom-color: transparent;
+    border-left-color: transparent;
+  }
+
 }

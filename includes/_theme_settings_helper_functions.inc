@@ -367,8 +367,19 @@ function _generate_css_classes($region, $label) {
 function _animate_region($region) {
   return [
     '#type' => 'checkbox',
-    '#title' => t("Check this box to animate the region's border."),
-    '#default_value' => theme_get_setting("site_regions_animate_$region"),
+    '#title' => t("Tick this box to initiate animation of the region's border."),
+    '#default_value' => theme_get_setting("site_regions_{$region}_animate"),
+  ];
+};
+
+/**
+ * Helper function.
+ */
+function _border_region($region) {
+  return [
+    '#type' => 'checkbox',
+    '#title' => t('Tick this box if you prefer to apply a border to the inside regions'),
+    '#default_value' => theme_get_setting("site_regions_{$region}_border"),
   ];
 };
 
@@ -378,8 +389,8 @@ function _animate_region($region) {
 function _rounded_region($region) {
   return [
     '#type' => 'radios',
-    '#title' => t("Check this box to round the inside regions' corners."),
-    '#default_value' => theme_get_setting("site_regions_rounded_$region") ?? '',
+    '#title' => t("Tick this box to round the inside regions' corners."),
+    '#default_value' => theme_get_setting("site_regions_{$region}_rounded") ?? '',
     '#options' => [
       '' => t('None'),
       'radius-4' => t('4px / 0.25rem'),
@@ -397,7 +408,7 @@ function _disable_region($region) {
   return [
     '#type' => 'radios',
     '#title' => t("Change the visibility for $region region"),
-    '#default_value' => theme_get_setting("site_regions_disable_$region") ?? 0,
+    '#default_value' => theme_get_setting("site_regions_{$region}_disable") ?? 0,
     '#options' => [
       0 => t('Visible on all pages'),
       1 => t('Visiable on Home Page Only.'),

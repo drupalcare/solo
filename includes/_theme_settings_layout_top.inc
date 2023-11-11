@@ -26,13 +26,7 @@ if ($updated_regions['top']) {
       $form['solo_settings']["settings_top_container"]["top_3col"] = _create_region_layout_radio_three('top');
       $form['solo_settings']["settings_top_container"]["site_regions_top_disable"] = _disable_region('top');
       $form['solo_settings']["settings_top_container"]["site_regions_top_animate"] = _animate_region('top');
-
-      $form['solo_settings']["settings_top_container"]["site_regions_top_border"] = [
-        '#type' => 'checkbox',
-        '#title' => t('Tick this box if you prefer to apply a border to the inside regions'),
-        '#default_value' => theme_get_setting('site_regions_top_border'),
-      ];
-
+      $form['solo_settings']["settings_top_container"]["site_regions_top_border"] = _border_region('top');
       $form['solo_settings']["settings_top_container"]["site_regions_top_rounded"] = _rounded_region('top');
       $form['solo_settings']["settings_top_container"]["classes_{$region}"] = _generate_css_classes($region, $label);
       foreach ($attributes as $attribute_key => $attribute_label) {

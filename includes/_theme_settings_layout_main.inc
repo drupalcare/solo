@@ -27,13 +27,7 @@ if ($updated_regions['main']) {
       $form['solo_settings']["settings_main_container"]["main_2col"] = _create_region_layout_radio_two('main', $variables);
       $form['solo_settings']["settings_main_container"]["main_3col"] = _create_region_layout_radio_three('main');
       $form['solo_settings']["settings_main_container"]["site_regions_main_rounded"] = _rounded_region('main');
-
-      $form['solo_settings']["settings_main_container"]["site_regions_main_border"] = [
-        '#type' => 'checkbox',
-        '#title' => t('Tick this box if you prefer to apply a border to the inside regions'),
-        '#default_value' => theme_get_setting('site_regions_main_border'),
-      ];
-
+      $form['solo_settings']["settings_main_container"]["site_regions_main_border"] = _border_region('main');
       $form['solo_settings']["settings_main_container"]["classes_{$region}"] = _generate_css_classes($region, $label);
       foreach ($attributes as $attribute_key => $attribute_label) {
         $form['solo_settings']["settings_main_container"]["settings_{$region}_{$attribute_key}"] = _generate_form_element($region, $label, $attribute_key, $attribute_label);

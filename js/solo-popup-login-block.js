@@ -17,14 +17,14 @@
     button.setAttribute('aria-hidden', hidden);
   }
 
-  const closeSearchHandler = () => {
+  const closeBlockHandler = () => {
     loginBlock.style.display = 'none';
     loginBlock.classList.remove('toggled');
     setButtonAttributes(closeBlock, 'false', 'true');
     setButtonAttributes(openBlock, 'false', 'true');
   }
 
-  const openSearchHandler = () => {
+  const openBlockHandler = () => {
     loginBlock.style.display = "block";
     loginBlock.classList.add('toggled');
     setButtonAttributes(openBlock, 'true', 'false');
@@ -34,8 +34,8 @@
   Drupal.behaviors.soloFixedLoginBlock = {
     attach: function (settings) {
 
-      closeBlock?.addEventListener('click', closeSearchHandler);
-      openBlock?.addEventListener('click', openSearchHandler);
+      closeBlock?.addEventListener('click', closeBlockHandler);
+      openBlock?.addEventListener('click', openBlockHandler);
 
       //click any where to close any submenu.
       document.addEventListener('click', (event) => {

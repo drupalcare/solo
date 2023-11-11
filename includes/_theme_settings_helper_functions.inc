@@ -382,10 +382,10 @@ function _rounded_region($region) {
     '#default_value' => theme_get_setting("site_regions_rounded_$region") ?? '',
     '#options' => [
       '' => t('None'),
-      'radios-4' => t('4px / 0.25rem'),
-      'radios-8' => t('8px / 0.5rem'),
-      'radios-16' => t('16px / 1rem'),
-      'radios-24' => t('24px / 1.5rem'),
+      'radius-4' => t('4px / 0.25rem'),
+      'radius-8' => t('8px / 0.5rem'),
+      'radius-16' => t('16px / 1rem'),
+      'radius-24' => t('24px / 1.5rem'),
     ],
   ];
 };
@@ -635,7 +635,7 @@ function _create_megamenu_layout() {
   return [
     '#type' => 'radios',
     '#title' => t('Megamenu Layout (1, 2, 3 or 4 Columns).'),
-    '#default_value' => theme_get_setting('main_menu_megamenu_layout') ?? 'm-1-1',
+    '#default_value' => theme_get_setting('primary_menu_megamenu_layout') ?? 'm-1-1',
     '#options' => [
       'm-1' => t('1 Column - 100%'),
       'm-1-1' => t('2 Columns - 50%, 50%'),
@@ -655,7 +655,7 @@ function _create_megamenu_layout() {
     ],
     '#states' => [
       'visible' => [
-        ':input[name="main_menu_megamenu"]' => ['checked' => TRUE],
+        ':input[name="primary_menu_megamenu"]' => ['checked' => TRUE],
       ],
     ],
   ];

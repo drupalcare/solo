@@ -19,7 +19,7 @@
             } %}
             {% for key, social in socials %}
               {% if social.url %}
-                <a href="{{ social.url }}" title="{{ key|capitalize }}" class="solo-clear" target="_blank">
+                <a href="{{ social.url }}" title="{{ key|capitalize }}" class="solo-clear {{ key }}" target="_blank">
                   <span class="sm-icon">
                     {% set svg_icon = "@solo/partials/svg/_svg-" ~  key   ~ ".html.twig" %}
                     {% include svg_icon %}

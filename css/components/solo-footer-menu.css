@@ -77,3 +77,39 @@
   font-weight: normal;
   font-size: var(--solo-16);
 }
+
+.sm-icons .facebook svg {
+  fill: var(--solo-fb);
+}
+
+.sm-icons .twitter svg {
+  fill: var(--solo-tw);
+}
+
+.sm-icons .pinterest svg {
+  fill: var(--solo-pi);
+}
+
+.sm-icons .linkedin svg {
+  fill: var(--solo-in);
+}
+
+.sm-icons .instagram svg {
+  fill: var(--solo-st);
+}
+
+.sm-icons .youtube svg {
+  fill: var(--solo-tb);
+}
+
+.sm-icons .drupal svg {
+  fill: var(--solo-dr);
+}
+
+.sm-icons .mastodon svg {
+  fill: var(--solo-md);
+}
+
+.sm-icons .rss svg {
+  fill: var(--solo-ss);
+}

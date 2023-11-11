@@ -1,3 +1,9 @@
+.solo-inner .navigation__megamenu>li.link-only>a,
+.solo-inner .navigation__megamenu>li.button-only>button {
+  flex-basis: 100%;
+  flex-grow: 1;
+}
+
 @media (min-width:62.001rem) {
   .solo-inner .navigation__megamenu {
     position: relative;
@@ -99,18 +105,13 @@
     cursor: context-menu !important;
   }
 
-  .solo-inner .navigation__megamenu ul.sub__menu,
   .solo-inner .navigation__megamenu li.nav__menu-item,
   .solo-inner .navigation__megamenu li.nav__menu-item>a,
   .solo-inner .navigation__megamenu li.nav__menu-item>button {
     display: flex;
   }
 
-  .solo-inner .navigation__megamenu li.has-sub__menu {
-    position: relative;
-  }
 
-  .solo-inner .navigation__megamenu ul.sub__menu,
   .solo-inner .navigation__megamenu li.link-only {
     flex-direction: column;
     flex-wrap: wrap;
@@ -147,6 +148,11 @@
     display: flex;
     justify-content: center;
     align-items: center;
+  }
+
+  .solo-inner .navigation__megamenu li {
+    flex-basis: 100%;
+    flex-grow: 1;
   }
 
 }

@@ -127,7 +127,8 @@
     Drupal.solo.slideUp(subMenu, 400);
   }
   const openMenuHelper = (dropdownTogglerButton, subMenu) => {
-    if (subMenu.classList.contains('sub-mega')) {
+    currentWidth = getCurrentWidth();
+    if (subMenu.classList.contains('sub-mega') && currentWidth >= 993 ) {
       Drupal.solo.slideDown(subMenu, 'grid', 1000);
       //subMenu.style.display = "grid";
     } else {

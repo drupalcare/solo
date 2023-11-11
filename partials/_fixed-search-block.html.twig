@@ -2,12 +2,14 @@
   <!-- Start: Fixed Search Bar -->
   <div id="fixed-search-block" class="solo-outer lone fixed-search-block {{ classes_fixed_search_block }}" role="search" aria-label="{{ 'Search Bar'|t }}"{{ attributes_fixed_search_block }}>
     <div id="fixed-search-block-inner" class="solo-inner solo-col fixed-search-block-inner">
-      {{ page.fixed_search_block }}
-      <div id="search-button-close" class="hamburger-icon hamburger-icon-close search-button-close">
-      {# <i class="fa fa-close"></i> #}
-        <button class="btn-animate solo-button-menu" data-drupal-selector="search-block-button-close-inner" aria-label="Close" aria-controls="fixed-search-block-inner" aria-expanded="false" aria-hidden="hidden">
-            <span>{{ svg_bars|raw }}</span>
-        </button>
+      <div class="fixed-search-wrapper">
+        <div id="search-button-close" class="hamburger-icon hamburger-icon-close search-button-close">
+        {# <i class="fa fa-close"></i> #}
+          <button class="btn-animate solo-button-menu" data-drupal-selector="search-block-button-close-inner" aria-label="Close" aria-controls="fixed-search-block-inner" aria-expanded="false" aria-hidden="hidden">
+              <span>{{ svg_bars|raw }}</span>
+          </button>
+        </div>
+        {{ page.fixed_search_block }}
       </div>
     </div>
   </div>

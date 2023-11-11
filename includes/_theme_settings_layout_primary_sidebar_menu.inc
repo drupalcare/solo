@@ -17,6 +17,12 @@ if (array_key_exists('primary_sidebar_menu', $updated_regions['mix'])) {
   $form['solo_settings']["settings_{$region}"] = _generate_form_details($label);
   $form['solo_settings']["settings_{$region}"]["classes_{$region}"] = _generate_css_classes($region, $label);
 
+  $form['solo_settings']["settings_{$region}"]['primary_sidebar_menu_border'] = [
+    '#type' => 'checkbox',
+    '#title' => t('Tick this box if you prefer to add border for each menu item'),
+    '#default_value' => theme_get_setting('primary_sidebar_menu_border'),
+  ];
+
   foreach ($attributes as $attribute_key => $attribute_label) {
     $form['solo_settings']["settings_{$region}"]["settings_{$region}_{$attribute_key}"] = _generate_form_element($region, $label, $attribute_key, $attribute_label);
   }

@@ -87,6 +87,7 @@ h3 a) {
 .page-wrapper .search-button-close button:hover {
   color: var(--r-tx-bt-h, var(--r-tx));
   background-color: var(--r-bg-bt-h, var(--r-bg));
+  box-shadow: inset 0 0 var(--solo-10) var(--r-br);
 }
 
 /* Menu Link */
@@ -127,6 +128,12 @@ h3 a) {
 .page-wrapper .solo-radio:focus,
 .page-wrapper .solo-input:focus,
 .page-wrapper .solo-textarea:focus {
-  border-color: var(--r-tx) !important;
-  border-style: double;
+  -moz-box-shadow: inset  0 -40px 40px -40px var(--r-br);
+  -webkit-box-shadow: inset  0 -40px 40px -40px var(--r-br);
+  box-shadow: inset  0 -40px 40px -40px var(--r-br);
+  border-color: var(--r-br);
+}
+
+.page-wrapper .region-inner.animate-border:not(.main-box-inner):hover {
+  box-shadow: 0 25px 50px 0 var(--r-br);
 }

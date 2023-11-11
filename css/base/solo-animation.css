@@ -40,7 +40,7 @@
   width: 0;
   height: 0;
   background-color: transparent;
-  border-bottom: 3px solid transparent;
+  border-bottom: 5px solid transparent;
 }
 
 .page-wrapper ul:not(.solo-ul) li>a:before,
@@ -58,13 +58,13 @@
 .page-wrapper ul:not(.solo-ul) li>a:hover:before,
 .page-wrapper ul:not(.solo-ul) li>button:hover:before,
 .page-wrapper input.button:hover:before {
-  animation: btnBorderAnimation 0.2s linear forwards;
+  animation: btnBorderAnimation 0.3s linear forwards;
 }
 
 .page-wrapper ul:not(.solo-ul) li>a:hover:after,
 .page-wrapper ul:not(.solo-ul) li>button:hover:after,
 .page-wrapper input.button:hover:after {
-  animation: btnBorderAnimation 0.2s linear forwards;
+  animation: btnBorderAnimation 0.3s linear forwards;
 }
 
 a,

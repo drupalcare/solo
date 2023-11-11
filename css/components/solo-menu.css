@@ -52,7 +52,8 @@
   padding: var(--solo-12);
 }
 
-.solo-inner .navigation__menubar:not(.navigation__megamenu) li.nav__menu-item button.ds-link {
+.solo-inner .navigation__menubar:not(.navigation__megamenu) li.link-only>a,
+.solo-inner .navigation__menubar:not(.navigation__megamenu) li.button-only>button {
   flex-basis: 100%;
   flex-grow: 1;
 }
@@ -181,4 +182,8 @@
 .page-wrapper .navigation__default li.has-sub__menu:hover>button {
   color: var(--r-tx-lk-h) !important;
   background-color: var(--r-bg-lk-h) !important;
+}
+
+.page-wrapper .primary-menu.solo-sticky {
+  box-shadow: -1px 0 5px 1px rgba(0, 0, 0, 0.5);
 }

@@ -22,7 +22,7 @@ form.search-form>.form-wrapper>.form-item {
 
 form.search-form>.form-wrapper>.form-submit {
   grid-area: form-submit;
-  margin: 0 0 8px 0;
+  margin: 0 0 var(--solo-8) 0;
   width: 100%;
 }
 

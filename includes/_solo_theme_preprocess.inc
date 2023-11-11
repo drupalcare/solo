@@ -317,6 +317,9 @@ function _get_theme_variables() {
       'site_regions_disable_bottom',
       'site_regions_disable_footer',
       'site_flip_header_menu',
+      'primary_menu_border',
+      'primary_menu_justify_content',
+      'primary_sidebar_menu_border',
       'top_2col',
       'top_3col',
       'main_2col',
@@ -554,18 +557,18 @@ function solo_preprocess_block(&$variables): void {
  */
 function solo_preprocess_menu__primary_menu(&$variables): void {
 
-  if (theme_get_setting('main_menu_on_hover')) {
+  if (theme_get_setting('primary_menu_on_hover')) {
     $variables['click_hover'] = 'navigation-responsive-hover';
   }
   else {
     $variables['click_hover'] = 'navigation-responsive-click';
   }
 
-  if (theme_get_setting('main_menu_megamenu')) {
+  if (theme_get_setting('primary_menu_megamenu')) {
     $variables['megamenu'] = 'navigation__megamenu';
     $variables['sub_mega'] = 'sub-mega';
-    $variables['megamenu_layout'] = (theme_get_setting('main_menu_megamenu_layout'));
-    if (theme_get_setting('main_menu_submenu_header')) {
+    $variables['megamenu_layout'] = (theme_get_setting('primary_menu_megamenu_layout'));
+    if (theme_get_setting('primary_menu_submenu_header')) {
       $variables['sub_menu_header'] = 'sub__menu-header';
     }
   }

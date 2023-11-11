@@ -1,11 +1,11 @@
     {% if page.bottom_first or page.bottom_second or page.bottom_third or page.bottom_forth %}
       <!-- Start: Bottom -->
-  <div id="bottom-container" class="solo-outer multi bottom-container {{ classes_bottom_container }}"{{ attributes_bottom_container }}>
+  <div id="bottom-container" class="solo-outer multi bottom-container {{ site_regions_bottom_border ? 'has-border' }} {{ classes_bottom_container }}"{{ attributes_bottom_container }}>
     <div id="bottom-container-inner" class="solo-inner solo-col {{ bottom_layout }} bottom-container-inner">
       {% if page.bottom_first %}
       <!-- Start: Bottom First -->
       <div id="bottom-box-first" class="region-outer bottom-box bottom-box-first">
-        <div class="region-inner bottom-box-inner bottom-box-first-inner fade-inner {{ site_regions_rounded_bottom }} {{ site_regions_animate_bottom ? 'animate-border' }} {{ classes_bottom_first }}"{{ attributes_bottom_first }}>
+        <div class="region-inner bottom-box-inner bottom-box-first-inner fade-inner {{ site_regions_bottom_rounded }} {{ site_regions_bottom_animate ? 'animate-border' }} {{ classes_bottom_first }}"{{ attributes_bottom_first }}>
           {{ page.bottom_first }}
         </div>
       </div>
@@ -14,7 +14,7 @@
       {% if page.bottom_second %}
       <!-- Start: Bottom Second -->
       <div id="bottom-box-second" class="region-outer bottom-box bottom-box-second">
-        <div class="region-inner bottom-box-inner bottom-box-second-inner fade-inner {{ site_regions_rounded_bottom }} {{ site_regions_animate_bottom ? 'animate-border' }} {{ classes_bottom_second }}"{{ attributes_bottom_second }}>
+        <div class="region-inner bottom-box-inner bottom-box-second-inner fade-inner {{ site_regions_bottom_rounded }} {{ site_regions_bottom_animate ? 'animate-border' }} {{ classes_bottom_second }}"{{ attributes_bottom_second }}>
           {{ page.bottom_second }}
         </div>
       </div>
@@ -23,7 +23,7 @@
       {% if page.bottom_third %}
       <!-- Start: Bottom Third  -->
       <div id="bottom-box-third" class="region-outer bottom-box bottom-box-third">
-        <div class="region-inner bottom-box-inner bottom-box-third-inner fade-inner {{ site_regions_rounded_bottom }} {{ site_regions_animate_bottom ? 'animate-border' }} {{ classes_bottom_third }}"{{ attributes_bottom_third }}>
+        <div class="region-inner bottom-box-inner bottom-box-third-inner fade-inner {{ site_regions_bottom_rounded }} {{ site_regions_bottom_animate ? 'animate-border' }} {{ classes_bottom_third }}"{{ attributes_bottom_third }}>
           {{ page.bottom_third }}
         </div>
       </div>
@@ -32,7 +32,7 @@
       {% if page.bottom_fourth %}
       <!-- Start: Bottom Forth  -->
       <div id="bottom-box-fourth" class ="region-outer bottom-box bottom-box-fourth">
-        <div class="region-inner bottom-box-inner bottom-box-fourth-inner fade-inner {{ site_regions_rounded_bottom }} {{ site_regions_animate_bottom ? 'animate-border' }} {{ classes_bottom_fourth }}"{{ attributes_bottom_fourth }}>
+        <div class="region-inner bottom-box-inner bottom-box-fourth-inner fade-inner {{ site_regions_bottom_rounded }} {{ site_regions_bottom_animate ? 'animate-border' }} {{ classes_bottom_fourth }}"{{ attributes_bottom_fourth }}>
           {{ page.bottom_fourth }}
         </div>
       </div>

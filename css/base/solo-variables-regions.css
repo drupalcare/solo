@@ -37,23 +37,11 @@
 }
 
 /* Link only */
-.page-wrapper a:not(.nav__menu-link,
-.button,
-.site-name-link,
-.site-logo,
-h1 a,
-h2 a,
-h3 a) {
+.page-wrapper a:not(.nav__menu-link, .button, .site-name-link, .site-logo, h1 a, h2 a, h3 a) {
   color: var(--r-lk, var(--r-tx));
 }
 
-.page-wrapper a:hover:not(.nav__menu-link,
-.button,
-.site-name-link,
-.site-logo,
-h1 a,
-h2 a,
-h3 a) {
+.page-wrapper a:hover:not(.nav__menu-link, .button, .site-name-link, .site-logo, h1 a, h2 a, h3 a) {
   color: var(--r-lk-h, var(--r-tx));
 }
 
@@ -136,4 +124,12 @@ h3 a) {
 
 .page-wrapper .region-inner.animate-border:not(.main-box-inner):hover {
   box-shadow: 0 25px 50px 0 var(--r-br);
+}
+
+/* inner regions borders */
+.page-wrapper .top-container.has-border .region-inner,
+.page-wrapper .main-container.has-border .region-inner,
+.page-wrapper .bottom-container.has-border .region-inner,
+.page-wrapper .footer-container.has-border .region-inner {
+  border: 1px solid var(--r-br);
 }

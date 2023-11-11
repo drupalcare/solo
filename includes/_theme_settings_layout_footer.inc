@@ -26,9 +26,17 @@ if ($updated_regions['footer']) {
       $region = 'footer_container';
       $form['solo_settings']["settings_footer_container"]["footer_2col"] = _create_region_layout_radio_two('footer', $variables);
       $form['solo_settings']["settings_footer_container"]["footer_3col"] = _create_region_layout_radio_three('footer');
-      $form['solo_settings']["settings_footer_container"]["site_regions_disable_footer"] = _disable_region('footer');
-      $form['solo_settings']["settings_footer_container"]["site_regions_animate_footer"] = _animate_region('footer');
-      $form['solo_settings']["settings_footer_container"]["site_regions_rounded_footer"] = _rounded_region('footer');
+      $form['solo_settings']["settings_footer_container"]["site_regions_footer_disable"] = _disable_region('footer');
+      $form['solo_settings']["settings_footer_container"]["site_regions_footer_animate"] = _animate_region('footer');
+
+      $form['solo_settings']["settings_footer_container"]["site_regions_footer_border"] = [
+        '#type' => 'checkbox',
+        '#title' => t('Tick this box if you prefer to apply a border to the inside regions'),
+        '#default_value' => theme_get_setting('site_regions_footer_border'),
+      ];
+
+
+      $form['solo_settings']["settings_footer_container"]["site_regions_footer_rounded"] = _rounded_region('footer');
       $form['solo_settings']["settings_footer_container"]["classes_{$region}"] = _generate_css_classes($region, $label);
       foreach ($attributes as $attribute_key => $attribute_label) {
         $form['solo_settings']["settings_footer_container"]["settings_{$region}_{$attribute_key}"] = _generate_form_element($region, $label, $attribute_key, $attribute_label);

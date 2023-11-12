@@ -2,7 +2,7 @@ html,
 body {
   min-height: 100%;
   overflow-wrap: break-word;
-  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-family: var(--solo-font);
   font-size: var(--solo-16);
   line-height: var(--solo-32);
   font-weight: normal;
@@ -44,19 +44,19 @@ h1,
 h2,
 h3 {
   font-weight: 700;
-  margin: 12px 0;
+  margin: var(--solo-12) 0;
 }
 
 h4,
 h5,
 h6 {
   font-weight: normal;
-  margin: 8px 0;
+  margin: var(--solo-8) 0;
 }
 
 hr {
   border: 0;
-  border-top: 1px solid var(--r-br, var(--r-br-b));
+  border-top: var(--solo-2) solid var(--r-br, var(--r-br-b));
   margin: var(--solo-20) 0;
 }
 

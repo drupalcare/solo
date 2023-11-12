@@ -1,6 +1,7 @@
 :root {
   --font-sans: "metropolis", sans-serif;
   --font-serif: "Lora", "georgia", serif;
+  --solo-font: 'Helvetica Neue', Helvetica, Arial, sans-serif;;
   --solo-2560: 160rem;
   --solo-1920: 120rem;
   --solo-1600: 100rem;

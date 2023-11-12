@@ -10,23 +10,9 @@ Hunter Green #3F704D
   border-color: var(--r-br);
   background-color: var(--r-bg);
 }
-
-.page-wrapper .solo-select,
-.page-wrapper .solo-radio,
-.page-wrapper .solo-check,
-.page-wrapper .solo-input,
-.page-wrapper .solo-textarea .page-wrapper a.button,
-.page-wrapper input.button,
-.page-wrapper .search-button-close button {
-  --r-br: #3f704d;
-}
-
 /* inner regions */
-.page-wrapper .region-inner:not(.main-box .region-inner) {
-  border-width: 1px;
-  border-style: solid;
+.page-wrapper .region-inner {
   --r-br: #969210;
-  border-color: var(--r-br);
 }
 
 .page-wrapper .solo-outer:not(.fixed-search-block,
@@ -172,6 +158,17 @@ div.page-title {
 .footer-container .footer-box-inner {
   --r-bg: linear-gradient(0deg, #000000, #0c0b01);
   background: var(--r-bg);
+}
+
+.page-wrapper .solo-select,
+.page-wrapper .solo-radio,
+.page-wrapper .solo-check,
+.page-wrapper .solo-input,
+.page-wrapper .solo-textarea,
+.page-wrapper a.button,
+.page-wrapper input.button,
+.page-wrapper .search-button-close button {
+  --r-br: #3f704d;
 }
 
 .page-wrapper .solo-select:focus,

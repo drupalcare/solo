@@ -17,7 +17,8 @@
 .page-wrapper .solo-radio,
 .page-wrapper .solo-check,
 .page-wrapper .solo-input,
-.page-wrapper .solo-textarea .page-wrapper a.button,
+.page-wrapper .solo-textarea,
+.page-wrapper a.button,
 .page-wrapper input.button,
 .page-wrapper .search-button-close button {
   --r-br: #9faab3;
@@ -25,11 +26,6 @@
 }
 
 /* inner regions */
-.page-wrapper .region-inner {
-  border-width: 1px;
-  border-style: solid;
-}
-
 .page-wrapper .solo-outer:not(.fixed-search-block,
 .popup-login-block,
 .header,

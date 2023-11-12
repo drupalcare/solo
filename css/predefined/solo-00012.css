@@ -15,18 +15,16 @@ Natural Black #07000B
 .page-wrapper .solo-radio,
 .page-wrapper .solo-check,
 .page-wrapper .solo-input,
-.page-wrapper .solo-textarea .page-wrapper a.button,
+.page-wrapper .solo-textarea,
+.page-wrapper a.button,
 .page-wrapper input.button,
 .page-wrapper .search-button-close button {
   --r-br: #494b49;
 }
 
 /* inner regions */
-.page-wrapper .region-inner:not(.main-box .region-inner) {
-  border-width: 1px;
-  border-style: solid;
+.page-wrapper .region-inner {
   --r-br: #480071;
-  border-color: var(--r-br);
 }
 
 .page-wrapper .solo-outer:not(.fixed-search-block,

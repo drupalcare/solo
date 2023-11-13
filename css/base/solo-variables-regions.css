@@ -134,8 +134,8 @@ h3 a) {
   border-color: var(--r-br);
 }
 
-.page-wrapper .region-inner.animate-border:not(.main-box-inner):hover {
-  box-shadow: 0 25px 50px 0 var(--r-br);
+.page-wrapper .solo-outer.animate-border .region-inner:not(.main-box-inner):hover {
+  box-shadow: 0 25px 50px 0 rgba(var(--solo-shadow), .25);
 }
 
 /* inner regions borders */

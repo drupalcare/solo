@@ -63,10 +63,14 @@
 {% set svg_search %}
 {% include '@solo/partials/svg/_svg-search.html.twig' %}
 {% endset %}
+
 <!-- Start: Page Wrapper -->
 <div id="page-wrapper" class="page-wrapper solo-animate-opacity {{ site_global_width }} {{ classes_page_wrapper }} {{ site_inline_items_on ? 'solo__inline-items' }}"{{ attributes_page_wrapper }}>
+
   {% include '@solo/partials/_primary-sidebar-menu.html.twig' %}
+
   {% include '@solo/partials/_fixed-search-block.html.twig' %}
+
   {% include '@solo/partials/_popup-login-block.html.twig' %}
 
   {% if site_flip_header_menu %}
@@ -78,8 +82,6 @@
   {% endif %}
 
   {% include '@solo/partials/_welcome-text.html.twig' %}
-  {% include '@solo/partials/_highlighted.html.twig' %}
-  {% include '@solo/partials/_system-messages.html.twig' %}
 
   {% if site_regions_top_disable == 0 %}
   {% include '@solo/partials/_top-regions.html.twig' %}
@@ -91,9 +93,14 @@
   {% include '@solo/partials/_top-regions.html.twig' %}
   {% endif %}
 
+  {% include '@solo/partials/_highlighted.html.twig' %}
+
+  {% include '@solo/partials/_system-messages.html.twig' %}
 
   {% include '@solo/partials/_page-title.html.twig' %}
+
   {% include '@solo/partials/_breadcrumb.html.twig' %}
+
   {% include '@solo/partials/_main-regions.html.twig' %}
 
   {% if site_regions_bottom_disable == 0 %}
@@ -117,7 +124,7 @@
   {% endif %}
 
   {% include '@solo/partials/_footer-menu.html.twig' %}
-  {% include '@solo/partials/_copyright.html.twig' %}
 
+  {% include '@solo/partials/_copyright.html.twig' %}
 </div>
 <!-- End: Page Wrapper -->

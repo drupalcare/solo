@@ -1,20 +1,17 @@
-/* Regions */
+/* Page wrapper
+Braves Navy #13274F, Astros Navy #002D62
+*/
 .page-wrapper {
-  --r-br: #b2dbfb;
-  --r-bg: #f3f9fe;
-  --r-tx: #000204;
-}
-
-.fixed-search-block {
-  --r-bg: #e3f1fd;
-}
-
-.header {
-  --r-bg: #d2eafd;
+  --r-br: #84bcff;
+  --r-bg: #eef2fb;
+  --r-tx: #060c18;
+  color: var(--r-tx);
+  border-color: var(--r-br);
+  background-color: var(--r-bg);
 }
 
 /* Heads */
-.page-wrapper h1,
+.page-wrapper h1:not(.page-title),
 .page-wrapper h2,
 .page-wrapper h3,
 .page-wrapper h1 a,
@@ -23,7 +20,7 @@
 .page-wrapper h1 a span,
 .page-wrapper h2 a span,
 .page-wrapper h3 a span {
-  --r-tx: #042844;
+  --r-tx: #004495;
 }
 
 /* Link only */
@@ -34,7 +31,7 @@
 h1 a,
 h2 a,
 h3 a) {
-  --r-tx: #064475;
+  --r-tx: #234994;
 }
 
 .page-wrapper a:hover:not(.nav__menu-link,
@@ -44,29 +41,39 @@ h3 a) {
 h1 a,
 h2 a,
 h3 a) {
-  --r-tx: #021524;
+  --r-tx: #006bea;
 }
 
 /* Menu Links */
-.page-wrapper .header li.nav__menu-item>a,
-.page-wrapper .header li.nav__menu-item>button,
 .page-wrapper .login-button-open,
+.page-wrapper .hamburger-icon button,
 .page-wrapper .main-navigation-wrapper,
+.page-wrapper .main-navigation-wrapper ul,
+.page-wrapper .main-navigation-wrapper li,
+.page-wrapper .header li.nav__menu-item>a,
 .page-wrapper .main-navigation-wrapper li>a,
-.page-wrapper .main-navigation-wrapper li>button,
-.page-wrapper .hamburger-icon button {
-  --r-bg: #0b72c5;
-  --r-tx: #f3f9fe;
+.page-wrapper .header li.nav__menu-item>button,
+.page-wrapper .main-navigation-wrapper li>button {
+  --r-br: #001d40;
+  --r-bg: #002d62;
+  --r-tx: #fbfdff;
 }
 
-.page-wrapper .header li.nav__menu-item>a:hover,
-.page-wrapper .header li.nav__menu-item>button:hover,
 .page-wrapper .login-button-open:hover,
+.page-wrapper .hamburger-icon button:hover,
+.page-wrapper .header li.nav__menu-item>a:hover,
 .page-wrapper .main-navigation-wrapper li>a:hover,
-.page-wrapper .main-navigation-wrapper li>button:hover,
-.page-wrapper .hamburger-icon button:hover {
-  --r-bg: #f3f9fe;
-  --r-tx: #0b72c5;
+.page-wrapper .header li.nav__menu-item>button:hover,
+.page-wrapper .main-navigation-wrapper li>button:hover {
+  --r-tx: #d9eaff;
+  --r-bg: #00162f;
+}
+
+.page-wrapper ul.tabs.secondary li a:hover,
+.page-wrapper ul.tabs.primary li a:hover {
+  --r-tx: #d9eaff;
+  --r-bg: #00162f;
+  background-color: var(--r-bg);
 }
 
 @media (min-width:62.001rem) {
@@ -76,8 +83,8 @@ h3 a) {
   .page-wrapper .navigation-responsive-hover .navigation__megamenu>li.has-sub__menu:hover>button,
   .page-wrapper .navigation-responsive-hover .navigation__responsive:not(.navigation__megamenu) li.has-sub__menu:hover>a,
   .page-wrapper .navigation-responsive-hover .navigation__responsive:not(.navigation__megamenu) li.has-sub__menu:hover>button {
-    --r-bg: #f3f9fe;
-    --r-tx: #0b72c5;
+    --r-tx: #d9eaff;
+    --r-bg: #00162f;
   }
 
 }
@@ -87,127 +94,154 @@ h3 a) {
 .page-wrapper input.button,
 .page-wrapper .search-button-close button,
 .block-user-login-block form+.item-list ul li a {
-  --r-bg: #0b72c5;
-  --r-tx: #f3f9fe;
+  --r-bg: #1a356a;
+  --r-tx: #c5d4f1;
 }
 
 .page-wrapper a.button:hover,
 .page-wrapper input.button:hover,
 .page-wrapper .search-button-close button:hover,
 .block-user-login-block form+.item-list ul li a:hover {
-  --r-bg: #f3f9fe;
-  --r-tx: #0b72c5;
+  --r-tx: #fcfdfe;
+  --r-bg: #102041;
 }
 
-/* Regions */
-.welcome-text {
-  --r-bg: var(--solo-white);
-}
-
-.highlighted,
-.popup-login-block-inner {
-  --r-bg: #f3f9fe;
-}
-
-.top-container {
-  --r-bg: #e3f1fd;
-}
-
-.top-container .top-box-first-inner {
-  --r-bg: #f3f9fe;
-}
-
-.top-container .top-box-second-inner {
-  --r-bg: #f3f9fe;
-}
-
-.top-container .top-box-third-inner {
-  --r-bg: #f3f9fe;
-}
-
-.page-wrapper ul.tabs.secondary li a:hover,
-.page-wrapper ul.tabs.primary li a:hover {
-  background-color: #0b72c5;
-  --r-tx: #f3f9fe;
-}
-
-.main-container {
-  --r-bg: #f3f9fe;
-}
-
+/* Regions Light */
+.welcome-text,
 .main-container .main-box {
-  --r-bg: var(--solo-white);
+  --r-bg: var(--solo-white)
 }
 
-.page-wrapper .bottom-container a,
-.page-wrapper .bottom-container h1,
-.page-wrapper .bottom-container h2,
-.page-wrapper .bottom-container h3,
-.bottom-container {
-  --r-bg: #031e34;
-  --r-tx: #f3f9fe;
+.main-container,
+.top-container,
+.fixed-search-block,
+.popup-login-block-inner {
+  --r-br: #4098ff;
+  --r-bg: linear-gradient(135deg, #fbfdff, #eef2fb);
+  background: var(--r-bg);
 }
 
-.bottom-container .bottom-box-first-inner {
-  --r-bg: #021524;
+.highlighted {
+  --r-bg: #fcfdfe;
 }
 
-.bottom-container .bottom-box-second-inner {
-  --r-bg: #021524;
+.top-container .top-box-inner {
+  --r-bg: linear-gradient(180deg, #fcfdfe, #fdfdfd);
+  background: var(--r-bg);
 }
 
-.bottom-container .bottom-box-third-inner {
-  --r-bg: #021524;
+/* Regions Dark */
+header.header,
+div.page-title {
+  --r-tx: #c5d4f1;
+  --r-bg: linear-gradient(0deg, #0c1934, #13274f);
+  background: var(--r-bg);
 }
 
-.bottom-container .bottom-box-fourth-inner {
-  --r-bg: #021524;
-}
-
-.page-wrapper .footer-container a,
-.page-wrapper .footer-container h1,
-.page-wrapper .footer-container h2,
-.page-wrapper .footer-container h3,
-.footer-container {
-  --r-bg: #021524;
-  --r-tx: #f3f9fe;
-}
-
-.footer-container .footer-box-first-inner {
-  --r-bg: #010c14;
-}
-
-.footer-container .footer-box-second-inner {
-  --r-bg: #010c14;
-}
-
-.footer-container .footer-box-third-inner {
-  --r-bg: #010c14;
-}
-
-.page-wrapper .page-title,
-.page-wrapper .footer-menu a,
-.page-wrapper .footer-menu h1,
-.page-wrapper .footer-menu h2,
-.page-wrapper .footer-menu h3,
-.footer-menu {
-  --r-bg: #010c14;
-  --r-tx: #f3f9fe;
+div.page-title h1 a,
+div.page-title h1 span,
+header.header h1,
+header.header h2,
+header.header h3,
+header.header h1 a,
+header.header h2 a,
+header.header h3 a,
+header.header h1 a span,
+header.header h2 a span,
+header.header h3 a span {
+  --r-tx: #c5d4f1;
 }
 
 .breadcrumb,
-.page-wrapper .breadcrumb a,
-.page-wrapper .copyright a,
 .copyright {
-  --r-bg: #000204;
-  --r-tx: #f3f9fe;
+  --r-tx: #eaf4ff;
+  --r-bg: linear-gradient(180deg, #03050a, #00060d);
+  background: var(--r-bg);
 }
 
-.page-wrapper .bottom-container a:hover,
-.page-wrapper .footer-container a:hover,
-.page-wrapper .breadcrumb a:hover,
-.page-wrapper .copyright a:hover {
-  --r-tx: #a2d3fa;
+.bottom-container,
+.footer-container,
+.footer-menu {
+  --r-br: #004ca6;
+  --s-b: 149, 198, 255;
+  --r-tx: #b7d8ff;
+  --r-bg: linear-gradient(180deg, #00060d, #060c18);
+  background: var(--r-bg);
+}
+
+.bottom-container .bottom-box-inner,
+.footer-container .footer-box-inner {
+  --r-bg: linear-gradient(180deg, #00060d, #03050a);
+  background: var(--r-bg);
+}
+
+.page-wrapper .bottom-container a,
+.page-wrapper .footer-container a,
+.page-wrapper .footer-menu a,
+.page-wrapper .breadcrumb a,
+.page-wrapper .copyright a {
+  --r-tx: #0d7cff;
+}
+
+.page-wrapper .bottom-container h1,
+.page-wrapper .bottom-container h2,
+.page-wrapper .bottom-container h3,
+.page-wrapper .footer-container h1,
+.page-wrapper .footer-container h2,
+.page-wrapper .footer-container h3,
+.page-wrapper .footer-menu h1,
+.page-wrapper .footer-menu h2,
+.page-wrapper .footer-menu h3 {
+  --r-tx: #95c6ff;
+}
+
+.sm-icons .facebook svg,
+.sm-icons .twitter svg,
+.sm-icons .pinterest svg,
+.sm-icons .linkedin svg,
+.sm-icons .instagram svg,
+.sm-icons .youtube svg,
+.sm-icons .drupal svg,
+.sm-icons .mastodon svg,
+.sm-icons .rss svg {
+  fill: #2a56af;
+}
+
+.page-wrapper .solo-select,
+.page-wrapper .solo-radio,
+.page-wrapper .solo-check,
+.page-wrapper .solo-input,
+.page-wrapper .solo-textarea,
+.page-wrapper a.button,
+.page-wrapper input.button,
+.page-wrapper .search-button-close button {
+  --r-br: #0054b7;
+}
+
+.page-wrapper .solo-select:focus,
+.page-wrapper .solo-ckeck:focus,
+.page-wrapper .solo-radio:focus,
+.page-wrapper .solo-input:focus,
+.page-wrapper .solo-textarea:focus {
+  --r-br: #0073fb;
+}
+
+#fixed-search-block,
+.primary-sidebar-menu,
+.solo-inner .navigation__responsive,
+.page-wrapper .primary-menu.solo-sticky,
+.fixed-search-block-inner .fixed-search-wrapper,
+.page-wrapper .solo-outer.animate-border .region-inner.top-box-inner {
+  --s-b: rgb(6,12,24);
+}
+
+.page-wrapper .solo-outer.animate-border .region-inner.bottom-box-inner,
+.page-wrapper .solo-outer.animate-border .region-inner.footer-box-inner {
+  --s-b: 224,232,248;
+}
+
+.sm-icons a > span {
+  --s-b: 252,253,254;
 }
 
 /* Border animation  */

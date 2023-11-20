@@ -1,6 +1,5 @@
 /* Page wrapper
-WALNUT #432616
-MAHOGANY #420C09
+MAHOGANY #420C09, WALNUT #432616
 */
 .page-wrapper {
   --r-br: #60110d;
@@ -29,7 +28,7 @@ MAHOGANY #420C09
 }
 
 /* Heads */
-.page-wrapper h1,
+.page-wrapper h1:not(.page-title),
 .page-wrapper h2,
 .page-wrapper h3,
 .page-wrapper h1 a,
@@ -101,12 +100,6 @@ h3 a) {
   .page-wrapper .navigation-responsive-hover .navigation__responsive:not(.navigation__megamenu) li.has-sub__menu:hover>button {
     --r-tx: #ffffff;
     --r-bg: #ab1f17;
-  }
-
-  .page-wrapper .solo-inner .navigation__responsive>li>ul,
-  .page-wrapper .solo-inner .navigation__responsive:not(.navigation__megamenu)>li>ul>li>ul {
-    --solo-shadow: 126, 23, 17;
-    box-shadow: 0 2.8px 2.2px rgba(var(--solo-shadow), .034), 0 6.7px 5.3px rgba(var(--solo-shadow), .048), 0 12.5px 10px rgba(var(--solo-shadow), .06), 0 22.3px 17.9px rgba(var(--solo-shadow), .072), 0 41.8px 33.4px rgba(var(--solo-shadow), .086), 0 100px 80px rgba(var(--solo-shadow), .12);
   }
 
 }
@@ -193,6 +186,20 @@ div.page-title {
 .page-wrapper .solo-input:focus,
 .page-wrapper .solo-textarea:focus {
   --r-br: #b6673c;
+}
+#fixed-search-block,
+.primary-sidebar-menu,
+.solo-inner .navigation__responsive,
+.page-wrapper .primary-menu.solo-sticky,
+.fixed-search-block-inner .fixed-search-wrapper,
+.page-wrapper .solo-outer.animate-border .region-inner.top-box-inner,
+.page-wrapper .solo-outer.animate-border .region-inner.bottom-box-inner,
+.page-wrapper .solo-outer.animate-border .region-inner.footer-box-inner {
+  --s-b: 197,121,79;
+}
+
+.sm-icons a > span {
+  --s-b: 243,228,220;
 }
 
 /* Border animation  */

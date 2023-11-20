@@ -51,11 +51,6 @@
     background-color: var(--r-bg-lk-h, var(--r-bg)) !important;
   }
 
-  .solo-inner .navigation__responsive>li>ul,
-  .solo-inner .navigation__responsive:not(.navigation__megamenu)>li>ul>li>ul {
-    box-shadow: 0 2.8px 2.2px rgba(var(--solo-shadow), .034), 0 6.7px 5.3px rgba(var(--solo-shadow), .048), 0 12.5px 10px rgba(var(--solo-shadow), .06), 0 22.3px 17.9px rgba(var(--solo-shadow), .072), 0 41.8px 33.4px rgba(var(--solo-shadow), .086), 0 100px 80px rgba(var(--solo-shadow), .12);
-  }
-
 }
 
 /* For the repsonsive menus (Primary, Click and Hover) */

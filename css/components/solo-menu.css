@@ -25,6 +25,11 @@
   background-color: inherit;
 }
 
+.solo-inner ul.navigation__menubar li.is-active>a,
+.solo-inner ul.navigation__menubar li.is-active>button {
+  font-weight: bold;
+}
+
 .solo-inner .navigation__menubar li.nav__menu-item>a {
   text-decoration: none;
   -webkit-text-decoration: none;
@@ -182,8 +187,4 @@
 .page-wrapper .navigation__default li.has-sub__menu:hover>button {
   color: var(--r-tx-lk-h) !important;
   background-color: var(--r-bg-lk-h) !important;
-}
-
-.page-wrapper .primary-menu.solo-sticky {
-  box-shadow: -1px 0 5px 1px rgba(0, 0, 0, 0.5);
 }

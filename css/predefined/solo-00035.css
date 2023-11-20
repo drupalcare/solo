@@ -1,8 +1,7 @@
 /* Page wrapper
 Anti-Flash White #F2F3F4
 
-Rose White #FFFAFA
-Magnolia #F8F4FF
+Rose White #FFFAFA, Magnolia #F8F4FF
 */
 .page-wrapper {
   --r-br: #ab97a1;
@@ -13,22 +12,8 @@ Magnolia #F8F4FF
   background-color: var(--r-bg);
 }
 
-/* inner regions borders */
-.page-wrapper .solo-outer:not(.fixed-search-block,
-.popup-login-block,
-.header,
-.primary-sidebar-menu,
-.primary-menu,
-.system-messages,
-.top-container,
-.copyright) {
-  border-bottom-width: var(--solo-2);
-  border-bottom-style: solid;
-  border-color: #090708;
-}
-
 /* Heads */
-.page-wrapper h1,
+.page-wrapper h1:not(.page-title),
 .page-wrapper h2,
 .page-wrapper h3,
 .page-wrapper h1 a,
@@ -104,12 +89,6 @@ h3 a) {
     --r-bg: #251e21;
   }
 
-  .page-wrapper .solo-inner .navigation__responsive>li>ul,
-  .page-wrapper .solo-inner .navigation__responsive:not(.navigation__megamenu)>li>ul>li>ul {
-    --solo-shadow: 187, 169, 178;
-    box-shadow: 0 2.8px 2.2px rgba(var(--solo-shadow), .034), 0 6.7px 5.3px rgba(var(--solo-shadow), .048), 0 12.5px 10px rgba(var(--solo-shadow), .06), 0 22.3px 17.9px rgba(var(--solo-shadow), .072), 0 41.8px 33.4px rgba(var(--solo-shadow), .086), 0 100px 80px rgba(var(--solo-shadow), .12);
-  }
-
 }
 
 /* Form Button */
@@ -167,7 +146,6 @@ div.page-title {
 .bottom-container,
 .footer-container,
 .footer-menu {
-  --solo-shadow: 255,254,255;
   --r-tx: #e0d9dd;
   --r-bg: linear-gradient(0deg, #090708, #120f10);
   background: var(--r-bg);
@@ -193,7 +171,8 @@ div.page-title {
 .page-wrapper .bottom-container h3,
 .page-wrapper .footer-container h1,
 .page-wrapper .footer-container h2,
-.page-wrapper .footer-container h3 .page-wrapper .footer-menu h1,
+.page-wrapper .footer-container h3,
+.page-wrapper .footer-menu h1,
 .page-wrapper .footer-menu h2,
 .page-wrapper .footer-menu h3 {
   --r-tx: #8d717f;
@@ -208,7 +187,7 @@ div.page-title {
 .sm-icons .drupal svg,
 .sm-icons .mastodon svg,
 .sm-icons .rss svg {
-  fill: #8d717f;
+  fill: #bca8b2;
 }
 
 .page-wrapper .solo-select,
@@ -228,6 +207,21 @@ div.page-title {
 .page-wrapper .solo-input:focus,
 .page-wrapper .solo-textarea:focus {
   --r-br: #4b3c44;
+}
+/* For main menu shadow */
+#fixed-search-block,
+.primary-sidebar-menu,
+.solo-inner .navigation__responsive,
+.page-wrapper .primary-menu.solo-sticky,
+.fixed-search-block-inner .fixed-search-wrapper,
+.page-wrapper .solo-outer.animate-border .region-inner.top-box-inner,
+.page-wrapper .solo-outer.animate-border .region-inner.bottom-box-inner,
+.page-wrapper .solo-outer.animate-border .region-inner.footer-box-inner {
+  --s-b: 232,226,229;
+}
+
+.sm-icons a > span {
+  --s-b: 105,81,93;
 }
 
 /* Border animation  */

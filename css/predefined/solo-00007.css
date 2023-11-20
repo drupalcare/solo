@@ -1,6 +1,5 @@
 /* Page wrapper
-Stone Gray #928E85
-Outer Space #414A4C
+Stone Gray #928E85, Outer Space #414A4C
 */
 .page-wrapper {
   --r-br: #b2afa9;
@@ -41,7 +40,7 @@ Outer Space #414A4C
 }
 
 /* Heads */
-.page-wrapper h1,
+.page-wrapper h1:not(.page-title),
 .page-wrapper h2,
 .page-wrapper h3,
 .page-wrapper h1 a,
@@ -50,7 +49,7 @@ Outer Space #414A4C
 .page-wrapper h1 a span,
 .page-wrapper h2 a span,
 .page-wrapper h3 a span {
-  --r-tx: #3a3833;
+  --r-tx: #495355;
 }
 
 /* Link only */
@@ -61,7 +60,7 @@ Outer Space #414A4C
 h1 a,
 h2 a,
 h3 a) {
-  --r-tx: #495355;
+  --r-tx: #292f31;
 }
 
 .page-wrapper a:hover:not(.nav__menu-link,
@@ -71,7 +70,7 @@ h3 a) {
 h1 a,
 h2 a,
 h3 a) {
-  --r-tx: #222627;
+  --r-tx: #0a0c0c;
 }
 
 /* Menu Links */
@@ -114,15 +113,7 @@ h3 a) {
     --r-tx: #ffffff;
     --r-bg: #3a3833;
   }
-  .page-wrapper .solo-inner .navigation__responsive>li>ul,
-  .page-wrapper .solo-inner .navigation__responsive:not(.navigation__megamenu)>li>ul>li>ul {
-    box-shadow: 0 2.8px 2.2px rgba(var(--solo-shadow),.034),
-    0 6.7px 5.3px rgba(var(--solo-shadow),.048),
-    0 12.5px 10px rgba(var(--solo-shadow),.06),
-    0 22.3px 17.9px rgba(var(--solo-shadow),.072),
-    0 41.8px 33.4px rgba(var(--solo-shadow),.086),
-    0 100px 80px rgba(var(--solo-shadow),.12);
-  }
+
 }
 
 /* Form Button */
@@ -130,7 +121,7 @@ h3 a) {
 .page-wrapper input.button,
 .page-wrapper .search-button-close button,
 .block-user-login-block form+.item-list ul li a {
-  --r-bg: #394143;
+  --r-bg: #414a4c;
   --r-tx: #dde1e2;
 }
 
@@ -172,12 +163,23 @@ div.page-title {
   background: var(--r-bg);
 }
 
+.page-wrapper .solo-select,
+.page-wrapper .solo-radio,
+.page-wrapper .solo-check,
+.page-wrapper .solo-input,
+.page-wrapper .solo-textarea,
+.page-wrapper a.button,
+.page-wrapper input.button,
+.page-wrapper .search-button-close button {
+  --r-br: #515c5e;
+}
+
 .page-wrapper .solo-select:focus,
 .page-wrapper .solo-ckeck:focus,
 .page-wrapper .solo-radio:focus,
 .page-wrapper .solo-input:focus,
 .page-wrapper .solo-textarea:focus {
-  --r-br: #292f31;
+  --r-br: #819094;
 }
 
 .sm-icons .facebook svg,
@@ -196,6 +198,22 @@ div.page-title {
 .copyright {
   --r-bg: linear-gradient(180deg, #eae9e8, #dde1e2);
   background: var(--r-bg);
+}
+
+/* For main menu shadow */
+#fixed-search-block,
+.primary-sidebar-menu,
+.solo-inner .navigation__responsive,
+.page-wrapper .primary-menu.solo-sticky,
+.fixed-search-block-inner .fixed-search-wrapper,
+.page-wrapper .solo-outer.animate-border .region-inner.top-box-inner,
+.page-wrapper .solo-outer.animate-border .region-inner.bottom-box-inner,
+.page-wrapper .solo-outer.animate-border .region-inner.footer-box-inner {
+  --s-b: 18,20,21;
+}
+
+.sm-icons a > span {
+  --s-b: 184,193,195;
 }
 
 /* Border animation  */

@@ -1,6 +1,5 @@
 /* Page wrapper
-Retro Black #1F201F
-Natural Black #07000B
+Natural Black #07000B, Retro Black #1F201F
 */
 .page-wrapper {
   --r-br: #530082;
@@ -11,16 +10,6 @@ Natural Black #07000B
   background-color: var(--r-bg);
 }
 
-.page-wrapper .solo-select,
-.page-wrapper .solo-radio,
-.page-wrapper .solo-check,
-.page-wrapper .solo-input,
-.page-wrapper .solo-textarea,
-.page-wrapper a.button,
-.page-wrapper input.button,
-.page-wrapper .search-button-close button {
-  --r-br: #494b49;
-}
 
 /* inner regions */
 .page-wrapper .region-inner {
@@ -40,7 +29,7 @@ Natural Black #07000B
 }
 
 /* Heads */
-.page-wrapper h1,
+.page-wrapper h1:not(.page-title),
 .page-wrapper h2,
 .page-wrapper h3,
 .page-wrapper h1 a,
@@ -113,16 +102,7 @@ h3 a) {
     --r-tx: #e4b5ff;
     --r-bg: #3d0060;
   }
-  .page-wrapper .solo-inner .navigation__responsive>li>ul,
-  .page-wrapper .solo-inner .navigation__responsive:not(.navigation__megamenu)>li>ul>li>ul {
-    --solo-shadow: 62,0,96;
-    box-shadow: 0 2.8px 2.2px rgba(var(--solo-shadow),.034),
-    0 6.7px 5.3px rgba(var(--solo-shadow),.048),
-    0 12.5px 10px rgba(var(--solo-shadow),.06),
-    0 22.3px 17.9px rgba(var(--solo-shadow),.072),
-    0 41.8px 33.4px rgba(var(--solo-shadow),.086),
-    0 100px 80px rgba(var(--solo-shadow),.12);
-  }
+
 }
 
 /* Form Button */
@@ -171,7 +151,16 @@ div.page-title {
   --r-bg: linear-gradient(0deg, #000000, #07000b);
   background: var(--r-bg);
 }
-
+.page-wrapper .solo-select,
+.page-wrapper .solo-radio,
+.page-wrapper .solo-check,
+.page-wrapper .solo-input,
+.page-wrapper .solo-textarea,
+.page-wrapper a.button,
+.page-wrapper input.button,
+.page-wrapper .search-button-close button {
+  --r-br: #494b49;
+}
 .page-wrapper .solo-select:focus,
 .page-wrapper .solo-ckeck:focus,
 .page-wrapper .solo-radio:focus,
@@ -197,7 +186,20 @@ div.page-title {
   --r-bg: linear-gradient(180deg, #1d002d, #171717);
   background: var(--r-bg);
 }
+#fixed-search-block,
+.primary-sidebar-menu,
+.solo-inner .navigation__responsive,
+.page-wrapper .primary-menu.solo-sticky,
+.fixed-search-block-inner .fixed-search-wrapper,
+.page-wrapper .solo-outer.animate-border .region-inner.top-box-inner,
+.page-wrapper .solo-outer.animate-border .region-inner.bottom-box-inner,
+.page-wrapper .solo-outer.animate-border .region-inner.footer-box-inner {
+  --s-b: 216,147,255;
+}
 
+.sm-icons a > span {
+  --s-b: 185,62,255;
+}
 /* Border animation  */
 @keyframes borderLeftColors {
   0% {

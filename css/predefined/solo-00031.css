@@ -1,4 +1,6 @@
-/* Regions */
+/* Regions
+PUNCH #F25278
+*/
 .page-wrapper {
   --r-br: #a2a2a2;
   --r-bg: #ffffff;
@@ -14,7 +16,7 @@
 }
 
 /* Heads */
-.page-wrapper h1,
+.page-wrapper h1:not(.page-title),
 .page-wrapper h2,
 .page-wrapper h3,
 .page-wrapper h1 a,
@@ -23,7 +25,7 @@
 .page-wrapper h1 a span,
 .page-wrapper h2 a span,
 .page-wrapper h3 a span {
-  --r-tx: #222222;
+  --r-tx: #21020a;
 }
 
 /* Link only */
@@ -34,7 +36,7 @@
 h1 a,
 h2 a,
 h3 a) {
-  --r-tx: #3c3c3c;
+  --r-tx: #ce103d;
 }
 
 .page-wrapper a:hover:not(.nav__menu-link,
@@ -44,7 +46,7 @@ h3 a) {
 h1 a,
 h2 a,
 h3 a) {
-  --r-tx: #000000;
+  --r-tx: #af0d34;
 }
 
 /* Menu Links */
@@ -57,7 +59,8 @@ h3 a) {
 .page-wrapper .main-navigation-wrapper li>a,
 .page-wrapper .header li.nav__menu-item>button,
 .page-wrapper .main-navigation-wrapper li>button {
-  --r-bg: #000;
+  --r-br: #60071c;
+  --r-bg: #000000;
   --r-tx: #ffffff;
 }
 
@@ -67,6 +70,7 @@ h3 a) {
 .page-wrapper .main-navigation-wrapper li>a:hover,
 .page-wrapper .header li.nav__menu-item>button:hover,
 .page-wrapper .main-navigation-wrapper li>button:hover {
+  --r-br: #bf0e38;
   --r-bg: #1a1a1a;
   --r-tx: #bbbbbb;
 }
@@ -88,10 +92,7 @@ h3 a) {
     --r-bg: #1a1a1a;
     --r-tx: #bbbbbb;
   }
-  .page-wrapper .solo-inner .navigation__responsive>li>ul,
-  .page-wrapper .solo-inner .navigation__responsive:not(.navigation__megamenu)>li>ul>li>ul {
-    box-shadow: 0 2.8px 2.2px rgba(var(--solo-shadow), .034), 0 6.7px 5.3px rgba(var(--solo-shadow), .048), 0 12.5px 10px rgba(var(--solo-shadow), .06), 0 22.3px 17.9px rgba(var(--solo-shadow), .072), 0 41.8px 33.4px rgba(var(--solo-shadow), .086), 0 100px 80px rgba(var(--solo-shadow), .12);
-  }
+
 }
 
 /* Form Button */
@@ -99,7 +100,7 @@ h3 a) {
 .page-wrapper input.button,
 .page-wrapper .search-button-close button,
 .block-user-login-block form+.item-list ul li a {
-  --r-bg: #000;
+  --r-bg: #000000;
   --r-tx: #ffffff;
 }
 
@@ -107,8 +108,8 @@ h3 a) {
 .page-wrapper input.button:hover,
 .page-wrapper .search-button-close button:hover,
 .block-user-login-block form+.item-list ul li a:hover {
-  --r-bg: #1a1a1a;
-  --r-tx: #bbbbbb;
+  --r-bg: #bf0e38;
+  --r-tx: #fef0f3;
 }
 
 /* Regions */
@@ -145,10 +146,6 @@ h3 a) {
   --r-bg: var(--solo-white);
 }
 
-.page-wrapper .bottom-container a,
-.page-wrapper .bottom-container h1,
-.page-wrapper .bottom-container h2,
-.page-wrapper .bottom-container h3,
 .bottom-container {
   --r-bg: #1a1a1a;
   --r-tx: #e6e6e6;
@@ -170,10 +167,6 @@ h3 a) {
   --r-bg: #111111;
 }
 
-.page-wrapper .footer-container a,
-.page-wrapper .footer-container h1,
-.page-wrapper .footer-container h2,
-.page-wrapper .footer-container h3,
 .footer-container {
   --r-bg: #111111;
   --r-tx: #e6e6e6;
@@ -191,22 +184,44 @@ h3 a) {
   --r-bg: #090909;
 }
 
-.page-wrapper div.page-title,
-.page-wrapper .footer-menu a,
-.page-wrapper .footer-menu h1,
-.page-wrapper .footer-menu h2,
-.page-wrapper .footer-menu h3,
-.footer-menu {
+.footer-menu,
+.page-wrapper div.page-title {
   --r-bg: #090909;
   --r-tx: #e6e6e6;
 }
 
-.breadcrumb,
-.page-wrapper .breadcrumb a,
-.page-wrapper .copyright a,
-.copyright {
+.copyright,
+.breadcrumb {
   --r-bg: #000000;
   --r-tx: #f6f6f6;
+}
+
+.page-wrapper .footer-menu h1,
+.page-wrapper .footer-menu h2,
+.page-wrapper .footer-menu h3,
+.page-wrapper .bottom-container h1,
+.page-wrapper .bottom-container h2,
+.page-wrapper .bottom-container h3,
+.page-wrapper .footer-container h1,
+.page-wrapper .footer-container h2,
+.page-wrapper .footer-container h3 {
+  --r-tx: #7f0a26;
+}
+
+.page-wrapper .bottom-container a,
+.page-wrapper .footer-container a,
+.page-wrapper .footer-menu a,
+.page-wrapper .breadcrumb a,
+.page-wrapper .copyright a {
+  --r-tx: #fde0e7;
+}
+
+.page-wrapper .bottom-container a:hover,
+.page-wrapper .footer-container a:hover,
+.page-wrapper .footer-menu a:hover,
+.page-wrapper .breadcrumb a:hover,
+.page-wrapper .copyright a:hover {
+  --r-tx: #ed1347;
 }
 
 .sm-icons .facebook svg,
@@ -238,6 +253,25 @@ h3 a) {
 .page-wrapper .solo-input:focus,
 .page-wrapper .solo-textarea:focus {
   --r-br: #a2a2a2;
+}
+
+/* For main menu shadow */
+#fixed-search-block,
+.primary-sidebar-menu,
+.solo-inner .navigation__responsive,
+.page-wrapper .primary-menu.solo-sticky,
+.fixed-search-block-inner .fixed-search-wrapper,
+.page-wrapper .solo-outer.animate-border .region-inner.top-box-inner {
+  --s-b: 9, 9, 9;
+}
+
+.sm-icons a > span {
+  --s-b: 102, 102, 102
+}
+
+.page-wrapper .solo-outer.animate-border .region-inner.bottom-box-inner,
+.page-wrapper .solo-outer.animate-border .region-inner.footer-box-inner {
+  --s-b: 213, 213, 213;
 }
 
 /* Border animation  */

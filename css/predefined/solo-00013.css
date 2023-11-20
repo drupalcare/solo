@@ -1,6 +1,5 @@
 /* Page wrapper
-AMARANTH PINK #E52B50
-Natural Black #07000B
+AMARANTH PINK #E52B50, Natural Black #07000B
 */
 .page-wrapper {
   --r-br: #6a0d20;
@@ -9,17 +8,6 @@ Natural Black #07000B
   color: var(--r-tx);
   border-color: var(--r-br);
   background-color: var(--r-bg);
-}
-
-.page-wrapper .solo-select,
-.page-wrapper .solo-radio,
-.page-wrapper .solo-check,
-.page-wrapper .solo-input,
-.page-wrapper .solo-textarea,
-.page-wrapper a.button,
-.page-wrapper input.button,
-.page-wrapper .search-button-close button {
-  --r-br: #494b49;
 }
 
 /* inner regions */
@@ -40,7 +28,7 @@ Natural Black #07000B
 }
 
 /* Heads */
-.page-wrapper h1,
+.page-wrapper h1:not(.page-title),
 .page-wrapper h2,
 .page-wrapper h3,
 .page-wrapper h1 a,
@@ -113,16 +101,7 @@ h3 a) {
     --r-tx: #fdf0f2;
     --r-bg: #4c0917;
   }
-  .page-wrapper .solo-inner .navigation__responsive>li>ul,
-  .page-wrapper .solo-inner .navigation__responsive:not(.navigation__megamenu)>li>ul>li>ul {
-    --solo-shadow: 90,12,27;
-    box-shadow: 0 2.8px 2.2px rgba(var(--solo-shadow),.034),
-    0 6.7px 5.3px rgba(var(--solo-shadow),.048),
-    0 12.5px 10px rgba(var(--solo-shadow),.06),
-    0 22.3px 17.9px rgba(var(--solo-shadow),.072),
-    0 41.8px 33.4px rgba(var(--solo-shadow),.086),
-    0 100px 80px rgba(var(--solo-shadow),.12);
-  }
+
 }
 
 /* Form Button */
@@ -172,6 +151,17 @@ div.page-title {
   background: var(--r-bg);
 }
 
+.page-wrapper .solo-select,
+.page-wrapper .solo-radio,
+.page-wrapper .solo-check,
+.page-wrapper .solo-input,
+.page-wrapper .solo-textarea,
+.page-wrapper a.button,
+.page-wrapper input.button,
+.page-wrapper .search-button-close button {
+  --r-br: #494b49;
+}
+
 .page-wrapper .solo-select:focus,
 .page-wrapper .solo-ckeck:focus,
 .page-wrapper .solo-radio:focus,
@@ -196,6 +186,21 @@ div.page-title {
 .copyright {
   --r-bg: linear-gradient(180deg, #2d060e, #171717);
   background: var(--r-bg);
+}
+
+#fixed-search-block,
+.primary-sidebar-menu,
+.solo-inner .navigation__responsive,
+.page-wrapper .primary-menu.solo-sticky,
+.fixed-search-block-inner .fixed-search-wrapper,
+.page-wrapper .solo-outer.animate-border .region-inner.top-box-inner,
+.page-wrapper .solo-outer.animate-border .region-inner.bottom-box-inner,
+.page-wrapper .solo-outer.animate-border .region-inner.footer-box-inner {
+  --s-b: 240,134,155;
+}
+
+.sm-icons a > span {
+  --s-b: 229,43,80;
 }
 
 /* Border animation  */

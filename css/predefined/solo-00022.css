@@ -32,7 +32,7 @@ Ceramic #FCFFF9 green shiny
 }
 
 /* Heads */
-.page-wrapper h1,
+.page-wrapper h1:not(.page-title),
 .page-wrapper h2,
 .page-wrapper h3,
 .page-wrapper h1 a,
@@ -108,11 +108,6 @@ h3 a) {
     --r-bg: #a9b18a;
   }
 
-  .page-wrapper .solo-inner .navigation__responsive>li>ul,
-  .page-wrapper .solo-inner .navigation__responsive:not(.navigation__megamenu)>li>ul>li>ul {
-    box-shadow: 0 2.8px 2.2px rgba(var(--solo-shadow), .034), 0 6.7px 5.3px rgba(var(--solo-shadow), .048), 0 12.5px 10px rgba(var(--solo-shadow), .06), 0 22.3px 17.9px rgba(var(--solo-shadow), .072), 0 41.8px 33.4px rgba(var(--solo-shadow), .086), 0 100px 80px rgba(var(--solo-shadow), .12);
-  }
-
 }
 
 /* Form Button */
@@ -120,7 +115,7 @@ h3 a) {
 .page-wrapper input.button,
 .page-wrapper .search-button-close button,
 .block-user-login-block form+.item-list ul li a {
-  --r-bg: #8ca6f9;
+  --r-bg: #6e764e;
   --r-tx: #03113f;
 }
 
@@ -129,7 +124,7 @@ h3 a) {
 .page-wrapper .search-button-close button:hover,
 .block-user-login-block form+.item-list ul li a:hover {
   --r-tx: #04164f;
-  --r-bg: #edf1fe;
+  --r-bg: #51573a;
 }
 
 /* Regions */
@@ -187,7 +182,7 @@ div.page-title {
 .page-wrapper a.button,
 .page-wrapper input.button,
 .page-wrapper .search-button-close button {
-  --r-br: #adbffa;
+  --r-br: #939d6b;
 }
 
 .page-wrapper .solo-select:focus,
@@ -195,9 +190,22 @@ div.page-title {
 .page-wrapper .solo-radio:focus,
 .page-wrapper .solo-input:focus,
 .page-wrapper .solo-textarea:focus {
-  --r-br: #4c74f5;
+  --r-br: #51573a;
+}
+#fixed-search-block,
+.primary-sidebar-menu,
+.solo-inner .navigation__responsive,
+.page-wrapper .primary-menu.solo-sticky,
+.fixed-search-block-inner .fixed-search-wrapper,
+.page-wrapper .solo-outer.animate-border .region-inner.top-box-inner,
+.page-wrapper .solo-outer.animate-border .region-inner.bottom-box-inner,
+.page-wrapper .solo-outer.animate-border .region-inner.footer-box-inner {
+  --s-b: 11,53,191;
 }
 
+.sm-icons a > span {
+  --s-b: 140,166,249;
+}
 /* Border animation  */
 @keyframes borderLeftColors {
   0% {

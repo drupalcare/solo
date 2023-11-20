@@ -8,7 +8,6 @@
   left: 0;
   overflow-y: hidden;
   transition: 0.5s;
-  box-shadow: 0 var(--solo-2) var(--solo-5) 0 rgba(0, 0, 0, 0.16), 0 var(--solo-2) var(--solo-10) 0 rgba(0, 0, 0, 0.12);
   background-color: var(--r-bg);
 }
 
@@ -28,7 +27,6 @@
 .fixed-search-block-inner .fixed-search-wrapper {
   border-radius: var(--solo-16);
   display: flex;
-  box-shadow: rgba(0, 0, 0, 0.4) 0px 30px 90px;
 }
 
 .fixed-search-block-inner form .form-search,

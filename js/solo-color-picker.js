@@ -26,18 +26,8 @@
    */
   function synchronizeInputs(changedInput, inputToSync) {
     inputToSync.value = changedInput.value;
-
     changedInput.setAttribute('data-solo-custom-color', changedInput.value);
     inputToSync.setAttribute('data-solo-custom-color', changedInput.value);
-
-    const colorSchemeSelect = document.querySelector(
-      '[data-drupal-selector="edit-color-scheme"]',
-    );
-
-    if (colorSchemeSelect.value !== '') {
-      colorSchemeSelect.value = '';
-      announceFieldChange(colorSchemeSelect);
-    }
   }
 
 
@@ -91,14 +81,6 @@
    */
   Drupal.behaviors.soloColorPicker = {
     attach: () => {
-      const colorSchemeSelect = once(
-        'solo-color-picker',
-        '[data-drupal-selector="edit-color-scheme"]',
-      );
-
-      colorSchemeSelect.forEach((selectElement) => {
-        initColorSchemeSelect(selectElement);
-      });
 
       const colorTextInputs = once(
         'solo-color-picker',
@@ -108,6 +90,7 @@
       colorTextInputs.forEach((textInput) => {
         initColorPicker(textInput);
       });
+
     },
   };
 })(Drupal, drupalSettings, once);

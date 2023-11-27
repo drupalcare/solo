@@ -256,10 +256,10 @@ function _get_region_attributes_for_region($region, $attributes) {
     if (theme_get_setting("settings_{$region}_{$key}")) {
       $css_val = theme_get_setting("settings_{$region}_{$key}");
       $css_var = str_replace('_', '-', $key);
-
-      $css_val = _solo_convert_hex_to_hsl($css_val);
-      $css_val = implode(', ', $css_val);
-      $css_val = "hsla({$css_val},1)";
+      // Un comment the below to use hsla colors.
+      // $css_val = _solo_convert_hex_to_hsl($css_val);
+      // $css_val = implode(', ', $css_val);
+      // $css_val = "hsla({$css_val},1)";.
       $css_var = "{$css_var}:{$css_val}";
       $region_attr[] = $css_var;
     }

@@ -12,8 +12,10 @@
 
 // Popup login block region.
 if (array_key_exists('popup_login_block', $updated_regions['mix'])) {
+
   $region = 'popup_login_block';
-  $label = $updated_regions['mix']['popup_login_block'];
+  $label = $updated_regions['mix'][$region];
+
   $form['solo_settings']["settings_{$region}"] = _generate_form_details($label);
   $form['solo_settings']["settings_{$region}"]["classes_{$region}"] = _generate_css_classes($region, $label);
 
@@ -28,7 +30,6 @@ if (array_key_exists('popup_login_block', $updated_regions['mix'])) {
     '#title' => t('You can change the login word.'),
     '#default_value' => theme_get_setting('header_login_links') ?? 'Login',
   ];
-
 
   foreach ($attributes as $attribute_key => $attribute_label) {
     $form['solo_settings']["settings_{$region}"]["settings_{$region}_{$attribute_key}"] = _generate_form_element($region, $label, $attribute_key, $attribute_label);

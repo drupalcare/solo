@@ -1,7 +1,10 @@
 /**
  * @file
- * Defines Javascript behaviors for the Solo Theme.
- * https://www.drupal.org/node/3158256
+ * Solo
+ *
+ * Filename:     solo-menu.js
+ * Website:      https://www.flashwebcenter.com
+ * Developer:    Alaa Haddad https://www.alaahaddad.com.
  */
 ((Drupal) => {
   'use strict';
@@ -22,26 +25,26 @@
   // On mega menu click we select the first level for the big screen.
   const mmClickBig = querySelectorElements(
     '.solo-inner .solo-menu.navigation-responsive-click .navigation__megamenu>li>.dropdown-toggler'
-    );
+  );
   // On mega menu click we select all level for the small screen.
   const mmClickSmall = querySelectorElements(
     '.solo-inner .solo-menu.navigation-responsive-click .navigation__megamenu li .dropdown-toggler'
-    );
+  );
   const mmHoverSmall = querySelectorElements(
     '.solo-inner .solo-menu.navigation-responsive-hover .navigation__megamenu li .dropdown-toggler'
-    );
+  );
   // ON mega menu hover we select all ULs
   const navigationMegamenuHover = querySelectorElements(
     '.solo-inner .solo-menu.navigation-responsive-hover .navigation__megamenu li .dropdown-toggler'
-    );
+  );
   // Default menu mouse over
   const navigationResponsiveHover = querySelectorElements(
     '.solo-inner .solo-menu.navigation-responsive-hover .navigation__menubar:not(.navigation__megamenu) .dropdown-toggler'
-    );
+  );
   // Default menu mouse click
   const navigationResponsiveClick = querySelectorElements(
     '.solo-inner .solo-menu.navigation-responsive-click .navigation__menubar:not(.navigation__megamenu) .dropdown-toggler'
-    );
+  );
 
   // Default menu
   const navigationDefault = querySelectorElements(
@@ -128,7 +131,7 @@
   }
   const openMenuHelper = (dropdownTogglerButton, subMenu) => {
     currentWidth = getCurrentWidth();
-    if (subMenu.classList.contains('sub-mega') && currentWidth >= 993 ) {
+    if (subMenu.classList.contains('sub-mega') && currentWidth >= 993) {
       Drupal.solo.slideDown(subMenu, 'grid', 1000);
       //subMenu.style.display = "grid";
     } else {
@@ -246,57 +249,46 @@
     });
   });
 
+  function addRemoveListener(event) {
+    const button = event.currentTarget;
+    const subMenu = button.nextElementSibling;
+    dropdownTogglerButtonIsClicked(button, subMenu);
+  }
 
-    function addRemoveListener(event) {
-      const button = event.currentTarget;
-      const subMenu = button.nextElementSibling;
-      dropdownTogglerButtonIsClicked(button, subMenu);
+  function addEventListenerToButtons(buttons) {
+    buttons.forEach((button) => {
+      button.addEventListener('click', addRemoveListener);
+    });
+  }
+
+  function removeEventListenerToButtons(buttons) {
+    buttons.forEach((button) => {
+      button.removeEventListener('click', addRemoveListener);
+    });
+  }
+
+  function menusHelper(currentWidth) {
+    if (currentWidth >= 993) {
+      // remove the first level menu styles.
+      removesiteMenuBarsStyles(siteMenuBars);
+      // menus.
+      removeEventListenerToButtons(mmClickSmall);
+      addEventListenerToButtons(mmClickBig);
+
+      removeEventListenerToButtons(mmHoverSmall);
+      removeEventListenerToButtons(navigationResponsiveHover);
+    } else {
+      // call the hover type only on small screen.
+      removeEventListenerToButtons(mmClickBig);
+      addEventListenerToButtons(mmClickSmall);
+
+      addEventListenerToButtons(mmHoverSmall);
+      addEventListenerToButtons(navigationResponsiveHover);
     }
-
-    function addEventListenerToButtons(buttons) {
-      buttons.forEach((button) => {
-        button.addEventListener('click', addRemoveListener);
-      });
-    }
-
-    function removeEventListenerToButtons(buttons) {
-      buttons.forEach((button) => {
-        button.removeEventListener('click', addRemoveListener);
-      });
-    }
-
-
-  // function disableClickForHover(menubars) {
-  //   menubars.forEach((menubar) => {
-  //     menubar.addEventListener('click', (event) => {
-  //       event.preventDefault();
-  //       event.stopPropagation();
-  //     });
-  //   });
-  // }
-
-    function menusHelper(currentWidth) {
-        if (currentWidth >= 993) {
-          // remove the first level menu styles.
-          removesiteMenuBarsStyles(siteMenuBars);
-          // menus.
-          removeEventListenerToButtons(mmClickSmall);
-          addEventListenerToButtons(mmClickBig);
-
-          removeEventListenerToButtons(mmHoverSmall);
-          removeEventListenerToButtons(navigationResponsiveHover);
-        } else {
-          // call the hover type only on small screen.
-          removeEventListenerToButtons(mmClickBig);
-          addEventListenerToButtons(mmClickSmall);
-
-          addEventListenerToButtons(mmHoverSmall);
-          addEventListenerToButtons(navigationResponsiveHover);
-        }
-    }
+  }
 
   Drupal.behaviors.menuAction = {
-    attach: function (settings) {
+    attach: function(settings) {
       addEventListenerToButtons(navigationDefault);
       addEventListenerToButtons(navigationResponsiveClick);
       addEventListenerToButtons(navigationSidebar);
@@ -310,7 +302,6 @@
         // reset menu styles on resize.
         resetSubMenus(siteSubMenus, svgIcons);
       });
-
 
     }
   };

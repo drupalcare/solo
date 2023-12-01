@@ -111,7 +111,7 @@ h3 a) {
 /* Regions Light */
 .welcome-text,
 .main-container .main-box {
-  --r-bg: var(--solo-white)
+  --r-bg: var(--solo-white);
 }
 
 .main-container,

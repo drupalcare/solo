@@ -266,7 +266,7 @@ h3 a) {
 }
 
 .sm-icons a > span {
-  --s-b: 102, 102, 102
+  --s-b: 102, 102, 102;
 }
 
 .page-wrapper .solo-outer.animate-border .region-inner.bottom-box-inner,

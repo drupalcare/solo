@@ -1,15 +1,20 @@
 /**
  * @file
- * Defines Javascript behaviors for the Solo Theme.
- * https://www.drupal.org/node/3158256
+ * Solo
+ *
+ * Filename:     solo-menu-side.js
+ * Website:      https://www.flashwebcenter.com
+ * Developer:    Alaa Haddad https://www.alaahaddad.com.
  */
 ((Drupal, once) => {
 
   'use strict';
 
+  // Get the primary sidebar menu and all the sidebar hamburger icons
   const verticalNav = document.getElementById('primary-sidebar-menu');
   let cosBtns = document.querySelectorAll('.sidebar-hamburger-icon');
 
+  // Function to add a click event listener to a specified element
   const sideMenubarCloseOpen = (selector, callback) => {
     const element = document.querySelector(selector);
     if (element) {
@@ -17,6 +22,7 @@
     }
   };
 
+  // Function to toggle the sidebar menu and update the aria-expanded and aria-hidden attributes of the hamburger icons
   const sideMenubarToggleNav = (isOpen) => {
     cosBtns?.forEach((cosBtn) => {
       cosBtn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
@@ -33,6 +39,7 @@
   };
   Drupal.solo.sideMenubarToggleNav = sideMenubarToggleNav;
 
+  // Attach these behaviors to the Drupal system
   Drupal.behaviors.soloPrimarySideMenu = {
     attach: function(settings) {
       // Close nav button found in page.html.twig in vertical menu region.
@@ -41,7 +48,7 @@
       // Open nav button found in page.html.twig in header region.
       sideMenubarCloseOpen('#sidebar-button-open', () => sideMenubarToggleNav(true));
 
-      //click any where to close any submenu.
+      // Click anywhere to close any submenu.
       document.addEventListener('click', (event) => {
         if (event.target == verticalNav) {
           sideMenubarToggleNav(false);
@@ -52,3 +59,4 @@
   };
 
 })(Drupal, once);
+

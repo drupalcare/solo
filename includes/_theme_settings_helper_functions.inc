@@ -15,13 +15,13 @@
  */
 function _get_site_width_options() {
   return [
-    'sw-1600' => t('1600px / 100rem'),
-    'sw-2560' => t('2560px / 160rem'),
-    'sw-1920' => t('1920px / 120rem'),
-    'sw-1440' => t('1440px / 90rem'),
-    'sw-1280' => t('1280px / 80rem'),
-    'sw-1024' => t('1024px / 64rem'),
     'sw-800' => t('800px / 50rem'),
+    'sw-1024' => t('1024px / 64rem'),
+    'sw-1280' => t('1280px / 80rem'),
+    'sw-1440' => t('1440px / 90rem'),
+    'sw-1600' => t('1600px / 100rem'),
+    'sw-1920' => t('1920px / 120rem'),
+    'sw-2560' => t('2560px / 160rem'),
     'sw-100' => t('100%'),
   ];
 }
@@ -55,9 +55,9 @@ function _get_site_global_font_size() {
  */
 function _get_site_node_date_format($d_s, $d_m, $d_l) {
   return [
-    'solo_date_s' => t("Short: ($d_s)"),
-    'solo_date_m' => t("Medium: ($d_m)"),
-    'solo_date_l' => t("Long: ($d_l)"),
+    'solo_date_s' => t("Short: (@d_s)", ['@d_s' => $d_s]),
+    'solo_date_m' => t("Medium: (@d_m)", ['@d_m' => $d_m]),
+    'solo_date_l' => t("Long: (@d_l)", ['@d_l' => $d_l]),
   ];
 }
 
@@ -320,10 +320,10 @@ function _get_special_font_options() {
 function _generate_form_details($label) {
   return [
     '#type' => 'details',
-    '#title' => t("<strong class='info'>$label</strong> Settings - Solo Theme"),
+    '#title' => t("<strong class='info'>@label</strong> Settings - Solo Theme", ['@label' => $label]),
     '#collapsible' => TRUE,
     '#collapsed' => FALSE,
-    '#description'   => t('<p>This section is related to general configurations.</p>'),
+    '#description'   => t('This section is related to general configurations.'),
   ];
 }
 
@@ -335,7 +335,7 @@ function _generate_form_element($region, $label, $attribute_key, $attribute_labe
     '#type' => 'textfield',
     '#maxlength' => 7,
     '#size' => 10,
-    '#title' => t("$attribute_label"),
+    '#title' => t("(@attribute_label)", ['@attribute_label' => $attribute_label]),
     '#default_value' => theme_get_setting("settings_{$region}_{$attribute_key}"),
     '#attributes' => [
       'pattern' => '^#[a-fA-F0-9]{6}',
@@ -405,7 +405,7 @@ function _rounded_region($region) {
 function _disable_region($region) {
   return [
     '#type' => 'radios',
-    '#title' => t("Change the visibility for $region region"),
+    '#title' => t("Change the visibility for @region region", ['@region' => $region]),
     '#default_value' => theme_get_setting("site_regions_{$region}_disable") ?? 0,
     '#options' => [
       0 => t('Visible on all pages'),
@@ -425,7 +425,10 @@ function _get_active_regions() {
   $block_storage = \Drupal::entityTypeManager()->getStorage('block');
 
   foreach ($theme_regions as $machine_name => $label_name) {
-    $blocks = $block_storage->loadByProperties(['theme' => $active_theme, 'region' => $machine_name]);
+    $blocks = $block_storage->loadByProperties([
+      'theme' => $active_theme,
+      'region' => $machine_name,
+    ]);
 
     if (!empty($blocks)) {
       $active_regions[] = $machine_name;
@@ -453,7 +456,9 @@ function _get_updated_regions() {
     'top' => [
       'regions' => ['top_first', 'top_second', 'top_third'],
       'container' => 'Top Container Wrapper',
-      'labels' => ['Top First Container', 'Top Second Container', 'Top Third Container'],
+      'labels' => ['Top First Container', 'Top Second Container',
+        'Top Third Container',
+      ],
     ],
     'main' => [
       'regions' => ['sidebar_first', 'content', 'sidebar_second'],
@@ -461,14 +466,20 @@ function _get_updated_regions() {
       'labels' => ['Sidebar First', 'Content', 'Sidebar Second'],
     ],
     'bottom' => [
-      'regions' => ['bottom_first', 'bottom_second', 'bottom_third', 'bottom_fourth'],
+      'regions' => ['bottom_first', 'bottom_second', 'bottom_third',
+        'bottom_fourth',
+      ],
       'container' => 'Bottom Container Wrapper',
-      'labels' => ['Bottom First Container', 'Bottom Second Container', 'Bottom Third Container', 'Bottom Fourth Container'],
+      'labels' => ['Bottom First Container', 'Bottom Second Container',
+        'Bottom Third Container', 'Bottom Fourth Container',
+      ],
     ],
     'footer' => [
       'regions' => ['footer_first', 'footer_second', 'footer_third'],
       'container' => 'Footer Container Wrapper',
-      'labels' => ['Footer First Container', 'Footer Second Container', 'Footer Third Container'],
+      'labels' => ['Footer First Container', 'Footer Second Container',
+        'Footer Third Container',
+      ],
     ],
   ];
 
@@ -494,7 +505,11 @@ function _get_updated_regions() {
     }
   }
 
-  return array_merge(['all' => $updated_regions_all, 'mix' => $updated_regions_mix], $updated_regions);
+  return array_merge([
+    'all' => $updated_regions_all,
+    'mix' => $updated_regions_mix,
+  ],
+    $updated_regions);
 }
 
 /**
@@ -510,7 +525,9 @@ function _count_regions() {
   $regions = [
     'top' => ['top_first', 'top_second', 'top_third'],
     'main' => ['sidebar_first', 'content', 'sidebar_second'],
-    'bottom' => ['bottom_first', 'bottom_second', 'bottom_third', 'bottom_fourth'],
+    'bottom' => ['bottom_first', 'bottom_second', 'bottom_third',
+      'bottom_fourth',
+    ],
     'footer' => ['footer_first', 'footer_second', 'footer_third'],
   ];
 
@@ -522,7 +539,10 @@ function _count_regions() {
   ];
 
   foreach ($theme_regions as $region => $description) {
-    $blocks = $block_storage->loadByProperties(['theme' => $active_theme, 'region' => $region]);
+    $blocks = $block_storage->loadByProperties([
+      'theme' => $active_theme,
+      'region' => $region,
+    ]);
 
     if (!empty($blocks) && array_filter($blocks, function ($block) {
       return $block->status();
@@ -562,7 +582,7 @@ function _create_region_layout_radio_four($region) {
 
   return [
     '#type' => 'radios',
-    '#title' => t("The four columns settings for $region region"),
+    '#title' => t("The four columns' settings for @region region", ['@region' => $region]),
     '#default_value' => theme_get_setting("{$region}_4col") ?? 'solo-col-1-1-1-1',
     '#options' => [
       'solo-col-1-1-1-1' => t('25%, 25%, 25%, 25%'),
@@ -585,7 +605,7 @@ function _create_region_layout_radio_three($region) {
   }
   return [
     '#type' => 'radios',
-    '#title' => t("The three columns' settings for the $region region."),
+    '#title' => t("The three columns' settings for @region region", ['@region' => $region]),
     '#default_value' => theme_get_setting("{$region}_3col") ?? $def,
     '#options' => [
       'solo-col-1-1-1' => t('33.3%, 33.3%, 33.3%'),
@@ -623,7 +643,7 @@ function _create_region_layout_radio_two($region, &$variables) {
   }
   return [
     '#type' => 'radios',
-    '#title' => t("The two columns' settings for the $region region."),
+    '#title' => t("The two columns' settings for @region region", ['@region' => $region]),
     '#default_value' => theme_get_setting("{$region}_2col") ?? $def,
     '#options' => [
       'solo-col-1-1' => t('50%, 50%'),

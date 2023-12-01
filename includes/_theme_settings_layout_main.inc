@@ -11,13 +11,15 @@
  */
 
 if ($updated_regions['main']) {
+
   $region_label = implode(", ", $updated_regions['main']);
+
   $form['solo_settings']["settings_main_container"] = [
     '#type' => 'details',
     '#title' => t("<strong class='status'>Main Containers</strong> Settings - Solo Theme"),
     '#collapsible' => TRUE,
     '#collapsed' => FALSE,
-    '#description'   => t("<p>The settings for $region_label.</p>"),
+    '#description'   => t("<p>The settings for @region_label.</p>", ['@region_label' => $region_label]),
   ];
 
   foreach ($updated_regions['main'] as $region => $label) {
@@ -33,7 +35,6 @@ if ($updated_regions['main']) {
         $form['solo_settings']["settings_main_container"]["settings_{$region}_{$attribute_key}"] = _generate_form_element($region, $label, $attribute_key, $attribute_label);
       }
     }
-
     else {
       $form['solo_settings']['settings_main_container']["settings_{$region}"] = _generate_form_details($label);
       foreach ($attributes as $attribute_key => $attribute_label) {

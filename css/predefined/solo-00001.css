@@ -11,7 +11,6 @@
   background: var(--r-bg);
 }
 
-
 /* Heads */
 .page-wrapper h1:not(.page-title),
 .page-wrapper h2,
@@ -238,8 +237,6 @@ h3 a) {
 .page-wrapper .search-button-close button {
   --r-br: #7488a5;
 }
-
-
 
 .page-wrapper .solo-select:focus,
 .page-wrapper .solo-ckeck:focus,

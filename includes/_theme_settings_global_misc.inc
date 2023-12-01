@@ -45,6 +45,28 @@ $form['solo_settings']['settings_global_misc']['site_global_font_size'] = [
   '#description' => t("<p><strong>You can adjust the entire website's font size by choosing your preferred size in pixels or rem units.</strong></p>"),
 ];
 
+$form['solo_settings']['settings_global_misc']['site_import_googel_font'] = [
+  '#type' => 'textfield',
+  '#title' => t('Import Google Font'),
+  '#description' => t("To import a Google font, follow these steps:<br>
+
+Step 1: Obtain the Google Fonts URL. You can do this by visiting Google Fonts and copying the URL. For example, <strong class='info'>https://fonts.googleapis.com/css2?family=Teko:wght@300;400;500;600;700&display=swap</strong>.<br>
+
+Step 2: Inject the CSS rules to specify the font families in the field below. For instance,
+<strong class='info'>h1, h2, h3 {font-family: 'Teko', sans-serif <span class='error'>!important;</span>}</strong>.<br>
+
+<span class='error'>Note</span>: If you are using Global Site Fonts or Heading Fonts, you must include <span class='error'>!important</span>; in your CSS.
+ "),
+  '#default_value' => theme_get_setting('site_import_googel_font'),
+];
+
+$form['solo_settings']['settings_global_misc']['site_css_injector'] = [
+  '#type' => 'textarea',
+  '#title' => t('CSS Injector'),
+  '#description'   => t("Inject custom CSS into the theme's head globally."),
+  '#default_value' => theme_get_setting('site_css_injector'),
+];
+
 $form['solo_settings']['settings_global_misc']['site_login_page_on'] = [
   '#type' => 'checkbox',
   '#title' => t('Tick this box to modify the layout for the login, register, and password reset pages.'),

@@ -55,21 +55,21 @@ $form['solo_settings']['settings_social_icons']['sm_show_icons'] = [
 ];
 
 $social_icons = [
-  'facebook' => 'Facebook Page',
-  'twitter' => 'Twitter Profile',
-  'pinterest' => 'Pinterest Profile',
-  'linkedin' => 'Linkedin Profile',
-  'instagram' => 'Instagram Profile',
-  'youtube' => 'Youtube Profile',
-  'mastodon' => 'Mastodon Profile',
-  'drupal' => 'Drupal Profile',
-  'rss' => 'RSS Link',
+  'facebook' => t('Facebook Page'),
+  'twitter' => t('Twitter Profile'),
+  'pinterest' => t('Pinterest Profile'),
+  'linkedin' => t('Linkedin Profile'),
+  'instagram' => t('Instagram Profile'),
+  'youtube' => t('Youtube Profile'),
+  'mastodon' => t('Mastodon Profile'),
+  'drupal' => t('Drupal Profile'),
+  'rss' => t('RSS Link'),
 ];
 
 foreach ($social_icons as $key => $value) {
   $form['solo_settings']['settings_social_icons']['sm_icon_' . $key] = [
     '#type' => 'textfield',
-    '#title' => t($value),
+    '#title' => $value,
     '#default_value' => theme_get_setting('sm_icon_' . $key),
   ];
 }

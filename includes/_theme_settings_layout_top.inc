@@ -11,15 +11,19 @@
  */
 
 if ($updated_regions['top']) {
+
   $region_label = implode(", ", $updated_regions['top']);
+
   $form['solo_settings']["settings_top_container"] = [
     '#type' => 'details',
     '#title' => t("<strong class='status'>Top Containers</strong> Settings - Solo Theme"),
     '#collapsible' => TRUE,
     '#collapsed' => FALSE,
-    '#description'   => t("<p>The settings for $region_label.</p>"),
+    '#description'   => t("<p>The settings for @region_label.</p>", ['@region_label' => $region_label]),
   ];
+
   foreach ($updated_regions['top'] as $region => $label) {
+
     if ($region == 'container') {
       $region = 'top_container';
       $form['solo_settings']["settings_top_container"]["top_2col"] = _create_region_layout_radio_two('top', $variables);

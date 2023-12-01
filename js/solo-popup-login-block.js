@@ -1,7 +1,10 @@
 /**
  * @file
- * Defines Javascript behaviors for the Solo Theme.
- * https://www.drupal.org/node/3158256
+ * Solo
+ *
+ * Filename:     solo-popup-login-block.js
+ * Website:      https://www.flashwebcenter.com
+ * Developer:    Alaa Haddad https://www.alaahaddad.com.
  */
 ((Drupal, once) => {
   'use strict';

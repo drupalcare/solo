@@ -10,14 +10,17 @@
  * Author:       Alaa Haddad http://www.alaahaddad.com.
  */
 
+// Footer region.
 if ($updated_regions['footer']) {
+
   $region_label = implode(", ", $updated_regions['footer']);
+
   $form['solo_settings']["settings_footer_container"] = [
     '#type' => 'details',
     '#title' => t("<strong class='status'>Footer Containers</strong> Settings - Solo Theme"),
     '#collapsible' => TRUE,
     '#collapsed' => FALSE,
-    '#description'   => t("<p>The settings for $region_label.</p>"),
+    '#description'   => t("<p>The settings for @region_label.</p>", ['@region_label' => $region_label]),
   ];
 
   foreach ($updated_regions['footer'] as $region => $label) {
@@ -35,7 +38,6 @@ if ($updated_regions['footer']) {
         $form['solo_settings']["settings_footer_container"]["settings_{$region}_{$attribute_key}"] = _generate_form_element($region, $label, $attribute_key, $attribute_label);
       }
     }
-
     else {
       $form['solo_settings']['settings_footer_container']["settings_{$region}"] = _generate_form_details($label);
       foreach ($attributes as $attribute_key => $attribute_label) {

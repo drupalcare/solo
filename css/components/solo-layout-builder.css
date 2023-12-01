@@ -92,8 +92,7 @@
 }
 
 .node-layout-builder-form .messages {
-  padding-left: calc(2 * var(--solo-16));
-  !important;
+  padding-left: calc(2 * var(--solo-16)) !important;
   margin-left: var(--solo-10);
 }
 
@@ -192,8 +191,7 @@
 }
 
 .layout-builder__add-block>a {
-  padding: var(--solo-8) var(--solo-24);
-  !important;
+  padding: var(--solo-8) var(--solo-24) !important;
   font-size: var(--solo-14);
 }
 

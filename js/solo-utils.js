@@ -1,11 +1,14 @@
 /**
  * @file
- * Defines Javascript behaviors for the Solo Theme.
- * https://www.drupal.org/node/3158256
+ * Solo
+ *
+ * Filename:     solo-utils.js
+ * Website:      https://www.flashwebcenter.com
+ * Developer:    Alaa Haddad https://www.alaahaddad.com.
  */
 ((Drupal, once) => {
 
-'use strict';
+  'use strict';
 
   /**
    * solo helper functions.
@@ -52,7 +55,8 @@
 
   const slideDown = (target, menuDisplay = 'block', duration = 600) => {
     target.style.removeProperty('display');
-    let currentDisplay = window.getComputedStyle(target).display;
+    let currentDisplay = window.getComputedStyle(target)
+      .display;
 
     if (currentDisplay === 'none') currentDisplay = menuDisplay;
 
@@ -93,7 +97,7 @@
   }
   Drupal.solo.slideToggle = slideToggle;
 
-    // Get current width
+  // Get current width
   const getCurrentWidth = () => window.innerWidth || document.documentElement
     .clientWidth || document.body.clientWidth;
 

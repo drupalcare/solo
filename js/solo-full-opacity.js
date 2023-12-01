@@ -1,8 +1,12 @@
 /**
  * @file
- * Defines Javascript behaviors for the Solo Theme.
+ * Solo
+ *
+ * Filename:     solo-full-opacity.js
+ * Website:      https://www.flashwebcenter.com
+ * Developer:    Alaa Haddad https://www.alaahaddad.com.
  */
-(function (Drupal, once) {
+(function(Drupal, once) {
   'use strict';
   let scrollOn = false;
   const animationHeight = window.innerHeight * 0.15;
@@ -29,7 +33,7 @@
   }, 100);
 
   Drupal.behaviors.soloFullOpacity = {
-    attach: function (context, settings) {
+    attach: function(context, settings) {
       if (!document.getElementById("layout-builder")) {
         const fadeElements = document.querySelectorAll('.fade-inner');
         fadeElements.forEach((element) => {

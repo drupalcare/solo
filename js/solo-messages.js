@@ -1,8 +1,11 @@
 /**
  * @file
- * Customization of messages.
+ * Solo
+ *
+ * Filename:     solo-message.js
+ * Website:      https://www.flashwebcenter.com
+ * Developer:    Alaa Haddad https://www.alaahaddad.com.
  */
-
 ((Drupal, once) => {
   /**
    * Adds a close button to the message.
@@ -45,9 +48,10 @@
    */
   Drupal.behaviors.messages = {
     attach(context) {
-      once('messages', '[data-drupal-selector="messages"]', context).forEach(
-        closeMessage,
-      );
+      once('messages', '[data-drupal-selector="messages"]', context)
+        .forEach(
+          closeMessage,
+        );
     },
   };
 

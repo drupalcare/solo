@@ -10,10 +10,12 @@
  * Author:       Alaa Haddad http://www.alaahaddad.com.
  */
 
-// Popup login block region.
+// Primary Menu region.
 if (array_key_exists('primary_menu', $updated_regions['mix'])) {
+
   $region = 'primary_menu';
-  $label = $updated_regions['mix']['primary_menu'];
+  $label = $updated_regions['mix'][$region];
+
   $form['solo_settings']["settings_{$region}"] = _generate_form_details($label);
   $form['solo_settings']["settings_{$region}"]["classes_{$region}"] = _generate_css_classes($region, $label);
 

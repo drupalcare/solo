@@ -44,6 +44,7 @@ h1,
 h2,
 h3 {
   font-weight: 700;
+  font-family: var(--solo-h1);
   margin: var(--solo-12) 0;
 }
 

@@ -41,7 +41,7 @@ h3 a) {
 h1 a,
 h2 a,
 h3 a) {
-  --r-tx: #69238c
+  --r-tx: #69238c;
 }
 
 /* Menu Links */
@@ -110,7 +110,7 @@ h3 a) {
 /* Regions Light */
 .welcome-text,
 .main-container .main-box {
-  --r-bg: var(--solo-white)
+  --r-bg: var(--solo-white);
 }
 
 .main-container,

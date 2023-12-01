@@ -116,18 +116,17 @@ function solo_preprocess_html(&$variables): void {
     'google_font',
   ];
 
-  // Add internal CSS.
   // $variables['#attached']['html_head'][] = [
-  //   [
-  //     '#tag' => 'link',
-  //     '#attributes' => [
-  //       'href' => $solo_path . '/css/styles.css',
-  //       'rel' => 'stylesheet',
-  //       'type' => 'text/css',
-  //     ],
-  //   ],
-  //   'theme_styles',
-  // ];.
+  // [
+  // '#tag' => 'link',
+  // '#attributes' => [
+  // 'href' => $solo_path . '/css/styles.css',
+  // 'rel' => 'stylesheet',
+  // 'type' => 'text/css',
+  // ],
+  // ],
+  // 'theme_styles',
+  // ];
   $variables['#attached']['html_head'][] = [
     [
       '#tag' => 'style',

@@ -10,9 +10,12 @@
  * Author:       Alaa Haddad http://www.alaahaddad.com.
  */
 
+// Header region.
 if (array_key_exists('header', $updated_regions['mix'])) {
+
   $region = 'header';
-  $label = $updated_regions['mix']['header'];
+  $label = $updated_regions['mix'][$region];
+
   $form['solo_settings']["settings_{$region}"] = _generate_form_details($label);
   $form['solo_settings']["settings_{$region}"]["classes_{$region}"] = _generate_css_classes($region, $label);
 

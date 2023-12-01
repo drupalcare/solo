@@ -15,6 +15,7 @@
  */
 $region = 'credit_copyright';
 $label = 'credit & Copyright';
+
 $form['solo_settings']["settings_{$region}"] = [
   '#type' => 'details',
   '#title' => t("<strong class='purple'>Copyright & Credit</strong> Settings - Solo Theme"),

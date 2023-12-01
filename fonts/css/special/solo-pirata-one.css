@@ -1,3 +1,4 @@
-.pirata-one {
-  font-family: 'Pirata One', cursive;
+.page-wrapper .pirata-one {
+  --solo-font-s: 'Pirata One', cursive;
+  font-family: var(--solo-font-s) !important;
 }

@@ -1,3 +1,4 @@
-.finger-paint {
-  font-family: 'Finger Paint', cursive;
+.page-wrapper .finger-paint {
+  --solo-font-s: 'Finger Paint', cursive;
+  font-family: var(--solo-font-s) !important;
 }

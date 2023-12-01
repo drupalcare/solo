@@ -1,3 +1,4 @@
-.rye {
-  font-family: 'Rye', cursive;
+.page-wrapper .rye {
+  --solo-font-s: 'Rye', cursive;
+  font-family: var(--solo-font-s) !important;
 }

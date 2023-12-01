@@ -1,3 +1,4 @@
-.train-one {
-  font-family: 'Train One', cursive;
+.page-wrapper .train-one {
+  --solo-font-s: 'Train One', cursive;
+  font-family: var(--solo-font-s) !important;
 }

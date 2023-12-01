@@ -1,3 +1,4 @@
-.irish-grover {
-  font-family: 'Bungee Shade', cursive;
+.page-wrapper .irish-grover {
+  --solo-font-s: 'Bungee Shade', cursive;
+  font-family: var(--solo-font-s) !important;
 }

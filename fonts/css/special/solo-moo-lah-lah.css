@@ -1,3 +1,4 @@
-.moo-lah-lah {
-  font-family: 'Moo Lah Lah', cursive;
+.page-wrapper .moo-lah-lah {
+  --solo-font-s: 'Moo Lah Lah', cursive;
+  font-family: var(--solo-font-s) !important;
 }

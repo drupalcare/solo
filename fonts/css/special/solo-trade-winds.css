@@ -1,3 +1,4 @@
-.trade-winds {
-  font-family: 'Trade Winds', cursive;
+.page-wrapper .trade-winds {
+  --solo-font-s: 'Trade Winds', cursive;
+  font-family: var(--solo-font-s) !important;
 }

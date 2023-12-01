@@ -1,3 +1,4 @@
-.bungee-shade {
-  font-family: 'Bungee Shade', cursive;
+.page-wrapper .bungee-shade {
+  --solo-font-s: 'Bungee Shade', cursive;
+  font-family: var(--solo-font-s) !important;
 }

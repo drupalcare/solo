@@ -89,7 +89,8 @@ $form['solo_settings']['settings_global_misc']['site_opacity_onscroll_on'] = [
 
 $form['solo_settings']['settings_global_misc']['site_inline_items_on'] = [
   '#type' => 'checkbox',
-  '#title' => t('Tick this box to display multiple field items in a single line. Note that this does not apply to long text fields.'),
+  '#title' => t('Tick this box to display multiple field items on the same line. Note that this does not apply to long text fields.'),
+  '#description'   => t('<p>In the current implementation, a field with multiple values is displayed in a block layout. This means each value is displayed on a new line, one below the other. This can take up a lot of vertical space, especially if there are many values.<br> The task is to change this layout so that the values are displayed inline. This means the values will be displayed on the same line, separated by a space, This will make the display more compact and easier to read.</p>'),
   '#default_value' => theme_get_setting('site_inline_items_on'),
 ];
 

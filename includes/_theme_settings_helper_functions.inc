@@ -409,8 +409,8 @@ function _disable_region($region) {
     '#default_value' => theme_get_setting("site_regions_{$region}_disable") ?? 0,
     '#options' => [
       0 => t('Visible on all pages'),
-      1 => t('Visiable on Home Page Only.'),
-      2 => t('Visiable on All Pages Except Home Page.'),
+      1 => t('Visible on Home Page Only.'),
+      2 => t('Visible on All Pages Except Home Page.'),
     ],
   ];
 };

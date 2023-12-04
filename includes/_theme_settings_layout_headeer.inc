@@ -27,13 +27,13 @@ if (array_key_exists('header', $updated_regions['mix'])) {
 
   $form['solo_settings']["settings_{$region}"]['header_change_icons'] = [
     '#type' => 'checkbox',
-    '#title' => t("To position the Search Icon, User Menu, Sidebar Menu, and Sidebar Hamburger to the left, and make the Main Sidebar menu open from the left as well, please check the box."),
+    '#title' => t("Select this option to position the Search Icon, User Menu, Sidebar Menu, and Sidebar Hamburger to the left, and make the Main Sidebar menu open from the left as well."),
     '#default_value' => theme_get_setting('header_change_icons'),
   ];
 
   $form['solo_settings']["settings_{$region}"]['site_name_animate_on'] = [
     '#type' => 'select',
-    '#title' => t("Select the preferred CSS text animation effects for the website title."),
+    '#title' => t("Select the preferred CSS text animation effects for the Site Name."),
     '#options' => _get_animate_site_name(),
     '#default_value' => theme_get_setting('site_name_animate_on'),
   ];

@@ -40,4 +40,9 @@
     padding-top: var(--solo-12);
   }
 
+  #primary-sidebar-menu {
+    min-width: 400px;
+    max-width: 600px;
+  }
+
 }

@@ -69,10 +69,10 @@ solo-global:
       css/theme/solo-clickable-image.css: { weight: 200 }
       css/media-query/solo-min-width-993.css: { weight: 200 }
       css/media-query/solo-max-width-992.css: { weight: 200 }
-      css/media-query/solo-max-min-width-992-601.css: { weight: 200 }
       css/media-query/solo-max-width-767.css: { weight: 200 }
+      css/media-query/solo-max-width-600.css: { weight: 200 }
+      css/media-query/solo-max-width-414.css: { weight: 200 }
       css/theme/solo-global-settings.css: { weight: 200 }
-      # css/media-query/solo-max-width-600.css: { weight: -10 }
   js:
     js/solo-utils.js: { }
     js/solo-scripts.js: { }

@@ -4,7 +4,6 @@
   display: flex;
   justify-content: space-between;
   flex-direction: column;
-  min-width: 600px;
   position: fixed !important;
   overflow: auto;
 }
@@ -18,8 +17,6 @@
   inset-inline-start: 100%;
   visibility: hidden;
   overflow: auto;
-  width: 100%;
-  max-width: 600px;
   height: 100%;
   transition: visibility 0.2s, transform 0.2s;
 }

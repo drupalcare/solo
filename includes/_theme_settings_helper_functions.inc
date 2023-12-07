@@ -29,6 +29,32 @@ function _get_site_width_options() {
 /**
  * Helper function.
  */
+function _get_site_breakpoints_options() {
+  return [
+    'sb-576' => t('576px / 36rem'),
+    'sb-768' => t('768px / 48rem'),
+    'sb-992' => t('992px / 62rem'),
+    'sb-1200' => t('1200px / 75rem'),
+    'sb-1400' => t('1400px / 87.5rem'),
+  ];
+}
+
+/**
+ * Helper function.
+ */
+function _get_menu_breakpoints_options() {
+  return [
+    'mn-576' => t('576px / 36rem'),
+    'mn-768' => t('768px / 48rem'),
+    'mn-992' => t('992px / 62rem'),
+    'mn-1200' => t('1200px / 75rem'),
+    'mn-1400' => t('1400px / 87.5rem'),
+  ];
+}
+
+/**
+ * Helper function.
+ */
 function _get_site_global_regions_gab() {
   return [
     '16' => t('Default 16px / 1rem'),
@@ -386,7 +412,7 @@ function _border_region($region) {
  */
 function _rounded_region($region) {
   return [
-    '#type' => 'radios',
+    '#type' => 'select',
     '#title' => t("Tick this box to round the inside regions' corners."),
     '#default_value' => theme_get_setting("site_regions_{$region}_rounded") ?? '',
     '#options' => [
@@ -404,7 +430,7 @@ function _rounded_region($region) {
  */
 function _disable_region($region) {
   return [
-    '#type' => 'radios',
+    '#type' => 'select',
     '#title' => t("Change the visibility for @region region", ['@region' => $region]),
     '#default_value' => theme_get_setting("site_regions_{$region}_disable") ?? 0,
     '#options' => [
@@ -581,7 +607,7 @@ function _count_regions() {
 function _create_region_layout_radio_four($region) {
 
   return [
-    '#type' => 'radios',
+    '#type' => 'select',
     '#title' => t("The four columns' settings for @region region", ['@region' => $region]),
     '#default_value' => theme_get_setting("{$region}_4col") ?? 'solo-col-1-1-1-1',
     '#options' => [
@@ -604,7 +630,7 @@ function _create_region_layout_radio_three($region) {
     $def = 'solo-col-1-1-1';
   }
   return [
-    '#type' => 'radios',
+    '#type' => 'select',
     '#title' => t("The three columns' settings for @region region", ['@region' => $region]),
     '#default_value' => theme_get_setting("{$region}_3col") ?? $def,
     '#options' => [
@@ -642,7 +668,7 @@ function _create_region_layout_radio_two($region, &$variables) {
     $def = 'solo-col-1-1';
   }
   return [
-    '#type' => 'radios',
+    '#type' => 'select',
     '#title' => t("The two columns' settings for @region region", ['@region' => $region]),
     '#default_value' => theme_get_setting("{$region}_2col") ?? $def,
     '#options' => [
@@ -662,7 +688,7 @@ function _create_region_layout_radio_two($region, &$variables) {
  */
 function _create_megamenu_layout() {
   return [
-    '#type' => 'radios',
+    '#type' => 'select',
     '#title' => t('Megamenu Layout (1, 2, 3 or 4 Columns).'),
     '#default_value' => theme_get_setting('primary_menu_megamenu_layout') ?? 'm-1-1',
     '#options' => [

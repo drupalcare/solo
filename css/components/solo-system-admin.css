@@ -179,31 +179,6 @@ form .field--widget-entity-reference-paragraphs td.field-multiple-drag {
   padding: var(--solo-8) !important;
 }
 
-@media screen and (min-width:62.001rem) {
-  .admin-context .system-status-general-info__items {
-    display: flex;
-    overflow-x: hidden;
-    flex-wrap: wrap;
-  }
-
-  .admin-context .system-status-general-info__item {
-    border-color: var(--solo-br);
-    flex: 1;
-    flex-basis: 33%;
-    width: 33%;
-  }
-
-  .admin-context .system-status-general-info__item:nth-child(2) {
-    flex: 2;
-    flex-basis: 66%;
-  }
-
-  .admin-context .system-status-general-info__run-cron {
-    margin: var(--solo-16) 0 var(--solo-16);
-  }
-
-}
-
 .admin-context .system-status-report__requirements-group details,
 .admin-context .system-status-report__requirements-group summary {
   list-style-type: none;

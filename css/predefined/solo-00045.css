@@ -76,18 +76,13 @@ h3 a) {
   background-color: var(--r-bg);
 }
 
-@media (min-width:62.001rem) {
-
-  /* The same colors as hover for the main menu */
-  .page-wrapper .navigation-responsive-hover .navigation__megamenu>li.has-sub__menu:hover>a,
-  .page-wrapper .navigation-responsive-hover .navigation__megamenu>li.has-sub__menu:hover>button,
-  .page-wrapper .navigation-responsive-hover .navigation__responsive:not(.navigation__megamenu) li.has-sub__menu:hover>a,
-  .page-wrapper .navigation-responsive-hover .navigation__responsive:not(.navigation__megamenu) li.has-sub__menu:hover>button {
-    --r-tx: #fff;
-    --r-bg: #ae164e;
-  }
-
-
+/* The same colors as hover for the main menu */
+.page-wrapper .navigation-responsive-hover .navigation__megamenu>li.has-sub__menu:hover>a,
+.page-wrapper .navigation-responsive-hover .navigation__megamenu>li.has-sub__menu:hover>button,
+.page-wrapper .navigation-responsive-hover .navigation__responsive:not(.navigation__megamenu) li.has-sub__menu:hover>a,
+.page-wrapper .navigation-responsive-hover .navigation__responsive:not(.navigation__megamenu) li.has-sub__menu:hover>button {
+  --r-tx: #fff;
+  --r-bg: #ae164e;
 }
 
 /* Form Button */
@@ -117,7 +112,7 @@ h3 a) {
 .top-container,
 .fixed-search-block,
 .popup-login-block-inner {
-  --s-b: 250,218,230;
+  --s-b: 250, 218, 230;
   --r-br: #f4adc7;
   --r-bg: linear-gradient(135deg, #faf5fd, #fef8fa);
   background: var(--r-bg);
@@ -232,25 +227,23 @@ header.header h3 a span {
   --r-br: #a245d0;
 }
 
-
 #fixed-search-block,
 .primary-sidebar-menu,
 .solo-inner .navigation__responsive,
 .page-wrapper .primary-menu.solo-sticky,
 .fixed-search-block-inner .fixed-search-wrapper {
-  --s-b: 24,8,31;
+  --s-b: 24, 8, 31;
 }
 
 .page-wrapper .solo-outer.animate-border .region-inner.top-box-inner,
 .page-wrapper .solo-outer.animate-border .region-inner.bottom-box-inner,
 .page-wrapper .solo-outer.animate-border .region-inner.footer-box-inner {
-  --s-b: 244,232,249;
+  --s-b: 244, 232, 249;
 }
 
 .sm-icons a > span {
-  --s-b: 224,191,239;
+  --s-b: 224, 191, 239;
 }
-
 
 /* Border animation  */
 @keyframes borderLeftColors {

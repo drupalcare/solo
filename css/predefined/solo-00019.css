@@ -91,17 +91,13 @@ h3 a) {
   background-color: #bb3a00;
 }
 
-@media (min-width:62.001rem) {
-
-  /* The same colors as hover for the main menu */
-  .page-wrapper .navigation-responsive-hover .navigation__megamenu>li.has-sub__menu:hover>a,
-  .page-wrapper .navigation-responsive-hover .navigation__megamenu>li.has-sub__menu:hover>button,
-  .page-wrapper .navigation-responsive-hover .navigation__responsive:not(.navigation__megamenu) li.has-sub__menu:hover>a,
-  .page-wrapper .navigation-responsive-hover .navigation__responsive:not(.navigation__megamenu) li.has-sub__menu:hover>button {
-    --r-tx: #fff3ee;
-    --r-bg: #bb3a00;
-  }
-
+/* The same colors as hover for the main menu */
+.page-wrapper .navigation-responsive-hover .navigation__megamenu>li.has-sub__menu:hover>a,
+.page-wrapper .navigation-responsive-hover .navigation__megamenu>li.has-sub__menu:hover>button,
+.page-wrapper .navigation-responsive-hover .navigation__responsive:not(.navigation__megamenu) li.has-sub__menu:hover>a,
+.page-wrapper .navigation-responsive-hover .navigation__responsive:not(.navigation__megamenu) li.has-sub__menu:hover>button {
+  --r-tx: #fff3ee;
+  --r-bg: #bb3a00;
 }
 
 /* Form Button */
@@ -196,11 +192,11 @@ div.page-title {
 .page-wrapper .solo-outer.animate-border .region-inner.top-box-inner,
 .page-wrapper .solo-outer.animate-border .region-inner.bottom-box-inner,
 .page-wrapper .solo-outer.animate-border .region-inner.footer-box-inner {
-  --s-b: 238,238,251;
+  --s-b: 238, 238, 251;
 }
 
 .sm-icons a > span {
-  --s-b: 111,118,225;
+  --s-b: 111, 118, 225;
 }
 
 /* Border animation  */

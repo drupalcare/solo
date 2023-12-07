@@ -91,17 +91,13 @@ h3 a) {
   background-color: #ab1f17;
 }
 
-@media (min-width:62.001rem) {
-
-  /* The same colors as hover for the main menu */
-  .page-wrapper .navigation-responsive-hover .navigation__megamenu>li.has-sub__menu:hover>a,
-  .page-wrapper .navigation-responsive-hover .navigation__megamenu>li.has-sub__menu:hover>button,
-  .page-wrapper .navigation-responsive-hover .navigation__responsive:not(.navigation__megamenu) li.has-sub__menu:hover>a,
-  .page-wrapper .navigation-responsive-hover .navigation__responsive:not(.navigation__megamenu) li.has-sub__menu:hover>button {
-    --r-tx: #ffffff;
-    --r-bg: #ab1f17;
-  }
-
+/* The same colors as hover for the main menu */
+.page-wrapper .navigation-responsive-hover .navigation__megamenu>li.has-sub__menu:hover>a,
+.page-wrapper .navigation-responsive-hover .navigation__megamenu>li.has-sub__menu:hover>button,
+.page-wrapper .navigation-responsive-hover .navigation__responsive:not(.navigation__megamenu) li.has-sub__menu:hover>a,
+.page-wrapper .navigation-responsive-hover .navigation__responsive:not(.navigation__megamenu) li.has-sub__menu:hover>button {
+  --r-tx: #ffffff;
+  --r-bg: #ab1f17;
 }
 
 /* Form Button */
@@ -187,6 +183,7 @@ div.page-title {
 .page-wrapper .solo-textarea:focus {
   --r-br: #b6673c;
 }
+
 #fixed-search-block,
 .primary-sidebar-menu,
 .solo-inner .navigation__responsive,
@@ -195,11 +192,11 @@ div.page-title {
 .page-wrapper .solo-outer.animate-border .region-inner.top-box-inner,
 .page-wrapper .solo-outer.animate-border .region-inner.bottom-box-inner,
 .page-wrapper .solo-outer.animate-border .region-inner.footer-box-inner {
-  --s-b: 197,121,79;
+  --s-b: 197, 121, 79;
 }
 
 .sm-icons a > span {
-  --s-b: 243,228,220;
+  --s-b: 243, 228, 220;
 }
 
 /* Border animation  */

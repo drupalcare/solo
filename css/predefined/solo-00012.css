@@ -10,7 +10,6 @@ Natural Black #07000B, Retro Black #1F201F
   background-color: var(--r-bg);
 }
 
-
 /* inner regions */
 .page-wrapper .region-inner {
   --r-br: #480071;
@@ -92,17 +91,13 @@ h3 a) {
   --r-tx: #e4b5ff;
 }
 
-@media (min-width:62.001rem) {
-
-  /* The same colors as hover for the main menu */
-  .page-wrapper .navigation-responsive-hover .navigation__megamenu>li.has-sub__menu:hover>a,
-  .page-wrapper .navigation-responsive-hover .navigation__megamenu>li.has-sub__menu:hover>button,
-  .page-wrapper .navigation-responsive-hover .navigation__responsive:not(.navigation__megamenu) li.has-sub__menu:hover>a,
-  .page-wrapper .navigation-responsive-hover .navigation__responsive:not(.navigation__megamenu) li.has-sub__menu:hover>button {
-    --r-tx: #e4b5ff;
-    --r-bg: #3d0060;
-  }
-
+/* The same colors as hover for the main menu */
+.page-wrapper .navigation-responsive-hover .navigation__megamenu>li.has-sub__menu:hover>a,
+.page-wrapper .navigation-responsive-hover .navigation__megamenu>li.has-sub__menu:hover>button,
+.page-wrapper .navigation-responsive-hover .navigation__responsive:not(.navigation__megamenu) li.has-sub__menu:hover>a,
+.page-wrapper .navigation-responsive-hover .navigation__responsive:not(.navigation__megamenu) li.has-sub__menu:hover>button {
+  --r-tx: #e4b5ff;
+  --r-bg: #3d0060;
 }
 
 /* Form Button */
@@ -151,6 +146,7 @@ div.page-title {
   --r-bg: linear-gradient(0deg, #000000, #07000b);
   background: var(--r-bg);
 }
+
 .page-wrapper .solo-select,
 .page-wrapper .solo-radio,
 .page-wrapper .solo-check,
@@ -161,6 +157,7 @@ div.page-title {
 .page-wrapper .search-button-close button {
   --r-br: #494b49;
 }
+
 .page-wrapper .solo-select:focus,
 .page-wrapper .solo-ckeck:focus,
 .page-wrapper .solo-radio:focus,
@@ -186,6 +183,7 @@ div.page-title {
   --r-bg: linear-gradient(180deg, #1d002d, #171717);
   background: var(--r-bg);
 }
+
 #fixed-search-block,
 .primary-sidebar-menu,
 .solo-inner .navigation__responsive,
@@ -194,12 +192,13 @@ div.page-title {
 .page-wrapper .solo-outer.animate-border .region-inner.top-box-inner,
 .page-wrapper .solo-outer.animate-border .region-inner.bottom-box-inner,
 .page-wrapper .solo-outer.animate-border .region-inner.footer-box-inner {
-  --s-b: 216,147,255;
+  --s-b: 216, 147, 255;
 }
 
 .sm-icons a > span {
-  --s-b: 185,62,255;
+  --s-b: 185, 62, 255;
 }
+
 /* Border animation  */
 @keyframes borderLeftColors {
   0% {

@@ -91,17 +91,13 @@ h3 a) {
   background-color: var(--r-bg);
 }
 
-@media (min-width:62.001rem) {
-
-  /* The same colors as hover for the main menu */
-  .page-wrapper .navigation-responsive-hover .navigation__megamenu>li.has-sub__menu:hover>a,
-  .page-wrapper .navigation-responsive-hover .navigation__megamenu>li.has-sub__menu:hover>button,
-  .page-wrapper .navigation-responsive-hover .navigation__responsive:not(.navigation__megamenu) li.has-sub__menu:hover>a,
-  .page-wrapper .navigation-responsive-hover .navigation__responsive:not(.navigation__megamenu) li.has-sub__menu:hover>button {
-    --r-tx: #3f0000;
-    --r-bg: #ff7272;
-  }
-
+/* The same colors as hover for the main menu */
+.page-wrapper .navigation-responsive-hover .navigation__megamenu>li.has-sub__menu:hover>a,
+.page-wrapper .navigation-responsive-hover .navigation__megamenu>li.has-sub__menu:hover>button,
+.page-wrapper .navigation-responsive-hover .navigation__responsive:not(.navigation__megamenu) li.has-sub__menu:hover>a,
+.page-wrapper .navigation-responsive-hover .navigation__responsive:not(.navigation__megamenu) li.has-sub__menu:hover>button {
+  --r-tx: #3f0000;
+  --r-bg: #ff7272;
 }
 
 /* Form Button */
@@ -154,6 +150,7 @@ div.page-title {
   --r-bg: linear-gradient(0deg, #ede3ff, #ffffff);
   background: var(--r-bg);
 }
+
 /* Copyright */
 .copyright {
   --r-bg: linear-gradient(180deg, #ffe9e9, #f8f4ff);
@@ -190,6 +187,7 @@ div.page-title {
 .page-wrapper .solo-textarea:focus {
   --r-br: #975bff;
 }
+
 /* For main menu shadow */
 #fixed-search-block,
 .primary-sidebar-menu,
@@ -199,12 +197,13 @@ div.page-title {
 .page-wrapper .solo-outer.animate-border .region-inner.top-box-inner,
 .page-wrapper .solo-outer.animate-border .region-inner.bottom-box-inner,
 .page-wrapper .solo-outer.animate-border .region-inner.footer-box-inner {
-  --s-b: 39,0,108;
+  --s-b: 39, 0, 108;
 }
 
 .sm-icons a > span {
-  --s-b: 172,125,255;
+  --s-b: 172, 125, 255;
 }
+
 /* Border animation  */
 @keyframes borderLeftColors {
   0% {

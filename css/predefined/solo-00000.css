@@ -156,17 +156,13 @@ h3 a) {
   --r-tx: #f3f9fe;
 }
 
-@media (min-width:62.001rem) {
-
-  /* The same colors as hover for the main menu */
-  .page-wrapper .navigation-responsive-hover .navigation__megamenu>li.has-sub__menu:hover>a,
-  .page-wrapper .navigation-responsive-hover .navigation__megamenu>li.has-sub__menu:hover>button,
-  .page-wrapper .navigation-responsive-hover .navigation__responsive:not(.navigation__megamenu) li.has-sub__menu:hover>a,
-  .page-wrapper .navigation-responsive-hover .navigation__responsive:not(.navigation__megamenu) li.has-sub__menu:hover>button {
-    --r-bg: #e9eef0;
-    --r-tx: #2f3e45;
-  }
-
+/* The same colors as hover for the main menu */
+.page-wrapper .navigation-responsive-hover .navigation__megamenu>li.has-sub__menu:hover>a,
+.page-wrapper .navigation-responsive-hover .navigation__megamenu>li.has-sub__menu:hover>button,
+.page-wrapper .navigation-responsive-hover .navigation__responsive:not(.navigation__megamenu) li.has-sub__menu:hover>a,
+.page-wrapper .navigation-responsive-hover .navigation__responsive:not(.navigation__megamenu) li.has-sub__menu:hover>button {
+  --r-bg: #e9eef0;
+  --r-tx: #2f3e45;
 }
 
 /* Form Button */
@@ -559,15 +555,6 @@ h1 a,
 h2 a,
 h3 a) {
   --r-tx: #f3f9fe;
-}
-
-/* For main menu shadow */
-@media (min-width:62.001rem) {
-  .solo-inner .navigation__responsive>li>ul,
-  .solo-inner .navigation__responsive:not(.navigation__megamenu)>li>ul>li>ul {
-    --s-b: var(--s-w);
-  }
-
 }
 
 .page-wrapper .primary-menu.solo-sticky {

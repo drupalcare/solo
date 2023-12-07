@@ -78,17 +78,13 @@ h3 a) {
   background-color: var(--r-bg);
 }
 
-@media (min-width:62.001rem) {
-
-  /* The same colors as hover for the main menu */
-  .page-wrapper .navigation-responsive-hover .navigation__megamenu>li.has-sub__menu:hover>a,
-  .page-wrapper .navigation-responsive-hover .navigation__megamenu>li.has-sub__menu:hover>button,
-  .page-wrapper .navigation-responsive-hover .navigation__responsive:not(.navigation__megamenu) li.has-sub__menu:hover>a,
-  .page-wrapper .navigation-responsive-hover .navigation__responsive:not(.navigation__megamenu) li.has-sub__menu:hover>button {
-    --r-tx: #fffdfe;
-    --r-bg: #ff016f;
-  }
-
+/* The same colors as hover for the main menu */
+.page-wrapper .navigation-responsive-hover .navigation__megamenu>li.has-sub__menu:hover>a,
+.page-wrapper .navigation-responsive-hover .navigation__megamenu>li.has-sub__menu:hover>button,
+.page-wrapper .navigation-responsive-hover .navigation__responsive:not(.navigation__megamenu) li.has-sub__menu:hover>a,
+.page-wrapper .navigation-responsive-hover .navigation__responsive:not(.navigation__megamenu) li.has-sub__menu:hover>button {
+  --r-tx: #fffdfe;
+  --r-bg: #ff016f;
 }
 
 /* Form Button */
@@ -225,22 +221,23 @@ header.header h3 a span {
 .page-wrapper .solo-textarea:focus {
   --r-br: #ff016f;
 }
+
 #fixed-search-block,
 .primary-sidebar-menu,
 .solo-inner .navigation__responsive,
 .page-wrapper .primary-menu.solo-sticky,
 .fixed-search-block-inner .fixed-search-wrapper,
 .page-wrapper .solo-outer.animate-border .region-inner.top-box-inner {
-  --s-b: 62,4,20;
+  --s-b: 62, 4, 20;
 }
 
 .page-wrapper .solo-outer.animate-border .region-inner.bottom-box-inner,
 .page-wrapper .solo-outer.animate-border .region-inner.footer-box-inner {
-  --s-b: 253,221,230;
+  --s-b: 253, 221, 230;
 }
 
 .sm-icons a > span {
-  --s-b: 255,253,254;
+  --s-b: 255, 253, 254;
 }
 
 /* Border animation  */

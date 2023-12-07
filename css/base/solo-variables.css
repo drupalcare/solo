@@ -6,13 +6,15 @@
   --solo-1920: 120rem;
   --solo-1600: 100rem;
   --solo-1440: 90rem;
+  --solo-1400: 87.5rem;
   --solo-1280: 80rem;
+  --solo-1200: 75rem;
   --solo-1024: 64rem;
   --solo-992: 62rem;
   --solo-800: 50rem;
-  --solo-767: 47.938;
+  --solo-768: 48rem;
   --solo-600: 37.5rem;
-  --solo-500: 31.25rem;
+  --solo-576: 36rem;
   --solo-420: 26.25rem;
   --solo-320: 20rem;
   --solo-64: 4rem;

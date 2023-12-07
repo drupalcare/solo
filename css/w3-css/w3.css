@@ -753,7 +753,7 @@ a {
 
 }
 
-@media (min-width:62.001rem) {
+@media (min-width:62rem) {
   .w3-col.l1 {
     width: 8.33333%;
   }
@@ -920,7 +920,7 @@ a {
 
 }
 
-@media (min-width:62.001rem) {
+@media (min-width:62rem) {
   .w3-modal-content {
     width: 900px;
   }

@@ -86,17 +86,13 @@ h3 a) {
   --r-tx: #ffffff;
 }
 
-@media (min-width:62.001rem) {
-
-  /* The same colors as hover for the main menu */
-  .page-wrapper .navigation-responsive-hover .navigation__megamenu>li.has-sub__menu:hover>a,
-  .page-wrapper .navigation-responsive-hover .navigation__megamenu>li.has-sub__menu:hover>button,
-  .page-wrapper .navigation-responsive-hover .navigation__responsive:not(.navigation__megamenu) li.has-sub__menu:hover>a,
-  .page-wrapper .navigation-responsive-hover .navigation__responsive:not(.navigation__megamenu) li.has-sub__menu:hover>button {
-    --r-bg: #3c6dd0;
-    --r-tx: #fcfdfe;
-  }
-
+/* The same colors as hover for the main menu */
+.page-wrapper .navigation-responsive-hover .navigation__megamenu>li.has-sub__menu:hover>a,
+.page-wrapper .navigation-responsive-hover .navigation__megamenu>li.has-sub__menu:hover>button,
+.page-wrapper .navigation-responsive-hover .navigation__responsive:not(.navigation__megamenu) li.has-sub__menu:hover>a,
+.page-wrapper .navigation-responsive-hover .navigation__responsive:not(.navigation__megamenu) li.has-sub__menu:hover>button {
+  --r-bg: #3c6dd0;
+  --r-tx: #fcfdfe;
 }
 
 /* Form Button */
@@ -133,6 +129,7 @@ div.page-title {
   --r-bg: #f9fcf8;
   --r-br: #8acd7d;
 }
+
 .main-container,
 .bottom-container,
 .footer-container,
@@ -151,7 +148,6 @@ div.page-title {
   --r-bg: linear-gradient(0deg, #ffffff, #eef2fb);
   background: var(--r-bg);
 }
-
 
 .page-wrapper .solo-select,
 .page-wrapper .solo-radio,
@@ -189,6 +185,7 @@ div.page-title {
   --r-bg: linear-gradient(180deg, #e0e8f8, #e9eae8);
   background: var(--r-bg);
 }
+
 #fixed-search-block,
 .primary-sidebar-menu,
 .solo-inner .navigation__responsive,
@@ -197,12 +194,13 @@ div.page-title {
 .page-wrapper .solo-outer.animate-border .region-inner.top-box-inner,
 .page-wrapper .solo-outer.animate-border .region-inner.bottom-box-inner,
 .page-wrapper .solo-outer.animate-border .region-inner.footer-box-inner {
-  --s-b: 8,17,7;
+  --s-b: 8, 17, 7;
 }
 
 .sm-icons a > span {
-  --s-b: 215,238,211;
+  --s-b: 215, 238, 211;
 }
+
 /* Border animation  */
 @keyframes borderLeftColors {
   0% {

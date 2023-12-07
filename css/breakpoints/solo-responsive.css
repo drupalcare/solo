@@ -1,0 +1,107 @@
+@media (min-width:62rem) {
+  #primary-sidebar-menu {
+    min-width: 400px;
+    max-width: 600px;
+  }
+
+}
+
+@media (max-width:62rem) {
+  #primary-sidebar-menu {
+    min-width: 300px;
+    max-width: 500px;
+  }
+
+}
+
+@media (max-width:48rem) {
+  .node--view-mode-teaser .field--name-field-image {
+    min-width: 100%;
+  }
+
+  .view .node--view-mode-teaser .node__title,
+  .view .node--view-mode-teaser .node__content .field--name-field-image {
+    padding-right: 0 !important;
+    margin-right: 0 !important;
+  }
+
+  #primary-sidebar-menu {
+    min-width: 300px;
+    max-width: 400px;
+  }
+
+}
+
+@media (max-width:36rem) {
+  h1 {
+    font-size: var(--solo-24);
+  }
+
+  h2 {
+    font-size: var(--solo-20);
+  }
+
+  h3 {
+    font-size: var(--solo-18);
+  }
+
+  h4 {
+    font-size: var(--solo-16);
+  }
+
+  #primary-sidebar-menu {
+    min-width: 300px;
+    max-width: 350px;
+  }
+
+  .header-inner .branding-wrapper {
+    display: grid;
+    gap: var(--solo-8);
+    margin-top: var(--solo-8);;
+  }
+
+  .site-name {
+    font-size: calc(2 * var(--solo-16));
+  }
+
+  .site-slogan {
+    font-size: var(--solo-24) !important;
+  }
+
+  .header-inner .branding-wrapper>* {
+    width: 100%;
+  }
+
+  .header-inner .branding-wrapper .branding-first,
+  .header-inner .branding-wrapper .branding-first a,
+  .header-inner .branding-wrapper h1.site-name,
+  .header-inner .branding-wrapper h3.site-slogan {
+    justify-content: center;
+    text-align: center;
+  }
+
+}
+
+@media (max-width:25.875rem) {
+  h1 {
+    font-size: var(--solo-20);
+  }
+
+  h2 {
+    font-size: var(--solo-18);
+  }
+
+  h3 {
+    font-size: var(--solo-16);
+  }
+
+  h4 {
+    font-size: var(--solo-14);
+  }
+
+  #primary-sidebar-menu {
+    min-width: 200px;
+    max-width: 250px;
+  }
+
+}

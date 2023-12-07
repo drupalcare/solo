@@ -119,8 +119,16 @@
     Array.from(element.children)
       .forEach(child => child.classList.add(`li-${depth}`));
   };
-
   Drupal.solo.calculateDepth = calculateDepth;
+
+  const getMyBreakpoints = (element, mn) => {
+      const classes = [`${mn}-576`, `${mn}-768`, `${mn}-992`, `${mn}-1200`, `${mn}-1400`];
+      const classList = Array.from(element.classList);
+      const foundClass = classList.find(c => classes.includes(c));
+      return foundClass ? parseInt(foundClass.split('-')[1]) : 992;
+
+  }
+  Drupal.solo.getMyBreakpoints = getMyBreakpoints;
 
   Drupal.behaviors.soloMenuDepth = {
     attach: (settings) => {

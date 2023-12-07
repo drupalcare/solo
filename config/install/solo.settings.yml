@@ -26,5 +26,9 @@ sm_icon_size: 'sm-icons-small'
 footer_credit_link: 1
 count_main: 2
 site_global_width: sw-1600
+site_global_breakpoints: sb-992
+site_global_regions_gab: 16
+site_global_font_size: 16
+site_menu_breakpoints: mn-992
 header_login_links: Login
 predefined_current_theme: solo-predefined-00052

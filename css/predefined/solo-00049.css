@@ -77,17 +77,13 @@ h3 a) {
   background-color: var(--r-bg);
 }
 
-@media (min-width:62.001rem) {
-
-  /* The same colors as hover for the main menu */
-  .page-wrapper .navigation-responsive-hover .navigation__megamenu>li.has-sub__menu:hover>a,
-  .page-wrapper .navigation-responsive-hover .navigation__megamenu>li.has-sub__menu:hover>button,
-  .page-wrapper .navigation-responsive-hover .navigation__responsive:not(.navigation__megamenu) li.has-sub__menu:hover>a,
-  .page-wrapper .navigation-responsive-hover .navigation__responsive:not(.navigation__megamenu) li.has-sub__menu:hover>button {
-    --r-tx: #142a1e;
-    --r-bg: #469167;
-  }
-
+/* The same colors as hover for the main menu */
+.page-wrapper .navigation-responsive-hover .navigation__megamenu>li.has-sub__menu:hover>a,
+.page-wrapper .navigation-responsive-hover .navigation__megamenu>li.has-sub__menu:hover>button,
+.page-wrapper .navigation-responsive-hover .navigation__responsive:not(.navigation__megamenu) li.has-sub__menu:hover>a,
+.page-wrapper .navigation-responsive-hover .navigation__responsive:not(.navigation__megamenu) li.has-sub__menu:hover>button {
+  --r-tx: #142a1e;
+  --r-bg: #469167;
 }
 
 /* Form Button */
@@ -164,7 +160,7 @@ header.header h3 a span {
 .footer-container,
 .footer-menu {
   --r-br: #1f412e;
-  --s-b: 190,199,232;
+  --s-b: 190, 199, 232;
   --r-tx: #abd6be;
   --r-bg: linear-gradient(180deg, #080b17, #04050a);
   background: var(--r-bg);
@@ -226,22 +222,23 @@ header.header h3 a span {
 .page-wrapper .solo-textarea:focus {
   --r-br: #5baf80;
 }
+
 #fixed-search-block,
 .primary-sidebar-menu,
 .solo-inner .navigation__responsive,
 .page-wrapper .primary-menu.solo-sticky,
 .fixed-search-block-inner .fixed-search-wrapper,
 .page-wrapper .solo-outer.animate-border .region-inner.top-box-inner {
-  --s-b: 9,19,14;
+  --s-b: 9, 19, 14;
 }
 
 .page-wrapper .solo-outer.animate-border .region-inner.bottom-box-inner,
 .page-wrapper .solo-outer.animate-border .region-inner.footer-box-inner {
-  --s-b: 239,248,243;
+  --s-b: 239, 248, 243;
 }
 
 .sm-icons a > span {
-  --s-b: 166,148,130;
+  --s-b: 166, 148, 130;
 }
 
 /* Border animation  */

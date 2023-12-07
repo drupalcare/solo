@@ -19,19 +19,19 @@
 
     const bodyTag = document.body;
 
-    if (currentWidth >= 993) {
+    if (currentWidth >= 992) {
 
       bodyTag.classList.add('large-screen');
       bodyTag.classList.remove('small-screen', 'medium-screen');
 
     }
 
-    if ((currentWidth >= 601) && (currentWidth <= 992)) {
+    if ((currentWidth >= 576) && (currentWidth <= 992)) {
       bodyTag.classList.add('medium-screen');
       bodyTag.classList.remove('large-screen', 'small-screen');
     }
 
-    if (currentWidth <= 600) {
+    if (currentWidth <= 576) {
       bodyTag.classList.add('small-screen');
       bodyTag.classList.remove('large-screen', 'medium-screen');
     }

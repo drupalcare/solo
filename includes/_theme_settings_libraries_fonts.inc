@@ -21,12 +21,6 @@ $form['solo_settings']['settings_libraries_fonts'] = [
   '#collapsed' => FALSE,
 ];
 
-$form['solo_settings']['settings_libraries_fonts']['site_load_w3css_on'] = [
-  '#type' => 'checkbox',
-  '#title' => t('<strong>Tick this box to load the W3.CSS library locally</strong>.'),
-  '#default_value' => theme_get_setting('site_load_w3css_on'),
-];
-
 $form['solo_settings']['settings_libraries_fonts']['site_load_w3css_extended'] = [
   '#type' => 'details',
   '#title' => t("<strong>Extra Predefined CSS Classes</strong>"),
@@ -84,6 +78,19 @@ $form['solo_settings']['settings_libraries_fonts']['site_load_w3css_extended'] =
     "),
 ];
 
+$form['solo_settings']['settings_libraries_fonts']['site_load_w3css_on'] = [
+  '#type' => 'checkbox',
+  '#title' => t('<strong>Tick this box to load the W3.CSS library locally</strong>.'),
+  '#default_value' => theme_get_setting('site_load_w3css_on'),
+];
+
+$form['solo_settings']['settings_libraries_fonts']['site_font_google_local_on'] = [
+  '#type' => 'checkbox',
+  '#title' => t("Tick this box to load Google fonts locally. (<span class='status'>Global and Heading</span> Fonts only)"),
+  '#description'   => t("<p>Any font you choose for the site, heading or special will have a CSS class that you can apply to any html tag. <a target='_blank' href='https://www.drupal.org/node/2866181#change-font'>click here to view the documentaion on drupal.org</a></p>"),
+  '#default_value' => theme_get_setting('site_font_google_local_on'),
+];
+
 $form['solo_settings']['settings_libraries_fonts']['site_font_awesome_on'] = [
   '#type' => 'select',
   '#title' => t('Select Font Awesome Library'),
@@ -97,18 +104,10 @@ $form['solo_settings']['settings_libraries_fonts']['site_font_awesome_on'] = [
   ],
 ];
 
-$form['solo_settings']['settings_libraries_fonts']['site_font_google_local_on'] = [
-  '#type' => 'checkbox',
-  '#title' => t("Tick this box to load Google fonts locally. (<span class='status'>Global and Heading</span> Fonts only)"),
-  '#description'   => t("<p>Any font you choose for the site, heading or special will have a CSS class that you can apply to any html tag. <a target='_blank' href='https://www.drupal.org/node/2866181#change-font'>click here to view the documentaion on drupal.org</a></p>"),
-  '#default_value' => theme_get_setting('site_font_google_local_on'),
-];
-
 $form['solo_settings']['settings_libraries_fonts']['site_font_google_global_on'] = [
   '#type' => 'select',
   '#title' => t("<span class='status'>Global Site Fonts:</span> Choose the site font - The font will be applied to the whole website.<a target='_blank' href='https://drupal8-w3css-theme.flashwebcenter.com/w3css-theme-google-fonts-global-site-fonts'> Click here to view a live demo for all available fonts.</a>"),
-  '#description'   => t("There are 50 Global Site Fonts. The CSS Classes: open-sans, abel, alegreya-sans, alegreya-sans-sc, amita, archivo-narrow, arimo, arvo, barlow, barlow-semi-condensed
-, bitter, cairo, comfortaa, courgette, domine, dosis, exo-2, fira-sans, glegoo, hind-siliguri, ibm-plex-sans, inconsolata, josefin-sans, kanit, kavivanar, lato, libre-baskerville, lora, merienda, merriweather, montserrat, mukta, nunito, oranienbaum, oswald, oxygen, playfair-display, poppins, prompt, pt-serif, quicksand, raleway, roboto, roboto-condensed, roboto-mono, spline-sans, source-sans-3, titillium-web, ubuntu, work-sans."),
+  '#description'   => t("There are 50 Global Site Fonts, each with its own CSS class that can be applied to any HTML tag. For example, if you select Open Sans, the CSS class will be 'open-sans'."),
   '#options' => _get_global_font_options(),
   '#default_value' => theme_get_setting('site_font_google_global_on'),
 ];
@@ -116,7 +115,7 @@ $form['solo_settings']['settings_libraries_fonts']['site_font_google_global_on']
 $form['solo_settings']['settings_libraries_fonts']['site_font_google_heading_on'] = [
   '#type' => 'select',
   '#title' => t("<span class='status'>Heading Fonts:</span> Choose the heading font - The font will be applied to h1, h2 and h3 only.<a target='_blank' href='https://drupal8-w3css-theme.flashwebcenter.com/w3css-theme-google-fonts-heading-fonts'> Click here to view a live demo for all available fonts.</a>"),
-  '#description'   => t("There are 26 Heading Fonts. The CSS Classes: abril-fatface, aladin, anton, archivo-black, bebas-neue, big-shoulders-stencil-display, big-shoulders-stencil-text, black-ops-one, bree-serif, cinzel, dancing-script, dm-serif-display, doppio-one, fjalla-one, francois-one, fredericka-the-great, fredoka, hammersmith-one, indie-flower, kalam, lobster-two, patrick-hand, prosto-one, righteous, staatliches, yanone-kaffeesatz."),
+  '#description'   => t("There are 26 Heading Fonts, each with its own CSS class that can be applied to any h1, h2 or h3 tag. For example, if you select Open Sans, the CSS class will be 'open-sans'."),
   '#options' => _get_heading_font_options(),
   '#default_value' => theme_get_setting('site_font_google_heading_on'),
 ];
@@ -124,7 +123,7 @@ $form['solo_settings']['settings_libraries_fonts']['site_font_google_heading_on'
 $form['solo_settings']['settings_libraries_fonts']['site_font_google_special_on'] = [
   '#type' => 'select',
   '#title' => t("<span class='status'>Special Fonts:</span> They are not applied to any html tags by default and they are only imported. Each font library has a CSS class that you can apply to any html tag. <a target='_blank' href='https://drupal8-w3css-theme.flashwebcenter.com/w3css-theme-google-fonts-special-fonts'>Click here to view a live demo for all available fonts.</a>"),
-  '#description'   => t("<p>There are 25 Spcial Fonts. The CSS Classes: akronim, barriecito, bungee-shade, ceviche-one, creepster, faster-one, finger-paint, frijole, irish-grover, kumar-one, londrina-outline, megrim, metal-mania, monoton, moo-lah-lah, new-rocker, nosifer, pirata-one, ruslan-display, rye, sancreek, slackey, trade-winds, train-one, unifrakturmaguntia.</p>"),
+  '#description'   => t("There are 25 Special fonts, each with its own CSS class that can be applied to any HTML tag. For example, if you select Open Sans, the CSS class will be 'open-sans'."),
   '#options' => _get_special_font_options(),
   '#default_value' => theme_get_setting('site_font_google_special_on'),
 ];

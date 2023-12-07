@@ -70,8 +70,9 @@
     const addAriaControlToButton = (hamburgerIcon) => {
         const [hamburgerIconChild, navTagId] = getMobileNavType(hamburgerIcon);
         let ariaControl = document.querySelector(`#${navTagId} .navigation__responsive`).getAttribute('id');
-
-        if (currentWidth <= 992) {
+        const pageClass = document.querySelector('.page-wrapper');
+        const brNum = Drupal.solo.getMyBreakpoints(pageClass, 'mn');
+        if (currentWidth <= brNum) {
             hamburgerIconChild.setAttribute('aria-controls', ariaControl);
         } else {
             hamburgerIconChild.removeAttribute('aria-controls');
@@ -120,8 +121,9 @@
 
                 processHamburgerIcons(hamburgerIconButtons);
                 currentWidth = getCurrentWidth();
-
-                if (currentWidth <= 992) {
+                const pageClass = document.querySelector('.page-wrapper');
+                const brNum = Drupal.solo.getMyBreakpoints(pageClass, 'mn');
+                if (currentWidth <= brNum) {
                     resetMenusOnResize();
                 }
             });

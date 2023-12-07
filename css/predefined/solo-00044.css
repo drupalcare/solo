@@ -77,18 +77,13 @@ h3 a) {
   background-color: var(--r-bg);
 }
 
-@media (min-width:62.001rem) {
-
-  /* The same colors as hover for the main menu */
-  .page-wrapper .navigation-responsive-hover .navigation__megamenu>li.has-sub__menu:hover>a,
-  .page-wrapper .navigation-responsive-hover .navigation__megamenu>li.has-sub__menu:hover>button,
-  .page-wrapper .navigation-responsive-hover .navigation__responsive:not(.navigation__megamenu) li.has-sub__menu:hover>a,
-  .page-wrapper .navigation-responsive-hover .navigation__responsive:not(.navigation__megamenu) li.has-sub__menu:hover>button {
-    --r-tx: #400;
-    --r-bg: #fbb;
-  }
-
-
+/* The same colors as hover for the main menu */
+.page-wrapper .navigation-responsive-hover .navigation__megamenu>li.has-sub__menu:hover>a,
+.page-wrapper .navigation-responsive-hover .navigation__megamenu>li.has-sub__menu:hover>button,
+.page-wrapper .navigation-responsive-hover .navigation__responsive:not(.navigation__megamenu) li.has-sub__menu:hover>a,
+.page-wrapper .navigation-responsive-hover .navigation__responsive:not(.navigation__megamenu) li.has-sub__menu:hover>button {
+  --r-tx: #400;
+  --r-bg: #fbb;
 }
 
 /* Form Button */
@@ -118,7 +113,7 @@ h3 a) {
 .top-container,
 .fixed-search-block,
 .popup-login-block-inner {
-  --s-b: 255,0,0;
+  --s-b: 255, 0, 0;
   --r-br: #f88;
   --r-bg: linear-gradient(135deg, #fdfdfd, #fdd);
   background: var(--r-bg);
@@ -140,7 +135,6 @@ div.page-title {
   --r-bg: linear-gradient(0deg, #202331, #2d3246);
   background: var(--r-bg);
 }
-
 
 div.page-title h1 a,
 div.page-title h1 span,
@@ -228,22 +222,23 @@ header.header h3 a span {
 .page-wrapper .solo-textarea:focus {
   --r-br: #e00;
 }
+
 #fixed-search-block,
 .primary-sidebar-menu,
 .solo-inner .navigation__responsive,
 .page-wrapper .primary-menu.solo-sticky,
 .fixed-search-block-inner .fixed-search-wrapper,
 .page-wrapper .solo-outer.animate-border .region-inner.top-box-inner {
-  --s-b: 34,0,0;
+  --s-b: 34, 0, 0;
 }
 
 .page-wrapper .solo-outer.animate-border .region-inner.bottom-box-inner,
 .page-wrapper .solo-outer.animate-border .region-inner.footer-box-inner {
-  --s-b: 255,238,238;
+  --s-b: 255, 238, 238;
 }
 
 .sm-icons a > span {
-  --s-b: 255,0,0;
+  --s-b: 255, 0, 0;
 }
 
 /* Border animation  */

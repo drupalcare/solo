@@ -67,11 +67,7 @@ solo-global:
       css/theme/solo-regions-animation.css: { weight: 200 }
       css/theme/solo-sitename-animation.css: { weight: 200 }
       css/theme/solo-clickable-image.css: { weight: 200 }
-      css/media-query/solo-min-width-993.css: { weight: 200 }
-      css/media-query/solo-max-width-992.css: { weight: 200 }
-      css/media-query/solo-max-width-767.css: { weight: 200 }
-      css/media-query/solo-max-width-600.css: { weight: 200 }
-      css/media-query/solo-max-width-414.css: { weight: 200 }
+      css/breakpoints/solo-responsive.css: { weight: 200 }
       css/theme/solo-global-settings.css: { weight: 200 }
   js:
     js/solo-utils.js: { }
@@ -79,7 +75,6 @@ solo-global:
     js/solo-messages.js: { }
     js/solo-fixed-search-block.js: { }
     js/solo-popup-login-block.js: { }
-
   dependencies:
     - core/drupal
     - core/drupal.ajax
@@ -92,9 +87,7 @@ solo-menu:
     component:
       css/components/solo-menu.css: { weight: 0 }
     theme:
-      css/theme/solo-menu-main.css: { weight: 200 }
-      css/theme/solo-megamenu.css: { weight: 200 }
-      css/theme/solo-menu-side.css: { weight: 200 }
+      css/theme/solo-menu-side.css: { weight: 300 }
   js:
     js/solo-menu-scripts.js: { }
     js/solo-menu.js: { }
@@ -106,6 +99,78 @@ solo-menu:
     - core/drupal.ajax
     - core/drupalSettings
     - core/once
+
+# Global Breakpoints .
+solo-global-breakpoints-sb-576:
+  Version: VERSION
+  css:
+    layout:
+      css/layout/solo-layout-breakpoints-sb-576.css: { weight: -100 }
+    theme:
+      css/breakpoints/solo-global-breakpoints-sb-576.css: { weight: 200 }
+
+solo-global-breakpoints-sb-768:
+  Version: VERSION
+  css:
+    layout:
+      css/layout/solo-layout-breakpoints-sb-768.css: { weight: -100 }
+    theme:
+      css/breakpoints/solo-global-breakpoints-sb-768.css: { weight: 200 }
+
+solo-global-breakpoints-sb-992:
+  Version: VERSION
+  css:
+    layout:
+      css/layout/solo-layout-breakpoints-sb-992.css: { weight: -100 }
+    theme:
+      css/breakpoints/solo-global-breakpoints-sb-992.css: { weight: 200 }
+
+solo-global-breakpoints-sb-1200:
+  Version: VERSION
+  css:
+    layout:
+      css/layout/solo-layout-breakpoints-sb-1200.css: { weight: -100 }
+    theme:
+      css/breakpoints/solo-global-breakpoints-sb-1200.css: { weight: 200 }
+
+solo-global-breakpoints-sb-1400:
+  Version: VERSION
+  css:
+    layout:
+      css/layout/solo-layout-breakpoints-sb-1400.css: { weight: -100 }
+    theme:
+      css/breakpoints/solo-global-breakpoints-sb-1400.css: { weight: 200 }
+
+# Menu Breakpoints .
+solo-menu-breakpoints-mn-576:
+  Version: VERSION
+  css:
+    theme:
+      css/breakpoints/solo-menu-breakpoints-mn-576.css: { weight: 200 }
+
+solo-menu-breakpoints-mn-768:
+  Version: VERSION
+  css:
+    theme:
+      css/breakpoints/solo-menu-breakpoints-mn-768.css: { weight: 200 }
+
+solo-menu-breakpoints-mn-992:
+  Version: VERSION
+  css:
+    theme:
+      css/breakpoints/solo-menu-breakpoints-mn-992.css: { weight: 200 }
+
+solo-menu-breakpoints-mn-1200:
+  Version: VERSION
+  css:
+    theme:
+      css/breakpoints/solo-menu-breakpoints-mn-1200.css: { weight: 200 }
+
+solo-menu-breakpoints-mn-1400:
+  Version: VERSION
+  css:
+    theme:
+      css/breakpoints/solo-menu-breakpoints-mn-1400.css: { weight: 200 }
 
 # Color Picker.
 solo-form-theme-settings:

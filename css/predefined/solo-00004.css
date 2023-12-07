@@ -103,16 +103,13 @@ h3 a) {
   --r-tx: #ffffff;
 }
 
-@media (min-width:62.001rem) {
-
-  /* The same colors as hover for the main menu */
-  .page-wrapper .navigation-responsive-hover .navigation__megamenu>li.has-sub__menu:hover>a,
-  .page-wrapper .navigation-responsive-hover .navigation__megamenu>li.has-sub__menu:hover>button,
-  .page-wrapper .navigation-responsive-hover .navigation__responsive:not(.navigation__megamenu) li.has-sub__menu:hover>a,
-  .page-wrapper .navigation-responsive-hover .navigation__responsive:not(.navigation__megamenu) li.has-sub__menu:hover>button {
-    --r-tx: #ffffff;
-    --r-bg: #05b8f4;
-  }
+/* The same colors as hover for the main menu */
+.page-wrapper .navigation-responsive-hover .navigation__megamenu>li.has-sub__menu:hover>a,
+.page-wrapper .navigation-responsive-hover .navigation__megamenu>li.has-sub__menu:hover>button,
+.page-wrapper .navigation-responsive-hover .navigation__responsive:not(.navigation__megamenu) li.has-sub__menu:hover>a,
+.page-wrapper .navigation-responsive-hover .navigation__responsive:not(.navigation__megamenu) li.has-sub__menu:hover>button {
+  --r-tx: #ffffff;
+  --r-bg: #05b8f4;
 }
 
 /* Form Button */
@@ -190,39 +187,38 @@ div.page-title {
 
 /* For main menu shadow */
 .solo-inner .navigation__responsive {
-  --s-b: 36,21,113;
+  --s-b: 36, 21, 113;
 }
 
 .page-wrapper .primary-menu.solo-sticky {
-  --s-b: 36,21,113;
+  --s-b: 36, 21, 113;
 }
 
 .primary-sidebar-menu {
-  --s-b: 36,21,113;
+  --s-b: 36, 21, 113;
 }
 
 /* inner regions borders */
 .page-wrapper .solo-outer.animate-border .region-inner.top-box-inner {
-  --s-b: 36,21,113;
+  --s-b: 36, 21, 113;
 }
 
 .page-wrapper .solo-outer.animate-border .region-inner.bottom-box-inner,
 .page-wrapper .solo-outer.animate-border .region-inner.footer-box-inner {
-  --s-b: 36,21,113;
+  --s-b: 36, 21, 113;
 }
 
 .sm-icons a > span {
-  --s-b: 79,53,217;
+  --s-b: 79, 53, 217;
 }
 
 #fixed-search-block {
-  --s-b: 36,21,113;
+  --s-b: 36, 21, 113;
 }
 
 .fixed-search-block-inner .fixed-search-wrapper {
-  --s-b: 36,21,113;
+  --s-b: 36, 21, 113;
 }
-
 
 /* Border animation  */
 @keyframes borderLeftColors {

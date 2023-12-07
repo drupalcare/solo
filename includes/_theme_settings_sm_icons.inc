@@ -22,7 +22,7 @@ $form['solo_settings']['settings_social_icons'] = [
 ];
 
 $form['solo_settings']['settings_social_icons']['sm_icon_size'] = [
-  '#type' => 'radios',
+  '#type' => 'select',
   '#title' => t('The size of the social media icons can be altered from here.'),
   '#default_value' => theme_get_setting('sm_icon_size'),
   '#options' => [

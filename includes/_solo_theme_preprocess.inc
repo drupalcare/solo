@@ -94,6 +94,7 @@ function solo_preprocess_html(&$variables): void {
   $solo_list = \Drupal::service('extension.list.theme')->getPath('solo');
   $solo_path = $solo_base . '/' . $solo_list;
   $variables['solo_path'] = $solo_path;
+
   $theme_head_vars = ['site_css_injector', 'site_import_googel_font'];
 
   if (theme_get_setting('site_global_font_size') || theme_get_setting('site_global_regions_gab')) {
@@ -291,6 +292,8 @@ function _get_theme_variables() {
 
   return [
     'misc' => [
+      'site_global_breakpoints',
+      'site_menu_breakpoints',
       'site_global_width',
       'site_css_injector',
       'site_font_google_special_on',
@@ -373,6 +376,15 @@ function solo_preprocess_page(&$variables) {
     }
   }
 
+  if (theme_get_setting('site_global_breakpoints')) {
+    $g_point = theme_get_setting('site_global_breakpoints');
+    $variables['#attached']['library'][] = 'solo/solo-global-breakpoints-' . $g_point;
+  }
+
+  if (theme_get_setting('site_menu_breakpoints')) {
+    $m_point = theme_get_setting('site_menu_breakpoints');
+    $variables['#attached']['library'][] = 'solo/solo-menu-breakpoints-' . $m_point;
+  }
   // Top regions variables.
   $regions = [
     'top' => ['first', 'second', 'third'],
@@ -536,23 +548,41 @@ function solo_preprocess_comment(&$variables): void {
  * Implements hook_preprocess_HOOK() for block.html.twig.
  */
 function solo_preprocess_block(&$variables): void {
-  if (!empty($variables['elements']['#id'])) {
-    /** @var \Drupal\block\BlockInterface $block */
-    $block = \Drupal::entityTypeManager()
-      ->getStorage('block')
-      ->load($variables['elements']['#id']);
-    if ($block) {
-      $region = $block->getRegion();
-
-      if ($variables['base_plugin_id'] === 'system_menu_block') {
-        $variables['content']['#attributes']['region'] = $region;
-      }
-      if ($variables['base_plugin_id'] === 'system_branding_block') {
-        $variables['solo_path'] = &$variables['solo_path'];
-        $variables['logo_default'] = \Drupal::config('solo.settings')->get('logo.use_default');
-      }
-    }
+  if (empty($variables['elements']['#id'])) {
+    return;
   }
+
+  $block = _load_block($variables['elements']['#id']);
+  if (!$block) {
+    return;
+  }
+
+  _process_system_menu_block($variables, $block);
+  _process_system_branding_block($variables);
+}
+
+function _load_block($id) {
+  return \Drupal::entityTypeManager()
+    ->getStorage('block')
+    ->load($id);
+}
+
+function _process_system_menu_block(&$variables, $block) {
+  if ($variables['base_plugin_id'] !== 'system_menu_block') {
+    return;
+  }
+
+  $region = $block->getRegion();
+  $variables['content']['#attributes']['region'] = $region;
+}
+
+function _process_system_branding_block(&$variables) {
+  if ($variables['base_plugin_id'] !== 'system_branding_block') {
+    return;
+  }
+
+  $variables['solo_path'] = &$variables['solo_path'];
+  $variables['logo_default'] = \Drupal::config('solo.settings')->get('logo.use_default');
 }
 
 /**

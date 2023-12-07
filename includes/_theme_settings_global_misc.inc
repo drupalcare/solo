@@ -23,26 +23,49 @@ $form['solo_settings']['settings_global_misc'] = [
 
 $form['solo_settings']['settings_global_misc']['site_global_width'] = [
   '#title' => t("Website's Width - Solo Theme"),
-  '#type' => 'radios',
+  '#type' => 'select',
   '#options' => _get_site_width_options(),
   '#default_value' => theme_get_setting('site_global_width'),
   '#description' => t("<p><strong>You can adjust the entire website's width by choosing your preferred size in pixels or rem units.</strong></p>"),
 ];
 
+$form['solo_settings']['settings_global_misc']['site_global_breakpoints'] = [
+  '#title' => t("Website's Breakpoints - Solo Theme"),
+  '#type' => 'select',
+  '#options' => _get_site_breakpoints_options(),
+  '#default_value' => theme_get_setting('site_global_breakpoints'),
+  '#description' => t("<p><strong>Use them to adjust the global layout for a particular screen or device size.</strong></p>"),
+];
+
+$form['solo_settings']['settings_global_misc']['site_menu_breakpoints'] = [
+  '#title' => t("Menu's Breakpoints - Solo Theme"),
+  '#type' => 'select',
+  '#options' => _get_menu_breakpoints_options(),
+  '#default_value' => theme_get_setting('site_menu_breakpoints'),
+  '#description' => t("<p><strong>Adjust the global layout for any responsive menu on a specific screen or device size using them.</strong></p>"),
+];
+
 $form['solo_settings']['settings_global_misc']['site_global_regions_gab'] = [
   '#title' => t("Website Region's Spaces"),
-  '#type' => 'radios',
+  '#type' => 'select',
   '#options' => _get_site_global_regions_gab(),
-  '#default_value' => theme_get_setting('site_global_regions_gab') ?? '16',
+  '#default_value' => theme_get_setting('site_global_regions_gab'),
   '#description' => t("<p><strong>You can adjust the entire website's padding by choosing your preferred size in pixels or rem units.</strong></p>"),
 ];
 
 $form['solo_settings']['settings_global_misc']['site_global_font_size'] = [
   '#title' => t("Website's Font Size"),
-  '#type' => 'radios',
+  '#type' => 'select',
   '#options' => _get_site_global_font_size(),
-  '#default_value' => theme_get_setting('site_global_font_size') ?? '16',
+  '#default_value' => theme_get_setting('site_global_font_size'),
   '#description' => t("<p><strong>You can adjust the entire website's font size by choosing your preferred size in pixels or rem units.</strong></p>"),
+];
+
+$form['solo_settings']['settings_global_misc']['site_node_date_format'] = [
+  '#title' => t("Choose the node date format."),
+  '#type' => 'select',
+  '#options' => _get_site_node_date_format($d_s, $d_m, $d_l),
+  '#default_value' => theme_get_setting('site_node_date_format') ?? 'solo_date_l',
 ];
 
 $form['solo_settings']['settings_global_misc']['site_import_googel_font'] = [
@@ -92,11 +115,4 @@ $form['solo_settings']['settings_global_misc']['site_inline_items_on'] = [
   '#title' => t('Tick this box to display multiple field items on the same line. Note that this does not apply to long text fields.'),
   '#description'   => t('<p>In the current implementation, a field with multiple values is displayed in a block layout. This means each value is displayed on a new line, one below the other. This can take up a lot of vertical space, especially if there are many values.<br> The task is to change this layout so that the values are displayed inline. This means the values will be displayed on the same line, separated by a space, This will make the display more compact and easier to read.</p>'),
   '#default_value' => theme_get_setting('site_inline_items_on'),
-];
-
-$form['solo_settings']['settings_global_misc']['site_node_date_format'] = [
-  '#title' => t("Choose the node date format."),
-  '#type' => 'radios',
-  '#options' => _get_site_node_date_format($d_s, $d_m, $d_l),
-  '#default_value' => theme_get_setting('site_node_date_format') ?? 'solo_date_l',
 ];

@@ -77,17 +77,13 @@ h3 a) {
   background-color: var(--r-bg);
 }
 
-@media (min-width:62.001rem) {
-
-  /* The same colors as hover for the main menu */
-  .page-wrapper .navigation-responsive-hover .navigation__megamenu>li.has-sub__menu:hover>a,
-  .page-wrapper .navigation-responsive-hover .navigation__megamenu>li.has-sub__menu:hover>button,
-  .page-wrapper .navigation-responsive-hover .navigation__responsive:not(.navigation__megamenu) li.has-sub__menu:hover>a,
-  .page-wrapper .navigation-responsive-hover .navigation__responsive:not(.navigation__megamenu) li.has-sub__menu:hover>button {
-    --r-tx: #f9e2e1;
-    --r-bg: #a62724;
-  }
-
+/* The same colors as hover for the main menu */
+.page-wrapper .navigation-responsive-hover .navigation__megamenu>li.has-sub__menu:hover>a,
+.page-wrapper .navigation-responsive-hover .navigation__megamenu>li.has-sub__menu:hover>button,
+.page-wrapper .navigation-responsive-hover .navigation__responsive:not(.navigation__megamenu) li.has-sub__menu:hover>a,
+.page-wrapper .navigation-responsive-hover .navigation__responsive:not(.navigation__megamenu) li.has-sub__menu:hover>button {
+  --r-tx: #f9e2e1;
+  --r-bg: #a62724;
 }
 
 /* Form Button */
@@ -164,7 +160,7 @@ header.header h3 a span {
 .footer-container,
 .footer-menu {
   --r-br: #601715;
-  --s-b: 194,46,42;
+  --s-b: 194, 46, 42;
   --r-tx: #a9a9c6;
   --r-bg: linear-gradient(180deg, #000000, #030001);
   background: var(--r-bg);
@@ -191,6 +187,7 @@ header.header h3 a span {
 .page-wrapper .copyright a:hover {
   --r-tx: #98a7db;
 }
+
 .page-wrapper .bottom-container h1,
 .page-wrapper .bottom-container h2,
 .page-wrapper .bottom-container h3,
@@ -241,16 +238,16 @@ header.header h3 a span {
 .page-wrapper .primary-menu.solo-sticky,
 .fixed-search-block-inner .fixed-search-wrapper,
 .page-wrapper .solo-outer.animate-border .region-inner.top-box-inner {
-  --s-b: 43,61,124;
+  --s-b: 43, 61, 124;
 }
 
 .page-wrapper .solo-outer.animate-border .region-inner.bottom-box-inner,
 .page-wrapper .solo-outer.animate-border .region-inner.footer-box-inner {
-  --s-b: 227,232,246;
+  --s-b: 227, 232, 246;
 }
 
 .sm-icons a > span {
-  --s-b: 227,232,246;
+  --s-b: 227, 232, 246;
 }
 
 /* Border animation  */

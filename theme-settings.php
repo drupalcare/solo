@@ -34,6 +34,7 @@ function solo_form_system_theme_settings_alter(&$form, FormStateInterface $form_
   require_once __DIR__ . '/includes/_theme_settings_blueprint.inc';
   require_once __DIR__ . '/includes/_theme_settings_global_misc.inc';
   require_once __DIR__ . '/includes/_theme_settings_libraries_fonts.inc';
+  require_once __DIR__ . '/includes/_theme_settings_predefined_themes.inc';
   require_once __DIR__ . '/includes/_theme_settings_layout_page_wrapper.inc';
   require_once __DIR__ . '/includes/_theme_settings_layout_popup_login_block.inc';
   require_once __DIR__ . '/includes/_theme_settings_layout_fixed_search_block.inc';
@@ -50,8 +51,6 @@ function solo_form_system_theme_settings_alter(&$form, FormStateInterface $form_
   require_once __DIR__ . '/includes/_theme_settings_layout_bottom.inc';
   require_once __DIR__ . '/includes/_theme_settings_layout_footer.inc';
   require_once __DIR__ . '/includes/_theme_settings_layout_footer_menu.inc';
-  require_once __DIR__ . '/includes/_theme_settings_predefined_themes.inc';
   require_once __DIR__ . '/includes/_theme_settings_sm_icons.inc';
   require_once __DIR__ . '/includes/_theme_settings_credit_copyright.inc';
-
 }

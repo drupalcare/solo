@@ -154,37 +154,3 @@
 .user-logged-in .toolbar-bar {
   z-index: 1300;
 }
-
-@media (max-width:62rem) {
-  .header-inner .block-system-branding-block {
-    justify-content: center;
-  }
-
-}
-
-@media (max-width:37.5rem) {
-  .header-inner .branding-wrapper {
-    display: grid;
-  }
-
-  .site-name {
-    font-size: calc(2 * var(--solo-16));
-  }
-
-  .site-slogan {
-    font-size: var(--solo-24) !important;
-  }
-
-  .header-inner .branding-wrapper>* {
-    width: 100%;
-  }
-
-  .header-inner .branding-wrapper .branding-first,
-  .header-inner .branding-wrapper .branding-first a,
-  .header-inner .branding-wrapper h1.site-name,
-  .header-inner .branding-wrapper h3.site-slogan {
-    justify-content: center;
-    text-align: center;
-  }
-
-}

@@ -3,10 +3,6 @@
   /* For main menu shadow
   box-shadow: [horizontal offset] [vertical offset] [blur radius] [optional spread radius] [color];
   */
-  .solo-inner .navigation__responsive>li>ul,
-  .solo-inner .navigation__responsive:not(.navigation__megamenu)>li>ul>li>ul {
-    box-shadow: 0 2.8px 2.2px rgba(var(--s-b), .034), 0 6.7px 5.3px rgba(var(--s-b), .048), 0 12.5px 10px rgba(var(--s-b), .06), 0 22.3px 17.9px rgba(var(--s-b), .072), 0 41.8px 33.4px rgba(var(--s-b), .086), 0 100px 80px rgba(var(--s-b), .12);
-  }
 
   .navigation__megamenu.m-1>li>ul.sub__menu {
     grid-auto-flow: row;
@@ -77,10 +73,9 @@
     display: none !important;
   }
 
-  /* For main menu shadow */
   .solo-inner .navigation__responsive>li>ul,
   .solo-inner .navigation__responsive:not(.navigation__megamenu)>li>ul>li>ul {
-    --s-b: var(--s-w);
+    box-shadow: 0 2.8px 2.2px rgba(var(--s-b), .034), 0 6.7px 5.3px rgba(var(--s-b), .048), 0 12.5px 10px rgba(var(--s-b), .06), 0 22.3px 17.9px rgba(var(--s-b), .072), 0 41.8px 33.4px rgba(var(--s-b), .086), 0 100px 80px rgba(var(--s-b), .12);
   }
 
   .solo-inner .navigation__responsive {

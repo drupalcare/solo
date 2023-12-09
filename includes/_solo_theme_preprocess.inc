@@ -561,12 +561,18 @@ function solo_preprocess_block(&$variables): void {
   _process_system_branding_block($variables);
 }
 
+/**
+ * Helper function.
+ */
 function _load_block($id) {
   return \Drupal::entityTypeManager()
     ->getStorage('block')
     ->load($id);
 }
 
+/**
+ * Helper function.
+ */
 function _process_system_menu_block(&$variables, $block) {
   if ($variables['base_plugin_id'] !== 'system_menu_block') {
     return;
@@ -576,6 +582,9 @@ function _process_system_menu_block(&$variables, $block) {
   $variables['content']['#attributes']['region'] = $region;
 }
 
+/**
+ * Helper function.
+ */
 function _process_system_branding_block(&$variables) {
   if ($variables['base_plugin_id'] !== 'system_branding_block') {
     return;

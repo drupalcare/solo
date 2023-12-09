@@ -6,7 +6,7 @@ solo.screen-xsm-min:
     - 1x
 solo.screen-sm-min:
   label: screen-sm-min
-  mediaQuery: 'all and (min-width: 414px / 25.938rem)'
+  mediaQuery: 'all and (min-width: 414px)'
   weight: 1
   multipliers:
     - 1x
@@ -14,7 +14,7 @@ solo.screen-sm-min:
     - 2x
 solo.screen-md-min:
   label: screen-md-min
-  mediaQuery: 'all and (min-width: 576px / 36rem)'
+  mediaQuery: 'all and (min-width: 576px)'
   weight: 2
   multipliers:
     - 1x
@@ -22,7 +22,7 @@ solo.screen-md-min:
     - 2x
 solo.screen-lg-min:
   label: screen-lg-min
-  mediaQuery: 'all and (min-width: 992px / 48rem)'
+  mediaQuery: 'all and (min-width: 992px)'
   weight: 3
   multipliers:
     - 1x
@@ -30,7 +30,7 @@ solo.screen-lg-min:
     - 2x
 solo.screen-xlg-min:
   label: screen-xlg-min
-  mediaQuery: 'all and (min-width: 1200px / 75rem)'
+  mediaQuery: 'all and (min-width: 1200px)'
   weight: 4
   multipliers:
     - 1x
@@ -38,7 +38,7 @@ solo.screen-xlg-min:
     - 2x
 solo.screen-xxlg-min:
   label: screen-xxlg-min
-  mediaQuery: 'all and (min-width: 1400px / 87.5rem)'
+  mediaQuery: 'all and (min-width: 1400px)'
   weight: 5
   multipliers:
     - 1x

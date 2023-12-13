@@ -312,6 +312,10 @@
 }
 
 @media (max-width:62rem) {
+  .overflow-hidden .primary-menu.solo-sticky {
+    height: 100%;
+  }
+
   .solo-inner .navigation__megamenu ul.sub__menu {
     grid-auto-columns: 1fr;
   }

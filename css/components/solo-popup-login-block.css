@@ -32,6 +32,7 @@
   align-items: center;
   justify-content: space-evenly;
   width: 100%;
+  flex-wrap: wrap;
 }
 
 .block-user-login-block .item-list ul li {

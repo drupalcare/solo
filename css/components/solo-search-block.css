@@ -8,7 +8,7 @@ form.solo-search-block-form {
 
 .solo-search-block-form {
   display: grid;
-  grid-template-columns: minmax(12.5rem, auto) minmax(2.5rem, 10rem);
+  grid-template-columns: minmax(12.5rem, auto) minmax(5rem, 10rem);
   grid-template-rows: 1fr;
   gap: 0 0;
   grid-auto-flow: row;
@@ -56,4 +56,11 @@ input.search-button-block {
   background-color: var(--r-tx);
   -webkit-mask: var(--solo-search-icon);
   mask: var(--solo-search-icon);
+}
+
+@media (max-width:26rem) {
+  .solo-search-block-form {
+    grid-template-columns: minmax(60%, auto) minmax(20%, 40%);
+  }
+
 }

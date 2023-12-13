@@ -56,9 +56,9 @@
       closeSearch?.addEventListener('click', closeSearchHandler);
       openSearch?.addEventListener('click', openSearchHandler);
 
-      //click any where to close any submenu.
+      //click any where to close search box.
       document.addEventListener('click', (event) => {
-        if (event.target == searchBlock) {
+        if (!searchBlock.contains(event.target)) {
           closeSearchHandler();
         }
       });
@@ -66,3 +66,4 @@
   };
 
 })(Drupal, once);
+

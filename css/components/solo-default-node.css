@@ -111,6 +111,28 @@ article.node .node__header .node__meta {
   margin-right: 0;
 }
 
+.field--type-text img.align-left,
+.field--type-string img.align-left,
+.field--type-string-long img.align-left,
+.field--type-text-with-summary img.align-left {
+  padding-right: var(--solo-16);
+}
+
+.field--type-text img.align-right,
+.field--type-string img.align-right,
+.field--type-string-long img.align-right,
+.field--type-text-with-summary img.align-right {
+  padding-left: var(--solo-16);
+}
+
+.field--type-text img.align-center,
+.field--type-string img.align-center,
+.field--type-string-long img.align-center,
+.field--type-text-with-summary img.align-center {
+  padding-right: var(--solo-16);
+  padding-left: var(--solo-16);
+}
+
 /* To show multi fields in one line */
 .solo__inline-items .field.field__items,
 .solo__inline-items .field>.field__items {

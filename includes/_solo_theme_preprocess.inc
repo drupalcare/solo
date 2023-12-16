@@ -315,6 +315,7 @@ function _get_theme_variables() {
       'site_regions_main_rounded',
       'site_regions_bottom_rounded',
       'site_regions_footer_rounded',
+      'site_regions_highlighted_disable',
       'site_regions_top_disable',
       'site_regions_bottom_disable',
       'site_regions_footer_disable',

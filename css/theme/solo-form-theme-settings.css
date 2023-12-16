@@ -121,11 +121,12 @@ form.system-theme-settings [data-drupal-selector="solo-color-picker"] .form-text
   width: calc(100% - 70px);
   border-radius: 12px 0 0 12px;
   border-right: none;
+  box-sizing: border-box;
 }
 
 form.system-theme-settings [data-drupal-selector="solo-color-picker"] .form-color {
   display: inline-block;
-  width: 40px;
+  width: 50px;
   margin-right: 20px;
   vertical-align: bottom;
   border-radius: 0 12px 12px 0;

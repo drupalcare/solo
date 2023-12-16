@@ -18,6 +18,7 @@ ckeditor5-stylesheets:
 
 #Regions
 regions:
+  highlighted: 'Highlighted'
   popup_login_block: 'Popup Login Block'
   fixed_search_block: 'Fixed Search Block'
   header: 'Header'
@@ -27,7 +28,6 @@ regions:
   top_first: 'Top First Container'
   top_second: 'Top Second Container'
   top_third: 'Top Third Container'
-  highlighted: 'Highlighted'
   system_messages: 'System Messages'
   page_title: 'Page Title'
   breadcrumb: 'Breadcrumb'

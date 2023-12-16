@@ -30,9 +30,9 @@ if ($updated_regions['bottom']) {
       $form['solo_settings']["settings_bottom_container"]["bottom_3col"] = _create_region_layout_radio_three('bottom');
       $form['solo_settings']["settings_bottom_container"]["bottom_4col"] = _create_region_layout_radio_four('bottom');
       $form['solo_settings']["settings_bottom_container"]["site_regions_bottom_disable"] = _disable_region('bottom');
+      $form['solo_settings']["settings_bottom_container"]["site_regions_bottom_rounded"] = _rounded_region('bottom');
       $form['solo_settings']["settings_bottom_container"]["site_regions_bottom_animate"] = _animate_region('bottom');
       $form['solo_settings']["settings_bottom_container"]["site_regions_bottom_border"] = _border_region('bottom');
-      $form['solo_settings']["settings_bottom_container"]["site_regions_bottom_rounded"] = _rounded_region('bottom');
       $form['solo_settings']["settings_bottom_container"]["classes_{$region}"] = _generate_css_classes($region, $label);
       foreach ($attributes as $attribute_key => $attribute_label) {
         $form['solo_settings']["settings_bottom_container"]["settings_{$region}_{$attribute_key}"] = _generate_form_element($region, $label, $attribute_key, $attribute_label);

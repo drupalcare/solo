@@ -7,8 +7,8 @@ dependencies:
     - solo
 id: solo_help
 theme: solo
-region: highlighted
-weight: -30
+region: content
+weight: 3
 provider: null
 plugin: help_block
 settings:

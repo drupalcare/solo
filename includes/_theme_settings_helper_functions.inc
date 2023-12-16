@@ -413,7 +413,7 @@ function _border_region($region) {
 function _rounded_region($region) {
   return [
     '#type' => 'select',
-    '#title' => t("Tick this box to round the inside regions' corners."),
+    '#title' => t("Select from this list to enable rounding of the inside regions' corners."),
     '#default_value' => theme_get_setting("site_regions_{$region}_rounded") ?? '',
     '#options' => [
       '' => t('None'),
@@ -510,25 +510,25 @@ function _get_updated_regions() {
   ];
 
   foreach ($active_regions as $key => $region) {
-    if ($region != 'auto_hidden_block') {
-      $label = ucwords(str_replace('_', ' ', $region));
 
-      foreach ($region_config as $section => $config) {
-        if (in_array($region, $config['regions'])) {
-          $updated_regions[$section]['container'] = $config['container'];
-          $updated_regions_all['container'] = $config['container'];
+    $label = ucwords(str_replace('_', ' ', $region));
 
-          $index = array_search($region, $config['regions']);
-          $updated_regions[$section][$region] = $config['labels'][$index];
-        }
+    foreach ($region_config as $section => $config) {
+      if (in_array($region, $config['regions'])) {
+        $updated_regions[$section]['container'] = $config['container'];
+        $updated_regions_all['container'] = $config['container'];
+
+        $index = array_search($region, $config['regions']);
+        $updated_regions[$section][$region] = $config['labels'][$index];
       }
-
-      if (!in_array($region, array_merge(...array_column($region_config, 'regions')))) {
-        $updated_regions_mix[$region] = $label;
-      }
-
-      $updated_regions_all[$region] = $label;
     }
+
+    if (!in_array($region, array_merge(...array_column($region_config, 'regions')))) {
+      $updated_regions_mix[$region] = $label;
+    }
+
+    $updated_regions_all[$region] = $label;
+
   }
 
   return array_merge([

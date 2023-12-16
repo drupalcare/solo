@@ -29,9 +29,9 @@ if ($updated_regions['top']) {
       $form['solo_settings']["settings_top_container"]["top_2col"] = _create_region_layout_radio_two('top', $variables);
       $form['solo_settings']["settings_top_container"]["top_3col"] = _create_region_layout_radio_three('top');
       $form['solo_settings']["settings_top_container"]["site_regions_top_disable"] = _disable_region('top');
+      $form['solo_settings']["settings_top_container"]["site_regions_top_rounded"] = _rounded_region('top');
       $form['solo_settings']["settings_top_container"]["site_regions_top_animate"] = _animate_region('top');
       $form['solo_settings']["settings_top_container"]["site_regions_top_border"] = _border_region('top');
-      $form['solo_settings']["settings_top_container"]["site_regions_top_rounded"] = _rounded_region('top');
       $form['solo_settings']["settings_top_container"]["classes_{$region}"] = _generate_css_classes($region, $label);
       foreach ($attributes as $attribute_key => $attribute_label) {
         $form['solo_settings']["settings_top_container"]["settings_{$region}_{$attribute_key}"] = _generate_form_element($region, $label, $attribute_key, $attribute_label);

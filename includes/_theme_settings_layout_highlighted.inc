@@ -17,6 +17,7 @@ if (array_key_exists('highlighted', $updated_regions['mix'])) {
   $label = $updated_regions['mix'][$region];
 
   $form['solo_settings']["settings_{$region}"] = _generate_form_details($label);
+  $form['solo_settings']["settings_{$region}"]["site_regions_highlighted_disable"] = _disable_region('highlighted');
   $form['solo_settings']["settings_{$region}"]["classes_{$region}"] = _generate_css_classes($region, $label);
 
   foreach ($attributes as $attribute_key => $attribute_label) {

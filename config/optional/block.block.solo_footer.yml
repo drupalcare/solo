@@ -10,7 +10,7 @@ dependencies:
 id: solo_footer
 theme: solo
 region: footer_menu
-weight: 0
+weight: -10
 provider: null
 plugin: 'system_menu_block:footer'
 settings:

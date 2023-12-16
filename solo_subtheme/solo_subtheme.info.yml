@@ -8,6 +8,7 @@ libraries:
 
 #Regions
 regions:
+  highlighted: 'Highlighted'
   popup_login_block: 'Popup Login Block'
   fixed_search_block: 'Fixed Search Block'
   header: 'Header'
@@ -17,7 +18,6 @@ regions:
   top_first: 'Top First Container'
   top_second: 'Top Second Container'
   top_third: 'Top Third Container'
-  highlighted: 'Highlighted'
   system_messages: 'System Messages'
   page_title: 'Page Title'
   breadcrumb: 'Breadcrumb'
@@ -32,7 +32,6 @@ regions:
   footer_second: 'Footer Second Container'
   footer_third: 'Footer Third Container'
   footer_menu: 'Footer Menu Container'
-  auto_hidden_block: 'Auto Hidden Blocks'
 features:
   comment_user_picture: true
   comment_user_verification: true

@@ -476,6 +476,14 @@ function solo_preprocess_node(&$variables) {
   if (!empty($variables['date']) && !empty($variables['display_submitted']) && $variables['display_submitted'] === TRUE) {
     $variables['date'] = \Drupal::service('date.formatter')->format($variables['node']->getCreatedTime(), $d_format);
   }
+  // Check if the content type is in the array of
+  // enabled types for reading mode.
+  $content_type = $node_type = $variables['node']->getType();
+  $reading_mode_enabled = theme_get_setting('site_reading_mode_content_type');
+  if (is_array($reading_mode_enabled) && in_array($content_type, $reading_mode_enabled)) {
+    $variables['attributes']['class'][] = 'reading-mode';
+  }
+
 }
 
 /**

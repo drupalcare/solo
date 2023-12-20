@@ -715,3 +715,18 @@ function _create_megamenu_layout() {
     ],
   ];
 }
+
+/**
+ * Helper function to get a list of content types.
+ */
+function _solo_get_content_types() {
+  $content_types = [];
+  $entity_type_manager = \Drupal::entityTypeManager();
+  $bundle_info = $entity_type_manager->getStorage('node_type')->loadMultiple();
+
+  foreach ($bundle_info as $type) {
+    $content_types[$type->id()] = $type->label();
+  }
+
+  return $content_types;
+}

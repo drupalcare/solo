@@ -1,446 +1,298 @@
-INTRODUCTION:
---------------------------------------------------------------------------------
+# Solo - W3CSS Theme
 
-The development of this theme was centered around user-friendliness and quick loading times. With the W3CSS Paragraphs, you now possess the capability to generate an infinite number of UI designs.
+Solo is the third generation of the W3CSS Theme and has been thoroughly
+revamped. This version does not rely on jQuery, making the inclusion of
+the w3.css library optional.
 
-This CSS framework is not only smaller and quicker than its counterparts, but it's also simpler to learn and utilize. It exclusively employs standard CSS, eliminating the need for jQuery or JavaScript libraries. This accelerates and streamlines web development. By default, it supports contemporary responsive design with a mobile-first approach. It ensures CSS uniformity across all browsers, including Chrome, Firefox, IE, Safari, and more. Additionally, it guarantees CSS consistency across all devices, such as PCs, laptops, tablets, and mobiles. To learn more about W3.CSS, visit W3.CSS.
+Should you wish to construct a more intricate website, consider utilizing
+the [Paragraphs Bundles](https://www.drupal.org/project/paragraphs_bundles)
+module. This module equips you with robust capabilities to create complex
+components such as 3D cards, slideshows, 3D carousel, tabs, cards,
+accordions, and more.
 
+## Features
 
-REQUIREMENTS:
---------------------------------------------------------------------------------
+### 24 Regions
 
-No modules need to be installed for this theme.
+The theme offers 24 distinct regions, each with its own unique settings,
+allowing for a high degree of customization and control over the look and
+feel of your website. The regions in this theme are designed to accommodate
+a wide variety of content types and layouts.
 
+### Intelligent Design
 
-INSTALLATION:
---------------------------------------------------------------------------------
+If a region is not being used, its settings will be hidden. This helps to
+keep the theme's interface clean and uncluttered, making it easier for you
+to find and adjust the settings you need.
 
-Follow these steps to download and install the Solo Theme on your Drupal site:
+### Responsive Design
 
-1. Download the Solo Theme and save it to the themes/ directory of your Drupal site. The path should look like this: your-drupal-site-name/themes/.
-2. Navigate to the Appearance settings of your site by going to your-site-domain/admin/appearance.
-3. Scroll down the page until you find the Solo Theme.
-4. Click on 'Install and set as default'.
-5. Click 'Save' to apply the changes.
+Solo theme is fully responsive, ensuring your website will look and function
+perfectly on all devices, including desktops, tablets, and smartphones.
 
-FEATURES:
---------------------------------------------------------------------------------
-) Solo Theme is modern Drupal with built-in responsiveness
+### Five Breakpoints
 
-) Solo Theme has 22 regions. Check README.txt for more details.
+The Solo theme provides 5 breakpoints for the site and 5 for the menu,
+enabling you to display the most optimal layout to the user.
 
-) Solo Theme has 26 sections. In the theme settings under Advanced Site Colors
- you have 26 fields for CSS customization.(Background Colors - Background Hover
- Colors - Text Colors - Text Hover Colors - Link Text Colors - Link Text Hover
- Colors - Link Background Colors - Button Colors - Button Hover Colors).
+### Three-Level Main Menu and Megamenu
 
-) Solo Theme comes with ability to change the website width. Just insert any
-of the predefined classes into website width in theme settings.
-(sw-100-percent, sw-2560, sw-1920, sw-1600,
-sw-1440, sw-1280, sw-1024 and sw-800).
+Includes a three-level main menu, enabling you to create a complex navigation
+structure with ease. Hoverable or clickable.
 
-) Solo Theme comes with horizontal main menu or vertical side nav. Simply add
- the main menu to the horizontal region or the vertical region.
+### Sidebar Main Menu
 
-) Solo Theme comes with 101 fonts. 50 fonts can be applied to the global
-site, 26 fonts for heading (H1, H2 and H3 and 25 special fonts can be applied
-to any html tag. Any uploaded font has a CSS class can be applied to any html
-tag.
+In addition to the three-level main menu, the theme also includes a sidebar
+main menu, providing an additional navigation option.
 
-) Solo Theme comes with 24 CSS text animation effects. can be applied to
-site name, page title or use the css class to apply it to any html tag.
+### Customized Colors
 
-) Solo Theme comes with a custom page layout for user login/register/reset
-password.
+Customize 15 color fields per region to align the colors with your brand
+identity.
 
-) Solo Theme comes with a custom border animation for top regions, bottom
-regions and footer regions..
+### Customized Layout
 
-) Solo Theme comes with over 50 predefined color themes. Simply insert the
-name of any of the predefined themes. More will be added.
+Customize your website's layout with seven styles for two-column layouts,
+three styles for three-column layouts, and four styles for four-column layouts.
 
-) Solo Theme comes with the ability to create your own private W3.CSS theme
-and apply it to your site.
+### Conclusion
 
-) Solo Theme V1 comes with 6 color libraries. (US Highway, US Safety,
-Camouflage, Vivid, European Signal and Food).
+Solo is perfect for those who want a high degree of control over their
+website's design, but also value simplicity and ease of use. Whether you are
+creating a simple blog or a complex corporate website, Solo theme will provide
+you with the tools you need to create an effective online presence.
 
-) Solo Theme comes with 11 color libraries. (Camouflage, European Signal,
-Fashion, Flat UI, Food, IOS, Metro UI, US highway, US Safety, Vivid and Win8).
-You can create unlimited color themes.
+## Solo Regions
 
-) Solo Theme comes with 8 social media links that are easy to configure.
+The Solo theme encompasses two types of regions: **Single and Grouped regions**.
 
-) Solo Theme has a top region that includes three flexible regions. (The total
- space in the top region will be divided by the number of regions you filled.)
+### [1] Single Regions
 
-) Solo Theme has a bottom region that includes four flexible regions. (The
-total space in the bottom region will be divided by the number of regions you
-filled.)
+The theme consists of the following single regions:
 
-) Solo Theme has a footer region that includes three flexible regions. (The
-total space in the footer region will be divided by the number of regions you
-filled.)
+1. Popup Login Block
+2. Fixed Search Block
+3. Header
+4. Primary Sidebar Menu
+5. Primary Menu
+6. Welcome Text
+7. Highlighted
+8. System Messages
+9. Page Title
+10. Breadcrumb
+11. Footer Menu Container
 
-) Solo Theme comes with Font Awesome 4.7.0, 5.15.4 or 6.1.1 optional you can
-enable them in theme settings.
+All single regions are visible on all site pages, except 'Page Title' (not
+visible on the home page) and 'Welcome Text' (visible on the home page only).
 
-) Solo Theme comes with jQuery match height. Example: If you have three blocks
- in the top area, they will always have matching height on the large screen
- size. The script was removed and it uses CSS Flexbox.
+### [2] Grouped Regions
 
-) Solo Theme comes with a responsive main menu and It is three level
- drop-down menu. The drop-down works on hover for big screen and on click for
- small screen.
+The theme also includes the following grouped regions:
 
-) Solo Theme will hide completely (divs, wrappers, classes) any region you
-don't use. Nothing will be printed in the back.
+| TOP                  | MAIN              | BOTTOM                 | FOOTER              |
+|----------------------|-------------------|------------------------|---------------------|
+| 1. Top First Container | 1. Left Sidebar | 1. Bottom First Container | 1. Footer First Container |
+| 2. Top Second Container| 2. Content      | 2. Bottom Second Container | 2. Footer Second Container |
+| 3. Top Third Container | 3. Right Sidebar| 3. Bottom Third Container | 3. Footer Third Container |
+|                        |                 | 4. Bottom Fourth Container |                     |
 
-) Solo Theme uses the minimum HTML structure to show the content. Example,
-You will not see div > div > div > div > div.
+# Theme Architecture
 
-) Solo Theme comes with the ability to create a custom page template according
- to content type's name. If you have two content types article and video you can
-  have page--article.html.twig and page--video.html.twig
+The `div` element with the class `page-wrapper` wraps around 24 distinct regions.
+Both the `page-wrapper` and each of these regions can have up to 15 different
+color inputs applied to them. The color inputs can be categorized as follows:
+
+## Color Categories
+
+- **General**
+  - Background color
+  - Text color
+  - Border color
+  - HTML heading color (h1, h2, h3)
+  - Background color for Form Input Field
 
-) Solo Theme comes with the ability to create a custom page template for any
-view. Example if you have a view name "recent_video", then you can create a page
- template name page--recent-video.html.twig.
+- **Links**
+  - Text link color
+  - Text link hover color
 
-) Solo Theme comes with the ability to create a custom page template for any
-vocabulary. Example if you have a vocabulary name "Tags", then you can create a
-page template name page--taxonomy--tags.html.twig.
+- **Menus**
+  - Text menu link color
+  - Text menu link hover color
+  - Background menu link color
+  - Background menu link hover color
 
-) Solo Theme comes with the ability to change the main container's columns
-layout to equal width. Change the columns from (25% 50% 25%) to (33% 33% 33%)
+- **Buttons**
+  - Text color for buttons
+  - Text hover color for buttons
+  - Background button color
+  - Background button hover color
 
-) Solo Theme comes with the ability to create a responsive horizontal three
-level secondary menu or a responsive vertical three level secondary menu.
+**Note:** The construction of the 15 colors is as follows: First, apply global
+colors to the page wrapper. Then, for each region, apply specific colors. Note
+that the colors of the regions will override the global colors.
 
-) Solo Theme comes with customized Sub-themes. Each sub-theme has different
-layout/template.
+# Theme Settings
 
-CONFIGURATION:
---------------------------------------------------------------------------------
+## Blueprint
 
-The new version was added with all new featuers. If you are using V1 and you did
- not override the page.html.twig, then you can update the theme however you
- normally do. If you did override the page.html.twig, then you will need to
- clone the new page.html.twig and update it.
+The blueprint for the Solo theme regions is a structured layout that defines
+the various sections of a web page. Here's a brief description of each region:
 
-You can build any website layout with the w3.css library. I try to add the most
-well-known templates/layouts. I added some sub-themes to include different
-layouts. If you see a Solo template that you want to have available in this
-theme then let me know and I'll customize it and add it to the collection as a
-sub-theme.
+- `highlighted`: This block is for highlighted or important content.
+- `popup_login_block`: This is a block that pops up for user login.
+- `fixed_search_block`: This block is for the search bar, fixed in place.
+- `header`: The topmost part of the webpage, usually with the logo and navigation.
+- `primary_sidebar_menu`: The main sidebar menu, on the left or right of the page.
+- `primary_menu`: The main navigation menu, usually in the header.
+- `welcome_text`: A text block welcoming the user to the website.
+- `top_first`, `top_second`, `top_third`: Container blocks at the top of the page.
+- `system_messages`: This block displays system messages to the user.
+- `page_title`: Displays the title of the current page.
+- `breadcrumb`: Navigation links showing the user's path to the current page.
+- `sidebar_first` (Left Sidebar), `sidebar_second` (Right Sidebar).
+- `content`: The main content area of the webpage.
+- `bottom_first`, `bottom_second`, `bottom_third`, `bottom_fourth`: Bottom blocks.
+- `footer_first`, `footer_second`, `footer_third`: Footer container blocks.
+- `footer_menu`: The navigation menu in the footer.
 
-Note: All customized Sub-themes have an extra region in addition to the regions
- in the parent theme for the sticky search block. If you click on the search
- icon, you'll get a sticky search bar on the top in return.
+Each of these regions can contain various types of content, such as text, images,
+links, and more, depending on the needs of the website.
 
-What are Solo Sub-themes? They are custom themes with different page
-layouts.
+This blueprint serves as a starting point and guide for developers, designers,
+and other site builders involved in the development process.
 
-What are solo predefined color themes? They are color skins that can
-be applied to a Solo Theme or any of its sub-themes.
+## Global Site Settings
 
-  * How to change the logo
-  ........................
+- Solo theme provides features to adjust website width and breakpoints.
+- It allows altering spaces between regions and modifying layout settings.
+- Solo theme enables font size modifications and custom data formats.
+- Ability to import Google fonts and add custom CSS to the header.
+- Modify login, register, and password pages; change header and menu order.
+- Offers animation features and layout changes for multiple value fields.
+- Apply reading mode to content types, setting max width for content regions.
 
-Go to your-drupal-site-name/admin/appearance/settings/solo and
-uncheck “Use the logo supplied by the theme” then upload your own website logo
-they insert the path in logo text "Path to custom logo" box and click save.
-Logo size is fixed. If you want to change the logo's size you will have to
-change it in the sub theme.
+## Libraries and Fonts Settings
 
-  * How to enable the page title
-  ..............................
+- Feature to upload and use the w3.css library locally.
+- Modify the font family of the entire website with Google fonts.
+- Alter font family of h1, h2, h3 with Google fonts selections.
+- Offers 25 special Google fonts for application to HTML tags.
 
-Go to your-drupal-site-name/admin/structure/block and scroll down until you see
-Page Title's region. Page Title block is disabled by default, just click on
-Enable to enable the page title
+## Page Wrapper Settings
 
-  * How to enable the site slogan
-  ...............................
+- Input field for predefined CSS classes from Solo or third-party libraries.
+- 15 color input fields for global use across the site.
 
-Go to your-drupal-site-name/admin/structure/block and in header region. You
-should see two blocks User account menu and Site branding. Click on configure
-for Site branding and check the check box for Site Slogan.
+## Predefined Color Themes Settings
 
+- Dropdown select list with 50 predefined Color Scheme Themes for the site.
 
-  * CSS Text Animation Effects Classes | Solo Theme
-  ...........................
-Go to your-drupal-site-name/admin/appearance/settings/solo and
-click on CSS TEXT ANIMATION EFFECTS - Solo Theme to expand it. You can choose
-the animation for the site name or page title. Also you will see the css text
-animation effect classes that you can use with any html tag.
+## Social Media Links Settings
 
+- Options for social media icon sizes (Small, Medium, Large).
+- Input color field to change social media icon colors.
+- Checkbox to show or hide social icons.
+- Eight social text fields and one RSS field.
 
+# Single Regions Settings
 
-  * How to enable/disable region border animation? | Solo Theme
-  ...........................
-Go to your-drupal-site-name/admin/appearance/settings/solo and
-click on ENABLE BORDER ANIMATION - Solo Theme to expand it. There is a
-checkbox to enable/disable the border animation for top regions, bottom
-regions and footer regions.
+## Highlighted Settings
 
-  * How to expand multi items field to 100%? | Solo Theme
-  ...........................
-By default, any drupal field with multiple items (like taxonomy, file, user
-etc. ) will display those items in one line. If you want to change that, go to
-your-drupal-site-name/admin/appearance/settings/solo and click
-on ADVANCED SITE COLORS - Solo Theme to expand it then add w3-expand-fields
-to Page Wrapper field.
+- Change visibility options for the highlighted block.
+- Text input for predefined CSS classes.
+- 15 color input fields for this region.
 
-  * How to change the favicon
-  ...........................
+## Popup Login Block Settings
 
-Go to www.your-drupal-site-name/admin/appearance/settings/solo
-and uncheck “Use the favicon supplied by the theme” then upload your own favicon
-and click save.
+- Input field for predefined CSS classes.
+- Checkbox for popup block login feature.
+- Text field to customize login wording.
+- 15 color input fields for this region.
 
-  * How to change website width
-  .............................
+## Fixed Search Block Settings
 
-In Solo Theme was changed to a dropdown select list.
+- Input field for predefined CSS classes.
+- 15 color input fields for this region.
 
-Go to your-drupal-site-name/admin/appearance/settings/solo and
-click on Website Width to expand it. Copy and paste your desired website width
-and click save.
+# Theme Settings Documentation
 
+## Header Settings
 
-  * How to change website font or heading font? | Solo Theme
-  .............................
+- Text input for predefined CSS classes from Solo or third-party libraries.
+- Checkbox to center Site's Name, Slogan, and Logo.
+- Checkbox to adjust positioning of Search Icon, User Menu, Sidebar Menu, and
+  Sidebar Hamburger to the left.
+- Dropdown for 24 predefined CSS text animations for the Site name.
+- 15 color input fields for this region.
 
-Go to your-drupal-site-name/admin/appearance/settings/solo and
-click on GOOGLE FONTS - Solo Theme to expand it. You can
-choose the site font or heading font.
+## Primary Sidebar Menu Settings
 
-Special font are not applied to any html tage by default. You just choose the
-font then use the css class with any html tag.
+- Text input for predefined CSS classes.
+- Checkbox to apply borders to menu items.
+- 15 color input fields for this region.
 
-Tip: Any font you choose for the site or heading will have a CSS class that
-you can apply to any html tag.
+## Primary Menu Settings
 
-Example: If I have chosen the font "Anton" for the heading and I want to apply
-this font to a paragraph, here is how it's done;
+- Text input for predefined CSS classes.
+- Checkbox for hover-to-show main menu dropdowns.
+- Checkbox to apply borders to menu items.
+- Checkbox for even space distribution between menu items.
+- 15 color input fields for this region.
+- Checkbox for Mega Menu transformation with additional fields:
+  - Mega Menu Layout options (2-4 columns with various percentages).
+  - Mega Menu Header checkbox for second level headers.
 
-  * How to use the sole predefined themes
-  ........................................
+## Welcome Settings
 
-In Solo Theme was changed to a dropdown select list.
-Go to your-drupal-site-name/admin/appearance/settings/solo and
-click on  Solo predefined color themes to expand it.  Copy and paste any of
-your desired Solo color theme and click save.  FYI: if you have any w3
-classes in Advanced Site Color Section they will not override the uploaded
-color theme because of the CSS order.  Any predefined theme file it will be
-loaded after w3.css.
+- Text input for predefined CSS classes.
+- 15 color input fields for this region.
 
-  * How to change website colors
-  ..............................
+## System Message Settings
 
-Go to your-drupal-site-name/admin/appearance/settings/solo and
-click on Advanced Site Colors to expand it.  Each section in the website can
-be modified and click save. You can change the text color, background color,
-padding, margin or borders. You can use any of W3 CSS Classes
-https://www.w3schools.com/w3css/w3css_references.asp
+- Text input for predefined CSS classes.
+- 15 color input fields for this region.
 
-  * How to change Social Media Links
-  ..................................
+## Page Title Settings
 
-Go to www.your-drupal-site-name/admin/appearance/settings/solo
-and click on Social Media Link to expand it.  Change any of the links and click
-save.
+- Text input for predefined CSS classes.
+- Dropdown for 24 predefined CSS text animations for the page title.
+- 15 color input fields for this region.
 
-  * How to change copyright
-  .........................
+## Breadcrumb Settings
 
-Go to www.your-drupal-site-name/admin/appearance/settings/solo
-and click on Copyright to expand it, then change the text there and click save.
+- Text input for predefined CSS classes.
+- Checkbox to hide page title from the breadcrumb.
+- 15 color input fields for this region.
 
-  * How to disable the credit at the bottom
-  .........................................
+## Footer Menu Settings
 
-Go to www.your-drupal-site-name/admin/appearance/settings/solo
-and click on Credit to expand it.  Uncheck the Show/Hide Credit Text and click
-save.
+- Text input for predefined CSS classes.
+- Dropdown for 24 predefined CSS text animations for the page title.
+- 15 color input fields for this region.
 
-  * How to disable the whole page opacity animation.
-  .........................................
+## Copyright and Credit Settings
 
-Go to your-drupal-site-name/admin/appearance/settings/solo and
-click on ADVANCED SITE COLORS then insert into the text field Page Wrapper
-w3-animate-opacity-disabled
+- Text input for predefined CSS classes.
+- 15 color input fields for this region.
+- Text field for dynamic copyright year.
+- Checkbox to show or hide credit.
 
-  * How to disable animate opacity on scroll down.
-  .........................................
+## Grouped Regions
 
-Go to your-drupal-site-name/admin/appearance/settings/solo and
-click on ENABLE FULL OPACITY ON SCROLL then uncheck the checkbox next to Check
-this box to animate the opacity on scroll down.
+Regions grouped together are enclosed within a div. While the region wrapper
+has its own settings, individual regions maintain their own settings.
 
-  * How to create a new custom predefined color theme
-  ...................................................
+### The (TOP, MAIN, BOTTOM, FOOTER) Region Wrapper Settings
 
-You must have a sub-theme to store the generated css.
+- Two, three, and four columns settings with various percentage distributions.
+- Change visibility options (Visible on all pages, Home Page Only, All Pages Except Home Page).
+- Checkbox for animation on individual region's border (Not for Main).
+- Checkbox to apply borders to each individual region.
+- Radio field for round corners on each individual region.
+- Text input for predefined CSS classes.
+- 15 color input fields for this region.
 
-Go to https://www.w3schools.com/w3css/w3css_color_generator.asp and create your
-custom private theme.  Follow the steps to generate a private theme.
+### Individual Region Settings
 
-Go to your-drupal-site-directory/themes/custom/your-sub-theme/css/styles.css
-open and paste the generated css inside styles.css.
-
-Clear caches and it is done.
-
-  * How to use the solo_subtheme
-  .......................................
-
-Inside the folder
-your-drupal-site-directory/themes/solo/solo_subtheme
-you will have all the necessary files for start up sub-theme.
-
--- Steps for creating a new sub-theme for Solo Theme.
-
-1) Copy the sub-theme from the Solo Theme and paste it in your custom theme
-directory.
-
-2) Re-name the copied folder to have the new sub-theme name. Example: my new
-sub-theme is solo_subtheme.  I will rename the folder from
-"solo_subtheme" to "solo_subtheme".
-
-3) Open the new named sub-theme folder "solo_subtheme" and change the following
- files' names from:
-solo_subtheme.theme >> To >> solo_subtheme.theme
-solo_subtheme.info.yml >> To >> solo_subtheme.info.yml
-solo_subtheme.libraries.yml >> To >> solo_subtheme.libraries.yml
-
-4) Open the file solo_subtheme.info.yml in your text editor and edit the
-following:
-line 1 from "Solo Sub-theme" >> To "Solo Sub-theme", This is human
-readable name.
-line 8 from "solo_subtheme/solo-subtheme-global" >> To >>
-"solo_subtheme/solo-subtheme-global".
-
-We are only changing the solo_subtheme to the new sub theme name.
-The name "solo-subtheme-global" is the library name and MUST match the name
-in solo_subtheme.libraries.yml.
-
-If you would like to change the library name you MUST change it in both files.
-
-5) Make sure the spaces in this file are not changed. The sub-theme now is
-ready to be enabled.
-
-
--- Steps for creating a new sub-theme of a sub-theme.
-I will be using the sub-theme Amun as an example and you can follow these steps
-with any of the sub-themes.
-
-1) Copy the amun_subtheme from the Amun Sub-Theme and paste it in your custom
-theme directory.
-
-2) Re-name the copied folder to have the new sub-theme name. Example: my new
-sub-theme is amun_custom_subtheme.  I will rename the folder from
-"amun_subtheme" to "amun_custom_subtheme".
-
-3) Open the new named sub-theme folder "amun_custom_subtheme" and change the
-following files' names from:
-amun_subtheme.theme >> To >> amun_custom_subtheme.theme
-amun_subtheme.info.yml >> To >> amun_custom_subtheme.info.yml
-amun_subtheme.libraries.yml >> To >> amun_custom_subtheme.libraries.yml
-
-4) Open the file amun_custom_subtheme.info.yml in your text editor and edit the
-following:
-line 1 from "Amun Sub-Theme" >> To "Amun Custom Sub-theme", This is human
-readable name.
-line 8 from "amun_subtheme/amun-subtheme-global" >> To >>
-"amun_custom_subtheme/amun-subtheme-global".
-
-5) Make sure the spaces in this file are not changed. The sub-theme now is
-ready to be enabled.
-
-  * How to Change The Main Container's Columns to Equal Width
-  ...........................................................
-
-Go to www.your-drupal-site-name/admin/appearance/settings/solo
-and click on Change The Main Container's Columns to Equal Width and insert
-33-33-33 in the text box then click save.
-
-  * How to Create The Main Menu
-  .............................
-
-(Drupal comes with a default main menu.)
-
-1) You don't have to use the default main menu as your main menu. ANY menu can
-be the main menu.
-
-2) If you want a horizontal menu just drop ANY menu in the  Primary Menu region.
-
-3) If you want a horizontal menu just drop ANY menu in the  Primary Menu
-Vertical region.
-
-4) You don't have to create any a special template for the vertical or
-horizontal main menu. menu--main.html.twig
-
-5) You can create two main menus and use the two regions.
-http://drupal8-w3css-theme.flashwebcenter.com
-
-6) Note: A vertical main menu is different from a side menu in your website.
-(Example for the vertical menu:
-
-https://www.w3schools.com/w3css/tryw3css_templates_interior_design.htm)
-
-A side menu is just a secondary menu you have on your website.  The secondary
-menu can be vertical or horizontal and you can place it in left or right column.
-
-  * How to Create a Responsive Horizontal Secondary Menu
-  ......................................................
-
-Create a menu with any name. Example the new menu name is 'Titto'.  Add all the
-links as usual in drupal. The maximum number of menu levels to show is three.
-This maximum number includes the initial level.  Level one is always visible on
-screen resolution bigger than 992px. The two levels show on hover. On screen
-resolution less than 992px all levels are hidden and they show by clicking.
-Go to solo/templates/navigation and clone menu--responsive-h.html.twig to
-your sub theme folder and name it menu--titto.html.twig. Clear all caches and
-you are done.
-
-  * How to Create a Responsive Vertical Secondary Menu
-  ....................................................
-
-Create a menu with any name.  Example the new menu name is 'Titto'.
-Add all the links as usuall in drupal. The maximum number of menu levels to show
-is three. This maximum number includes the initial level. Level one is always
-visible. The two levels are hidden and you show them by clicking.
-Go to solo/templates/navigation and clone menu--responsive-v.html.twig to
-your sub theme folder and name it menu--titto.html.twig. Clear all caches and
-you are done.
-
-  * How to Make the Main Vertical Menu Open On The Right Side
-  ....................................................
-
-1- Create a sub-theme.
-2- copy page .../solo/templates/layout/page.html.twig to the sub-theme.
-3- Open page.html.twig in the sub-theme and find the words "primary-sidebar-menu".
-On the same line, change "w3-animate-left" to "w3-animate-right".
-4- Find the word "sidebar-button-open". On the same line, change "w3-left"
-to "w3-right".
-5- Copy and paste the following css in the sub-theme css style file:
-#primary-sidebar-menu.w3-sidebar{right:0;}
-#sidebar-button-open {margin:0 0 0 10px!important;}
-
-  * How to remove background colors and use an image as a background.
-  ....................................................
-
-Create a sub-theme.
-Go to solo/css/w3-css-theme-custom and copy w3-theme-00029.css
-file inside your-sub-theme/css folder.
-Open your-sub-theme.libraries.yml and  paste css/w3-theme-00029.css: {}
-under css/styles.css: {}.
-Note: Spacing must be aligned exactly underneath.
-Create a folder inside the sub-theme and name it images. Add the image you
-want to use as a background inside images folder.
-The image name must be page-wrapper.jpg.
-
-  * How to use W3.CSS classes with views
-  ....................................................
-https://www.youtube.com/watch?v=wCObqmBn3Xk
+- Text input for predefined CSS classes.
+- 15 color input fields for this region.

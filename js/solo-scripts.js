@@ -64,7 +64,7 @@
 
       // Disable top margin if breadcrumb exist.
 
-      let clickableImages = document.querySelectorAll('a > img');
+      let clickableImages = document.querySelectorAll('a > img:not(.field--name-user-picture img)');
 
       clickableImages.forEach(function(clickableImage) {
         clickableImage.parentElement.classList.add('img--is-clickable');

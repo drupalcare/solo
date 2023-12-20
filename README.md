@@ -98,7 +98,8 @@ The theme also includes the following grouped regions:
 
 # Theme Architecture
 
-The `div` element with the class `page-wrapper` wraps around 24 distinct regions.
+The `div` element with the class `page-wrapper` wraps around 2
+4 distinct regions.
 Both the `page-wrapper` and each of these regions can have up to 15 different
 color inputs applied to them. The color inputs can be categorized as follows:
 
@@ -141,22 +142,26 @@ the various sections of a web page. Here's a brief description of each region:
 - `highlighted`: This block is for highlighted or important content.
 - `popup_login_block`: This is a block that pops up for user login.
 - `fixed_search_block`: This block is for the search bar, fixed in place.
-- `header`: The topmost part of the webpage, usually with the logo and navigation.
-- `primary_sidebar_menu`: The main sidebar menu, on the left or right of the page.
+- `header`: The topmost part of the webpage, usually with the logo and
+navigation.
+- `primary_sidebar_menu`: The main sidebar menu, on the left or right of the
+page.
 - `primary_menu`: The main navigation menu, usually in the header.
 - `welcome_text`: A text block welcoming the user to the website.
-- `top_first`, `top_second`, `top_third`: Container blocks at the top of the page.
+- `top_first`, `top_second`, `top_third`: Container blocks at the top of the
+page.
 - `system_messages`: This block displays system messages to the user.
 - `page_title`: Displays the title of the current page.
 - `breadcrumb`: Navigation links showing the user's path to the current page.
 - `sidebar_first` (Left Sidebar), `sidebar_second` (Right Sidebar).
 - `content`: The main content area of the webpage.
-- `bottom_first`, `bottom_second`, `bottom_third`, `bottom_fourth`: Bottom blocks.
+- `bottom_first`, `bottom_second`, `bottom_third`, `bottom_fourth`: Bottom
+blocks.
 - `footer_first`, `footer_second`, `footer_third`: Footer container blocks.
 - `footer_menu`: The navigation menu in the footer.
 
-Each of these regions can contain various types of content, such as text, images,
-links, and more, depending on the needs of the website.
+Each of these regions can contain various types of content, such as text,
+images, links, and more, depending on the needs of the website.
 
 This blueprint serves as a starting point and guide for developers, designers,
 and other site builders involved in the development process.
@@ -285,7 +290,8 @@ has its own settings, individual regions maintain their own settings.
 ### The (TOP, MAIN, BOTTOM, FOOTER) Region Wrapper Settings
 
 - Two, three, and four columns settings with various percentage distributions.
-- Change visibility options (Visible on all pages, Home Page Only, All Pages Except Home Page).
+- Change visibility options (Visible on all pages, Home Page Only, All Pages
+Except Home Page).
 - Checkbox for animation on individual region's border (Not for Main).
 - Checkbox to apply borders to each individual region.
 - Radio field for round corners on each individual region.

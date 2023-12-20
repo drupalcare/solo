@@ -162,3 +162,31 @@
 [dir="rtl"] .node--unpublished .comment__content:after {
   border-left-color: var(--r-br, var(--r-br-b));
 }
+
+@media (max-width:36rem) {
+  article.comment {
+    display: grid;
+    grid-template-rows: auto;
+    grid-template-areas: "comment__meta"
+    "comment__content";
+  }
+
+  .comment__meta {
+    margin-top: var(--solo-12);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: left;
+    align-items: baseline;
+    grid-area: 2;
+  }
+
+  .comment__content {
+    grid-area: 1;
+    margin-top: var(--solo-12);
+  }
+
+  .comment__meta>* {
+    margin-right: var(--solo-12);
+  }
+
+}

@@ -177,8 +177,9 @@ article.node .node__header .node__meta {
 }
 
 /* For reading mode */
-.reading-mode.node--view-mode-full .field--type-text-long,
-.reading-mode.node--view-mode-full .field--type-text-with-summary {
+.sidebar-box-main .reading-mode.node--view-mode-full .field--type-text-long:not(.field--type-comment .field--type-text-long),
+.sidebar-box-main .reading-mode.node--view-mode-full .field--type-text-with-summary:not(.field--type-comment .field--type-text-with-summary) {
   max-width: 600px;
   margin: 0 auto;
 }
+

@@ -134,46 +134,20 @@ article.node .node__header .node__meta {
 }
 
 /* To show multi fields in one line */
-.solo__inline-items .field.field__items,
-.solo__inline-items .field>.field__items {
+.solo__inline-items .field.taxonomy-term-entity.field__items,
+.solo__inline-items .field.taxonomy-term-entity>.field__items {
   display: inline-flex;
   flex-wrap: wrap;
 }
 
-.solo__inline-items .field.field__items>.field__item,
-.solo__inline-items .field>.field__items>.field__item {
+.solo__inline-items .field.taxonomy-term-entity.field__items>.field__item,
+.solo__inline-items .field.taxonomy-term-entity>.field__items>.field__item {
   margin-right: var(--solo-16);
 }
 
-.solo__inline-items .field.field__items>.field__item:last-child,
-.solo__inline-items .field>.field__items>.field__item:last-child {
+.solo__inline-items .field.taxonomy-term-entity.field__items>.field__item:last-child,
+.solo__inline-items .field.taxonomy-term-entity>.field__items>.field__item:last-child {
   margin-right: 0;
-}
-
-.solo__inline-items .field--type-string.field__items,
-.solo__inline-items .field--type-string>.field__items,
-.solo__inline-items .field--type-string-long.field__items,
-.solo__inline-items .field--type-string-long>.field__items,
-.solo__inline-items .field--type-text.field__items,
-.solo__inline-items .field--type-text>.field__items,
-.solo__inline-items .field--type-text-long.field__items,
-.solo__inline-items .field--type-text-long>.field__items,
-.solo__inline-items .field--type-text-with-summary.field__items,
-.solo__inline-items .field--type-text-with-summary>.field__items {
-  display: grid;
-}
-
-.solo__inline-items .field--type-string.field__items>*,
-.solo__inline-items .field--type-string>.field__items>*,
-.solo__inline-items .field--type-string-long.field__items>*,
-.solo__inline-items .field--type-string-long>.field__items>*,
-.solo__inline-items .field--type-text.field__items>*,
-.solo__inline-items .field--type-text>.field__items>*,
-.solo__inline-items .field--type-text-long.field__items>*,
-.solo__inline-items .field--type-text-long>.field__items>*,
-.solo__inline-items .field--type-text-with-summary.field__items>*,
-.solo__inline-items .field--type-text-with-summary>.field__items>* {
-  width: 100%;
 }
 
 /* For reading mode */
@@ -182,4 +156,3 @@ article.node .node__header .node__meta {
   max-width: 600px;
   margin: 0 auto;
 }
-

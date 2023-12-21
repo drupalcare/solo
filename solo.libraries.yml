@@ -27,7 +27,7 @@ solo-global:
   Version: VERSION
   css:
     base:
-      css/base/solo-normalize.8.0.1.css: { weight: -200 }
+      css/base/solo-normalize.css: { weight: -200 }
       css/base/solo-variables.css: { weight: -200 }
       css/base/solo-variables-regions.css: { weight: -200 }
       css/base/solo-animation.css: { weight: -200 }

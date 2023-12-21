@@ -7,6 +7,7 @@
 
 use Drupal\Component\Utility\Html;
 use Drupal\Core\Datetime\DrupalDateTime;
+use Drupal\Core\Entity\EntityInterface;
 use Drupal\Core\Template\Attribute;
 use Drupal\user\UserInterface;
 
@@ -452,7 +453,6 @@ function solo_preprocess_page(&$variables) {
     $curr_path = ltrim($curr_path, '/');
     if ($curr_path == 'user/login' || $curr_path == 'user/register' || $curr_path == 'user/password') {
       unset($variables['page']['sidebar_first'], $variables['page']['sidebar_second']);
-
       $variables['#attached']['library'][] = 'solo/solo-user-login-custom';
     }
   }
@@ -478,9 +478,9 @@ function solo_preprocess_node(&$variables) {
   }
   // Check if the content type is in the array of
   // enabled types for reading mode.
-  $content_type = $node_type = $variables['node']->getType();
+  $content_type = $variables['node']->getType();
   $reading_mode_enabled = theme_get_setting('site_reading_mode_content_type');
-  if (is_array($reading_mode_enabled) && in_array($content_type, $reading_mode_enabled)) {
+  if (is_array($reading_mode_enabled) && in_array($content_type, $reading_mode_enabled, TRUE)) {
     $variables['attributes']['class'][] = 'reading-mode';
   }
 
@@ -501,6 +501,37 @@ function solo_preprocess_breadcrumb(&$variables): void {
       ];
       // Add cache context based on url.
       $variables['#cache']['contexts'][] = 'url';
+    }
+  }
+}
+
+/**
+ * Implements hook_preprocess_field().
+ */
+function solo_preprocess_field(&$variables, $hook) {
+  // Check if the field is of type 'entity_reference'.
+  if (isset($variables['element']['#field_type']) && $variables['element']['#field_type'] === 'entity_reference') {
+    // Check if items are set and not empty.
+    if (!empty($variables['element']['#items'])) {
+      // Load the first item.
+      $first_item = $variables['element']['#items']->first();
+
+      // Check if the first item is not empty and has an 'entity' property.
+      if ($first_item && $first_item->entity) {
+        $entity = $first_item->entity;
+
+        // Get the entity type of the referenced entity.
+        $entity_type = $entity->getEntityTypeId();
+
+        // Create a CSS class based on the entity type
+        // (e.g., 'taxonomy-entity', 'user-entity').
+        $class = $entity_type . '-entity';
+
+        // Sanitize and add the CSS class to the field wrapper.
+        // Replace 'drupal_html_class()' with a custom sanitization or
+        // use Html::getClass() from Drupal\Component\Utility\Html.
+        $variables['attributes']['class'][] = Html::getClass($class);
+      }
     }
   }
 }
@@ -573,7 +604,7 @@ function solo_preprocess_block(&$variables): void {
 /**
  * Helper function.
  */
-function _load_block($id) {
+function _load_block($id): ?EntityInterface {
   return \Drupal::entityTypeManager()
     ->getStorage('block')
     ->load($id);
@@ -594,7 +625,7 @@ function _process_system_menu_block(&$variables, $block) {
 /**
  * Helper function.
  */
-function _process_system_branding_block(&$variables) {
+function _process_system_branding_block(&$variables): void {
   if ($variables['base_plugin_id'] !== 'system_branding_block') {
     return;
   }

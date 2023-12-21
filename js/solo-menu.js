@@ -263,7 +263,7 @@
       addEventListenerToButtons(navigationDefault);
       addEventListenerToButtons(navigationResponsiveClick);
       addEventListenerToButtons(navigationSidebar);
-      // We only call main menu click and hvoer type when hover is disabled.
+      // We only call main menu click and hover type when hover is disabled.
       currentWidth = getCurrentWidth();
       menusHelper(currentWidth)
       window.addEventListener('resize', () => {

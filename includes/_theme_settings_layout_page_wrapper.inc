@@ -13,7 +13,7 @@
 // Page wrapper settings.
 $form['solo_settings']['settings_page_wrapper'] = [
   '#type' => 'details',
-  '#title' => t("<strong class='error'>Page Wrapper</strong> Settings - Solo Theme"),
+  '#title' => t("<strong class='status'>Page Wrapper</strong> Settings - Solo Theme"),
   '#collapsible' => TRUE,
   '#collapsed' => FALSE,
   '#description'   => t("The Page Wrapper serves as the encompassing div for all regions within the site. Any settings applied to it will have a global effect. It's important to note that the CSS should probably be provided by a trusted user, such as an admin or developer."),

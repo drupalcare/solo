@@ -55,15 +55,15 @@ $form['solo_settings']['settings_social_icons']['sm_show_icons'] = [
 ];
 
 $social_icons = [
-  'facebook' => t('Facebook Page'),
-  'twitter' => t('Twitter Profile'),
-  'pinterest' => t('Pinterest Profile'),
-  'linkedin' => t('Linkedin Profile'),
-  'instagram' => t('Instagram Profile'),
-  'youtube' => t('Youtube Profile'),
-  'mastodon' => t('Mastodon Profile'),
-  'drupal' => t('Drupal Profile'),
-  'rss' => t('RSS Link'),
+  'facebook' => t('Facebook'),
+  'twitter' => t('X previously named (Twitter) Profile'),
+  'pinterest' => t('Pinterest'),
+  'linkedin' => t('Linkedin'),
+  'instagram' => t('Instagram'),
+  'youtube' => t('Youtube'),
+  'mastodon' => t('Mastodon'),
+  'drupal' => t('Drupal'),
+  'rss' => t('RSS'),
 ];
 
 foreach ($social_icons as $key => $value) {

@@ -16,7 +16,7 @@
 
 $form['solo_settings']['settings_global_misc'] = [
   '#type' => 'details',
-  '#title' => t("<strong class='purple'>Global Site</strong> Settings - Solo Theme"),
+  '#title' => t("<strong class='error'>Global Site</strong> Settings - Solo Theme"),
   '#collapsible' => TRUE,
   '#collapsed' => FALSE,
 ];
@@ -119,7 +119,7 @@ $form['solo_settings']['settings_global_misc']['site_inline_items_on'] = [
 
 $form['solo_settings']['settings_global_misc']['site_reading_mode_content_type'] = [
   '#type' => 'select',
-  '#title' => t('Content Type for Reading Mode'),
+  '#title' => t('Reading Mode'),
   '#default_value' => theme_get_setting('site_reading_mode_content_type') ?? '',
   '#options' => _solo_get_content_types(),
   '#multiple' => TRUE,

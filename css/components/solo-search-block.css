@@ -53,7 +53,11 @@ input.search-button-block {
   width: 24px;
   height: 24px;
   content: "";
+  font-size: 16px;
+  line-height: 16px;
   background-color: var(--r-tx);
+  background-repeat: no-repeat;
+  background-size: 24px 24px;
   -webkit-mask: var(--solo-search-icon);
   mask: var(--solo-search-icon);
 }

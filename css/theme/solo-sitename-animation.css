@@ -9,198 +9,198 @@
 
 }
 
-.animation-effects-001,
+#page-wrapper .animation-effects-001,
 #header.animate-site-name-001 a.site-name-link,
 #page-title.animate-page-title-001 .page-title,
 #page-title.animate-page-title-001 .page-title span {
   background: linear-gradient(45deg, #5f2879, #00418d, #00c2de, #fad717, #00ba71, #fa8901, #f43545, #ccc, #f43545, #fa8901, #00ba71, #fad717, #00c2de, #00418d, #5f2879);
 }
 
-.animation-effects-002,
+#page-wrapper .animation-effects-002,
 #header.animate-site-name-002 a.site-name-link,
 #page-title.animate-page-title-002 .page-title,
 #page-title.animate-page-title-002 .page-title span {
   background: linear-gradient(45deg, #095fab, #25abe8, #57d75b, #ccc, #57d75b, #25abe8, #095fab);
 }
 
-.animation-effects-003,
+#page-wrapper .animation-effects-003,
 #header.animate-site-name-003 a.site-name-link,
 #page-title.animate-page-title-003 .page-title,
 #page-title.animate-page-title-003 .page-title span {
   background: linear-gradient(45deg, #d0e4f7, #73b1e7, #e2d40b, #539fe1, #87bcea, #539fe1, #e2d40b, #73b1e7, #d0e4f7);
 }
 
-.animation-effects-004,
+#page-wrapper .animation-effects-004,
 #header.animate-site-name-004 a.site-name-link,
 #page-title.animate-page-title-004 .page-title,
 #page-title.animate-page-title-004 .page-title span {
   background: linear-gradient(45deg, #f44336, #e91e63, #9c27b0, #673ab7, #3f51b5, #2196f3, #87ceeb, #00bcd4, #00ffff, #009688, #4caf50, #8bc34a, #8bc34a, #8bc34a, #8bc34a, #4caf50, #009688, #00ffff, #00bcd4, #87ceeb, #2196f3, #3f51b5, #673ab7, #9c27b0, #e91e63, #f44336);
 }
 
-.animation-effects-005,
+#page-wrapper .animation-effects-005,
 #header.animate-site-name-005 a.site-name-link,
 #page-title.animate-page-title-005 .page-title,
 #page-title.animate-page-title-005 .page-title span {
   background: linear-gradient(45deg, #009688, #2196f3, #ffeb3b, #ff9800, #f44336, #9c27b0, #9c27b0, #f44336, #ff9800, #ffeb3b, #2196f3, #009688);
 }
 
-.animation-effects-006,
+#page-wrapper .animation-effects-006,
 #header.animate-site-name-006 a.site-name-link,
 #page-title.animate-page-title-006 .page-title,
 #page-title.animate-page-title-006 .page-title span {
   background: linear-gradient(45deg, #f44336, #9c27b0, #2196f3, #4caf50, #ff9800, #ff9800, #4caf50, #2196f3, #9c27b0, #f44336);
 }
 
-.animation-effects-007,
+#page-wrapper .animation-effects-007,
 #header.animate-site-name-007 a.site-name-link,
 #page-title.animate-page-title-007 .page-title,
 #page-title.animate-page-title-007 .page-title span {
   background: linear-gradient(45deg, #ffb5ba, #ff796c, #ce4676, #87ceeb, #00bcd4, #2196f3, #00bcd4, #87ceeb, #ce4676, #ff796c, #ffb5ba);
 }
 
-.animation-effects-008,
+#page-wrapper .animation-effects-008,
 #header.animate-site-name-008 a.site-name-link,
 #page-title.animate-page-title-008 .page-title,
 #page-title.animate-page-title-008 .page-title span {
   background: linear-gradient(45deg, #8db600, #27a64c, #008882, #0085a1, #0085a1, #008882, #27a64c, #8db600);
 }
 
-.animation-effects-009,
+#page-wrapper .animation-effects-009,
 #header.animate-site-name-009 a.site-name-link,
 #page-title.animate-page-title-009 .page-title,
 #page-title.animate-page-title-009 .page-title span {
   background: linear-gradient(45deg, #ffb7a5, #e25822, #f6a600, #dcd300, #dcd300, #f6a600, #e25822, #ffb7a5);
 }
 
-.animation-effects-010,
+#page-wrapper .animation-effects-010,
 #header.animate-site-name-010 a.site-name-link,
 #page-title.animate-page-title-010 .page-title,
 #page-title.animate-page-title-010 .page-title span {
   background: linear-gradient(45deg, #008856, #00a1c2, #9065ca, #9a4eae, #9a4eae, #9065ca, #00a1c2, #008856);
 }
 
-.animation-effects-011,
+#page-wrapper .animation-effects-011,
 #header.animate-site-name-011 a.site-name-link,
 #page-title.animate-page-title-011 .page-title,
 #page-title.animate-page-title-011 .page-title span {
   background: linear-gradient(45deg, #ffb5ba, #be0032, #f38400, #f3c300, #f3c300, #f38400, #be0032, #ffb5ba);
 }
 
-.animation-effects-012,
+#page-wrapper .animation-effects-012,
 #header.animate-site-name-012 a.site-name-link,
 #page-title.animate-page-title-012 .page-title,
 #page-title.animate-page-title-012 .page-title span {
   background: linear-gradient(45deg, #bd1e24, #e97600, #f6c700, #007256, #0067a7, #964f8e, #964f8e, #0067a7, #007256, #f6c700, #e97600, #bd1e24);
 }
 
-.animation-effects-013,
+#page-wrapper .animation-effects-013,
 #header.animate-site-name-013 a.site-name-link,
 #page-title.animate-page-title-013 .page-title,
 #page-title.animate-page-title-013 .page-title span {
   background: linear-gradient(45deg, #5f2879, #00418d, #00c2de, #fad717, #00ba71, #fa8901, #f43545, #fa8901, #00ba71, #fad717, #00c2de, #00418d, #5f2879);
 }
 
-.animation-effects-014,
+#page-wrapper .animation-effects-014,
 #header.animate-site-name-014 a.site-name-link,
 #page-title.animate-page-title-014 .page-title,
 #page-title.animate-page-title-014 .page-title span {
   background: linear-gradient(45deg, #fad717, #fa8901, #f43545, #fa8901, #fad717);
 }
 
-.animation-effects-015,
+#page-wrapper .animation-effects-015,
 #header.animate-site-name-015 a.site-name-link,
 #page-title.animate-page-title-015 .page-title,
 #page-title.animate-page-title-015 .page-title span {
   background: linear-gradient(45deg, #aebcbf, #6e7774, #cefc00, #ccc, #444, #ccc, #cefc00, #6e7774, #aebcbf);
 }
 
-.animation-effects-016,
+#page-wrapper .animation-effects-016,
 #header.animate-site-name-016 a.site-name-link,
 #page-title.animate-page-title-016 .page-title,
 #page-title.animate-page-title-016 .page-title span {
   background: linear-gradient(45deg, #aebcbf, #6e7774, #ff6a00, #ccc, #444, #ccc, #ff6a00, #6e7774, #aebcbf);
 }
 
-.animation-effects-017,
+#page-wrapper .animation-effects-017,
 #header.animate-site-name-017 a.site-name-link,
 #page-title.animate-page-title-017 .page-title,
 #page-title.animate-page-title-017 .page-title span {
   background: linear-gradient(45deg, #aebcbf, #6e7774, #ffee00, #ccc, #444, #ccc, #ffee00, #6e7774, #aebcbf);
 }
 
-.animation-effects-018,
+#page-wrapper .animation-effects-018,
 #header.animate-site-name-018 a.site-name-link,
 #page-title.animate-page-title-018 .page-title,
 #page-title.animate-page-title-018 .page-title span {
   background: linear-gradient(45deg, #aebcbf, #6e7774, #46f900, #ccc, #444, #ccc, #46f900, #6e7774, #aebcbf);
 }
 
-.animation-effects-019,
+#page-wrapper .animation-effects-019,
 #header.animate-site-name-019 a.site-name-link,
 #page-title.animate-page-title-019 .page-title,
 #page-title.animate-page-title-019 .page-title span {
   background: linear-gradient(45deg, #aebcbf, #6e7774, #00fcde, #ccc, #444, #ccc, #00fcde, #6e7774, #aebcbf);
 }
 
-.animation-effects-020,
+#page-wrapper .animation-effects-020,
 #header.animate-site-name-020 a.site-name-link,
 #page-title.animate-page-title-020 .page-title,
 #page-title.animate-page-title-020 .page-title span {
   background: linear-gradient(45deg, #aebcbf, #6e7774, #00c9fc, #ccc, #444, #ccc, #00c9fc, #6e7774, #aebcbf);
 }
 
-.animation-effects-021,
+#page-wrapper .animation-effects-021,
 #header.animate-site-name-021 a.site-name-link,
 #page-title.animate-page-title-021 .page-title,
 #page-title.animate-page-title-021 .page-title span {
   background: linear-gradient(45deg, #aebcbf, #6e7774, #e000f4, #ccc, #444, #ccc, #e000f4, #6e7774, #aebcbf);
 }
 
-.animation-effects-022,
+#page-wrapper .animation-effects-022,
 #header.animate-site-name-022 a.site-name-link,
 #page-title.animate-page-title-022 .page-title,
 #page-title.animate-page-title-022 .page-title span {
   background: linear-gradient(45deg, #aebcbf, #6e7774, #f7001c, #ccc, #444, #ccc, #f7001c, #6e7774, #aebcbf);
 }
 
-.animation-effects-023,
+#page-wrapper .animation-effects-023,
 #header.animate-site-name-023 a.site-name-link,
 #page-title.animate-page-title-023 .page-title,
 #page-title.animate-page-title-023 .page-title span {
   background: linear-gradient(45deg, #aebcbf, #6e7774, #e50095, #ccc, #444, #ccc, #e50095, #6e7774, #aebcbf);
 }
 
-.animation-effects-024,
+#page-wrapper .animation-effects-024,
 #header.animate-site-name-024 a.site-name-link,
 #page-title.animate-page-title-024 .page-title,
 #page-title.animate-page-title-024 .page-title span {
   background: linear-gradient(45deg, #30267a, #0085a1, #870074, #ce4676, #ce4676, #870074, #0085a1, #30267a);
 }
 
-.animation-effects-001,
-.animation-effects-002,
-.animation-effects-003,
-.animation-effects-004,
-.animation-effects-005,
-.animation-effects-006,
-.animation-effects-007,
-.animation-effects-008,
-.animation-effects-009,
-.animation-effects-010,
-.animation-effects-011,
-.animation-effects-012,
-.animation-effects-013,
-.animation-effects-014,
-.animation-effects-015,
-.animation-effects-016,
-.animation-effects-017,
-.animation-effects-018,
-.animation-effects-019,
-.animation-effects-020,
-.animation-effects-021,
-.animation-effects-022,
-.animation-effects-023,
-.animation-effects-024,
+#page-wrapper .animation-effects-001,
+#page-wrapper .animation-effects-002,
+#page-wrapper .animation-effects-003,
+#page-wrapper .animation-effects-004,
+#page-wrapper .animation-effects-005,
+#page-wrapper .animation-effects-006,
+#page-wrapper .animation-effects-007,
+#page-wrapper .animation-effects-008,
+#page-wrapper .animation-effects-009,
+#page-wrapper .animation-effects-010,
+#page-wrapper .animation-effects-011,
+#page-wrapper .animation-effects-012,
+#page-wrapper .animation-effects-013,
+#page-wrapper .animation-effects-014,
+#page-wrapper .animation-effects-015,
+#page-wrapper .animation-effects-016,
+#page-wrapper .animation-effects-017,
+#page-wrapper .animation-effects-018,
+#page-wrapper .animation-effects-019,
+#page-wrapper .animation-effects-020,
+#page-wrapper .animation-effects-021,
+#page-wrapper .animation-effects-022,
+#page-wrapper .animation-effects-023,
+#page-wrapper .animation-effects-024,
 #header.animate-site-name-001 a.site-name-link,
 #header.animate-site-name-002 a.site-name-link,
 #header.animate-site-name-003 a.site-name-link,

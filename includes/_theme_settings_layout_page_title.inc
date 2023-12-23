@@ -23,7 +23,7 @@ if (array_key_exists('page_title', $updated_regions['mix'])) {
     '#type' => 'select',
     '#title' => t("Choose the desired CSS text animation effects for the page title."),
     '#options' => _get_animate_page_title(),
-    '#description' => t("You can apply the available CSS Text Animation Effects Classes to any HTML tag. For more information, refer to the [<a target='_blank' href='https://www.drupal.org/node/2866181#change-font'>documentation on drupal.org</a>]To see examples of all the CSS Text Animation Effects, visit this [<a target='_blank' href='https://drupal8-w3css-theme.flashwebcenter.com/w3css-theme-fonts-css-text-animation-effects'>link</a>]."),
+    '#description' => t("You can apply the available CSS Text Animation Effects Classes to any HTML tag. To see examples of all the CSS Text Animation Effects, <a target='_blank' href='https://unitedstarsofamerica.com/node/190'> Click here to view a live demo for all available aimations.</a>"),
     '#default_value' => theme_get_setting('site_pagetitle_animate_on'),
   ];
 

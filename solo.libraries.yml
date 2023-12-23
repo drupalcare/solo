@@ -1434,7 +1434,7 @@ solo-gfex-monoton:
 
 
 
-# Custom predefined color themes.
+# Custom predefined color scheme.
 solo-predefined-00001:
   Version: VERSION
   css:

@@ -188,7 +188,7 @@ and other site builders involved in the development process.
 - Input field for predefined CSS classes from Solo or third-party libraries.
 - 15 color input fields for global use across the site.
 
-## Predefined Color Themes Settings
+## Predefined Color Scheme Settings
 
 - Dropdown select list with 50 predefined Color Scheme Themes for the site.
 

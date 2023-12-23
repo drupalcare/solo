@@ -16,15 +16,15 @@
 
 $form['solo_settings']['settings_predefined_theme'] = [
   '#type' => 'details',
-  '#title' => t("<strong class='warning'>Predefined Color Themes</strong> Settings - Solo Theme"),
+  '#title' => t("<strong class='warning'>Predefined Color Scheme</strong> Settings - Solo Theme"),
   '#collapsible' => TRUE,
   '#collapsed' => FALSE,
-  '#description'   => t('<p><strong><a target="_blank" href="https://drupal8-w3css-theme.flashwebcenter.com/w3css-predefined-color-themes">The demo site provides examples for all of the color themes.</a>.</strong></p>'),
+  '#description'   => t('<p><strong><a target="_blank" href="https://unitedstarsofamerica.com/color-scheme">The demo site provides examples for all of the color scheme.</a>.</strong></p>'),
 ];
 
 $form['solo_settings']['settings_predefined_theme']['predefined_current_theme'] = [
   '#type' => 'select',
-  '#title' => t("Choose the desired predefined theme"),
+  '#title' => t("Choose the desired color scheme"),
   '#options' => _get_predefined_theme(),
   '#default_value' => theme_get_setting('predefined_current_theme'),
 ];

@@ -20,6 +20,7 @@ sm_icon_youtube: 'https://www.youtube.com/user/flashwebcenter'
 sm_icon_drupal: 'https://www.drupal.org/u/flashwebcenter'
 sm_icon_mastodon: 'https://www.drupal.org/u/flashwebcenter'
 sm_icon_rss: rss.xml
+sm_icon_rss: 'info@example.com'
 footer_copyright: 'Copyright © %year% Company Name - All rights reserved'
 sm_show_icons: 1
 sm_icon_size: 'sm-icons-small'

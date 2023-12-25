@@ -34,7 +34,11 @@ article.node .node__header .node__meta {
 }
 
 .field:not(:last-child) {
-  margin-block-end: var(--solo-18);
+  margin-bottom: var(--solo-18);
+}
+
+.field--name-pb-image-field+.field--name-pb-image-caption {
+  font-size: var(--solo-14);
 }
 
 .field--label-above {

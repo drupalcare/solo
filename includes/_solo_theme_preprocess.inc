@@ -356,6 +356,7 @@ function _get_theme_variables() {
       'sm_icon_instagram',
       'sm_icon_youtube',
       'sm_icon_drupal',
+      'sm_icon_email',
       'sm_icon_rss',
       'sm_icon_mastodon',
       'footer_copyright',

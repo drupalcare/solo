@@ -53,7 +53,6 @@ $form['solo_settings']['settings_social_icons']['sm_show_icons'] = [
   '#default_value' => theme_get_setting('sm_show_icons'),
   '#description' => t("Select this option to display the Social Icon. Deselect it to conceal it."),
 ];
-
 $social_icons = [
   'facebook' => t('Facebook'),
   'twitter' => t('X previously named (Twitter) Profile'),
@@ -64,11 +63,13 @@ $social_icons = [
   'mastodon' => t('Mastodon'),
   'drupal' => t('Drupal'),
   'rss' => t('RSS'),
+  'email' => t('Email'),
 ];
 
 foreach ($social_icons as $key => $value) {
   $form['solo_settings']['settings_social_icons']['sm_icon_' . $key] = [
-    '#type' => 'textfield',
+  // Check if the key is 'email'.
+    '#type' => $key === 'email' ? 'email' : 'textfield',
     '#title' => $value,
     '#default_value' => theme_get_setting('sm_icon_' . $key),
   ];

@@ -102,6 +102,10 @@
   fill: var(--solo-ss);
 }
 
+.sm-icons .email svg {
+  fill: var(--solo-em);
+}
+
 /* Size for icons */
 @media (min-width:26rem) {
   .sm-icons.sm-icons-medium a > span {

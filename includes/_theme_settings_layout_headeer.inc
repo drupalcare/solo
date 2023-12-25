@@ -34,6 +34,7 @@ if (array_key_exists('header', $updated_regions['mix'])) {
   $form['solo_settings']["settings_{$region}"]['site_name_animate_on'] = [
     '#type' => 'select',
     '#title' => t("Select the preferred CSS text animation effects for the Site Name."),
+    '#description' => t("Note that the animations are sorted based on their names (e.g., 'Aurora Wave', 'Dreamy Bloom', etc.)"),
     '#options' => _get_animate_site_name(),
     '#default_value' => theme_get_setting('site_name_animate_on'),
   ];

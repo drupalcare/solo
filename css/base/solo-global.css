@@ -18,26 +18,32 @@ html {
 /* HTML tags */
 h1 {
   font-size: var(--solo-36);/* 36px */
+  line-height: var(--solo-38);
 }
 
 h2 {
   font-size: var(--solo-32);/* 32px */
+  line-height: var(--solo-34);
 }
 
 h3 {
   font-size: var(--solo-24);/* 24px */
+  line-height: var(--solo-26);
 }
 
 h4 {
   font-size: var(--solo-20);/* 20px */
+  line-height: var(--solo-22);
 }
 
 h5 {
   font-size: var(--solo-18);/* 18px */
+  line-height: var(--solo-20);
 }
 
 h6 {
   font-size: var(--solo-16);/* 16px */
+  line-height: var(--solo-18);
 }
 
 h1,

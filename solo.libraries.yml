@@ -1432,305 +1432,303 @@ solo-gfex-monoton:
       'https://fonts.googleapis.com/css2?family=Monoton&display=swap': { type: external, minified: true }
       fonts/css/special/solo-monoton.css: { }
 
-
-
 # Custom predefined color scheme.
-solo-predefined-00001:
+solo-berry-blue-dreams:
   Version: VERSION
   css:
     theme:
-      css/predefined/solo-00001.css: { weight: -9 }
+      css/predefined/solo-berry-blue-dreams.css: { weight: -9 }
 
-solo-predefined-00002:
+solo-blueberry-skies-quartet:
   Version: VERSION
   css:
     theme:
-      css/predefined/solo-00002.css: { weight: -9 }
+      css/predefined/solo-blueberry-skies-quartet.css: { weight: -9 }
 
-solo-predefined-00003:
+solo-predefined-solo-blushing-magnolia:
   Version: VERSION
   css:
     theme:
-      css/predefined/solo-00003.css: { weight: -9 }
+      css/predefined/solo-blushing-magnolia.css: { weight: -9 }
 
-solo-predefined-00004:
+solo-celestial-blue-depths:
   Version: VERSION
   css:
     theme:
-      css/predefined/solo-00004.css: { weight: -9 }
+      css/predefined/solo-celestial-blue-depths.css: { weight: -9 }
 
-solo-predefined-00005:
+solo-classic-ivory-lace:
   Version: VERSION
   css:
     theme:
-      css/predefined/solo-00005.css: { weight: -9 }
+      css/predefined/solo-classic-ivory-lace.css: { weight: -9 }
 
-solo-predefined-00006:
+solo-cotton-candy-whispers:
   Version: VERSION
   css:
     theme:
-      css/predefined/solo-00006.css: { weight: -9 }
+      css/predefined/solo-cotton-candy-whispers.css: { weight: -9 }
 
-solo-predefined-00007:
+solo-crimson-denim-night:
   Version: VERSION
   css:
     theme:
-      css/predefined/solo-00007.css: { weight: -9 }
+      css/predefined/solo-crimson-denim-night.css: { weight: -9 }
 
-solo-predefined-00008:
+solo-deep-ocean-shadows:
   Version: VERSION
   css:
     theme:
-      css/predefined/solo-00008.css: { weight: -9 }
+      css/predefined/solo-deep-ocean-shadows.css: { weight: -9 }
 
-solo-predefined-00009:
+solo-deep-sea-echo:
   Version: VERSION
   css:
     theme:
-      css/predefined/solo-00009.css: { weight: -9 }
+      css/predefined/solo-deep-sea-echo.css: { weight: -9 }
 
-solo-predefined-00010:
+solo-denim-twilight:
   Version: VERSION
   css:
     theme:
-      css/predefined/solo-00010.css: { weight: -9 }
+      css/predefined/solo-denim-twilight.css: { weight: -9 }
 
-solo-predefined-00011:
+solo-dusk-shadow-fusion:
   Version: VERSION
   css:
     theme:
-      css/predefined/solo-00011.css: { weight: -9 }
+      css/predefined/solo-dusk-shadow-fusion.css: { weight: -9 }
 
-solo-predefined-00012:
+solo-eclipse-noir:
   Version: VERSION
   css:
     theme:
-      css/predefined/solo-00012.css: { weight: -9 }
+      css/predefined/solo-eclipse-noir.css: { weight: -9 }
 
-solo-predefined-00013:
+solo-emerald-twilight-blend:
   Version: VERSION
   css:
     theme:
-      css/predefined/solo-00013.css: { weight: -9 }
+      css/predefined/solo-emerald-twilight-blend.css: { weight: -9 }
 
-solo-predefined-00014:
+solo-enchanted-forest-zest:
   Version: VERSION
   css:
     theme:
-      css/predefined/solo-00014.css: { weight: -9 }
+      css/predefined/solo-enchanted-forest-zest.css: { weight: -9 }
 
-solo-predefined-00015:
+solo-ethereal-white-harmony:
   Version: VERSION
   css:
     theme:
-      css/predefined/solo-00015.css: { weight: -9 }
+      css/predefined/solo-ethereal-white-harmony.css: { weight: -9 }
 
-solo-predefined-00016:
+solo-flaming-sapphire:
   Version: VERSION
   css:
     theme:
-      css/predefined/solo-00016.css: { weight: -9 }
+      css/predefined/solo-flaming-sapphire.css: { weight: -9 }
 
-solo-predefined-00017:
+solo-galactic-stone-hues:
   Version: VERSION
   css:
     theme:
-      css/predefined/solo-00017.css: { weight: -9 }
+      css/predefined/solo-galactic-stone-hues.css: { weight: -9 }
 
-solo-predefined-00018:
+solo-gentle-ivory-breeze:
   Version: VERSION
   css:
     theme:
-      css/predefined/solo-00018.css: { weight: -9 }
+      css/predefined/solo-gentle-ivory-breeze.css: { weight: -9 }
 
-solo-predefined-00019:
+solo-gunmetal-echo:
   Version: VERSION
   css:
     theme:
-      css/predefined/solo-00019.css: { weight: -9 }
+      css/predefined/solo-gunmetal-echo.css: { weight: -9 }
 
-solo-predefined-00020:
+solo-indigo-pulse:
   Version: VERSION
   css:
     theme:
-      css/predefined/solo-00020.css: { weight: -9 }
+      css/predefined/solo-indigo-pulse.css: { weight: -9 }
 
-solo-predefined-00021:
+solo-ivory-whisper:
   Version: VERSION
   css:
     theme:
-      css/predefined/solo-00021.css: { weight: -9 }
+      css/predefined/solo-ivory-whisper.css: { weight: -9 }
 
-solo-predefined-00022:
+solo-jungle-denim-fusion:
   Version: VERSION
   css:
     theme:
-      css/predefined/solo-00022.css: { weight: -9 }
+      css/predefined/solo-jungle-denim-fusion.css: { weight: -9 }
 
-solo-predefined-00023:
+solo-lemon-lime-forest:
   Version: VERSION
   css:
     theme:
-      css/predefined/solo-00023.css: { weight: -9 }
+      css/predefined/solo-lemon-lime-forest.css: { weight: -9 }
 
 solo-predefined-00024:
   Version: VERSION
   css:
     theme:
-      css/predefined/solo-00024.css: { weight: -9 }
+      css/predefined/solo-luminous-alabaster.css: { weight: -9 }
 
-solo-predefined-00025:
+solo-magnolia-afternoon:
   Version: VERSION
   css:
     theme:
-      css/predefined/solo-00025.css: { weight: -9 }
+      css/predefined/solo-magnolia-afternoon.css: { weight: -9 }
 
-solo-predefined-00026:
+solo-metallic-nebula:
   Version: VERSION
   css:
     theme:
-      css/predefined/solo-00026.css: { weight: -9 }
+      css/predefined/solo-metallic-nebula.css: { weight: -9 }
 
-solo-predefined-00027:
+solo-midnight-denim-swirl:
   Version: VERSION
   css:
     theme:
-      css/predefined/solo-00027.css: { weight: -9 }
+      css/predefined/solo-midnight-denim-swirl.css: { weight: -9 }
 
-solo-predefined-00028:
+solo-midnight-garden-trio:
   Version: VERSION
   css:
     theme:
-      css/predefined/solo-00028.css: { weight: -9 }
+      css/predefined/solo-midnight-garden-trio.css: { weight: -9 }
 
-solo-predefined-00029:
+solo-midnight-navy-duo:
   Version: VERSION
   css:
     theme:
-      css/predefined/solo-00029.css: { weight: -9 }
+      css/predefined/solo-midnight-navy-duo.css: { weight: -9 }
 
-solo-predefined-00030:
+solo-midnight-whispers:
   Version: VERSION
   css:
     theme:
-      css/predefined/solo-00030.css: { weight: -9 }
+      css/predefined/solo-midnight-whispers.css: { weight: -9 }
 
-solo-predefined-00031:
+solo-monochrome-splash:
   Version: VERSION
   css:
     theme:
-      css/predefined/solo-00031.css: { weight: -9 }
+      css/predefined/solo-monochrome-splash.css: { weight: -9 }
 
-solo-predefined-00032:
+solo-mystic-ash-twilight:
   Version: VERSION
   css:
     theme:
-      css/predefined/solo-00032.css: { weight: -9 }
+      css/predefined/solo-mystic-ash-twilight.css: { weight: -9 }
 
-solo-predefined-00033:
+solo-nightfall-in-paris:
   Version: VERSION
   css:
     theme:
-      css/predefined/solo-00033.css: { weight: -9 }
+      css/predefined/solo-nightfall-in-paris.css: { weight: -9 }
 
-solo-predefined-00034:
+solo-nocturnal-velvet:
   Version: VERSION
   css:
     theme:
-      css/predefined/solo-00034.css: { weight: -9 }
+      css/predefined/solo-nocturnal-velvet.css: { weight: -9 }
 
-solo-predefined-00035:
+solo-obsidian-cascade:
   Version: VERSION
   css:
     theme:
-      css/predefined/solo-00035.css: { weight: -9 }
+      css/predefined/solo-obsidian-cascade.css: { weight: -9 }
 
-solo-predefined-00036:
+solo-ocean-depths-mystery:
   Version: VERSION
   css:
     theme:
-      css/predefined/solo-00036.css: { weight: -9 }
+      css/predefined/solo-ocean-depths-mystery.css: { weight: -9 }
 
-solo-predefined-00037:
+solo-parisian-skyline:
   Version: VERSION
   css:
     theme:
-      css/predefined/solo-00037.css: { weight: -9 }
+      css/predefined/solo-parisian-skyline.css: { weight: -9 }
 
-solo-predefined-00038:
+solo-porcelain-brilliance:
   Version: VERSION
   css:
     theme:
-      css/predefined/solo-00038.css: { weight: -9 }
+      css/predefined/solo-porcelain-brilliance.css: { weight: -9 }
 
-solo-predefined-00039:
+solo-porpoise-dream:
   Version: VERSION
   css:
     theme:
-      css/predefined/solo-00039.css: { weight: -9 }
+      css/predefined/solo-porpoise-dream.css: { weight: -9 }
 
-solo-predefined-00040:
+solo-pristine-porcelain-glow:
   Version: VERSION
   css:
     theme:
-      css/predefined/solo-00040.css: { weight: -9 }
+      css/predefined/solo-pristine-porcelain-glow.css: { weight: -9 }
 
-solo-predefined-00041:
+solo-raspberry-nightfall:
   Version: VERSION
   css:
     theme:
-      css/predefined/solo-00041.css: { weight: -9 }
+      css/predefined/solo-raspberry-nightfall.css: { weight: -9 }
 
-solo-predefined-00042:
+solo-razzle-onyx-elegance:
   Version: VERSION
   css:
     theme:
-      css/predefined/solo-00042.css: { weight: -9 }
+      css/predefined/solo-razzle-onyx-elegance.css: { weight: -9 }
 
-solo-predefined-00043:
+solo-royal-azure-flame:
   Version: VERSION
   css:
     theme:
-      css/predefined/solo-00043.css: { weight: -9 }
+      css/predefined/solo-royal-azure-flame.css: { weight: -9 }
 
-solo-predefined-00044:
+solo-rustic-redwood-charm:
   Version: VERSION
   css:
     theme:
-      css/predefined/solo-00044.css: { weight: -9 }
+      css/predefined/solo-rustic-redwood-charm.css: { weight: -9 }
 
-solo-predefined-00045:
+solo-salmon-denim-fade:
   Version: VERSION
   css:
     theme:
-      css/predefined/solo-00045.css: { weight: -9 }
+      css/predefined/solo-salmon-denim-fade.css: { weight: -9 }
 
-solo-predefined-00046:
+solo-silken-shadow-whisper:
   Version: VERSION
   css:
     theme:
-      css/predefined/solo-00046.css: { weight: -9 }
+      css/predefined/solo-silken-shadow-whisper.css: { weight: -9 }
 
-solo-predefined-00047:
+solo-smokey-quartz-symphony:
   Version: VERSION
   css:
     theme:
-      css/predefined/solo-00047.css: { weight: -9 }
+      css/predefined/solo-smokey-quartz-symphony.css: { weight: -9 }
 
-solo-predefined-00048:
+solo-soft-silk-elegance:
   Version: VERSION
   css:
     theme:
-      css/predefined/solo-00048.css: { weight: -9 }
+      css/predefined/solo-soft-silk-elegance.css: { weight: -9 }
 
-solo-predefined-00049:
+solo-twilight-ash-mystique:
   Version: VERSION
   css:
     theme:
-      css/predefined/solo-00049.css: { weight: -9 }
+      css/predefined/solo-twilight-ash-mystique.css: { weight: -9 }
 
-solo-predefined-00050:
+solo-urban-stone-shadows:
   Version: VERSION
   css:
     theme:
-      css/predefined/solo-00050.css: { weight: -9 }
+      css/predefined/solo-urban-stone-shadows.css: { weight: -9 }

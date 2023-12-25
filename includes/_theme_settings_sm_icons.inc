@@ -69,7 +69,7 @@ $social_icons = [
 foreach ($social_icons as $key => $value) {
   $form['solo_settings']['settings_social_icons']['sm_icon_' . $key] = [
   // Check if the key is 'email'.
-  // '#type' => $key === 'email' ? 'email' : 'textfield',
+  // '#type' => $key === 'email' ? 'email' : 'textfield',.
     '#type' => 'textfield',
     '#title' => $value,
     '#default_value' => theme_get_setting('sm_icon_' . $key),

@@ -5,27 +5,41 @@
 h1.page-title {
   display: grid;
   padding: var(--solo-32) 0;
-  font-size: calc(3 * var(--solo-16));
-  line-height: calc(4 * var(--solo-14));
 }
 
 h1.page-title span {
   display: inline-flex;
 }
 
+@media (min-width:75rem) {
+  h1.page-title {
+    font-size: var(--solo-64);
+    line-height: calc(2 * var(--solo-34));
+  }
+
+}
+
+@media (max-width:75rem) {
+  h1.page-title {
+    font-size: var(--solo-48);
+    line-height: var(--solo-50);
+  }
+
+}
+
 @media (max-width:62rem) {
   h1.page-title {
-    font-size: var(--solo-32);
-    line-height: var(--solo-36);
+    font-size: var(--solo-36);
+    line-height: var(--solo-38);
     padding: var(--solo-16) 0;
   }
 
 }
 
-@media (max-width:37.5rem) {
+@media (max-width:36rem) {
   h1.page-title {
-    font-size: var(--solo-18);
-    line-height: var(--solo-24);
+    font-size: var(--solo-20);
+    line-height: var(--solo-22);
     padding: var(--solo-8) 0;
   }
 

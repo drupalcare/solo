@@ -203,8 +203,8 @@
     padding: 0;
   }
 
-  .solo-inner .navigation__menubar li a {
-    text-wrap: balance !important;
-  }
+}
 
+.solo-inner .navigation__default li a {
+  text-wrap: balance !important;
 }

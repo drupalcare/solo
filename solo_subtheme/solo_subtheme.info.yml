@@ -1,7 +1,7 @@
 name: Solo Sub-theme
 type: theme
 base theme: solo
-core_version_requirement: ^10
+core_version_requirement: ^10 || ^11
 description: 'Solo Sub-theme is an empty theme for your customization.'
 libraries:
   - solo_subtheme/solo-subtheme-global
@@ -32,11 +32,3 @@ regions:
   footer_second: 'Footer Second Container'
   footer_third: 'Footer Third Container'
   footer_menu: 'Footer Menu Container'
-features:
-  comment_user_picture: true
-  comment_user_verification: true
-  favicon: true
-  logo: true
-  name: true
-  node_user_picture: true
-  slogan: true

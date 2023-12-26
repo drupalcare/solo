@@ -18,32 +18,32 @@ html {
 /* HTML tags */
 h1 {
   font-size: var(--solo-36);/* 36px */
-  line-height: var(--solo-38);
+  line-height: calc(2 * var(--solo-20));
 }
 
 h2 {
   font-size: var(--solo-32);/* 32px */
-  line-height: var(--solo-34);
+  line-height: var(--solo-36);
 }
 
 h3 {
   font-size: var(--solo-24);/* 24px */
-  line-height: var(--solo-26);
+  line-height: var(--solo-28);
 }
 
 h4 {
   font-size: var(--solo-20);/* 20px */
-  line-height: var(--solo-22);
+  line-height: var(--solo-24);
 }
 
 h5 {
   font-size: var(--solo-18);/* 18px */
-  line-height: var(--solo-20);
+  line-height: var(--solo-22);
 }
 
 h6 {
   font-size: var(--solo-16);/* 16px */
-  line-height: var(--solo-18);
+  line-height: var(--solo-20);
 }
 
 h1,

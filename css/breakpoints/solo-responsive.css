@@ -9,22 +9,22 @@
 @media (max-width:62rem) {
   h1 {
     font-size: var(--solo-26);
-    line-height: var(--solo-28);
+    line-height: calc(2 * var(--solo-15));
   }
 
   h2 {
     font-size: var(--solo-22);
-    line-height: var(--solo-24);
+    line-height: var(--solo-26);
   }
 
   h3 {
     font-size: var(--solo-20);
-    line-height: var(--solo-22);
+    line-height: var(--solo-24);
   }
 
   h4 {
     font-size: var(--solo-18);
-    line-height: var(--solo-20);
+    line-height: var(--solo-22);
   }
 
   #primary-sidebar-menu {
@@ -47,22 +47,22 @@
 
   h1 {
     font-size: var(--solo-22);
-    line-height: var(--solo-24);
+    line-height: var(--solo-26);
   }
 
   h2 {
     font-size: var(--solo-20);
-    line-height: var(--solo-22);
+    line-height: var(--solo-24);
   }
 
   h3 {
     font-size: var(--solo-18);
-    line-height: var(--solo-20);
+    line-height: var(--solo-22);
   }
 
   h4 {
     font-size: var(--solo-16);
-    line-height: var(--solo-18);
+    line-height: var(--solo-20);
   }
 
   #primary-sidebar-menu {
@@ -81,12 +81,12 @@
 
   .site-name {
     font-size: var(--solo-26) !important;
-    line-height: var(--solo-28) !important;
+    line-height: calc(2 * var(--solo-15)) !important;
   }
 
   .site-slogan {
     font-size: var(--solo-20) !important;
-    line-height: var(--solo-22) !important;
+    line-height: var(--solo-24) !important;
   }
 
   .header-inner .branding-wrapper>* {
@@ -103,22 +103,22 @@
 
   h1 {
     font-size: var(--solo-20);
-    line-height: var(--solo-22);
+    line-height: var(--solo-24);
   }
 
   h2 {
     font-size: var(--solo-18);
-    line-height: var(--solo-20);
+    line-height: var(--solo-22);
   }
 
   h3 {
     font-size: var(--solo-16);
-    line-height: var(--solo-18);
+    line-height: var(--solo-20);
   }
 
   h4 {
     font-size: var(--solo-14);
-    line-height: var(--solo-16);
+    line-height: var(--solo-18);
   }
 
   #primary-sidebar-menu {
@@ -136,17 +136,17 @@
 
   h2 {
     font-size: var(--solo-16);
-    line-height: var(--solo-18);
+    line-height: var(--solo-20);
   }
 
   h3 {
     font-size: var(--solo-14);
-    line-height: var(--solo-16);
+    line-height: var(--solo-18);
   }
 
   h4 {
     font-size: var(--solo-12);
-    line-height: var(--solo-14);
+    line-height: var(--solo-16);
   }
 
   #primary-sidebar-menu {

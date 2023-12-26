@@ -1505,11 +1505,11 @@ solo-eclipse-noir:
     theme:
       css/predefined/solo-eclipse-noir.css: { weight: -9 }
 
-solo-emerald-twilight-blend:
+solo-charcoal-gray:
   Version: VERSION
   css:
     theme:
-      css/predefined/solo-emerald-twilight-blend.css: { weight: -9 }
+      css/predefined/solo-charcoal-gray.css: { weight: -9 }
 
 solo-enchanted-forest-zest:
   Version: VERSION

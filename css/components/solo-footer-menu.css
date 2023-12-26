@@ -3,15 +3,15 @@
 }
 
 .navigation__menubar-footer li a {
-  padding: var(--solo-6) var(--solo-12);
+  padding: var(--solo-px6) var(--solo-px12);
 }
 
 .footer-menu-first {
-  margin: var(--solo-16) auto;
+  margin: var(--solo-px16) auto;
 }
 
 .footer-menu-second>* {
-  margin: var(--solo-16) auto;
+  margin: var(--solo-px16) auto;
 }
 
 .navigation__menubar-footer li {
@@ -34,7 +34,7 @@
   transition: 0.4s ease;
   width: 1.875rem;
   height: 1.875rem;
-  margin: 0 var(--solo-5);
+  margin: 0 var(--solo-px5);
   display: inline-block;
   background-repeat: no-repeat;
   border: 1px solid transparent;
@@ -54,7 +54,7 @@
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
-  margin: var(--solo-4);
+  margin: var(--solo-px4);
 }
 
 .sm-icons a > span:hover {
@@ -63,7 +63,7 @@
 
 .sm-icons a > .fa-ext {
   font-weight: normal;
-  font-size: var(--solo-16);
+  font-size: var(--solo-px16);
 }
 
 .sm-icons .facebook svg {
@@ -109,26 +109,26 @@
 /* Size for icons */
 @media (min-width:26rem) {
   .sm-icons.sm-icons-medium a > span {
-    background-size: calc(2 * var(--solo-20));
-    width: calc(2 * var(--solo-20));
-    height: calc(2 * var(--solo-20));
+    background-size: calc(2 * var(--solo-px20));
+    width: calc(2 * var(--solo-px20));
+    height: calc(2 * var(--solo-px20));
   }
 
   .sm-icons.sm-icons-large a > span {
-    background-size: var(--solo-64);
-    width: var(--solo-64);
-    height: var(--solo-64);
+    background-size: var(--solo-px64);
+    width: var(--solo-px64);
+    height: var(--solo-px64);
   }
 
 }
 
 @media (max-width:62rem) {
   .sm-icons.sm-icons-large a {
-    margin: var(--solo-8) var(--solo-16);
+    margin: var(--solo-px8) var(--solo-px16);
   }
 
   .sm-icons.sm-icons-medium a {
-    margin: var(--solo-6) var(--solo-12);
+    margin: var(--solo-px6) var(--solo-px12);
   }
 
 }

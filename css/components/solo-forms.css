@@ -68,24 +68,24 @@ fieldset {
 
 .form-type-radio label,
 .form-type-checkbox label {
-  margin-left: var(--solo-4) !important; /* LTR */
+  margin-left: var(--solo-px4) !important; /* LTR */
   float: none !important;
 }
 
 [dir="rtl"] .form-type-radio label,
 [dir="rtl"] .form-type-checkbox label {
-  margin-right: var(--solo-4) !important;
+  margin-right: var(--solo-px4) !important;
   margin-left: 0 !important;
 }
 
 .form-type-radio .description,
 .form-type-checkbox .description {
-  margin-left: var(--solo-2) !important; /* LTR */
+  margin-left: var(--solo-px2) !important; /* LTR */
 }
 
 [dir="rtl"] .form-type-radio .description,
 [dir="rtl"] .form-type-checkbox .description {
-  margin-right: var(--solo-2) !important;
+  margin-right: var(--solo-px2) !important;
   margin-left: 0 !important;
 }
 
@@ -116,7 +116,7 @@ abbr.ajax-changed {
 .form-item input.error,
 .form-item textarea.error,
 .form-item select.error {
-  border: var(--solo-2) solid red;
+  border: var(--solo-px2) solid red;
 }
 
 .form-wrapper .field-multiple-table .label {
@@ -125,27 +125,27 @@ abbr.ajax-changed {
 
 .form-required:after {
   display: inline-block;
-  width: var(--solo-10);
-  height: var(--solo-10);
+  width: var(--solo-px10);
+  height: var(--solo-px10);
   margin: 0 0.3em;
   content: "";
   vertical-align: super;
   background-image: url(../../images/icons/required.svg);
   background-repeat: no-repeat;
-  background-size: var(--solo-10) var(--solo-10);
+  background-size: var(--solo-px10) var(--solo-px10);
 }
 
 /* Inline Error Message. */
 .form-item--error-message:before {
   display: inline-block;
-  width: var(--solo-16);
-  height: var(--solo-16);
+  width: var(--solo-px16);
+  height: var(--solo-px16);
   margin: 0 0.3em;
   content: "";
   vertical-align: middle;
   background-image: url(../../images/icons/error.svg);
   background-repeat: no-repeat;
-  background-size: var(--solo-16) var(--solo-16);
+  background-size: var(--solo-px16) var(--solo-px16);
 }
 
 input,
@@ -154,9 +154,9 @@ textarea,
 .admin-context  form .form-actions > a,
 .admin-context  .action-links li > a,
 .view-filters details.form-wrapper {
-  -webkit-box-shadow: inset 0 0 var(--solo-5) rgba(51, 44, 51, 0.1);
-  -moz-box-shadow: inset 0 0 var(--solo-5) rgba(51, 44, 51, 0.1);
-  box-shadow: inset 0 0 var(--solo-5) rgba(51, 44, 51, 0.1);
+  -webkit-box-shadow: inset 0 0 var(--solo-px5) rgba(51, 44, 51, 0.1);
+  -moz-box-shadow: inset 0 0 var(--solo-px5) rgba(51, 44, 51, 0.1);
+  box-shadow: inset 0 0 var(--solo-px5) rgba(51, 44, 51, 0.1);
 }
 
 [type=checkbox],
@@ -186,7 +186,7 @@ form.system-theme-settings .details-wrapper .form-element--api-color {
 }
 
 .dropbutton-wrapper.open {
-  border: var(--solo-1) solid var(--r-br, var(--r-br-b));
+  border: var(--solo-px1) solid var(--r-br, var(--r-br-b));
 }
 
 .dropbutton-wrapper.open .solo-button {

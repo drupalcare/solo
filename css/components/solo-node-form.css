@@ -6,7 +6,7 @@ details.form-wrapper::after {
 
 details.form-wrapper {
   padding: 0 !important;
-  margin-bottom: var(--solo-16) !important;
+  margin-bottom: var(--solo-px16) !important;
   line-height: inherit;
   color: inherit;
   box-shadow: 0 1px 4px var(--r-br, var(--r-br-b));
@@ -14,25 +14,25 @@ details.form-wrapper {
 
 details.form-wrapper > summary {
   cursor: pointer;
-  padding: var(--solo-8) var(--solo-16);
+  padding: var(--solo-px8) var(--solo-px16);
 }
 
 form div.container-inline>* {
-  margin: var(--solo-8) var(--solo-8) var(--solo-8) 0;
+  margin: var(--solo-px8) var(--solo-px8) var(--solo-px8) 0;
 }
 
 form .fieldset-wrapper .form-item {
-  margin-top: var(--solo-8);
-  margin-bottom: var(--solo-8);
+  margin-top: var(--solo-px8);
+  margin-bottom: var(--solo-px8);
 }
 
 .details-wrapper {
-  margin: var(--solo-16);
+  margin: var(--solo-px16);
   display: grid;
 }
 
 .modules-wrapper details[open] {
-  padding: var(--solo-8) var(--solo-16) !important;
+  padding: var(--solo-px8) var(--solo-px16) !important;
 }
 
 .vertical-tabs details[open] {
@@ -165,7 +165,7 @@ form .form-item {
 }
 
 fieldset.form-item > .fieldset-wrapper {
-  padding: var(--solo-8);
+  padding: var(--solo-px8);
 }
 
 .field-ui-overview .field-plugin-settings-edit {

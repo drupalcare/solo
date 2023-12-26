@@ -26,7 +26,7 @@ Ceramic #FCFFF9 green shiny
 .primary-menu,
 .system-messages,
 .copyright) {
-  border-bottom-width: var(--solo-2);
+  border-bottom-width: var(--solo-px2);
   border-bottom-style: solid;
   border-color: var(--solo-white);
 }

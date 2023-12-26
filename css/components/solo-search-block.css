@@ -34,14 +34,14 @@ form.solo-search-block-form {
 
 .solo-search-block-form .form-item,
 .solo-search-block-form .form-actions {
-  margin: var(--solo-6) auto !important;
+  margin: var(--solo-px6) auto !important;
   display: inline-block;
 }
 
 input.search-button-block {
   margin: 0 !important;
-  padding-left: var(--solo-3) !important;
-  padding-right: var(--solo-3) !important;
+  padding-left: var(--solo-px3) !important;
+  padding-right: var(--solo-px3) !important;
 }
 
 .solo-search-block-form .form-type-search:before {

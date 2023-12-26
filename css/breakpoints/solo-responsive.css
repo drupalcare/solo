@@ -8,23 +8,23 @@
 
 @media (max-width:62rem) {
   h1 {
-    font-size: var(--solo-26);
-    line-height: calc(2 * var(--solo-15));
+    font-size: var(--solo-px26);
+    line-height: calc(2 * var(--solo-px15));
   }
 
   h2 {
-    font-size: var(--solo-22);
-    line-height: var(--solo-26);
+    font-size: var(--solo-px22);
+    line-height: var(--solo-px26);
   }
 
   h3 {
-    font-size: var(--solo-20);
-    line-height: var(--solo-24);
+    font-size: var(--solo-px20);
+    line-height: var(--solo-px24);
   }
 
   h4 {
-    font-size: var(--solo-18);
-    line-height: var(--solo-22);
+    font-size: var(--solo-px18);
+    line-height: var(--solo-px22);
   }
 
   #primary-sidebar-menu {
@@ -46,23 +46,23 @@
   }
 
   h1 {
-    font-size: var(--solo-22);
-    line-height: var(--solo-26);
+    font-size: var(--solo-px22);
+    line-height: var(--solo-px26);
   }
 
   h2 {
-    font-size: var(--solo-20);
-    line-height: var(--solo-24);
+    font-size: var(--solo-px20);
+    line-height: var(--solo-px24);
   }
 
   h3 {
-    font-size: var(--solo-18);
-    line-height: var(--solo-22);
+    font-size: var(--solo-px18);
+    line-height: var(--solo-px22);
   }
 
   h4 {
-    font-size: var(--solo-16);
-    line-height: var(--solo-20);
+    font-size: var(--solo-px16);
+    line-height: var(--solo-px20);
   }
 
   #primary-sidebar-menu {
@@ -75,18 +75,18 @@
 @media (max-width:36rem) {
   .header-inner .branding-wrapper {
     display: grid;
-    gap: var(--solo-8);
-    margin-top: var(--solo-8);
+    gap: var(--solo-px8);
+    margin-top: var(--solo-px8);
   }
 
   .site-name {
-    font-size: var(--solo-26) !important;
-    line-height: calc(2 * var(--solo-15)) !important;
+    font-size: var(--solo-px26) !important;
+    line-height: calc(2 * var(--solo-px15)) !important;
   }
 
   .site-slogan {
-    font-size: var(--solo-20) !important;
-    line-height: var(--solo-24) !important;
+    font-size: var(--solo-px20) !important;
+    line-height: var(--solo-px24) !important;
   }
 
   .header-inner .branding-wrapper>* {
@@ -102,23 +102,23 @@
   }
 
   h1 {
-    font-size: var(--solo-20);
-    line-height: var(--solo-24);
+    font-size: var(--solo-px20);
+    line-height: var(--solo-px24);
   }
 
   h2 {
-    font-size: var(--solo-18);
-    line-height: var(--solo-22);
+    font-size: var(--solo-px18);
+    line-height: var(--solo-px22);
   }
 
   h3 {
-    font-size: var(--solo-16);
-    line-height: var(--solo-20);
+    font-size: var(--solo-px16);
+    line-height: var(--solo-px20);
   }
 
   h4 {
-    font-size: var(--solo-14);
-    line-height: var(--solo-18);
+    font-size: var(--solo-px14);
+    line-height: var(--solo-px18);
   }
 
   #primary-sidebar-menu {
@@ -130,23 +130,23 @@
 
 @media (max-width:20rem) {
   h1 {
-    font-size: var(--solo-18);
-    line-height: var(--solo-20);
+    font-size: var(--solo-px18);
+    line-height: var(--solo-px20);
   }
 
   h2 {
-    font-size: var(--solo-16);
-    line-height: var(--solo-20);
+    font-size: var(--solo-px16);
+    line-height: var(--solo-px20);
   }
 
   h3 {
-    font-size: var(--solo-14);
-    line-height: var(--solo-18);
+    font-size: var(--solo-px14);
+    line-height: var(--solo-px18);
   }
 
   h4 {
-    font-size: var(--solo-12);
-    line-height: var(--solo-16);
+    font-size: var(--solo-px12);
+    line-height: var(--solo-px16);
   }
 
   #primary-sidebar-menu {

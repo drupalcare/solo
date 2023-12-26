@@ -25,14 +25,14 @@
 }
 
 .fixed-search-block-inner .fixed-search-wrapper {
-  border-radius: var(--solo-16);
+  border-radius: var(--solo-px16);
   display: flex;
 }
 
 .fixed-search-block-inner form .form-search,
 .fixed-search-block-inner form .form-submit {
-  padding-top: var(--solo-20);
-  padding-bottom: var(--solo-20);
+  padding-top: var(--solo-px20);
+  padding-bottom: var(--solo-px20);
 }
 
 .fixed-search-block-inner .solo-search-block-form .form-type-search:before {
@@ -44,7 +44,7 @@
 }
 
 .fixed-search-block-inner form .form-submit {
-  border-radius: 0 var(--solo-16) var(--solo-16) 0;
+  border-radius: 0 var(--solo-px16) var(--solo-px16) 0;
 }
 
 .fixed-search-block-inner .solo-search-block-form .form-item,
@@ -58,7 +58,7 @@
   background-color: var(--r-bg);
   min-width: 60px !important;
   margin: 0 auto !important;
-  border-radius: var(--solo-16) 0 0 var(--solo-16);
+  border-radius: var(--solo-px16) 0 0 var(--solo-px16);
 }
 
 .solo-inner.fixed-search-block-inner .hamburger-icon span>svg {

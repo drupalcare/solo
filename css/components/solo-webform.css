@@ -11,11 +11,11 @@
 }
 
 .webform-submission-form .form-actions > input {
-  margin: var(--solo-16) var(--solo-8) !important;
+  margin: var(--solo-px16) var(--solo-px8) !important;
 }
 
 .webform-submission-form .form-type-webform-rating label {
-  height: calc(2* var(--solo-12));
+  height: calc(2* var(--solo-px12));
   float: left;
 }
 
@@ -41,7 +41,7 @@
 .webform-multiple-add > div,
 .webform-multiple-add > input {
   float: left;
-  margin-right: var(--solo-10);
+  margin-right: var(--solo-px10);
 }
 
 .webform-multiple-add .field-suffix {
@@ -59,7 +59,7 @@
 }
 
 .webform-multiple-table td input[type="image"] + input[type="image"] {
-  margin: var(--solo-2) 0 0 0;
+  margin: var(--solo-px2) 0 0 0;
 }
 .webform-has-field-prefix,
 .webform-has-field-suffix {

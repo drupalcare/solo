@@ -17,7 +17,7 @@ Braves Navy #13274F, Zombie Gray #63645E, Mantis #74C365
 .primary-menu,
 .system-messages,
 .copyright) {
-  border-bottom-width: var(--solo-2);
+  border-bottom-width: var(--solo-px2);
   border-bottom-style: solid;
   border-color: var(--solo-white);
 }

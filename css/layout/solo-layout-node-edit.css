@@ -13,27 +13,27 @@
   border-radius: 10px;
   background-color: var(--r-bg);
   width: 100%;
-  margin: var(--solo-20) 0;
+  margin: var(--solo-px20) 0;
   padding: 0;
   -webkit-box-shadow: 0px 0px 19px 19px rgba(180, 180, 180, 0.1);
   box-shadow: 0px 0px 19px 19px rgba(180, 180, 180, 0.1);
 }
 
 .layout-region-node-footer {
-  padding-top: var(--solo-20);
-  padding-bottom: var(--solo-20);
+  padding-top: var(--solo-px20);
+  padding-bottom: var(--solo-px20);
   background-color: var(--r-bg);
 }
 
 .layout-region-node-footer__content {
-  padding: var(--solo-16);
-  margin: var(--solo-16) 0;
+  padding: var(--solo-px16);
+  margin: var(--solo-px16) 0;
   background-color: var(--r-bg);
 }
 
 .layout-region-node-main>div,
 .layout-region-node-secondary>div {
-  padding: var(--solo-16);
+  padding: var(--solo-px16);
 }
 
 .page-content {
@@ -56,8 +56,8 @@
 }
 
 .layout__region--content > .solo-row > fieldset {
-  margin-bottom: var(--solo-16) !important;
-  padding-bottom: var(--solo-16) !important;
+  margin-bottom: var(--solo-px16) !important;
+  padding-bottom: var(--solo-px16) !important;
 }
 
 .admin-context .block-local-tasks-block,
@@ -75,7 +75,7 @@
 .layout-node-form .form-item label,
 .layout-node-form .form-item .label {
   display: inline-block;
-  padding-bottom: var(--solo-8);
+  padding-bottom: var(--solo-px8);
   font-weight: normal;
 }
 
@@ -112,7 +112,7 @@
 }
 
 .layout-node-form .paragraphs-actions > .button + .paragraphs-dropdown {
-  margin: 0 var(--solo-8) !important;
+  margin: 0 var(--solo-px8) !important;
 }
 
 .layout-node-form .form-wrapper .paragraphs-dropdown-action.button,
@@ -131,8 +131,8 @@
 .layout-node-form div.description,
 .layout-node-form .form-item .solo-small,
 .layout-node-form .form-item .description {
-  padding: var(--solo-3) !important;
-  margin: var(--solo-1) 0 !important;
+  padding: var(--solo-px3) !important;
+  margin: var(--solo-px1) 0 !important;
 }
 
 .layout-node-form .description ul,
@@ -179,7 +179,7 @@
 }
 
 .layout-region-node-secondary .entity-meta > details[open] {
-  padding: var(--solo-8) !important;
+  padding: var(--solo-px8) !important;
   background-color: var(--r-bg) !important;
 }
 

@@ -22,7 +22,7 @@ MAHOGANY #420C09, WALNUT #432616
 .primary-menu,
 .system-messages,
 .copyright) {
-  border-bottom-width: var(--solo-2);
+  border-bottom-width: var(--solo-px2);
   border-bottom-style: solid;
   border-color: var(--solo-black);
 }

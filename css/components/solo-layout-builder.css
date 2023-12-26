@@ -36,8 +36,8 @@
 }
 
 #drupal-off-canvas .details-wrapper ul li a {
-  line-height: var(--solo-24);
-  font-size: var(--solo-14);
+  line-height: var(--solo-px24);
+  font-size: var(--solo-px14);
 }
 
 .layout-builder-block .solo-left.field__item {
@@ -46,8 +46,8 @@
 }
 
 #drupal-off-canvas .form-item {
-  margin-top: var(--solo-10);
-  margin-bottom: var(--solo-10);
+  margin-top: var(--solo-px10);
+  margin-bottom: var(--solo-px10);
 }
 
 #drupal-off-canvas input[type="checkbox"],
@@ -57,7 +57,7 @@
 
 #drupal-off-canvas .form-type-radio label,
 #drupal-off-canvas .form-type-checkbox label {
-  height: var(--solo-24);
+  height: var(--solo-px24);
   display: inline-block;
 }
 
@@ -80,9 +80,9 @@
   clear: none;
   display: inline-block;
   text-align: center;
-  padding: var(--solo-8) var(--solo-16);
-  margin: 0 var(--solo-20) 0 0;
-  border-radius: var(--solo-20) 0;
+  padding: var(--solo-px8) var(--solo-px16);
+  margin: 0 var(--solo-px20) 0 0;
+  border-radius: var(--solo-px20) 0;
 }
 
 .node-layout-builder-form {
@@ -92,12 +92,12 @@
 }
 
 .node-layout-builder-form .messages {
-  padding-left: calc(2 * var(--solo-16)) !important;
-  margin-left: var(--solo-10);
+  padding-left: calc(2 * var(--solo-px16)) !important;
+  margin-left: var(--solo-px10);
 }
 
 .node-layout-builder-form .vertical-tabs__panes {
-  margin: var(--solo-20);
+  margin: var(--solo-px20);
 }
 
 .layout-builder__region {
@@ -105,7 +105,7 @@
 }
 
 .layout-builder-block {
-  padding: var(--solo-5) var(--solo-16);
+  padding: var(--solo-px5) var(--solo-px16);
   background-color: transparent;
   clear: both;
 }
@@ -124,8 +124,8 @@
 }
 
 .layout-builder {
-  margin: var(--solo-10);
-  padding: var(--solo-10) var(--solo-15);
+  margin: var(--solo-px10);
+  padding: var(--solo-px10) var(--solo-px15);
   border: 1px solid rgb(55, 170, 220);
 }
 
@@ -135,12 +135,12 @@
 
 .layout-builder__link--configure,
 .layout-builder__link--remove {
-  font-size: var(--solo-13);
+  font-size: var(--solo-px13);
   clear: none;
   display: inline-block;
   text-align: center;
-  padding: var(--solo-8) var(--solo-16);
-  margin: 0 var(--solo-10) 0 0;
+  padding: var(--solo-px8) var(--solo-px16);
+  margin: 0 var(--solo-px10) 0 0;
   text-indent: unset;
   width: auto;
   height: auto;
@@ -148,30 +148,30 @@
 
 .layout-builder__link--remove,
 .layout-builder__link--configure {
-  border-radius: var(--solo-20) 0;
+  border-radius: var(--solo-px20) 0;
 }
 
 .layout-builder__add-block,
 .layout-builder__link--add,
 .layout-builder__add-section {
-  border-radius: var(--solo-20) 0;
+  border-radius: var(--solo-px20) 0;
 }
 
 .layout-builder__link--add:before {
   display: inline-block;
-  width: var(--solo-16);
-  height: var(--solo-16);
-  margin: 0 var(--solo-10) 0 0;
+  width: var(--solo-px16);
+  height: var(--solo-px16);
+  margin: 0 var(--solo-px10) 0 0;
   content: "";
   vertical-align: middle;
   background-image: url(../../images/icons/plus-circle.svg);
   background-repeat: no-repeat;
-  background-size: var(--solo-16) var(--solo-16);
+  background-size: var(--solo-px16) var(--solo-px16);
   background-color: transparent;
 }
 
 .layout-builder__add-section {
-  margin-bottom: var(--solo-16);
+  margin-bottom: var(--solo-px16);
   padding: 0;
   border: none;
   outline: none;
@@ -179,20 +179,20 @@
 
 .layout-builder__add-block {
   padding: 0;
-  margin: var(--solo-10) !important;
+  margin: var(--solo-px10) !important;
   display: inline-block;
 }
 
 .layout-builder__link--add {
-  padding: var(--solo-10) var(--solo-20);
+  padding: var(--solo-px10) var(--solo-px20);
   width: 100%;
   display: block;
   text-align: left;
 }
 
 .layout-builder__add-block>a {
-  padding: var(--solo-8) var(--solo-24) !important;
-  font-size: var(--solo-14);
+  padding: var(--solo-px8) var(--solo-px24) !important;
+  font-size: var(--solo-px14);
 }
 
 .layout-builder__link--remove:hover {
@@ -200,7 +200,7 @@
 }
 
 .layout-builder__link--configure {
-  margin: 0 0 var(--solo-20) 0;
+  margin: 0 0 var(--solo-px20) 0;
   color: #0b3e6f;
 }
 
@@ -214,7 +214,7 @@
 
 .layout-builder .field>img {
   width: 100%;
-  margin-top: var(--solo-10);
+  margin-top: var(--solo-px10);
 }
 
 .layout-builder__add-block.is-layout-builder-highlighted,
@@ -222,7 +222,7 @@
 .layout-builder__layout.is-layout-builder-highlighted:before,
 .layout-builder__layout.is-layout-builder-highlighted,
 .layout-builder-block.is-layout-builder-highlighted {
-  border: var(--solo-2)solid #a2ceef;
+  border: var(--solo-px2)solid #a2ceef;
 }
 
 .ui-dialog.ui-dialog-off-canvas .ui-dialog-titlebar {

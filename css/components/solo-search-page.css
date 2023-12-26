@@ -11,7 +11,7 @@ form.search-form>.form-wrapper {
   grid-template-rows: 1fr;
   gap: 0 0;
   grid-auto-flow: row;
-  row-gap: var(--solo-8);
+  row-gap: var(--solo-px8);
   grid-template-areas: "form-item form-submit";
   align-items: self-end;
 }
@@ -22,13 +22,13 @@ form.search-form>.form-wrapper>.form-item {
 
 form.search-form>.form-wrapper>.form-submit {
   grid-area: form-submit;
-  margin: 0 0 var(--solo-8) 0;
+  margin: 0 0 var(--solo-px8) 0;
   width: 100%;
 }
 
 form.search-form .form-wrapper>.button--primary {
-  padding-right: var(--solo-3) !important;
-  padding-left: var(--solo-3) !important;
+  padding-right: var(--solo-px3) !important;
+  padding-left: var(--solo-px3) !important;
 }
 
 form.search-form>* {
@@ -36,8 +36,8 @@ form.search-form>* {
 }
 
 .path-search .solo-row.item-list>h3 {
-  padding: 0 var(--solo-16);
-  font-size: var(--solo-18);
+  padding: 0 var(--solo-px16);
+  font-size: var(--solo-px18);
 }
 
 .path-search .search-form .search-advanced summary.solo-button {

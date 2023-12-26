@@ -34,7 +34,7 @@ Stone Gray #928E85, Outer Space #414A4C
 .primary-menu,
 .system-messages,
 .copyright) {
-  border-bottom-width: var(--solo-2);
+  border-bottom-width: var(--solo-px2);
   border-bottom-style: solid;
   border-color: var(--solo-white);
 }

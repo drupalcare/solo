@@ -3,8 +3,8 @@ body {
   min-height: 100%;
   overflow-wrap: break-word;
   font-family: var(--solo-font);
-  font-size: var(--solo-16);
-  line-height: var(--solo-32);
+  font-size: var(--solo-px16);
+  line-height: var(--solo-px32);
   font-weight: normal;
   font-style: normal;
   -webkit-font-smoothing: antialiased;
@@ -17,33 +17,33 @@ html {
 
 /* HTML tags */
 h1 {
-  font-size: var(--solo-36);/* 36px */
-  line-height: calc(2 * var(--solo-20));
+  font-size: var(--solo-px36);/* 36px */
+  line-height: calc(2 * var(--solo-px20));
 }
 
 h2 {
-  font-size: var(--solo-32);/* 32px */
-  line-height: var(--solo-36);
+  font-size: var(--solo-px32);/* 32px */
+  line-height: var(--solo-px36);
 }
 
 h3 {
-  font-size: var(--solo-24);/* 24px */
-  line-height: var(--solo-28);
+  font-size: var(--solo-px24);/* 24px */
+  line-height: var(--solo-px28);
 }
 
 h4 {
-  font-size: var(--solo-20);/* 20px */
-  line-height: var(--solo-24);
+  font-size: var(--solo-px20);/* 20px */
+  line-height: var(--solo-px24);
 }
 
 h5 {
-  font-size: var(--solo-18);/* 18px */
-  line-height: var(--solo-22);
+  font-size: var(--solo-px18);/* 18px */
+  line-height: var(--solo-px22);
 }
 
 h6 {
-  font-size: var(--solo-16);/* 16px */
-  line-height: var(--solo-20);
+  font-size: var(--solo-px16);/* 16px */
+  line-height: var(--solo-px20);
 }
 
 h1,
@@ -51,20 +51,20 @@ h2,
 h3 {
   font-weight: 700;
   font-family: var(--solo-h1);
-  margin: var(--solo-12) 0;
+  margin: var(--solo-px12) 0;
 }
 
 h4,
 h5,
 h6 {
   font-weight: normal;
-  margin: var(--solo-8) 0;
+  margin: var(--solo-px8) 0;
 }
 
 hr {
   border: 0;
-  border-top: var(--solo-2) solid var(--r-br, var(--r-br-b));
-  margin: var(--solo-20) 0;
+  border-top: var(--solo-px2) solid var(--r-br, var(--r-br-b));
+  margin: var(--solo-px20) 0;
 }
 
 .solo-image {
@@ -111,11 +111,11 @@ img {
 }
 
 .solo-table-all {
-  border: var(--solo-1) solid var(--r-br, var(--r-br-b));
+  border: var(--solo-px1) solid var(--r-br, var(--r-br-b));
 }
 
 .solo-table-all tr {
-  border-bottom: var(--solo-1) solid var(--r-br, var(--r-br-b));
+  border-bottom: var(--solo-px1) solid var(--r-br, var(--r-br-b));
 }
 
 .solo-table-all tr:nth-child(odd) {
@@ -130,7 +130,7 @@ img {
 .solo-table th,
 .solo-table-all td,
 .solo-table-all th {
-  padding: var(--solo-8);
+  padding: var(--solo-px8);
   display: table-cell;
   text-align: left;
   vertical-align: top;
@@ -140,7 +140,7 @@ img {
 .solo-table td:first-child,
 .solo-table-all th:first-child,
 .solo-table-all td:first-child {
-  padding-left: var(--solo-16);
+  padding-left: var(--solo-px16);
 }
 
 /*Unordered list */
@@ -152,14 +152,14 @@ img {
 }
 
 .solo-ul li {
-  padding: var(--solo-8) var(--solo-16);
+  padding: var(--solo-px8) var(--solo-px16);
 }
 
 /* Button */
 .button,
 .solo-button {
   display: inline-block;
-  padding: var(--solo-8);
+  padding: var(--solo-px8);
   line-height: inherit;
   vertical-align: middle;
   overflow: hidden;
@@ -180,10 +180,10 @@ img {
 .form-submit,
 .solo-button.button--primary,
 .block-user-login-block form+.item-list ul li a {
-  border-width: var(--solo-1);
+  border-width: var(--solo-px1);
   border-style: solid;
-  padding: var(--solo-10) var(--solo-24);
-  margin: var(--solo-6) auto;
+  padding: var(--solo-px10) var(--solo-px24);
+  margin: var(--solo-px6) auto;
   float: none;
   text-align: center;
 }
@@ -194,27 +194,27 @@ img {
 }
 
 .solo-button.button--small {
-  padding: var(--solo-8);
-  margin: var(--solo-2) auto;
+  padding: var(--solo-px8);
+  margin: var(--solo-px2) auto;
 }
 
 /* Forms Elements */
 .solo-check,
 .solo-radio {
-  width: var(--solo-24);
-  height: var(--solo-24);
+  width: var(--solo-px24);
+  height: var(--solo-px24);
   position: relative;
-  top: var(--solo-66);
-  border: var(--solo-1) solid var(--r-br, var(--r-br-b));
+  top: var(--solo-px66);
+  border: var(--solo-px1) solid var(--r-br, var(--r-br-b));
   line-height: inherit;
 }
 
 .solo-input,
 .solo-textarea {
-  padding: var(--solo-10) var(--solo-8);
+  padding: var(--solo-px10) var(--solo-px8);
   display: block;
   width: 100%;
-  border: var(--solo-1) solid var(--r-br, var(--r-br-b));
+  border: var(--solo-px1) solid var(--r-br, var(--r-br-b));
   line-height: inherit;
 }
 
@@ -223,16 +223,16 @@ img {
 }
 
 .solo-select {
-  padding: var(--solo-16) var(--solo-12);
+  padding: var(--solo-px16) var(--solo-px12);
   width: 100%;
 }
 
 select {
   max-width: 100%;
-  border: var(--solo-1) solid var(--r-br, var(--r-br-b));
+  border: var(--solo-px1) solid var(--r-br, var(--r-br-b));
   background-image: var(--solo-select-arrow-icon);
   background-repeat: no-repeat;
-  background-position: right var(--solo-10) center;
+  background-position: right var(--solo-px10) center;
   font-family: inherit;
   font-size: inherit;
   -webkit-appearance: none;
@@ -245,7 +245,7 @@ select[disabled] {
 }
 
 select.error {
-  border: solid var(--solo-2) var(--solo-red);
+  border: solid var(--solo-px2) var(--solo-red);
 }
 
 select.error:focus {
@@ -258,7 +258,7 @@ select[multiple] {
 }
 
 select[multiple] option {
-  padding: var(--solo-16) var(--solo-12);
+  padding: var(--solo-px16) var(--solo-px12);
 }
 
 ol {
@@ -271,26 +271,26 @@ ol {
 
 .field-prefix,
 .field-suffix {
-  padding: var(--solo-16) var(--solo-8);
+  padding: var(--solo-px16) var(--solo-px8);
   vertical-align: middle;
 }
 
 .solo-padding {
-  padding: var(--solo-8) var(--solo-16);
+  padding: var(--solo-px8) var(--solo-px16);
 }
 
 .solo-container,
 .solo-panel {
-  padding: var(--solo-3) var(--solo-16);
+  padding: var(--solo-px3) var(--solo-px16);
 }
 
 .solo-panel {
-  margin-top: var(--solo-16);
-  margin-bottom: var(--solo-16);
+  margin-top: var(--solo-px16);
+  margin-bottom: var(--solo-px16);
 }
 
 .solo-small {
-  font-size: var(--solo-13);
+  font-size: var(--solo-px13);
 }
 
 .solo-bar {
@@ -299,7 +299,7 @@ ol {
 }
 
 .solo-bar .solo-bar-item {
-  padding: var(--solo-8) var(--solo-16);
+  padding: var(--solo-px8) var(--solo-px16);
   float: left;
   width: auto;
   border: none;
@@ -308,8 +308,8 @@ ol {
 }
 
 .solo-section {
-  margin-top: var(--solo-16);
-  margin-bottom: var(--solo-16);
+  margin-top: var(--solo-px16);
+  margin-bottom: var(--solo-px16);
 }
 
 .solo-block {
@@ -325,12 +325,12 @@ ol {
 .links.inline {
   display: flex;
   justify-content: right;
-  font-size: var(--solo-14);
+  font-size: var(--solo-px14);
 }
 
 form fieldset:not(td fieldset) {
   border: 1px solid var(--r-br, var(--r-br-b)) !important;
-  margin-top: var(--solo-12);
+  margin-top: var(--solo-px12);
 }
 
 /* Global Classes */
@@ -387,7 +387,7 @@ form fieldset:not(td fieldset) {
 }
 
 .solo-card {
-  -webkit-box-shadow: 0 var(--solo-1) var(--solo-3) 0 rgba(0, 0, 0, 0.12);
-  -moz-box-shadow: 0 var(--solo-1) var(--solo-3) 0 rgba(0, 0, 0, 0.12);
-  box-shadow: 0 var(--solo-1) var(--solo-3) 0 rgba(0, 0, 0, 0.12);
+  -webkit-box-shadow: 0 var(--solo-px1) var(--solo-px3) 0 rgba(0, 0, 0, 0.12);
+  -moz-box-shadow: 0 var(--solo-px1) var(--solo-px3) 0 rgba(0, 0, 0, 0.12);
+  box-shadow: 0 var(--solo-px1) var(--solo-px3) 0 rgba(0, 0, 0, 0.12);
 }

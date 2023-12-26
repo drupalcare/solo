@@ -17,7 +17,7 @@
   background-color: var(--r-bg);
   max-width: 900px !important;
   margin: 0 auto;
-  padding: calc(2 * var(--solo-16));
+  padding: calc(2 * var(--solo-px16));
   height: auto !important;
 }
 
@@ -49,7 +49,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: var(--solo-8) var(--solo-16);
+  padding: var(--solo-px8) var(--solo-px16);
   min-width: 5.75rem;
   color: var(--r-tx-bt);
   background-color: var(--r-bg-bt);

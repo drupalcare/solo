@@ -33,7 +33,7 @@
   }
 
   body:not(.path-frontpage).main-container-inner {
-    padding-top: var(--solo-12);
+    padding-top: var(--solo-px12);
   }
 
   .admin-context .system-status-general-info__items {
@@ -55,7 +55,7 @@
   }
 
   .admin-context .system-status-general-info__run-cron {
-    margin: var(--solo-16) 0 var(--solo-16);
+    margin: var(--solo-px16) 0 var(--solo-px16);
   }
 
 }

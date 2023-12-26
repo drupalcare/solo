@@ -40,15 +40,15 @@
 .solo-inner:not(.primary-menu-inner,
 .primary-sidebar-menu-inner,
 .system-messages-inner) {
-  padding: var(--solo-16);
+  padding: var(--solo-px16);
 }
 
 .solo-outer .region-inner {
-  padding: var(--solo-16);
+  padding: var(--solo-px16);
 }
 
 /* We change it in big screen */
 .multi>.solo-col {
-  gap: var(--solo-16);
+  gap: var(--solo-px16);
   grid-auto-flow: column;
 }

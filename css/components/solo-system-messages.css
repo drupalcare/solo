@@ -9,13 +9,13 @@
 
 .webform-message .messages.messages--webform,
 .messages {
-  min-height: calc(2 * var(--solo-32)) !important;
-  padding: var(--solo-16) !important;
-  margin: var(--solo-16) 0 !important;
+  min-height: calc(2 * var(--solo-px32)) !important;
+  padding: var(--solo-px16) !important;
+  margin: var(--solo-px16) 0 !important;
   color: var(--solo-white) !important;
   outline: solid 1px transparent !important;
   background-color: var(--solo-dark-gray) !important;
-  border: var(--solo-1) solid var(--solo-black) !important;
+  border: var(--solo-px1) solid var(--solo-black) !important;
 }
 
 .webform-message .messages.messages--webform *,
@@ -44,11 +44,11 @@
 }
 
 .messages:not(.hidden) ~ .messages {
-  margin-block-start: var(--solo-16) !important;
+  margin-block-start: var(--solo-px16) !important;
 }
 
 .messages__item + .messages__item {
-  margin-block-start: var(--solo-16) !important;
+  margin-block-start: var(--solo-px16) !important;
 }
 
 .messages__container {
@@ -66,7 +66,7 @@
 .messages__content {
   overflow: auto; /* Ensure large code blocks can be scrolled to. */
   flex: 1;
-  padding: 0 var(--solo-16) !important;
+  padding: 0 var(--solo-px16) !important;
 }
 
 .messages__button {
@@ -75,8 +75,8 @@
 
 .messages__close {
   position: relative;
-  width: calc(2 * var(--solo-24)) !important;
-  height: calc(2 * var(--solo-24)) !important;
+  width: calc(2 * var(--solo-px24)) !important;
+  height: calc(2 * var(--solo-px24)) !important;
   cursor: pointer;
   vertical-align: top;
   border: 0;
@@ -93,7 +93,7 @@
   top: 50%;
   left: 50%;
   display: block;
-  width: calc(2 * var(--solo-20)) !important;
+  width: calc(2 * var(--solo-px20)) !important;
   height: 0;
   content: "";
   border-top: dashed 2px var(--solo-gray) !important;
@@ -119,8 +119,8 @@
 */
 .messages__icon svg {
   vertical-align: top;
-  width: calc(2 * var(--solo-20)) !important;
-  height: calc(2 * var(--solo-20)) !important;
+  width: calc(2 * var(--solo-px20)) !important;
+  height: calc(2 * var(--solo-px20)) !important;
   border-style: dashed;
   border-radius: 50%;
 }
@@ -154,7 +154,7 @@
 }
 
 .js-form-managed-file .messages {
-  margin-block-end: var(--solo-16) !important;
+  margin-block-end: var(--solo-px16) !important;
   border-inline-start: solid 0.375rem var(--solo-red) !important;
 }
 

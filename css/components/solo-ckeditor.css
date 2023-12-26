@@ -15,28 +15,28 @@
 
 .ck-editor__top,
 .cke_top {
-  border-radius: var(--solo-6) var(--solo-6) 0 0;
-  border: var(--solo-1) solid var(--r-br, var(--r-br-b)) !important;
+  border-radius: var(--solo-px6) var(--solo-px6) 0 0;
+  border: var(--solo-px1) solid var(--r-br, var(--r-br-b)) !important;
 }
 
 .cke_contents {
-  border: var(--solo-1) solid var(--r-br, var(--r-br-b)) !important;
+  border: var(--solo-px1) solid var(--r-br, var(--r-br-b)) !important;
 }
 
 .ck-editor__main,
 .cke_bottom {
-  border-radius: 0 0 var(--solo-6) var(--solo-6);
-  border: var(--solo-1) solid var(--r-br, var(--r-br-b)) !important;
+  border-radius: 0 0 var(--solo-px6) var(--solo-px6);
+  border: var(--solo-px1) solid var(--r-br, var(--r-br-b)) !important;
   border-top: none !important;
 }
 
 .text-format-wrapper > .element-container-wrapper {
-  margin: var(--solo-8) auto !important;
-  border-radius: var(--solo-6);
-  border: var(--solo-1) solid var(--r-br, var(--r-br-b)) !important;
+  margin: var(--solo-px8) auto !important;
+  border-radius: var(--solo-px6);
+  border: var(--solo-px1) solid var(--r-br, var(--r-br-b)) !important;
   background-color: var(--r-bg) !important;
-  padding: var(--solo-8) var(--solo-16);
-  font-size: var(--solo-14);
+  padding: var(--solo-px8) var(--solo-px16);
+  font-size: var(--solo-px14);
 }
 
 .ck-rounded-corners .ck.ck-editor__top .ck-sticky-panel .ck-toolbar,
@@ -47,7 +47,7 @@
 }
 
 .filter-guidelines-item {
-  font-size: var(--solo-13);
+  font-size: var(--solo-px13);
 }
 
 .filter-guidelines-item li {

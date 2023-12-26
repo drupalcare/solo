@@ -55,7 +55,7 @@
 }
 
 .branding-wrapper .branding-first {
-  margin-right: var(--solo-12);
+  margin-right: var(--solo-px12);
   display: flex;
 }
 
@@ -67,12 +67,12 @@
 
 #sidebar-button-close svg,
 #sidebar-button-open svg {
-  height: calc(2 * var(--solo-20));
+  height: calc(2 * var(--solo-px20));
 }
 
 #search-button-open svg {
-  width: var(--solo-32);
-  height: var(--solo-32);
+  width: var(--solo-px32);
+  height: var(--solo-px32);
 }
 
 #sidebar-button-close button,
@@ -93,11 +93,11 @@
 
 #sidebar-button-close button span,
 #search-button-open button span {
-  padding: var(--solo-8) var(--solo-16) !important;
+  padding: var(--solo-px8) var(--solo-px16) !important;
 }
 
 #sidebar-button-open button span {
-  padding: var(--solo-4) var(--solo-16) !important;
+  padding: var(--solo-px4) var(--solo-px16) !important;
 }
 
 #sidebar-button-close button {

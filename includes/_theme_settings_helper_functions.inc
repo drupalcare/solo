@@ -191,7 +191,7 @@ function _get_predefined_theme() {
     'solo-midnight-whispers' => t('Midnight Whispers'),
     'solo-monochrome-splash' => t('Monochrome Splash'),
     'solo-mystic-ash-twilight' => t('Mystic Ash Twilight'),
-    'solo-nightfall-in-paris' => t('Nightfall in Paris'),
+    'solo-nightfall-paris' => t('Nightfall in Paris'),
     'solo-nocturnal-velvet' => t('Nocturnal Velvet'),
     'solo-ocean-depths-mystery' => t('Ocean Depths Mystery'),
     'solo-obsidian-cascade' => t('Obsidian Cascade'),

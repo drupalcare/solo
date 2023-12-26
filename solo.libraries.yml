@@ -1625,11 +1625,11 @@ solo-mystic-ash-twilight:
     theme:
       css/predefined/solo-mystic-ash-twilight.css: { weight: -9 }
 
-solo-nightfall-in-paris:
+solo-nightfall-paris:
   Version: VERSION
   css:
     theme:
-      css/predefined/solo-nightfall-in-paris.css: { weight: -9 }
+      css/predefined/solo-nightfall-paris.css: { weight: -9 }
 
 solo-nocturnal-velvet:
   Version: VERSION

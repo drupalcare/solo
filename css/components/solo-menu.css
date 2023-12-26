@@ -195,6 +195,24 @@
   border-bottom: 1px solid var(--r-br);
 }
 
+/* Right left mens */
+.solo-side-menu {
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+  padding: 0;
+}
+
+.solo-side-menu li a {
+  margin: 0 var(--solo-4);
+  padding: var(--solo-12);
+}
+
+.solo-side-menu li a.is-active,
+.solo-side-menu li.active-trail {
+  font-weight: bold;
+}
+
 @media (max-width:36rem) {
   .links.inline,
   .pager__items,
@@ -203,8 +221,4 @@
     padding: 0;
   }
 
-}
-
-.solo-inner .navigation__default li a {
-  text-wrap: balance !important;
 }

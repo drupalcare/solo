@@ -1445,7 +1445,7 @@ solo-blueberry-skies-quartet:
     theme:
       css/predefined/solo-blueberry-skies-quartet.css: { weight: -9 }
 
-solo-predefined-solo-blushing-magnolia:
+solo-blushing-magnolia:
   Version: VERSION
   css:
     theme:

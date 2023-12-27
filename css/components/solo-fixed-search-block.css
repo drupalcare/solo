@@ -44,7 +44,7 @@
 }
 
 .fixed-search-block-inner form .form-submit {
-  border-radius: 0 var(--solo-px16) var(--solo-px16) 0;
+  border-radius: 0 var(--solo-px4) var(--solo-px4) 0;
 }
 
 .fixed-search-block-inner .solo-search-block-form .form-item,
@@ -58,7 +58,7 @@
   background-color: var(--r-bg);
   min-width: 60px !important;
   margin: 0 auto !important;
-  border-radius: var(--solo-px16) 0 0 var(--solo-px16);
+  border-radius: var(--solo-px4) 0 0 var(--solo-px4);
 }
 
 .solo-inner.fixed-search-block-inner .hamburger-icon span>svg {

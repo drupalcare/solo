@@ -1571,7 +1571,7 @@ solo-lemon-lime-forest:
     theme:
       css/predefined/solo-lemon-lime-forest.css: { weight: -9 }
 
-solo-predefined-00024:
+solo-luminous-alabaster:
   Version: VERSION
   css:
     theme:

@@ -265,7 +265,8 @@
   }
 
   .solo-inner .navigation__megamenu>li>ul>li {
-    padding-bottom: var(--solo-px16) !important;
+    margin-top: var(--solo-px16) !important;
+    margin-bottom: var(--solo-px16) !important;
   }
 
   .solo-inner .navigation__megamenu>li>ul.sub__menu>* {

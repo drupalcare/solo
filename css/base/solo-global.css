@@ -223,7 +223,8 @@ img {
 }
 
 .solo-select {
-  padding: var(--solo-px16) var(--solo-px12);
+  line-height: inherit;
+  padding: var(--solo-px10) var(--solo-px8);
   width: 100%;
 }
 

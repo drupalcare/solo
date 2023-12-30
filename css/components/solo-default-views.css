@@ -17,10 +17,6 @@
   cursor: pointer;
 }
 
-.view-header {
-  padding: 0 var(--solo-px16);
-}
-
 #view-edit-form  .dropbutton li a {
   padding: var(--solo-px4) var(--solo-px10);
 }
@@ -82,4 +78,24 @@
 
 .views-align-center {
   text-align: center !important;
+}
+
+form.views-exposed-form {
+  margin-bottom: var(--solo-px16);
+}
+
+form.views-exposed-form .form--inline {
+  align-items: flex-end;
+}
+
+form.views-exposed-form.form--inline .form-actions {
+  flex-grow: unset !important;
+  flex-basis: unset !important;
+  vertical-align: bottom;
+  width: auto;
+}
+
+form.views-exposed-form.form--inline .form-actions input {
+  vertical-align: bottom;
+  margin: 0;
 }

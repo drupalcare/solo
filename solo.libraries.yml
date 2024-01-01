@@ -261,9 +261,9 @@ font-awesome-6-ex:
   header: true
   css:
     base:
-      https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css: { type: external, minified: true, attributes: { defer: true } }
+      https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css: { type: external, minified: true, attributes: { defer: true } }
   js:
-    https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/js/all.min.js: { type: external, minified: true, attributes: { defer: true } }
+    https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/js/all.min.js: { type: external, minified: true, attributes: { defer: true } }
 
 # Google Fonts - Global.
 solo-gfex-alegreya-sans:

@@ -99,7 +99,7 @@ $form['solo_settings']['settings_libraries_fonts']['site_font_awesome_on'] = [
     1 => t('Load Font Awesome 4.7 locally.'),
     2 => t('Load Font Awesome 4.7 from the CDN.'),
     3 => t('Load Font Awesome 5.15.4 from the CDN.'),
-    4 => t('Load Font Awesome 6.1.1 from the CDN.'),
+    4 => t('Load Font Awesome 6.5.1 from the CDN.'),
   ],
 ];
 

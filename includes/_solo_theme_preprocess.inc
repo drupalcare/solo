@@ -52,7 +52,7 @@ function _add_user_path_to_body_class(&$variables): void {
 function _add_view_id_to_body_class($route_match, &$variables): void {
   $view_id = $route_match->getParameter('view_id');
   if ($view_id) {
-    $variables['attributes']['class'][] = 'path-view-' . Html::cleanCssIdentifier($view_id);
+    $variables['attributes']['class'][] = 'views-page path-view-' . Html::cleanCssIdentifier($view_id);
   }
 }
 

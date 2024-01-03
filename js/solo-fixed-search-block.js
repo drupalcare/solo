@@ -1,69 +1,83 @@
 /**
  * @file
- * Solo
+ * Adds toggle functionality to a fixed search block.
  *
- * Filename:     solo-fixed-search-block.js
- * Website:      https://www.flashwebcenter.com
- * Developer:    Alaa Haddad https://www.alaahaddad.com.
+ * Filename: solo-fixed-search-block.js
+ * Website: https://www.flashwebcenter.com
+ * Developer: Alaa Haddad https://www.alaahaddad.com.
  */
-((Drupal, once) => {
+((Drupal, drupalSettings, once) => {
   'use strict';
 
-  const mainSideNav = document.querySelector('.primary-sidebar-menu .navigation-sidebar ul');
   const searchBlock = document.getElementById('fixed-search-block');
-  const openSearch = document.querySelector('.search-button-open');
-  const closeSearch = document.querySelector('.search-button-close');
+  const openSearch = document.querySelectorAll('.search-button-open>button');
+  const closeSearch = document.querySelectorAll('.search-button-close>button');
 
-  const setButtonAttributes = (element, expanded, hidden) => {
-    const button = element.querySelector('button');
-    button.setAttribute('aria-expanded', expanded);
-    button.setAttribute('aria-hidden', hidden);
-  };
-
-  const removeActiveClass = () => {
-    searchBlock.classList.remove('toggled');
-    setButtonAttributes(closeSearch, 'false', 'true');
-    setButtonAttributes(openSearch, 'false', 'true');
-  };
-
-  const closeSearchHandler = () => {
-    searchBlock.style.height = "0px";
-    searchBlock.addEventListener('transitionend', removeActiveClass, {
-      once: true
-    });
-  };
-
-  const openSearchHandler = () => {
-    if (mainSideNav) {
-      Drupal.solo.sideMenubarToggleNav(false);
+  // Function to add a click event listener to a specified element
+  const searchBlockCloseOpen = (selector, callback) => {
+    const element = document.querySelector(selector);
+    if (element) {
+      element.addEventListener('click', callback);
     }
-
-    searchBlock.classList.add('toggled');
-    setButtonAttributes(openSearch, 'true', 'false');
-    setButtonAttributes(closeSearch, 'true', 'false');
-
-    searchBlock.style.height = "auto";
-    let height = searchBlock.clientHeight + "px";
-    searchBlock.style.height = "0px";
-
-    setTimeout(() => {
-      searchBlock.style.height = height;
-    }, 0);
   };
 
+  // Function to toggle the sidebar menu and update the aria-expanded
+  // and aria-hidden attributes of the hamburger icons
+  const setAriaAttributes = (element, isOpen) => {
+    element.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    element.setAttribute('aria-hidden', isOpen ? 'false' : 'true');
+  };
+
+  const searchBlockToggle = (isOpen) => {
+    closeSearch?.forEach(cosBtn => setAriaAttributes(cosBtn, isOpen));
+    openSearch?.forEach(opnBtn => setAriaAttributes(opnBtn, isOpen));
+
+    if (isOpen) {
+      searchBlock.classList.add('toggled');
+      searchBlock.style.height = 'auto';
+
+      const height = searchBlock.clientHeight + 'px';
+      searchBlock.style.height = '0px';
+
+      setTimeout(() => {
+        searchBlock.style.height = height;
+      }, 0);
+      if (mainSideNav) {
+        Drupal.solo.sideMenubarToggleNav(false);
+      }
+    }
+    else {
+
+      searchBlock.style.height = '0px';
+      searchBlock.addEventListener('transitionend', (event) => {
+        if (event.propertyName === 'height') {
+          searchBlock.classList.remove('toggled');
+
+        }
+      }, { once: true});
+
+    }
+  };
+
+  Drupal.solo.searchBlockToggle = searchBlockToggle;
+
+  // Attach these behaviors to the Drupal system
   Drupal.behaviors.soloFixedSearchBlock = {
     attach: function(settings) {
-      closeSearch?.addEventListener('click', closeSearchHandler);
-      openSearch?.addEventListener('click', openSearchHandler);
+      // Close nav button found in page.html.twig in vertical menu region.
+      searchBlockCloseOpen('#search-button-close', () => searchBlockToggle(false));
 
-      //click any where to close search box.
+      // Open nav button found in page.html.twig in header region.
+      searchBlockCloseOpen('#search-button-open', () => searchBlockToggle(true));
+
+      // Click anywhere to close any submenu.
       document.addEventListener('click', (event) => {
-        if (!searchBlock.contains(event.target)) {
-          closeSearchHandler();
+        if (event.target == searchBlock) {
+          searchBlockToggle(false);
         }
       });
+
     }
   };
 
-})(Drupal, once);
-
+})(Drupal, drupalSettings, once);

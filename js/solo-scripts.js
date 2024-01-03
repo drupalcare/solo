@@ -6,7 +6,7 @@
  * Website:      https://www.flashwebcenter.com
  * Developer:    Alaa Haddad https://www.alaahaddad.com.
  */
-((Drupal, once) => {
+((Drupal, drupalSettings, once) => {
   'use strict';
 
   // Get current widht
@@ -77,4 +77,4 @@
     }
   };
 
-})(Drupal, once);
+})(Drupal, drupalSettings, once);

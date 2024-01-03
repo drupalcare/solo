@@ -43,7 +43,7 @@
       //click any where to close any submenu.
       document.addEventListener('click', (event) => {
         if (event.target == loginBlock) {
-          closeSearchHandler();
+          closeBlockHandler();
         }
       });
 

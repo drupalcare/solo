@@ -1,12 +1,13 @@
 /**
  * @file
- * Solo
+ * Contains utility functions for Solo module.
  *
- * Filename:     solo-utils.js
- * Website:      https://www.flashwebcenter.com
- * Developer:    Alaa Haddad https://www.alaahaddad.com.
+ * Filename: solo-utils.js
+ * Website: https://www.flashwebcenter.com
+ * Developer: Alaa Haddad https://www.alaahaddad.com.
  */
-((Drupal, once) => {
+
+((Drupal, drupalSettings, once) => {
 
   'use strict';
 
@@ -130,14 +131,17 @@
   }
   Drupal.solo.getMyBreakpoints = getMyBreakpoints;
 
+  /**
+   * Drupal behavior to add classes based on depth.
+   */
   Drupal.behaviors.soloMenuDepth = {
-    attach: (settings) => {
-      Array.from(document.querySelectorAll('.solo-inner ul'))
-        .forEach((element) => {
-          const depth = calculateDepth(element);
-          addClassAccordingToDepth(element, depth);
-        });
+    attach: (context, settings) => {
+      const menus = once('soloMenuDepth', '.solo-inner ul', context);
+      menus.forEach((element) => {
+        const depth = calculateDepth(element);
+        addClassAccordingToDepth(element, depth);
+      });
     }
   };
 
-})(Drupal, once);
+})(Drupal, drupalSettings, once);

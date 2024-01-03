@@ -46,7 +46,7 @@
    * @prop {Drupal~behaviorAttach} attach
    *   Attaches the close button behavior for messages.
    */
-  Drupal.behaviors.messages = {
+  Drupal.behaviors.soloMessages = {
     attach(context) {
       once('messages', '[data-drupal-selector="messages"]', context)
         .forEach(

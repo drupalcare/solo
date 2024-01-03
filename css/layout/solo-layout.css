@@ -39,7 +39,8 @@
 
 .solo-inner:not(.primary-menu-inner,
 .primary-sidebar-menu-inner,
-.system-messages-inner) {
+.system-messages-inner,
+.highlighted-inner) {
   padding: var(--solo-px16);
 }
 

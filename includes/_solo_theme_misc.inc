@@ -34,9 +34,25 @@ function _load_special_fonts(array &$attachments): void {
  * Helper function.
  */
 function _load_predefined_color_theme(array &$attachments): void {
-  $is_theme = theme_get_setting('predefined_current_theme') ?: '';
-  // $theme_path = 'solo/' . ($is_theme == 'none' ?
-  // 'solo-predefined-00052' : $is_theme);
+
+  $theme_category = theme_get_setting('theme_category');
+  if ($theme_category === 'none') {
+    // Set to empty or a placeholder value.
+    $is_theme = '';
+  }
+  else {
+    $is_theme_setting = theme_get_setting('predefined_current_theme');
+
+    // Ensure $is_theme_setting is not null before exploding.
+    if ($is_theme_setting === NULL) {
+      // Set a default value or handle the error.
+      $is_theme_setting = '';
+    }
+
+    $theme_parts = explode('|', $is_theme_setting);
+    $is_theme = count($theme_parts) > 1 ? $theme_parts[1] : $theme_parts[0];
+  }
+
   $theme_path = 'solo/' . $is_theme;
   $attachments['#attached']['library'][] = $theme_path;
 }

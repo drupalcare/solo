@@ -9,11 +9,18 @@
 
 }
 
+#page-wrapper .animate-solo-electric-surge,
+#header.animate-site-electric-surge a.site-name-link,
+#page-title.animate-title-electric-surge .page-title,
+#page-title.animate-title-electric-surge .page-title span {
+  background: linear-gradient(45deg, #f44336, #e91e63, #9c27b0, #673ab7, #3f51b5, #2196f3, #87ceeb, #00bcd4, #00ffff, #009688, #4caf50, #8bc34a, #8bc34a, #8bc34a, #8bc34a, #4caf50, #009688, #00ffff, #00bcd4, #87ceeb, #2196f3, #3f51b5, #673ab7, #9c27b0, #e91e63, #f44336);
+}
+
 #page-wrapper .animate-solo-aurora-wave,
 #header.animate-site-aurora-wave a.site-name-link,
 #page-title.animate-title-aurora-wave .page-title,
 #page-title.animate-title-aurora-wave .page-title span {
-  background: linear-gradient(45deg, #5f2879, #00418d, #00c2de, #fad717, #00ba71, #fa8901, #f43545, #ccc, #f43545, #fa8901, #00ba71, #fad717, #00c2de, #00418d, #5f2879);
+  background: linear-gradient(45deg, #5f2879, #5f2879, #4c3c83, #00418d, #00418d, #0075a5, #00c2de, #00c2de, #16d1c8, #fad717, #fad717, #95e569, #00ba71, #00ba71, #4daa36, #fa8901, #fa8901, #fc614a, #f43545, #f43545, #d93658, #ccc, #ccc, #d93658, #f43545, #f43545, #fc614a, #fa8901, #fa8901, #4daa36, #00ba71, #00ba71, #95e569, #fad717, #fad717, #16d1c8, #00c2de, #00c2de, #0075a5, #00418d, #00418d, #4c3c83, #5f2879, #5f2879);
 }
 
 #page-wrapper .animate-solo-dreamy-bloom,
@@ -28,13 +35,6 @@
 #page-title.animate-title-echo-pulse .page-title,
 #page-title.animate-title-echo-pulse .page-title span {
   background: linear-gradient(45deg, #d0e4f7, #73b1e7, #e2d40b, #539fe1, #87bcea, #539fe1, #e2d40b, #73b1e7, #d0e4f7);
-}
-
-#page-wrapper .animate-solo-electric-surge,
-#header.animate-site-electric-surge a.site-name-link,
-#page-title.animate-title-electric-surge .page-title,
-#page-title.animate-title-electric-surge .page-title span {
-  background: linear-gradient(45deg, #f44336, #e91e63, #9c27b0, #673ab7, #3f51b5, #2196f3, #87ceeb, #00bcd4, #00ffff, #009688, #4caf50, #8bc34a, #8bc34a, #8bc34a, #8bc34a, #4caf50, #009688, #00ffff, #00bcd4, #87ceeb, #2196f3, #3f51b5, #673ab7, #9c27b0, #e91e63, #f44336);
 }
 
 #page-wrapper .animate-solo-gravity-defy,
@@ -62,14 +62,14 @@
 #header.animate-site-moonlight-dance a.site-name-link,
 #page-title.animate-title-moonlight-dance .page-title,
 #page-title.animate-title-moonlight-dance .page-title span {
-  background: linear-gradient(45deg, #8db600, #27a64c, #008882, #0085a1, #0085a1, #008882, #27a64c, #8db600);
+  background: linear-gradient(45deg, #8db600, #6bc026, #27a64c, #009688, #0085a1, #0077b3, #0085a1, #009688, #27a64c, #6bc026, #8db600);
 }
 
 #page-wrapper .animate-solo-mystic-fade,
 #header.animate-site-mystic-fade a.site-name-link,
 #page-title.animate-title-mystic-fade .page-title,
 #page-title.animate-title-mystic-fade .page-title span {
-  background: linear-gradient(45deg, #ffb7a5, #e25822, #f6a600, #dcd300, #dcd300, #f6a600, #e25822, #ffb7a5);
+  background: linear-gradient(45deg, #ffb7a5, #e25822, #f6a600, #dcd300, #8c52ff, #34d2eb, #dcd300, #f6a600, #e25822, #ffb7a5);
 }
 
 #page-wrapper .animate-solo-phoenix-rise,
@@ -160,14 +160,14 @@
 #header.animate-site-sapphire-zoom a.site-name-link,
 #page-title.animate-title-sapphire-zoom .page-title,
 #page-title.animate-title-sapphire-zoom .page-title span {
-  background: linear-gradient(45deg, #aebcbf, #6e7774, #f7001c, #ccc, #444, #ccc, #f7001c, #6e7774, #aebcbf);
+  background: linear-gradient(45deg, #aebcbf, #6e7774, #f7001c, #0f52ba, #444, #3b4d57, #0f52ba, #f7001c, #6e7774, #aebcbf);
 }
 
 #page-wrapper .animate-solo-rhythmic-slide,
 #header.animate-site-rhythmic-slide a.site-name-link,
 #page-title.animate-title-rhythmic-slide .page-title,
 #page-title.animate-title-rhythmic-slide .page-title span {
-  background: linear-gradient(45deg, #aebcbf, #6e7774, #e50095, #ccc, #444, #ccc, #e50095, #6e7774, #aebcbf);
+  background: linear-gradient(45deg, #6a1b9a, #ab47bc, #ce93d8, #e1bee7, #f8bbd0, #f48fb1, #f06292, #ec407a, #ff80ab, #ff4081, #f50057, #c51162, #c51162, #f50057, #ff4081, #ff80ab, #ec407a, #f06292, #f48fb1, #f8bbd0, #e1bee7, #ce93d8, #ab47bc, #6a1b9a);
 }
 
 #page-wrapper .animate-solo-zen-rotation,

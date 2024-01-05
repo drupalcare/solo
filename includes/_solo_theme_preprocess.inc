@@ -344,6 +344,7 @@ function _get_theme_variables() {
       'count_main',
       'count_bottom',
       'count_footer',
+      'theme_category',
     ],
     'social' => [
       'sm_icon_size',

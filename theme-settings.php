@@ -10,12 +10,14 @@
  * Author:       Alaa Haddad http://www.alaahaddad.com.
  */
 
+use Drupal\Component\Utility\UrlHelper;
 use Drupal\Core\Form\FormStateInterface;
 
 /**
  * Implements hook_form_system_theme_settings_alter().
  */
 function solo_form_system_theme_settings_alter(&$form, FormStateInterface $form_state) {
+  $form['#validate'][] = 'solo_theme_settings_validate';
   $form['logo']['#weight'] = 97;
   $form['favicon']['#open'] = FALSE;
   $form['favicon']['#weight'] = 98;
@@ -53,4 +55,23 @@ function solo_form_system_theme_settings_alter(&$form, FormStateInterface $form_
   require_once __DIR__ . '/includes/_theme_settings_layout_footer_menu.inc';
   require_once __DIR__ . '/includes/_theme_settings_sm_icons.inc';
   require_once __DIR__ . '/includes/_theme_settings_credit_copyright.inc';
+}
+
+/**
+ * Validation handler for the Solo system_theme_settings form.
+ */
+function solo_theme_settings_validate($form, FormStateInterface $form_state) {
+  $url = $form_state->getValue('footer_link');
+  $text = $form_state->getValue('footer_link_text');
+
+  if ($url !== '' && !UrlHelper::isValid($url, TRUE)) {
+    $form_state->setErrorByName('footer_link', t('The URL %url is not valid.', [
+      '%url' => $url,
+    ]));
+  }
+
+  // Validate that text is provided if URL is provided.
+  if (!empty($url) && empty($text)) {
+    $form_state->setErrorByName('footer_link_text', t('You must enter link text if you provide a URL.'));
+  }
 }

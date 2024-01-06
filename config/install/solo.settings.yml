@@ -25,6 +25,9 @@ footer_copyright: 'Copyright © %year% Company Name - All rights reserved'
 sm_show_icons: 1
 sm_icon_size: 'sm-icons-small'
 footer_credit_link: 1
+footer_link: 'https://www.alaahaddad.com/'
+footer_link_label: 'Developed & Designed by'
+footer_link_text: 'Alaa Haddad'
 count_main: 2
 site_global_width: sw-1600
 site_global_breakpoints: sb-992

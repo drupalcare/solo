@@ -1,30 +1,23 @@
-  {% if footer_copyright or footer_credit_link %}
+  {% if footer_copyright or footer_link %}
     <!-- Start: Copyright -->
     <div id="copyright" class="solo-outer lone copyright {{ classes_credit_copyright }}"{{ attributes_credit_copyright }}>
       <div id="copyright-inner" class="solo-inner solo-col solo-col-2 copyright-inner">
-        {% if footer_copyright %}
-          <!-- Start: Copyright -->
-
-            <p class="copyright-first">
-              {% set current_date = "now"|date("Y") %}
-              {{ footer_copyright|replace({"%year%": current_date}) }}
-            </p>
-
-          <!-- End: Copyright -->
-        {% endif %}
-        {% if footer_credit_link %}
+      {% if footer_copyright %}
+      <!-- Start: Copyright -->
+      <p class="copyright-first">
+        {% set current_date = "now"|date("Y") %}
+        {{ footer_copyright|replace({"%year%": current_date}) }}
+      </p>
+      <!-- End: Copyright -->
+      {% endif %}
+      {% if footer_link %}
           <!-- Start: Credit Link -->
-
-            <p class="copyright-second">Developed &#38; Designed by
-              <a href="https://www.alaahaddad.com" title="Alaa Haddad" target="_blank">
-                Alaa Haddad
-              </a>
-            </p>
-
-          <!-- End: Credit Link -->
-        {% endif %}
+      <p class="copyright-second">
+        {{ footer_link_label }} <a href="{{ footer_link }}" title="{{ footer_link_text }}" target="_blank">{{ footer_link_text }}</a>
+      </p>
+      <!-- End: Credit Link -->
+      {% endif %}
       </div>
     </div>
     <!-- End: Copyright -->
   {% endif %}
-

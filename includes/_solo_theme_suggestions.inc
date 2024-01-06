@@ -28,7 +28,7 @@ function solo_theme_suggestions_form_alter(array &$suggestions, array $variables
  */
 function solo_theme_suggestions_block_alter(array &$suggestions, array $variables): void {
   if (isset($variables['elements']['content']['#block_content'])) {
-    array_splice($suggestions, 1, 0, 'block__bundle__' . $variables['elements']['content']['#block_content']->bundle());
+    array_splice($suggestions, 1, 0, 'block__type__' . $variables['elements']['content']['#block_content']->bundle());
   }
 }
 

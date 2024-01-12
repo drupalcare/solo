@@ -23,9 +23,11 @@
   width: 100%;
 }
 
-.lone>.solo-col:not(.header-inner,
-.primary-menu-inner,
-.fixed-search-block-inner) {
+.page-wrapper>* {
+  z-index: 0;
+}
+
+.lone>.solo-col:not(.header-inner, .primary-menu-inner, .fixed-search-block-inner) {
   grid-auto-flow: row;
 }
 
@@ -37,10 +39,7 @@
   padding: 0 !important;
 }
 
-.solo-inner:not(.primary-menu-inner,
-.primary-sidebar-menu-inner,
-.system-messages-inner,
-.highlighted-inner) {
+.solo-inner:not(.primary-menu-inner, .primary-sidebar-menu-inner, .system-messages-inner, .highlighted-inner) {
   padding: var(--solo-px16);
 }
 

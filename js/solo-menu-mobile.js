@@ -28,7 +28,10 @@
             Drupal.solo.revertIcons(navTagId);
         });
         Drupal.solo.slideDown(navigationMenubarClass);
-
+        const menuElement = document.getElementById(navTagId);
+        if (menuElement) {
+            menuElement.setAttribute('aria-hidden', 'false');
+        }
     };
 
     const closeMobileMenu = navTagId => {
@@ -41,14 +44,18 @@
         });
 
         Drupal.solo.slideUp(navigationMenubarClass, 400);
-
+        const menuElement = document.getElementById(navTagId);
+        if (menuElement) {
+            menuElement.setAttribute('aria-hidden', 'true');
+        }
     };
 
     const getMobileNavType = (hamburgerIcon) => {
         const hamburgerIconChild = hamburgerIcon.children[0];
         const navTagId = hamburgerIcon.closest('nav').id;
-        // page tempalte
-        return [hamburgerIconChild, navTagId];
+
+        const menuElement = document.getElementById(navTagId);
+        return [hamburgerIconChild, navTagId, menuElement];
     };
 
     const hamburgerIconIsClicked = (hamburgerIcon) => {
@@ -56,12 +63,10 @@
 
         if (!hamburgerIcon.classList.contains('toggled')) {
             hamburgerIconChild.setAttribute('aria-expanded', 'true');
-            hamburgerIconChild.setAttribute('aria-hidden', 'false');
             hamburgerIcon.classList.add('toggled');
             openMobileMenu(navTagId);
         } else {
             hamburgerIconChild.setAttribute('aria-expanded', 'false');
-            hamburgerIconChild.setAttribute('aria-hidden', 'true');
             hamburgerIcon.classList.remove('toggled');
             closeMobileMenu(navTagId);
         }

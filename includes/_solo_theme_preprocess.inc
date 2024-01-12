@@ -219,7 +219,7 @@ function _get_region_attributes() {
     '__r_lk' => 'Text Link',
     '__r_lk_h' => 'Text Link Hover',
     '__r_br' => 'Border Color',
-    '__r_bg_in' => 'Background Input Form',
+    '__r_bg_fr' => 'Background Input Form',
     '__r_tx_lk' => 'Text Menu Link',
     '__r_tx_lk_h' => 'Text Menu Link Hover',
     '__r_bg_lk' => 'Background Menu Link',

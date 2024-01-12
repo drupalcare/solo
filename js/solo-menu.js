@@ -96,8 +96,8 @@
       const closeMenuHelper = (rotated, dropdownTogglerButton, subMenu) => {
         rotated.style.removeProperty('transform');
         dropdownTogglerButton.setAttribute('aria-expanded', 'false');
-        dropdownTogglerButton.setAttribute('aria-hidden', 'true');
         dropdownTogglerButton.setAttribute('tabindex', '-1');
+        subMenu.setAttribute('aria-hidden', 'true');
         Drupal.solo.slideUp(subMenu, 400);
       }
       const openMenuHelper = (dropdownTogglerButton, subMenu) => {
@@ -113,8 +113,9 @@
         }
         // Drupal.solo.slideDown(subMenu);
         dropdownTogglerButton.setAttribute('aria-expanded', 'true');
-        dropdownTogglerButton.setAttribute('aria-hidden', 'false');
         dropdownTogglerButton.setAttribute('tabindex', '0');
+        subMenu.setAttribute('aria-hidden', 'false');
+
       }
       // This function is used in two times. 1- When clicked any where closer to
       // menubar it will close any submenus. 2- When resizing the screen, it will

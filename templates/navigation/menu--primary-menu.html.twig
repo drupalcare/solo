@@ -32,7 +32,7 @@
 <div class="solo-clear solo-menu navigation-responsive {{ click_hover }} navigation-primary-responsive">
 
   <div class="mobile-nav hamburger-icon solo-block">
-    <button class="solo-button-menu mobile-menubar-toggler-button" data-drupal-selector="mobile-menubar-toggler-button" aria-label='Close Or Open' aria-expanded="false" aria-expanded="true">
+    <button class="solo-button-menu mobile-menubar-toggler-button" data-drupal-selector="mobile-menubar-toggler-button" aria-label='Close Or Open' aria-expanded="false">
       <span>
         {{ svg_bars|raw }}
       </span>
@@ -76,6 +76,7 @@ We call a macro which calls itself to render the full tree.
   'role': 'menu',
   'aria-level': menu_level,
   'tabindex': '-1',
+  'aria-hidden': 'true',
 }) %}
 
 {% if items %}
@@ -113,7 +114,6 @@ We call a macro which calls itself to render the full tree.
         'aria-controls': aria_id,
         'aria-haspopup': 'true',
         'aria-expanded': 'false',
-        'aria-hidden': 'true',
         'tabindex': '-1',
       }) %}
 
@@ -152,9 +152,7 @@ We call a macro which calls itself to render the full tree.
           link_title,
           item.url,
           item.attributes.removeClass(item_classes).addClass(link_classes),
-          item.attributes.setAttribute('role', 'menuitem').setAttribute('tabindex', '-1')
-          )
-          }}
+          item.attributes.setAttribute('role', 'menuitem').setAttribute('tabindex', '-1'))}}
       {% endif %}{# End for the if item.is_expanded #}
 
       {% if item.below %}

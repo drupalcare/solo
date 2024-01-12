@@ -9,6 +9,7 @@
 ((Drupal, drupalSettings, once) => {
   'use strict';
 
+  const mainSideNav = document.getElementById('primary-sidebar-menu');
   const searchBlock = document.getElementById('fixed-search-block');
   const openSearch = document.querySelectorAll('.search-button-open>button');
   const closeSearch = document.querySelectorAll('.search-button-close>button');
@@ -21,16 +22,16 @@
     }
   };
 
-  // Function to toggle the sidebar menu and update the aria-expanded
-  // and aria-hidden attributes of the hamburger icons
-  const setAriaAttributes = (element, isOpen) => {
-    element.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
-    element.setAttribute('aria-hidden', isOpen ? 'false' : 'true');
+  // Function to toggle the aria-expanded attribute for open/close buttons
+  // and aria-hidden for search block
+  const setAriaAttributes = (isOpen) => {
+    openSearch.forEach(btn => btn.setAttribute('aria-expanded', isOpen ? 'true' : 'false'));
+    closeSearch.forEach(btn => btn.setAttribute('aria-expanded', isOpen ? 'true' : 'false'));
+    searchBlock.setAttribute('aria-hidden', isOpen ? 'false' : 'true');
   };
 
   const searchBlockToggle = (isOpen) => {
-    closeSearch?.forEach(cosBtn => setAriaAttributes(cosBtn, isOpen));
-    openSearch?.forEach(opnBtn => setAriaAttributes(opnBtn, isOpen));
+    setAriaAttributes(isOpen);
 
     if (isOpen) {
       searchBlock.classList.add('toggled');
@@ -41,23 +42,22 @@
 
       setTimeout(() => {
         searchBlock.style.height = height;
-      }, 0);
+      }, 10); // Added a small delay
+
       if (mainSideNav) {
         Drupal.solo.sideMenubarToggleNav(false);
       }
     }
     else {
-
       searchBlock.style.height = '0px';
       searchBlock.addEventListener('transitionend', (event) => {
-        if (event.propertyName === 'height') {
+        if (event.propertyName === 'height' && event.target === searchBlock) {
           searchBlock.classList.remove('toggled');
-
         }
       }, { once: true});
-
     }
   };
+
 
   Drupal.solo.searchBlockToggle = searchBlockToggle;
 
@@ -70,14 +70,16 @@
       // Open nav button found in page.html.twig in header region.
       searchBlockCloseOpen('#search-button-open', () => searchBlockToggle(true));
 
-      // Click anywhere to close any submenu.
+      // Click anywhere outside the search block to close it.
       document.addEventListener('click', (event) => {
-        if (event.target == searchBlock) {
+        // Check if the click is outside the search block
+        if (!searchBlock.contains(event.target)) {
           searchBlockToggle(false);
         }
       });
-
     }
   };
 
+
 })(Drupal, drupalSettings, once);
+

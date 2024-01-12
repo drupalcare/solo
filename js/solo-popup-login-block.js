@@ -10,44 +10,43 @@
   'use strict';
 
   const loginBlock = document.getElementById('popup-login-block');
-  const loginBlockInner = document.querySelector('.popup-login-block-inner');
-  const openBlock = document.querySelector('.login-button-open');
-  const closeBlock = document.querySelector('.login-button-close');
+  const openBlock = document.querySelector('.login-button-open>button');
+  const closeBlock = document.querySelector('.login-button-close>button');
 
-  const setButtonAttributes = (element, expanded, hidden) => {
-    const button = element.querySelector('button');
-    button.setAttribute('aria-expanded', expanded);
-    button.setAttribute('aria-hidden', hidden);
+  const toggleAriaAttributes = (isOpen) => {
+    // Set aria-expanded on the open and close buttons
+    openBlock.setAttribute('aria-expanded', isOpen.toString());
+    closeBlock.setAttribute('aria-expanded', isOpen.toString());
+
+    // Set aria-hidden on the login block
+    loginBlock.setAttribute('aria-hidden', (!isOpen).toString());
   }
 
   const closeBlockHandler = () => {
     loginBlock.style.display = 'none';
     loginBlock.classList.remove('toggled');
-    setButtonAttributes(closeBlock, 'false', 'true');
-    setButtonAttributes(openBlock, 'false', 'true');
+    toggleAriaAttributes(false);
   }
 
   const openBlockHandler = () => {
     loginBlock.style.display = "block";
     loginBlock.classList.add('toggled');
-    setButtonAttributes(openBlock, 'true', 'false');
-    setButtonAttributes(closeBlock, 'true', 'false');
+    toggleAriaAttributes(true);
   }
 
   Drupal.behaviors.soloFixedLoginBlock = {
     attach: function (settings) {
-
       closeBlock?.addEventListener('click', closeBlockHandler);
       openBlock?.addEventListener('click', openBlockHandler);
 
-      //click any where to close any submenu.
+      // Click anywhere to close the login block.
       document.addEventListener('click', (event) => {
-        if (event.target == loginBlock) {
+        if (event.target === loginBlock) {
           closeBlockHandler();
         }
       });
-
     }
   };
 
 })(Drupal, once);
+

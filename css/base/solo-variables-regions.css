@@ -30,7 +30,7 @@
 .page-wrapper .solo-select,
 .page-wrapper .solo-radio,
 .page-wrapper .solo-check,
-.page-wrapper .solo-input,
+.page-wrapper input:not(input.button),
 .page-wrapper .solo-textarea {
   background-color: var(--r-bg-fr, var(--r-bg));
   border-color: var(--r-br, var(--r-br-b));

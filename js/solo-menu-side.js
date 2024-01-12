@@ -14,6 +14,7 @@
   const verticalNav = document.getElementById('primary-sidebar-menu');
   let cosBtns = document.querySelectorAll('.sidebar-button-close>button');
   let opnBtns = document.querySelectorAll('.sidebar-button-open>button');
+
   // Function to add a click event listener to a specified element
   const sideMenubarCloseOpen = (selector, callback) => {
     const element = document.querySelector(selector);
@@ -22,21 +23,28 @@
     }
   };
 
-  // Function to toggle the sidebar menu and update the aria-expanded
-  // and aria-hidden attributes of the hamburger icons
-  const setAriaAttributes = (element, isOpen) => {
+  // Function to toggle aria-expanded on the hamburger icons
+  const setAriaExpanded = (element, isOpen) => {
     element.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
-    element.setAttribute('aria-hidden', isOpen ? 'false' : 'true');
+  };
+
+  // Function to toggle aria-hidden on the vertical navigation
+  const setAriaHidden = (element, isHidden) => {
+    element.setAttribute('aria-hidden', isHidden ? 'true' : 'false');
   };
 
   const sideMenubarToggleNav = (isOpen) => {
-    cosBtns?.forEach(cosBtn => setAriaAttributes(cosBtn, isOpen));
-    opnBtns?.forEach(opnBtn => setAriaAttributes(opnBtn, isOpen));
+    // Set aria-expanded for buttons
+    cosBtns?.forEach(cosBtn => setAriaExpanded(cosBtn, isOpen));
+    opnBtns?.forEach(opnBtn => setAriaExpanded(opnBtn, isOpen));
 
+    // Set aria-hidden for vertical navigation
+    setAriaHidden(verticalNav, !isOpen);
+
+    // Toggle the class for the vertical navigation
     if (isOpen) {
       verticalNav.classList.add('toggled');
-    }
-    else {
+    } else {
       verticalNav.classList.remove('toggled');
       const subMenus = document.querySelectorAll('.navigation__sidebar li ul.sub__menu');
       subMenus?.forEach(Drupal.solo.hideSubMenus);
@@ -48,15 +56,15 @@
   // Attach these behaviors to the Drupal system
   Drupal.behaviors.soloPrimarySideMenu = {
     attach: function(settings) {
-      // Close nav button found in page.html.twig in vertical menu region.
+      // Close nav button event
       sideMenubarCloseOpen('#sidebar-button-close', () => sideMenubarToggleNav(false));
 
-      // Open nav button found in page.html.twig in header region.
+      // Open nav button event
       sideMenubarCloseOpen('#sidebar-button-open', () => sideMenubarToggleNav(true));
 
-      // Click anywhere to close any submenu.
+      // Click event to close any submenu
       document.addEventListener('click', (event) => {
-        if (event.target == verticalNav) {
+        if (event.target === verticalNav) {
           sideMenubarToggleNav(false);
         }
       });
@@ -65,3 +73,4 @@
   };
 
 })(Drupal, once);
+

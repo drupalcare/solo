@@ -242,6 +242,12 @@
     flex-direction: column;
   }
 
+  .page-wrapper .solo-inner .navigation__megamenu ul li.nav__menu-item>button,
+  .page-wrapper .solo-inner .navigation__megamenu ul li.nav__menu-item>a {
+    --r-bg-lk: transparent;
+    --r-bg-lk-h: transparent;
+  }
+
   .solo-inner .navigation__megamenu>li.nav__menu-item>a,
   .solo-inner .navigation__megamenu>li.nav__menu-item>button {
     padding: var(--solo-px12);

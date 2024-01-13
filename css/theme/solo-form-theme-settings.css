@@ -1,3 +1,155 @@
+#edit-settings-blueprint div {
+  width: 100% !important;
+}
+
+.blueprint {
+  background-color: #b0e0e6 !important;
+  padding: 10px !important;
+  display: grid !important;
+  gap: 10px !important;
+  grid-auto-flow: row;
+  grid-template-columns: repeat(1, 1fr) !important;
+  width: 100% !important;
+  color: #444444 !important;
+  justify-content: center;
+  align-items: center;
+}
+
+.blueprint * {
+  color: #444444 !important;
+  justify-content: center;
+  align-items: center;
+  display: grid;
+  grid-auto-flow: row;
+  height: 100%;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+.blueprint .highlighted {
+  background-color: #faf5ef !important;
+}
+
+.blueprint .primary-sidebar-menu {
+  background-color: #ecfbfc !important;
+}
+
+.blueprint .fixed-search-block {
+  background-color: #fff5ee !important;
+}
+
+.blueprint .popup-login-block {
+  background-color: #f1f9ec !important;
+}
+
+.blueprint .primary-menu {
+  background-color: #ecfbfc !important;
+}
+
+.blueprint .header {
+  background-color: #f8f8ff !important;
+}
+
+.blueprint .welcome-text {
+  background-color: #f5f5f5 !important;
+}
+
+.blueprint .top-regions {
+  background-color: #fdfcfa !important;
+  display: grid !important;
+  grid-template-columns: repeat(3, 1fr) !important;
+}
+
+.blueprint .top-regions .top-one {
+  background-color: #fffafa !important;
+}
+
+.blueprint .top-regions .top-two {
+  background-color: #ecf3f9 !important;
+}
+
+.blueprint .top-regions .top-three {
+  background-color: #fffaf0 !important;
+}
+
+.blueprint .system-messages {
+  background-color: #f8fbf8 !important;
+}
+
+.blueprint .page-title-solo {
+  background-color: #f6f1f4 !important;
+}
+
+.blueprint .breadcrumb {
+  background-color: #ebf5f0 !important;
+}
+
+.blueprint .main-regions {
+  background-color: #f2f3f4 !important;
+  display: grid !important;
+  grid-template-columns: 1fr 2fr 1fr !important;
+}
+
+.blueprint .main-regions .sidebar-first {
+  background-color: #f6f4f1 !important;
+}
+
+.blueprint .main-regions .content {
+  background-color: #ebf6f7 !important;
+}
+
+.blueprint .main-regions .sidebar-second {
+  background-color: #f8f4ff !important;
+}
+
+.blueprint .bottom-regions {
+  background-color: #fefffc !important;
+  display: grid !important;
+  grid-template-columns: repeat(4, 1fr) !important;
+}
+
+.blueprint .bottom-regions .bottom-one {
+  background-color: #f8f8e8 !important;
+}
+
+.blueprint .bottom-regions .bottom-two {
+  background-color: #f7f5f6 !important;
+}
+
+.blueprint .bottom-regions .bottom-three {
+  background-color: #f2f7fd !important;
+}
+
+.blueprint .bottom-regions .bottom-four {
+  background-color: #fdf9ef !important;
+}
+
+.blueprint .footer-regions {
+  background-color: #fcfff9 !important;
+  display: grid !important;
+  grid-template-columns: repeat(3, 1fr) !important;
+}
+
+.blueprint .footer-regions .footer-one {
+  background-color: #eef1ea !important;
+}
+
+.blueprint .footer-regions .footer-two {
+  background-color: #efece1 !important;
+}
+
+.blueprint .footer-regions .footer-three {
+  background-color: #edf2f8 !important;
+}
+
+.blueprint .footer-menu {
+  background-color: #f4f5f0 !important;
+}
+
+.blueprint .copyright {
+  background-color: #edf1fe !important;
+}
+
 form.system-theme-settings {
   display: grid;
   max-width: 1200px;

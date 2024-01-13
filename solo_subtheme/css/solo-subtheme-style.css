@@ -1,19 +1,70 @@
 /* Add your css code here */
 
-/*#page-wrapper {
-  --r-bg:;
-  --r-tx:;
-  --r-h1:;
-  --r-lk:;
-  --r-lk-h:;
-  --r-br:;
-  --r-bg-fr:;
-  --r-tx-lk:;
-  --r-tx-lk-h:;
-  --r-bg-lk:;
-  --r-bg-lk-h:;
-  --r-tx-bt:;
-  --r-tx-bt-h:;
-  --r-bg-bt:;
-  --r-bg-bt-h:;
-}*/
+#page-wrapper {
+/* Background color  */
+  --r-bg: #fefffc;
+/* Text color */
+  --r-tx: #4c5866;
+/* h1, h2, h3 color */
+  --r-h1: #2a3439;
+/* Link text color */
+  --r-lk: #8a3324;
+/* Link text color hover */
+  --r-lk-h: #79443b;
+/* Border color */
+  --r-br: #f4f5f0;
+/* input form background */
+  --r-bg-fr: #f8f4ff;
+/* Menu link text color */
+  --r-tx-lk: #2c3e4c;
+/* Menu link text color hover */
+  --r-tx-lk-h: #1520a6;
+/* Menu link background color */
+  --r-bg-lk:#F2F7FD ;
+/* Menu link background color hover */
+  --r-bg-lk-h: #f8f8e8;
+/* Button text color */
+  --r-tx-bt: #354a21;
+/* Button text color hover */
+  --r-tx-bt-h: #597d35;
+/* Button background color */
+  --r-bg-bt: #edf1fe;
+/* Button background color hover */
+  --r-bg-bt-h: #efece1;
+}
+
+/*#page-wrapper {}
+#primary-sidebar-menu {}
+#fixed-search-block {}
+#popup-login-block {}
+#header {}
+#primary-menu {}
+#welcome-text {}
+
+#top-container {}
+#top-container-first {}
+#top-container-second {}
+#top-container-third {}
+
+#system-messages {}
+#breadcrumb {}
+#page-title {}
+
+#main-container {}
+#sidebar-box-first {}
+#sidebar-box-main {}
+#sidebar-box-second {}
+
+#bottom-container {}
+#bottom-container-first {}
+#bottom-container-second {}
+#bottom-container-third {}
+#bottom-container-fourth {}
+
+#footer-container {}
+#footer-container-first {}
+#footer-container-second {}
+#footer-container-third {}
+
+#footer-menu {}
+#copyright {}*/

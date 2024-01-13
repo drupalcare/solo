@@ -619,10 +619,11 @@ function _count_regions() {
 
   \Drupal::messenger()->addMessage(t("<p class='settings-message'>
     <ul class='settings-message'>
-    <li><strong><a href='/admin/structure/block'>Regions</a> can be categorized as follows: <span class='error'>empty</span>, Non-Empty with all blocks <span class='info'>disabled</span>, and Non-Empty with at least one block <span class='status'>enabled</span></strong></li>
-    <li><strong>Each region has unique settings and if the region is <span class='error'>empty</span> then you will not see it on this page.</strong></li>
-    <li><strong>The Top Container has <span class='status'>@top</span> enabled region(s), the Main Container has <span class='status'>@main</span> enabled, the Bottom Container has <span class='status'>@bottom</span> enabled, the Footer Container has <span class='status'>@footer</span> enabled</strong></li>
-    </ul>",
+        <li>In the <a href='/admin/structure/block'>Regions</a> section, regions are classified into three types: <span class='status'>Enabled</span>, <span class='info'>Disabled</span>, and <span class='error'>Empty</span>. An 'Enabled' region contains at least one active block. A 'Disabled' region has blocks, but all are inactive. An 'Empty' region does not contain any blocks.</li>
+        <li>Every region possesses distinct settings. Regions marked as <span class='error'>empty</span> won't be displayed on this page.</li>
+        <li>Region status overview: Top Container - <span class='status'>@top</span> enabled region(s), Main Container - <span class='status'>@main</span> enabled, Bottom Container - <span class='status'>@bottom</span> enabled, Footer Container - <span class='status'>@footer</span> enabled.</li>
+    </ul>
+</p>",
     [
       '@top' => $counts['top'],
       '@main' => $counts['main'],

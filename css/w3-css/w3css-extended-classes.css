@@ -1,3 +1,86 @@
+/* Default */
+.w3-hover-over:hover,
+.w3-button:hover {
+  color: #000 !important;
+  background-color: #ccc !important;
+}
+
+.w3-transparent,
+.w3-hover-none:hover {
+  background-color: transparent !important;
+}
+
+.w3-hover-none:hover {
+  box-shadow: none !important;
+}
+
+/* Background Colors added */
+.w3-pale-red,
+.w3-hover-pale-red:hover {
+  color: #000 !important;
+  background-color: #ffdddd !important;
+}
+
+.w3-pale-green,
+.w3-hover-pale-green:hover {
+  color: #000 !important;
+  background-color: #ddffdd !important;
+}
+
+.w3-pale-yellow,
+.w3-hover-pale-yellow:hover {
+  color: #000 !important;
+  background-color: #ffffcc !important;
+}
+
+.w3-pale-blue,
+.w3-hover-pale-blue:hover {
+  color: #000 !important;
+  background-color: #ddffff !important;
+}
+
+/* Text color added */
+.w3-text-pale-red,
+.w3-hover-text-pale-red:hover {
+  color: #ffe7e7 !important;
+}
+
+.w3-text-pale-green,
+.w3-hover-text-pale-green:hover {
+  color: #e7ffe7 !important;
+}
+
+.w3-text-pale-yellow,
+.w3-hover-text-pale-yellow:hover {
+  color: #ffffcc !important;
+}
+
+.w3-text-pale-blue,
+.w3-hover-text-pale-blue:hover {
+  color: #e7ffff !important;
+}
+
+/* border colors added */
+.w3-border-pale-red,
+.w3-hover-border-pale-red:hover {
+  border-color: #ffe7e7 !important;
+}
+
+.w3-border-pale-green,
+.w3-hover-border-pale-green:hover {
+  border-color: #e7ffe7 !important;
+}
+
+.w3-border-pale-yellow,
+.w3-hover-border-pale-yellow:hover {
+  border-color: #ffffcc !important;
+}
+
+.w3-border-pale-blue,
+.w3-hover-border-pale-blue:hover {
+  border-color: #e7ffff !important;
+}
+
 /* Link Text Color Classes */
 .w3-link-red a {
   color: #f44336 !important;
@@ -249,8 +332,6 @@
 }
 
 /* Link Color Classes Hover */
-
-/* Link Color Classes Hover */
 .w3-button-red button,
 .w3-link-hover-red a:hover,
 .w3-button-hover-red button:hover {
@@ -470,27 +551,6 @@
 .w3-button-hover-pale-blue button:hover {
   color: #000 !important;
   background-color: #e7ffff !important;
-}
-
-/* Four missing text and hover classes */
-.w3-text-pale-red,
-.w3-hover-text-pale-red:hover {
-  color: #ffe7e7 !important;
-}
-
-.w3-text-pale-green,
-.w3-hover-text-pale-green:hover {
-  color: #e7ffe7 !important;
-}
-
-.w3-text-pale-yellow,
-.w3-hover-text-pale-yellow:hover {
-  color: #ffffcc !important;
-}
-
-.w3-text-pale-blue,
-.w3-hover-text-pale-blue:hover {
-  color: #e7ffff !important;
 }
 
 /* Round Hover Classes */

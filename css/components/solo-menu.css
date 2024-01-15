@@ -196,20 +196,29 @@
 }
 
 /* Right left mens */
-.solo-side-menu {
+.solo-side-menu,
+.solo-footer-menu {
   display: flex;
   flex-wrap: wrap;
   list-style: none;
   padding: 0;
+  justify-content: left;
 }
 
-.solo-side-menu li a {
+.solo-footer-menu {
+  justify-content: center;
+}
+
+.solo-side-menu li a,
+.solo-footer-menu li a {
   margin: 0 var(--solo-px4);
   padding: var(--solo-px12);
 }
 
 .solo-side-menu li a.is-active,
-.solo-side-menu li.active-trail {
+.solo-side-menu li.active-trail,
+.solo-footer-menu li a.is-active,
+.solo-footer-menu li.active-trail {
   font-weight: bold;
 }
 

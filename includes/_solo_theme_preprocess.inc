@@ -630,12 +630,26 @@ function _process_system_menu_block(&$variables, $block) {
  * Helper function.
  */
 function _process_system_branding_block(&$variables): void {
+  // Ensure this function only processes system branding blocks.
   if ($variables['base_plugin_id'] !== 'system_branding_block') {
     return;
   }
 
-  $variables['solo_path'] = &$variables['solo_path'];
-  $variables['logo_default'] = \Drupal::config('solo.settings')->get('logo.use_default');
+  // Get the machine name of the current default theme.
+  $default_theme = \Drupal::config('system.theme')->get('default');
+  // Get the machine name of the active theme.
+  $active_theme_name = \Drupal::theme()->getActiveTheme()->getName();
+  // Get the 'logo.use_default' configuration from the 'solo' theme.
+  $logo_default = \Drupal::config('solo.settings')->get('logo.use_default');
+
+  // Check if both active and default themes are 'solo' and 'logo.use_default' is 1.
+  if ($default_theme === 'solo' && $active_theme_name === 'solo' && $logo_default == 1) {
+    $variables['logo_default'] = 1;
+  }
+  else {
+    // Initialize $logo_default to 0.
+    $variables['logo_default'] = 0;
+  }
 }
 
 /**

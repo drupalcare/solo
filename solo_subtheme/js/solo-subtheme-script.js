@@ -3,12 +3,14 @@
  * This file is to add any custom js for the Solo Sub-theme.
  */
 
-(function ($) {
 
+((Drupal, drupalSettings, once) => {
   'use strict';
 
-  Drupal.behaviors.soloSubthemeBehavior = {
-      // Perform jQuery as normal in here.
+  Drupal.behaviors.soloSubTheme = {
+    attach: (context, settings) => {
+      // your code here.
+    }
   };
 
-})(jQuery);
+})(Drupal, drupalSettings, once);

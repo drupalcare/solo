@@ -642,7 +642,7 @@ function _process_system_branding_block(&$variables): void {
   // Get the 'logo.use_default' configuration from the 'solo' theme.
   $logo_default = \Drupal::config('solo.settings')->get('logo.use_default');
 
-  // Check if both active and default themes are 'solo' and 'logo.use_default' is 1.
+  // If both active and default themes are 'solo' and 'logo.use_default' is 1.
   if ($default_theme === 'solo' && $active_theme_name === 'solo' && $logo_default == 1) {
     $variables['logo_default'] = 1;
   }

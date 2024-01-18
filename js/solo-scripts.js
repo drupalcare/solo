@@ -62,12 +62,12 @@
         element.removeAttribute('open');
       });
 
-      // Disable top margin if breadcrumb exist.
+      // Select all <img> and <picture> elements inside an <a> tag, excluding those with a specific class
+      let clickableElements = document.querySelectorAll('a > img:not(.field--name-user-picture img), a > picture:not(.field--name-user-picture img)');
 
-      let clickableImages = document.querySelectorAll('a > img:not(.field--name-user-picture img)');
-
-      clickableImages.forEach(function(clickableImage) {
-        clickableImage.parentElement.classList.add('img--is-clickable');
+      // Add a class to the parent <a> tag of each selected element
+      clickableElements.forEach(function(clickableElement) {
+        clickableElement.parentElement.classList.add('img--is-clickable');
       });
 
       mediaSize();

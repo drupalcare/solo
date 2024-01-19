@@ -80,13 +80,13 @@
   }
 
   .site-name {
-    font-size: var(--solo-px26) !important;
-    line-height: calc(2 * var(--solo-px15)) !important;
+    font-size: var(--solo-px26);
+    line-height: calc(2 * var(--solo-px15));
   }
 
   .site-slogan {
-    font-size: var(--solo-px20) !important;
-    line-height: var(--solo-px24) !important;
+    font-size: var(--solo-px20);
+    line-height: var(--solo-px24);
   }
 
   .header-inner .branding-wrapper>* {

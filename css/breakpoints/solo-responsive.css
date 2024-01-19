@@ -96,6 +96,7 @@
   .header-inner .branding-wrapper .branding-first,
   .header-inner .branding-wrapper .branding-first a,
   .header-inner .branding-wrapper h1.site-name,
+  .header-inner .branding-wrapper h1.site-name a,
   .header-inner .branding-wrapper h3.site-slogan {
     justify-content: center;
     text-align: center;

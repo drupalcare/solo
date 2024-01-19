@@ -46,6 +46,7 @@
 
 .branding-wrapper {
   display: flex;
+  align-items: center;
 }
 
 .branding-second {

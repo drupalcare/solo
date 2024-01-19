@@ -38,11 +38,8 @@
   flex-grow: 1;
 }
 
+.branding-wrapper,
 .branding-wrapper h1.site-name a {
-  display: flex;
-}
-
-.branding-wrapper {
   display: flex;
 }
 
@@ -52,6 +49,8 @@
 
 .branding-wrapper .branding-first a {
   display: inline-flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .branding-wrapper .branding-first {

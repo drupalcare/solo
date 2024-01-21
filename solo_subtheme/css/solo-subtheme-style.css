@@ -44,9 +44,9 @@ Examples:
 #welcome-text {}
 
 #top-container {}
-#top-container-first {}
-#top-container-second {}
-#top-container-third {}
+#top-box-first {}
+#top-box-second {}
+#top-box-third {}
 
 #system-messages {}
 #breadcrumb {}
@@ -58,15 +58,15 @@ Examples:
 #sidebar-box-second {}
 
 #bottom-container {}
-#bottom-container-first {}
-#bottom-container-second {}
-#bottom-container-third {}
-#bottom-container-fourth {}
+#bottom-box-first {}
+#bottom-box-second {}
+#bottom-box-third {}
+#bottom-box-fourth {}
 
 #footer-container {}
-#footer-container-first {}
-#footer-container-second {}
-#footer-container-third {}
+#footer-box-first {}
+#footer-box-second {}
+#footer-box-third {}
 
 #footer-menu {}
 #copyright {}*/

@@ -335,19 +335,12 @@ form fieldset:not(td fieldset) {
 }
 
 /* Global Classes */
-.solo-fixed {
-  position: fixed;
-  top: 0;
-  width: 100%;
-}
-
 .solo-sticky {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: auto;
-  overflow-y: auto;
 }
 
 .solo-relative {

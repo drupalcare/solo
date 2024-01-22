@@ -327,6 +327,7 @@
 @media (max-width:62rem) {
   .overflow-hidden .primary-menu.solo-sticky {
     height: 100%;
+    overflow-y: auto;
   }
 
   .solo-inner .navigation__megamenu ul.sub__menu {

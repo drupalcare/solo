@@ -212,6 +212,32 @@
           }
         });
       }
+
+      // Function to add hover functionality
+      const addHoverFunctionality = () => {
+        if (document.querySelector('.navigation-responsive-hover')) {
+          const dropdownTogglers = document.querySelectorAll('.dropdown-toggler');
+
+          dropdownTogglers.forEach(toggler => {
+            toggler.addEventListener('mouseenter', () => {
+              toggler.setAttribute('aria-expanded', 'true');
+              const siblingUl = toggler.nextElementSibling;
+              if (siblingUl && siblingUl.tagName === 'UL') {
+                siblingUl.setAttribute('aria-hidden', 'false');
+              }
+            });
+
+            toggler.addEventListener('mouseleave', () => {
+              toggler.setAttribute('aria-expanded', 'false');
+              const siblingUl = toggler.nextElementSibling;
+              if (siblingUl && siblingUl.tagName === 'UL') {
+                siblingUl.setAttribute('aria-hidden', 'true');
+              }
+            });
+          });
+        }
+      };
+
       // Add focus class once you click on menubar.
       siteMenuBars.forEach((siteMenuBar) => {
         siteMenuBar.addEventListener('click', (event) => {
@@ -285,7 +311,7 @@
           }
         });
       }
-
+      addHoverFunctionality();
       addEventListenerToButtons(navigationDefault);
       addEventListenerToButtons(navigationResponsiveClick);
       addEventListenerToButtons(navigationSidebar);
@@ -297,6 +323,7 @@
         menusHelper(currentWidth)
         // reset menu styles on resize.
         resetSubMenus(siteSubMenus, svgIcons);
+        addHoverFunctionality();
       });
     }
   };

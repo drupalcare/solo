@@ -25,6 +25,7 @@
   background-color: inherit;
 }
 
+.solo-inner ul.navigation__menubar li>a.is-active,
 .solo-inner ul.navigation__menubar li.is-active>a,
 .solo-inner ul.navigation__menubar li.is-active>button {
   font-weight: bold;

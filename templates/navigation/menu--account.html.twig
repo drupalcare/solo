@@ -117,7 +117,7 @@
     {% if rendered_url starts with '/' or rendered_url starts with 'http' %}
       {# The parent link is clickable and it has children #}
       {% set c_link = 'nav__menu-link nav__menu-link-' ~ menu_name|clean_class ~ ' url-added' %}
-      <a href='{{ item.url }}' class='{{ c_link }} url-added' tabindex='-1' data-drupal-link-system-path={{ system_path }}>
+      <a href='{{ item.url }}' class='{{ c_link }}' tabindex='-1' data-drupal-link-system-path={{ system_path }}>
         <span class='menu__url-title-enabled'>{{ item.title }}</span>
       </a>
       <button class='en-link dropdown-toggler {{ dropdown_toggler_class }}' {{ dorpdown_toggler_attributes }}>

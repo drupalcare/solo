@@ -129,7 +129,6 @@
     const toggleOverflow = () => {
         if (menu.classList.contains('toggled')) {
             body.classList.add('overflow-hidden');
-            console.log('added class')
         } else {
             body.classList.remove('overflow-hidden');
         }

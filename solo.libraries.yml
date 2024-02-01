@@ -100,6 +100,19 @@ solo-menu:
     - core/drupalSettings
     - core/once
 
+solo-menu-keyboard:
+  Version: VERSION
+  css:
+    component:
+      css/components/solo-menu-keyboard.css: { weight: 0 }
+  js:
+    js/solo-menu-keyboard.js: { }
+  dependencies:
+    - core/drupal
+    - core/drupal.ajax
+    - core/drupalSettings
+    - core/once
+
 # Global Breakpoints .
 solo-global-breakpoints-sb-576:
   Version: VERSION

@@ -7,6 +7,9 @@
   .solo-inner .navigation__responsive {
     display: flex !important;
     flex-wrap: wrap;
+  }
+
+  .navigation-primary-responsive.align-center .navigation__responsive {
     justify-content: center;
   }
 

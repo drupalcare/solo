@@ -31,10 +31,22 @@ if (array_key_exists('primary_menu', $updated_regions['mix'])) {
     '#default_value' => theme_get_setting('primary_menu_border'),
   ];
 
+  $form['solo_settings']["settings_{$region}"]['primary_menu_align_center'] = [
+    '#type' => 'checkbox',
+    '#title' => t('Tick this box if you prefer the main menu to be centered.'),
+    '#default_value' => theme_get_setting('primary_menu_align_center'),
+  ];
+
   $form['solo_settings']["settings_{$region}"]['primary_menu_justify_content'] = [
     '#type' => 'checkbox',
     '#title' => t('Tick this box to distributes the space evenly between the menu items. The first item is positioned at the start of the line, and the last item is positioned at the end of the line.'),
     '#default_value' => theme_get_setting('primary_menu_justify_content'),
+  ];
+
+  $form['solo_settings']["settings_{$region}"]['primary_menu_keyboard'] = [
+    '#type' => 'checkbox',
+    '#title' => t('Tick this box to enable Keyboard Compatibility for the main menu.'),
+    '#default_value' => theme_get_setting('primary_menu_keyboard'),
   ];
 
   $form['solo_settings']["settings_{$region}"]['primary_menu_megamenu'] = [

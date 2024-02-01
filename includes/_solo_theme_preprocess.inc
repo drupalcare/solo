@@ -391,6 +391,11 @@ function solo_preprocess_page(&$variables) {
     $m_point = theme_get_setting('site_menu_breakpoints');
     $variables['#attached']['library'][] = 'solo/solo-menu-breakpoints-' . $m_point;
   }
+
+  if (theme_get_setting('primary_menu_keyboard')) {
+    $variables['#attached']['library'][] = 'solo/solo-menu-keyboard';
+  }
+
   // Top regions variables.
   $regions = [
     'top' => ['first', 'second', 'third'],
@@ -662,6 +667,10 @@ function solo_preprocess_menu__primary_menu(&$variables): void {
   }
   else {
     $variables['click_hover'] = 'navigation-responsive-click';
+  }
+
+  if (theme_get_setting('primary_menu_align_center')) {
+    $variables['align_center'] = 'align-center';
   }
 
   if (theme_get_setting('primary_menu_megamenu')) {

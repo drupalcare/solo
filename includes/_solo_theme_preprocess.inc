@@ -321,6 +321,7 @@ function _get_theme_variables() {
       'site_regions_bottom_disable',
       'site_regions_footer_disable',
       'site_flip_header_menu',
+      'site_flip_main_left',
       'primary_menu_border',
       'primary_menu_justify_content',
       'primary_sidebar_menu_border',
@@ -394,6 +395,10 @@ function solo_preprocess_page(&$variables) {
 
   if (theme_get_setting('primary_menu_keyboard')) {
     $variables['#attached']['library'][] = 'solo/solo-menu-keyboard';
+  }
+
+  if (theme_get_setting('site_flip_main_left')) {
+    $variables['flip_main'] = 'pb-flip-main';
   }
 
   // Top regions variables.

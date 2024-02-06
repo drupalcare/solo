@@ -30,7 +30,16 @@ if ($updated_regions['main']) {
       $form['solo_settings']["settings_main_container"]["main_3col"] = _create_region_layout_radio_three('main');
       $form['solo_settings']["settings_main_container"]["site_regions_main_rounded"] = _rounded_region('main');
       $form['solo_settings']["settings_main_container"]["site_regions_main_border"] = _border_region('main');
+
+      $form['solo_settings']['settings_main_container']['site_flip_main_left'] = [
+        '#type' => 'checkbox',
+        '#title' => t('Tick this box to activate an alternative mobile layout.'),
+        '#description'   => t('<p>When enabled, this feature changes the order in which the regions are displayed on mobile devices. The main content region will be displayed first, followed by the left sidebar, and finally the right sidebar at the bottom. This layout prioritizes the visibility of the main content when viewed on smaller screens.</p>'),
+        '#default_value' => theme_get_setting('site_flip_main_left'),
+      ];
+
       $form['solo_settings']["settings_main_container"]["classes_{$region}"] = _generate_css_classes($region, $label);
+
       foreach ($attributes as $attribute_key => $attribute_label) {
         $form['solo_settings']["settings_main_container"]["settings_{$region}_{$attribute_key}"] = _generate_form_element($region, $label, $attribute_key, $attribute_label);
       }

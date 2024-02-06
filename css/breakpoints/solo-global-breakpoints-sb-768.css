@@ -102,4 +102,24 @@
     justify-content: center;
   }
 
+  .main-container-inner.pb-flip-main {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-areas: "main"
+    "first"
+    "second";
+  }
+
+  .main-container-inner.pb-flip-main .sidebar-box-main {
+    grid-area: main;
+  }
+
+  .main-container-inner.pb-flip-main .sidebar-box-first {
+    grid-area: first;
+  }
+
+  .main-container-inner.pb-flip-main .sidebar-box-second {
+    grid-area: second;
+  }
+
 }

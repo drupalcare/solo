@@ -33,8 +33,8 @@ if ($updated_regions['main']) {
 
       $form['solo_settings']['settings_main_container']['site_flip_main_left'] = [
         '#type' => 'checkbox',
-        '#title' => t('Tick this box to activate an alternative mobile layout.'),
-        '#description'   => t('<p>When enabled, this feature changes the order in which the regions are displayed on mobile devices. The main content region will be displayed first, followed by the left sidebar, and finally the right sidebar at the bottom. This layout prioritizes the visibility of the main content when viewed on smaller screens.</p>'),
+        '#title' => t('Tick this box to rearrange mobile layout to show Main Content, then Left and Right Sidebars.'),
+        '#description'   => t('<p>This layout prioritizes the visibility of the main content when viewed on smaller screens.</p>'),
         '#default_value' => theme_get_setting('site_flip_main_left'),
       ];
 

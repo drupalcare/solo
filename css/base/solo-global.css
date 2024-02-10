@@ -101,48 +101,6 @@ img {
   opacity: 0.7;
 }
 
-/* Table */
-.solo-table,
-.solo-table-all {
-  border-collapse: collapse;
-  border-spacing: 0;
-  width: 100%;
-  display: table;
-}
-
-.solo-table-all {
-  border: var(--solo-px1) solid var(--r-br, var(--r-br-b));
-}
-
-.solo-table-all tr {
-  border-bottom: var(--solo-px1) solid var(--r-br, var(--r-br-b));
-}
-
-.solo-table-all tr:nth-child(odd) {
-  background-color: var(--solo-odd);
-}
-
-.solo-table-all tr:nth-child(even) {
-  background-color: var(--solo-even);
-}
-
-.solo-table td,
-.solo-table th,
-.solo-table-all td,
-.solo-table-all th {
-  padding: var(--solo-px8);
-  display: table-cell;
-  text-align: left;
-  vertical-align: top;
-}
-
-.solo-table th:first-child,
-.solo-table td:first-child,
-.solo-table-all th:first-child,
-.solo-table-all td:first-child {
-  padding-left: var(--solo-px16);
-}
-
 /*Unordered list */
 .solo-ul {
   list-style-type: none;

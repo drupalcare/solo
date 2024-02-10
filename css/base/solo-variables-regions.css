@@ -1,5 +1,4 @@
 /* Start Var tags */
-
 .page-wrapper {
   --r-br-b: #94a2b8;
   --r-br: #cbced7;
@@ -9,19 +8,14 @@
 
 .page-wrapper,
 .solo-outer,
-.region-inner {
-  border-color: var(--r-br, var(--r-br-b));
-  background-color: var(--r-bg);
-  color: var(--r-tx);
-}
-
-.page-wrapper tr,
-.page-wrapper td,
-.page-wrapper th,
+.region-inner,
 .page-wrapper hr,
+.page-wrapper ul,
+.page-wrapper ul li,
 .page-wrapper table,
-.page-wrapper  ul,
-.page-wrapper li {
+.page-wrapper table td,
+.page-wrapper table th,
+.page-wrapper table tr {
   border-color: var(--r-br, var(--r-br-b));
   background-color: var(--r-bg);
   color: var(--r-tx);
@@ -30,8 +24,8 @@
 .page-wrapper .solo-select,
 .page-wrapper .solo-radio,
 .page-wrapper .solo-check,
-.page-wrapper input:not(input.button),
-.page-wrapper .solo-textarea {
+.page-wrapper .solo-textarea,
+.page-wrapper input:not(input.button) {
   background-color: var(--r-bg-fr, var(--r-bg));
   border-color: var(--r-br, var(--r-br-b));
   color: var(--r-tx);

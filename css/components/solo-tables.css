@@ -1,47 +1,63 @@
-table {
+.page-wrapper table {
   width: 100%;
   border-collapse: collapse;
 }
 
-tr {
+.page-wrapper tr {
   border-bottom: 1px solid var(--r-br, var(--r-br-b));
 }
 
-tr.region-title {
+.page-wrapper tr.region-title {
   color: var(--r-tx);
   background-color: var(--r-bg);
 }
 
-.region-title td {
+.page-wrapper table td ul {
+  margin: 0;
+}
+
+.page-wrapper table td li {
+  list-style: none;
+}
+
+.page-wrapper .region-title td {
   font-weight: bold !important;
   text-transform: uppercase;
 }
 
-.region-title td a {
+.page-wrapper .region-title td a {
   text-transform: capitalize;
 }
 
-table td ul {
-  margin: 0;
+.page-wrapper .solo-table-all {
+  border-collapse: collapse;
+  border-spacing: 0;
+  width: 100%;
+  display: table;
 }
 
-table td li {
-  list-style: none;
+.page-wrapper .solo-table-all {
+  border: var(--solo-px1) solid var(--r-br, var(--r-br-b));
 }
 
-.solo-table-all {
-  border-color: var(--r-br, var(--r-br-b)) !important;
+.page-wrapper .solo-table-all tr {
+  border-bottom: var(--solo-px1) solid var(--r-br, var(--r-br-b));
 }
 
-.solo-table td,
-.solo-table th,
-.solo-table-all td,
-.solo-table-all th {
+.page-wrapper .solo-table-all td,
+.page-wrapper .solo-table-all th {
+  padding: var(--solo-px8);
+  display: table-cell;
   vertical-align: middle;
   text-align: initial;
 }
 
-td .form-type-radio,
-td .form-type-checkbox {
+.page-wrapper .solo-table-all th:first-child,
+.page-wrapper .solo-table-all td:first-child {
+  padding-left: var(--solo-px16);
+}
+
+.page-wrapper table td .form-type-radio,
+.page-wrapper table td .form-type-checkbox {
   margin: 0 !important;
 }

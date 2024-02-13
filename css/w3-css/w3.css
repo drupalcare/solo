@@ -313,36 +313,36 @@ a {
   display: table;
 }
 
-.w3-table-all {
+#page-wrapper .w3-table-all {
   --r-br: var(--solo-ccc);
-  border: 1px solid var(--r-br);
+  border: 1px solid var(--r-br) !important;
 }
 
-.w3-bordered tr,
-.w3-table-all tr {
+#page-wrapper .w3-bordered tr,
+#page-wrapper .w3-table-all tr {
   --r-br: #ddd;
-  border-bottom: 1px solid var(--r-br);
+  border-bottom: 1px solid var(--r-br) !important;
 }
 
-.w3-striped tbody tr:nth-child(even) {
+#page-wrapper .w3-striped tbody tr:nth-child(even) {
   --r-bg: #f1f1f1;
-  background-color: var(--r-bg);
+  background-color: var(--r-bg) !important;
 }
 
-.w3-table-all tr:nth-child(odd) {
+#page-wrapper .w3-table-all tr:nth-child(odd) {
   --r-bg: var(--solo-white);
-  background-color: var(--r-bg);
+  background-color: var(--r-bg) !important;
 }
 
-.w3-table-all tr:nth-child(even) {
+#page-wrapper .w3-table-all tr:nth-child(even) {
   --r-bg: #f1f1f1;
-  background-color: var(--r-bg);
+  background-color: var(--r-bg) !important;
 }
 
-.w3-hoverable tbody tr:hover,
-.w3-ul.w3-hoverable li:hover {
+#page-wrapper .w3-hoverable tbody tr:hover,
+#page-wrapper .w3-ul.w3-hoverable li:hover {
   --r-bg: var(--solo-ccc);
-  background-color: var(--r-bg);
+  background-color: var(--r-bg) !important;
 }
 
 .w3-centered tr th,
@@ -413,12 +413,12 @@ a {
   box-shadow: none;
 }
 
-.w3-badge,
-.w3-tag {
+#page-wrapper .w3-badge,
+#page-wrapper .w3-tag {
   --r-tx: var(--solo-white);
   --r-bg: var(--solo-black);
-  background-color: var(--r-bg);
-  color: var(--r-tx);
+  background-color: var(--r-bg) !important;
+  color: var(--r-tx) !important;
   display: inline-block;
   padding-left: 8px;
   padding-right: 8px;
@@ -466,21 +466,21 @@ a {
   transition: opacity 0s;
 }
 
-.w3-input {
+#page-wrapper .w3-input {
   --r-br: var(--solo-ccc);
   padding: 8px;
   display: block;
   border: none;
-  border-bottom: 1px solid var(--r-br);
+  border-bottom: 1px solid var(--r-br) !important;
   width: 100%;
 }
 
-.w3-select {
+#page-wrapper .w3-select {
   --r-br: var(--solo-ccc);
   padding: 9px 0;
   width: 100%;
   border: none;
-  border-bottom: 1px solid var(--r-br);
+  border-bottom: 1px solid var(--r-br) !important;
 }
 
 .w3-dropdown-click,
@@ -494,28 +494,28 @@ a {
   display: block;
 }
 
-.w3-dropdown-hover:first-child,
-.w3-dropdown-click:hover {
+#page-wrapper .w3-dropdown-hover:first-child,
+#page-wrapper .w3-dropdown-click:hover {
   --r-tx: var(--solo-black);
   --r-bg: var(--solo-ccc);
-  background-color: var(--r-bg);
-  color: var(--r-tx);
+  background-color: var(--r-bg) !important;
+  color: var(--r-tx) !important;
 }
 
-.w3-dropdown-hover:hover > .w3-button:first-child,
-.w3-dropdown-click:hover > .w3-button:first-child {
+#page-wrapper .w3-dropdown-hover:hover > .w3-button:first-child,
+#page-wrapper .w3-dropdown-click:hover > .w3-button:first-child {
   --r-tx: var(--solo-black);
   --r-bg: var(--solo-ccc);
-  background-color: var(--r-bg);
-  color: var(--r-tx);
+  background-color: var(--r-bg) !important;
+  color: var(--r-tx) !important;
 }
 
-.w3-dropdown-content {
+#page-wrapper .w3-dropdown-content {
   cursor: auto;
   --r-tx: var(--solo-black);
   --r-bg: var(--solo-white);
-  background-color: var(--r-bg);
-  color: var(--r-tx);
+  background-color: var(--r-bg) !important;
+  color: var(--r-tx) !important;
   display: none;
   position: absolute;
   min-width: 160px;
@@ -532,11 +532,11 @@ a {
   top: 6px;
 }
 
-.w3-sidebar {
+#page-wrapper .w3-sidebar {
   height: 100%;
   width: 200px;
   --r-bg: var(--solo-white);
-  background-color: var(--r-bg);
+  background-color: var(--r-bg) !important;
   position: fixed !important;
   z-index: 1;
   overflow: auto;
@@ -578,10 +578,10 @@ a {
   background-color: rgba(0, 0, 0, 0.4);
 }
 
-.w3-modal-content {
+#page-wrapper .w3-modal-content {
   margin: auto;
   --r-bg: var(--solo-white);
-  background-color: var(--r-bg);
+  background-color: var(--r-bg) !important;
   position: relative;
   padding: 0;
   outline: 0;
@@ -1139,20 +1139,20 @@ a {
   font-size: 16px;
 }
 
-.w3-code {
+#page-wrapper .w3-code {
   width: auto;
   --r-bg: var(--solo-white);
-  background-color: var(--r-bg);
+  background-color: var(--r-bg) !important;
   padding: 8px 12px;
   --r-br: #4caf50;
-  border-left: 4px solid var(--r-br);
+  border-left: 4px solid var(--r-br) !important;
   word-wrap: break-word;
 }
 
-.w3-codespan {
+#page-wrapper .w3-codespan {
   color: crimson;
   --r-bg: #f1f1f1;
-  background-color: var(--r-bg);
+  background-color: var(--r-bg) !important;
   padding-left: 4px;
   padding-right: 4px;
   font-size: 110%;

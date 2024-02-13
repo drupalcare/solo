@@ -29,11 +29,23 @@
 }
 
 /* Link only */
-.page-wrapper a:not(.nav__menu-link, .button, .site-name-link, .site-logo, h1 a, h2 a, h3 a) {
+.page-wrapper a:not(.nav__menu-link,
+.button,
+.site-name-link,
+.site-logo,
+h1 a,
+h2 a,
+h3 a) {
   color: var(--r-lk, var(--r-tx));
 }
 
-.page-wrapper a:hover:not(.nav__menu-link, .button, .site-name-link, .site-logo, h1 a, h2 a, h3 a) {
+.page-wrapper a:hover:not(.nav__menu-link,
+.button,
+.site-name-link,
+.site-logo,
+h1 a,
+h2 a,
+h3 a) {
   color: var(--r-lk-h, var(--r-tx));
 }
 

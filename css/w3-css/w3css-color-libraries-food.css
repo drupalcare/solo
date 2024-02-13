@@ -1,199 +1,279 @@
 .w3-food-apple {
-  color: #000 !important;
-  background-color: #76cd26 !important;
+  --r-tx: var(--solo-black);
+  --r-bg: #76cd26;
+  color: var(--r-tx) !important;
+  background-color: var(--r-bg) !important;
 }
 
 .w3-food-aspargus {
-  color: #fff !important;
-  background-color: #77ab56 !important;
+  --r-tx: var(--solo-white);
+  --r-bg: #77ab56;
+  color: var(--r-tx) !important;
+  background-color: var(--r-bg) !important;
 }
 
 .w3-food-apricot {
-  color: #fff !important;
-  background-color: #ffb16d !important;
+  --r-tx: var(--solo-white);
+  --r-bg: #ffb16d;
+  color: var(--r-tx) !important;
+  background-color: var(--r-bg) !important;
 }
 
 .w3-food-aubergine {
-  color: #fff !important;
-  background-color: #3d0734 !important;
+  --r-tx: var(--solo-white);
+  --r-bg: #3d0734;
+  color: var(--r-tx) !important;
+  background-color: var(--r-bg) !important;
 }
 
 .w3-food-avocado {
-  color: #fff !important;
-  background-color: #87a922 !important;
+  --r-tx: var(--solo-white);
+  --r-bg: #87a922;
+  color: var(--r-tx) !important;
+  background-color: var(--r-bg) !important;
 }
 
 .w3-food-banana {
-  color: #000 !important;
-  background-color: #fafe4b !important;
+  --r-tx: var(--solo-black);
+  --r-bg: #fafe4b;
+  color: var(--r-tx) !important;
+  background-color: var(--r-bg) !important;
 }
 
 .w3-food-butter {
-  color: #000 !important;
-  background-color: #ffff81 !important;
+  --r-tx: var(--solo-black);
+  --r-bg: #ffff81;
+  color: var(--r-tx) !important;
+  background-color: var(--r-bg) !important;
 }
 
 .w3-food-blueberry {
-  color: #fff !important;
-  background-color: #464196 !important;
+  --r-tx: var(--solo-white);
+  --r-bg: #464196;
+  color: var(--r-tx) !important;
+  background-color: var(--r-bg) !important;
 }
 
 .w3-food-carrot {
-  color: #fff !important;
-  background-color: #e67e22 !important;
+  --r-tx: var(--solo-white);
+  --r-bg: #e67e22;
+  color: var(--r-tx) !important;
+  background-color: var(--r-bg) !important;
 }
 
 .w3-food-cherry {
-  color: #fff !important;
-  background-color: #cf0234 !important;
+  --r-tx: var(--solo-white);
+  --r-bg: #cf0234;
+  color: var(--r-tx) !important;
+  background-color: var(--r-bg) !important;
 }
 
 .w3-food-chocolate {
-  color: #fff !important;
-  background-color: #411900 !important;
+  --r-tx: var(--solo-white);
+  --r-bg: #411900;
+  color: var(--r-tx) !important;
+  background-color: var(--r-bg) !important;
 }
 
 .w3-food-cranberry {
-  color: #fff !important;
-  background-color: #9e003a !important;
+  --r-tx: var(--solo-white);
+  --r-bg: #9e003a;
+  color: var(--r-tx) !important;
+  background-color: var(--r-bg) !important;
 }
 
 .w3-food-coffee {
-  color: #fff !important;
-  background-color: #a6814c !important;
+  --r-tx: var(--solo-white);
+  --r-bg: #a6814c;
+  color: var(--r-tx) !important;
+  background-color: var(--r-bg) !important;
 }
 
 .w3-food-egg {
-  color: #000 !important;
-  background-color: #fffcc4 !important;
+  --r-tx: var(--solo-black);
+  --r-bg: #fffcc4;
+  color: var(--r-tx) !important;
+  background-color: var(--r-bg) !important;
 }
 
 .w3-food-grape {
-  color: #fff !important;
-  background-color: #6c3461 !important;
+  --r-tx: var(--solo-white);
+  --r-bg: #6c3461;
+  color: var(--r-tx) !important;
+  background-color: var(--r-bg) !important;
 }
 
 .w3-food-kiwi {
-  color: #000 !important;
-  background-color: #8ee53f !important;
+  --r-tx: var(--solo-black);
+  --r-bg: #8ee53f;
+  color: var(--r-tx) !important;
+  background-color: var(--r-bg) !important;
 }
 
 .w3-food-lemon {
-  color: #000 !important;
-  background-color: #fdff52 !important;
+  --r-tx: var(--solo-black);
+  --r-bg: #fdff52;
+  color: var(--r-tx) !important;
+  background-color: var(--r-bg) !important;
 }
 
 .w3-food-lime {
-  color: #000 !important;
-  background-color: #bffe28 !important;
+  --r-tx: var(--solo-black);
+  --r-bg: #bffe28;
+  color: var(--r-tx) !important;
+  background-color: var(--r-bg) !important;
 }
 
 .w3-food-mango {
-  color: #fff !important;
-  background-color: #ffa62b !important;
+  --r-tx: var(--solo-white);
+  --r-bg: #ffa62b;
+  color: var(--r-tx) !important;
+  background-color: var(--r-bg) !important;
 }
 
 .w3-food-mushroom {
-  color: #fff !important;
-  background-color: #ba9e88 !important;
+  --r-tx: var(--solo-white);
+  --r-bg: #ba9e88;
+  color: var(--r-tx) !important;
+  background-color: var(--r-bg) !important;
 }
 
 .w3-food-mustard {
-  color: #fff !important;
-  background-color: #ceb301 !important;
+  --r-tx: var(--solo-white);
+  --r-bg: #ceb301;
+  color: var(--r-tx) !important;
+  background-color: var(--r-bg) !important;
 }
 
 .w3-food-mint {
-  color: #000 !important;
-  background-color: #c0fa8b !important;
+  --r-tx: var(--solo-black);
+  --r-bg: #c0fa8b;
+  color: var(--r-tx) !important;
+  background-color: var(--r-bg) !important;
 }
 
 .w3-food-olive {
-  color: #fff !important;
-  background-color: #6e750e !important;
+  --r-tx: var(--solo-white);
+  --r-bg: #6e750e;
+  color: var(--r-tx) !important;
+  background-color: var(--r-bg) !important;
 }
 
 .w3-food-orange {
-  color: #fff !important;
-  background-color: #f97306 !important;
+  --r-tx: var(--solo-white);
+  --r-bg: #f97306;
+  color: var(--r-tx) !important;
+  background-color: var(--r-bg) !important;
 }
 
 .w3-food-pea {
-  color: #fff !important;
-  background-color: #a4bf20 !important;
+  --r-tx: var(--solo-white);
+  --r-bg: #a4bf20;
+  color: var(--r-tx) !important;
+  background-color: var(--r-bg) !important;
 }
 
 .w3-food-peach {
-  color: #fff !important;
-  background-color: #ffb07c !important;
+  --r-tx: var(--solo-white);
+  --r-bg: #ffb07c;
+  color: var(--r-tx) !important;
+  background-color: var(--r-bg) !important;
 }
 
 .w3-food-pear {
-  color: #000 !important;
-  background-color: #cbf85f !important;
+  --r-tx: var(--solo-black);
+  --r-bg: #cbf85f;
+  color: var(--r-tx) !important;
+  background-color: var(--r-bg) !important;
 }
 
 .w3-food-pistachio {
-  color: #000 !important;
-  background-color: #c0fa8b !important;
+  --r-tx: var(--solo-black);
+  --r-bg: #c0fa8b;
+  color: var(--r-tx) !important;
+  background-color: var(--r-bg) !important;
 }
 
 .w3-food-plum {
-  color: #fff !important;
-  background-color: #3f012c !important;
+  --r-tx: var(--solo-white);
+  --r-bg: #3f012c;
+  color: var(--r-tx) !important;
+  background-color: var(--r-bg) !important;
 }
 
 .w3-food-pomegranate {
-  color: #fff !important;
-  background-color: #c0392b !important;
+  --r-tx: var(--solo-white);
+  --r-bg: #c0392b;
+  color: var(--r-tx) !important;
+  background-color: var(--r-bg) !important;
 }
 
 .w3-food-pumpkin {
-  color: #fff !important;
-  background-color: #d35400 !important;
+  --r-tx: var(--solo-white);
+  --r-bg: #d35400;
+  color: var(--r-tx) !important;
+  background-color: var(--r-bg) !important;
 }
 
 .w3-food-raspberry {
-  color: #fff !important;
-  background-color: #b00149 !important;
+  --r-tx: var(--solo-white);
+  --r-bg: #b00149;
+  color: var(--r-tx) !important;
+  background-color: var(--r-bg) !important;
 }
 
 .w3-food-saffron {
-  color: #fff !important;
-  background-color: #feb209 !important;
+  --r-tx: var(--solo-white);
+  --r-bg: #feb209;
+  color: var(--r-tx) !important;
+  background-color: var(--r-bg) !important;
 }
 
 .w3-food-salmon {
-  color: #fff !important;
-  background-color: #ff796c !important;
+  --r-tx: var(--solo-white);
+  --r-bg: #ff796c;
+  color: var(--r-tx) !important;
+  background-color: var(--r-bg) !important;
 }
 
 .w3-food-spearmint {
-  color: #000 !important;
-  background-color: #1ef876 !important;
+  --r-tx: var(--solo-black);
+  --r-bg: #1ef876;
+  color: var(--r-tx) !important;
+  background-color: var(--r-bg) !important;
 }
 
 .w3-food-squash {
-  color: #fff !important;
-  background-color: #f2ab15 !important;
+  --r-tx: var(--solo-white);
+  --r-bg: #f2ab15;
+  color: var(--r-tx) !important;
+  background-color: var(--r-bg) !important;
 }
 
 .w3-food-strawberry {
-  color: #fff !important;
-  background-color: #fb2943 !important;
+  --r-tx: var(--solo-white);
+  --r-bg: #fb2943;
+  color: var(--r-tx) !important;
+  background-color: var(--r-bg) !important;
 }
 
 .w3-food-tomato {
-  color: #fff !important;
-  background-color: #ec2d01 !important;
+  --r-tx: var(--solo-white);
+  --r-bg: #ec2d01;
+  color: var(--r-tx) !important;
+  background-color: var(--r-bg) !important;
 }
 
 .w3-food-wheat {
-  color: #000 !important;
-  background-color: #fbdd7e !important;
+  --r-tx: var(--solo-black);
+  --r-bg: #fbdd7e;
+  color: var(--r-tx) !important;
+  background-color: var(--r-bg) !important;
 }
 
 .w3-food-wine {
-  color: #fff !important;
-  background-color: #80013f !important;
+  --r-tx: var(--solo-white);
+  --r-bg: #80013f;
+  color: var(--r-tx) !important;
+  background-color: var(--r-bg) !important;
 }

@@ -1,99 +1,139 @@
 .w3-flat-turquoise {
-  color: #fff !important;
-  background-color: #1abc9c !important;
+  --r-tx: var(--solo-white);
+  --r-bg: #1abc9c;
+  color: var(--r-tx) !important;
+  background-color: var(--r-bg) !important;
 }
 
 .w3-flat-emerald {
-  color: #fff !important;
-  background-color: #2ecc71 !important;
+  --r-tx: var(--solo-white);
+  --r-bg: #2ecc71;
+  color: var(--r-tx) !important;
+  background-color: var(--r-bg) !important;
 }
 
 .w3-flat-peter-river {
-  color: #fff !important;
-  background-color: #3498db !important;
+  --r-tx: var(--solo-white);
+  --r-bg: #3498db;
+  color: var(--r-tx) !important;
+  background-color: var(--r-bg) !important;
 }
 
 .w3-flat-amethyst {
-  color: #fff !important;
-  background-color: #9b59b6 !important;
+  --r-tx: var(--solo-white);
+  --r-bg: #9b59b6;
+  color: var(--r-tx) !important;
+  background-color: var(--r-bg) !important;
 }
 
 .w3-flat-wet-asphalt {
-  color: #fff !important;
-  background-color: #34495e !important;
+  --r-tx: var(--solo-white);
+  --r-bg: #34495e;
+  color: var(--r-tx) !important;
+  background-color: var(--r-bg) !important;
 }
 
 .w3-flat-green-sea {
-  color: #fff !important;
-  background-color: #16a085 !important;
+  --r-tx: var(--solo-white);
+  --r-bg: #16a085;
+  color: var(--r-tx) !important;
+  background-color: var(--r-bg) !important;
 }
 
 .w3-flat-nephritis {
-  color: #fff !important;
-  background-color: #27ae60 !important;
+  --r-tx: var(--solo-white);
+  --r-bg: #27ae60;
+  color: var(--r-tx) !important;
+  background-color: var(--r-bg) !important;
 }
 
 .w3-flat-belize-hole {
-  color: #fff !important;
-  background-color: #2980b9 !important;
+  --r-tx: var(--solo-white);
+  --r-bg: #2980b9;
+  color: var(--r-tx) !important;
+  background-color: var(--r-bg) !important;
 }
 
 .w3-flat-wisteria {
-  color: #fff !important;
-  background-color: #8e44ad !important;
+  --r-tx: var(--solo-white);
+  --r-bg: #8e44ad;
+  color: var(--r-tx) !important;
+  background-color: var(--r-bg) !important;
 }
 
 .w3-flat-midnight-blue {
-  color: #fff !important;
-  background-color: #2c3e50 !important;
+  --r-tx: var(--solo-white);
+  --r-bg: #2c3e50;
+  color: var(--r-tx) !important;
+  background-color: var(--r-bg) !important;
 }
 
 .w3-flat-sun-flower {
-  color: #fff !important;
-  background-color: #f1c40f !important;
+  --r-tx: var(--solo-white);
+  --r-bg: #f1c40f;
+  color: var(--r-tx) !important;
+  background-color: var(--r-bg) !important;
 }
 
 .w3-flat-carrot {
-  color: #fff !important;
-  background-color: #e67e22 !important;
+  --r-tx: var(--solo-white);
+  --r-bg: #e67e22;
+  color: var(--r-tx) !important;
+  background-color: var(--r-bg) !important;
 }
 
 .w3-flat-alizarin {
-  color: #fff !important;
-  background-color: #e74c3c !important;
+  --r-tx: var(--solo-white);
+  --r-bg: #e74c3c;
+  color: var(--r-tx) !important;
+  background-color: var(--r-bg) !important;
 }
 
 .w3-flat-clouds {
-  color: #000 !important;
-  background-color: #ecf0f1 !important;
+  --r-tx: var(--solo-black);
+  --r-bg: #ecf0f1;
+  color: var(--r-tx) !important;
+  background-color: var(--r-bg) !important;
 }
 
 .w3-flat-concrete {
-  color: #fff !important;
-  background-color: #95a5a6 !important;
+  --r-tx: var(--solo-white);
+  --r-bg: #95a5a6;
+  color: var(--r-tx) !important;
+  background-color: var(--r-bg) !important;
 }
 
 .w3-flat-orange {
-  color: #fff !important;
-  background-color: #f39c12 !important;
+  --r-tx: var(--solo-white);
+  --r-bg: #f39c12;
+  color: var(--r-tx) !important;
+  background-color: var(--r-bg) !important;
 }
 
 .w3-flat-pumpkin {
-  color: #fff !important;
-  background-color: #d35400 !important;
+  --r-tx: var(--solo-white);
+  --r-bg: #d35400;
+  color: var(--r-tx) !important;
+  background-color: var(--r-bg) !important;
 }
 
 .w3-flat-pomegranate {
-  color: #fff !important;
-  background-color: #c0392b !important;
+  --r-tx: var(--solo-white);
+  --r-bg: #c0392b;
+  color: var(--r-tx) !important;
+  background-color: var(--r-bg) !important;
 }
 
 .w3-flat-silver {
-  color: #000 !important;
-  background-color: #bdc3c7 !important;
+  --r-tx: var(--solo-black);
+  --r-bg: #bdc3c7;
+  color: var(--r-tx) !important;
+  background-color: var(--r-bg) !important;
 }
 
 .w3-flat-asbestos {
-  color: #fff !important;
-  background-color: #7f8c8d !important;
+  --r-tx: var(--solo-white);
+  --r-bg: #7f8c8d;
+  color: var(--r-tx) !important;
+  background-color: var(--r-bg) !important;
 }

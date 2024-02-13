@@ -2,6 +2,21 @@
   --solo-font: 'Helvetica Neue', Helvetica, Arial, sans-serif;
   --solo-font-s: 'Helvetica Neue', Helvetica, Arial, sans-serif;
   --solo-h1: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  --r-bg: initial;
+  --r-tx: initial;
+  --r-h1: initial;
+  --r-lk: initial;
+  --r-lk-h: initial;
+  --r-br: initial;
+  --r-bg-fr: initial;
+  --r-tx-lk: initial;
+  --r-tx-lk-h: initial;
+  --r-bg-lk: initial;
+  --r-bg-lk-h: initial;
+  --r-tx-bt: initial;
+  --r-tx-bt-h: initial;
+  --r-bg-bt: initial;
+  --r-bg-bt-h: initial;
   --solo-px2560: 160rem;
   --solo-px1920: 120rem;
   --solo-px1600: 100rem;
@@ -46,6 +61,8 @@
   --solo-px2: 0.125rem;
   --solo-px1: 0.063rem;
   --solo-px0: 0;
+  --solo-transparent: transparent;
+  --solo-ccc: #ccc;
   --solo-amber: #ffc107;
   --solo-aqua: #00ffff;
   --solo-blue: #2196f3;
@@ -76,7 +93,6 @@
   --solo-pale-green: #ddffdd;
   --solo-pale-yellow: #ffffcc;
   --solo-pale-blue: #ddffff;
-  --solo-odd: #fbfbfc;
   --solo-fb: #1877f2;
   --solo-tw: #1da1f2;
   --solo-pi: #bd081c;

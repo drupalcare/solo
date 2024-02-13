@@ -62,8 +62,13 @@
         element.removeAttribute('open');
       });
 
-      // Select all <img> and <picture> elements inside an <a> tag, excluding those with a specific class
-      let clickableElements = document.querySelectorAll('a > img:not(.field--name-user-picture img), a > picture:not(.field--name-user-picture img)');
+      // Select all <img> and <picture> elements inside an <a> tag, excluding
+      // those with a specific class and also excluding those with classes
+      // that contain the word 'icon'
+      let clickableElements = document.querySelectorAll(
+        'a > img:not(.field--name-user-picture img):not([class*="icon"]), ' +
+        'a > picture:not(.field--name-user-picture img):not([class*="icon"])'
+      );
 
       // Add a class to the parent <a> tag of each selected element
       clickableElements.forEach(function(clickableElement) {

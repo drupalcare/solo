@@ -313,36 +313,32 @@ a {
   display: table;
 }
 
-#page-wrapper .w3-table-all {
+.page-wrapper .w3-table-all {
   --r-br: var(--solo-ccc);
-  border: 1px solid var(--r-br) !important;
+  border: 1px solid var(--r-br);
 }
 
-#page-wrapper .w3-bordered tr,
-#page-wrapper .w3-table-all tr {
+.page-wrapper .w3-bordered tr,
+.page-wrapper .w3-table-all tr {
   --r-br: #ddd;
-  border-bottom: 1px solid var(--r-br) !important;
+  border-bottom: 1px solid var(--r-br);
 }
 
-#page-wrapper .w3-striped tbody tr:nth-child(even) {
+.page-wrapper .w3-table-all tr:nth-child(even),
+.page-wrapper .w3-striped tbody tr:nth-child(even) {
   --r-bg: #f1f1f1;
-  background-color: var(--r-bg) !important;
+  background-color: var(--r-bg);
 }
 
-#page-wrapper .w3-table-all tr:nth-child(odd) {
+.page-wrapper .w3-table-all tr:nth-child(odd) {
   --r-bg: var(--solo-white);
-  background-color: var(--r-bg) !important;
+  background-color: var(--r-bg);
 }
 
-#page-wrapper .w3-table-all tr:nth-child(even) {
-  --r-bg: #f1f1f1;
-  background-color: var(--r-bg) !important;
-}
-
-#page-wrapper .w3-hoverable tbody tr:hover,
-#page-wrapper .w3-ul.w3-hoverable li:hover {
+.page-wrapper .w3-hoverable tbody tr:hover,
+.page-wrapper .w3-ul.w3-hoverable li:hover {
   --r-bg: var(--solo-ccc);
-  background-color: var(--r-bg) !important;
+  background-color: var(--r-bg);
 }
 
 .w3-centered tr th,
@@ -413,12 +409,12 @@ a {
   box-shadow: none;
 }
 
-#page-wrapper .w3-badge,
-#page-wrapper .w3-tag {
+.page-wrapper .w3-badge,
+.page-wrapper .w3-tag {
   --r-tx: var(--solo-white);
   --r-bg: var(--solo-black);
-  background-color: var(--r-bg) !important;
-  color: var(--r-tx) !important;
+  background-color: var(--r-bg);
+  color: var(--r-tx);
   display: inline-block;
   padding-left: 8px;
   padding-right: 8px;
@@ -466,21 +462,21 @@ a {
   transition: opacity 0s;
 }
 
-#page-wrapper .w3-input {
+.page-wrapper .w3-input {
   --r-br: var(--solo-ccc);
   padding: 8px;
   display: block;
   border: none;
-  border-bottom: 1px solid var(--r-br) !important;
+  border-bottom: 1px solid var(--r-br);
   width: 100%;
 }
 
-#page-wrapper .w3-select {
+.page-wrapper .w3-select {
   --r-br: var(--solo-ccc);
   padding: 9px 0;
   width: 100%;
   border: none;
-  border-bottom: 1px solid var(--r-br) !important;
+  border-bottom: 1px solid var(--r-br);
 }
 
 .w3-dropdown-click,
@@ -494,28 +490,28 @@ a {
   display: block;
 }
 
-#page-wrapper .w3-dropdown-hover:first-child,
-#page-wrapper .w3-dropdown-click:hover {
+.page-wrapper .w3-dropdown-hover:first-child,
+.page-wrapper .w3-dropdown-click:hover {
   --r-tx: var(--solo-black);
   --r-bg: var(--solo-ccc);
-  background-color: var(--r-bg) !important;
-  color: var(--r-tx) !important;
+  background-color: var(--r-bg);
+  color: var(--r-tx);
 }
 
-#page-wrapper .w3-dropdown-hover:hover > .w3-button:first-child,
-#page-wrapper .w3-dropdown-click:hover > .w3-button:first-child {
+.page-wrapper .w3-dropdown-hover:hover > .w3-button:first-child,
+.page-wrapper .w3-dropdown-click:hover > .w3-button:first-child {
   --r-tx: var(--solo-black);
   --r-bg: var(--solo-ccc);
-  background-color: var(--r-bg) !important;
-  color: var(--r-tx) !important;
+  background-color: var(--r-bg);
+  color: var(--r-tx);
 }
 
-#page-wrapper .w3-dropdown-content {
+.page-wrapper .w3-dropdown-content {
   cursor: auto;
   --r-tx: var(--solo-black);
   --r-bg: var(--solo-white);
-  background-color: var(--r-bg) !important;
-  color: var(--r-tx) !important;
+  background-color: var(--r-bg);
+  color: var(--r-tx);
   display: none;
   position: absolute;
   min-width: 160px;
@@ -532,11 +528,11 @@ a {
   top: 6px;
 }
 
-#page-wrapper .w3-sidebar {
+.page-wrapper .w3-sidebar {
   height: 100%;
   width: 200px;
   --r-bg: var(--solo-white);
-  background-color: var(--r-bg) !important;
+  background-color: var(--r-bg);
   position: fixed !important;
   z-index: 1;
   overflow: auto;
@@ -578,10 +574,10 @@ a {
   background-color: rgba(0, 0, 0, 0.4);
 }
 
-#page-wrapper .w3-modal-content {
+.page-wrapper .w3-modal-content {
   margin: auto;
   --r-bg: var(--solo-white);
-  background-color: var(--r-bg) !important;
+  background-color: var(--r-bg);
   position: relative;
   padding: 0;
   outline: 0;
@@ -1139,20 +1135,20 @@ a {
   font-size: 16px;
 }
 
-#page-wrapper .w3-code {
+.page-wrapper .w3-code {
   width: auto;
   --r-bg: var(--solo-white);
-  background-color: var(--r-bg) !important;
+  background-color: var(--r-bg);
   padding: 8px 12px;
   --r-br: #4caf50;
-  border-left: 4px solid var(--r-br) !important;
+  border-left: 4px solid var(--r-br);
   word-wrap: break-word;
 }
 
-#page-wrapper .w3-codespan {
+.page-wrapper .w3-codespan {
   color: crimson;
   --r-bg: #f1f1f1;
-  background-color: var(--r-bg) !important;
+  background-color: var(--r-bg);
   padding-left: 4px;
   padding-right: 4px;
   font-size: 110%;
@@ -1412,49 +1408,49 @@ a {
   border: 0 !important;
 }
 
-.w3-border {
+.page-wrapper .w3-border {
   --r-br: var(--solo-ccc);
-  border: 1px solid var(--r-br) !important;
+  border: 1px solid var(--r-br);
 }
 
-.w3-border-top {
+.page-wrapper .w3-border-top {
   --r-br: var(--solo-ccc);
-  border-top: 1px solid var(--r-br) !important;
+  border-top: 1px solid var(--r-br);
 }
 
-.w3-border-bottom {
+.page-wrapper .w3-border-bottom {
   --r-br: var(--solo-ccc);
-  border-bottom: 1px solid var(--r-br) !important;
+  border-bottom: 1px solid var(--r-br);
 }
 
-.w3-border-left {
+.page-wrapper .w3-border-left {
   --r-br: var(--solo-ccc);
-  border-left: 1px solid var(--r-br) !important;
+  border-left: 1px solid var(--r-br);
 }
 
-.w3-border-right {
+.page-wrapper .w3-border-right {
   --r-br: var(--solo-ccc);
-  border-right: 1px solid var(--r-br) !important;
+  border-right: 1px solid var(--r-br);
 }
 
-.w3-topbar {
+.page-wrapper .w3-topbar {
   --r-br: var(--solo-ccc);
-  border-top: 6px solid var(--r-br) !important;
+  border-top: 6px solid var(--r-br);
 }
 
-.w3-bottombar {
+.page-wrapper .w3-bottombar {
   --r-br: var(--solo-ccc);
-  border-bottom: 6px solid var(--r-br) !important;
+  border-bottom: 6px solid var(--r-br);
 }
 
-.w3-leftbar {
+.page-wrapper .w3-leftbar {
   --r-br: var(--solo-ccc);
-  border-left: 6px solid var(--r-br) !important;
+  border-left: 6px solid var(--r-br);
 }
 
-.w3-rightbar {
+.page-wrapper .w3-rightbar {
   --r-br: var(--solo-ccc);
-  border-right: 6px solid var(--r-br) !important;
+  border-right: 6px solid var(--r-br);
 }
 
 .w3-section,

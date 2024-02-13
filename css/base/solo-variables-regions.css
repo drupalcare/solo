@@ -12,10 +12,7 @@
 .page-wrapper hr,
 .page-wrapper ul,
 .page-wrapper ul li,
-.page-wrapper table,
-.page-wrapper table td,
-.page-wrapper table th,
-.page-wrapper table tr {
+.page-wrapper table {
   border-color: var(--r-br, var(--r-br-b));
   background-color: var(--r-bg);
   color: var(--r-tx);
@@ -32,23 +29,11 @@
 }
 
 /* Link only */
-.page-wrapper a:not(.nav__menu-link,
-.button,
-.site-name-link,
-.site-logo,
-h1 a,
-h2 a,
-h3 a) {
+.page-wrapper a:not(.nav__menu-link, .button, .site-name-link, .site-logo, h1 a, h2 a, h3 a) {
   color: var(--r-lk, var(--r-tx));
 }
 
-.page-wrapper a:hover:not(.nav__menu-link,
-.button,
-.site-name-link,
-.site-logo,
-h1 a,
-h2 a,
-h3 a) {
+.page-wrapper a:hover:not(.nav__menu-link, .button, .site-name-link, .site-logo, h1 a, h2 a, h3 a) {
   color: var(--r-lk-h, var(--r-tx));
 }
 

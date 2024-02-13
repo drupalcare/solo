@@ -44,6 +44,18 @@
   border-bottom: var(--solo-px1) solid var(--r-br, var(--r-br-b));
 }
 
+.page-wrapper .solo-table-all tr:nth-child(even) {
+  background-color: var(--solo-even, var(--r-bg));
+}
+
+.page-wrapper .solo-table-all tr:nth-child(odd) {
+  background-color: var(--solo-odd, var(--r-bg));
+}
+
+#page-wrapper .solo-table-all thead tr {
+  background-color: var(--solo-thead, var(--r-bg));
+}
+
 .page-wrapper .solo-table-all td,
 .page-wrapper .solo-table-all th {
   padding: var(--solo-px8);

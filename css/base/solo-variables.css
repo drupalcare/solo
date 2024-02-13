@@ -8,6 +8,7 @@
   --r-lk: initial;
   --r-lk-h: initial;
   --r-br: initial;
+  --r-br-b:initial;
   --r-bg-fr: initial;
   --r-tx-lk: initial;
   --r-tx-lk-h: initial;
@@ -17,6 +18,9 @@
   --r-tx-bt-h: initial;
   --r-bg-bt: initial;
   --r-bg-bt-h: initial;
+  --solo-thead: initial;
+  --solo-odd: initial;
+  --solo-even: initial;
   --solo-px2560: 160rem;
   --solo-px1920: 120rem;
   --solo-px1600: 100rem;

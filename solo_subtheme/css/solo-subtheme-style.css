@@ -1,41 +1,27 @@
 /* Add your css code here */
-/* Variable Definitions:
-    --r-bg: Background color
-    --r-tx: Text color
-    --r-h1: h1, h2, h3 color
-    --r-lk: Link text color
-    --r-lk-h: Link text color hover
-    --r-br: Border color
-    --r-bg-fr: Input form background
-    --r-tx-lk: Menu link text color
-    --r-tx-lk-h: Menu link text color hover
-    --r-bg-lk: Menu link background color
-    --r-bg-lk-h: Menu link background color hover
-    --r-tx-bt: Button text color
-    --r-tx-bt-h: Button text color hover
-    --r-bg-bt: Button background color
-    --r-bg-bt-h: Button background color hover
-Examples:
-#page-wrapper {
-  --r-bg: #fefffc;
-  --r-tx: #4c5866;
-  --r-h1: #2a3439;
-  --r-lk: #8a3324;
-  --r-lk-h: #79443b;
-  --r-br: #f4f5f0;
-  --r-bg-fr: #f8f4ff;
-  --r-tx-lk: #2c3e4c;
-  --r-tx-lk-h: #1520a6;
-  --r-bg-lk:#F2F7FD;
-  --r-bg-lk-h: #f8f8e8;
-  --r-tx-bt: #354a21;
-  --r-tx-bt-h: #597d35;
-  --r-bg-bt: #edf1fe;
-  --r-bg-bt-h: #efece1;
-  }
+/*
+Variable Definitions:
+  --r-bg: Controls the background color.
+  --r-tx: Determines the color of the text.
+  --r-h1: Sets the color for h1, h2, and h3 headings.
+  --r-lk: Changes the link text color.
+  --r-lk-h: Alters the hover color of link text.
+  --r-br: Specifies the border color.
+  --r-bg-fr: Defines the background color of input forms.
+  --r-tx-lk: Adjusts the menu link text color.
+  --r-tx-lk-h: Modifies the hover color of menu link text.
+  --r-bg-lk: Sets the menu link background color.
+  --r-bg-lk-h: Changes the hover background color of menu links.
+  --r-tx-bt: Determines the button text color.
+  --r-tx-bt-h: Alters the button text color on hover.
+  --r-bg-bt: Specifies the button background color.
+  --r-bg-bt-h: Sets the button background color on hover.
 */
 
-/*#page-wrapper {}
+/*
+Regions Names, each region has an ID and a Class with the same name.
+You can use .page-wrapper or #page-wrapper
+#page-wrapper {}
 #primary-sidebar-menu {}
 #fixed-search-block {}
 #popup-login-block {}
@@ -69,4 +55,24 @@ Examples:
 #footer-box-third {}
 
 #footer-menu {}
-#copyright {}*/
+#copyright {}
+
+Examples:
+#page-wrapper {
+  --r-bg: #fefffc;
+  --r-tx: #4c5866;
+  --r-h1: #2a3439;
+  --r-lk: #8a3324;
+  --r-lk-h: #79443b;
+  --r-br: #f4f5f0;
+  --r-bg-fr: #f8f4ff;
+  --r-tx-lk: #2c3e4c;
+  --r-tx-lk-h: #1520a6;
+  --r-bg-lk:#F2F7FD;
+  --r-bg-lk-h: #f8f8e8;
+  --r-tx-bt: #354a21;
+  --r-tx-bt-h: #597d35;
+  --r-bg-bt: #edf1fe;
+  --r-bg-bt-h: #efece1;
+  }
+*/

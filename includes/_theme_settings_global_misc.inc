@@ -119,9 +119,9 @@ $form['solo_settings']['settings_global_misc']['site_inline_items_on'] = [
 
 $form['solo_settings']['settings_global_misc']['site_reading_mode_content_type'] = [
   '#type' => 'select',
-  '#title' => t('Reading Mode'),
+  '#title' => t('Reading Mode (45rem/720px)'),
   '#default_value' => theme_get_setting('site_reading_mode_content_type') ?? '',
   '#options' => _solo_get_content_types(),
   '#multiple' => TRUE,
-  '#description' => t("Choose the content type for which 'Reading Mode' should be enabled, and set the maximum width for the content region to 600 px for both Text Formatted Long and Text Formatted Long with Summary. It is for Default/Full view mode only."),
+  '#description' => t("A common guideline for the maximum width of a text block for comfortable reading is around 60 to 75 characters per line. This guideline helps to prevent the text from becoming too difficult to follow from one line to the next. Choose the content type for which 'Reading Mode' should be enabled, and set the maximum width for the content region to 45rem/720px for both Text Formatted Long and Text Formatted Long with Summary. It is for Default/Full view mode only."),
 ];

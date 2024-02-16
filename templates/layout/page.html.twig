@@ -64,7 +64,7 @@
 {% endset %}
 
 <!-- Start: Page Wrapper -->
-<div id="page-wrapper" class="page-wrapper solo-animate-opacity {{ site_global_width }} {{ site_global_breakpoints }} {{ site_menu_breakpoints }} {{ classes_page_wrapper }} {{ site_inline_items_on ? 'solo__inline-items' }}"{{ attributes_page_wrapper }}>
+<div id="page-wrapper" class="page-wrapper solo-animate-opacity{{ site_global_width ? ' ' ~ site_global_width }}{{ site_global_breakpoints ? ' ' ~ site_global_breakpoints }}{{ site_menu_breakpoints ? ' ' ~ site_menu_breakpoints }}{{ classes_page_wrapper ? ' ' ~ classes_page_wrapper }}{{ site_inline_items_on ? ' solo__inline-items' }}" {{ attributes_page_wrapper }}>
 
   {% if site_regions_highlighted_disable == 0 %}
   {% include '@solo/partials/_highlighted.html.twig' %}

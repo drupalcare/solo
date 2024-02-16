@@ -18,6 +18,9 @@
   display: inline-flex;
 }
 
+.copyright-inner.solo-col-1 p {
+  text-align: center;
+}
 /* label form in the footer */
 .footer-menu-inner form label {
   text-align: left;

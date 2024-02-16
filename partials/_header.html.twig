@@ -1,7 +1,7 @@
   {% if page.header or page.primary_sidebar_menu %}
     <!-- Start: Header -->
-    <header id="header" class="solo-outer lone header {{ site_header_colors }} {{ site_name_animate_on }} {{ classes_header }}" role="banner" aria-label="{{ 'Site header'|t }}"{{ attributes_header }}>
-      <div id="header-inner" class="solo-inner solo-col solo-col-1 header-inner {{ header_change_icons ? 'hs-icons-left' }} {{ header_sitename_center ? 'header-sitename-center' }}">
+    <header id="header" class="solo-outer lone header{{ site_header_colors ? ' ' ~ site_header_colors }}{{ site_name_animate_on ? ' ' ~ site_name_animate_on }}{{ classes_header ? ' ' ~ classes_header }}" role="banner" aria-label="{{ 'Site header'|t }}"{{ attributes_header }}>
+      <div id="header-inner" class="solo-inner solo-col solo-col-1 header-inner{{ header_change_icons ? ' hs-icons-left' }}{{ header_sitename_center ? ' header-sitename-center' }}">
 
         {% if page.primary_sidebar_menu %}
           <div id="sidebar-button-open" class="hamburger-icon sidebar-button-open">

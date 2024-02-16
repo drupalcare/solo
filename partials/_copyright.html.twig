@@ -1,7 +1,7 @@
   {% if footer_copyright or footer_link %}
     <!-- Start: Copyright -->
-    <div id="copyright" class="solo-outer lone copyright {{ classes_credit_copyright }}"{{ attributes_credit_copyright }}>
-      <div id="copyright-inner" class="solo-inner solo-col solo-col-2 copyright-inner">
+    <div id="copyright" class="solo-outer lone copyright{{ classes_credit_copyright ? ' ' ~ classes_credit_copyright }}" {{ attributes_credit_copyright }}>
+      <div id="copyright-inner" class="solo-inner solo-col copyright-inner{{ (footer_copyright and footer_link) ? ' solo-col-2' : ' solo-col-1' }}">
       {% if footer_copyright %}
       <!-- Start: Copyright -->
       <p class="copyright-first">

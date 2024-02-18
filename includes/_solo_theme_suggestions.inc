@@ -35,9 +35,15 @@ function solo_theme_suggestions_block_alter(array &$suggestions, array $variable
 /**
  * Implements hook_theme_suggestions_HOOK_alter() for menu.
  */
-function solo_theme_suggestions_menu_alter(&$suggestions, array $variables): void {
+function solo_theme_suggestions_menu_alter(array &$suggestions, array $variables): void {
+  // Construct the suggestion based on the region, if it exists.
   if (isset($variables['attributes']['region'])) {
-    $suggestions[] = 'menu__' . $variables['attributes']['region'];
+    $region_suggestion = 'menu__' . $variables['attributes']['region'];
+
+    // Only add the suggestion if it's not already in the array.
+    if (!in_array($region_suggestion, $suggestions)) {
+      array_unshift($suggestions, $region_suggestion);
+    }
   }
 }
 
@@ -83,24 +89,16 @@ function solo_theme_suggestions_page_alter(array &$suggestions, array $variables
 /**
  * Implements hook_theme_suggestions_HOOK_alter().
  */
-function solo_theme_suggestions_user_alter(&$suggestions, $variables): ?array {
-
+function solo_theme_suggestions_user_alter(array &$suggestions, array $variables) {
   $viewModeKey = '#view_mode';
   $elements = $variables['elements'] ?? [];
 
-  if (!isset($elements[$viewModeKey])) {
-    return NULL;
+  if (isset($elements[$viewModeKey])) {
+    $viewMode = str_replace('.', '_', $elements[$viewModeKey]);
+    $userId = \Drupal::currentUser()->id();
+
+    $suggestions[] = "user__$viewMode";
+    $suggestions[] = "user__$userId";
+    $suggestions[] = "user__{$userId}__$viewMode";
   }
-
-  $viewMode = str_replace('.', '_', $elements[$viewModeKey]);
-  $userId = \Drupal::service('current_user')->id();
-
-  $suggestions = [
-    "user__$viewMode",
-    "user__$userId",
-    "user__{$userId}__$viewMode",
-  ];
-
-  return $suggestions;
-
 }

@@ -38,8 +38,16 @@
         item.addEventListener('keydown', this.handleMenuItemKeydown.bind(this));
       });
 
-      // Add resize event listener
-      window.addEventListener('resize', this.handleResize.bind(this));
+      // Enhanced resize event listener
+      window.addEventListener('resize', () => {
+        // Check if an input field is not focused
+        if (!(document.activeElement && document.activeElement.tagName === 'INPUT')) {
+          // Delay the resize handling for 1/2 second if no input is focused
+          setTimeout(() => {
+            this.handleResize();
+          }, 500); // Only delay execution when input is not focused
+        }
+      });
     }
 
     handleResize() {

@@ -37,19 +37,31 @@
   white-space: nowrap;
 }
 
-.page-wrapper #primary-menu {
+.page-wrapper .solo-inner nav ul {
+  z-index: 1;
+}
+
+.page-wrapper .solo-inner nav ul > li > ul {
+  z-index: 2;
+}
+
+.page-wrapper .solo-inner nav ul > li > ul > li > ul {
+  z-index: 3;
+}
+
+.page-wrapper .main-navigation-wrapper {
   z-index: 1000;
 }
 
-.solo-inner ul.navigation__menubar {
+.page-wrapper .main-navigation-wrapper ul.navigation__menubar {
   z-index: 2000 !important;
 }
 
-.solo-inner ul.navigation__menubar>li>ul {
+.page-wrapper .main-navigation-wrapper ul.navigation__menubar>li>ul {
   z-index: 3000 !important;
 }
 
-.solo-inner ul.navigation__menubar >li>ul>li>ul {
+.page-wrapper .main-navigation-wrapper ul.navigation__menubar >li>ul>li>ul {
   z-index: 4000 !important;
 }
 

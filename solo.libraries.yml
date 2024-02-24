@@ -91,7 +91,6 @@ solo-menu:
   js:
     js/solo-menu-scripts.js: { }
     js/solo-menu.js: { }
-    js/solo-menu-keyboard.js: { }
     js/solo-menu-mobile.js: { }
     js/solo-menu-side.js: { }
   dependencies:

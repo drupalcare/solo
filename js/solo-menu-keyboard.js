@@ -11,6 +11,7 @@
 
   class MenubarNavigation {
     constructor(menu) {
+      this.isMegamenu = false;
       this.menu = menu;
       this.menuItems = menu.querySelectorAll('li > a, li > button');
       this.pageClass = document.querySelector('.page-wrapper');
@@ -27,6 +28,10 @@
     }
 
     init() {
+      if (this.menu.querySelector('ul[role="menubar"]').classList.contains('navigation__megamenu')) {
+        this.isMegamenu = true;
+      }
+
       this.bindEventListeners();
       this.setDefaultFocus(); // Sets the initial focus based on screen size
       this.bindMobileNavClickListener();
@@ -143,6 +148,38 @@
     }
 
     handleArrowDown(currentItem, isSmallScreen) {
+      // Check if we are in a megamenu
+      if (this.isMegamenu && !isSmallScreen) {
+        let nextItem;
+        // Determine if the current li is the last child of its parent ul
+        let currentLi = currentItem.closest('li');
+        let isLastLi = currentLi.nextElementSibling === null;
+
+        if (isLastLi && !currentLi.classList.contains('has-sub__menu')) {
+          // Navigate up to find the correct level of ul > li to jump to the next focusable item
+          let currentLevelLi = currentItem.closest('ul').closest('li');
+          let nextLevelLi = currentLevelLi.nextElementSibling;
+
+          if (nextLevelLi) {
+            // If there is a next sibling at the current nested level, focus the first item
+            nextItem = nextLevelLi.querySelector('a, button');
+          } else {
+            // If at the last item of the current nested level, move up to find the next focusable item at the parent level
+            let parentLevelLi = currentLevelLi.closest('ul').closest('ul').closest('li').nextElementSibling;
+            if (parentLevelLi) {
+              nextItem = parentLevelLi.querySelector('a, button');
+            }
+          }
+        } else {
+          // For non-last li elements, simply move to the next item within the same list
+          nextItem = currentItem.nextElementSibling ? currentItem.nextElementSibling.querySelector('a, button') : null;
+        }
+
+        if (nextItem) {
+          nextItem.focus();
+          return true;
+        }
+      }
 
       // Check if currentItem is a dropdown-toggler and the submenu is toggled
       if (currentItem.classList.contains('dropdown-toggler')) {

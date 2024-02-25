@@ -119,15 +119,8 @@
         });
     }
 
-    // Prevent page scrolling on mobile devices when the navigation dropdown
-    // menu is activated.
-    const menu = document.querySelector('.primary-menu .mobile-nav');
-
     Drupal.behaviors.mobileMenu = {
         attach: function(settings) {
-            menu.addEventListener('click', toggleOverflow);
-            menu.addEventListener('resize', toggleOverflow);
-
             window.addEventListener('resize', () => {
                 processHamburgerIcons(hamburgerIconButtons);
                 currentWidth = getCurrentWidth();

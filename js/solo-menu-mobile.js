@@ -119,20 +119,9 @@
         });
     }
 
-
-
     // Prevent page scrolling on mobile devices when the navigation dropdown
     // menu is activated.
     const menu = document.querySelector('.primary-menu .mobile-nav');
-    const body = document.querySelector('body');
-
-    const toggleOverflow = () => {
-        if (menu.classList.contains('toggled')) {
-            body.classList.add('overflow-hidden');
-        } else {
-            body.classList.remove('overflow-hidden');
-        }
-    };
 
     Drupal.behaviors.mobileMenu = {
         attach: function(settings) {
@@ -140,7 +129,6 @@
             menu.addEventListener('resize', toggleOverflow);
 
             window.addEventListener('resize', () => {
-                body.classList.remove('overflow-hidden');
                 processHamburgerIcons(hamburgerIconButtons);
                 currentWidth = getCurrentWidth();
                 const pageClass = document.querySelector('.page-wrapper');

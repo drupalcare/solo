@@ -401,6 +401,10 @@ function solo_preprocess_page(&$variables) {
     $variables['flip_main'] = 'pb-flip-main';
   }
 
+  if (!theme_get_setting('system_messages_disable_dark')) {
+    $variables['#attached']['library'][] = 'solo/solo-system-messages-dark';
+  }
+
   // Top regions variables.
   $regions = [
     'top' => ['first', 'second', 'third'],

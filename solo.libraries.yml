@@ -112,6 +112,12 @@ solo-menu-keyboard:
     - core/drupalSettings
     - core/once
 
+solo-system-messages-dark:
+  Version: VERSION
+  css:
+    component:
+      css/components/solo-system-messages-dark.css: { weight: 0 }
+
 # Global Breakpoints .
 solo-global-breakpoints-sb-576:
   Version: VERSION

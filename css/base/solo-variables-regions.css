@@ -61,10 +61,6 @@ h3 a) {
   color: var(--r-h1, var(--r-tx));
 }
 
-.page-wrapper .system-messages {
-  --r-bg: var(--solo-black);
-}
-
 /* Button */
 .page-wrapper a.button,
 .page-wrapper input.button,

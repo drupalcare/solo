@@ -73,6 +73,10 @@
 }
 
 @media (max-width:36rem) {
+  .header-inner #block-solo-branding {
+    width: 100%;
+  }
+
   .header-inner .branding-wrapper {
     display: grid;
     gap: var(--solo-px8);

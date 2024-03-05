@@ -21,6 +21,7 @@
 .copyright-inner.solo-col-1 p {
   text-align: center;
 }
+
 /* label form in the footer */
 .footer-menu-inner form label {
   text-align: left;
@@ -107,6 +108,26 @@
 
 .sm-icons .email svg {
   fill: var(--solo-em);
+}
+
+.sm-icons .reddit svg {
+  fill: var(--solo-it);
+}
+
+.sm-icons .snapchat svg {
+  fill: var(--solo-sn);
+}
+
+.sm-icons .whatsapp svg {
+  fill: var(--solo-up);
+}
+
+.sm-icons .tiktok svg {
+  fill: var(--solo-tk);
+}
+
+.sm-icons .threads svg {
+  fill: var(--solo-th);
 }
 
 /* Size for icons */

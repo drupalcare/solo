@@ -96,46 +96,41 @@ function solo_preprocess_html(&$variables): void {
   $solo_path = $solo_base . '/' . $solo_list;
   $variables['solo_path'] = $solo_path;
 
-  $theme_head_vars = ['site_css_injector', 'site_import_googel_font'];
-
-  if (theme_get_setting('site_global_font_size') || theme_get_setting('site_global_regions_gab')) {
-    $variables['html_attributes']->setAttribute('class', _get_html_classes());
-  }
-
+ $theme_head_vars = ['site_css_injector', 'site_import_google_font'];
   foreach ($theme_head_vars as $theme_head_var) {
     $variables[$theme_head_var] = theme_get_setting($theme_head_var);
   }
 
-  $variables['#attached']['html_head'][] = [
-    [
-      '#tag' => 'link',
-      '#attributes' => [
-        'href' => theme_get_setting('site_import_googel_font'),
-        'rel' => 'stylesheet',
-        'type' => 'text/css',
+  $google_font = theme_get_setting('site_import_google_font');
+  if (!empty($google_font)) {
+    $variables['#attached']['html_head'][] = [
+      [
+        '#tag' => 'link',
+        '#attributes' => [
+          'href' => theme_get_setting('site_import_google_font'),
+          'rel' => 'stylesheet',
+          'type' => 'text/css',
+        ],
       ],
-    ],
-    'google_font',
-  ];
+      'google_font',
+    ];
+  }
 
-  // $variables['#attached']['html_head'][] = [
-  // [
-  // '#tag' => 'link',
-  // '#attributes' => [
-  // 'href' => $solo_path . '/css/styles.css',
-  // 'rel' => 'stylesheet',
-  // 'type' => 'text/css',
-  // ],
-  // ],
-  // 'theme_styles',
-  // ];
-  $variables['#attached']['html_head'][] = [
-    [
-      '#tag' => 'style',
-      '#value' => theme_get_setting('site_css_injector'),
-    ],
-    'solo',
-  ];
+  $css_code = theme_get_setting('site_css_injector');
+  if (!empty($css_code)) {
+    $variables['#attached']['html_head'][] = [
+      [
+        '#type' => 'html_tag',
+        '#tag' => 'style',
+        '#value' => $css_code,
+      ],
+      'inline_css',
+    ];
+  }
+
+  if (theme_get_setting('site_global_font_size') || theme_get_setting('site_global_regions_gab')) {
+    $variables['html_attributes']->setAttribute('class', _get_html_classes());
+  }
 
   // Add node id to the body class.
   if ($route_name === 'entity.node.canonical') {

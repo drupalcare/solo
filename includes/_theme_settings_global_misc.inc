@@ -68,7 +68,7 @@ $form['solo_settings']['settings_global_misc']['site_node_date_format'] = [
   '#default_value' => theme_get_setting('site_node_date_format') ?? 'solo_date_l',
 ];
 
-$form['solo_settings']['settings_global_misc']['site_import_googel_font'] = [
+$form['solo_settings']['settings_global_misc']['site_import_google_font'] = [
   '#type' => 'textfield',
   '#title' => t('Import Google Font'),
   '#description' => t("To import a Google font, follow these steps:<br>
@@ -80,7 +80,7 @@ Step 2: Inject the CSS rules to specify the font families in the field below. Fo
 
 <span class='error'>Note</span>: If you are using Global Site Fonts or Heading Fonts, you must include <span class='error'>!important</span>; in your CSS.
  "),
-  '#default_value' => theme_get_setting('site_import_googel_font'),
+  '#default_value' => theme_get_setting('site_import_google_font'),
 ];
 
 $form['solo_settings']['settings_global_misc']['site_css_injector'] = [

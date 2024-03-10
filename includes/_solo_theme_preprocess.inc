@@ -96,7 +96,7 @@ function solo_preprocess_html(&$variables): void {
   $solo_path = $solo_base . '/' . $solo_list;
   $variables['solo_path'] = $solo_path;
 
- $theme_head_vars = ['site_css_injector', 'site_import_google_font'];
+  $theme_head_vars = ['site_css_injector', 'site_css_dynamic', 'site_import_google_font'];
   foreach ($theme_head_vars as $theme_head_var) {
     $variables[$theme_head_var] = theme_get_setting($theme_head_var);
   }
@@ -107,7 +107,7 @@ function solo_preprocess_html(&$variables): void {
       [
         '#tag' => 'link',
         '#attributes' => [
-          'href' => theme_get_setting('site_import_google_font'),
+          'href' => $google_font,
           'rel' => 'stylesheet',
           'type' => 'text/css',
         ],
@@ -116,16 +116,55 @@ function solo_preprocess_html(&$variables): void {
     ];
   }
 
-  $css_code = theme_get_setting('site_css_injector');
-  if (!empty($css_code)) {
+  $css_injector = theme_get_setting('site_css_injector');
+  if (!empty($css_injector)) {
     $variables['#attached']['html_head'][] = [
       [
         '#type' => 'html_tag',
         '#tag' => 'style',
-        '#value' => $css_code,
+        '#value' => $css_injector,
       ],
       'inline_css',
     ];
+  }
+
+  // Define the Drupal file system service for directory operations.
+  $file_system = \Drupal::service('file_system');
+
+  // Handle Dynamic CSS.
+  $css_dynamic = theme_get_setting('site_css_dynamic');
+  $css_file_path = DRUPAL_ROOT . '/' . $solo_path . '/css/theme/solo-css-dynamic.css';
+
+  // Determine the directory for the CSS file and ensure it exists.
+  $css_directory = dirname($css_file_path);
+  if (!file_exists($css_directory)) {
+    $file_system->mkdir($css_directory, NULL, TRUE);
+  }
+
+  // Write the CSS to the file, or clear the file if the setting is empty.
+  file_put_contents($css_file_path, $css_dynamic);
+
+  // Attach the CSS library only if there is content.
+  if (!empty($css_dynamic)) {
+    $variables['#attached']['library'][] = 'solo/solo-css-dynamic';
+  }
+
+  // Handle Dynamic JS.
+  $js_dynamic = theme_get_setting('site_js_dynamic');
+  $js_file_path = DRUPAL_ROOT . '/' . $solo_path . '/js/solo-js-dynamic.js';
+
+  // Determine the directory for the JS file and ensure it exists.
+  $js_directory = dirname($js_file_path);
+  if (!file_exists($js_directory)) {
+    $file_system->mkdir($js_directory, NULL, TRUE);
+  }
+
+  // Write the JS to the file, or clear the file if the setting is empty.
+  file_put_contents($js_file_path, $js_dynamic);
+
+  // Attach the JS library only if there is content.
+  if (!empty($js_dynamic)) {
+    $variables['#attached']['library'][] = 'solo/solo-js-dynamic';
   }
 
   if (theme_get_setting('site_global_font_size') || theme_get_setting('site_global_regions_gab')) {

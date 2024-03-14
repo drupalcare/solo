@@ -21,7 +21,7 @@
       {% for item in items %}
         {%
           set item_classes = [
-          'solo-side-menu__item',
+          'solo-footer-menu__item',
           item.is_expanded and item.below ? 'expanded dropdown',
           item.in_active_trail ? 'active active-trail',
           loop.first ? 'first',

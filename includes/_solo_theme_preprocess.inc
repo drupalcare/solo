@@ -8,6 +8,7 @@
 use Drupal\Component\Utility\Html;
 use Drupal\Core\Datetime\DrupalDateTime;
 use Drupal\Core\Entity\EntityInterface;
+use Drupal\Core\File\FileSystemInterface;
 use Drupal\Core\Template\Attribute;
 use Drupal\user\UserInterface;
 
@@ -128,43 +129,62 @@ function solo_preprocess_html(&$variables): void {
     ];
   }
 
-  // Define the Drupal file system service for directory operations.
   $file_system = \Drupal::service('file_system');
+  $file_url_generator = \Drupal::service('file_url_generator');
 
-  // Handle Dynamic CSS.
+  // Assuming you've already retrieved your dynamic content.
   $css_dynamic = theme_get_setting('site_css_dynamic');
-  $css_file_path = DRUPAL_ROOT . '/' . $solo_path . '/css/theme/solo-css-dynamic.css';
-
-  // Determine the directory for the CSS file and ensure it exists.
-  $css_directory = dirname($css_file_path);
-  if (!file_exists($css_directory)) {
-    $file_system->mkdir($css_directory, NULL, TRUE);
-  }
-
-  // Write the CSS to the file, or clear the file if the setting is empty.
-  file_put_contents($css_file_path, $css_dynamic);
-
-  // Attach the CSS library only if there is content.
-  if (!empty($css_dynamic)) {
-    $variables['#attached']['library'][] = 'solo/solo-css-dynamic';
-  }
-
-  // Handle Dynamic JS.
   $js_dynamic = theme_get_setting('site_js_dynamic');
-  $js_file_path = DRUPAL_ROOT . '/' . $solo_path . '/js/solo-js-dynamic.js';
 
-  // Determine the directory for the JS file and ensure it exists.
-  $js_directory = dirname($js_file_path);
-  if (!file_exists($js_directory)) {
-    $file_system->mkdir($js_directory, NULL, TRUE);
+  // Define the file URIs.
+  $css_file_uri = 'public://css/solo-css-dynamic.css';
+  $js_file_uri = 'public://js/solo-js-dynamic.js';
+
+  // Check and prepare directories.
+  $css_directory = $file_system->dirname($css_file_uri);
+  $js_directory = $file_system->dirname($js_file_uri);
+  if (!$file_system->prepareDirectory($css_directory, FileSystemInterface::CREATE_DIRECTORY) ||
+      !$file_system->prepareDirectory($js_directory, FileSystemInterface::CREATE_DIRECTORY)) {
+    // Log an error if directories could not be prepared.
+    \Drupal::logger('solo_preprocess_html')->error('Failed to prepare directory for CSS or JS.');
+    // Exit the function if directories couldn't be created or made writable.
+    return;
   }
 
-  // Write the JS to the file, or clear the file if the setting is empty.
-  file_put_contents($js_file_path, $js_dynamic);
+  // Handle dynamic CSS.
+  if (!empty($css_dynamic)) {
+    // Write the CSS content to the file.
+    if ($file_system->saveData($css_dynamic, $css_file_uri, FileSystemInterface::EXISTS_REPLACE) !== FALSE) {
+      // Generate the absolute URL for the CSS file and attach it to the HTML document.
+      $css_url = $file_url_generator->generateAbsoluteString($css_file_uri);
+      $variables['#attached']['html_head'][] = [
+        [
+          '#type' => 'html_tag',
+          '#tag' => 'link',
+          '#attributes' => ['href' => $css_url, 'rel' => 'stylesheet'],
+        ],
+        'solo_dynamic_css',
+      ];
+    }
+    else {
+      // Log an error if the file could not be saved.
+      \Drupal::logger('solo_preprocess_html')->error('Failed to save dynamic CSS content.');
+    }
+  }
 
-  // Attach the JS library only if there is content.
+  // Handle dynamic JS.
   if (!empty($js_dynamic)) {
+    // Attach the JS library.
     $variables['#attached']['library'][] = 'solo/solo-js-dynamic';
+    // Write the JS content to the file.
+    if ($file_system->saveData($js_dynamic, $js_file_uri, FileSystemInterface::EXISTS_REPLACE) !== FALSE) {
+      // Note: Since we're attaching it as a library, the direct script tag might not be necessary,
+      // unless you need to attach it outside of a defined library.
+    }
+    else {
+      // Log an error if the file could not be saved.
+      \Drupal::logger('solo_preprocess_html')->error('Failed to save dynamic JS content.');
+    }
   }
 
   if (theme_get_setting('site_global_font_size') || theme_get_setting('site_global_regions_gab')) {

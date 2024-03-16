@@ -283,17 +283,11 @@ font-awesome-6-ex:
   js:
     https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/js/all.min.js: { type: external, minified: true, attributes: { defer: true } }
 
-# CSS Dynamic.
-solo-css-dynamic:
-  Version: VERSION
-  css:
-    theme:
-      css/theme/solo-css-dynamic.css:  { weight: 300 }
-
+# JS Dynamic.
 solo-js-dynamic:
   Version: VERSION
   js:
-    js/solo-js-dynamic.js: { }
+    js/placeholder.js: { attributes: { defer: true } }
   dependencies:
     - core/jquery
     - core/drupal.ajax

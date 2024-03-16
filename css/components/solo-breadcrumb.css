@@ -28,7 +28,7 @@ ul.breadcrumb-menu li {
 ul.breadcrumb-menu li a {
   display: flex;
   align-items: center;
-  padding: var(--solo-px5);
+  padding: var(--solo-px16) var(--solo-px6) var(--solo-px16) var(--solo-px12);
 }
 
 .breadcrumb-menu li .breadcrumb-sep {

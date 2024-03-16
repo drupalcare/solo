@@ -250,6 +250,12 @@ ol {
 
 .solo-small {
   font-size: var(--solo-px13);
+  line-height: var(--solo-px16);
+}
+
+.solo-medium {
+  font-size: var(--solo-px16);
+  line-height: var(--solo-px18);
 }
 
 .solo-bar {

@@ -1,5 +1,5 @@
 nav.tabs {
-  margin: 10px 0 !important;
+  margin: var(--solo-px10) 0 !important;
   display: grid;
 }
 
@@ -72,6 +72,10 @@ ul.primary > li > a {
   z-index: 1;
 }
 
+ul.primary > li > a:hover {
+  --r-bg: transparent !important;
+}
+
 ul.primary > li > a::before {
   content: "";
   position: absolute;
@@ -80,7 +84,7 @@ ul.primary > li > a::before {
   width: 100%;
   height: 100%;
   background-color: var(--solo-gray);
-  transition: transform 0.3s ease;
+  transition: transform 0.3s ease-out;
   z-index: -1;
   transform: translateY(100%);
 }
@@ -105,6 +109,44 @@ ul.primary > li > a:hover::before {
   transform: translateY(0);
 }
 
+ul.primary > li.core-task,
+ul.primary > li.core-task a {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+ul.primary > li.core-task a {
+  padding-left: var(--solo-px32);
+}
+
+ul.primary > li.core-task .task-icon {
+  z-index: 2;
+  position: absolute;
+  left: var(--solo-px6);
+}
+
+ul.primary > li.core-task .task-icon.icon-view {
+  fill: var(--solo-green);
+}
+
+ul.primary > li.core-task .task-icon.icon-edit {
+  fill: var(--solo-blue);
+}
+
+ul.primary > li.core-task .task-icon.icon-delete {
+  fill: var(--solo-red);
+}
+
+ul.primary > li.core-task .task-icon.icon-revisions {
+  fill: var(--solo-purple);
+}
+
 ul.primary > li > a:hover {
   --r-lk-h: var(--solo-white);
+}
+
+ul.primary > li.core-task a:hover + .task-icon {
+  fill: var(--solo-white);
 }

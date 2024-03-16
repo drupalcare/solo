@@ -16,7 +16,7 @@ ul.primary {
 }
 
 ul.primary {
-  border-bottom: 1px solid var(--r-br, var(--r-br-b));
+  border-bottom: 2px solid var(--r-br, var(--r-br-b));
 }
 
 ul.secondary li.is-active > a,
@@ -26,22 +26,85 @@ ul.primary li.is-active > a {
 
 ul.primary > li {
   border: none;
-  border-right: 1px dotted var(--r-br, var(--r-br-b));
-  float: left;
 }
 
-ul.primary > li:last-child {
-  border-right: none !important;
-}
-
-ul.primary > li > a,
 nav.action-links > li > a {
-  text-align: center;
-  padding: 12px 16px;
-  display: block;
+  display: flex;
+  align-items: center;
+  padding: var(--solo-px12) var(--solo-px16);
+}
+
+ul.primary > li > a {
+  display: flex;
+  align-items: center;
+  padding: var(--solo-px6) var(--solo-px16);
+  border: 1px solid var(--r-br, var(--r-br-b));
+  border-bottom: none;
+  margin-right: var(--solo-px6);
+  border-radius: var(--solo-px8) var(--solo-px8) 0 0;
 }
 
 ul.secondary > li > a {
-  padding: 8px 12px;
+  padding: var(--solo-px4) var(--solo-px12);
   display: block;
+}
+
+ul.primary .view-link {
+  --r-lk: var(--solo-green);
+}
+
+ul.primary .edit-link {
+  --r-lk: var(--solo-blue);
+}
+
+ul.primary .delete-link {
+  --r-lk: var(--solo-red);
+}
+
+ul.primary .revisions-link {
+  --r-lk: var(--solo-purple);
+}
+
+ul.primary > li > a {
+  position: relative;
+  transition: color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+  overflow: hidden;
+  z-index: 1;
+}
+
+ul.primary > li > a::before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: var(--solo-gray);
+  transition: transform 0.3s ease;
+  z-index: -1;
+  transform: translateY(100%);
+}
+
+ul.primary > li > a.view-link::before {
+  background-color: var(--solo-green);
+}
+
+ul.primary > li > a.edit-link::before {
+  background-color: var(--solo-blue);
+}
+
+ul.primary > li > a.delete-link::before {
+  background-color: var(--solo-red);
+}
+
+ul.primary > li > a.revisions-link::before {
+  background-color: var(--solo-purple);
+}
+
+ul.primary > li > a:hover::before {
+  transform: translateY(0);
+}
+
+ul.primary > li > a:hover {
+  --r-lk-h: var(--solo-white);
 }

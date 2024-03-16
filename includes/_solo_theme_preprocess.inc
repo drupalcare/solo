@@ -546,17 +546,16 @@ function solo_preprocess_node(&$variables) {
 /**
  * Implements hook_preprocess_breadcrumb().
  */
-function solo_preprocess_breadcrumb(&$variables): void {
-  if ($variables['breadcrumb'] && !theme_get_setting('site_breadcrumb_pagetitle_off')) {
-    $is_request = \Drupal::request();
+function solo_preprocess_breadcrumb(&$variables) {
+
+  if (!empty($variables['breadcrumb']) && !theme_get_setting('site_breadcrumb_pagetitle_off')) {
+    $request = \Drupal::request();
     $route_match = \Drupal::routeMatch();
-    $page_title = \Drupal::service('title_resolver')
-      ->getTitle($is_request, $route_match->getRouteObject());
-    if (!empty($page_title)) {
+    $page_title = \Drupal::service('title_resolver')->getTitle($request, $route_match->getRouteObject());
+    if (!empty($page_title) && is_string($page_title)) {
       $variables['breadcrumb'][] = [
         'text' => $page_title,
       ];
-      // Add cache context based on url.
       $variables['#cache']['contexts'][] = 'url';
     }
   }
@@ -849,6 +848,31 @@ function solo_preprocess_menu_local_task(&$variables): void {
   if (isset($variables['element']['#level'])) {
     $variables['level'] = $variables['element']['#level'];
   }
+
+  // Retrieve the route name from the link.
+  $route_name = $variables['element']['#link']['url']->getRouteName();
+
+  // Based on the route name, add a unique class to the link.
+  switch ($route_name) {
+    case 'entity.node.canonical':
+      $variables['link']['#options']['attributes']['class'][] = 'view-link';
+      break;
+
+    case 'entity.node.edit_form':
+      $variables['link']['#options']['attributes']['class'][] = 'edit-link';
+      break;
+
+    case 'entity.node.delete_form':
+      $variables['link']['#options']['attributes']['class'][] = 'delete-link';
+      break;
+
+    case 'entity.node.version_history':
+      $variables['link']['#options']['attributes']['class'][] = 'revisions-link';
+      break;
+
+    // Add more cases as needed for other links.
+  }
+
 }
 
 /**

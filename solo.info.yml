@@ -3,7 +3,7 @@ description: 'Solo is the third generation of the <a target=_blank href=https://
 package: Solo
 type: theme
 base theme: false
-core_version_requirement: ^10 || ^11
+core_version_requirement: ^10.1 || ^11
 
 #Libraries
 libraries:

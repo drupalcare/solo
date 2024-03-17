@@ -137,8 +137,8 @@ function solo_preprocess_html(&$variables): void {
   $js_dynamic = theme_get_setting('site_js_dynamic');
 
   // Define the file URIs.
-  $css_file_uri = 'public://css/solo-css-dynamic.css';
-  $js_file_uri = 'public://js/solo-js-dynamic.js';
+  $css_file_uri = 'public://solo/css/solo-css-dynamic.css';
+  $js_file_uri = 'public://solo/js/solo-js-dynamic.js';
 
   // Check and prepare directories.
   $css_directory = $file_system->dirname($css_file_uri);
@@ -178,8 +178,16 @@ function solo_preprocess_html(&$variables): void {
     $variables['#attached']['library'][] = 'solo/solo-js-dynamic';
     // Write the JS content to the file.
     if ($file_system->saveData($js_dynamic, $js_file_uri, FileSystemInterface::EXISTS_REPLACE) !== FALSE) {
-      // Note: Since we're attaching it as a library, the direct script tag might not be necessary,
-      // unless you need to attach it outside of a defined library.
+      // Generate the absolute URL for the JS file and attach it to the HTML document.
+      $js_url = $file_url_generator->generateAbsoluteString($js_file_uri);
+      $variables['#attached']['html_head'][] = [
+        [
+          '#type' => 'html_tag',
+          '#tag' => 'script',
+          '#attributes' => ['src' => $js_url, 'type' => 'application/javascript'],
+        ],
+        'solo_dynamic_js',
+      ];
     }
     else {
       // Log an error if the file could not be saved.

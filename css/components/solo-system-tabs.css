@@ -122,9 +122,10 @@ ul.primary > li.core-task a {
 }
 
 ul.primary > li.core-task .task-icon {
-  z-index: 2;
+  z-index: 1;
   position: absolute;
   left: var(--solo-px6);
+  pointer-events: none;
 }
 
 ul.primary > li.core-task .task-icon.icon-view {

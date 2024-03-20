@@ -8,14 +8,25 @@
 
 .page-wrapper,
 .solo-outer,
-.region-inner,
+.region-inner {
+  border-color: var(--r-br, var(--r-br-b));
+  background-color: var(--r-bg);
+  color: var(--r-tx);
+}
+
 .page-wrapper hr,
 .page-wrapper ul,
 .page-wrapper ul li,
 .page-wrapper table {
   border-color: var(--r-br, var(--r-br-b));
-  background-color: var(--r-bg);
   color: var(--r-tx);
+}
+
+.page-wrapper hr:not(.field hr),
+.page-wrapper ul:not(.field ul),
+.page-wrapper ul li:not(.field ul li),
+.page-wrapper table:not(.field table) {
+  background-color: var(--r-bg);
 }
 
 .page-wrapper .solo-select,

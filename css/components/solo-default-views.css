@@ -80,10 +80,6 @@
   text-align: center !important;
 }
 
-form.views-exposed-form {
-  margin-bottom: var(--solo-px16);
-}
-
 form.views-exposed-form .form--inline {
   align-items: flex-end;
 }
@@ -98,4 +94,13 @@ form.views-exposed-form.form--inline .form-actions {
 form.views-exposed-form.form--inline .form-actions input {
   vertical-align: bottom;
   margin: 0;
+}
+
+form.views-exposed-form .exposed-form > div {
+  margin-bottom: var(--solo-px12);
+  margin-right: var(--solo-px12);
+}
+
+form.views-exposed-form .exposed-form > div:last-child {
+  margin-right: var(--solopx0);
 }

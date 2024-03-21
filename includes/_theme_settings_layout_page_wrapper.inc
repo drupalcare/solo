@@ -30,7 +30,9 @@ $form['solo_settings']['settings_page_wrapper']['classes_page_wrapper'] = [
 - dis-padding: Disables padding
 - dis-opacity: Disables the whole page opacity
 - image-auto: Disables 100 percent image inside any link
-- dis-text-transform: Disables text transform"),
+- dis-text-transform: Disables text transform
+- dis-anim-link: Disables submit button wiggle animation
+- dis-anim-submit: Disables menu border animation"),
   '#default_value' => theme_get_setting('classes_page_wrapper'),
 ];
 

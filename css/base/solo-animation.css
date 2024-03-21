@@ -60,8 +60,6 @@
   right: 0;
 }
 
-.page-wrapper nav input.button:hover:after,
-.page-wrapper nav input.button:hover:before,
 .page-wrapper nav ul:not(.solo-ul,
 .field ul) li>a:hover:after,
 .page-wrapper nav ul:not(.solo-ul,
@@ -231,4 +229,15 @@ input.button {
     transform: rotateZ(0) scale(1);
   }
 
+}
+
+.page-wrapper.dis-anim-submit form input.button.form-submit:hover {
+  animation: none !important;
+}
+
+.page-wrapper.dis-anim-link nav ul li>a:hover:after,
+.page-wrapper.dis-anim-link nav ul li>a:hover:before,
+.page-wrapper.dis-anim-link nav ul li>button:hover:after,
+.page-wrapper.dis-anim-link nav ul li>button:hover:before {
+  animation: none !important;
 }

@@ -25,6 +25,10 @@
   padding-top: 11px;
 }
 
+form #edit-reset {
+  margin: 0 var(--solo-px12);
+}
+
 .js .views-edit-view .dropbutton-wrapper .dropbutton .dropbutton-action > *,
 .views-display-setting,
 .views-display-setting input,

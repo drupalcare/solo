@@ -17,7 +17,6 @@
 .pager__items li.is-active {
   padding: var(--solo-px6) var(--solo-px12);
   font-weight: bold;
-  scale: 1.1;
 }
 
 .pager__items li.solo-active-pager a,

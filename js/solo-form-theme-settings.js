@@ -9,6 +9,8 @@
 ((Drupal) => {
 
   'use strict';
+
+  // Close details on load
   const formDetails = document.querySelectorAll('.system-theme-settings>details');
   formDetails.forEach((formDetail) => {
     formDetail.removeAttribute('open');
@@ -16,9 +18,13 @@
 
   Drupal.behaviors.soloFormThemeSettings = {
     attach: function(context, settings) {
-      // Query selector within the context
       const categorySelect = context.querySelector('#edit-theme-category');
       if (!categorySelect) {
+        return;
+      }
+
+      const themeSelect = context.querySelector('#edit-predefined-current-theme');
+      if (!themeSelect) {
         return;
       }
 
@@ -26,27 +32,30 @@
       if (categorySelect.getAttribute('data-solo-theme-settings-processed') !== 'true') {
         categorySelect.setAttribute('data-solo-theme-settings-processed', 'true');
 
-        const themeSelect = context.querySelector('#edit-predefined-current-theme');
-        if (!themeSelect) {
-          return;
-        }
-
         // Clone original options
         const initialOptions = Array.from(themeSelect.options);
 
-        categorySelect.addEventListener('change', function() {
-          const selectedCategory = this.value;
-          themeSelect.innerHTML = ''; // Clear current options
-
+        // Function to filter theme options based on selected category
+        const filterThemeOptions = (selectedCategory) => {
+          themeSelect.innerHTML = '';
           if (selectedCategory !== 'none') {
-            initialOptions.forEach(function(option) {
+            initialOptions.forEach((option) => {
               if (option.value.startsWith(selectedCategory + '|')) {
-                themeSelect.appendChild(option.cloneNode(true)); // Append matching option
+                themeSelect.appendChild(option.cloneNode(true));
               }
             });
           }
+        };
+
+        // Filter options on category change
+        categorySelect.addEventListener('change', function() {
+          filterThemeOptions(this.value);
         });
+
+        // Also filter options based on the default value or current value
+        filterThemeOptions(categorySelect.value);
       }
     }
   };
 })(Drupal);
+

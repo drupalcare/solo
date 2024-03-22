@@ -64,8 +64,10 @@
 
       // Click event to close any submenu
       document.addEventListener('click', (event) => {
-        if (event.target === verticalNav) {
-          sideMenubarToggleNav(false);
+        if (verticalNav) {
+          if (event.target === verticalNav) {
+            sideMenubarToggleNav(false);
+          }
         }
       });
 

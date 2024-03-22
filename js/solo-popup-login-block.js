@@ -41,10 +41,13 @@
 
       // Click anywhere to close the login block.
       document.addEventListener('click', (event) => {
-        if (event.target === loginBlock) {
-          closeBlockHandler();
+        if (loginBlock) {
+          if (event.target === loginBlock) {
+            closeBlockHandler();
+          }
         }
       });
+
     }
   };
 

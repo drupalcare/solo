@@ -72,11 +72,14 @@
 
       // Click anywhere outside the search block to close it.
       document.addEventListener('click', (event) => {
-        // Check if the click is outside the search block
-        if (!searchBlock.contains(event.target)) {
-          searchBlockToggle(false);
+        if (searchBlock) {
+          // Check if the click is outside the search block
+          if (!searchBlock.contains(event.target)) {
+            searchBlockToggle(false);
+          }
         }
       });
+
     }
   };
 

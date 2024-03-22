@@ -44,6 +44,10 @@ ul.primary > li > a {
   border-radius: var(--solo-px8) var(--solo-px8) 0 0;
 }
 
+ul.primary > li:last-child > a {
+  margin-right: var(--solo-px0);
+}
+
 ul.secondary > li > a {
   padding: var(--solo-px4) var(--solo-px12);
   display: block;

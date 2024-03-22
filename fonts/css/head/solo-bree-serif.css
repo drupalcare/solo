@@ -5,19 +5,4 @@
   --solo-h1: 'Bree Serif', serif;
   font-family: var(--solo-h1);
   letter-spacing: var(--solo-px1);
-  font-weight: 400;
-}
-.page-wrapper h1 {
-  font-size: calc(2 * var(--solo-px24));
-  line-height: calc(2 * var(--solo-px24));
-}
-
-.page-wrapper h2 {
-  font-size: calc(2 * var(--solo-px20));
-  line-height: calc(2 * var(--solo-px20));
-}
-
-.page-wrapper h3 {
-  font-size: calc(2 * var(--solo-px17));
-  line-height: calc(2 * var(--solo-px17));
 }

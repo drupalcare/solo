@@ -231,13 +231,13 @@ input.button {
 
 }
 
-.page-wrapper.dis-anim-submit form input.button.form-submit:hover {
+.dis-anim-submit form input.button.form-submit:hover {
   animation: none !important;
 }
 
-.page-wrapper.dis-anim-link nav ul li>a:hover:after,
-.page-wrapper.dis-anim-link nav ul li>a:hover:before,
-.page-wrapper.dis-anim-link nav ul li>button:hover:after,
-.page-wrapper.dis-anim-link nav ul li>button:hover:before {
+.dis-anim-link nav ul li>a:hover:after,
+.dis-anim-link nav ul li>a:hover:before,
+.dis-anim-link nav ul li>button:hover:after,
+.dis-anim-link nav ul li>button:hover:before {
   animation: none !important;
 }

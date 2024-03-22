@@ -88,9 +88,17 @@ function _load_full_opacity(array &$attachments): void {
  * Helper function.
  */
 function _site_load_w3css_library(array &$attachments): void {
-  /** @var \Drupal\Core\Routing\AdminContext $admin_context */
   if (theme_get_setting('site_load_w3css_on')) {
     $attachments['#attached']['library'][] = 'solo/w3-css';
+  }
+}
+
+/**
+ * Helper function.
+ */
+function _load_color_coded_system_tabs(array &$attachments): void {
+  if (theme_get_setting('color_coded_system_tabs')) {
+    $attachments['#attached']['library'][] = 'solo/solo-color-coded-system-tabs';
   }
 }
 
@@ -104,6 +112,7 @@ function solo_page_attachments_alter(array &$attachments): void {
   _load_font_awesome($attachments);
   _load_full_opacity($attachments);
   _site_load_w3css_library($attachments);
+  _load_color_coded_system_tabs($attachments);
 }
 
 /**

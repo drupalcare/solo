@@ -131,6 +131,13 @@ $form['solo_settings']['settings_global_misc']['site_inline_items_on'] = [
   '#default_value' => theme_get_setting('site_inline_items_on'),
 ];
 
+$form['solo_settings']['settings_global_misc']['color_coded_system_tabs'] = [
+  '#type' => 'checkbox',
+  '#title' => t('Tick this box to enhanced navigation with color-coded system tabs'),
+  '#description'   => t('<p>This tailored CSS script enriches the user interface of the website by assigning bespoke colors to core system tab links, such as View, Edit, Delete, and Revisions.</p>'),
+  '#default_value' => theme_get_setting('color_coded_system_tabs'),
+];
+
 $form['solo_settings']['settings_global_misc']['site_reading_mode_content_type'] = [
   '#type' => 'select',
   '#title' => t('Reading Mode (45rem/720px)'),

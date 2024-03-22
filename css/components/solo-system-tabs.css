@@ -53,105 +53,18 @@ ul.secondary > li > a {
   display: block;
 }
 
-ul.primary .view-link {
-  --r-lk: var(--solo-green);
+ul.primary > li > a,
+nav.action-links > li > a {
+  text-align: center;
+  padding: 8px 16px;
+  display: block;
 }
 
-ul.primary .edit-link {
-  --r-lk: var(--solo-blue);
+ul.secondary > li > a {
+  padding: 6px 12px;
+  display: block;
 }
 
-ul.primary .delete-link {
-  --r-lk: var(--solo-red);
-}
-
-ul.primary .revisions-link {
-  --r-lk: var(--solo-purple);
-}
-
-ul.primary > li > a {
-  position: relative;
-  transition: color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
-  overflow: hidden;
-  z-index: 1;
-}
-
-ul.primary > li > a:hover {
-  --r-bg: transparent !important;
-}
-
-ul.primary > li > a::before {
-  content: "";
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: var(--solo-gray);
-  transition: transform 0.3s ease-out;
-  z-index: -1;
-  transform: translateY(100%);
-}
-
-ul.primary > li > a.view-link::before {
-  background-color: var(--solo-green);
-}
-
-ul.primary > li > a.edit-link::before {
-  background-color: var(--solo-blue);
-}
-
-ul.primary > li > a.delete-link::before {
-  background-color: var(--solo-red);
-}
-
-ul.primary > li > a.revisions-link::before {
-  background-color: var(--solo-purple);
-}
-
-ul.primary > li > a:hover::before {
-  transform: translateY(0);
-}
-
-ul.primary > li.core-task,
-ul.primary > li.core-task a {
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-ul.primary > li.core-task a {
-  padding-left: var(--solo-px32);
-}
-
-ul.primary > li.core-task .task-icon {
-  z-index: 1;
-  position: absolute;
-  left: var(--solo-px6);
-  pointer-events: none;
-}
-
-ul.primary > li.core-task .task-icon.icon-view {
-  fill: var(--solo-green);
-}
-
-ul.primary > li.core-task .task-icon.icon-edit {
-  fill: var(--solo-blue);
-}
-
-ul.primary > li.core-task .task-icon.icon-delete {
-  fill: var(--solo-red);
-}
-
-ul.primary > li.core-task .task-icon.icon-revisions {
-  fill: var(--solo-purple);
-}
-
-ul.primary > li > a:hover {
-  --r-lk-h: var(--solo-white);
-}
-
-ul.primary > li.core-task a:hover + .task-icon {
-  fill: var(--solo-white);
+ul.primary .task-icon {
+  display: none;
 }

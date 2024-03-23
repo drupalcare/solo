@@ -18,7 +18,7 @@
             {% if item.url %}
               <a class="btn-animate" href="{{ item.url }}">{{ item.text }}</a>
             {% else %}
-              {{ item.text }}
+              <span class="breadcrumb-title">{{ item.text }}</span>
             {% endif %}
             {# Add the separator if it's not the last item and the text is not empty. #}
             {% if not loop.last %}

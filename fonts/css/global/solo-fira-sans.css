@@ -18,7 +18,7 @@ h3 div),
 .page-wrapper span:not(h1 span,
 h2 span,
 h3 span),
-.page-wrapper .fira-sans {
+#page-wrapper .fira-sans {
   --solo-font: 'Fira Sans', sans-serif;
   font-family: var(--solo-font);
 }

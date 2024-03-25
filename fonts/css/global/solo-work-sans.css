@@ -18,7 +18,7 @@ h3 div),
 .page-wrapper span:not(h1 span,
 h2 span,
 h3 span),
-.page-wrapper .work-sans {
+#page-wrapper .work-sans {
   --solo-font: 'Work Sans', sans-serif;
   font-family: var(--solo-font);
 }

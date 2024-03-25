@@ -18,7 +18,7 @@ h3 div),
 .page-wrapper span:not(h1 span,
 h2 span,
 h3 span),
-.page-wrapper .oxygen {
+#page-wrapper .oxygen {
   --solo-font: 'Oxygen', sans-serif;
   font-family: var(--solo-font);
 }

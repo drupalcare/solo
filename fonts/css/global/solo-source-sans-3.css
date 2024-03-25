@@ -18,8 +18,8 @@ h3 div),
 .page-wrapper span:not(h1 span,
 h2 span,
 h3 span),
-.page-wrapper .source-sans-3,
-.source-sans-pro {
+#page-wrapper .source-sans-3,
+#page-wrapper .source-sans-pro {
   --solo-font: 'Source Sans 3', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   font-family: var(--solo-font);
 }

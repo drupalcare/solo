@@ -18,7 +18,7 @@ h3 div),
 .page-wrapper span:not(h1 span,
 h2 span,
 h3 span),
-.page-wrapper .playfair-display {
+#page-wrapper .playfair-display {
   --solo-font: 'Playfair Display','Helvetica Neue', Helvetica, Arial, serif;
   font-family: var(--solo-font);
 }

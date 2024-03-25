@@ -18,7 +18,7 @@ h3 div),
 .page-wrapper span:not(h1 span,
 h2 span,
 h3 span),
-.page-wrapper .hind-siliguri {
+#page-wrapper .hind-siliguri {
   --solo-font: 'Hind Siliguri', sans-serif;
   font-family: var(--solo-font);
 }

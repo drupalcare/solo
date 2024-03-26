@@ -134,25 +134,6 @@
 }
 
 @media (max-width:20rem) {
-  h1 {
-    font-size: var(--solo-px18);
-    line-height: var(--solo-px20);
-  }
-
-  h2 {
-    font-size: var(--solo-px16);
-    line-height: var(--solo-px20);
-  }
-
-  h3 {
-    font-size: var(--solo-px14);
-    line-height: var(--solo-px18);
-  }
-
-  h4 {
-    font-size: var(--solo-px12);
-    line-height: var(--solo-px16);
-  }
 
   #primary-sidebar-menu {
     min-width: 12rem;

@@ -64,6 +64,14 @@
   display: flex;
 }
 
+.branding-second.site-name-outer.site-slogan-outer .site-name {
+  margin-bottom: 0;
+}
+
+.branding-second.site-name-outer.site-slogan-outer .site-slogan {
+  margin-top: 0;
+}
+
 /* header buttons (Menu, Search) */
 #sidebar-button-open {
   z-index: 1;

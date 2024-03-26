@@ -18,32 +18,26 @@ html {
 /* HTML tags */
 h1 {
   font-size: var(--solo-px36);/* 36px */
-  line-height: calc(2 * var(--solo-px22));
 }
 
 h2 {
   font-size: var(--solo-px32);/* 32px */
-  line-height: calc(2 * var(--solo-px20));
 }
 
 h3 {
   font-size: var(--solo-px24);/* 24px */
-  line-height: calc(2 * var(--solo-px16));
 }
 
 h4 {
   font-size: var(--solo-px20);/* 20px */
-  line-height: var(--solo-px28);
 }
 
 h5 {
   font-size: var(--solo-px18);/* 18px */
-  line-height: var(--solo-px26);
 }
 
 h6 {
   font-size: var(--solo-px16);/* 16px */
-  line-height: var(--solo-px24);
 }
 
 h1,

@@ -4,27 +4,36 @@
     max-width: 36rem;
   }
 
+  /* HTML tags */
+  h1 {
+    line-height: calc(2 * var(--solo-px22));
+  }
+
+  h2 {
+    line-height: calc(2 * var(--solo-px20));
+  }
+
+  h3 {
+    line-height: calc(2 * var(--solo-px18));
+  }
+
 }
 
 @media (max-width:62rem) {
   h1 {
     font-size: var(--solo-px26);
-    line-height: calc(2 * var(--solo-px15));
   }
 
   h2 {
     font-size: var(--solo-px22);
-    line-height: var(--solo-px26);
   }
 
   h3 {
     font-size: var(--solo-px20);
-    line-height: var(--solo-px24);
   }
 
   h4 {
     font-size: var(--solo-px18);
-    line-height: var(--solo-px22);
   }
 
   #primary-sidebar-menu {
@@ -47,22 +56,18 @@
 
   h1 {
     font-size: var(--solo-px22);
-    line-height: var(--solo-px26);
   }
 
   h2 {
     font-size: var(--solo-px20);
-    line-height: var(--solo-px24);
   }
 
   h3 {
     font-size: var(--solo-px18);
-    line-height: var(--solo-px22);
   }
 
   h4 {
     font-size: var(--solo-px16);
-    line-height: var(--solo-px20);
   }
 
   #primary-sidebar-menu {
@@ -108,22 +113,20 @@
 
   h1 {
     font-size: var(--solo-px20);
-    line-height: var(--solo-px24);
   }
 
   h2 {
     font-size: var(--solo-px18);
-    line-height: var(--solo-px22);
   }
 
   h3 {
     font-size: var(--solo-px16);
-    line-height: var(--solo-px20);
   }
 
-  h4 {
-    font-size: var(--solo-px14);
-    line-height: var(--solo-px18);
+  .field p,
+  .field li,
+  .field span {
+    line-height: var(--solo-px28);
   }
 
   #primary-sidebar-menu {
@@ -134,7 +137,6 @@
 }
 
 @media (max-width:20rem) {
-
   #primary-sidebar-menu {
     min-width: 12rem;
     max-width: 16rem;

@@ -9,6 +9,7 @@ Hunter Green #3F704D
   color: var(--r-tx);
   border-color: var(--r-br);
   background-color: var(--r-bg);
+  --r-header-bg: linear-gradient(0deg, #000000, #0e1911);
 }
 
 /* inner regions */

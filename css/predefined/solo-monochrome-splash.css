@@ -5,6 +5,10 @@ PUNCH #F25278
   --r-br: #a2a2a2;
   --r-bg: #ffffff;
   --r-tx: #000000;
+  color: var(--r-tx);
+  border-color: var(--r-br);
+  background-color: var(--r-bg);
+  --r-header-bg: #d5d5d5;
 }
 
 .fixed-search-block {

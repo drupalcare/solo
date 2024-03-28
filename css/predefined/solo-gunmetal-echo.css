@@ -9,6 +9,7 @@ Gunmetal #2A3439, Marengo #4C5866, Gray Wolf #504A4B
   color: var(--r-tx);
   border-color: var(--r-br);
   background-color: var(--r-bg);
+  --r-header-bg: linear-gradient(0deg, #0c1318, #14191c);
 }
 
 /* Heads */

@@ -12,6 +12,7 @@ Acoustic White #EFECE1 beig
   color: var(--r-tx);
   border-color: var(--r-br);
   background-color: var(--r-bg);
+  --r-header-bg: linear-gradient(0deg, #edf2f8, #eef1ea);
 }
 
 /* inner regions */

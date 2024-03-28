@@ -1,6 +1,7 @@
 /* Page wrapper
 Deep Black #050203, Retro Black #1F201F
 */
+
 .page-wrapper {
   --r-br: #5a2436;
   --r-bg: #050203;
@@ -8,6 +9,7 @@ Deep Black #050203, Retro Black #1F201F
   color: var(--r-tx);
   border-color: var(--r-br);
   background-color: var(--r-bg);
+  --r-header-bg: linear-gradient(0deg, #000000, #291119);
 }
 
 /* inner regions */

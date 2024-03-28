@@ -10,6 +10,7 @@ Piggy Pink #FDDDE6, Cotton Candy #FFBCD9, Cameo Pink #EFBBCC
   color: var(--r-tx);
   border-color: var(--r-br);
   background-color: var(--r-bg);
+  --r-header-bg: linear-gradient(0deg, #cf3165, #ef0e4d);
 }
 
 /* Heads */

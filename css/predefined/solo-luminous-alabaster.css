@@ -12,8 +12,8 @@ Ceramic #FCFFF9 green shiny
   color: var(--r-tx);
   border-color: var(--r-br);
   background-color: var(--r-bg);
+  --r-header-bg: linear-gradient(45deg, #fdfeff, #fcfff9);
 }
-
 /* inner regions */
 .page-wrapper .region-inner {
   --r-br: #c1ff82;

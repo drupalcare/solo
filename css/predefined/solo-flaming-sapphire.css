@@ -8,6 +8,7 @@ International Orange #FF4F00, LAPIS #2832C2
   color: var(--r-tx);
   border-color: var(--r-br);
   background-color: var(--r-bg);
+  --r-header-bg: linear-gradient(0deg, #000000, #331000);
 }
 
 /* inner regions */

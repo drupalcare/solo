@@ -155,7 +155,7 @@ function solo_preprocess_html(&$variables): void {
   if (!empty($css_dynamic)) {
     // Write the CSS content to the file.
     if ($file_system->saveData($css_dynamic, $css_file_uri, FileSystemInterface::EXISTS_REPLACE) !== FALSE) {
-      // Generate the absolute URL for the CSS file and attach it to the HTML document.
+      // Generate the absolute URL for the CSS file and attach it to the HTML.
       $css_url = $file_url_generator->generateAbsoluteString($css_file_uri);
       $variables['#attached']['html_head'][] = [
         [
@@ -178,7 +178,7 @@ function solo_preprocess_html(&$variables): void {
     $variables['#attached']['library'][] = 'solo/solo-js-dynamic';
     // Write the JS content to the file.
     if ($file_system->saveData($js_dynamic, $js_file_uri, FileSystemInterface::EXISTS_REPLACE) !== FALSE) {
-      // Generate the absolute URL for the JS file and attach it to the HTML document.
+      // Generate the absolute URL for the JS file and attach it to the HTML.
       $js_url = $file_url_generator->generateAbsoluteString($js_file_uri);
       $variables['#attached']['html_head'][] = [
         [

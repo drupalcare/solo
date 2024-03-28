@@ -9,6 +9,7 @@ RED #D0312D, DENIM #151E3D,MIDNIGHT #040406
   color: var(--r-tx);
   border-color: var(--r-br);
   background-color: var(--r-bg);
+  --r-header-bg: linear-gradient(180deg, #000000, #030001);
 }
 
 /* Heads */

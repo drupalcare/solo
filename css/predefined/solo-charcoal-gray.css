@@ -9,6 +9,7 @@ Braves Navy #13274F
   color: var(--r-tx);
   border-color: var(--r-br);
   background-color: var(--r-bg);
+  --r-header-bg: linear-gradient(to left top, #ffffff, #e1e1e0);
 }
 
 .page-wrapper .solo-outer:not(.fixed-search-block,

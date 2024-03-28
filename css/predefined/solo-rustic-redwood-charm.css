@@ -8,6 +8,7 @@ MAHOGANY #420C09, WALNUT #432616
   color: var(--r-tx);
   border-color: var(--r-br);
   background-color: var(--r-bg);
+  --r-header-bg: linear-gradient(0deg, #000000, #240705);
 }
 
 /* inner regions */

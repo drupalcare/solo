@@ -9,6 +9,7 @@ AMAZON #3B7A57, DENIM #151E3D
   color: var(--r-tx);
   border-color: var(--r-br);
   background-color: var(--r-bg);
+  --r-header-bg: linear-gradient(180deg, #151e3d, #0c1224);
 }
 
 /* Heads */

@@ -3,6 +3,10 @@
   --r-br: #a5aab9;
   --r-bg: #fbfbfc;
   --r-tx: #383c49;
+  color: var(--r-tx);
+  border-color: var(--r-br);
+  background-color: var(--r-bg);
+  --r-header-bg: linear-gradient(0deg, #f5f5f6, #e6e9ee);
 }
 
 .header,

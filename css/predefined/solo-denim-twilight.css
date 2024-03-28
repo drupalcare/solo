@@ -3,6 +3,10 @@
   --r-br: #adbec7;
   --r-bg: #eaeef0;
   --r-tx: #0d1113;
+  color: var(--r-tx);
+  border-color: var(--r-br);
+  background-color: var(--r-bg);
+  --r-header-bg: linear-gradient(to left top, #fefefe, #f4f6f7);
 }
 
 .fixed-search-block {
@@ -10,7 +14,8 @@
 }
 
 .header {
-  --r-bg: #f4f6f7;
+  --r-bg: linear-gradient(to left top, #fefefe, #f4f6f7);
+  background: var(--r-bg);
 }
 
 /* Heads */

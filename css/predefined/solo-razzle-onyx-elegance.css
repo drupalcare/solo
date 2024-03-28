@@ -8,6 +8,7 @@ AMARANTH PINK #E52B50, RAZZMATAZZ #E3256B, ONYX #030104
   color: var(--r-tx);
   border-color: var(--r-br);
   background-color: var(--r-bg);
+  --r-header-bg: linear-gradient(0deg, #220b2d, #0d0412);
 }
 
 /* Heads */

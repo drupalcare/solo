@@ -8,6 +8,7 @@ Braves Navy #13274F, Astros Navy #002D62
   color: var(--r-tx);
   border-color: var(--r-br);
   background-color: var(--r-bg);
+  --r-header-bg: linear-gradient(0deg, #0c1934, #13274f);
 }
 
 /* Heads */

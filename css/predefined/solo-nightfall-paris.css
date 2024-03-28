@@ -9,6 +9,7 @@ Natural Black #07000B, Bleu De France #318CE7
   color: var(--r-tx);
   border-color: var(--r-br);
   background-color: var(--r-bg);
+  --r-header-bg: linear-gradient(0deg, #000000, #12121a);
 }
 
 /* inner regions */

@@ -10,6 +10,7 @@ Carbon Gray #625D5D, Davy’s Gray #555555, Dim Gray #696969
   color: var(--r-tx);
   border-color: var(--r-br);
   background-color: var(--r-bg);
+  --r-header-bg: linear-gradient(0deg, #b6b6b4, #a5a5a3);
 }
 
 /* Heads */

@@ -8,6 +8,7 @@ BLUEBERRY #241571, CERULEAN #0492C2
   color: var(--r-tx);
   border-color: var(--r-br);
   background-color: var(--r-bg);
+  --r-header-bg: linear-gradient(to left top, #ffffff, #e5e1f9);
 }
 
 .page-wrapper .solo-select,

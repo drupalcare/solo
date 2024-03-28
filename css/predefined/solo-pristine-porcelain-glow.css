@@ -10,6 +10,7 @@ Bright White #F4F5F0, Brilliant White #EDF1FE, Ceramic #FCFFF9
   color: var(--r-tx);
   border-color: var(--r-br);
   background-color: var(--r-bg);
+  --r-header-bg: linear-gradient(45deg, #f4f5f0, #edf1fe);
 }
 
 /* inner regions */

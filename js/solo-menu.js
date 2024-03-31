@@ -16,12 +16,10 @@
     attach: function(context, settings) {
 
       const querySelectorElements = (selector) => context.querySelectorAll(selector) ?? null;
-
       const hamburgerIconButtons = querySelectorElements('.solo-inner .navigation-responsive .mobile-nav');
       const siteMenuBars = querySelectorElements('.solo-inner .solo-menu .navigation__menubar');
       const siteSubMenus = querySelectorElements('.solo-inner .solo-menu .navigation__menubar ul');
       const svgIcons = querySelectorElements('.solo-inner .solo-menu .navigation__menubar .toggler-icon>svg');
-
       const mmClickBig = querySelectorElements('.solo-inner .solo-menu.navigation-responsive-click .navigation__megamenu>li>.dropdown-toggler');
       const mmClickSmall = querySelectorElements('.solo-inner .solo-menu.navigation-responsive-click .navigation__megamenu li .dropdown-toggler');
       const mmHoverSmall = querySelectorElements('.solo-inner .solo-menu.navigation-responsive-hover .navigation__megamenu li .dropdown-toggler');
@@ -29,7 +27,8 @@
       const navigationResponsiveHover = querySelectorElements('.solo-inner .solo-menu.navigation-responsive-hover .navigation__menubar:not(.navigation__megamenu) .dropdown-toggler');
       const navigationResponsiveClick = querySelectorElements('.solo-inner .solo-menu.navigation-responsive-click .navigation__menubar:not(.navigation__megamenu) .dropdown-toggler');
       const navigationDefault = querySelectorElements('.solo-inner .solo-menu .navigation__default .dropdown-toggler');
-      const navigationSidebar = querySelectorElements('.solo-inner .solo-menu.navigation-sidebar .dropdown-toggler');
+      const navigationSidebarHover = querySelectorElements('.solo-inner .solo-menu.navigation-sidebar-hover li .dropdown-toggler');
+      const navigationSidebarClick = querySelectorElements('.solo-inner .solo-menu.navigation-sidebar-click li .dropdown-toggler');
 
       // Get current width
       const getCurrentWidth = () => window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
@@ -281,6 +280,7 @@
           removeEventListenerToButtons(mmClickSmall);
           addEventListenerToButtons(mmClickBig);
           removeEventListenerToButtons(mmHoverSmall);
+          removeEventListenerToButtons(navigationSidebarHover);
           removeEventListenerToButtons(navigationResponsiveHover);
         }
         else {
@@ -288,6 +288,7 @@
           removeEventListenerToButtons(mmClickBig);
           addEventListenerToButtons(mmClickSmall);
           addEventListenerToButtons(mmHoverSmall);
+          addEventListenerToButtons(navigationSidebarHover);
           addEventListenerToButtons(navigationResponsiveHover);
         }
       }
@@ -314,7 +315,7 @@
       addHoverFunctionality();
       addEventListenerToButtons(navigationDefault);
       addEventListenerToButtons(navigationResponsiveClick);
-      addEventListenerToButtons(navigationSidebar);
+      addEventListenerToButtons(navigationSidebarClick);
       // We only call main menu click and hover type when hover is disabled.
       currentWidth = getCurrentWidth();
       menusHelper(currentWidth)

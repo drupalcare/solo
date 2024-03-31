@@ -21,7 +21,7 @@ if (array_key_exists('primary_menu', $updated_regions['mix'])) {
 
   $form['solo_settings']["settings_{$region}"]['primary_menu_on_hover'] = [
     '#type' => 'checkbox',
-    '#title' => t('Tick this box if you prefer to show the main menu dropdowns when hovering over them with the mouse, instead of clicking.'),
+    '#title' => t('Tick this box if you prefer to show the main menu dropdowns when hovering over them with the mouse, instead of clicking. (Big screen only)'),
     '#default_value' => theme_get_setting('primary_menu_on_hover'),
   ];
 

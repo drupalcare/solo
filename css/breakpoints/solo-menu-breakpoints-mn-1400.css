@@ -171,6 +171,28 @@
     text-align: center;
   }
 
+  /* Sidebar Menu Hover */
+  .solo-inner .navigation-sidebar-hover .navigation__sidebar li:hover>ul.sub__menu {
+    display: block !important;
+  }
+
+  .solo-inner .navigation-sidebar-hover .navigation__sidebar li.has-sub__menu:hover>*>.dropdown-arrow {
+    transition: all 0.3s ease;
+    transform: rotate(180deg);
+  }
+
+  .solo-inner .navigation-sidebar-hover .navigation__sidebar li.has-sub__menu>a:hover,
+  .solo-inner .navigation-sidebar-hover .navigation__sidebar li.has-sub__menu>button:hover {
+    color: inherit !important;
+    background-color: inherit !important;
+  }
+
+  .page-wrapper .navigation-sidebar-hover .navigation__sidebar li.has-sub__menu:hover>a,
+  .page-wrapper .navigation-sidebar-hover .navigation__sidebar li.has-sub__menu:hover>button {
+    color: var(--r-tx-lk-h, var(--r-tx)) !important;
+    background-color: var(--r-bg-lk-h, var(--r-bg)) !important;
+  }
+
 }
 
 /* For the repsonsive menus (Primary, Click and Hover) */

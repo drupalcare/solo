@@ -19,6 +19,12 @@ if (array_key_exists('primary_sidebar_menu', $updated_regions['mix'])) {
   $form['solo_settings']["settings_{$region}"] = _generate_form_details($label);
   $form['solo_settings']["settings_{$region}"]["classes_{$region}"] = _generate_css_classes($region, $label);
 
+  $form['solo_settings']["settings_{$region}"]['primary_sidebar_menu_hover'] = [
+    '#type' => 'checkbox',
+    '#title' => t('Tick this box if you prefer to show the sidebar main menu dropdowns when hovering over them with the mouse, instead of clicking. (Big screen only)'),
+    '#default_value' => theme_get_setting('primary_sidebar_menu_hover'),
+  ];
+
   $form['solo_settings']["settings_{$region}"]['primary_sidebar_menu_border'] = [
     '#type' => 'checkbox',
     '#title' => t('Tick this box if you prefer to add border for each menu item'),

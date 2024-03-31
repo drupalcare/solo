@@ -89,6 +89,8 @@ h3 a) {
 }
 
 /* The same colors as hover for the main menu */
+.page-wrapper .navigation-sidebar-hover .navigation__sidebar li.has-sub__menu:hover>a,
+.page-wrapper .navigation-sidebar-hover .navigation__sidebar li.has-sub__menu:hover>button,
 .page-wrapper .navigation-responsive-hover .navigation__megamenu>li.has-sub__menu:hover>a,
 .page-wrapper .navigation-responsive-hover .navigation__megamenu>li.has-sub__menu:hover>button,
 .page-wrapper .navigation-responsive-hover .navigation__responsive:not(.navigation__megamenu) li.has-sub__menu:hover>a,

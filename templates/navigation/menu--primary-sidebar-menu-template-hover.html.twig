@@ -1,7 +1,7 @@
 {#
 /**
  * @file
- * solo's theme implementation for the sidebar menu.
+ * solo's theme implementation for the sidebar main menu.
  *
  * Available variables:
  * - menu_name: The machine name of the menu.
@@ -26,7 +26,7 @@
 {% include '@solo/partials/svg/_svg-menu-arrow.html.twig' %}
 {% endmacro %}
 
-<div class="solo-clear solo-menu navigation-sidebar navigation-primary-sidebar{{ click_hover_sidebar ? ' ' ~ click_hover_sidebar }}">
+<div class="solo-clear solo-menu navigation-sidebar navigation-sidebar-template navigation-sidebar-hover">
 
 {{ menus.menu_links(items, attributes, 0, menu_name, aria_id ) }}
 </div>
@@ -38,7 +38,7 @@
 {% set menu_classes = [
   'navigation__menubar',
   'navigation__sidebar',
-  'navigation__primary_sidebar',
+  'navigation__sidebar__template',
   'navigation__menubar-' ~ menu_name|clean_class,
 ]
 %}
@@ -59,7 +59,6 @@
   'role': 'menu',
   'aria-level': menu_level,
   'tabindex': '-1',
-  'aria-hidden': 'true',
 }) %}
 
 {% if items %}
@@ -103,6 +102,7 @@
     'aria-controls': aria_id,
     'aria-haspopup': 'true',
     'aria-expanded': 'false',
+    'aria-hidden': 'true',
     'tabindex': '-1',
   }) %}
 
@@ -168,3 +168,4 @@
   </ul>
 {% endif %} {# End of {% if items %} #}
 {% endmacro %}
+

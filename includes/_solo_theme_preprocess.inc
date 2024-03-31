@@ -762,6 +762,20 @@ function solo_preprocess_menu__primary_menu(&$variables): void {
 /**
  * Implements hook_preprocess_menu().
  */
+function solo_preprocess_menu__primary_sidebar_menu(&$variables): void {
+
+  if (theme_get_setting('primary_sidebar_menu_hover')) {
+    $variables['click_hover_sidebar'] = 'navigation-sidebar-hover';
+  }
+  else {
+    $variables['click_hover_sidebar'] = 'navigation-sidebar-click';
+  }
+
+}
+
+/**
+ * Implements hook_preprocess_menu().
+ */
 function solo_preprocess_menu__account(&$variables): void {
 
   if (!$variables['user']->isAuthenticated()) {

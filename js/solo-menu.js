@@ -68,7 +68,11 @@
       }
       const getArrowDirection = (verticalNav) => {
         const pageClass = document.querySelector('.page-wrapper');
+        const expandLeft = document.querySelector('#primary-menu .expand-left');
         const brNum = Drupal.solo.getMyBreakpoints(pageClass, 'mn');
+        if (expandLeft) {
+          return (currentWidth >= brNum && !verticalNav) ? 'rotate(90deg)' : 'rotate(180deg)';
+        }
         return (currentWidth >= brNum && !verticalNav) ? 'rotate(-90deg)' : 'rotate(180deg)';
       }
       // Change the arrow direction on close.

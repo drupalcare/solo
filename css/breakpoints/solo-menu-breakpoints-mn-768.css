@@ -193,6 +193,49 @@
     background-color: var(--r-bg-lk-h, var(--r-bg)) !important;
   }
 
+  /* Primary Menu expand left */
+  #primary-menu .expand-left ul.navigation__primary:not(.navigation__megamenu)>li>ul>li>button.en-link,
+  #primary-menu .expand-left ul.navigation__primary:not(.navigation__megamenu)>li>ul>li>button>span.toggler-icon {
+    order: -1;
+    text-align: right;
+  }
+
+  #primary-menu .expand-left ul.navigation__primary:not(.navigation__megamenu)>li>ul>li>a.url-added,
+  #primary-menu .expand-left ul.navigation__primary:not(.navigation__megamenu)>li>ul>li>button>span.menu__url-title-disabled {
+    order: 1;
+    justify-content: flex-end;
+    text-align: right;
+  }
+
+  #primary-menu .expand-left ul.navigation__primary:not(.navigation__megamenu)>li>ul>li>button>span.menu__url-title-disabled {
+    margin-right: var(--solo-px0) !important;
+    margin-left: var(--solo-px12) !important;
+    text-align: right;
+  }
+
+  #primary-menu .expand-left ul.navigation__primary:not(.navigation__megamenu) li.button-only>button>span.toggler-icon {
+    margin-right: var(--solo-px12) !important;
+    margin-left: var(--solo-px0) !important;
+  }
+
+  #primary-menu .expand-left ul.navigation__primary:not(.navigation__megamenu)>li>ul.sub__menu {
+    right: 0 !important;
+    left: initial !important;
+  }
+
+  #primary-menu .expand-left ul.navigation__primary:not(.navigation__megamenu)>li>ul>li>ul.sub__menu {
+    right: 100% !important;
+    left: initial !important;
+  }
+
+  #primary-menu .expand-left ul.navigation__primary:not(.navigation__megamenu)>li>ul>li>ul>li a {
+    justify-content: flex-end !important;
+  }
+
+  #primary-menu .expand-left.navigation-responsive-hover .navigation__responsive:not(.navigation__megamenu)>li>ul>li.has-sub__menu:hover .dropdown-arrow {
+    transform: rotate(90deg);
+  }
+
 }
 
 /* For the repsonsive menus (Primary, Click and Hover) */

@@ -748,6 +748,10 @@ function solo_preprocess_menu__primary_menu(&$variables): void {
     $variables['align_center'] = 'align-center';
   }
 
+  if (theme_get_setting('primary_menu_expand_left')) {
+    $variables['expand_left'] = 'expand-left';
+  }
+
   if (theme_get_setting('primary_menu_megamenu')) {
     $variables['megamenu'] = 'navigation__megamenu';
     $variables['sub_mega'] = 'sub-mega';

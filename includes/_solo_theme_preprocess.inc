@@ -147,7 +147,6 @@ function solo_preprocess_html(&$variables): void {
       !$file_system->prepareDirectory($js_directory, FileSystemInterface::CREATE_DIRECTORY)) {
     // Log an error if directories could not be prepared.
     \Drupal::logger('solo_preprocess_html')->error('Failed to prepare directory for CSS or JS.');
-    // Exit the function if directories couldn't be created or made writable.
     return;
   }
 
@@ -167,8 +166,14 @@ function solo_preprocess_html(&$variables): void {
       ];
     }
     else {
-      // Log an error if the file could not be saved.
       \Drupal::logger('solo_preprocess_html')->error('Failed to save dynamic CSS content.');
+    }
+  }
+  else {
+    // Delete the CSS file if $css_dynamic is empty.
+    $css_real_path = \Drupal::service('file_system')->realpath($css_file_uri);
+    if (file_exists($css_real_path)) {
+      $file_system->delete($css_file_uri);
     }
   }
 
@@ -190,8 +195,14 @@ function solo_preprocess_html(&$variables): void {
       ];
     }
     else {
-      // Log an error if the file could not be saved.
       \Drupal::logger('solo_preprocess_html')->error('Failed to save dynamic JS content.');
+    }
+  }
+  else {
+    // Delete the JS file if $js_dynamic is empty.
+    $js_real_path = \Drupal::service('file_system')->realpath($js_file_uri);
+    if (file_exists($js_real_path)) {
+      $file_system->delete($js_file_uri);
     }
   }
 

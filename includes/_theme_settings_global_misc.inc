@@ -93,14 +93,14 @@ $form['solo_settings']['settings_global_misc']['site_css_injector'] = [
 $form['solo_settings']['settings_global_misc']['site_css_dynamic'] = [
   '#type' => 'textarea',
   '#title' => t('CSS Dynamic'),
-  '#description' => t("Enter your CSS here to have it written into a dedicated CSS file that's loaded across your site. This approach is ideal for more substantial CSS customizations that benefit from being cached as a separate file. It's particularly useful for performance optimization on larger sites, as it ensures that your custom styles are cached by browsers and not inlined on every page load."),
+  '#description' => t("Enter your CSS here to have it written into a dedicated CSS file that's loaded across your site. This approach is ideal for more substantial CSS customizations that benefit from being cached as a separate file. It's particularly useful for performance optimization on larger sites, as it ensures that your custom styles are cached by browsers and not inlined on every page load. It is saved in the public file system path sites/*/files/solo/css/solo-css-dynamic.css."),
   '#default_value' => theme_get_setting('site_css_dynamic'),
 ];
 
 $form['solo_settings']['settings_global_misc']['site_js_dynamic'] = [
   '#type' => 'textarea',
   '#title' => t('JavaScript Dynamic'),
-  '#description' => t("Enter your JavaScript code here to be saved into a separate, dedicated file that will be loaded across your site. Ideal for extensive JavaScript that benefits from browser caching, this approach helps in optimizing site performance by reducing page load times. By including this JavaScript, you'll automatically have access to a set of Drupal's core libraries within your scripts, including jQuery, AJAX functionalities, Drupal behaviors, drupalSettings, and once. This means you can leverage these powerful features directly in your custom JavaScript, enhancing your site's interactivity and functionality without needing to manually include these libraries."),
+  '#description' => t("Enter your JavaScript code here to be saved into a separate, dedicated file that will be loaded across your site. Ideal for extensive JavaScript that benefits from browser caching, this approach helps in optimizing site performance by reducing page load times. By including this JavaScript, you'll automatically have access to a set of Drupal's core libraries within your scripts, including jQuery, AJAX functionalities, Drupal behaviors, drupalSettings, and once. This means you can leverage these powerful features directly in your custom JavaScript, enhancing your site's interactivity and functionality without needing to manually include these libraries. It is saved in the public file system path sites/*/files/solo/js/solo-js-dynamic.js."),
   '#default_value' => theme_get_setting('site_js_dynamic'),
 ];
 

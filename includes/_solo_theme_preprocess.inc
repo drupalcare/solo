@@ -413,6 +413,8 @@ function _get_theme_variables() {
       'footer_3col',
       'header_change_icons',
       'header_sitename_center',
+      'header_sitename_center_small',
+      'header_sitename_center_default',
       'header_popup_login',
       'count_top',
       'count_main',

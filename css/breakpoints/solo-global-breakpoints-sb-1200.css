@@ -122,4 +122,29 @@
     grid-area: second;
   }
 
+  /* Center logo/site name for small screen */
+  .header-inner.header-sitename-center-small .block-system-branding-block {
+    margin: 0 auto;
+    width: 100%;
+    justify-content: center;
+  }
+
+  .header-inner.header-sitename-center-small .branding-wrapper {
+    display: grid;
+  }
+
+  .header-inner.header-sitename-center-small .branding-wrapper>* {
+    width: 100%;
+  }
+
+  .header-inner.header-sitename-center-small .branding-wrapper .branding-first,
+  .header-inner.header-sitename-center-small .branding-wrapper .branding-first a,
+  .header-inner.header-sitename-center-small .branding-wrapper h1.site-name,
+  .header-inner.header-sitename-center-small .branding-wrapper h1.site-name a,
+  .header-inner.header-sitename-center-small .branding-wrapper h3.site-slogan,
+  .header-inner.header-sitename-center-small .branding-wrapper .branding-second {
+    justify-content: center;
+    text-align: center;
+  }
+
 }

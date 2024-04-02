@@ -78,16 +78,6 @@
 }
 
 @media (max-width:36rem) {
-  .header-inner #block-solo-branding {
-    width: 100%;
-  }
-
-  .header-inner .branding-wrapper {
-    display: grid;
-    gap: var(--solo-px8);
-    margin-top: var(--solo-px8);
-  }
-
   .site-name {
     font-size: var(--solo-px26);
     line-height: calc(2 * var(--solo-px15));
@@ -96,19 +86,6 @@
   .site-slogan {
     font-size: var(--solo-px20);
     line-height: var(--solo-px24);
-  }
-
-  .header-inner .branding-wrapper>* {
-    width: 100%;
-  }
-
-  .header-inner .branding-wrapper .branding-first,
-  .header-inner .branding-wrapper .branding-first a,
-  .header-inner .branding-wrapper h1.site-name,
-  .header-inner .branding-wrapper h1.site-name a,
-  .header-inner .branding-wrapper h3.site-slogan {
-    justify-content: center;
-    text-align: center;
   }
 
   h1 {
@@ -137,6 +114,7 @@
 }
 
 @media (max-width:20rem) {
+
   #primary-sidebar-menu {
     min-width: 12rem;
     max-width: 16rem;

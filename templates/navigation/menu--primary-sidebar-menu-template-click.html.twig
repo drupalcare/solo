@@ -51,13 +51,11 @@
 {% set menubar_attributes = create_attribute({
   'id': menu_name ~'__menubar'|clean_unique_id,
   'role': 'menubar',
-  'aria-level': menu_level,
 }) %}
 
 {% set submenu_attributes = create_attribute({
   'id': menu_name ~'__submenu'|clean_unique_id,
   'role': 'menu',
-  'aria-level': menu_level,
   'tabindex': '-1',
 }) %}
 
@@ -112,7 +110,7 @@
 
     {# The parent menu and it has children #}
     {% if item.is_expanded %}
-    <li{{ item.attributes.addClass(item_classes) }} role='none'>
+    <li{{ item.attributes.addClass(item_classes) }} role='none' aria-level='{{ menu_level }}'>
     {% if rendered_url starts with '/' or rendered_url starts with 'http' %}
         {# The parent link is clickable and it has children #}
         {% set c_link_classes = ['nav__menu-link nav__menu-link-' ~ menu_name|clean_class, 'url-added'] %}
@@ -148,7 +146,7 @@
     {% set link_title %}
       <span class="menu__url-title">{{ item.title }}</span>
     {% endset %}
-    <li{{ item.attributes.addClass(item_classes) }} role='none'>
+    <li{{ item.attributes.addClass(item_classes) }} role='none' aria-level='{{ menu_level }}'>
       {{ link(
       link_title,
       item.url,
@@ -160,7 +158,7 @@
 
     {% if item.below %}
       {% set attributes = attributes.setAttribute('id', aria_id).setAttribute('tabindex', '-1') %}
-      {{ menus.menu_links(item.below, attributes, menu_level + 1, menu_name) }}
+      {{ menus.menu_links(item.below, attributes, menu_level, menu_name) }}
     {% endif %}
     </li>
 

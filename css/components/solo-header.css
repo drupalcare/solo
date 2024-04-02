@@ -196,3 +196,8 @@
 .header-inner.header-sitename-center-default .branding-wrapper {
   justify-content: center;
 }
+
+.header-inner.header-sitename-center-default .block-system-branding-block {
+  width: 100%;
+  margin: 0 auto;
+}

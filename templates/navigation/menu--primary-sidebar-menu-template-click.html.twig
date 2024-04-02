@@ -79,7 +79,6 @@
   {% import _self as macros %}
   {% set aria_id = (menu_name ~ '-sub__menu-' ~ loop.index )|clean_unique_id %}
   {% set dropdown_toggler_class = (menu_level == 1) ? 'dropdown-toggler-parent' : 'dropdown-toggler-child' %}
-  {% set dropdown_toggler_role = (menu_level == 1) ? 'menuitem' : 'menu' %}
   {% set rendered_url = item.url|render %}
 
   {% set item_classes = [
@@ -96,7 +95,7 @@
 
   {% set dorpdown_toggler_attributes = create_attribute({
     'data-drupal-selector': menu_name ~ '__level-' ~ (menu_level + 1),
-    'role': dropdown_toggler_role,
+    'role': 'menuitem',
     'aria-controls': aria_id,
     'aria-haspopup': 'true',
     'aria-expanded': 'false',
@@ -121,7 +120,7 @@
             {%- if item.url.getOption('attributes').title %} title="{{ item.url.getOption('attributes').title }}" {% endif -%}
             {%- if item.url.getOption('attributes').target %} target="{{ item.url.getOption('attributes').target }}" {% endif -%}
             {%- if item.url.getOption('attributes').rel %} rel="{{ item.url.getOption('attributes').rel }}" {% endif -%}
-            tabindex="-1" data-drupal-link-system-path="{{ system_path }}">
+            tabindex="-1" data-drupal-link-system-path="{{ system_path }}" role='menuitem'>
             <span class="menu__url-title-enabled">{{ item.title }}</span>
         </a>
         <button class="en-link dropdown-toggler {{ dropdown_toggler_class }}" {{ dorpdown_toggler_attributes }}>

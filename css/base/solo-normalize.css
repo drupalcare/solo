@@ -302,3 +302,14 @@ a:hover,
 button:hover {
   cursor: pointer;
 }
+
+.field--type-text-long img,
+.field--type-text-long video,
+.field--type-text-long embed,
+.field--type-text-long object,
+.field--type-text-with-summary img,
+.field--type-text-with-summary video,
+.field--type-text-with-summary embed,
+.field--type-text-with-summary object {
+  display: inline-block;
+}

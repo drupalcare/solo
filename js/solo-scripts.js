@@ -67,7 +67,11 @@
       // that contain the word 'icon'
       let clickableElements = document.querySelectorAll(
         'a > img:not(.field--name-user-picture img):not([class*="icon"]), ' +
-        'a > picture:not(.field--name-user-picture img):not([class*="icon"])'
+        'a > picture:not(.field--name-user-picture img):not([class*="icon"])' +
+        'a > img:not(.field--type-text-long img)' +
+        'a > img:not(.field--type-text-with-summary img)' +
+        'a > picture:not(.field--type-text-long img)' +
+        'a > picture:not(.field--type-text-with-summary img)'
       );
 
       // Add a class to the parent <a> tag of each selected element

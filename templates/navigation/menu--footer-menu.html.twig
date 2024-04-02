@@ -32,7 +32,7 @@
 
         {% set link_attributes = link_attributes.addClass(item.in_active_trail ? 'solo-current' : '') %}
 
-        <li{{ attributes.addClass(item_classes) }}>
+        <li{{ attributes.addClass(item_classes) }} role='none'>
           <a href="{{ item.url }}" {{ link_attributes.setAttribute('role', 'menuitem') }}>
             {{ item.title }}
           </a>

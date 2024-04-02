@@ -123,7 +123,7 @@
 
     {# The parent menu and it has children #}
     {% if item.is_expanded %}
-    <li{{ item.attributes.addClass(item_classes) }} role='none' aria-level='{{ menu_level }}'>
+    <li{{ item.attributes.addClass(item_classes) }} role='none'>
     {% if rendered_url starts with '/' or rendered_url starts with 'http' %}
         {# The parent link is clickable and it has children #}
         {% set c_link_classes = ['nav__menu-link nav__menu-link-' ~ menu_name|clean_class, 'url-added'] %}
@@ -159,7 +159,7 @@
       {% set link_title %}
         <span class="menu__url-title">{{ item.title }}</span>
       {% endset %}
-    <li{{ item.attributes.addClass(item_classes) }} role='none' aria-level='{{ menu_level }}'>
+    <li{{ item.attributes.addClass(item_classes) }} role='none'>
         {{ link(
         link_title,
         item.url,

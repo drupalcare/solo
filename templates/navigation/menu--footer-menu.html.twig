@@ -49,7 +49,7 @@
           {% set link_attributes = link_attributes.addClass('solo-current') %}
         {% endif %}
 
-        <li{{ item.attributes.addClass(item_classes) }} role='none' aria-level="{{ menu_level + 1 }}">
+        <li{{ item.attributes.addClass(item_classes) }} role='none'>
           {{ link(item.title, item.url, link_attributes) }}
           {% if item.is_expanded and menu_level < 2 and item.below %}
             {{ menus.menu_links(item.below, menu_level + 1, megamenu, loop.index, item, duplicate_parent, attributes) }}

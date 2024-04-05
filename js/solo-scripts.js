@@ -14,7 +14,7 @@
     .clientWidth || document.body.clientWidth;
 
   const checkRegionsWidth = () => {
-    const regions = document.querySelectorAll('.region-inner');
+    const regions = document.querySelectorAll('.region-inner, .copyright-inner, .footer-menu-inner');
     regions.forEach(region => {
       const regionWidth = region.offsetWidth;
 

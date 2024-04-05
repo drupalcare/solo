@@ -286,3 +286,25 @@
 #primary-menu .expand-left.navigation-responsive-hover .navigation__responsive:not(.navigation__megamenu)>li>ul>li.has-sub__menu:hover .dropdown-arrow {
   transform: rotate(90deg);
 }
+
+/* plain menu in sidebar and footer for devices smaller than 320px */
+.copyright-inner.region-xs .solo-side-menu,
+.copyright-inner.region-xs .solo-footer-menu,
+.footer-menu-inner.region-xs .solo-side-menu,
+.footer-menu-inner.region-xs .solo-footer-menu,
+.region-inner.region-xs .solo-side-menu,
+.region-inner.region-xs .solo-footer-menu {
+  justify-content: left;
+  flex-direction: column;
+}
+
+.copyright-inner.region-xs .solo-side-menu li a,
+.copyright-inner.region-xs .solo-footer-menu li a,
+.footer-menu-inner.region-xs .solo-side-menu li a,
+.footer-menu-inner.region-xs .solo-footer-menu li a,
+.region-inner.region-xs .solo-side-menu li a,
+.region-inner.region-xs .solo-footer-menu li a {
+  padding-left: 0;
+  padding-right: 0;
+  justify-content: left;
+}

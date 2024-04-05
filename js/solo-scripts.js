@@ -13,6 +13,31 @@
   const getCurrentWidth = () => window.innerWidth || document.documentElement
     .clientWidth || document.body.clientWidth;
 
+  const checkRegionsWidth = () => {
+    const regions = document.querySelectorAll('.region-inner');
+    regions.forEach(region => {
+      const regionWidth = region.offsetWidth;
+
+      // Remove all previous size classes to prevent class duplication
+      region.classList.remove('region-xs', 'region-s', 'region-m', 'region-l', 'region-xl', 'region-xxl');
+
+      // Assign new class based on region width
+      if (regionWidth <= 320) {
+        region.classList.add('region-xs'); // Extra Small Devices
+      } else if (regionWidth > 320 && regionWidth <= 600) {
+        region.classList.add('region-s'); // Small Devices
+      } else if (regionWidth > 600 && regionWidth <= 768) {
+        region.classList.add('region-m'); // Medium Devices
+      } else if (regionWidth > 768 && regionWidth <= 992) {
+        region.classList.add('region-l'); // Large Devices
+      } else if (regionWidth > 992 && regionWidth <= 1200) {
+        region.classList.add('region-xl'); // Extra Large Devices
+      } else if (regionWidth > 1200) {
+        region.classList.add('region-xxl'); // Extra Extra Large Devices
+      }
+    });
+  };
+
   // Add/remove css classes according to screen changes.
   let mediaSize = function() {
     const currentWidth = getCurrentWidth();
@@ -35,6 +60,8 @@
       bodyTag.classList.add('small-screen');
       bodyTag.classList.remove('large-screen', 'medium-screen');
     }
+
+    checkRegionsWidth();
 
   };
 
@@ -78,8 +105,10 @@
       });
 
       mediaSize();
-      getCurrentWidth();
-      window.addEventListener('resize', mediaSize, getCurrentWidth);
+      window.addEventListener('resize', () => {
+        mediaSize();
+      });
+
 
     }
   };

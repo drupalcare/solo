@@ -111,6 +111,11 @@
     max-width: 22rem;
   }
 
+  ol,
+  ul {
+    padding-left: var(--solo-px8);
+  }
+
 }
 
 @media (max-width:20rem) {

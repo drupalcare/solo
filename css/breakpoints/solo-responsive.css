@@ -111,9 +111,22 @@
     max-width: 22rem;
   }
 
+  form ol,
+  form ul,
   .field ol,
   .field ul {
     padding-left: var(--solo-px24);
+  }
+
+  form ol ul,
+  form ol ol,
+  form ul ul,
+  form ul ol,
+  .field ol ul,
+  .field ol ol,
+  .field ul ul,
+  .field ul ol {
+    padding-left: var(--solo-px12);
   }
 
 }

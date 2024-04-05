@@ -106,17 +106,14 @@
     line-height: var(--solo-px28);
   }
 
-  .field ul {
-    padding-left: var(--solo-px12);
-  }
-
-  .field ol {
-    padding-left: var(--solo-px16);
-  }
-
   #primary-sidebar-menu {
     min-width: 18rem;
     max-width: 22rem;
+  }
+
+  .field ol,
+  .field ul {
+    padding-left: var(--solo-px24);
   }
 
 }

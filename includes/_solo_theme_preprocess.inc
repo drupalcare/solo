@@ -366,6 +366,7 @@ function _get_theme_variables() {
 
   return [
     'misc' => [
+      'opacity_page_wrapper',
       'site_global_breakpoints',
       'site_menu_breakpoints',
       'site_global_width',

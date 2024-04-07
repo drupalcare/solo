@@ -64,12 +64,14 @@
 {% endset %}
 
 <!-- Start: Page Wrapper -->
-{% set page_wrapper_classes = 'page-wrapper solo-animate-opacity' ~
+{% set page_wrapper_classes = 'page-wrapper' ~
   (site_global_width ? ' ' ~ site_global_width) ~
   (site_global_breakpoints ? ' ' ~ site_global_breakpoints) ~
   (site_menu_breakpoints ? ' ' ~ site_menu_breakpoints) ~
   (classes_page_wrapper ? ' ' ~ classes_page_wrapper) ~
-  (site_inline_items_on ? ' solo__inline-items' : '') %}
+  (opacity_page_wrapper ? ' solo__fade-in' : '') ~
+  (site_inline_items_on ? ' solo__inline-items' : '')
+  %}
 
 <div id="page-wrapper" class="{{ page_wrapper_classes }}" {{ attributes_page_wrapper }}>
 

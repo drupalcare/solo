@@ -67,20 +67,17 @@
 
   Drupal.behaviors.soloTheme = {
     attach: function(context, settings) {
-      // Change the form color to match the footer color.
-      const footerFormBg = window.getComputedStyle(document.querySelector(
-          '#footer-menu'))
-        .backgroundColor;
-      const footerFormTxt = window.getComputedStyle(document
-          .querySelector('#footer-menu'))
-        .color;
+      // Ensure code only runs once per element
+      const footerMenu = document.querySelector('#footer-menu', context);
+      if (footerMenu) {
+        const footerFormBg = window.getComputedStyle(footerMenu).backgroundColor;
+        const footerFormTxt = window.getComputedStyle(footerMenu).color;
+        let footerMenuForm = document.querySelector('#footer-menu form', context);
 
-      let footerMenu = document.querySelector('#footer-menu');
-      let footerMenuForm = document.querySelector('#footer-menu form');
-
-      if (footerMenu && footerMenuForm) {
-        footerMenuForm.style.background = footerFormBg;
-        footerMenuForm.style.color = footerFormTxt;
+        if (footerMenuForm) {
+          footerMenuForm.style.background = footerFormBg;
+          footerMenuForm.style.color = footerFormTxt;
+        }
       }
 
       // Remove attribute 'open'

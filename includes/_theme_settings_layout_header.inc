@@ -43,10 +43,34 @@ if (array_key_exists('header', $updated_regions['mix'])) {
     '#default_value' => theme_get_setting('header_change_icons'),
   ];
 
+  $form['solo_settings']["settings_{$region}"]['site_name_font_size_s'] = [
+    '#title' => t("Select the desired font size for the Site Name on small screen."),
+    '#type' => 'select',
+    '#options' => _get_site_name_font_size(),
+    '#default_value' => theme_get_setting('site_name_font_size_s'),
+    '#description' => t("<p>Small Screen: You can adjust the page title's font size by choosing your preferred size in pixels or rem units. <strong>This setting follows the website's breakpoints, which can be found under Global Site Settings.</strong></p>"),
+  ];
+
+  $form['solo_settings']["settings_{$region}"]['site_name_font_size_l'] = [
+    '#title' => t("Select the desired font size for the Site Name on large screen."),
+    '#type' => 'select',
+    '#options' => _get_site_name_font_size(),
+    '#default_value' => theme_get_setting('site_name_font_size_l'),
+    '#description' => t("<p>Large Screen: You can adjust the page title's font size by choosing your preferred size in pixels or rem units. <strong>This setting follows the website's breakpoints, which can be found under Global Site Settings.</strong></p>"),
+  ];
+
+  $form['solo_settings']["settings_{$region}"]['site_name_google_font'] = [
+    '#type' => 'select',
+    '#title' => t("<span class='status'>Site Name Fonts:</span> They are not applied to any html tags by default and they are only imported. Each font library has a CSS class that you can apply to any html tag. <a target='_blank' href='https://unitedstarsofamerica.com/node/394'>Click here to view a live demo for all available fonts.</a>"),
+    '#description'   => t("There are 25 fonts, each with its own CSS class that can be applied to any HTML tag. For example, if you select Eagel Lake, the CSS class will be 'eagle-lake'."),
+    '#options' => _get_name_title_google_font(),
+    '#default_value' => theme_get_setting('site_name_google_font'),
+  ];
+
   $form['solo_settings']["settings_{$region}"]['site_name_animate_on'] = [
     '#type' => 'select',
-    '#title' => t("Select the preferred CSS text animation effects for the Site Name."),
-    '#description' => t("Note that the animations are sorted based on their names (e.g., 'Aurora Wave', 'Dreamy Bloom', etc.)"),
+    '#title' => t("Select the desired CSS text animation effects for the Site Name."),
+    '#description' => t("<p>Note that the animations are sorted based on their names (e.g., 'Aurora Wave', 'Dreamy Bloom', etc.) <strong>You can also utilize the H1, H2, H3 text in the field below to apply color to the site name and site slogan.</strong></p>"),
     '#options' => _get_animate_site_name(),
     '#default_value' => theme_get_setting('site_name_animate_on'),
   ];

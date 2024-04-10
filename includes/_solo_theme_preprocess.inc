@@ -371,6 +371,8 @@ function _get_theme_variables() {
       'site_menu_breakpoints',
       'site_global_width',
       'site_css_injector',
+      'site_name_google_font',
+      'site_pagetitle_google_font',
       'site_font_google_special_on',
       'site_font_google_heading_on',
       'site_font_google_global_on',
@@ -380,6 +382,10 @@ function _get_theme_variables() {
       'site_opacity_onscroll_on',
       'site_login_page_on',
       'site_pagetitle_animate_on',
+      'site_pagetitle_font_size_s',
+      'site_pagetitle_font_size_l',
+      'site_name_font_size_s',
+      'site_name_font_size_l',
       'site_name_animate_on',
       'site_breadcrumb_pagetitle_off',
       'site_inline_items_on',
@@ -484,6 +490,22 @@ function solo_preprocess_page(&$variables) {
 
   if (!theme_get_setting('system_messages_disable_dark')) {
     $variables['#attached']['library'][] = 'solo/solo-system-messages-dark';
+  }
+
+  if (theme_get_setting('site_name_font_size_s')) {
+    $variables['name_size_s'] = 'name-s-' . theme_get_setting('site_name_font_size_s');
+  }
+
+  if (theme_get_setting('site_name_font_size_l')) {
+    $variables['name_size_l'] = 'name-l-' . theme_get_setting('site_name_font_size_l');
+  }
+
+  if (theme_get_setting('site_pagetitle_font_size_s')) {
+    $variables['title_size_s'] = 'title-s-' . theme_get_setting('site_pagetitle_font_size_s');
+  }
+
+  if (theme_get_setting('site_pagetitle_font_size_l')) {
+    $variables['title_size_l'] = 'title-l-' . theme_get_setting('site_pagetitle_font_size_l');
   }
 
   // Top regions variables.

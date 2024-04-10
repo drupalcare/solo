@@ -79,6 +79,34 @@ function _get_site_global_font_size() {
 /**
  * Helper function.
  */
+function _get_site_name_font_size() {
+  return [
+    '' => t('The Default Settings'),
+    '18' => t('Large 18px / 1.125rem'),
+    '24' => t('X Large 24px / 1.5rem'),
+    '36' => t('XX Large 36px / 2.25rem'),
+    '48' => t('XXX Large 48px / 3rem'),
+    '64' => t('Jumbo 64px / 4rem'),
+  ];
+}
+
+/**
+ * Helper function.
+ */
+function _get_page_title_font_size() {
+  return [
+    '' => t('The Default Settings'),
+    '18' => t('Large 18px / 1.125rem'),
+    '24' => t('X Large 24px / 1.5rem'),
+    '36' => t('XX Large 36px / 2.25rem'),
+    '48' => t('XXX Large 48px / 3rem'),
+    '64' => t('Jumbo 64px / 4rem'),
+  ];
+}
+
+/**
+ * Helper function.
+ */
 function _get_site_node_date_format($d_s, $d_m, $d_l) {
   return [
     'solo_date_s' => t("Short: (@d_s)", ['@d_s' => $d_s]),
@@ -363,7 +391,7 @@ function _get_special_font_options() {
     'solo-moo-lah-lah' => t('moo-lah-lah - cursive'),
     'solo-new-rocker' => t('new-rocker - cursive'),
     'solo-nosifer' => t('nosifer - cursive'),
-    'solo-pirata-one' => t('pirata-one - cursive'),
+    'solo-pirata-one' => t('pirata-one - system-ui'),
     'solo-ruslan-display' => t('ruslan-display - cursive'),
     'solo-rye' => t('rye - cursive'),
     'solo-sancreek' => t('sancreek - cursive'),
@@ -371,6 +399,40 @@ function _get_special_font_options() {
     'solo-trade-winds' => t('trade-winds - cursive'),
     'solo-train-one' => t('train-one - cursive'),
     'solo-unifrakturmaguntia' => t('unifrakturmaguntia - cursive'),
+  ];
+}
+
+/**
+ * Helper function.
+ */
+function _get_name_title_google_font() {
+  return [
+    '' => t('None'),
+    'solo-acme' => t('Acme - sans-serif'),
+    'solo-audiowide' => t('Audiowide - sans-serif'),
+    'solo-berkshire-swash' => t('Berkshire Swash - serif'),
+    'solo-contrail-one' => t('Contrail One - sans-serif'),
+    'solo-cookie' => t('Cookie - cursive'),
+    'solo-croissant-one' => t('Croissant One - serif'),
+    'solo-crushed' => t('Crushed - sans-serif'),
+    'solo-eagle-lake' => t('Eagle Lake - serif'),
+    'solo-fugaz-one' => t('Fugaz One - sans-serif'),
+    'solo-gilda-display' => t('Gilda Display - serif'),
+    'solo-girassol' => t('Girassol - serif'),
+    'solo-italiana' => t('Italiana - sans-serif'),
+    'solo-joan' => t('Joan - sans-serif'),
+    'solo-julius-sans-one' => t('Julius Sans One - sans-serif'),
+    'solo-katibeh' => t('Katibeh - serif'),
+    'solo-kaushan-script' => t('Kaushan Script - cursive'),
+    'solo-overlock-sc' => t('Overlock SC - sans-serif'),
+    'solo-poiret-one' => t('Poiret One - sans-serif'),
+    'solo-prata' => t('Prata - serif'),
+    'solo-redressed' => t('Redressed - cursive'),
+    'solo-tapestry' => t('Tapestry - serif'),
+    'solo-uncial-antiqua' => t('Uncial Antiqua - system-ui'),
+    'solo-unica-one' => t('Unica One - sans-serif'),
+    'solo-yatra-one' => t('Yatra One - system-ui'),
+    'solo-yeseva-one' => t('Yeseva One - serif'),
   ];
 }
 

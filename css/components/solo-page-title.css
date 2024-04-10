@@ -2,43 +2,50 @@
   display: grid;
 }
 
-h1.page-title {
+h1.page-title-text {
   display: grid;
   padding: var(--solo-px32) 0;
 }
 
-h1.page-title span {
+h1.page-title-text span {
   display: inline-flex;
 }
 
-@media (min-width:75rem) {
-  h1.page-title {
-    font-size: var(--solo-px64);
-    line-height: calc(2 * var(--solo-px34));
-  }
 
+h1.page-title-text {
+  font-size: calc(2 * var(--solo-px32));
+  line-height: calc(2 * var(--solo-px38));
 }
 
 @media (max-width:75rem) {
-  h1.page-title {
-    font-size: var(--solo-px48);
-    line-height: var(--solo-px50);
+  h1.page-title-text {
+    font-size: calc(2 * var(--solo-px24));
+    line-height: calc(2 * var(--solo-px28));
   }
 
 }
 
 @media (max-width:62rem) {
-  h1.page-title {
+  h1.page-title-text {
     font-size: var(--solo-px36);
-    line-height: var(--solo-px38);
+    line-height: calc(2 * var(--solo-px22));
     padding: var(--solo-px16) 0;
   }
 
 }
 
+@media (max-width:48rem) {
+  h1.page-title-text {
+    font-size: var(--solo-px24);
+    line-height: calc(2 * var(--solo-px14));
+    padding: var(--solo-px8) 0;
+  }
+
+}
+
 @media (max-width:36rem) {
-  h1.page-title {
-    font-size: var(--solo-px20);
+  h1.page-title-text {
+    font-size: var(--solo-px18);
     line-height: var(--solo-px22);
     padding: var(--solo-px8) 0;
   }

@@ -40,7 +40,7 @@ AEGEAN #1F456E, ARSENIC #3B444B
 }
 
 /* Heads */
-.page-wrapper h1:not(.page-title),
+.page-wrapper h1:not(.page-title-text),
 .page-wrapper h2,
 .page-wrapper h3,
 .page-wrapper h1 a,
@@ -48,7 +48,10 @@ AEGEAN #1F456E, ARSENIC #3B444B
 .page-wrapper h3 a,
 .page-wrapper h1 a span,
 .page-wrapper h2 a span,
-.page-wrapper h3 a span {
+.page-wrapper h3 a span,
+.page-wrapper .site-name,
+.page-wrapper .site-slogan,
+.page-wrapper .site-name-link {
   --r-tx: #3b444b;
 }
 
@@ -140,7 +143,7 @@ h3 a) {
 }
 
 header.header,
-div.page-title {
+div.page-title.lone {
   --r-bg: linear-gradient(to left top, #ffffff, #e1e5e8);
   background: var(--r-bg);
 }

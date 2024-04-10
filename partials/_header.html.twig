@@ -1,6 +1,6 @@
   {% if page.header or page.primary_sidebar_menu %}
     <!-- Start: Header -->
-    <header id="header" class="solo-outer lone header{{ site_header_colors ? ' ' ~ site_header_colors }}{{ site_name_animate_on ? ' ' ~ site_name_animate_on }}{{ classes_header ? ' ' ~ classes_header }}" role="banner" aria-label="{{ 'Site header'|t }}"{{ attributes_header }}>
+    <header id="header" class="solo-outer lone header{{ site_header_colors ? ' ' ~ site_header_colors }}{{ site_name_animate_on ? ' ' ~ site_name_animate_on }}{{ site_name_google_font ? ' ' ~ site_name_google_font }}{{ name_size_s ? ' ' ~ name_size_s }}{{ name_size_l ? ' ' ~ name_size_l }}{{ classes_header ? ' ' ~ classes_header }}" role="banner" aria-label="{{ 'Site header'|t }}"{{ attributes_header }}>
       <div id="header-inner" class="solo-inner solo-col solo-col-1 header-inner{{ header_change_icons ? ' hs-icons-left' }}{{ header_sitename_center ? ' header-sitename-center' }}{{ header_sitename_center_small ? ' header-sitename-center-small' }}{{ header_sitename_center_default ? ' header-sitename-center-default' }}">
 
         {% if page.primary_sidebar_menu %}

@@ -42,7 +42,9 @@ h6 {
 
 h1,
 h2,
-h3 {
+h3,
+.site-name,
+.site-slogan {
   font-weight: 700;
   font-family: var(--solo-h1);
   margin: var(--solo-px12) 0;

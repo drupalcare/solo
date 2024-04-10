@@ -58,6 +58,36 @@
     margin: var(--solo-px16) 0 var(--solo-px16);
   }
 
+  #header.name-l-18 .site-name-link,
+  #page-title.title-l-18 .page-title-text {
+    font-size: var(--solo-px18);
+    line-height: var(--solo-px22);
+  }
+
+  #header.name-l-24 .site-name-link,
+  #page-title.title-l-24 .page-title-text {
+    font-size: var(--solo-px24);
+    line-height: calc(2 * var(--solo-px14));
+  }
+
+  #header.name-l-36 .site-name-link,
+  #page-title.title-l-36 .page-title-text {
+    font-size: var(--solo-px36);
+    line-height: calc(2 * var(--solo-px22));
+  }
+
+  #header.name-l-48 .site-name-link,
+  #page-title.title-l-48 .page-title-text {
+    font-size: calc(2 * var(--solo-px24));
+    line-height: calc(2 * var(--solo-px28));
+  }
+
+  #header.name-l-64 .site-name-link,
+  #page-title.title-l-64 .page-title-text {
+    font-size: calc(2 * var(--solo-px32));
+    line-height: calc(2 * var(--solo-px38));
+  }
+
 }
 
 @media (max-width:62rem) {
@@ -139,12 +169,42 @@
 
   .header-inner.header-sitename-center-small .branding-wrapper .branding-first,
   .header-inner.header-sitename-center-small .branding-wrapper .branding-first a,
-  .header-inner.header-sitename-center-small .branding-wrapper h1.site-name,
-  .header-inner.header-sitename-center-small .branding-wrapper h1.site-name a,
-  .header-inner.header-sitename-center-small .branding-wrapper h3.site-slogan,
+  .header-inner.header-sitename-center-small .branding-wrapper .site-name,
+  .header-inner.header-sitename-center-small .branding-wrapper .site-name a,
+  .header-inner.header-sitename-center-small .branding-wrapper .site-slogan,
   .header-inner.header-sitename-center-small .branding-wrapper .branding-second {
     justify-content: center;
     text-align: center;
+  }
+
+  #header.name-s-18  .site-name-link,
+  #page-title.title-s-18 .page-title-text {
+    font-size: var(--solo-px18);
+    line-height: var(--solo-px22);
+  }
+
+  #header.name-s-24  .site-name-link,
+  #page-title.title-s-24 .page-title-text {
+    font-size: var(--solo-px24);
+    line-height: calc(2 * var(--solo-px14));
+  }
+
+  #header.name-s-36  .site-name-link,
+  #page-title.title-s-36 .page-title-text {
+    font-size: var(--solo-px36);
+    line-height: calc(2 * var(--solo-px22));
+  }
+
+  #header.name-s-48 .site-name-link,
+  #page-title.title-s-48 .page-title-text {
+    font-size: calc(2 * var(--solo-px24));
+    line-height: calc(2 * var(--solo-px28));
+  }
+
+  #header.name-s-64 .site-name-link,
+  #page-title.title-s-64 .page-title-text {
+    font-size: calc(2 * var(--solo-px32));
+    line-height: calc(2 * var(--solo-px38));
   }
 
 }

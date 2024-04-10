@@ -4,6 +4,16 @@
     max-width: 36rem;
   }
 
+  .site-name {
+    font-size: var(--solo-px36);
+    line-height: calc(2 * var(--solo-px22));
+  }
+
+  .site-slogan {
+    font-size: var(--solo-px24);
+    line-height: calc(2 * var(--solo-px14));
+  }
+
   /* HTML tags */
   h1 {
     line-height: calc(2 * var(--solo-px22));
@@ -20,6 +30,16 @@
 }
 
 @media (max-width:62rem) {
+  .site-name {
+    font-size: var(--solo-px24);
+    line-height: calc(2 * var(--solo-px14));
+  }
+
+  .site-slogan {
+    font-size: var(--solo-px18);
+    line-height: var(--solo-px22);
+  }
+
   h1 {
     font-size: var(--solo-px26);
   }
@@ -78,16 +98,6 @@
 }
 
 @media (max-width:36rem) {
-  .site-name {
-    font-size: var(--solo-px26);
-    line-height: calc(2 * var(--solo-px15));
-  }
-
-  .site-slogan {
-    font-size: var(--solo-px20);
-    line-height: var(--solo-px24);
-  }
-
   h1 {
     font-size: var(--solo-px20);
   }
@@ -132,7 +142,6 @@
 }
 
 @media (max-width:20rem) {
-
   #primary-sidebar-menu {
     min-width: 12rem;
     max-width: 16rem;

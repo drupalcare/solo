@@ -14,7 +14,7 @@ PORPOISE #4D4C5C, FLINT #7F7D9C, DOVE #7C6E7F
 }
 
 /* Heads */
-.page-wrapper h1:not(.page-title),
+.page-wrapper h1:not(.page-title-text),
 .page-wrapper h2,
 .page-wrapper h3,
 .page-wrapper h1 a,
@@ -22,7 +22,10 @@ PORPOISE #4D4C5C, FLINT #7F7D9C, DOVE #7C6E7F
 .page-wrapper h3 a,
 .page-wrapper h1 a span,
 .page-wrapper h2 a span,
-.page-wrapper h3 a span {
+.page-wrapper h3 a span,
+.page-wrapper .site-name,
+.page-wrapper .site-slogan,
+.page-wrapper .site-name-link {
   --r-tx: #9290ab;
 }
 
@@ -134,7 +137,7 @@ h3 a) {
 
 /* Regions Dark */
 header.header,
-div.page-title {
+div.page-title.lone {
   --r-tx: #f6f5f7;
   --r-bg: linear-gradient(0deg, #4d4c5c, #3d3d49);
   background: var(--r-bg);

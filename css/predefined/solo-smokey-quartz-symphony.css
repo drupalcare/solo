@@ -18,7 +18,7 @@ Smokey Gray #726E6D, Sonic Gray #757575,Spanish Gray #989898,Taupe Gray #8B8589
 }
 
 /* Heads */
-.page-wrapper h1:not(.page-title),
+.page-wrapper h1:not(.page-title-text),
 .page-wrapper h2,
 .page-wrapper h3,
 .page-wrapper h1 a,
@@ -26,7 +26,10 @@ Smokey Gray #726E6D, Sonic Gray #757575,Spanish Gray #989898,Taupe Gray #8B8589
 .page-wrapper h3 a,
 .page-wrapper h1 a span,
 .page-wrapper h2 a span,
-.page-wrapper h3 a span {
+.page-wrapper h3 a span,
+.page-wrapper .site-name,
+.page-wrapper .site-slogan,
+.page-wrapper .site-name-link {
   --r-tx: #767676;
 }
 
@@ -133,7 +136,7 @@ h3 a) {
 
 /* Regions Dark */
 header.header,
-div.page-title {
+div.page-title.lone {
   --r-tx: #e4e4e4;
   --r-bg: linear-gradient(0deg, #2c292b, #080808);
   background: var(--r-bg);

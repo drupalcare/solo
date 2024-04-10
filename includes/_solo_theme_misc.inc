@@ -33,6 +33,28 @@ function _load_special_fonts(array &$attachments): void {
 /**
  * Helper function.
  */
+function _load_site_name_fonts(array &$attachments): void {
+  if (theme_get_setting('site_name_google_font')) {
+    $ex_font_s = theme_get_setting('site_name_google_font');
+    $current_exgfs = 'solo/solo-gfex' . substr($ex_font_s, 4);
+    $attachments['#attached']['library'][] = $current_exgfs;
+  }
+}
+
+/**
+ * Helper function.
+ */
+function _load_page_title_fonts(array &$attachments): void {
+  if (theme_get_setting('site_pagetitle_google_font')) {
+    $ex_font_s = theme_get_setting('site_pagetitle_google_font');
+    $current_exgfs = 'solo/solo-gfex' . substr($ex_font_s, 4);
+    $attachments['#attached']['library'][] = $current_exgfs;
+  }
+}
+
+/**
+ * Helper function.
+ */
 function _load_predefined_color_theme(array &$attachments): void {
 
   $theme_category = theme_get_setting('theme_category');
@@ -108,6 +130,8 @@ function _load_color_coded_system_tabs(array &$attachments): void {
 function solo_page_attachments_alter(array &$attachments): void {
   _load_google_fonts($attachments);
   _load_special_fonts($attachments);
+  _load_site_name_fonts($attachments);
+  _load_page_title_fonts($attachments);
   _load_predefined_color_theme($attachments);
   _load_font_awesome($attachments);
   _load_full_opacity($attachments);

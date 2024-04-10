@@ -20,7 +20,7 @@ DodgerBlue 1E90FF, INDIGO #281E5D
 }
 
 /* Heads */
-.page-wrapper h1:not(.page-title),
+.page-wrapper h1:not(.page-title-text),
 .page-wrapper h2,
 .page-wrapper h3,
 .page-wrapper h1 a,
@@ -28,7 +28,10 @@ DodgerBlue 1E90FF, INDIGO #281E5D
 .page-wrapper h3 a,
 .page-wrapper h1 a span,
 .page-wrapper h2 a span,
-.page-wrapper h3 a span {
+.page-wrapper h3 a span,
+.page-wrapper .site-name,
+.page-wrapper .site-slogan,
+.page-wrapper .site-name-link {
   --r-tx: #042844;
 }
 
@@ -186,7 +189,7 @@ h3 a) {
 }
 
 .footer-menu,
-.page-wrapper div.page-title {
+.page-wrapper div.page-title.lone {
   --r-bg: #010c14;
   --r-tx: #f3f9fe;
 }

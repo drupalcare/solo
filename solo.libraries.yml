@@ -1470,6 +1470,183 @@ solo-gfex-monoton:
       'https://fonts.googleapis.com/css2?family=Monoton&display=swap': { type: external, minified: true }
       fonts/css/special/solo-monoton.css: { }
 
+# Google fonts - Site Name Fonts.
+solo-gfex-acme:
+  Version: VERSION
+  css:
+    base:
+      'https://fonts.googleapis.com/css2?family=Acme&display=swap': { type: external, minified: true }
+      fonts/css/site-name/solo-acme.css: { }
+
+solo-gfex-audiowide:
+  Version: VERSION
+  css:
+    base:
+      'https://fonts.googleapis.com/css2?family=Audiowide&display=swap': { type: external, minified: true }
+      fonts/css/site-name/solo-audiowide.css: { }
+
+solo-gfex-berkshire-swash:
+  Version: VERSION
+  css:
+    base:
+      'https://fonts.googleapis.com/css2?family=Berkshire+Swash&display=swap': { type: external, minified: true }
+      fonts/css/site-name/solo-berkshire-swash.css: { }
+
+solo-gfex-contrail-one:
+  Version: VERSION
+  css:
+    base:
+      'https://fonts.googleapis.com/css2?family=Contrail+One&display=swap': { type: external, minified: true }
+      fonts/css/site-name/solo-contrail-one.css: { }
+
+solo-gfex-cookie:
+  Version: VERSION
+  css:
+    base:
+      'https://fonts.googleapis.com/css2?family=Cookie&display=swap': { type: external, minified: true }
+      fonts/css/site-name/solo-cookie.css: { }
+
+solo-gfex-croissant-one:
+  Version: VERSION
+  css:
+    base:
+      'https://fonts.googleapis.com/css2?family=Croissant+One&display=swap': { type: external, minified: true }
+      fonts/css/site-name/solo-croissant-one.css: { }
+
+solo-gfex-crushed:
+  Version: VERSION
+  css:
+    base:
+      'https://fonts.googleapis.com/css2?family=Crushed&display=swap': { type: external, minified: true }
+      fonts/css/site-name/solo-crushed.css: { }
+
+solo-gfex-eagle-lake:
+  Version: VERSION
+  css:
+    base:
+      'https://fonts.googleapis.com/css2?family=Eagle+Lake&display=swap': { type: external, minified: true }
+      fonts/css/site-name/solo-eagle-lake.css: { }
+
+solo-gfex-fugaz-one:
+  Version: VERSION
+  css:
+    base:
+      'https://fonts.googleapis.com/css2?family=Fugaz+One&display=swap': { type: external, minified: true }
+      fonts/css/site-name/solo-fugaz-one.css: { }
+
+solo-gfex-gilda-display:
+  Version: VERSION
+  css:
+    base:
+      'https://fonts.googleapis.com/css2?family=Gilda+Display&display=swap': { type: external, minified: true }
+      fonts/css/site-name/solo-gilda-display.css: { }
+
+solo-gfex-girassol:
+  Version: VERSION
+  css:
+    base:
+      'https://fonts.googleapis.com/css2?family=Girassol&display=swap': { type: external, minified: true }
+      fonts/css/site-name/solo-girassol.css: { }
+
+solo-gfex-italiana:
+  Version: VERSION
+  css:
+    base:
+      'https://fonts.googleapis.com/css2?family=Italiana&display=swap': { type: external, minified: true }
+      fonts/css/site-name/solo-italiana.css: { }
+
+solo-gfex-joan:
+  Version: VERSION
+  css:
+    base:
+      'https://fonts.googleapis.com/css2?family=Joan&display=swap': { type: external, minified: true }
+      fonts/css/site-name/solo-joan.css: { }
+
+solo-gfex-julius-sans-one:
+  Version: VERSION
+  css:
+    base:
+      'https://fonts.googleapis.com/css2?family=Julius+Sans+One&display=swap': { type: external, minified: true }
+      fonts/css/site-name/solo-julius-sans-one.css: { }
+
+solo-gfex-katibeh:
+  Version: VERSION
+  css:
+    base:
+      'https://fonts.googleapis.com/css2?family=Katibeh&display=swap': { type: external, minified: true }
+      fonts/css/site-name/solo-katibeh.css: { }
+
+solo-gfex-kaushan-script:
+  Version: VERSION
+  css:
+    base:
+      'https://fonts.googleapis.com/css2?family=Kaushan+Script&display=swap': { type: external, minified: true }
+      fonts/css/site-name/solo-kaushan-script.css: { }
+
+solo-gfex-overlock-sc:
+  Version: VERSION
+  css:
+    base:
+      'https://fonts.googleapis.com/css2?family=Overlock+SC&display=swap': { type: external, minified: true }
+      fonts/css/site-name/solo-overlock-sc.css: { }
+
+solo-gfex-poiret-one:
+  Version: VERSION
+  css:
+    base:
+      'https://fonts.googleapis.com/css2?family=Poiret+One&display=swap': { type: external, minified: true }
+      fonts/css/site-name/solo-poiret-one.css: { }
+
+solo-gfex-prata:
+  Version: VERSION
+  css:
+    base:
+      'https://fonts.googleapis.com/css2?family=Prata&display=swap': { type: external, minified: true }
+      fonts/css/site-name/solo-prata.css: { }
+
+solo-gfex-redressed:
+  Version: VERSION
+  css:
+    base:
+      'https://fonts.googleapis.com/css2?family=Redressed&display=swap': { type: external, minified: true }
+      fonts/css/site-name/solo-redressed.css: { }
+
+solo-gfex-tapestry:
+  Version: VERSION
+  css:
+    base:
+      'https://fonts.googleapis.com/css2?family=Tapestry&display=swap': { type: external, minified: true }
+      fonts/css/site-name/solo-tapestry.css: { }
+
+solo-gfex-uncial-antiqua:
+  Version: VERSION
+  css:
+    base:
+      'https://fonts.googleapis.com/css2?family=Uncial+Antiqua&display=swap': { type: external, minified: true }
+      fonts/css/site-name/solo-uncial-antiqua.css: { }
+
+solo-gfex-unica-one:
+  Version: VERSION
+  css:
+    base:
+      'https://fonts.googleapis.com/css2?family=Unica+One&display=swap': { type: external, minified: true }
+      fonts/css/site-name/solo-unica-one.css: { }
+
+solo-gfex-yatra-one:
+  Version: VERSION
+  css:
+    base:
+      'https://fonts.googleapis.com/css2?family=Yatra+One&display=swap': { type: external, minified: true }
+      fonts/css/site-name/solo-yatra-one.css: { }
+
+solo-gfex-yeseva-one:
+  Version: VERSION
+  css:
+    base:
+      'https://fonts.googleapis.com/css2?family=Yeseva+One&display=swap': { type: external, minified: true }
+      fonts/css/site-name/solo-yeseva-one.css: { }
+
+
 # Custom predefined color scheme.
 solo-berry-blue-dreams:
   Version: VERSION

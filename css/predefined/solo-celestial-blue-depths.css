@@ -12,7 +12,7 @@ Egyptian Blue #1034A6, Yale Blue #00356B, Space Cadet #1D2951
 }
 
 /* Heads */
-.page-wrapper h1:not(.page-title),
+.page-wrapper h1:not(.page-title-text),
 .page-wrapper h2,
 .page-wrapper h3,
 .page-wrapper h1 a,
@@ -20,7 +20,10 @@ Egyptian Blue #1034A6, Yale Blue #00356B, Space Cadet #1D2951
 .page-wrapper h3 a,
 .page-wrapper h1 a span,
 .page-wrapper h2 a span,
-.page-wrapper h3 a span {
+.page-wrapper h3 a span,
+.page-wrapper .site-name,
+.page-wrapper .site-slogan,
+.page-wrapper .site-name-link {
   --r-tx: #7b6a58;
 }
 
@@ -132,14 +135,14 @@ h3 a) {
 
 /* Regions Dark */
 header.header,
-div.page-title {
+div.page-title.lone {
   --r-tx: #dfe4f4;
   --r-bg: linear-gradient(180deg, #1034a6, #0a2168);
   background: var(--r-bg);
 }
 
-div.page-title h1 a,
-div.page-title h1 span,
+div.page-title.lone h1 a,
+div.page-title.lone h1 span,
 header.header h1,
 header.header h2,
 header.header h3,

@@ -41,7 +41,7 @@ function solo_form_system_theme_settings_alter(&$form, FormStateInterface $form_
   require_once __DIR__ . '/includes/_theme_settings_layout_highlighted.inc';
   require_once __DIR__ . '/includes/_theme_settings_layout_popup_login_block.inc';
   require_once __DIR__ . '/includes/_theme_settings_layout_fixed_search_block.inc';
-  require_once __DIR__ . '/includes/_theme_settings_layout_headeer.inc';
+  require_once __DIR__ . '/includes/_theme_settings_layout_header.inc';
   require_once __DIR__ . '/includes/_theme_settings_layout_primary_sidebar_menu.inc';
   require_once __DIR__ . '/includes/_theme_settings_layout_primary_menu.inc';
   require_once __DIR__ . '/includes/_theme_settings_layout_welcome_text.inc';

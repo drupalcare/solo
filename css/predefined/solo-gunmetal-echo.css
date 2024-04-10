@@ -13,7 +13,7 @@ Gunmetal #2A3439, Marengo #4C5866, Gray Wolf #504A4B
 }
 
 /* Heads */
-.page-wrapper h1:not(.page-title),
+.page-wrapper h1:not(.page-title-text),
 .page-wrapper h2,
 .page-wrapper h3,
 .page-wrapper h1 a,
@@ -21,7 +21,10 @@ Gunmetal #2A3439, Marengo #4C5866, Gray Wolf #504A4B
 .page-wrapper h3 a,
 .page-wrapper h1 a span,
 .page-wrapper h2 a span,
-.page-wrapper h3 a span {
+.page-wrapper h3 a span,
+.page-wrapper .site-name,
+.page-wrapper .site-slogan,
+.page-wrapper .site-name-link {
   --r-tx: #718296;
 }
 
@@ -132,7 +135,7 @@ h3 a) {
 
 /* Regions Dark */
 header.header,
-div.page-title {
+div.page-title.lone {
   --r-tx: #e4e4e4;
   --r-bg: linear-gradient(0deg, #0c1318, #14191c);
   background: var(--r-bg);

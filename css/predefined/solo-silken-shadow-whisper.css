@@ -29,7 +29,7 @@ Shadow White #EEF1EA, Acoustic White #EFECE1, Aircraft White #EDF2F8
 }
 
 /* Heads */
-.page-wrapper h1:not(.page-title),
+.page-wrapper h1:not(.page-title-text),
 .page-wrapper h2,
 .page-wrapper h3,
 .page-wrapper h1 a,
@@ -37,7 +37,10 @@ Shadow White #EEF1EA, Acoustic White #EFECE1, Aircraft White #EDF2F8
 .page-wrapper h3 a,
 .page-wrapper h1 a span,
 .page-wrapper h2 a span,
-.page-wrapper h3 a span {
+.page-wrapper h3 a span,
+.page-wrapper .site-name,
+.page-wrapper .site-slogan,
+.page-wrapper .site-name-link {
   --r-tx: #375e8d;
 }
 
@@ -129,7 +132,7 @@ h3 a) {
 }
 
 header.header,
-div.page-title {
+div.page-title.lone {
   --r-bg: linear-gradient(0deg, #dde3d6, #d5e0ee);
   background: var(--r-bg);
 }

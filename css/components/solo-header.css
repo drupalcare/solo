@@ -45,8 +45,8 @@
   margin-right: auto;
 }
 
-.branding-wrapper h1.site-name,
-.branding-wrapper h3.site-slogan {
+.branding-wrapper .site-name,
+.branding-wrapper .site-slogan {
   flex-grow: 1;
   display: flex;
   align-items: stretch;
@@ -54,7 +54,7 @@
   max-height: 100%;
 }
 
-.branding-wrapper h1.site-name a {
+.branding-wrapper .site-name a {
   flex-grow: 1;
   width: 100%;
   height: 100%;
@@ -185,9 +185,9 @@
 
 .header-inner.header-sitename-center .branding-wrapper .branding-first,
 .header-inner.header-sitename-center .branding-wrapper .branding-first a,
-.header-inner.header-sitename-center .branding-wrapper h1.site-name,
-.header-inner.header-sitename-center .branding-wrapper h1.site-name a,
-.header-inner.header-sitename-center .branding-wrapper h3.site-slogan,
+.header-inner.header-sitename-center .branding-wrapper .site-name,
+.header-inner.header-sitename-center .branding-wrapper .site-name a,
+.header-inner.header-sitename-center .branding-wrapper .site-slogan,
 .header-inner.header-sitename-center .branding-wrapper .branding-second {
   justify-content: center;
   text-align: center;

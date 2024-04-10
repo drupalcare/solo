@@ -45,6 +45,11 @@ article.node .node__header .node__meta {
   display: grid;
 }
 
+.node--view-mode-teaser .field--type-image {
+  float: left;
+  margin-right: var(--solo-px16);
+}
+
 .node--view-mode-teaser .field {
   margin-block-end: var(--solo-px16);
 }

@@ -31,7 +31,7 @@ hr {
 }
 
 pre {
-  font-family: monospace, monospace;
+  font-family: monospace;
   font-size: 1em;
 }
 
@@ -54,7 +54,7 @@ strong {
 code,
 kbd,
 samp {
-  font-family: monospace, monospace;
+  font-family: monospace;
   font-size: 1em;
 }
 
@@ -244,16 +244,6 @@ li a span {
 }
 
 a,
-a:link,
-a:visited,
-a:hover,
-a:active,
-a:focus {
-  text-decoration: none;
-  outline: none;
-}
-
-a,
 input,
 button,
 textarea,
@@ -277,6 +267,7 @@ a:active,
 input:active,
 button:active,
 textarea:active {
+  text-decoration: none;
   outline: none;
 }
 
@@ -295,11 +286,6 @@ button {
   all: unset;
   outline: revert;
   box-sizing: border-box;
-  cursor: pointer;
-}
-
-a:hover,
-button:hover {
   cursor: pointer;
 }
 

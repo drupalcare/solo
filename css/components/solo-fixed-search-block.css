@@ -35,7 +35,7 @@
   padding-bottom: var(--solo-px20);
 }
 
-.fixed-search-block-inner .solo-search-block-form .form-type-search:before {
+.fixed-search-block-inner .solo-search-block-form .form-type-search::before {
   top: 26px;
 }
 

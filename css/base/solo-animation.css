@@ -29,13 +29,13 @@
 }
 
 .page-wrapper nav ul:not(.solo-ul,
-.field ul) li>a:after,
+.field ul) li>a::after,
 .page-wrapper nav ul:not(.solo-ul,
-.field ul) li>a:before,
+.field ul) li>a::before,
 .page-wrapper nav ul:not(.solo-ul,
-.field ul) li>button:after,
+.field ul) li>button::after,
 .page-wrapper nav ul:not(.solo-ul,
-.field ul) li>button:before {
+.field ul) li>button::before {
   content: '';
   position: absolute;
   bottom: 0;
@@ -47,27 +47,27 @@
 }
 
 .page-wrapper nav ul:not(.solo-ul,
-.field ul) li>a:before,
+.field ul) li>a::before,
 .page-wrapper nav ul:not(.solo-ul,
-.field ul) li>button:before {
+.field ul) li>button::before {
   left: 0;
 }
 
 .page-wrapper nav ul:not(.solo-ul,
-.field ul) li>a:after,
+.field ul) li>a::after,
 .page-wrapper nav ul:not(.solo-ul,
-.field ul) li>button:after {
+.field ul) li>button::after {
   right: 0;
 }
 
 .page-wrapper nav ul:not(.solo-ul,
-.field ul) li>a:hover:after,
+.field ul) li>a:hover::after,
 .page-wrapper nav ul:not(.solo-ul,
-.field ul) li>a:hover:before,
+.field ul) li>a:hover::before,
 .page-wrapper nav ul:not(.solo-ul,
-.field ul) li>button:hover:after,
+.field ul) li>button:hover::after,
 .page-wrapper nav ul:not(.solo-ul,
-.field ul) li>button:hover:before {
+.field ul) li>button:hover::before {
   animation: btnBorderAnimation 0.5s linear forwards;
 }
 
@@ -236,9 +236,9 @@ input.button {
   animation: none !important;
 }
 
-.dis-anim-link nav ul li>a:hover:after,
-.dis-anim-link nav ul li>a:hover:before,
-.dis-anim-link nav ul li>button:hover:after,
-.dis-anim-link nav ul li>button:hover:before {
+.dis-anim-link nav ul li>a:hover::after,
+.dis-anim-link nav ul li>a:hover::before,
+.dis-anim-link nav ul li>button:hover::after,
+.dis-anim-link nav ul li>button:hover::before {
   animation: none !important;
 }

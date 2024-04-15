@@ -1,5 +1,5 @@
-.solo-clear:after,
-.solo-clear:before {
+.solo-clear::after,
+.solo-clear::before {
   content: "";
   display: table;
   clear: both;

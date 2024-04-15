@@ -123,7 +123,7 @@ abbr.ajax-changed {
   font-size: inherit;
 }
 
-.form-required:after {
+.form-required::after {
   display: inline-block;
   width: var(--solo-px10);
   height: var(--solo-px10);
@@ -136,7 +136,7 @@ abbr.ajax-changed {
 }
 
 /* Inline Error Message. */
-.form-item--error-message:before {
+.form-item--error-message::before {
   display: inline-block;
   width: var(--solo-px16);
   height: var(--solo-px16);

@@ -157,7 +157,7 @@
   border-radius: var(--solo-px20) 0;
 }
 
-.layout-builder__link--add:before {
+.layout-builder__link--add::before {
   display: inline-block;
   width: var(--solo-px16);
   height: var(--solo-px16);
@@ -219,7 +219,7 @@
 
 .layout-builder__add-block.is-layout-builder-highlighted,
 .layout-builder__add-section.is-layout-builder-highlighted,
-.layout-builder__layout.is-layout-builder-highlighted:before,
+.layout-builder__layout.is-layout-builder-highlighted::before,
 .layout-builder__layout.is-layout-builder-highlighted,
 .layout-builder-block.is-layout-builder-highlighted {
   border: var(--solo-px2)solid #a2ceef;

@@ -68,7 +68,7 @@ ul.admin-list {
   transition: 0.4s;
 }
 
-.paragraph-type-top.solo-row:before {
+.paragraph-type-top.solo-row::before {
   display: inline-block;
   content: none;
 }
@@ -155,10 +155,10 @@ form .field--widget-entity-reference-paragraphs td.field-multiple-drag {
   display: inline-block;
 }
 
-.admin-context .item-list--comma-list:before,
-.admin-context .item-list--comma-list:after,
-.admin-context .item-list--comma-list li.solo-panel:after,
-.admin-context .item-list--comma-list li.solo-panel:before {
+.admin-context .item-list--comma-list::before,
+.admin-context .item-list--comma-list::after,
+.admin-context .item-list--comma-list li.solo-panel::after,
+.admin-context .item-list--comma-list li.solo-panel::before {
   display: inline-block;
   clear: none !important;
 }
@@ -188,7 +188,7 @@ form .field--widget-entity-reference-paragraphs td.field-multiple-drag {
   padding-top: 0 !important;
 }
 
-.admin-context .system-status-report__status-icon:before {
+.admin-context .system-status-report__status-icon::before {
   top: var(--solo-px15);
   left: -15px;
 }

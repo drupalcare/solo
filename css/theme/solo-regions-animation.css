@@ -3,7 +3,7 @@
   position: relative;
 }
 
-.page-wrapper .solo-outer.animate-border .region-inner:not(.main-box-inner):before {
+.page-wrapper .solo-outer.animate-border .region-inner:not(.main-box-inner)::before {
   content: '';
   position: absolute;
   top: 0;
@@ -14,11 +14,11 @@
   border: var(--solo-px4) solid transparent;
 }
 
-.page-wrapper .solo-outer.animate-border .region-inner:not(.main-box-inner):hover:before {
+.page-wrapper .solo-outer.animate-border .region-inner:not(.main-box-inner):hover::before {
   animation: borderLeftColors 1.5s linear forwards;
 }
 
-.page-wrapper .solo-outer.animate-border .region-inner:not(.main-box-inner):after {
+.page-wrapper .solo-outer.animate-border .region-inner:not(.main-box-inner)::after {
   content: '';
   position: absolute;
   bottom: 0;
@@ -29,7 +29,7 @@
   border: var(--solo-px4) solid transparent;
 }
 
-.page-wrapper .solo-outer.animate-border .region-inner:not(.main-box-inner):hover:after {
+.page-wrapper .solo-outer.animate-border .region-inner:not(.main-box-inner):hover::after {
   animation: borderRightColors 1.5s linear forwards;
 }
 
@@ -41,26 +41,26 @@
 
 /* Radios */
 .page-wrapper .solo-outer.radius-4 .region-inner,
-.page-wrapper .solo-outer.animate-border.radius-4 .region-inner:not(.main-box-inner):before,
-.page-wrapper .solo-outer.animate-border.radius-4 .region-inner:not(.main-box-inner):after {
+.page-wrapper .solo-outer.animate-border.radius-4 .region-inner:not(.main-box-inner)::before,
+.page-wrapper .solo-outer.animate-border.radius-4 .region-inner:not(.main-box-inner)::after {
   border-radius: var(--solo-px4);
 }
 
 .page-wrapper .solo-outer.radius-8 .region-inner,
-.page-wrapper .solo-outer.animate-border.radius-8 .region-inner:not(.main-box-inner):before,
-.page-wrapper .solo-outer.animate-border.radius-8 .region-inner:not(.main-box-inner):after {
+.page-wrapper .solo-outer.animate-border.radius-8 .region-inner:not(.main-box-inner)::before,
+.page-wrapper .solo-outer.animate-border.radius-8 .region-inner:not(.main-box-inner)::after {
   border-radius: var(--solo-px8);
 }
 
 .page-wrapper .solo-outer.radius-16 .region-inner,
-.page-wrapper .solo-outer.animate-border.radius-16 .region-inner:not(.main-box-inner):before,
-.page-wrapper .solo-outer.animate-border.radius-16 .region-inner:not(.main-box-inner):after {
+.page-wrapper .solo-outer.animate-border.radius-16 .region-inner:not(.main-box-inner)::before,
+.page-wrapper .solo-outer.animate-border.radius-16 .region-inner:not(.main-box-inner)::after {
   border-radius: var(--solo-px16);
 }
 
 .page-wrapper .solo-outer.radius-24 .region-inner,
-.page-wrapper .solo-outer.animate-border.radius-24 .region-inner:not(.main-box-inner):before,
-.page-wrapper .solo-outer.animate-border.radius-24 .region-inner:not(.main-box-inner):after {
+.page-wrapper .solo-outer.animate-border.radius-24 .region-inner:not(.main-box-inner)::before,
+.page-wrapper .solo-outer.animate-border.radius-24 .region-inner:not(.main-box-inner)::after {
   border-radius: var(--solo-px24);
 }
 

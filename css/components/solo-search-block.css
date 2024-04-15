@@ -44,7 +44,7 @@ input.search-button-block {
   padding-right: var(--solo-px3) !important;
 }
 
-.solo-search-block-form .form-type-search:before {
+.solo-search-block-form .form-type-search::before {
   position: absolute;
   opacity: 0.5;
   top: 20px;

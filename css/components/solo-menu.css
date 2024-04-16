@@ -216,16 +216,25 @@
   list-style: none;
   padding: 0;
   justify-content: left;
+  align-items: center;
 }
 
 .solo-footer-menu {
   justify-content: center;
 }
 
+.solo-side-menu li,
+.solo-footer-menu li {
+  display: inline-flex;
+  align-items: center;
+}
+
 .solo-side-menu li a,
 .solo-footer-menu li a {
   margin: 0 var(--solo-px4);
-  padding: var(--solo-px12);
+  padding: var(--solo-px6) var(--solo-px8);
+  display: inline-block;
+  max-width: 100%;
 }
 
 .solo-side-menu li a.is-active,

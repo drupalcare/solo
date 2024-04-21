@@ -123,6 +123,7 @@ img {
   text-align: center;
   cursor: pointer;
   white-space: nowrap;
+  text-overflow: ellipsis;
   -webkit-touch-callout: none;
   -webkit-user-select: none;
   -khtml-user-select: none;

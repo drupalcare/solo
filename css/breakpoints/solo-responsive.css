@@ -139,6 +139,11 @@
     padding-left: var(--solo-px12);
   }
 
+  .button,
+  .solo-button {
+    white-space: normal;
+  }
+
 }
 
 @media (max-width:20rem) {

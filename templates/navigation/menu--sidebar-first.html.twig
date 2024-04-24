@@ -17,22 +17,22 @@
   {% import _self as menus %}
   {% if items %}
     <ul{% if menu_level == 0 %} class="solo-side-menu" role="menubar"{% else %} class="solo-side-menu__sublist" role="menu"{% endif %}>
-    {% for item in items %}
-      {%
-        set classes = [
-          'solo-side-menu__item',
-          item.is_expanded ? 'expanded',
-          item.is_collapsed ? 'collapsed',
-          item.in_active_trail ? 'is-active',
-        ]
-      %}
-      <li{{ item.attributes.addClass(classes) }} role="none">
-        {{ link(item.title, item.url, { 'role': 'menuitem' }) }}
-        {% if item.below %}
-          {{ menus.menu_links(item.below, attributes, menu_level + 1) }}
-        {% endif %}
-      </li>
-    {% endfor %}
+      {% for item in items %}
+        {%
+          set classes = [
+            'solo-side-menu__item',
+            item.is_expanded ? 'expanded' : null,
+            item.is_collapsed ? 'collapsed' : null,
+            item.in_active_trail ? 'is-active' : null,
+          ]
+        %}
+        <li{{ item.attributes.addClass(classes) | default(attributes) }} role="none">
+          {{ link(item.title, item.url, { 'role': 'menuitem' }) }}
+          {% if item.below %}
+            {{ menus.menu_links(item.below, attributes, menu_level + 1) }}
+          {% endif %}
+        </li>
+      {% endfor %}
     </ul>
   {% endif %}
 {% endmacro %}

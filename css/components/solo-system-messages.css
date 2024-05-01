@@ -1,5 +1,11 @@
-.messages *,
-.webform-message .messages.messages--webform * {
+.messages *:not(pre,
+pre.sf-dump *,
+pre.sf-dump *,
+pre.sf-dump .sf-dump-default),
+.webform-message .messages.messages--webform *:not(pre,
+pre.sf-dump *,
+pre.sf-dump *,
+pre.sf-dump .sf-dump-default) {
   color: inherit !important;
 }
 
@@ -120,7 +126,10 @@
 }
 
 #system-messages .messages__content,
-#system-messages .messages__content > * {
+#system-messages .messages__content > *:not(pre,
+pre.sf-dump *,
+pre.sf-dump *,
+pre.sf-dump .sf-dump-default) {
   --r-bg: transparent;
   background-color: var(--r-bg) !important;
 }

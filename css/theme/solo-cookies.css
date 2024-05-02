@@ -1,11 +1,9 @@
 #page-wrapper .cookiesjsr-banner,
-#page-wrapper .cookiesjsr-banner div,
 #page-wrapper .cookiesjsr-layer div,
-#page-wrapper .cookiesjsr-layer span,
 #page-wrapper .cookiesjsr-layer header,
 #page-wrapper .cookiesjsr-layer footer {
   border-color: var(--r-br, var(--r-br-b));
-  background-color: var(--r-bg);
+  background: var(--r-bg);
   color: var(--r-tx);
 }
 
@@ -45,8 +43,11 @@
 }
 
 #page-wrapper .cookiesjsr-links,
-#page-wrapper .cookiesjsr-links * {
-  background: transparent;
+#page-wrapper .cookiesjsr-links div,
+#page-wrapper .cookiesjsr-layer div span,
+#page-wrapper .cookiesjsr-layer footer div,
+#page-wrapper .cookiesjsr-service-group--services div {
+  background: transparent !important;
 }
 
 @media (min-width:768px) {

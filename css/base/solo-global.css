@@ -195,6 +195,16 @@ select {
   appearance: none;
 }
 
+.dropbutton-wrapper > div {
+  border: var(--solo-px1) solid var(--r-br, var(--r-br-b));
+  padding-top: var(--solo-px6);
+  padding-bottom: var(--solo-px6);
+}
+
+.dropbutton-multiple.open .dropbutton-arrow {
+  top: var(--solo-px20);
+}
+
 select[disabled] {
   color: var(--solo-white);
   background-color: var(--solo-dark-gray);
@@ -214,7 +224,7 @@ select[multiple] {
 }
 
 select[multiple] option {
-  padding: var(--solo-px16) var(--solo-px12);
+  padding: var(--solo-px4) var(--solo-px8);
 }
 
 ol {

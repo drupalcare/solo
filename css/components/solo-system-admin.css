@@ -140,11 +140,11 @@ form .field--widget-entity-reference-paragraphs td.field-multiple-drag {
 }
 
 .admin-context .system-modules td details {
-  margin: 0 !important;
+  margin: 0 0 var(--solo-px6) 0 !important;
 }
 
 .admin-context .system-modules td details summary {
-  padding: var(--solo-px6) 0 !important;
+  padding: var(--solo-px6) !important;
 }
 
 .admin-context .modules-wrapper .requirements {

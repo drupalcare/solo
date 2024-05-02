@@ -204,7 +204,7 @@ table ul.dropbutton,
 }
 
 .js td .dropbutton-wrapper {
-  min-height: 40px;
+  min-height: 50px;
 }
 
 table ul.dropbutton li:first-child {
@@ -294,6 +294,7 @@ form .form--inline .form-actions {
   flex-grow: 1;
   flex-basis: 100%;
 }
+
 form .pb-tab-display [data-drupal-selector="para-color-picker"] .form-color {
   min-height: 54px;
 }

@@ -185,10 +185,6 @@ form.system-theme-settings .details-wrapper .form-element--api-color {
   all: unset;
 }
 
-.dropbutton-wrapper.open {
-  border: var(--solo-px1) solid var(--r-br, var(--r-br-b));
-}
-
 .dropbutton-wrapper.open .solo-button {
   width: 100%;
   border: 0 !important;

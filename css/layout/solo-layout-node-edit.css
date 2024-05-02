@@ -178,7 +178,7 @@
   margin-right: 0;
 }
 
-.layout-region-node-secondary .entity-meta > details[open] {
+.layout-region-node-secondary .entity-meta > details {
   padding: var(--solo-px8) !important;
   background-color: var(--r-bg) !important;
 }

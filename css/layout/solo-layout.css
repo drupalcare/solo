@@ -53,3 +53,18 @@
   gap: var(--solo-px16);
   grid-auto-flow: column;
 }
+
+.top-box,
+.top-box-inner,
+.main-box,
+.main-box-inner,
+.bottom-box,
+.bottom-box-inner,
+.footer-box,
+.footer-box-inner {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  flex-grow: 1;
+}

@@ -220,6 +220,12 @@ function solo_preprocess_html(&$variables): void {
     _add_taxonomy_term_to_body_class($route_match, $variables);
   }
 
+  // Check if the cookies module is enabled.
+  if (\Drupal::moduleHandler()->moduleExists('cookies')) {
+    // Attach the library when the module is enabled.
+    $variables['#attached']['library'][] = 'solo/solo-cookies';
+  }
+
   // If the user is logged in use ID if not use second word after user/login.
   _add_user_path_to_body_class($variables);
 

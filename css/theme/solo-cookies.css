@@ -1,0 +1,74 @@
+#page-wrapper .cookiesjsr-banner,
+#page-wrapper .cookiesjsr-banner div,
+#page-wrapper .cookiesjsr-layer div,
+#page-wrapper .cookiesjsr-layer span,
+#page-wrapper .cookiesjsr-layer header,
+#page-wrapper .cookiesjsr-layer footer {
+  border-color: var(--r-br, var(--r-br-b));
+  background-color: var(--r-bg);
+  color: var(--r-tx);
+}
+
+#page-wrapper .cookiesjsr-banner {
+  border-top: 3px solid var(--r-br);
+  border-radius: var(--solo-px4);
+}
+
+#page-wrapper #cookiesjsr button,
+#page-wrapper .cookiesjsr-service--always-on {
+  text-align: center;
+  border-color: var(--r-br, var(--r-br-b));
+  color: var(--r-tx-bt, var(--r-tx));
+  background: var(--r-bg-bt, var(--r-bg));
+}
+
+#page-wrapper .cookiesjsr-layer--header button {
+  border-radius: 50%;
+  border: 1px solid var(--r-br);
+  width: calc(2 * var(--solo-px24));
+  height: calc(2 * var(--solo-px24));
+  text-indent: initial;
+  font-size: var(--solo-px12);
+  line-height: var(--solo-px12);
+  text-transform: uppercase;
+}
+
+#page-wrapper .cookiesjsr-layer {
+  border: 1px solid var(--r-br);
+  border-radius: var(--solo-px4);
+}
+
+#page-wrapper #cookiesjsr button:hover {
+  color: var(--r-tx-bt-h, var(--r-tx));
+  background: var(--r-bg-bt-h, var(--r-bg));
+  box-shadow: inset 0 0 var(--solo-px10) var(--r-br);
+}
+
+#page-wrapper .cookiesjsr-links,
+#page-wrapper .cookiesjsr-links * {
+  background: transparent;
+}
+
+@media (min-width:768px) {
+  #page-wrapper .cookiesjsr-service-group--tab {
+    text-align: left !important;
+    width: 30%;
+  }
+
+  #page-wrapper li.cookiesjsr-service-group > div {
+    border-left: 1px solid var(--r-br);
+  }
+
+  #page-wrapper .cookiesjsr-service-group button {
+    border-bottom: 1px solid var(--r-br);
+  }
+
+  #page-wrapper .cookiesjsr-service-group.active button {
+    text-decoration: underline !important;
+    border-bottom: 4px solid var(--r-br);
+    -moz-box-shadow: inset  0 -40px 40px -40px var(--r-br);
+    -webkit-box-shadow: inset  0 -40px 40px -40px var(--r-br);
+    box-shadow: inset  0 -40px 40px -40px var(--r-br);
+  }
+
+}

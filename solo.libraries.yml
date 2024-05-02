@@ -119,6 +119,13 @@ solo-system-messages-dark:
     component:
       css/components/solo-system-messages-dark.css: { weight: 0 }
 
+# Custom Cookies
+solo-cookies:
+  Version: VERSION
+  css:
+    theme:
+      css/theme/solo-cookies.css: { weight: 200 }
+
 # Color Coded system tabs
 solo-color-coded-system-tabs:
   Version: VERSION

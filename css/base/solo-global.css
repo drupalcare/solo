@@ -221,6 +221,7 @@ select.error:focus {
 select[multiple] {
   height: auto;
   background-image: none;
+  padding: var(--solo-px4) var(--solo-px8);
 }
 
 select[multiple] option {

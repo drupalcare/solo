@@ -89,20 +89,29 @@
       // Select all <img> and <picture> elements inside an <a> tag, excluding
       // those with a specific class and also excluding those with classes
       // that contain the word 'icon'
-      let clickableElements = document.querySelectorAll(
-        'a > img:not(.field--name-user-picture img),' +
-        'a > picture:not(.field--name-user-picture img),' +
-        'a > img:not(.field--type-text-long img),' +
-        'a > img:not(.field--type-text-with-summary img),' +
-        'a > picture:not(.field--type-text-long img),' +
-        'a > picture:not(.field--type-text-with-summary img),' +
-        'a:not([class*="icon"]) > img:not([class*="icon"]),' +
-        'a:not([class*="icon"]) > picture:not([class*="icon"]),'
-      );
+      let clickableElements = document.querySelectorAll('a > img, a > picture');
 
-      // Add a class to the parent <a> tag of each selected element
-      clickableElements.forEach(function(clickableElement) {
-        clickableElement.parentElement.classList.add('img--is-clickable');
+      const filteredElements = Array.from(clickableElements).filter(el => {
+        // Check if any parent up to the root has specific classes to exclude
+        let ancestor = el.parentElement;
+        while (ancestor && ancestor !== document.body) {
+          if (ancestor.matches('.field--name-user-picture, .field--type-text-long, .field--type-text-with-summary')) {
+            return false;
+          }
+          ancestor = ancestor.parentElement;
+        }
+
+        // Exclude elements with "icon" in their class or in their parent <a> element's class
+        if (el.classList.contains('icon') || (el.parentElement && el.parentElement.classList.contains('icon'))) {
+          return false;
+        }
+
+        return true;
+      });
+
+      // Apply the class to the parent <a> tags
+      filteredElements.forEach(function(el) {
+        el.parentElement.classList.add('img--is-clickable');
       });
 
       mediaSize();

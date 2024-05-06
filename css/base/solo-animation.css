@@ -201,35 +201,34 @@ input.button {
 
 @keyframes wiggle {
   0%,
-  7% {
-    transform: rotateZ(0) scale(1);
-  }
-
-  15% {
-    transform: rotateZ(-15deg) scale(1.05);
-  }
-
-  20% {
-    transform: rotateZ(10deg) scale(0.95);
-  }
-
-  25% {
-    transform: rotateZ(-10deg) scale(1.05);
-  }
-
-  30% {
-    transform: rotateZ(6deg) scale(0.95);
-  }
-
-  35% {
-    transform: rotateZ(-4deg) scale(1.05);
-  }
-
-  40%,
+  7%,
   100% {
     transform: rotateZ(0) scale(1);
   }
 
+  15% {
+    transform: rotateZ(-8deg) scale(1.03);
+  }
+
+  20% {
+    transform: rotateZ(6deg) scale(0.97);
+  }
+
+  25% {
+    transform: rotateZ(-6deg) scale(1.03);
+  }
+
+  30% {
+    transform: rotateZ(4deg) scale(0.97);
+  }
+
+  35% {
+    transform: rotateZ(-2deg) scale(1.03);
+  }
+
+  40% {
+    transform: rotateZ(0) scale(1);
+  }
 }
 
 .dis-anim-submit form input.button.form-submit:hover {

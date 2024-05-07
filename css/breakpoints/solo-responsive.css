@@ -10,8 +10,8 @@
   }
 
   .site-slogan {
-    font-size: var(--solo-px24);
-    line-height: calc(2 * var(--solo-px14));
+    font-size: var(--solo-px20);
+    line-height: calc(2 * var(--solo-px12));
   }
 
   /* HTML tags */

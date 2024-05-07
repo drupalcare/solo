@@ -20,6 +20,7 @@
 
 }
 
+.page-wrapper .login-button-open button,
 .page-wrapper nav ul:not(.solo-ul,
 .field ul) li>a,
 .page-wrapper nav ul:not(.solo-ul,
@@ -28,6 +29,8 @@
   overflow: hidden;
 }
 
+.page-wrapper .login-button-open button::after,
+.page-wrapper .login-button-open button::before,
 .page-wrapper nav ul:not(.solo-ul,
 .field ul) li>a::after,
 .page-wrapper nav ul:not(.solo-ul,
@@ -46,6 +49,7 @@
   border-bottom: 5px solid transparent;
 }
 
+.page-wrapper .login-button-open button::before,
 .page-wrapper nav ul:not(.solo-ul,
 .field ul) li>a::before,
 .page-wrapper nav ul:not(.solo-ul,
@@ -53,6 +57,7 @@
   left: 0;
 }
 
+.page-wrapper .login-button-open button::after,
 .page-wrapper nav ul:not(.solo-ul,
 .field ul) li>a::after,
 .page-wrapper nav ul:not(.solo-ul,
@@ -60,6 +65,8 @@
   right: 0;
 }
 
+.page-wrapper .login-button-open button:hover::after,
+.page-wrapper .login-button-open button:hover::before,
 .page-wrapper nav ul:not(.solo-ul,
 .field ul) li>a:hover::after,
 .page-wrapper nav ul:not(.solo-ul,

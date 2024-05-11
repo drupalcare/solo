@@ -4,33 +4,24 @@
 }
 
 label,
-.field__label {
-  font-weight: bold;
-}
-
-article.node {
-  display: grid;
-}
-
-article.node>* {
-  width: 100%;
-}
-
-article.node .node__header {
-  display: grid;
-}
-
 article.node .node__header .node__meta {
   display: flex;
   justify-content: flex-end;
 }
 
-.path-node article.node .node__content {
+article.node,
+article.node .node__header,
+article.node.node--view-mode-full .node__content {
   display: grid;
 }
 
-.path-node article.node .node__content>* {
+article.node>*,
+article.node.node--view-mode-full .node__content>* {
   width: 100%;
+}
+
+.field__label {
+  font-weight: bold;
 }
 
 .field:not(:last-child) {

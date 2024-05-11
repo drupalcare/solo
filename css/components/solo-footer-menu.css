@@ -18,6 +18,10 @@
   display: inline-flex;
 }
 
+.copyright-inner p {
+  font-size: var(--solo-px14);
+}
+
 .copyright-inner.solo-col-1 p {
   text-align: center;
 }

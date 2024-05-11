@@ -90,6 +90,13 @@
 
 }
 
+@media (max-width:1200px) {
+  #page-wrapper .cookiesjsr-banner--action {
+    flex-direction: column-reverse;
+  }
+
+}
+
 @media (min-width:768px) {
   #page-wrapper li.cookiesjsr-service-group > div {
     border-left: 1px solid var(--r-br);

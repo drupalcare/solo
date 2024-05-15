@@ -59,31 +59,31 @@
   }
 
   #header.name-l-18 .site-name-link,
-  #page-title.title-l-18 .page-title-text {
+  #page-wrapper.title-l-18 .page-title-text {
     font-size: var(--solo-px18);
     line-height: var(--solo-px22);
   }
 
   #header.name-l-24 .site-name-link,
-  #page-title.title-l-24 .page-title-text {
+  #page-wrapper.title-l-24 .page-title-text {
     font-size: var(--solo-px24);
     line-height: calc(2 * var(--solo-px14));
   }
 
   #header.name-l-36 .site-name-link,
-  #page-title.title-l-36 .page-title-text {
+  #page-wrapper.title-l-36 .page-title-text {
     font-size: var(--solo-px36);
     line-height: calc(2 * var(--solo-px22));
   }
 
   #header.name-l-48 .site-name-link,
-  #page-title.title-l-48 .page-title-text {
+  #page-wrapper.title-l-48 .page-title-text {
     font-size: calc(2 * var(--solo-px24));
     line-height: calc(2 * var(--solo-px28));
   }
 
   #header.name-l-64 .site-name-link,
-  #page-title.title-l-64 .page-title-text {
+  #page-wrapper.title-l-64 .page-title-text {
     font-size: calc(2 * var(--solo-px32));
     line-height: calc(2 * var(--solo-px38));
   }
@@ -178,31 +178,31 @@
   }
 
   #header.name-s-18  .site-name-link,
-  #page-title.title-s-18 .page-title-text {
+  #page-wrapper.title-s-18 .page-title-text {
     font-size: var(--solo-px18);
     line-height: var(--solo-px22);
   }
 
   #header.name-s-24  .site-name-link,
-  #page-title.title-s-24 .page-title-text {
+  #page-wrapper.title-s-24 .page-title-text {
     font-size: var(--solo-px24);
     line-height: calc(2 * var(--solo-px14));
   }
 
   #header.name-s-36  .site-name-link,
-  #page-title.title-s-36 .page-title-text {
+  #page-wrapper.title-s-36 .page-title-text {
     font-size: var(--solo-px36);
     line-height: calc(2 * var(--solo-px22));
   }
 
   #header.name-s-48 .site-name-link,
-  #page-title.title-s-48 .page-title-text {
+  #page-wrapper.title-s-48 .page-title-text {
     font-size: calc(2 * var(--solo-px24));
     line-height: calc(2 * var(--solo-px28));
   }
 
   #header.name-s-64 .site-name-link,
-  #page-title.title-s-64 .page-title-text {
+  #page-wrapper.title-s-64 .page-title-text {
     font-size: calc(2 * var(--solo-px32));
     line-height: calc(2 * var(--solo-px38));
   }

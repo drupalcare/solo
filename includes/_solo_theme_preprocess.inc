@@ -514,6 +514,10 @@ function solo_preprocess_page(&$variables) {
     $variables['title_size_l'] = 'title-l-' . theme_get_setting('site_pagetitle_font_size_l');
   }
 
+  if (theme_get_setting('site_pagetitle_center')) {
+    $variables['site_pagetitle_center'] = 'pt-center';
+  }
+
   // Top regions variables.
   $regions = [
     'top' => ['first', 'second', 'third'],

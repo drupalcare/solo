@@ -52,6 +52,12 @@ if (array_key_exists('page_title', $updated_regions['mix'])) {
     '#default_value' => theme_get_setting('site_pagetitle_animate_on'),
   ];
 
+  $form['solo_settings']["settings_{$region}"]['site_pagetitle_center'] = [
+    '#type' => 'checkbox',
+    '#title' => t('<strong>Tick this box to center Page Title</strong>.'),
+    '#default_value' => theme_get_setting('site_pagetitle_center'),
+  ];
+
   foreach ($attributes as $attribute_key => $attribute_label) {
     $form['solo_settings']["settings_{$region}"]["settings_{$region}_{$attribute_key}"] = _generate_form_element($region, $label, $attribute_key, $attribute_label);
   }

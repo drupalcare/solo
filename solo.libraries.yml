@@ -54,6 +54,7 @@ solo-global:
       css/components/solo-pager.css: { weight: 0 }
       css/components/solo-search-block.css: { weight: 0 }
       css/components/solo-search-page.css: { weight: 0 }
+      css/components/solo-skip-link.css: { weight: 0 }
       css/components/solo-sitemap.css: { weight: 0 }
       css/components/solo-system-admin.css: { weight: 0 }
       css/components/solo-system-messages.css: { weight: 0 }

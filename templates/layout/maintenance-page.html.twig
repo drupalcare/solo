@@ -22,9 +22,9 @@
       {% if site_name or site_slogan %}
         <div class="site-name-block">
           {% if site_name %}
-           <div class="solo-clear">
-             <a href="{{ front_page }}" title="{{ 'Home'|t }}" rel="home">{{ site_name }}</a>
-           </div>
+            <div class="solo-clear">
+              <a href="{{ front_page }}" title="{{ 'Home'|t }}" rel="home">{{ site_name }}</a>
+            </div>
           {% endif %}
           {% if site_slogan %}
             <div class="solo-clear">{{ site_slogan }}</div>
@@ -32,20 +32,20 @@
         </div>
       {% endif %}
     </header>
-      {% if title %}
-    <div class="solo-clear">
-        <h1 >{{ title }}</h1>
-    </div>
-       {% endif %}
-      {% if title %}
-    <div class="solo-clear">
-       {{ page.highlighted }}
-    </div>
-      {% endif %}
     {% if title %}
+      <div class="solo-clear">
+        <h1>{{ title }}</h1>
+      </div>
+    {% endif %}
+    {% if page.highlighted %}
+      <div class="solo-clear">
+        {{ page.highlighted }}
+      </div>
+    {% endif %}
     <div class="solo-clear">
-       {{ page.content }}
+      <a id="main-content" tabindex="-1"></a>
+      {{ page.content }}
     </div>
-      {% endif %}
   </main>
 </div>
+

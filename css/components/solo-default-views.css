@@ -108,3 +108,8 @@ form.views-exposed-form .exposed-form > div {
 form.views-exposed-form .exposed-form > div:last-child {
   margin-right: var(--solopx0);
 }
+
+form.views-exposed-form input,
+form.views-exposed-form fieldset {
+  width: auto;
+}

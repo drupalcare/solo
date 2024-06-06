@@ -9,24 +9,45 @@
 ((Drupal, drupalSettings, once) => {
   'use strict';
 
+        document.addEventListener('DOMContentLoaded', () => {
+          // Function to handle focus events
+          const handleFocus = (event) => {
+            const element = event.target;
+            const tagName = element.tagName.toLowerCase();
+            const id = element.id ? `#${element.id}` : '';
+            const className = element.className ? `.${element.className.split(' ').join('.')}` : '';
+            const description = `${tagName}${id}${className}`;
+            console.log(`Focused element: ${description}`);
+          };
+
+          // Add event listener to all focusable elements
+          const focusableElements = document.querySelectorAll('a, button, input, select, textarea, [tabindex]:not([tabindex="-1"])');
+          focusableElements.forEach((element) => {
+            element.addEventListener('focus', handleFocus);
+          });
+        });
+
   const mainSideNav = document.getElementById('primary-sidebar-menu');
   const searchBlock = document.getElementById('fixed-search-block');
-  const openSearch = document.querySelectorAll('.search-button-open>button');
-  const closeSearch = document.querySelectorAll('.search-button-close>button');
+  const openSearchButtons = document.querySelectorAll('.search-button-open>button');
+  const closeSearchButton = document.querySelector('.search-button-close>button');
+  const skipToContent = document.getElementById('skip-to-content');
+  const mainContent = document.getElementById('main-content');
 
   // Function to add a click event listener to a specified element
-  const searchBlockCloseOpen = (selector, callback) => {
-    const element = document.querySelector(selector);
-    if (element) {
-      element.addEventListener('click', callback);
-    }
+  const searchBlockCloseOpen = (elements, callback) => {
+    elements.forEach(element => {
+      if (element) {
+        element.addEventListener('click', callback);
+      }
+    });
   };
 
   // Function to toggle the aria-expanded attribute for open/close buttons
   // and aria-hidden for search block
   const setAriaAttributes = (isOpen) => {
-    openSearch.forEach(btn => btn.setAttribute('aria-expanded', isOpen ? 'true' : 'false'));
-    closeSearch.forEach(btn => btn.setAttribute('aria-expanded', isOpen ? 'true' : 'false'));
+    openSearchButtons.forEach(btn => btn.setAttribute('aria-expanded', isOpen ? 'true' : 'false'));
+    closeSearchButton?.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
     searchBlock.setAttribute('aria-hidden', isOpen ? 'false' : 'true');
   };
 
@@ -40,6 +61,24 @@
         element.setAttribute('tabindex', '-1');
       }
     });
+  };
+
+  // Function to focus the first input field in the search block
+  const focusFirstInput = () => {
+    const firstInput = searchBlock.querySelector('input');
+    if (firstInput) {
+      firstInput.focus();
+    }
+  };
+
+  // Function to move focus to the close button when tabbing out of the last input
+  const focusTrap = (event) => {
+    const elements = Array.from(searchBlock.querySelectorAll('button, input'));
+    const lastElement = elements[elements.length - 1];
+    if (event.target === lastElement && event.key === 'Tab' && !event.shiftKey) {
+      event.preventDefault();
+      closeSearchButton.focus();
+    }
   };
 
   const searchBlockToggle = (isOpen) => {
@@ -60,6 +99,8 @@
       if (mainSideNav) {
         Drupal.solo.sideMenubarToggleNav(false);
       }
+
+      focusFirstInput();
     } else {
       searchBlock.style.height = '0px';
       searchBlock.addEventListener('transitionend', (event) => {
@@ -77,10 +118,13 @@
     Drupal.behaviors.soloFixedSearchBlock = {
       attach: function(context, settings) {
         // Close nav button found in page.html.twig in vertical menu region.
-        searchBlockCloseOpen('#search-button-close', () => searchBlockToggle(false));
+        searchBlockCloseOpen([closeSearchButton], () => searchBlockToggle(false));
 
         // Open nav button found in page.html.twig in header region.
-        searchBlockCloseOpen('#search-button-open', () => searchBlockToggle(true));
+        searchBlockCloseOpen(openSearchButtons, () => searchBlockToggle(true));
+
+        // Add focus trap to the last element to redirect focus to the close button
+        searchBlock.addEventListener('keydown', focusTrap);
 
         // Click anywhere outside the search block to close it.
         document.addEventListener('click', (event) => {
@@ -94,9 +138,16 @@
 
         // Initialize the search block as hidden and non-focusable
         searchBlockToggle(false);
+
+        // Handle skip to content link
+        if (skipToContent) {
+          skipToContent.addEventListener('click', (event) => {
+            event.preventDefault();
+            mainContent.focus();
+          });
+        }
       }
     };
   }
 
 })(Drupal, drupalSettings, once);
-

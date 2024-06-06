@@ -6,7 +6,7 @@
  * Website:      https://www.flashwebcenter.com
  * Developer:    Alaa Haddad https://www.alaahaddad.com.
  */
-((Drupal, drupalSettings) => {
+((Drupal, drupalSettings, once) => {
   'use strict';
   let isClicked = false;
   let currentWidth;
@@ -95,31 +95,63 @@
         const nestedTogglers = [...togglerSibling.querySelectorAll('.solo-inner .solo-menu ul .dropdown-toggler svg')];
         return [nestedSubMenus, nestedTogglers];
       }
-      // This function handle the attributes
+
+      // This function handles the attributes for closing the menu
+      // Helper function to set multiple attributes
+      const setSubMenuAttributes = (element, attributes) => {
+        for (const key in attributes) {
+          element.setAttribute(key, attributes[key]);
+        }
+      }
+
+      // This function handles the attributes for closing the menu
       const closeMenuHelper = (rotated, dropdownTogglerButton, subMenu) => {
         rotated.style.removeProperty('transform');
-        dropdownTogglerButton.setAttribute('aria-expanded', 'false');
-        dropdownTogglerButton.setAttribute('tabindex', '-1');
-        subMenu.setAttribute('aria-hidden', 'true');
+        setSubMenuAttributes(dropdownTogglerButton, {
+          'aria-expanded': 'false',
+          'tabindex': '-1'
+        });
+        setSubMenuAttributes(subMenu, {
+          'aria-hidden': 'true',
+          'tabindex': '-1'
+        });
+
+        // Update tabindex for all button and a elements inside the submenu to -1
+        const submenuItems = subMenu.querySelectorAll(':scope > li > button, :scope > li > a');
+        submenuItems.forEach(item => {
+          item.setAttribute('tabindex', '-1');
+        });
+
         Drupal.solo.slideUp(subMenu, 400);
       }
+
+      // This function handles the attributes for opening the menu
       const openMenuHelper = (dropdownTogglerButton, subMenu) => {
         currentWidth = getCurrentWidth();
         const pageClass = document.querySelector('.page-wrapper');
         const brNum = Drupal.solo.getMyBreakpoints(pageClass, 'mn');
         if (subMenu.classList.contains('sub-mega') && currentWidth >= brNum) {
           Drupal.solo.slideDown(subMenu, 'grid', 1000);
-          //subMenu.style.display = "grid";
-        }
-        else {
+        } else {
           Drupal.solo.slideDown(subMenu);
         }
-        // Drupal.solo.slideDown(subMenu);
-        dropdownTogglerButton.setAttribute('aria-expanded', 'true');
-        dropdownTogglerButton.setAttribute('tabindex', '0');
-        subMenu.setAttribute('aria-hidden', 'false');
 
+        setSubMenuAttributes(dropdownTogglerButton, {
+          'aria-expanded': 'true',
+          'tabindex': '0'
+        });
+        setSubMenuAttributes(subMenu, {
+          'aria-hidden': 'false',
+          'tabindex': '0'
+        });
+
+        // Update tabindex for all button and a elements inside the submenu to 0
+        const submenuItems = subMenu.querySelectorAll(':scope > li > button, :scope > li > a');
+        submenuItems.forEach(item => {
+          item.setAttribute('tabindex', '0');
+        });
       }
+
       // This function is used in two times. 1- When clicked any where closer to
       // menubar it will close any submenus. 2- When resizing the screen, it will
       // close any submenus.
@@ -332,4 +364,4 @@
       });
     }
   };
-})(Drupal, drupalSettings);
+})(Drupal, drupalSettings, once);

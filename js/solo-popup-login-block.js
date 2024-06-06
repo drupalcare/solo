@@ -27,6 +27,24 @@
         });
       };
 
+      // Function to focus the first input field in the login block
+      const focusFirstInput = () => {
+        const firstInput = loginBlock.querySelector('input');
+        if (firstInput) {
+          firstInput.focus();
+        }
+      };
+
+      // Function to move focus to the close button when tabbing out of the last input
+      const focusTrap = (event) => {
+        const elements = Array.from(loginBlock.querySelectorAll('button, input'));
+        const lastElement = elements[elements.length - 1];
+        if (event.target === lastElement && event.key === 'Tab' && !event.shiftKey) {
+          event.preventDefault();
+          closeBlock.focus();
+        }
+      };
+
       // Proceed only if loginBlock is found
       if (loginBlock) {
         const toggleAriaAttributes = (isOpen) => {
@@ -51,10 +69,14 @@
           loginBlock.style.display = 'block';
           loginBlock.classList.add('toggled');
           toggleAriaAttributes(true);
+          focusFirstInput();
         };
 
         closeBlock?.addEventListener('click', closeBlockHandler);
         openBlock?.addEventListener('click', openBlockHandler);
+
+        // Add focus trap to the last element to redirect focus to the close button
+        loginBlock.addEventListener('keydown', focusTrap);
 
         // Click anywhere to close the login block, excluding clicks within the loginBlock itself.
         document.addEventListener('click', (event) => {
@@ -70,5 +92,3 @@
   };
 
 })(Drupal, drupalSettings, once);
-
-

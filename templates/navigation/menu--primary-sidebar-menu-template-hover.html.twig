@@ -27,8 +27,7 @@
 {% endmacro %}
 
 <div class="solo-clear solo-menu navigation-sidebar navigation-sidebar-template navigation-sidebar-hover">
-
-{{ menus.menu_links(items, attributes, 0, menu_name, aria_id ) }}
+  {{ menus.menu_links(items, attributes, 0, menu_name, aria_id ) }}
 </div>
 
 {% macro menu_links(items, attributes, menu_level, menu_name, aria_id) %}
@@ -120,7 +119,8 @@
             {%- if item.url.getOption('attributes').title %} title="{{ item.url.getOption('attributes').title }}" {% endif -%}
             {%- if item.url.getOption('attributes').target %} target="{{ item.url.getOption('attributes').target }}" {% endif -%}
             {%- if item.url.getOption('attributes').rel %} rel="{{ item.url.getOption('attributes').rel }}" {% endif -%}
-            tabindex="-1" data-drupal-link-system-path="{{ system_path }}" role='menuitem'>
+            {% if menu_level == 1 %} tabindex="0" {% else %} tabindex="-1" {% endif %}
+            data-drupal-link-system-path="{{ system_path }}" role='menuitem'>
             <span class="menu__url-title-enabled">{{ item.title }}</span>
         </a>
         <button class="en-link dropdown-toggler {{ dropdown_toggler_class }}" {{ dorpdown_toggler_attributes }}>
@@ -150,7 +150,7 @@
       link_title,
       item.url,
       item.attributes.removeClass(item_classes).addClass(link_classes),
-      item.attributes.setAttribute('role', 'menuitem').setAttribute('tabindex', '-1')
+      item.attributes.setAttribute('role', 'menuitem').setAttribute('tabindex', menu_level == 1 ? '0' : '-1')
       )
       }}
     {% endif %}{# End for the if item.is_expanded #}

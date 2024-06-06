@@ -6,26 +6,29 @@
  * Website:      https://www.flashwebcenter.com
  * Developer:    Alaa Haddad https://www.alaahaddad.com.
  */
-((Drupal, once) => {
-
+((Drupal, drupalSettings, once) => {
   'use strict';
 
   // Get the primary sidebar menu and all the sidebar hamburger icons
   const verticalNav = document.getElementById('primary-sidebar-menu');
-  let cosBtns = document.querySelectorAll('.sidebar-button-close>button');
-  let opnBtns = document.querySelectorAll('.sidebar-button-open>button');
+  const closeBtns = document.querySelectorAll('.sidebar-button-close>button');
+  const openBtns = document.querySelectorAll('.sidebar-button-open>button');
+  const firstLevelSelector = '.navigation__primary_sidebar .nav__menubar-item > a, .navigation__primary_sidebar .nav__menubar-item > button';
 
-  // Function to add a click event listener to a specified element
-  const sideMenubarCloseOpen = (selector, callback) => {
-    const element = document.querySelector(selector);
-    if (element) {
-      element.addEventListener('click', callback);
-    }
+  // Function to add a click event listener to specified elements
+  const sideMenubarCloseOpen = (buttons, callback) => {
+    buttons.forEach(button => {
+      if (button) {
+        button.addEventListener('click', callback);
+      }
+    });
   };
 
   // Function to toggle aria-expanded on the hamburger icons
-  const setAriaExpanded = (element, isOpen) => {
-    element.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+  const setAriaExpanded = (buttons, isOpen) => {
+    buttons.forEach(button => {
+      button.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    });
   };
 
   // Function to toggle aria-hidden on the vertical navigation
@@ -33,21 +36,61 @@
     element.setAttribute('aria-hidden', isHidden ? 'true' : 'false');
   };
 
+  // Function to focus the first interactive element in the vertical navigation
+  const focusFirstInteractiveElement = () => {
+    const firstInteractiveElement = verticalNav.querySelector(firstLevelSelector);
+    if (firstInteractiveElement) {
+      firstInteractiveElement.focus();
+    }
+  };
+
+  // Function to update tabindex of first level menu items
+  const updateTabindex = (isOpen) => {
+    const firstLevelItems = verticalNav.querySelectorAll(firstLevelSelector);
+    firstLevelItems.forEach(item => {
+      item.setAttribute('tabindex', isOpen ? '0' : '-1');
+    });
+  };
+
+  // Function to trap focus within the sidebar
+  const trapFocus = (event) => {
+    const focusableElements = Array.from(verticalNav.querySelectorAll(firstLevelSelector)).filter(el => el.getAttribute('tabindex') === '0');
+    const currentIndex = focusableElements.indexOf(document.activeElement);
+    let nextIndex;
+
+    if (event.key === 'Tab') {
+      if (event.shiftKey) { // Shift + Tab
+        nextIndex = currentIndex > 0 ? currentIndex - 1 : focusableElements.length - 1;
+      } else { // Tab
+        nextIndex = currentIndex < focusableElements.length - 1 ? currentIndex + 1 : 0;
+      }
+      event.preventDefault();
+      focusableElements[nextIndex].focus();
+    }
+  };
+
   const sideMenubarToggleNav = (isOpen) => {
     // Set aria-expanded for buttons
-    cosBtns?.forEach(cosBtn => setAriaExpanded(cosBtn, isOpen));
-    opnBtns?.forEach(opnBtn => setAriaExpanded(opnBtn, isOpen));
+    setAriaExpanded(closeBtns, isOpen);
+    setAriaExpanded(openBtns, isOpen);
 
     // Set aria-hidden for vertical navigation
     setAriaHidden(verticalNav, !isOpen);
 
+    // Update tabindex for first level menu items
+    updateTabindex(isOpen);
+
     // Toggle the class for the vertical navigation
     if (isOpen) {
       verticalNav.classList.add('toggled');
+      // Focus the first interactive element after opening the sidebar
+      focusFirstInteractiveElement();
+      document.addEventListener('keydown', trapFocus);
     } else {
       verticalNav.classList.remove('toggled');
       const subMenus = document.querySelectorAll('.navigation__sidebar li ul.sub__menu');
       subMenus?.forEach(Drupal.solo.hideSubMenus);
+      document.removeEventListener('keydown', trapFocus);
     }
   };
 
@@ -55,24 +98,20 @@
 
   // Attach these behaviors to the Drupal system
   Drupal.behaviors.soloPrimarySideMenu = {
-    attach: function(settings) {
+    attach: function (context, settings) {
       // Close nav button event
-      sideMenubarCloseOpen('#sidebar-button-close', () => sideMenubarToggleNav(false));
+      sideMenubarCloseOpen(closeBtns, () => sideMenubarToggleNav(false));
 
       // Open nav button event
-      sideMenubarCloseOpen('#sidebar-button-open', () => sideMenubarToggleNav(true));
+      sideMenubarCloseOpen(openBtns, () => sideMenubarToggleNav(true));
 
       // Click event to close any submenu
       document.addEventListener('click', (event) => {
-        if (verticalNav) {
-          if (event.target === verticalNav) {
-            sideMenubarToggleNav(false);
-          }
+        if (verticalNav && !verticalNav.contains(event.target) && !event.target.closest('.sidebar-button-open')) {
+          sideMenubarToggleNav(false);
         }
       });
-
     }
   };
 
-})(Drupal, once);
-
+})(Drupal, drupalSettings, once);

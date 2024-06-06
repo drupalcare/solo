@@ -6,7 +6,7 @@
  * Website:      https://www.flashwebcenter.com
  * Developer:    Alaa Haddad https://www.alaahaddad.com.
  */
-(function (Drupal) {
+((Drupal, drupalSettings, once) => {
   'use strict';
 
   Drupal.behaviors.globalMenu = {
@@ -57,5 +57,5 @@
     }
   };
 
-})(Drupal);
+})(Drupal, drupalSettings, once);
 

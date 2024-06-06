@@ -6,7 +6,7 @@
  * Website:      https://www.flashwebcenter.com
  * Developer:    Alaa Haddad https://www.alaahaddad.com.
  */
-((Drupal, drupalSettings) => {
+((Drupal, drupalSettings, once) => {
   'use strict';
 
   class MenubarNavigation {
@@ -33,9 +33,9 @@
       }
 
       this.bindEventListeners();
-      this.setDefaultFocus(); // Sets the initial focus based on screen size
+      // this.setDefaultFocus(); // Sets the initial focus based on screen size
       this.bindMobileNavClickListener();
-      this.handleResize(); // Ensure correct focus on initial load
+      // this.handleResize(); // Ensure correct focus on initial load
     }
 
     bindEventListeners() {
@@ -383,4 +383,4 @@
     }
   };
 
-})(Drupal, drupalSettings);
+})(Drupal, drupalSettings, once);

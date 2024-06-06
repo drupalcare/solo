@@ -16,8 +16,6 @@
             const tagName = element.tagName.toLowerCase();
             const id = element.id ? `#${element.id}` : '';
             const className = element.className ? `.${element.className.split(' ').join('.')}` : '';
-            const description = `${tagName}${id}${className}`;
-            console.log(`Focused element: ${description}`);
           };
 
           // Add event listener to all focusable elements

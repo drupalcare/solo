@@ -80,9 +80,7 @@
 
 <article{{ attributes.addClass(classes) }}>
 
-  {% if (label and not page) or display_submitted %}
-
-  <header class="solo-clear node__header">
+  <header class="solo-clear node__header{{ (label and not page) or display_submitted ? '' : ' header-is-empty' }}">
     {{ title_prefix }}
     {% if label and not page %}
       <h3 {{ title_attributes.addClass('node__title') }}>
@@ -108,8 +106,6 @@
     {% endif %}
 
   </header>
-
-  {% endif %}
 
   <div{{ content_attributes.addClass('solo-clear node__content') }}>
     {{ content }}

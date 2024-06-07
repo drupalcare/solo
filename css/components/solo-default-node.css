@@ -3,6 +3,12 @@
   margin-bottom: var(--solo-px18);
 }
 
+#page-wrapper .node__header.header-is-empty {
+  margin-bottom: 0;
+  width: initial;
+  display: initial;
+}
+
 label,
 .field__label {
   font-weight: bold;

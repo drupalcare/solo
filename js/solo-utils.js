@@ -34,6 +34,7 @@
     target.style.height = `${target.offsetHeight}px`;
     target.offsetHeight; // Trigger reflow
     target.classList.remove('toggled');
+    target.setAttribute('aria-hidden', 'true');
 
     Object.keys(cssStyles)
       .forEach(style => {
@@ -76,6 +77,7 @@
     target.style.transitionTimingFunction = 'ease-in-out'; // Added for smoother transition
     target.style.height = `${height}px`;
     target.classList.add('toggled');
+    target.setAttribute('aria-hidden', 'false');
 
     ['paddingTop', 'paddingBottom', 'marginTop', 'marginBottom'].forEach(property => {
       target.style.removeProperty(property);

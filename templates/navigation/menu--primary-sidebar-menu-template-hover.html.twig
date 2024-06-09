@@ -98,8 +98,7 @@
     'aria-controls': aria_id,
     'aria-haspopup': 'true',
     'aria-expanded': 'false',
-    'aria-hidden': 'true',
-    'tabindex': '-1',
+    'tabindex': menu_level == 1 ? '0' : '-1',
   }) %}
 
     {# Set additional attributes if they exist #}
@@ -119,7 +118,7 @@
             {%- if item.url.getOption('attributes').title %} title="{{ item.url.getOption('attributes').title }}" {% endif -%}
             {%- if item.url.getOption('attributes').target %} target="{{ item.url.getOption('attributes').target }}" {% endif -%}
             {%- if item.url.getOption('attributes').rel %} rel="{{ item.url.getOption('attributes').rel }}" {% endif -%}
-            {% if menu_level == 1 %} tabindex="0" {% else %} tabindex="-1" {% endif %}
+            tabindex="{{ menu_level == 1 ? '0' : '-1' }}"
             data-drupal-link-system-path="{{ system_path }}" role='menuitem'>
             <span class="menu__url-title-enabled">{{ item.title }}</span>
         </a>
@@ -165,4 +164,3 @@
   </ul>
 {% endif %} {# End of {% if items %} #}
 {% endmacro %}
-

@@ -23,6 +23,10 @@
     });
   };
 
+  const updateAriaHidden = (menuElement, hiddenValue) => {
+    menuElement.setAttribute('aria-hidden', hiddenValue);
+  };
+
   const openMobileMenu = navTagId => {
     const navigationMenubarClass = Drupal.solo.getNavigationMenubarClass(navTagId);
     const subMenuClasses = Drupal.solo.getSubMenuClasses(navTagId);
@@ -34,8 +38,7 @@
     Drupal.solo.slideDown(navigationMenubarClass);
     const menuElement = document.getElementById(navTagId);
     if (menuElement) {
-      menuElement.setAttribute('aria-hidden', 'false');
-      // Update tabindex for first-level menu items
+      updateAriaHidden(menuElement, 'false');
       updateFirstLevelTabindex(menuElement, '0');
     }
   };
@@ -52,8 +55,7 @@
     Drupal.solo.slideUp(navigationMenubarClass, 400);
     const menuElement = document.getElementById(navTagId);
     if (menuElement) {
-      menuElement.setAttribute('aria-hidden', 'true');
-      // Reset tabindex for first-level menu items
+      updateAriaHidden(menuElement, 'true');
       updateFirstLevelTabindex(menuElement, '-1');
     }
   };
@@ -115,6 +117,7 @@
       const menuElement = document.querySelector('.navigation__responsive');
       if (menuElement) {
         updateFirstLevelTabindex(menuElement, '0');
+        updateAriaHidden(menuElement, 'false');
       }
     }
   };
@@ -139,7 +142,6 @@
     const [hamburgerIconChild, navTagId] = getMobileNavType(hamburgerIcon);
 
     hamburgerIconChild.setAttribute('aria-expanded', 'false');
-    hamburgerIconChild.setAttribute('aria-hidden', 'true');
     hamburgerIcon.classList.remove('toggled');
     closeMobileMenu(navTagId);
   };
@@ -173,5 +175,3 @@
   };
 
 })(Drupal, drupalSettings, once);
-
-

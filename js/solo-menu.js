@@ -16,7 +16,6 @@
     attach: function(context, settings) {
 
       const querySelectorElements = (selector) => context.querySelectorAll(selector) ?? null;
-      const hamburgerIconButtons = querySelectorElements('.solo-inner .navigation-responsive .mobile-nav');
       const siteMenuBars = querySelectorElements('.solo-inner .solo-menu .navigation__menubar');
       const siteSubMenus = querySelectorElements('.solo-inner .solo-menu .navigation__menubar ul');
       const svgIcons = querySelectorElements('.solo-inner .solo-menu .navigation__menubar .toggler-icon>svg');

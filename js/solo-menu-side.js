@@ -45,10 +45,10 @@
   };
 
   // Function to update tabindex of first level menu items
-  const updateTabindex = (isOpen) => {
+  const updateTabindex = () => {
     const firstLevelItems = verticalNav.querySelectorAll(firstLevelSelector);
     firstLevelItems.forEach(item => {
-      item.setAttribute('tabindex', isOpen ? '0' : '-1');
+      item.setAttribute('tabindex', '0');
     });
   };
 
@@ -78,7 +78,7 @@
     setAriaHidden(verticalNav, !isOpen);
 
     // Update tabindex for first level menu items
-    updateTabindex(isOpen);
+    updateTabindex();
 
     // Toggle the class for the vertical navigation
     if (isOpen) {
@@ -111,7 +111,14 @@
           sideMenubarToggleNav(false);
         }
       });
+
+      // Ensure the tabindex is always set correctly on load
+      if (verticalNav.classList.contains('toggled')) {
+        updateTabindex();
+      }
     }
   };
 
 })(Drupal, drupalSettings, once);
+
+

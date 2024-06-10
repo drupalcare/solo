@@ -327,19 +327,29 @@
     }
 
     closeSubMenu(currentItem) {
-      const subMenu = currentItem.closest('ul')
-        .querySelector('.toggled');
-      if (subMenu) {
-        Drupal.solo.slideUp(subMenu);
+      // Traverse up the DOM to find the closest `ul` with the `toggled` class
+      let subMenu = currentItem;
+      while (subMenu && subMenu.tagName !== 'UL') {
+        subMenu = subMenu.parentElement;
       }
-      currentItem.focus();
+      subMenu = subMenu && subMenu.classList.contains('toggled') ? subMenu : null;
+
+      if (subMenu) {
+        // Close the submenu
+        Drupal.solo.slideUp(subMenu);
+        // Focus on the corresponding button within the parent `li`
+        const parentLi = subMenu.closest('li');
+        const siblingButton = parentLi ? parentLi.querySelector('button.dropdown-toggler') : null;
+        siblingButton?.focus();
+      } else {
+        currentItem.focus();
+      }
     }
 
     handleMenuItemKeydown(event) {
       const key = event.key;
       const currentItem = event.target; // Use target to ensure we get the element that was actually clicked
-      const isMenubar = currentItem.closest('ul')
-        .getAttribute('role') === 'menubar';
+      const isMenubar = currentItem.closest('ul').getAttribute('role') === 'menubar';
       let handled = false;
       const isSmallScreen = this.isSmallScreen();
 

@@ -12,6 +12,7 @@
   Drupal.behaviors.soloFixedLoginBlock = {
     attach: function (settings) {
       const loginBlock = document.getElementById('popup-login-block');
+
       const openBlock = document.querySelector('.login-button-open>button');
       const closeBlock = document.querySelector('.login-button-close>button');
 

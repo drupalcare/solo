@@ -26,6 +26,19 @@
     marginBottom: '0'
   };
 
+  const removeStyles = (target) => {
+    const stylesToRemove = ['height', 'paddingTop', 'paddingBottom', 'marginTop', 'marginBottom', 'overflow', 'transitionDuration', 'transitionProperty'];
+    stylesToRemove.forEach(st => target.style.removeProperty(st));
+  }
+  Drupal.solo.removeStyles = removeStyles;
+
+  const updateTabindex = (target, isOpen) => {
+    const firstLevelItems = target.querySelectorAll(':scope > li > a, :scope > li > button');
+    firstLevelItems.forEach(item => {
+      item.setAttribute('tabindex', isOpen ? '0' : '-1');
+    });
+  };
+
   const slideUp = (target, duration = 600) => {
     target.style.transitionProperty = 'height, margin, padding';
     target.style.transitionDuration = `${duration}ms`;
@@ -35,6 +48,7 @@
     target.offsetHeight; // Trigger reflow
     target.classList.remove('toggled');
     target.setAttribute('aria-hidden', 'true');
+    updateTabindex(target, false);
 
     Object.keys(cssStyles)
       .forEach(style => {
@@ -48,17 +62,9 @@
   };
   Drupal.solo.slideUp = slideUp;
 
-  const removeStyles = (target) => {
-    const stylesToRemove = ['height', 'paddingTop', 'paddingBottom', 'marginTop', 'marginBottom', 'overflow', 'transitionDuration', 'transitionProperty'];
-    stylesToRemove.forEach(st => target.style.removeProperty(st));
-  }
-
-  Drupal.solo.removeStyles = removeStyles;
-
   const slideDown = (target, menuDisplay = 'block', duration = 600) => {
     target.style.removeProperty('display');
-    let currentDisplay = window.getComputedStyle(target)
-      .display;
+    let currentDisplay = window.getComputedStyle(target).display;
 
     if (currentDisplay === 'none') currentDisplay = menuDisplay;
 
@@ -78,6 +84,7 @@
     target.style.height = `${height}px`;
     target.classList.add('toggled');
     target.setAttribute('aria-hidden', 'false');
+    updateTabindex(target, true);
 
     ['paddingTop', 'paddingBottom', 'marginTop', 'marginBottom'].forEach(property => {
       target.style.removeProperty(property);
@@ -94,16 +101,14 @@
   const slideToggle = (target, duration = 500) => {
     if (!target.classList.contains('toggled')) {
       return slideDown(target, duration);
-    }
-    else {
+    } else {
       return slideUp(target, duration);
     }
   }
   Drupal.solo.slideToggle = slideToggle;
 
   // Get current width
-  const getCurrentWidth = () => window.innerWidth || document.documentElement
-    .clientWidth || document.body.clientWidth;
+  const getCurrentWidth = () => window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
 
   const calculateDepth = (element) => {
     let depth = 1;
@@ -117,11 +122,10 @@
     }
     return depth;
   };
-  const addClassAccordingToDepth = (element, depth) => {
 
+  const addClassAccordingToDepth = (element, depth) => {
     element.classList.add(`ul-${depth}`);
-    Array.from(element.children)
-      .forEach(child => child.classList.add(`li-${depth}`));
+    Array.from(element.children).forEach(child => child.classList.add(`li-${depth}`));
   };
   Drupal.solo.calculateDepth = calculateDepth;
 
@@ -130,7 +134,6 @@
     const classList = Array.from(element.classList);
     const foundClass = classList.find(c => classes.includes(c));
     return foundClass ? parseInt(foundClass.split('-')[1]) : 992;
-
   }
   Drupal.solo.getMyBreakpoints = getMyBreakpoints;
 

@@ -13,7 +13,7 @@
   const verticalNav = document.getElementById('primary-sidebar-menu');
   const closeBtns = document.querySelectorAll('.sidebar-button-close>button');
   const openBtns = document.querySelectorAll('.sidebar-button-open>button');
-  const firstLevelSelector = '.navigation__primary_sidebar .nav__menubar-item > a, .navigation__primary_sidebar .nav__menubar-item > button';
+  const firstLevelSelector = '#primary-sidebar-menu .nav__menubar-item > a, #primary-sidebar-menu .nav__menubar-item > button';
 
   // Function to add a click event listener to specified elements
   const sideMenubarCloseOpen = (buttons, callback) => {
@@ -45,10 +45,14 @@
   };
 
   // Function to update tabindex of first level menu items
-  const updateTabindex = () => {
+  const updateTabindex = (isOpen) => {
     const firstLevelItems = verticalNav.querySelectorAll(firstLevelSelector);
     firstLevelItems.forEach(item => {
-      item.setAttribute('tabindex', '0');
+      item.setAttribute('tabindex', isOpen ? '0' : '-1');
+    });
+
+    closeBtns.forEach(button => {
+      button.setAttribute('tabindex', isOpen ? '0' : '-1');
     });
   };
 
@@ -77,8 +81,8 @@
     // Set aria-hidden for vertical navigation
     setAriaHidden(verticalNav, !isOpen);
 
-    // Update tabindex for first level menu items
-    updateTabindex();
+    // Update tabindex for first level menu items and close buttons
+    updateTabindex(isOpen);
 
     // Toggle the class for the vertical navigation
     if (isOpen) {
@@ -88,7 +92,7 @@
       document.addEventListener('keydown', trapFocus);
     } else {
       verticalNav.classList.remove('toggled');
-      const subMenus = document.querySelectorAll('.navigation__sidebar li ul.sub__menu');
+      const subMenus = verticalNav.querySelectorAll('.navigation__sidebar li ul.sub__menu');
       subMenus?.forEach(Drupal.solo.hideSubMenus);
       document.removeEventListener('keydown', trapFocus);
     }
@@ -114,11 +118,11 @@
 
       // Ensure the tabindex is always set correctly on load
       if (verticalNav.classList.contains('toggled')) {
-        updateTabindex();
+        updateTabindex(true);
+      } else {
+        updateTabindex(false);
       }
     }
   };
 
 })(Drupal, drupalSettings, once);
-
-

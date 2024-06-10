@@ -10,7 +10,6 @@
   'use strict';
   let isClicked = false;
   let currentWidth;
-  let timeoutId;
 
   Drupal.behaviors.menuAction = {
     attach: function(context, settings) {
@@ -32,6 +31,7 @@
       // Get current width
       const getCurrentWidth = () => window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
       currentWidth = getCurrentWidth();
+
       // Function to handle the click, so don't click fast twice.
       const delay = (duration) => new Promise(resolve => setTimeout(resolve, duration));
       const clickedHandler = async (callback) => {
@@ -43,28 +43,33 @@
         }
       }
       Drupal.solo.clickedHandler = clickedHandler;
+
       const hideSubMenus = (childElement) => {
         Drupal.solo.slideUp(childElement, 300);
       }
       Drupal.solo.hideSubMenus = hideSubMenus;
+
       const getNavigationMenubarClass = (menuBar) => {
         return document.querySelector(`.solo-inner #${menuBar} .navigation__menubar`);
       }
       Drupal.solo.getNavigationMenubarClass = getNavigationMenubarClass;
+
       const getSubMenuClasses = (subMenus) => {
         return document.querySelectorAll(`.solo-inner #${subMenus} .navigation__menubar ul.sub__menu`);
       }
       Drupal.solo.getSubMenuClasses = getSubMenuClasses;
+
       const hasParentWithClass = (element, className) => !!element.closest(`.${className}`);
+
       const getNavTagId = (dropdownTogglerButton) => {
-        const {
-          id: navId
-        } = dropdownTogglerButton.closest('nav');
+        const { id: navId } = dropdownTogglerButton.closest('nav');
         return navId;
       }
+
       const getRotated = (dropdownTogglerButton) => {
         return dropdownTogglerButton.querySelector('.toggler-icon svg');
       }
+
       const getArrowDirection = (verticalNav) => {
         const pageClass = document.querySelector('.page-wrapper');
         const expandLeft = document.querySelector('#primary-menu .expand-left');
@@ -74,6 +79,7 @@
         }
         return (currentWidth >= brNum && !verticalNav) ? 'rotate(-90deg)' : 'rotate(180deg)';
       }
+
       // Change the arrow direction on close.
       const revertIcons = (navId) => {
         let svgIcons = document.querySelectorAll(`.solo-inner #${navId} .toggler-icon svg`);
@@ -82,12 +88,14 @@
         });
       }
       Drupal.solo.revertIcons = revertIcons
-      //click anywhere to close the nav
+
+      // click anywhere to close the nav
       const removesiteMenuBarsStyles = (siteMenuBars) => {
         siteMenuBars.forEach((siteMenuBar) => {
           siteMenuBar.removeAttribute('style');
         });
       }
+
       const getDropdownElements = (dropdownTogglerButton) => {
         const togglerSibling = dropdownTogglerButton.closest('.solo-inner .solo-menu ul');
         const nestedSubMenus = [...togglerSibling.querySelectorAll('.solo-inner .solo-menu ul')];
@@ -107,18 +115,7 @@
       const closeMenuHelper = (rotated, dropdownTogglerButton, subMenu) => {
         rotated.style.removeProperty('transform');
         setSubMenuAttributes(dropdownTogglerButton, {
-          'aria-expanded': 'false',
-          'tabindex': '-1'
-        });
-        setSubMenuAttributes(subMenu, {
-          'aria-hidden': 'true',
-          'tabindex': '-1'
-        });
-
-        // Update tabindex for all button and a elements inside the submenu to -1
-        const submenuItems = subMenu.querySelectorAll(':scope > li > button, :scope > li > a');
-        submenuItems.forEach(item => {
-          item.setAttribute('tabindex', '-1');
+          'aria-expanded': 'false'
         });
 
         Drupal.solo.slideUp(subMenu, 400);
@@ -136,18 +133,7 @@
         }
 
         setSubMenuAttributes(dropdownTogglerButton, {
-          'aria-expanded': 'true',
-          'tabindex': '0'
-        });
-        setSubMenuAttributes(subMenu, {
-          'aria-hidden': 'false',
-          'tabindex': '0'
-        });
-
-        // Update tabindex for all button and a elements inside the submenu to 0
-        const submenuItems = subMenu.querySelectorAll(':scope > li > button, :scope > li > a');
-        submenuItems.forEach(item => {
-          item.setAttribute('tabindex', '0');
+          'aria-expanded': 'true'
         });
       }
 
@@ -161,7 +147,8 @@
           siteSubMenus.forEach(el => el.style.removeProperty('transform'));
         }, 550);
       };
-      //click any where to close any submenu.
+
+      // Click any where to close any submenu.
       document.addEventListener('click', (event) => {
         clickedHandler(() => {
           const navMenu = '.solo-inner .solo-menu .navigation__menubar';
@@ -170,6 +157,7 @@
           }
         });
       });
+
       // Open menubar get called by dropdownTogglerButtonIsClicked();
       const openMenubar = (dropdownTogglerButton, subMenu) => {
         const navTagId = getNavTagId(dropdownTogglerButton);
@@ -184,6 +172,7 @@
         rotated.style.transform = 'rotate(180deg)';
         openMenuHelper(dropdownTogglerButton, subMenu);
       }
+
       // Close menubar get called by dropdownTogglerButtonIsClicked();
       const closeMenubar = (dropdownTogglerButton, subMenu) => {
         const navTagId = getNavTagId(dropdownTogglerButton);
@@ -195,34 +184,35 @@
         });
         closeMenuHelper(rotated, dropdownTogglerButton, subMenu);
       }
+
       // Open submenu get called by dropdownTogglerButtonIsClicked();
       const openSubMenu = (dropdownTogglerButton, subMenu) => {
         const [nestedSubMenus, nestedTogglers] = getDropdownElements(dropdownTogglerButton);
         const rotated = getRotated(dropdownTogglerButton);
         const verticalNav = subMenu.closest('.navigation-sidebar');
-        // close all opened sibling menu
+        // Close all opened sibling menu
         nestedSubMenus.forEach((nestedSubMenu) => {
           if (nestedSubMenu !== subMenu) {
             hideSubMenus(nestedSubMenu);
           }
         });
-        // revert all rotated icons
+        // Revert all rotated icons
         nestedTogglers.forEach((nestedToggler) => {
           if (nestedToggler !== dropdownTogglerButton) {
             nestedToggler.style.removeProperty('transform');
           }
         });
         let arrowDirection = getArrowDirection(verticalNav);
-        // rotate 90 only if it is bigger than 992px
-        //  let arrowDirection = verticalNav != null ? 'rotate(-90deg)' : 'rotate(180deg)';
         rotated.style.transform = arrowDirection;
         openMenuHelper(dropdownTogglerButton, subMenu);
       }
+
       // Close submenu get called by dropdownTogglerButtonIsClicked();
       const closeSubMenu = (dropdownTogglerButton, subMenu) => {
         const rotated = getRotated(dropdownTogglerButton);
         closeMenuHelper(rotated, dropdownTogglerButton, subMenu);
       }
+
       // Toggler handle, according to the menu type functions will be called.
       const dropdownTogglerButtonIsClicked = (dropdownTogglerButton, subMenu) => {
         clickedHandler(() => {
@@ -231,16 +221,13 @@
           if (isClassPresent) {
             if (!subMenu.classList.contains('toggled')) {
               openMenubar(dropdownTogglerButton, subMenu);
-            }
-            else {
+            } else {
               closeMenubar(dropdownTogglerButton, subMenu);
             }
-          }
-          else {
+          } else {
             if (!subMenu.classList.contains('toggled')) {
               openSubMenu(dropdownTogglerButton, subMenu);
-            }
-            else {
+            } else {
               closeSubMenu(dropdownTogglerButton, subMenu);
             }
           }
@@ -255,18 +242,10 @@
           dropdownTogglers.forEach(toggler => {
             toggler.addEventListener('mouseenter', () => {
               toggler.setAttribute('aria-expanded', 'true');
-              const siblingUl = toggler.nextElementSibling;
-              if (siblingUl && siblingUl.tagName === 'UL') {
-                siblingUl.setAttribute('aria-hidden', 'false');
-              }
             });
 
             toggler.addEventListener('mouseleave', () => {
               toggler.setAttribute('aria-expanded', 'false');
-              const siblingUl = toggler.nextElementSibling;
-              if (siblingUl && siblingUl.tagName === 'UL') {
-                siblingUl.setAttribute('aria-hidden', 'true');
-              }
             });
           });
         }
@@ -280,8 +259,7 @@
           const brNum = Drupal.solo.getMyBreakpoints(pageClass, 'mn');
           if (hasParentWithClass(siteMenuBar, sideMenu) || currentWidth <= brNum) {
             siteMenuBar.classList.remove('focus-in');
-          }
-          else {
+          } else {
             siteMenuBar.classList.add('focus-in');
           }
         });
@@ -309,17 +287,16 @@
         const pageClass = document.querySelector('.page-wrapper');
         const brNum = Drupal.solo.getMyBreakpoints(pageClass, 'mn');
         if (currentWidth >= brNum) {
-          // remove the first level menu styles.
+          // Remove the first level menu styles.
           removesiteMenuBarsStyles(siteMenuBars);
-          // menus.
+          // Menus.
           removeEventListenerToButtons(mmClickSmall);
           addEventListenerToButtons(mmClickBig);
           removeEventListenerToButtons(mmHoverSmall);
           removeEventListenerToButtons(navigationSidebarHover);
           removeEventListenerToButtons(navigationResponsiveHover);
-        }
-        else {
-          // call the hover type only on small screen.
+        } else {
+          // Call the hover type only on small screen.
           removeEventListenerToButtons(mmClickBig);
           addEventListenerToButtons(mmClickSmall);
           addEventListenerToButtons(mmHoverSmall);
@@ -347,17 +324,18 @@
           }
         });
       }
+
       addHoverFunctionality();
       addEventListenerToButtons(navigationDefault);
       addEventListenerToButtons(navigationResponsiveClick);
       addEventListenerToButtons(navigationSidebarClick);
       // We only call main menu click and hover type when hover is disabled.
       currentWidth = getCurrentWidth();
-      menusHelper(currentWidth)
+      menusHelper(currentWidth);
       window.addEventListener('resize', () => {
         currentWidth = getCurrentWidth();
-        menusHelper(currentWidth)
-        // reset menu styles on resize.
+        menusHelper(currentWidth);
+        // Reset menu styles on resize.
         resetSubMenus(siteSubMenus, svgIcons);
         addHoverFunctionality();
       });

@@ -9,21 +9,21 @@
 ((Drupal, drupalSettings, once) => {
   'use strict';
 
-        document.addEventListener('DOMContentLoaded', () => {
-          // Function to handle focus events
-          const handleFocus = (event) => {
-            const element = event.target;
-            const tagName = element.tagName.toLowerCase();
-            const id = element.id ? `#${element.id}` : '';
-            const className = element.className ? `.${element.className.split(' ').join('.')}` : '';
-          };
+  document.addEventListener('DOMContentLoaded', () => {
+    // Function to handle focus events
+    const handleFocus = (event) => {
+      const element = event.target;
+      const tagName = element.tagName.toLowerCase();
+      const id = element.id ? `#${element.id}` : '';
+      const className = element.className ? `.${element.className.split(' ').join('.')}` : '';
+    };
 
-          // Add event listener to all focusable elements
-          const focusableElements = document.querySelectorAll('a, button, input, select, textarea, [tabindex]:not([tabindex="-1"])');
-          focusableElements.forEach((element) => {
-            element.addEventListener('focus', handleFocus);
-          });
-        });
+    // Add event listener to all focusable elements
+    const focusableElements = document.querySelectorAll('a, button, input, select, textarea, [tabindex]:not([tabindex="-1"])');
+    focusableElements.forEach((element) => {
+      element.addEventListener('focus', handleFocus);
+    });
+  });
 
   const mainSideNav = document.getElementById('primary-sidebar-menu');
   const searchBlock = document.getElementById('fixed-search-block');

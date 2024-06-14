@@ -329,20 +329,35 @@
     closeSubMenu(currentItem) {
       // Traverse up the DOM to find the closest `ul` with the `toggled` class
       let subMenu = currentItem;
-      while (subMenu && subMenu.tagName !== 'UL') {
-        subMenu = subMenu.parentElement;
-      }
-      subMenu = subMenu && subMenu.classList.contains('toggled') ? subMenu : null;
+      let megaMenu = document.querySelector('.solo-inner .solo-menu ul.navigation__megamenu');
 
-      if (subMenu) {
-        // Close the submenu
-        Drupal.solo.slideUp(subMenu);
-        // Focus on the corresponding button within the parent `li`
-        const parentLi = subMenu.closest('li');
-        const siblingButton = parentLi ? parentLi.querySelector('button.dropdown-toggler') : null;
-        siblingButton?.focus();
+      if (megaMenu) {
+        // If inside a mega menu, close all submenus within it
+        let allSubMenus = megaMenu.querySelectorAll('ul');
+        allSubMenus.forEach(subMenu => {
+          if (subMenu.classList.contains('toggled')) {
+            Drupal.solo.slideUp(subMenu);
+            subMenu.classList.remove('toggled');
+          }
+        });
       } else {
-        currentItem.focus();
+        // Regular menu logic
+        while (subMenu && subMenu.tagName !== 'UL') {
+          subMenu = subMenu.parentElement;
+        }
+        subMenu = subMenu && subMenu.classList.contains('toggled') ? subMenu : null;
+
+        if (subMenu) {
+          // Close the submenu
+          Drupal.solo.slideUp(subMenu);
+          subMenu.classList.remove('toggled');
+          // Focus on the corresponding button within the parent `li`
+          const parentLi = subMenu.closest('li');
+          const siblingButton = parentLi ? parentLi.querySelector('button.dropdown-toggler') : null;
+          siblingButton?.focus();
+        } else {
+          currentItem.focus();
+        }
       }
     }
 

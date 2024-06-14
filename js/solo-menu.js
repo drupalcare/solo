@@ -123,6 +123,7 @@
 
       // This function handles the attributes for opening the menu
       const openMenuHelper = (dropdownTogglerButton, subMenu) => {
+
         currentWidth = getCurrentWidth();
         const pageClass = document.querySelector('.page-wrapper');
         const brNum = Drupal.solo.getMyBreakpoints(pageClass, 'mn');
@@ -148,7 +149,7 @@
         }, 550);
       };
 
-      // Click any where to close any submenu.
+      // Click anywhere to close any submenu.
       document.addEventListener('click', (event) => {
         clickedHandler(() => {
           const navMenu = '.solo-inner .solo-menu .navigation__menubar';
@@ -342,3 +343,4 @@
     }
   };
 })(Drupal, drupalSettings, once);
+

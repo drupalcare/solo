@@ -67,6 +67,23 @@
 
   Drupal.behaviors.soloTheme = {
     attach: function(context, settings) {
+
+      // Select all spans with the class 'file--mime-application-octet-stream'
+      const fileSpans = context.querySelectorAll('.field--type-file span.file');
+
+      fileSpans.forEach(function (span) {
+        const link = span.querySelector('a');
+        if (link && span.contains(link)) {
+          const url = link.getAttribute('href');
+          const urlParts = url.split('.');
+          const fileExtension = urlParts[urlParts.length - 1]; // Get the last part as the file extension
+          if (fileExtension) {
+            // Add the file extension as a class to the span
+            span.classList.add(`file--${fileExtension}`);
+          }
+        }
+      });
+
       // Ensure code only runs once per element
       const footerMenu = document.querySelector('#footer-menu', context);
       if (footerMenu) {

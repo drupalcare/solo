@@ -1,0 +1,255 @@
+/**
+ * @file
+ * Default style for file module.
+ */
+
+/* https://iconduck.com/sets/svg-file-type-icons */
+
+
+.file {
+  display: inline-block;
+  min-height: var(--solo-px24);
+  padding-left: var(--solo-px32);
+  background-repeat: no-repeat;
+  background-position: left center; /* LTR */
+  background-size: var(--solo-px32) var(--solo-px32);
+  background-repeat: no-repeat;
+}
+
+[dir="rtl"] .file {
+  padding-right: var(--solo-px32);
+  padding-left: inherit;
+  background-position: right center;
+}
+
+.file--general,
+.file--application-octet-stream {
+  background-image: url(../../images/icons/application-octet-stream.svg);
+}
+
+.file--package-x-generic {
+  background-image: url(../../images/icons/package-x-generic.svg);
+}
+
+.file--x-office-spreadsheet {
+  background-image: url(../../images/icons/x-office-spreadsheet.svg);
+}
+
+.file--x-office-document {
+  background-image: url(../../images/icons/x-office-document.svg);
+}
+
+.file--x-office-presentation {
+  background-image: url(../../images/icons/x-office-presentation.svg);
+}
+
+.file--text-x-script {
+  background-image: url(../../images/icons/text-x-script.svg);
+}
+
+.file--text-html {
+  background-image: url(../../images/icons/text-html.svg);
+}
+
+.file--text-plain {
+  background-image: url(../../images/icons/text-plain.svg);
+}
+
+.file--application-pdf {
+  background-image: url(../../images/icons/application-pdf.svg);
+}
+
+.file--application-x-executable {
+  background-image: url(../../images/icons/application-x-executable.svg);
+}
+
+.file--audio {
+  background-image: url(../../images/icons/audio-x-generic.svg);
+}
+
+.file--video {
+  background-image: url(../../images/icons/video-x-generic.svg);
+}
+
+.file--text {
+  background-image: url(../../images/icons/text-x-generic.svg);
+}
+
+.file--image {
+  background-image: url(../../images/icons/image-x-generic.svg);
+}
+
+/* Separate files */
+.file--mime-application-zip {
+  background-image: url(../../images/icons/zip.svg) !important;
+}
+
+.file--mime-application-vnd-openxmlformats-officedocument-wordprocessingml-document {
+  background-image: url(../../images/icons/vnd-openxmlformats-officedocument-wordprocessingml-document.svg) !important;
+}
+
+.file--mime-application-vnd-openxmlformats-officedocument-spreadsheetml-sheet {
+  background-image: url(../../images/icons/vnd-openxmlformats-officedocument-spreadsheetml-sheet.svg) !important;
+}
+
+.file--mime-application-vnd-oasis-opendocument-text {
+  background-image: url(../../images/icons/vnd-oasis-opendocument-text.svg) !important;
+}
+
+.file--mime-application-msword {
+  background-image: url(../../images/icons/x-dot.svg) !important;
+}
+
+.file--mime-application-vnd-oasis-opendocument-text-template {
+  background-image: url(../../images/icons/vnd-oasis-opendocument-text-template.svg) !important;
+}
+
+.file--mime-application-vnd-oasis-opendocument-spreadsheet {
+  background-image: url(../../images/icons/vnd-oasis-opendocument-spreadsheet.svg) !important;
+}
+
+.file--mime-text-csv {
+  background-image: url(../../images/icons/csv.svg) !important;
+}
+
+.file--mime-application-vnd-oasis-opendocument-spreadsheet-template {
+  background-image: url(../../images/icons/vnd-oasis-opendocument-spreadsheet-template.svg) !important;
+}
+
+.file--mime-application-vnd-ms-powerpoint,
+.file--mime-application-vnd-openxmlformats-officedocument-presentationml-presentation {
+  background-image: url(../../images/icons/vnd-openxmlformats-officedocument-presentationml-presentation.svg) !important;
+}
+
+.file--mime-application-vnd-oasis-opendocument-presentation-template {
+  background-image: url(../../images/icons/vnd-oasis-opendocument-presentation-template.svg) !important;
+}
+
+.file--mime-application-vnd-oasis-opendocument-formula {
+  background-image: url(../../images/icons/vnd-oasis-opendocument-formula.svg) !important;
+}
+
+.file--mime-application-vnd-oasis-opendocument-presentation {
+  background-image: url(../../images/icons/vnd-oasis-opendocument-presentation.svg) !important;
+}
+
+.file--mime-application-pgp-keys {
+  background-image: url(../../images/icons/x-iwork-keynote-sffkey.svg) !important;
+}
+
+.file--mime-video-mp4 {
+  background-image: url(../../images/icons/mp4.svg) !important;
+}
+
+.file--mime-video-x-matroska {
+  background-image: url(../../images/icons/x-matroska.svg) !important;
+}
+
+.file--mime-video-mpeg {
+  background-image: url(../../images/icons/mpeg.svg) !important;
+}
+
+.file--mime-video-quicktime {
+  background-image: url(../../images/icons/quicktime.svg) !important;
+}
+
+.file--mime-video-x-ms-wmv {
+  background-image: url(../../images/icons/x-ms-wmv.svg) !important;
+}
+
+.file--mime-video-x-msvideo {
+  background-image: url(../../images/icons/x-msvideo.svg) !important;
+}
+
+.file--mime-video-x-flv {
+  background-image: url(../../images/icons/x-flv.svg) !important;
+}
+
+.file--mime-audio-x-aiff {
+  background-image: url(../../images/icons/x-aiff.svg) !important;
+}
+
+.file--mime-audio-ogg {
+  background-image: url(../../images/icons/ogg.svg) !important;
+}
+
+.file--mime-audio-x-wav {
+  background-image: url(../../images/icons/vnd-wave.svg) !important;
+}
+
+.file--mime-audio-aac {
+  background-image: url(../../images/icons/aac.svg) !important;
+}
+
+.file--mime-audio-x-ms-wma {
+  background-image: url(../../images/icons/x-ms-wma.svg) !important;
+}
+
+.file--mime-audio-midi {
+  background-image: url(../../images/icons/midi.svg) !important;
+}
+
+.file--mime-audio-mpeg {
+  background-image: url(../../images/icons/mp3.svg) !important;
+}
+
+.file--mime-audio-x-mpegurl {
+  background-image: url(../../images/icons/vnd-apple-mpegurl.svg) !important;
+}
+
+.file--mime-image-tiff {
+  background-image: url(../../images/icons/tiff.svg) !important;
+}
+
+.file[class~="file--mime-image-svg+xml"][class~="file--image"] {
+  background-image: url(../../images/icons/svg-xml.svg) !important;
+}
+
+.file--mime-image-gif {
+  background-image: url(../../images/icons/gif.svg) !important;
+}
+
+.file--mime-image-png {
+  background-image: url(../../images/icons/png.svg) !important;
+}
+
+.file--mime-image-x-ms-bmp {
+  background-image: url(../../images/icons/x-ms-bmp.svg) !important;
+}
+
+.file--mime-image-jpeg {
+  background-image: url(../../images/icons/jpeg.svg) !important;
+}
+
+.file--mime-application-zip {
+  background-image: url(../../images/icons/zip.svg) !important;
+}
+
+.file--mime-application-x-7z-compressed {
+  background-image: url(../../images/icons/x-7z-compressed.svg) !important;
+}
+
+.file--mime-application-gzip {
+  background-image: url(../../images/icons/x-gzip.svg) !important;
+}
+
+.file--mime-application-rar {
+  background-image: url(../../images/icons/x-rar-compressed.svg) !important;
+}
+
+.file--mime-application-x-iso9660-image {
+  background-image: url(../../images/icons/x-iso9660-image.svg) !important;
+}
+
+.file--mime-application-x-tar {
+  background-image: url(../../images/icons/x-tar.svg) !important;
+}
+
+.file--mime-application-x-apple-diskimage {
+  background-image: url(../../images/icons/x-apple-diskimage.svg) !important;
+}
+
+.file--mime-text-plain {
+  background-image: url(../../images/icons/plain.svg) !important;
+}
+

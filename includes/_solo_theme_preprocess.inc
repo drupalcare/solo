@@ -393,6 +393,7 @@ function _get_theme_variables() {
       'site_name_font_size_s',
       'site_name_font_size_l',
       'site_name_animate_on',
+      'site_breadcrumb_scroll',
       'site_breadcrumb_pagetitle_off',
       'site_inline_items_on',
       'site_regions_top_animate',

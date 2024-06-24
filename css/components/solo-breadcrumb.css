@@ -42,3 +42,9 @@ ul.breadcrumb-menu li > span {
   align-items: center;
   fill: var(--r-tx);
 }
+
+.solo__bc-scroll ul.breadcrumb-menu {
+  overflow-x: auto;
+  white-space: nowrap;
+  flex-wrap: nowrap;
+}

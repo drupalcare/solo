@@ -120,6 +120,17 @@ article.node.node--view-mode-full .node__header .node__meta {
   margin-right: 0;
 }
 
+.field--type-text-long img:not(.align-center),
+.field--type-text-long video:not(.align-center),
+.field--type-text-long embed:not(.align-center),
+.field--type-text-long object:not(.align-center),
+.field--type-text-with-summary img:not(.align-center),
+.field--type-text-with-summary video:not(.align-center),
+.field--type-text-with-summary embed:not(.align-center),
+.field--type-text-with-summary object:not(.align-center) {
+  display: inline-block;
+}
+
 .field--type-text img.align-left,
 .field--type-string img.align-left,
 .field--type-string-long img.align-left,
@@ -138,8 +149,8 @@ article.node.node--view-mode-full .node__header .node__meta {
 .field--type-string img.align-center,
 .field--type-string-long img.align-center,
 .field--type-text-with-summary img.align-center {
-  margin-right: var(--solo-px16);
-  margin-left: var(--solo-px16);
+  margin-right: auto;
+  margin-left: atuo;
 }
 
 /* To show multi fields in one line */

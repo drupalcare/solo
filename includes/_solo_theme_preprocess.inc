@@ -97,7 +97,10 @@ function solo_preprocess_html(&$variables): void {
   $solo_path = $solo_base . '/' . $solo_list;
   $variables['solo_path'] = $solo_path;
 
-  $theme_head_vars = ['site_css_injector', 'site_css_dynamic', 'site_import_google_font'];
+  $theme_head_vars = ['site_css_injector',
+    'site_css_dynamic',
+    'site_import_google_font',
+  ];
   foreach ($theme_head_vars as $theme_head_var) {
     $variables[$theme_head_var] = theme_get_setting($theme_head_var);
   }
@@ -189,7 +192,10 @@ function solo_preprocess_html(&$variables): void {
         [
           '#type' => 'html_tag',
           '#tag' => 'script',
-          '#attributes' => ['src' => $js_url, 'type' => 'application/javascript'],
+          '#attributes' => [
+            'src' => $js_url,
+            'type' => 'application/javascript',
+          ],
         ],
         'solo_dynamic_js',
       ];
@@ -429,6 +435,7 @@ function _get_theme_variables() {
       'header_sitename_center',
       'header_sitename_center_small',
       'header_sitename_center_default',
+      'header_logo_image_alt',
       'header_popup_login',
       'count_top',
       'count_main',
@@ -777,6 +784,9 @@ function _process_system_branding_block(&$variables): void {
     // Initialize $logo_default to 0.
     $variables['logo_default'] = 0;
   }
+
+  $variables['logo_alt'] = theme_get_setting('header_logo_image_alt') ?: 'Home';
+
 }
 
 /**

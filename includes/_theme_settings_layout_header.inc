@@ -19,6 +19,12 @@ if (array_key_exists('header', $updated_regions['mix'])) {
   $form['solo_settings']["settings_{$region}"] = _generate_form_details($label);
   $form['solo_settings']["settings_{$region}"]["classes_{$region}"] = _generate_css_classes($region, $label);
 
+  $form['solo_settings']["settings_{$region}"]['header_logo_image_alt'] = [
+    '#type' => 'textfield',
+    '#title' => t('Enter the text to be used for the Site Name Link Title and Site Logo Image Alt.'),
+    '#default_value' => theme_get_setting('header_logo_image_alt'),
+  ];
+
   $form['solo_settings']["settings_{$region}"]['header_sitename_center_default'] = [
     '#type' => 'checkbox',
     '#title' => t("Select this option to center the Site's Logo, Site's Name, and Slogan within the header. The logo will be positioned on the left, while the site name and slogan will be centered alongside it."),

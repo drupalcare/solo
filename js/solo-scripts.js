@@ -112,7 +112,7 @@
         // Check if any parent up to the root has specific classes to exclude
         let ancestor = el.parentElement;
         while (ancestor && ancestor !== document.body) {
-          if (ancestor.matches('.field--name-user-picture, .field--type-text-long, .field--type-text-with-summary')) {
+          if (ancestor.matches('.site-logo, .field--name-user-picture, .field--type-text-long, .field--type-text-with-summary')) {
             return false;
           }
           ancestor = ancestor.parentElement;

@@ -1,11 +1,24 @@
 /* Border animation  */
+@keyframes animateregion {
+  0% {
+    transform: scale(1);
+}
+  50% {
+    transform: scale(1.01);
+}
+  100% {
+    transform: scale(1);
+}
+}
+
+.page-wrapper .solo-outer.animate-hover .region-inner:not(.main-box-inner),
 .page-wrapper .solo-outer.animate-border .region-inner:not(.main-box-inner) {
   position: relative;
   transition: all 0.3s ease;
 }
 
-.page-wrapper .solo-outer.animate-border .region-inner:not(.main-box-inner):hover {
-  transform: scale(1.02);
+.page-wrapper .solo-outer.animate-hover .region-inner:not(.main-box-inner):hover {
+  animation: animateregion 2s;
 }
 
 .page-wrapper .solo-outer.animate-border .region-inner:not(.main-box-inner)::before {

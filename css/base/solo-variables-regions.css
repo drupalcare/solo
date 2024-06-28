@@ -149,7 +149,7 @@ h3 a) {
 }
 
 /* inner regions borders */
-.page-wrapper .solo-outer.animate-border .region-inner:not(.main-box-inner):hover {
+.page-wrapper .solo-outer.animate-hover .region-inner:not(.main-box-inner):hover {
   -moz-box-shadow: 0 25px 50px 0 rgba(var(--s-b), .35);
   -webkit-box-shadow: 0 25px 50px 0 rgba(var(--s-b), .35);
   box-shadow: 0 25px 50px 0 rgba(var(--s-b), .35);

@@ -142,7 +142,7 @@
    */
   Drupal.behaviors.soloMenuDepth = {
     attach: (context, settings) => {
-      const menus = once('soloMenuDepth', '.solo-inner ul', context);
+      const menus = once('soloMenuDepth', '.solo-inner nav ul:not(.field ul)', context);
       menus.forEach((element) => {
         const depth = calculateDepth(element);
         addClassAccordingToDepth(element, depth);

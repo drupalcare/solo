@@ -484,11 +484,22 @@ function _generate_css_classes($region, $label) {
 /**
  * Helper function.
  */
-function _animate_region($region) {
+function _animate_region_border($region) {
   return [
     '#type' => 'checkbox',
     '#title' => t("Tick this box to initiate animation of the region's border."),
-    '#default_value' => theme_get_setting("site_regions_{$region}_animate"),
+    '#default_value' => theme_get_setting("site_regions_{$region}_animate_border"),
+  ];
+};
+
+/**
+ * Helper function.
+ */
+function _animate_region_hover($region) {
+  return [
+    '#type' => 'checkbox',
+    '#title' => t("Tick this box to initiate on hover animation for the region."),
+    '#default_value' => theme_get_setting("site_regions_{$region}_animate_hover"),
   ];
 };
 

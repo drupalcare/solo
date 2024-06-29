@@ -211,12 +211,12 @@ div.page-title.lone {
 }
 
 /* inner regions borders */
-.page-wrapper .solo-outer.animate-border .region-inner.top-box-inner {
+.page-wrapper .solo-outer.animate-hover .region-inner.top-box-inner {
   --s-b: 1, 46, 61;
 }
 
-.page-wrapper .solo-outer.animate-border .region-inner.bottom-box-inner,
-.page-wrapper .solo-outer.animate-border .region-inner.footer-box-inner {
+.page-wrapper .solo-outer.animate-hover .region-inner.bottom-box-inner,
+.page-wrapper .solo-outer.animate-hover .region-inner.footer-box-inner {
   --s-b: 1, 46, 61;
 }
 

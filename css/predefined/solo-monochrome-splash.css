@@ -272,7 +272,7 @@ h3 a) {
 .solo-inner .navigation__responsive,
 .page-wrapper .primary-menu.solo-sticky,
 .fixed-search-block-inner .fixed-search-wrapper,
-.page-wrapper .solo-outer.animate-border .region-inner.top-box-inner {
+.page-wrapper .solo-outer.animate-hover .region-inner.top-box-inner {
   --s-b: 9, 9, 9;
 }
 
@@ -280,8 +280,8 @@ h3 a) {
   --s-b: 102, 102, 102;
 }
 
-.page-wrapper .solo-outer.animate-border .region-inner.bottom-box-inner,
-.page-wrapper .solo-outer.animate-border .region-inner.footer-box-inner {
+.page-wrapper .solo-outer.animate-hover .region-inner.bottom-box-inner,
+.page-wrapper .solo-outer.animate-hover .region-inner.footer-box-inner {
   --s-b: 213, 213, 213;
 }
 

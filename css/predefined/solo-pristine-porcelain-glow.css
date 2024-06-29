@@ -204,9 +204,9 @@ div.page-title.lone {
 .solo-inner .navigation__responsive,
 .page-wrapper .primary-menu.solo-sticky,
 .fixed-search-block-inner .fixed-search-wrapper,
-.page-wrapper .solo-outer.animate-border .region-inner.top-box-inner,
-.page-wrapper .solo-outer.animate-border .region-inner.bottom-box-inner,
-.page-wrapper .solo-outer.animate-border .region-inner.footer-box-inner {
+.page-wrapper .solo-outer.animate-hover .region-inner.top-box-inner,
+.page-wrapper .solo-outer.animate-hover .region-inner.bottom-box-inner,
+.page-wrapper .solo-outer.animate-hover .region-inner.footer-box-inner {
   --s-b: 72, 77, 51;
 }
 

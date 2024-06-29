@@ -239,12 +239,12 @@ header.header h3 a span {
 .solo-inner .navigation__responsive,
 .page-wrapper .primary-menu.solo-sticky,
 .fixed-search-block-inner .fixed-search-wrapper,
-.page-wrapper .solo-outer.animate-border .region-inner.top-box-inner {
+.page-wrapper .solo-outer.animate-hover .region-inner.top-box-inner {
   --s-b: 4, 13, 42;
 }
 
-.page-wrapper .solo-outer.animate-border .region-inner.bottom-box-inner,
-.page-wrapper .solo-outer.animate-border .region-inner.footer-box-inner {
+.page-wrapper .solo-outer.animate-hover .region-inner.bottom-box-inner,
+.page-wrapper .solo-outer.animate-hover .region-inner.footer-box-inner {
   --s-b: 250, 251, 255;
 }
 

@@ -41,24 +41,16 @@
   // Add/remove css classes according to screen changes.
   let mediaSize = function() {
     const currentWidth = getCurrentWidth();
-
     const bodyTag = document.body;
+    // Remove all previous size classes to prevent class duplication
+    bodyTag.classList.remove('small-screen', 'medium-screen', 'large-screen');
 
     if (currentWidth >= 992) {
-
       bodyTag.classList.add('large-screen');
-      bodyTag.classList.remove('small-screen', 'medium-screen');
-
-    }
-
-    if ((currentWidth >= 576) && (currentWidth <= 992)) {
+    } else if (currentWidth >= 576 && currentWidth < 992) {
       bodyTag.classList.add('medium-screen');
-      bodyTag.classList.remove('large-screen', 'small-screen');
-    }
-
-    if (currentWidth <= 576) {
+    } else if (currentWidth < 576) {
       bodyTag.classList.add('small-screen');
-      bodyTag.classList.remove('large-screen', 'medium-screen');
     }
 
     checkRegionsWidth();

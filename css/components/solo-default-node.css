@@ -150,7 +150,7 @@ article.node.node--view-mode-full .node__header .node__meta {
 .field--type-string-long img.align-center,
 .field--type-text-with-summary img.align-center {
   margin-right: auto;
-  margin-left: atuo;
+  margin-left: auto;
 }
 
 /* To show multi fields in one line */

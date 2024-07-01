@@ -16,7 +16,7 @@
   const checkRegionsWidth = () => {
     const regions = document.querySelectorAll('.region-inner, .copyright-inner, .footer-menu-inner');
     regions.forEach(region => {
-      const regionWidth = region.offsetWidth;
+      const regionWidth = region.getBoundingClientRect().width;
 
       // Remove all previous size classes to prevent class duplication
       region.classList.remove('region-xs', 'region-s', 'region-m', 'region-l', 'region-xl', 'region-xxl');

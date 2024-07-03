@@ -209,7 +209,6 @@
 }
 
 /* Right left mens */
-.solo-side-menu,
 .solo-footer-menu {
   display: flex;
   flex-wrap: wrap;
@@ -223,13 +222,11 @@
   justify-content: center;
 }
 
-.solo-side-menu li,
 .solo-footer-menu li {
   display: inline-flex;
   align-items: center;
 }
 
-.solo-side-menu li a,
 .solo-footer-menu li a {
   margin: 0 var(--solo-px4);
   padding: var(--solo-px6) var(--solo-px8);
@@ -237,8 +234,6 @@
   max-width: 100%;
 }
 
-.solo-side-menu li a.is-active,
-.solo-side-menu li.active-trail,
 .solo-footer-menu li a.is-active,
 .solo-footer-menu li.active-trail {
   font-weight: bold;

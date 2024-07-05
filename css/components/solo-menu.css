@@ -19,6 +19,14 @@
   white-space: nowrap;
 }
 
+@media (max-width:36rem) {
+  .solo-inner ul.navigation__menubar li.nav__menu-item a,
+  .solo-inner ul.navigation__menubar li.nav__menu-item button {
+    white-space: normal;
+    word-wrap: break-word;
+  }
+}
+
 .solo-inner ul.sub__menu,
 .solo-inner li.nav__menu-item,
 .solo-inner ul.navigation__menubar {

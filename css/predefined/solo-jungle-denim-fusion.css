@@ -10,6 +10,9 @@ AMAZON #3B7A57, DENIM #151E3D
   border-color: var(--r-br);
   background-color: var(--r-bg);
   --r-header-bg: linear-gradient(180deg, #151e3d, #0c1224);
+  --r-header-tx: #94cbac;
+  --r-menu-tx-h: #142a1e;
+  --r-menu-bg-h: #469167;
 }
 
 /* Heads */
@@ -25,7 +28,7 @@ AMAZON #3B7A57, DENIM #151E3D
 .page-wrapper .site-name,
 .page-wrapper .site-slogan,
 .page-wrapper .site-name-link {
-  --r-tx: #263770;
+  --r-tx: #639c7c;
 }
 
 /* Link only */

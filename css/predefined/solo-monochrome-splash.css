@@ -9,6 +9,9 @@ PUNCH #F25278
   border-color: var(--r-br);
   background-color: var(--r-bg);
   --r-header-bg: #d5d5d5;
+  --r-header-tx: #21020a;
+  --r-menu-bg-h: #1a1a1a;
+  --r-menu-tx-h: #bbbbbb;
 }
 
 .fixed-search-block {

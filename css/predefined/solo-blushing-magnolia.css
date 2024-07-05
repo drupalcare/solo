@@ -11,6 +11,9 @@ Rose White #FFFAFA, Magnolia #F8F4FF
   border-color: var(--r-br);
   background-color: var(--r-bg);
   --r-header-bg: linear-gradient(0deg, #f8f4ff, #fffafa);
+  --r-header-tx: #21005b;
+  --r-menu-tx-h: #3f0000;
+  --r-menu-bg-h: #ff7272;
 }
 
 /* inner regions */

@@ -9,6 +9,9 @@ Black Rock #010127, Neutral Black #0B0B0B, Black Denim #191C27
   border-color: var(--r-br);
   background-color: var(--r-bg);
   --r-header-bg: linear-gradient(0deg, #000006, #010116);
+  --r-header-tx: #a1a1fd;
+  --r-menu-tx-h: #ffffff;
+  --r-menu-bg-h: #010138;
 }
 
 /* inner regions */

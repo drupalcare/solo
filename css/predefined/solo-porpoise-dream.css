@@ -11,6 +11,9 @@ PORPOISE #4D4C5C, FLINT #7F7D9C, DOVE #7C6E7F
   border-color: var(--r-br);
   background-color: var(--r-bg);
   --r-header-bg: linear-gradient(0deg, #4d4c5c, #3d3d49);
+  --r-header-tx: #9290ab;
+  --r-menu-tx-h: #f1f1f4;
+  --r-menu-bg-h: #4d4c5c;
 }
 
 /* Heads */

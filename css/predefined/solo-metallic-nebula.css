@@ -10,6 +10,9 @@ Nickel #727472, Outer Space #414A4C, Rocket Metallic #8A7F8D
   border-color: var(--r-br);
   background-color: var(--r-bg);
   --r-header-bg: linear-gradient(0deg, #121415, #222627);
+  --r-header-tx: #767676;
+  --r-menu-tx-h: #fdfdfd;
+  --r-menu-bg-h: #0f0e10;
 }
 
 /* Heads */

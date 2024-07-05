@@ -9,7 +9,11 @@ AMARANTH PINK #E52B50, Natural Black #07000B
   border-color: var(--r-br);
   background-color: var(--r-bg);
   --r-header-bg: linear-gradient(0deg, #000000, #0f0205);
+  --r-header-tx: #f9d2da;
+  --r-menu-tx-h: #fdf0f2;
+  --r-menu-bg-h: #4c0917;
 }
+
 
 /* inner regions */
 .page-wrapper .region-inner {

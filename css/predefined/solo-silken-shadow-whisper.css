@@ -13,7 +13,11 @@ Shadow White #EEF1EA, Acoustic White #EFECE1, Aircraft White #EDF2F8
   border-color: var(--r-br);
   background-color: var(--r-bg);
   --r-header-bg: linear-gradient(0deg, #dde3d6, #d5e0ee);
+  --r-header-tx: #375e8d;
+  --r-menu-tx-h: #e3decb;
+  --r-menu-bg-h: #51492b;
 }
+
 
 /* inner regions */
 .page-wrapper .solo-outer:not(.fixed-search-block,

@@ -9,6 +9,9 @@ Natural Black #07000B, Retro Black #1F201F
   border-color: var(--r-br);
   background-color: var(--r-bg);
   --r-header-bg: linear-gradient(0deg, #000000, #12001c);
+  --r-header-tx: #eac6ff;
+  --r-menu-tx-h: #e4b5ff;
+  --r-menu-bg-h: #3d0060;
 }
 
 /* inner regions */

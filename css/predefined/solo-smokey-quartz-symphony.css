@@ -15,6 +15,9 @@ Smokey Gray #726E6D, Sonic Gray #757575,Spanish Gray #989898,Taupe Gray #8B8589
   border-color: var(--r-br);
   background-color: var(--r-bg);
   --r-header-bg: linear-gradient(0deg, #2c292b, #080808);
+  --r-header-tx: #767676;
+  --r-menu-tx-h: #f8f7f7;
+  --r-menu-bg-h: #0a0909;
 }
 
 /* Heads */

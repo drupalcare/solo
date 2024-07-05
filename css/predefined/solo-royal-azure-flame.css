@@ -9,6 +9,9 @@ LAPIS #2832C2, International Orange #FF4F00
   border-color: var(--r-br);
   background-color: var(--r-bg);
   --r-header-bg: linear-gradient(0deg, #000000, #0b0e35);
+  --r-header-tx: #2b36d0;
+  --r-menu-bg-h: #050619;
+  --r-menu-tx-h: #d1d4f6;
 }
 
 /* inner regions */

@@ -9,6 +9,9 @@ Bayern Blue #0066B2, Berry Blue #4F86F7, Blue Yonder #5072A7, OIL #050100
   border-color: var(--r-br);
   background-color: var(--r-bg);
   --r-header-bg: linear-gradient(0deg, #0e0c0a, #221d18);
+  --r-header-tx: #85725f;
+  --r-menu-tx-h: #000508;
+  --r-menu-bg-h: #008df6;
 }
 
 /* Heads */

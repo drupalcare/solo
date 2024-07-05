@@ -10,6 +10,9 @@ Deep Black #050203, Retro Black #1F201F
   border-color: var(--r-br);
   background-color: var(--r-bg);
   --r-header-bg: linear-gradient(0deg, #000000, #291119);
+  --r-header-tx: #973c5a;
+  --r-menu-tx-h: #fcf8f9;
+  --r-menu-bg-h: #421a27;
 }
 
 /* inner regions */

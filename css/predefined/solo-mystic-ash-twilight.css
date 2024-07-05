@@ -9,7 +9,11 @@ ASH #564C4D, FLINT #7F7D9C
   border-color: var(--r-br);
   background-color: var(--r-bg);
   --r-header-bg: linear-gradient(to left top, #ffffff, #d5d4de);
+  --r-header-tx: #292935;
+  --r-menu-tx-h: #ffffff;
+  --r-menu-bg-h: #7f7d9c;
 }
+
 
 .page-wrapper .solo-select,
 .page-wrapper .solo-radio,

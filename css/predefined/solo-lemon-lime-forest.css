@@ -9,6 +9,9 @@ Greenish Yellow #EEEA62, Hunter Green #3F704D
   border-color: var(--r-br);
   background-color: var(--r-bg);
   --r-header-bg: linear-gradient(0deg, #000000, #1b1a03);
+  --r-header-tx: #c4bf15;
+  --r-menu-tx-h: #fbfadd;
+  --r-menu-bg-h: #68650b;
 }
 
 /* inner regions */

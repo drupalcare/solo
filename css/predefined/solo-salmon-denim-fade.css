@@ -10,6 +10,9 @@ Black Denim #191C27, Salmon #FF9999
   border-color: var(--r-br);
   background-color: var(--r-bg);
   --r-header-bg: linear-gradient(0deg, #202331, #2d3246);
+  --r-header-tx: #5b668f;
+  --r-menu-tx-h: #400;
+  --r-menu-bg-h: #fbb;
 }
 
 /* Heads */

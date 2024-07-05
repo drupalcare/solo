@@ -9,6 +9,9 @@ Egyptian Blue #1034A6, Yale Blue #00356B, Space Cadet #1D2951
   border-color: var(--r-br);
   background-color: var(--r-bg);
   --r-header-bg: linear-gradient(180deg, #1034a6, #0a2168);
+  --r-header-tx: #7b6a58;
+  --r-menu-tx-h: #fafbff;
+  --r-menu-bg-h: #1034a6;
 }
 
 /* Heads */

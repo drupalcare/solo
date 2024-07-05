@@ -10,6 +10,9 @@ Outer Space #414A4C
   border-color: var(--r-br);
   background-color: var(--r-bg);
   --r-header-bg: linear-gradient(to left top, #ffffff, #dde1e2);
+  --r-header-tx: #4c4943;
+  --r-menu-tx-h: #ffffff;
+  --r-menu-bg-h: #31383a;
 }
 
 .page-wrapper .solo-select,

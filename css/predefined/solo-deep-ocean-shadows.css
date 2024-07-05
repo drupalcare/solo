@@ -9,6 +9,9 @@ AEGEAN #1F456E, ARSENIC #3B444B
   border-color: var(--r-br);
   background-color: var(--r-bg);
   --r-header-bg: linear-gradient(to left top, #ffffff, #e1e5e8);
+  --r-header-tx: #3b444b;
+  --r-menu-bg-h: #fbfcf8;
+  --r-menu-tx-h: #070808;
 }
 
 .page-wrapper .solo-select,

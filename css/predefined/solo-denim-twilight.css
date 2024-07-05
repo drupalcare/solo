@@ -7,6 +7,9 @@
   border-color: var(--r-br);
   background-color: var(--r-bg);
   --r-header-bg: linear-gradient(to left top, #fefefe, #f4f6f7);
+  --r-header-tx: #141a1d;
+  --r-menu-bg-h: #1e2a56;
+  --r-menu-tx-h: #cad2ed;
 }
 
 .fixed-search-block {

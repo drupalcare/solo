@@ -7,6 +7,9 @@
   border-color: var(--r-br);
   background-color: var(--r-bg);
   --r-header-bg: linear-gradient(0deg, #f5f5f6, #e6e9ee);
+  --r-header-tx: #6c738c;
+  --r-menu-bg-h: #394558;
+  --r-menu-tx-h: #ffffff;
 }
 
 .header,

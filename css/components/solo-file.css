@@ -9,7 +9,7 @@
   margin-bottom: var(--solo-px8);
 }
 
-.file {
+.file:not(.imce-item) {
   display: inline-block;
   min-height: var(--solo-px24);
   padding-left: var(--solo-px32);

@@ -149,15 +149,43 @@
         }, 550);
       };
 
-      // Click anywhere to close any submenu.
-      document.addEventListener('click', (event) => {
-        clickedHandler(() => {
-          const navMenu = '.solo-inner .solo-menu .navigation__menubar';
-          if (!event.target.closest(navMenu)) {
-            resetSubMenus(siteSubMenus, svgIcons);
-          }
+      // Function to reset specific sub-menus and their icons
+      const resetSpecificSubMenus = (specificSubMenus, specificSvgIcons) => {
+        specificSvgIcons.forEach(el => el.style.removeProperty('transform'));
+        specificSubMenus.forEach(el => Drupal.solo.slideUp(el, 500));
+        setTimeout(() => {
+          specificSubMenus.forEach(el => el.style.removeProperty('transform'));
+        }, 550);
+      };
+
+      // Click anywhere to close any submenu inside the specified IDs only.
+      const closeSubMenusOnClick = () => {
+        const navMenus = ['.solo-inner .solo-menu.navigation-responsive-click .navigation__menubar', '#primary-sidebar-menu .navigation__menubar'];
+
+        document.addEventListener('click', (event) => {
+          clickedHandler(() => {
+            let isInsideSpecifiedNavMenu = false;
+
+            navMenus.forEach(selector => {
+              if (event.target.closest(selector)) {
+                isInsideSpecifiedNavMenu = true;
+              }
+            });
+
+            if (!isInsideSpecifiedNavMenu) {
+              const specificNavMenus = document.querySelectorAll(navMenus.join(', '));
+              const specificSubMenus = [];
+              const specificSvgIcons = [];
+              specificNavMenus.forEach(menu => {
+                specificSubMenus.push(...menu.querySelectorAll('ul.navigation__menubar ul'));
+                specificSvgIcons.push(...menu.querySelectorAll('.toggler-icon svg'));
+              });
+
+              resetSpecificSubMenus(specificSubMenus, specificSvgIcons);
+            }
+          });
         });
-      });
+      };
 
       // Open menubar get called by dropdownTogglerButtonIsClicked();
       const openMenubar = (dropdownTogglerButton, subMenu) => {
@@ -340,6 +368,9 @@
         resetSubMenus(siteSubMenus, svgIcons);
         addHoverFunctionality();
       });
+
+      // Add new functionality
+      closeSubMenusOnClick();
     }
   };
 })(Drupal, drupalSettings, once);

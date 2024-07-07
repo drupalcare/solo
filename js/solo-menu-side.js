@@ -98,10 +98,25 @@
         document.removeEventListener('keydown', trapFocus);
       }
     };
-
     Drupal.solo.sideMenubarToggleNav = sideMenubarToggleNav;
 
-    // Attach these behaviors to the Drupal system
+    function addOutsideClickListener(enable) {
+      if (enable === true) {
+        document.addEventListener('click', outsideClickListener);
+      } else {
+        document.removeEventListener('click', outsideClickListener);
+      }
+    }
+
+    function outsideClickListener(event) {
+      if (verticalNav && !verticalNav.contains(event.target) && !event.target.closest('.sidebar-button-open')) {
+        sideMenubarToggleNav(false);
+      }
+    }
+
+    // Expose the function to the Drupal namespace
+    Drupal.solo.addOutsideClickListener = addOutsideClickListener;
+
     Drupal.behaviors.soloPrimarySideMenu = {
       attach: function (context, settings) {
         // Close nav button event
@@ -110,20 +125,20 @@
         // Open nav button event
         sideMenubarCloseOpen(openBtns, () => sideMenubarToggleNav(true));
 
-        // Click event to close any submenu
-        document.addEventListener('click', (event) => {
-          if (verticalNav && !verticalNav.contains(event.target) && !event.target.closest('.sidebar-button-open')) {
-            sideMenubarToggleNav(false);
-          }
-        });
+        // Add outside click listener
+        Drupal.solo.addOutsideClickListener(true);
 
         // Ensure the tabindex is always set correctly on load
-        if (verticalNav.classList.contains('toggled')) {
-          updateTabindex(true);
-        } else {
-          updateTabindex(false);
+        const verticalNav = document.querySelector('.vertical-nav');
+        if (verticalNav) {
+          if (verticalNav.classList.contains('toggled')) {
+            updateTabindex(true);
+          } else {
+            updateTabindex(false);
+          }
         }
       }
     };
+
   }
 })(Drupal, drupalSettings, once);

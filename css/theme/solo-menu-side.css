@@ -72,6 +72,11 @@
   padding-left: 32px;
 }
 
+.solo-inner .navigation-sidebar .navigation__sidebar>li.nav__menu-item>ul.sub__menu>li.nav__menu-item>ul.sub__menu>li.nav__menu-item> ul.sub__menu>li.nav__menu-item>a:first-child,
+.solo-inner .navigation-sidebar .navigation__sidebar>li.nav__menu-item>ul.sub__menu>li.nav__menu-item>ul.sub__menu>li.nav__menu-item> ul.sub__menu>li.nav__menu-item>button:first-child {
+  padding-left: 40px;
+}
+
 .solo-inner .navigation-sidebar .navigation__sidebar li.has-sub__menu {
   justify-content: space-between;
   flex-wrap: wrap;

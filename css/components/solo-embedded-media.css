@@ -6,20 +6,47 @@ figcaption {
   line-height: 1.5rem;
 }
 
-@media (min-width: 36rem) {
+.align-right,
+.align-left,
+.align-center {
+  float: none;
+  max-width: 100%;
+  margin: 1rem 0;
+}
+
+.align-center {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@media (min-width:36rem) {
   figcaption {
     padding: 1rem;
   }
+
+  .align-right {
+    float: right;
+    max-width: 75%;
+    margin: 1rem 0 1rem 1rem;
+  }
+
+  [dir="rtl"] .align-right {
+    float: left;
+  }
+
+  .align-left {
+    float: left;
+    max-width: 75%;
+    margin: 1rem 1rem 1rem 0;
+  }
+
+  [dir="rtl"] .align-left {
+    float: right;
+  }
+
 }
 
-.align-right,
-.align-left {
-  float: none;
-  max-width: 100%;
-  margin: 1.5rem 0;
-}
-
-@media (min-width: 48rem) {
+@media (min-width:48rem) {
   .align-right {
     float: right;
     max-width: 50%;
@@ -29,9 +56,7 @@ figcaption {
   [dir="rtl"] .align-right {
     float: left;
   }
-}
 
-@media (min-width: 48rem) {
   .align-left {
     float: left;
     max-width: 50%;
@@ -41,6 +66,7 @@ figcaption {
   [dir="rtl"] .align-left {
     float: right;
   }
+
 }
 
 .align-center img,

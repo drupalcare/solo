@@ -3,6 +3,23 @@
   margin-bottom: var(--solo-px18);
 }
 
+
+#page-wrapper .text-align-left {
+  text-align: left;
+}
+
+#page-wrapper .text-align-right {
+  text-align: right;
+}
+
+#page-wrapper .text-align-center {
+  text-align: center;
+}
+
+#page-wrapper .text-align-justify {
+  text-align: justify;
+}
+
 #page-wrapper .node__header.header-is-empty {
   margin-bottom: 0;
   width: initial;
@@ -120,37 +137,23 @@ article.node.node--view-mode-full .node__header .node__meta {
   margin-right: 0;
 }
 
-.field--type-text-long img:not(.align-center),
-.field--type-text-long video:not(.align-center),
-.field--type-text-long embed:not(.align-center),
-.field--type-text-long object:not(.align-center),
-.field--type-text-with-summary img:not(.align-center),
-.field--type-text-with-summary video:not(.align-center),
-.field--type-text-with-summary embed:not(.align-center),
-.field--type-text-with-summary object:not(.align-center) {
+.field--type-text-long img:not(.align-center,
+.media.align-center img),
+.field--type-text-long video:not(.align-center,
+.media.align-center img),
+.field--type-text-long embed:not(.align-center,
+.media.align-center img),
+.field--type-text-long object:not(.align-center,
+.media.align-center img),
+.field--type-text-with-summary img:not(.align-center,
+.media.align-center img),
+.field--type-text-with-summary video:not(.align-center,
+.media.align-center img),
+.field--type-text-with-summary embed:not(.align-center,
+.media.align-center img),
+.field--type-text-with-summary object:not(.align-center,
+.media.align-center img) {
   display: inline-block;
-}
-
-.field--type-text img.align-left,
-.field--type-string img.align-left,
-.field--type-string-long img.align-left,
-.field--type-text-with-summary img.align-left {
-  margin-right: var(--solo-px16);
-}
-
-.field--type-text img.align-right,
-.field--type-string img.align-right,
-.field--type-string-long img.align-right,
-.field--type-text-with-summary img.align-right {
-  margin-left: var(--solo-px16);
-}
-
-.field--type-text img.align-center,
-.field--type-string img.align-center,
-.field--type-string-long img.align-center,
-.field--type-text-with-summary img.align-center {
-  margin-right: auto;
-  margin-left: auto;
 }
 
 /* To show multi fields in one line */

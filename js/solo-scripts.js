@@ -24,9 +24,9 @@
       // Assign new class based on region width
       if (regionWidth <= 320) {
         region.classList.add('region-xs'); // Extra Small Devices
-      } else if (regionWidth > 320 && regionWidth <= 600) {
+      } else if (regionWidth > 320 && regionWidth <= 576) {
         region.classList.add('region-s'); // Small Devices
-      } else if (regionWidth > 600 && regionWidth <= 768) {
+      } else if (regionWidth > 576 && regionWidth <= 768) {
         region.classList.add('region-m'); // Medium Devices
       } else if (regionWidth > 768 && regionWidth <= 992) {
         region.classList.add('region-l'); // Large Devices

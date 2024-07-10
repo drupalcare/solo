@@ -805,7 +805,7 @@ function solo_preprocess_menu__primary_menu(&$variables): void {
   }
 
   if (theme_get_setting('primary_menu_align_center')) {
-    $variables['align_center'] = 'align-center';
+    $variables['align_center'] = 'menu-align-center';
   }
 
   if (theme_get_setting('primary_menu_expand_left')) {

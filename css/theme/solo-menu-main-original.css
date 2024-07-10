@@ -9,7 +9,7 @@
     flex-wrap: wrap;
   }
 
-  .navigation-primary-responsive.align-center .navigation__responsive {
+  .navigation-primary-responsive.menu-align-center .navigation__responsive {
     justify-content: center;
   }
 

@@ -144,12 +144,36 @@
     white-space: normal;
   }
 
+  #page-wrapper .views-exposed-form .exposed-form > div {
+    margin: var(--solo-px8); auto;
+    width: 100%;
+  }
+  #page-wrapper .views-exposed-form .exposed-form .form-actions,
+  #page-wrapper .views-exposed-form .exposed-form {
+    flex-wrap: nowrap;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    margin: 0;
+  }
+
 }
 
 @media (max-width:20rem) {
   #primary-sidebar-menu {
     min-width: 12rem;
     max-width: 16rem;
+  }
+
+  .solo-input,
+  .solo-select,
+  .solo-textarea {
+    max-width: 220px;
+    min-width: 120px;
+  }
+
+  .form-actions input {
+    min-width: 80px;
   }
 
 }

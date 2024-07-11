@@ -79,15 +79,6 @@ form div.form-type-datelist.solo-section.form-item {
   clear: none;
 }
 
-form .form-type-date label,
-form .form-item-color label,
-form .form-type-select label,
-form .form-type-datelist label,
-form .form-type-datetime label {
-  display: block;
-  clear: both;
-}
-
 .form-type-datelist > div {
   padding-left: 0;
 }

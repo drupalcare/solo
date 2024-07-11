@@ -154,6 +154,10 @@ img {
 }
 
 /* Forms Elements */
+.form-type-date > input {
+  max-height: 3.438rem;
+}
+
 .solo-check,
 .solo-radio {
   width: var(--solo-px24);
@@ -166,6 +170,7 @@ img {
 
 .solo-input,
 .solo-textarea {
+  max-width: 100%;
   padding: var(--solo-px10) var(--solo-px8);
   display: block;
   width: 100%;
@@ -173,19 +178,13 @@ img {
   line-height: inherit;
 }
 
-.form-type-date > input {
-  max-height: 3.438rem;
-}
-
 .solo-select {
-  line-height: inherit;
-  padding: var(--solo-px10) var(--solo-px34) var(--solo-px10) var(--solo-px8);
-  width: 100%;
-}
-
-select {
   max-width: 100%;
+  display: block;
+  line-height: inherit;
   border: var(--solo-px1) solid var(--r-br, var(--r-br-b));
+  padding: var(--solo-px10) var(--solo-px40) var(--solo-px10) var(--solo-px8);
+  width: 100%;
   background-image: var(--solo-select-arrow-icon);
   background-repeat: no-repeat;
   background-position: right var(--solo-px10) center;

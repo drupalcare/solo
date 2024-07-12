@@ -35,11 +35,11 @@
   {% endif %}
 
   <div class="mobile-nav hamburger-icon solo-block">
-    <button class="solo-button-menu mobile-menubar-toggler-button" data-drupal-selector="mobile-menubar-toggler-button" tabindex='-1' aria-label="{{ 'Close Or Open'|t }}" aria-expanded="false">
+    <button class="solo-button-menu mobile-menubar-toggler-button" data-drupal-selector="mobile-menubar-toggler-button" tabindex='-1' aria-label="{{ 'Open or Close horizontal Main Menu'|t }}" aria-expanded="false">
       <span>
         {{ svg_bars|raw }}
       </span>
-      <span class="visually-hidden">Open or Close Main Menu</span>
+      <span class="visually-hidden">{{ 'Open or Close horizontal Main Menu'|t }}</span>
     </button>
   </div>
 {{ menus.menu_links(items, attributes, 0, menu_name, aria_id, megamenu, megamenu_layout, sub_mega, sub_menu_header ) }}

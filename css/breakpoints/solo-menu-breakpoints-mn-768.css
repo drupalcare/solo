@@ -483,6 +483,7 @@
     width: auto;
     height: initial;
     display: flex;
+    margin-left: var(--solo-px12);
   }
 
   #primary-menu .navigation-primary-responsive > .mobile-nav {

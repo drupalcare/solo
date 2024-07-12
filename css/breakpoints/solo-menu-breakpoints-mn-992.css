@@ -471,6 +471,7 @@
   #primary-menu .navigation-primary-responsive {
     display: flex;
     flex-wrap: wrap;
+    margin-left: var(--solo-px12);
   }
 
   #primary-menu .navigation-primary-responsive > .menu-branding {

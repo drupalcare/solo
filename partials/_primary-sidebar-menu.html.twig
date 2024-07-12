@@ -10,8 +10,12 @@
               <span class="visually-hidden">Close Menu</span>
           </button>
       </div>
-
       {{ page.primary_sidebar_menu }}
+
+      {% if primary_sidebar_menu_branding %}
+      {% include '@solo/partials/_menu-branding.html.twig' %}
+      {% endif %}
+
     </div>
   </div>
   <!-- End: Primary Sidebar Menu -->

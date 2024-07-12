@@ -23,6 +23,8 @@
 
 .primary-sidebar-menu-inner {
   display: grid;
+  grid-template-rows: auto 1fr auto;
+  height: 100vh;
 }
 
 .primary-sidebar-menu-inner>* {
@@ -113,6 +115,18 @@
 .page-wrapper .has-border .primary-sidebar-menu-inner .navigation__menubar li {
   border-bottom: 1px solid var(--r-br) !important;
 }
+
+/* Menu brandiong. */
+#primary-sidebar-menu .menu-branding {
+  margin: 0;
+  width: 100%;
+  padding: var(--solo-px12);
+  align-self: end;
+  width: auto;
+  height: initial;
+  display: flex;
+}
+
 
 @keyframes slide-out {
   0% {

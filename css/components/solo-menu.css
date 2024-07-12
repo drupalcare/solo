@@ -318,3 +318,39 @@
   padding-right: 0;
   justify-content: left;
 }
+
+/* Menu branding */
+.menu-branding {
+  display: none;
+  height: 0;
+  width: 0;
+  overflow: hidden;
+  line-height: normal;
+  align-items: center;
+  justify-content: flex-start;
+  flex-wrap: nowrap;
+  max-width: 400px;
+  flex: 0 1 auto;
+  flex-direction: row;
+  gap: var(--solo-px12);
+  margin-right: var(--solo-px12);
+}
+
+.menu-branding-logo,
+.menu-branding-logo img,
+.menu-branding-logo svg,
+.menu-branding-site-name {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  max-height: 50px;
+  width: auto;
+}
+
+.menu-branding-site-name {
+  font-weight: bold;
+  font-size: var(--solo-px16);
+  display: flex;
+  align-items: center;
+  height: 100%;
+}

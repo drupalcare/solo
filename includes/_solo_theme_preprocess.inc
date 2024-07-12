@@ -419,8 +419,10 @@ function _get_theme_variables() {
       'site_flip_header_menu',
       'site_flip_main_left',
       'primary_menu_border',
+      'primary_menu_branding',
       'primary_menu_justify_content',
       'primary_sidebar_menu_border',
+      'primary_sidebar_menu_branding',
       'site_regions_top_border',
       'site_regions_main_border',
       'site_regions_bottom_border',
@@ -527,6 +529,13 @@ function solo_preprocess_page(&$variables) {
 
   if (theme_get_setting('site_pagetitle_center')) {
     $variables['site_pagetitle_center'] = 'pt-center';
+  }
+
+  if (theme_get_setting('primary_sidebar_menu_branding')) {
+    $variables['site_logo'] = theme_get_setting('logo.url');
+    $variables['logo_default'] = theme_get_setting('logo.use_default');
+    $variables['site_name'] = \Drupal::config('system.site')->get('name');
+    $variables['logo_alt'] = theme_get_setting('header_logo_image_alt') ?: 'Home';
   }
 
   // Top regions variables.
@@ -819,6 +828,14 @@ function solo_preprocess_menu__primary_menu(&$variables): void {
     if (theme_get_setting('primary_menu_submenu_header')) {
       $variables['sub_menu_header'] = 'sub__menu-header';
     }
+  }
+
+  if (theme_get_setting('primary_menu_branding')) {
+    $variables['primary_menu_branding'] = theme_get_setting('primary_menu_branding');
+    $variables['site_logo'] = theme_get_setting('logo.url');
+    $variables['logo_default'] = theme_get_setting('logo.use_default');
+    $variables['site_name'] = \Drupal::config('system.site')->get('name');
+    $variables['logo_alt'] = theme_get_setting('header_logo_image_alt') ?: 'Home';
   }
 
 }

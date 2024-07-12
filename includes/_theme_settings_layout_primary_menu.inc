@@ -37,6 +37,12 @@ if (array_key_exists('primary_menu', $updated_regions['mix'])) {
     '#default_value' => theme_get_setting('primary_menu_align_center'),
   ];
 
+  $form['solo_settings']["settings_{$region}"]['primary_menu_branding'] = [
+    '#type' => 'checkbox',
+    '#title' => t('Tick this box to enable the logo and site name beside the hamburger menu.'),
+    '#default_value' => theme_get_setting('primary_menu_branding'),
+  ];
+
   $form['solo_settings']["settings_{$region}"]['primary_menu_justify_content'] = [
     '#type' => 'checkbox',
     '#title' => t('Tick this box to distributes the space evenly between the menu items. The first item is positioned at the start of the line, and the last item is positioned at the end of the line.'),

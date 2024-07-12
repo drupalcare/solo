@@ -474,4 +474,25 @@
     flex-grow: 1;
   }
 
+  #primary-menu .navigation-primary-responsive {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  #primary-menu .navigation-primary-responsive > .menu-branding {
+    width: auto;
+    height: initial;
+    display: flex;
+  }
+
+  #primary-menu .navigation-primary-responsive > .mobile-nav {
+    width: auto;
+    flex: 1 1 auto;
+  }
+
+  #primary-menu .navigation-primary-responsive > ul {
+    width: 100%;
+    flex: 1 0 100%;
+  }
+
 }

@@ -31,6 +31,12 @@ if (array_key_exists('primary_sidebar_menu', $updated_regions['mix'])) {
     '#default_value' => theme_get_setting('primary_sidebar_menu_border'),
   ];
 
+  $form['solo_settings']["settings_{$region}"]['primary_sidebar_menu_branding'] = [
+    '#type' => 'checkbox',
+    '#title' => t('Tick this box to enable the logo and site name at the bottom of the menu'),
+    '#default_value' => theme_get_setting('primary_sidebar_menu_branding'),
+  ];
+
   foreach ($attributes as $attribute_key => $attribute_label) {
     $form['solo_settings']["settings_{$region}"]["settings_{$region}_{$attribute_key}"] = _generate_form_element($region, $label, $attribute_key, $attribute_label);
   }

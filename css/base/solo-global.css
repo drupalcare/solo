@@ -110,6 +110,7 @@ img {
 }
 
 /* Button */
+button,
 .button,
 .solo-button {
   display: inline-block;
@@ -133,6 +134,7 @@ img {
 }
 
 .form-submit,
+[type="submit"],
 .solo-button.button--primary,
 .block-user-login-block form+.item-list ul li a {
   border-width: var(--solo-px1);
@@ -158,18 +160,24 @@ img {
   max-height: 3.438rem;
 }
 
+
 .solo-check,
-.solo-radio {
+.solo-radio,
+[type="radio"],
+[type="checkbox"] {
   width: var(--solo-px24);
   height: var(--solo-px24);
   position: relative;
-  top: var(--solo-px66);
   border: var(--solo-px1) solid var(--r-br, var(--r-br-b));
   line-height: inherit;
 }
 
+textarea,
 .solo-input,
-.solo-textarea {
+.solo-textarea,
+input[type="text"],
+input[type="email"],
+input[type="password"] {
   max-width: 100%;
   padding: var(--solo-px10) var(--solo-px8);
   display: block;
@@ -178,6 +186,7 @@ img {
   line-height: inherit;
 }
 
+select,
 .solo-select {
   max-width: 100%;
   display: block;

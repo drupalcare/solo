@@ -97,6 +97,12 @@
 
 }
 
+@media (min-width:36rem) {
+  #page-wrapper .views-exposed-form .exposed-form>* {
+    width: auto;
+  }
+}
+
 @media (max-width:36rem) {
   h1 {
     font-size: var(--solo-px20);

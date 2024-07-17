@@ -533,7 +533,7 @@ function solo_preprocess_page(&$variables) {
 
   if (theme_get_setting('primary_sidebar_menu_branding')) {
     $variables['site_logo'] = theme_get_setting('logo.url');
-    $variables['logo_default'] = theme_get_setting('logo.use_default');
+    $variables['logo_default'] = _set_logo_default($variables);
     $variables['site_name'] = \Drupal::config('system.site')->get('name');
     $variables['logo_alt'] = theme_get_setting('header_logo_image_alt') ?: 'Home';
   }
@@ -749,6 +749,8 @@ function solo_preprocess_block(&$variables): void {
 
   _process_system_menu_block($variables, $block);
   _process_system_branding_block($variables);
+  _set_logo_default($variables);
+  _set_logo_alt($variables);
 }
 
 /**
@@ -775,12 +777,7 @@ function _process_system_menu_block(&$variables, $block) {
 /**
  * Helper function.
  */
-function _process_system_branding_block(&$variables): void {
-  // Ensure this function only processes system branding blocks.
-  if ($variables['base_plugin_id'] !== 'system_branding_block') {
-    return;
-  }
-
+function _set_logo_default(&$variables): void {
   // Get the machine name of the current default theme.
   $default_theme = \Drupal::config('system.theme')->get('default');
   // Get the machine name of the active theme.
@@ -796,9 +793,23 @@ function _process_system_branding_block(&$variables): void {
     // Initialize $logo_default to 0.
     $variables['logo_default'] = 0;
   }
+}
 
+/**
+ * Helper function.
+ */
+function _set_logo_alt(&$variables): void {
   $variables['logo_alt'] = theme_get_setting('header_logo_image_alt') ?: 'Home';
+}
 
+/**
+ * Helper function.
+ */
+function _process_system_branding_block(&$variables): void {
+  // Ensure this function only processes system branding blocks.
+  if ($variables['base_plugin_id'] !== 'system_branding_block') {
+    return;
+  }
 }
 
 /**
@@ -833,7 +844,7 @@ function solo_preprocess_menu__primary_menu(&$variables): void {
   if (theme_get_setting('primary_menu_branding')) {
     $variables['primary_menu_branding'] = theme_get_setting('primary_menu_branding');
     $variables['site_logo'] = theme_get_setting('logo.url');
-    $variables['logo_default'] = theme_get_setting('logo.use_default');
+    $variables['logo_default'] = _set_logo_default($variables);
     $variables['site_name'] = \Drupal::config('system.site')->get('name');
     $variables['logo_alt'] = theme_get_setting('header_logo_image_alt') ?: 'Home';
   }

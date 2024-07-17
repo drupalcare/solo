@@ -123,6 +123,28 @@
         el.parentElement.classList.add('img--is-clickable');
       });
 
+      // Handle broken images
+      const handleBrokenImages = (context) => {
+        const images = context.querySelectorAll('img');
+        images.forEach(img => {
+          img.onerror = function() {
+            if (!this.classList.contains('broken-image')) {
+              this.classList.add('broken-image');
+              const placeholder = document.createElement('div');
+              placeholder.className = 'img-placeholder';
+              placeholder.innerHTML = 'Image not available';
+              this.style.display = 'none';
+              this.parentNode.insertBefore(placeholder, this.nextSibling);
+            }
+          };
+          // Force recheck the image load status to trigger the error if the image is broken
+          img.src = img.src;
+        });
+      };
+
+      // Call the function to handle broken images
+      handleBrokenImages(context);
+
       mediaSize();
       window.addEventListener('resize', () => {
         mediaSize();

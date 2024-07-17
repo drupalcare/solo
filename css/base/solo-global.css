@@ -72,6 +72,20 @@ img {
   vertical-align: middle;
 }
 
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+.img-placeholder {
+  width: 100%;
+  height: auto;
+  display: block;
+  text-align: center;
+  font-size: 14px;
+}
+
+
 /* End Var tags */
 .solo-container::after,
 .solo-container::before,

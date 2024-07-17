@@ -842,7 +842,7 @@ function solo_preprocess_menu__primary_menu(&$variables): void {
   }
 
   if (theme_get_setting('primary_menu_branding')) {
-    $variables['primary_menu_branding'] = theme_get_setting('primary_menu_branding');
+    $variables['primary_menu_branding'] = 'activate-branding';
     $variables['site_logo'] = theme_get_setting('logo.url');
     $variables['logo_default'] = _set_logo_default($variables);
     $variables['site_name'] = \Drupal::config('system.site')->get('name');

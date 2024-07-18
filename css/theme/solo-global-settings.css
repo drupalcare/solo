@@ -64,7 +64,8 @@
   /* Region gabs 24 */
   html.gab-24 .solo-inner:not(.primary-menu-inner,
   .primary-sidebar-menu-inner,
-  .system-messages-inner) {
+  .system-messages-inner,
+  .highlighted-inner) {
     padding: var(--solo-px24);
   }
 
@@ -86,7 +87,8 @@
   /* Region gabs 36 */
   html.gab-36 .solo-inner:not(.primary-menu-inner,
   .primary-sidebar-menu-inner,
-  .system-messages-inner) {
+  .system-messages-inner,
+  .highlighted-inner) {
     padding: var(--solo-px36);
   }
 
@@ -108,7 +110,8 @@
   /* Region gabs 48 */
   html.gab-48 .solo-inner:not(.primary-menu-inner,
   .primary-sidebar-menu-inner,
-  .system-messages-inner) {
+  .system-messages-inner,
+  .highlighted-inner) {
     padding: var(--solo-px48);
   }
 
@@ -130,7 +133,8 @@
   /* Region gabs 64 */
   html.gab-64 .solo-inner:not(.primary-menu-inner,
   .primary-sidebar-menu-inner,
-  .system-messages-inner) {
+  .system-messages-inner,
+  .highlighted-inner) {
     padding: var(--solo-px64);
   }
 

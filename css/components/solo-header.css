@@ -124,9 +124,13 @@
   min-width: 5.625rem;
 }
 
-#sidebar-button-close button span,
 #search-button-open button span {
   padding: var(--solo-px8) var(--solo-px16) !important;
+}
+
+#sidebar-button-close button span {
+  padding: var(--solo-px8) 0 !important;
+  min-width: initial;
 }
 
 #sidebar-button-open button span {
@@ -138,7 +142,8 @@
 }
 
 #sidebar-button-close button {
-  justify-content: left;
+  justify-content: right;
+  align-items: center;
 }
 
 /* Add class to switch the header icon and site name */

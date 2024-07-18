@@ -33,7 +33,7 @@ if (array_key_exists('primary_sidebar_menu', $updated_regions['mix'])) {
 
   $form['solo_settings']["settings_{$region}"]['primary_sidebar_menu_branding'] = [
     '#type' => 'checkbox',
-    '#title' => t('Tick this box to enable the logo and site name at the bottom of the menu'),
+    '#title' => t('Tick this box to display the logo beside the close button for the main menu.'),
     '#default_value' => theme_get_setting('primary_sidebar_menu_branding'),
   ];
 

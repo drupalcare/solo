@@ -117,16 +117,19 @@
 }
 
 /* Menu brandiong. */
-#primary-sidebar-menu .menu-branding {
-  margin: 0;
-  width: 100%;
-  padding: var(--solo-px12);
-  align-self: end;
-  width: auto;
-  height: initial;
+#primary-sidebar-menu .sidebar-button-close.active-branding {
   display: flex;
+  flex-wrap: nowrap;
+  flex-direction: row-reverse;
 }
 
+#primary-sidebar-menu .sidebar-button-close.active-branding .menu-branding {
+  margin: 0;
+  padding: var(--solo-px4) var(--solo-px12);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
 @keyframes slide-out {
   0% {

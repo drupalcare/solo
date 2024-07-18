@@ -39,7 +39,7 @@ if (array_key_exists('primary_menu', $updated_regions['mix'])) {
 
   $form['solo_settings']["settings_{$region}"]['primary_menu_branding'] = [
     '#type' => 'checkbox',
-    '#title' => t('Tick this box to enable the logo and site name beside the hamburger menu.'),
+    '#title' => t('Tick this box to display the logo beside the main menu.'),
     '#default_value' => theme_get_setting('primary_menu_branding'),
   ];
 

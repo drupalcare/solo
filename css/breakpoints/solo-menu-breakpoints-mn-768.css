@@ -396,6 +396,11 @@
     flex-grow: 1;
   }
 
+  /* For the menu branding */
+  #primary-menu .activate-branding.navigation-primary-responsive {
+    flex-wrap: nowrap;
+  }
+
 }
 
 @media (max-width:48rem) {
@@ -474,19 +479,10 @@
     flex-grow: 1;
   }
 
+  /* For the menu branding */
   #primary-menu .activate-branding.navigation-primary-responsive {
     display: flex;
     flex-wrap: wrap;
-  }
-
-  #primary-menu .activate-branding.navigation-primary-responsive .menu-branding:first-child {
-    margin-left: var(--solo-px12);
-  }
-
-  #primary-menu .activate-branding.navigation-primary-responsive > .menu-branding {
-    width: auto;
-    height: initial;
-    display: flex;
   }
 
   #primary-menu .activate-branding.navigation-primary-responsive > .mobile-nav {

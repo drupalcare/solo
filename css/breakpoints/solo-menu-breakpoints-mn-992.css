@@ -84,6 +84,7 @@
 
   .navigation-primary-responsive.menu-align-center .navigation__responsive {
     justify-content: center;
+    margin: 0 auto;
   }
 
   .solo-inner .navigation__responsive:not(.navigation__megamenu)>li.nav__menu-item ul.sub__menu {

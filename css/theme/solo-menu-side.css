@@ -117,13 +117,13 @@
 }
 
 /* Menu brandiong. */
-#primary-sidebar-menu .sidebar-button-close.active-branding {
+#primary-sidebar-menu .sidebar-button-close.activate-branding {
   display: flex;
   flex-wrap: nowrap;
   flex-direction: row-reverse;
 }
 
-#primary-sidebar-menu .sidebar-button-close.active-branding .menu-branding {
+#primary-sidebar-menu .sidebar-button-close.activate-branding .menu-branding {
   margin: 0;
   padding: var(--solo-px4) var(--solo-px12);
   display: flex;

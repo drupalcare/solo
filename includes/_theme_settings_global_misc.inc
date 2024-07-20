@@ -29,42 +29,61 @@ $form['solo_settings']['settings_global_misc']['site_global_width'] = [
   '#description' => t("<p><strong>You can adjust the entire website's width by choosing your preferred size in pixels or rem units.</strong></p>"),
 ];
 
-  // Checkbox to enable custom widths for each content type
-  $form['solo_settings']['settings_global_misc']['enable_custom_widths'] = [
-    '#type' => 'checkbox',
-    '#title' => t('Enable custom widths for each content type'),
-    '#default_value' => theme_get_setting('enable_custom_widths'),
-  ];
+// Checkbox to enable custom widths for each content type.
+$form['solo_settings']['settings_global_misc']['enable_custom_widths'] = [
+  '#type' => 'checkbox',
+  '#title' => t('Enable custom widths for each content type'),
+  '#default_value' => theme_get_setting('enable_custom_widths'),
+];
 
-  // Collapsible details element for content type specific width settings
-  $form['solo_settings']['settings_global_misc']['content_type_widths'] = [
-    '#type' => 'details',
-    '#title' => t('Content Type Widths'),
-    '#open' => TRUE,
+// Collapsible details element for content type specific width settings.
+$form['solo_settings']['settings_global_misc']['content_type_widths'] = [
+  '#type' => 'details',
+  '#title' => t('Content Type Widths'),
+  '#open' => TRUE,
+  '#states' => [
+    'visible' => [
+      ':input[name="enable_custom_widths"]' => ['checked' => TRUE],
+    ],
+  ],
+];
+
+// Content type specific width settings.
+$global_width = theme_get_setting('site_global_width');
+$content_types = _solo_get_content_types();
+foreach ($content_types as $type => $label) {
+  $form['solo_settings']['settings_global_misc']['content_type_widths']['site_width_' . $type] = [
+    '#title' => t("Width for @content_type", ['@content_type' => $label]),
+    '#type' => 'select',
+    '#options' => _get_site_width_options(),
+    '#default_value' => theme_get_setting('site_width_' . $type) ?: $global_width,
+    '#description' => t("<p><strong>You can adjust the width for the @content_type content type by choosing your preferred size in pixels or rem units.</strong></p>", ['@content_type' => $label]),
     '#states' => [
       'visible' => [
         ':input[name="enable_custom_widths"]' => ['checked' => TRUE],
       ],
     ],
   ];
+}
 
-  // Content type specific width settings
-  $global_width = theme_get_setting('site_global_width');
-  $content_types = _solo_get_content_types();
-  foreach ($content_types as $type => $label) {
-    $form['solo_settings']['settings_global_misc']['content_type_widths']['site_width_' . $type] = [
-      '#title' => t("Width for @content_type", ['@content_type' => $label]),
-      '#type' => 'select',
-      '#options' => _get_site_width_options(),
-      '#default_value' => theme_get_setting('site_width_' . $type) ?: $global_width,
-      '#description' => t("<p><strong>You can adjust the width for the @content_type content type by choosing your preferred size in pixels or rem units.</strong></p>", ['@content_type' => $label]),
-      '#states' => [
-        'visible' => [
-          ':input[name="enable_custom_widths"]' => ['checked' => TRUE],
-        ],
-      ],
-    ];
-  }
+// Check if the solo_utilities module is enabled.
+if (\Drupal::moduleHandler()->moduleExists('solo_utilities')) {
+  // Checkbox to enable custom widths for individual nodes.
+  $form['solo_settings']['settings_global_misc']['enable_custom_node_width'] = [
+    '#type' => 'checkbox',
+    '#title' => t('Tick this box to enable custom widths for individual nodes'),
+    '#default_value' => theme_get_setting('enable_custom_node_width'),
+    '#description' => t('Allow setting custom widths for individual nodes. Once enabled, you will see a dropdown in the node edit form where you can select a custom width for each node. If "None" is selected, the default width will be used. Individual node widths take priority over content type-specific widths, which take priority over the global width.'),
+  ];
+}
+else {
+  // Display a message if the module is not enabled.
+  $form['solo_settings']['settings_global_misc']['enable_custom_node_width_message'] = [
+    '#type' => 'item',
+    '#title' => t('Tick this box to enable custom widths for individual nodes'),
+    '#markup' => t('To enable custom widths for individual nodes, please install and enable the <a href="https://www.drupal.org/project/solo_utilities" target="_blank">Solo Utilities module</a>.'),
+  ];
+}
 
 $form['solo_settings']['settings_global_misc']['site_global_breakpoints'] = [
   '#title' => t("Website's Breakpoints - Solo Theme"),

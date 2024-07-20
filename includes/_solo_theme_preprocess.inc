@@ -10,6 +10,7 @@ use Drupal\Core\Datetime\DrupalDateTime;
 use Drupal\Core\Entity\EntityInterface;
 use Drupal\Core\File\FileSystemInterface;
 use Drupal\Core\Template\Attribute;
+use Drupal\node\NodeInterface;
 use Drupal\user\UserInterface;
 
 /**
@@ -92,9 +93,9 @@ function _get_html_classes() {
 function solo_preprocess_html(&$variables): void {
   $route_match = \Drupal::routeMatch();
   $route_name = $route_match->getRouteName();
-  $solo_base = \Drupal::request()->getBasePath();
+  $solo_utilities = \Drupal::request()->getBasePath();
   $solo_list = \Drupal::service('extension.list.theme')->getPath('solo');
-  $solo_path = $solo_base . '/' . $solo_list;
+  $solo_path = $solo_utilities . '/' . $solo_list;
   $variables['solo_path'] = $solo_path;
 
   $theme_head_vars = ['site_css_injector',
@@ -610,22 +611,43 @@ function solo_preprocess_page(&$variables) {
 
   _create_region_attributes($variables);
 
+  // Initialize with the global width setting.
   $site_width_class = theme_get_setting('site_global_width');
-  $enable_custom_widths = theme_get_setting('enable_custom_widths');
 
-  if ($enable_custom_widths) {
-    $node = \Drupal::routeMatch()->getParameter('node');
+  // Check if custom widths are enabled.
+  $enable_custom_widths = theme_get_setting('enable_custom_node_width');
 
-    if ($node instanceof \Drupal\node\NodeInterface) {
-      $content_type = $node->getType();
+  // Get the current node.
+  $node = \Drupal::routeMatch()->getParameter('node');
+
+  if ($node instanceof NodeInterface) {
+    // Get the content type of the node.
+    $content_type = $node->bundle();
+
+    // Check for node-specific width.
+    $custom_width = '';
+    if ($enable_custom_widths) {
+      $node_widths = \Drupal::entityTypeManager()->getStorage('node_width')->loadByProperties(['node_id' => $node->id()]);
+      if (!empty($node_widths)) {
+        $custom_width = reset($node_widths)->get('width_class')->value;
+      }
+    }
+
+    // Check for content type-specific width if no custom width is set.
+    if (!$custom_width) {
       $content_type_width = theme_get_setting('site_width_' . $content_type);
-
-      if ($content_type_width && $content_type_width !== $site_width_class) {
+      if ($content_type_width) {
         $site_width_class = $content_type_width;
       }
     }
+
+    // Use custom width if set.
+    if ($custom_width) {
+      $site_width_class = $custom_width;
+    }
   }
 
+  // Pass the width class to the Twig template.
   $variables['site_width_class'] = $site_width_class;
 }
 

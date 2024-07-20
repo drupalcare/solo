@@ -1,21 +1,25 @@
+In solo_subtheme/css/solo-subtheme-style.css you start with the 'Variable Definitions', then the 'region names' and finally the examples of colors from the 'Variable Definitions'.
+It would be easier to have the definitions and color examples side by side or merged together.
+Reason: I knew I had seen the definitions somewhere and searched on the solo website, but could not find them.
+By default, my editor shows the color examples and the added css. Until today I did not get back to the beginning of the page....
 /* Add your css code here */
 /*
 Variable Definitions:
-  --r-bg: Controls the background color.
-  --r-tx: Determines the color of the text.
+  --r-bg: Sets the background color.
+  --r-tx: Sets the text color.
   --r-h1: Sets the color for h1, h2, and h3 headings.
-  --r-lk: Changes the link text color.
-  --r-lk-h: Alters the hover color of link text.
-  --r-br: Specifies the border color.
-  --r-bg-fr: Defines the background color of input forms.
-  --r-tx-lk: Adjusts the menu link text color.
-  --r-tx-lk-h: Modifies the hover color of menu link text.
-  --r-bg-lk: Sets the menu link background color.
-  --r-bg-lk-h: Changes the hover background color of menu links.
-  --r-tx-bt: Determines the button text color.
-  --r-tx-bt-h: Alters the button text color on hover.
-  --r-bg-bt: Specifies the button background color.
-  --r-bg-bt-h: Sets the button background color on hover.
+  --r-lk: Sets the link text color.
+  --r-lk-h: Sets the hover color for link text.
+  --r-br: Sets the border color.
+  --r-bg-fr: Sets the background color for input forms.
+  --r-tx-lk: Sets the menu link text color.
+  --r-tx-lk-h: Sets the hover color for menu link text.
+  --r-bg-lk: Sets the background color for menu links.
+  --r-bg-lk-h: Sets the hover background color for menu links.
+  --r-tx-bt: Sets the button text color.
+  --r-tx-bt-h: Sets the hover color for button text.
+  --r-bg-bt: Sets the button background color.
+  --r-bg-bt-h: Sets the hover background color for buttons.
 */
 
 /*
@@ -58,21 +62,43 @@ You can use .page-wrapper or #page-wrapper
 #copyright {}
 
 Examples:
+
 #page-wrapper {
-  --r-bg: #fefffc;
-  --r-tx: #4c5866;
-  --r-h1: #2a3439;
-  --r-lk: #8a3324;
-  --r-lk-h: #79443b;
-  --r-br: #f4f5f0;
-  --r-bg-fr: #f8f4ff;
-  --r-tx-lk: #2c3e4c;
-  --r-tx-lk-h: #1520a6;
-  --r-bg-lk:#F2F7FD;
-  --r-bg-lk-h: #f8f8e8;
-  --r-tx-bt: #354a21;
-  --r-tx-bt-h: #597d35;
-  --r-bg-bt: #edf1fe;
-  --r-bg-bt-h: #efece1;
-  }
+  background-color: var(--r-bg);
+  color: var(--r-tx);
+  border-color: var(--r-br);
+}
+
+h1, h2, h3 {
+  color: var(--r-h1);
+}
+
+a:not(li.nav__menu-item a) {
+  color: var(--r-lk);
+  color: var(--r-lk-h);
+}
+
+input:not(.button) {
+  background-color: var(--r-bg-fr);
+}
+
+li.nav__menu-item a {
+  color: var(--r-tx-lk);
+  background-color: var(--r-bg-lk);
+}
+
+li.nav__menu-item a:hover {
+  color: var(--r-tx-lk-h);
+  background-color: var(--r-bg-lk-h);
+}
+
+button:not(li.nav__menu-item button) {
+  color: var(--r-tx-bt);
+  background-color: var(--r-bg-bt);
+}
+
+button:not(li.nav__menu-item button):hover {
+  color: var(--r-tx-bt-h);
+  background-color: var(--r-bg-bt-h);
+}
 */

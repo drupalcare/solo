@@ -65,7 +65,7 @@
 
 <!-- Start: Page Wrapper -->
 {% set page_wrapper_classes = 'page-wrapper' ~
-  (site_global_width ? ' ' ~ site_global_width) ~
+  (site_width_class ? ' ' ~ site_width_class) ~
   (site_global_breakpoints ? ' ' ~ site_global_breakpoints) ~
   (site_menu_breakpoints ? ' ' ~ site_menu_breakpoints) ~
   (site_pagetitle_google_font ? ' ' ~ site_pagetitle_google_font) ~
@@ -77,7 +77,8 @@
   (opacity_page_wrapper ? ' solo__fade-in' : '') ~
   (site_breadcrumb_scroll ? ' solo__bc-scroll' : '') ~
   (site_inline_items_on ? ' solo__inline-items' : '')
-  %}
+%}
+
 
 <div id="page-wrapper" class="{{ page_wrapper_classes }}" {{ attributes_page_wrapper }}>
 

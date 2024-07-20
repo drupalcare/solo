@@ -610,6 +610,23 @@ function solo_preprocess_page(&$variables) {
 
   _create_region_attributes($variables);
 
+  $site_width_class = theme_get_setting('site_global_width');
+  $enable_custom_widths = theme_get_setting('enable_custom_widths');
+
+  if ($enable_custom_widths) {
+    $node = \Drupal::routeMatch()->getParameter('node');
+
+    if ($node instanceof \Drupal\node\NodeInterface) {
+      $content_type = $node->getType();
+      $content_type_width = theme_get_setting('site_width_' . $content_type);
+
+      if ($content_type_width && $content_type_width !== $site_width_class) {
+        $site_width_class = $content_type_width;
+      }
+    }
+  }
+
+  $variables['site_width_class'] = $site_width_class;
 }
 
 /**

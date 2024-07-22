@@ -457,6 +457,7 @@ function _get_theme_variables() {
       'sm_icon_tiktok',
       'sm_icon_threads',
       'sm_icon_whatsapp',
+      'sm_icon_telegram',
       'sm_icon_reddit',
       'sm_icon_facebook',
       'sm_icon_twitter',

@@ -63,6 +63,7 @@ $social_icons = [
   'mastodon' => t('Mastodon'),
   'reddit' => t('Reddit'),
   'whatsapp' => t('WhatsApp'),
+  'telegram' => t('Telegram'),
   'snapchat' => t('Snapchat'),
   'threads' => t('Threads'),
   'tiktok' => t('TikTok'),

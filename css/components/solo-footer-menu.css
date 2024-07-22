@@ -130,6 +130,10 @@
   fill: var(--solo-tk);
 }
 
+.sm-icons .telegram svg {
+  fill: var(--solo-tl);
+}
+
 .sm-icons .threads svg {
   fill: var(--solo-th);
 }

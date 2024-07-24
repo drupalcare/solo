@@ -28,8 +28,8 @@ form.solo-search-block-form {
 }
 
 .solo-search-block-form .form-type-search input {
-  text-indent: 24px;
   background-color: transparent;
+  padding-inline-start: var(--solo-px34);
 }
 
 .solo-search-block-form .form-item,

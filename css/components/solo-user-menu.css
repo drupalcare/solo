@@ -33,7 +33,7 @@
   width: 100%;
 }
 
-.path-user .sidebar-box-main .field--name-user-picture {
+.path-user .sidebar-box-main .field--name-user-picture:not(.user-register-form .field--name-user-picture) {
   float: left;
   margin-right: var(--solo-px16);
 }

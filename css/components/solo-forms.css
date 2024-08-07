@@ -177,6 +177,10 @@ form.system-theme-settings .details-wrapper .form-element--api-color {
   border: 0;
 }
 
+form .form-item__description {
+  padding: var(--solo-px8) 0;
+}
+
 .form-wrapper {
   align-items: start;
 }

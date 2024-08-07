@@ -98,6 +98,12 @@ function solo_preprocess_html(&$variables): void {
   $solo_path = $solo_utilities . '/' . $solo_list;
   $variables['solo_path'] = $solo_path;
 
+  // Check if we're viewing a user profile page.
+  if ($route_name === 'entity.user.canonical') {
+    // Add a custom CSS class to the body tag.
+    $variables['attributes']['class'][] = 'user-profile-page';
+  }
+
   $theme_head_vars = ['site_css_injector',
     'site_css_dynamic',
     'site_import_google_font',

@@ -64,6 +64,7 @@ solo-global:
       css/components/solo-tables.css: { weight: 0 }
       css/components/solo-teaser-mode.css: { weight: 0 }
       css/components/solo-user-login.css: { weight: 0 }
+      css/components/solo-user-profile.css: { weight: 0 }
       css/components/solo-user-menu.css: { weight: 0 }
       css/components/solo-webform.css: { weight: 0 }
     theme:

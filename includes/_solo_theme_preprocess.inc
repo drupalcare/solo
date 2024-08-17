@@ -82,9 +82,9 @@ function _get_theme_setting_class($setting, $class_prefix) {
  */
 function _get_html_classes() {
   $fs_size = _get_theme_setting_class('site_global_font_size', 'fs');
-  $gab_size = _get_theme_setting_class('site_global_regions_gab', 'gab');
+  $gap_size = _get_theme_setting_class('site_global_regions_gap', 'gap');
 
-  return $fs_size . $gab_size;
+  return $fs_size . $gap_size;
 }
 
 /**
@@ -219,7 +219,7 @@ function solo_preprocess_html(&$variables): void {
     }
   }
 
-  if (theme_get_setting('site_global_font_size') || theme_get_setting('site_global_regions_gab')) {
+  if (theme_get_setting('site_global_font_size') || theme_get_setting('site_global_regions_gap')) {
     $variables['html_attributes']->setAttribute('class', _get_html_classes());
   }
 

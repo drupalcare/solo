@@ -55,13 +55,14 @@ function _get_menu_breakpoints_options() {
 /**
  * Helper function.
  */
-function _get_site_global_regions_gab() {
+function _get_site_global_regions_gap() {
   return [
     '16' => t('Default 16px / 1rem'),
     '24' => t('24px / 1.5rem'),
     '36' => t('36px / 2.25rem'),
     '48' => t('48px / 3rem'),
     '64' => t('64px / 4rem'),
+    'no' => t('None'),
   ];
 }
 

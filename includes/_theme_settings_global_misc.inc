@@ -25,7 +25,7 @@ $form['solo_settings']['settings_global_misc']['site_global_width'] = [
   '#title' => t("Website's Width - Solo Theme"),
   '#type' => 'select',
   '#options' => _get_site_width_options(),
-  '#default_value' => theme_get_setting('site_global_width'),
+  '#default_value' => theme_get_setting('site_global_width') ?? 'sw-1600',
   '#description' => t("<p><strong>You can adjust the entire website's width by choosing your preferred size in pixels or rem units.</strong></p>"),
 ];
 
@@ -56,7 +56,7 @@ foreach ($content_types as $type => $label) {
     '#title' => t("Width for @content_type", ['@content_type' => $label]),
     '#type' => 'select',
     '#options' => _get_site_width_options(),
-    '#default_value' => theme_get_setting('site_width_' . $type) ?: $global_width,
+    '#default_value' => theme_get_setting('site_width_' . $type) ?? $global_width,
     '#description' => t("<p><strong>You can adjust the width for the @content_type content type by choosing your preferred size in pixels or rem units.</strong></p>", ['@content_type' => $label]),
     '#states' => [
       'visible' => [
@@ -89,7 +89,7 @@ $form['solo_settings']['settings_global_misc']['site_global_breakpoints'] = [
   '#title' => t("Website's Breakpoints - Solo Theme"),
   '#type' => 'select',
   '#options' => _get_site_breakpoints_options(),
-  '#default_value' => theme_get_setting('site_global_breakpoints'),
+  '#default_value' => theme_get_setting('site_global_breakpoints') ?? 'sb-992',
   '#description' => t("<p><strong>Use them to adjust the global layout for a particular screen or device size.</strong></p>"),
 ];
 
@@ -97,15 +97,15 @@ $form['solo_settings']['settings_global_misc']['site_menu_breakpoints'] = [
   '#title' => t("Menu's Breakpoints - Solo Theme"),
   '#type' => 'select',
   '#options' => _get_menu_breakpoints_options(),
-  '#default_value' => theme_get_setting('site_menu_breakpoints'),
+  '#default_value' => theme_get_setting('site_menu_breakpoints') ?? 'mn-992',
   '#description' => t("<p><strong>Adjust the global layout for any responsive menu on a specific screen or device size using them.</strong></p>"),
 ];
 
-$form['solo_settings']['settings_global_misc']['site_global_regions_gab'] = [
+$form['solo_settings']['settings_global_misc']['site_global_regions_gap'] = [
   '#title' => t("Website Region's Spaces"),
   '#type' => 'select',
-  '#options' => _get_site_global_regions_gab(),
-  '#default_value' => theme_get_setting('site_global_regions_gab'),
+  '#options' => _get_site_global_regions_gap(),
+  '#default_value' => theme_get_setting('site_global_regions_gap') ?? '16',
   '#description' => t("<p><strong>You can adjust the entire website's padding by choosing your preferred size in pixels or rem units.</strong></p>"),
 ];
 
@@ -113,7 +113,7 @@ $form['solo_settings']['settings_global_misc']['site_global_font_size'] = [
   '#title' => t("Website's Font Size"),
   '#type' => 'select',
   '#options' => _get_site_global_font_size(),
-  '#default_value' => theme_get_setting('site_global_font_size'),
+  '#default_value' => theme_get_setting('site_global_font_size') ?? '16',
   '#description' => t("<p><strong>You can adjust the entire website's font size by choosing your preferred size in pixels or rem units.</strong></p>"),
 ];
 

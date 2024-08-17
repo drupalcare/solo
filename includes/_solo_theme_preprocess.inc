@@ -420,6 +420,8 @@ function _get_theme_variables() {
       'site_regions_bottom_rounded',
       'site_regions_footer_rounded',
       'site_regions_highlighted_disable',
+      'site_regions_welcome_disable',
+      'site_regions_welcome_width',
       'site_regions_top_disable',
       'site_regions_bottom_disable',
       'site_regions_footer_disable',
@@ -619,43 +621,30 @@ function solo_preprocess_page(&$variables) {
   _create_region_attributes($variables);
 
   // Initialize with the global width setting.
-  $site_width_class = theme_get_setting('site_global_width');
+  $final_widths = theme_get_setting('site_global_width');
+  $type_widths  = theme_get_setting('enable_custom_widths');
+  $node_widths  = theme_get_setting('enable_custom_node_width');
 
-  // Check if custom widths are enabled.
-  $enable_custom_widths = theme_get_setting('enable_custom_node_width');
-
-  // Get the current node.
-  $node = \Drupal::routeMatch()->getParameter('node');
-
-  if ($node instanceof NodeInterface) {
-    // Get the content type of the node.
-    $content_type = $node->bundle();
-
-    // Check for node-specific width.
-    $custom_width = '';
-    if ($enable_custom_widths) {
-      $node_widths = \Drupal::entityTypeManager()->getStorage('node_width')->loadByProperties(['node_id' => $node->id()]);
-      if (!empty($node_widths)) {
-        $custom_width = reset($node_widths)->get('width_class')->value;
-      }
-    }
-
-    // Check for content type-specific width if no custom width is set.
-    if (!$custom_width) {
+  if ($type_widths || $node_widths) {
+    $node = \Drupal::routeMatch()->getParameter('node');
+    if ($node instanceof NodeInterface) {
+      $content_type = $node->bundle();
+      // Check for content type-specific.
       $content_type_width = theme_get_setting('site_width_' . $content_type);
       if ($content_type_width) {
-        $site_width_class = $content_type_width;
+        $final_widths = $content_type_width;
       }
-    }
 
-    // Use custom width if set.
-    if ($custom_width) {
-      $site_width_class = $custom_width;
+      // Check for node-specific width.
+      $node_widths = \Drupal::entityTypeManager()->getStorage('node_width')->loadByProperties(['node_id' => $node->id()]);
+      if (!empty($node_widths)) {
+        $final_widths = reset($node_widths)->get('width_class')->value;
+      }
     }
   }
 
   // Pass the width class to the Twig template.
-  $variables['site_width_class'] = $site_width_class;
+  $variables['site_width_class'] = $final_widths;
 }
 
 /**

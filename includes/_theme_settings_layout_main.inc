@@ -29,15 +29,22 @@ if ($updated_regions['main']) {
       $form['solo_settings']["settings_main_container"]["main_2col"] = _create_region_layout_radio_two('main', $variables);
       $form['solo_settings']["settings_main_container"]["main_3col"] = _create_region_layout_radio_three('main');
       $form['solo_settings']["settings_main_container"]["site_regions_main_rounded"] = _rounded_region('main');
-      $form['solo_settings']["settings_main_container"]["site_regions_main_border"] = _border_region('main');
-
-      $form['solo_settings']['settings_main_container']['site_flip_main_left'] = [
-        '#type' => 'checkbox',
-        '#title' => t('Tick this box to rearrange mobile layout to show Main Content, then Left and Right Sidebars.'),
-        '#description'   => t('<p>This layout prioritizes the visibility of the main content when viewed on smaller screens.</p>'),
-        '#default_value' => theme_get_setting('site_flip_main_left'),
+      $form['solo_settings']['settings_main_container']['site_mobile_layout_order'] = [
+        '#type' => 'select',
+        '#title' => t('Select the layout order for mobile view'),
+        '#description' => t('<p>This setting allows you to choose the order in which the main content and sidebars are displayed on smaller screens.</p>'),
+        '#options' => [
+          'left_main_right' => t('Default Layout (Left, Main, Right)'),
+          'main_left_right' => t('Main Content First, then Left and Right Sidebars'),
+          'main_right_left' => t('Main Content First, then Right and Left Sidebars'),
+          'left_right_main' => t('Left Sidebar First, then Right Sidebar and Main Content'),
+          'right_left_main' => t('Right Sidebar First, then Left Sidebar and Main Content'),
+          'left_right_main' => t('Left and Right Sidebars First, then Main Content'),
+          'right_left_main' => t('Right and Left Sidebars First, then Main Content'),
+        ],
+        '#default_value' => theme_get_setting('site_mobile_layout_order'),
       ];
-
+      $form['solo_settings']["settings_main_container"]["site_regions_main_border"] = _border_region('main');
       $form['solo_settings']["settings_main_container"]["classes_{$region}"] = _generate_css_classes($region, $label);
 
       foreach ($attributes as $attribute_key => $attribute_label) {

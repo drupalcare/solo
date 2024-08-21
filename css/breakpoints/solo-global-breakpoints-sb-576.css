@@ -132,23 +132,103 @@
     justify-content: center;
   }
 
-  .main-container-inner.pb-flip-main {
-    display: grid;
+  /* Default Layout (Left, Main, Right) */
+  .main-container-inner.left-main-right {
+    grid-template-columns: 1fr;
+    grid-template-areas: "first"
+    "main"
+    "second";
+  }
+
+  .main-container-inner.left-main-right .sidebar-box-main {
+    grid-area: main;
+  }
+
+  .main-container-inner.left-main-right .sidebar-box-first {
+    grid-area: first;
+  }
+
+  .main-container-inner.left-main-right .sidebar-box-second {
+    grid-area: second;
+  }
+
+  /* Main Content First, then Left and Right Sidebars */
+  .main-container-inner.main-left-right {
     grid-template-columns: 1fr;
     grid-template-areas: "main"
     "first"
     "second";
   }
 
-  .main-container-inner.pb-flip-main .sidebar-box-main {
+  .main-container-inner.main-left-right .sidebar-box-main {
     grid-area: main;
   }
 
-  .main-container-inner.pb-flip-main .sidebar-box-first {
+  .main-container-inner.main-left-right .sidebar-box-first {
     grid-area: first;
   }
 
-  .main-container-inner.pb-flip-main .sidebar-box-second {
+  .main-container-inner.main-left-right .sidebar-box-second {
+    grid-area: second;
+  }
+
+  /* Main Content First, then Right and Left Sidebars */
+  .main-container-inner.main-right-left {
+    grid-template-columns: 1fr;
+    grid-template-areas: "main"
+    "second"
+    "first";
+  }
+
+  .main-container-inner.main-right-left .sidebar-box-main {
+    grid-area: main;
+  }
+
+  .main-container-inner.main-right-left .sidebar-box-first {
+    grid-area: first;
+  }
+
+  .main-container-inner.main-right-left .sidebar-box-second {
+    grid-area: second;
+  }
+
+  /* Left Sidebar First, then Right Sidebar and Main Content */
+  .main-container-inner.left-right-main {
+    grid-template-columns: 1fr;
+    grid-template-areas: "first"
+    "second"
+    "main";
+  }
+
+  .main-container-inner.left-right-main .sidebar-box-main {
+    grid-area: main;
+  }
+
+  .main-container-inner.left-right-main .sidebar-box-first {
+    grid-area: first;
+  }
+
+  .main-container-inner.left-right-main .sidebar-box-second {
+    grid-area: second;
+  }
+
+  /* Right Sidebar First, then Left Sidebar and Main Content */
+  .main-container-inner.right-left-main {
+    grid-template-columns: 1fr;
+    grid-template-areas: "second"
+    "first"
+    "main";
+  }
+
+  .main-container-inner.right-left-main .sidebar-box-main {
+    grid-area: main;
+  }
+
+  .main-container-inner.right-left-main .sidebar-box-first {
+    grid-area: first;
+  }
+
+  .main-container-inner.right-left-main .sidebar-box-second {
     grid-area: second;
   }
 

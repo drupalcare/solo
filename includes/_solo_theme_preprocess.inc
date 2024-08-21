@@ -426,7 +426,7 @@ function _get_theme_variables() {
       'site_regions_bottom_disable',
       'site_regions_footer_disable',
       'site_flip_header_menu',
-      'site_flip_main_left',
+      'site_mobile_layout_order',
       'primary_menu_border',
       'primary_menu_branding',
       'primary_menu_justify_content',
@@ -513,8 +513,9 @@ function solo_preprocess_page(&$variables) {
     $variables['#attached']['library'][] = 'solo/solo-menu-keyboard';
   }
 
-  if (theme_get_setting('site_flip_main_left')) {
-    $variables['flip_main'] = 'pb-flip-main';
+  if ($layout_order = theme_get_setting('site_mobile_layout_order')) {
+    $layout_class = str_replace('_', '-', $layout_order);
+    $variables['main_layout_order'] = $layout_class;
   }
 
   if (!theme_get_setting('system_messages_disable_dark')) {

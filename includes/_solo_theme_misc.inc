@@ -94,10 +94,10 @@ function _solo_utilities_get_user_selected_library() {
   }
 
   // Create an instance of LibraryLoadNegotiator and call evaluateRules.
-  $library_load_negotiator = \Drupal::service('solo_utilities.library_load_negotiator');
+  $color_schemes_negotiator = \Drupal::service('solo_utilities.color_schemes_negotiator');
 
   // Call the evaluateRules method to get the library.
-  $selected_library = $library_load_negotiator->evaluateRules();
+  $selected_library = $color_schemes_negotiator->evaluateRules();
 
   return $selected_library;
 }

@@ -839,3 +839,48 @@ function _solo_get_content_types() {
 
   return $content_types;
 }
+
+/**
+ * Helper function to check if a theme is in the Solo hierarchy.
+ *
+ * @param string $theme_name
+ *   The name of the theme to check.
+ *
+ * @return bool
+ *   TRUE if the theme or any of its base themes is 'solo', FALSE otherwise.
+ */
+function solo_utilities__check_solo_theme_hierarchy($theme_name) {
+  $theme_handler = \Drupal::service('theme_handler');
+  $theme_info = $theme_handler->getTheme($theme_name);
+
+  // If the theme is 'solo', return TRUE.
+  if ($theme_name === 'solo') {
+    return TRUE;
+  }
+
+  // If there are base themes, check them recursively.
+  if (!empty($theme_info->info['base theme'])) {
+    foreach ((array) $theme_info->info['base theme'] as $base_theme_name) {
+      if (solo_utilities__check_solo_theme_hierarchy($base_theme_name)) {
+        return TRUE;
+      }
+    }
+  }
+
+  // If 'solo' was not found in the hierarchy, return FALSE.
+  return FALSE;
+}
+
+/**
+ * Helper function to check if the Solo theme or its sub-themes are active.
+ *
+ * @return bool
+ *   TRUE if 'solo' or its sub-themes are in hierarchy, FALSE otherwise.
+ */
+function solo_utilities__check_solo_theme_hierarchy_active() {
+  // Get the front-end (default) theme's name from configuration.
+  $default_theme = \Drupal::config('system.theme')->get('default');
+
+  // Check if 'solo' is the default theme or in the base theme hierarchy.
+  return solo_utilities__check_solo_theme_hierarchy($default_theme);
+}

@@ -56,27 +56,50 @@ function _load_page_title_fonts(array &$attachments): void {
  * Helper function.
  */
 function _load_predefined_color_theme(array &$attachments): void {
-
+  // Default library path based on theme settings.
   $theme_category = theme_get_setting('theme_category');
-  if ($theme_category === 'none') {
-    // Set to empty or a placeholder value.
-    $is_theme = '';
-  }
-  else {
-    $is_theme_setting = theme_get_setting('predefined_current_theme');
+  $is_theme = '';
 
-    // Ensure $is_theme_setting is not null before exploding.
-    if ($is_theme_setting === NULL) {
-      // Set a default value or handle the error.
-      $is_theme_setting = '';
-    }
-
+  if ($theme_category !== 'none') {
+    $is_theme_setting = theme_get_setting('predefined_current_theme') ?? '';
     $theme_parts = explode('|', $is_theme_setting);
     $is_theme = count($theme_parts) > 1 ? $theme_parts[1] : $theme_parts[0];
   }
 
+  // Check if the solo_utilities module is installed.
+  if (\Drupal::moduleHandler()->moduleExists('solo_utilities')) {
+    // Fetch the user-selected library from solo_utilities.
+    $user_library = _solo_utilities_get_user_selected_library();
+
+    if (!empty($user_library)) {
+      // Attach the user-selected library if it exists.
+      $attachments['#attached']['library'][] = 'solo/' . $user_library;
+      // Early return if user library is set.
+      return;
+    }
+  }
+
+  // Fallback to the default theme library if no user-selected library.
   $theme_path = 'solo/' . $is_theme;
   $attachments['#attached']['library'][] = $theme_path;
+}
+
+/**
+ * Helper function.
+ */
+function _solo_utilities_get_user_selected_library() {
+  // Ensure the solo_utilities module is installed.
+  if (!\Drupal::moduleHandler()->moduleExists('solo_utilities')) {
+    return NULL;
+  }
+
+  // Create an instance of LibraryLoadNegotiator and call evaluateRules.
+  $library_load_negotiator = \Drupal::service('solo_utilities.library_load_negotiator');
+
+  // Call the evaluateRules method to get the library.
+  $selected_library = $library_load_negotiator->evaluateRules();
+
+  return $selected_library;
 }
 
 /**

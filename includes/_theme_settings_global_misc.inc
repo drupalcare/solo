@@ -70,14 +70,14 @@ $form['solo_settings']['settings_global_misc']['content_type_widths'] = [
 ];
 
 // Content type specific width settings.
-$global_width = theme_get_setting('site_global_width');
+
 $content_types = _solo_get_content_types();
 foreach ($content_types as $type => $label) {
   $form['solo_settings']['settings_global_misc']['content_type_widths']['site_width_' . $type] = [
     '#title' => t("Width for @content_type", ['@content_type' => $label]),
     '#type' => 'select',
-    '#options' => _get_site_width_options(),
-    '#default_value' => theme_get_setting('site_width_' . $type) ?? $global_width,
+    '#options' => _get_content_type_width_options(),
+    '#default_value' => theme_get_setting('site_width_' . $type) ?? '',
     '#description' => t("<p><strong>You can adjust the width for the @content_type content type by choosing your preferred size in pixels or rem units.</strong></p>", ['@content_type' => $label]),
     '#states' => [
       'visible' => [

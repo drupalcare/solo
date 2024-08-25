@@ -13,6 +13,23 @@
 /**
  * Helper function.
  */
+function _get_content_type_width_options() {
+  return [
+    '' => t('None'),
+    'sw-800' => t('800px / 50rem'),
+    'sw-1024' => t('1024px / 64rem'),
+    'sw-1280' => t('1280px / 80rem'),
+    'sw-1440' => t('1440px / 90rem'),
+    'sw-1600' => t('1600px / 100rem'),
+    'sw-1920' => t('1920px / 120rem'),
+    'sw-2560' => t('2560px / 160rem'),
+    'sw-100' => t('100%'),
+  ];
+}
+
+/**
+ * Helper function.
+ */
 function _get_site_width_options() {
   return [
     'sw-800' => t('800px / 50rem'),

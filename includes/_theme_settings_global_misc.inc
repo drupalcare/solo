@@ -70,7 +70,6 @@ $form['solo_settings']['settings_global_misc']['content_type_widths'] = [
 ];
 
 // Content type specific width settings.
-
 $content_types = _solo_get_content_types();
 foreach ($content_types as $type => $label) {
   $form['solo_settings']['settings_global_misc']['content_type_widths']['site_width_' . $type] = [

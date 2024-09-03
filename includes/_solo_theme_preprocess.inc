@@ -88,6 +88,31 @@ function _get_html_classes() {
 }
 
 /**
+ * Helper function.
+ */
+function _get_enabled_skip_links() {
+  $enabled_skip_links = [];
+
+  if (theme_get_setting('skip_header_content')) {
+    $enabled_skip_links['skip_header_content'] = TRUE;
+  }
+
+  if (theme_get_setting('skip_navigation_content')) {
+    $enabled_skip_links['skip_navigation_content'] = TRUE;
+  }
+
+  if (theme_get_setting('skip_main_content')) {
+    $enabled_skip_links['skip_main_content'] = TRUE;
+  }
+
+  if (theme_get_setting('skip_footer_content')) {
+    $enabled_skip_links['skip_footer_content'] = TRUE;
+  }
+
+  return $enabled_skip_links;
+}
+
+/**
  * Implements hook_preprocess_HOOK() for HTML document templates.
  */
 function solo_preprocess_html(&$variables): void {
@@ -247,6 +272,8 @@ function solo_preprocess_html(&$variables): void {
 
   // Add admin context to the body class.
   _add_admin_context_to_body_class($variables);
+
+  $variables['enabled_skip_links'] = _get_enabled_skip_links();
 
 }
 

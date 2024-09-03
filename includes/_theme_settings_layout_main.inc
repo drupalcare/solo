@@ -33,18 +33,17 @@ if ($updated_regions['main']) {
         '#type' => 'select',
         '#title' => t('Select the layout order for mobile view'),
         '#description' => t('<p>This setting allows you to choose the order in which the main content and sidebars are displayed on smaller screens.</p>'),
-        '#options' => [
-          'left_main_right' => t('Default Layout (Left, Main, Right)'),
-          'main_left_right' => t('Main Content First, then Left and Right Sidebars'),
-          'main_right_left' => t('Main Content First, then Right and Left Sidebars'),
-          'left_right_main' => t('Left Sidebar First, then Right Sidebar and Main Content'),
-          'right_left_main' => t('Right Sidebar First, then Left Sidebar and Main Content'),
-          'left_right_main' => t('Left and Right Sidebars First, then Main Content'),
-          'right_left_main' => t('Right and Left Sidebars First, then Main Content'),
-        ],
+        '#options' => _get_mobile_layout_options(),
         '#default_value' => theme_get_setting('site_mobile_layout_order'),
       ];
       $form['solo_settings']["settings_main_container"]["site_regions_main_border"] = _border_region('main');
+
+      $form['solo_settings']["settings_main_container"]['skip_main_content'] = [
+        '#type' => 'checkbox',
+        '#title' => t('Enable skip to main content link'),
+        '#default_value' => theme_get_setting('skip_main_content'),
+      ];
+
       $form['solo_settings']["settings_main_container"]["classes_{$region}"] = _generate_css_classes($region, $label);
 
       foreach ($attributes as $attribute_key => $attribute_label) {

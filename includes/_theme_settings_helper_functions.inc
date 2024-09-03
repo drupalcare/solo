@@ -13,6 +13,21 @@
 /**
  * Helper function.
  */
+function _get_mobile_layout_options() {
+  return [
+    'left_main_right' => t('Default Layout (Left, Main, Right)'),
+    'main_left_right' => t('Main Content First, then Left and Right Sidebars'),
+    'main_right_left' => t('Main Content First, then Right and Left Sidebars'),
+    'left_right_main' => t('Left Sidebar First, then Right Sidebar and Main Content'),
+    'right_left_main' => t('Right Sidebar First, then Left Sidebar and Main Content'),
+    'left_right_main' => t('Left and Right Sidebars First, then Main Content'),
+    'right_left_main' => t('Right and Left Sidebars First, then Main Content'),
+  ];
+}
+
+/**
+ * Helper function.
+ */
 function _get_content_type_width_options() {
   return [
     '' => t('None'),

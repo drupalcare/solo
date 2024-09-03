@@ -29,8 +29,6 @@
   const searchBlock = document.getElementById('fixed-search-block');
   const openSearchButtons = document.querySelectorAll('.search-button-open>button');
   const closeSearchButton = document.querySelector('.search-button-close>button');
-  const skipToContent = document.getElementById('skip-to-content');
-  const mainContent = document.getElementById('main-content');
 
   // Function to add a click event listener to a specified element
   const searchBlockCloseOpen = (elements, callback) => {
@@ -137,13 +135,6 @@
         // Initialize the search block as hidden and non-focusable
         searchBlockToggle(false);
 
-        // Handle skip to content link
-        if (skipToContent) {
-          skipToContent.addEventListener('click', (event) => {
-            event.preventDefault();
-            mainContent.focus();
-          });
-        }
       }
     };
   }

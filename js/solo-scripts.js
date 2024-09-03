@@ -9,6 +9,10 @@
 ((Drupal, drupalSettings, once) => {
   'use strict';
 
+  const mainContent = document.getElementById('main-content');
+  const header = document.getElementById('header-content');
+  const mainNavigation = document.getElementById('main-navigation-content');
+  const footer = document.getElementById('footer-content');
   // Get current widht
   const getCurrentWidth = () => window.innerWidth || document.documentElement
     .clientWidth || document.body.clientWidth;
@@ -141,6 +145,24 @@
           img.src = img.src;
         });
       };
+
+      // Function to handle skip links
+      const handleSkipLinkClick = (skipLink, targetElement) => {
+        if (skipLink && targetElement) {
+          skipLink.addEventListener('click', (event) => {
+            event.preventDefault();
+            targetElement.setAttribute('tabindex', '-1'); // Make the target element focusable
+            targetElement.focus();
+            targetElement.removeAttribute('tabindex'); // Clean up tabindex after focus
+          });
+        }
+      };
+
+      // Handle skip links for various sections
+      handleSkipLinkClick(document.querySelector('.skip-link[href="#header-content"]'), header);
+      handleSkipLinkClick(document.querySelector('.skip-link[href="#main-navigation-content"]'), mainNavigation);
+      handleSkipLinkClick(document.querySelector('.skip-link[href="#main-content"]'), mainContent);
+      handleSkipLinkClick(document.querySelector('.skip-link[href="#footer-content"]'), footer);
 
       // Call the function to handle broken images
       handleBrokenImages(context);

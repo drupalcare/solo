@@ -19,6 +19,12 @@ if (array_key_exists('primary_menu', $updated_regions['mix'])) {
   $form['solo_settings']["settings_{$region}"] = _generate_form_details($label);
   $form['solo_settings']["settings_{$region}"]["classes_{$region}"] = _generate_css_classes($region, $label);
 
+  $form['solo_settings']["settings_{$region}"]['skip_navigation_content'] = [
+    '#type' => 'checkbox',
+    '#title' => t('Enable skip to main navigation link'),
+    '#default_value' => theme_get_setting('skip_navigation'),
+  ];
+
   $form['solo_settings']["settings_{$region}"]['primary_menu_on_hover'] = [
     '#type' => 'checkbox',
     '#title' => t('Tick this box if you prefer to show the main menu dropdowns when hovering over them with the mouse, instead of clicking. (Big screen only)'),

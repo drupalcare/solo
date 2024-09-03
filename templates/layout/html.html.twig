@@ -40,12 +40,22 @@
   </head>
   <body{{ attributes.addClass(body_classes) }}>
     {#
-      Keyboard navigation/accessibility link to main content section in
+      Keyboard navigation/accessibility link to four sections in
       page.html.twig.
     #}
-    <a href="#main-content" class="visually-hidden focusable skip-link">
-      {{ 'Skip to main content'|t }}
-    </a>
+    {% if enabled_skip_links.skip_header_content %}
+      <a href="#header-content" class="visually-hidden focusable skip-link">{{ 'Skip to header'|t }}</a>
+    {% endif %}
+    {% if enabled_skip_links.skip_navigation_content %}
+      <a href="#main-navigation-content" class="visually-hidden focusable skip-link">{{ 'Skip to main navigation'|t }}</a>
+    {% endif %}
+    {% if enabled_skip_links.skip_main_content %}
+      <a href="#main-content" class="visually-hidden focusable skip-link">{{ 'Skip to main content'|t }}</a>
+    {% endif %}
+    {% if enabled_skip_links.skip_footer_content %}
+      <a href="#footer-content" class="visually-hidden focusable skip-link">{{ 'Skip to footer'|t }}</a>
+    {% endif %}
+
     {{ page_top }}
     {{ page }}
     {{ page_bottom }}

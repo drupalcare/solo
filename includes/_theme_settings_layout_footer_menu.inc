@@ -22,7 +22,7 @@ if (array_key_exists('footer_menu', $updated_regions['mix'])) {
   $form['solo_settings']["settings_{$region}"]['skip_footer_content'] = [
     '#type' => 'checkbox',
     '#title' => t('Enable skip to footer link'),
-    '#default_value' => theme_get_setting('skip_footer'),
+    '#default_value' => theme_get_setting('skip_footer_content'),
   ];
 
   foreach ($attributes as $attribute_key => $attribute_label) {

@@ -22,7 +22,7 @@ if (array_key_exists('primary_menu', $updated_regions['mix'])) {
   $form['solo_settings']["settings_{$region}"]['skip_navigation_content'] = [
     '#type' => 'checkbox',
     '#title' => t('Enable skip to main navigation link'),
-    '#default_value' => theme_get_setting('skip_navigation'),
+    '#default_value' => theme_get_setting('skip_navigation_content'),
   ];
 
   $form['solo_settings']["settings_{$region}"]['primary_menu_on_hover'] = [

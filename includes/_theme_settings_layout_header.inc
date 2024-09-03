@@ -28,7 +28,7 @@ if (array_key_exists('header', $updated_regions['mix'])) {
   $form['solo_settings']["settings_{$region}"]['skip_header_content'] = [
     '#type' => 'checkbox',
     '#title' => t('Enable skip to header link'),
-    '#default_value' => theme_get_setting('skip_header'),
+    '#default_value' => theme_get_setting('skip_header_content'),
   ];
 
   $form['solo_settings']["settings_{$region}"]['header_sitename_center_default'] = [

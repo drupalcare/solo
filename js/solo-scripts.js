@@ -8,14 +8,8 @@
  */
 ((Drupal, drupalSettings, once) => {
   'use strict';
-
-  const mainContent = document.getElementById('main-content');
-  const header = document.getElementById('header-content');
-  const mainNavigation = document.getElementById('main-navigation-content');
-  const footer = document.getElementById('footer-content');
-  // Get current widht
-  const getCurrentWidth = () => window.innerWidth || document.documentElement
-    .clientWidth || document.body.clientWidth;
+  // Get current width
+  const getCurrentWidth = () => window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
 
   const checkRegionsWidth = () => {
     const regions = document.querySelectorAll('.region-inner, .copyright-inner, .footer-menu-inner');
@@ -42,10 +36,11 @@
     });
   };
 
-  // Add/remove css classes according to screen changes.
-  let mediaSize = function() {
+  // Add/remove CSS classes according to screen changes.
+  const mediaSize = () => {
     const currentWidth = getCurrentWidth();
     const bodyTag = document.body;
+
     // Remove all previous size classes to prevent class duplication
     bodyTag.classList.remove('small-screen', 'medium-screen', 'large-screen');
 
@@ -58,34 +53,30 @@
     }
 
     checkRegionsWidth();
-
   };
 
   Drupal.behaviors.soloTheme = {
     attach: function(context, settings) {
-
       // Select all spans with the class 'file--mime-application-octet-stream'
       const fileSpans = context.querySelectorAll('.field--type-file span.file');
-
-      fileSpans.forEach(function (span) {
+      fileSpans.forEach(span => {
         const link = span.querySelector('a');
         if (link && span.contains(link)) {
           const url = link.getAttribute('href');
           const urlParts = url.split('.');
           const fileExtension = urlParts[urlParts.length - 1]; // Get the last part as the file extension
           if (fileExtension) {
-            // Add the file extension as a class to the span
-            span.classList.add(`file--${fileExtension}`);
+            span.classList.add(`file--${fileExtension}`); // Add file extension as a class to the span
           }
         }
       });
 
       // Ensure code only runs once per element
-      const footerMenu = document.querySelector('#footer-menu', context);
+      const footerMenu = context.querySelector('#footer-menu');
       if (footerMenu) {
         const footerFormBg = window.getComputedStyle(footerMenu).backgroundColor;
         const footerFormTxt = window.getComputedStyle(footerMenu).color;
-        let footerMenuForm = document.querySelector('#footer-menu form', context);
+        let footerMenuForm = context.querySelector('#footer-menu form');
 
         if (footerMenuForm) {
           footerMenuForm.style.background = footerFormBg;
@@ -93,17 +84,14 @@
         }
       }
 
-      // Remove attribute 'open'
-      const detailsElements = document.querySelectorAll('#system-theme-settings details');
+      // Remove attribute 'open' from details elements in theme settings
+      const detailsElements = context.querySelectorAll('#system-theme-settings details');
       detailsElements.forEach(element => {
         element.removeAttribute('open');
       });
 
-      // Select all <img> and <picture> elements inside an <a> tag, excluding
-      // those with a specific class and also excluding those with classes
-      // that contain the word 'icon'
-      let clickableElements = document.querySelectorAll('a > img, a > picture');
-
+      // Filter <img> and <picture> elements inside <a> tags
+      let clickableElements = context.querySelectorAll('a > img, a > picture');
       const filteredElements = Array.from(clickableElements).filter(el => {
         // Check if any parent up to the root has specific classes to exclude
         let ancestor = el.parentElement;
@@ -122,8 +110,8 @@
         return true;
       });
 
-      // Apply the class to the parent <a> tags
-      filteredElements.forEach(function(el) {
+      // Apply class to the parent <a> tags
+      filteredElements.forEach(el => {
         el.parentElement.classList.add('img--is-clickable');
       });
 
@@ -146,33 +134,74 @@
         });
       };
 
-      // Function to handle skip links
-      const handleSkipLinkClick = (skipLink, targetElement) => {
-        if (skipLink && targetElement) {
-          skipLink.addEventListener('click', (event) => {
-            event.preventDefault();
-            targetElement.setAttribute('tabindex', '-1'); // Make the target element focusable
-            targetElement.focus();
-            targetElement.removeAttribute('tabindex'); // Clean up tabindex after focus
-          });
-        }
-      };
+        // Flag to track if a skip link was clicked
+        let skipLinkClicked = false;
 
-      // Handle skip links for various sections
-      handleSkipLinkClick(document.querySelector('.skip-link[href="#header-content"]'), header);
-      handleSkipLinkClick(document.querySelector('.skip-link[href="#main-navigation-content"]'), mainNavigation);
-      handleSkipLinkClick(document.querySelector('.skip-link[href="#main-content"]'), mainContent);
-      handleSkipLinkClick(document.querySelector('.skip-link[href="#footer-content"]'), footer);
+        // Function to handle skip links
+        const handleSkipLinkClick = (skipLinkSelector, targetSelector) => {
+          const skipLink = document.querySelector(skipLinkSelector);
+          const targetElement = document.querySelector(targetSelector);
+
+          if (skipLink && targetElement) {
+            skipLink.addEventListener('click', (event) => {
+              event.preventDefault();
+
+              // Set flag to indicate a skip link was clicked
+              skipLinkClicked = true;
+
+              // Make the target element focusable temporarily
+              targetElement.setAttribute('tabindex', '-1');
+              targetElement.focus({ preventScroll: true });
+              window.scrollTo({
+                top: targetElement.offsetTop,
+                behavior: 'smooth'
+              });
+
+              setTimeout(() => {
+                targetElement.removeAttribute('tabindex');
+              }, 500);
+
+              // Remove the fragment identifier from the URL without reloading the page
+              history.replaceState(null, '', window.location.pathname);
+            });
+          }
+        };
+
+        // Handle skip links for various sections
+        handleSkipLinkClick('.skip-link[href="#header-content"]', '#header-content');
+        handleSkipLinkClick('.skip-link[href="#main-navigation-content"]', '#main-navigation-content');
+        handleSkipLinkClick('.skip-link[href="#main-content"]', '#main-content');
+        handleSkipLinkClick('.skip-link[href="#footer-content"]', '#footer-content');
+
+        // Prevent automatic focus if URL has a fragment and was triggered by a skip link
+        if (window.location.hash && skipLinkClicked) {
+          const targetElement = document.querySelector(window.location.hash);
+
+          if (targetElement) {
+            window.scrollTo({
+              top: targetElement.offsetTop,
+              behavior: 'smooth'
+            });
+            targetElement.setAttribute('tabindex', '-1');
+            targetElement.focus({ preventScroll: true });
+            setTimeout(() => {
+              targetElement.removeAttribute('tabindex');
+            }, 500);
+          }
+        }
 
       // Call the function to handle broken images
       handleBrokenImages(context);
 
+      // Initial media size check and on resize event
       mediaSize();
+      let resizeTimeout;
       window.addEventListener('resize', () => {
-        mediaSize();
+        clearTimeout(resizeTimeout);
+        resizeTimeout = setTimeout(() => {
+          mediaSize();
+        }, 200);
       });
-
-
     }
   };
 

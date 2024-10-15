@@ -163,6 +163,16 @@
     margin: 0;
   }
 
+  .links.inline {
+    justify-content: left;
+    padding: 0;
+  }
+
+  .links.inline li:first-child {
+    justify-content: left;
+    padding-left: 0;
+  }
+
 }
 
 @media (max-width:20rem) {

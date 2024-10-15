@@ -246,7 +246,6 @@
 }
 
 @media (max-width:36rem) {
-  .links.inline,
   .pager__items,
   .solo-inner .navigation__default {
     justify-content: left;

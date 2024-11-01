@@ -31,11 +31,14 @@
  * @see template_preprocess_views_view_table()
  */
 #}
-{% set classes = [
+{%
+  set classes = [
     'solo-table-all',
+    'views-table',
+    'views-view-table',
     'cols-' ~ header|length,
     responsive ? 'responsive-enabled',
-    sticky ? 'sticky-enabled',
+    sticky ? 'position-sticky sticky-header',
   ]
 %}
 <div class="solo-responsive">

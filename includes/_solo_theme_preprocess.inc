@@ -6,6 +6,7 @@
  */
 
 use Drupal\Component\Utility\Html;
+use Drupal\Component\Utility\UrlHelper;
 use Drupal\Core\Datetime\DrupalDateTime;
 use Drupal\Core\Entity\EntityInterface;
 use Drupal\Core\File\FileSystemInterface;
@@ -1120,4 +1121,23 @@ function _maintenance_library(&$variables): void {
 function solo_preprocess_maintenance_page(&$variables): void {
   _set_site_name($variables);
   _maintenance_library($variables);
+}
+
+/**
+ * Implements template_preprocess_HOOK() for views_view_table.
+ */
+function solo_preprocess_views_view_table(array &$variables) {
+  // Apply sortable-heading logic if needed.
+  if (!empty($variables['header'])) {
+    foreach ($variables['header'] as &$header_cell) {
+      if (!empty($header_cell['url'])) {
+        $parsed_url = UrlHelper::parse($header_cell['url']);
+        $query = !empty($parsed_url['query']) ? $parsed_url['query'] : [];
+
+        if (isset($query['order']) && isset($query['sort'])) {
+          $header_cell['attributes']->addClass('sortable-heading');
+        }
+      }
+    }
+  }
 }

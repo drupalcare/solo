@@ -73,3 +73,31 @@
 .page-wrapper table td .form-type-checkbox {
   margin: 0 !important;
 }
+
+.page-wrapper .solo-table-all th.hide-empty-column,
+.page-wrapper .solo-table-all td.hide-empty-column,
+.page-wrapper .solo-table-all th.priority-low,
+.page-wrapper .solo-table-all th.priority-medium,
+.page-wrapper .solo-table-all td.priority-low,
+.page-wrapper .solo-table-all td.priority-medium {
+  display: none;
+}
+
+@media (min-width: 36rem) {
+  .page-wrapper .solo-table-all th.priority-medium,
+  .page-wrapper .solo-table-all td.priority-medium {
+    display: table-cell;
+  }
+}
+
+@media (min-width: 62rem) {
+  .page-wrapper .solo-table-all th.priority-low,
+  .page-wrapper .solo-table-all td.priority-low {
+    display: table-cell;
+  }
+}
+
+.page-wrapper .tabledrag-toggle-weight-wrapper + table,
+.page-wrapper .tabledrag-toggle-weight-wrapper + .tableresponsive-toggle-columns + table {
+  margin-block-start: 0;
+}

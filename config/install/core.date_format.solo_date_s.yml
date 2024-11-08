@@ -7,4 +7,4 @@ dependencies:
 id: solo_date_s
 label: 'Solo Date Short'
 locked: false
-pattern: 'j  F,  Y'
+pattern: 'F j, Y'

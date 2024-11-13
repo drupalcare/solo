@@ -20,7 +20,7 @@ a.img--is-clickable {
 a.img--is-clickable > img.solo-image,
 a.img--is-clickable > picture > img.solo-image {
   width: 100%;
-  float: left;
+  float: inline-start;
 }
 
 .image-auto a.img--is-clickable > img.solo-image,

@@ -4,7 +4,8 @@
 
 h1.page-title-text {
   display: grid;
-  padding: var(--solo-px32) 0;
+  padding-block: var(--solo-px32);
+  padding-inline: 0;
 }
 
 h1.page-title-text span {
@@ -36,7 +37,8 @@ h1.page-title-text {
   h1.page-title-text {
     font-size: var(--solo-px36);
     line-height: calc(2 * var(--solo-px22));
-    padding: var(--solo-px16) 0;
+    padding-block: var(--solo-px16);
+    padding-inline: 0;
   }
 
 }
@@ -45,7 +47,8 @@ h1.page-title-text {
   h1.page-title-text {
     font-size: var(--solo-px24);
     line-height: calc(2 * var(--solo-px14));
-    padding: var(--solo-px8) 0;
+    padding-block: var(--solo-px8);
+    padding-inline: 0;
   }
 
 }
@@ -54,7 +57,8 @@ h1.page-title-text {
   h1.page-title-text {
     font-size: var(--solo-px18);
     line-height: var(--solo-px22);
-    padding: var(--solo-px8) 0;
+    padding-block: var(--solo-px8);
+    padding-inline: 0;
   }
 
 }

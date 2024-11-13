@@ -12,7 +12,7 @@ Acoustic White #EFECE1 beig
   color: var(--r-tx);
   border-color: var(--r-br);
   background-color: var(--r-bg);
-  --r-header-bg: linear-gradient(to left top, #ffffff, #f8f4ff);
+  --r-header-bg: linear-gradient(to start top, #ffffff, #f8f4ff);
   --r-header-tx: #1f3550;
   --r-menu-tx-h: #0c0d0f;
   --r-menu-bg-h: #c4c8cd;
@@ -136,7 +136,7 @@ h3 a) {
 
 header.header,
 div.page-title.lone {
-  --r-bg: linear-gradient(to left top, #ffffff, #f8f4ff);
+  --r-bg: linear-gradient(to start top, #ffffff, #f8f4ff);
   background: var(--r-bg);
 }
 

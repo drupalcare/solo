@@ -7,7 +7,7 @@
 .solo-inner.navigation__menubar-account {
   display: flex;
   flex-wrap: wrap;
-  justify-content: right;
+  justify-content: end;
   margin: 0;
   padding: 0;
 }
@@ -17,7 +17,7 @@
 }
 
 .solo-inner .navigation__menubar-account li {
-  float: right;
+  float: inline-end;
   margin: 0;
   padding: 0;
   display: inline-flex;
@@ -25,7 +25,8 @@
 
 .solo-inner .navigation__menubar-account li a {
   text-align: center;
-  padding: var(--solo-px8) var(--solo-px16) !important;
+  padding-block: var(--solo-px8) !important;
+  padding-inline: var(--solo-px16) !important;
   min-width: 90px;
 }
 

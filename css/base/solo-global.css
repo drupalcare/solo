@@ -47,20 +47,34 @@ h3,
 .site-slogan {
   font-weight: 700;
   font-family: var(--solo-h1);
-  margin: var(--solo-px12) 0;
+  margin-block: var(--solo-px12);
+  margin-inline: 0;
 }
 
 h4,
 h5,
 h6 {
   font-weight: normal;
-  margin: var(--solo-px8) 0;
+  margin-block: var(--solo-px8);
+  margin-inline: 0;
+}
+
+[dir="rtl"] ol,
+[dir="rtl"] ul {
+  direction: rtl;
+  text-align: var(--solo-text-align-start);
+}
+
+[dir="rtl"] .breadcrumb-menu li .breadcrumb-sep {
+  direction: rtl;
+  transform: scaleX(-1);
 }
 
 hr {
   border: 0;
-  border-top: var(--solo-px2) solid var(--r-br, var(--r-br-b));
-  margin: var(--solo-px20) 0;
+  border-block-start: var(--solo-px2) solid var(--r-br, var(--r-br-b));
+  margin-block: var(--solo-px20);
+  margin-inline: 0;
 }
 
 .solo-image {
@@ -70,9 +84,6 @@ hr {
 
 img {
   vertical-align: middle;
-}
-
-img {
   max-width: 100%;
   height: auto;
 }
@@ -84,7 +95,6 @@ img {
   text-align: center;
   font-size: 14px;
 }
-
 
 /* End Var tags */
 .solo-container::after,
@@ -120,7 +130,8 @@ img {
 }
 
 .solo-ul li {
-  padding: var(--solo-px8) var(--solo-px16);
+  padding-block: var(--solo-px8);
+  padding-inline: var(--solo-px16);
 }
 
 /* Button */
@@ -152,8 +163,10 @@ img {
 .block-user-login-block form+.item-list ul li a {
   border-width: var(--solo-px1);
   border-style: solid;
-  padding: var(--solo-px10) var(--solo-px24);
-  margin: var(--solo-px6) auto;
+  padding-block: var(--solo-px10);
+  padding-inline: var(--solo-px24);
+  margin-block: var(--solo-px6);
+  margin-inline: auto;
   float: none;
   text-align: center;
 }
@@ -165,14 +178,14 @@ img {
 
 .solo-button.button--small {
   padding: var(--solo-px8);
-  margin: var(--solo-px2) auto;
+  margin-block: var(--solo-px2);
+  margin-inline: auto;
 }
 
 /* Forms Elements */
 .form-type-date > input {
   max-height: 3.125rem;
 }
-
 
 .solo-check,
 .solo-radio,
@@ -192,7 +205,8 @@ input[type="text"],
 input[type="email"],
 input[type="password"] {
   max-width: 100%;
-  padding: var(--solo-px10) var(--solo-px8);
+  padding-block: var(--solo-px10);
+  padding-inline: var(--solo-px8);
   display: block;
   width: 100%;
   border: var(--solo-px1) solid var(--r-br, var(--r-br-b));
@@ -205,25 +219,33 @@ select,
   display: block;
   line-height: inherit;
   border: var(--solo-px1) solid var(--r-br, var(--r-br-b));
-  padding: var(--solo-px10) var(--solo-px40) var(--solo-px10) var(--solo-px8);
+  padding-block: var(--solo-px10);
+  padding-inline-start: var(--solo-px8);
+  padding-inline-end: var(--solo-px40);
   width: 100%;
   background-image: var(--solo-select-arrow-icon);
   background-repeat: no-repeat;
-  background-position: right var(--solo-px10) center;
+  background-position: var(--select-arrow, right var(--solo-px10)) center;
   font-family: inherit;
   font-size: inherit;
   -webkit-appearance: none;
   appearance: none;
 }
 
+/* Adjust for RTL */
+[dir="rtl"] select,
+[dir="rtl"] .solo-select {
+  --select-arrow: left var(--solo-px10);
+}
+
 .dropbutton-wrapper > div {
   border: var(--solo-px1) solid var(--r-br, var(--r-br-b));
-  padding-top: var(--solo-px6);
-  padding-bottom: var(--solo-px6);
+  padding-block-start: var(--solo-px6);
+  padding-block-end: var(--solo-px6);
 }
 
 .dropbutton-multiple.open .dropbutton-arrow {
-  top: var(--solo-px20);
+  inset-block-start: var(--solo-px20);
 }
 
 select[disabled] {
@@ -242,11 +264,13 @@ select.error:focus {
 select[multiple] {
   height: auto;
   background-image: none;
-  padding: var(--solo-px4) var(--solo-px8);
+  padding-block: var(--solo-px4);
+  padding-inline: var(--solo-px8);
 }
 
 select[multiple] option {
-  padding: var(--solo-px4) var(--solo-px8);
+  padding-block: var(--solo-px4);
+  padding-inline: var(--solo-px8);
 }
 
 ol {
@@ -259,22 +283,25 @@ ol {
 
 .field-prefix,
 .field-suffix {
-  padding: var(--solo-px16) var(--solo-px8);
+  padding-block: var(--solo-px16);
+  padding-inline: var(--solo-px8);
   vertical-align: middle;
 }
 
 .solo-padding {
-  padding: var(--solo-px8) var(--solo-px16);
+  padding-block: var(--solo-px8);
+  padding-inline: var(--solo-px16);
 }
 
 .solo-container,
 .solo-panel {
-  padding: var(--solo-px3) var(--solo-px16);
+  padding-block: var(--solo-px3);
+  padding-inline: var(--solo-px16);
 }
 
 .solo-panel {
-  margin-top: var(--solo-px16);
-  margin-bottom: var(--solo-px16);
+  margin-block-start: var(--solo-px16);
+  margin-block-end: var(--solo-px16);
 }
 
 .solo-small {
@@ -293,8 +320,9 @@ ol {
 }
 
 .solo-bar .solo-bar-item {
-  padding: var(--solo-px8) var(--solo-px16);
-  float: left;
+  padding-block: var(--solo-px8);
+  padding-inline: var(--solo-px16);
+  float: inline-start;
   width: auto;
   border: none;
   display: block;
@@ -302,8 +330,8 @@ ol {
 }
 
 .solo-section {
-  margin-top: var(--solo-px16);
-  margin-bottom: var(--solo-px16);
+  margin-block-start: var(--solo-px16);
+  margin-block-end: var(--solo-px16);
 }
 
 .solo-block {
@@ -318,21 +346,21 @@ ol {
 
 .links.inline {
   display: flex;
-  justify-content: right;
+  justify-content: end;
   font-size: var(--solo-px14);
 }
 
 form fieldset:not(td fieldset) {
   border: 1px solid var(--r-br, var(--r-br-b)) !important;
-  margin-top: var(--solo-px12);
+  margin-block-start: var(--solo-px12);
 }
 
 /* Global Classes */
 .solo-sticky {
   position: -webkit-sticky;
   position: sticky;
-  top: 0;
-  left: 0;
+  inset-block-start: 0;
+  inset-inline-start: 0;
   width: 100%;
   height: auto;
 }

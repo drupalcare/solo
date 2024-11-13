@@ -24,8 +24,8 @@
 .page-wrapper .solo-outer.animate-border .region-inner:not(.main-box-inner)::before {
   content: '';
   position: absolute;
-  top: 0;
-  left: 0;
+  inset-block-start: 0;
+  inset-inline-start: 0;
   width: 0;
   height: 0;
   background-color: transparent;
@@ -39,8 +39,8 @@
 .page-wrapper .solo-outer.animate-border .region-inner:not(.main-box-inner)::after {
   content: '';
   position: absolute;
-  bottom: 0;
-  right: 0;
+  inset-block-end: 0;
+  inset-inline-end: 0;
   width: 0;
   height: 0;
   background-color: transparent;

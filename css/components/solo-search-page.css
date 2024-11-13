@@ -22,13 +22,15 @@ form.search-form>.form-wrapper>.form-item {
 
 form.search-form>.form-wrapper>.form-submit {
   grid-area: form-submit;
-  margin: 0 0 var(--solo-px8) 0;
+  margin-block-end: var(--solo-px8);
+  margin-inline: 0;
+  margin-block-start: 0;
   width: 100%;
 }
 
 form.search-form .form-wrapper>.button--primary {
-  padding-right: var(--solo-px3) !important;
-  padding-left: var(--solo-px3) !important;
+  padding-inline-end: var(--solo-px3) !important;
+  padding-inline-start: var(--solo-px3) !important;
 }
 
 form.search-form>* {
@@ -36,7 +38,8 @@ form.search-form>* {
 }
 
 .path-search .solo-row.item-list>h3 {
-  padding: 0 var(--solo-px16);
+  padding-block: 0;
+  padding-inline: var(--solo-px16);
   font-size: var(--solo-px18);
 }
 
@@ -59,7 +62,7 @@ form.search-form>* {
 
 .path-search .search-form .search-advanced #edit-lang-fieldset>.fieldset-wrapper,
 .path-search .search-form .search-advanced #edit-types-fieldset>.fieldset-wrapper {
-  margin-top: 0 !important;
+  margin-block-start: 0 !important;
 }
 
 .path-search .search-form .search-advanced #edit-lang-fieldset>legend,

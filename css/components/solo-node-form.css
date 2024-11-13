@@ -6,7 +6,8 @@ details.form-wrapper::after {
 
 details.form-wrapper {
   padding: 0 !important;
-  margin-bottom: var(--solo-px16) !important;
+  margin-block-end: var(--solo-px16) !important;
+  margin-inline: 0 !important;
   line-height: inherit;
   color: inherit;
   box-shadow: 0 1px 4px var(--r-br, var(--r-br-b));
@@ -14,16 +15,20 @@ details.form-wrapper {
 
 details.form-wrapper > summary {
   cursor: pointer;
-  padding: var(--solo-px8) var(--solo-px16);
+  padding-block: var(--solo-px8);
+  padding-inline: var(--solo-px16);
 }
 
 form div.container-inline>* {
-  margin: var(--solo-px8) var(--solo-px8) var(--solo-px8) 0;
+  margin-block-start: var(--solo-px8);
+  margin-block-end: var(--solo-px8);
+  margin-inline-end: var(--solo-px8);
+  margin-inline-start: 0;
 }
 
 form .fieldset-wrapper .form-item {
-  margin-top: var(--solo-px8);
-  margin-bottom: var(--solo-px8);
+  margin-block-start: var(--solo-px8);
+  margin-block-end: var(--solo-px8);
 }
 
 .details-wrapper {
@@ -32,7 +37,8 @@ form .fieldset-wrapper .form-item {
 }
 
 .modules-wrapper details[open] {
-  padding: var(--solo-px8) var(--solo-px16) !important;
+  padding-block: var(--solo-px8) !important;
+  padding-inline: var(--solo-px16) !important;
 }
 
 .vertical-tabs details[open] {
@@ -47,7 +53,7 @@ form .tableselect-sort td:first-child {
 form tr.draggable td > a,
 form tr.draggable td > div.form-type-radio,
 form tr.draggable td > div.form-type-checkbox {
-  float: left !important;
+  float: inline-start !important;
   padding: 0 !important;
   margin: 0 !important;
   clear: none !important;
@@ -61,13 +67,16 @@ form a.tabledrag-handle .handle {
 }
 
 form .draggable a.tabledrag-handle {
-  margin: -3px 5px 0 0 !important;
+  margin-block-start: 0 !important;
+  margin-block-end: -3px !important;
+  margin-inline-end: 5px !important;
+  margin-inline-start: 0 !important;
   width: 25px;
 }
 
 form tr.draggable .solo-check,
 form tr.draggable .solo-radio {
-  top: 0;
+  inset-block-start: 0;
 }
 
 form .field-multiple-drag {
@@ -80,7 +89,7 @@ form div.form-type-datelist.solo-section.form-item {
 }
 
 .form-type-datelist > div {
-  padding-left: 0;
+  padding-inline-start: 0;
 }
 
 form #edit-datelist,
@@ -90,7 +99,7 @@ form #edit-datetime {
 }
 
 form #edit-datetime > div {
-  float: left;
+  float: inline-start;
   margin: 0 !important;
   width: 50%;
 }
@@ -103,7 +112,7 @@ form .form-type-date,
 form .form-type-datetime,
 form .form-type-webform-time {
   width: 50% !important;
-  float: left;
+  float: inline-start;
   clear: none;
 }
 
@@ -116,7 +125,7 @@ form .form-type-webform-time input {
 form .form-item-range > span.field-suffix,
 form .form-item-range .form-item-range__output {
   display: block;
-  float: left;
+  float: inline-start;
   width: 100%;
 }
 
@@ -127,8 +136,8 @@ form .form-item-range .form-item-range__output input {
 }
 
 form .form-item-datelist #edit-datelist > div select {
-  padding-left: 10px;
-  padding-right: 10px;
+  padding-inline-start: 10px;
+  padding-inline-end: 10px;
 }
 
 form .table-sort-weight.form-select {
@@ -140,7 +149,12 @@ form select {
 }
 
 .messages.messages--info {
-  background-position: 2px  17px;
+  background-position: var(--background-position-inline, 2px) 17px;
+}
+
+/* Adjust for RTL */
+[dir="rtl"] .messages.messages--info {
+  --background-position-inline: calc(100% - 2px);
 }
 
 .js-filter-guidelines {
@@ -148,11 +162,11 @@ form select {
 }
 
 .js-filter-guidelines li {
-  padding-bottom: 0;
+  padding-block-end: 0;
 }
 
 form .form-item {
-  text-align: left;
+  text-align: var(--solo-text-align-start);
 }
 
 fieldset.form-item > .fieldset-wrapper {
@@ -165,13 +179,13 @@ fieldset.form-item > .fieldset-wrapper {
 }
 
 form .form-item label {
-  padding-right: 10px;
+  padding-inline-end: 10px;
 }
 
 table ul.dropbutton li.solo-left.dropbutton-action {
   float: none !important;
   z-index: 1;
-  margin-right: 0 !important;
+  margin-inline-end: 0 !important;
   line-height: 26px;
 }
 
@@ -185,13 +199,14 @@ table ul.dropbutton,
 }
 
 .dropbutton li a {
-  padding: 6px 12px;
+  padding-block: 6px;
+  padding-inline: 12px;
   line-height: 26px;
   font-size: 14px;
 }
 
 .dropbutton button {
-  border-left: none;
+  border-inline-start: none;
 }
 
 .js td .dropbutton-wrapper {
@@ -199,16 +214,16 @@ table ul.dropbutton,
 }
 
 table ul.dropbutton li:first-child {
-  margin-right: 10px !important;
+  margin-inline-end: 10px !important;
 }
 
 .node-form table ul.dropbutton li:first-child {
-  margin-right: 0 !important;
+  margin-inline-end: 0 !important;
 }
 
 table ul.dropbutton li.dropbutton-toggle {
-  margin-right: 0 !important;
-  margin-left: 10px;
+  margin-inline-end: 0 !important;
+  margin-inline-start: 10px;
 }
 
 /* Node preview */
@@ -220,16 +235,18 @@ table ul.dropbutton li.dropbutton-toggle {
 .node-preview-container .node-preview-form-select {
   display: flex;
   align-items: center;
-  justify-content: flex-start;
+  justify-content: start;
   width: auto;
   height: 100%;
-  margin: 0 auto !important;
+  margin-block: 0 !important;
+  margin-inline: auto !important;
 }
 
 .node-preview-container a.node-preview-backlink {
   display: inline-flex;
   align-items: center;
-  padding: 8px 12px;
+  padding-block: 8px;
+  padding-inline: 12px;
 }
 
 .node-preview-container a.node-preview-backlink:hover {
@@ -253,7 +270,8 @@ div.node-preview-container .form-item-view-mode select {
 }
 
 .ui-dialog .ui-widget-content.ui-dialog-buttonpane .button {
-  margin: 10px auto;
+  margin-block: 10px;
+  margin-inline: auto;
 }
 
 .ui-dialog,
@@ -278,7 +296,7 @@ span.field-edit-link button {
 form .form--inline {
   display: flex;
   flex-wrap: wrap;
-  justify-content: flex-start;
+  justify-content: start;
 }
 
 form .form--inline .form-actions {

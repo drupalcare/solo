@@ -1,11 +1,11 @@
 dl dd {
-  margin-bottom: var(--solo-px8);
-  margin-left: var(--solo-px8);
+  margin-block-end: var(--solo-px8);
+  margin-inline-start: var(--solo-px8);
 }
 
 .panel__title {
   margin: 0;
-  padding-bottom: var(--solo-px10);
+  padding-block-end: var(--solo-px10);
   text-transform: uppercase;
   font-size: 1em;
 }
@@ -20,13 +20,16 @@ ul.admin-list {
   padding: 0;
   list-style-type: none;
   list-style-image: none;
-  border-top: var(--solo-px1) solid #bfbfbf;
+  border-block-start: var(--solo-px1) solid #bfbfbf;
 }
 
 .admin-list li a {
   display: block;
   min-height: 0;
-  padding: 10px 15px 14px 25px;
+  padding-block-start: 10px;
+  padding-inline-end: 15px;
+  padding-block-end: 14px;
+  padding-inline-start: 25px;
   background: url(../../images/icons/chevron-disc-right.svg) no-repeat 1px 17px;
 }
 
@@ -43,7 +46,7 @@ ul.admin-list {
 }
 
 .winnow-clear {
-  top: var(--solo-px4);
+  inset-block-start: var(--solo-px4);
 }
 
 .system-modules label,
@@ -63,7 +66,7 @@ ul.admin-list {
 .dropbutton input.solo-margin-top {
   margin: 0 !important;
   width: 100% !important;
-  text-align: left;
+  text-align: var(--solo-text-align-start);
   border: none;
   transition: 0.4s;
 }
@@ -79,7 +82,7 @@ ul.admin-list {
 
 form .field--widget-entity-reference-paragraphs td.field-multiple-drag {
   width: auto;
-  padding-left: 0;
+  padding-inline-start: 0;
 }
 
 .admin-context .block-system-main-block > div,
@@ -89,7 +92,7 @@ form .field--widget-entity-reference-paragraphs td.field-multiple-drag {
 
 .admin-context nav.action-links {
   list-style: none;
-  margin-left: var(--solo-px1);
+  margin-inline-start: var(--solo-px1);
 }
 
 .admin-context nav.action-links li {
@@ -106,8 +109,10 @@ form .field--widget-entity-reference-paragraphs td.field-multiple-drag {
 
 .admin-context .region-title__action a,
 .admin-context form .form-actions > a {
-  margin: var(--solo-px16) var(--solo-px12);
-  padding: var(--solo-px12) var(--solo-px16);
+  margin-block: var(--solo-px16);
+  margin-inline: var(--solo-px12);
+  padding-block: var(--solo-px12);
+  padding-inline: var(--solo-px16);
   display: inline-block;
 }
 
@@ -117,21 +122,25 @@ form .field--widget-entity-reference-paragraphs td.field-multiple-drag {
 
 .admin-context form .form-actions button,
 .admin-context form .form-actions input {
-  margin: var(--solo-px16) var(--solo-px12) var(--solo-px16) 0;
+  margin-block: var(--solo-px16);
+  margin-inline-end: var(--solo-px12);
+  margin-inline-start: 0;
 }
 
 /* admin pages  */
 .admin-context .block-system-main-block .modules-tabs {
-  margin-right: var(--solo-px16);
-  margin-left: var(--solo-px16);
+  margin-inline-end: var(--solo-px16);
+  margin-inline-start: var(--solo-px16);
   border-color: #eaeaea;
 }
 
 .admin-context .modules-tabs__pane {
-  margin: 0 0 0 240px !important;
-  padding: var(--solo-px12) var(--solo-px16) !important;
+  margin-block: 0 !important;
+  margin-inline-start: 240px !important;
+  padding-block: var(--solo-px12) !important;
+  padding-inline: var(--solo-px16) !important;
   background: #f8f8f8;
-  border-left: 1px solid #eaeaea;
+  border-inline-start: 1px solid #eaeaea;
   width: auto;
 }
 
@@ -140,7 +149,8 @@ form .field--widget-entity-reference-paragraphs td.field-multiple-drag {
 }
 
 .admin-context .system-modules td details {
-  margin: 0 0 var(--solo-px6) 0 !important;
+  margin-block-end: var(--solo-px6) !important;
+  margin-inline: 0 !important;
 }
 
 .admin-context .system-modules td details summary {
@@ -164,7 +174,7 @@ form .field--widget-entity-reference-paragraphs td.field-multiple-drag {
 }
 
 .admin-context .admin-requirements {
-  text-align: left;
+  text-align: var(--solo-text-align-start);
 }
 
 .admin-context .item-list--comma-list {
@@ -172,7 +182,8 @@ form .field--widget-entity-reference-paragraphs td.field-multiple-drag {
 }
 
 .admin-context .item-list--comma-list li {
-  padding: var(--solo-px8) var(--solo-px4);
+  padding-block: var(--solo-px8);
+  padding-inline: var(--solo-px4);
 }
 
 .admin-context .system-status-report__status-title {
@@ -185,16 +196,16 @@ form .field--widget-entity-reference-paragraphs td.field-multiple-drag {
 }
 
 .admin-context .system-status-report__entry__value {
-  padding-top: 0 !important;
+  padding-block-start: 0 !important;
 }
 
 .admin-context .system-status-report__status-icon::before {
-  top: var(--solo-px15);
-  left: -15px;
+  inset-block-start: var(--solo-px15);
+  inset-inline-start: -15px;
 }
 
 .admin-context .system-status-report__requirements-group details {
-  margin-bottom: var(--solo-px5) !important;
+  margin-block-end: var(--solo-px5) !important;
 }
 
 /**

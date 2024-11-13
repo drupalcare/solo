@@ -41,12 +41,12 @@
 .field ul) li>button::before {
   content: '';
   position: absolute;
-  bottom: 0;
+  inset-block-end: 0;
   width: 0;
   height: 0;
-  right: 0;
+  inset-inline-end: 0;
   background-color: transparent;
-  border-bottom: 5px solid transparent;
+  border-block-end: 5px solid transparent;
 }
 
 .page-wrapper .login-button-open button::before,
@@ -54,7 +54,7 @@
 .field ul) li>a::before,
 .page-wrapper nav ul:not(.solo-ul,
 .field ul) li>button::before {
-  left: 0;
+  inset-inline-start: 0;
 }
 
 .page-wrapper .login-button-open button::after,
@@ -62,7 +62,7 @@
 .field ul) li>a::after,
 .page-wrapper nav ul:not(.solo-ul,
 .field ul) li>button::after {
-  right: 0;
+  inset-inline-end: 0;
 }
 
 .page-wrapper .login-button-open button:hover::after,
@@ -114,12 +114,12 @@ input.button {
 
 @keyframes animatetop {
   from {
-    top: -300px;
+    inset-block-start: -300px;
     opacity: 0;
   }
 
   to {
-    top: 0;
+    inset-block-start: 0;
     opacity: 1;
   }
 
@@ -133,12 +133,12 @@ input.button {
 
 @keyframes animateleft {
   from {
-    left: -300px;
+    inset-inline-start: -300px;
     opacity: 0;
   }
 
   to {
-    left: 0;
+    inset-inline-start: 0;
     opacity: 1;
   }
 
@@ -152,12 +152,12 @@ input.button {
 
 @keyframes animateright {
   from {
-    right: -300px;
+    inset-inline-end: -300px;
     opacity: 0;
   }
 
   to {
-    right: 0;
+    inset-inline-end: 0;
     opacity: 1;
   }
 
@@ -171,12 +171,12 @@ input.button {
 
 @keyframes animatebottom {
   from {
-    bottom: -300px;
+    inset-block-end: -300px;
     opacity: 0;
   }
 
   to {
-    bottom: 0;
+    inset-block-end: 0;
     opacity: 1;
   }
 

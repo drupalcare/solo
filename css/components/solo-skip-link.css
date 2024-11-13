@@ -19,7 +19,8 @@
 }
 
 .skip-link.focusable:focus {
-  padding: var(--solo-px12) var(--solo-px24);
+  padding-block: var(--solo-px12);
+  padding-inline: var(--solo-px24);
   position: absolute !important;
   z-index: 1000;
   width: 100%;

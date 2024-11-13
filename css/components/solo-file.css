@@ -6,23 +6,21 @@
 /* https://iconduck.com/sets/svg-file-type-icons */
 
 .field--type-file .field__items .field__item {
-  margin-bottom: var(--solo-px8);
+  margin-block-end: var(--solo-px8);
 }
 
 .file:not(.imce-item) {
   display: inline-block;
   min-height: var(--solo-px24);
-  padding-left: var(--solo-px32);
+  padding-inline-start: var(--solo-px32);
   background-repeat: no-repeat;
-  background-position: left center; /* LTR */
+  background-position: var(--file-icon, left) center;
   background-size: var(--solo-px32) var(--solo-px32);
-  background-repeat: no-repeat;
 }
 
-[dir="rtl"] .file {
-  padding-right: var(--solo-px32);
-  padding-left: inherit;
-  background-position: right center;
+/* Adjust for RTL */
+[dir="rtl"] .file:not(.imce-item) {
+  --file-icon: right;
 }
 
 .file--general,

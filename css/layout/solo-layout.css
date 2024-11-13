@@ -2,7 +2,8 @@
 .page-wrapper,
 .solo-outer {
   display: grid;
-  margin: 0 auto;
+  margin-inline: auto;
+  margin-block: 0;
 }
 
 .page-wrapper {

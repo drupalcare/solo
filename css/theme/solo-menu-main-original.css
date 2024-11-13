@@ -11,7 +11,8 @@
 
   .navigation-primary-responsive.menu-align-center .navigation__responsive {
     justify-content: center;
-    margin: 0 auto;
+    margin-inline: auto;
+    margin-block: 0;
   }
 
   .solo-inner .navigation__responsive:not(.navigation__megamenu)>li.nav__menu-item ul.sub__menu {
@@ -22,15 +23,15 @@
   /* For the second tier */
   .solo-inner .navigation__responsive>li>ul.sub__menu {
     position: absolute;
-    left: 0;
-    top: 100%;
+    inset-inline-start: 0;
+    inset-block-start: 100%;
   }
 
   /* For the third tier */
   .solo-inner .navigation__responsive:not(.navigation__megamenu)>li>ul>li>ul.sub__menu {
     position: absolute;
-    left: 100%;
-    top: 0;
+    inset-inline-start: 100%;
+    inset-block-start: 0;
   }
 
   .solo-inner .navigation-responsive-hover .navigation__responsive:not(.navigation__megamenu) li:hover>ul.sub__menu {
@@ -65,15 +66,15 @@
   }
 
   .page-wrapper .has-border .primary-menu-inner .navigation__primary>li:first-child {
-    border-left: 1px solid var(--r-br);
+    border-inline-start: 1px solid var(--r-br);
   }
 
   .page-wrapper .has-border .primary-menu-inner .navigation__primary>li {
-    border-right: 1px solid var(--r-br) !important;
+    border-inline-end: 1px solid var(--r-br) !important;
   }
 
   .page-wrapper .has-border .primary-menu-inner .navigation__primary:not(.navigation__megamenu)>li li {
-    border-bottom: 1px solid var(--r-br) !important;
+    border-block-end: 1px solid var(--r-br) !important;
   }
 
   /* Justify menu items */
@@ -119,39 +120,39 @@
   #primary-menu .expand-left ul.navigation__primary:not(.navigation__megamenu)>li>ul>li>button.en-link,
   #primary-menu .expand-left ul.navigation__primary:not(.navigation__megamenu)>li>ul>li>button>span.toggler-icon {
     order: -1;
-    text-align: right;
+    text-align: var(--solo-text-align-end);
   }
 
   #primary-menu .expand-left ul.navigation__primary:not(.navigation__megamenu)>li>ul>li>a.url-added,
   #primary-menu .expand-left ul.navigation__primary:not(.navigation__megamenu)>li>ul>li>button>span.menu__url-title-disabled {
     order: 1;
-    justify-content: flex-end;
-    text-align: right;
+    justify-content: end;
+    text-align: var(--solo-text-align-end);
   }
 
   #primary-menu .expand-left ul.navigation__primary:not(.navigation__megamenu)>li>ul>li>button>span.menu__url-title-disabled {
-    margin-right: var(--solo-px0) !important;
-    margin-left: var(--solo-px12) !important;
-    text-align: right;
+    margin-inline-end: var(--solo-px0) !important;
+    margin-inline-start: var(--solo-px12) !important;
+    text-align: var(--solo-text-align-end);
   }
 
   #primary-menu .expand-left ul.navigation__primary:not(.navigation__megamenu) li.button-only>button>span.toggler-icon {
-    margin-right: var(--solo-px12) !important;
-    margin-left: var(--solo-px0) !important;
+    margin-inline-end: var(--solo-px12) !important;
+    margin-inline-start: var(--solo-px0) !important;
   }
 
   #primary-menu .expand-left ul.navigation__primary:not(.navigation__megamenu)>li>ul.sub__menu {
-    right: 0 !important;
-    left: initial !important;
+    inset-inline-end: 0 !important;
+    inset-inline-start: initial !important;
   }
 
   #primary-menu .expand-left ul.navigation__primary:not(.navigation__megamenu)>li>ul>li>ul.sub__menu {
-    right: 100% !important;
-    left: initial !important;
+    inset-inline-end: 100% !important;
+    inset-inline-start: initial !important;
   }
 
   #primary-menu .expand-left ul.navigation__primary:not(.navigation__megamenu)>li>ul>li>ul>li a {
-    justify-content: flex-end !important;
+    justify-content: end !important;
   }
 
   #primary-menu .expand-left.navigation-responsive-hover .navigation__responsive:not(.navigation__megamenu)>li>ul>li.has-sub__menu:hover .dropdown-arrow {
@@ -164,7 +165,7 @@
 @media (max-width:62rem) {
   .solo-inner .navigation__responsive,
   .solo-inner .navigation__responsive ul.sub__menu {
-    justify-content: left;
+    justify-content: start;
     align-items: stretch;
     flex-direction: column;
     flex-basis: 100%;
@@ -183,16 +184,16 @@
 
   .solo-inner .navigation__responsive>li.nav__menu-item>ul.sub__menu>li.nav__menu-item>a:first-child,
   .solo-inner .navigation__responsive>li.nav__menu-item>ul.sub__menu>li.nav__menu-item>button:first-child {
-    padding-left: 24px;
+    padding-inline-start: 24px;
   }
 
   .solo-inner .navigation__responsive>li.nav__menu-item>ul.sub__menu>li.nav__menu-item>ul.sub__menu>li.nav__menu-item>a:first-child,
   .solo-inner .navigation__responsive>li.nav__menu-item>ul.sub__menu>li.nav__menu-item>ul.sub__menu>li.nav__menu-item>button:first-child {
-    padding-left: 32px;
+    padding-inline-start: 32px;
   }
 
   .solo-inner .navigation__responsive li.has-sub__menu {
-    justify-content: flex-end;
+    justify-content: end;
     flex-wrap: wrap;
   }
 
@@ -202,23 +203,24 @@
   }
 
   .solo-inner .navigation__responsive li.link-and-button>button {
-    margin-left: auto;
+    margin-inline-start: auto;
   }
 
   .mobile-nav > button {
-    padding: 0 16px !important;
+    padding-inline: var(--solo-px16) !important;
+    padding-block: 0 !important;
   }
 
   .page-wrapper .has-border .primary-menu-inner ul.toggled {
-    border-top: 1px solid var(--r-br) !important;
+    border-block-start: 1px solid var(--r-br) !important;
   }
 
   .page-wrapper .has-border .primary-menu-inner .navigation__primary.toggled {
-    border-top: 1px solid var(--r-br) !important;
+    border-block-start: 1px solid var(--r-br) !important;
   }
 
   .page-wrapper .has-border .primary-menu-inner .navigation__primary li {
-    border-bottom: 1px solid var(--r-br) !important;
+    border-block-end: 1px solid var(--r-br) !important;
   }
 
 }

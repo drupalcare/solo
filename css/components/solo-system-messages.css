@@ -21,10 +21,13 @@ pre.sf-dump .sf-dump-default) {
 .messages,
 .webform-message .messages.messages--webform {
   min-height: calc(2 * var(--solo-px32)) !important;
-  padding: var(--solo-px16) !important;
-  margin: var(--solo-px16) 0 !important;
+  padding-block: var(--solo-px16) !important;
+  padding-inline: var(--solo-px16) !important;
+  margin-block: var(--solo-px16) !important;
+  margin-inline: 0 !important;
   outline: solid 1px transparent !important;
 }
+
 
 /* Additional specificity to override contrib modules. */
 .webform-message .messages.messages--webform .messages.messages-list__item {
@@ -67,10 +70,12 @@ pre.sf-dump .sf-dump-default) {
 }
 
 .messages__content {
-  overflow: auto; /* Ensure large code blocks can be scrolled to. */
+  overflow: auto;
   flex: 1;
-  padding: 0 var(--solo-px16) !important;
+  padding-inline: var(--solo-px16) !important;
+  padding-block: 0 !important;
 }
+
 
 .messages__button {
   flex-shrink: 0;
@@ -92,8 +97,8 @@ pre.sf-dump .sf-dump-default) {
 .messages__close::before,
 .messages__close::after {
   position: absolute;
-  top: 50%;
-  left: 50%;
+  inset-block-start: 50%;
+  inset-inline-start: 50%;
   display: block;
   width: calc(2 * var(--solo-px14)) !important;
   height: 0;

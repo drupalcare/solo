@@ -11,12 +11,12 @@ figcaption {
 .align-center {
   float: none;
   max-width: 100%;
-  margin: 1rem 0;
+  margin-block: 1rem;
 }
 
 .align-center {
-  margin-left: auto;
-  margin-right: auto;
+  margin-inline-start: auto;
+  margin-inline-end: auto;
 }
 
 @media (min-width:36rem) {
@@ -25,46 +25,58 @@ figcaption {
   }
 
   .align-right {
-    float: right;
+    float: inline-end;
     max-width: 75%;
-    margin: 1rem 0 1rem 1rem;
+    margin-block: 1rem;
+    margin-inline-start: 1rem;
   }
 
   [dir="rtl"] .align-right {
-    float: left;
+    float: inline-start;
+    margin-inline-start: 0;
+    margin-inline-end: 1rem;
   }
 
   .align-left {
-    float: left;
+    float: inline-start;
     max-width: 75%;
-    margin: 1rem 1rem 1rem 0;
+    margin-block: 1rem;
+    margin-inline-end: 1rem;
   }
 
   [dir="rtl"] .align-left {
-    float: right;
+    float: inline-end;
+    margin-inline-end: 0;
+    margin-inline-start: 1rem;
   }
 
 }
 
 @media (min-width:48rem) {
   .align-right {
-    float: right;
+    float: inline-end;
     max-width: 50%;
-    margin: 1rem 0 1rem 1rem;
+    margin-block: 1rem;
+    margin-inline-start: 1rem;
   }
 
   [dir="rtl"] .align-right {
-    float: left;
+    float: inline-start;
+    margin-inline-start: 0;
+    margin-inline-end: 1rem;
   }
 
   .align-left {
-    float: left;
+    float: inline-start;
     max-width: 50%;
-    margin: 1rem 1rem 1rem 0;
+    margin-block: 1rem;
+    margin-inline-end: 1rem;
   }
 
   [dir="rtl"] .align-left {
-    float: right;
+    float: inline-end;
+    margin-inline-end: 0;
+    margin-inline-start: 1rem;
   }
 
 }

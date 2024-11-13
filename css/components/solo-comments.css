@@ -3,7 +3,7 @@
 }
 
 .comment-wrapper h2.comment-form__title {
-  margin-bottom: var(--solo-px24);
+  margin-block-end: var(--solo-px24);
 }
 
 .field-node--comment {
@@ -11,7 +11,7 @@
 }
 
 .comment {
-  margin-bottom: var(--solo-px24);
+  margin-block-end: var(--solo-px24);
   vertical-align: top;
   display: flex;
 }
@@ -21,12 +21,12 @@
 }
 
 .comment__meta {
-  padding-right: var(--solo-px24);
+  padding-inline-end: var(--solo-px24);
   font-size: var(--solo-px16);
 }
 
 [dir="rtl"] .comment__meta {
-  padding-left: var(--solo-px24);
+  padding-inline-start: var(--solo-px24);
 }
 
 .comment__attribution img {
@@ -43,12 +43,13 @@
 }
 
 .comment__author {
-  margin: var(--solo-px4) 0;
+  margin-block: var(--solo-px4);
+  margin-inline: 0;
   line-height: var(--solo-px18);
 }
 
 .comment__time {
-  margin-bottom: var(--solo-px4);
+  margin-block-end: var(--solo-px4);
   font-size: var(--solo-px14);
   line-height: var(--solo-px18);
 }
@@ -74,79 +75,84 @@
 }
 
 .comment__content > h3 {
-  margin-top: 0;
+  margin-block-start: 0;
 }
 
 [dir="rtl"] .comment__content::before {
-  right: auto;
-  left: 100%;
-  border-right: none;
-  border-left: var(--solo-px20) solid var(--r-br, var(--r-br-b));
+  inset-inline-end: auto;
+  inset-inline-start: 100%;
+  border-inline-end: none;
+  border-inline-start: var(--solo-px20) solid var(--r-br, var(--r-br-b));
 }
 
 .comment__content::after {
   content: '';
   position: absolute;
-  right: 100%; /* LTR */
-  top: var(--solo-px20);
-  border-top: var(--solo-px20) solid transparent;
-  border-right: var(--solo-px20) solid transparent; /* LTR */
-  border-bottom: var(--solo-px20) solid transparent;
-  margin-right: -1px; /* LTR */
+  inset-inline-end: 100%; /* LTR */
+  inset-block-start: var(--solo-px20);
+  border-block-start: var(--solo-px20) solid transparent;
+  border-inline-end: var(--solo-px20) solid transparent; /* LTR */
+  border-block-end: var(--solo-px20) solid transparent;
+  margin-inline-end: -1px; /* LTR */
 }
 
 [dir="rtl"] .comment__content::after {
-  right: auto;
-  left: 100%;
-  border-right: none;
-  border-left: var(--solo-px20) solid transparent;
-  margin-right: 0;
-  margin-left: -1px;
+  inset-inline-end: auto;
+  inset-inline-start: 100%;
+  border-inline-end: none;
+  border-inline-start: var(--solo-px20) solid transparent;
+  margin-inline-end: 0;
+  margin-inline-start: -1px;
 }
 
 .indented {
-  margin-left: calc(2 * var(--solo-px20)); /* LTR */
+  margin-inline-start: calc(2 * var(--solo-px20)); /* LTR */
 }
 
 [dir="rtl"] .indented {
-  margin-right: var(--solo-px24);
-  margin-left: 0;
+  margin-inline-end: var(--solo-px24);
+  margin-inline-start: 0;
 }
 
 .comment .links {
-  padding: 0 0 var(--solo-px4) 0;
+  padding-block-end: var(--solo-px4);
 }
 
 .comment .links li {
-  padding: 0 var(--solo-px8) 0 0; /* LTR */
+  padding-inline-end: var(--solo-px8);
   font-size: var(--solo-px16);
 }
 
 [dir="rtl"] .comment .links li {
-  padding: 0 0 0 var(--solo-px8);
+  padding-inline-start: var(--solo-px8);
+  padding-inline-end: 0;
 }
 
 .comment--unpublished {
-  margin-right: var(--solo-px5); /* LTR */
-  padding: var(--solo-px5) var(--solo-px2) var(--solo-px5); /* LTR */
+  margin-inline-end: var(--solo-px5);
+  padding-block: var(--solo-px5);
+  padding-inline-end: var(--solo-px2);
 }
 
 [dir="rtl"] .comment--unpublished {
-  margin-left: var(--solo-px5);
-  margin-right: 0;
-  padding: var(--solo-px5) var(--solo-px5) var(--solo-px5) var(--solo-px2);
+  margin-inline-start: var(--solo-px5);
+  margin-inline-end: 0;
+  padding-inline-start: var(--solo-px2);
+  padding-inline-end: var(--solo-px5);
 }
 
 /**
  * change this to .comment--unpublished.
  */
 .unpublished .comment-text .comment-arrow {
-  border-left: var(--solo-px1) solid var(--r-br, var(--r-br-b));
-  border-right: var(--solo-px1) solid var(--r-br, var(--r-br-b));
+  border-inline-start: var(--solo-px1) solid var(--r-br, var(--r-br-b));
+  border-inline-end: var(--solo-px1) solid var(--r-br, var(--r-br-b));
 }
 
 .unpublished {
-  padding: var(--solo-px20) var(--solo-px15) 0;
+  padding-block-start: var(--solo-px20);
+  padding-inline: var(--solo-px15);
+  padding-block-end: 0;
 }
 
 .comment-footer {
@@ -172,21 +178,21 @@
   }
 
   .comment__meta {
-    margin-top: var(--solo-px12);
+    margin-block-start: var(--solo-px12);
     display: flex;
     flex-wrap: wrap;
-    justify-content: left;
+    justify-content: start;
     align-items: baseline;
     grid-area: 2;
   }
 
   .comment__content {
     grid-area: 1;
-    margin-top: var(--solo-px12);
+    margin-block-start: var(--solo-px12);
   }
 
   .comment__meta>* {
-    margin-right: var(--solo-px12);
+    margin-inline-end: var(--solo-px12);
   }
 
 }

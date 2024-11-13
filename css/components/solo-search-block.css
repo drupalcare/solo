@@ -34,21 +34,22 @@ form.solo-search-block-form {
 
 .solo-search-block-form .form-item,
 .solo-search-block-form .form-actions {
-  margin: var(--solo-px6) auto !important;
+  margin-block: var(--solo-px6) !important;
+  margin-inline: auto !important;
   display: inline-block;
 }
 
 input.search-button-block {
   margin: 0 !important;
-  padding-left: var(--solo-px3) !important;
-  padding-right: var(--solo-px3) !important;
+  padding-inline-start: var(--solo-px3) !important;
+  padding-inline-end: var(--solo-px3) !important;
 }
 
 .solo-search-block-form .form-type-search::before {
   position: absolute;
   opacity: 0.5;
-  top: 20px;
-  left: 6px;
+  inset-block-start: 20px;
+  inset-inline-start: 6px; /* This will be updated for RTL */
   display: inline-block;
   width: 24px;
   height: 24px;

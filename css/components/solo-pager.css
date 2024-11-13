@@ -9,13 +9,15 @@
 }
 
 .pager__items li a {
-  padding: var(--solo-px6) var(--solo-px12);
+  padding-block: var(--solo-px6);
+  padding-inline: var(--solo-px12);
   display: inline-flex;
 }
 
 .pager__items li.solo-active-pager,
 .pager__items li.is-active {
-  padding: var(--solo-px6) var(--solo-px12);
+  padding-block: var(--solo-px6);
+  padding-inline: var(--solo-px12);
   font-weight: bold;
 }
 

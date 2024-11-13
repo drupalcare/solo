@@ -9,7 +9,7 @@ Outer Space #414A4C
   color: var(--r-tx);
   border-color: var(--r-br);
   background-color: var(--r-bg);
-  --r-header-bg: linear-gradient(to left top, #ffffff, #dde1e2);
+  --r-header-bg: linear-gradient(to start top, #ffffff, #dde1e2);
   --r-header-tx: #4c4943;
   --r-menu-tx-h: #ffffff;
   --r-menu-bg-h: #31383a;
@@ -147,7 +147,7 @@ h3 a) {
 
 header.header,
 div.page-title.lone {
-  --r-bg: linear-gradient(to left top, #ffffff, #dde1e2);
+  --r-bg: linear-gradient(to start top, #ffffff, #dde1e2);
   background: var(--r-bg);
 }
 

@@ -8,7 +8,7 @@ AEGEAN #1F456E, ARSENIC #3B444B
   color: var(--r-tx);
   border-color: var(--r-br);
   background-color: var(--r-bg);
-  --r-header-bg: linear-gradient(to left top, #ffffff, #e8f0f9);
+  --r-header-bg: linear-gradient(to start top, #ffffff, #e8f0f9);
   --r-header-tx: #1d2125;
   --r-menu-tx-h: #050b11;
   --r-menu-bg-h: #e8f0f9;
@@ -146,7 +146,7 @@ h3 a) {
 
 header.header,
 div.page-title.lone {
-  --r-bg: linear-gradient(to left top, #ffffff, #e8f0f9);
+  --r-bg: linear-gradient(to start top, #ffffff, #e8f0f9);
   background: var(--r-bg);
 }
 

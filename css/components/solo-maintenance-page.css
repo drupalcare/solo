@@ -12,10 +12,10 @@ body.maintenance-page {
 
 .maintenance-page main {
   min-height: 43.75rem;
-  margin-top: calc(2* var(--solo-px16)) !important;
+  margin-block-start: calc(2* var(--solo-px16)) !important;
   max-width: 800px;
-  margin-left: auto;
-  margin-right: auto;
+  margin-inline-start: auto;
+  margin-inline-end: auto;
 }
 
 .maintenance-page main header,
@@ -31,7 +31,8 @@ body.maintenance-page {
 }
 
 .site-name-block {
-  margin: 20px auto;
+  margin-block: 20px;
+  margin-inline: auto;
 }
 
 .maintenance-page main h1 {

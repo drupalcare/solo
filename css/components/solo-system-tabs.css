@@ -1,5 +1,6 @@
 nav.tabs {
-  margin: var(--solo-px10) 0 !important;
+  margin-block: var(--solo-px10) !important;
+  margin-inline: 0 !important;
   display: grid;
 }
 
@@ -16,7 +17,7 @@ ul.primary {
 }
 
 ul.primary {
-  border-bottom: 2px solid var(--r-br, var(--r-br-b));
+  border-block-end: 2px solid var(--r-br, var(--r-br-b));
 }
 
 ul.secondary li.is-active > a,
@@ -27,41 +28,48 @@ ul.primary li.is-active > a {
 ul.primary > li {
   border: none;
 }
-
 nav.action-links > li > a {
   display: flex;
   align-items: center;
-  padding: var(--solo-px12) var(--solo-px16);
+  padding-block: var(--solo-px12);
+  padding-inline: var(--solo-px16);
 }
 
 ul.primary > li > a {
   display: flex;
   align-items: center;
-  padding: var(--solo-px6) var(--solo-px16);
+  padding-block: var(--solo-px6);
+  padding-inline: var(--solo-px16);
   border: 1px solid var(--r-br, var(--r-br-b));
-  border-bottom: none;
-  margin-right: var(--solo-px6);
-  border-radius: var(--solo-px8) var(--solo-px8) 0 0;
+  border-block-end: none;
+  margin-inline-end: var(--solo-px6);
+  border-start-start-radius: var(--solo-px8);
+  border-start-end-radius: var(--solo-px8);
+  border-end-end-radius: 0;
+  border-end-start-radius: 0;
 }
 
 ul.primary > li:last-child > a {
-  margin-right: var(--solo-px0);
+  margin-inline-end: 0;
 }
 
 ul.secondary > li > a {
-  padding: var(--solo-px4) var(--solo-px12);
+  padding-block: var(--solo-px4);
+  padding-inline: var(--solo-px12);
   display: block;
 }
 
 ul.primary > li > a,
 nav.action-links > li > a {
   text-align: center;
-  padding: 8px 16px;
+  padding-block: var(--solo-px8);
+  padding-inline: var(--solo-px16);
   display: block;
 }
 
 ul.secondary > li > a {
-  padding: 6px 12px;
+  padding-block: var(--solo-px6);
+  padding-inline: var(--solo-px12);
   display: block;
 }
 

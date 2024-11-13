@@ -7,22 +7,22 @@
 
   html.fs-18 #sidebar-button-close button span,
   html.fs-18 #search-button-open button span {
-    padding-top: var(--solo-px10) !important;
-    padding-bottom: var(--solo-px10) !important;
+    padding-block-start: var(--solo-px10) !important;
+    padding-block-end: var(--solo-px10) !important;
   }
 
   html.fs-18 #sidebar-button-open button span {
-    padding-top: var(--solo-px6) !important;
-    padding-bottom: var(--solo-px6) !important;
+    padding-block-start: var(--solo-px6) !important;
+    padding-block-end: var(--solo-px6) !important;
   }
 
   html.fs-18 .solo-search-block-form .form-type-search::before {
-    top: 25px;
-    left: 7px;
+    inset-block-start: 25px;
+    inset-inline-start: 7px;
   }
 
   html.fs-18 .fixed-search-block-inner .solo-search-block-form .form-type-search::before {
-    top: 30px;
+    inset-block-start: 30px;
   }
 
   html.fs-18 .solo-inner .login-button-open>button,
@@ -38,22 +38,22 @@
 
   html.fs-20 #sidebar-button-close button span,
   html.fs-20 #search-button-open button span {
-    padding-top: var(--solo-px12) !important;
-    padding-bottom: var(--solo-px12) !important;
+    padding-block-start: var(--solo-px12) !important;
+    padding-block-end: var(--solo-px12) !important;
   }
 
   html.fs-20 #sidebar-button-open button span {
-    padding-top: var(--solo-px8) !important;
-    padding-bottom: var(--solo-px8) !important;
+    padding-block-start: var(--solo-px8) !important;
+    padding-block-end: var(--solo-px8) !important;
   }
 
   html.fs-20 .solo-search-block-form .form-type-search::before {
-    top: 28px;
-    left: 8px;
+    inset-block-start: 28px;
+    inset-inline-start: 8px;
   }
 
   html.fs-20 .fixed-search-block-inner .solo-search-block-form .form-type-search::before {
-    top: 34px;
+    inset-block-start: 34px;
   }
 
   html.fs-20 .solo-inner .login-button-open>button,
@@ -95,8 +95,8 @@
 
   html.gap-24 .solo-inner .navigation__menubar li.nav__menu-item>a,
   html.gap-24 .solo-inner .navigation__menubar li.nav__menu-item>button {
-    padding-top: var(--solo-px18);
-    padding-bottom: var(--solo-px18);
+    padding-block-start: var(--solo-px18);
+    padding-block-end: var(--solo-px18);
   }
 
   /* Region gaps 36 */
@@ -118,8 +118,8 @@
 
   html.gap-36 .solo-inner .navigation__menubar li.nav__menu-item>a,
   html.gap-36 .solo-inner .navigation__menubar li.nav__menu-item>button {
-    padding-top: var(--solo-px20);
-    padding-bottom: var(--solo-px20);
+    padding-block-start: var(--solo-px20);
+    padding-block-end: var(--solo-px20);
   }
 
   /* Region gaps 48 */
@@ -141,8 +141,8 @@
 
   html.gap-48 .solo-inner .navigation__menubar li.nav__menu-item>a,
   html.gap-48 .solo-inner .navigation__menubar li.nav__menu-item>button {
-    padding-top: var(--solo-px24);
-    padding-bottom: var(--solo-px24);
+    padding-block-start: var(--solo-px24);
+    padding-block-end: var(--solo-px24);
   }
 
   /* Region gaps 64 */
@@ -164,8 +164,8 @@
 
   html.gap-64 .solo-inner .navigation__menubar li.nav__menu-item>a,
   html.gap-64 .solo-inner .navigation__menubar li.nav__menu-item>button {
-    padding-top: var(--solo-px32);
-    padding-bottom: var(--solo-px32);
+    padding-block-start: var(--solo-px32);
+    padding-block-end: var(--solo-px32);
   }
 
 }

@@ -1,7 +1,7 @@
 .solo-inner .hamburger-icon,
 .solo-inner .hamburger-icon>button>span {
   display: flex;
-  justify-content: flex-end;
+  justify-content: end;
   align-items: baseline;
 }
 

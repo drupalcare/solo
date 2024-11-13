@@ -8,7 +8,7 @@ BLUEBERRY #241571, CERULEAN #0492C2
   color: var(--r-tx);
   border-color: var(--r-br);
   background-color: var(--r-bg);
-  --r-header-bg: linear-gradient(to left top, #ffffff, #e5e1f9);
+  --r-header-bg: linear-gradient(to start top, #ffffff, #e5e1f9);
   --r-header-tx: #2d1a8e;
   --r-menu-tx-h: #ffffff;
   --r-menu-bg-h: #4f35d9;
@@ -146,7 +146,7 @@ h3 a) {
 
 header.header,
 div.page-title.lone {
-  --r-bg: linear-gradient(to left top, #ffffff, #e5e1f9);
+  --r-bg: linear-gradient(to start top, #ffffff, #e5e1f9);
   background: var(--r-bg);
 }
 

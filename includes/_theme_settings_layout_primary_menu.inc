@@ -57,7 +57,7 @@ if (array_key_exists('primary_menu', $updated_regions['mix'])) {
 
   $form['solo_settings']["settings_{$region}"]['primary_menu_expand_left'] = [
     '#type' => 'checkbox',
-    '#title' => t('Tick this box if you want the dropdown menu to open on the left side instead of its default behavior, which is to open on the right side upon hover or click. (Big screen only)'),
+    '#title' => t('For LTR languages, tick this box to make the dropdown menu open on the left instead of the default right. For RTL languages, ticking this box will make the dropdown open on the right instead of the default left, adjusting to the language direction. (Big screen only)'),
     '#default_value' => theme_get_setting('primary_menu_expand_left'),
   ];
 

@@ -3,7 +3,7 @@ div.action,
 .form-actions {
   display: flex;
   flex-wrap: wrap;
-  align-items: flex-start;
+  align-items: start;
 }
 
 div.action,
@@ -16,8 +16,8 @@ div.form-actions {
 
 .form-radios .form-item,
 .form-checkboxes .form-item {
-  margin-top: 0.4em !important;
-  margin-bottom: 0.4em !important;
+  margin-block-start: 0.4em !important;
+  margin-block-end: 0.4em !important;
 }
 
 .form-radios,
@@ -32,24 +32,27 @@ fieldset {
 .form-type-radio {
   display: inline-flex;
   width: 100%;
-  justify-content: left;
+  justify-content: start;
   align-items: self-start;
   flex-grow: 1;
 }
 
 .form-type-checkbox {
-  margin-top: 12px;
+  margin-block-start: 12px;
   display: inline-flex;
   width: 100%;
   flex-grow: 1;
-  justify-content: left;
+  justify-content: start;
   align-items: self-start;
   flex-wrap: wrap;
 }
 
 .form-type-radio .form-radio,
 .form-type-checkbox .form-checkbox {
-  margin: 2px 2px 0 0;
+  margin-block-start: 2px;
+  margin-inline-end: 2px;
+  margin-block-end: 0;
+  margin-inline-start: 0;
 }
 
 .form-type-checkbox .form-checkbox {
@@ -68,25 +71,25 @@ fieldset {
 
 .form-type-radio label,
 .form-type-checkbox label {
-  margin-left: var(--solo-px4) !important; /* LTR */
+  margin-inline-start: var(--solo-px4) !important; /* LTR */
   float: none !important;
 }
 
 [dir="rtl"] .form-type-radio label,
 [dir="rtl"] .form-type-checkbox label {
-  margin-right: var(--solo-px4) !important;
-  margin-left: 0 !important;
+  margin-inline-end: var(--solo-px4) !important;
+  margin-inline-start: 0 !important;
 }
 
 .form-type-radio .description,
 .form-type-checkbox .description {
-  margin-left: var(--solo-px2) !important; /* LTR */
+  margin-inline-start: var(--solo-px2) !important; /* LTR */
 }
 
 [dir="rtl"] .form-type-radio .description,
 [dir="rtl"] .form-type-checkbox .description {
-  margin-right: var(--solo-px2) !important;
-  margin-left: 0 !important;
+  margin-inline-end: var(--solo-px2) !important;
+  margin-inline-start: 0 !important;
 }
 
 .marker {
@@ -110,7 +113,7 @@ input[type="radio"]:focus {
 
 abbr.tabledrag-changed,
 abbr.ajax-changed {
-  border-bottom: none;
+  border-block-end: none;
 }
 
 .form-item input.error,
@@ -127,7 +130,8 @@ abbr.ajax-changed {
   display: inline-block;
   width: var(--solo-px10);
   height: var(--solo-px10);
-  margin: 0 0.3em;
+  margin-block: 0;
+  margin-inline: 0.3em;
   content: "";
   vertical-align: super;
   background-image: url(../../images/icons/required.svg);
@@ -140,7 +144,8 @@ abbr.ajax-changed {
   display: inline-block;
   width: var(--solo-px16);
   height: var(--solo-px16);
-  margin: 0 0.3em;
+  margin-block: 0;
+  margin-inline: 0.3em;
   content: "";
   vertical-align: middle;
   background-image: url(../../images/icons/error.svg);
@@ -178,7 +183,8 @@ form.system-theme-settings .details-wrapper .form-element--api-color {
 }
 
 form .form-item__description {
-  padding: var(--solo-px8) 0;
+  padding-block: var(--solo-px8);
+  padding-inline: 0;
 }
 
 .form-wrapper {

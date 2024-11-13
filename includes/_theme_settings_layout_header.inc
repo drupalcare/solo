@@ -51,7 +51,7 @@ if (array_key_exists('header', $updated_regions['mix'])) {
 
   $form['solo_settings']["settings_{$region}"]['header_change_icons'] = [
     '#type' => 'checkbox',
-    '#title' => t("Select this option to position the Search Icon, User Menu, Sidebar Menu, and Sidebar Hamburger to the left, and make the Main Sidebar menu open from the left as well."),
+    '#title' => t("For LTR languages, select this option to position the Search Icon, User Menu, Sidebar Menu, and Sidebar Hamburger on the left, with the logo and site name/slogan on the right. For RTL languages, these elements will be mirrored, positioning the Search Icon, User Menu, Sidebar Menu, and Sidebar Hamburger on the right, with the logo and site name/slogan on the left. The Main Sidebar menu will open from the left in LTR and from the right in RTL."),
     '#default_value' => theme_get_setting('header_change_icons'),
   ];
 

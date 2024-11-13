@@ -4,7 +4,7 @@
 }
 
 .page-wrapper tr {
-  border-bottom: 1px solid var(--r-br, var(--r-br-b));
+  border-block-end: 1px solid var(--r-br, var(--r-br-b));
 }
 
 .page-wrapper tr.region-title {
@@ -41,7 +41,7 @@
 }
 
 .page-wrapper .solo-table-all tr {
-  border-bottom: var(--solo-px1) solid var(--r-br, var(--r-br-b));
+  border-block-end: var(--solo-px1) solid var(--r-br, var(--r-br-b));
 }
 
 .page-wrapper .solo-table-all tr:nth-child(even) {
@@ -66,7 +66,7 @@
 
 .page-wrapper .solo-table-all th:first-child,
 .page-wrapper .solo-table-all td:first-child {
-  padding-left: var(--solo-px16);
+  padding-inline-start: var(--solo-px16);
 }
 
 .page-wrapper table td .form-type-radio,

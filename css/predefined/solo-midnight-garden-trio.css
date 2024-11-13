@@ -8,7 +8,7 @@ Braves Navy #13274F, Zombie Gray #63645E, Mantis #74C365
   color: var(--r-tx);
   border-color: var(--r-br);
   background-color: var(--r-bg);
-  --r-header-bg: linear-gradient(to left top, #edf7ec, #eef2fb);
+  --r-header-bg: linear-gradient(to start top, #edf7ec, #eef2fb);
   --r-header-tx: #50a440;
   --r-menu-tx-h: #ffffff;
   --r-menu-bg-h: #1d3b78;
@@ -130,7 +130,7 @@ h3 a) {
 header.header,
 div.page-title.lone {
   --r-tx: #8acd7d;
-  --r-bg: linear-gradient(to left top, #edf7ec, #eef2fb);
+  --r-bg: linear-gradient(to start top, #edf7ec, #eef2fb);
   background: var(--r-bg);
 }
 

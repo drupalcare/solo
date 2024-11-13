@@ -21,7 +21,8 @@ main {
 
 h1 {
   font-size: 2em;
-  margin: 0.67em 0;
+  margin-block: 0.67em;
+  margin-inline: 0;
 }
 
 hr {
@@ -41,7 +42,7 @@ a {
 }
 
 abbr[title] {
-  border-bottom: none;
+  border-block-end: none;
   text-decoration: underline;
   text-decoration: underline dotted;
 }
@@ -71,11 +72,11 @@ sup {
 }
 
 sub {
-  bottom: -0.25em;
+  inset-block-end: -0.25em;
 }
 
 sup {
-  top: -0.5em;
+  inset-block-start: -0.5em;
 }
 
 img {
@@ -126,8 +127,11 @@ button:-moz-focusring,
 }
 
 fieldset {
-  padding: 0.35em 0.75em 0.625em;
+  padding-block-start: 0.35em;
+  padding-inline: 0.75em;
+  padding-block-end: 0.625em;
 }
+
 
 legend {
   box-sizing: border-box;

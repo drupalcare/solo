@@ -8,7 +8,7 @@
 }
 
 #page-wrapper .cookiesjsr-banner {
-  border-top: 3px solid var(--r-br);
+  border-block-start: 3px solid var(--r-br);
   border-radius: var(--solo-px4);
 }
 
@@ -61,18 +61,29 @@
   background: transparent !important;
 }
 
+#page-wrapper .cookiesjsr-links {
+  list-style: none;
+}
+
+@media (min-width:36rem) {
+  [dir="rtl"] .cookiesjsr-links.links--row {
+    justify-content: start;
+  }
+
+}
+
 #page-wrapper .cookiesjsr-service-group--tab {
-  text-align: left !important;
+  text-align: start !important;
   width: 100%;
 }
 
 #page-wrapper .cookiesjsr-service-group button {
-  border-bottom: 1px solid var(--r-br);
+  border-block-end: 1px solid var(--r-br);
 }
 
 #page-wrapper .cookiesjsr-service-group.active button {
   text-decoration: underline !important;
-  border-bottom: 4px solid var(--r-br);
+  border-block-end: 4px solid var(--r-br);
   -moz-box-shadow: inset  0 -40px 40px -40px var(--r-br);
   -webkit-box-shadow: inset  0 -40px 40px -40px var(--r-br);
   box-shadow: inset  0 -40px 40px -40px var(--r-br);
@@ -85,7 +96,7 @@
 
 @media (min-width:1200px) {
   #page-wrapper .cookiesjsr-banner--action {
-    padding-right: var(--solo-px16);
+    padding-inline-end: var(--solo-px16);
   }
 
 }
@@ -99,7 +110,7 @@
 
 @media (min-width:768px) {
   #page-wrapper li.cookiesjsr-service-group > div {
-    border-left: 1px solid var(--r-br);
+    border-inline-start: 1px solid var(--r-br);
   }
 
   #page-wrapper .cookiesjsr-service-group--tab {
@@ -118,11 +129,11 @@
     flex-direction: column;
     display: flex;
     width: 100%;
-    justify-content: flex-start;
+    justify-content: start;
   }
 
   #page-wrapper .cookiesjsr-service--action {
-    align-items: flex-end;
+    align-items: end;
   }
 
 }

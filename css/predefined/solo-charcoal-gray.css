@@ -9,7 +9,7 @@ Braves Navy #13274F
   color: var(--r-tx);
   border-color: var(--r-br);
   background-color: var(--r-bg);
-  --r-header-bg: linear-gradient(to left top, #ffffff, #e1e1e0);
+  --r-header-bg: linear-gradient(to start top, #ffffff, #e1e1e0);
   --r-header-tx: #234994;
   --r-menu-tx-h: #ffffff;
   --r-menu-bg-h: #2f2f2d;
@@ -131,7 +131,7 @@ h3 a) {
 header.header,
 div.page-title.lone {
   --r-tx: #2d5dbd;
-  --r-bg: linear-gradient(to left top, #ffffff, #e1e1e0);
+  --r-bg: linear-gradient(to start top, #ffffff, #e1e1e0);
   background: var(--r-bg);
 }
 

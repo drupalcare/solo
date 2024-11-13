@@ -70,8 +70,8 @@
 
   .view .node--view-mode-teaser .node__title,
   .view .node--view-mode-teaser .node__content .field--name-field-image {
-    padding-right: 0 !important;
-    margin-right: 0 !important;
+    padding-inline-end: 0 !important;
+    margin-inline-end: 0 !important;
   }
 
   h1 {
@@ -131,7 +131,7 @@
   form ul,
   .field ol,
   .field ul {
-    padding-left: var(--solo-px24);
+    padding-inline-start: var(--solo-px24);
   }
 
   form ol ul,
@@ -142,7 +142,7 @@
   .field ol ol,
   .field ul ul,
   .field ul ol {
-    padding-left: var(--solo-px12);
+    padding-inline-start: var(--solo-px12);
   }
 
   .button,
@@ -158,19 +158,19 @@
   #page-wrapper .views-exposed-form .exposed-form {
     flex-wrap: nowrap;
     flex-direction: column;
-    justify-content: flex-start;
+    justify-content: start;
     align-items: center;
     margin: 0;
   }
 
   .links.inline {
-    justify-content: left;
+    justify-content: start;
     padding: 0;
   }
 
   .links.inline li:first-child {
-    justify-content: left;
-    padding-left: 0;
+    justify-content: start;
+    padding-inline-start: 0;
   }
 
 }

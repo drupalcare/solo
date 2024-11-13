@@ -933,7 +933,6 @@ function solo_preprocess_menu__primary_sidebar_menu(&$variables): void {
  * Implements hook_preprocess_menu().
  */
 function solo_preprocess_menu__account(&$variables): void {
-
   if (!$variables['user']->isAuthenticated()) {
     $enableLoginBlock = theme_get_setting('header_popup_login');
 
@@ -943,16 +942,15 @@ function solo_preprocess_menu__account(&$variables): void {
       $variables['login_popup_block'] = $enableLoginBlock;
       $variables['login_text'] = $loginText;
       $variables['current_path'] = $currentPath;
+
       foreach ($variables['items'] as $key => $item) {
-        $url = $item['url']->toString();
-        if ($url == '/user/login') {
+        // Use the route name for language-agnostic comparison.
+        if ($item['url']->getRouteName() === 'user.login') {
           unset($variables['items'][$key]);
         }
       }
     }
-
   }
-
 }
 
 /**

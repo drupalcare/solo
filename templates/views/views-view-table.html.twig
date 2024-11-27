@@ -41,7 +41,7 @@
     sticky ? 'position-sticky sticky-header',
   ]
 %}
-<div class="solo-responsive">
+<div class="{{ not responsive and not sticky ? 'solo-responsive ' : '' }}solo-table-wrapper">
   <table{{ attributes.addClass(classes) }}>
   {% if caption_needed %}
     <caption>

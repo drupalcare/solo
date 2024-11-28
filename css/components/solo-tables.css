@@ -1,6 +1,8 @@
-.page-wrapper table {
-  width: 100%;
+.page-wrapper .solo-table-all {
   border-collapse: collapse;
+  border-spacing: 0;
+  width: 100%;
+  display: table;
 }
 
 .page-wrapper tr {
@@ -30,13 +32,6 @@
 }
 
 .page-wrapper .solo-table-all {
-  border-collapse: collapse;
-  border-spacing: 0;
-  width: 100%;
-  display: table;
-}
-
-.page-wrapper .solo-table-all {
   border: var(--solo-px1) solid var(--r-br, var(--r-br-b));
 }
 
@@ -61,7 +56,10 @@
   padding: var(--solo-px8);
   display: table-cell;
   vertical-align: middle;
-  text-align: initial;
+  text-align: var(--solo-text-align-start);
+  box-sizing: border-box;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
 }
 
 .page-wrapper .solo-table-all th:first-child,

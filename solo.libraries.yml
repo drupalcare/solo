@@ -613,6 +613,19 @@ solo-gfin-barlow-semi-condensed:
       fonts/font-face/google-font-barlow-semi-condensed.css: { }
       fonts/css/global/solo-barlow-semi-condensed.css: { }
 
+solo-gfex-be-vietnam-pro:
+  Version: VERSION
+  css:
+    base:
+      'https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@100;200;300;400;500;600;700;800;900&display=swap': { type: external, minified: true }
+      fonts/css/global/solo-be-vietnam-pro.css: { }
+solo-gfin-be-vietnam-pro:
+  Version: VERSION
+  css:
+    base:
+      fonts/font-face/google-font-be-vietnam-pro.css: { }
+      fonts/css/global/solo-be-vietnam-pro.css: { }
+
 solo-gfex-bitter:
   Version: VERSION
   css:

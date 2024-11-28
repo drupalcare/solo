@@ -322,6 +322,7 @@ function _get_global_font_options() {
     'solo-arvo' => t('Arvo - serif'),
     'solo-barlow' => t('Barlow - sans-serif'),
     'solo-barlow-semi-condensed' => t('Barlow Semi Condensed - sans-serif'),
+    'solo-be-vietnam-pro' => t('Be Vietnam Pro - sans-serif'),
     'solo-bitter' => t('Bitter - serif'),
     'solo-cairo' => t('Cairo - sans-serif'),
     'solo-comfortaa' => t('Comfortaa - cursive'),

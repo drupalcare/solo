@@ -39,7 +39,9 @@
  * @see template_preprocess_table()
  */
 #}
-<div class="solo-responsive">
+{# Check if 'responsive' and 'sticky' classes are missing in attributes #}
+{% set class_list = attributes.class ?: [] %}
+<div class="{{ 'responsive-enabled' not in class_list and 'sticky-header' not in class_list ? 'solo-responsive ' : '' }}solo-table-wrapper">
   <table{{ attributes.addClass('solo-table-all') }}>
     {% if caption %}
       <caption>{{ caption }}</caption>

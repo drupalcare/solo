@@ -42,3 +42,4 @@ regions:
   footer_second: 'Footer Second Container'
   footer_third: 'Footer Third Container'
   footer_menu: 'Footer Menu Container'
+  hidden: 'Hidden Region'

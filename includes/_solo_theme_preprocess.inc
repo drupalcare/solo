@@ -497,6 +497,7 @@ function _get_theme_variables() {
       'sm_icon_reddit',
       'sm_icon_facebook',
       'sm_icon_twitter',
+      'sm_icon_bluesky',
       'sm_icon_pinterest',
       'sm_icon_linkedin',
       'sm_icon_instagram',

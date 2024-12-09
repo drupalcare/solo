@@ -86,6 +86,10 @@
   fill: var(--solo-tw);
 }
 
+.sm-icons .bluesky svg {
+  fill: var(--solo-bs);
+}
+
 .sm-icons .pinterest svg {
   fill: var(--solo-pi);
 }

@@ -56,6 +56,7 @@ $form['solo_settings']['settings_social_icons']['sm_show_icons'] = [
 $social_icons = [
   'facebook' => t('Facebook'),
   'twitter' => t('Formerly (Twitter) X'),
+  'bluesky' => t('Bluesky'),
   'pinterest' => t('Pinterest'),
   'linkedin' => t('Linkedin'),
   'instagram' => t('Instagram'),

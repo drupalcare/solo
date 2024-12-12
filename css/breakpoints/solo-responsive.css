@@ -101,6 +101,7 @@
   #page-wrapper .views-exposed-form .exposed-form>* {
     width: auto;
   }
+
 }
 
 @media (max-width:36rem) {
@@ -151,9 +152,11 @@
   }
 
   #page-wrapper .views-exposed-form .exposed-form > div {
-    margin: var(--solo-px8); auto;
+    margin: var(--solo-px8);
+    auto;
     width: 100%;
   }
+
   #page-wrapper .views-exposed-form .exposed-form .form-actions,
   #page-wrapper .views-exposed-form .exposed-form {
     flex-wrap: nowrap;
@@ -171,6 +174,17 @@
   .links.inline li:first-child {
     justify-content: start;
     padding-inline-start: 0;
+  }
+
+  #page-wrapper nav.tabs ul {
+    flex-direction: column;
+    gap: var(--solo-px12);
+  }
+
+  #page-wrapper nav.tabs ul li a {
+    border-radius: 0;
+    margin: 0;
+    border: 1px solid var(--r-br)
   }
 
 }

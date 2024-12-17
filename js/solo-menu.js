@@ -10,6 +10,10 @@
   'use strict';
   let isClicked = false;
   let currentWidth;
+  let currentLayout;
+  let previousLayout = Drupal.solo.getLayout();
+  const brNum = Drupal.solo.getBreakpointNumber('mn');
+
 
   Drupal.behaviors.menuAction = {
     attach: function(context, settings) {
@@ -71,9 +75,8 @@
       }
 
       const getArrowDirection = (verticalNav) => {
-        const pageClass = document.querySelector('.page-wrapper');
         const expandLeft = document.querySelector('#primary-menu .expand-left');
-        const brNum = Drupal.solo.getMyBreakpoints(pageClass, 'mn');
+
         if (expandLeft) {
           return (currentWidth >= brNum && !verticalNav) ? 'rotate(90deg)' : 'rotate(180deg)';
         }
@@ -125,8 +128,6 @@
       const openMenuHelper = (dropdownTogglerButton, subMenu) => {
 
         currentWidth = getCurrentWidth();
-        const pageClass = document.querySelector('.page-wrapper');
-        const brNum = Drupal.solo.getMyBreakpoints(pageClass, 'mn');
         if (subMenu.classList.contains('sub-mega') && currentWidth >= brNum) {
           Drupal.solo.slideDown(subMenu, 'grid', 1000);
         } else {
@@ -266,16 +267,28 @@
       // Function to add hover functionality
       const addHoverFunctionality = () => {
         if (document.querySelector('.navigation-responsive-hover')) {
-          const dropdownTogglers = document.querySelectorAll('.dropdown-toggler');
+          const menuItems = document.querySelectorAll('.navigation-responsive-hover li.has-sub__menu');
 
-          dropdownTogglers.forEach(toggler => {
-            toggler.addEventListener('mouseenter', () => {
-              toggler.setAttribute('aria-expanded', 'true');
-            });
+          menuItems.forEach(item => {
+            if (!item.hasAttribute('data-hover-added')) { // Prevent duplicate listeners
+              const toggler = item.querySelector(':scope > button.dropdown-toggler');
+              const subMenu = item.querySelector(':scope > ul');
 
-            toggler.addEventListener('mouseleave', () => {
-              toggler.setAttribute('aria-expanded', 'false');
-            });
+              // Ensure elements exist
+              if (toggler && subMenu) {
+                item.addEventListener('mouseenter', () => {
+                  toggler.setAttribute('aria-expanded', 'true');
+                  subMenu.setAttribute('aria-hidden', 'false');
+                });
+
+                item.addEventListener('mouseleave', () => {
+                  toggler.setAttribute('aria-expanded', 'false');
+                  subMenu.setAttribute('aria-hidden', 'true');
+                });
+              }
+
+              item.setAttribute('data-hover-added', 'true'); // Mark as added
+            }
           });
         }
       };
@@ -284,8 +297,6 @@
       siteMenuBars.forEach((siteMenuBar) => {
         siteMenuBar.addEventListener('click', (event) => {
           const sideMenu = ('navigation-sidebar');
-          const pageClass = document.querySelector('.page-wrapper');
-          const brNum = Drupal.solo.getMyBreakpoints(pageClass, 'mn');
           if (hasParentWithClass(siteMenuBar, sideMenu) || currentWidth <= brNum) {
             siteMenuBar.classList.remove('focus-in');
           } else {
@@ -313,25 +324,32 @@
       }
 
       function menusHelper(currentWidth) {
-        const pageClass = document.querySelector('.page-wrapper');
-        const brNum = Drupal.solo.getMyBreakpoints(pageClass, 'mn');
-        if (currentWidth >= brNum) {
-          // Remove the first level menu styles.
-          removesiteMenuBarsStyles(siteMenuBars);
-          // Menus.
-          removeEventListenerToButtons(mmClickSmall);
-          addEventListenerToButtons(mmClickBig);
-          removeEventListenerToButtons(mmHoverSmall);
-          removeEventListenerToButtons(navigationSidebarHover);
-          removeEventListenerToButtons(navigationResponsiveHover);
-        } else {
-          // Call the hover type only on small screen.
-          removeEventListenerToButtons(mmClickBig);
-          addEventListenerToButtons(mmClickSmall);
-          addEventListenerToButtons(mmHoverSmall);
-          addEventListenerToButtons(navigationSidebarHover);
-          addEventListenerToButtons(navigationResponsiveHover);
-        }
+
+        // Define which buttons to activate for small and large screens
+        const largeScreenActions = [
+          { remove: mmClickSmall, add: mmClickBig },
+          { remove: mmHoverSmall, add: null },
+          { remove: navigationSidebarHover, add: null },
+          { remove: navigationResponsiveHover, add: null },
+        ];
+
+        const smallScreenActions = [
+          { remove: mmClickBig, add: mmClickSmall },
+          { remove: null, add: mmHoverSmall },
+          { remove: null, add: navigationSidebarHover },
+          { remove: null, add: navigationResponsiveHover },
+        ];
+
+        // Reset first-level styles
+        removesiteMenuBarsStyles(siteMenuBars);
+
+        // Apply actions based on screen size
+        const actions = currentWidth >= brNum ? largeScreenActions : smallScreenActions;
+
+        actions.forEach(({ remove, add }) => {
+          if (remove) removeEventListenerToButtons(remove);
+          if (add) addEventListenerToButtons(add);
+        });
       }
 
       // Add active class to the menu if the page is views.
@@ -360,13 +378,19 @@
       addEventListenerToButtons(navigationSidebarClick);
       // We only call main menu click and hover type when hover is disabled.
       currentWidth = getCurrentWidth();
+
       menusHelper(currentWidth);
       window.addEventListener('resize', () => {
-        currentWidth = getCurrentWidth();
-        menusHelper(currentWidth);
-        // Reset menu styles on resize.
-        resetSubMenus(siteSubMenus, svgIcons);
+        currentLayout = Drupal.solo.getLayout();
+        currentWidth  = getCurrentWidth();
+        if (previousLayout != currentLayout) {
+          menusHelper(currentWidth);
+          resetSubMenus(siteSubMenus, svgIcons);
+          previousLayout = currentLayout;
+        }
+
         addHoverFunctionality();
+
       });
 
       // Add new functionality

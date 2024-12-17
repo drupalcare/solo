@@ -138,6 +138,30 @@
   Drupal.solo.getMyBreakpoints = getMyBreakpoints;
 
   /**
+   * Get breakpoint number based on the specified class and breakpoint prefix.
+   *
+   * @param {string} breakpointPrefix - The prefix for the breakpoint (e.g., 'mn').
+   * @returns {number} - The numeric breakpoint value.
+   */
+  Drupal.solo.getBreakpointNumber = (breakpointPrefix = 'mn') => {
+    const pageClass = document.querySelector('.page-wrapper');
+    return Drupal.solo.getMyBreakpoints(pageClass, breakpointPrefix);
+  };
+
+  /**
+   * Determines the current layout based on breakpoints.
+   *
+   * @returns {string} 'large' if layout is large, 'small' otherwise.
+   */
+  const getLayout = () => {
+    const pageClass = document.querySelector('.page-wrapper');
+    const brNum = Drupal.solo.getMyBreakpoints(pageClass, 'mn');
+    const currentWidth = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
+    return currentWidth > brNum ? 'large' : 'small';
+  };
+  Drupal.solo.getLayout = getLayout;
+
+  /**
    * Drupal behavior to add classes based on depth.
    */
   Drupal.behaviors.soloMenuDepth = {

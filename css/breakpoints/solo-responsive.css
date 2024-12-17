@@ -1,3 +1,10 @@
+@media (min-width:36rem) {
+  #page-wrapper .views-exposed-form .exposed-form>* {
+    width: auto;
+  }
+
+}
+
 @media (min-width:62rem) {
   #primary-sidebar-menu {
     min-width: 25rem;
@@ -97,13 +104,6 @@
 
 }
 
-@media (min-width:36rem) {
-  #page-wrapper .views-exposed-form .exposed-form>* {
-    width: auto;
-  }
-
-}
-
 @media (max-width:36rem) {
   h1 {
     font-size: var(--solo-px20);
@@ -147,6 +147,7 @@
   }
 
   .button,
+  nav li *,
   .solo-button {
     white-space: normal;
   }

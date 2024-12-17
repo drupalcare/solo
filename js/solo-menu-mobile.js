@@ -10,9 +10,10 @@
   'use strict';
 
   let currentWidth;
+  let currentLayout = Drupal.solo.getLayout();
+  let previousLayout = currentLayout;
   const hamburgerIconButtons = document.querySelectorAll('.solo-inner .navigation-responsive .mobile-nav button');
-
-  // Get current width
+  const brNum = Drupal.solo.getBreakpointNumber('mn');
   const getCurrentWidth = () => window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
 
   // Function to update tabindex of first-level menu items
@@ -84,9 +85,7 @@
 
   const addAriaControlToButton = (hamburgerIcon) => {
     const [hamburgerIconChild, navTagId] = getMobileNavType(hamburgerIcon);
-    let ariaControl = document.querySelector(`#${navTagId} .navigation__responsive`).getAttribute('id');
-    const pageClass = document.querySelector('.page-wrapper');
-    const brNum = Drupal.solo.getMyBreakpoints(pageClass, 'mn');
+    const ariaControl = document.querySelector(`#${navTagId} .navigation__responsive`)?.getAttribute('id');
     if (currentWidth <= brNum) {
       hamburgerIconChild.setAttribute('aria-controls', ariaControl);
     } else {
@@ -94,25 +93,14 @@
     }
   };
 
-  // Function to update tabindex of hamburger button
   const updateHamburgerTabindex = () => {
-    const pageClass = document.querySelector('.page-wrapper');
-    const brNum = Drupal.solo.getMyBreakpoints(pageClass, 'mn');
     currentWidth = getCurrentWidth();
     hamburgerIconButtons.forEach(button => {
-      if (currentWidth <= brNum) {
-        button.setAttribute('tabindex', '0');
-      } else {
-        button.setAttribute('tabindex', '-1');
-      }
+      button.setAttribute('tabindex', currentWidth <= brNum ? '0' : '-1');
     });
   };
 
-  // Function to update tabindex of first-level menu items for large screens
   const updateTabindexForLargeScreens = () => {
-    const pageClass = document.querySelector('.page-wrapper');
-    const brNum = Drupal.solo.getMyBreakpoints(pageClass, 'mn');
-    currentWidth = getCurrentWidth();
     if (currentWidth > brNum) {
       const menuElement = document.querySelector('.navigation__responsive');
       if (menuElement) {
@@ -122,7 +110,20 @@
     }
   };
 
-  // Onload tag the menubar id and assign it to hamburger button.
+  const closeOnResize = (hamburgerIcon) => {
+    const [hamburgerIconChild, navTagId] = getMobileNavType(hamburgerIcon);
+    hamburgerIconChild.setAttribute('aria-expanded', 'false');
+    hamburgerIcon.classList.remove('toggled');
+    closeMobileMenu(navTagId);
+  };
+
+  const resetMenusOnResize = () => {
+    hamburgerIconButtons?.forEach((hamburgerIconButton) => {
+      closeOnResize(hamburgerIconButton);
+    });
+  };
+
+  // Onload tag the menubar id and assign it to hamburger button
   function processHamburgerIcons(hamburgerIconButtons) {
     hamburgerIconButtons.forEach((hamburgerIcon) => {
       addAriaControlToButton(hamburgerIcon);
@@ -138,38 +139,25 @@
     });
   });
 
-  const closeOnResize = (hamburgerIcon) => {
-    const [hamburgerIconChild, navTagId] = getMobileNavType(hamburgerIcon);
-
-    hamburgerIconChild.setAttribute('aria-expanded', 'false');
-    hamburgerIcon.classList.remove('toggled');
-    closeMobileMenu(navTagId);
-  };
-
-  // This function is to keep the menubar open when changing the screen
-  // resolution over 992 px and it is called in resize event listener.
-  const resetMenusOnResize = () => {
-    hamburgerIconButtons?.forEach((hamburgerIconButton) => {
-      closeOnResize(hamburgerIconButton);
-    });
-  };
-
   Drupal.behaviors.mobileMenu = {
-    attach: function (settings) {
-      // Update tabindex on load
+    attach: function () {
       updateHamburgerTabindex();
       updateTabindexForLargeScreens();
+      processHamburgerIcons(hamburgerIconButtons);
 
       window.addEventListener('resize', () => {
-        processHamburgerIcons(hamburgerIconButtons);
-        updateHamburgerTabindex(); // Update tabindex on resize
-        updateTabindexForLargeScreens();
         currentWidth = getCurrentWidth();
-        const pageClass = document.querySelector('.page-wrapper');
-        const brNum = Drupal.solo.getMyBreakpoints(pageClass, 'mn');
-        if (currentWidth <= brNum) {
+        const isSmallScreen = currentWidth <= brNum;
+        currentLayout = Drupal.solo.getLayout();
+
+        if (isSmallScreen && previousLayout !== currentLayout) {
           resetMenusOnResize();
+          previousLayout = currentLayout;
         }
+
+        processHamburgerIcons(hamburgerIconButtons);
+        updateHamburgerTabindex();
+        updateTabindexForLargeScreens();
       });
     }
   };

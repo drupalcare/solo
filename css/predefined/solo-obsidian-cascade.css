@@ -177,6 +177,12 @@ div.page-title.lone {
   --r-tx: #9c9ab2;
 }
 
+.page-wrapper .multi h1 span,
+.page-wrapper .multi h2 span,
+.page-wrapper .multi h3 span {
+  color: inherit;
+}
+
 .page-wrapper .bottom-container h1,
 .page-wrapper .bottom-container h2,
 .page-wrapper .bottom-container h3,

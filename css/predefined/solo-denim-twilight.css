@@ -202,6 +202,12 @@ h3 a) {
   --r-tx: #e0e6e9;
 }
 
+.page-wrapper .multi h1 span,
+.page-wrapper .multi h2 span,
+.page-wrapper .multi h3 span {
+  color: inherit;
+}
+
 .page-wrapper .bottom-container h1,
 .page-wrapper .bottom-container h2,
 .page-wrapper .bottom-container h3,

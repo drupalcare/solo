@@ -35,10 +35,15 @@
   outline: none;
 }
 
+.pager__item.solo-active-pager {
+  cursor: default !important;
+}
+
 .pager__item.solo-active-pager a {
+  pointer-events: none !important;
   font-weight: bold;
   cursor: default;
-  text-decoration: none;
+  text-decoration: none !important;
 }
 
 .pager__item.pager__item--ellipsis {

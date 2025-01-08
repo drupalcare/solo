@@ -303,6 +303,15 @@ h3 a) {
   --s-b: 17, 21, 26;
 }
 
+.page-wrapper .pager__item a {
+  transition: background .3s;
+}
+
+.page-wrapper .pager__item a:hover {
+  color: var(--r-header-tx);
+  background: var(--r-header-bg);
+}
+
 /* Border animation  */
 @keyframes borderLeftColors {
   0% {

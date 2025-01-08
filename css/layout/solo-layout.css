@@ -41,7 +41,11 @@
 .solo-inner:not(.primary-menu-inner,
 .primary-sidebar-menu-inner,
 .system-messages-inner,
-.highlighted-inner) {
+.highlighted-inner,
+.active-top-1 > .solo-inner,
+.active-main-1 > .solo-inner,
+.active-bottom-1 > .solo-inner,
+.active-footer-1 > .solo-inner) {
   padding: var(--solo-px16);
 }
 

@@ -203,3 +203,20 @@ $form['solo_settings']['settings_global_misc']['site_reading_mode_content_type']
   '#multiple' => TRUE,
   '#description' => t("A common guideline for the maximum width of a text block for comfortable reading is around 60 to 75 characters per line. This guideline helps to prevent the text from becoming too difficult to follow from one line to the next. Choose the content type for which 'Reading Mode' should be enabled, and set the maximum width for the content region to 45rem/720px for both Text Formatted Long and Text Formatted Long with Summary. It is for Default/Full view mode only."),
 ];
+
+// Check if the Search module is enabled.
+if (\Drupal::moduleHandler()->moduleExists('search')) {
+  // Add checkboxes to enable/disable search filters.
+  $form['solo_settings']['settings_global_misc']['disable_search_filters'] = [
+    '#type' => 'checkboxes',
+    '#title' => t('Disable advanced search filters'),
+    '#description' => t('Choose the filters to disable in the advanced search form. If all filters are disabled, the "Advanced" section will be hidden. By default, all filters are enabled.'),
+    '#options' => [
+      'disable_keywords' => t('Disable Keywords filter'),
+      'disable_types' => t('Disable Types filter'),
+      'disable_language' => t('Disable Language filter'),
+    ],
+    // Ensure a default array is returned even if no value is set.
+    '#default_value' => theme_get_setting('disable_search_filters') ?: [],
+  ];
+}

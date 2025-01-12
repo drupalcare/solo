@@ -77,3 +77,88 @@ form.search-form>* {
 .search-form + h2 {
   clear: both;
 }
+
+form.search-form details.search-advanced .details-wrapper {
+  overflow: hidden;
+  height: 0;
+  opacity: 0;
+  transition: height 0.4s ease, opacity 0.4s ease;
+}
+
+form.search-form details.search-advanced[open] .details-wrapper {
+  height: auto;
+  opacity: 1;
+}
+
+form.search-form details.search-advanced[open] .details-wrapper {
+  height: var(--details-wrapper-height);
+}
+
+form.search-form .search-advanced fieldset[data-drupal-selector="edit-keywords-fieldset"] .solo-clear::before,
+form.search-form .search-advanced fieldset[data-drupal-selector="edit-types-fieldset"] .solo-clear::before,
+form.search-form .search-advanced fieldset[data-drupal-selector="edit-lang-fieldset"] .solo-clear::before {
+  display: inline;
+  content: none;
+}
+
+form.search-form .search-advanced fieldset[data-drupal-selector="edit-keywords-fieldset"] > .fieldset-wrapper,
+form.search-form .search-advanced fieldset[data-drupal-selector="edit-types-fieldset"] > .fieldset-wrapper,
+form.search-form .search-advanced fieldset[data-drupal-selector="edit-lang-fieldset"]  > .fieldset-wrapper {
+  padding: 0;
+}
+
+form.search-form .search-advanced fieldset[data-drupal-selector="edit-keywords-fieldset"] > .fieldset-wrapper fieldset,
+form.search-form .search-advanced fieldset[data-drupal-selector="edit-types-fieldset"] > .fieldset-wrapper fieldset,
+form.search-form .search-advanced fieldset[data-drupal-selector="edit-lang-fieldset"]  > .fieldset-wrapper fieldset {
+  border: none !important;
+}
+
+@media(min-width:48rem) {
+  form.search-form .search-advanced fieldset[data-drupal-selector="edit-keywords-fieldset"] .fieldset-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--solo-px12);
+  }
+
+  form.search-form .search-advanced fieldset[data-drupal-selector="edit-types-fieldset"] .fieldset-wrapper .form-checkboxes,
+  form.search-form .search-advanced fieldset[data-drupal-selector="edit-lang-fieldset"] .fieldset-wrapper .form-checkboxes {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--solo-px24);
+  }
+
+  form.search-form .search-advanced fieldset[data-drupal-selector="edit-types-fieldset"] .fieldset-wrapper .form-checkboxes>*,
+  form.search-form .search-advanced fieldset[data-drupal-selector="edit-lang-fieldset"] .fieldset-wrapper .form-checkboxes >* {
+    width: auto;
+    flex-wrap: nowrap;
+  }
+
+  form.search-form .search-advanced fieldset[data-drupal-selector="edit-types-fieldset"] .fieldset-wrapper .form-checkboxes label,
+  form.search-form .search-advanced fieldset[data-drupal-selector="edit-lang-fieldset"] .fieldset-wrapper .form-checkboxes label {
+    flex-basis: max-content;
+    white-space: nowrap;
+  }
+
+}
+
+@media (min-width:48rem) and (max-width:62rem) {
+  form.search-form .search-advanced fieldset[data-drupal-selector="edit-keywords-fieldset"] .fieldset-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--solo-px12);
+  }
+
+  form.search-form .search-advanced fieldset[data-drupal-selector="edit-keywords-fieldset"] .fieldset-wrapper > * {
+    flex: 1 1 calc(50% - var(--solo-px12));
+    max-width: calc(50% - var(--solo-px12));
+  }
+
+  form.search-form .search-advanced fieldset[data-drupal-selector="edit-keywords-fieldset"] .fieldset-wrapper > *:nth-child(3) {
+    flex: 1 1 100%;
+    max-width: 100%;
+  }
+
+}

@@ -174,4 +174,47 @@
     }
   };
 
+  Drupal.behaviors.soloSearchAnimation = {
+    attach: (context, settings) => {
+      // Adding behavior for animating details-wrapper
+      const detailsElements = once('soloDetailsAnimation', '.search-form details.search-advanced', context);
+
+      detailsElements?.forEach((detail) => {
+        const wrapper = detail.querySelector('.details-wrapper');
+
+        if (wrapper) {
+          if (!detail.open) {
+            wrapper.style.height = 0;
+            wrapper.style.opacity = 0;
+            wrapper.style.overflow = 'hidden';
+          }
+
+          detail.addEventListener('toggle', () => {
+            if (detail.open) {
+              const contentHeight = wrapper.scrollHeight + 'px';
+              wrapper.style.height = contentHeight;
+              wrapper.style.opacity = 1;
+              wrapper.addEventListener(
+                'transitionend',
+                () => {
+                  if (detail.open) {
+                    wrapper.style.height = 'auto';
+                  }
+                },
+                { once: true }
+              );
+            } else {
+              wrapper.style.height = wrapper.scrollHeight + 'px'
+              requestAnimationFrame(() => {
+                wrapper.style.height = 0;
+                wrapper.style.opacity = 0;
+              });
+            }
+          });
+        }
+      });
+    },
+  };
+
+
 })(Drupal, drupalSettings, once);

@@ -15,6 +15,36 @@ function solo_form_alter(&$form, FormStateInterface $form_state, $form_id): void
   if (isset($form['actions']['submit']) && (count($form['actions'])) <= 2) {
     $form['actions']['submit']['#attributes']['class'][] = 'button--primary';
   }
+  // Check if this is the search form.
+  if ($form_id === 'search_form') {
+    // Get the theme settings for disabling filters.
+    $disabled_filters = theme_get_setting('disable_search_filters') ?: [];
+
+    // Check if all three options are selected.
+    $all_selected = !empty($disabled_filters['disable_keywords']) &&
+                    !empty($disabled_filters['disable_types']) &&
+                    !empty($disabled_filters['disable_language']);
+
+    if ($all_selected) {
+      // Remove the "Advanced" section entirely.
+      if (isset($form['advanced'])) {
+        unset($form['advanced']);
+      }
+    }
+    else {
+      // Remove only the selected filters individually.
+      if (!empty($disabled_filters['disable_keywords']) && isset($form['advanced']['keywords-fieldset'])) {
+        unset($form['advanced']['keywords-fieldset']);
+      }
+      if (!empty($disabled_filters['disable_types']) && isset($form['advanced']['types-fieldset'])) {
+        unset($form['advanced']['types-fieldset']);
+      }
+      if (!empty($disabled_filters['disable_language']) && isset($form['advanced']['lang-fieldset'])) {
+        unset($form['advanced']['lang-fieldset']);
+      }
+    }
+
+  }
 }
 
 /**

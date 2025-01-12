@@ -4,7 +4,7 @@ form.search-form input[type=textfield] {
   width: 100% !important;
 }
 
-form.search-form>.form-wrapper {
+form.search-form>.form-wrapper:not(.search-advanced) {
   position: relative;
   display: grid;
   grid-template-columns: minmax(250px, auto) minmax(50px, 160px);

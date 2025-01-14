@@ -5,6 +5,7 @@
  * Solo Theme Alter.
  */
 
+use Drupal\Core\Database\Query\SelectInterface;
 use Drupal\comment\CommentInterface;
 use Drupal\Core\Form\FormStateInterface;
 
@@ -12,37 +13,85 @@ use Drupal\Core\Form\FormStateInterface;
  * Implements hook_form_alter().
  */
 function solo_form_alter(&$form, FormStateInterface $form_state, $form_id): void {
-  if (isset($form['actions']['submit']) && (count($form['actions'])) <= 2) {
+  // Add a primary button class to forms with fewer than 3 actions.
+  if (!empty($form['actions']['submit']) && count($form['actions']) <= 2) {
     $form['actions']['submit']['#attributes']['class'][] = 'button--primary';
   }
-  // Check if this is the search form.
+
+  // Apply changes only to the search form.
   if ($form_id === 'search_form') {
-    // Get the theme settings for disabling filters.
-    $disabled_filters = theme_get_setting('disable_search_filters') ?: [];
+    // Retrieve theme settings for filters and content types.
+    $disabled_filters = theme_get_setting('disable_search_filters') ?? [];
+    $always_applied_content_types = array_filter(theme_get_setting('search_result_content_types') ?? []);
 
-    // Check if all three options are selected.
-    $all_selected = !empty($disabled_filters['disable_keywords']) &&
-                    !empty($disabled_filters['disable_types']) &&
-                    !empty($disabled_filters['disable_language']);
+    // Check if all filters are disabled.
+    if (
+      in_array('disable_keywords', $disabled_filters, TRUE) &&
+      in_array('disable_types', $disabled_filters, TRUE) &&
+      in_array('disable_language', $disabled_filters, TRUE)
+    ) {
+      // Remove the entire "Advanced" section.
+      unset($form['advanced']);
+      // No need to process further if all filters are disabled.
+      return;
+    }
 
-    if ($all_selected) {
-      // Remove the "Advanced" section entirely.
-      if (isset($form['advanced'])) {
-        unset($form['advanced']);
+    // Remove individual filters if specified.
+    $filter_fieldsets = [
+      'disable_keywords' => 'keywords-fieldset',
+      'disable_language' => 'lang-fieldset',
+    ];
+
+    foreach ($filter_fieldsets as $filter_key => $fieldset_key) {
+      if (in_array($filter_key, $disabled_filters, TRUE) && isset($form['advanced'][$fieldset_key])) {
+        unset($form['advanced'][$fieldset_key]);
       }
     }
-    else {
-      // Remove only the selected filters individually.
-      if (!empty($disabled_filters['disable_keywords']) && isset($form['advanced']['keywords-fieldset'])) {
-        unset($form['advanced']['keywords-fieldset']);
+
+    // Handle the "Types" filter specifically.
+    if (in_array('disable_types', $disabled_filters, TRUE) && isset($form['advanced']['types-fieldset'])) {
+      if (!empty($always_applied_content_types)) {
+        // Hide the "Types" filter and add hidden content types.
+        unset($form['advanced']['types-fieldset']);
+
+        $form['advanced']['hidden_content_types'] = [
+          '#type' => 'value',
+          '#value' => $always_applied_content_types,
+        ];
+
+        // Add validation to apply these content types to the search query.
+        $form['#validate'][] = 'solo_apply_hidden_content_types';
       }
-      if (!empty($disabled_filters['disable_types']) && isset($form['advanced']['types-fieldset'])) {
+      else {
+        // Remove the "Types" filter if no content types are specified.
         unset($form['advanced']['types-fieldset']);
       }
-      if (!empty($disabled_filters['disable_language']) && isset($form['advanced']['lang-fieldset'])) {
-        unset($form['advanced']['lang-fieldset']);
-      }
     }
+  }
+}
+
+/**
+ * Custom validation handler to apply hidden content types to the search query.
+ */
+function solo_apply_hidden_content_types(array &$form, FormStateInterface $form_state): void {
+  $hidden_content_types = $form['advanced']['hidden_content_types']['#value'] ?? [];
+  if (!empty($hidden_content_types)) {
+    $current_criteria = $form_state->getValue('type') ?? [];
+    $updated_criteria = array_merge($current_criteria, $hidden_content_types);
+    $form_state->setValue('type', $updated_criteria);
+  }
+}
+
+/**
+ * Implements hook_query_TAG_alter() for the node_search plugin.
+ */
+function solo_query_node_search_alter(SelectInterface $query) {
+  // Get the content types to always apply from the theme settings.
+  $always_applied_content_types = array_filter(theme_get_setting('search_result_content_types') ?? []);
+
+  if (!empty($always_applied_content_types)) {
+    // Add a condition to restrict the query to the allowed content types.
+    $query->condition('n.type', $always_applied_content_types, 'IN');
 
   }
 }

@@ -56,6 +56,10 @@
  * @see template_preprocess_search_result()
  */
 #}
+
+{% if search_teaser %}
+  {{ search_teaser }}
+{% else %}
 {{ attach_library('claro/classy.search-results') }}
 {{ title_prefix }}
 <h3{{ title_attributes.addClass('search-result__title') }}>
@@ -70,3 +74,5 @@
     <p class="solo-small search-result__info">{{ info }}</p>
   {% endif %}
 </div>
+{% endif %}
+

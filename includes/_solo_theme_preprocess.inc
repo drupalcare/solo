@@ -775,9 +775,18 @@ function solo_preprocess_filter_caption(&$variables): void {
  * Implements hook_preprocess_search_result().
  */
 function solo_preprocess_search_result(&$variables): void {
-  // Apply custom date formatter to "date" field.
-  if (!empty($variables['result']['date'])) {
-    $variables['info_date'] = \Drupal::service('date.formatter')->format($variables['result']['node']->getCreatedTime(), 'solo_date_s');
+  // Check if teaser mode is enabled.
+  if (theme_get_setting('enable_teaser_mode')) {
+    // Render the teaser view mode for the node, if available.
+    if (
+      isset($variables['result']['node']) &&
+      $variables['result']['node'] instanceof
+    NodeInterface) {
+      $node = $variables['result']['node'];
+      $variables['search_teaser'] = \Drupal::entityTypeManager()
+        ->getViewBuilder('node')
+        ->view($node, 'teaser');
+    }
   }
 }
 

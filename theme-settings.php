@@ -36,6 +36,7 @@ function solo_form_system_theme_settings_alter(&$form, FormStateInterface $form_
   require_once __DIR__ . '/includes/_theme_settings_blueprint.inc';
   require_once __DIR__ . '/includes/_theme_settings_global_misc.inc';
   require_once __DIR__ . '/includes/_theme_settings_libraries_fonts.inc';
+  require_once __DIR__ . '/includes/_theme_settings_search_results.inc';
   require_once __DIR__ . '/includes/_theme_settings_predefined_themes.inc';
   require_once __DIR__ . '/includes/_theme_settings_layout_page_wrapper.inc';
   require_once __DIR__ . '/includes/_theme_settings_layout_highlighted.inc';

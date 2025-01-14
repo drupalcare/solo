@@ -437,6 +437,7 @@ function _get_theme_variables() {
       'site_breadcrumb_scroll',
       'site_breadcrumb_pagetitle_off',
       'site_inline_items_on',
+      'site_regions_collapse_order',
       'site_regions_top_animate_border',
       'site_regions_bottom_animate_border',
       'site_regions_footer_animate_border',

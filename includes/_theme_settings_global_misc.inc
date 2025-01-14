@@ -94,6 +94,13 @@ $form['solo_settings']['settings_global_misc']['site_global_breakpoints'] = [
   '#description' => t("<p><strong>Use them to adjust the global layout for a particular screen or device size.</strong></p>"),
 ];
 
+$form['solo_settings']['settings_global_misc']['site_regions_collapse_order'] = [
+  '#type' => 'checkbox',
+  '#title' => t('Tick this box to modify the layout collapse order.'),
+  '#description'   => t('<p>When enabled, this setting adjusts the layout of grouped regions to collapse into a responsive grid for better viewing on smaller screens. This feature applies only if the grouped region contains exactly three or four regions.</p>'),
+  '#default_value' => theme_get_setting('site_regions_collapse_order'),
+];
+
 $form['solo_settings']['settings_global_misc']['site_menu_breakpoints'] = [
   '#title' => t("Menu's Breakpoints - Solo Theme"),
   '#type' => 'select',

@@ -83,20 +83,6 @@ function solo_apply_hidden_content_types(array &$form, FormStateInterface $form_
 }
 
 /**
- * Implements hook_query_TAG_alter() for the node_search plugin.
- */
-function solo_query_node_search_alter(SelectInterface $query) {
-  // Get the content types to always apply from the theme settings.
-  $always_applied_content_types = array_filter(theme_get_setting('search_result_content_types') ?? []);
-
-  if (!empty($always_applied_content_types)) {
-    // Add a condition to restrict the query to the allowed content types.
-    $query->condition('n.type', $always_applied_content_types, 'IN');
-
-  }
-}
-
-/**
  * Implements hook_form_FORM_ID_alter().
  */
 function solo_form_node_preview_form_select_alter(&$form, FormStateInterface $form_state, $form_id): void {

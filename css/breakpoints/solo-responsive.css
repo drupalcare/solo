@@ -153,8 +153,7 @@
   }
 
   #page-wrapper .views-exposed-form .exposed-form > div {
-    margin: var(--solo-px8);
-    auto;
+    margin: var(--solo-px8) auto;
     width: 100%;
   }
 
@@ -185,7 +184,7 @@
   #page-wrapper nav.tabs ul li a {
     border-radius: 0;
     margin: 0;
-    border: 1px solid var(--r-br)
+    border: 1px solid var(--r-br);
   }
 
 }

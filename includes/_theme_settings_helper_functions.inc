@@ -10,6 +10,8 @@
  * Author:       Alaa Haddad http://www.alaahaddad.com.
  */
 
+use Drupal\Core\Form\FormStateInterface;
+
 /**
  * Helper function.
  */
@@ -916,4 +918,16 @@ function solo_utilities__check_solo_theme_hierarchy_active() {
 
   // Check if 'solo' is the default theme or in the base theme hierarchy.
   return solo_utilities__check_solo_theme_hierarchy($default_theme);
+}
+
+/**
+ * Submit handler for the Solo search settings.
+ */
+function solo_settings_search_submit(array &$form, FormStateInterface $form_state) {
+  $filters = $form_state->getValue('disable_search_filters');
+
+  // If "Disable Types" is unchecked, set content types to an empty array.
+  if (empty($filters['disable_types'])) {
+    $form_state->setValue('search_result_content_types', []);
+  }
 }

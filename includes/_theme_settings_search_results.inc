@@ -40,13 +40,13 @@ if (\Drupal::moduleHandler()->moduleExists('search')) {
     '#description' => t('Enable this option to display search results using the teaser view mode.'),
   ];
 
-  // List of content types for filtering search results (conditional visibility).
+  // List of content types for filtering search results conditional visibility.
   $form['solo_settings']['settings_search']['search_result_content_types'] = [
     '#type' => 'checkboxes',
     '#title' => t('Content Types to Display in Search Results'),
     '#options' => _solo_get_content_types(),
     '#default_value' => theme_get_setting('search_result_content_types') ?? [],
-    '#description' => t('Select the content types to include in the search results.'),
+    '#description' => t('Allow site builder to select which content types can be searched across the site. The chosen content types will apply to both the search form on the page and the Drupal Core Search Blocks.'),
     '#states' => [
       // Show this field only if "Disable Types" is selected.
       'visible' => [
@@ -54,4 +54,7 @@ if (\Drupal::moduleHandler()->moduleExists('search')) {
       ],
     ],
   ];
+
+  // Add a submit handler to process the values.
+  $form['#submit'][] = 'solo_settings_search_submit';
 }

@@ -5,70 +5,8 @@
  * Solo Theme Alter.
  */
 
-use Drupal\Core\Database\Query\SelectInterface;
 use Drupal\comment\CommentInterface;
 use Drupal\Core\Form\FormStateInterface;
-
-/**
- * Implements hook_form_alter().
- */
-function solo_form_alter(&$form, FormStateInterface $form_state, $form_id): void {
-  // Add a primary button class to forms with fewer than 3 actions.
-  if (!empty($form['actions']['submit']) && count($form['actions']) <= 2) {
-    $form['actions']['submit']['#attributes']['class'][] = 'button--primary';
-  }
-
-  // Apply changes only to the search form.
-  if ($form_id === 'search_form') {
-    // Retrieve theme settings for filters and content types.
-    $disabled_filters = theme_get_setting('disable_search_filters') ?? [];
-    $always_applied_content_types = array_filter(theme_get_setting('search_result_content_types') ?? []);
-
-    // Check if all filters are disabled.
-    if (
-      in_array('disable_keywords', $disabled_filters, TRUE) &&
-      in_array('disable_types', $disabled_filters, TRUE) &&
-      in_array('disable_language', $disabled_filters, TRUE)
-    ) {
-      // Remove the entire "Advanced" section.
-      unset($form['advanced']);
-      // No need to process further if all filters are disabled.
-      return;
-    }
-
-    // Remove individual filters if specified.
-    $filter_fieldsets = [
-      'disable_keywords' => 'keywords-fieldset',
-      'disable_language' => 'lang-fieldset',
-    ];
-
-    foreach ($filter_fieldsets as $filter_key => $fieldset_key) {
-      if (in_array($filter_key, $disabled_filters, TRUE) && isset($form['advanced'][$fieldset_key])) {
-        unset($form['advanced'][$fieldset_key]);
-      }
-    }
-
-    // Handle the "Types" filter specifically.
-    if (in_array('disable_types', $disabled_filters, TRUE) && isset($form['advanced']['types-fieldset'])) {
-      if (!empty($always_applied_content_types)) {
-        // Hide the "Types" filter and add hidden content types.
-        unset($form['advanced']['types-fieldset']);
-
-        $form['advanced']['hidden_content_types'] = [
-          '#type' => 'value',
-          '#value' => $always_applied_content_types,
-        ];
-
-        // Add validation to apply these content types to the search query.
-        $form['#validate'][] = 'solo_apply_hidden_content_types';
-      }
-      else {
-        // Remove the "Types" filter if no content types are specified.
-        unset($form['advanced']['types-fieldset']);
-      }
-    }
-  }
-}
 
 /**
  * Custom validation handler to apply hidden content types to the search query.
@@ -91,30 +29,6 @@ function solo_form_node_preview_form_select_alter(&$form, FormStateInterface $fo
   $form['backlink']['#options']['attributes']['class'][] = 'button--icon-back';
   $form['backlink']['#options']['attributes']['class'][] = 'button--primary';
   $form['view_mode']['#attributes']['class'][] = 'form-element--small';
-}
-
-/**
- * Implements hook_form_FORM_ID_alter() for search_block_form.
- */
-function solo_form_search_block_form_alter(&$form, FormStateInterface $form_state): void {
-  // Add placeholder text to keys input.
-  $form['keys']['#attributes']['placeholder'] = t('Search by keyword or phrase.');
-
-  // Add a class to the submit button.
-  $form['actions']['submit']['#attributes']['class'][] = 'search-button-block';
-}
-
-/**
- * Implements hook_form_FORM_ID_alter() for search_block_form.
- */
-function solo_form_search_form_alter(&$form, FormStateInterface $form_state): void {
-  if (isset($form['help_link'])) {
-    unset($form['help_link']);
-  }
-  // Add placeholder text to keys input.
-  $form['keys']['#attributes']['placeholder'] = t('Search by keyword or phrase.');
-  $form['basic']['submit']['#attributes']['class'][] = 'button--primary';
-  $form['advanced']['submit']['#attributes']['class'][] = 'button--primary';
 }
 
 /**
@@ -156,4 +70,104 @@ function solo_form_comment_form_alter(&$form, FormStateInterface $form_state, $f
  */
 function solo_form_views_exposed_form_alter(&$form): void {
   $form['#attributes']['class'][] = 'form--inline';
+}
+
+/**
+ * Implements hook_form_FORM_ID_alter() for search_block_form.
+ */
+function solo_form_search_form_alter(&$form, FormStateInterface $form_state): void {
+  // Remove the help link if it exists.
+  if (isset($form['help_link'])) {
+    unset($form['help_link']);
+  }
+
+  // Add a primary button class to forms with fewer than 3 actions.
+  if (!empty($form['actions']['submit']) && isset($form['actions']) && count($form['actions']) <= 2) {
+    $form['actions']['submit']['#attributes']['class'][] = 'button--primary';
+  }
+
+  // Add placeholder text to the keys input, if it exists.
+  if (isset($form['keys'])) {
+    $form['keys']['#attributes']['placeholder'] = t('Search by keyword or phrase.');
+  }
+
+  // Add a primary button class to basic and advanced submit buttons if exist.
+  if (isset($form['basic']['submit'])) {
+    $form['basic']['submit']['#attributes']['class'][] = 'button--primary';
+  }
+  if (isset($form['advanced']['submit'])) {
+    $form['advanced']['submit']['#attributes']['class'][] = 'button--primary';
+  }
+
+  // Retrieve theme settings for filters and content types.
+  $disabled_filters = theme_get_setting('disable_search_filters') ?? [];
+  $always_applied_content_types = array_filter(theme_get_setting('search_result_content_types') ?? []);
+
+  // Check if all filters are disabled.
+  if (
+    in_array('disable_keywords', $disabled_filters, TRUE) &&
+    in_array('disable_types', $disabled_filters, TRUE) &&
+    in_array('disable_language', $disabled_filters, TRUE)
+  ) {
+    // Remove the entire "Advanced" section.
+    unset($form['advanced']);
+    // No need to process further if all filters are disabled.
+    return;
+  }
+
+  // Remove individual filters if specified.
+  $filter_fieldsets = [
+    'disable_keywords' => 'keywords-fieldset',
+    'disable_language' => 'lang-fieldset',
+  ];
+
+  foreach ($filter_fieldsets as $filter_key => $fieldset_key) {
+    if (in_array($filter_key, $disabled_filters, TRUE) && isset($form['advanced'][$fieldset_key])) {
+      unset($form['advanced'][$fieldset_key]);
+    }
+  }
+
+  // Handle the "Types" filter specifically.
+  if (in_array('disable_types', $disabled_filters, TRUE) && isset($form['advanced']['types-fieldset'])) {
+    if (!empty($always_applied_content_types)) {
+      // Hide the "Types" filter and add hidden content types.
+      unset($form['advanced']['types-fieldset']);
+
+      $form['advanced']['hidden_content_types'] = [
+        '#type' => 'value',
+        '#value' => $always_applied_content_types,
+      ];
+
+      // Add validation to apply these content types to the search query.
+      $form['#validate'][] = 'solo_apply_hidden_content_types';
+    }
+    else {
+      // Remove the "Types" filter if no content types are specified.
+      unset($form['advanced']['types-fieldset']);
+    }
+  }
+
+}
+
+/**
+ * Implements hook_form_FORM_ID_alter() for search_block_form.
+ */
+function solo_form_search_block_form_alter(&$form, FormStateInterface $form_state): void {
+  // Add placeholder text to keys input.
+  $form['keys']['#attributes']['placeholder'] = t('Search by keyword or phrase.');
+
+  // Add a class to the submit button.
+  $form['actions']['submit']['#attributes']['class'][] = 'search-button-block';
+
+  // Fetch the content types from theme settings.
+  $content_types = array_filter(theme_get_setting('search_result_content_types') ?? []);
+
+  // Attach the content types to drupalSettings.
+  $form['#attached']['drupalSettings']['solo'] = [
+    'searchContentTypes' => $content_types,
+  ];
+
+  // Attach the custom JS library.
+  $form['#attached']['library'][] = 'solo/solo-search-settings';
+
 }

@@ -125,6 +125,15 @@ solo-cookies:
     theme:
       css/theme/solo-cookies.css: { weight: 200 }
 
+# Custom Cookies
+solo-search-settings:
+  js:
+    js/solo-search-settings.js: { }
+  dependencies:
+    - core/drupal
+    - core/drupalSettings
+    - core/once
+
 # Color Coded system tabs
 solo-color-coded-system-tabs:
   css:

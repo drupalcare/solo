@@ -20,7 +20,6 @@
 
 }
 
-.page-wrapper .login-button-open button,
 .page-wrapper nav ul:not(.solo-ul,
 .field ul,
 .pager ul) li>a,
@@ -31,8 +30,6 @@
   overflow: hidden;
 }
 
-.page-wrapper .login-button-open button::after,
-.page-wrapper .login-button-open button::before,
 .page-wrapper nav ul:not(.solo-ul,
 .field ul,
 .pager ul) li>a::after,
@@ -55,7 +52,6 @@
   border-block-end: 5px solid transparent;
 }
 
-.page-wrapper .login-button-open button::before,
 .page-wrapper nav ul:not(.solo-ul,
 .field ul,
 .pager ul) li>a::before,
@@ -65,7 +61,6 @@
   inset-inline-start: 0;
 }
 
-.page-wrapper .login-button-open button::after,
 .page-wrapper nav ul:not(.solo-ul,
 .field ul,
 .pager ul) li>a::after,
@@ -75,8 +70,6 @@
   inset-inline-end: 0;
 }
 
-.page-wrapper .login-button-open button:hover::after,
-.page-wrapper .login-button-open button:hover::before,
 .page-wrapper nav ul:not(.solo-ul,
 .field ul,
 .pager ul) li>a:hover::after,

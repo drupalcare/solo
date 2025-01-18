@@ -14,7 +14,7 @@
     attach: function (context) {
       // Fetch content types from drupalSettings.
       const contentTypes = drupalSettings?.solo?.searchContentTypes;
-      console.log(contentTypes);
+      // console.log(contentTypes);
       // Validate contentTypes: Ensure it's an object and not empty.
       if (contentTypes && Object.keys(contentTypes).length > 0) {
         // Select the search block form using `once` to avoid duplicate bindings.

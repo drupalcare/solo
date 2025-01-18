@@ -147,7 +147,7 @@
   }
 
   .button,
-  nav li *,
+  nav li *:not(.solo__bc-scroll ul.breadcrumb-menu *),
   .solo-button {
     white-space: normal;
   }

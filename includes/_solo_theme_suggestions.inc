@@ -8,18 +8,24 @@
 use Drupal\Core\Routing\RouteMatchInterface;
 
 /**
- * Implements hook_theme_suggestions_HOOK_alter().
+ * Implements hook_theme_suggestions_HOOK_alter() for forms.
  */
 function solo_theme_suggestions_form_alter(array &$suggestions, array $variables): void {
-  // Check if form_id exists in variables.
-  if (isset($variables['element']['#form_id'])) {
-    // Get the form ID.
-    $form_id = $variables['element']['#form_id'];
+  // Check if the form element has an ID and it is meaningful.
+  if (!empty($variables['element']['#id'])) {
+    // Add a theme suggestion based on the form ID.
+    $suggestions[] = 'form__' . str_replace('-', '_', $variables['element']['#id']);
+  }
 
-    // Suggest the name for the search block.
-    if ($form_id === 'search_block_form') {
-      $suggestions[] = 'form__search_block_form';
-    }
+  // Check if the form element has a type and it is meaningful.
+  if (!empty($variables['element']['#type'])) {
+    // Add a theme suggestion based on the form type.
+    $suggestions[] = 'form__' . $variables['element']['#type'];
+  }
+
+  // Special case for the search block form based on #form_id.
+  if (!empty($variables['element']['#form_id']) && $variables['element']['#form_id'] === 'search_block_form') {
+    $suggestions[] = 'form__search_block_form';
   }
 }
 

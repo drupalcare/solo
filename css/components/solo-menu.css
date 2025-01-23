@@ -344,3 +344,7 @@
   height: 100%;
   width: auto;
 }
+
+.admin-toolbar {
+  z-index: 5000;
+}

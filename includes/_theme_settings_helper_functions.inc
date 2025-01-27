@@ -526,7 +526,7 @@ function _animate_region_border($region) {
     '#title' => t("Tick this box to initiate animation of the region's border."),
     '#default_value' => theme_get_setting("site_regions_{$region}_animate_border"),
   ];
-};
+}
 
 /**
  * Helper function.
@@ -537,7 +537,7 @@ function _animate_region_hover($region) {
     '#title' => t("Tick this box to initiate on hover animation for the region."),
     '#default_value' => theme_get_setting("site_regions_{$region}_animate_hover"),
   ];
-};
+}
 
 /**
  * Helper function.
@@ -548,7 +548,7 @@ function _border_region($region) {
     '#title' => t('Tick this box if you prefer to apply a border to the inside regions'),
     '#default_value' => theme_get_setting("site_regions_{$region}_border"),
   ];
-};
+}
 
 /**
  * Helper function.
@@ -566,7 +566,7 @@ function _rounded_region($region) {
       'radius-24' => t('24px / 1.5rem'),
     ],
   ];
-};
+}
 
 /**
  * Helper function.
@@ -582,7 +582,7 @@ function _disable_region($region) {
       2 => t('Visible on All Pages Except Home Page.'),
     ],
   ];
-};
+}
 
 /**
  * Helper function.

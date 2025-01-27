@@ -350,7 +350,7 @@ function _get_region_attributes() {
     '__r_bg_bt_h' => 'Background Button Hover',
 
   ];
-};
+}
 
 /**
  * Helper function.

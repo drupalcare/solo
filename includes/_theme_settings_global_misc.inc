@@ -21,8 +21,15 @@ $form['solo_settings']['settings_global_misc'] = [
   '#collapsed' => FALSE,
 ];
 
+  $form['solo_settings']['settings_global_misc']['enable_px_based_widths'] = [
+    '#type' => 'checkbox',
+    '#title' => t("Enable PX-Based Global Website Width"),
+    '#default_value' => theme_get_setting('enable_px_based_widths'),
+    '#description' => t("Check this box to switch the website's width from rem units to fixed pixel-based widths, ensuring consistent layout sizing. <a href='https://alaahaddad.com/node/70' target='_blank'>Learn more</a>."),
+  ];
+
 $form['solo_settings']['settings_global_misc']['site_global_width'] = [
-  '#title' => t("Website's Width - Solo Theme"),
+  '#title' => t("Global Website Width - Solo Theme"),
   '#type' => 'select',
   '#options' => _get_site_width_options(),
   '#default_value' => theme_get_setting('site_global_width') ?? 'sw-1600',

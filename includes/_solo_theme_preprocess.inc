@@ -124,6 +124,11 @@ function solo_preprocess_html(&$variables): void {
   $solo_path = $solo_utilities . '/' . $solo_list;
   $variables['solo_path'] = $solo_path;
 
+  // Add 'px' class if the setting is enabled.
+  if (theme_get_setting('enable_px_based_widths')) {
+    $variables['attributes']['class'][] = 'px';
+  }
+
   // Check if we're viewing a user profile page.
   if ($route_name === 'entity.user.canonical') {
     // Add a custom CSS class to the body tag.

@@ -23,20 +23,29 @@
   --solo-thead: initial;
   --solo-odd: initial;
   --solo-even: initial;
-  /* Size Variables */
-  --solo-px2560: 160rem;
-  --solo-px1920: 120rem;
-  --solo-px1600: 100rem;
-  --solo-px1440: 90rem;
+  /* website width variables rem */
+  --solo-rem2560: 160rem;
+  --solo-rem1920: 120rem;
+  --solo-rem1600: 100rem;
+  --solo-rem1440: 90rem;
+  --solo-rem1280: 80rem;
+  --solo-rem1024: 64rem;
+  --solo-rem800: 50rem;
+  --solo-px2560: 2560px;
+  --solo-px1920: 1920px;
+  --solo-px1600: 1600px;
+  --solo-px1440: 1440px;
+  --solo-px1280: 1280px;
+  --solo-px1024: 1024px;
+  --solo-px800: 800px;
+  /* website breakpoints variables */
   --solo-px1400: 87.5rem;
-  --solo-px1280: 80rem;
   --solo-px1200: 75rem;
-  --solo-px1024: 64rem;
   --solo-px992: 62rem;
-  --solo-px800: 50rem;
   --solo-px768: 48rem;
   --solo-px600: 37.5rem;
   --solo-px576: 36rem;
+  /* website genral variables */
   --solo-px420: 26.25rem;
   --solo-px320: 20rem;
   --solo-px64: 4rem;

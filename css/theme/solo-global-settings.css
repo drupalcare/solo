@@ -1,4 +1,148 @@
-/* Font zie 18 */
+/* Font zie 12 & 14 */
+html.fs-12,
+html.fs-12 body {
+  font-size: var(--solo-px12);
+}
+
+html.fs-14 #page-wrapper ul.primary > li.core-task .task-icon,
+html.fs-12 #page-wrapper ul.primary > li.core-task .task-icon {
+  width: 16px;
+}
+
+html.fs-14 .menu-branding .menu-branding-logo img,
+html.fs-12 .menu-branding .menu-branding-logo img {
+  max-height: 30px;
+}
+
+html.fs-14 #sidebar-button-close button span,
+html.fs-14 #search-button-open button span,
+html.fs-12 #sidebar-button-close button span,
+html.fs-12 #search-button-open button span {
+  padding-block-start: var(--solo-px10) !important;
+  padding-block-end: var(--solo-px10) !important;
+}
+
+html.fs-14 #sidebar-button-open button span,
+html.fs-12 #sidebar-button-open button span {
+  padding-block-start: var(--solo-px6) !important;
+  padding-block-end: var(--solo-px6) !important;
+}
+
+html.fs-12 .solo-search-block-form .form-type-search::before {
+  inset-block-start: 13px;
+  inset-inline-start: 2px;
+}
+
+html.fs-12 .fixed-search-block-inner .solo-search-block-form .form-type-search::before {
+  inset-block-start: 16px;
+}
+
+html.fs-14 .solo-inner .login-button-open>button,
+html.fs-14 .solo-inner .navigation__menubar-account li a,
+html.fs-12 .solo-inner .login-button-open>button,
+html.fs-12 .solo-inner .navigation__menubar-account li a {
+  padding: var(--solo-px10) !important;
+}
+
+/* Font zie 14 */
+html.fs-14,
+html.fs-14 body {
+  font-size: var(--solo-px14);
+}
+
+html.fs-14 .solo-search-block-form .form-type-search::before {
+  inset-block-start: 16px;
+  inset-inline-start: 5px;
+}
+
+html.fs-14 .fixed-search-block-inner .solo-search-block-form .form-type-search::before {
+  inset-block-start: 20px;
+}
+
+/* Region gaps 0 */
+html.gap-no .solo-inner:not(.primary-menu-inner,
+.primary-sidebar-menu-inner) {
+  padding: var(--solo-px0);
+}
+
+html.gap-no .solo-outer .region-inner {
+  padding: var(--solo-px0);
+}
+
+html.gap-no .multi>.solo-col {
+  gap: var(--solo-px0);
+  grid-auto-flow: column;
+}
+
+/* Region gaps 12 */
+html.gap-12 .solo-inner:not(.primary-menu-inner,
+.primary-sidebar-menu-inner,
+.system-messages-inner,
+.highlighted-inner) {
+  padding: var(--solo-px12);
+}
+
+html.gap-12 .solo-outer .region-inner {
+  padding: var(--solo-px12);
+}
+
+html.gap-12 .multi>.solo-col {
+  gap: var(--solo-px12);
+  grid-auto-flow: column;
+}
+
+html.gap-12 .solo-inner .navigation__menubar li.nav__menu-item>a,
+html.gap-12 .solo-inner .navigation__menubar li.nav__menu-item>button {
+  padding-block-start: var(--solo-px8);
+  padding-block-end: var(--solo-px8);
+}
+
+/* Region gaps 14 */
+html.gap-14 .solo-inner:not(.primary-menu-inner,
+.primary-sidebar-menu-inner,
+.system-messages-inner,
+.highlighted-inner) {
+  padding: var(--solo-px14);
+}
+
+html.gap-14 .solo-outer .region-inner {
+  padding: var(--solo-px14);
+}
+
+html.gap-14 .multi>.solo-col {
+  gap: var(--solo-px14);
+  grid-auto-flow: column;
+}
+
+html.gap-14 .solo-inner .navigation__menubar li.nav__menu-item>a,
+html.gap-14 .solo-inner .navigation__menubar li.nav__menu-item>button {
+  padding-block-start: var(--solo-px10);
+  padding-block-end: var(--solo-px10);
+}
+
+/* Region gaps 20 */
+html.gap-20 .solo-inner:not(.primary-menu-inner,
+.primary-sidebar-menu-inner,
+.system-messages-inner,
+.highlighted-inner) {
+  padding: var(--solo-px20);
+}
+
+html.gap-20 .solo-outer .region-inner {
+  padding: var(--solo-px20);
+}
+
+html.gap-20 .multi>.solo-col {
+  gap: var(--solo-px20);
+  grid-auto-flow: column;
+}
+
+html.gap-20 .solo-inner .navigation__menubar li.nav__menu-item>a,
+html.gap-20 .solo-inner .navigation__menubar li.nav__menu-item>button {
+  padding-block-start: var(--solo-px14);
+  padding-block-end: var(--solo-px14);
+}
+
 @media (min-width:26rem) {
   html.fs-18,
   html.fs-18 body {
@@ -59,21 +203,6 @@
   html.fs-20 .solo-inner .login-button-open>button,
   html.fs-20 .solo-inner .navigation__menubar-account li a {
     padding: var(--solo-px12) !important;
-  }
-
-  /* Region gaps 0 */
-  html.gap-no .solo-inner:not(.primary-menu-inner,
-  .primary-sidebar-menu-inner) {
-    padding: var(--solo-px0);
-  }
-
-  html.gap-no .solo-outer .region-inner {
-    padding: var(--solo-px0);
-  }
-
-  html.gap-no .multi>.solo-col {
-    gap: var(--solo-px0);
-    grid-auto-flow: column;
   }
 
   /* Region gaps 24 */

@@ -91,7 +91,10 @@ function _get_menu_breakpoints_options() {
  */
 function _get_site_global_regions_gap() {
   return [
+    '12' => t('12px / 0.75rem'),
+    '14' => t('14px / 0.875rem'),
     '16' => t('Default 16px / 1rem'),
+    '20' => t('20px / 1.25rem'),
     '24' => t('24px / 1.5rem'),
     '36' => t('36px / 2.25rem'),
     '48' => t('48px / 3rem'),
@@ -105,6 +108,8 @@ function _get_site_global_regions_gap() {
  */
 function _get_site_global_font_size() {
   return [
+    '12' => t('12px / 0.75rem'),
+    '14' => t('14px / 0.875rem'),
     '16' => t('Default 16px / 1rem'),
     '18' => t('18px / 1.125rem'),
     '20' => t('20px / 1.25rem'),

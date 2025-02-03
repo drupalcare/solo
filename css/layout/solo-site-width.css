@@ -1,32 +1,44 @@
-.page-wrapper.sw-100>.solo-outer>.solo-inner:not(.primary-sidebar-menu-inner, .page-node-type-pb-content .main-container-inner) {
+.page-wrapper>.solo-outer>.solo-inner {
+  overflow: hidden;
+}
+
+.page-wrapper.sw-100>.solo-outer>.solo-inner:not(.primary-sidebar-menu-inner,
+.page-node-type-pb-content .main-container-inner) {
   max-width: 100%;
 }
 
-.page-wrapper.sw-2560>.solo-outer>.solo-inner:not(.primary-sidebar-menu-inner, .page-node-type-pb-content .main-container-inner) {
+.page-wrapper.sw-2560>.solo-outer>.solo-inner:not(.primary-sidebar-menu-inner,
+.page-node-type-pb-content .main-container-inner) {
   max-width: var(--solo-rem2560);
 }
 
-.page-wrapper.sw-1920>.solo-outer>.solo-inner:not(.primary-sidebar-menu-inner, .page-node-type-pb-content .main-container-inner) {
+.page-wrapper.sw-1920>.solo-outer>.solo-inner:not(.primary-sidebar-menu-inner,
+.page-node-type-pb-content .main-container-inner) {
   max-width: var(--solo-rem1920);
 }
 
-.page-wrapper.sw-1600>.solo-outer>.solo-inner:not(.primary-sidebar-menu-inner, .page-node-type-pb-content .main-container-inner) {
+.page-wrapper.sw-1600>.solo-outer>.solo-inner:not(.primary-sidebar-menu-inner,
+.page-node-type-pb-content .main-container-inner) {
   max-width: var(--solo-rem1600);
 }
 
-.page-wrapper.sw-1440>.solo-outer>.solo-inner:not(.primary-sidebar-menu-inner, .page-node-type-pb-content .main-container-inner) {
+.page-wrapper.sw-1440>.solo-outer>.solo-inner:not(.primary-sidebar-menu-inner,
+.page-node-type-pb-content .main-container-inner) {
   max-width: var(--solo-rem1440);
 }
 
-.page-wrapper.sw-1280>.solo-outer>.solo-inner:not(.primary-sidebar-menu-inner, .page-node-type-pb-content .main-container-inner) {
+.page-wrapper.sw-1280>.solo-outer>.solo-inner:not(.primary-sidebar-menu-inner,
+.page-node-type-pb-content .main-container-inner) {
   max-width: var(--solo-rem1280);
 }
 
-.page-wrapper.sw-1024>.solo-outer>.solo-inner:not(.primary-sidebar-menu-inner, .page-node-type-pb-content .main-container-inner) {
+.page-wrapper.sw-1024>.solo-outer>.solo-inner:not(.primary-sidebar-menu-inner,
+.page-node-type-pb-content .main-container-inner) {
   max-width: var(--solo-rem1024);
 }
 
-.page-wrapper.sw-800>.solo-outer>.solo-inner:not(.primary-sidebar-menu-inner, .page-node-type-pb-content .main-container-inner) {
+.page-wrapper.sw-800>.solo-outer>.solo-inner:not(.primary-sidebar-menu-inner,
+.page-node-type-pb-content .main-container-inner) {
   max-width: var(--solo-rem800);
 }
 
@@ -57,6 +69,4 @@
 
 .px .page-wrapper.sw-800>.solo-outer>.solo-inner {
   --solo-800rem: var(--solo-px800);
-}
-
 }

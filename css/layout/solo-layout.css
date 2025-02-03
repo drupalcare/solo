@@ -1,10 +1,18 @@
-.solo-col,
 .page-wrapper,
 .solo-outer {
   display: grid;
   margin-inline: auto;
   margin-block: 0;
 }
+
+.solo-col {
+  display: grid;
+  margin-inline: auto;
+  margin-block: 0;
+  max-width: 100%;
+  overflow: hidden;
+}
+
 
 .page-wrapper {
   grid-auto-columns: 100%;

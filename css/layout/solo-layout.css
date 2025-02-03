@@ -10,9 +10,7 @@
   margin-inline: auto;
   margin-block: 0;
   max-width: 100%;
-  overflow: hidden;
 }
-
 
 .page-wrapper {
   grid-auto-columns: 100%;

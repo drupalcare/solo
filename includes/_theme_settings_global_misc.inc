@@ -209,6 +209,15 @@ $form['solo_settings']['settings_global_misc']['color_coded_system_tabs'] = [
   '#default_value' => theme_get_setting('color_coded_system_tabs'),
 ];
 
+// Checkbox to enable toggleable radio buttons.
+$form['solo_settings']['settings_global_misc']['enable_toggleable_radios'] = [
+  '#type' => 'checkbox',
+  '#title' => t('Enable toggleable radio buttons'),
+  '#description' => t('Allow users to deselect a selected radio button by clicking it again. By default, radio buttons are mutually exclusive and cannot be unselected without selecting another option. Enabling this feature provides a more flexible experience.'),
+  '#default_value' => theme_get_setting('enable_toggleable_radios'),
+];
+
+
 $form['solo_settings']['settings_global_misc']['site_reading_mode_content_type'] = [
   '#type' => 'select',
   '#title' => t('Reading Mode (45rem/720px)'),

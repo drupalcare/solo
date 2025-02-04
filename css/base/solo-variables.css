@@ -142,6 +142,12 @@
   --solo-event: var(--solo-white);
   --solo-text-align-start: left;
   --solo-text-align-end: right;
+  --solo-checkbox-bg: linear-gradient(180deg, #d1d1d1 0%, #a8a8a8 50%, #7f7f7f 100%);
+  --solo-checkbox-checked-bg: linear-gradient(180deg, #bebebe 0%, #8c8c8c 50%, #5f5f5f 100%);
+  --solo-checkbox-check-circle: radial-gradient(circle at 35% 35%, #ffffff 0%, #e6e6e6 40%, #bfbfbf 100%);
+  --solo-checkbox-checked-circle: radial-gradient(circle at 40% 40%,  #bfffc9 0%, #38cc73 30%, #218e4a 70%, #18602e 100%);
+  --solo-checkbox-disabled-bg: linear-gradient(180deg, #c0c0c0 0%, #9e9e9e 50%, #7c7c7c 100%);
+  --solo-checkbox-disabled-circle: radial-gradient(circle at 40% 40%, #e3e3e3 0%, #c6c6c6 40%, #9f9f9f 100%);
   /* Icons */
   --solo-select-arrow-icon: url("data:image/svg+xml,%3csvg width='18' height='11' viewBox='0 0 18 11' fill='none' xmlns='http://www.w3.org/2000/svg'%3e%3cpath d='M18 1.49699C18 1.35271 17.9279 1.19038 17.8196 1.08216L16.9178 0.18036C16.8096 0.0721439 16.6473 0 16.503 0C16.3587 0 16.1964 0.0721439 16.0882 0.18036L9 7.26854L1.91182 0.18036C1.80361 0.0721439 1.64128 0 1.49699 0C1.33467 0 1.19038 0.0721439 1.08216 0.18036L0.180361 1.08216C0.0721442 1.19038 0 1.35271 0 1.49699C0 1.64128 0.0721442 1.80361 0.180361 1.91182L8.58517 10.3166C8.69339 10.4248 8.85571 10.497 9 10.497C9.14429 10.497 9.30661 10.4248 9.41483 10.3166L17.8196 1.91182C17.9279 1.80361 18 1.64128 18 1.49699Z' fill='%235D7585'/%3e%3c/svg%3e");
   --solo-arrow-right-icon: url("data:image/svg+xml,%5C%3Csvg class='stroke-svg' xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%5C%3Cpath d='M5 12h13M12 5l7 7-7 7'/%3E%5C%3C/svg%3E");

@@ -113,6 +113,18 @@ solo-menu-keyboard:
     - core/drupalSettings
     - core/once
 
+solo-toggleable-radios:
+  css:
+    component:
+      css/components/solo-toggleable-radios.css: { weight: 0 }
+  js:
+    js/solo-toggleable-radios.js: { }
+  dependencies:
+    - core/drupal
+    - core/drupal.ajax
+    - core/drupalSettings
+    - core/once
+
 # Custom Message
 solo-system-messages-dark:
   css:

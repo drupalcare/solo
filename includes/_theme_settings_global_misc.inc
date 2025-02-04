@@ -217,6 +217,12 @@ $form['solo_settings']['settings_global_misc']['enable_toggleable_radios'] = [
   '#default_value' => theme_get_setting('enable_toggleable_radios'),
 ];
 
+$form['solo_settings']['settings_global_misc']['enable_custom_select'] = [
+  '#type' => 'checkbox',
+  '#title' => t('Enable custom select dropdowns'),
+  '#description' => t('Replace the default select dropdowns with a fully styled, interactive dropdown. Supports single and multi-select.'),
+  '#default_value' => theme_get_setting('enable_custom_select'),
+];
 
 $form['solo_settings']['settings_global_misc']['site_reading_mode_content_type'] = [
   '#type' => 'select',

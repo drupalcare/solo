@@ -125,6 +125,18 @@ solo-toggleable-radios:
     - core/drupalSettings
     - core/once
 
+solo-custom-select:
+  css:
+    theme:
+      css/components/solo-custom-select.css: {}
+  js:
+    js/solo-custom-select.js: {}
+  dependencies:
+    - core/drupal
+    - core/drupal.ajax
+    - core/drupalSettings
+    - core/once
+
 # Custom Message
 solo-system-messages-dark:
   css:

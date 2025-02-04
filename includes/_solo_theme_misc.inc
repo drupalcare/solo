@@ -148,6 +148,15 @@ function _load_color_coded_system_tabs(array &$attachments): void {
 }
 
 /**
+ * Helper function.
+ */
+function _load_enable_toggleable_radios(array &$attachments): void {
+  if (theme_get_setting('enable_toggleable_radios')) {
+    $attachments['#attached']['library'][] = 'solo/solo-toggleable-radios';
+  }
+}
+
+/**
  * Implements hook_page_attachments_alter().
  */
 function solo_page_attachments_alter(array &$attachments): void {
@@ -160,6 +169,7 @@ function solo_page_attachments_alter(array &$attachments): void {
   _load_full_opacity($attachments);
   _site_load_w3css_library($attachments);
   _load_color_coded_system_tabs($attachments);
+  _load_enable_toggleable_radios($attachments);
 }
 
 /**

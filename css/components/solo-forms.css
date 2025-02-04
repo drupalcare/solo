@@ -14,64 +14,59 @@ div.form-actions {
   justify-content: center;
 }
 
+.form-radios,
+.form-checkboxes {
+  display: grid;
+}
+
+.form-type-radio,
+.form-type-checkbox {
+  display: inline-block;
+  width: 100%;
+}
+
+.form-type-radio .description,
+.form-type-checkbox .description {
+  width: 100%;
+}
+
+
 .form-radios .form-item,
 .form-checkboxes .form-item {
   margin-block-start: 0.4em !important;
   margin-block-end: 0.4em !important;
-}
-
-.form-radios,
-.form-checkboxes {
-  display: grid;
+  display: flex;
+  align-items: center;
+  justify-content: start;
 }
 
 fieldset {
   width: 100%;
 }
 
-.form-type-radio {
+input[type="radio"],
+input[type="checkbox"] {
   display: inline-flex;
-  width: 100%;
-  justify-content: start;
-  align-items: self-start;
-  flex-grow: 1;
-}
-
-.form-type-checkbox {
-  margin-block-start: 12px;
-  display: inline-flex;
-  width: 100%;
-  flex-grow: 1;
   justify-content: start;
   align-items: self-start;
   flex-wrap: wrap;
-}
-
-.form-type-radio .form-radio,
-.form-type-checkbox .form-checkbox {
-  margin-block-start: 2px;
-  margin-inline-end: 2px;
+  margin-block-start: -2px;
+  margin-inline-end: 8px;
   margin-block-end: 0;
   margin-inline-start: 0;
 }
 
-.form-type-checkbox .form-checkbox {
-  flex-basis: 30px;
+.form-type-boolean input[type="checkbox"] {
+  margin-block-start: 2px;
 }
 
-.form-type-checkbox label {
-  flex-basis: calc(100% - 50px);
-}
-
-.form-type-radio .description,
-.form-type-checkbox .description {
-  flex-basis: 100%;
-  flex-grow: 1;
+.form-type-boolean > *:not(.discription) {
+  float: var(--solo-text-align-start);
 }
 
 .form-type-radio label,
 .form-type-checkbox label {
-  margin-inline-start: var(--solo-px4) !important; /* LTR */
+  margin-inline-start: var(--solo-px4) !important;
   float: none !important;
 }
 
@@ -81,24 +76,8 @@ fieldset {
   margin-inline-start: 0 !important;
 }
 
-.form-type-radio .description,
-.form-type-checkbox .description {
-  margin-inline-start: var(--solo-px2) !important; /* LTR */
-}
-
-[dir="rtl"] .form-type-radio .description,
-[dir="rtl"] .form-type-checkbox .description {
-  margin-inline-end: var(--solo-px2) !important;
-  margin-inline-start: 0 !important;
-}
-
 .marker {
   color: #e00;
-}
-
-.form-checkbox,
-.form-radio {
-  display: inline-block;
 }
 
 input[type="checkbox"]:focus,
@@ -164,8 +143,8 @@ textarea,
   box-shadow: inset 0 0 var(--solo-px5) rgba(51, 44, 51, 0.1);
 }
 
-[type=checkbox],
-[type=radio] {
+input[type=radio],
+input[type=checkbox] {
   box-shadow: none;
 }
 

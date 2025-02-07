@@ -224,6 +224,38 @@ $form['solo_settings']['settings_global_misc']['enable_custom_select'] = [
   '#default_value' => theme_get_setting('enable_custom_select'),
 ];
 
+$form['solo_settings']['settings_global_misc']['multi_select_ui'] = [
+  '#type' => 'select',
+  '#title' => t('Multi-Select UI Style'),
+  '#description' => t('Choose the style for multi-select fields.'),
+  '#options' => [
+    'dropdown' => t('Dropdown with Checkboxes'),
+    'tags' => t('Tag-Based (Removable Pills)'),
+    'searchable' => t('Tag-Based with Searchable Dropdown'),
+    'dual_list' => t('Dual List Selector'),
+  ],
+  '#default_value' => theme_get_setting('multi_select_ui'),
+  '#states' => [
+    'visible' => [
+      ':input[name="enable_custom_select"]' => ['checked' => TRUE],
+    ],
+  ],
+];
+
+// Ensure the custom submit handler runs.
+$form['#submit'][] = 'solo_reset_multi_select';
+
+/**
+ * Custom submit handler to reset multi_select_ui when custom selects are disabled.
+ */
+function solo_reset_multi_select($form, &$form_state) {
+  if (empty($form_state->getValue(['solo_settings', 'settings_global_misc', 'enable_custom_select']))) {
+    \Drupal::configFactory()->getEditable('solo.settings')
+      ->set('settings_global_misc.multi_select_ui', 'dropdown')
+      ->save();
+  }
+}
+
 $form['solo_settings']['settings_global_misc']['site_reading_mode_content_type'] = [
   '#type' => 'select',
   '#title' => t('Reading Mode (45rem/720px)'),

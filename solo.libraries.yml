@@ -73,11 +73,11 @@ solo-global:
       css/breakpoints/solo-responsive.css: { weight: 200 }
       css/theme/solo-global-settings.css: { weight: 200 }
   js:
-    js/solo-utils.js: { }
-    js/solo-scripts.js: { }
-    js/solo-messages.js: { }
-    js/solo-fixed-search-block.js: { }
-    js/solo-popup-login-block.js: { }
+    js/components/solo-utils.js: { }
+    js/components/solo-scripts.js: { }
+    js/components/solo-messages.js: { }
+    js/components/solo-fixed-search-block.js: { }
+    js/components/solo-popup-login-block.js: { }
   dependencies:
     - core/drupal
     - core/drupal.ajax
@@ -91,10 +91,10 @@ solo-menu:
     theme:
       css/theme/solo-menu-side.css: { weight: 300 }
   js:
-    js/solo-menu-scripts.js: { }
-    js/solo-menu.js: { }
-    js/solo-menu-mobile.js: { }
-    js/solo-menu-side.js: { }
+    js/menu/solo-menu-scripts.js: { }
+    js/menu/solo-menu.js: { }
+    js/menu/solo-menu-mobile.js: { }
+    js/menu/solo-menu-side.js: { }
   dependencies:
     - core/drupal
     - core/drupal.ajax
@@ -106,7 +106,7 @@ solo-menu-keyboard:
     component:
       css/components/solo-menu-keyboard.css: { weight: 0 }
   js:
-    js/solo-menu-keyboard.js: { }
+    js/menu/solo-menu-keyboard.js: { }
   dependencies:
     - core/drupal
     - core/drupal.ajax
@@ -118,23 +118,108 @@ solo-toggleable-radios:
     component:
       css/components/solo-toggleable-radios.css: { weight: 0 }
   js:
-    js/solo-toggleable-radios.js: { }
+    js/forms/solo-toggleable-radios.js: { }
   dependencies:
     - core/drupal
     - core/drupal.ajax
     - core/drupalSettings
     - core/once
 
-solo-custom-select:
+solo-select-single:
   css:
     theme:
-      css/components/solo-custom-select.css: {}
+      css/components/solo-select-single.css: { weight: 0 }
   js:
-    js/solo-custom-select.js: {}
+    js/forms/solo-select-single.js: {}
   dependencies:
     - core/drupal
     - core/drupal.ajax
     - core/drupalSettings
+    - core/once
+
+solo-select-multi-dropdown:
+  css:
+    theme:
+      css/components/solo-select-multi.css:  { weight: 0 }
+  js:
+    js/forms/solo-select-multi-global.js: {}
+    js/forms/solo-select-multi-dropdown.js: {}
+  dependencies:
+    - core/drupal
+    - core/drupal.ajax
+    - core/drupalSettings
+    - core/once
+
+solo-select-multi-tags:
+  css:
+    theme:
+      css/components/solo-select-multi.css:  { weight: 0 }
+  js:
+    js/forms/solo-select-multi-global.js: {}
+    js/forms/solo-select-multi-tags.js: {}
+  dependencies:
+    - core/drupal
+    - core/drupal.ajax
+    - core/drupalSettings
+    - core/once
+
+solo-select-multi-searchable:
+  css:
+    theme:
+      css/components/solo-select-multi.css:  { weight: 0 }
+  js:
+    js/forms/solo-select-multi-global.js: {}
+    js/forms/solo-select-multi-searchable.js: {}
+  dependencies:
+    - core/drupal
+    - core/drupal.ajax
+    - core/drupalSettings
+    - core/once
+
+solo-select-multi-dual-list:
+  css:
+    theme:
+      css/components/solo-select-multi-dual-list.css:  { weight: 0 }
+  js:
+    js/forms/solo-select-multi-global.js: {}
+    js/forms/solo-select-multi-dual-list.js: {}
+  dependencies:
+    - core/drupal
+    - core/drupal.ajax
+    - core/drupalSettings
+    - core/once
+
+
+# Custom Cookies
+solo-search-settings:
+  js:
+    js/components/solo-search-settings.js: { }
+  dependencies:
+    - core/drupal
+    - core/drupalSettings
+    - core/once
+
+# Color Picker.
+solo-form-theme-settings:
+  css:
+    theme:
+      css/theme/solo-form-theme-settings.css: { weight: 200 }
+  js:
+    js/base/solo-form-theme-settings.js: { }
+    js/base/solo-color-picker.js: { }
+  dependencies:
+    - core/drupal
+    - core/drupalSettings
+    - core/once
+
+
+# Full Opacity on Scroll.
+solo-full-opacity:
+  header: true
+  js:
+    js/base/solo-full-opacity.js: { }
+  dependencies:
+    - core/drupal
     - core/once
 
 # Custom Message
@@ -148,15 +233,6 @@ solo-cookies:
   css:
     theme:
       css/theme/solo-cookies.css: { weight: 200 }
-
-# Custom Cookies
-solo-search-settings:
-  js:
-    js/solo-search-settings.js: { }
-  dependencies:
-    - core/drupal
-    - core/drupalSettings
-    - core/once
 
 # Color Coded system tabs
 solo-color-coded-system-tabs:
@@ -226,29 +302,6 @@ solo-menu-breakpoints-mn-1400:
     theme:
       css/breakpoints/solo-menu-breakpoints-mn-1400.css: { weight: 200 }
 
-# Color Picker.
-solo-form-theme-settings:
-  css:
-    theme:
-      css/theme/solo-form-theme-settings.css: { weight: 200 }
-  js:
-    js/solo-form-theme-settings.js: { }
-    js/solo-color-picker.js: { }
-  dependencies:
-    - core/drupal
-    - core/drupalSettings
-    - core/once
-
-
-# Full Opacity on Scroll.
-solo-full-opacity:
-  header: true
-  js:
-    js/solo-full-opacity.js: { }
-  dependencies:
-    - core/drupal
-    - core/once
-
 # custom user login page.
 
 solo-user-login-custom:
@@ -317,7 +370,7 @@ font-awesome-6-ex:
 # JS Dynamic.
 solo-js-dynamic:
   js:
-    js/placeholder.js: { attributes: { defer: true } }
+    js/base/placeholder.js: { attributes: { defer: true } }
   dependencies:
     - core/jquery
     - core/drupal.ajax

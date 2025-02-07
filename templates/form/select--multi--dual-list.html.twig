@@ -1,0 +1,71 @@
+{#
+/**
+ * @file
+ * Theme override for a select element.
+ *
+ * Available variables:
+ * - attributes: HTML attributes for the <select> tag.
+ * - options: The <option> element children.
+ *
+ * @see template_preprocess_select()
+ */
+#}
+{{ attach_library('solo/solo-select-multi-dual-list') }}
+{% apply spaceless %}
+  <div class="solo-select-multi dual-list" tabindex="0" data-target-id="{{ attributes.id }}">
+    <div class="dual-list-container">
+      <div class="dual-list-available">
+        <label>Available</label>
+        {% for option in options %}
+          {% if not option.selected %}
+            <div class="dual-list-option" data-value="{{ option.value }}">
+              {{ option.label }}
+              <button class="dual-list-add">
+                <span>
+                {% include '@solo/partials/svg/_arrow_circle_right.html.twig' %}
+                </span>
+              </button>
+            </div>
+          {% endif %}
+        {% endfor %}
+      </div>
+
+      <div class="dual-list-selected">
+        <label>Selected</label>
+        {% for option in options %}
+          {% if option.selected %}
+            <div class="dual-list-option selected-option" data-value="{{ option.value }}">
+              {{ option.label }}
+              <button class="dual-list-remove">
+                <span>
+                {% include '@solo/partials/svg/_arrow_circle_left.html.twig' %}
+                </span>
+              </button>
+            </div>
+          {% endif %}
+        {% endfor %}
+      </div>
+    </div>
+
+    <!-- Clear All Button -->
+    <div class="dual-list-footer">
+        <button type="button" class="multi-clear-all">
+          <span>
+            {% include '@solo/partials/svg/_clear_all.html.twig' %}
+          </span>
+          <span>{{ 'Clear All'|t }}</span>
+        </button>
+    </div>
+  </div>
+
+  <!-- Keep the original select field for submission -->
+  <select {{ attributes.addClass('solo-hidden-select', 'visually-hidden') }} multiple>
+    {% for option in options %}
+      <option value="{{ option.value }}" {{ option.selected ? 'selected="selected"' }}>{{ option.label }}</option>
+    {% endfor %}
+  </select>
+{% endapply %}
+
+
+
+

@@ -1,0 +1,68 @@
+{#
+/**
+ * @file
+ * Theme override for a select element.
+ *
+ * Available variables:
+ * - attributes: HTML attributes for the <select> tag.
+ * - options: The <option> element children.
+ *
+ * @see template_preprocess_select()
+ */
+#}
+{{ attach_library('solo/solo-select-multi-searchable') }}
+{% set delete_icon %}
+  {% include '@solo/partials/svg/_delete.html.twig' %}
+{% endset %}
+{% apply spaceless %}
+  <div class="solo-select-multi searchable" tabindex="0" data-target-id="{{ attributes.id }}">
+    <div class="solo-select-multi-header">
+      {% set selected_options = options|filter(o => o.selected) %}
+      {% if selected_options|length > 0 %}
+      <div class="solo-multi-tag">
+        {% for selected in selected_options %}
+        <div class="solo-multi-tag-item" data-value="{{ selected.value }}">
+          <span>{{ selected.label }}</span>
+          <button class="remove-tag">
+            {% include '@solo/partials/svg/_delete.html.twig' %}
+          </button>
+        </div>
+       {% endfor %}
+      </div>
+      {% endif %}
+      <span class="select-multi-header-arrow">
+        {% include '@solo/partials/svg/_expand_circle_down.html.twig' %}
+      </span>
+    </div>
+
+    <div class="solo-select-multi-content" aria-hidden="true">
+      <div class="options-inner">
+        <div class="search-input">
+          {% include '@solo/partials/svg/_manage_search.html.twig' %}
+          <input type="text" class="multi-search-input" placeholder="Search..." />
+        </div>
+        {% for option in options %}
+          <div class="solo-select-multi-option" data-value="{{ option.value }}">
+            {{ option.label }}
+          </div>
+        {% endfor %}
+
+        <div class="multi-select-footer">
+          <button type="button" class="multi-clear-all">
+            <span>
+              {% include '@solo/partials/svg/_clear_all.html.twig' %}
+            </span>
+            <span>{{ 'Clear All'|t }}</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Hidden select for form submission -->
+  <select {{ attributes.addClass('solo-hidden-select', 'visually-hidden') }} multiple>
+    {% for option in options %}
+      <option value="{{ option.value }}" {{ option.selected ? 'selected="selected"' }}>{{ option.label }}</option>
+    {% endfor %}
+  </select>
+{% endapply %}

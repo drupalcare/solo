@@ -102,3 +102,46 @@ function solo_theme_suggestions_user_alter(array &$suggestions, array $variables
     $suggestions[] = "user__{$userId}__$viewMode";
   }
 }
+
+/**
+ * Implements hook_theme_suggestions_HOOK_alter() for select elements.
+ */
+function solo_theme_suggestions_select_alter(array &$suggestions, array $variables) {
+  // Check if custom select is enabled in theme settings.
+  $use_custom_selects = theme_get_setting('enable_custom_select');
+
+  if ($use_custom_selects) {
+    // Determine if it's a single or multiple select.
+    if (empty($variables['element']['#multiple'])) {
+      // Uses select--single.html.twig.
+      $suggestions[] = 'select__single';
+    }
+    else {
+      // Get the selected multi-select UI from theme settings.
+      $multi_select_ui = theme_get_setting('multi_select_ui');
+
+      // Apply the correct template based on the selected multi-select UI type.
+      switch ($multi_select_ui) {
+        case 'tags':
+          // Uses select--multi--tags.html.twig.
+          $suggestions[] = 'select__multi__tags';
+          break;
+
+        case 'searchable':
+          // Uses select--multi--searchable.html.twig.
+          $suggestions[] = 'select__multi__searchable';
+          break;
+
+        case 'dual_list':
+          // Uses select--multi--dual-list.html.twig.
+          $suggestions[] = 'select__multi__dual_list';
+          break;
+
+        default:
+          // Uses select--multi--dropdown.html.twig.
+          $suggestions[] = 'select__multi__dropdown';
+          break;
+      }
+    }
+  }
+}

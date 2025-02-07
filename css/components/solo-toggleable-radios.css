@@ -25,12 +25,12 @@ input[type="checkbox"]::before {
   height: 100%;
   border-radius: 22px;
   transition: transform 0.3s ease-in-out, background 0.3s ease, border 0.3s ease, color 0.3s ease, opacity 0.3s ease;
-  transform: translateX(16px);
+  transform: translateX(-16px);
 }
 
 input[type="radio"]:checked::before,
 input[type="checkbox"]:checked::before {
-  transform: translateX(-16px);
+  transform: translateX(16px);
 }
 
 input[type="radio"]:disabled,

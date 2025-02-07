@@ -1,0 +1,47 @@
+{#
+/**
+ * @file
+ * Theme override for a select element.
+ *
+ * Available variables:
+ * - attributes: HTML attributes for the <select> tag.
+ * - options: The <option> element children.
+ *
+ * @see template_preprocess_select()
+ */
+#}
+{{ attach_library('solo/solo-select-single') }}
+
+{% apply spaceless %}
+  <div class="solo-select-single" tabindex="0" data-target-id="{{ attributes.id }}">
+    <div class="solo-select-single-header">
+      <span class="select-single-header-text">
+        {% set selected_option = options|filter(o => o.selected)|first %}
+        {{ selected_option.label ?? options|first.label }}
+      </span>
+      <span class="select-single-header-arrow">
+        {% include '@solo/partials/svg/_expand_circle_down.html.twig' %}
+      </span>
+    </div>
+
+    <div class="solo-select-single-content" aria-hidden="true">
+      <div class="single-content-inner">
+      {% for option in options %}
+        <div class="solo-select-single-option{{ option.selected ? ' selected-option' }}" data-value="{{ option.value }}">
+          {{ option.label }}
+        </div>
+      {% endfor %}
+      </div>
+    </div>
+  </div>
+
+  <!-- Keep the original select field for submission -->
+  <select {{ attributes.addClass('solo-hidden-select', 'visually-hidden') }} single>
+    {% for option in options %}
+      <option value="{{ option.value }}" {{ option.selected ? 'selected="selected"' }}>{{ option.label }}</option>
+    {% endfor %}
+  </select>
+{% endapply %}
+
+
+

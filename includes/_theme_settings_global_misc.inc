@@ -210,51 +210,51 @@ $form['solo_settings']['settings_global_misc']['color_coded_system_tabs'] = [
 ];
 
 // Checkbox to enable toggleable radio buttons.
-$form['solo_settings']['settings_global_misc']['enable_toggleable_radios'] = [
-  '#type' => 'checkbox',
-  '#title' => t('Enable toggleable radio buttons'),
-  '#description' => t('Allow users to deselect a selected radio button by clicking it again. By default, radio buttons are mutually exclusive and cannot be unselected without selecting another option. Enabling this feature provides a more flexible experience.'),
-  '#default_value' => theme_get_setting('enable_toggleable_radios'),
-];
+// $form['solo_settings']['settings_global_misc']['enable_toggleable_radios'] = [
+//   '#type' => 'checkbox',
+//   '#title' => t('Enable toggleable radio buttons'),
+//   '#description' => t('Allow users to deselect a selected radio button by clicking it again. By default, radio buttons are mutually exclusive and cannot be unselected without selecting another option. Enabling this feature provides a more flexible experience.'),
+//   '#default_value' => theme_get_setting('enable_toggleable_radios'),
+// ];
 
-$form['solo_settings']['settings_global_misc']['enable_custom_select'] = [
-  '#type' => 'checkbox',
-  '#title' => t('Enable custom select dropdowns'),
-  '#description' => t('Replace the default select dropdowns with a fully styled, interactive dropdown. Supports single and multi-select.'),
-  '#default_value' => theme_get_setting('enable_custom_select'),
-];
+// $form['solo_settings']['settings_global_misc']['enable_custom_select'] = [
+//   '#type' => 'checkbox',
+//   '#title' => t('Enable custom select dropdowns'),
+//   '#description' => t('Replace the default select dropdowns with a fully styled, interactive dropdown. Supports single and multi-select.'),
+//   '#default_value' => theme_get_setting('enable_custom_select'),
+// ];
 
-$form['solo_settings']['settings_global_misc']['multi_select_ui'] = [
-  '#type' => 'select',
-  '#title' => t('Multi-Select UI Style'),
-  '#description' => t('Choose the style for multi-select fields.'),
-  '#options' => [
-    'dropdown' => t('Dropdown with Checkboxes'),
-    'tags' => t('Tag-Based (Removable Pills)'),
-    'searchable' => t('Tag-Based with Searchable Dropdown'),
-    'dual_list' => t('Dual List Selector'),
-  ],
-  '#default_value' => theme_get_setting('multi_select_ui'),
-  '#states' => [
-    'visible' => [
-      ':input[name="enable_custom_select"]' => ['checked' => TRUE],
-    ],
-  ],
-];
+// $form['solo_settings']['settings_global_misc']['multi_select_ui'] = [
+//   '#type' => 'select',
+//   '#title' => t('Multi-Select UI Style'),
+//   '#description' => t('Choose the style for multi-select fields.'),
+//   '#options' => [
+//     'dropdown' => t('Dropdown with Checkboxes'),
+//     'tags' => t('Tag-Based (Removable Pills)'),
+//     'searchable' => t('Tag-Based with Searchable Dropdown'),
+//     'dual_list' => t('Dual List Selector'),
+//   ],
+//   '#default_value' => theme_get_setting('multi_select_ui'),
+//   '#states' => [
+//     'visible' => [
+//       ':input[name="enable_custom_select"]' => ['checked' => TRUE],
+//     ],
+//   ],
+// ];
 
-// Ensure the custom submit handler runs.
-$form['#submit'][] = 'solo_reset_multi_select';
+// // Ensure the custom submit handler runs.
+// $form['#submit'][] = 'solo_reset_multi_select';
 
-/**
- * Reset multi_select_ui when custom selects are disabled.
- */
-function solo_reset_multi_select($form, &$form_state) {
-  if (empty($form_state->getValue(['solo_settings', 'settings_global_misc', 'enable_custom_select']))) {
-    \Drupal::configFactory()->getEditable('solo.settings')
-      ->set('settings_global_misc.multi_select_ui', 'dropdown')
-      ->save();
-  }
-}
+// /**
+//  * Reset multi_select_ui when custom selects are disabled.
+//  */
+// function solo_reset_multi_select($form, &$form_state) {
+//   if (empty($form_state->getValue(['solo_settings', 'settings_global_misc', 'enable_custom_select']))) {
+//     \Drupal::configFactory()->getEditable('solo.settings')
+//       ->set('settings_global_misc.multi_select_ui', 'dropdown')
+//       ->save();
+//   }
+// }
 
 $form['solo_settings']['settings_global_misc']['site_reading_mode_content_type'] = [
   '#type' => 'select',

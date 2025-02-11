@@ -33,6 +33,8 @@
       return;
     }
 
+    console.log("Initializing Multi-Select Tags:", customSelect);
+
     // Toggle dropdown open/close
     selectedDisplay.addEventListener("click", (event) => {
       event.stopPropagation();
@@ -44,41 +46,44 @@
       }
     });
 
-once('soloMultiSelectDropdownEvents', dropdownMenu).forEach(() => {
-  dropdownMenu.addEventListener("click", function(event) {
-    event.stopPropagation();
+    once('soloMultiSelectDropdownEvents', dropdownMenu).forEach(() => {
+      dropdownMenu.addEventListener("click", function(event) {
+        event.stopPropagation();
 
-    if (event.target.classList.contains("solo-select-multi-option")) {
-      Drupal.solo.toggleMultiSelectOption(hiddenSelect, event.target, selectedDisplay, clearAllButton);
-      event.target.classList.add('hidden'); // Hide instead of remove
-    }
-  });
-});
-
-
-once('clearAllTags', clearAllButton).forEach(() => {
-  clearAllButton.addEventListener("click", function () {
-    // Clear all selected options
-    hiddenSelect.querySelectorAll("option").forEach(option => (option.selected = false));
-
-    // Remove all selected tags inside .solo-multi-tag
-    const multiTagContainer = selectedDisplay.querySelector('.solo-multi-tag');
-    if (multiTagContainer) {
-      multiTagContainer.innerHTML = ''; // Only remove tags, keep structure
-    }
-
-    // Unhide all options in the dropdown
-    dropdownMenu.querySelectorAll('.solo-select-multi-option.hidden').forEach(option => {
-      option.classList.remove('hidden');
+        if (event.target.classList.contains("solo-select-multi-option")) {
+          Drupal.solo.toggleMultiSelectOption(hiddenSelect, event.target, selectedDisplay, clearAllButton);
+          event.target.classList.add('hidden'); // Hide instead of remove
+          console.log("Option selected:", event.target.dataset.value);
+        }
+      });
     });
 
-    // Sync state
-    Drupal.solo.syncHiddenSelect(hiddenSelect, []);
-    Drupal.solo.updateMultiSelectDisplay(hiddenSelect, selectedDisplay, clearAllButton);
-    hiddenSelect.dispatchEvent(new Event("change"));
-  });
-});
+    once('clearAllTags', clearAllButton).forEach(() => {
+      clearAllButton.addEventListener("click", function () {
+        console.log("Clearing all selected tags");
 
+        // Clear all selected options
+        hiddenSelect.querySelectorAll("option").forEach(option => {
+          option.selected = false;
+        });
+
+        // Remove all selected tags inside .solo-multi-tag
+        const multiTagContainer = selectedDisplay.querySelector('.solo-multi-tag');
+        if (multiTagContainer) {
+          multiTagContainer.innerHTML = ''; // Only remove tags, keep structure
+        }
+
+        // Unhide all options in the dropdown
+        dropdownMenu.querySelectorAll('.solo-select-multi-option.hidden').forEach(option => {
+          option.classList.remove('hidden');
+        });
+
+        // Sync state
+        Drupal.solo.syncHiddenSelect(hiddenSelect, []);
+        Drupal.solo.updateMultiSelectDisplay(hiddenSelect, selectedDisplay, clearAllButton);
+        hiddenSelect.dispatchEvent(new Event("change"));
+      });
+    });
 
     // Close dropdown when clicking **outside**
     document.addEventListener("click", (event) => {
@@ -90,7 +95,27 @@ once('clearAllTags', clearAllButton).forEach(() => {
     // Enable keyboard navigation
     Drupal.solo.handleKeyboardNavigation(customSelect, dropdownMenu, selectedDisplay);
 
-    // Initialize UI with existing selections
+    // Ensure UI syncs with hidden select field on load
+    syncUIWithHiddenSelect(hiddenSelect, options, selectedDisplay, clearAllButton);
+
+    console.log("Multi-Select Tags initialized successfully.");
+  }
+
+  function syncUIWithHiddenSelect(hiddenSelect, options, selectedDisplay, clearAllButton) {
+    console.log("Syncing UI with hidden select");
+
+    const selectedValues = Array.from(hiddenSelect.options)
+      .filter(option => option.selected)
+      .map(option => option.value);
+
+    selectedValues.forEach(value => {
+      const correspondingOption = Array.from(options).find(opt => opt.dataset.value === value);
+      if (correspondingOption) {
+        correspondingOption.classList.add("hidden"); // Ensure selected values are hidden in dropdown
+      }
+    });
+
     Drupal.solo.updateMultiSelectDisplay(hiddenSelect, selectedDisplay, clearAllButton);
   }
+
 })(Drupal, once);

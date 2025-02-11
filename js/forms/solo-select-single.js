@@ -114,18 +114,25 @@
   }
 
   function updateOptionVisibility(options, selectedValue) {
+      let visibleOptions = 0;
+
       options.forEach(option => {
           if (option.dataset.value === selectedValue) {
               option.classList.add("hidden");
           } else {
               option.classList.remove("hidden");
+              visibleOptions++;
           }
       });
+
+      // Ensure at least one option remains visible
+      if (visibleOptions === 0) {
+          options.forEach(option => option.classList.remove("hidden"));
+      }
   }
 
-
   function handleArrowNavigation(options, key) {
-    const visibleOptions = Array.from(options).filter(opt => opt.style.display !== "none");
+    const visibleOptions = Array.from(options).filter(opt => !opt.classList.contains("hidden"));
     let currentIndex = visibleOptions.findIndex(opt => document.activeElement === opt);
 
     let newIndex = key === "ArrowDown" ? currentIndex + 1 : currentIndex - 1;
@@ -147,4 +154,3 @@
   }
 
 })(Drupal, once);
-

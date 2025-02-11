@@ -10,9 +10,104 @@
   'use strict';
   // Ensure Drupal.solo namespace exists
   Drupal.solo = Drupal.solo || {};
-  /**
-   * Opens the dropdown while keeping other dropdowns untouched.
-   */
+
+
+Drupal.solo.handleSelectionLimit = function (container, itemSelector, maxSelections) {
+  if (!Number.isInteger(maxSelections)) {
+    return;
+  }
+
+  const items = container.querySelectorAll(itemSelector);
+  //const hiddenSelect = document.querySelector(`[data-target-id="${container.dataset.targetId}"]`);
+  const hiddenSelect = container.nextElementSibling;
+  const selectedDisplay = container.querySelector('.solo-select-multi-header');
+  const clearAllButton = container.querySelector('.multi-clear-all');
+
+  if (!hiddenSelect) {
+    console.error("Selectify: Hidden select not found for", container);
+    return;
+  }
+
+  // Get the first matching item to determine the type
+  const firstItem = items[0];
+  if (!firstItem) {
+    console.warn("Selectify: No items found for selector", itemSelector);
+    return;
+  }
+
+  let selectedCount = 0;
+
+  // ✅ **Run the checkbox loop if the first item is a checkbox**
+  if (firstItem.tagName === "INPUT" && firstItem.type === "checkbox") {
+    items.forEach((item) => {
+      item.addEventListener('change', function () {
+        let selectedItems = [...items].filter(i => i.checked);
+        selectedCount = selectedItems.length;
+        console.log('Number of checkboxes selected:', selectedCount);
+
+        if (this.checked) {
+          if (selectedCount > maxSelections) {
+            this.checked = false;
+            selectedCount--;
+            return;
+          }
+        } else {
+          selectedCount--;
+        }
+
+        if (selectedCount === maxSelections) {
+          return;
+        }
+
+        const selectedValues = selectedItems.map(i => i.value);
+
+        // Sync hidden select
+        Drupal.solo.syncHiddenSelect(hiddenSelect, selectedValues);
+
+        Drupal.solo.updateMultiSelectDisplay(hiddenSelect, selectedDisplay, clearAllButton);
+
+      });
+    });
+  }
+
+  // ✅ **Run the non-checkbox loop if the first item is not a checkbox**
+  else {
+    items.forEach((item) => {
+      item.addEventListener('click', function (event) {
+        event.preventDefault();
+
+        let selectedItems = [...items].filter(i => i.classList.contains('selected'));
+        selectedCount = selectedItems.length;
+        console.log('Number of non-checkbox items selected:', selectedCount);
+
+        if (!item.classList.contains('selected')) {
+          if (selectedCount >= maxSelections) {
+            return;
+          }
+          item.classList.add('selected');
+          selectedCount++;
+        } else {
+          item.classList.remove('selected');
+          selectedCount--;
+        }
+
+        selectedItems = [...items].filter(i => i.classList.contains('selected'));
+        const selectedValues = selectedItems.map(i => i.getAttribute('data-value') || i.textContent.trim());
+
+        // Sync hidden select
+        Drupal.solo.syncHiddenSelect(hiddenSelect, selectedValues);
+
+
+
+        Drupal.solo.updateMultiSelectDisplay(hiddenSelect, selectedDisplay, clearAllButton);
+      });
+    });
+  }
+};
+
+
+
+
   Drupal.solo.openDropdown = (dropdown, triggerElement = null) => {
     document.querySelectorAll(".solo-select-multi-content.toggled").forEach(otherDropdown => {
       if (otherDropdown !== dropdown) {

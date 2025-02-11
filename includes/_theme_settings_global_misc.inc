@@ -246,7 +246,7 @@ $form['solo_settings']['settings_global_misc']['multi_select_ui'] = [
 $form['#submit'][] = 'solo_reset_multi_select';
 
 /**
- * Custom submit handler to reset multi_select_ui when custom selects are disabled.
+ * Reset multi_select_ui when custom selects are disabled.
  */
 function solo_reset_multi_select($form, &$form_state) {
   if (empty($form_state->getValue(['solo_settings', 'settings_global_misc', 'enable_custom_select']))) {

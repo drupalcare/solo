@@ -721,7 +721,7 @@ function _add_node_breadcrumb(RouteMatchInterface $route_match, array &$breadcru
   if ($route_match->getRouteName() === 'entity.node.canonical') {
     $node = $route_match->getParameter('node');
     if ($node instanceof NodeInterface) {
-      $breadcrumb[] = ['text' => $node->label()];
+      $breadcrumb[] = ['text' => Html::decodeEntities($node->label())];
     }
   }
 }
@@ -733,7 +733,7 @@ function _add_taxonomy_breadcrumb(RouteMatchInterface $route_match, array &$brea
   if ($route_match->getRouteName() === 'entity.taxonomy_term.canonical') {
     $term = $route_match->getParameter('taxonomy_term');
     if ($term instanceof TermInterface) {
-      $breadcrumb[] = ['text' => $term->label()];
+      $breadcrumb[] = ['text' => Html::decodeEntities($term->label())];
     }
   }
 }
@@ -745,7 +745,7 @@ function _add_user_breadcrumb(RouteMatchInterface $route_match, array &$breadcru
   if ($route_match->getRouteName() === 'entity.user.canonical') {
     $user = $route_match->getParameter('user');
     if ($user instanceof UserInterface) {
-      $breadcrumb[] = ['text' => $user->getDisplayName()];
+      $breadcrumb[] = ['text' => Html::decodeEntities($user->getDisplayName())];
     }
   }
 }
@@ -757,7 +757,7 @@ function _add_webform_breadcrumb(RouteMatchInterface $route_match, array &$bread
   if ($route_match->getRouteName() === 'entity.webform.canonical') {
     $webform = $route_match->getParameter('webform');
     if ($webform instanceof Webform) {
-      $breadcrumb[] = ['text' => $webform->label()];
+      $breadcrumb[] = ['text' => Html::decodeEntities($webform->label())];
     }
   }
 }
@@ -786,7 +786,7 @@ function _add_view_breadcrumb(RouteMatchInterface $route_match, array &$breadcru
   }
 
   // Add the title to the breadcrumb.
-  $breadcrumb[] = ['text' => $title];
+  $breadcrumb[] = ['text' => Html::decodeEntities($title)];
 }
 
 /**
@@ -800,11 +800,11 @@ function solo_preprocess_breadcrumb(&$variables) {
       $variables['breadcrumb'] = [];
     }
 
-
     // Get services.
     $request = \Drupal::request();
     $route_match = \Drupal::service('current_route_match');
     $title_resolver = \Drupal::service('title_resolver');
+    $breadcrumb = [];
 
     // Get the page title.
     $page_title = $title_resolver->getTitle($request, $route_match->getRouteObject());
@@ -823,18 +823,14 @@ function solo_preprocess_breadcrumb(&$variables) {
 
       // If not found, add the page title.
       if (!$title_exists) {
-        $variables['breadcrumb'][] = ['text' => $page_title];
+        $variables['breadcrumb'][] = ['text' => Html::decodeEntities($page_title)];
         $variables['#cache']['contexts'][] = 'url';
       }
     }
 
-
     // Retrieve body classes dynamically from request attributes (best practice).
     $request = \Drupal::request();
     $body_classes = $request->attributes->get('solo_body_classes', []);
-
-    // Initialize breadcrumb.
-    $breadcrumb = [];
 
     _add_node_breadcrumb($route_match, $breadcrumb);
     _add_taxonomy_breadcrumb($route_match, $breadcrumb);
@@ -852,7 +848,7 @@ function solo_preprocess_breadcrumb(&$variables) {
 
       foreach ($variables['breadcrumb'] as $item) {
         if (!empty($item['text']) && !in_array($item['text'], $seen_texts, TRUE)) {
-          $seen_texts[] = $item['text'];
+          $seen_texts[] = Html::decodeEntities($item['text']);
           $unique_breadcrumb[] = $item;
         }
       }

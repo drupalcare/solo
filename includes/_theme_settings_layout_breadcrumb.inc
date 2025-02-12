@@ -21,7 +21,7 @@ if (array_key_exists('breadcrumb', $updated_regions['mix'])) {
   $form['solo_settings']["settings_{$region}"]['site_breadcrumb_pagetitle_off'] = [
     '#type' => 'checkbox',
     '#title' => t('Exclude the page title from the Breadcrumb.'),
-    '#description' => t('Enable this option to prevent the page title from being added to the breadcrumb trail. This setting applies to all content types, Views pages, taxonomy terms, and user profile pages.'),
+    '#description' => t('By default, Drupal does not include the page title in the breadcrumb. Solo adds it as a custom feature, but you can disable it to revert to the default behavior. Enable this option to prevent the page title from being added to the breadcrumb trail. This setting applies to all content types, Views pages, taxonomy terms, and user profile pages.'),
     '#default_value' => theme_get_setting('site_breadcrumb_pagetitle_off'),
   ];
 

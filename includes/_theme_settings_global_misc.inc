@@ -215,15 +215,13 @@ $form['solo_settings']['settings_global_misc']['color_coded_system_tabs'] = [
 //   '#title' => t('Enable toggleable radio buttons'),
 //   '#description' => t('Allow users to deselect a selected radio button by clicking it again. By default, radio buttons are mutually exclusive and cannot be unselected without selecting another option. Enabling this feature provides a more flexible experience.'),
 //   '#default_value' => theme_get_setting('enable_toggleable_radios'),
-// ];
-
+// ];.
 // $form['solo_settings']['settings_global_misc']['enable_custom_select'] = [
 //   '#type' => 'checkbox',
 //   '#title' => t('Enable custom select dropdowns'),
 //   '#description' => t('Replace the default select dropdowns with a fully styled, interactive dropdown. Supports single and multi-select.'),
 //   '#default_value' => theme_get_setting('enable_custom_select'),
 // ];
-
 // $form['solo_settings']['settings_global_misc']['multi_select_ui'] = [
 //   '#type' => 'select',
 //   '#title' => t('Multi-Select UI Style'),
@@ -241,10 +239,8 @@ $form['solo_settings']['settings_global_misc']['color_coded_system_tabs'] = [
 //     ],
 //   ],
 // ];
-
 // // Ensure the custom submit handler runs.
 // $form['#submit'][] = 'solo_reset_multi_select';
-
 // /**
 //  * Reset multi_select_ui when custom selects are disabled.
 //  */
@@ -255,7 +251,6 @@ $form['solo_settings']['settings_global_misc']['color_coded_system_tabs'] = [
 //       ->save();
 //   }
 // }
-
 $form['solo_settings']['settings_global_misc']['site_reading_mode_content_type'] = [
   '#type' => 'select',
   '#title' => t('Reading Mode (45rem/720px)'),

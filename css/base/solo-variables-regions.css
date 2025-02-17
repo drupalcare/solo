@@ -23,8 +23,8 @@
 }
 
 .page-wrapper hr:not(.field hr),
-.page-wrapper ul:not(.field ul),
-.page-wrapper ul li:not(.field ul li),
+.page-wrapper ul:not(.messages ul):not(.field ul),
+.page-wrapper ul li:not(.messages li):not(.field li),
 .page-wrapper table:not(.field table) {
   background-color: var(--r-bg);
 }

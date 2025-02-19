@@ -67,6 +67,7 @@
 .active-main-1 > .solo-inner > div,
 .active-bottom-1 > .solo-inner > div,
 .active-footer-1 > .solo-inner > div {
+  width: calc(100% - var(--solo-gap));
   margin: 0 auto;
 }
 

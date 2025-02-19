@@ -78,6 +78,7 @@
   --solo-px2: 0.125rem;
   --solo-px1: 0.063rem;
   --solo-px0: 0;
+  --solo-gap: var(--solo-px16);
   /* Color Constants */
   --solo-transparent: transparent;
   --solo-ccc: #ccc;

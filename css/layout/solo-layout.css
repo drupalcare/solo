@@ -44,7 +44,7 @@
   padding: 0 !important;
 }
 
-.solo-inner:not(.primary-menu-inner,
+.solo-inner:not( .primary-menu-inner,
 .primary-sidebar-menu-inner,
 .system-messages-inner,
 .highlighted-inner,
@@ -52,16 +52,31 @@
 .active-main-1 > .solo-inner,
 .active-bottom-1 > .solo-inner,
 .active-footer-1 > .solo-inner) {
-  padding: var(--solo-px16);
+  padding: var(--solo-gap);
+}
+
+.active-top-1 > .solo-inner,
+.active-main-1 > .solo-inner,
+.active-bottom-1 > .solo-inner,
+.active-footer-1 > .solo-inner {
+  padding-top: var(--solo-gap);
+  padding-bottom: var(--solo-gap);
+}
+
+.active-top-1 > .solo-inner > div,
+.active-main-1 > .solo-inner > div,
+.active-bottom-1 > .solo-inner > div,
+.active-footer-1 > .solo-inner > div {
+  margin: 0 auto;
 }
 
 .solo-outer .region-inner {
-  padding: var(--solo-px16);
+  padding: var(--solo-gap);
 }
 
 /* We change it in big screen */
 .multi>.solo-col {
-  gap: var(--solo-px16);
+  gap: var(--solo-gap);
   grid-auto-flow: column;
 }
 

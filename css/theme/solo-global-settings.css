@@ -59,38 +59,7 @@ html.fs-14 .fixed-search-block-inner .solo-search-block-form .form-type-search::
   inset-block-start: 20px;
 }
 
-/* Region gaps 0 */
-html.gap-no .solo-inner:not(.primary-menu-inner,
-.primary-sidebar-menu-inner) {
-  padding: var(--solo-px0);
-}
-
-html.gap-no .solo-outer .region-inner {
-  padding: var(--solo-px0);
-}
-
-html.gap-no .multi>.solo-col {
-  gap: var(--solo-px0);
-  grid-auto-flow: column;
-}
-
 /* Region gaps 12 */
-html.gap-12 .solo-inner:not(.primary-menu-inner,
-.primary-sidebar-menu-inner,
-.system-messages-inner,
-.highlighted-inner) {
-  padding: var(--solo-px12);
-}
-
-html.gap-12 .solo-outer .region-inner {
-  padding: var(--solo-px12);
-}
-
-html.gap-12 .multi>.solo-col {
-  gap: var(--solo-px12);
-  grid-auto-flow: column;
-}
-
 html.gap-12 .solo-inner .navigation__menubar li.nav__menu-item>a,
 html.gap-12 .solo-inner .navigation__menubar li.nav__menu-item>button {
   padding-block-start: var(--solo-px8);
@@ -98,52 +67,49 @@ html.gap-12 .solo-inner .navigation__menubar li.nav__menu-item>button {
 }
 
 /* Region gaps 14 */
-html.gap-14 .solo-inner:not(.primary-menu-inner,
-.primary-sidebar-menu-inner,
-.system-messages-inner,
-.highlighted-inner) {
-  padding: var(--solo-px14);
-}
-
-html.gap-14 .solo-outer .region-inner {
-  padding: var(--solo-px14);
-}
-
-html.gap-14 .multi>.solo-col {
-  gap: var(--solo-px14);
-  grid-auto-flow: column;
-}
-
 html.gap-14 .solo-inner .navigation__menubar li.nav__menu-item>a,
 html.gap-14 .solo-inner .navigation__menubar li.nav__menu-item>button {
   padding-block-start: var(--solo-px10);
   padding-block-end: var(--solo-px10);
 }
 
-/* Region gaps 20 */
-html.gap-20 .solo-inner:not(.primary-menu-inner,
-.primary-sidebar-menu-inner,
-.system-messages-inner,
-.highlighted-inner) {
-  padding: var(--solo-px20);
-}
-
-html.gap-20 .solo-outer .region-inner {
-  padding: var(--solo-px20);
-}
-
-html.gap-20 .multi>.solo-col {
-  gap: var(--solo-px20);
-  grid-auto-flow: column;
-}
-
-html.gap-20 .solo-inner .navigation__menubar li.nav__menu-item>a,
-html.gap-20 .solo-inner .navigation__menubar li.nav__menu-item>button {
-  padding-block-start: var(--solo-px14);
-  padding-block-end: var(--solo-px14);
-}
-
 @media (min-width:26rem) {
+
+  /* Region gaps 20 */
+  html.gap-20 .solo-inner .navigation__menubar li.nav__menu-item>a,
+  html.gap-20 .solo-inner .navigation__menubar li.nav__menu-item>button {
+    padding-block-start: var(--solo-px14);
+    padding-block-end: var(--solo-px14);
+  }
+
+  /* Region gaps 24 */
+  html.gap-24 .solo-inner .navigation__menubar li.nav__menu-item>a,
+  html.gap-24 .solo-inner .navigation__menubar li.nav__menu-item>button {
+    padding-block-start: var(--solo-px18);
+    padding-block-end: var(--solo-px18);
+  }
+
+  /* Region gaps 36 */
+  html.gap-36 .solo-inner .navigation__menubar li.nav__menu-item>a,
+  html.gap-36 .solo-inner .navigation__menubar li.nav__menu-item>button {
+    padding-block-start: var(--solo-px20);
+    padding-block-end: var(--solo-px20);
+  }
+
+  /* Region gaps 48 */
+  html.gap-48 .solo-inner .navigation__menubar li.nav__menu-item>a,
+  html.gap-48 .solo-inner .navigation__menubar li.nav__menu-item>button {
+    padding-block-start: var(--solo-px24);
+    padding-block-end: var(--solo-px24);
+  }
+
+  /* Region gaps 64 */
+  html.gap-64 .solo-inner .navigation__menubar li.nav__menu-item>a,
+  html.gap-64 .solo-inner .navigation__menubar li.nav__menu-item>button {
+    padding-block-start: var(--solo-px32);
+    padding-block-end: var(--solo-px32);
+  }
+
   html.fs-18,
   html.fs-18 body {
     font-size: var(--solo-px18);
@@ -203,98 +169,6 @@ html.gap-20 .solo-inner .navigation__menubar li.nav__menu-item>button {
   html.fs-20 .solo-inner .login-button-open>button,
   html.fs-20 .solo-inner .navigation__menubar-account li a {
     padding: var(--solo-px12) !important;
-  }
-
-  /* Region gaps 24 */
-  html.gap-24 .solo-inner:not(.primary-menu-inner,
-  .primary-sidebar-menu-inner,
-  .system-messages-inner,
-  .highlighted-inner) {
-    padding: var(--solo-px24);
-  }
-
-  html.gap-24 .solo-outer .region-inner {
-    padding: var(--solo-px24);
-  }
-
-  html.gap-24 .multi>.solo-col {
-    gap: var(--solo-px24);
-    grid-auto-flow: column;
-  }
-
-  html.gap-24 .solo-inner .navigation__menubar li.nav__menu-item>a,
-  html.gap-24 .solo-inner .navigation__menubar li.nav__menu-item>button {
-    padding-block-start: var(--solo-px18);
-    padding-block-end: var(--solo-px18);
-  }
-
-  /* Region gaps 36 */
-  html.gap-36 .solo-inner:not(.primary-menu-inner,
-  .primary-sidebar-menu-inner,
-  .system-messages-inner,
-  .highlighted-inner) {
-    padding: var(--solo-px36);
-  }
-
-  html.gap-36 .solo-outer .region-inner {
-    padding: var(--solo-px36);
-  }
-
-  html.gap-36 .multi>.solo-col {
-    gap: var(--solo-px36);
-    grid-auto-flow: column;
-  }
-
-  html.gap-36 .solo-inner .navigation__menubar li.nav__menu-item>a,
-  html.gap-36 .solo-inner .navigation__menubar li.nav__menu-item>button {
-    padding-block-start: var(--solo-px20);
-    padding-block-end: var(--solo-px20);
-  }
-
-  /* Region gaps 48 */
-  html.gap-48 .solo-inner:not(.primary-menu-inner,
-  .primary-sidebar-menu-inner,
-  .system-messages-inner,
-  .highlighted-inner) {
-    padding: var(--solo-px48);
-  }
-
-  html.gap-48 .solo-outer .region-inner {
-    padding: var(--solo-px48);
-  }
-
-  html.gap-48 .multi>.solo-col {
-    gap: var(--solo-px48);
-    grid-auto-flow: column;
-  }
-
-  html.gap-48 .solo-inner .navigation__menubar li.nav__menu-item>a,
-  html.gap-48 .solo-inner .navigation__menubar li.nav__menu-item>button {
-    padding-block-start: var(--solo-px24);
-    padding-block-end: var(--solo-px24);
-  }
-
-  /* Region gaps 64 */
-  html.gap-64 .solo-inner:not(.primary-menu-inner,
-  .primary-sidebar-menu-inner,
-  .system-messages-inner,
-  .highlighted-inner) {
-    padding: var(--solo-px64);
-  }
-
-  html.gap-64 .solo-outer .region-inner {
-    padding: var(--solo-px64);
-  }
-
-  html.gap-64 .multi>.solo-col {
-    gap: var(--solo-px64);
-    grid-auto-flow: column;
-  }
-
-  html.gap-64 .solo-inner .navigation__menubar li.nav__menu-item>a,
-  html.gap-64 .solo-inner .navigation__menubar li.nav__menu-item>button {
-    padding-block-start: var(--solo-px32);
-    padding-block-end: var(--solo-px32);
   }
 
 }

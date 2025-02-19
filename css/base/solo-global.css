@@ -417,3 +417,51 @@ form fieldset:not(td fieldset) {
   white-space: nowrap;
   border: 0;
 }
+
+html.gap-no,
+html.gap-no {
+  --solo-gap: var(--solo-px0);
+}
+
+html.gap-12,
+html.gap-12 {
+  --solo-gap: var(--solo-px12);
+}
+
+html.gap-14,
+html.gap-14 {
+  --solo-gap: var(--solo-px14);
+}
+
+html.gap-16,
+html.gap-16 {
+  --solo-gap: var(--solo-px16);
+}
+
+@media (min-width:26rem) {
+  html.gap-20,
+  html.gap-20 {
+    --solo-gap: var(--solo-px20);
+  }
+
+  html.gap-24,
+  html.gap-24 {
+    --solo-gap: var(--solo-px24);
+  }
+
+  html.gap-36,
+  html.gap-36 {
+    --solo-gap: var(--solo-px36);
+  }
+
+  html.gap-48,
+  html.gap-48 {
+    --solo-gap: var(--solo-px48);
+  }
+
+  html.gap-64,
+  html.gap-64 {
+    --solo-gap: var(--solo-px64);
+  }
+
+}

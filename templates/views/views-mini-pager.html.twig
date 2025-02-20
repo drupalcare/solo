@@ -12,7 +12,7 @@
 #}
 {% if items.previous or items.next %}
   <nav class="pager" role="navigation" aria-labelledby="{{ heading_id }}">
-    <h4 id="{{ heading_id }}" class="pager__heading visually-hidden">{{ 'Pagination'|t }}</h4>
+    <span id="{{ heading_id }}" class="pager__heading visually-hidden">{{ 'Pagination'|t }}</span>
     <ul class="solo-clear pager__items js-pager__items">
       {% if items.previous %}
         <li class="solo-button pager__item pager__item--previous">

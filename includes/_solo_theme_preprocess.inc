@@ -828,7 +828,7 @@ function solo_preprocess_breadcrumb(&$variables) {
       }
     }
 
-    // Retrieve body classes dynamically from request attributes (best practice).
+    // Retrieve body classes dynamically from request attributes.
     $request = \Drupal::request();
     $body_classes = $request->attributes->get('solo_body_classes', []);
 
@@ -1030,6 +1030,9 @@ function solo_preprocess_menu__primary_menu(&$variables): void {
 
   if (theme_get_setting('primary_menu_on_hover')) {
     $variables['click_hover'] = 'navigation-responsive-hover';
+    if (theme_get_setting('primary_menu_arrow_hover')) {
+      $variables['remove_arrow'] = 'remove-arrow';
+    }
   }
   else {
     $variables['click_hover'] = 'navigation-responsive-click';

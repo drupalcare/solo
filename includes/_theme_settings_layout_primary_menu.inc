@@ -31,6 +31,18 @@ if (array_key_exists('primary_menu', $updated_regions['mix'])) {
     '#default_value' => theme_get_setting('primary_menu_on_hover'),
   ];
 
+  $form['solo_settings']["settings_{$region}"]['primary_menu_arrow_hover'] = [
+    '#type' => 'checkbox',
+    '#title' => t('Tick this box to hide dropdown arrows on hover menus. (Big screen only)'),
+    '#description' => t('When enabled, the main menu expands dropdowns on hover. This option removes the arrow icons from parent menu items, reducing visual clutter and saving space, especially for menus with many items.'),
+    '#default_value' => theme_get_setting('primary_menu_arrow_hover'),
+    '#states' => [
+      'visible' => [
+        ':input[name="primary_menu_on_hover"]' => ['checked' => TRUE],
+      ],
+    ],
+  ];
+
   $form['solo_settings']["settings_{$region}"]['primary_menu_border'] = [
     '#type' => 'checkbox',
     '#title' => t('Tick this box if you prefer to add border for each menu item'),

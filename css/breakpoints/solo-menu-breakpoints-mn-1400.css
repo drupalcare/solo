@@ -495,4 +495,12 @@
     flex-wrap: nowrap;
   }
 
+  /* Remove the dropdown arrow when hover navigation is enabled */
+  #primary-menu .navigation-responsive-hover.remove-arrow .navigation__menubar > li > a + button,
+  #primary-menu .navigation-responsive-hover.remove-arrow .navigation__menubar > li > button > span.dropdown-arrow {
+    display: none !important;
+    padding: 0;
+    margin: 0;
+    border: none;
+  }
 }

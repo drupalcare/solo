@@ -163,7 +163,7 @@ img {
 .block-user-login-block form+.item-list ul li a {
   border-width: var(--solo-px1);
   border-style: solid;
-  padding-block: var(--solo-px10);
+  padding-block: var(--solo-px8);
   padding-inline: var(--solo-px24);
   margin-block: var(--solo-px6);
   margin-inline: auto;
@@ -205,8 +205,7 @@ input[type="text"],
 input[type="email"],
 input[type="password"] {
   max-width: 100%;
-  padding-block: var(--solo-px10);
-  padding-inline: var(--solo-px8);
+  padding: var(--solo-px8);
   display: block;
   width: 100%;
   border: var(--solo-px1) solid var(--r-br, var(--r-br-b));
@@ -219,8 +218,7 @@ select,
   display: block;
   line-height: inherit;
   border: var(--solo-px1) solid var(--r-br, var(--r-br-b));
-  padding-block: var(--solo-px10);
-  padding-inline-start: var(--solo-px8);
+  padding: var(--solo-px8);
   padding-inline-end: var(--solo-px40);
   width: 100%;
   background-image: var(--solo-select-arrow-icon);

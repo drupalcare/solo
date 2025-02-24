@@ -5,9 +5,6 @@ LAPIS #2832C2, International Orange #FF4F00
   --r-br: #1c238a;
   --r-bg: #02030b;
   --r-tx: #dfe1f9;
-  color: var(--r-tx);
-  border-color: var(--r-br);
-  background-color: var(--r-bg);
   --r-header-bg: linear-gradient(0deg, #000000, #0b0e35);
   --r-header-tx: #2b36d0;
   --r-menu-bg-h: #050619;
@@ -224,6 +221,34 @@ div.page-title.lone {
   color: var(--r-header-tx);
   background: var(--r-header-bg);
 }
+
+/* Dark Theme Styles */
+.page-wrapper .selectify-radio,
+.page-wrapper .selectify-checkbox,
+.page-wrapper .selectify-radio *,
+.page-wrapper .selectify-checkbox * {
+  --selectify-checkbox-bg: linear-gradient(180deg, var(--r-header-bg) 0%, #050619 50%, #2b36d0 100%);
+  --selectify-checkbox-checked-bg: linear-gradient(180deg, #2b36d0 0%, #050619 50%, #dfe1f9 100%);
+  --selectify-checkbox-check-circle: radial-gradient(circle at 35% 35%, #1c238a 0%, #2b36d0 40%, #dfe1f9 100%);
+  --selectify-checkbox-checked-circle: radial-gradient(circle at 40% 40%, #dfe1f9 0%, #2b36d0 40%, #1c238a 100%);
+  --selectify-checkbox-disabled-bg: linear-gradient(180deg, #1c238a 0%, #050619 50%, var(--r-br) 100%);
+  --selectify-checkbox-disabled-circle: radial-gradient(circle at 40% 40%, #7178e1 0%, #2b36d0 40%, #050619 100%);
+}
+
+.page-wrapper .selectify-select,
+.page-wrapper .selectify-select * {
+  --selectify-select-bg: linear-gradient(180deg, var(--r-bg) 0%, #0b0e35 100%);
+  --selectify-select-hover-bg: linear-gradient(0deg, #0b0e35 0%, #050619 100%);
+  --selectify-select-border-color: #1c238a;
+  --selectify-select-color: var(--r-tx);
+  --selectify-select-focus-border-color: #2b36d0;
+  --selectify-select-disabled-bg: linear-gradient(180deg, #0b0e35 0%, #1c238a 100%);
+  --selectify-select-arrow-color: #2b36d0;
+  --selectify-dropdown-shadow: 0px 4px 14px rgba(255, 255, 255, 0.12);
+  --selectify-option-hover-bg: linear-gradient(180deg, #0b0e35 0%, #050619 100%);
+  --selectify-option-active-bg: linear-gradient(180deg, #1c238a 0%, #2b36d0 100%);
+}
+
 
 /* Border animation  */
 @keyframes borderLeftColors {

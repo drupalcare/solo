@@ -5,9 +5,6 @@ Bayern Blue #0066B2, Berry Blue #4F86F7, Blue Yonder #5072A7, OIL #050100
   --r-br: #bbaea0;
   --r-bg: #f6fbff;
   --r-tx: #2c261f;
-  color: var(--r-tx);
-  border-color: var(--r-br);
-  background-color: var(--r-bg);
   --r-header-bg: linear-gradient(0deg, #0e0c0a, #221d18);
   --r-header-tx: #85725f;
   --r-menu-tx-h: #000508;
@@ -270,6 +267,31 @@ header.header h3 a span {
 .page-wrapper .pager__item a:hover {
   color: var(--r-header-tx);
   background: var(--r-header-bg);
+}
+.page-wrapper .selectify-radio,
+.page-wrapper .selectify-checkbox,
+.page-wrapper .selectify-radio *,
+.page-wrapper .selectify-checkbox * {
+  --selectify-checkbox-bg: linear-gradient(180deg, var(--r-br) 0%, #c6b5a2 50%, #8e7c65 100%);
+  --selectify-checkbox-checked-bg: linear-gradient(180deg, var(--r-menu-bg-h) 0%, #006bb3 50%, #004c8b 100%);
+  --selectify-checkbox-check-circle: radial-gradient(circle at 35% 35%, #ffffff 0%, #f1ebd7 40%, #c4b69e 100%);
+  --selectify-checkbox-checked-circle: radial-gradient(circle at 40% 40%, #ffffff 0%, #b5a88a 40%, var(--r-header-tx) 100%);
+  --selectify-checkbox-disabled-bg: linear-gradient(180deg, var(--r-bg) 0%, #e0dbd0 50%, #c6b5a2 100%);
+  --selectify-checkbox-disabled-circle: radial-gradient(circle at 40% 40%, #f9f7f0 0%, #f1ebd7 40%, #c4b69e 100%);
+}
+
+.page-wrapper .selectify-select,
+.page-wrapper .selectify-select * {
+  --selectify-select-bg: linear-gradient(180deg, #ffffff 0%, var(--r-bg) 100%);
+  --selectify-select-hover-bg: linear-gradient(0deg, var(--r-bg) 0%, #e1effa 100%);
+  --selectify-select-border-color: var(--r-br);
+  --selectify-select-color: var(--r-tx);
+  --selectify-select-focus-border-color: var(--r-menu-bg-h);
+  --selectify-select-disabled-bg: linear-gradient(180deg, #ffffff 0%, var(--r-bg) 100%);
+  --selectify-select-arrow-color: var(--r-header-tx);
+  --selectify-dropdown-shadow: 0px 4px 14px rgba(44, 38, 31, 0.15);
+  --selectify-option-hover-bg: linear-gradient(180deg, #ffffff 0%, #e1effa 100%);
+  --selectify-option-active-bg: linear-gradient(180deg, var(--r-br) 0%, var(--r-menu-bg-h) 100%);
 }
 
 /* Border animation  */

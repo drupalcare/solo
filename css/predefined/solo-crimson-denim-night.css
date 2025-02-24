@@ -6,9 +6,6 @@ RED #D0312D, DENIM #151E3D,MIDNIGHT #040406
   --r-br: #a9a9c6;
   --r-bg: #fffdfd;
   --r-tx: #262639;
-  color: var(--r-tx);
-  border-color: var(--r-br);
-  background-color: var(--r-bg);
   --r-header-bg: linear-gradient(180deg, #000000, #030001);
   --r-header-tx: #565680;
   --r-menu-tx-h: #f9e2e1;
@@ -280,6 +277,32 @@ header.header h3 a span {
 .page-wrapper .pager__item a:hover {
   color: var(--r-header-tx);
   background: var(--r-header-bg);
+}
+
+.page-wrapper .selectify-radio,
+.page-wrapper .selectify-checkbox,
+.page-wrapper .selectify-radio *,
+.page-wrapper .selectify-checkbox * {
+  --selectify-checkbox-bg: linear-gradient(180deg, var(--r-br) 0%, #b3b3cc 50%, #8c8bb3 100%);
+  --selectify-checkbox-checked-bg: linear-gradient(180deg, var(--r-menu-bg-h) 0%, #7d1f1b 50%, #5b1711 100%);
+  --selectify-checkbox-check-circle: radial-gradient(circle at 35% 35%, #ffffff 0%, #f1d0d0 40%, #d09b9b 100%);
+  --selectify-checkbox-checked-circle: radial-gradient(circle at 40% 40%, #ffffff 0%, #f4c0c0 40%, var(--r-header-tx) 100%);
+  --selectify-checkbox-disabled-bg: linear-gradient(180deg, #f1d0d0 0%, #e1b0b0 50%, var(--r-br) 100%);
+  --selectify-checkbox-disabled-circle: radial-gradient(circle at 40% 40%, #f8e4e4 0%, #f1d0d0 40%, #d09b9b 100%);
+}
+
+.page-wrapper .selectify-select,
+.page-wrapper .selectify-select * {
+  --selectify-select-bg: linear-gradient(180deg, #ffffff 0%, var(--r-bg) 100%);
+  --selectify-select-hover-bg: linear-gradient(0deg, var(--r-bg) 0%, #f9e4e4 100%);
+  --selectify-select-border-color: var(--r-br);
+  --selectify-select-color: var(--r-tx);
+  --selectify-select-focus-border-color: var(--r-menu-bg-h);
+  --selectify-select-disabled-bg: linear-gradient(180deg, #ffffff 0%, var(--r-bg) 100%);
+  --selectify-select-arrow-color: var(--r-header-tx);
+  --selectify-dropdown-shadow: 0px 4px 14px rgba(38, 38, 57, 0.12);
+  --selectify-option-hover-bg: linear-gradient(180deg, #ffffff 0%, #f9e4e4 100%);
+  --selectify-option-active-bg: linear-gradient(180deg, var(--r-br) 0%, var(--r-menu-bg-h) 100%);
 }
 
 /* Border animation  */

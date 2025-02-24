@@ -11,9 +11,6 @@ Smokey Gray #726E6D, Sonic Gray #757575,Spanish Gray #989898,Taupe Gray #8B8589
   --r-br: #9c969a;
   --r-bg: #f7f6f7;
   --r-tx: #1a191a;
-  color: var(--r-tx);
-  border-color: var(--r-br);
-  background-color: var(--r-bg);
   --r-header-bg: linear-gradient(0deg, #2c292b, #080808);
   --r-header-tx: #767676;
   --r-menu-tx-h: #f8f7f7;
@@ -258,6 +255,34 @@ div.page-title.lone {
   color: var(--r-header-tx);
   background: var(--r-header-bg);
 }
+
+/* Light Theme Styles */
+.page-wrapper .selectify-radio,
+.page-wrapper .selectify-checkbox,
+.page-wrapper .selectify-radio *,
+.page-wrapper .selectify-checkbox * {
+  --selectify-checkbox-bg: linear-gradient(180deg, var(--r-header-bg) 0%, #9c969a 50%, #767676 100%);
+  --selectify-checkbox-checked-bg: linear-gradient(180deg, #767676 0%, #9c969a 50%, #1a191a 100%);
+  --selectify-checkbox-check-circle: radial-gradient(circle at 35% 35%, #ffffff 0%, #9c969a 40%, #767676 100%);
+  --selectify-checkbox-checked-circle: radial-gradient(circle at 40% 40%, #ffffff 0%, #767676 40%, #1a191a 100%);
+  --selectify-checkbox-disabled-bg: linear-gradient(180deg, #9c969a 0%, #767676 50%, var(--r-br) 100%);
+  --selectify-checkbox-disabled-circle: radial-gradient(circle at 40% 40%, #c2bec1 0%, #9c969a 40%, #767676 100%);
+}
+
+.page-wrapper .selectify-select,
+.page-wrapper .selectify-select * {
+  --selectify-select-bg: linear-gradient(180deg, #ffffff 0%, var(--r-bg) 100%);
+  --selectify-select-hover-bg: linear-gradient(0deg, var(--r-bg) 0%, #9c969a 100%);
+  --selectify-select-border-color: #9c969a;
+  --selectify-select-color: var(--r-tx);
+  --selectify-select-focus-border-color: #767676;
+  --selectify-select-disabled-bg: linear-gradient(180deg, #f1f1f1 0%, #c2bec1 100%);
+  --selectify-select-arrow-color: #767676;
+  --selectify-dropdown-shadow: 0px 4px 14px rgba(0, 0, 0, 0.12);
+  --selectify-option-hover-bg: linear-gradient(180deg, #ffffff 0%, #9c969a 100%);
+  --selectify-option-active-bg: linear-gradient(180deg, #9c969a 0%, #767676 100%);
+}
+
 
 /* Border animation  */
 @keyframes borderLeftColors {

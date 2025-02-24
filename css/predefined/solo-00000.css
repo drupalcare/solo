@@ -3,9 +3,6 @@
   --r-br: #f2f3f4;
   --r-bg: #fbfcf8;
   --r-tx: #63645e;
-  color: var(--r-tx);
-  border-color: var(--r-br);
-  background-color: var(--r-bg);
   --r-header-bg: linear-gradient(45deg, red 0 50%, blue 50% 100%);
   --r-header-bg: #1a2327;
   --r-menu-bg-h: #e9eef0;

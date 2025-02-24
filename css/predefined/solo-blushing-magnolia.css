@@ -7,9 +7,6 @@ Rose White #FFFAFA, Magnolia #F8F4FF
   --r-br: #e2d2ff;
   --r-bg: #f8f4ff;
   --r-tx: #1b004a;
-  color: var(--r-tx);
-  border-color: var(--r-br);
-  background-color: var(--r-bg);
   --r-header-bg: linear-gradient(0deg, #f8f4ff, #fffafa);
   --r-header-tx: #21005b;
   --r-menu-tx-h: #3f0000;
@@ -228,6 +225,31 @@ div.page-title.lone {
 .page-wrapper .pager__item a:hover {
   color: var(--r-header-tx);
   background: var(--r-header-bg);
+}
+.page-wrapper .selectify-radio,
+.page-wrapper .selectify-checkbox,
+.page-wrapper .selectify-radio *,
+.page-wrapper .selectify-checkbox * {
+  --selectify-checkbox-bg: linear-gradient(180deg, var(--r-br) 0%, #d1c3ff 50%, #b0a3e6 100%);
+  --selectify-checkbox-checked-bg: linear-gradient(180deg, var(--r-menu-bg-h) 0%, #ff4d4d 50%, #b61e1e 100%);
+  --selectify-checkbox-check-circle: radial-gradient(circle at 35% 35%, #ffffff 0%, #f4e9ff 40%, #d0b8ff 100%);
+  --selectify-checkbox-checked-circle: radial-gradient(circle at 40% 40%, #ffffff 0%, #d9b7ff 40%, var(--r-header-tx) 100%);
+  --selectify-checkbox-disabled-bg: linear-gradient(180deg, var(--r-bg) 0%, #f6ebff 50%, #e2d2ff 100%);
+  --selectify-checkbox-disabled-circle: radial-gradient(circle at 40% 40%, #fff4ff 0%, #f4e9ff 40%, #d0b8ff 100%);
+}
+
+.page-wrapper .selectify-select,
+.page-wrapper .selectify-select * {
+  --selectify-select-bg: linear-gradient(180deg, #ffffff 0%, var(--r-bg) 100%);
+  --selectify-select-hover-bg: linear-gradient(0deg, var(--r-bg) 0%, #f7efff 100%);
+  --selectify-select-border-color: var(--r-br);
+  --selectify-select-color: var(--r-tx);
+  --selectify-select-focus-border-color: var(--r-menu-bg-h);
+  --selectify-select-disabled-bg: linear-gradient(180deg, #ffffff 0%, var(--r-bg) 100%);
+  --selectify-select-arrow-color: var(--r-header-tx);
+  --selectify-dropdown-shadow: 0px 4px 14px rgba(27, 0, 74, 0.15);
+  --selectify-option-hover-bg: linear-gradient(180deg, #ffffff 0%, #f7efff 100%);
+  --selectify-option-active-bg: linear-gradient(180deg, var(--r-br) 0%, var(--r-menu-bg-h) 100%);
 }
 
 /* Border animation  */

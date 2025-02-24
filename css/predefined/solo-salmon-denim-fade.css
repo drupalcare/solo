@@ -6,9 +6,6 @@ Black Denim #191C27, Salmon #FF9999
   --r-br: #f99;
   --r-bg: #fee;
   --r-tx: #191c27;
-  color: var(--r-tx);
-  border-color: var(--r-br);
-  background-color: var(--r-bg);
   --r-header-bg: linear-gradient(0deg, #202331, #2d3246);
   --r-header-tx: #5b668f;
   --r-menu-tx-h: #400;
@@ -272,6 +269,34 @@ header.header h3 a span {
   color: var(--r-header-tx);
   background: var(--r-header-bg);
 }
+/* Light Theme Styles */
+.page-wrapper .selectify-radio,
+.page-wrapper .selectify-checkbox,
+.page-wrapper .selectify-radio *,
+.page-wrapper .selectify-checkbox * {
+  --selectify-checkbox-bg: linear-gradient(180deg, var(--r-header-bg) 0%, #f99 50%, #5b668f 100%);
+  --selectify-checkbox-checked-bg: linear-gradient(180deg, #5b668f 0%, #f99 50%, #191c27 100%);
+  --selectify-checkbox-check-circle: radial-gradient(circle at 35% 35%, #ffffff 0%, #f99 40%, #5b668f 100%);
+  --selectify-checkbox-checked-circle: radial-gradient(circle at 40% 40%, #ffffff 0%, #5b668f 40%, #191c27 100%);
+  --selectify-checkbox-disabled-bg: linear-gradient(180deg, #f99 0%, #5b668f 50%, var(--r-br) 100%);
+  --selectify-checkbox-disabled-circle: radial-gradient(circle at 40% 40%, #fbb 0%, #f99 40%, #5b668f 100%);
+}
+
+.page-wrapper .selectify-select,
+.page-wrapper .selectify-select * {
+  --selectify-select-bg: linear-gradient(180deg, #ffffff 0%, var(--r-bg) 100%);
+  --selectify-select-hover-bg: linear-gradient(0deg, var(--r-bg) 0%, #f99 100%);
+  --selectify-select-border-color: #f99;
+  --selectify-select-color: var(--r-tx);
+  --selectify-select-focus-border-color: #5b668f;
+  --selectify-select-disabled-bg: linear-gradient(180deg, #f1f1f1 0%, #fbb 100%);
+  --selectify-select-arrow-color: #5b668f;
+  --selectify-dropdown-shadow: 0px 4px 14px rgba(0, 0, 0, 0.12);
+  --selectify-option-hover-bg: linear-gradient(180deg, #ffffff 0%, #f99 100%);
+  --selectify-option-active-bg: linear-gradient(180deg, #f99 0%, #5b668f 100%);
+}
+
+
 
 /* Border animation  */
 @keyframes borderLeftColors {

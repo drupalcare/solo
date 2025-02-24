@@ -6,9 +6,6 @@ Nickel #727472, Outer Space #414A4C, Rocket Metallic #8A7F8D
   --r-br: #eaeaea;
   --r-bg: #f7f6f7;
   --r-tx: #1a191a;
-  color: var(--r-tx);
-  border-color: var(--r-br);
-  background-color: var(--r-bg);
   --r-header-bg: linear-gradient(0deg, #121415, #222627);
   --r-header-tx: #767676;
   --r-menu-tx-h: #fdfdfd;
@@ -255,6 +252,34 @@ div.page-title.lone {
   color: var(--r-header-tx);
   background: var(--r-header-bg);
 }
+
+/* Light Theme Styles */
+.page-wrapper .selectify-radio,
+.page-wrapper .selectify-checkbox,
+.page-wrapper .selectify-radio *,
+.page-wrapper .selectify-checkbox * {
+  --selectify-checkbox-bg: linear-gradient(180deg, var(--r-header-bg) 0%, #eaeaea 50%, #767676 100%);
+  --selectify-checkbox-checked-bg: linear-gradient(180deg, #767676 0%, #eaeaea 50%, #1a191a 100%);
+  --selectify-checkbox-check-circle: radial-gradient(circle at 35% 35%, #ffffff 0%, #eaeaea 40%, #767676 100%);
+  --selectify-checkbox-checked-circle: radial-gradient(circle at 40% 40%, #ffffff 0%, #767676 40%, #1a191a 100%);
+  --selectify-checkbox-disabled-bg: linear-gradient(180deg, #eaeaea 0%, #767676 50%, var(--r-br) 100%);
+  --selectify-checkbox-disabled-circle: radial-gradient(circle at 40% 40%, #d0d0d0 0%, #eaeaea 40%, #767676 100%);
+}
+
+.page-wrapper .selectify-select,
+.page-wrapper .selectify-select * {
+  --selectify-select-bg: linear-gradient(180deg, #ffffff 0%, var(--r-bg) 100%);
+  --selectify-select-hover-bg: linear-gradient(0deg, var(--r-bg) 0%, #eaeaea 100%);
+  --selectify-select-border-color: #eaeaea;
+  --selectify-select-color: var(--r-tx);
+  --selectify-select-focus-border-color: #767676;
+  --selectify-select-disabled-bg: linear-gradient(180deg, #f1f8f6 0%, #d0d0d0 100%);
+  --selectify-select-arrow-color: #767676;
+  --selectify-dropdown-shadow: 0px 4px 14px rgba(0, 0, 0, 0.12);
+  --selectify-option-hover-bg: linear-gradient(180deg, #ffffff 0%, #eaeaea 100%);
+  --selectify-option-active-bg: linear-gradient(180deg, #eaeaea 0%, #767676 100%);
+}
+
 
 /* Border animation  */
 @keyframes borderLeftColors {

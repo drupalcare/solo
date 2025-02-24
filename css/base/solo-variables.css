@@ -23,6 +23,13 @@
   --solo-thead: initial;
   --solo-odd: initial;
   --solo-even: initial;
+  --r-bg-dark: initial;
+  --r-tx-dark: initial;
+  --r-br-dark: initial;
+  --r-header-bg: initial;
+  --r-header-tx: initial;
+  --r-menu-tx-h: initial;
+  --r-menu-bg-h: initial;
   /* website width variables rem */
   --solo-rem2560: 160rem;
   --solo-rem1920: 120rem;
@@ -134,6 +141,8 @@
   --solo-shadow: 0, 0, 0;
   --s-b: 0, 0, 0;
   --s-w: 255, 255, 255;
+  --solo-box-shadow-light: 0 2px 8px rgba(0, 0, 0, 0.15);
+  --solo-box-shadow-dark: 0 2px 8px rgba(255, 255, 255, 0.1);
   /* Button Colors */
   --solo-button-color-s1: var(--solo-blue-gray);
   --solo-button-color-s2: var(--solo-light-gray);

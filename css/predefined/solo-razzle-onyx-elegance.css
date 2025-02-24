@@ -5,9 +5,6 @@ AMARANTH PINK #E52B50, RAZZMATAZZ #E3256B, ONYX #030104
   --r-br: #f9d2da;
   --r-bg: #faf5fd;
   --r-tx: #17081f;
-  color: var(--r-tx);
-  border-color: var(--r-br);
-  background-color: var(--r-bg);
   --r-header-bg: linear-gradient(0deg, #220b2d, #0d0412);
   --r-header-tx: #a952d4;
   --r-menu-tx-h: #fff;
@@ -276,6 +273,34 @@ header.header h3 a span {
   color: var(--r-header-tx);
   background: var(--r-header-bg);
 }
+
+/* Light Theme Styles */
+.page-wrapper .selectify-radio,
+.page-wrapper .selectify-checkbox,
+.page-wrapper .selectify-radio *,
+.page-wrapper .selectify-checkbox * {
+  --selectify-checkbox-bg: linear-gradient(180deg, var(--r-header-bg) 0%, #f9d2da 50%, #a952d4 100%);
+  --selectify-checkbox-checked-bg: linear-gradient(180deg, #a952d4 0%, #f9d2da 50%, #17081f 100%);
+  --selectify-checkbox-check-circle: radial-gradient(circle at 35% 35%, #ffffff 0%, #f9d2da 40%, #a952d4 100%);
+  --selectify-checkbox-checked-circle: radial-gradient(circle at 40% 40%, #ffffff 0%, #a952d4 40%, #17081f 100%);
+  --selectify-checkbox-disabled-bg: linear-gradient(180deg, #f9d2da 0%, #a952d4 50%, var(--r-br) 100%);
+  --selectify-checkbox-disabled-circle: radial-gradient(circle at 40% 40%, #e5bfd0 0%, #f9d2da 40%, #a952d4 100%);
+}
+
+.page-wrapper .selectify-select,
+.page-wrapper .selectify-select * {
+  --selectify-select-bg: linear-gradient(180deg, #ffffff 0%, var(--r-bg) 100%);
+  --selectify-select-hover-bg: linear-gradient(0deg, var(--r-bg) 0%, #f9d2da 100%);
+  --selectify-select-border-color: #f9d2da;
+  --selectify-select-color: var(--r-tx);
+  --selectify-select-focus-border-color: #a952d4;
+  --selectify-select-disabled-bg: linear-gradient(180deg, #f1f1f1 0%, #e5bfd0 100%);
+  --selectify-select-arrow-color: #a952d4;
+  --selectify-dropdown-shadow: 0px 4px 14px rgba(0, 0, 0, 0.12);
+  --selectify-option-hover-bg: linear-gradient(180deg, #ffffff 0%, #f9d2da 100%);
+  --selectify-option-active-bg: linear-gradient(180deg, #f9d2da 0%, #a952d4 100%);
+}
+
 
 /* Border animation  */
 @keyframes borderLeftColors {

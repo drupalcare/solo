@@ -6,9 +6,6 @@ Hunter Green #3F704D
   --r-br: #203a28;
   --r-bg: #020302;
   --r-tx: #b6d6bf;
-  color: var(--r-tx);
-  border-color: var(--r-br);
-  background-color: var(--r-bg);
   --r-header-bg: linear-gradient(0deg, #000000, #0e1911);
   --r-header-tx: #335a3e;
   --r-menu-tx-h: #f7fbf8;
@@ -224,6 +221,32 @@ div.page-title.lone {
 .page-wrapper .pager__item a:hover {
   color: var(--r-header-tx);
   background: var(--r-header-bg);
+}
+
+.page-wrapper .selectify-radio,
+.page-wrapper .selectify-checkbox,
+.page-wrapper .selectify-radio *,
+.page-wrapper .selectify-checkbox * {
+  --selectify-checkbox-bg: linear-gradient(180deg, var(--r-header-bg) 0%, #0e1911 50%, #335a3e 100%);
+  --selectify-checkbox-checked-bg: linear-gradient(180deg, #335a3e 0%, #0e1911 50%, #b6d6bf 100%);
+  --selectify-checkbox-check-circle: radial-gradient(circle at 35% 35%, #ffffff 0%, #b6d6bf 40%, #335a3e 100%);
+  --selectify-checkbox-checked-circle: radial-gradient(circle at 40% 40%, #ffffff 0%, #335a3e 40%, #b6d6bf 100%);
+  --selectify-checkbox-disabled-bg: linear-gradient(180deg, #b6d6bf 0%, #335a3e 50%, var(--r-br) 100%);
+  --selectify-checkbox-disabled-circle: radial-gradient(circle at 40% 40%, #f7fbf8 0%, #b6d6bf 40%, #335a3e 100%);
+}
+
+.page-wrapper .selectify-select,
+.page-wrapper .selectify-select * {
+  --selectify-select-bg: linear-gradient(180deg, #ffffff 0%, var(--r-bg) 100%);
+  --selectify-select-hover-bg: linear-gradient(0deg, var(--r-bg) 0%, #0e1911 100%);
+  --selectify-select-border-color: #b6d6bf;
+  --selectify-select-color: var(--r-tx);
+  --selectify-select-focus-border-color: #335a3e;
+  --selectify-select-disabled-bg: linear-gradient(180deg, #f1f8f6 0%, #d1e9e3 100%);
+  --selectify-select-arrow-color: #335a3e;
+  --selectify-dropdown-shadow: 0px 4px 14px rgba(0, 150, 136, 0.12);
+  --selectify-option-hover-bg: linear-gradient(180deg, #ffffff 0%, #0e1911 100%);
+  --selectify-option-active-bg: linear-gradient(180deg, #335a3e 0%, #f7fbf8 100%);
 }
 
 /* Border animation  */

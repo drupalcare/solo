@@ -5,9 +5,6 @@ International Orange #FF4F00, LAPIS #2832C2
   --r-br: #662000;
   --r-bg: #110500;
   --r-tx: #fff3ee;
-  color: var(--r-tx);
-  border-color: var(--r-br);
-  background-color: var(--r-bg);
   --r-header-bg: linear-gradient(0deg, #000000, #331000);
   --r-header-tx: #aa3500;
   --r-menu-tx-h: #fff3ee;
@@ -225,6 +222,33 @@ div.page-title.lone {
   color: var(--r-header-tx);
   background: var(--r-header-bg);
 }
+
+.page-wrapper .selectify-radio,
+.page-wrapper .selectify-checkbox,
+.page-wrapper .selectify-radio *,
+.page-wrapper .selectify-checkbox * {
+  --selectify-checkbox-bg: linear-gradient(180deg, var(--r-header-bg) 0%, #331000 50%, #aa3500 100%);
+  --selectify-checkbox-checked-bg: linear-gradient(180deg, #aa3500 0%, #331000 50%, #fff3ee 100%);
+  --selectify-checkbox-check-circle: radial-gradient(circle at 35% 35%, #ffffff 0%, #fff3ee 40%, #aa3500 100%);
+  --selectify-checkbox-checked-circle: radial-gradient(circle at 40% 40%, #ffffff 0%, #aa3500 40%, #fff3ee 100%);
+  --selectify-checkbox-disabled-bg: linear-gradient(180deg, #fff3ee 0%, #aa3500 50%, var(--r-br) 100%);
+  --selectify-checkbox-disabled-circle: radial-gradient(circle at 40% 40%, #f7e0d9 0%, #fff3ee 40%, #aa3500 100%);
+}
+
+.page-wrapper .selectify-select,
+.page-wrapper .selectify-select * {
+  --selectify-select-bg: linear-gradient(180deg, #ffffff 0%, var(--r-bg) 100%);
+  --selectify-select-hover-bg: linear-gradient(0deg, var(--r-bg) 0%, #331000 100%);
+  --selectify-select-border-color: #fff3ee;
+  --selectify-select-color: var(--r-tx);
+  --selectify-select-focus-border-color: #aa3500;
+  --selectify-select-disabled-bg: linear-gradient(180deg, #f1f8f6 0%, #d1e9e3 100%);
+  --selectify-select-arrow-color: #aa3500;
+  --selectify-dropdown-shadow: 0px 4px 14px rgba(0, 150, 136, 0.12);
+  --selectify-option-hover-bg: linear-gradient(180deg, #ffffff 0%, #331000 100%);
+  --selectify-option-active-bg: linear-gradient(180deg, #aa3500 0%, #fff3ee 100%);
+}
+
 
 /* Border animation  */
 @keyframes borderLeftColors {

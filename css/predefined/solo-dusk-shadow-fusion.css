@@ -7,9 +7,6 @@ Carbon Gray #625D5D, Davy’s Gray #555555, Dim Gray #696969
   --r-br: #b6b3b3;
   --r-bg: #f6f6f6;
   --r-tx: #2b2b2b;
-  color: var(--r-tx);
-  border-color: var(--r-br);
-  background-color: var(--r-bg);
   --r-header-bg: linear-gradient(0deg, #b6b6b4, #a5a5a3);
   --r-header-tx: #363635;
   --r-menu-tx-h: #0b0b0b;
@@ -259,6 +256,33 @@ div.page-title.lone {
   color: var(--r-header-tx);
   background: var(--r-header-bg);
 }
+
+.page-wrapper .selectify-radio,
+.page-wrapper .selectify-checkbox,
+.page-wrapper .selectify-radio *,
+.page-wrapper .selectify-checkbox * {
+  --selectify-checkbox-bg: linear-gradient(180deg, var(--r-header-bg) 0%, #a5a5a3 50%, #363635 100%);
+  --selectify-checkbox-checked-bg: linear-gradient(180deg, #b6b3b3 0%, #a5a5a3 50%, #2b2b2b 100%);
+  --selectify-checkbox-check-circle: radial-gradient(circle at 35% 35%, #ffffff 0%, #d6d6d6 40%, #b6b3b3 100%);
+  --selectify-checkbox-checked-circle: radial-gradient(circle at 40% 40%, #ffffff 0%, #b6b3b3 40%, #2b2b2b 100%);
+  --selectify-checkbox-disabled-bg: linear-gradient(180deg, #d6d6d6 0%, #b6b3b3 50%, var(--r-br) 100%);
+  --selectify-checkbox-disabled-circle: radial-gradient(circle at 40% 40%, #e0e0e0 0%, #d6d6d6 40%, #b6b3b3 100%);
+}
+
+.page-wrapper .selectify-select,
+.page-wrapper .selectify-select * {
+  --selectify-select-bg: linear-gradient(180deg, #ffffff 0%, var(--r-bg) 100%);
+  --selectify-select-hover-bg: linear-gradient(0deg, var(--r-bg) 0%, #eafbfa 100%);
+  --selectify-select-border-color: #d6d6d6;
+  --selectify-select-color: var(--r-tx);
+  --selectify-select-focus-border-color: #b6b3b3;
+  --selectify-select-disabled-bg: linear-gradient(180deg, #f1f8f6 0%, #d1e9e3 100%);
+  --selectify-select-arrow-color: #363635;
+  --selectify-dropdown-shadow: 0px 4px 14px rgba(0, 150, 136, 0.12);
+  --selectify-option-hover-bg: linear-gradient(180deg, #ffffff 0%, #eafbfa 100%);
+  --selectify-option-active-bg: linear-gradient(180deg, #d6d6d6 0%, #b6b3b3 100%);
+}
+
 
 /* Border animation  */
 @keyframes borderLeftColors {

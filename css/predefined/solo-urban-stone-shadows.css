@@ -5,9 +5,6 @@ Stone Gray #928E85, Outer Space #414A4C
   --r-br: #b2afa9;
   --r-bg: #f2f2f1;
   --r-tx: #1f1e1b;
-  color: var(--r-tx);
-  border-color: var(--r-br);
-  background-color: var(--r-bg);
   --r-header-bg: linear-gradient(to start top, #ffffff, #dad9d6);
   --r-header-tx: #495355;
   --r-menu-tx-h: #ffffff;
@@ -237,6 +234,34 @@ div.page-title.lone {
   color: var(--r-header-tx);
   background: var(--r-header-bg);
 }
+
+/* Light Theme Styles */
+.page-wrapper .selectify-radio,
+.page-wrapper .selectify-checkbox,
+.page-wrapper .selectify-radio *,
+.page-wrapper .selectify-checkbox * {
+  --selectify-checkbox-bg: linear-gradient(180deg, var(--r-header-bg) 0%, #b2afa9 50%, #495355 100%);
+  --selectify-checkbox-checked-bg: linear-gradient(180deg, #495355 0%, #b2afa9 50%, #1f1e1b 100%);
+  --selectify-checkbox-check-circle: radial-gradient(circle at 35% 35%, #ffffff 0%, #b2afa9 40%, #495355 100%);
+  --selectify-checkbox-checked-circle: radial-gradient(circle at 40% 40%, #ffffff 0%, #495355 40%, #1f1e1b 100%);
+  --selectify-checkbox-disabled-bg: linear-gradient(180deg, #b2afa9 0%, #495355 50%, var(--r-br) 100%);
+  --selectify-checkbox-disabled-circle: radial-gradient(circle at 40% 40%, #d0ccc7 0%, #b2afa9 40%, #495355 100%);
+}
+
+.page-wrapper .selectify-select,
+.page-wrapper .selectify-select * {
+  --selectify-select-bg: linear-gradient(180deg, #ffffff 0%, var(--r-bg) 100%);
+  --selectify-select-hover-bg: linear-gradient(0deg, var(--r-bg) 0%, #b2afa9 100%);
+  --selectify-select-border-color: #b2afa9;
+  --selectify-select-color: var(--r-tx);
+  --selectify-select-focus-border-color: #495355;
+  --selectify-select-disabled-bg: linear-gradient(180deg, #f1f1f1 0%, #d0ccc7 100%);
+  --selectify-select-arrow-color: #495355;
+  --selectify-dropdown-shadow: 0px 4px 14px rgba(0, 0, 0, 0.12);
+  --selectify-option-hover-bg: linear-gradient(180deg, #ffffff 0%, #b2afa9 100%);
+  --selectify-option-active-bg: linear-gradient(180deg, #b2afa9 0%, #495355 100%);
+}
+
 
 /* Border animation  */
 @keyframes borderLeftColors {

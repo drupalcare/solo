@@ -6,9 +6,6 @@ Natural Black #07000B, Bleu De France #318CE7
   --r-br: #262639;
   --r-bg: #040406;
   --r-tx: #bebed3;
-  color: var(--r-tx);
-  border-color: var(--r-br);
-  background-color: var(--r-bg);
   --r-header-bg: linear-gradient(0deg, #000000, #12121a);
   --r-header-tx: #6c6c9d;
   --r-menu-tx-h: #f1f1f5;
@@ -225,6 +222,34 @@ div.page-title.lone {
   color: var(--r-header-tx);
   background: var(--r-header-bg);
 }
+
+/* Dark Theme Styles */
+.page-wrapper .selectify-radio,
+.page-wrapper .selectify-checkbox,
+.page-wrapper .selectify-radio *,
+.page-wrapper .selectify-checkbox * {
+  --selectify-checkbox-bg: linear-gradient(180deg, var(--r-header-bg) 0%, #3a3a58 50%, #6c6c9d 100%);
+  --selectify-checkbox-checked-bg: linear-gradient(180deg, #6c6c9d 0%, #3a3a58 50%, #bebed3 100%);
+  --selectify-checkbox-check-circle: radial-gradient(circle at 35% 35%, #262639 0%, #6c6c9d 40%, #bebed3 100%);
+  --selectify-checkbox-checked-circle: radial-gradient(circle at 40% 40%, #bebed3 0%, #6c6c9d 40%, #262639 100%);
+  --selectify-checkbox-disabled-bg: linear-gradient(180deg, #262639 0%, #3a3a58 50%, var(--r-br) 100%);
+  --selectify-checkbox-disabled-circle: radial-gradient(circle at 40% 40%, #7e7eaf 0%, #6c6c9d 40%, #3a3a58 100%);
+}
+
+.page-wrapper .selectify-select,
+.page-wrapper .selectify-select * {
+  --selectify-select-bg: linear-gradient(180deg, var(--r-bg) 0%, #12121a 100%);
+  --selectify-select-hover-bg: linear-gradient(0deg, #12121a 0%, #3a3a58 100%);
+  --selectify-select-border-color: #262639;
+  --selectify-select-color: var(--r-tx);
+  --selectify-select-focus-border-color: #6c6c9d;
+  --selectify-select-disabled-bg: linear-gradient(180deg, #12121a 0%, #262639 100%);
+  --selectify-select-arrow-color: #6c6c9d;
+  --selectify-dropdown-shadow: 0px 4px 14px rgba(255, 255, 255, 0.12);
+  --selectify-option-hover-bg: linear-gradient(180deg, #12121a 0%, #3a3a58 100%);
+  --selectify-option-active-bg: linear-gradient(180deg, #262639 0%, #6c6c9d 100%);
+}
+
 
 /* Border animation  */
 @keyframes borderLeftColors {

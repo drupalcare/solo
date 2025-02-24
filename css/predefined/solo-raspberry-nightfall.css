@@ -5,9 +5,6 @@ AMARANTH PINK #E52B50, Natural Black #07000B
   --r-br: #6a0d20;
   --r-bg: #0f0205;
   --r-tx: #fdf0f2;
-  color: var(--r-tx);
-  border-color: var(--r-br);
-  background-color: var(--r-bg);
   --r-header-bg: linear-gradient(0deg, #000000, #0f0205);
   --r-header-tx: #f9d2da;
   --r-menu-tx-h: #fdf0f2;
@@ -225,6 +222,34 @@ div.page-title.lone {
   color: var(--r-header-tx);
   background: var(--r-header-bg);
 }
+
+/* Dark Theme Styles */
+.page-wrapper .selectify-radio,
+.page-wrapper .selectify-checkbox,
+.page-wrapper .selectify-radio *,
+.page-wrapper .selectify-checkbox * {
+  --selectify-checkbox-bg: linear-gradient(180deg, var(--r-header-bg) 0%, #4c0917 50%, #f9d2da 100%);
+  --selectify-checkbox-checked-bg: linear-gradient(180deg, #f9d2da 0%, #4c0917 50%, #fdf0f2 100%);
+  --selectify-checkbox-check-circle: radial-gradient(circle at 35% 35%, #6a0d20 0%, #f9d2da 40%, #fdf0f2 100%);
+  --selectify-checkbox-checked-circle: radial-gradient(circle at 40% 40%, #fdf0f2 0%, #f9d2da 40%, #6a0d20 100%);
+  --selectify-checkbox-disabled-bg: linear-gradient(180deg, #6a0d20 0%, #4c0917 50%, var(--r-br) 100%);
+  --selectify-checkbox-disabled-circle: radial-gradient(circle at 40% 40%, #d89aa1 0%, #f9d2da 40%, #4c0917 100%);
+}
+
+.page-wrapper .selectify-select,
+.page-wrapper .selectify-select * {
+  --selectify-select-bg: linear-gradient(180deg, var(--r-bg) 0%, #0f0205 100%);
+  --selectify-select-hover-bg: linear-gradient(0deg, #0f0205 0%, #4c0917 100%);
+  --selectify-select-border-color: #6a0d20;
+  --selectify-select-color: var(--r-tx);
+  --selectify-select-focus-border-color: #f9d2da;
+  --selectify-select-disabled-bg: linear-gradient(180deg, #0f0205 0%, #6a0d20 100%);
+  --selectify-select-arrow-color: #f9d2da;
+  --selectify-dropdown-shadow: 0px 4px 14px rgba(255, 255, 255, 0.12);
+  --selectify-option-hover-bg: linear-gradient(180deg, #0f0205 0%, #4c0917 100%);
+  --selectify-option-active-bg: linear-gradient(180deg, #6a0d20 0%, #f9d2da 100%);
+}
+
 
 /* Border animation  */
 @keyframes borderLeftColors {

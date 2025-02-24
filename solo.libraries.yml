@@ -93,6 +93,7 @@ solo-menu:
   js:
     js/menu/solo-menu-scripts.js: { }
     js/menu/solo-menu.js: { }
+    js/menu/solo-menu-repositions-submenus.js: { }
     js/menu/solo-menu-mobile.js: { }
     js/menu/solo-menu-side.js: { }
   dependencies:

@@ -378,14 +378,14 @@
     margin-inline-end: var(--solo-px0) !important;
   }
 
-  #primary-menu .expand-left ul.navigation__primary:not(.navigation__megamenu)>li>ul.sub__menu {
-    inset-inline-end: 0 !important;
-    inset-inline-start: initial !important;
+  html #primary-menu .expand-left ul.navigation__primary:not(.navigation__megamenu)>li>ul.sub__menu {
+    inset-inline-end: 0 ;
+    inset-inline-start: initial;
   }
 
-  #primary-menu .expand-left ul.navigation__primary:not(.navigation__megamenu)>li>ul>li>ul.sub__menu {
-    inset-inline-end: 100% !important;
-    inset-inline-start: initial !important;
+  html #primary-menu .expand-left ul.navigation__primary:not(.navigation__megamenu)>li>ul>li>ul.sub__menu {
+    inset-inline-end: 100%;
+    inset-inline-start: initial;
   }
 
   #primary-menu .expand-left ul.navigation__primary:not(.navigation__megamenu)>li>ul>li>ul>li a {

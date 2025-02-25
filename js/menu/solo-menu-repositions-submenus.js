@@ -8,10 +8,15 @@
  */
 ((Drupal, drupalSettings, once) => {
   'use strict';
-
   Drupal.behaviors.soloMenuFix = {
-    attach: function (context) {
-      const breakpoint = Drupal.solo.getBreakpointNumber('mn'); // Get the menu breakpoint
+    attach: function(context) {
+      const breakpoint = Drupal.solo.getBreakpointNumber('mn');
+      const windowWidth = window.innerWidth;
+
+      // Quit if the screen is smaller than the breakpoint
+      if (windowWidth < breakpoint) {
+        return;
+      }
 
       // Function 1: Get full window width
       function getWindowWidth() {
@@ -51,72 +56,63 @@
       // Function to reposition second-level submenus
       function adjustSecondLevelSubmenu(li) {
         const windowWidth = getWindowWidth();
-        if (windowWidth < breakpoint) return; // Only run on large screens
-
+        if (windowWidth < breakpoint) return;
         const submenu = li.querySelector(':scope > .sub__menu');
         if (!submenu) return;
-
+        // Temporarily hide submenu to prevent flicker
+        submenu.style.visibility = 'hidden';
         const liRect = getLiPosition(li);
         const submenuWidth = getSubmenuWidth(submenu);
         const spaceLeft = getSpaceLeft(liRect);
         const spaceRight = getSpaceRight(liRect, windowWidth);
-
-// console.log("Parent <li> Position:", liRect);
-// console.log("Submenu Width:", submenuWidth);
-// console.log("Space Left:", spaceLeft);
-// console.log("Space Right:", spaceRight);
-
         // Adjust positioning for second-level submenu
         if (submenuWidth + 30 > spaceRight) {
-          console.log("First option");
           submenu.style.left = 'auto';
-          submenu.style.right = '0'; // Align with li's start
+          submenu.style.right = '0';
         } else if (submenuWidth + 30 > spaceLeft) {
-          console.log("Second option");
           submenu.style.right = 'auto';
-          submenu.style.left = '0'; // Align with li's end
+          submenu.style.left = '0';
         } else {
-          console.log("nothing");
           submenu.style.left = '';
           submenu.style.right = '';
         }
+        // Make submenu visible after positioning is set
+        submenu.style.visibility = 'visible';
       }
 
       // Function to reposition third-level submenus based on **parent li** position
       function adjustThirdLevelSubmenu(li) {
         const windowWidth = getWindowWidth();
-        if (windowWidth < breakpoint) return; // Only run on large screens
-
+        if (windowWidth < breakpoint) return;
         const submenu = li.querySelector(':scope > .sub__menu');
         if (!submenu) return;
-
-        const parentLi = li.closest('li.has-sub__menu'); // Get the direct parent li
+        const parentLi = li.closest('li.has-sub__menu');
         if (!parentLi) return;
-
+        // Temporarily hide submenu to prevent flicker
+        submenu.style.visibility = 'hidden';
         const parentRect = getLiPosition(parentLi);
         const submenuWidth = getSubmenuWidth(submenu);
         const spaceLeft = getSpaceLeft(parentRect);
         const spaceRight = getSpaceRight(parentRect, windowWidth);
-
-
         // Adjust positioning for third-level submenu
         if (submenuWidth + 30 > spaceRight) {
           submenu.style.left = 'auto';
-          submenu.style.right = '100%'; // Place before parent `li`
+          submenu.style.right = '100%';
         } else if (submenuWidth + 30 > spaceLeft) {
           submenu.style.right = 'auto';
-          submenu.style.left = '100%'; // Place after parent `li`
+          submenu.style.left = '100%';
         } else {
           submenu.style.left = '';
           submenu.style.right = '';
         }
+        // Make submenu visible after positioning is set
+        submenu.style.visibility = 'visible';
       }
 
       // Function to apply the submenu fix
       function applySubmenuFix(menuSelector, adjustFunction) {
-        document.querySelectorAll(menuSelector, context).forEach((li) => {
-          li.addEventListener('click', function (event) {
-            event.stopPropagation(); // Prevent event bubbling
+        once('soloMenuFix', document.querySelectorAll(menuSelector, context)).forEach((li) => {
+          li.addEventListener('mouseenter', function() {
             adjustFunction(this);
           });
         });
@@ -125,11 +121,18 @@
       // Apply fixes to second and third-level submenus
       applySubmenuFix('.navigation__primary > li.has-sub__menu', adjustSecondLevelSubmenu);
       applySubmenuFix('.navigation__primary > li.has-sub__menu ul li.has-sub__menu', adjustThirdLevelSubmenu);
+
+      // Function to reapply fixes on window resize
+      function handleResize() {
+        if (window.innerWidth >= breakpoint) {
+          applySubmenuFix('.navigation__primary > li.has-sub__menu', adjustSecondLevelSubmenu);
+          applySubmenuFix('.navigation__primary > li.has-sub__menu ul li.has-sub__menu', adjustThirdLevelSubmenu);
+        }
+      }
+
+      // Listen for window resize and reapply menu fix
+      window.addEventListener('resize', handleResize);
     }
   };
 })(Drupal, drupalSettings, once);
-
-
-
-
 

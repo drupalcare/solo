@@ -112,7 +112,7 @@
       // Function to apply the submenu fix
       function applySubmenuFix(menuSelector, adjustFunction) {
         once('soloMenuFix', document.querySelectorAll(menuSelector, context)).forEach((li) => {
-          li.addEventListener('mouseenter', function() {
+          li.addEventListener('click', function() {
             adjustFunction(this);
           });
         });

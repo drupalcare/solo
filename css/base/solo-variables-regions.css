@@ -4,6 +4,16 @@
   --r-br: #cbced7;
   --r-bg: #f0f2f5;
   --r-tx: #262d38;
+  --solo-odd-light: #f4f5f0;
+  --solo-even-light: #e8e9e3;
+  --solo-odd-dark: #222418;
+  --solo-even-dark: #2e3025;
+  --r-bg-dark: #222418;
+  --r-tx-dark: #222418;
+  --r-br-dark: #4a4c3b;
+  --r-tx-light: #f4f5f0;
+  --r-bg-light: #f4f5f0;
+  --r-br-light: #d6dac7;
 }
 
 .page-wrapper,

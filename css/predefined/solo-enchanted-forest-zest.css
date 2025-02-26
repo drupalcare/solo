@@ -3,7 +3,7 @@ Greenish Yellow #EEEA62
 Hunter Green #3F704D
 */
 .page-wrapper {
-  --r-br: #203a28;
+  --r-br: #1d3524;
   --r-bg: #020302;
   --r-tx: #b6d6bf;
   --r-header-bg: linear-gradient(0deg, #000000, #0e1911);
@@ -14,7 +14,7 @@ Hunter Green #3F704D
 
 /* inner regions */
 .page-wrapper .region-inner {
-  --r-br: #203a28;
+  --r-br: #1d3524;
 }
 
 .page-wrapper .solo-outer:not(.fixed-search-block,
@@ -180,6 +180,7 @@ div.page-title.lone {
   background: var(--r-bg);
 }
 
+.page-wrapper .selectify,
 .page-wrapper .solo-select,
 .page-wrapper .solo-radio,
 .page-wrapper .solo-check,
@@ -191,6 +192,13 @@ div.page-title.lone {
   --r-br: #494708;
 }
 
+.page-wrapper .selectify *:hover,
+.page-wrapper .solo-select:hover,
+.page-wrapper .solo-ckeck:hover,
+.page-wrapper .solo-radio:hover,
+.page-wrapper .solo-input:hover,
+.page-wrapper .solo-textarea:hover,
+.page-wrapper .selectify *:focus,
 .page-wrapper .solo-select:focus,
 .page-wrapper .solo-ckeck:focus,
 .page-wrapper .solo-radio:focus,
@@ -227,7 +235,7 @@ div.page-title.lone {
 .page-wrapper .selectify-checkbox,
 .page-wrapper .selectify-radio *,
 .page-wrapper .selectify-checkbox * {
-  --selectify-checkbox-bg: linear-gradient(180deg, var(--r-header-bg) 0%, #0e1911 50%, #335a3e 100%);
+  --selectify-checkbox-bg: linear-gradient(180deg, var(--r-header-tx) 0%, #0e1911 50%, #335a3e 100%);
   --selectify-checkbox-checked-bg: linear-gradient(180deg, #335a3e 0%, #0e1911 50%, #b6d6bf 100%);
   --selectify-checkbox-check-circle: radial-gradient(circle at 35% 35%, #ffffff 0%, #b6d6bf 40%, #335a3e 100%);
   --selectify-checkbox-checked-circle: radial-gradient(circle at 40% 40%, #ffffff 0%, #335a3e 40%, #b6d6bf 100%);
@@ -237,16 +245,16 @@ div.page-title.lone {
 
 .page-wrapper .selectify-select,
 .page-wrapper .selectify-select * {
-  --selectify-select-bg: linear-gradient(180deg, #ffffff 0%, var(--r-bg) 100%);
+  --selectify-select-bg: linear-gradient(180deg, #203c28 0%, var(--r-bg) 100%);
   --selectify-select-hover-bg: linear-gradient(0deg, var(--r-bg) 0%, #0e1911 100%);
-  --selectify-select-border-color: #b6d6bf;
   --selectify-select-color: var(--r-tx);
-  --selectify-select-focus-border-color: #335a3e;
+  --selectify-select-border-color: var(--r-br);
+  --selectify-select-focus-border-color: var(--r-br);
   --selectify-select-disabled-bg: linear-gradient(180deg, #f1f8f6 0%, #d1e9e3 100%);
   --selectify-select-arrow-color: #335a3e;
   --selectify-dropdown-shadow: 0px 4px 14px rgba(0, 150, 136, 0.12);
-  --selectify-option-hover-bg: linear-gradient(180deg, #ffffff 0%, #0e1911 100%);
-  --selectify-option-active-bg: linear-gradient(180deg, #335a3e 0%, #f7fbf8 100%);
+  --selectify-option-hover-bg: linear-gradient(180deg, #203c28 0%, #0e1911 100%);
+  --selectify-option-active-bg: linear-gradient(180deg, #335a3e 0%, #203c28 100%);
 }
 
 /* Border animation  */

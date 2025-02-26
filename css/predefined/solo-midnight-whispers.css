@@ -7,12 +7,32 @@
   --r-header-tx: #6c738c;
   --r-menu-bg-h: #394558;
   --r-menu-tx-h: #ffffff;
+  --r-br-dark: #313845;
+  --r-br-light: #e0e0e1;
 }
 
 .header,
 .fixed-search-block {
   --r-bg: linear-gradient(0deg, #f5f5f6, #e6e9ee);
   background: var(--r-bg);
+}
+
+.page-wrapper .top-container,
+.page-wrapper .top-container *,
+.page-wrapper .main-container,
+.page-wrapper .main-container * {
+  --r-br: var(--r-br-light);
+}
+
+.page-wrapper .copyright,
+.page-wrapper .copyright *,
+.page-wrapper .footer-menu,
+.page-wrapper .footer-menu *,
+.page-wrapper .footer-container,
+.page-wrapper .footer-container *,
+.page-wrapper .bottom-container,
+.page-wrapper .bottom-container * {
+  --r-br: var(--r-br-dark);
 }
 
 /* Heads */
@@ -64,7 +84,7 @@ h3 a) {
 .page-wrapper .main-navigation-wrapper li>button {
   --r-tx: #fafbfc;
   --r-bg: #19242c;
-  --r-br: #4e525a;
+  --r-br: #11181d;
 }
 
 .page-wrapper .login-button-open:hover,
@@ -246,6 +266,7 @@ h3 a) {
   fill: #93a2b9;
 }
 
+.page-wrapper .selectify,
 .page-wrapper .solo-select,
 .page-wrapper .solo-radio,
 .page-wrapper .solo-check,
@@ -254,15 +275,22 @@ h3 a) {
 .page-wrapper a.button,
 .page-wrapper input.button,
 .page-wrapper .search-button-close button {
-  --r-br: #7488a5;
+  --r-br: #dadee2;
 }
 
+.page-wrapper .selectify *:hover,
+.page-wrapper .solo-select:hover,
+.page-wrapper .solo-ckeck:hover,
+.page-wrapper .solo-radio:hover,
+.page-wrapper .solo-input:hover,
+.page-wrapper .solo-textarea:hover,
+.page-wrapper .selectify *:focus,
 .page-wrapper .solo-select:focus,
 .page-wrapper .solo-ckeck:focus,
 .page-wrapper .solo-radio:focus,
 .page-wrapper .solo-input:focus,
 .page-wrapper .solo-textarea:focus {
-  --r-br: #404d62;
+  --r-br: #c4c7ca;
 }
 
 /* For main menu shadow */
@@ -326,9 +354,9 @@ h3 a) {
 .selectify-select * {
   --selectify-select-bg: linear-gradient(180deg, #ffffff 0%, var(--r-bg) 100%);
   --selectify-select-hover-bg: linear-gradient(0deg, var(--r-bg) 0%, #e6e9ee 100%);
-  --selectify-select-border-color: var(--r-br);
   --selectify-select-color: var(--r-tx);
-  --selectify-select-focus-border-color: var(--r-menu-bg-h);
+  --selectify-select-border-color: var(--r-br);
+  --selectify-select-focus-border-color: var(--r-br);
   --selectify-select-disabled-bg: linear-gradient(180deg, #f7f8fa 0%, #e6e9ee 100%);
   --selectify-select-arrow-color: var(--r-header-tx);
   --selectify-dropdown-shadow: 0px 4px 14px rgba(56, 60, 73, 0.15);

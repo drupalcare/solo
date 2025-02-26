@@ -17,7 +17,7 @@ Acoustic White #EFECE1 beig
 
 /* inner regions */
 .page-wrapper .region-inner {
-  --r-br: #739ac8;
+  --r-br: #bbd2ec;
 }
 
 .page-wrapper .solo-outer:not(.fixed-search-block,
@@ -79,7 +79,7 @@ h3 a) {
 .page-wrapper .main-navigation-wrapper li>a,
 .page-wrapper .header li.nav__menu-item>button,
 .page-wrapper .main-navigation-wrapper li>button {
-  --r-br: #c8d7ea;
+  --r-br: #d2e2f4;
   --r-bg: #edf2f8;
   --r-tx: #1a2d44;
 }
@@ -185,6 +185,7 @@ div.page-title.lone {
   fill: #294668;
 }
 
+.page-wrapper .selectify,
 .page-wrapper .solo-select,
 .page-wrapper .solo-radio,
 .page-wrapper .solo-check,
@@ -196,6 +197,13 @@ div.page-title.lone {
   --r-br: #bcc8ad;
 }
 
+.page-wrapper .selectify *:hover,
+.page-wrapper .solo-select:hover,
+.page-wrapper .solo-ckeck:hover,
+.page-wrapper .solo-radio:hover,
+.page-wrapper .solo-input:hover,
+.page-wrapper .solo-textarea:hover,
+.page-wrapper .selectify *:focus,
 .page-wrapper .solo-select:focus,
 .page-wrapper .solo-ckeck:focus,
 .page-wrapper .solo-radio:focus,
@@ -231,7 +239,7 @@ div.page-title.lone {
 .page-wrapper .selectify-checkbox,
 .page-wrapper .selectify-radio *,
 .page-wrapper .selectify-checkbox * {
-  --selectify-checkbox-bg: linear-gradient(180deg, var(--r-header-bg) 0%, #edf2f8 50%, #1f3550 100%);
+  --selectify-checkbox-bg: linear-gradient(180deg, var(--r-header-tx) 0%, #edf2f8 50%, #1f3550 100%);
   --selectify-checkbox-checked-bg: linear-gradient(180deg, #1f3550 0%, #edf2f8 50%, #1a2d44 100%);
   --selectify-checkbox-check-circle: radial-gradient(circle at 35% 35%, #ffffff 0%, #97b4d7 40%, #edf2f8 100%);
   --selectify-checkbox-checked-circle: radial-gradient(circle at 40% 40%, #ffffff 0%, #edf2f8 40%, #1a2d44 100%);
@@ -243,9 +251,9 @@ div.page-title.lone {
 .page-wrapper .selectify-select * {
   --selectify-select-bg: linear-gradient(180deg, #ffffff 0%, var(--r-bg) 100%);
   --selectify-select-hover-bg: linear-gradient(0deg, var(--r-bg) 0%, #edf2f8 100%);
-  --selectify-select-border-color: #97b4d7;
   --selectify-select-color: var(--r-tx);
-  --selectify-select-focus-border-color: #1f3550;
+  --selectify-select-border-color: var(--r-br);
+  --selectify-select-focus-border-color: var(--r-br);
   --selectify-select-disabled-bg: linear-gradient(180deg, #f1f8f6 0%, #d1e9e3 100%);
   --selectify-select-arrow-color: #1f3550;
   --selectify-dropdown-shadow: 0px 4px 14px rgba(0, 150, 136, 0.12);

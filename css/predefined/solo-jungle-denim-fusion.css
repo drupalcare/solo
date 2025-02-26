@@ -59,7 +59,7 @@ h3 a) {
 .page-wrapper .main-navigation-wrapper li>a,
 .page-wrapper .header li.nav__menu-item>button,
 .page-wrapper .main-navigation-wrapper li>button {
-  --r-br: #254c36;
+  --r-br: #316347;
   --r-bg: #3b7a57;
   --r-tx: #040705;
 }
@@ -119,7 +119,7 @@ h3 a) {
 .top-container,
 .fixed-search-block,
 .popup-login-block-inner {
-  --r-br: #88c6a4;
+  --r-br: #d2eadd;
   --r-bg: linear-gradient(45deg, #d7ddf1, #eff8f3);
   background: var(--r-bg);
 }
@@ -224,6 +224,7 @@ header.header h3 a span {
   fill: #356f4f;
 }
 
+.page-wrapper .selectify,
 .page-wrapper .solo-select,
 .page-wrapper .solo-radio,
 .page-wrapper .solo-check,
@@ -232,15 +233,22 @@ header.header h3 a span {
 .page-wrapper a.button,
 .page-wrapper input.button,
 .page-wrapper .search-button-close button {
-  --r-br: #469167;
+  --r-br: #d2eadd;
 }
 
+.page-wrapper .selectify *:hover,
+.page-wrapper .solo-select:hover,
+.page-wrapper .solo-ckeck:hover,
+.page-wrapper .solo-radio:hover,
+.page-wrapper .solo-input:hover,
+.page-wrapper .solo-textarea:hover,
+.page-wrapper .selectify *:focus,
 .page-wrapper .solo-select:focus,
 .page-wrapper .solo-ckeck:focus,
 .page-wrapper .solo-radio:focus,
 .page-wrapper .solo-input:focus,
 .page-wrapper .solo-textarea:focus {
-  --r-br: #5baf80;
+  --r-br: #9fd0b6;
 }
 
 #fixed-search-block,
@@ -275,7 +283,7 @@ header.header h3 a span {
 .page-wrapper .selectify-checkbox,
 .page-wrapper .selectify-radio *,
 .page-wrapper .selectify-checkbox * {
-  --selectify-checkbox-bg: linear-gradient(180deg, var(--r-header-bg) 0%, #469167 50%, #0c1224 100%);
+  --selectify-checkbox-bg: linear-gradient(180deg, var(--r-header-tx) 0%, #469167 50%, #0c1224 100%);
   --selectify-checkbox-checked-bg: linear-gradient(180deg, #0c1224 0%, #469167 50%, #0f1e16 100%);
   --selectify-checkbox-check-circle: radial-gradient(circle at 35% 35%, #ffffff 0%, #9fd1b5 40%, #469167 100%);
   --selectify-checkbox-checked-circle: radial-gradient(circle at 40% 40%, #ffffff 0%, #469167 40%, #0f1e16 100%);
@@ -286,14 +294,14 @@ header.header h3 a span {
 .page-wrapper .selectify-select,
 .page-wrapper .selectify-select * {
   --selectify-select-bg: linear-gradient(180deg, #ffffff 0%, var(--r-bg) 100%);
-  --selectify-select-hover-bg: linear-gradient(0deg, var(--r-bg) 0%, #469167 100%);
-  --selectify-select-border-color: #9fd1b5;
+  --selectify-select-hover-bg: linear-gradient(0deg, var(--r-bg) 0%, #e3eaec 100%);
   --selectify-select-color: var(--r-tx);
-  --selectify-select-focus-border-color: #0c1224;
+  --selectify-select-border-color: var(--r-br);
+  --selectify-select-focus-border-color: var(--r-br);
   --selectify-select-disabled-bg: linear-gradient(180deg, #f1f8f6 0%, #d1e9e3 100%);
   --selectify-select-arrow-color: #0c1224;
   --selectify-dropdown-shadow: 0px 4px 14px rgba(0, 0, 0, 0.12);
-  --selectify-option-hover-bg: linear-gradient(180deg, #ffffff 0%, #469167 100%);
+  --selectify-option-hover-bg: linear-gradient(180deg, #ffffff 0%, #e3eaec 100%);
   --selectify-option-active-bg: linear-gradient(180deg, #9fd1b5 0%, #0c1224 100%);
 }
 

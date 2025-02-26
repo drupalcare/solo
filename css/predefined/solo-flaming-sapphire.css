@@ -14,7 +14,12 @@ International Orange #FF4F00, LAPIS #2832C2
 
 /* inner regions */
 .page-wrapper .region-inner {
-  --r-br: #aa3500;
+  --r-br: #521a00;
+}
+
+.page-wrapper .primary-sidebar-menu,
+.page-wrapper .primary-menu {
+  --r-br: #2e0f00;
 }
 
 .page-wrapper .solo-outer:not(.fixed-search-block,
@@ -87,13 +92,13 @@ h3 a) {
 .page-wrapper .header li.nav__menu-item>button:hover,
 .page-wrapper .main-navigation-wrapper li>button:hover {
   --r-tx: #fff3ee;
-  --r-bg: #bb3a00;
+  --r-bg: #993000;
 }
 
 .page-wrapper ul.tabs.secondary li a:hover,
 .page-wrapper ul.tabs.primary li a:hover {
   --r-tx: #fff3ee;
-  background-color: #bb3a00;
+  background-color: #993000;
 }
 
 /* The same colors as hover for the main menu */
@@ -180,6 +185,7 @@ div.page-title.lone {
   background: var(--r-bg);
 }
 
+.page-wrapper .selectify,
 .page-wrapper .solo-select,
 .page-wrapper .solo-radio,
 .page-wrapper .solo-check,
@@ -188,9 +194,16 @@ div.page-title.lone {
 .page-wrapper a.button,
 .page-wrapper input.button,
 .page-wrapper .search-button-close button {
-  --r-br: #444ed9;
+  --r-br: #363eab;
 }
 
+.page-wrapper .selectify *:hover,
+.page-wrapper .solo-select:hover,
+.page-wrapper .solo-ckeck:hover,
+.page-wrapper .solo-radio:hover,
+.page-wrapper .solo-input:hover,
+.page-wrapper .solo-textarea:hover,
+.page-wrapper .selectify *:focus,
 .page-wrapper .solo-select:focus,
 .page-wrapper .solo-ckeck:focus,
 .page-wrapper .solo-radio:focus,
@@ -227,7 +240,7 @@ div.page-title.lone {
 .page-wrapper .selectify-checkbox,
 .page-wrapper .selectify-radio *,
 .page-wrapper .selectify-checkbox * {
-  --selectify-checkbox-bg: linear-gradient(180deg, var(--r-header-bg) 0%, #331000 50%, #aa3500 100%);
+  --selectify-checkbox-bg: linear-gradient(180deg, var(--r-header-tx) 0%, #331000 50%, #aa3500 100%);
   --selectify-checkbox-checked-bg: linear-gradient(180deg, #aa3500 0%, #331000 50%, #fff3ee 100%);
   --selectify-checkbox-check-circle: radial-gradient(circle at 35% 35%, #ffffff 0%, #fff3ee 40%, #aa3500 100%);
   --selectify-checkbox-checked-circle: radial-gradient(circle at 40% 40%, #ffffff 0%, #aa3500 40%, #fff3ee 100%);
@@ -237,16 +250,16 @@ div.page-title.lone {
 
 .page-wrapper .selectify-select,
 .page-wrapper .selectify-select * {
-  --selectify-select-bg: linear-gradient(180deg, #ffffff 0%, var(--r-bg) 100%);
+  --selectify-select-bg: linear-gradient(180deg, #240b00 0%, var(--r-bg) 100%);
   --selectify-select-hover-bg: linear-gradient(0deg, var(--r-bg) 0%, #331000 100%);
-  --selectify-select-border-color: #fff3ee;
   --selectify-select-color: var(--r-tx);
-  --selectify-select-focus-border-color: #aa3500;
+  --selectify-select-border-color: var(--r-br);
+  --selectify-select-focus-border-color: var(--r-br);
   --selectify-select-disabled-bg: linear-gradient(180deg, #f1f8f6 0%, #d1e9e3 100%);
-  --selectify-select-arrow-color: #aa3500;
+  --selectify-select-arrow-color: var(--r-br);
   --selectify-dropdown-shadow: 0px 4px 14px rgba(0, 150, 136, 0.12);
-  --selectify-option-hover-bg: linear-gradient(180deg, #ffffff 0%, #331000 100%);
-  --selectify-option-active-bg: linear-gradient(180deg, #aa3500 0%, #fff3ee 100%);
+  --selectify-option-hover-bg: linear-gradient(180deg, #240b00 0%, #331000 100%);
+  --selectify-option-active-bg: linear-gradient(180deg, #aa3500 0%, #240b00 100%);
 }
 
 

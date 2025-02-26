@@ -59,13 +59,11 @@
         if (windowWidth < breakpoint) return;
         const submenu = li.querySelector(':scope > .sub__menu');
         if (!submenu) return;
-        // Temporarily hide submenu to prevent flicker
         submenu.style.visibility = 'hidden';
         const liRect = getLiPosition(li);
         const submenuWidth = getSubmenuWidth(submenu);
         const spaceLeft = getSpaceLeft(liRect);
         const spaceRight = getSpaceRight(liRect, windowWidth);
-        // Adjust positioning for second-level submenu
         if (submenuWidth + 30 > spaceRight) {
           submenu.style.left = 'auto';
           submenu.style.right = '0';
@@ -76,11 +74,10 @@
           submenu.style.left = '';
           submenu.style.right = '';
         }
-        // Make submenu visible after positioning is set
         submenu.style.visibility = 'visible';
       }
 
-      // Function to reposition third-level submenus based on **parent li** position
+      // Function to reposition third-level submenus
       function adjustThirdLevelSubmenu(li) {
         const windowWidth = getWindowWidth();
         if (windowWidth < breakpoint) return;
@@ -88,13 +85,11 @@
         if (!submenu) return;
         const parentLi = li.closest('li.has-sub__menu');
         if (!parentLi) return;
-        // Temporarily hide submenu to prevent flicker
         submenu.style.visibility = 'hidden';
         const parentRect = getLiPosition(parentLi);
         const submenuWidth = getSubmenuWidth(submenu);
         const spaceLeft = getSpaceLeft(parentRect);
         const spaceRight = getSpaceRight(parentRect, windowWidth);
-        // Adjust positioning for third-level submenu
         if (submenuWidth + 30 > spaceRight) {
           submenu.style.left = 'auto';
           submenu.style.right = '100%';
@@ -105,15 +100,16 @@
           submenu.style.left = '';
           submenu.style.right = '';
         }
-        // Make submenu visible after positioning is set
         submenu.style.visibility = 'visible';
       }
 
-      // Function to apply the submenu fix
+      // Function to apply submenu fix for both hover and click
       function applySubmenuFix(menuSelector, adjustFunction) {
         once('soloMenuFix', document.querySelectorAll(menuSelector, context)).forEach((li) => {
-          li.addEventListener('click', function() {
-            adjustFunction(this);
+          ['mouseenter', 'click'].forEach(eventType => {
+            li.addEventListener(eventType, function() {
+              adjustFunction(this);
+            });
           });
         });
       }
@@ -135,4 +131,5 @@
     }
   };
 })(Drupal, drupalSettings, once);
+
 

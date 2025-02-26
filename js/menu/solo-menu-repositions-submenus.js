@@ -115,14 +115,14 @@
       }
 
       // Apply fixes to second and third-level submenus
-      applySubmenuFix('.navigation__primary > li.has-sub__menu', adjustSecondLevelSubmenu);
-      applySubmenuFix('.navigation__primary > li.has-sub__menu ul li.has-sub__menu', adjustThirdLevelSubmenu);
+      applySubmenuFix('.primary-menu .navigation__primary > li.has-sub__menu', adjustSecondLevelSubmenu);
+      applySubmenuFix('.primary-menu .navigation__primary > li.has-sub__menu ul li.has-sub__menu', adjustThirdLevelSubmenu);
 
       // Function to reapply fixes on window resize
       function handleResize() {
         if (window.innerWidth >= breakpoint) {
-          applySubmenuFix('.navigation__primary > li.has-sub__menu', adjustSecondLevelSubmenu);
-          applySubmenuFix('.navigation__primary > li.has-sub__menu ul li.has-sub__menu', adjustThirdLevelSubmenu);
+          applySubmenuFix('.primary-menu .navigation__primary > li.has-sub__menu', adjustSecondLevelSubmenu);
+          applySubmenuFix('.primary-menu .navigation__primary > li.has-sub__menu ul li.has-sub__menu', adjustThirdLevelSubmenu);
         }
       }
 

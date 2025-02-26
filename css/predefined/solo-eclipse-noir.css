@@ -1,7 +1,6 @@
 /* Page wrapper
 Deep Black #050203, Retro Black #1F201F
 */
-
 .page-wrapper {
   --r-br: #5a2436;
   --r-bg: #050203;
@@ -14,7 +13,7 @@ Deep Black #050203, Retro Black #1F201F
 
 /* inner regions */
 .page-wrapper .region-inner {
-  --r-br: #722e45;
+  --r-br: #411b28;
 }
 
 .page-wrapper .solo-outer:not(.fixed-search-block,
@@ -154,6 +153,7 @@ div.page-title.lone {
   background: var(--r-bg);
 }
 
+.page-wrapper .selectify,
 .page-wrapper .solo-select,
 .page-wrapper .solo-radio,
 .page-wrapper .solo-check,
@@ -165,6 +165,13 @@ div.page-title.lone {
   --r-br: #494b49;
 }
 
+.page-wrapper .selectify *:hover,
+.page-wrapper .solo-select:hover,
+.page-wrapper .solo-ckeck:hover,
+.page-wrapper .solo-radio:hover,
+.page-wrapper .solo-input:hover,
+.page-wrapper .solo-textarea:hover,
+.page-wrapper .selectify *:focus,
 .page-wrapper .solo-select:focus,
 .page-wrapper .solo-ckeck:focus,
 .page-wrapper .solo-radio:focus,
@@ -241,7 +248,7 @@ div.page-title.lone {
 .page-wrapper .selectify-checkbox,
 .page-wrapper .selectify-radio *,
 .page-wrapper .selectify-checkbox * {
-  --selectify-checkbox-bg: linear-gradient(180deg, var(--r-header-bg) 0%, #291119 50%, #973c5a 100%);
+  --selectify-checkbox-bg: linear-gradient(180deg, var(--r-header-tx) 0%, #291119 50%, #973c5a 100%);
   --selectify-checkbox-checked-bg: linear-gradient(180deg, #973c5a 0%, #291119 50%, #eed3dc 100%);
   --selectify-checkbox-check-circle: radial-gradient(circle at 35% 35%, #ffffff 0%, #eed3dc 40%, #973c5a 100%);
   --selectify-checkbox-checked-circle: radial-gradient(circle at 40% 40%, #ffffff 0%, #973c5a 40%, #eed3dc 100%);
@@ -251,16 +258,16 @@ div.page-title.lone {
 
 .page-wrapper .selectify-select,
 .page-wrapper .selectify-select * {
-  --selectify-select-bg: linear-gradient(180deg, #ffffff 0%, var(--r-bg) 100%);
+  --selectify-select-bg: linear-gradient(180deg, #12070b 0%, var(--r-bg) 100%);
   --selectify-select-hover-bg: linear-gradient(0deg, var(--r-bg) 0%, #291119 100%);
-  --selectify-select-border-color: #eed3dc;
   --selectify-select-color: var(--r-tx);
-  --selectify-select-focus-border-color: #973c5a;
+  --selectify-select-border-color: var(--r-br);
+  --selectify-select-focus-border-color: var(--r-br);
   --selectify-select-disabled-bg: linear-gradient(180deg, #f1f8f6 0%, #d1e9e3 100%);
   --selectify-select-arrow-color: #973c5a;
   --selectify-dropdown-shadow: 0px 4px 14px rgba(0, 150, 136, 0.12);
   --selectify-option-hover-bg: linear-gradient(180deg, #ffffff 0%, #291119 100%);
-  --selectify-option-active-bg: linear-gradient(180deg, #973c5a 0%, #fcf8f9 100%);
+  --selectify-option-active-bg: linear-gradient(180deg, var(--r-header-tx) 0%, #12070b 100%);
 }
 
 /* Border animation  */

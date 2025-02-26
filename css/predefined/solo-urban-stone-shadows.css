@@ -11,21 +11,14 @@ Stone Gray #928E85, Outer Space #414A4C
   --r-menu-bg-h: #3a3833;
 }
 
-.page-wrapper .solo-select,
-.page-wrapper .solo-radio,
-.page-wrapper .solo-check,
-.page-wrapper .solo-input,
-.page-wrapper .solo-textarea,
-.page-wrapper a.button,
-.page-wrapper input.button,
-.page-wrapper .search-button-close button {
-  --r-br: #596567;
-  border-color: var(--r-br);
-}
-
 /* inner regions */
 .page-wrapper .region-inner {
-  --r-br: #a29f97;
+  --r-br: #eae3d0;
+}
+
+.page-wrapper .primary-sidebar-menu,
+.page-wrapper .primary-menu {
+  --r-br: #7f7d76;
 }
 
 .page-wrapper .solo-outer:not(.fixed-search-block,
@@ -165,6 +158,7 @@ div.page-title.lone {
   background: var(--r-bg);
 }
 
+.page-wrapper .selectify,
 .page-wrapper .solo-select,
 .page-wrapper .solo-radio,
 .page-wrapper .solo-check,
@@ -173,9 +167,16 @@ div.page-title.lone {
 .page-wrapper a.button,
 .page-wrapper input.button,
 .page-wrapper .search-button-close button {
-  --r-br: #515c5e;
+  --r-br: #96a8ab;
 }
 
+.page-wrapper .selectify *:hover,
+.page-wrapper .solo-select:hover,
+.page-wrapper .solo-ckeck:hover,
+.page-wrapper .solo-radio:hover,
+.page-wrapper .solo-input:hover,
+.page-wrapper .solo-textarea:hover,
+.page-wrapper .selectify *:focus,
 .page-wrapper .solo-select:focus,
 .page-wrapper .solo-ckeck:focus,
 .page-wrapper .solo-radio:focus,
@@ -240,7 +241,7 @@ div.page-title.lone {
 .page-wrapper .selectify-checkbox,
 .page-wrapper .selectify-radio *,
 .page-wrapper .selectify-checkbox * {
-  --selectify-checkbox-bg: linear-gradient(180deg, var(--r-header-bg) 0%, #b2afa9 50%, #495355 100%);
+  --selectify-checkbox-bg: linear-gradient(180deg, var(--r-header-tx) 0%, #b2afa9 50%, #495355 100%);
   --selectify-checkbox-checked-bg: linear-gradient(180deg, #495355 0%, #b2afa9 50%, #1f1e1b 100%);
   --selectify-checkbox-check-circle: radial-gradient(circle at 35% 35%, #ffffff 0%, #b2afa9 40%, #495355 100%);
   --selectify-checkbox-checked-circle: radial-gradient(circle at 40% 40%, #ffffff 0%, #495355 40%, #1f1e1b 100%);
@@ -252,9 +253,9 @@ div.page-title.lone {
 .page-wrapper .selectify-select * {
   --selectify-select-bg: linear-gradient(180deg, #ffffff 0%, var(--r-bg) 100%);
   --selectify-select-hover-bg: linear-gradient(0deg, var(--r-bg) 0%, #b2afa9 100%);
-  --selectify-select-border-color: #b2afa9;
   --selectify-select-color: var(--r-tx);
-  --selectify-select-focus-border-color: #495355;
+  --selectify-select-border-color: var(--r-br);
+  --selectify-select-focus-border-color: var(--r-br);
   --selectify-select-disabled-bg: linear-gradient(180deg, #f1f1f1 0%, #d0ccc7 100%);
   --selectify-select-arrow-color: #495355;
   --selectify-dropdown-shadow: 0px 4px 14px rgba(0, 0, 0, 0.12);

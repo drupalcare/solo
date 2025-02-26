@@ -9,6 +9,8 @@ Bayern Blue #0066B2, Berry Blue #4F86F7, Blue Yonder #5072A7, OIL #050100
   --r-header-tx: #85725f;
   --r-menu-tx-h: #000508;
   --r-menu-bg-h: #008df6;
+  --r-br-dark: #003157;
+  --r-br-light: #dcd0c7;
 }
 
 /* Heads */
@@ -109,11 +111,6 @@ h3 a) {
 }
 
 /* Regions Light */
-.welcome-text,
-.main-container .main-box {
-  --r-bg: var(--solo-white);
-}
-
 .main-container,
 .top-container,
 .fixed-search-block,
@@ -223,6 +220,7 @@ header.header h3 a span {
   fill: #5d5043;
 }
 
+.page-wrapper .selectify,
 .page-wrapper .solo-select,
 .page-wrapper .solo-radio,
 .page-wrapper .solo-check,
@@ -234,6 +232,13 @@ header.header h3 a span {
   --r-br: #2c261f;
 }
 
+.page-wrapper .selectify *:hover,
+.page-wrapper .solo-select:hover,
+.page-wrapper .solo-ckeck:hover,
+.page-wrapper .solo-radio:hover,
+.page-wrapper .solo-input:hover,
+.page-wrapper .solo-textarea:hover,
+.page-wrapper .selectify *:focus,
 .page-wrapper .solo-select:focus,
 .page-wrapper .solo-ckeck:focus,
 .page-wrapper .solo-radio:focus,
@@ -268,6 +273,14 @@ header.header h3 a span {
   color: var(--r-header-tx);
   background: var(--r-header-bg);
 }
+
+.page-wrapper .top-container,
+.page-wrapper .top-container *,
+.page-wrapper .main-container,
+.page-wrapper .main-container * {
+  --r-br: var(--r-br-light);
+}
+
 .page-wrapper .selectify-radio,
 .page-wrapper .selectify-checkbox,
 .page-wrapper .selectify-radio *,
@@ -284,11 +297,11 @@ header.header h3 a span {
 .page-wrapper .selectify-select * {
   --selectify-select-bg: linear-gradient(180deg, #ffffff 0%, var(--r-bg) 100%);
   --selectify-select-hover-bg: linear-gradient(0deg, var(--r-bg) 0%, #e1effa 100%);
-  --selectify-select-border-color: var(--r-br);
   --selectify-select-color: var(--r-tx);
-  --selectify-select-focus-border-color: var(--r-menu-bg-h);
+  --selectify-select-border-color: var(--r-br);
+  --selectify-select-focus-border-color: var(--r-br);
   --selectify-select-disabled-bg: linear-gradient(180deg, #ffffff 0%, var(--r-bg) 100%);
-  --selectify-select-arrow-color: var(--r-header-tx);
+  --selectify-select-arrow-color: var(--r-menu-bg-h);
   --selectify-dropdown-shadow: 0px 4px 14px rgba(44, 38, 31, 0.15);
   --selectify-option-hover-bg: linear-gradient(180deg, #ffffff 0%, #e1effa 100%);
   --selectify-option-active-bg: linear-gradient(180deg, var(--r-br) 0%, var(--r-menu-bg-h) 100%);

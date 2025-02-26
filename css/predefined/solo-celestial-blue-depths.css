@@ -9,6 +9,8 @@ Egyptian Blue #1034A6, Yale Blue #00356B, Space Cadet #1D2951
   --r-header-tx: #7b6a58;
   --r-menu-tx-h: #fafbff;
   --r-menu-bg-h: #1034a6;
+  --r-br-dark: #0a2580;
+  --r-br-light: #c4cade;
 }
 
 /* Heads */
@@ -165,7 +167,7 @@ header.header h3 a span {
 .bottom-container,
 .footer-container,
 .footer-menu {
-  --r-br: #091c58;
+  --r-br: var(--r-br-dark);
   --r-tx: #dbe3fc;
   --r-bg: linear-gradient(180deg, #020306, #040d2a);
   background: var(--r-bg);
@@ -223,6 +225,7 @@ header.header h3 a span {
   fill: #a1afdd;
 }
 
+.page-wrapper .selectify,
 .page-wrapper .solo-select,
 .page-wrapper .solo-radio,
 .page-wrapper .solo-check,
@@ -234,6 +237,13 @@ header.header h3 a span {
   --r-br: #0a2168;
 }
 
+.page-wrapper .selectify *:hover,
+.page-wrapper .solo-select:hover,
+.page-wrapper .solo-ckeck:hover,
+.page-wrapper .solo-radio:hover,
+.page-wrapper .solo-input:hover,
+.page-wrapper .solo-textarea:hover,
+.page-wrapper .selectify *:focus,
 .page-wrapper .solo-select:focus,
 .page-wrapper .solo-ckeck:focus,
 .page-wrapper .solo-radio:focus,
@@ -268,6 +278,14 @@ header.header h3 a span {
   color: var(--r-header-tx);
   background: var(--r-header-bg);
 }
+
+.page-wrapper .top-container,
+.page-wrapper .top-container *,
+.page-wrapper .main-container,
+.page-wrapper .main-container * {
+  --r-br: var(--r-br-light);
+}
+
 .page-wrapper .selectify-radio,
 .page-wrapper .selectify-checkbox,
 .page-wrapper .selectify-radio *,
@@ -284,9 +302,9 @@ header.header h3 a span {
 .page-wrapper .selectify-select * {
   --selectify-select-bg: linear-gradient(180deg, #ffffff 0%, var(--r-bg) 100%);
   --selectify-select-hover-bg: linear-gradient(0deg, var(--r-bg) 0%, #e5ecf9 100%);
-  --selectify-select-border-color: var(--r-br);
   --selectify-select-color: var(--r-tx);
-  --selectify-select-focus-border-color: var(--r-menu-bg-h);
+  --selectify-select-border-color: var(--r-br);
+  --selectify-select-focus-border-color: var(--r-br);
   --selectify-select-disabled-bg: linear-gradient(180deg, #ffffff 0%, var(--r-bg) 100%);
   --selectify-select-arrow-color: var(--r-header-tx);
   --selectify-dropdown-shadow: 0px 4px 14px rgba(4, 13, 42, 0.15);

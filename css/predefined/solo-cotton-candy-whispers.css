@@ -9,6 +9,8 @@ Piggy Pink #FDDDE6, Cotton Candy #FFBCD9, Cameo Pink #EFBBCC
   --r-header-tx: #f66d93;
   --r-menu-tx-h: #fffdfe;
   --r-menu-bg-h: #ff016f;
+  --r-br-dark: #47001f;
+  --r-br-light: #f8dde5;
 }
 
 /* Heads */
@@ -163,7 +165,7 @@ header.header h3 a span {
 .bottom-container,
 .footer-container,
 .footer-menu {
-  --r-br: #780034;
+  --r-br: var(--r-br-dark);
   --r-tx: #f9e4eb;
   --r-bg: linear-gradient(180deg, #0e0105, #010000);
   background: var(--r-bg);
@@ -221,6 +223,7 @@ header.header h3 a span {
   fill: #8f082e;
 }
 
+.page-wrapper .selectify,
 .page-wrapper .solo-select,
 .page-wrapper .solo-radio,
 .page-wrapper .solo-check,
@@ -232,6 +235,13 @@ header.header h3 a span {
   --r-br: #ffabcf;
 }
 
+.page-wrapper .selectify *:hover,
+.page-wrapper .solo-select:hover,
+.page-wrapper .solo-ckeck:hover,
+.page-wrapper .solo-radio:hover,
+.page-wrapper .solo-input:hover,
+.page-wrapper .solo-textarea:hover,
+.page-wrapper .selectify *:focus,
 .page-wrapper .solo-select:focus,
 .page-wrapper .solo-ckeck:focus,
 .page-wrapper .solo-radio:focus,
@@ -267,6 +277,11 @@ header.header h3 a span {
   background: var(--r-header-bg);
 }
 
+.page-wrapper .main-container,
+.page-wrapper .main-container * {
+  --r-br: var(--r-br-light);
+}
+
 .page-wrapper .selectify-radio,
 .page-wrapper .selectify-checkbox,
 .page-wrapper .selectify-radio *,
@@ -283,14 +298,14 @@ header.header h3 a span {
 .page-wrapper .selectify-select * {
   --selectify-select-bg: linear-gradient(180deg, #ffffff 0%, var(--r-bg) 100%);
   --selectify-select-hover-bg: linear-gradient(0deg, var(--r-bg) 0%, #f8e6ec 100%);
-  --selectify-select-border-color: var(--r-br);
   --selectify-select-color: var(--r-tx);
-  --selectify-select-focus-border-color: var(--r-menu-bg-h);
+  --selectify-select-border-color: var(--r-br);
+  --selectify-select-focus-border-color: var(--r-br);
   --selectify-select-disabled-bg: linear-gradient(180deg, #ffffff 0%, var(--r-bg) 100%);
   --selectify-select-arrow-color: var(--r-header-tx);
   --selectify-dropdown-shadow: 0px 4px 14px rgba(56, 13, 27, 0.12);
   --selectify-option-hover-bg: linear-gradient(180deg, #ffffff 0%, #f8e6ec 100%);
-  --selectify-option-active-bg: linear-gradient(180deg, var(--r-br) 0%, var(--r-menu-bg-h) 100%);
+  --selectify-option-active-bg: linear-gradient(180deg, var(--r-br) 0%, #f8e6ec 100%);
 }
 
 /* Border animation  */

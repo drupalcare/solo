@@ -9,6 +9,8 @@ DodgerBlue 1E90FF, INDIGO #281E5D
   --r-header-tx: #042844;
   --r-menu-bg-h: #0f8ef4;
   --r-menu-tx-h: #000204;
+  --r-br-light: #d4e8f7;
+  --r-br-dark: #053357;
 }
 
 .fixed-search-block {
@@ -17,6 +19,24 @@ DodgerBlue 1E90FF, INDIGO #281E5D
 
 .header {
   --r-bg: #f3f9fe;
+}
+
+.page-wrapper .copyright,
+.page-wrapper .copyright *,
+.page-wrapper .footer-menu,
+.page-wrapper .footer-menu *,
+.page-wrapper .footer-container,
+.page-wrapper .footer-container *,
+.page-wrapper .bottom-container,
+.page-wrapper .bottom-container * {
+  --r-br: var(--r-br-dark);
+}
+
+.page-wrapper .top-container,
+.page-wrapper .top-container *,
+.page-wrapper .main-container,
+.page-wrapper .main-container * {
+  --r-br: var(--r-br-light);
 }
 
 /* Heads */
@@ -254,6 +274,7 @@ h3 a) {
   fill: #91ccfa;
 }
 
+.page-wrapper .selectify,
 .page-wrapper .solo-select,
 .page-wrapper .solo-radio,
 .page-wrapper .solo-check,
@@ -262,15 +283,22 @@ h3 a) {
 .page-wrapper a.button,
 .page-wrapper input.button,
 .page-wrapper .search-button-close button {
-  --r-br: #6d5bca;
+  --r-br: #d9d1ff;
 }
 
+.page-wrapper .selectify *:hover,
+.page-wrapper .solo-select:hover,
+.page-wrapper .solo-ckeck:hover,
+.page-wrapper .solo-radio:hover,
+.page-wrapper .solo-input:hover,
+.page-wrapper .solo-textarea:hover,
+.page-wrapper .selectify *:focus,
 .page-wrapper .solo-select:focus,
 .page-wrapper .solo-ckeck:focus,
 .page-wrapper .solo-radio:focus,
 .page-wrapper .solo-input:focus,
 .page-wrapper .solo-textarea:focus {
-  --r-br: #4f3bb7;
+  --r-br: #b7abf8;
 }
 
 /* For main menu shadow */
@@ -322,7 +350,7 @@ h3 a) {
 .page-wrapper .selectify-checkbox,
 .page-wrapper .selectify-radio *,
 .page-wrapper .selectify-checkbox * {
-  --selectify-checkbox-bg: linear-gradient(180deg, var(--r-header-bg) 0%, #b2dbfb 50%, #042844 100%);
+  --selectify-checkbox-bg: linear-gradient(180deg, var(--r-header-tx) 0%, #b2dbfb 50%, #042844 100%);
   --selectify-checkbox-checked-bg: linear-gradient(180deg, #042844 0%, #b2dbfb 50%, #000204 100%);
   --selectify-checkbox-check-circle: radial-gradient(circle at 35% 35%, #ffffff 0%, #b2dbfb 40%, #f3f9fe 100%);
   --selectify-checkbox-checked-circle: radial-gradient(circle at 40% 40%, #ffffff 0%, #f3f9fe 40%, #000204 100%);
@@ -334,9 +362,9 @@ h3 a) {
 .page-wrapper .selectify-select * {
   --selectify-select-bg: linear-gradient(180deg, #ffffff 0%, var(--r-bg) 100%);
   --selectify-select-hover-bg: linear-gradient(0deg, var(--r-bg) 0%, #b2dbfb 100%);
-  --selectify-select-border-color: #b2dbfb;
   --selectify-select-color: var(--r-tx);
-  --selectify-select-focus-border-color: #042844;
+  --selectify-select-border-color: var(--r-br);
+  --selectify-select-focus-border-color: var(--r-br);
   --selectify-select-disabled-bg: linear-gradient(180deg, #f1f8f6 0%, #d1e9e3 100%);
   --selectify-select-arrow-color: #042844;
   --selectify-dropdown-shadow: 0px 4px 14px rgba(0, 150, 136, 0.12);

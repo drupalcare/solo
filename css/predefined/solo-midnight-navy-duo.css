@@ -9,6 +9,7 @@ Braves Navy #13274F, Astros Navy #002D62
   --r-header-tx: #7ab6ff;
   --r-menu-tx-h: #d9eaff;
   --r-menu-bg-h: #00162f;
+  --r-br-light: #b8daff;
 }
 
 /* Heads */
@@ -25,6 +26,13 @@ Braves Navy #13274F, Astros Navy #002D62
 .page-wrapper .site-slogan,
 .page-wrapper .site-name-link {
   --r-tx: #2e75cc;
+}
+
+.page-wrapper .top-container,
+.page-wrapper .top-container *,
+.page-wrapper .main-container,
+.page-wrapper .main-container * {
+  --r-br: var(--r-br-light);
 }
 
 /* Link only */
@@ -223,6 +231,7 @@ header.header h3 a span {
   fill: #2a56af;
 }
 
+.page-wrapper .selectify,
 .page-wrapper .solo-select,
 .page-wrapper .solo-radio,
 .page-wrapper .solo-check,
@@ -234,6 +243,13 @@ header.header h3 a span {
   --r-br: #0054b7;
 }
 
+.page-wrapper .selectify *:hover,
+.page-wrapper .solo-select:hover,
+.page-wrapper .solo-ckeck:hover,
+.page-wrapper .solo-radio:hover,
+.page-wrapper .solo-input:hover,
+.page-wrapper .solo-textarea:hover,
+.page-wrapper .selectify *:focus,
 .page-wrapper .solo-select:focus,
 .page-wrapper .solo-ckeck:focus,
 .page-wrapper .solo-radio:focus,
@@ -274,7 +290,7 @@ header.header h3 a span {
 .page-wrapper .selectify-checkbox,
 .page-wrapper .selectify-radio *,
 .page-wrapper .selectify-checkbox * {
-  --selectify-checkbox-bg: linear-gradient(180deg, var(--r-header-bg) 0%, #84bcff 50%, #7ab6ff 100%);
+  --selectify-checkbox-bg: linear-gradient(180deg, var(--r-header-tx) 0%, #ffffff 50%, #7ab6ff 100%);
   --selectify-checkbox-checked-bg: linear-gradient(180deg, #7ab6ff 0%, #84bcff 50%, #060c18 100%);
   --selectify-checkbox-check-circle: radial-gradient(circle at 35% 35%, #ffffff 0%, #84bcff 40%, #7ab6ff 100%);
   --selectify-checkbox-checked-circle: radial-gradient(circle at 40% 40%, #ffffff 0%, #7ab6ff 40%, #060c18 100%);
@@ -286,9 +302,9 @@ header.header h3 a span {
 .page-wrapper .selectify-select * {
   --selectify-select-bg: linear-gradient(180deg, #ffffff 0%, var(--r-bg) 100%);
   --selectify-select-hover-bg: linear-gradient(0deg, var(--r-bg) 0%, #84bcff 100%);
-  --selectify-select-border-color: #84bcff;
   --selectify-select-color: var(--r-tx);
-  --selectify-select-focus-border-color: #7ab6ff;
+  --selectify-select-border-color: var(--r-br);
+  --selectify-select-focus-border-color: var(--r-br);
   --selectify-select-disabled-bg: linear-gradient(180deg, #f1f8f6 0%, #bfd9ff 100%);
   --selectify-select-arrow-color: #7ab6ff;
   --selectify-dropdown-shadow: 0px 4px 14px rgba(0, 0, 0, 0.12);

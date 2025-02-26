@@ -23,9 +23,16 @@
   --solo-thead: initial;
   --solo-odd: initial;
   --solo-even: initial;
+  --solo-odd-light: initial;
+  --solo-even-light: initial;
+  --solo-odd-dark: initial;
+  --solo-even-dark: initial;
   --r-bg-dark: initial;
   --r-tx-dark: initial;
   --r-br-dark: initial;
+  --r-bg-light: initial;
+  --r-tx-light: initial;
+  --r-br-light: initial;
   --r-header-bg: initial;
   --r-header-tx: initial;
   --r-menu-tx-h: initial;

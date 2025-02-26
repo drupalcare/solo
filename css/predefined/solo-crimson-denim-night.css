@@ -10,6 +10,7 @@ RED #D0312D, DENIM #151E3D,MIDNIGHT #040406
   --r-header-tx: #565680;
   --r-menu-tx-h: #f9e2e1;
   --r-menu-bg-h: #a62724;
+  --r-br-light: #fddddd;
 }
 
 /* Heads */
@@ -232,6 +233,7 @@ header.header h3 a span {
   fill: #a62724;
 }
 
+.page-wrapper .selectify,
 .page-wrapper .solo-select,
 .page-wrapper .solo-radio,
 .page-wrapper .solo-check,
@@ -243,6 +245,13 @@ header.header h3 a span {
   --r-br: #6e1a18;
 }
 
+.page-wrapper .selectify *:hover,
+.page-wrapper .solo-select:hover,
+.page-wrapper .solo-ckeck:hover,
+.page-wrapper .solo-radio:hover,
+.page-wrapper .solo-input:hover,
+.page-wrapper .solo-textarea:hover,
+.page-wrapper .selectify *:focus,
 .page-wrapper .solo-select:focus,
 .page-wrapper .solo-ckeck:focus,
 .page-wrapper .solo-radio:focus,
@@ -279,6 +288,13 @@ header.header h3 a span {
   background: var(--r-header-bg);
 }
 
+.page-wrapper .top-container,
+.page-wrapper .top-container *,
+.page-wrapper .main-container,
+.page-wrapper .main-container * {
+  --r-br: var(--r-br-light);
+}
+
 .page-wrapper .selectify-radio,
 .page-wrapper .selectify-checkbox,
 .page-wrapper .selectify-radio *,
@@ -295,14 +311,14 @@ header.header h3 a span {
 .page-wrapper .selectify-select * {
   --selectify-select-bg: linear-gradient(180deg, #ffffff 0%, var(--r-bg) 100%);
   --selectify-select-hover-bg: linear-gradient(0deg, var(--r-bg) 0%, #f9e4e4 100%);
-  --selectify-select-border-color: var(--r-br);
   --selectify-select-color: var(--r-tx);
-  --selectify-select-focus-border-color: var(--r-menu-bg-h);
+  --selectify-select-border-color: var(--r-br);
+  --selectify-select-focus-border-color: var(--r-br);
   --selectify-select-disabled-bg: linear-gradient(180deg, #ffffff 0%, var(--r-bg) 100%);
-  --selectify-select-arrow-color: var(--r-header-tx);
+  --selectify-select-arrow-color: #d0312d;
   --selectify-dropdown-shadow: 0px 4px 14px rgba(38, 38, 57, 0.12);
   --selectify-option-hover-bg: linear-gradient(180deg, #ffffff 0%, #f9e4e4 100%);
-  --selectify-option-active-bg: linear-gradient(180deg, var(--r-br) 0%, var(--r-menu-bg-h) 100%);
+  --selectify-option-active-bg: linear-gradient(180deg, var(--r-br) 0%, #f9e4e4 100%);
 }
 
 /* Border animation  */

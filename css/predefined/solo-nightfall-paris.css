@@ -14,7 +14,7 @@ Natural Black #07000B, Bleu De France #318CE7
 
 /* inner regions */
 .page-wrapper .region-inner {
-  --r-br: #48486c;
+  --r-br: #34344e;
 }
 
 .page-wrapper .solo-outer:not(.fixed-search-block,
@@ -154,6 +154,7 @@ div.page-title.lone {
   background: var(--r-bg);
 }
 
+.page-wrapper .selectify,
 .page-wrapper .solo-select,
 .page-wrapper .solo-radio,
 .page-wrapper .solo-check,
@@ -162,15 +163,22 @@ div.page-title.lone {
 .page-wrapper a.button,
 .page-wrapper input.button,
 .page-wrapper .search-button-close button {
-  --r-br: #13599f;
+  --r-br: #0d4073;
 }
 
+.page-wrapper .selectify *:hover,
+.page-wrapper .solo-select:hover,
+.page-wrapper .solo-ckeck:hover,
+.page-wrapper .solo-radio:hover,
+.page-wrapper .solo-input:hover,
+.page-wrapper .solo-textarea:hover,
+.page-wrapper .selectify *:focus,
 .page-wrapper .solo-select:focus,
 .page-wrapper .solo-ckeck:focus,
 .page-wrapper .solo-radio:focus,
 .page-wrapper .solo-input:focus,
 .page-wrapper .solo-textarea:focus {
-  --r-br: #1873cd;
+  --r-br: #0d58a2;
 }
 
 .sm-icons .snapchat svg,
@@ -228,7 +236,7 @@ div.page-title.lone {
 .page-wrapper .selectify-checkbox,
 .page-wrapper .selectify-radio *,
 .page-wrapper .selectify-checkbox * {
-  --selectify-checkbox-bg: linear-gradient(180deg, var(--r-header-bg) 0%, #3a3a58 50%, #6c6c9d 100%);
+  --selectify-checkbox-bg: linear-gradient(180deg, var(--r-header-tx) 0%, #3a3a58 50%, #6c6c9d 100%);
   --selectify-checkbox-checked-bg: linear-gradient(180deg, #6c6c9d 0%, #3a3a58 50%, #bebed3 100%);
   --selectify-checkbox-check-circle: radial-gradient(circle at 35% 35%, #262639 0%, #6c6c9d 40%, #bebed3 100%);
   --selectify-checkbox-checked-circle: radial-gradient(circle at 40% 40%, #bebed3 0%, #6c6c9d 40%, #262639 100%);
@@ -240,9 +248,9 @@ div.page-title.lone {
 .page-wrapper .selectify-select * {
   --selectify-select-bg: linear-gradient(180deg, var(--r-bg) 0%, #12121a 100%);
   --selectify-select-hover-bg: linear-gradient(0deg, #12121a 0%, #3a3a58 100%);
-  --selectify-select-border-color: #262639;
   --selectify-select-color: var(--r-tx);
-  --selectify-select-focus-border-color: #6c6c9d;
+  --selectify-select-border-color: var(--r-br);
+  --selectify-select-focus-border-color: var(--r-br);
   --selectify-select-disabled-bg: linear-gradient(180deg, #12121a 0%, #262639 100%);
   --selectify-select-arrow-color: #6c6c9d;
   --selectify-dropdown-shadow: 0px 4px 14px rgba(255, 255, 255, 0.12);

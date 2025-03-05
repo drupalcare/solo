@@ -51,20 +51,20 @@ if (array_key_exists('primary_menu', $updated_regions['mix'])) {
 
   $form['solo_settings']["settings_{$region}"]['primary_menu_align_center'] = [
     '#type' => 'checkbox',
-    '#title' => t('Tick this box if you prefer the main menu to be centered.'),
+    '#title' => t('Tick this box if you prefer the main menu to be centered. (Big screen only)'),
     '#default_value' => theme_get_setting('primary_menu_align_center'),
+  ];
+
+  $form['solo_settings']["settings_{$region}"]['primary_menu_justify_content'] = [
+    '#type' => 'checkbox',
+    '#title' => t('Tick this box to distributes the space evenly between the menu items. The first item is positioned at the start of the line, and the last item is positioned at the end of the line. (Big screen only)'),
+    '#default_value' => theme_get_setting('primary_menu_justify_content'),
   ];
 
   $form['solo_settings']["settings_{$region}"]['primary_menu_branding'] = [
     '#type' => 'checkbox',
     '#title' => t('Tick this box to display a clickable logo next to the Main Menu. To also display the site name, add the class show-sitename to the field (CSS Classes Only).'),
     '#default_value' => theme_get_setting('primary_menu_branding'),
-  ];
-
-  $form['solo_settings']["settings_{$region}"]['primary_menu_justify_content'] = [
-    '#type' => 'checkbox',
-    '#title' => t('Tick this box to distributes the space evenly between the menu items. The first item is positioned at the start of the line, and the last item is positioned at the end of the line.'),
-    '#default_value' => theme_get_setting('primary_menu_justify_content'),
   ];
 
   $form['solo_settings']["settings_{$region}"]['primary_menu_expand_left'] = [

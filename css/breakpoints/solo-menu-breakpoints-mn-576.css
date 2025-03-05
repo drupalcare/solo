@@ -311,6 +311,7 @@
   /* Justify menu items */
   .page-wrapper .menu--justify .primary-menu-inner .navigation__primary {
     justify-content: space-between;
+    flex-grow: 1;
   }
 
   .page-wrapper .menu--justify .primary-menu-inner .navigation__primary>li {

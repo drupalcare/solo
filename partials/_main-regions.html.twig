@@ -7,7 +7,7 @@
 {% set main_regions = 0 %}
 {% if main_left %}
   {% set main_regions = main_regions + 1 %}
-  {% set sidebar_first_outer_classes = 'region-outer main-box sidebar-box-first' %}
+  {% set sidebar_first_outer_classes = 'region-outer main-box main-box-sides sidebar-box-first' %}
   {% set sidebar_first_inner_classes = 'region-inner main-box-inner sidebar-box-first-inner fade-inner' ~ (classes_sidebar_first ? ' ' ~ classes_sidebar_first) %}
 {% endif %}
 
@@ -19,7 +19,7 @@
 
 {% if main_right %}
   {% set main_regions = main_regions + 1 %}
-  {% set sidebar_second_outer_classes = 'region-outer main-box sidebar-box-second' %}
+  {% set sidebar_second_outer_classes = 'region-outer main-box main-box-sides sidebar-box-second' %}
   {% set sidebar_second_inner_classes = 'region-inner main-box-inner sidebar-box-second-inner fade-inner' ~ (classes_sidebar_second ? ' ' ~ classes_sidebar_second) %}
 {% endif %}
 

@@ -44,29 +44,13 @@
   color: var(--r-tx, var(--r-tx-dark));
 }
 
-.page-wrapper span,
-.page-wrapper h1,
-.page-wrapper h2,
-.page-wrapper h3,
-.page-wrapper h4,
-.page-wrapper h5,
-.page-wrapper h6,
-.page-wrapper code,
-.page-wrapper pre,
-.page-wrapper kbd,
-.page-wrapper samp,
-.page-wrapper p,
-.page-wrapper hr,
-.page-wrapper ul,
-.page-wrapper ol,
-.page-wrapper ul li,
-.page-wrapper ol li,
-.page-wrapper table,
-.page-wrapper th,
-.page-wrapper td,
-.page-wrapper tr,
-.page-wrapper blockquote {
-  background-color: transparent;
+.page-wrapper hr:not(.field hr),
+.page-wrapper ul:not(.messages ul):not(.field ul),
+.page-wrapper ul li:not(.messages li):not(.field li),
+.page-wrapper ol:not(.messages ol):not(.field ol),
+.page-wrapper ol li:not(.messages li):not(.field li),
+.page-wrapper table:not(.field table) {
+  background-color: var(--r-bg);
 }
 
 .page-wrapper mark,
@@ -79,13 +63,15 @@
 .page-wrapper input:not(.button,
 [type="submit"],
 [type="checkbox"],
-[type="radio"]) .page-wrapper .solo-select:not(.selectify-select),
+[type="radio"]),
+.page-wrapper .solo-select:not(.selectify-select),
 .page-wrapper .solo-radio:not(.selectify-radio),
 .page-wrapper .solo-check:not(.selectify-checkbox) {
-  background-color: var(--r-bg);
+  background-color: var(--r-bg-fr, var(--r-bg));
   border-color: var(--r-br, var(--r-br-b));
   color: var(--r-tx);
 }
+
 
 /* Link only */
 .page-wrapper a:not(.nav__menu-link,
@@ -228,4 +214,8 @@ h3 a):hover {
 .page-wrapper .bottom-container.has-border .region-inner,
 .page-wrapper .footer-container.has-border .region-inner {
   border: 1px solid var(--r-br);
+}
+
+.page-wrapper .dropbutton {
+  transition: all 0.3 ease;
 }

@@ -111,7 +111,7 @@ form .field--widget-entity-reference-paragraphs td.field-multiple-drag {
 .admin-context form .form-actions > a {
   margin-block: var(--solo-px16);
   margin-inline: var(--solo-px12);
-  padding-block: var(--solo-px12);
+  padding-block: var(--solo-px8);
   padding-inline: var(--solo-px16);
   display: inline-block;
 }

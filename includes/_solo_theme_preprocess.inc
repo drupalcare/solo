@@ -5,6 +5,7 @@
  * Theme preprocess functions.
  */
 
+use Drupal\views\Render\ViewsRenderPipelineMarkup;
 use Drupal\Component\Utility\Html;
 use Drupal\Component\Utility\UrlHelper;
 use Drupal\Core\Datetime\DrupalDateTime;
@@ -721,7 +722,13 @@ function _add_node_breadcrumb(RouteMatchInterface $route_match, array &$breadcru
   if ($route_match->getRouteName() === 'entity.node.canonical') {
     $node = $route_match->getParameter('node');
     if ($node instanceof NodeInterface) {
-      $breadcrumb[] = ['text' => Html::decodeEntities($node->label())];
+      $label = $node->label();
+      if (is_array($label)) {
+        // \Drupal::logger('solo')->warning('Node label is an array: @data', ['@data' => print_r($label, TRUE)]);
+        // Get first element if it's an array
+        $label = reset($label);
+      }
+      $breadcrumb[] = ['text' => Html::decodeEntities((string) $label)];
     }
   }
 }
@@ -733,7 +740,12 @@ function _add_taxonomy_breadcrumb(RouteMatchInterface $route_match, array &$brea
   if ($route_match->getRouteName() === 'entity.taxonomy_term.canonical') {
     $term = $route_match->getParameter('taxonomy_term');
     if ($term instanceof TermInterface) {
-      $breadcrumb[] = ['text' => Html::decodeEntities($term->label())];
+      $label = $term->label();
+      if (is_array($label)) {
+        // \Drupal::logger('solo')->warning('Taxonomy label is an array: @data', ['@data' => print_r($label, TRUE)]);
+        $label = reset($label);
+      }
+      $breadcrumb[] = ['text' => Html::decodeEntities((string) $label)];
     }
   }
 }
@@ -745,7 +757,12 @@ function _add_user_breadcrumb(RouteMatchInterface $route_match, array &$breadcru
   if ($route_match->getRouteName() === 'entity.user.canonical') {
     $user = $route_match->getParameter('user');
     if ($user instanceof UserInterface) {
-      $breadcrumb[] = ['text' => Html::decodeEntities($user->getDisplayName())];
+      $display_name = $user->getDisplayName();
+      if (is_array($display_name)) {
+        // \Drupal::logger('solo')->warning('User display name is an array: @data', ['@data' => print_r($display_name, TRUE)]);
+        $display_name = reset($display_name);
+      }
+      $breadcrumb[] = ['text' => Html::decodeEntities((string) $display_name)];
     }
   }
 }
@@ -757,7 +774,12 @@ function _add_webform_breadcrumb(RouteMatchInterface $route_match, array &$bread
   if ($route_match->getRouteName() === 'entity.webform.canonical') {
     $webform = $route_match->getParameter('webform');
     if ($webform instanceof Webform) {
-      $breadcrumb[] = ['text' => Html::decodeEntities($webform->label())];
+      $label = $webform->label();
+      if (is_array($label)) {
+        // \Drupal::logger('solo')->warning('Webform label is an array: @data', ['@data' => print_r($label, TRUE)]);
+        $label = reset($label);
+      }
+      $breadcrumb[] = ['text' => Html::decodeEntities((string) $label)];
     }
   }
 }
@@ -774,7 +796,6 @@ function _add_view_breadcrumb(RouteMatchInterface $route_match, array &$breadcru
   $is_views_page = $view_id || (!empty($body_classes) && in_array('views-page', $body_classes));
 
   if (!$is_views_page) {
-    // Exit if it's not a Views page.
     return;
   }
 
@@ -782,14 +803,19 @@ function _add_view_breadcrumb(RouteMatchInterface $route_match, array &$breadcru
   $request = \Drupal::request();
   $title = $title_resolver->getTitle($request, $route);
 
-  // Ensure the title is a string.
-  if (empty($title)) {
-    return;
+  // Handle ViewsRenderPipelineMarkup objects.
+  if ($title instanceof ViewsRenderPipelineMarkup) {
+    $title = $title->__toString();
   }
 
-  // If the title is a render array, extract the #markup value.
+  // If the title is a render array, extract #markup.
   if (is_array($title) && isset($title['#markup'])) {
     $title = $title['#markup'];
+  }
+
+  // Ensure the title is a valid string.
+  if (!is_string($title) || empty($title)) {
+    return;
   }
 
   // Add the title to the breadcrumb.
@@ -800,34 +826,25 @@ function _add_view_breadcrumb(RouteMatchInterface $route_match, array &$breadcru
  * Implements hook_preprocess_breadcrum().
  */
 function solo_preprocess_breadcrumb(&$variables) {
-
   if (!empty($variables['breadcrumb']) && !theme_get_setting('site_breadcrumb_pagetitle_off')) {
+    $variables['breadcrumb'] = $variables['breadcrumb'] ?? [];
 
-    if (!isset($variables['breadcrumb'])) {
-      $variables['breadcrumb'] = [];
-    }
-
-    // Get services.
-    $request = \Drupal::request();
-    $route_match = \Drupal::service('current_route_match');
+    $breadcrumb     = [];
+    $request        = \Drupal::request();
+    $route_match    = \Drupal::service('current_route_match');
     $title_resolver = \Drupal::service('title_resolver');
-    $breadcrumb = [];
-
-    // Get the page title.
-    $page_title = $title_resolver->getTitle($request, $route_match->getRouteObject());
+    $page_title     = $title_resolver->getTitle($request, $route_match->getRouteObject());
+    $body_classes   = $request->attributes->get('solo_body_classes', []);
 
     if (!empty($page_title) && is_string($page_title)) {
       $title_exists = FALSE;
-
       // Check if the page title already exists in the breadcrumb.
       foreach ($variables['breadcrumb'] as $breadcrumb_item) {
         if (!empty($breadcrumb_item['text']) && $breadcrumb_item['text'] === $page_title) {
           $title_exists = TRUE;
-          // Stop checking once found.
           break;
         }
       }
-
       // If not found, add the page title.
       if (!$title_exists) {
         $variables['breadcrumb'][] = ['text' => Html::decodeEntities($page_title)];
@@ -835,30 +852,37 @@ function solo_preprocess_breadcrumb(&$variables) {
       }
     }
 
-    // Retrieve body classes dynamically from request attributes.
-    $request = \Drupal::request();
-    $body_classes = $request->attributes->get('solo_body_classes', []);
-
     _add_node_breadcrumb($route_match, $breadcrumb);
     _add_taxonomy_breadcrumb($route_match, $breadcrumb);
     _add_user_breadcrumb($route_match, $breadcrumb);
     _add_webform_breadcrumb($route_match, $breadcrumb);
     _add_view_breadcrumb($route_match, $breadcrumb, $title_resolver, $body_classes);
 
-    // Merge breadcrumbs.
     $variables['breadcrumb'] = array_merge($variables['breadcrumb'], $breadcrumb);
-
-    // Ensure unique breadcrumb items.
     if (!empty($variables['breadcrumb'])) {
       $unique_breadcrumb = [];
       $seen_texts = [];
 
       foreach ($variables['breadcrumb'] as $item) {
-        if (!empty($item['text']) && !in_array($item['text'], $seen_texts, TRUE)) {
-          $seen_texts[] = Html::decodeEntities($item['text']);
-          $unique_breadcrumb[] = $item;
+        if (!empty($item['text'])) {
+          $text = $item['text'];
+          if (is_array($text)) {
+            if (isset($text['#markup']) && is_string($text['#markup'])) {
+              $text = $text['#markup'];
+            }
+            else {
+              continue;
+            }
+          }
+          $decoded_text = Html::decodeEntities($text);
+
+          if (!in_array($decoded_text, $seen_texts, TRUE)) {
+            $seen_texts[] = $decoded_text;
+            $unique_breadcrumb[] = $item;
+          }
         }
       }
+
       $variables['breadcrumb'] = $unique_breadcrumb;
     }
   }

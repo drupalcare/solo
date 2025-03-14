@@ -44,13 +44,31 @@
   color: var(--r-tx, var(--r-tx-dark));
 }
 
-.page-wrapper hr:not(.field hr),
-.page-wrapper ul:not(.messages ul):not(.field ul),
-.page-wrapper ul li:not(.messages li):not(.field li),
-.page-wrapper ol:not(.messages ol):not(.field ol),
-.page-wrapper ol li:not(.messages li):not(.field li),
-.page-wrapper table:not(.field table) {
+.page-wrapper hr,
+.page-wrapper ul,
+.page-wrapper ul li,
+.page-wrapper ol,
+.page-wrapper ol li,
+.page-wrapper table {
   background-color: var(--r-bg);
+}
+
+.page-wrapper .field hr,
+.page-wrapper .views-field hr,
+.page-wrapper .messages ul,
+.page-wrapper .field ul,
+.page-wrapper .views-field ul,
+.page-wrapper .messages ul li,
+.page-wrapper .field ul li,
+.page-wrapper .views-field ul li,
+.page-wrapper .messages ol,
+.page-wrapper .field ol,
+.page-wrapper .views-field ol,
+.page-wrapper .messages ol li,
+.page-wrapper .field ol li,
+.page-wrapper .views-field ol li,
+.page-wrapper .field table {
+  background-color: initial;
 }
 
 .page-wrapper mark,

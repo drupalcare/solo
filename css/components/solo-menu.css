@@ -73,7 +73,12 @@
 
 .solo-inner .navigation__menubar:not(.navigation__megamenu) li.nav__menu-item>a,
 .solo-inner .navigation__menubar:not(.navigation__megamenu) li.nav__menu-item>button {
-  padding: var(--solo-px12);
+  padding: var(--solo-px10) var(--solo-px12);
+}
+
+.solo-inner .navigation__menubar:not(.navigation__megamenu) li li.nav__menu-item>a,
+.solo-inner .navigation__menubar:not(.navigation__megamenu) li li.nav__menu-item>button {
+  padding: var(--solo-px8) var(--solo-px12);
 }
 
 .solo-inner .navigation__menubar:not(.navigation__megamenu) li.link-only>a,
@@ -327,7 +332,7 @@
   justify-content: center;
   height: 100%;
   width: auto;
-  max-height: 50px;
+  max-height: 42px;
 }
 
 #primary-menu .menu-branding .menu-branding-site-name,

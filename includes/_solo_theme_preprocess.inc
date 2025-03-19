@@ -724,8 +724,6 @@ function _add_node_breadcrumb(RouteMatchInterface $route_match, array &$breadcru
     if ($node instanceof NodeInterface) {
       $label = $node->label();
       if (is_array($label)) {
-        // \Drupal::logger('solo')->warning('Node label is an array: @data', ['@data' => print_r($label, TRUE)]);
-        // Get first element if it's an array
         $label = reset($label);
       }
       $breadcrumb[] = ['text' => Html::decodeEntities((string) $label)];
@@ -742,7 +740,6 @@ function _add_taxonomy_breadcrumb(RouteMatchInterface $route_match, array &$brea
     if ($term instanceof TermInterface) {
       $label = $term->label();
       if (is_array($label)) {
-        // \Drupal::logger('solo')->warning('Taxonomy label is an array: @data', ['@data' => print_r($label, TRUE)]);
         $label = reset($label);
       }
       $breadcrumb[] = ['text' => Html::decodeEntities((string) $label)];
@@ -759,7 +756,6 @@ function _add_user_breadcrumb(RouteMatchInterface $route_match, array &$breadcru
     if ($user instanceof UserInterface) {
       $display_name = $user->getDisplayName();
       if (is_array($display_name)) {
-        // \Drupal::logger('solo')->warning('User display name is an array: @data', ['@data' => print_r($display_name, TRUE)]);
         $display_name = reset($display_name);
       }
       $breadcrumb[] = ['text' => Html::decodeEntities((string) $display_name)];
@@ -776,7 +772,6 @@ function _add_webform_breadcrumb(RouteMatchInterface $route_match, array &$bread
     if ($webform instanceof Webform) {
       $label = $webform->label();
       if (is_array($label)) {
-        // \Drupal::logger('solo')->warning('Webform label is an array: @data', ['@data' => print_r($label, TRUE)]);
         $label = reset($label);
       }
       $breadcrumb[] = ['text' => Html::decodeEntities((string) $label)];

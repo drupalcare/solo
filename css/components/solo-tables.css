@@ -7,8 +7,12 @@
   border: var(--solo-px1) solid var(--r-br, var(--r-br-b));
 }
 
-.page-wrapper table tr {
+.page-wrapper table tr td {
   border-block-end: 1px solid var(--r-br, var(--r-br-b));
+}
+
+.page-wrapper table tr:last-child td {
+  border-bottom: none;
 }
 
 .page-wrapper table td ul {

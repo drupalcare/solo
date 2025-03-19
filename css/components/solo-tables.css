@@ -4,11 +4,12 @@
   border-spacing: 0;
   width: 100%;
   display: table;
-  border: var(--solo-px1) solid var(--r-br, var(--r-br-b));
 }
 
+.page-wrapper table,
+.page-wrapper table tr th,
 .page-wrapper table tr td {
-  border-block-end: 1px solid var(--r-br, var(--r-br-b));
+  border: var(--solo-px1) solid var(--r-br, var(--r-br-b));
 }
 
 .page-wrapper table tr:last-child td {

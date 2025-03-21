@@ -201,7 +201,8 @@ function solo_preprocess_html(&$variables): void {
     // Write the CSS content to the file.
     if ($file_system->saveData($css_dynamic, $css_file_uri, FileSystemInterface::EXISTS_REPLACE) !== FALSE) {
       // Generate the absolute URL for the CSS file and attach it to the HTML.
-      $css_url = $file_url_generator->generateAbsoluteString($css_file_uri);
+      $css_hash = md5($css_dynamic);
+      $css_url = $file_url_generator->generateAbsoluteString($css_file_uri) . '?v=' . $css_hash;
       $variables['#attached']['html_head'][] = [
         [
           '#type' => 'html_tag',
@@ -230,7 +231,8 @@ function solo_preprocess_html(&$variables): void {
     // Write the JS content to the file.
     if ($file_system->saveData($js_dynamic, $js_file_uri, FileSystemInterface::EXISTS_REPLACE) !== FALSE) {
       // Generate the absolute URL for the JS file and attach it to the HTML.
-      $js_url = $file_url_generator->generateAbsoluteString($js_file_uri);
+      $js_hash = md5($js_dynamic);
+      $js_url = $file_url_generator->generateAbsoluteString($js_file_uri) . '?v=' . $js_hash;
       $variables['#attached']['html_head'][] = [
         [
           '#type' => 'html_tag',

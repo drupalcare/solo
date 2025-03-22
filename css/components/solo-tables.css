@@ -6,10 +6,13 @@
   display: table;
 }
 
-.page-wrapper table,
+.page-wrapper .solo-table-wrapper {
+  border: var(--solo-px1) solid var(--r-br, var(--r-br-b));
+}
+
 .page-wrapper table tr th,
 .page-wrapper table tr td {
-  border: var(--solo-px1) solid var(--r-br, var(--r-br-b));
+  border-bottom: var(--solo-px1) solid var(--r-br, var(--r-br-b));
 }
 
 .page-wrapper table tr:last-child td {

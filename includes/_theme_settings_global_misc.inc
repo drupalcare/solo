@@ -137,6 +137,7 @@ $form['solo_settings']['settings_global_misc']['site_node_date_format'] = [
   '#type' => 'select',
   '#options' => _get_site_node_date_format($d_s, $d_m, $d_l),
   '#default_value' => theme_get_setting('site_node_date_format') ?? 'solo_date_l',
+  '#description' => t('Select a custom format for the node creation date. Choose "- None -" to use the default format provided by Drupal core or contributed modules.'),
 ];
 
 $form['solo_settings']['settings_global_misc']['site_import_google_font'] = [

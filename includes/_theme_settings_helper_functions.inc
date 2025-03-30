@@ -149,6 +149,7 @@ function _get_page_title_font_size() {
  */
 function _get_site_node_date_format($d_s, $d_m, $d_l) {
   return [
+    'none' => t('- None -'),
     'solo_date_s' => t("Short: (@d_s)", ['@d_s' => $d_s]),
     'solo_date_m' => t("Medium: (@d_m)", ['@d_m' => $d_m]),
     'solo_date_l' => t("Long: (@d_l)", ['@d_l' => $d_l]),

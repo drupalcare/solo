@@ -695,26 +695,33 @@ function solo_preprocess_page(&$variables) {
 /**
  * Implements hook_preprocess_HOOK() for node.html.twig.
  */
-function solo_preprocess_node(&$variables) {
-  $d_format = theme_get_setting('site_node_date_format') ?? 'solo_date_l';
-  // Remove the "Add new comment" link on teasers or when the comment form is
-  // displayed on the page.
+function solo_preprocess_node(array &$variables) {
+  $d_format = theme_get_setting('site_node_date_format');
+
+  // Do not override if the user selected "none" (i.e., use Drupal's default).
+  if (
+    $d_format !== 'none' &&
+    !empty($variables['date']) &&
+    !empty($variables['display_submitted']) &&
+    $variables['display_submitted'] === TRUE
+  ) {
+    $variables['date'] = \Drupal::service('date.formatter')->format(
+      $variables['node']->getCreatedTime(),
+      $d_format
+    );
+  }
+
+  // Remove the "Add new comment" link on teasers or when comment form is visible.
   if ($variables['teaser'] || !empty($variables['content']['comments']['comment_form'])) {
     unset($variables['content']['links']['comment']['#links']['comment-add']);
   }
 
-  // Apply custom date formatter to "date" field.
-  if (!empty($variables['date']) && !empty($variables['display_submitted']) && $variables['display_submitted'] === TRUE) {
-    $variables['date'] = \Drupal::service('date.formatter')->format($variables['node']->getCreatedTime(), $d_format);
-  }
-  // Check if the content type is in the array of
-  // enabled types for reading mode.
+  // Add reading mode class if enabled.
   $content_type = $variables['node']->getType();
   $reading_mode_enabled = theme_get_setting('site_reading_mode_content_type');
   if (is_array($reading_mode_enabled) && in_array($content_type, $reading_mode_enabled, TRUE)) {
     $variables['attributes']['class'][] = 'reading-mode';
   }
-
 }
 
 /**

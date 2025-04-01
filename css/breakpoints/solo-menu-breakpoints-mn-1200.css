@@ -242,6 +242,7 @@
 
   .navigation-primary-responsive.menu-align-right .navigation__primary {
     margin-inline-start: auto;
+    float: right;
   }
 
   .navigation-primary-responsive.menu-align-center .navigation__responsive {

@@ -19,6 +19,36 @@ if (array_key_exists('primary_menu', $updated_regions['mix'])) {
   $form['solo_settings']["settings_{$region}"] = _generate_form_details($label);
   $form['solo_settings']["settings_{$region}"]["classes_{$region}"] = _generate_css_classes($region, $label);
 
+  // Determine current alignment setting, with backward compatibility.
+  $menu_alignment = theme_get_setting('primary_menu_alignment');
+
+  if (!isset($menu_alignment) || $menu_alignment === '') {
+    if (theme_get_setting('primary_menu_align_center')) {
+      $menu_alignment = 'center';
+    }
+    elseif (theme_get_setting('primary_menu_justify_content')) {
+      $menu_alignment = 'justify';
+    }
+    else {
+      // Default to left-aligned.
+      $menu_alignment = 'none';
+    }
+  }
+
+  // Define the select field with full descriptions.
+  $form['solo_settings']["settings_{$region}"]['primary_menu_alignment'] = [
+    '#type' => 'select',
+    '#title' => t('Main menu alignment (large screens only)'),
+    '#description' => t('Choose how the main menu should be aligned on larger screens. This setting controls the horizontal alignment of the top-level on big screen for menu items.'),
+    '#options' => [
+      'none' => t('Left aligned (default): Aligns the menu items to the left. This is the default layout.'),
+      'center' => t('Center aligned: Centers the menu items horizontally across the menu bar.'),
+      'justify' => t('Justify content: Distributes the space evenly between the menu items.'),
+      'right' => t('Right aligned: Aligns all menu items to the right side of the menu bar.'),
+    ],
+    '#default_value' => $menu_alignment,
+  ];
+
   $form['solo_settings']["settings_{$region}"]['skip_navigation_content'] = [
     '#type' => 'checkbox',
     '#title' => t('Enable skip to main navigation link'),
@@ -47,18 +77,6 @@ if (array_key_exists('primary_menu', $updated_regions['mix'])) {
     '#type' => 'checkbox',
     '#title' => t('Tick this box if you prefer to add border for each menu item'),
     '#default_value' => theme_get_setting('primary_menu_border'),
-  ];
-
-  $form['solo_settings']["settings_{$region}"]['primary_menu_align_center'] = [
-    '#type' => 'checkbox',
-    '#title' => t('Tick this box if you prefer the main menu to be centered. (Big screen only)'),
-    '#default_value' => theme_get_setting('primary_menu_align_center'),
-  ];
-
-  $form['solo_settings']["settings_{$region}"]['primary_menu_justify_content'] = [
-    '#type' => 'checkbox',
-    '#title' => t('Tick this box to distributes the space evenly between the menu items. The first item is positioned at the start of the line, and the last item is positioned at the end of the line. (Big screen only)'),
-    '#default_value' => theme_get_setting('primary_menu_justify_content'),
   ];
 
   $form['solo_settings']["settings_{$region}"]['primary_menu_branding'] = [

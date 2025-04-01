@@ -39,7 +39,7 @@ if (array_key_exists('primary_menu', $updated_regions['mix'])) {
   $form['solo_settings']["settings_{$region}"]['primary_menu_alignment'] = [
     '#type' => 'select',
     '#title' => t('Main menu block alignment (large screens only)'),
-    '#description' => t('Controls how the entire main menu block is aligned within its parent container on large screens. This affects the position of the full menu, including all menu items.'),
+    '#description' => t('Controls how the entire main menu block is aligned within its parent container on large screens. It is aligned to the left by default. This feature is intended to align the entire block, not its children.'),
     '#options' => [
       'none' => t('Left aligned (default): Positions the entire menu block to the left side of the container.'),
       'center' => t('Center aligned: Centers the entire menu block horizontally within the container.'),

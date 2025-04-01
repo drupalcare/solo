@@ -72,16 +72,19 @@
 }
 
 .solo-inner .navigation__menubar:not(.navigation__megamenu) li.nav__menu-item>a,
+.solo-inner .navigation__menubar:not(.navigation__megamenu) li.nav__menu-item>span,
 .solo-inner .navigation__menubar:not(.navigation__megamenu) li.nav__menu-item>button {
   padding: var(--solo-px10) var(--solo-px12);
 }
 
 .solo-inner .navigation__menubar:not(.navigation__megamenu) li li.nav__menu-item>a,
+.solo-inner .navigation__menubar:not(.navigation__megamenu) li li.nav__menu-item>span,
 .solo-inner .navigation__menubar:not(.navigation__megamenu) li li.nav__menu-item>button {
   padding: var(--solo-px8) var(--solo-px12);
 }
 
 .solo-inner .navigation__menubar:not(.navigation__megamenu) li.link-only>a,
+.solo-inner .navigation__menubar:not(.navigation__megamenu) li.link-only>span,
 .solo-inner .navigation__menubar:not(.navigation__megamenu) li.button-only>button {
   flex-basis: 100%;
   flex-grow: 1;

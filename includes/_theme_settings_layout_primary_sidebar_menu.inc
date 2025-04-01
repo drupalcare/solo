@@ -21,7 +21,7 @@ if (array_key_exists('primary_sidebar_menu', $updated_regions['mix'])) {
 
   $form['solo_settings']["settings_{$region}"]['primary_sidebar_menu_hover'] = [
     '#type' => 'checkbox',
-    '#title' => t('Tick this box if you prefer to show the sidebar main menu dropdowns when hovering over them with the mouse, instead of clicking. (Big screen only)'),
+    '#title' => t('Tick this box if you prefer to show the sidebar main menu dropdowns when hovering over them with the mouse, instead of clicking. (Large screen only)'),
     '#default_value' => theme_get_setting('primary_sidebar_menu_hover'),
   ];
 

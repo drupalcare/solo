@@ -57,13 +57,13 @@ if (array_key_exists('primary_menu', $updated_regions['mix'])) {
 
   $form['solo_settings']["settings_{$region}"]['primary_menu_on_hover'] = [
     '#type' => 'checkbox',
-    '#title' => t('Tick this box if you prefer to show the main menu dropdowns when hovering over them with the mouse, instead of clicking. (Big screen only)'),
+    '#title' => t('Tick this box if you prefer to show the main menu dropdowns when hovering over them with the mouse, instead of clicking. (Large screen only)'),
     '#default_value' => theme_get_setting('primary_menu_on_hover'),
   ];
 
   $form['solo_settings']["settings_{$region}"]['primary_menu_arrow_hover'] = [
     '#type' => 'checkbox',
-    '#title' => t('Tick this box to hide dropdown arrows on hover menus. (Big screen only)'),
+    '#title' => t('Tick this box to hide dropdown arrows on hover menus. (Large screen only)'),
     '#description' => t('When enabled, the main menu expands dropdowns on hover. This option removes the arrow icons from parent menu items, reducing visual clutter and saving space, especially for menus with many items.'),
     '#default_value' => theme_get_setting('primary_menu_arrow_hover'),
     '#states' => [
@@ -87,7 +87,7 @@ if (array_key_exists('primary_menu', $updated_regions['mix'])) {
 
   $form['solo_settings']["settings_{$region}"]['primary_menu_expand_left'] = [
     '#type' => 'checkbox',
-    '#title' => t('For LTR languages, tick this box to make the dropdown menu open on the left instead of the default right. For RTL languages, ticking this box will make the dropdown open on the right instead of the default left, adjusting to the language direction. (Big screen only)'),
+    '#title' => t('For LTR languages, tick this box to make the dropdown menu open on the left instead of the default right. For RTL languages, ticking this box will make the dropdown open on the right instead of the default left, adjusting to the language direction. (Large screen only)'),
     '#default_value' => theme_get_setting('primary_menu_expand_left'),
   ];
 

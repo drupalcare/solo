@@ -38,13 +38,13 @@ if (array_key_exists('primary_menu', $updated_regions['mix'])) {
   // Define the select field with full descriptions.
   $form['solo_settings']["settings_{$region}"]['primary_menu_alignment'] = [
     '#type' => 'select',
-    '#title' => t('Main menu alignment (large screens only)'),
-    '#description' => t('Choose how the main menu should be aligned on larger screens. This setting controls the horizontal alignment of the top-level on big screen for menu items.'),
+    '#title' => t('Top-level menu item alignment (large screens only)'),
+    '#description' => t('Controls how the top-level menu items are aligned *within* the menu container on large screens. This setting does not move the entire menu block; it affects only the alignment of the items inside the block.'),
     '#options' => [
-      'none' => t('Left aligned (default): Aligns the menu items to the left. This is the default layout.'),
-      'center' => t('Center aligned: Centers the menu items horizontally across the menu bar.'),
-      'justify' => t('Justify content: Distributes the space evenly between the menu items.'),
-      'right' => t('Right aligned: Aligns all menu items to the right side of the menu bar.'),
+      'none' => t('Left aligned (default): Aligns the top-level menu items to the left within the container.'),
+      'center' => t('Center aligned: Horizontally centers the top-level items inside the menu container.'),
+      'justify' => t('Justify content: Evenly spaces top-level items to fill the available container width.'),
+      'right' => t('Right aligned: Aligns top-level menu items to the right edge of the container.'),
     ],
     '#default_value' => $menu_alignment,
   ];

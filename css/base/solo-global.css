@@ -401,6 +401,18 @@ form fieldset:not(td fieldset) {
   text-transform: none !important;
 }
 
+.region-inner.region-left {
+  text-align: left;
+}
+
+.region-inner.region-center {
+  text-align: center;
+}
+
+.region-inner.region-right {
+  text-align: right;
+}
+
 .solo-card {
   -webkit-box-shadow: 0 var(--solo-px1) var(--solo-px3) 0 rgba(0, 0, 0, 0.12);
   -moz-box-shadow: 0 var(--solo-px1) var(--solo-px3) 0 rgba(0, 0, 0, 0.12);

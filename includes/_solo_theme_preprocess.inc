@@ -345,6 +345,18 @@ function _get_css_classes() {
 /**
  * Helper function.
  */
+function _get_region_alignment() {
+  $regions = _get_site_regions();
+  $region_alignment = [];
+  foreach ($regions as $region) {
+    $region_alignment[] = "align_{$region}";
+  }
+  return $region_alignment;
+}
+
+/**
+ * Helper function.
+ */
 function _get_region_attributes() {
   return [
     '__r_bg' => 'Background',
@@ -527,6 +539,7 @@ function _get_theme_variables() {
       'footer_link_text',
     ],
     'css_classes' => _get_css_classes(),
+    'region_alignment' => _get_region_alignment(),
     'settings_region' => _get_settings_region(),
   ];
 }

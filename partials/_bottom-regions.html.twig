@@ -10,25 +10,25 @@
 {% if bottom_first %}
   {% set bottom_regions = bottom_regions + 1 %}
   {% set bottom_first_outer_classes = 'region-outer bottom-box bottom-box-first' %}
-  {% set bottom_first_inner_classes = 'region-inner bottom-box-inner bottom-box-first-inner fade-inner' ~ (classes_bottom_first ? ' ' ~ classes_bottom_first) %}
+  {% set bottom_first_inner_classes = 'region-inner bottom-box-inner bottom-box-first-inner fade-inner' ~ (align_bottom_first ? ' ' ~ align_bottom_first) ~ (classes_bottom_first ? ' ' ~ classes_bottom_first) %}
 {% endif %}
 
 {% if bottom_second %}
   {% set bottom_regions = bottom_regions + 1 %}
   {% set bottom_second_outer_classes = 'region-outer bottom-box bottom-box-second' %}
-  {% set bottom_second_inner_classes = 'region-inner bottom-box-inner bottom-box-second-inner fade-inner' ~ (classes_bottom_second ? ' ' ~ classes_bottom_second) %}
+  {% set bottom_second_inner_classes = 'region-inner bottom-box-inner bottom-box-second-inner fade-inner' ~ (align_bottom_second ? ' ' ~ align_bottom_second) ~ (classes_bottom_second ? ' ' ~ classes_bottom_second) %}
 {% endif %}
 
 {% if bottom_third %}
   {% set bottom_regions = bottom_regions + 1 %}
   {% set bottom_third_outer_classes = 'region-outer bottom-box bottom-box-third' %}
-  {% set bottom_third_inner_classes = 'region-inner bottom-box-inner bottom-box-third-inner fade-inner' ~ (classes_bottom_third ? ' ' ~ classes_bottom_third) %}
+  {% set bottom_third_inner_classes = 'region-inner bottom-box-inner bottom-box-third-inner fade-inner' ~ (align_bottom_third ? ' ' ~ align_bottom_third) ~ (classes_bottom_third ? ' ' ~ classes_bottom_third) %}
 {% endif %}
 
 {% if bottom_fourth %}
   {% set bottom_regions = bottom_regions + 1 %}
   {% set bottom_fourth_outer_classes = 'region-outer bottom-box bottom-box-fourth' %}
-  {% set bottom_fourth_inner_classes = 'region-inner bottom-box-inner bottom-box-fourth-inner fade-inner' ~ (classes_bottom_fourth ? ' ' ~ classes_bottom_fourth) %}
+  {% set bottom_fourth_inner_classes = 'region-inner bottom-box-inner bottom-box-fourth-inner fade-inner' ~ (align_bottom_fourth ? ' ' ~ align_bottom_fourth) ~ (classes_bottom_fourth ? ' ' ~ classes_bottom_fourth) %}
 {% endif %}
 
 {% set bottom_active = 'active-bottom-' ~ bottom_regions %}

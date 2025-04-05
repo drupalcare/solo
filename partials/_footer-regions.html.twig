@@ -9,19 +9,19 @@
 {% if footer_first%}
   {% set footer_regions = footer_regions + 1 %}
   {% set footer_first_outer_classes = 'region-outer footer-box footer-box-first' %}
-  {% set footer_first_inner_classes = 'region-inner footer-box-inner footer-box-first-inner fade-inner' ~ (classes_footer_first ? ' ' ~ classes_footer_first) %}
+  {% set footer_first_inner_classes = 'region-inner footer-box-inner footer-box-first-inner fade-inner' ~ (align_footer_first ? ' ' ~ align_footer_first) ~ (classes_footer_first ? ' ' ~ classes_footer_first) %}
 {% endif %}
 
 {% if footer_second %}
   {% set footer_regions = footer_regions + 1 %}
   {% set footer_second_outer_classes = 'region-outer footer-box footer-box-second' %}
-  {% set footer_second_inner_classes = 'region-inner footer-box-inner footer-box-second-inner fade-inner' ~ (classes_footer_second ? ' ' ~ classes_footer_second) %}
+  {% set footer_second_inner_classes = 'region-inner footer-box-inner footer-box-second-inner fade-inner' ~ (align_footer_second ? ' ' ~ align_footer_second) ~ (classes_footer_second ? ' ' ~ classes_footer_second) %}
 {% endif %}
 
 {% if footer_third %}
   {% set footer_regions = footer_regions + 1 %}
   {% set footer_third_outer_classes = 'region-outer footer-box footer-box-third' %}
-  {% set footer_third_inner_classes = 'region-inner footer-box-inner footer-box-third-inner fade-inner' ~ (classes_footer_third ? ' ' ~ classes_footer_third) %}
+  {% set footer_third_inner_classes = 'region-inner footer-box-inner footer-box-third-inner fade-inner' ~ (align_footer_third ? ' ' ~ align_footer_third) ~ (classes_footer_third ? ' ' ~ classes_footer_third) %}
 {% endif %}
 
 {% set footer_active = 'active-footer-' ~ footer_regions %}

@@ -42,6 +42,13 @@ if ($updated_regions['top']) {
       $form['solo_settings']['settings_top_container']["settings_{$region}"] = _generate_form_details($label);
       foreach ($attributes as $attribute_key => $attribute_label) {
         $form['solo_settings']['settings_top_container']["settings_{$region}"]["classes_{$region}"] = _generate_css_classes($region, $label);
+        $form['solo_settings']['settings_top_container']["settings_{$region}"]["align_{$region}"] = [
+          '#title' => t("Region Block Alignment Option"),
+          '#type' => 'select',
+          '#options' => _alignment_region($region),
+          '#default_value' => theme_get_setting("align_{$region}") ?? 'region-left',
+          '#description' => t("<p>By default, block content is left-aligned. This feature allows theme users to align blocks to the center or right within specific regions through region-level configuration.</p>"),
+        ];
         $form['solo_settings']['settings_top_container']["settings_{$region}"]["settings_{$region}_{$attribute_key}"] = _generate_form_element($region, $label, $attribute_key, $attribute_label);
       }
     }

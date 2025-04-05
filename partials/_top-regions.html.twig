@@ -10,19 +10,19 @@
 {% if top_first %}
   {% set top_regions = top_regions + 1 %}
   {% set top_first_outer_classes = 'region-outer top-box top-box-first' %}
-  {% set top_first_inner_classes = 'region-inner top-box-inner top-box-first-inner fade-inner' ~ (classes_top_first ? ' ' ~ classes_top_first) %}
+  {% set top_first_inner_classes = 'region-inner top-box-inner top-box-first-inner fade-inner'  ~ (align_top_first ? ' ' ~ align_top_first) ~ (classes_top_first ? ' ' ~ classes_top_first) %}
 {% endif %}
 
 {% if top_second %}
   {% set top_regions = top_regions + 1 %}
   {% set top_second_outer_classes = 'region-outer top-box top-box-second' %}
-  {% set top_second_inner_classes = 'region-inner top-box-inner top-box-second-inner fade-inner' ~ (classes_top_second ? ' ' ~ classes_top_second) %}
+  {% set top_second_inner_classes = 'region-inner top-box-inner top-box-second-inner fade-inner'~ (align_top_second ? ' ' ~ align_top_second) ~ (classes_top_second ? ' ' ~ classes_top_second) %}
 {% endif %}
 
 {% if top_third %}
   {% set top_regions = top_regions + 1 %}
   {% set top_third_outer_classes = 'region-outer top-box top-box-third' %}
-  {% set top_third_inner_classes = 'region-inner top-box-inner top-box-third-inner fade-inner' ~ (classes_top_third ? ' ' ~ classes_top_third) %}
+  {% set top_third_inner_classes = 'region-inner top-box-inner top-box-third-inner fade-inner'  ~ (align_top_third ? ' ' ~ align_top_third) ~ (classes_top_third ? ' ' ~ classes_top_third) %}
 {% endif %}
 
 {% set top_active = 'active-top-' ~ top_regions %}

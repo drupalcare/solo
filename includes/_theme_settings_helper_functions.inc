@@ -548,6 +548,17 @@ function _animate_region_hover($region) {
 /**
  * Helper function.
  */
+function _alignment_region($region) {
+  return [
+    'region-left' => t('Align Left'),
+    'region-center' => t('Align Center'),
+    'region-right' => t('Align Right'),
+  ];
+}
+
+/**
+ * Helper function.
+ */
 function _border_region($region) {
   return [
     '#type' => 'checkbox',

@@ -105,6 +105,17 @@
     line-height: calc(2 * var(--solo-px38));
   }
 
+  .region-inner.region-left {
+    text-align: left;
+  }
+
+  .region-inner.region-center {
+    text-align: center;
+  }
+
+  .region-inner.region-right {
+    text-align: right;
+  }
 }
 
 @media (max-width:48rem) {

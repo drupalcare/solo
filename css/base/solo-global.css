@@ -401,6 +401,70 @@ form fieldset:not(td fieldset) {
   text-transform: none !important;
 }
 
+.solo-text-left * {
+  text-align: left !important;
+}
+
+.solo-text-center * {
+  text-align: center !important;
+}
+
+.solo-text-right * {
+  text-align: right !important;
+}
+
+.solo-display-none {
+  display: none !important;
+}
+
+.solo-visually-hidden {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
+
+.solo-no-wrap {
+  white-space: nowrap !important;
+}
+
+.solo-break-word {
+  word-break: break-word !important;
+}
+
+.solo-truncate {
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  white-space: nowrap !important;
+}
+
+.solo-align-left {
+  margin-right: auto !important;
+}
+
+.solo-align-center {
+  margin-left: auto !important;
+  margin-right: auto !important;
+  display: block !important;
+}
+
+.solo-align-right {
+  margin-left: auto !important;
+}
+
+.solo-overflow-hidden {
+  overflow: hidden !important;
+}
+
+.solo-overflow-auto {
+  overflow: auto !important;
+}
+
 .solo-card {
   -webkit-box-shadow: 0 var(--solo-px1) var(--solo-px3) 0 rgba(0, 0, 0, 0.12);
   -moz-box-shadow: 0 var(--solo-px1) var(--solo-px3) 0 rgba(0, 0, 0, 0.12);

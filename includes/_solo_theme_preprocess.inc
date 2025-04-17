@@ -1094,6 +1094,9 @@ function solo_preprocess_menu__primary_menu(&$variables): void {
   if (theme_get_setting('primary_menu_expand_left')) {
     $variables['expand_left'] = 'expand-left';
   }
+  else {
+    $variables['expand_left'] = 'expand-right';
+  }
 
   if (theme_get_setting('primary_menu_megamenu')) {
     $variables['megamenu'] = 'navigation__megamenu';

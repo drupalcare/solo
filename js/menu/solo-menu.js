@@ -48,9 +48,18 @@
       }
       Drupal.solo.clickedHandler = clickedHandler;
 
-      const hideSubMenus = (childElement) => {
-        Drupal.solo.slideUp(childElement, 300);
-      }
+      const hideSubMenus = (subMenu) => {
+        // Animate close
+        Drupal.solo.slideUp(subMenu, 300);
+
+        // Update ARIA attributes
+        subMenu.setAttribute('aria-hidden', 'true');
+        const toggler = subMenu.previousElementSibling;
+        if (toggler && toggler.classList.contains('dropdown-toggler')) {
+          toggler.setAttribute('aria-expanded', 'false');
+        }
+      };
+
       Drupal.solo.hideSubMenus = hideSubMenus;
 
       const getNavigationMenubarClass = (menuBar) => {
@@ -75,13 +84,33 @@
       }
 
       const getArrowDirection = (verticalNav) => {
-        const expandLeft = document.querySelector('#primary-menu .expand-left');
+        const isRtl = document.documentElement.dir === 'rtl';
+        const isExpandLeft = document.querySelector('#primary-menu .expand-left') !== null;
 
-        if (expandLeft) {
-          return (currentWidth >= brNum && !verticalNav) ? 'rotate(90deg)' : 'rotate(180deg)';
+        // Only rotate if currentWidth >= brNum and not verticalNav
+        const shouldRotate = currentWidth >= brNum && !verticalNav;
+
+        if (!shouldRotate) {
+          return 'rotate(180deg)';
         }
-        return (currentWidth >= brNum && !verticalNav) ? 'rotate(-90deg)' : 'rotate(180deg)';
-      }
+
+        // Four explicit combinations
+        if (!isRtl && !isExpandLeft) {
+          return 'rotate(-90deg)'; // English, expand-right
+        }
+
+        if (!isRtl && isExpandLeft) {
+          return 'rotate(90deg)'; // English, expand-left
+        }
+
+        if (isRtl && !isExpandLeft) {
+          return 'rotate(90deg)'; // Arabic, expand-right
+        }
+
+        if (isRtl && isExpandLeft) {
+          return 'rotate(-90deg)'; // Arabic, expand-left
+        }
+      };
 
       // Change the arrow direction on close.
       const revertIcons = (navId) => {
@@ -101,8 +130,8 @@
 
       const getDropdownElements = (dropdownTogglerButton) => {
         const togglerSibling = dropdownTogglerButton.closest('.solo-inner .solo-menu ul');
-        const nestedSubMenus = [...togglerSibling.querySelectorAll('.solo-inner .solo-menu ul')];
-        const nestedTogglers = [...togglerSibling.querySelectorAll('.solo-inner .solo-menu ul .dropdown-toggler svg')];
+        const nestedSubMenus = [...togglerSibling.querySelectorAll(':scope > li > ul.sub__menu')];
+        const nestedTogglers = [...togglerSibling.querySelectorAll(':scope > li > button.dropdown-toggler svg')];
         return [nestedSubMenus, nestedTogglers];
       }
 
@@ -241,7 +270,33 @@
       const closeSubMenu = (dropdownTogglerButton, subMenu) => {
         const rotated = getRotated(dropdownTogglerButton);
         closeMenuHelper(rotated, dropdownTogglerButton, subMenu);
-      }
+
+        // Remove flipped direction classes
+        const parentLi = dropdownTogglerButton.closest('li.has-sub__menu');
+        if (parentLi) {
+          parentLi.classList.remove('submenu-flipped-left', 'submenu-flipped-right');
+        }
+
+        // Remove data-flipped attribute
+        if (subMenu && subMenu.dataset.flipped) {
+          delete subMenu.dataset.flipped;
+        }
+
+        // NEW: Close any nested (child) submenus within this submenu
+        const nestedSubMenus = subMenu.querySelectorAll('ul.sub__menu');
+        const nestedTogglers = subMenu.querySelectorAll('button.dropdown-toggler');
+
+        nestedSubMenus.forEach(nested => {
+          Drupal.solo.slideUp(nested, 400); // Animate close
+          nested.classList.remove('toggled'); // Remove toggle class if used
+        });
+
+        nestedTogglers.forEach(toggler => {
+          const icon = toggler.querySelector('.toggler-icon svg');
+          if (icon) icon.style.removeProperty('transform');
+          toggler.setAttribute('aria-expanded', 'false');
+        });
+      };
 
       // Toggler handle, according to the menu type functions will be called.
       const dropdownTogglerButtonIsClicked = (dropdownTogglerButton, subMenu) => {
@@ -266,6 +321,7 @@
 
       // Function to add hover functionality
       const addHoverFunctionality = () => {
+        if (window.innerWidth < brNum) return;
         if (document.querySelector('.navigation-responsive-hover')) {
           const menuItems = document.querySelectorAll('.navigation-responsive-hover li.has-sub__menu');
 
@@ -324,8 +380,13 @@
       }
 
       function menusHelper(currentWidth) {
+        // Fresh toggler lookups only inside this function
+        const mmClickSmall = document.querySelectorAll('.solo-inner .solo-menu.navigation-responsive-click .navigation__megamenu li .dropdown-toggler');
+        const mmClickBig = document.querySelectorAll('.solo-inner .solo-menu.navigation-responsive-click .navigation__megamenu > li > .dropdown-toggler');
+        const mmHoverSmall = document.querySelectorAll('.solo-inner .solo-menu.navigation-responsive-hover .navigation__megamenu li .dropdown-toggler');
+        const navigationSidebarHover = document.querySelectorAll('.solo-inner .solo-menu.navigation-sidebar-hover li .dropdown-toggler');
+        const navigationResponsiveHover = document.querySelectorAll('.solo-inner .solo-menu.navigation-responsive-hover .navigation__menubar:not(.navigation__megamenu) .dropdown-toggler');
 
-        // Define which buttons to activate for small and large screens
         const largeScreenActions = [
           { remove: mmClickSmall, add: mmClickBig },
           { remove: mmHoverSmall, add: null },
@@ -340,10 +401,8 @@
           { remove: null, add: navigationResponsiveHover },
         ];
 
-        // Reset first-level styles
         removesiteMenuBarsStyles(siteMenuBars);
 
-        // Apply actions based on screen size
         const actions = currentWidth >= brNum ? largeScreenActions : smallScreenActions;
 
         actions.forEach(({ remove, add }) => {
@@ -398,4 +457,3 @@
     }
   };
 })(Drupal, drupalSettings, once);
-

@@ -43,6 +43,10 @@
   white-space: nowrap;
 }
 
+.page-wrapper .solo-inner nav .dropdown-arrow {
+  transition: all 0.3s ease;
+}
+
 .page-wrapper .solo-inner nav ul {
   z-index: 1;
 }
@@ -53,6 +57,10 @@
 
 .page-wrapper .solo-inner nav ul > li > ul > li > ul {
   z-index: 3;
+}
+
+.page-wrapper .solo-inner nav ul > li > ul > li > ul > li > ul {
+  z-index: 4;
 }
 
 .page-wrapper .main-navigation-wrapper {
@@ -69,6 +77,10 @@
 
 .page-wrapper .main-navigation-wrapper ul.navigation__menubar >li>ul>li>ul {
   z-index: 4000 !important;
+}
+
+.page-wrapper .main-navigation-wrapper ul.navigation__menubar >li>ul>li>ul>li>ul {
+  z-index: 5000 !important;
 }
 
 .solo-inner .navigation__menubar:not(.navigation__megamenu) li.nav__menu-item>a,
@@ -185,6 +197,13 @@
 
 /* For the third tier */
 .solo-inner .navigation__default>li>ul>li>ul.sub__menu {
+  position: absolute;
+  inset-inline-start: 100%;
+  inset-block-start: 0;
+}
+
+/* For the fourth tier */
+.solo-inner .navigation__default>li>ul>li>ul>li>ul.sub__menu {
   position: absolute;
   inset-inline-start: 100%;
   inset-block-start: 0;

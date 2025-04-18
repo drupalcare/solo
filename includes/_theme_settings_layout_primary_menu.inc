@@ -34,7 +34,19 @@ if (array_key_exists('primary_menu', $updated_regions['mix'])) {
       $menu_alignment = 'none';
     }
   }
-
+  $form['solo_settings']["settings_{$region}"]['primary_menu_depth_info'] = [
+    '#type' => 'item',
+    '#title' => t('Menu depth support'),
+    '#markup' => t('The Solo theme supports <strong>up to 4 levels of nested menu items</strong> in the primary menu block.
+      Menus behave consistently across all levels and support both hover and click interactions on large screens.<br><br>
+      <strong>Example structure:</strong><br>
+      - Fruit<br>
+      &nbsp;&nbsp;- Apple<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;- Red Apple<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- Gala<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- Delish<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- Green<br><br>'),
+  ];
   // Define the select field with full descriptions.
   $form['solo_settings']["settings_{$region}"]['primary_menu_alignment'] = [
     '#type' => 'select',

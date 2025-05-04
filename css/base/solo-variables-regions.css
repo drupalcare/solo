@@ -46,10 +46,11 @@
 
 .page-wrapper hr,
 .page-wrapper ul,
-.page-wrapper ul li,
 .page-wrapper ol,
 .page-wrapper ol li,
-.page-wrapper table {
+.page-wrapper ul li,
+.page-wrapper table,
+.page-wrapper .dropbutton-widget {
   background-color: var(--r-bg);
 }
 
@@ -235,5 +236,5 @@ h3 a):hover {
 }
 
 .page-wrapper .dropbutton {
-  transition: all 0.3 ease;
+  transition: all 0.3s ease;
 }

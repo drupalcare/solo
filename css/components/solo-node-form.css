@@ -213,6 +213,10 @@ table ul.dropbutton,
   min-height: 50px;
 }
 
+.dropbutton-widget {
+  transition: all 0.3s ease;
+}
+
 table ul.dropbutton li:first-child {
   margin-inline-end: 10px !important;
 }

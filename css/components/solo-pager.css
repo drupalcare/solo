@@ -57,7 +57,7 @@
 }
 
 /* Responsive adjustments */
-@media (max-width:48rem) {
+@media (max-width:47.99875rem) {
   .pager__items {
     gap: var(--solo-px4);
   }

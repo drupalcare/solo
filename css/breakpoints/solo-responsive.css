@@ -8,7 +8,7 @@
 @media (min-width:62rem) {
   #primary-sidebar-menu {
     min-width: 25rem;
-    max-width: 36rem;
+    max-width: 35.99875rem;
   }
 
   .site-name {
@@ -36,7 +36,7 @@
 
 }
 
-@media (max-width:62rem) {
+@media (max-width:61.99875rem) {
   .site-name {
     font-size: var(--solo-px24);
     line-height: calc(2 * var(--solo-px14));
@@ -70,7 +70,7 @@
 
 }
 
-@media (max-width:48rem) {
+@media (max-width:47.99875rem) {
   .node--view-mode-teaser .field--name-field-image {
     min-width: 100%;
   }
@@ -104,7 +104,7 @@
 
 }
 
-@media (max-width:36rem) {
+@media (max-width:35.99875rem) {
   h1 {
     font-size: var(--solo-px20);
   }

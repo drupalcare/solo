@@ -152,7 +152,7 @@ form.search-form .search-advanced fieldset[data-drupal-selector="edit-keywords-f
 
 }
 
-@media (min-width:48rem) and (max-width:62rem) {
+@media (min-width:48rem) and (max-width:61.99875rem) {
   form.search-form .search-advanced fieldset[data-drupal-selector="edit-keywords-fieldset"] .fieldset-wrapper > * {
     flex: 1 1 calc(50% - var(--solo-px12));
     max-width: calc(50% - var(--solo-px12));

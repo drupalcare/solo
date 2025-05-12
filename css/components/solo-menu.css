@@ -274,7 +274,7 @@
   font-weight: bold;
 }
 
-@media (max-width:36rem) {
+@media (max-width:35.99875rem) {
   .pager__items,
   .solo-inner .navigation__default {
     justify-content: start;

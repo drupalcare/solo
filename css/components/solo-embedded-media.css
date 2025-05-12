@@ -26,7 +26,7 @@ figcaption {
 
   .align-right {
     float: inline-end;
-    max-width: 75%;
+    max-width: 74.99875%;
     margin-block: 1rem;
     margin-inline-start: 1rem;
   }
@@ -39,7 +39,7 @@ figcaption {
 
   .align-left {
     float: inline-start;
-    max-width: 75%;
+    max-width: 74.99875%;
     margin-block: 1rem;
     margin-inline-end: 1rem;
   }

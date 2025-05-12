@@ -967,14 +967,14 @@ a {
 
 }
 
-@media (max-width:62rem) and (min-width:601px) {
+@media (max-width:61.99875rem) and (min-width:601px) {
   .w3-hide-medium {
     display: none !important;
   }
 
 }
 
-@media (max-width:62rem) {
+@media (max-width:61.99875rem) {
   .w3-sidebar.w3-collapse {
     display: none;
   }

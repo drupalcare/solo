@@ -87,7 +87,7 @@
 
 }
 
-@media (max-width:62rem) {
+@media (max-width:61.99875rem) {
   .solo-inner .navigation__megamenu ul.sub__menu {
     grid-auto-columns: 1fr;
   }

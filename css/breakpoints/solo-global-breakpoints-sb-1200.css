@@ -135,7 +135,7 @@
 
 }
 
-@media (max-width:75rem) {
+@media (max-width:74.99875rem) {
   .solo-mobile-hide {
     display: none !important;
   }
@@ -345,7 +345,7 @@
 
 }
 
-@media (min-width:48rem) and (max-width:75rem) {
+@media (min-width:48rem) and (max-width:74.99875rem) {
   #page-wrapper.solo__collapse-order .active-bottom-4 .bottom-container-inner {
     grid-auto-flow: row;
     grid-template-columns: 1fr 1fr;

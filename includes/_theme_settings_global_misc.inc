@@ -210,12 +210,6 @@ $form['solo_settings']['settings_global_misc']['color_coded_system_tabs'] = [
   '#default_value' => theme_get_setting('color_coded_system_tabs'),
 ];
 
-$form['solo_settings']['settings_global_misc']['site_enable_soloflex'] = [
-  '#type' => 'checkbox',
-  '#title' => t('<strong>Enable SoloFlex utility classes feature</strong><br>Tick this box to activate SoloFlex dynamic layout and styling classes.'),
-  '#default_value' => theme_get_setting('site_enable_soloflex'),
-];
-
 $form['solo_settings']['settings_global_misc']['site_reading_mode_content_type'] = [
   '#type' => 'select',
   '#title' => t('Reading Mode (45rem/720px)'),

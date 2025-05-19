@@ -570,10 +570,6 @@ function solo_preprocess_page(&$variables) {
     $variables['#attached']['library'][] = 'solo/solo-menu-keyboard';
   }
 
-  if (theme_get_setting('site_enable_soloflex')) {
-    $variables['#attached']['library'][] = 'solo/solo-flex';
-  }
-
   if ($layout_order = theme_get_setting('site_mobile_layout_order')) {
     $layout_class = str_replace('_', '-', $layout_order);
     $variables['main_layout_order'] = $layout_class;

@@ -123,15 +123,6 @@ solo-search-settings:
     - core/drupalSettings
     - core/once
 
-# Solo Flex
-solo-flex:
-  js:
-    js/components/solo-flex.js: { }
-  dependencies:
-    - core/drupal
-    - core/drupalSettings
-    - core/once
-
 # Color Picker.
 solo-form-theme-settings:
   css:

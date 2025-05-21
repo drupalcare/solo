@@ -68,12 +68,21 @@
   };
 
   // Function to move focus to the close button when tabbing out of the last input
-  const focusTrap = (event) => {
-    const elements = Array.from(searchBlock.querySelectorAll('button, input'));
-    const lastElement = elements[elements.length - 1];
-    if (event.target === lastElement && event.key === 'Tab' && !event.shiftKey) {
-      event.preventDefault();
-      closeSearchButton.focus();
+  const trapFocus = (event) => {
+    const focusable = Array.from(searchBlock.querySelectorAll('button, input, [tabindex]:not([tabindex="-1"])'))
+      .filter(el => !el.disabled && el.offsetParent !== null);
+
+    const first = focusable[0];
+    const last = focusable[focusable.length - 1];
+
+    if (event.key === 'Tab') {
+      if (event.shiftKey && event.target === first) {
+        event.preventDefault();
+        last.focus();
+      } else if (!event.shiftKey && event.target === last) {
+        event.preventDefault();
+        first.focus();
+      }
     }
   };
 
@@ -83,27 +92,43 @@
 
     if (isOpen) {
       searchBlock.classList.add('toggled');
+      searchBlock.style.transition = 'none';
       searchBlock.style.height = 'auto';
-
       const height = searchBlock.clientHeight + 'px';
       searchBlock.style.height = '0px';
+      searchBlock.offsetHeight; // force reflow
+      searchBlock.style.transition = ''; // restore transition
 
-      setTimeout(() => {
+      requestAnimationFrame(() => {
         searchBlock.style.height = height;
-      }, 10); // Added a small delay
+      });
+
+      const onOpenEnd = (event) => {
+        if (event.propertyName === 'height') {
+          searchBlock.style.height = 'auto';
+          searchBlock.removeEventListener('transitionend', onOpenEnd);
+        }
+      };
+      searchBlock.addEventListener('transitionend', onOpenEnd);
 
       if (mainSideNav) {
         Drupal.solo.sideMenubarToggleNav(false);
       }
 
       focusFirstInput();
+
     } else {
+      searchBlock.style.height = getComputedStyle(searchBlock).height;
+      searchBlock.offsetHeight;
       searchBlock.style.height = '0px';
-      searchBlock.addEventListener('transitionend', (event) => {
-        if (event.propertyName === 'height' && event.target === searchBlock) {
+
+      const onCloseEnd = (event) => {
+        if (event.propertyName === 'height') {
           searchBlock.classList.remove('toggled');
+          searchBlock.removeEventListener('transitionend', onCloseEnd);
         }
-      }, { once: true });
+      };
+      searchBlock.addEventListener('transitionend', onCloseEnd);
     }
   };
 
@@ -120,7 +145,7 @@
         searchBlockCloseOpen(openSearchButtons, () => searchBlockToggle(true));
 
         // Add focus trap to the last element to redirect focus to the close button
-        searchBlock.addEventListener('keydown', focusTrap);
+        searchBlock.addEventListener('keydown', trapFocus);
 
         // Click anywhere outside the search block to close it.
         document.addEventListener('click', (event) => {
@@ -131,9 +156,6 @@
             }
           }
         });
-
-        // Initialize the search block as hidden and non-focusable
-        searchBlockToggle(false);
 
       }
     };

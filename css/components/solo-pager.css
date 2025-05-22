@@ -13,11 +13,16 @@
   list-style: none;
   padding: 0;
   margin: 0;
+  align-items: center;
+  justify-content: center;
+  line-height: var(--solo-px24);
+  font-size: var(--solo-px14);
 }
 
 .pager__item {
   display: flex;
   align-items: center;
+  justify-content: center;
 }
 
 .pager__item a {

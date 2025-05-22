@@ -23,6 +23,7 @@ ul.breadcrumb-menu li {
   display: flex;
   align-items: center;
   border-block-end: none;
+  font-size: var(--solo-px14);
 }
 
 ul.breadcrumb-menu li > a {
@@ -30,7 +31,7 @@ ul.breadcrumb-menu li > a {
   align-items: center;
   padding-block: var(--solo-px16);
   padding-inline-end: var(--solo-px6);
-  padding-inline-start: var(--solo-px12);
+  padding-inline-start: var(--solo-px2);
 }
 
 ul.breadcrumb-menu li > span {
@@ -38,9 +39,8 @@ ul.breadcrumb-menu li > span {
   align-items: center;
   padding-block: var(--solo-px16);
   padding-inline-end: var(--solo-px6);
-  padding-inline-start: var(--solo-px5);
+  padding-inline-start: var(--solo-px4);
 }
-
 
 .breadcrumb-menu li .breadcrumb-sep {
   display: flex;
@@ -52,4 +52,8 @@ ul.breadcrumb-menu li > span {
   overflow-x: auto;
   white-space: nowrap;
   flex-wrap: nowrap;
+}
+
+.breadcrumb-menu > li:first-child > * {
+  padding-inline-start: 0;
 }

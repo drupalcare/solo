@@ -164,3 +164,24 @@ form.search-form .search-advanced fieldset[data-drupal-selector="edit-keywords-f
   }
 
 }
+
+@media(max-width:26rem) {
+  .path-search #edit-basic {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    align-items: start;
+  }
+
+  .path-search #edit-basic > * {
+    margin: 0 0 12px 0;
+    width: 100%;
+  }
+
+  .path-search #edit-basic::before,
+  .path-search #edit-basic::after {
+    content: unset;
+    display: none;
+    clear: none;
+  }
+}

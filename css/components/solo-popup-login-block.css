@@ -51,10 +51,11 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  padding-block: var(--solo-px8);
+  padding-block: 0.563rem;
   padding-inline: var(--solo-px16);
   min-width: 5.75rem;
   color: var(--r-tx-bt);
   background-color: var(--r-bg-bt);
-  height: 100%;
+  line-height: 1.5;
+  font-size: var(--solo-px16);
 }

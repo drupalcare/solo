@@ -37,11 +37,17 @@ html.fs-12 .fixed-search-block-inner .solo-search-block-form .form-type-search::
   inset-block-start: 16px;
 }
 
-html.fs-14 .solo-inner .login-button-open>button,
-html.fs-14 .solo-inner .navigation__menubar-account li a,
+
 html.fs-12 .solo-inner .login-button-open>button,
 html.fs-12 .solo-inner .navigation__menubar-account li a {
-  padding: var(--solo-px10) !important;
+  line-height: 1.5;
+  padding: 0.688rem!important;
+}
+
+html.fs-14 .solo-inner .login-button-open>button,
+html.fs-14 .solo-inner .navigation__menubar-account li a {
+  line-height: 1.5;
+  padding: 0.688rem!important;
 }
 
 /* Font zie 14 */
@@ -137,7 +143,8 @@ html.gap-14 .solo-inner .navigation__menubar li.nav__menu-item>button {
 
   html.fs-18 .solo-inner .login-button-open>button,
   html.fs-18 .solo-inner .navigation__menubar-account li a {
-    padding: var(--solo-px10) !important;
+    padding: 0.688rem !important;
+    line-height: 1.5;
   }
 
   /* Font zie 20 */
@@ -168,7 +175,8 @@ html.gap-14 .solo-inner .navigation__menubar li.nav__menu-item>button {
 
   html.fs-20 .solo-inner .login-button-open>button,
   html.fs-20 .solo-inner .navigation__menubar-account li a {
-    padding: var(--solo-px12) !important;
+    padding: 0.813rem !important;
+    line-height: 1.5;
   }
 
 }

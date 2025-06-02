@@ -155,9 +155,17 @@
     flex: 1 0 100%;
   }
 
+  .menu-branding {
+    margin-inline-start: var(--solo-px12);
+  }
 }
 
 @media (min-width:62rem) {
+  #primary-menu .primary-menu-inner {
+    padding-left: var(--solo-gap);
+    padding-right: var(--solo-gap);
+  }
+
   .navigation__megamenu.m-1>li>ul.sub__menu {
     grid-auto-flow: row;
     grid-template-rows: 1fr;

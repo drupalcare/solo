@@ -21,13 +21,16 @@
   margin: 0;
   padding: 0;
   display: inline-flex;
+  line-height: 1.5;
+  font-size: var(--solo-px16);
 }
 
 .solo-inner .navigation__menubar-account li a {
   text-align: center;
-  padding-block: var(--solo-px8) !important;
+  padding-block: 0.563rem !important;
   padding-inline: var(--solo-px16) !important;
   min-width: 90px;
+  line-height: 1.5;
 }
 
 .solo-inner .navigation__menubar-account li a span {

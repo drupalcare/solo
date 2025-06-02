@@ -11,7 +11,7 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: end;
-  align-items: start;
+  align-items: center;
   flex-direction: row-reverse;
 }
 
@@ -19,11 +19,6 @@
 .header-inner .solo-block {
   width: initial;
   display: flex;
-}
-
-.header-inner > div,
-.header-inner > nav {
-  margin-block-end: var(--solo-px12);
 }
 
 .header-inner .branding-wrapper {
@@ -103,16 +98,6 @@
   text-align: center !important;
 }
 
-#sidebar-button-close svg,
-#sidebar-button-open svg {
-  height: calc(2 * var(--solo-px20));
-}
-
-#search-button-open svg {
-  width: var(--solo-px32);
-  height: var(--solo-px32);
-}
-
 #sidebar-button-close button,
 #sidebar-button-open button,
 #search-button-open button {
@@ -120,10 +105,16 @@
   justify-content: center;
 }
 
+#sidebar-button-close button {
+  justify-content: end;
+  align-items: center;
+  width: 100%;
+}
+
 #sidebar-button-close button span,
 #sidebar-button-open button span,
 #search-button-open button span {
-  display: inline-flex;
+  display: flex;
   align-items: center;
   justify-content: center;
   min-width: 5.625rem;
@@ -145,14 +136,14 @@
   padding-inline: var(--solo-px16) !important;
 }
 
-
-#sidebar-button-close button {
-  width: 100%;
+#sidebar-button-close svg,
+#sidebar-button-open svg {
+  height: 2.125rem;
 }
 
-#sidebar-button-close button {
-  justify-content: end;
-  align-items: center;
+#search-button-open svg {
+  width: var(--solo-px26);
+  height: var(--solo-px26);
 }
 
 [dir="rtl"] .primary-sidebar-menu.hs-icons-left #sidebar-button-close button {

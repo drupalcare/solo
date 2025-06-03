@@ -713,6 +713,7 @@ function solo_preprocess_node(array &$variables) {
 
   // Do not override if the user selected "none" (i.e., use Drupal's default).
   if (
+    is_string($d_format) &&
     $d_format !== 'none' &&
     !empty($variables['date']) &&
     !empty($variables['display_submitted']) &&

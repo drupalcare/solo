@@ -1,10 +1,12 @@
+.header-inner nav .navigation__menubar,
+.header-inner nav .navigation__menubar > li,
 .solo-inner .navigation__menubar-account,
 .solo-inner .navigation__menubar-account li {
   margin: 0;
   padding: 0;
 }
-
-.solo-inner.navigation__menubar-account {
+.header-inner nav .navigation__menubar,
+.solo-inner .navigation__menubar-account {
   display: flex;
   flex-wrap: wrap;
   justify-content: end;
@@ -12,10 +14,11 @@
   padding: 0;
 }
 
-.header-inner .navigation__menubar-account {
+.header-inner nav .navigation__menubar {
   justify-content: center;
 }
 
+.header-inner nav .navigation__menubar > li,
 .solo-inner .navigation__menubar-account li {
   float: inline-end;
   margin: 0;
@@ -25,14 +28,20 @@
   font-size: var(--solo-px16);
 }
 
+.header-inner nav .navigation__menubar > li > button,
+.header-inner nav .navigation__menubar > li > a,
 .solo-inner .navigation__menubar-account li a {
   text-align: center;
   padding-block: 0.563rem !important;
   padding-inline: var(--solo-px16) !important;
-  min-width: 90px;
   line-height: 1.5;
 }
 
+.header-inner nav .navigation__menubar > li > a {
+  min-width: 90px;
+}
+
+.header-inner nav .navigation__menubar > li > a > span,
 .solo-inner .navigation__menubar-account li a span {
   width: 100%;
 }

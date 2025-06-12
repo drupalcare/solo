@@ -174,6 +174,24 @@
     }
   };
 
+  Drupal.behaviors.soloFileUpload = {
+    attach(context) {
+      const wrappers = once('solo-file-upload', '.solo-file-upload-wrapper', context);
+      wrappers.forEach(wrapper => {
+        const input = wrapper.querySelector('.solo-file-native');
+        const fileName = wrapper.querySelector('.solo-file-name');
+
+        input.addEventListener('change', () => {
+          if (input.files.length > 0) {
+            fileName.textContent = input.files[0].name;
+          } else {
+            fileName.textContent = 'No file chosen';
+          }
+        });
+      });
+    }
+  };
+
   Drupal.behaviors.soloSearchAnimation = {
     attach: (context, settings) => {
       // Adding behavior for animating details-wrapper

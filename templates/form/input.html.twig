@@ -10,8 +10,25 @@
  * @see template_preprocess_input()
  */
 #}
-{% set classes = [
-    'solo-input',
-  ]
-%}
-<input{{ attributes.addClass(classes) }} />{{ children }}
+
+{% if input_group %}
+  <div class="input-group solo-form-group">
+{% endif %}
+
+{% if prefix %}
+  {{ prefix }}
+{% endif %}
+
+{% block input %}
+  <input{{ attributes.addClass('solo-input') }} />
+{% endblock %}
+
+{% if suffix %}
+  {{ suffix }}
+{% endif %}
+
+{% if input_group %}
+  </div>
+{% endif %}
+
+{{ children }}

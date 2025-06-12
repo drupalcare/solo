@@ -136,7 +136,8 @@ img {
 
 /* Button */
 .button,
-.solo-button {
+.solo-button,
+.solo-file-button {
   display: inline-block;
   padding: var(--solo-px8);
   line-height: inherit;
@@ -159,6 +160,7 @@ img {
 
 .form-submit,
 [type="submit"],
+.solo-file-button,
 .solo-button.button--primary,
 .block-user-login-block form+.item-list ul li a {
   border-width: var(--solo-px1);

@@ -131,6 +131,7 @@ h3 a):hover {
 /* Button */
 .page-wrapper a.button,
 .page-wrapper input.button,
+.page-wrapper .solo-file-button,
 .page-wrapper .search-button-close button {
   border-color: var(--r-br, var(--r-br-b));
   color: var(--r-tx-bt, var(--r-tx));
@@ -139,6 +140,7 @@ h3 a):hover {
 
 .page-wrapper a.button:hover,
 .page-wrapper input.button:hover,
+.page-wrapper .solo-file-button:hover,
 .page-wrapper .search-button-close button:hover {
   color: var(--r-tx-bt-h, var(--r-tx));
   background-color: var(--r-bg-bt-h, var(--r-bg));

@@ -5,7 +5,7 @@
   margin: 0;
   padding: 0;
 }
-.header-inner nav .navigation__menubar,
+
 .solo-inner .navigation__menubar-account {
   display: flex;
   flex-wrap: wrap;
@@ -18,7 +18,6 @@
   justify-content: center;
 }
 
-.header-inner nav .navigation__menubar > li,
 .solo-inner .navigation__menubar-account li {
   float: inline-end;
   margin: 0;
@@ -31,7 +30,6 @@
 .header-inner nav .navigation__menubar > li > button,
 .header-inner nav .navigation__menubar > li > a,
 .solo-inner .navigation__menubar-account li a {
-  text-align: center;
   padding-block: 0.563rem !important;
   padding-inline: var(--solo-px16) !important;
   line-height: 1.5;

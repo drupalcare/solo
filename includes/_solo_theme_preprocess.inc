@@ -5,12 +5,14 @@
  * Theme preprocess functions.
  */
 
+use Drupal\Core\File\FileSystemInterface;
+use Drupal\Core\Url;
 use Drupal\views\Render\ViewsRenderPipelineMarkup;
 use Drupal\Component\Utility\Html;
 use Drupal\Component\Utility\UrlHelper;
 use Drupal\Core\Datetime\DrupalDateTime;
 use Drupal\Core\Entity\EntityInterface;
-use Drupal\Core\File\FileSystemInterface;
+use Drupal\Core\File\FileExists;
 use Drupal\Core\Template\Attribute;
 use Drupal\Core\Routing\RouteMatchInterface;
 use Drupal\Core\Controller\TitleResolver;
@@ -199,7 +201,7 @@ function solo_preprocess_html(&$variables): void {
   // Handle dynamic CSS.
   if (!empty($css_dynamic)) {
     // Write the CSS content to the file.
-    if ($file_system->saveData($css_dynamic, $css_file_uri, FileSystemInterface::EXISTS_REPLACE) !== FALSE) {
+    if ($file_system->saveData($css_dynamic, $css_file_uri, FileExists::Replace) !== FALSE) {
       // Generate the absolute URL for the CSS file and attach it to the HTML.
       $css_hash = md5($css_dynamic);
       $css_url = $file_url_generator->generateAbsoluteString($css_file_uri) . '?v=' . $css_hash;
@@ -229,7 +231,7 @@ function solo_preprocess_html(&$variables): void {
     // Attach the JS library.
     $variables['#attached']['library'][] = 'solo/solo-js-dynamic';
     // Write the JS content to the file.
-    if ($file_system->saveData($js_dynamic, $js_file_uri, FileSystemInterface::EXISTS_REPLACE) !== FALSE) {
+    if ($file_system->saveData($js_dynamic, $js_file_uri, FileExists::Replace) !== FALSE) {
       // Generate the absolute URL for the JS file and attach it to the HTML.
       $js_hash = md5($js_dynamic);
       $js_url = $file_url_generator->generateAbsoluteString($js_file_uri) . '?v=' . $js_hash;
@@ -1025,7 +1027,7 @@ function _load_block($id): ?EntityInterface {
 /**
  * Helper function.
  */
-function _process_system_menu_block(&$variables, $block) {
+function _process_system_menu_block(&$variables, $block): void {
   if ($variables['base_plugin_id'] !== 'system_menu_block') {
     return;
   }
@@ -1147,14 +1149,17 @@ function solo_preprocess_menu__account(&$variables): void {
       $variables['current_path'] = $currentPath;
 
       foreach ($variables['items'] as $key => $item) {
-        // Use the route name for language-agnostic comparison.
-        if ($item['url']->getRouteName() === 'user.login') {
-          unset($variables['items'][$key]);
+        $url = $item['url'];
+        if ($url instanceof Url && $url->isRouted()) {
+          if ($url->getRouteName() === 'user.login') {
+            unset($variables['items'][$key]);
+          }
         }
       }
     }
   }
 }
+
 
 /**
  * Implements hook_preprocess_form_element().
@@ -1248,28 +1253,23 @@ function solo_preprocess_menu_local_task(&$variables): void {
     $variables['level'] = $variables['element']['#level'];
   }
 
-  // Retrieve the route name from the link.
-  $route_name = $variables['element']['#link']['url']->getRouteName();
-
-  // Based on the route name, add a unique class to the link.
-  switch ($route_name) {
-    case 'entity.node.canonical':
-      $variables['link']['#options']['attributes']['class'][] = 'view-link';
-      break;
-
-    case 'entity.node.edit_form':
-      $variables['link']['#options']['attributes']['class'][] = 'edit-link';
-      break;
-
-    case 'entity.node.delete_form':
-      $variables['link']['#options']['attributes']['class'][] = 'delete-link';
-      break;
-
-    case 'entity.node.version_history':
-      $variables['link']['#options']['attributes']['class'][] = 'revisions-link';
-      break;
-
-    // Add more cases as needed for other links.
+  $url = $variables['element']['#link']['url'];
+  if ($url instanceof Url && $url->isRouted()) {
+    $route_name = $url->getRouteName();
+    switch ($route_name) {
+      case 'entity.node.canonical':
+        $variables['link']['#options']['attributes']['class'][] = 'view-link';
+        break;
+      case 'entity.node.edit_form':
+        $variables['link']['#options']['attributes']['class'][] = 'edit-link';
+        break;
+      case 'entity.node.delete_form':
+        $variables['link']['#options']['attributes']['class'][] = 'delete-link';
+        break;
+      case 'entity.node.version_history':
+        $variables['link']['#options']['attributes']['class'][] = 'revisions-link';
+        break;
+    }
   }
 
 }
@@ -1284,7 +1284,7 @@ function solo_preprocess_field__comment(&$variables): void {
   // Add user.compact to field-comment if profile's avatar of current user
   // exist.
   $user = \Drupal::currentUser();
-  if ($user->isAuthenticated() && $user instanceof UserInterface) {
+  if ($user instanceof UserInterface && $user->isAuthenticated()) {
     if ($user->hasField('user_picture') && !$user->get('user_picture')->isEmpty()) {
       $variables['user_picture'] = \Drupal::entityTypeManager()
         ->getViewBuilder('user')
@@ -1335,7 +1335,7 @@ function solo_preprocess_views_view_table(array &$variables) {
         $parsed_url = UrlHelper::parse($header_cell['url']);
         $query = !empty($parsed_url['query']) ? $parsed_url['query'] : [];
 
-        if (isset($query['order']) && isset($query['sort'])) {
+        if (isset($query['order'], $query['sort'])) {
           $header_cell['attributes']->addClass('sortable-heading');
         }
       }

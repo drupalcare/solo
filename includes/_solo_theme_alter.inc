@@ -91,7 +91,7 @@ function solo_form_search_form_alter(&$form, FormStateInterface $form_state): vo
     $form['keys']['#attributes']['placeholder'] = t('Search by keyword or phrase.');
   }
 
-  // Add a primary button class to basic and advanced submit buttons if exist.
+  // Add a primary button class to basic and advanced submit buttons if existed.
   if (isset($form['basic']['submit'])) {
     $form['basic']['submit']['#attributes']['class'][] = 'button--primary';
   }
@@ -122,13 +122,13 @@ function solo_form_search_form_alter(&$form, FormStateInterface $form_state): vo
   ];
 
   foreach ($filter_fieldsets as $filter_key => $fieldset_key) {
-    if (in_array($filter_key, $disabled_filters, TRUE) && isset($form['advanced'][$fieldset_key])) {
+    if (isset($form['advanced'][$fieldset_key]) && in_array($filter_key, $disabled_filters, TRUE)) {
       unset($form['advanced'][$fieldset_key]);
     }
   }
 
   // Handle the "Types" filter specifically.
-  if (in_array('disable_types', $disabled_filters, TRUE) && isset($form['advanced']['types-fieldset'])) {
+  if (isset($form['advanced']['types-fieldset']) && in_array('disable_types', $disabled_filters, TRUE)) {
     if (!empty($always_applied_content_types)) {
       // Hide the "Types" filter and add hidden content types.
       unset($form['advanced']['types-fieldset']);

@@ -97,9 +97,7 @@ function _solo_utilities_get_user_selected_library() {
   $color_schemes_negotiator = \Drupal::service('solo_utilities.color_schemes_negotiator');
 
   // Call the evaluateRules method to get the library.
-  $selected_library = $color_schemes_negotiator->evaluateRules();
-
-  return $selected_library;
+  return $color_schemes_negotiator->evaluateRules();
 }
 
 /**

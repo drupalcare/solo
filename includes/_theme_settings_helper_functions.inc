@@ -22,8 +22,6 @@ function _get_mobile_layout_options() {
     'main_right_left' => t('Main Content First, then Right and Left Sidebars'),
     'left_right_main' => t('Left Sidebar First, then Right Sidebar and Main Content'),
     'right_left_main' => t('Right Sidebar First, then Left Sidebar and Main Content'),
-    'left_right_main' => t('Left and Right Sidebars First, then Main Content'),
-    'right_left_main' => t('Right and Left Sidebars First, then Main Content'),
   ];
 }
 
@@ -674,16 +672,16 @@ function _get_updated_regions() {
     $label = ucwords(str_replace('_', ' ', $region));
 
     foreach ($region_config as $section => $config) {
-      if (in_array($region, $config['regions'])) {
+      if (in_array($region, $config['regions'], TRUE)) {
         $updated_regions[$section]['container'] = $config['container'];
         $updated_regions_all['container'] = $config['container'];
 
-        $index = array_search($region, $config['regions']);
+        $index = array_search($region, $config['regions'], TRUE);
         $updated_regions[$section][$region] = $config['labels'][$index];
       }
     }
 
-    if (!in_array($region, array_merge(...array_column($region_config, 'regions')))) {
+    if (!in_array($region, array_merge(...array_column($region_config, 'regions')), TRUE)) {
       $updated_regions_mix[$region] = $label;
     }
 
@@ -734,7 +732,7 @@ function _count_regions() {
       return $block->status();
     })) {
       foreach ($regions as $key => $region_group) {
-        if (in_array($region, $region_group)) {
+        if (in_array($region, $region_group, TRUE)) {
           $counts[$key]++;
         }
       }
@@ -805,18 +803,17 @@ function _create_region_layout_radio_three($region) {
 /**
  * Helper function.
  */
-function _get_which_main_col($variables) {
+function _get_which_main_col(array $variables): string {
   if (empty($variables['page']['sidebar_first'])) {
     return 'solo-col-2-1';
   }
-  elseif (empty($variables['page']['sidebar_second'])) {
+  if (empty($variables['page']['sidebar_second'])) {
     return 'solo-col-1-2';
   }
-  else {
-    return 'solo-col-1-1';
-  }
-
+  return 'solo-col-1-1';
 }
+
+
 
 /**
  * Helper function.

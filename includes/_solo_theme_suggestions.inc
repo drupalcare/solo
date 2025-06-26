@@ -41,7 +41,7 @@ function solo_theme_suggestions_menu_alter(array &$suggestions, array $variables
     $region_suggestion = 'menu__' . $variables['attributes']['region'];
 
     // Only add the suggestion if it's not already in the array.
-    if (!in_array($region_suggestion, $suggestions, TRUE)) {
+    if (!in_array($region_suggestion, $suggestions)) {
       array_unshift($suggestions, $region_suggestion);
     }
   }

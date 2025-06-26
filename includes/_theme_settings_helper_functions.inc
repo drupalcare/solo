@@ -672,16 +672,16 @@ function _get_updated_regions() {
     $label = ucwords(str_replace('_', ' ', $region));
 
     foreach ($region_config as $section => $config) {
-      if (in_array($region, $config['regions'], TRUE)) {
+      if (in_array($region, $config['regions'])) {
         $updated_regions[$section]['container'] = $config['container'];
         $updated_regions_all['container'] = $config['container'];
 
-        $index = array_search($region, $config['regions'], TRUE);
+        $index = array_search($region, $config['regions']);
         $updated_regions[$section][$region] = $config['labels'][$index];
       }
     }
 
-    if (!in_array($region, array_merge(...array_column($region_config, 'regions')), TRUE)) {
+    if (!in_array($region, array_merge(...array_column($region_config, 'regions')))) {
       $updated_regions_mix[$region] = $label;
     }
 
@@ -732,7 +732,7 @@ function _count_regions() {
       return $block->status();
     })) {
       foreach ($regions as $key => $region_group) {
-        if (in_array($region, $region_group, TRUE)) {
+        if (in_array($region, $region_group)) {
           $counts[$key]++;
         }
       }
@@ -803,17 +803,18 @@ function _create_region_layout_radio_three($region) {
 /**
  * Helper function.
  */
-function _get_which_main_col(array $variables): string {
+function _get_which_main_col($variables) {
   if (empty($variables['page']['sidebar_first'])) {
     return 'solo-col-2-1';
   }
-  if (empty($variables['page']['sidebar_second'])) {
+  elseif (empty($variables['page']['sidebar_second'])) {
     return 'solo-col-1-2';
   }
-  return 'solo-col-1-1';
+  else {
+    return 'solo-col-1-1';
+  }
+
 }
-
-
 
 /**
  * Helper function.

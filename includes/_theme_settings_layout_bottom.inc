@@ -34,6 +34,12 @@ if ($updated_regions['bottom']) {
       $form['solo_settings']["settings_bottom_container"]["site_regions_bottom_border"] = _border_region('bottom');
       $form['solo_settings']["settings_bottom_container"]["site_regions_bottom_animate_border"] = _animate_region_border('bottom');
       $form['solo_settings']["settings_bottom_container"]["site_regions_bottom_animate_hover"] = _animate_region_hover('bottom');
+      $form['solo_settings']["settings_bottom_container"]["enable_aria_bottom"] = [
+        '#type' => 'checkbox',
+        '#title' => t('Enable ARIA Landmark for Bottom Container'),
+        '#default_value' => theme_get_setting('enable_aria_bottom') ?? 0,
+        '#description' => t('Adds <code>role="region"</code> and <code>aria-label</code> to the bottom container for improved accessibility. Enable only if this region consistently contains important, navigable content.'),
+      ];
       $form['solo_settings']["settings_bottom_container"]["classes_{$region}"] = _generate_css_classes($region, $label);
       foreach ($attributes as $attribute_key => $attribute_label) {
         $form['solo_settings']["settings_bottom_container"]["settings_{$region}_{$attribute_key}"] = _generate_form_element($region, $label, $attribute_key, $attribute_label);

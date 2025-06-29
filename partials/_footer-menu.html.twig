@@ -1,6 +1,6 @@
   {% if page.footer_menu or sm_show_icons %}
     <!-- Start: Footer Menu -->
-    <div id="footer-menu" class="solo-outer lone footer-menu{{ classes_footer_menu ? ' ' ~ classes_footer_menu }}" {{ attributes_footer_menu }}>
+    <div id="footer-menu" aria-label="{{ 'Footer Menu'|t }}" class="solo-outer lone footer-menu{{ classes_footer_menu ? ' ' ~ classes_footer_menu }}" {{ attributes_footer_menu }}>
       <div id="footer-menu-inner" class="solo-inner solo-col solo-col-1 footer-menu-inner">
 
     {% if sm_show_icons %}

@@ -39,7 +39,7 @@
   (top_layout ? ' ' ~ top_layout) %}
 
   <!-- Start: Top Container -->
-  <div id="top-container" class="{{ top_outer }}" {{ attributes_top_container }}>
+  <div id="top-container"{% if enable_aria_top %} role="region" aria-label="{{ 'Top Section'|t }}"{% endif %} class="{{ top_outer }}" {{ attributes_top_container }}>
     <div id="top-container-inner" class="{{ top_inner }}">
 
     {% if top_first %}

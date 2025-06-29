@@ -37,8 +37,8 @@
 {% set footer_inner = 'solo-inner solo-col footer-container-inner' ~
   (footer_layout ? ' ' ~ footer_layout) %}
 
-  <!-- start: Footer -->
-  <div id="footer-container" class="{{ footer_outer }}" {{ attributes_footer_container }}>
+  <!-- Start: Footer -->
+  <div id="footer-container"{% if enable_aria_footer %} role="region" aria-label="{{ 'Footer Section'|t }}"{% endif %} class="{{ footer_outer }}" {{ attributes_footer_container }}>
     <div id="footer-container-inner" class="{{ footer_inner }}">
 
     {% if footer_first %}

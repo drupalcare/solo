@@ -18,21 +18,22 @@ sm_icon_pinterest: 'https://www.pinterest.com/alaahaddad'
 sm_icon_linkedin: 'https://www.linkedin.com/company/flash-web-center'
 sm_icon_instagram: 'https://www.instagram.com/flashwebcenter'
 sm_icon_youtube: 'https://www.youtube.com/user/flashwebcenter'
-sm_icon_snapchat: 'https://www.snapchat.com/add/flashwebcenter'
+sm_icon_snapchat: 'https://www.drupal.org/u/flashwebcenter'
 sm_icon_reddit: 'https://www.reddit.com/user/flashwebcenter/'
 sm_icon_tiktok: 'https://www.tiktok.com/@flashwebcenter'
 sm_icon_whatsapp: 'https://www.drupal.org/u/flashwebcenter'
 sm_icon_threads: 'https://www.drupal.org/u/flashwebcenter'
 sm_icon_drupal: 'https://www.drupal.org/u/flashwebcenter'
 sm_icon_mastodon: 'https://mastodon.social/deck/@flashwebcenter'
+sm_icon_telegram: 'https://www.drupal.org/u/flashwebcenter'
 sm_icon_rss: rss.xml
 sm_icon_email: '/#email'
 footer_copyright: 'Copyright © %year% Company Name - All rights reserved'
 sm_show_icons: 1
-sm_icon_size: 'sm-icons-small'
+sm_icon_size: sm-icons-medium
 footer_link: 'https://www.alaahaddad.com/'
-footer_link_label: 'Developed & Designed by'
-footer_link_text: 'Alaa Haddad'
+footer_link_label: 'Developed and Designed by'
+footer_link_text: 'Alaa Haddad at Flash Web Center, LLC'
 count_main: 2
 site_global_width: sw-1600
 site_global_breakpoints: sb-992

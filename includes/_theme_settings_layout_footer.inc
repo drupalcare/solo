@@ -34,6 +34,12 @@ if ($updated_regions['footer']) {
       $form['solo_settings']["settings_footer_container"]["site_regions_footer_border"] = _border_region('footer');
       $form['solo_settings']["settings_footer_container"]["site_regions_footer_animate_border"] = _animate_region_border('footer');
       $form['solo_settings']["settings_footer_container"]["site_regions_footer_animate_hover"] = _animate_region_hover('footer');
+      $form['solo_settings']["settings_footer_container"]["enable_aria_footer"] = [
+        '#type' => 'checkbox',
+        '#title' => t('Enable ARIA Landmark for Footer Container'),
+        '#default_value' => theme_get_setting('enable_aria_footer') ?? 0,
+        '#description' => t('Adds <code>role="region"</code> and <code>aria-label</code> to the footer container for improved accessibility. Enable only if this region consistently contains important, navigable content.'),
+      ];
       $form['solo_settings']["settings_footer_container"]["classes_{$region}"] = _generate_css_classes($region, $label);
       foreach ($attributes as $attribute_key => $attribute_label) {
         $form['solo_settings']["settings_footer_container"]["settings_{$region}_{$attribute_key}"] = _generate_form_element($region, $label, $attribute_key, $attribute_label);

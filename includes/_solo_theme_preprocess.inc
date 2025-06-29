@@ -513,6 +513,11 @@ function _get_theme_variables() {
       'count_bottom',
       'count_footer',
       'theme_category',
+      'enable_aria_bottom',
+      'enable_aria_top',
+      'enable_aria_footer',
+      'enable_aria_welcome',
+      'enable_aria_highlighted',
     ],
     'social' => [
       'sm_icon_size',

@@ -45,7 +45,8 @@
   (bottom_layout ? ' ' ~ bottom_layout) %}
 
   <!-- Start: Bottom Container -->
-  <div id="bottom-container" class="{{ bottom_outer }}" {{ attributes_bottom_container }}>
+  <div id="bottom-container"{% if enable_aria_bottom %} role="region" aria-label="{{ 'Bottom Section'|t }}"{% endif %} class="{{ bottom_outer }}" {{ attributes_bottom_container }}>
+
     <div id="bottom-container-inner" class="{{ bottom_inner }}">
 
     {% if bottom_first %}

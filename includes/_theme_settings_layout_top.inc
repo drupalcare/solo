@@ -33,6 +33,12 @@ if ($updated_regions['top']) {
       $form['solo_settings']["settings_top_container"]["site_regions_top_border"] = _border_region('top');
       $form['solo_settings']["settings_top_container"]["site_regions_top_animate_border"] = _animate_region_border('top');
       $form['solo_settings']["settings_top_container"]["site_regions_top_animate_hover"] = _animate_region_hover('top');
+      $form['solo_settings']["settings_top_container"]["enable_aria_top"] = [
+        '#type' => 'checkbox',
+        '#title' => t('Enable ARIA Landmark for Top Container'),
+        '#default_value' => theme_get_setting('enable_aria_top') ?? 0,
+        '#description' => t('Adds <code>role="region"</code> and <code>aria-label</code> to the top container for improved accessibility. Enable only if this region consistently contains important, navigable content.'),
+      ];
       $form['solo_settings']["settings_top_container"]["classes_{$region}"] = _generate_css_classes($region, $label);
       foreach ($attributes as $attribute_key => $attribute_label) {
         $form['solo_settings']["settings_top_container"]["settings_{$region}_{$attribute_key}"] = _generate_form_element($region, $label, $attribute_key, $attribute_label);

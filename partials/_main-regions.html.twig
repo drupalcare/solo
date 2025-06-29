@@ -40,11 +40,11 @@
   <!-- Start: Main -->
   <div id="main-container" class="{{ main_outer }}" {{ attributes_main_container }}>
     <div id="main-container-inner" class="{{ main_inner }}">
-      <!-- Start Main Container -->
+      <!-- Start: Main Container -->
 
     {% if main_left %}
-      <!-- Start Left SideBar -->
-      <div id="sidebar-box-first" class="{{ sidebar_first_outer_classes }}" role="complementary">
+      <!-- Start: Left SideBar -->
+      <div id="sidebar-box-first" class="{{ sidebar_first_outer_classes }}" role="complementary" aria-label="{{ 'Sidebar First'|t }}">
         <div class="{{ sidebar_first_inner_classes }}" {{ attributes_sidebar_first }}>
           {{ main_left }}
         </div>
@@ -65,7 +65,7 @@
 
     {% if main_right %}
       <!-- Start: Right SideBar -->
-      <div id="sidebar-box-second" class="{{ sidebar_second_outer_classes }}" role="complementary">
+      <div id="sidebar-box-second" class="{{ sidebar_second_outer_classes }}" role="complementary" aria-label="{{ 'Sidebar Second'|t }}">
         <div class="{{ sidebar_second_inner_classes }}" {{ attributes_sidebar_second }}>
           {{ main_right }}
         </div>

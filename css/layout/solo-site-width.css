@@ -54,5 +54,4 @@
 .page-wrapper > .solo-outer > .solo-inner:not(.primary-sidebar-menu-inner,
 .page-node-type-pb-content .main-container-inner) {
   max-width: var(--solo-width);
-  overflow-x: hidden;
 }

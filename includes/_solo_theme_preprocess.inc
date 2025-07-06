@@ -1165,7 +1165,6 @@ function solo_preprocess_menu__account(&$variables): void {
   }
 }
 
-
 /**
  * Implements hook_preprocess_form_element().
  */
@@ -1265,12 +1264,15 @@ function solo_preprocess_menu_local_task(&$variables): void {
       case 'entity.node.canonical':
         $variables['link']['#options']['attributes']['class'][] = 'view-link';
         break;
+
       case 'entity.node.edit_form':
         $variables['link']['#options']['attributes']['class'][] = 'edit-link';
         break;
+
       case 'entity.node.delete_form':
         $variables['link']['#options']['attributes']['class'][] = 'delete-link';
         break;
+
       case 'entity.node.version_history':
         $variables['link']['#options']['attributes']['class'][] = 'revisions-link';
         break;

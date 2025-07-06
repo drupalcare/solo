@@ -47,20 +47,20 @@
   transition: all 0.3s ease;
 }
 
-.page-wrapper .solo-inner nav ul {
-  z-index: 1;
+.page-wrapper .solo-inner nav ul.navigation__menubar {
+  z-index: 10;
 }
 
-.page-wrapper .solo-inner nav ul > li > ul {
-  z-index: 2;
+.page-wrapper .solo-inner nav ul.navigation__menubar > li > ul {
+  z-index: 20;
 }
 
-.page-wrapper .solo-inner nav ul > li > ul > li > ul {
-  z-index: 3;
+.page-wrapper .solo-inner nav ul.navigation__menubar > li > ul > li > ul {
+  z-index: 30;
 }
 
-.page-wrapper .solo-inner nav ul > li > ul > li > ul > li > ul {
-  z-index: 4;
+.page-wrapper .solo-inner nav ul.navigation__menubar > li > ul > li > ul > li > ul {
+  z-index: 40;
 }
 
 .page-wrapper .main-navigation-wrapper {
@@ -71,15 +71,15 @@
   z-index: 2000 !important;
 }
 
-.page-wrapper .main-navigation-wrapper ul.navigation__menubar>li>ul {
+.page-wrapper .main-navigation-wrapper ul.navigation__menubar > li > ul {
   z-index: 3000 !important;
 }
 
-.page-wrapper .main-navigation-wrapper ul.navigation__menubar >li>ul>li>ul {
+.page-wrapper .main-navigation-wrapper ul.navigation__menubar > li > ul > li > ul {
   z-index: 4000 !important;
 }
 
-.page-wrapper .main-navigation-wrapper ul.navigation__menubar >li>ul>li>ul>li>ul {
+.page-wrapper .main-navigation-wrapper ul.navigation__menubar > li > ul > li > ul > li > ul {
   z-index: 5000 !important;
 }
 
@@ -373,5 +373,5 @@
 }
 
 .admin-toolbar {
-  z-index: 5000;
+  z-index: 6000;
 }

@@ -41,6 +41,7 @@
 .text-align-center embed {
   margin-inline-start: auto;
   margin-inline-end: auto;
+  float: none;
 }
 
 .solo-text-right img,

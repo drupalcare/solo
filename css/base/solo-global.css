@@ -530,3 +530,26 @@ html.gap-16 {
   }
 
 }
+
+.inline-radio-checkbox form .form-wrapper.solo-clear::after,
+.inline-radio-checkbox form .form-wrapper.solo-clear::before,
+.inline-radio-checkbox form .form-wrapper .solo-clear::after,
+.inline-radio-checkbox form .form-wrapper .solo-clear::before {
+  content: none;
+  display: none;
+  clear: none;
+}
+
+.inline-radio-checkbox form .form-radios,
+.inline-radio-checkbox form .form-checkboxes {
+  display: inline-flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.inline-radio-checkbox form .form-radios .form-type-radio,
+.inline-radio-checkbox form .form-checkboxes .form-type-checkbox {
+  margin: 0;
+  width: auto;
+}

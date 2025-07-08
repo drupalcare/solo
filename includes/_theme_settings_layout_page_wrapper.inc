@@ -46,6 +46,7 @@ $form['solo_settings']['settings_page_wrapper']['classes_page_wrapper'] = [
       <li><code>solo-overflow-auto</code>: Enables scroll if content overflows</li>
       <li><code>solo-mobile-hide</code>: Hides on small screens</li>
       <li><code>solo-desktop-hide</code>: Hides on larger screens</li>
+      <li><code>inline-radio-checkbox</code>: Displays checkboxes and radio buttons inline rather than stacked, improving compactness in forms.</li>
     </ul>
     <br>
     <u>Type 2: Region-wide text alignment</u>

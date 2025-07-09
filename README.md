@@ -50,6 +50,39 @@ main menu, providing an additional navigation option.
 Customize 15 color fields per region to align the colors with your brand
 identity.
 
+Variable Definitions:
+Solo theme uses CSS custom properties for region-specific theming, providing granular control while ensuring consistency across layouts. Below are the available region variables:
+
+--r-bg: Region background color. Sets the overall background color of the region wrapper.
+
+--r-tx: Region text color. Sets the default text color for all paragraph and inline text within the region.
+
+--r-h1: Region heading color. Specifically controls the color for headings (h1, h2, h3) within the region.
+
+--r-lk: Region link color. Sets the color for anchor (<a>) links in their normal (non-hover) state.
+
+--r-lk-h: Region link hover color. Sets the color for links when hovered or focused, aiding user feedback.
+
+--r-br: Region border color. Sets the border color for the region, allowing clear section separation.
+
+--r-bg-fr: Form background color within the region. Targets backgrounds of forms such as login and search blocks within the region.
+
+--r-tx-lk: Menu link text color within the region. Sets the text color for navigation/menu links.
+
+--r-tx-lk-h: Menu link hover text color within the region, aiding clear navigation feedback.
+
+--r-bg-lk: Menu link background color in the region (normal state).
+
+--r-bg-lk-h: Menu link background hover color in the region.
+
+--r-tx-bt: Button text color within the region (normal state).
+
+--r-tx-bt-h: Button text hover color within the region.
+
+--r-bg-bt: Button background color within the region (normal state).
+
+--r-bg-bt-h: Button background hover color within the region.
+
 ### Customized Layout
 
 Customize your website's layout with seven styles for two-column layouts,
@@ -89,12 +122,12 @@ visible on the home page) and 'Welcome Text' (visible on the home page only).
 
 The theme also includes the following grouped regions:
 
-| TOP                  | MAIN              | BOTTOM                 | FOOTER              |
-|----------------------|-------------------|------------------------|---------------------|
-| 1. Top First Container | 1. Left Sidebar | 1. Bottom First Container | 1. Footer First Container |
-| 2. Top Second Container| 2. Content      | 2. Bottom Second Container | 2. Footer Second Container |
-| 3. Top Third Container | 3. Right Sidebar| 3. Bottom Third Container | 3. Footer Third Container |
-|                        |                 | 4. Bottom Fourth Container |                     |
+| TOP         | MAIN         | BOTTOM        | FOOTER        |
+|-------------|--------------|---------------|---------------|
+| 1. Top 1    | 1. Sidebar L | 1. Bottom 1   | 1. Footer 1   |
+| 2. Top 2    | 2. Content   | 2. Bottom 2   | 2. Footer 2   |
+| 3. Top 3    | 3. Sidebar R | 3. Bottom 3   | 3. Footer 3   |
+|             |              | 4. Bottom 4   |               |
 
 # Theme Architecture
 

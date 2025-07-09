@@ -53,6 +53,7 @@ $form['solo_settings']['settings_social_icons']['sm_show_icons'] = [
   '#default_value' => theme_get_setting('sm_show_icons'),
   '#description' => t("Select this option to display the Social Icon. Deselect it to conceal it."),
 ];
+
 $social_icons = [
   'facebook' => t('Facebook'),
   'twitter' => t('Formerly (Twitter) X'),

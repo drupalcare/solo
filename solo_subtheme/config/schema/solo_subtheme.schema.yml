@@ -106,8 +106,8 @@ solo_subtheme.settings:
       label: 'Enable aria footer'
 
 
-# Section.
-# ----------------------------
+    # Section.
+    # ----------------------------
     sm_icon_telegram:
       type: string
       label: Telegram
@@ -168,8 +168,8 @@ solo_subtheme.settings:
     sm_icon_colors:
       type: string
       label: Icon colors
-# Section.
-# ----------------------------
+    # Section.
+    # ----------------------------
     footer_copyright:
       type: string
       label: Footer copyright
@@ -182,8 +182,8 @@ solo_subtheme.settings:
     footer_link_text:
       type: string
       label: Footer link text
-# Section.
-# ----------------------------
+    # Section.
+    # ----------------------------
     header_popup_login:
       type: boolean
       label: Popup login
@@ -205,8 +205,8 @@ solo_subtheme.settings:
     header_logo_image_alt:
       type: string
       label: Logo image alt
-# Section.
-# ----------------------------
+    # Section.
+    # ----------------------------
     count_main:
       type: integer
       label: Main region count
@@ -600,8 +600,8 @@ solo_subtheme.settings:
     predefined_current_theme:
       type: string
       label: Predefined current theme
-# Section.
-# ----------------------------
+    # Section.
+    # ----------------------------
     primary_menu_on_hover:
       type: boolean
       label: Primary menu on hover
@@ -647,8 +647,8 @@ solo_subtheme.settings:
     primary_menu_branding:
       type: boolean
       label: Primary menu branding
-# Section.
-# ----------------------------
+    # Section.
+    # ----------------------------
     align_top_first:
       type: string
       label: Align top first
@@ -685,8 +685,8 @@ solo_subtheme.settings:
     align_footer_third:
       type: string
       label: Align footer third
-# Section.
-# ----------------------------
+    # Section.
+    # ----------------------------
     settings_popup_login_block___r_bg_fr:
       type: string
       label: Form background color
@@ -752,8 +752,8 @@ solo_subtheme.settings:
       label: Button hover background color
       description: Sets the hover/focus background color for buttons within this
         region.
-# Section.
-# ----------------------------
+    # Section.
+    # ----------------------------
     settings_page_wrapper___r_bg_fr:
       type: string
       label: Form background color
@@ -819,8 +819,8 @@ solo_subtheme.settings:
       label: Button hover background color
       description: Sets the hover/focus background color for buttons within this
         region.
-# Section.
-# ----------------------------
+    # Section.
+    # ----------------------------
     settings_fixed_search_block___r_bg_fr:
       type: string
       label: Form background color
@@ -886,8 +886,8 @@ solo_subtheme.settings:
       label: Button hover background color
       description: Sets the hover/focus background color for buttons within this
         region.
-# Section.
-# ----------------------------
+    # Section.
+    # ----------------------------
     settings_header___r_bg_fr:
       type: string
       label: Form background color
@@ -953,8 +953,8 @@ solo_subtheme.settings:
       label: Button hover background color
       description: Sets the hover/focus background color for buttons within this
         region.
-# Section.
-# ----------------------------
+    # Section.
+    # ----------------------------
     settings_primary_menu___r_bg_fr:
       type: string
       label: Form background color
@@ -1020,8 +1020,8 @@ solo_subtheme.settings:
       label: Button hover background color
       description: Sets the hover/focus background color for buttons within this
         region.
-# Section.
-# ----------------------------
+    # Section.
+    # ----------------------------
     settings_system_messages___r_bg_fr:
       type: string
       label: Form background color
@@ -1087,8 +1087,8 @@ solo_subtheme.settings:
       label: Button hover background color
       description: Sets the hover/focus background color for buttons within this
         region.
-# Section.
-# ----------------------------
+    # Section.
+    # ----------------------------
     settings_page_title___r_bg_fr:
       type: string
       label: Form background color
@@ -1154,8 +1154,8 @@ solo_subtheme.settings:
       label: Button hover background color
       description: Sets the hover/focus background color for buttons within this
         region.
-# Section.
-# ----------------------------
+    # Section.
+    # ----------------------------
     settings_breadcrumb___r_bg_fr:
       type: string
       label: Form background color
@@ -1221,8 +1221,8 @@ solo_subtheme.settings:
       label: Button hover background color
       description: Sets the hover/focus background color for buttons within this
         region.
-# Section.
-# ----------------------------
+    # Section.
+    # ----------------------------
     settings_main_container___r_bg_fr:
       type: string
       label: Form background color
@@ -1288,8 +1288,8 @@ solo_subtheme.settings:
       label: Button hover background color
       description: Sets the hover/focus background color for buttons within this
         region.
-# Section.
-# ----------------------------
+    # Section.
+    # ----------------------------
     settings_content___r_bg_fr:
       type: string
       label: Form background color
@@ -1355,8 +1355,8 @@ solo_subtheme.settings:
       label: Button hover background color
       description: Sets the hover/focus background color for buttons within this
         region.
-# Section.
-# ----------------------------
+    # Section.
+    # ----------------------------
     settings_sidebar_second___r_bg_fr:
       type: string
       label: Form background color
@@ -1422,8 +1422,8 @@ solo_subtheme.settings:
       label: Button hover background color
       description: Sets the hover/focus background color for buttons within this
         region.
-# Section.
-# ----------------------------
+    # Section.
+    # ----------------------------
     settings_sidebar_first___r_bg_fr:
       type: string
       label: Form background color
@@ -1484,8 +1484,8 @@ solo_subtheme.settings:
       type: string
       label: Button hover background color
       description: Sets the hover/focus background color for buttons within this region.
-# Section.
-# ----------------------------
+    # Section.
+    # ----------------------------
     settings_footer_menu___r_bg_fr:
       type: string
       label: Form background color
@@ -1551,8 +1551,8 @@ solo_subtheme.settings:
       label: Button hover background color
       description: Sets the hover/focus background color for buttons within this
         region.
-# Section.
-# ----------------------------
+    # Section.
+    # ----------------------------
     settings_credit_copyright___r_bg_fr:
       type: string
       label: Form background color
@@ -1618,8 +1618,8 @@ solo_subtheme.settings:
       label: Button hover background color
       description: Sets the hover/focus background color for buttons within this
         region.
-# Section.
-# ----------------------------
+    # Section.
+    # ----------------------------
     settings_primary_sidebar_menu___r_bg_fr:
       type: string
       label: Form background color
@@ -1685,8 +1685,8 @@ solo_subtheme.settings:
       label: Button hover background color
       description: Sets the hover/focus background color for buttons within this
         region.
-# Section.
-# ----------------------------
+    # Section.
+    # ----------------------------
     settings_top_container___r_bg_fr:
       type: string
       label: Form background color
@@ -1752,8 +1752,8 @@ solo_subtheme.settings:
       label: Button hover background color
       description: Sets the hover/focus background color for buttons within this
         region.
-# Section.
-# ----------------------------
+    # Section.
+    # ----------------------------
     settings_top_first___r_bg_fr:
       type: string
       label: Form background color
@@ -1819,8 +1819,8 @@ solo_subtheme.settings:
       label: Button hover background color
       description: Sets the hover/focus background color for buttons within this
         region.
-# Section.
-# ----------------------------
+    # Section.
+    # ----------------------------
     settings_top_second___r_bg_fr:
       type: string
       label: Form background color
@@ -1886,8 +1886,8 @@ solo_subtheme.settings:
       label: Button hover background color
       description: Sets the hover/focus background color for buttons within this
         region.
-# Section.
-# ----------------------------
+    # Section.
+    # ----------------------------
     settings_top_third___r_bg_fr:
       type: string
       label: Form background color
@@ -1953,8 +1953,8 @@ solo_subtheme.settings:
       label: Button hover background color
       description: Sets the hover/focus background color for buttons within this
         region.
-# Section.
-# ----------------------------
+    # Section.
+    # ----------------------------
     settings_bottom_container___r_bg_fr:
       type: string
       label: Form background color
@@ -2020,8 +2020,8 @@ solo_subtheme.settings:
       label: Button hover background color
       description: Sets the hover/focus background color for buttons within this
         region.
-# Section.
-# ----------------------------
+    # Section.
+    # ----------------------------
     settings_bottom_first___r_bg_fr:
       type: string
       label: Form background color
@@ -2087,8 +2087,8 @@ solo_subtheme.settings:
       label: Button hover background color
       description: Sets the hover/focus background color for buttons within this
         region.
-# Section.
-# ----------------------------
+    # Section.
+    # ----------------------------
     settings_bottom_second___r_bg_fr:
       type: string
       label: Form background color
@@ -2154,8 +2154,8 @@ solo_subtheme.settings:
       label: Button hover background color
       description: Sets the hover/focus background color for buttons within this
         region.
-# Section.
-# ----------------------------
+    # Section.
+    # ----------------------------
     settings_bottom_third___r_bg_fr:
       type: string
       label: Form background color
@@ -2221,8 +2221,8 @@ solo_subtheme.settings:
       label: Button hover background color
       description: Sets the hover/focus background color for buttons within this
         region.
-# Section.
-# ----------------------------
+    # Section.
+    # ----------------------------
     settings_bottom_fourth___r_bg_fr:
       type: string
       label: Form background color
@@ -2288,8 +2288,8 @@ solo_subtheme.settings:
       label: Button hover background color
       description: Sets the hover/focus background color for buttons within this
         region.
-# Section.
-# ----------------------------
+    # Section.
+    # ----------------------------
     settings_footer_container___r_bg_fr:
       type: string
       label: Form background color
@@ -2355,8 +2355,8 @@ solo_subtheme.settings:
       label: Button hover background color
       description: Sets the hover/focus background color for buttons within this
         region.
-# Section.
-# ----------------------------
+    # Section.
+    # ----------------------------
     settings_footer_first___r_bg_fr:
       type: string
       label: Form background color
@@ -2422,8 +2422,8 @@ solo_subtheme.settings:
       label: Button hover background color
       description: Sets the hover/focus background color for buttons within this
         region.
-# Section.
-# ----------------------------
+    # Section.
+    # ----------------------------
     settings_footer_second___r_bg_fr:
       type: string
       label: Form background color
@@ -2489,8 +2489,8 @@ solo_subtheme.settings:
       label: Button hover background color
       description: Sets the hover/focus background color for buttons within this
         region.
-# Section.
-# ----------------------------
+    # Section.
+    # ----------------------------
     settings_footer_third___r_bg_fr:
       type: string
       label: Form background color
@@ -2556,8 +2556,8 @@ solo_subtheme.settings:
       label: Button hover background color
       description: Sets the hover/focus background color for buttons within this
         region.
-# Section.
-# ----------------------------
+    # Section.
+    # ----------------------------
     settings_highlighted___r_bg_fr:
       type: string
       label: Form background color
@@ -2623,8 +2623,8 @@ solo_subtheme.settings:
       label: Button hover background color
       description: Sets the hover/focus background color for buttons within this
         region.
-# Section.
-# ----------------------------
+    # Section.
+    # ----------------------------
     settings_welcome_text___r_bg_fr:
       type: string
       label: Form background color

@@ -42,39 +42,40 @@ if (\Drupal::moduleHandler()->moduleExists('solo_utilities') && solo_utilities__
   // Checkbox to enable custom widths for individual nodes.
   $form['solo_settings']['settings_global_misc']['enable_custom_node_width'] = [
     '#type' => 'checkbox',
-    '#title' => t('Tick this box to enable custom widths for individual nodes'),
+    '#title' => t('Tick this box to enable custom widths for individual nodes or for each content type.'),
     '#default_value' => theme_get_setting('enable_custom_node_width'),
     '#description' => t('Allow setting custom widths for individual nodes. Once enabled, you will see a dropdown in the node edit form where you can select a custom width for each node. If "None" is selected, the default width will be used. Individual node widths take priority over content type-specific widths, which take priority over the global width.'),
   ];
+  // Checkbox to enable custom widths for each content type.
+  $form['solo_settings']['settings_global_misc']['enable_custom_widths'] = [
+    '#type' => 'checkbox',
+    '#title' => t('Enable custom widths for each content type'),
+    '#default_value' => theme_get_setting('enable_custom_widths'),
+  ];
+
+  // Collapsible details element for content type specific width settings.
+  $form['solo_settings']['settings_global_misc']['content_type_widths'] = [
+    '#type' => 'details',
+    '#title' => t('Content Type Widths'),
+    '#open' => TRUE,
+    '#states' => [
+      'visible' => [
+        ':input[name="enable_custom_widths"]' => ['checked' => TRUE],
+      ],
+    ],
+  ];
+
 }
 else {
   // Display a message if the module is not enabled or the Solo theme or its
   // sub-themes are not active.
   $form['solo_settings']['settings_global_misc']['enable_custom_node_width_message'] = [
     '#type' => 'item',
-    '#title' => t('Enable custom widths for individual nodes'),
-    '#markup' => t('To enable custom widths for individual nodes, please ensure that the <a href="https://www.drupal.org/project/solo_utilities" target="_blank">Solo Utilities module</a> is installed and enabled. Additionally, this feature requires that the Solo theme or one of its sub-themes is actively being used on the site. The Solo theme must be set as the default theme or be a parent, grandparent, or part of the active theme hierarchy in any capacity.'),
+    '#title' => t('Enable custom widths for individual nodes or each content type.'),
+    '#markup' => t('To enable custom widths for individual nodes or each content type, please ensure that the <a href="https://www.drupal.org/project/solo_utilities" target="_blank">Solo Utilities module</a> is installed and enabled. Additionally, this feature requires that the Solo theme or one of its sub-themes is actively being used on the site. The Solo theme must be set as the default theme or be a parent, grandparent, or part of the active theme hierarchy in any capacity.'),
   ];
 }
 
-// Checkbox to enable custom widths for each content type.
-$form['solo_settings']['settings_global_misc']['enable_custom_widths'] = [
-  '#type' => 'checkbox',
-  '#title' => t('Enable custom widths for each content type'),
-  '#default_value' => theme_get_setting('enable_custom_widths'),
-];
-
-// Collapsible details element for content type specific width settings.
-$form['solo_settings']['settings_global_misc']['content_type_widths'] = [
-  '#type' => 'details',
-  '#title' => t('Content Type Widths'),
-  '#open' => TRUE,
-  '#states' => [
-    'visible' => [
-      ':input[name="enable_custom_widths"]' => ['checked' => TRUE],
-    ],
-  ],
-];
 
 // Content type specific width settings.
 $content_types = _solo_get_content_types();

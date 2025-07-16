@@ -102,6 +102,7 @@ solo-menu:
     - core/drupal.ajax
     - core/drupalSettings
     - core/once
+    - solo/solo-global
 
 solo-menu-keyboard:
   css:
@@ -114,6 +115,7 @@ solo-menu-keyboard:
     - core/drupal.ajax
     - core/drupalSettings
     - core/once
+    - solo/solo-global
 
 # Custom Cookies
 solo-search-settings:
@@ -123,6 +125,7 @@ solo-search-settings:
     - core/drupal
     - core/drupalSettings
     - core/once
+    - solo/solo-global
 
 # Color Picker.
 solo-form-theme-settings:

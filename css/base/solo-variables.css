@@ -126,6 +126,7 @@
   --solo-pale-green: #ddffdd;
   --solo-pale-yellow: #ffffcc;
   --solo-pale-blue: #ddffff;
+  --solo-ease-in-out: cubic-bezier(0.1, 0.5, 1, 0.1);
   /* Social Media Colors */
   --solo-up: #25d366;
   --solo-sn: #fffc00;

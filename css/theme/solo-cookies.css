@@ -10,6 +10,7 @@
 #page-wrapper .cookiesjsr-banner {
   border-block-start: 3px solid var(--r-br);
   border-radius: var(--solo-px4);
+  z-index: 5000;
 }
 
 #page-wrapper .cookiesjsr-banner.active {

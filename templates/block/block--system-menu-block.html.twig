@@ -34,23 +34,27 @@
 #}
 {%
   set classes = [
-    'block',
-    'block-menu',
-    'navigation',
-    'menu--' ~ derivative_plugin_id|clean_class,
-  ]
+  'block',
+  'block-menu',
+  'navigation',
+  'menu--' ~ derivative_plugin_id|clean_class,
+]
 %}
-
-{# Generate heading ID for aria-labelledby. #}
 {% set heading_id = attributes.id ~ '-menu'|clean_id %}
 <nav {{ attributes.addClass(classes).setAttribute('aria-labelledby', heading_id).setAttribute('role', 'navigation') }}>
+
   {% if solo_block_title_visibility_enabled %}
-  {% include '@solo/templates/block/block-title.html.twig' %}
+    {% include '@solo/templates/block/block-title.html.twig' %}
   {% else %}
-  {{ title_prefix }}
-  <h2{{ title_attributes.addClass('block__title').setAttribute('id', heading_id) }}>{{ configuration.label }}</h2>
-  {{ title_suffix }}
+    {% if not configuration.label_display %}
+      {% set title_attributes = title_attributes.addClass('visually-hidden') %}
+    {% endif %}
+    {{ title_prefix }}
+    <h2{{ title_attributes.addClass('block__title').setAttribute('id', heading_id) }}>{{ configuration.label }}</h2>
+    {{ title_suffix }}
   {% endif %}
+
+  {# Menu. #}
   {% block content %}
     {{ content }}
   {% endblock %}

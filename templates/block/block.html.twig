@@ -33,12 +33,20 @@
     'block-' ~ plugin_id|clean_class,
   ]
 %}
+
 <section{{ attributes.addClass(classes) }}>
-  {{ title_prefix }}
-  {% if label %}
-    <h2{{ title_attributes.addClass('solo-block-title') }}>{{ label }}</h2>
+  {% if solo_block_title_visibility_enabled %}
+    {# Use new conditional logic with visibility control. #}
+    {% include '@solo/templates/block/block-title.html.twig' %}
+  {% else %}
+    {# Use fallback title output for sites not using visibility setting. #}
+    {{ title_prefix }}
+    {% if label %}
+      <h2{{ title_attributes.addClass('solo-block-title') }}>{{ label }}</h2>
+    {% endif %}
+    {{ title_suffix }}
   {% endif %}
-  {{ title_suffix }}
+
   {% block content %}
     {{ content }}
   {% endblock %}

@@ -36,6 +36,22 @@ $form['solo_settings']['settings_global_misc']['site_global_width'] = [
   '#description' => t("<p><strong>You can adjust the entire website's width by choosing your preferred size in pixels or rem units.</strong></p>"),
 ];
 
+if (\Drupal::moduleHandler()->moduleExists('solo_utilities')) {
+  $form['solo_settings']['settings_global_misc']['enable_block_title_visibility'] = [
+    '#type' => 'checkbox',
+    '#title' => t('Enable custom block title visibility'),
+    '#description' => t('Allows control over each block’s title visibility: visible, visually hidden (for screen readers), or completely removed from HTML output.'),
+    '#default_value' => theme_get_setting('enable_block_title_visibility'),
+  ];
+}
+else {
+  $form['solo_settings']['settings_global_misc']['disable_block_title_visibility'] = [
+    '#type' => 'item',
+    '#title' => t('Block Title Visibility'),
+    '#markup' => t('This feature requires the <a href="https://www.drupal.org/project/solo_utilities" target="_blank">Solo Utilities module</a>. Once enabled, you will be able to control visibility of block titles through an advanced dropdown option in each block configuration.'),
+  ];
+}
+
 // Check if the solo_utilities module is enabled and if the Solo theme or its
 // sub-themes are active.
 if (\Drupal::moduleHandler()->moduleExists('solo_utilities') && solo_utilities__check_solo_theme_hierarchy_active()) {

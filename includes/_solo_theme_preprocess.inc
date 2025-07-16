@@ -518,6 +518,8 @@ function _get_theme_variables() {
       'enable_aria_footer',
       'enable_aria_welcome',
       'enable_aria_highlighted',
+      'enable_block_title_visibility',
+      'disable_block_title_visibility',
     ],
     'social' => [
       'sm_icon_size',

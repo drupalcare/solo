@@ -338,6 +338,12 @@ solo.settings:
       label: Classes credit copyright
     # Section.
     # ----------------------------
+    enable_block_title_visibility:
+      type: integer
+      label: Custom Block Title is Enabled
+    disable_block_title_visibility:
+      type: integer
+      label: Custom Block Title is Disabled
     site_global_width:
       type: string
       label: Global width

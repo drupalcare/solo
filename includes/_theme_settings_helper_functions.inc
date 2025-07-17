@@ -946,3 +946,22 @@ function solo_settings_search_submit(array &$form, FormStateInterface $form_stat
     $form_state->setValue('search_result_content_types', []);
   }
 }
+
+/**
+ * Get Default value.
+ */
+function _solo_get_layout_default($region, $col, $type_id) {
+  $key = "solo_layout_{$region}_{$col}_$type_id";
+  $global = "{$region}_{$col}";
+  $enabled = theme_get_setting("enable_per_type_layout_$region");
+
+  $val = theme_get_setting($key);
+  if (empty($val) || !$enabled) {
+    $val = theme_get_setting($global);
+  }
+
+  return $val;
+}
+
+// Fetch content types.
+$content_types = _solo_get_content_types();

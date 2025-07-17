@@ -557,6 +557,10 @@ function _get_theme_variables() {
  * Implements hook_preprocess_page() for page templates.
  */
 function solo_preprocess_page(&$variables) {
+
+  // Get current content type.
+  $node = \Drupal::routeMatch()->getParameter('node');
+  $content_type = $node instanceof NodeInterface ? $node->bundle() : NULL;
   // $variables['solo_path'] = &$variables['solo_path'];
   $variables_lists = _get_theme_variables();
   foreach ($variables_lists as $variables_list) {
@@ -623,17 +627,16 @@ function solo_preprocess_page(&$variables) {
     'footer' => ['first', 'second', 'third'],
   ];
 
+  // Detect subregion presence and calculate region counts.
   foreach ($regions as $region => $subregions) {
-    // Loop through each subregion.
     foreach ($subregions as $subregion) {
-      if ($subregion == 'content') {
+      if ($subregion === 'content') {
         ${"has_{$subregion}"} = !empty($variables['page']["{$subregion}"]);
       }
-      // Check if the region and subregion exist in the 'page' array.
       ${"has_{$region}_{$subregion}"} = !empty($variables['page']["{$region}_{$subregion}"]);
     }
   }
-  // Add Responsive classes to Top Container.
+
   $count_top = (int) $has_top_first + (int) $has_top_second + (int) $has_top_third;
   $count_main = (int) $has_sidebar_first + (int) $has_content + (int) $has_sidebar_second;
   $count_bottom = (int) $has_bottom_first + (int) $has_bottom_second + (int) $has_bottom_third + (int) $has_bottom_fourth;
@@ -647,32 +650,63 @@ function solo_preprocess_page(&$variables) {
     'footer' => $count_footer,
   ];
 
-  foreach ($counts as $key => $count) {
+  // Assign layout classes based on active column count and overrides.
+  foreach ($counts as $region => $count) {
+    $layout = NULL;
+
     if ($count === 1) {
-      $variables[$key . '_layout'] = 'solo-col-1';
+      $layout = 'solo-col-1';
     }
-    if ($count === 2) {
-      $variables[$key . '_layout'] = theme_get_setting($key . '_2col') ?? 'solo-col-1-1';
-      // Special setting for main container.
-      if ($key == 'main') {
+
+    elseif ($count === 2) {
+      $layout = theme_get_setting("{$region}_2col") ?? 'solo-col-1-1';
+
+      // Smart sidebar layout for main.
+      if ($region === 'main') {
         if (!$found_main[0]) {
-          $variables[$key . '_layout'] = theme_get_setting($key . '_2col') ?? 'solo-col-2-1';
+          $layout = theme_get_setting("{$region}_2col") ?? 'solo-col-2-1';
         }
-        if (!$found_main[2]) {
-          $variables[$key . '_layout'] = theme_get_setting($key . '_2col') ?? 'solo-col-1-2';
+        elseif (!$found_main[2]) {
+          $layout = theme_get_setting("{$region}_2col") ?? 'solo-col-1-2';
+        }
+      }
+
+      // Override per content type.
+      if ($content_type && theme_get_setting("enable_per_type_layout_{$region}")) {
+        $override = theme_get_setting("solo_layout_{$region}_2col_{$content_type}");
+        if (!empty($override)) {
+          $layout = $override;
         }
       }
     }
-    if ($count === 3) {
-      $variables[$key . '_layout'] = theme_get_setting($key . '_3col') ?? 'solo-col-1-1-1';
-      // Special setting for main container.
-      if ($key == 'main') {
-        $variables[$key . '_layout'] = theme_get_setting($key . '_3col') ?? 'solo-col-1-2-1';
+
+    elseif ($count === 3) {
+      $layout = theme_get_setting("{$region}_3col") ?? 'solo-col-1-1-1';
+
+      if ($region === 'main') {
+        $layout = theme_get_setting("{$region}_3col") ?? 'solo-col-1-2-1';
+      }
+
+      if ($content_type && theme_get_setting("enable_per_type_layout_{$region}")) {
+        $override = theme_get_setting("solo_layout_{$region}_3col_{$content_type}");
+        if (!empty($override)) {
+          $layout = $override;
+        }
       }
     }
-    if ($count === 4) {
-      $variables[$key . '_layout'] = theme_get_setting($key . '_4col') ?? 'solo-col-1-1-1-1';
+
+    elseif ($count === 4) {
+      $layout = theme_get_setting("{$region}_4col") ?? 'solo-col-1-1-1-1';
+
+      if ($content_type && theme_get_setting("enable_per_type_layout_{$region}")) {
+        $override = theme_get_setting("solo_layout_{$region}_4col_{$content_type}");
+        if (!empty($override)) {
+          $layout = $override;
+        }
+      }
     }
+
+    $variables["{$region}_layout"] = $layout;
   }
 
   // Check if the curren user on login/register or reset.
@@ -693,9 +727,7 @@ function solo_preprocess_page(&$variables) {
   $node_widths  = theme_get_setting('enable_custom_node_width');
 
   if ($type_widths || $node_widths) {
-    $node = \Drupal::routeMatch()->getParameter('node');
     if ($node instanceof NodeInterface) {
-      $content_type = $node->bundle();
       // Check for content type-specific.
       $content_type_width = theme_get_setting('site_width_' . $content_type);
       if ($content_type_width) {

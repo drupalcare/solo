@@ -26,14 +26,50 @@ if ($updated_regions['footer']) {
   foreach ($updated_regions['footer'] as $region => $label) {
 
     if ($region == 'container') {
-      $region = 'footer_container';
-      $form['solo_settings']["settings_footer_container"]["footer_2col"] = _create_region_layout_radio_two('footer', $variables);
-      $form['solo_settings']["settings_footer_container"]["footer_3col"] = _create_region_layout_radio_three('footer');
-      $form['solo_settings']["settings_footer_container"]["site_regions_footer_disable"] = _disable_region('footer');
-      $form['solo_settings']["settings_footer_container"]["site_regions_footer_rounded"] = _rounded_region('footer');
-      $form['solo_settings']["settings_footer_container"]["site_regions_footer_border"] = _border_region('footer');
-      $form['solo_settings']["settings_footer_container"]["site_regions_footer_animate_border"] = _animate_region_border('footer');
-      $form['solo_settings']["settings_footer_container"]["site_regions_footer_animate_hover"] = _animate_region_hover('footer');
+      $region        = 'footer_container';
+      $layout_region = 'footer';
+
+      // Global layout options for footer region.
+      $form['solo_settings']['settings_footer_container']['footer_2col'] = _create_region_layout_radio_two($layout_region, $variables);
+      $form['solo_settings']['settings_footer_container']['footer_3col'] = _create_region_layout_radio_three($layout_region);
+
+      // Enable per-content-type layout override.
+      $form['solo_settings']['settings_footer_container']['enable_per_type_layout_footer'] = [
+        '#type' => 'checkbox',
+        '#title' => t('Enable per-content-type layouts for Footer region'),
+        '#default_value' => theme_get_setting('enable_per_type_layout_footer'),
+      ];
+
+      foreach ($content_types as $type_id => $type_label) {
+        $form['solo_settings']['settings_footer_container']['solo_layout_footer_per_type'][$type_id] = [
+          '#type' => 'details',
+          '#title' => t('Layout for @label', ['@label' => $type_label]),
+          '#open' => FALSE,
+          '#states' => [
+            'visible' => [
+              ':input[name="enable_per_type_layout_footer"]' => ['checked' => TRUE],
+            ],
+          ],
+        ];
+
+        // 2-column override.
+        $layout_2col = _create_region_layout_radio_two($layout_region, $variables);
+        $layout_2col['#title'] = t('Two-column layout (override)');
+        $layout_2col['#default_value'] = _solo_get_layout_default($layout_region, '2col', $type_id);
+        $form['solo_settings']['settings_footer_container']['solo_layout_footer_per_type'][$type_id]["solo_layout_footer_2col_$type_id"] = $layout_2col;
+
+        // 3-column override.
+        $layout_3col = _create_region_layout_radio_three($layout_region);
+        $layout_3col['#title'] = t('Three-column layout (override)');
+        $layout_3col['#default_value'] = _solo_get_layout_default($layout_region, '3col', $type_id);
+        $form['solo_settings']['settings_footer_container']['solo_layout_footer_per_type'][$type_id]["solo_layout_footer_3col_$type_id"] = $layout_3col;
+      }
+
+      $form['solo_settings']["settings_footer_container"]["site_regions_footer_disable"] = _disable_region($layout_region);
+      $form['solo_settings']["settings_footer_container"]["site_regions_footer_rounded"] = _rounded_region($layout_region);
+      $form['solo_settings']["settings_footer_container"]["site_regions_footer_border"] = _border_region($layout_region);
+      $form['solo_settings']["settings_footer_container"]["site_regions_footer_animate_border"] = _animate_region_border($layout_region);
+      $form['solo_settings']["settings_footer_container"]["site_regions_footer_animate_hover"] = _animate_region_hover($layout_region);
       $form['solo_settings']["settings_footer_container"]["enable_aria_footer"] = [
         '#type' => 'checkbox',
         '#title' => t('Enable ARIA Landmark for Footer Container'),

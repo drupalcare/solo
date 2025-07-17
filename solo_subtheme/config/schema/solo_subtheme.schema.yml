@@ -104,8 +104,6 @@ solo_subtheme.settings:
     enable_aria_footer:
       type: boolean
       label: 'Enable aria footer'
-
-
     # Section.
     # ----------------------------
     sm_icon_telegram:
@@ -246,6 +244,14 @@ solo_subtheme.settings:
     bottom_4col:
       type: string
       label: Bottom 4-column layout
+    enable_per_type_layout_top:
+      type: boolean
+    enable_per_type_layout_main:
+      type: boolean
+    enable_per_type_layout_bottom:
+      type: boolean
+    enable_per_type_layout_footer:
+      type: boolean
     # Section.
     # ----------------------------
     classes_page_wrapper:
@@ -379,39 +385,6 @@ solo_subtheme.settings:
     enable_custom_node_width_message:
       type: integer
       label: Enable custom node width Message
-    site_width_article:
-      type: string
-      label: Width for article
-    site_width_features:
-      type: string
-      label: Width for features
-    site_width_page:
-      type: string
-      label: Width for page
-    site_width_para:
-      type: string
-      label: Width for para
-    site_width_pb_content:
-      type: string
-      label: Width for pb_content
-    site_width_pb_node_reference:
-      type: string
-      label: Width for pb_node_reference
-    site_width_theme:
-      type: string
-      label: Width for theme
-    site_width_tutorials:
-      type: string
-      label: Width for tutorials
-    site_width_video:
-      type: string
-      label: Width for video
-    site_width_pb_import_node:
-      type: string
-      label: Width for pb_import_node
-    site_width_pb_import_para:
-      type: string
-      label: Width for pb_import_para
     # Section.
     # ----------------------------
     site_font_google_local_on:

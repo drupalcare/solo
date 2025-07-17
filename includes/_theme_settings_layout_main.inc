@@ -25,10 +25,42 @@ if ($updated_regions['main']) {
   foreach ($updated_regions['main'] as $region => $label) {
 
     if ($region == 'container') {
-      $region = 'main_container';
-      $form['solo_settings']["settings_main_container"]["main_2col"] = _create_region_layout_radio_two('main', $variables);
-      $form['solo_settings']["settings_main_container"]["main_3col"] = _create_region_layout_radio_three('main');
-      $form['solo_settings']["settings_main_container"]["site_regions_main_rounded"] = _rounded_region('main');
+      $region                                                                          = 'main_container';
+      $layout_region                                                                   = 'main';
+      $form['solo_settings']["settings_main_container"]["main_2col"]                   = _create_region_layout_radio_two($layout_region, $variables);
+      $form['solo_settings']["settings_main_container"]["main_3col"]                   = _create_region_layout_radio_three($layout_region);
+      $form['solo_settings']['settings_main_container']['enable_per_type_layout_main'] = [
+        '#type' => 'checkbox',
+        '#title' => t('Enable per-content-type layouts for Main region'),
+        '#default_value' => theme_get_setting('enable_per_type_layout_main'),
+      ];
+
+      foreach ($content_types as $type_id => $type_label) {
+        $form['solo_settings']['settings_main_container']['solo_layout_main_per_type'][$type_id] = [
+          '#type' => 'details',
+          '#title' => t('Layout for @label', ['@label' => $type_label]),
+          '#open' => FALSE,
+          '#states' => [
+            'visible' => [
+              ':input[name="enable_per_type_layout_main"]' => ['checked' => TRUE],
+            ],
+          ],
+        ];
+
+        // 2-column override.
+        $layout_2col = _create_region_layout_radio_two($layout_region, $variables);
+        $layout_2col['#title'] = t('Two-column layout (override)');
+        $layout_2col['#default_value'] = _solo_get_layout_default($layout_region, '2col', $type_id);
+        $form['solo_settings']['settings_main_container']['solo_layout_main_per_type'][$type_id]["solo_layout_main_2col_$type_id"] = $layout_2col;
+
+        // 3-column override.
+        $layout_3col = _create_region_layout_radio_three($layout_region);
+        $layout_3col['#title'] = t('Three-column layout (override)');
+        $layout_3col['#default_value'] = _solo_get_layout_default($layout_region, '3col', $type_id);
+        $form['solo_settings']['settings_main_container']['solo_layout_main_per_type'][$type_id]["solo_layout_main_3col_$type_id"] = $layout_3col;
+      }
+
+      $form['solo_settings']["settings_main_container"]["site_regions_main_rounded"] = _rounded_region($layout_region);
       $form['solo_settings']['settings_main_container']['site_mobile_layout_order'] = [
         '#type' => 'select',
         '#title' => t('Select the layout order for mobile view'),
@@ -36,7 +68,7 @@ if ($updated_regions['main']) {
         '#options' => _get_mobile_layout_options(),
         '#default_value' => theme_get_setting('site_mobile_layout_order'),
       ];
-      $form['solo_settings']["settings_main_container"]["site_regions_main_border"] = _border_region('main');
+      $form['solo_settings']["settings_main_container"]["site_regions_main_border"] = _border_region($layout_region);
 
       $form['solo_settings']["settings_main_container"]['skip_main_content'] = [
         '#type' => 'checkbox',

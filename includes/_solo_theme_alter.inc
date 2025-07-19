@@ -7,6 +7,8 @@
 
 use Drupal\comment\CommentInterface;
 use Drupal\Core\Form\FormStateInterface;
+use Drupal\node\NodeInterface;
+use Drupal\node\Entity\NodeType;
 
 /**
  * Custom validation handler to apply hidden content types to the search query.
@@ -34,7 +36,7 @@ function solo_form_node_preview_form_select_alter(&$form, FormStateInterface $fo
 /**
  * Implements hook_form_FORM_ID_alter() for node_form.
  */
-function solo_form_node_form_alter(&$form, FormStateInterface $form_state): void {
+function solo_form_node_form_alter(array &$form, FormStateInterface $form_state, $form_id): void {
   // Set the theme for the form.
   $form['#theme'] = ['node_edit_form'];
 
@@ -52,6 +54,42 @@ function solo_form_node_form_alter(&$form, FormStateInterface $form_state): void
   // Define the 'revision_information' container and group it under 'meta'.
   $form['revision_information']['#type'] = 'container';
   $form['revision_information']['#group'] = 'meta';
+
+}
+
+/**
+ * Implements hook_theme_suggestions_node_edit_form_alter().
+ *
+ * Adds per-content-type template suggestions for node edit forms.
+ * E.g., node_edit_form__article → node-edit-form--article.html.twig.
+ */
+function solo_theme_suggestions_node_edit_form_alter(array &$suggestions, array $variables): void {
+  $bundle = NULL;
+
+  // Attempt to retrieve the bundle from the form's #node property (edit form).
+  if (
+    isset($variables['form']['#node']) &&
+    $variables['form']['#node'] instanceof NodeInterface
+  ) {
+    $bundle = $variables['form']['#node']->bundle();
+  }
+
+  // Fallback for add form (/node/add/{bundle}).
+  elseif ($route = \Drupal::routeMatch()) {
+    // Check if route provides a node type object.
+    if (($type = $route->getParameter('node_type')) && $type instanceof NodeType) {
+      $bundle = $type->id();
+    }
+    // Check if route provides a node entity (some contrib modules do this).
+    elseif (($node = $route->getParameter('node')) && $node instanceof NodeInterface) {
+      $bundle = $node->bundle();
+    }
+  }
+
+  // Add the suggestion if bundle is known.
+  if ($bundle) {
+    $suggestions[] = 'node_edit_form__' . $bundle;
+  }
 }
 
 /**

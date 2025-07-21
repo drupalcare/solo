@@ -25,10 +25,10 @@ if ($updated_regions['main']) {
   foreach ($updated_regions['main'] as $region => $label) {
 
     if ($region == 'container') {
-      $region                                                                          = 'main_container';
-      $layout_region                                                                   = 'main';
-      $form['solo_settings']["settings_main_container"]["main_2col"]                   = _create_region_layout_radio_two($layout_region, $variables);
-      $form['solo_settings']["settings_main_container"]["main_3col"]                   = _create_region_layout_radio_three($layout_region);
+      $region = 'main_container';
+      $layout_region = 'main';
+      $form['solo_settings']["settings_main_container"]["main_2col"] = _create_region_layout_radio_two($layout_region, $variables);
+      $form['solo_settings']["settings_main_container"]["main_3col"] = _create_region_layout_radio_three($layout_region);
       $form['solo_settings']['settings_main_container']['enable_per_type_layout_main'] = [
         '#type' => 'checkbox',
         '#title' => t('Enable per-content-type layouts for Main region'),

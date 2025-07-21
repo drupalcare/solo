@@ -229,3 +229,54 @@ function _solo_convert_hex_to_hsl(string $hex_string): array {
   // Convert Saturation and Lightness to percentages.
   return [round($h), round($s * 100) . '%', round($l * 100) . '%'];
 }
+
+/**
+ * Implements hook_modules_disabled().
+ */
+function solo_modules_disabled(array $modules): void {
+  if (in_array('solo_utilities', $modules, TRUE)) {
+    // Detect all installed themes that are using Solo as a base or are Solo.
+    $theme_handler = \Drupal::service('theme_handler');
+    $theme_names = array_keys($theme_handler->listInfo());
+
+    foreach ($theme_names as $theme_name) {
+      $theme = $theme_handler->getTheme($theme_name);
+      if (!$theme) {
+        continue;
+      }
+
+      // Skip if it's not Solo or a sub-theme of Solo.
+      $base_themes = array_keys($theme->info['base theme'] ?? []);
+      if ($theme_name !== 'solo' && !in_array('solo', $base_themes, TRUE)) {
+        continue;
+      }
+
+      $config = \Drupal::configFactory()->getEditable("{$theme_name}.settings");
+      $has_changes = FALSE;
+
+      // Core setting keys to clear.
+      $keys_to_clear = [
+        'enable_custom_widths',
+        'enable_custom_node_width',
+      ];
+
+      // Add all per-content-type keys.
+      $content_types = \Drupal::entityTypeManager()->getStorage('node_type')->loadMultiple();
+      foreach ($content_types as $type) {
+        $keys_to_clear[] = "site_width_{$type->id()}";
+      }
+
+      foreach ($keys_to_clear as $key) {
+        if ($config->get($key) !== NULL) {
+          $config->clear($key);
+          $has_changes = TRUE;
+        }
+      }
+
+      if ($has_changes) {
+        $config->save();
+        \Drupal::configFactory()->reset("{$theme_name}.settings");
+      }
+    }
+  }
+}

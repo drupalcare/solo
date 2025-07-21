@@ -554,6 +554,27 @@ function _get_theme_variables() {
 }
 
 /**
+ * Returns the width class for a given node, if custom node widths are enabled.
+ *
+ * @param \Drupal\node\NodeInterface $node
+ *   The node to check.
+ *
+ * @return string|null
+ *   The width class string, or NULL if not defined or not supported.
+ */
+function _get_node_width_class(NodeInterface $node): ?string {
+  if (\Drupal::moduleHandler()->moduleExists('solo_utilities') &&
+      \Drupal::entityTypeManager()->hasDefinition('node_width')) {
+    $items = \Drupal::entityTypeManager()->getStorage('node_width')
+      ->loadByProperties(['node_id' => $node->id()]);
+    if (!empty($items)) {
+      return reset($items)->get('width_class')->value;
+    }
+  }
+  return NULL;
+}
+
+/**
  * Implements hook_preprocess_page() for page templates.
  */
 function solo_preprocess_page(&$variables) {
@@ -723,27 +744,38 @@ function solo_preprocess_page(&$variables) {
 
   // Initialize with the global width setting.
   $final_widths = theme_get_setting('site_global_width');
-  $type_widths  = theme_get_setting('enable_custom_widths');
-  $node_widths  = theme_get_setting('enable_custom_node_width');
 
-  if ($type_widths || $node_widths) {
-    if ($node instanceof NodeInterface) {
-      // Check for content type-specific.
-      $content_type_width = theme_get_setting('site_width_' . $content_type);
-      if ($content_type_width) {
-        $final_widths = $content_type_width;
-      }
+  // Only apply per-content-type and node widths if solo_utilities is active.
+  if (\Drupal::moduleHandler()->moduleExists('solo_utilities')) {
+    $type_widths = theme_get_setting('enable_custom_widths');
+    $node_widths_enabled = theme_get_setting('enable_custom_node_width');
 
-      // Check for node-specific width.
-      $node_widths = \Drupal::entityTypeManager()->getStorage('node_width')->loadByProperties(['node_id' => $node->id()]);
-      if (!empty($node_widths)) {
-        $final_widths = reset($node_widths)->get('width_class')->value;
+    if ($type_widths || $node_widths_enabled) {
+      if ($node instanceof NodeInterface) {
+        $content_type = $node->bundle();
+
+        // Check for content type-specific width override.
+        if ($type_widths) {
+          $content_type_width = theme_get_setting('site_width_' . $content_type);
+          if (!empty($content_type_width)) {
+            $final_widths = $content_type_width;
+          }
+        }
+
+        // Check for node-specific width override.
+        if ($node_widths_enabled) {
+          $node_class = _get_node_width_class($node);
+          if ($node_class) {
+            $final_widths = $node_class;
+          }
+        }
       }
     }
   }
 
   // Pass the width class to the Twig template.
   $variables['site_width_class'] = $final_widths;
+
 }
 
 /**

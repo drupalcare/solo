@@ -146,6 +146,19 @@ function _solo_theme_settings_submit($form, FormStateInterface $form_state) {
   $content_types = \Drupal::entityTypeManager()->getStorage('node_type')->loadMultiple();
   $regions = ['top', 'main', 'bottom', 'footer'];
 
+  // Handle per-content-type width cleanup when disabled.
+  $custom_widths_enabled = (bool) $form_state->getValue('enable_custom_widths', FALSE);
+  $config->set('enable_custom_widths', $custom_widths_enabled);
+
+  if (!$custom_widths_enabled) {
+    foreach ($content_types as $type) {
+      $key = "site_width_{$type->id()}";
+      if ($config->get($key) !== NULL) {
+        $config->clear($key);
+      }
+    }
+  }
+
   foreach ($regions as $region) {
     $enable_key = "enable_per_type_layout_$region";
     $enabled = (bool) $form_state->getValue($enable_key, FALSE);

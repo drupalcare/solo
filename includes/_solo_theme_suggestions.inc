@@ -36,13 +36,36 @@ function solo_theme_suggestions_block_alter(array &$suggestions, array $variable
  * Implements hook_theme_suggestions_HOOK_alter() for menu.
  */
 function solo_theme_suggestions_menu_alter(array &$suggestions, array $variables): void {
-  // Construct the suggestion based on the region, if it exists.
-  if (isset($variables['attributes']['region'])) {
-    $region_suggestion = 'menu__' . $variables['attributes']['region'];
+  $new_suggestions = [];
 
-    // Only add the suggestion if it's not already in the array.
-    if (!in_array($region_suggestion, $suggestions)) {
-      array_unshift($suggestions, $region_suggestion);
+  // Handle region-based suggestions.
+  if (isset($variables['attributes']['region'])) {
+    $region = $variables['attributes']['region'];
+    $new_suggestions[] = 'menu__' . $region;
+
+    // If it's a menu block, add more specific suggestions.
+    if (isset($variables['#menu_block_configuration'])) {
+      $config = $variables['#menu_block_configuration'];
+      $menu_name = $variables['#menu_name'] ?? '';
+
+      // Add various combinations.
+      $new_suggestions[] = 'menu__' . $region . '__menu_block';
+      if ($menu_name) {
+        $new_suggestions[] = 'menu__' . $region . '__' . strtr($menu_name, '-', '_');
+        $new_suggestions[] = 'menu__' . $region . '__' . strtr($menu_name, '-', '_') . '__menu_block';
+      }
+
+      // Add suggestion from menu_block configuration if it exists.
+      if (!empty($config['suggestion'])) {
+        $new_suggestions[] = 'menu__' . $region . '__' . $config['suggestion'];
+      }
+    }
+  }
+
+  // Add new suggestions to the beginning for higher priority.
+  foreach (array_reverse($new_suggestions) as $suggestion) {
+    if (!in_array($suggestion, $suggestions)) {
+      array_unshift($suggestions, $suggestion);
     }
   }
 }

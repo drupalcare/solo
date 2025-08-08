@@ -431,8 +431,9 @@
     flex-direction: column;
   }
 
-  .page-wrapper .solo-inner .navigation__megamenu ul li.nav__menu-item>button,
-  .page-wrapper .solo-inner .navigation__megamenu ul li.nav__menu-item>a {
+  .page-wrapper .solo-inner .navigation__megamenu ul li.nav__menu-item>a,
+  .page-wrapper .solo-inner .navigation__megamenu ul li.nav__menu-item>span,
+  .page-wrapper .solo-inner .navigation__megamenu ul li.nav__menu-item>button {
     --r-bg-lk: transparent;
     --r-bg-lk-h: transparent;
   }
@@ -477,6 +478,7 @@
   }
 
   .solo-inner .navigation__megamenu>li li>a,
+  .solo-inner .navigation__megamenu>li li>span,
   .solo-inner .navigation__megamenu>li li>button {
     display: inline-flex !important;
     width: min-content;

@@ -54,6 +54,10 @@ if (array_key_exists("highlighted", $updated_regions["mix"])) {
     "#title" => t("Color Settings"),
     "#group" => "highlighted_tabs",
     "#weight" => -8,
+    '#attributes' => [
+      'class' => ['solo-color-panel'],
+      'data-solo-panel' => 'colors',
+    ],
   ];
 
   foreach ($attributes as $attribute_key => $attribute_label) {

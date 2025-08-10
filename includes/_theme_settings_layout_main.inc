@@ -117,6 +117,10 @@ if ($updated_regions["main"]) {
         "#title" => t("Color Settings"),
         "#group" => "main_container_tabs",
         "#weight" => -4,
+        '#attributes' => [
+        'class' => ['solo-color-panel'],
+        'data-solo-panel' => 'colors',
+      ],
       ];
 
       foreach ($attributes as $attribute_key => $attribute_label) {
@@ -148,6 +152,10 @@ if ($updated_regions["main"]) {
         "#title" => t("Color Settings"),
         "#open" => FALSE,
         "#description" => t("Configure colors for background, text, links, buttons, and other visual elements in this region."),
+        '#attributes' => [
+          'class' => ['solo-color-panel'],
+          'data-solo-panel' => 'colors',
+        ],
       ];
 
       foreach ($attributes as $attribute_key => $attribute_label) {

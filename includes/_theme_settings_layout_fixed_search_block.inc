@@ -47,6 +47,10 @@ if (array_key_exists("fixed_search_block", $updated_regions["mix"])) {
     "#title" => t("Color Settings"),
     "#group" => "fixed_search_tabs",
     "#weight" => -8,
+      '#attributes' => [
+      'class' => ['solo-color-panel'],
+      'data-solo-panel' => 'colors',
+    ],
   ];
 
   foreach ($attributes as $attribute_key => $attribute_label) {

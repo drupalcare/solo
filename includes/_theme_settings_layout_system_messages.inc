@@ -53,6 +53,10 @@ if (array_key_exists("system_messages", $updated_regions["mix"])) {
     "#title" => t("Color Settings"),
     "#group" => "system_messages_tabs",
     "#weight" => -8,
+    '#attributes' => [
+      'class' => ['solo-color-panel'],
+      'data-solo-panel' => 'colors',
+    ],
   ];
 
   foreach ($attributes as $attribute_key => $attribute_label) {

@@ -79,6 +79,10 @@ if (array_key_exists("primary_sidebar_menu", $updated_regions["mix"])) {
     "#title" => t("Color Settings"),
     "#group" => "sidebar_menu_tabs",
     "#weight" => -6,
+    '#attributes' => [
+      'class' => ['solo-color-panel'],
+      'data-solo-panel' => 'colors',
+    ],
   ];
 
   foreach ($attributes as $attribute_key => $attribute_label) {

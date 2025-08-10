@@ -72,19 +72,19 @@
     {% set system_path = '<front>' %}
   {% endif %}
 
-  {# Comprehensive link detection #}
-  {% set route_name = item.url.getRouteName() %}
-  {% set url_string = item.url.toString() %}
-  {% set non_linkable_routes = ['<nolink>', '<button>'] %}
-  {% set is_linkable = route_name not in non_linkable_routes and url_string != '' %}
-
-  {# Special type detection #}
-  {% set link_type = 'standard' %}
-  {% if route_name == '<nolink>' %}
+  {# Link type detection - Following Drupal core Olivero pattern #}
+  {% if item.url.isRouted and item.url.routeName == '<nolink>' %}
       {% set link_type = 'nolink' %}
-  {% elseif route_name == '<button>' %}
+  {% elseif item.url.isRouted and item.url.routeName == '<button>' %}
       {% set link_type = 'button' %}
+  {% else %}
+      {% set link_type = 'link' %}
   {% endif %}
+
+  {# Determine if this is an external link for additional handling #}
+  {% set is_external = item.url.isExternal() %}
+  {% set url_string = item.url.toString() %}
+  {% set is_linkable = link_type != 'nolink' and url_string != '' %}
 
   {% import _self as macros %}
   {% set aria_id = (menu_name ~ '-sub__menu-' ~ loop.index )|clean_unique_id %}
@@ -101,6 +101,7 @@
   not item.is_expanded and is_linkable ? 'link-only',
   not item.is_expanded and link_type == 'nolink' ? 'no-link',
   not item.is_expanded and link_type == 'button' ? 'keyboard-button',
+  not item.is_expanded and is_external ? 'external-link',
   item.in_active_trail ? 'is-active',
   ]
   %}
@@ -116,8 +117,11 @@
     'data-menu-item-id': loop.index,
   }) %}
 
-    {# Set additional attributes if they exist #}
-    {% set additional_classes = item.url.getOption('attributes').class|default('') %}
+    {# Set additional attributes if they exist - with null safety #}
+    {% set additional_classes = '' %}
+    {% if item.url and item.url.getOption('attributes') and item.url.getOption('attributes').class %}
+        {% set additional_classes = item.url.getOption('attributes').class %}
+    {% endif %}
     {% set class_list = additional_classes is iterable ? additional_classes|join(' ') : additional_classes %}
 
     {# The parent menu and it has children #}
@@ -130,11 +134,12 @@
             {% set c_link_classes = c_link_classes|merge([class_list]) %}
         {% endif %}
         <a href="{{ item.url }}" class="{{ c_link_classes|join(' ') }}"
-            {%- if item.url.getOption('attributes').title %} title="{{ item.url.getOption('attributes').title }}" {% endif -%}
-            {%- if item.url.getOption('attributes').target %} target="{{ item.url.getOption('attributes').target }}" {% endif -%}
-            {%- if item.url.getOption('attributes').rel %} rel="{{ item.url.getOption('attributes').rel }}" {% endif -%}
+            {%- if item.url and item.url.getOption('attributes') and item.url.getOption('attributes').title %} title="{{ item.url.getOption('attributes').title }}" {% endif -%}
+            {%- if item.url and item.url.getOption('attributes') and item.url.getOption('attributes').target %} target="{{ item.url.getOption('attributes').target }}" {% endif -%}
+            {%- if item.url and item.url.getOption('attributes') and item.url.getOption('attributes').rel %} rel="{{ item.url.getOption('attributes').rel }}" {% endif -%}
+            {%- if is_external %} target="_blank" rel="noopener"{% endif -%}
             tabindex="-1" data-drupal-link-system-path="{{ system_path }}" role='menuitem'
-            {%- if item.in_active_trail and item.url.toString() == path('<current>') %} aria-current="page"{% endif -%}>
+            {%- if item.in_active_trail and item.url and item.url.toString() == path('<current>') %} aria-current="page"{% endif -%}>
             <span class="menu__url-title-enabled">{{ item.title }}</span>
         </a>
         <button class="en-link dropdown-toggler {{ dropdown_toggler_class }}" {{ dorpdown_toggler_attributes }}>
@@ -153,7 +158,7 @@
         {% if class_list %}
           {% set button_classes = button_classes|merge([class_list]) %}
         {% endif %}
-        <button class="{{ button_classes|join(' ') }}" {{ dorpdown_toggler_attributes }} {%- if item.url.getOption('attributes').title %} title="{{ item.url.getOption('attributes').title }}" {% endif -%} data-link-type="{{ link_type }}">
+        <button class="{{ button_classes|join(' ') }}" {{ dorpdown_toggler_attributes }} {%- if item.url and item.url.getOption('attributes') and item.url.getOption('attributes').title %} title="{{ item.url.getOption('attributes').title }}" {% endif -%} data-link-type="{{ link_type }}">
             <span class="menu__url-title-disabled">{{ item.title }}</span>
             <span class="visually-hidden">{{ '@title sub-navigation'|t({'@title': item.title}) }}</span>
             <span class="toggler-icon dropdown-arrow">{{ macros.svg_icon('M6 9l6 6 6-6') }}</span>
@@ -170,7 +175,7 @@
           <span class="nav__menu-nolink nav__menu-nolink-{{ menu_name|clean_class }} {{ class_list }}"
                 role="menuitem"
                 tabindex="-1"
-                {%- if item.url.getOption('attributes').title %} title="{{ item.url.getOption("attributes").title }}" {% endif -%}>
+                {%- if item.url and item.url.getOption('attributes') and item.url.getOption('attributes').title %} title="{{ item.url.getOption('attributes').title }}" {% endif -%}>
               {{ link_title }}
           </span>
       {% elseif link_type == 'button' %}
@@ -179,27 +184,43 @@
                   role="menuitem"
                   tabindex="-1"
                   type="button"
-                  {%- if item.url.getOption('attributes').title %} title="{{ item.url.getOption("attributes").title }}" {% endif -%}>
+                  {%- if item.url and item.url.getOption('attributes') and item.url.getOption('attributes').title %} title="{{ item.url.getOption('attributes').title }}" {% endif -%}>
               {{ link_title }}
           </button>
       {% else %}
-          {# Standard link #}
+          {# All other links (internal and external) #}
           {% set link_classes = [
               'nav__menu-link nav__menu-link-' ~ menu_name|clean_class,
           ] %}
           {% if class_list %}
               {% set link_classes = link_classes|merge([class_list]) %}
           {% endif %}
-          {{ link(
-          link_title,
-          item.url,
-          item.attributes.removeClass(item_classes).addClass(link_classes),
-          item.attributes.setAttribute('role', 'menuitem').setAttribute('tabindex', '-1')
-          .setAttribute('data-drupal-link-system-path', system_path)
-          .setAttribute(item.in_active_trail and item.url.toString() == path('<current>') ? 'aria-current' : 'data-inactive',
-          item.in_active_trail and item.url.toString() == path('<current>') ? 'page' : 'true')
-          )
-          }}
+
+          {# For external links, add security and accessibility attributes #}
+          {% if is_external %}
+              <a href="{{ item.url }}" class="{{ link_classes|join(' ') }}"
+                 role="menuitem"
+                 tabindex="-1"
+                 target="_blank"
+                 rel="noopener"
+                 data-drupal-link-system-path="{{ system_path }}"
+                 {%- if item.url and item.url.getOption('attributes') and item.url.getOption('attributes').title %} title="{{ item.url.getOption('attributes').title }}" {% endif -%}>
+                  {{ link_title }}
+                  <span class="visually-hidden">{{ '(opens in new tab)'|t }}</span>
+              </a>
+          {% else %}
+              {# Use Drupal's link function for internal links #}
+              {{ link(
+              link_title,
+              item.url,
+              item.attributes.removeClass(item_classes).addClass(link_classes),
+              item.attributes.setAttribute('role', 'menuitem').setAttribute('tabindex', '-1')
+              .setAttribute('data-drupal-link-system-path', system_path)
+              .setAttribute(item.in_active_trail and item.url and item.url.toString() == path('<current>') ? 'aria-current' : 'data-inactive',
+              item.in_active_trail and item.url and item.url.toString() == path('<current>') ? 'page' : 'true')
+              )
+              }}
+          {% endif %}
       {% endif %}
     {% endif %}{# End for the if item.is_expanded #}
 

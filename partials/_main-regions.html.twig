@@ -56,7 +56,9 @@
       <!-- Start: Main Content -->
       <div id="sidebar-box-main" class="{{ content_outer_classes }}" role="main">
         <div class="{{ content_inner_classes }}" {{ attributes_content }}>
+          {% if enabled_skip_links.skip_main_content %}
           <a id="main-content" tabindex="-1"></a>
+          {% endif %}
           {{ main_middle }}
         </div>
       </div>

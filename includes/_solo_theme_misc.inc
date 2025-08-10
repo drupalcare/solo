@@ -120,10 +120,32 @@ function _load_font_awesome(array &$attachments): void {
  * Helper function.
  */
 function _load_full_opacity(array &$attachments): void {
+  // Fast path: if the feature is off, do nothing.
+  if (!theme_get_setting('site_opacity_onscroll_on')) {
+    return;
+  }
+
   /** @var \Drupal\Core\Routing\AdminContext $admin_context */
   $admin_context = \Drupal::service('router.admin_context');
-  if (theme_get_setting('site_opacity_onscroll_on') && !$admin_context->isAdminRoute()) {
-    $attachments['#attached']['library'][] = 'solo/solo-full-opacity';
+  if ($admin_context->isAdminRoute()) {
+    return;
+  }
+
+  // Attach library when on a non-admin route.
+  $attachments['#attached']['library'][] = 'solo/solo-full-opacity';
+
+  // Optional: Provide sane defaults only if not set already.
+  // This avoids clobbering prior attachments (e.g., from preprocess).
+  $settings =& $attachments['#attached']['drupalSettings']['solo']['fullOpacity'];
+  if (!isset($settings)) {
+    $settings = [
+      'animationHeightRatio' => 0.15,
+      'fadeInDuration' => '1s',
+      'fadeOutDuration' => '0.5s',
+      'throttleDelay' => 16,
+      'debounceDelay' => 250,
+      'useIntersectionObserver' => TRUE,
+    ];
   }
 }
 

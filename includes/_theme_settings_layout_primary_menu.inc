@@ -191,6 +191,10 @@ if (array_key_exists("primary_menu", $updated_regions["mix"])) {
     "#title" => t("Color Settings"),
     "#group" => "primary_menu_tabs",
     "#weight" => 0,
+    '#attributes' => [
+      'class' => ['solo-color-panel'],
+      'data-solo-panel' => 'colors',
+    ],
   ];
 
   foreach ($attributes as $attribute_key => $attribute_label) {

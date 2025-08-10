@@ -392,24 +392,23 @@ function _get_region_alignment() {
 /**
  * Helper function.
  */
-function _get_region_attributes() {
+function _get_region_attributes(): array {
   return [
-    '__r_bg' => 'Background',
-    '__r_tx' => 'Text',
-    '__r_h1' => 'H1, H2, H3 Text',
-    '__r_lk' => 'Text Link',
-    '__r_lk_h' => 'Text Link Hover',
-    '__r_br' => 'Border Color',
-    '__r_bg_fr' => 'Background Input Form',
-    '__r_tx_lk' => 'Text Menu Link',
-    '__r_tx_lk_h' => 'Text Menu Link Hover',
-    '__r_bg_lk' => 'Background Menu Link',
-    '__r_bg_lk_h' => 'Background Menu Link Hover',
-    '__r_tx_bt' => 'Text Button',
-    '__r_tx_bt_h' => 'Text Button Hover',
-    '__r_bg_bt' => 'Background Button',
-    '__r_bg_bt_h' => 'Background Button Hover',
-
+    '__r_bg'      => t('Region background'),
+    '__r_tx'      => t('Region text'),
+    '__r_h1'      => t('Headings (H1-H3)'),
+    '__r_lk'      => t('Link text'),
+    '__r_lk_h'    => t('Link text (hover)'),
+    '__r_br'      => t('borders'),
+    '__r_bg_fr'   => t('Form field background'),
+    '__r_tx_lk'   => t('Menu link text'),
+    '__r_tx_lk_h' => t('Menu link text (hover)'),
+    '__r_bg_lk'   => t('Menu link background'),
+    '__r_bg_lk_h' => t('Menu link background (hover)'),
+    '__r_tx_bt'   => t('Button text'),
+    '__r_tx_bt_h' => t('Button text (hover)'),
+    '__r_bg_bt'   => t('Button background'),
+    '__r_bg_bt_h' => t('Button background (hover)'),
   ];
 }
 

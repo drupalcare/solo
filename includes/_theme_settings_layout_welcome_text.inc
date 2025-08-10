@@ -60,6 +60,10 @@ if (array_key_exists("welcome_text", $updated_regions["mix"])) {
     "#title" => t("Color Settings"),
     "#group" => "welcome_tabs",
     "#weight" => -8,
+    '#attributes' => [
+      'class' => ['solo-color-panel'],
+      'data-solo-panel' => 'colors',
+    ],
   ];
 
   foreach ($attributes as $attribute_key => $attribute_label) {

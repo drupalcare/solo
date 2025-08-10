@@ -94,6 +94,10 @@ if (array_key_exists("page_title", $updated_regions["mix"])) {
     "#title" => t("Color Settings"),
     "#group" => "page_title_tabs",
     "#weight" => -6,
+    '#attributes' => [
+      'class' => ['solo-color-panel'],
+      'data-solo-panel' => 'colors',
+    ],
   ];
 
   foreach ($attributes as $attribute_key => $attribute_label) {

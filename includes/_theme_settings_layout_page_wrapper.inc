@@ -111,6 +111,10 @@ $form["solo_settings"]["settings_page_wrapper"]["color_settings_tab"] = [
   "#title" => t("Color Settings"),
   "#group" => "page_wrapper_tabs",
   "#weight" => -6,
+  '#attributes' => [
+    'class' => ['solo-color-panel'],
+    'data-solo-panel' => 'colors',
+  ],
 ];
 
 $region = "page_wrapper";

@@ -220,6 +220,10 @@ if (array_key_exists("popup_login_block", $updated_regions["mix"])) {
     "#title" => t("Color Settings"),
     "#group" => "popup_login_tabs",
     "#weight" => -4,
+    '#attributes' => [
+      'class' => ['solo-color-panel'],
+      'data-solo-panel' => 'colors',
+    ],
   ];
 
   foreach ($attributes as $attribute_key => $attribute_label) {

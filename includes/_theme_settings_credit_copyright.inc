@@ -75,6 +75,10 @@ $form["solo_settings"]["settings_{$region}"]["color_settings"] = [
   "#title" => t("Color Settings"),
   "#group" => "copyright_tabs",
   "#weight" => -8,
+    '#attributes' => [
+      'class' => ['solo-color-panel'],
+      'data-solo-panel' => 'colors',
+    ],
 ];
 
 foreach ($attributes as $attribute_key => $attribute_label) {

@@ -10,6 +10,7 @@
  * Author:       Alaa Haddad http://www.alaahaddad.com.
  */
 
+use Drupal\Core\Cache\Cache;
 use Drupal\Core\Config\Config;
 use Drupal\Component\Utility\UrlHelper;
 use Drupal\Core\Form\FormStateInterface;
@@ -195,6 +196,42 @@ function _solo_theme_settings_submit($form, FormStateInterface $form_state) {
       }
     }
   }
+  if (!$form_state->getValue('header_popup_login')) {
+    // Reset ALL popup login settings to defaults.
+    $settings_to_reset = [
+      'header_login_links' => 'Login',
+      'popup_login_use_inline_styles' => FALSE,
+      'popup_login_animation_duration' => 300,
+      'popup_login_close_on_escape' => TRUE,
+      'popup_login_close_on_outside_click' => TRUE,
+      'popup_login_focus_trap' => TRUE,
+      'popup_login_announce_to_screen_readers' => TRUE,
+      'popup_login_return_focus_on_close' => TRUE,
+      'popup_login_custom_triggers' => '',
+      'popup_login_z_index' => 10000,
+      'popup_login_overlay_opacity' => 50,
+    ];
+
+    // Reset each setting.
+    foreach ($settings_to_reset as $key => $default_value) {
+      $form_state->setValue($key, $default_value);
+    }
+
+    // Clear the stored theme settings.
+    foreach ($settings_to_reset as $key => $default_value) {
+      $config->clear($key);
+    }
+
+  }
   \Drupal::configFactory()->reset($theme . '.settings');
   $config->save();
+
+  // Minimal targeted refresh.
+  \Drupal::service('theme.registry')->reset();
+  \Drupal::service('library.discovery.collector')->clearCachedDefinitions();
+  // Optional:
+  \Drupal::service('twig')->invalidate();
+  // Redundant but explicit:
+  Cache::invalidateTags(['config:' . $theme . '.settings']);
+
 }

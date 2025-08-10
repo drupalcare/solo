@@ -14,19 +14,34 @@
  * The theme settings.
  */
 
-$form['solo_settings']['settings_libraries_fonts'] = [
-  '#type' => 'details',
-  '#title' => t("<strong class='purple'>Libraries & Fonts</strong> Settings - Solo Theme"),
-  '#collapsible' => TRUE,
-  '#collapsed' => FALSE,
+$form["solo_settings"]["settings_libraries_fonts"] = [
+  "#type" => "details",
+  "#title" => t("<strong class='purple'>Libraries & Fonts</strong> Settings - Solo Theme"),
+  "#collapsible" => TRUE,
+  "#collapsed" => TRUE,
 ];
 
-$form['solo_settings']['settings_libraries_fonts']['site_load_w3css_extended'] = [
-  '#type' => 'details',
-  '#title' => t("<strong>Extra Predefined CSS Classes</strong>"),
-  '#collapsible' => TRUE,
-  '#collapsed' => FALSE,
-  '#description'   => t("<table style='width: 100%; line-height:1.6;  color: LightSlateGray; font-size: 16px; font-family: Helvetica;'>
+// Create vertical tabs container.
+$form["solo_settings"]["settings_libraries_fonts"]["libraries_fonts_tabs"] = [
+  "#type" => "vertical_tabs",
+  "#default_tab" => "edit-w3css-library",
+];
+
+// W3.CSS Library Tab.
+$form["solo_settings"]["settings_libraries_fonts"]["w3css_library"] = [
+  "#type" => "details",
+  "#title" => t("W3.CSS Library"),
+  "#group" => "libraries_fonts_tabs",
+  "#weight" => -10,
+  "#id" => "edit-w3css-library",
+];
+
+$form["solo_settings"]["settings_libraries_fonts"]["w3css_library"]["site_load_w3css_extended"] = [
+  "#type" => "details",
+  "#title" => t("<strong>Extra Predefined CSS Classes</strong>"),
+  "#collapsible" => TRUE,
+  "#collapsed" => FALSE,
+  "#description"   => t("<table style='width: 100%; line-height:1.6;  color: LightSlateGray; font-size: 16px; font-family: Helvetica;'>
 <tr>
   <td> </td>
   <th><strong>To utilize the following classes, the w3.css library needs to be activated. Any of the CSS classes can be copied and pasted into the text field. It's possible to paste multiple classes, just ensure there is a space separating each one.</strong></th>
@@ -77,52 +92,84 @@ $form['solo_settings']['settings_libraries_fonts']['site_load_w3css_extended'] =
 </table>"),
 ];
 
-$form['solo_settings']['settings_libraries_fonts']['site_load_w3css_on'] = [
-  '#type' => 'checkbox',
-  '#title' => t('<strong>Tick this box to load the W3.CSS library locally</strong>.'),
-  '#default_value' => theme_get_setting('site_load_w3css_on'),
+$form["solo_settings"]["settings_libraries_fonts"]["w3css_library"]["site_load_w3css_on"] = [
+  "#type" => "checkbox",
+  "#title" => t("<strong>Tick this box to load the W3.CSS library locally</strong>."),
+  "#default_value" => theme_get_setting("site_load_w3css_on"),
 ];
 
-$form['solo_settings']['settings_libraries_fonts']['site_font_google_local_on'] = [
-  '#type' => 'checkbox',
-  '#title' => t("Tick this box to load Google fonts locally. (<span class='status'>Global and Heading</span> Fonts only)"),
-  '#description'   => t("<p>Any font you choose for the site, heading or special will have a CSS class that you can apply to any html tag. <a target='_blank' href='https://www.drupal.org/node/2866181#change-font'>click here to view the documentaion on drupal.org</a></p>"),
-  '#default_value' => theme_get_setting('site_font_google_local_on'),
+// Font Libraries Tab.
+$form["solo_settings"]["settings_libraries_fonts"]["font_libraries"] = [
+  "#type" => "details",
+  "#title" => t("Font Libraries"),
+  "#group" => "libraries_fonts_tabs",
+  "#weight" => -8,
 ];
 
-$form['solo_settings']['settings_libraries_fonts']['site_font_awesome_on'] = [
-  '#type' => 'select',
-  '#title' => t('Select Font Awesome Library'),
-  '#default_value' => theme_get_setting('site_font_awesome_on'),
-  '#options' => [
-    0 => t('None'),
-    1 => t('Load Font Awesome 4.7 locally.'),
-    2 => t('Load Font Awesome 4.7 from the CDN.'),
-    3 => t('Load Font Awesome 5.15.4 from the CDN.'),
-    4 => t('Load Font Awesome 6.5.1 from the CDN.'),
+$form["solo_settings"]["settings_libraries_fonts"]["font_libraries"]["site_font_google_local_on"] = [
+  "#type" => "checkbox",
+  "#title" => t("Tick this box to load Google fonts locally. (<span class='status'>Global and Heading</span> Fonts only)"),
+  "#description"   => t("<p>Any font you choose for the site, heading or special will have a CSS class that you can apply to any html tag. <a target='_blank' href='https://www.drupal.org/node/2866181#change-font'>click here to view the documentaion on drupal.org</a></p>"),
+  "#default_value" => theme_get_setting("site_font_google_local_on"),
+];
+
+$form["solo_settings"]["settings_libraries_fonts"]["font_libraries"]["site_font_awesome_on"] = [
+  "#type" => "select",
+  "#title" => t("Select Font Awesome Library"),
+  "#default_value" => theme_get_setting("site_font_awesome_on"),
+  "#options" => [
+    0 => t("None"),
+    1 => t("Load Font Awesome 4.7 locally."),
+    2 => t("Load Font Awesome 4.7 from the CDN."),
+    3 => t("Load Font Awesome 5.15.4 from the CDN."),
+    4 => t("Load Font Awesome 6.5.1 from the CDN."),
   ],
 ];
 
-$form['solo_settings']['settings_libraries_fonts']['site_font_google_global_on'] = [
-  '#type' => 'select',
-  '#title' => t("<span class='status'>Global Site Fonts:</span> Choose the site font - The font will be applied to the whole website.<a target='_blank' href='https://unitedstarsofamerica.com/node/192'> Click here to view a live demo for all available fonts.</a>"),
-  '#description'   => t("There are 50 Global Site Fonts, each with its own CSS class that can be applied to any HTML tag. For example, if you select Open Sans, the CSS class will be 'open-sans'."),
-  '#options' => _get_global_font_options(),
-  '#default_value' => theme_get_setting('site_font_google_global_on'),
+// Global Site Fonts Tab.
+$form["solo_settings"]["settings_libraries_fonts"]["global_fonts"] = [
+  "#type" => "details",
+  "#title" => t("Global Site Fonts"),
+  "#group" => "libraries_fonts_tabs",
+  "#weight" => -6,
 ];
 
-$form['solo_settings']['settings_libraries_fonts']['site_font_google_heading_on'] = [
-  '#type' => 'select',
-  '#title' => t("<span class='status'>Heading Fonts:</span> Choose the heading font - The font will be applied to h1, h2 and h3 only.<a target='_blank' href='https://unitedstarsofamerica.com/node/193'> Click here to view a live demo for all available fonts.</a>"),
-  '#description'   => t("There are 26 Heading Fonts, each with its own CSS class that can be applied to any h1, h2 or h3 tag. For example, if you select Open Sans, the CSS class will be 'open-sans'."),
-  '#options' => _get_heading_font_options(),
-  '#default_value' => theme_get_setting('site_font_google_heading_on'),
+$form["solo_settings"]["settings_libraries_fonts"]["global_fonts"]["site_font_google_global_on"] = [
+  "#type" => "select",
+  "#title" => t("<span class='status'>Global Site Fonts:</span> Choose the site font - The font will be applied to the whole website.<a target='_blank' href='https://unitedstarsofamerica.com/node/192'> Click here to view a live demo for all available fonts.</a>"),
+  "#description"   => t("There are 50 Global Site Fonts, each with its own CSS class that can be applied to any HTML tag. For example, if you select Open Sans, the CSS class will be 'open-sans'."),
+  "#options" => _get_global_font_options(),
+  "#default_value" => theme_get_setting("site_font_google_global_on"),
 ];
 
-$form['solo_settings']['settings_libraries_fonts']['site_font_google_special_on'] = [
-  '#type' => 'select',
-  '#title' => t("<span class='status'>Special Fonts:</span> They are not applied to any html tags by default and they are only imported. Each font library has a CSS class that you can apply to any html tag. <a target='_blank' href='https://unitedstarsofamerica.com/node/191'>Click here to view a live demo for all available fonts.</a>"),
-  '#description'   => t("There are 25 Special fonts, each with its own CSS class that can be applied to any HTML tag. For example, if you select Open Sans, the CSS class will be 'open-sans'."),
-  '#options' => _get_special_font_options(),
-  '#default_value' => theme_get_setting('site_font_google_special_on'),
+// Heading Fonts Tab.
+$form["solo_settings"]["settings_libraries_fonts"]["heading_fonts"] = [
+  "#type" => "details",
+  "#title" => t("Heading Fonts"),
+  "#group" => "libraries_fonts_tabs",
+  "#weight" => -4,
+];
+
+$form["solo_settings"]["settings_libraries_fonts"]["heading_fonts"]["site_font_google_heading_on"] = [
+  "#type" => "select",
+  "#title" => t("<span class='status'>Heading Fonts:</span> Choose the heading font - The font will be applied to h1, h2 and h3 only.<a target='_blank' href='https://unitedstarsofamerica.com/node/193'> Click here to view a live demo for all available fonts.</a>"),
+  "#description"   => t("There are 26 Heading Fonts, each with its own CSS class that can be applied to any h1, h2 or h3 tag. For example, if you select Open Sans, the CSS class will be 'open-sans'."),
+  "#options" => _get_heading_font_options(),
+  "#default_value" => theme_get_setting("site_font_google_heading_on"),
+];
+
+// Special Fonts Tab.
+$form["solo_settings"]["settings_libraries_fonts"]["special_fonts"] = [
+  "#type" => "details",
+  "#title" => t("Special Fonts"),
+  "#group" => "libraries_fonts_tabs",
+  "#weight" => -2,
+];
+
+$form["solo_settings"]["settings_libraries_fonts"]["special_fonts"]["site_font_google_special_on"] = [
+  "#type" => "select",
+  "#title" => t("<span class='status'>Special Fonts:</span> They are not applied to any html tags by default and they are only imported. Each font library has a CSS class that you can apply to any html tag. <a target='_blank' href='https://unitedstarsofamerica.com/node/191'>Click here to view a live demo for all available fonts.</a>"),
+  "#description"   => t("There are 25 Special fonts, each with its own CSS class that can be applied to any HTML tag. For example, if you select Open Sans, the CSS class will be 'open-sans'."),
+  "#options" => _get_special_font_options(),
+  "#default_value" => theme_get_setting("site_font_google_special_on"),
 ];

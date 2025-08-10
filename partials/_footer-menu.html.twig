@@ -46,7 +46,9 @@
         <!-- Start: Bottom Menu -->
         {% if page.footer_menu %}
           <div class="solo-clear footer-menu-second fade-inner">
-            <a id="footer-content" tabindex="-1"></a>
+            {% if enabled_skip_links.skip_footer_content %}
+              <a id="footer-content" tabindex="-1" class="skip-anchor-target"></a>
+            {% endif %}
             {{ page.footer_menu }}
           </div>
           <!-- End: Bottom Menu -->
@@ -55,5 +57,3 @@
     </div>
     <!-- End: Footer Menu -->
   {% endif %}
-
-

@@ -44,8 +44,6 @@ solo-global:
       css/components/solo-embedded-media.css: { weight: 0 }
       css/components/solo-default-node.css: { weight: 0 }
       css/components/solo-default-views.css: { weight: 0 }
-      css/components/solo-fixed-search-block.css: { weight: 0 }
-      css/components/solo-popup-login-block.css: { weight: 0 }
       css/components/solo-forms.css: { weight: 0 }
       css/components/solo-footer-menu.css: { weight: 0 }
       css/components/solo-header.css: { weight: 0 }
@@ -77,13 +75,14 @@ solo-global:
     js/components/solo-utils.js: { }
     js/components/solo-scripts.js: { }
     js/components/solo-messages.js: { }
-    js/components/solo-fixed-search-block.js: { }
-    js/components/solo-popup-login-block.js: { }
   dependencies:
     - core/drupal
-    - core/drupal.ajax
-    - core/drupalSettings
     - core/once
+    - core/drupalSettings
+    - core/drupal.ajax
+    - core/drupal.message
+    - core/drupal.debounce
+    - core/drupal.announce
 
 solo-menu:
   css:
@@ -92,14 +91,14 @@ solo-menu:
     theme:
       css/theme/solo-menu-side.css: { weight: 300 }
   js:
-    js/menu/solo-menu-scripts.js: { }
+    js/menu/solo-menu-state-manager.js: {}
     js/menu/solo-menu.js: { }
-    js/menu/solo-menu-repositions-submenus.js: { }
     js/menu/solo-menu-mobile.js: { }
     js/menu/solo-menu-side.js: { }
+    js/menu/solo-menu-repositions-submenus.js: { }
+    js/menu/solo-menu-scripts.js: { }
   dependencies:
     - core/drupal
-    - core/drupal.ajax
     - core/drupalSettings
     - core/once
     - solo/solo-global
@@ -109,12 +108,47 @@ solo-menu-keyboard:
     component:
       css/components/solo-menu-keyboard.css: { weight: 0 }
   js:
-    js/menu/solo-menu-keyboard.js: { }
+    # js/keyboard/solo-keyboard-debug.js: {}
+    js/keyboard/solo-keyboard-template-parser.js: {}
+    js/keyboard/solo-keyboard-utils.js: {}
+    js/keyboard/solo-keyboard-aria.js: {}
+    js/keyboard/solo-keyboard-focus.js: {}
+    js/keyboard/solo-keyboard-navigation.js: {}
+    js/keyboard/solo-keyboard-megamenu.js: {}
+    js/keyboard/solo-keyboard-core.js: {}
   dependencies:
     - core/drupal
-    - core/drupal.ajax
     - core/drupalSettings
     - core/once
+    - core/drupal.announce
+    - solo/solo-global
+    - solo/solo-menu
+
+solo-fixed-search-block:
+  css:
+    component:
+      css/components/solo-fixed-search-block.css: { weight: 0 }
+  js:
+    js/components/solo-fixed-search-block.js: { }
+  dependencies:
+    - core/drupal
+    - core/drupalSettings
+    - core/once
+    - core/drupal.announce
+    - solo/solo-global
+
+solo-popup-login-block:
+  css:
+    component:
+      css/components/solo-popup-login-block.css: { weight: 0 }
+  js:
+    js/components/solo-popup-login-block.js: { }
+  dependencies:
+    - core/drupal
+    - core/drupalSettings
+    - core/once
+    - core/drupal.debounce
+    - core/drupal.announce
     - solo/solo-global
 
 # Custom Cookies
@@ -123,8 +157,8 @@ solo-search-settings:
     js/components/solo-search-settings.js: { }
   dependencies:
     - core/drupal
-    - core/drupalSettings
     - core/once
+    - core/drupalSettings
     - solo/solo-global
 
 # Color Picker.
@@ -139,7 +173,7 @@ solo-form-theme-settings:
     - core/drupal
     - core/drupalSettings
     - core/once
-
+    - core/drupal.form
 
 # Full Opacity on Scroll.
 solo-full-opacity:

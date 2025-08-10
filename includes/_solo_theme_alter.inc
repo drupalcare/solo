@@ -197,15 +197,21 @@ function solo_form_search_block_form_alter(&$form, FormStateInterface $form_stat
   // Add a class to the submit button.
   $form['actions']['submit']['#attributes']['class'][] = 'search-button-block';
 
-  // Fetch the content types from theme settings.
-  $content_types = array_filter(theme_get_setting('search_result_content_types') ?? []);
+  // DEBUG: Check what theme settings are returning.
+  $raw_content_types = theme_get_setting('search_result_content_types');
+  $content_types = array_filter($raw_content_types ?? []);
+
+  // DEBUG: Log what we're getting (temporary)
+  \Drupal::logger('solo')->notice('DEBUG - Raw content types: @raw', ['@raw' => print_r($raw_content_types, TRUE)]);
+  \Drupal::logger('solo')->notice('DEBUG - Filtered content types: @filtered', ['@filtered' => print_r($content_types, TRUE)]);
 
   // Attach the content types to drupalSettings.
   $form['#attached']['drupalSettings']['solo'] = [
     'searchContentTypes' => $content_types,
+  // Simple static path.
+    'searchBasePath' => '/search/node',
   ];
 
   // Attach the custom JS library.
   $form['#attached']['library'][] = 'solo/solo-search-settings';
-
 }

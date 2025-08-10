@@ -11,18 +11,33 @@
  */
 
 // Page wrapper settings.
-$form['solo_settings']['settings_page_wrapper'] = [
-  '#type' => 'details',
-  '#title' => t("<strong class='status'>Page Wrapper</strong> Settings - Solo Theme"),
-  '#collapsible' => TRUE,
-  '#collapsed' => FALSE,
-  '#description'   => t("The Page Wrapper serves as the encompassing div for all regions within the site. Any settings applied to it will have a global effect. It's important to note that the CSS should probably be provided by a trusted user, such as an admin or developer."),
+$form["solo_settings"]["settings_page_wrapper"] = [
+  "#type" => "details",
+  "#title" => t("<strong class='status'>Page Wrapper</strong> Settings - Solo Theme"),
+  "#collapsible" => TRUE,
+  "#collapsed" => TRUE,
+  "#description"   => t("The Page Wrapper serves as the encompassing div for all regions within the site. Any settings applied to it will have a global effect. It's important to note that the CSS should probably be provided by a trusted user, such as an admin or developer."),
 ];
 
-$form['solo_settings']['settings_page_wrapper']['classes_page_wrapper'] = [
-  '#type' => 'textfield',
-  '#title' => t('Custom CSS Classes'),
-  '#description' => t('
+// Create vertical tabs container.
+$form["solo_settings"]["settings_page_wrapper"]["page_wrapper_tabs"] = [
+  "#type" => "vertical_tabs",
+  "#default_tab" => "edit-css-classes-styling",
+];
+
+// CSS Classes & Styling Tab.
+$form["solo_settings"]["settings_page_wrapper"]["css_classes_styling"] = [
+  "#type" => "details",
+  "#title" => t("CSS Classes & Styling"),
+  "#group" => "page_wrapper_tabs",
+  "#weight" => -10,
+  "#id" => "edit-css-classes-styling",
+];
+
+$form["solo_settings"]["settings_page_wrapper"]["css_classes_styling"]["classes_page_wrapper"] = [
+  "#type" => "textfield",
+  "#title" => t("Custom CSS Classes"),
+  "#description" => t("
     <strong>Use predefined utility classes to control layout, spacing, and behavior.</strong><br><br>
 
     <u>Type 1: Element-only classes</u>
@@ -66,25 +81,41 @@ $form['solo_settings']['settings_page_wrapper']['classes_page_wrapper'] = [
     </ul>
     <br>
     <strong>Usage Tips:</strong>
-    - Use these classes in the "CSS Classes" field of regions, blocks, views, layout sections, or paragraphs.<br>
+    - Use these classes in the 'CSS Classes' field of regions, blocks, views, layout sections, or paragraphs.<br>
     - Most classes apply <code>!important</code> to ensure consistency across themes and modules.<br>
     - For text alignment, use <code>solo-text-*</code> for children, and <code>solo-align-*</code> for block alignment.<br>
 
     <strong>Note:</strong> Avoid overusing utility classes in deeply nested structures to maintain maintainability and design clarity.
-  '),
-  '#default_value' => theme_get_setting('classes_page_wrapper'),
+  "),
+  "#default_value" => theme_get_setting("classes_page_wrapper"),
 ];
 
-$form['solo_settings']['settings_page_wrapper']['opacity_page_wrapper'] = [
-  '#type' => 'checkbox',
-  '#title' => t('Enable Smooth Page Load Animation'),
-  '#description' => t('Activates a smooth transition effect for the entire page when it is loaded, enhancing the user experience by gradually increasing the page’s visibility from transparent to fully opaque. Ideal for creating a more engaging and visually appealing website entrance.'),
-
-  '#default_value' => theme_get_setting('opacity_page_wrapper'),
+// Animation Settings Tab.
+$form["solo_settings"]["settings_page_wrapper"]["animation_settings"] = [
+  "#type" => "details",
+  "#title" => t("Animation Settings"),
+  "#group" => "page_wrapper_tabs",
+  "#weight" => -8,
 ];
+
+$form["solo_settings"]["settings_page_wrapper"]["animation_settings"]["opacity_page_wrapper"] = [
+  "#type" => "checkbox",
+  "#title" => t("Enable Smooth Page Load Animation"),
+  "#description" => t("Activates a smooth transition effect for the entire page when it is loaded, enhancing the user experience by gradually increasing the page's visibility from transparent to fully opaque. Ideal for creating a more engaging and visually appealing website entrance."),
+  "#default_value" => theme_get_setting("opacity_page_wrapper"),
+];
+
+// Color Settings Tab.
+$form["solo_settings"]["settings_page_wrapper"]["color_settings_tab"] = [
+  "#type" => "details",
+  "#title" => t("Color Settings"),
+  "#group" => "page_wrapper_tabs",
+  "#weight" => -6,
+];
+
+$region = "page_wrapper";
+$label = "Page Wrapper";
 
 foreach ($attributes as $attribute_key => $attribute_label) {
-  $region = 'page_wrapper';
-  $label = 'Page Wrapper';
-  $form['solo_settings']["settings_{$region}"]["settings_{$region}_{$attribute_key}"] = _generate_form_element($region, $label, $attribute_key, $attribute_label);
+  $form["solo_settings"]["settings_page_wrapper"]["color_settings_tab"]["settings_{$region}_{$attribute_key}"] = _generate_form_element($region, $label, $attribute_key, $attribute_label);
 }

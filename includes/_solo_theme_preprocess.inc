@@ -292,6 +292,39 @@ function solo_preprocess_html(&$variables): void {
 
   $request = \Drupal::request();
   $request->attributes->set('solo_body_classes', $variables['attributes']['class'] ?? []);
+
+  $speed_setting = theme_get_setting('site_toggle_speed');
+
+  // Default values for 'normal'.
+  $speed_values = [
+    'slideUpSpeed' => 350,
+    'slideDownSpeed' => 500,
+    'megaMenuSpeed' => 800,
+  ];
+
+  switch ($speed_setting) {
+    case 'fast':
+      $speed_values = [
+        'slideUpSpeed' => 150,
+        'slideDownSpeed' => 250,
+        'megaMenuSpeed' => 500,
+      ];
+      break;
+
+    case 'slow':
+      $speed_values = [
+        'slideUpSpeed' => 500,
+        'slideDownSpeed' => 700,
+        'megaMenuSpeed' => 1400,
+      ];
+      break;
+  }
+
+  $variables['#attached']['drupalSettings']['solo'] = array_merge(
+  $variables['#attached']['drupalSettings']['solo'] ?? [],
+  $speed_values
+  );
+
 }
 
 /**
@@ -489,6 +522,8 @@ function _get_theme_variables() {
       'primary_menu_justify_content',
       'primary_sidebar_menu_border',
       'primary_sidebar_menu_branding',
+      'primary_menu_keyboard',
+      'primary_sidebar_menu_keyboard',
       'site_regions_top_border',
       'site_regions_main_border',
       'site_regions_bottom_border',
@@ -600,7 +635,7 @@ function solo_preprocess_page(&$variables) {
     $variables['#attached']['library'][] = 'solo/solo-menu-breakpoints-' . $m_point;
   }
 
-  if (theme_get_setting('primary_menu_keyboard')) {
+  if (theme_get_setting('primary_menu_keyboard') || theme_get_setting('primary_sidebar_menu_keyboard')) {
     $variables['#attached']['library'][] = 'solo/solo-menu-keyboard';
   }
 
@@ -639,6 +674,8 @@ function solo_preprocess_page(&$variables) {
     $variables['site_name'] = \Drupal::config('system.site')->get('name');
     $variables['logo_alt'] = theme_get_setting('header_logo_image_alt') ?: 'Home';
   }
+
+  $variables['enabled_skip_links'] = _get_enabled_skip_links();
 
   // Top regions variables.
   $regions = [
@@ -775,6 +812,23 @@ function solo_preprocess_page(&$variables) {
 
   // Pass the width class to the Twig template.
   $variables['site_width_class'] = $final_widths;
+
+  if (theme_get_setting('header_popup_login')) {
+    $variables['#attached']['drupalSettings']['solo']['popupLogin'] = [
+    // NEW.
+      'enabled' => (bool) theme_get_setting('header_popup_login'),
+      'useInlineStyles' => (bool) theme_get_setting('popup_login_use_inline_styles'),
+      'animationDuration' => (int) (theme_get_setting('popup_login_animation_duration') ?: 300),
+      'closeOnEscape' => (bool) theme_get_setting('popup_login_close_on_escape'),
+      'closeOnOutsideClick' => (bool) theme_get_setting('popup_login_close_on_outside_click'),
+      'focusTrap' => (bool) theme_get_setting('popup_login_focus_trap'),
+      'announceToScreenReaders' => (bool) theme_get_setting('popup_login_announce_to_screen_readers'),
+      'returnFocusOnClose' => (bool) theme_get_setting('popup_login_return_focus_on_close'),
+      'customTriggers' => (string) (theme_get_setting('popup_login_custom_triggers') ?: ''),
+      'zIndex' => (int) (theme_get_setting('popup_login_zIndex') ?: 10000),
+      'overlayOpacity' => (int) (theme_get_setting('popup_login_overlay_opacity') ?: 50),
+    ];
+  }
 
 }
 
@@ -1189,6 +1243,10 @@ function solo_preprocess_menu__primary_menu(&$variables): void {
     $variables['logo_alt'] = theme_get_setting('header_logo_image_alt') ?: 'Home';
   }
 
+  if (theme_get_setting('primary_menu_keyboard')) {
+    $variables['primary_menu_keyboard'] = 'solo-keyboard-enabled';
+  }
+
 }
 
 /**
@@ -1201,6 +1259,10 @@ function solo_preprocess_menu__primary_sidebar_menu(&$variables): void {
   }
   else {
     $variables['click_hover_sidebar'] = 'navigation-sidebar-click';
+  }
+
+  if (theme_get_setting('primary_sidebar_menu_keyboard')) {
+    $variables['primary_sidebar_menu_keyboard'] = 'solo-keyboard-enabled';
   }
 
 }

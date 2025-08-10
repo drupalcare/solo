@@ -940,11 +940,19 @@ function solo_utilities__check_solo_theme_hierarchy_active() {
  */
 function solo_settings_search_submit(array &$form, FormStateInterface $form_state) {
   $filters = $form_state->getValue('disable_search_filters');
-
   // If "Disable Types" is unchecked, set content types to an empty array.
   if (empty($filters['disable_types'])) {
     $form_state->setValue('search_result_content_types', []);
   }
+
+  // CRITICAL: Manually save the values we care about to config.
+  $theme = $form_state->getBuildInfo()['args'][0];
+  $config = \Drupal::configFactory()->getEditable("$theme.settings");
+
+  // Save our specific settings.
+  $config->set('disable_search_filters', $form_state->getValue('disable_search_filters'));
+  $config->set('search_result_content_types', $form_state->getValue('search_result_content_types'));
+  $config->save();
 }
 
 /**

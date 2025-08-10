@@ -290,8 +290,15 @@
     inset-block-start: 0;
   }
 
-  .solo-inner .navigation-responsive-hover .navigation__responsive:not(.navigation__megamenu) li:hover>ul.sub__menu {
+  .solo-inner .navigation-responsive-hover .dropdown-toggler {
+    pointer-events: none;
+    cursor: default;
+  }
+
+  .solo-inner .navigation-responsive-hover .navigation__responsive:not(.navigation__megamenu) li:hover>ul.sub__menu,
+  .solo-inner .navigation-responsive-hover .navigation__responsive:not(.navigation__megamenu) li:focus-within>ul.sub__menu {
     display: flex !important;
+    visibility: visible !important;
   }
 
   .page-wrapper .navigation-responsive-hover .navigation__responsive li.has-sub__menu>a:hover,

@@ -6,7 +6,7 @@
       <div id="sidebar-button-close" class="sidebar-button-close{{ header_change_icons ? ' hs-icons-left' }}{{ primary_sidebar_menu_branding ? ' activate-branding' }}">
         {# <i class="fa fa-close"></i> #}
           <button class="btn-animate solo-button-menu hamburger-icon hamburger-icon-close" data-drupal-selector="sidebar-hamburger-icon" aria-label="{{ 'Close Primary Sidebar Menu'|t }}" aria-controls="primary-sidebar-menu" aria-expanded="false">
-              <span>{{ svg_bars|raw }}</span>
+              <span aria-hidden="true">{{ svg_bars|raw }}</span>
               <span class="visually-hidden">{{ 'Close Primary Sidebar Menu'|t }}</span>
           </button>
           {% if primary_sidebar_menu_branding %}

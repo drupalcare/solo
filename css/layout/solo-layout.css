@@ -95,3 +95,6 @@
   height: 100%;
   flex-grow: 1;
 }
+.popup-login-block {
+  display: none;
+}

@@ -83,13 +83,14 @@
   z-index: 5000 !important;
 }
 
-.solo-inner .navigation__megamenu > li.nav__menu-item>span,
-.solo-inner .navigation__menubar:not(.navigation__megamenu) li.nav__menu-item>a,
-.solo-inner .navigation__menubar:not(.navigation__megamenu) li.nav__menu-item>span,
-.solo-inner .navigation__menubar:not(.navigation__megamenu) li.nav__menu-item>button {
+/* First level padding is bigger */
+.solo-inner ul.navigation__menubar>li.nav__menu-item>a,
+.solo-inner ul.navigation__menubar>li.nav__menu-item>span,
+.solo-inner ul.navigation__menubar>li.nav__menu-item>button {
   padding: var(--solo-px10) var(--solo-px12);
 }
 
+/* 2,3,4 level padding is smaller */
 .solo-inner .navigation__menubar:not(.navigation__megamenu) li li.nav__menu-item>a,
 .solo-inner .navigation__menubar:not(.navigation__megamenu) li li.nav__menu-item>span,
 .solo-inner .navigation__menubar:not(.navigation__megamenu) li li.nav__menu-item>button {

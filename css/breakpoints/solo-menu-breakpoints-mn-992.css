@@ -429,6 +429,7 @@
     position: relative;
   }
 
+  /* First level padding is bigger */
   .solo-inner .navigation__megamenu>li>ul li,
   .solo-inner .navigation__megamenu>li>ul ul {
     display: flex !important;
@@ -445,12 +446,8 @@
     --r-bg-lk-h: transparent;
   }
 
-  .solo-inner .navigation__megamenu>li.nav__menu-item>a,
-  .solo-inner .navigation__megamenu>li.nav__menu-item>button {
-    padding: var(--solo-px12);
-  }
-
   .solo-inner .navigation__megamenu>li>ul.sub__menu-header>li>a,
+  .solo-inner .navigation__megamenu>li>ul.sub__menu-header>li>span,
   .solo-inner .navigation__megamenu>li>ul.sub__menu-header>li>button {
     font-weight: bold;
     font-size: 110%;
@@ -493,8 +490,10 @@
 
   .page-wrapper .solo-inner .navigation__megamenu>li li:hover,
   .page-wrapper .solo-inner .navigation__megamenu>li li a:hover,
+  .page-wrapper .solo-inner .navigation__megamenu>li li span:hover,
   .page-wrapper .solo-inner .navigation__megamenu>li li button:hover,
   .page-wrapper .navigation-responsive-hover .navigation__megamenu li li.has-sub__menu:hover>a,
+  .page-wrapper .navigation-responsive-hover .navigation__megamenu li li.has-sub__menu:hover>span,
   .page-wrapper .navigation-responsive-hover .navigation__megamenu li li.has-sub__menu:hover>button {
     background-color: unset !important;
   }
@@ -515,6 +514,7 @@
 
   /* For the Mega menu */
   .solo-inner .navigation__megamenu>li.link-only>a,
+  .solo-inner .navigation__megamenu>li.no-link>span,
   .solo-inner .navigation__megamenu>li.button-only>button {
     flex-basis: 100%;
     flex-grow: 1;

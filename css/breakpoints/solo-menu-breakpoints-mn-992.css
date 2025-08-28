@@ -19,16 +19,19 @@
   }
 
   .solo-inner .navigation__responsive>li.nav__menu-item>ul.sub__menu>li.nav__menu-item>a:first-child,
+  .solo-inner .navigation__responsive>li.nav__menu-item>ul.sub__menu>li.nav__menu-item>span:first-child,
   .solo-inner .navigation__responsive>li.nav__menu-item>ul.sub__menu>li.nav__menu-item>button:first-child {
     padding-inline-start: 24px;
   }
 
   .solo-inner .navigation__responsive>li.nav__menu-item>ul.sub__menu>li.nav__menu-item>ul.sub__menu>li.nav__menu-item>a:first-child,
+  .solo-inner .navigation__responsive>li.nav__menu-item>ul.sub__menu>li.nav__menu-item>ul.sub__menu>li.nav__menu-item>span:first-child,
   .solo-inner .navigation__responsive>li.nav__menu-item>ul.sub__menu>li.nav__menu-item>ul.sub__menu>li.nav__menu-item>button:first-child {
     padding-inline-start: 32px;
   }
 
   .solo-inner .navigation__responsive>li.nav__menu-item>ul.sub__menu>li.nav__menu-item>ul.sub__menu>li.nav__menu-item>ul.sub__menu>li.nav__menu-item>a:first-child,
+  .solo-inner .navigation__responsive>li.nav__menu-item>ul.sub__menu>li.nav__menu-item>ul.sub__menu>li.nav__menu-item>ul.sub__menu>li.nav__menu-item>span:first-child,
   .solo-inner .navigation__responsive>li.nav__menu-item>ul.sub__menu>li.nav__menu-item>ul.sub__menu>li.nav__menu-item>ul.sub__menu>li.nav__menu-item>button:first-child {
     padding-inline-start: 40px;
   }
@@ -90,6 +93,7 @@
 
   .solo-inner .navigation__megamenu li.nav__menu-item,
   .solo-inner .navigation__megamenu li.nav__menu-item>a,
+  .solo-inner .navigation__megamenu li.nav__menu-item>span,
   .solo-inner .navigation__megamenu li.nav__menu-item>button {
     display: flex;
   }
@@ -134,6 +138,7 @@
 
   .solo-inner .navigation__megamenu li,
   .solo-inner .navigation__megamenu li.link-only>a,
+  .solo-inner .navigation__megamenu li.no-link>span,
   .solo-inner .navigation__megamenu li.button-only>button {
     flex-basis: 100%;
     flex-grow: 1;
@@ -341,6 +346,7 @@
   }
 
   .page-wrapper .navigation-primary-responsive.menu-align-justify .navigation__primary>li>a,
+  .page-wrapper .navigation-primary-responsive.menu-align-justify .navigation__primary>li>span,
   .page-wrapper .navigation-primary-responsive.menu-align-justify .navigation__primary>li>*>span,
   .page-wrapper .navigation-primary-responsive.menu-align-justify .navigation__primary>li>button,
   .page-wrapper .navigation-primary-responsive.menu-align-justify .navigation__primary>li>button.ds-link>span {

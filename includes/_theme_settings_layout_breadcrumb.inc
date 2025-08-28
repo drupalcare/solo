@@ -60,7 +60,7 @@ if (array_key_exists("breadcrumb", $updated_regions["mix"])) {
     "#title" => t("Color Settings"),
     "#group" => "breadcrumb_tabs",
     "#weight" => -8,
-      '#attributes' => [
+    '#attributes' => [
       'class' => ['solo-color-panel'],
       'data-solo-panel' => 'colors',
     ],

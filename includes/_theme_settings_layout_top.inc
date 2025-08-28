@@ -116,9 +116,9 @@ if ($updated_regions["top"]) {
         "#group" => "top_container_tabs",
         "#weight" => -4,
         '#attributes' => [
-        'class' => ['solo-color-panel'],
-        'data-solo-panel' => 'colors',
-      ],
+          'class' => ['solo-color-panel'],
+          'data-solo-panel' => 'colors',
+        ],
       ];
 
       foreach ($attributes as $attribute_key => $attribute_label) {

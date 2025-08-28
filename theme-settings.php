@@ -223,19 +223,19 @@ function _solo_theme_settings_submit($form, FormStateInterface $form_state) {
     }
 
   }
-  // Save configuration
+  // Save configuration.
   \Drupal::configFactory()->reset($theme . '.settings');
   $config->save();
 
-  // Clear theme registry
+  // Clear theme registry.
   \Drupal::service('theme.registry')->reset();
 
-  // Clear library discovery - use the correct service and method
+  // Clear library discovery - use the correct service and method.
   \Drupal::service('library.discovery')->clearCachedDefinitions();
 
-  // Clear Twig cache
+  // Clear Twig cache.
   \Drupal::service('twig')->invalidate();
 
-  // Invalidate config cache tags
+  // Invalidate config cache tags.
   Cache::invalidateTags(['config:' . $theme . '.settings']);
 }

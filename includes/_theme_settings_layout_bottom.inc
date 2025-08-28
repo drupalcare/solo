@@ -158,9 +158,9 @@ if ($updated_regions["bottom"]) {
         "#open" => FALSE,
         "#description" => t("Configure colors for background, text, links, buttons, and other visual elements in this region."),
         '#attributes' => [
-        'class' => ['solo-color-panel'],
-        'data-solo-panel' => 'colors',
-      ],
+          'class' => ['solo-color-panel'],
+          'data-solo-panel' => 'colors',
+        ],
       ];
 
       foreach ($attributes as $attribute_key => $attribute_label) {

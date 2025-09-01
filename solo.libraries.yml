@@ -31,6 +31,7 @@ solo-global:
       css/base/solo-variables-regions.css: { weight: -200 }
       css/base/solo-animation.css: { weight: -200 }
       css/base/solo-hamburger.css: { weight: -200 }
+      css/base/solo-quotation.css: { weight: -200 }
       css/base/solo-global.css: { weight: -200 }
     layout:
       css/layout/solo-layout.css: { weight: -100 }

@@ -1,0 +1,17 @@
+blockquote {
+  position: relative;
+  padding-inline-start: var(--solo-px24);
+  font-style: italic;
+}
+
+blockquote::before {
+  content: "";
+  display: block;
+  position: absolute;
+  inset-block-start: 0;
+  inset-inline-start: 0;
+  width: 4px;
+  height: 100%;
+  background-color: var(--r-br, var(--r-br-b));
+  border-radius: 2px;
+}

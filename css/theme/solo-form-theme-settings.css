@@ -156,6 +156,90 @@
   background-color: #edf1fe !important;
 }
 
+/* Additional CSS rules needed for the new semantic classes */
+.hero-banner {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 20px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+}
+
+.hero-banner h2 {
+  margin-top: 0;
+  color: white;
+}
+
+.features-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  margin-bottom: 30px;
+}
+
+.feature-card {
+  background: #f8f9ff;
+  padding: 15px;
+  border-radius: 6px;
+}
+
+.feature-card.beginners {
+  border-left: 4px solid #4CAF50;
+}
+
+.feature-card.beginners h3 {
+  color: #4CAF50;
+  margin-top: 0;
+}
+
+.feature-card.developers {
+  border-left: 4px solid #2196F3;
+}
+
+.feature-card.developers h3 {
+  color: #2196F3;
+  margin-top: 0;
+}
+
+.pro-tip {
+  background: #fff3cd;
+  border: 1px solid #ffeaa7;
+  padding: 15px;
+  border-radius: 6px;
+  margin-bottom: 20px;
+}
+
+.pro-tip h3 {
+  margin-top: 0;
+  color: #856404;
+}
+
+.pro-tip ul {
+  margin-bottom: 0;
+}
+
+.section-title {
+  border-bottom: 2px solid #667eea;
+  padding-bottom: 10px;
+}
+
+.ready-to-build {
+  background: #e8f5e8;
+  border: 1px solid #4CAF50;
+  padding: 20px;
+  border-radius: 8px;
+  margin-top: 30px;
+}
+
+.ready-to-build h3 {
+  color: #4CAF50;
+  margin-top: 0;
+}
+
+.ready-to-build p {
+  margin-bottom: 0;
+}
+
 form.system-theme-settings {
   display: grid;
   max-width: 1200px;

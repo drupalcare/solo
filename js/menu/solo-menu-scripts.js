@@ -87,14 +87,13 @@
     },
 
     detach: function (context, settings, trigger) {
-      // Clean up event listeners on detach
       if (trigger === 'unload') {
         const menus = once.find('solo-menu-init', context);
 
         menus.forEach(mainNavigation => {
-          if (mainNavigation._soloHandlers) {
+          if (mainNavigation._soloHandlers?.scroll) {
             window.removeEventListener('scroll', mainNavigation._soloHandlers.scroll);
-            delete mainNavigation._soloHandlers;
+            delete mainNavigation._soloHandlers.scroll;
           }
 
           // Clean up resize handler if not using state manager

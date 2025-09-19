@@ -305,18 +305,18 @@
     // Initial setup
     updateMenuStates(hamburgerIcons);
 
-    // Register resize handler with state manager if available
     if (Drupal.solo.menuState) {
       Drupal.solo.menuState.addResizeHandler(COMPONENT_NAME, createResizeHandler(hamburgerIcons), 250);
     } else {
-      // Fallback to traditional resize handler
       let resizeTimer;
-      window.addEventListener('resize', () => {
+      const onResize = () => {
         clearTimeout(resizeTimer);
         resizeTimer = setTimeout(() => {
           createResizeHandler(hamburgerIcons)();
         }, 250);
-      });
+      };
+      window.addEventListener('resize', onResize);
+      Drupal.solo._mobileResizeHandler = onResize;
     }
   }
 
@@ -352,6 +352,11 @@
             clickHandlers.delete(icon);
           }
         });
+
+        if (Drupal.solo._mobileResizeHandler) {
+          window.removeEventListener('resize', Drupal.solo._mobileResizeHandler);
+          delete Drupal.solo._mobileResizeHandler;
+        }
 
         if (Drupal.solo.menuState) {
           Drupal.solo.menuState.unregisterComponent(COMPONENT_NAME);

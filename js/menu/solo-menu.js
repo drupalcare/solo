@@ -207,7 +207,7 @@
       });
 
       nestedTogglers.forEach(nestedToggler => {
-        if (nestedToggler !== dropdownTogglerButton) {
+        if (nestedToggler !== rotated) {
           nestedToggler.style.removeProperty('transform');
         }
       });
@@ -279,12 +279,19 @@
 
     addEventListenerToButtons: (buttons) => {
       buttons.forEach(button => {
-        // Create handler if not exists
-        if (!eventHandlers.clickHandlers.has(button)) {
-          const handler = eventHandlers.addRemoveListener;
-          eventHandlers.clickHandlers.set(button, handler);
-          button.addEventListener('click', handler);
+        if (eventHandlers.clickHandlers.has(button)) {
+          return;  // Skip if already has handler
         }
+
+        // CREATE NEW FUNCTION for each button - THIS IS THE FIX
+        const handler = function(event) {
+          const button = event.currentTarget;
+          const subMenu = button.nextElementSibling;
+          eventHandlers.dropdownTogglerButtonIsClicked(button, subMenu);
+        };
+
+        eventHandlers.clickHandlers.set(button, handler);
+        button.addEventListener('click', handler);
       });
     },
 
@@ -294,7 +301,9 @@
         if (handler) {
           button.removeEventListener('click', handler);
           eventHandlers.clickHandlers.delete(button);
-          console.log('Removing listeners from', buttons.length, 'buttons');
+          if (drupalSettings?.solo?.debug) {
+            console.log('Removing listeners from', buttons.length, 'buttons');
+          }
         }
       });
     }

@@ -30,7 +30,6 @@ div.form-actions {
   width: 100%;
 }
 
-
 .form-radios .form-item,
 .form-checkboxes .form-item {
   margin-block-start: 0.4em !important;
@@ -179,3 +178,31 @@ form .form-item__description {
   border: 0 !important;
   margin: 0 !important;
 }
+
+/* Detect date ranges by looking for min/max fields */
+.solo-date-range-container {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+}
+
+form fieldset:has([name*="[min]"]):has([name*="[max]"]) .fieldset-wrapper {
+  display: flex;
+  align-items: flex-end;
+  padding: 0;
+}
+
+form fieldset:has([name*="[min]"]):has([name*="[max]"]) .fieldset-wrapper > div {
+  margin: 0;
+}
+
+fieldset:has([name*="[min]"]):has([name*="[max]"]) .form-item {
+  flex: 1;
+}
+
+/* Primary date range styling */
+.solo-date-range-container .form-type-date {
+  flex: 1;
+  min-width: 150px;
+}
+

@@ -64,7 +64,7 @@
 
 label,
 .field__label {
-  font-weight: bold;
+  font-weight: 500;
 }
 
 article.node.node--view-mode-full {

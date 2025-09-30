@@ -156,6 +156,7 @@ img {
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
+  border-radius: 0.25rem;
 }
 
 .form-submit,
@@ -211,6 +212,7 @@ input[type="password"] {
   display: block;
   width: 100%;
   border: var(--solo-px1) solid var(--r-br, var(--r-br-b));
+  border-radius: 0.25rem;
   line-height: inherit;
   background-color: var(--r-bg, transparent);
 }
@@ -229,6 +231,7 @@ select,
   background-position: var(--select-arrow, right var(--solo-px10)) center;
   font-family: inherit;
   font-size: inherit;
+  border-radius: 0.25rem;
   -webkit-appearance: none;
   appearance: none;
 }

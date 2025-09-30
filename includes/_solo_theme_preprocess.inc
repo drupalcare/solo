@@ -20,6 +20,7 @@ use Drupal\node\NodeInterface;
 use Drupal\taxonomy\TermInterface;
 use Drupal\user\UserInterface;
 use Drupal\webform\Entity\Webform;
+use Drupal\Core\Render\Element;
 
 /**
  * Helper function.
@@ -1293,43 +1294,122 @@ function solo_preprocess_menu__account(&$variables): void {
 }
 
 /**
- * Implements hook_preprocess_form_element().
+ * Implements hook_preprocess_HOOK() for form-element.html.twig.
  */
-function solo_preprocess_form_element(&$variables): void {
-  if (in_array($variables['element']['#type'] ?? FALSE, ['checkbox', 'radio'], TRUE)) {
+function solo_preprocess_form_element(array &$variables): void {
+  $element = $variables['element'];
+
+  // Initialize attributes class array if not set.
+  if (!isset($variables['attributes']['class'])) {
+    $variables['attributes']['class'] = [];
+  }
+
+  // Field state detection.
+  if (!empty($element['#value'])) {
+    $variables['attributes']['class'][] = 'has-value';
+  }
+
+  if (!empty($element['#required'])) {
+    $variables['attributes']['class'][] = 'is-required';
+  }
+
+  if (!empty($element['#errors'])) {
+    $variables['attributes']['class'][] = 'has-error';
+  }
+
+  // Add field machine name as class.
+  if (isset($element['#field_name'])) {
+    $variables['attributes']['class'][] = 'field--' . Html::getClass($element['#field_name']);
+  }
+
+  // Boolean field types.
+  $element_type = $element['#type'] ?? NULL;
+  if ($element_type !== NULL && in_array($element_type, ['checkbox', 'radio'], TRUE)) {
     $variables['attributes']['class'][] = 'form-type-boolean';
   }
 
+  // Add field type classes for better targeting.
+  if (isset($element['#type'])) {
+    $type_to_class = [
+      'date' => 'solo-field-date',
+      'datetime' => 'solo-field-datetime',
+      'datelist' => 'solo-field-datelist',
+      'daterange' => 'solo-field-daterange',
+      'datetime_timestamp' => 'solo-field-timestamp',
+      'textfield' => 'solo-field-text',
+      'select' => 'solo-field-select',
+      'checkbox' => 'solo-field-checkbox',
+      'checkboxes' => 'solo-field-checkboxes',
+      'radio' => 'solo-field-radio',
+      'radios' => 'solo-field-radios',
+      'textarea' => 'solo-field-textarea',
+      'file' => 'solo-field-file',
+      'managed_file' => 'solo-field-managed-file',
+      'entity_autocomplete' => 'solo-field-autocomplete',
+      'number' => 'solo-field-number',
+      'email' => 'solo-field-email',
+      'tel' => 'solo-field-tel',
+      'url' => 'solo-field-url',
+    ];
+
+    if (isset($type_to_class[$element['#type']])) {
+      $variables['attributes']['class'][] = $type_to_class[$element['#type']];
+    }
+  }
+
+  // Check if element name suggests it's date-related.
+  $element_name = $element['#name'] ?? '';
+  if ($element_name !== '') {
+    $date_indicators = ['date', 'created', 'changed', 'published', 'authored', 'start', 'end', 'from', 'to'];
+    foreach ($date_indicators as $indicator) {
+      if (stripos($element_name, $indicator) !== FALSE) {
+        $variables['attributes']['class'][] = 'solo-date-related';
+        break;
+      }
+    }
+  }
+
+  // Description handling.
   if (!empty($variables['description']['attributes'])) {
     $variables['description']['attributes']->addClass('form-item__description');
   }
 
-  if ($variables['disabled']) {
+  // Disabled state handling.
+  if (!empty($variables['disabled'])) {
     $variables['label']['#attributes']['class'][] = 'is-disabled';
   }
 }
 
 /**
- * Implements hook_preprocess_HOOK().
+ * Implements hook_preprocess_HOOK() for form-element-label.html.twig.
  */
-function solo_preprocess_form_element_label(&$variables): void {
+function solo_preprocess_form_element_label(array &$variables): void {
   $variables['attributes']['class'][] = 'form-item__label';
 }
 
 /**
- * Implements hook_preprocess_HOOK().
+ * Implements hook_preprocess_HOOK() for input.html.twig.
  */
-function solo_preprocess_input(&$variables): void {
+function solo_preprocess_input(array &$variables): void {
+  $element = $variables['element'] ?? [];
+
+  // Handle title display attribute.
   if (
-    !empty($variables['element']['#title_display']) &&
-    $variables['element']['#title_display'] === 'attribute' &&
-    !empty((string) $variables['element']['#title'])
+    !empty($element['#title_display']) &&
+    $element['#title_display'] === 'attribute' &&
+    !empty((string) $element['#title'])
   ) {
-    $variables['attributes']['title'] = (string) $variables['element']['#title'];
+    $variables['attributes']['title'] = (string) $element['#title'];
   }
 
-  $type_api = $variables['element']['#type'];
-  $type_html = $variables['attributes']['type'];
+  // Safely read input attributes from the element itself first.
+  $input_attributes = $element['#attributes'] ?? [];
+  $type_api = $element['#type'] ?? '';
+  $type_html = (string) ($input_attributes['type'] ?? ($variables['attributes']['type'] ?? ''));
+  $size_attr = $input_attributes['size'] ?? ($variables['attributes']['size'] ?? NULL);
+  $accept_attr = $input_attributes['accept'] ?? ($variables['attributes']['accept'] ?? NULL);
+
+  // Define text input types for classification.
   $text_types_html = [
     'text',
     'email',
@@ -1347,35 +1427,58 @@ function solo_preprocess_input(&$variables): void {
     'week',
   ];
 
-  if (in_array($type_html, $text_types_html, TRUE)) {
+  // Add classes for text-like inputs.
+  if ($type_html !== '' && in_array($type_html, $text_types_html, TRUE)) {
     $variables['attributes']['class'][] = 'form-element';
     $variables['attributes']['class'][] = Html::getClass('form-element--type-' . $type_html);
     $variables['attributes']['class'][] = Html::getClass('form-element--api-' . $type_api);
 
-    // This logic is functioning as expected, but there is nothing in the
-    // theme that renders the result.
-    // As a result it can't currently be covered by a functional test.
-    if (!empty($variables['element']['#autocomplete_route_name'])) {
+    // Handle autocomplete message.
+    if (!empty($element['#autocomplete_route_name'])) {
       $variables['autocomplete_message'] = t('Loading…');
     }
   }
 
+  // Add classes for boolean inputs.
   if (in_array($type_html, ['checkbox', 'radio'], TRUE)) {
     $variables['attributes']['class'][] = 'form-boolean';
     $variables['attributes']['class'][] = Html::getClass('form-boolean--type-' . $type_html);
   }
+
+  // Add size-based classes using ternary operator.
+  if ($size_attr !== NULL) {
+    $size = (int) $size_attr;
+    $variables['attributes']['class'][] = match (TRUE) {
+      $size <= 10 => 'input-small',
+      $size <= 30 => 'input-medium',
+      default => 'input-large',
+    };
+  }
+
+  // Detect file inputs with specific extensions.
+  if ($type_html === 'file' && $accept_attr !== NULL) {
+    $accept = (string) $accept_attr;
+    if (str_contains($accept, 'image')) {
+      $variables['attributes']['class'][] = 'input-image-upload';
+    }
+    // Additional file type detection.
+    if (str_contains($accept, 'pdf')) {
+      $variables['attributes']['class'][] = 'input-pdf-upload';
+    }
+    if (str_contains($accept, 'video')) {
+      $variables['attributes']['class'][] = 'input-video-upload';
+    }
+  }
 }
 
 /**
- * Implements hook_preprocess_HOOK() for menu-local-task templates.
+ * Implements hook_preprocess_HOOK() for menu-local-task.html.twig.
  */
-function solo_preprocess_menu_local_task(&$variables): void {
+function solo_preprocess_menu_local_task(array &$variables): void {
   $variables['link']['#options']['attributes']['class'][] = 'tabs__link';
   $variables['link']['#options']['attributes']['class'][] = 'js-tabs-link';
 
-  // Ensure is-active class is set when the tab is active. The generic active
-  // link handler applies stricter comparison rules than what is necessary for
-  // tabs.
+  // Ensure is-active class is set when the tab is active.
   if (isset($variables['is_active']) && $variables['is_active'] === TRUE) {
     $variables['link']['#options']['attributes']['class'][] = 'is-active';
   }
@@ -1384,42 +1487,43 @@ function solo_preprocess_menu_local_task(&$variables): void {
     $variables['level'] = $variables['element']['#level'];
   }
 
-  $url = $variables['element']['#link']['url'];
+  $url = $variables['element']['#link']['url'] ?? NULL;
   if ($url instanceof Url && $url->isRouted()) {
     $route_name = $url->getRouteName();
-    switch ($route_name) {
-      case 'entity.node.canonical':
-        $variables['link']['#options']['attributes']['class'][] = 'view-link';
-        break;
+    $route_classes = [
+      'entity.node.canonical' => 'view-link',
+      'entity.node.edit_form' => 'edit-link',
+      'entity.node.delete_form' => 'delete-link',
+      'entity.node.version_history' => 'revisions-link',
+    ];
 
-      case 'entity.node.edit_form':
-        $variables['link']['#options']['attributes']['class'][] = 'edit-link';
-        break;
-
-      case 'entity.node.delete_form':
-        $variables['link']['#options']['attributes']['class'][] = 'delete-link';
-        break;
-
-      case 'entity.node.version_history':
-        $variables['link']['#options']['attributes']['class'][] = 'revisions-link';
-        break;
+    if (isset($route_classes[$route_name])) {
+      $variables['link']['#options']['attributes']['class'][] = $route_classes[$route_name];
     }
   }
-
 }
 
 /**
  * Implements hook_preprocess_HOOK() for field--comment.html.twig.
  */
-function solo_preprocess_field__comment(&$variables): void {
+function solo_preprocess_field__comment(array &$variables): void {
   // Add a comment_count.
   $variables['comment_count'] = count(array_filter($variables['comments'], 'is_numeric', ARRAY_FILTER_USE_KEY));
 
-  // Add user.compact to field-comment if profile's avatar of current user
-  // exist.
-  $user = \Drupal::currentUser();
-  if ($user instanceof UserInterface && $user->isAuthenticated()) {
-    if ($user->hasField('user_picture') && !$user->get('user_picture')->isEmpty()) {
+  // Add user.compact to field-comment if profile's avatar
+  // of current user exists.
+  $current_user = \Drupal::currentUser();
+
+  if ($current_user->isAuthenticated()) {
+    // Load the full user entity.
+    /** @var \Drupal\user\UserInterface|null $user */
+    $user = \Drupal::entityTypeManager()
+      ->getStorage('user')
+      ->load($current_user->id());
+
+    if ($user instanceof UserInterface &&
+        $user->hasField('user_picture') &&
+        !$user->get('user_picture')->isEmpty()) {
       $variables['user_picture'] = \Drupal::entityTypeManager()
         ->getViewBuilder('user')
         ->view($user, 'compact');
@@ -1430,22 +1534,28 @@ function solo_preprocess_field__comment(&$variables): void {
 }
 
 /**
- * Helper functions.
+ * Sets the site name for maintenance pages.
+ *
+ * @param array $variables
+ *   The variables array.
  */
-function _set_site_name(&$variables): void {
+function _set_site_name(array &$variables): void {
   // By default, site_name is set to Drupal if no db connection is available
   // or during site installation. Setting site_name to an empty string makes
   // the site and update pages look cleaner.
   // @see template_preprocess_maintenance_page
-  if (!$variables['db_is_active']) {
+  if (!($variables['db_is_active'] ?? FALSE)) {
     $variables['site_name'] = '';
   }
 }
 
 /**
- * Helper functions.
+ * Adds maintenance page library.
+ *
+ * @param array $variables
+ *   The variables array.
  */
-function _maintenance_library(&$variables): void {
+function _maintenance_library(array &$variables): void {
   // Solo has custom styling for the maintenance page.
   $variables['#attached']['library'][] = 'solo/templates/layout/maintenance_page';
 }
@@ -1453,26 +1563,249 @@ function _maintenance_library(&$variables): void {
 /**
  * Implements hook_preprocess_HOOK() for maintenance-page.html.twig.
  */
-function solo_preprocess_maintenance_page(&$variables): void {
+function solo_preprocess_maintenance_page(array &$variables): void {
   _set_site_name($variables);
   _maintenance_library($variables);
 }
 
 /**
- * Implements template_preprocess_HOOK() for views_view_table.
+ * Implements template_preprocess_HOOK() for views-view-table.html.twig.
  */
-function solo_preprocess_views_view_table(array &$variables) {
+function solo_preprocess_views_view_table(array &$variables): void {
   // Apply sortable-heading logic if needed.
   if (!empty($variables['header'])) {
     foreach ($variables['header'] as &$header_cell) {
       if (!empty($header_cell['url'])) {
         $parsed_url = UrlHelper::parse($header_cell['url']);
-        $query = !empty($parsed_url['query']) ? $parsed_url['query'] : [];
+        $query = $parsed_url['query'] ?? [];
 
         if (isset($query['order'], $query['sort'])) {
           $header_cell['attributes']->addClass('sortable-heading');
         }
       }
     }
+  }
+}
+
+/**
+ * Implements hook_preprocess_HOOK() for fieldset.html.twig.
+ */
+function solo_preprocess_fieldset(array &$variables): void {
+  // Count different field types inside.
+  $field_types = [];
+  foreach (Element::children($variables['element']) as $child) {
+    if (isset($variables['element'][$child]['#type'])) {
+      $field_types[$variables['element'][$child]['#type']] = TRUE;
+    }
+  }
+
+  // Add class if all fields are same type.
+  if (count($field_types) === 1) {
+    $type = array_key_first($field_types);
+    if ($type !== NULL) {
+      $variables['attributes']['class'][] = 'fieldset-uniform-' . Html::getClass($type);
+    }
+  }
+
+  // Detect inline-friendly fieldsets (2-3 small fields).
+  $child_count = count(Element::children($variables['element']));
+  if ($child_count >= 2 && $child_count <= 3) {
+    $variables['attributes']['class'][] = 'fieldset-inline-ready';
+  }
+}
+
+/**
+ * Implements hook_preprocess_HOOK() for form.html.twig.
+ */
+function solo_preprocess_form(array &$variables): void {
+  // Add data attributes for AJAX behaviors.
+  _solo_mark_entity_reference_fields($variables['element']);
+}
+
+/**
+ * Marks entity reference fields for AJAX behaviors.
+ *
+ * @param array $elements
+ *   The form elements array.
+ */
+function _solo_mark_entity_reference_fields(array &$elements): void {
+  foreach (Element::children($elements) as $key) {
+    if (isset($elements[$key]['#type'])) {
+      // Detect entity reference fields.
+      if ($elements[$key]['#type'] === 'entity_autocomplete') {
+        $elements[$key]['#attributes']['data-entity-type'] = $elements[$key]['#target_type'] ?? '';
+        $target_bundles = $elements[$key]['#selection_settings']['target_bundles'] ?? [];
+        $elements[$key]['#attributes']['data-bundle'] = is_array($target_bundles) ? implode(',', $target_bundles) : '';
+        $elements[$key]['#wrapper_attributes']['class'][] = 'entity-ref-wrapper';
+      }
+
+      // Detect select lists that are entity references.
+      if ($elements[$key]['#type'] === 'select' && isset($elements[$key]['#entity_type'])) {
+        $elements[$key]['#wrapper_attributes']['class'][] = 'entity-select-wrapper';
+      }
+    }
+    // Recurse into children.
+    if (is_array($elements[$key])) {
+      _solo_mark_entity_reference_fields($elements[$key]);
+    }
+  }
+}
+
+/**
+ * Implements hook_preprocess_HOOK() for container.html.twig.
+ */
+function solo_preprocess_container(array &$variables): void {
+  // Initialize attributes class if not exists.
+  if (!isset($variables['attributes']['class'])) {
+    $variables['attributes']['class'] = [];
+  }
+
+  // Detect AJAX wrappers.
+  $container_id = $variables['attributes']['id'] ?? '';
+  if ($container_id !== '' && str_contains($container_id, 'ajax-wrapper')) {
+    $variables['attributes']['class'][] = 'ajax-container';
+  }
+
+  // Count and classify children.
+  $child_count = count(Element::children($variables['element']));
+  $variables['attributes']['class'][] = 'container-children-' . $child_count;
+
+  // Detect form actions container.
+  $classes = $variables['attributes']['class'] ?? [];
+  if (is_array($classes) && in_array('form-actions', $classes, TRUE)) {
+    $button_count = 0;
+    foreach (Element::children($variables['element']) as $child) {
+      $child_type = $variables['element'][$child]['#type'] ?? '';
+      if (in_array($child_type, ['submit', 'button'], TRUE)) {
+        $button_count++;
+      }
+    }
+    $variables['attributes']['class'][] = 'actions-buttons-' . $button_count;
+  }
+
+  // Detect field types within container.
+  $field_types_found = [];
+  _solo_detect_container_field_types($variables['element'], $field_types_found);
+
+  // Add classes based on field types found.
+  foreach ($field_types_found as $type => $count) {
+    $variables['attributes']['class'][] = 'contains-' . Html::getClass($type);
+    if ($count > 1) {
+      $variables['attributes']['class'][] = 'contains-multiple-' . Html::getClass($type);
+    }
+  }
+
+  // Special detection for date ranges.
+  if (isset($field_types_found['date']) && $field_types_found['date'] === 2) {
+    $variables['attributes']['class'][] = 'solo-date-range-container';
+  }
+
+  // Detect if container has min/max pattern.
+  if (_solo_container_has_min_max($variables['element'])) {
+    $variables['attributes']['class'][] = 'solo-has-date-range';
+  }
+}
+
+/**
+ * Helper to recursively detect field types in container.
+ *
+ * @param array $element
+ *   The element to check.
+ * @param array $types
+ *   Array to store found types (passed by reference).
+ */
+function _solo_detect_container_field_types(array $element, array &$types): void {
+  foreach (Element::children($element) as $key) {
+    // Check direct field type.
+    if (isset($element[$key]['#type'])) {
+      $type = $element[$key]['#type'];
+      $types[$type] = ($types[$type] ?? 0) + 1;
+    }
+
+    // Check for fieldsets and their content.
+    if ($key === 'wrapper' || (isset($element[$key]['#type']) && $element[$key]['#type'] === 'fieldset')) {
+      // Mark that we have a fieldset.
+      $types['fieldset'] = ($types['fieldset'] ?? 0) + 1;
+    }
+
+    // Check for min/max pattern.
+    if ($key === 'min' || $key === 'max') {
+      $types['date-range-field'] = ($types['date-range-field'] ?? 0) + 1;
+    }
+
+    // Recurse into children.
+    if (is_array($element[$key])) {
+      _solo_detect_container_field_types($element[$key], $types);
+    }
+  }
+}
+
+/**
+ * Check if container has min/max fields.
+ *
+ * @param array $element
+ *   The element to check.
+ *
+ * @return bool
+ *   TRUE if has min/max fields, FALSE otherwise.
+ */
+function _solo_container_has_min_max(array $element): bool {
+  $has_min = FALSE;
+  $has_max = FALSE;
+
+  foreach (Element::children($element) as $key) {
+    // Direct check.
+    if ($key === 'min') {
+      $has_min = TRUE;
+    }
+    if ($key === 'max') {
+      $has_max = TRUE;
+    }
+
+    // Check nested elements.
+    if (isset($element[$key]) && is_array($element[$key])) {
+      foreach (Element::children($element[$key]) as $child_key) {
+        if ($child_key === 'min') {
+          $has_min = TRUE;
+        }
+        elseif (isset($element[$key][$child_key]['#name'])) {
+          $child_name = (string) $element[$key][$child_key]['#name'];
+          if (str_contains($child_name, '[min]')) {
+            $has_min = TRUE;
+          }
+          if (str_contains($child_name, '[max]')) {
+            $has_max = TRUE;
+          }
+        }
+
+        if ($child_key === 'max') {
+          $has_max = TRUE;
+        }
+      }
+    }
+  }
+
+  return $has_min && $has_max;
+}
+
+/**
+ * Implements hook_preprocess_HOOK() for field-multiple-value-form.html.twig.
+ */
+function solo_preprocess_field_multiple_value_form(array &$variables): void {
+  // Add classes for different table layouts.
+  // Ensure #value exists and is countable before using count().
+  $item_count = 0;
+  if (isset($variables['element']['#value'])) {
+    $value = $variables['element']['#value'];
+    if (is_array($value) || $value instanceof \Countable) {
+      $item_count = count($value);
+    }
+  }
+
+  $variables['attributes']['class'][] = 'field-multiple-count-' . $item_count;
+
+  // Detect if draggable.
+  if (!empty($variables['element']['#tabledrag'])) {
+    $variables['attributes']['class'][] = 'has-tabledrag';
   }
 }

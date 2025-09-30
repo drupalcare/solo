@@ -187,6 +187,18 @@
     border: 1px solid var(--r-br);
   }
 
+  .solo-date-range-container .fieldset-wrapper {
+    flex-direction: column;
+  }
+
+  fieldset:has([name*="[min]"]):has([name*="[max]"]) .form-item {
+    max-width: 100%;
+  }
+
+  .solo-date-range-container .form-type-date {
+    width: 100%;
+  }
+
 }
 
 @media (max-width:20rem) {

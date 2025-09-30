@@ -111,9 +111,8 @@ form  #edit-datetime > div input {
 form .form-type-date,
 form .form-type-datetime,
 form .form-type-webform-time {
-  width: 50% !important;
-  float: inline-start;
-  clear: none;
+  max-width: 20rem;
+  width: 100%;
 }
 
 form .form-type-date input,

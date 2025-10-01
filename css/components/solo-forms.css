@@ -205,4 +205,3 @@ fieldset:has([name*="[min]"]):has([name*="[max]"]) .form-item {
   flex: 1;
   min-width: 150px;
 }
-

@@ -81,10 +81,8 @@ h3 a) {
 
 .page-wrapper .login-button-open:hover,
 .page-wrapper .hamburger-icon button:hover,
-.page-wrapper .header li.nav__menu-item>a:hover,
-.page-wrapper .main-navigation-wrapper li>a:hover,
-.page-wrapper .header li.nav__menu-item>button:hover,
-.page-wrapper .main-navigation-wrapper li>button:hover {
+.page-wrapper .header ul li.nav__menu-item>*:hover,
+.page-wrapper .main-navigation-wrapper li>*:hover {
   --r-tx: #ffffff;
   --r-bg: #010138;
 }

@@ -331,8 +331,7 @@
       } else {
         // Retry after full page load in case the menu was injected late (e.g. Admin Toolbar)
         window.addEventListener('load', () => {
-          const fallbackIcons = once('soloHamburgerLateInit',
-            '.mobile-nav button');
+          const fallbackIcons = once('soloHamburgerLateInit', '.mobile-nav button', document);
           if (fallbackIcons.length > 0) {
             initHamburgerMenu(fallbackIcons);
           }

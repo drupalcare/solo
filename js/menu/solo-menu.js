@@ -310,13 +310,14 @@
   };
 
   // Hover functionality
-  const addHoverFunctionality = () => {
+  const addHoverFunctionality = (searchContext = document) => {
     if (getCurrentWidth() < state.brNum) return;
 
-    const hoverMenus = document.querySelector('.navigation-responsive-hover');
+    const hoverMenus = searchContext.querySelector('.navigation-responsive-hover');
     if (!hoverMenus) return;
 
-    const menuItems = document.querySelectorAll('.navigation-responsive-hover li.has-sub__menu');
+    const menuItems = searchContext.querySelectorAll('.navigation-responsive-hover li.has-sub__menu');
+
 
     menuItems.forEach(item => {
       if (item.hasAttribute('data-hover-added')) return;
@@ -368,7 +369,7 @@
   };
 
   // Menu helper for responsive behavior
-  const menusHelper = (currentWidth) => {
+  const menusHelper = (currentWidth, searchContext = document) => {
     const buttons = {
       mmClickSmall: document.querySelectorAll(CONFIG.selectors.megaMenuClick.small),
       mmClickBig: document.querySelectorAll(CONFIG.selectors.megaMenuClick.big),
@@ -481,7 +482,7 @@
       eventHandlers.addEventListenerToButtons(elements.navigationSidebarClick);
 
       // Initialize responsive behavior
-      menusHelper(state.currentWidth);
+      menusHelper(state.currentWidth, context);
 
       // Handle resize events using state manager if available
       if (Drupal.solo.menuState) {
@@ -490,7 +491,7 @@
           state.currentWidth = screenInfo.width;
 
           if (state.previousLayout !== state.currentLayout) {
-            menusHelper(state.currentWidth);
+            menusHelper(state.currentWidth, context);
             iconManagement.resetSubMenus(elements.siteSubMenus, elements.svgIcons);
             state.previousLayout = state.currentLayout;
           }
@@ -503,7 +504,7 @@
             state.currentWidth = getCurrentWidth();
 
             if (state.previousLayout !== state.currentLayout) {
-              menusHelper(state.currentWidth);
+              menusHelper(state.currentWidth, document);
               iconManagement.resetSubMenus(elements.siteSubMenus, elements.svgIcons);
               state.previousLayout = state.currentLayout;
             }

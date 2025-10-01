@@ -141,7 +141,7 @@
     if (prefersReducedMotion()) {
       target.classList.remove('toggled');
       if (Drupal.solo.menuState) {
-        Drupal.solo.menuState.setHidden(target, false, componentName);
+        Drupal.solo.menuState.setHidden(target, true, componentName);
       } else {
         target.setAttribute('aria-hidden', 'true');
       }
@@ -153,37 +153,30 @@
     }
 
     try {
-      // Set transition properties
       target.style.transitionProperty = 'height, margin, padding';
       target.style.transitionDuration = `${duration}ms`;
       target.style.transitionTimingFunction = 'ease-in-out';
       target.style.boxSizing = 'border-box';
       target.style.height = `${target.offsetHeight}px`;
-
-      // Force reflow
       void target.offsetHeight;
 
-      // Update classes and ARIA using state manager
       target.classList.remove('toggled');
       if (Drupal.solo.menuState) {
-        Drupal.solo.menuState.setHidden(target, false, componentName);
+        Drupal.solo.menuState.setHidden(target, true, componentName);
       } else {
         target.setAttribute('aria-hidden', 'true');
       }
       updateTabindex(target, false, componentName);
 
-      // Apply collapsed styles
       Object.keys(cssStyles).forEach(style => {
         target.style[style] = cssStyles[style];
       });
 
-      // Cleanup after animation
       const timeoutId = setTimeout(() => {
         if (target && target.parentNode) {
           target.style.display = 'none';
           removeStyles(target);
           activeAnimations.delete(target);
-          // Announce after animation completes to avoid timing issues
           Drupal.announce(Drupal.t('Content collapsed'));
         }
       }, duration);
@@ -240,22 +233,18 @@
       let height = target.offsetHeight;
       height = Math.round(height);
 
-      // Apply collapsed styles first
       Object.keys(cssStyles).forEach(style => {
         target.style[style] = cssStyles[style];
       });
 
-      // Force reflow
       void target.offsetHeight;
 
-      // Set transition properties
       target.style.boxSizing = 'border-box';
       target.style.transitionProperty = 'height, margin, padding';
       target.style.transitionDuration = `${duration}ms`;
       target.style.transitionTimingFunction = 'ease-in-out';
       target.style.height = `${height}px`;
 
-      // Update classes and ARIA using state manager
       target.classList.add('toggled');
       if (Drupal.solo.menuState) {
         Drupal.solo.menuState.setAriaAttribute(target, 'aria-hidden', 'false', componentName);
@@ -264,18 +253,15 @@
       }
       updateTabindex(target, true, componentName);
 
-      // Remove padding and margin restrictions
       ['padding-top', 'padding-bottom', 'margin-top', 'margin-bottom'].forEach(property => {
         target.style.removeProperty(property);
       });
 
-      // Cleanup after animation
       const timeoutId = setTimeout(() => {
         if (target && target.parentNode) {
           ['height', 'overflow', 'transition-duration', 'transition-property', 'transition-timing-function', 'box-sizing'].forEach(property =>
             target.style.removeProperty(property));
           activeAnimations.delete(target);
-          // Announce after animation completes to avoid timing issues
           Drupal.announce(Drupal.t('Content expanded'));
         }
       }, duration);

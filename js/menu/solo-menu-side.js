@@ -11,6 +11,8 @@
 
   // Component name for state manager
   const COMPONENT_NAME = 'sidebar';
+  let focusVisibleHandlers = [];
+
 
   // Initialize Drupal.solo if it doesn't exist
   Drupal.solo = Drupal.solo || {};
@@ -34,29 +36,35 @@
       const keyboardEvents = ['keydown', 'keyup'];
       const pointerEvents = ['mousedown', 'mouseup', 'touchstart', 'touchend'];
 
-      // Track keyboard vs pointer interaction
-      keyboardEvents.forEach(event => {
-        document.addEventListener(event, () => {
-          hadKeyboardEvent = true;
-        }, true);
-      });
-
-      pointerEvents.forEach(event => {
-        document.addEventListener(event, () => {
-          hadKeyboardEvent = false;
-        }, true);
-      });
-
-      // Add/remove focus-visible class
-      document.addEventListener('focus', (e) => {
+      // Create named handlers for cleanup
+      const keyHandler = () => { hadKeyboardEvent = true; };
+      const pointerHandler = () => { hadKeyboardEvent = false; };
+      const focusHandler = (e) => {
         if (hadKeyboardEvent || e.target.matches(':focus-visible')) {
           e.target.classList.add('focus-visible');
         }
-      }, true);
-
-      document.addEventListener('blur', (e) => {
+      };
+      const blurHandler = (e) => {
         e.target.classList.remove('focus-visible');
-      }, true);
+      };
+
+      // Track keyboard vs pointer interaction
+      keyboardEvents.forEach(event => {
+        document.addEventListener(event, keyHandler, true);
+        focusVisibleHandlers.push({ event, handler: keyHandler, capture: true });
+      });
+
+      pointerEvents.forEach(event => {
+        document.addEventListener(event, pointerHandler, true);
+        focusVisibleHandlers.push({ event, handler: pointerHandler, capture: true });
+      });
+
+      // Add/remove focus-visible class
+      document.addEventListener('focus', focusHandler, true);
+      focusVisibleHandlers.push({ event: 'focus', handler: focusHandler, capture: true });
+
+      document.addEventListener('blur', blurHandler, true);
+      focusVisibleHandlers.push({ event: 'blur', handler: blurHandler, capture: true });
     }
   };
 
@@ -333,6 +341,12 @@
           buttons.forEach(button => {
             eventManager.offAll(button, 'solo.sidebar');
           });
+
+          // Add this new cleanup:
+          focusVisibleHandlers.forEach(({ event, handler, capture }) => {
+            document.removeEventListener(event, handler, capture);
+          });
+          focusVisibleHandlers = [];
 
           // Clear cache
           cachedFocusableElements = null;

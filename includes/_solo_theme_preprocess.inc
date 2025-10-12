@@ -1125,6 +1125,24 @@ function solo_preprocess_comment(&$variables): void {
  * Implements hook_preprocess_HOOK() for block.html.twig.
  */
 function solo_preprocess_block(&$variables): void {
+  // Check if page title block has an actual title.
+  if ($variables['plugin_id'] === 'page_title_block') {
+    $request = \Drupal::request();
+    $route_match = \Drupal::routeMatch();
+    $route = $route_match->getRouteObject();
+
+    if ($route) {
+      $title = \Drupal::service('title_resolver')->getTitle($request, $route);
+      $variables['has_page_title'] = !empty($title);
+    }
+    else {
+      $variables['has_page_title'] = FALSE;
+    }
+
+    // Add cache context since visibility depends on the route.
+    $variables['#cache']['contexts'][] = 'route';
+  }
+
   if (empty($variables['elements']['#id'])) {
     return;
   }

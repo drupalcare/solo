@@ -31,7 +31,13 @@
  * @ingroup themeable
  */
 #}
-
+{#
+/**
+ * @file
+ * Solo's implementation to display the page title block.
+ */
+#}
+{% if has_page_title is defined and has_page_title %}
 {%
   set classes = [
     'block',
@@ -40,9 +46,9 @@
     layout ? 'layout--' ~ layout|clean_class,
   ]
 %}
-
 <div{{ attributes.addClass(classes) }}>
   {{ title_prefix }}
   {{ content }}
   {{ title_suffix }}
 </div>
+{% endif %}

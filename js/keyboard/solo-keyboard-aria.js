@@ -113,11 +113,11 @@
       if (itemStructure?.link || itemStructure?.button) {
         const textElement = itemStructure.link || itemStructure.button;
         const text = textElement.textContent.trim();
-
         if (Drupal.announce) {
+          const state = isOpen ? Drupal.t('opened') : Drupal.t('closed');
           Drupal.announce(Drupal.t('@item submenu @state', {
             '@item': text,
-            '@state': isOpen ? 'opened' : 'closed'
+            '@state': state
           }));
         }
       }

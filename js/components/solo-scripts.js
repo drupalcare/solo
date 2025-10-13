@@ -1,16 +1,29 @@
 /**
  * @file
- * Solo
+ * Solo theme JavaScript functionality.
  *
  * Filename:     solo-scripts.js
  * Website:      https://www.flashwebcenter.com
  * Developer:    Alaa Haddad https://www.alaahaddad.com.
  */
+
 ((Drupal, drupalSettings, once) => {
   'use strict';
-  // Get current width
+
+  /**
+   * Gets the current viewport width.
+   *
+   * @return {number}
+   *   The current width in pixels.
+   */
   const getCurrentWidth = () => window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
 
+  /**
+   * Checks and updates region width classes.
+   *
+   * Assigns responsive classes to regions based on their current width.
+   * This allows CSS to target regions by their actual size, not just viewport.
+   */
   const checkRegionsWidth = () => {
     const regions = document.querySelectorAll('.region-inner, .copyright-inner, .footer-menu-inner');
     regions.forEach(region => {
@@ -36,7 +49,12 @@
     });
   };
 
-  // Add/remove CSS classes according to screen changes.
+  /**
+   * Updates body classes based on viewport size.
+   *
+   * Adds responsive classes to body element for global responsive styling.
+   * Works in conjunction with checkRegionsWidth for comprehensive responsive control.
+   */
   const mediaSize = () => {
     const currentWidth = getCurrentWidth();
     const bodyTag = document.body;
@@ -55,153 +73,221 @@
     checkRegionsWidth();
   };
 
+  /**
+   * Handles skip link clicks for improved accessibility.
+   *
+   * Improved implementation for mobile screen reader (TalkBack) support:
+   * - Uses scrollIntoView() for better SR compatibility
+   * - Adds delay before focus for DOM/SR synchronization
+   * - Provides ARIA live announcement for explicit feedback
+   * - Maintains tabindex for screen reader focus state
+   *
+   * @param {string} skipLinkSelector
+   *   CSS selector for the skip link element.
+   * @param {string} targetSelector
+   *   CSS selector for the target element.
+   */
+  const handleSkipLinkClick = (skipLinkSelector, targetSelector) => {
+    const skipLink = document.querySelector(skipLinkSelector);
+    const targetElement = document.querySelector(targetSelector);
+
+    if (skipLink && targetElement) {
+      skipLink.addEventListener('click', (event) => {
+        event.preventDefault();
+
+        // Make the target element focusable if it isn't already.
+        // Using -1 allows programmatic focus without adding to tab order.
+        if (!targetElement.hasAttribute('tabindex')) {
+          targetElement.setAttribute('tabindex', '-1');
+        }
+
+        // Use scrollIntoView for better screen reader compatibility.
+        // 'start' alignment works better with TalkBack than other options.
+        targetElement.scrollIntoView({
+          behavior: 'smooth',
+          block: 'start'
+        });
+
+        // Small delay before focusing helps TalkBack register the target.
+        // 100ms is enough for DOM/SR sync without noticeable UX delay.
+        setTimeout(() => {
+          targetElement.focus();
+
+          // Add aria-live announcement for screen readers.
+          // This helps ensure the target region is announced.
+          let announcement;
+          if (targetElement.getAttribute('aria-label')) {
+            announcement = targetElement.getAttribute('aria-label');
+          } else if (targetElement.getAttribute('id')) {
+            // Remove dashes and capitalize first letter
+            const cleanId = targetElement.getAttribute('id').replace(/-/g, ' ');
+            announcement = cleanId.charAt(0).toUpperCase() + cleanId.slice(1);
+          } else {
+            announcement = Drupal.t('Target section');
+          }
+
+          // Create temporary live region for announcement.
+          const liveRegion = document.createElement('div');
+          liveRegion.setAttribute('role', 'status');
+          liveRegion.setAttribute('aria-live', 'polite');
+          liveRegion.className = 'visually-hidden';
+          liveRegion.textContent = Drupal.t('Navigated to @section', {'@section': announcement});
+          document.body.appendChild(liveRegion);
+          // Remove live region after announcement.
+          setTimeout(() => {
+            if (liveRegion.parentNode) {
+              document.body.removeChild(liveRegion);
+            }
+          }, 1000);
+        }, 100);
+      });
+    }
+  };
+
+  /**
+   * Solo theme behavior.
+   *
+   * @type {Drupal~behavior}
+   *
+   * @prop {Drupal~behaviorAttach} attach
+   *   Attaches Solo theme behaviors.
+   */
   Drupal.behaviors.soloTheme = {
     attach: function(context, settings) {
-      // Select all spans with the class 'file--mime-application-octet-stream'
-      const fileSpans = context.querySelectorAll('.field--type-file span.file');
-      fileSpans.forEach(span => {
+
+      // Add file extension classes to file field spans.
+      // Uses once() to prevent duplicate processing on AJAX updates.
+      once('solo-file-extensions', '.field--type-file span.file', context).forEach(span => {
         const link = span.querySelector('a');
         if (link && span.contains(link)) {
           const url = link.getAttribute('href');
           const urlParts = url.split('.');
-          const fileExtension = urlParts[urlParts.length - 1]; // Get the last part as the file extension
+          const fileExtension = urlParts[urlParts.length - 1];
           if (fileExtension) {
-            span.classList.add(`file--${fileExtension}`); // Add file extension as a class to the span
+            span.classList.add(`file--${fileExtension}`);
           }
         }
       });
 
-      // Ensure code only runs once per element
-      const footerMenu = context.querySelector('#footer-menu');
-      if (footerMenu) {
+      // Style footer menu forms to match footer menu colors.
+      // Uses once() to prevent duplicate processing.
+      once('solo-footer-menu-form', '#footer-menu', context).forEach(footerMenu => {
         const footerFormBg = window.getComputedStyle(footerMenu).backgroundColor;
         const footerFormTxt = window.getComputedStyle(footerMenu).color;
-        let footerMenuForm = context.querySelector('#footer-menu form');
+        const footerMenuForm = footerMenu.querySelector('form');
 
         if (footerMenuForm) {
           footerMenuForm.style.background = footerFormBg;
           footerMenuForm.style.color = footerFormTxt;
         }
-      }
+      });
 
-      // Remove attribute 'open' from details elements in theme settings
-      const detailsElements = context.querySelectorAll('#system-theme-settings details');
-      detailsElements.forEach(element => {
+      // Remove 'open' attribute from details in theme settings.
+      // This prevents all fieldsets from being expanded by default.
+      once('solo-theme-settings-details', '#system-theme-settings details', context).forEach(element => {
         element.removeAttribute('open');
       });
 
-      // Filter <img> and <picture> elements inside <a> tags
-      let clickableElements = context.querySelectorAll('a > img, a > picture');
-      const filteredElements = Array.from(clickableElements).filter(el => {
-        // Check if any parent up to the root has specific classes to exclude
+      // Add clickable class to images/pictures inside links.
+      // Excludes specific contexts like logos and user pictures.
+      once('solo-clickable-images', 'a > img, a > picture', context).forEach(el => {
+        // Check if any parent has specific classes to exclude.
         let ancestor = el.parentElement;
+        let shouldExclude = false;
+
         while (ancestor && ancestor !== document.body) {
           if (ancestor.matches('.site-logo, .field--name-user-picture, .field--type-text-long, .field--type-text-with-summary')) {
-            return false;
+            shouldExclude = true;
+            break;
           }
           ancestor = ancestor.parentElement;
         }
 
-        // Exclude elements with "icon" in their class or in their parent <a> element's class
+        // Exclude elements with "icon" in their class or parent's class.
         if (el.classList.contains('icon') || (el.parentElement && el.parentElement.classList.contains('icon'))) {
-          return false;
+          shouldExclude = true;
         }
 
-        return true;
+        if (!shouldExclude) {
+          el.parentElement.classList.add('img--is-clickable');
+        }
       });
 
-      // Apply class to the parent <a> tags
-      filteredElements.forEach(el => {
-        el.parentElement.classList.add('img--is-clickable');
-      });
-
-      // Handle broken images
-      const handleBrokenImages = (context) => {
-        const images = context.querySelectorAll('img');
-        images.forEach(img => {
-          img.onerror = function() {
-            if (!this.classList.contains('broken-image')) {
-              this.classList.add('broken-image');
-              const placeholder = document.createElement('div');
-              placeholder.className = 'img-placeholder';
-              placeholder.innerHTML = 'Image not available';
-              this.style.display = 'none';
-              this.parentNode.insertBefore(placeholder, this.nextSibling);
-            }
-          };
-          // Force recheck the image load status to trigger the error if the image is broken
-          img.src = img.src;
-        });
-      };
-
-        // Flag to track if a skip link was clicked
-        let skipLinkClicked = false;
-
-        // Function to handle skip links
-        const handleSkipLinkClick = (skipLinkSelector, targetSelector) => {
-          const skipLink = document.querySelector(skipLinkSelector);
-          const targetElement = document.querySelector(targetSelector);
-
-          if (skipLink && targetElement) {
-            skipLink.addEventListener('click', (event) => {
-              event.preventDefault();
-
-              // Set flag to indicate a skip link was clicked
-              skipLinkClicked = true;
-
-              // Make the target element focusable temporarily
-              targetElement.setAttribute('tabindex', '-1');
-              targetElement.focus({ preventScroll: true });
-              window.scrollTo({
-                top: targetElement.offsetTop,
-                behavior: 'smooth'
-              });
-
-              setTimeout(() => {
-                targetElement.removeAttribute('tabindex');
-              }, 500);
-
-              // Remove the fragment identifier from the URL without reloading the page
-              history.replaceState(null, '', window.location.pathname);
-            });
+      // Handle broken images by adding placeholder.
+      // Uses once() to prevent duplicate error handlers.
+      once('solo-broken-images', 'img', context).forEach(img => {
+        img.addEventListener('error', function() {
+          if (!this.classList.contains('broken-image')) {
+            this.classList.add('broken-image');
+            const placeholder = document.createElement('div');
+            placeholder.className = 'img-placeholder';
+            placeholder.textContent = Drupal.t('Image not available');
+            this.style.display = 'none';
+            this.parentNode.insertBefore(placeholder, this.nextSibling);
           }
-        };
+        });
+        // Trigger error check if image is already broken.
+        if (!img.complete || img.naturalHeight === 0) {
+          img.dispatchEvent(new Event('error'));
+        }
+      });
 
-        // Handle skip links for various sections
+      // Setup skip links for accessibility.
+      // Uses once() to prevent duplicate event listeners on AJAX updates.
+      once('solo-skip-links', 'body', context).forEach(() => {
         handleSkipLinkClick('.skip-link[href="#header-content"]', '#header-content');
         handleSkipLinkClick('.skip-link[href="#main-navigation-content"]', '#main-navigation-content');
         handleSkipLinkClick('.skip-link[href="#main-content"]', '#main-content');
         handleSkipLinkClick('.skip-link[href="#footer-content"]', '#footer-content');
-
-        // Prevent automatic focus if URL has a fragment and was triggered by a skip link
-        if (window.location.hash && skipLinkClicked) {
-          const targetElement = document.querySelector(window.location.hash);
-
-          if (targetElement) {
-            window.scrollTo({
-              top: targetElement.offsetTop,
-              behavior: 'smooth'
-            });
-            targetElement.setAttribute('tabindex', '-1');
-            targetElement.focus({ preventScroll: true });
-            setTimeout(() => {
-              targetElement.removeAttribute('tabindex');
-            }, 500);
-          }
-        }
-
-      // Call the function to handle broken images
-      handleBrokenImages(context);
-
-      // Initial media size check and on resize event
-      mediaSize();
-      let resizeTimeout;
-      window.addEventListener('resize', () => {
-        clearTimeout(resizeTimeout);
-        resizeTimeout = setTimeout(() => {
-          mediaSize();
-        }, 200);
       });
+
+      // Initialize media size detection.
+      // Uses once() to prevent duplicate resize listeners.
+      once('solo-media-size', 'body', context).forEach(() => {
+        // Run initial check.
+        mediaSize();
+
+        // Setup resize handler with debouncing.
+        let resizeTimeout;
+        const resizeHandler = () => {
+          clearTimeout(resizeTimeout);
+          resizeTimeout = setTimeout(() => {
+            mediaSize();
+          }, 200);
+        };
+
+        window.addEventListener('resize', resizeHandler);
+
+        // Store handler reference for potential cleanup.
+        // This is important for proper memory management.
+        if (!window.soloResizeHandlers) {
+          window.soloResizeHandlers = [];
+        }
+        window.soloResizeHandlers.push(resizeHandler);
+      });
+    },
+
+    /**
+     * Detaches Solo theme behaviors.
+     *
+     * This is called when content is removed from the page.
+     * Proper cleanup prevents memory leaks in AJAX-heavy applications.
+     *
+     * @param {HTMLElement} context
+     *   The context element being removed.
+     * @param {object} settings
+     *   Settings object.
+     * @param {string} trigger
+     *   The trigger for detachment.
+     */
+    detach: function(context, settings, trigger) {
+      // Clean up resize event listeners when content is removed.
+      if (trigger === 'unload' && window.soloResizeHandlers) {
+        window.soloResizeHandlers.forEach(handler => {
+          window.removeEventListener('resize', handler);
+        });
+        window.soloResizeHandlers = [];
+      }
     }
   };
 

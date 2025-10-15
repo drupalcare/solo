@@ -429,6 +429,18 @@ function _get_settings_region() {
 }
 
 /**
+ * Convert hex color to RGB array.
+ */
+function _solo_hex_to_rgb(string $hex): array {
+  $hex = trim($hex, '#');
+  return [
+    'r' => hexdec(substr($hex, 0, 2)),
+    'g' => hexdec(substr($hex, 2, 2)),
+    'b' => hexdec(substr($hex, 4, 2)),
+  ];
+}
+
+/**
  * Helper function.
  */
 function _get_region_attributes_for_region($region, $attributes) {
@@ -814,8 +826,15 @@ function solo_preprocess_page(&$variables) {
   $variables['site_width_class'] = $final_widths;
 
   if (theme_get_setting('header_popup_login')) {
+    $bg_color = theme_get_setting('settings_popup_login_block___r_bg') ?: '';
+    $bg_rgb = '';
+
+    if ($bg_color && preg_match('/^#[a-fA-F0-9]{6}$/', $bg_color)) {
+      $rgb = _solo_hex_to_rgb($bg_color);
+      $bg_rgb = implode(',', [$rgb['r'], $rgb['g'], $rgb['b']]);
+    }
+
     $variables['#attached']['drupalSettings']['solo']['popupLogin'] = [
-    // NEW.
       'enabled' => (bool) theme_get_setting('header_popup_login'),
       'useInlineStyles' => (bool) theme_get_setting('popup_login_use_inline_styles'),
       'animationDuration' => (int) (theme_get_setting('popup_login_animation_duration') ?: 300),
@@ -825,8 +844,9 @@ function solo_preprocess_page(&$variables) {
       'announceToScreenReaders' => (bool) theme_get_setting('popup_login_announce_to_screen_readers'),
       'returnFocusOnClose' => (bool) theme_get_setting('popup_login_return_focus_on_close'),
       'customTriggers' => (string) (theme_get_setting('popup_login_custom_triggers') ?: ''),
-      'zIndex' => (int) (theme_get_setting('popup_login_zIndex') ?: 10000),
+      'zIndex' => (int) (theme_get_setting('popup_login_z_index') ?: 10000),
       'overlayOpacity' => (int) (theme_get_setting('popup_login_overlay_opacity') ?: 50),
+      'backgroundColorRgb' => $bg_rgb,
     ];
   }
 

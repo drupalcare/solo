@@ -47,24 +47,47 @@
   transition: all 0.3s ease;
 }
 
+.page-wrapper .solo-inner nav ul.navigation__menubar {
+  z-index: 10;
+}
+
+.page-wrapper .solo-inner nav ul.navigation__menubar > li > ul {
+  z-index: 20;
+}
+
+.page-wrapper .solo-inner nav ul.navigation__menubar > li > ul > li > ul {
+  z-index: 30;
+}
+
+.page-wrapper .solo-inner nav ul.navigation__menubar > li > ul > li > ul > li > ul {
+  z-index: 40;
+}
+
 .page-wrapper .main-navigation-wrapper {
-  z-index: 999;
+  z-index: 1000;
 }
 
-ul.navigation__menubar {
-  z-index: 1000 !important;
+.page-wrapper .main-navigation-wrapper ul.navigation__menubar {
+  z-index: 1001 !important;
 }
 
-ul.navigation__menubar > li > ul {
+.page-wrapper .main-navigation-wrapper ul.navigation__menubar > li > ul {
   z-index: 2000 !important;
 }
 
-ul.navigation__menubar > li > ul > li > ul {
+.page-wrapper .main-navigation-wrapper ul.navigation__menubar > li > ul > li > ul {
   z-index: 3000 !important;
 }
 
-ul.navigation__menubar > li > ul > li > ul > li > ul {
+.page-wrapper .main-navigation-wrapper ul.navigation__menubar > li > ul > li > ul > li > ul {
   z-index: 4000 !important;
+}
+
+/* Make sure this is bigger than the main menu */
+.page-wrapper .header ul.navigation__menubar ul,
+.page-wrapper .fixed-search-block ul.navigation__menubar ul,
+.page-wrapper .popup-login-block ul.navigation__menubar ul {
+  z-index: 1002 !important;
 }
 
 /* First level padding is bigger */

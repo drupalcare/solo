@@ -2,7 +2,7 @@
 
 /**
  * @file
- * Solo Theme.
+ * Solo Theme - Popup Login Block Configuration (FIXED).
  *
  * Filename:     solo.theme
  * Website:      http://www.flashwebcenter.com
@@ -67,12 +67,16 @@ if (array_key_exists("popup_login_block", $updated_regions["mix"])) {
     "#weight" => -8,
   ];
 
-  // Style method setting.
-  $form["solo_settings"]["settings_{$region}"]["advanced_settings"]["popup_login_use_inline_styles"] = [
-    "#type" => "checkbox",
-    "#title" => t("Use inline styles"),
-    "#description" => t("Use inline styles for z-index and display. Uncheck this if you experience conflicts with other modules that modify styles. When unchecked, CSS classes and variables will be used instead. <strong>Note: Checking this option will enable additional settings below and in the Accessibility & Behavior tab.</strong>"),
-    "#default_value" => theme_get_setting("popup_login_use_inline_styles") ?? FALSE,
+  // Animation duration - ALWAYS VISIBLE when popup is enabled.
+  $form["solo_settings"]["settings_{$region}"]["advanced_settings"]["popup_login_animation_duration"] = [
+    "#type" => "number",
+    "#title" => t("Animation duration (milliseconds)"),
+    "#description" => t("Duration of open/close animations in milliseconds. Default: 300ms"),
+    "#default_value" => theme_get_setting("popup_login_animation_duration") ?? 300,
+    "#min" => 0,
+    "#max" => 5000,
+    "#step" => 50,
+    "#field_suffix" => t("ms"),
     "#states" => [
       "visible" => [
         ":input[name='header_popup_login']" => ["checked" => TRUE],
@@ -80,55 +84,38 @@ if (array_key_exists("popup_login_block", $updated_regions["mix"])) {
     ],
   ];
 
-  // Animation duration.
-  $form["solo_settings"]["settings_{$region}"]["advanced_settings"]["popup_login_animation_duration"] = [
-    "#type" => "number",
-    "#title" => t("Animation duration (milliseconds)"),
-    "#description" => t("Duration of open/close animations in milliseconds. Default: 300ms"),
-    "#default_value" => theme_get_setting("popup_login_animation_duration") ?? 300,
-    "#min" => 0,
-    "#max" => 1000,
-    "#step" => 50,
-    "#field_suffix" => t("ms"),
-    "#states" => [
-      "visible" => [
-        ":input[name='popup_login_use_inline_styles']" => ["checked" => TRUE],
-      ],
-    ],
-  ];
-
-  // Z-index setting.
+  // Z-index setting - ALWAYS VISIBLE when popup is enabled.
   $form["solo_settings"]["settings_{$region}"]["advanced_settings"]["popup_login_z_index"] = [
     "#type" => "number",
     "#title" => t("Z-index"),
-    "#description" => t("The z-index value for the popup overlay. Adjust if the popup appears behind other elements."),
+    "#description" => t("The z-index value for the popup overlay. Adjust if the popup appears behind other elements. Default: 10000"),
     "#default_value" => theme_get_setting("popup_login_z_index") ?? 10000,
     "#min" => 1,
     "#max" => 999999,
     "#states" => [
       "visible" => [
-        ":input[name='popup_login_use_inline_styles']" => ["checked" => TRUE],
+        ":input[name='header_popup_login']" => ["checked" => TRUE],
       ],
     ],
   ];
 
-  // Overlay opacity.
+  // Overlay opacity - ALWAYS VISIBLE when popup is enabled.
   $form["solo_settings"]["settings_{$region}"]["advanced_settings"]["popup_login_overlay_opacity"] = [
     "#type" => "number",
     "#title" => t("Overlay opacity"),
-    "#description" => t("The opacity of the background overlay (0-100)."),
+    "#description" => t("The opacity of the background overlay (0-100). Default: 50%"),
     "#default_value" => theme_get_setting("popup_login_overlay_opacity") ?? 50,
     "#min" => 0,
     "#max" => 100,
     "#field_suffix" => "%",
     "#states" => [
       "visible" => [
-        ":input[name='popup_login_use_inline_styles']" => ["checked" => TRUE],
+        ":input[name='header_popup_login']" => ["checked" => TRUE],
       ],
     ],
   ];
 
-  // Custom trigger selectors.
+  // Custom trigger selectors - ALWAYS VISIBLE when popup is enabled.
   $form["solo_settings"]["settings_{$region}"]["advanced_settings"]["popup_login_custom_triggers"] = [
     "#type" => "textfield",
     "#title" => t("Custom trigger selectors"),
@@ -136,7 +123,20 @@ if (array_key_exists("popup_login_block", $updated_regions["mix"])) {
     "#default_value" => theme_get_setting("popup_login_custom_triggers") ?? "",
     "#states" => [
       "visible" => [
-        ":input[name='popup_login_use_inline_styles']" => ["checked" => TRUE],
+        ":input[name='header_popup_login']" => ["checked" => TRUE],
+      ],
+    ],
+  ];
+
+  // Style method setting - This controls ONLY how display property is applied.
+  $form["solo_settings"]["settings_{$region}"]["advanced_settings"]["popup_login_use_inline_styles"] = [
+    "#type" => "checkbox",
+    "#title" => t("Use inline styles for display property"),
+    "#description" => t("Controls how the popup visibility is managed. When checked, uses <code>style.display</code> directly. When unchecked, uses CSS classes. <strong>This setting does not affect animation, z-index, or other settings - those always work via CSS variables.</strong> Only change this if you experience conflicts with other modules."),
+    "#default_value" => theme_get_setting("popup_login_use_inline_styles") ?? FALSE,
+    "#states" => [
+      "visible" => [
+        ":input[name='header_popup_login']" => ["checked" => TRUE],
       ],
     ],
   ];
@@ -149,67 +149,67 @@ if (array_key_exists("popup_login_block", $updated_regions["mix"])) {
     "#weight" => -6,
   ];
 
-  // Close on escape key.
+  // Close on escape key - ALWAYS VISIBLE when popup is enabled.
   $form["solo_settings"]["settings_{$region}"]["accessibility_behavior"]["popup_login_close_on_escape"] = [
     "#type" => "checkbox",
     "#title" => t("Close on Escape key"),
-    "#description" => t("Allow users to close the popup by pressing the Escape key."),
+    "#description" => t("Allow users to close the popup by pressing the Escape key. Recommended for accessibility."),
     "#default_value" => theme_get_setting("popup_login_close_on_escape") ?? TRUE,
     "#states" => [
       "visible" => [
-        ":input[name='popup_login_use_inline_styles']" => ["checked" => TRUE],
+        ":input[name='header_popup_login']" => ["checked" => TRUE],
       ],
     ],
   ];
 
-  // Close on outside click.
+  // Close on outside click - ALWAYS VISIBLE when popup is enabled.
   $form["solo_settings"]["settings_{$region}"]["accessibility_behavior"]["popup_login_close_on_outside_click"] = [
     "#type" => "checkbox",
     "#title" => t("Close on outside click"),
-    "#description" => t("Close the popup when clicking outside of the login form."),
+    "#description" => t("Close the popup when clicking outside of the login form. Recommended for better UX."),
     "#default_value" => theme_get_setting("popup_login_close_on_outside_click") ?? TRUE,
     "#states" => [
       "visible" => [
-        ":input[name='popup_login_use_inline_styles']" => ["checked" => TRUE],
+        ":input[name='header_popup_login']" => ["checked" => TRUE],
       ],
     ],
   ];
 
-  // Focus trap.
+  // Focus trap - ALWAYS VISIBLE when popup is enabled.
   $form["solo_settings"]["settings_{$region}"]["accessibility_behavior"]["popup_login_focus_trap"] = [
     "#type" => "checkbox",
     "#title" => t("Enable focus trap"),
-    "#description" => t("Trap keyboard focus within the popup for better accessibility. Recommended for WCAG compliance."),
+    "#description" => t("Trap keyboard focus within the popup for better accessibility. Recommended for WCAG 2.1 compliance."),
     "#default_value" => theme_get_setting("popup_login_focus_trap") ?? TRUE,
     "#states" => [
       "visible" => [
-        ":input[name='popup_login_use_inline_styles']" => ["checked" => TRUE],
+        ":input[name='header_popup_login']" => ["checked" => TRUE],
       ],
     ],
   ];
 
-  // Screen reader announcements.
+  // Screen reader announcements - ALWAYS VISIBLE when popup is enabled.
   $form["solo_settings"]["settings_{$region}"]["accessibility_behavior"]["popup_login_announce_to_screen_readers"] = [
     "#type" => "checkbox",
     "#title" => t("Announce to screen readers"),
-    "#description" => t("Announce popup state changes to screen reader users for better accessibility."),
+    "#description" => t("Announce popup state changes to screen reader users for better accessibility. Recommended for WCAG 2.1 compliance."),
     "#default_value" => theme_get_setting("popup_login_announce_to_screen_readers") ?? TRUE,
     "#states" => [
       "visible" => [
-        ":input[name='popup_login_use_inline_styles']" => ["checked" => TRUE],
+        ":input[name='header_popup_login']" => ["checked" => TRUE],
       ],
     ],
   ];
 
-  // Return focus on close.
+  // Return focus on close - ALWAYS VISIBLE when popup is enabled.
   $form["solo_settings"]["settings_{$region}"]["accessibility_behavior"]["popup_login_return_focus_on_close"] = [
     "#type" => "checkbox",
     "#title" => t("Return focus on close"),
-    "#description" => t("Return keyboard focus to the element that triggered the popup when it closes."),
+    "#description" => t("Return keyboard focus to the element that triggered the popup when it closes. Recommended for accessibility."),
     "#default_value" => theme_get_setting("popup_login_return_focus_on_close") ?? TRUE,
     "#states" => [
       "visible" => [
-        ":input[name='popup_login_use_inline_styles']" => ["checked" => TRUE],
+        ":input[name='header_popup_login']" => ["checked" => TRUE],
       ],
     ],
   ];

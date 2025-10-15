@@ -168,7 +168,8 @@
       customTriggers: '',
       zIndex: 10000,
       overlayOpacity: 50,
-      useInlineStyles: false
+      useInlineStyles: false,
+      backgroundColorRgb: ''
     };
 
     // Merge with drupalSettings.
@@ -214,13 +215,16 @@
       this.createAriaLiveRegion();
     }
 
-    // Setup CSS variables if not using inline styles.
-    if (!this.settings.useInlineStyles) {
-      this.loginBlock.style.setProperty('--solo-popup-z-index', this.settings.zIndex);
-      this.loginBlock.style.setProperty('--solo-popup-overlay-opacity', this.settings.overlayOpacity / 100);
-      this.loginBlock.style.setProperty('--solo-popup-animation-duration', this.settings.animationDuration + 'ms');
-      this.loginBlock.classList.add('solo-popup-css-vars');
-    }
+    // ALWAYS set CSS variables - they are used by CSS regardless of inline styles mode.
+    this.loginBlock.style.setProperty('--solo-popup-z-index', this.settings.zIndex);
+    this.loginBlock.style.setProperty('--solo-popup-overlay-opacity', this.settings.overlayOpacity / 100);
+    this.loginBlock.style.setProperty('--solo-popup-animation-duration', this.settings.animationDuration + 'ms');
+
+    // Set background RGB (default to black if not provided)
+    const bgRgb = this.settings.backgroundColorRgb || '0, 0, 0';
+    this.loginBlock.style.setProperty('--solo-popup-bg-rgb', bgRgb);
+    // Add class to indicate variables are set.
+    this.loginBlock.classList.add('solo-popup-css-vars');
 
     // Bind events.
     this.bindEvents();
@@ -401,19 +405,12 @@
       new CustomEvent('solo:loginPopupOpen', { detail: { loginBlock: this.loginBlock }, bubbles: true })
     );
 
-    // Apply styles.
+    // Apply styles based on useInlineStyles setting.
     if (this.settings.useInlineStyles) {
-      // Show without clearing existing inline styles.
+      // Use direct inline styles for display.
       this.loginBlock.style.display = 'block';
-
-      // Only set z-index if not default.
-      if (this.settings.zIndex !== 10000) {
-        this.loginBlock.style.zIndex = this.settings.zIndex;
-      }
-
-      // Overlay opacity via CSS var.
-      this.loginBlock.style.setProperty('--solo-popup-overlay-opacity', this.settings.overlayOpacity / 100);
     } else {
+      // Use class-based approach.
       this.loginBlock.classList.add('solo-popup-visible');
     }
 

@@ -94,6 +94,10 @@
   --solo-px0: 0;
   --solo-gap: var(--solo-px16);
   /* Color Constants */
+  --solo-popup-z-index: initial;
+  --solo-popup-overlay-opacity: initial;
+  --solo-popup-animation-duration: initial;
+  --solo-popup-bg-rgb: 0, 0, 0;
   --solo-transparent: transparent;
   --solo-ccc: #ccc;
   --solo-amber: #ffc107;

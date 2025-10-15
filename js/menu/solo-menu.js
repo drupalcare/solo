@@ -477,10 +477,13 @@
       addHoverFunctionality();
 
       // Add event listeners
-      eventHandlers.addEventListenerToButtons(elements.navigationDefault);
       eventHandlers.addEventListenerToButtons(elements.navigationResponsiveClick);
       eventHandlers.addEventListenerToButtons(elements.navigationSidebarClick);
-
+      elements.navigationDefault.forEach(button => {
+        button.style.pointerEvents = 'none';
+        button.setAttribute('tabindex', '-1');
+        button.setAttribute('aria-hidden', 'true');
+      });
       // Initialize responsive behavior
       menusHelper(state.currentWidth, context);
 

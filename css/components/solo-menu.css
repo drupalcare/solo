@@ -49,6 +49,7 @@
 
 .page-wrapper .solo-inner nav ul.navigation__menubar {
   z-index: 10;
+  position: relative;
 }
 
 .page-wrapper .solo-inner nav ul.navigation__menubar > li > ul {
@@ -84,9 +85,9 @@
 }
 
 /* Make sure this is bigger than the main menu */
-.page-wrapper .header ul.navigation__menubar ul,
-.page-wrapper .fixed-search-block ul.navigation__menubar ul,
-.page-wrapper .popup-login-block ul.navigation__menubar ul {
+.page-wrapper:not(.menu-flipped) .header ul.navigation__menubar,
+.page-wrapper .fixed-search-block ul.navigation__menubar,
+.page-wrapper .popup-login-block ul.navigation__menubar {
   z-index: 1002 !important;
 }
 

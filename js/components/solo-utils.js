@@ -16,6 +16,133 @@
    */
   Drupal.solo = Drupal.solo || {};
 
+  /**
+   * Safely escapes CSS selectors with IE11 fallback
+   */
+  Drupal.solo.escapeSelector = (str) => {
+    if (!str) return '';
+
+    if (typeof CSS !== 'undefined' && CSS.escape) {
+      try {
+        return CSS.escape(str);
+      } catch (e) {
+        console.warn('Solo: CSS.escape failed', e);
+      }
+    }
+
+    // Fallback for IE11 and edge cases
+    return str.replace(/[!"#$%&'()*+,.\/:;<=>?@[\\\]^`{|}~]/g, '\\$&');
+  };
+
+  /**
+   * Animation queue with automatic cleanup
+   */
+  Drupal.solo.animationQueue = (() => {
+    const queue = new Map();
+    const cleanupHandlers = new Map();
+
+    const add = (elementKey, type, duration) => {
+      queue.set(elementKey, type);
+
+      // Auto-cleanup after duration + buffer
+      const timeoutId = setTimeout(() => {
+        queue.delete(elementKey);
+        cleanupHandlers.delete(elementKey);
+      }, duration + 100);
+
+      // Cleanup on page navigation
+      const cleanup = () => {
+        clearTimeout(timeoutId);
+        queue.delete(elementKey);
+        cleanupHandlers.delete(elementKey);
+      };
+
+      cleanupHandlers.set(elementKey, cleanup);
+      window.addEventListener('pagehide', cleanup, { once: true });
+
+      return cleanup;
+    };
+
+    const has = (elementKey) => queue.has(elementKey);
+
+    const clear = (elementKey) => {
+      const cleanup = cleanupHandlers.get(elementKey);
+      if (cleanup) cleanup();
+    };
+
+    const clearAll = () => {
+      cleanupHandlers.forEach(cleanup => cleanup());
+      queue.clear();
+      cleanupHandlers.clear();
+    };
+
+    return { add, has, clear, clearAll };
+  })();
+
+  /**
+   * Observes DOM mutations and cleans up orphaned event listeners
+   */
+  Drupal.solo.setupListenerCleanup = (handlerMap) => {
+    if (!handlerMap || typeof MutationObserver === 'undefined') return null;
+
+    const observer = new MutationObserver((mutations) => {
+      mutations.forEach((mutation) => {
+        mutation.removedNodes.forEach((node) => {
+          if (node.nodeType === 1 && node.querySelectorAll) {
+            // Clean up event listeners on removed elements
+            const buttons = node.querySelectorAll('.dropdown-toggler');
+            buttons.forEach(btn => {
+              const handler = handlerMap.get(btn);
+              if (handler) {
+                btn.removeEventListener('click', handler);
+                handlerMap.delete(btn);
+              }
+            });
+          }
+        });
+      });
+    });
+
+    observer.observe(document.body, {
+      childList: true,
+      subtree: true
+    });
+
+    return observer;
+  };
+
+  /**
+   * Sets inert state with fallback for Safari < 15.5
+   */
+  Drupal.solo.setInert = (element, value) => {
+    if (!element || !(element instanceof HTMLElement)) return;
+
+    if ('inert' in HTMLElement.prototype) {
+      element.inert = value;
+    } else {
+      // Fallback for older browsers
+      element.setAttribute('aria-hidden', value ? 'true' : 'false');
+
+      if (value) {
+        element.querySelectorAll('a, button, input, select, textarea, [tabindex]').forEach(el => {
+          const currentTabindex = el.getAttribute('tabindex');
+          el.setAttribute('data-original-tabindex', currentTabindex || '0');
+          el.setAttribute('tabindex', '-1');
+        });
+      } else {
+        element.querySelectorAll('[data-original-tabindex]').forEach(el => {
+          const original = el.getAttribute('data-original-tabindex');
+          if (original === '0' || original === null) {
+            el.removeAttribute('tabindex');
+          } else {
+            el.setAttribute('tabindex', original);
+          }
+          el.removeAttribute('data-original-tabindex');
+        });
+      }
+    }
+  };
+
   Drupal.solo.animations = {
     slideUp: drupalSettings.solo?.slideUpSpeed || 350,
     slideDown: drupalSettings.solo?.slideDownSpeed || 500,

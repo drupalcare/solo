@@ -319,9 +319,9 @@
       // Update search block
       searchBlock.setAttribute('aria-hidden', hiddenValue);
        if (isOpen) {
-         searchBlock.removeAttribute('inert');
+        Drupal.solo.setInert(searchBlock, false);
        } else {
-         searchBlock.setAttribute('inert', '');
+         Drupal.solo.setInert(searchBlock, true);
        }
     },
 

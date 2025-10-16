@@ -50,10 +50,38 @@
     }
 
     handleKeydown(event) {
-      const key = event.key;
+      // Validate event and target
+      if (!event || !event.target) {
+        console.warn('Solo Keyboard: Invalid event in handleKeydown');
+        return;
+      }
+
       const target = event.target;
+
+      // Verify target is still in DOM
+      if (!document.contains(target)) {
+        if (drupalSettings?.solo?.debug) {
+          console.debug('Solo Keyboard: Target element removed from DOM');
+        }
+        return;
+      }
+
+      const key = event.key;
+
+      // Check if core is still valid
+      if (!this.core || !this.core.templateInfo) {
+        console.warn('Solo Keyboard: Core not initialized properly');
+        return;
+      }
+
       const parser = this.core.getModule('templateParser');
-      const itemStructure = parser?.getItemStructure(target);
+
+      if (!parser) {
+        console.warn('Solo Keyboard: Template parser not available');
+        return;
+      }
+
+      const itemStructure = parser.getItemStructure(target);
       const isSidebar = this.core.templateInfo.isSidebar;
 
       if (['ArrowRight', 'ArrowLeft', 'ArrowDown', 'ArrowUp', 'Home', 'End', 'Escape'].includes(key)) {
@@ -228,23 +256,42 @@
     }
 
     navigateHorizontal(current, direction) {
+      if (!current || !document.contains(current)) {
+        console.warn('Solo Keyboard: Invalid current element in navigateHorizontal');
+        return;
+      }
+
       const parser = this.core.getModule('templateParser');
-      const itemStructure = parser?.getItemStructure(current);
+
+      if (!parser) {
+        console.warn('Solo Keyboard: Parser not available in navigateHorizontal');
+        return;
+      }
+
+      const itemStructure = parser.getItemStructure(current);
 
       if (itemStructure?.type === 'split') {
         if (direction === 1 && current === itemStructure.link && itemStructure.button) {
-          itemStructure.button.focus();
+          if (document.contains(itemStructure.button)) {
+            itemStructure.button.focus();
+          }
           return;
         }
         if (direction === -1 && current === itemStructure.button && itemStructure.link) {
-          itemStructure.link.focus();
+          if (document.contains(itemStructure.link)) {
+            itemStructure.link.focus();
+          }
           return;
         }
       }
 
       const currentLi = current.closest('li');
       const container = currentLi?.parentElement;
-      if (!container) return;
+
+      if (!container) {
+        console.warn('Solo Keyboard: No container found in navigateHorizontal');
+        return;
+      }
 
       const items = Array.from(container.children).filter(li => li.tagName === 'LI');
       const currentIndex = items.indexOf(currentLi);
@@ -276,17 +323,31 @@
     }
 
     navigateVertical(current, direction, itemStructure) {
+      if (!current || !document.contains(current)) {
+        console.warn('Solo Keyboard: Invalid current element in navigateVertical');
+        return;
+      }
+
+      if (!this.menubar || !document.contains(this.menubar)) {
+        console.warn('Solo Keyboard: Menubar not available in navigateVertical');
+        return;
+      }
+
       if (current === this.core.mobileNavButton && direction === 1) {
         if (!this.menubar.classList.contains('toggled')) {
           current.click();
 
           this.setTimeoutSafe(() => {
             const firstItem = this.getFirstFocusableItem(this.menubar);
-            if (firstItem) firstItem.focus();
+            if (firstItem && document.contains(firstItem)) {
+              firstItem.focus();
+            }
           }, 100);
         } else {
           const firstItem = this.getFirstFocusableItem(this.menubar);
-          if (firstItem) firstItem.focus();
+          if (firstItem && document.contains(firstItem)) {
+            firstItem.focus();
+          }
         }
         return;
       }
@@ -336,11 +397,25 @@
     }
 
     openSubmenu(trigger, itemStructure) {
-      if (!itemStructure?.submenu) return;
+      if (!itemStructure?.submenu) {
+        console.warn('Solo Keyboard: No submenu in openSubmenu');
+        return;
+      }
+
+      if (!document.contains(itemStructure.submenu)) {
+        console.warn('Solo Keyboard: Submenu not in DOM');
+        return;
+      }
 
       // Always prefer menuOperations over click
       if (Drupal.solo.menuOperations && itemStructure.button) {
-        const isMenubar = itemStructure.button.parentElement.classList.contains('nav__menubar-item');
+        if (!document.contains(itemStructure.button)) {
+          console.warn('Solo Keyboard: Button not in DOM in openSubmenu');
+          return;
+        }
+
+        const isMenubar = itemStructure.button.parentElement?.classList.contains('nav__menubar-item');
+
         if (isMenubar) {
           Drupal.solo.menuOperations.openMenubar(itemStructure.button, itemStructure.submenu);
         } else {
@@ -375,15 +450,40 @@
     }
 
     exitSubmenu(current) {
+      if (!current || !document.contains(current)) {
+        console.warn('Solo Keyboard: Invalid current element in exitSubmenu');
+        return;
+      }
+
       const submenu = current.closest('[role="menu"]');
-      if (!submenu || submenu === this.menubar) return;
+
+      if (!submenu || submenu === this.menubar) {
+        return;
+      }
+
+      if (!document.contains(submenu)) {
+        console.warn('Solo Keyboard: Submenu not in DOM in exitSubmenu');
+        return;
+      }
 
       const parentLi = submenu.closest('li');
-      const parser = this.core.getModule('templateParser');
-      const parentStructure = parser?.getItemStructure(parentLi);
-      const parentButton = parentStructure?.button || parentLi?.querySelector(':scope > button.dropdown-toggler');
 
-      if (parentButton) {
+      if (!parentLi) {
+        console.warn('Solo Keyboard: No parent LI found in exitSubmenu');
+        return;
+      }
+
+      const parser = this.core.getModule('templateParser');
+
+      if (!parser) {
+        console.warn('Solo Keyboard: Parser not available in exitSubmenu');
+        return;
+      }
+
+      const parentStructure = parser.getItemStructure(parentLi);
+      const parentButton = parentStructure?.button || parentLi.querySelector(':scope > button.dropdown-toggler');
+
+      if (parentButton && document.contains(parentButton)) {
         parentButton.focus();
         if (submenu.classList.contains('toggled')) {
           if (Drupal.solo.menuOperations) {
@@ -394,7 +494,7 @@
         }
       } else {
         const parentFocus = this.getPrimaryFocusElement(parentLi, parentStructure);
-        if (parentFocus) {
+        if (parentFocus && document.contains(parentFocus)) {
           parentFocus.focus();
         }
       }
@@ -420,9 +520,18 @@
     }
 
     getAllFocusableItems(container) {
-      if (!container) return [];
-      return Array.from(container.querySelectorAll(':scope > li > a, :scope > li > button'))
-        .filter(item => item.offsetParent !== null);
+      if (!container || !document.contains(container)) {
+        console.warn('Solo Keyboard: Invalid container in getAllFocusableItems');
+        return [];
+      }
+
+      try {
+        return Array.from(container.querySelectorAll(':scope > li > a, :scope > li > button'))
+          .filter(item => item.offsetParent !== null && document.contains(item));
+      } catch (error) {
+        console.error('Solo Keyboard: Error in getAllFocusableItems', error);
+        return [];
+      }
     }
 
     getFirstFocusableItem(container) {

@@ -400,6 +400,9 @@
 
     this.isOpen = true;
 
+    // Remove inert attribute before opening
+    Drupal.solo.setInert(this.loginBlock, false);
+
     // Dispatch custom event.
     this.loginBlock.dispatchEvent(
       new CustomEvent('solo:loginPopupOpen', { detail: { loginBlock: this.loginBlock }, bubbles: true })
@@ -467,16 +470,61 @@
 
     this.isOpen = false;
 
+    // CRITICAL: Remove focus from any element inside popup BEFORE hiding
+    if (this.loginBlock.contains(document.activeElement)) {
+      document.activeElement.blur();
+    }
+
     // Dispatch custom event.
     this.loginBlock.dispatchEvent(
       new CustomEvent('solo:loginPopupClose', { detail: { loginBlock: this.loginBlock }, bubbles: true })
     );
 
-    // Remove classes and update ARIA.
+    // Remove classes (but NOT aria-hidden yet)
     this.loginBlock.classList.remove('toggled');
-    this.updateAriaAttributes(false);
+
+    // Update aria-expanded on triggers (but NOT aria-hidden on dialog yet)
+    const triggers = document.querySelectorAll(
+      '[data-solo-login-popup-trigger], .login-popup-trigger, .login-button-open button, .login-button-open > button'
+    );
+    triggers.forEach((el) => el.setAttribute('aria-expanded', 'false'));
+
+    if (this.openButton) {
+      this.openButton.setAttribute('aria-expanded', 'false');
+    }
+    this.closeButton.setAttribute('aria-expanded', 'false');
+
     this.setElementsTabindex(false);
     document.body.classList.remove('solo-login-popup-open');
+
+    // Return focus FIRST
+    if (this.settings.returnFocusOnClose && this.lastFocusedElement) {
+      setTimeout(() => {
+        try {
+          this.lastFocusedElement.focus();
+        } catch (e) {
+          if (this.openButton) {
+            this.openButton.focus();
+          }
+        }
+
+        // THEN set aria-hidden AFTER focus has moved out
+        setTimeout(() => {
+          if (!this.isOpen) {
+            this.loginBlock.setAttribute('aria-hidden', 'true');
+            Drupal.solo.setInert(this.loginBlock, true);
+          }
+        }, 50);
+      }, 50);
+    } else {
+      // If not returning focus, still delay aria-hidden slightly
+      setTimeout(() => {
+        if (!this.isOpen) {
+          this.loginBlock.setAttribute('aria-hidden', 'true');
+          Drupal.solo.setInert(this.loginBlock, true);
+        }
+      }, 50);
+    }
 
     // Hide after animation.
     setTimeout(() => {
@@ -488,19 +536,6 @@
         }
       }
     }, this.settings.animationDuration);
-
-    // Return focus.
-    if (this.settings.returnFocusOnClose && this.lastFocusedElement) {
-      setTimeout(() => {
-        try {
-          this.lastFocusedElement.focus();
-        } catch (e) {
-          if (this.openButton) {
-            this.openButton.focus();
-          }
-        }
-      }, 50);
-    }
 
     if (announce && this.settings.announceToScreenReaders) {
       this.announce(Drupal.t('Login form closed'));
@@ -519,9 +554,9 @@
       this.loginBlock.removeEventListener('keydown', this.boundHandlers.focusTrap);
     }
   };
-
   /**
    * Update ARIA attributes.
+   * Note: aria-hidden on dialog is now managed separately to avoid focus conflicts.
    */
   Drupal.solo.PopupLogin.prototype.updateAriaAttributes = function (isOpen) {
     // Keep all triggers in sync.
@@ -534,7 +569,12 @@
       this.openButton.setAttribute('aria-expanded', String(isOpen));
     }
     this.closeButton.setAttribute('aria-expanded', String(isOpen));
-    this.loginBlock.setAttribute('aria-hidden', String(!isOpen));
+
+    // Only set aria-hidden when opening (removing it)
+    // When closing, this is handled separately after focus moves
+    if (isOpen) {
+      this.loginBlock.setAttribute('aria-hidden', 'false');
+    }
   };
 
   /**
@@ -626,9 +666,16 @@
       }
     }
 
+    // Remove inert attribute
+    if (this.loginBlock) {
+      Drupal.solo.setInert(this.loginBlock, false);
+    }
+
     // Clean up classes.
     document.body.classList.remove('solo-login-popup-open');
-    this.loginBlock.classList.remove('solo-popup-css-vars', 'solo-popup-visible');
+    if (this.loginBlock) {
+      this.loginBlock.classList.remove('solo-popup-css-vars', 'solo-popup-visible');
+    }
 
     // Clear references.
     this.loginBlock = null;

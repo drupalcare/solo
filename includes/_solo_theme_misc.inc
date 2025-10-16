@@ -5,6 +5,8 @@
  * Theme Setting.
  */
 
+use Drupal\Core\Url;
+
 /**
  * Helper function.
  */
@@ -190,6 +192,27 @@ function solo_page_attachments_alter(array &$attachments): void {
   _site_load_w3css_library($attachments);
   _load_color_coded_system_tabs($attachments);
   _load_enable_toggleable_radios($attachments);
+  // Check if debug mode is enabled in theme settings.
+  if (theme_get_setting('solo_menu_debug')) {
+    // NEW: Get verbosity setting.
+    $verbosity = theme_get_setting('solo_menu_debug_verbosity') ?: 'normal';
+
+    // Enable debug mode in drupalSettings.
+    $attachments['#attached']['drupalSettings']['solo']['debug'] = TRUE;
+
+    // NEW: Pass verbosity to JavaScript.
+    $attachments['#attached']['drupalSettings']['solo']['debug_verbosity'] = $verbosity;
+
+    // Attach the debug library.
+    $attachments['#attached']['library'][] = 'solo/solo-debug';
+
+    // Display warning message on every page (ENHANCED - optional)
+    \Drupal::messenger()->addWarning(t('<strong>SOLO DEBUG MODE ACTIVE</strong> (Verbosity: @verbosity) — Development tools are enabled. Open browser console and run showReport() for menu diagnostics. <a class="warning" href="@settings_url">Disable debug mode</a> before going to production.', [
+    // Shows "Normal", "Minimal", or "Verbose".
+      '@verbosity' => ucfirst($verbosity),
+      '@settings_url' => Url::fromRoute('system.theme_settings_theme', ['theme' => \Drupal::theme()->getActiveTheme()->getName()])->toString(),
+    ]));
+  }
 }
 
 /**

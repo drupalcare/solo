@@ -126,6 +126,11 @@
   // Get the primary sidebar menu and all the sidebar hamburger icons
   const verticalNav = document.getElementById('primary-sidebar-menu');
   if (verticalNav) {
+    // Validate the element has a proper ID
+    if (!verticalNav.id) {
+      console.warn('Solo Menu Side: Sidebar menu missing ID attribute');
+      return;
+    }
     const openDuration = Drupal.solo.animations.slideDown || 400;
     const closeDuration = Drupal.solo.animations.slideUp || 350;
     const closeBtns = document.querySelectorAll('.sidebar-button-close>button');
@@ -162,13 +167,32 @@
     };
 
     // Function to toggle aria-expanded on the hamburger icons using state manager
-    const setAriaExpanded = (el, value) => {
-      Drupal.solo.menuState.setExpanded(el, value === 'true', COMPONENT_NAME);
+    const setAriaExpanded = (elements, value) => {
+      // Handle both single elements and NodeLists
+      if (elements instanceof NodeList || Array.isArray(elements)) {
+        elements.forEach(el => {
+          if (el && el instanceof HTMLElement) {
+            Drupal.solo.menuState.setExpanded(el, value === 'true', COMPONENT_NAME);
+          }
+        });
+      } else if (elements && elements instanceof HTMLElement) {
+        Drupal.solo.menuState.setExpanded(elements, value === 'true', COMPONENT_NAME);
+      }
     };
 
     // Function to toggle aria-hidden on the vertical navigation using state manager
     const setAriaHidden = (el, value) => {
-      Drupal.solo.menuState.setHidden(el, value === 'true', COMPONENT_NAME);
+      if (!el || !(el instanceof HTMLElement)) return;
+
+      // IMPORTANT: Don't set aria-hidden on parent if it contains focusable buttons
+      // Instead, set it only on the menubar content, not the wrapper
+      const menubar = el.querySelector('.navigation__sidebar, .nav__menubar');
+      if (menubar) {
+        Drupal.solo.menuState.setHidden(menubar, value === 'true', COMPONENT_NAME);
+      } else {
+        // Fallback to setting on element itself
+        Drupal.solo.menuState.setHidden(el, value === 'true', COMPONENT_NAME);
+      }
     };
 
     // Function to focus the first interactive element in the vertical navigation
@@ -202,9 +226,10 @@
 
       // Handle Escape key
       if (isEscape) {
+        event.preventDefault();
         sideMenubarToggleNav(false);
         // Return focus to the element that opened the sidebar
-        if (lastFocusedElement) {
+        if (lastFocusedElement && document.contains(lastFocusedElement)) {
           lastFocusedElement.focus();
         }
         return;
@@ -248,12 +273,18 @@
 
       verticalNav.style.setProperty('--solo-sidebar-speed', `${duration}ms`);
 
-      // Set aria-expanded for buttons
-      setAriaExpanded(closeBtns, isOpen);
-      setAriaExpanded(openBtns, isOpen);
+      // Set aria-expanded for buttons (iterate through NodeLists)
+      closeBtns.forEach(btn => {
+        if (btn && btn instanceof HTMLElement) {
+          Drupal.solo.menuState.setExpanded(btn, isOpen, COMPONENT_NAME);
+        }
+      });
 
-      // Set aria-hidden for vertical navigation
-      setAriaHidden(verticalNav, !isOpen);
+      openBtns.forEach(btn => {
+        if (btn && btn instanceof HTMLElement) {
+          Drupal.solo.menuState.setExpanded(btn, isOpen, COMPONENT_NAME);
+        }
+      });
 
       // Update tabindex for first level menu items and close buttons
       updateTabindex(isOpen);
@@ -262,6 +293,12 @@
       if (isOpen) {
         // Store the element that triggered opening
         lastFocusedElement = document.activeElement;
+
+        // Remove aria-hidden BEFORE opening (so focus can move inside)
+        Drupal.solo.menuState.setHidden(verticalNav, false, COMPONENT_NAME);
+
+        // Use inert attribute if available for better browser support
+        Drupal.solo.setInert(verticalNav, false);
 
         if (Drupal.solo.menuState) {
           Drupal.solo.menuState.coordinateMenuOperation('open', verticalNav, COMPONENT_NAME);
@@ -276,6 +313,16 @@
         eventManager.on(document, 'keydown', 'solo.sidebar.focus', trapFocus);
         eventManager.on(document, 'click', 'solo.sidebar.outside', outsideClickListener);
       } else {
+        // CRITICAL: Remove focus from any element inside sidebar BEFORE hiding
+        if (verticalNav.contains(document.activeElement)) {
+          document.activeElement.blur();
+
+          // Return focus to the element that opened the sidebar
+          if (lastFocusedElement && document.contains(lastFocusedElement)) {
+            lastFocusedElement.focus();
+          }
+        }
+
         if (Drupal.solo.menuState) {
           Drupal.solo.menuState.coordinateMenuOperation('close', verticalNav, COMPONENT_NAME);
         } else {
@@ -291,6 +338,13 @@
 
         // Clear cache
         cachedFocusableElements = null;
+
+        // CRITICAL: Set aria-hidden AFTER removing focus
+        // This prevents the "Blocked aria-hidden" warning
+        Drupal.solo.menuState.setHidden(verticalNav, true, COMPONENT_NAME);
+
+        // Use inert attribute if available for better browser support
+        Drupal.solo.setInert(verticalNav, true);
       }
     };
     Drupal.solo.sideMenubarToggleNav = sideMenubarToggleNav;

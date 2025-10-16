@@ -109,7 +109,6 @@ solo-menu-keyboard:
     component:
       css/components/solo-menu-keyboard.css: { weight: 0 }
   js:
-    # js/keyboard/solo-keyboard-debug.js: {}
     js/keyboard/solo-keyboard-template-parser.js: {}
     js/keyboard/solo-keyboard-utils.js: {}
     js/keyboard/solo-keyboard-aria.js: {}
@@ -124,6 +123,19 @@ solo-menu-keyboard:
     - core/drupal.announce
     - solo/solo-global
     - solo/solo-menu
+
+solo-debug:
+  css:
+    theme:
+      css/debug/solo-debug.css: { minified: false, preprocess: false }
+  js:
+    js/debug/solo-menu-debugger.js: { minified: false, preprocess: false }
+    js/debug/solo-keyboard-debug.js: { minified: false, preprocess: false }
+    js/debug/solo-menu-diagnostic.js: { minified: false, preprocess: false }
+    js/debug/solo-keyboard-aria-cleanup.js: { minified: false, preprocess: false }
+  dependencies:
+    - solo/solo-menu
+    - solo/solo-menu-keyboard
 
 solo-fixed-search-block:
   css:

@@ -165,7 +165,7 @@
   const SELECTORS = {
     PAGE_WRAPPER: '.page-wrapper',
     SOLO_MENUS: '.solo-inner nav ul:not(.field ul)',
-    SOLO_MENUS_ALL: '.solo-inner nav ul', // For filtering approach
+    SOLO_MENUS_ALL: '.solo-inner nav ul',
     FILE_UPLOAD_WRAPPER: '.solo-file-upload-wrapper',
     FILE_INPUT: '.solo-file-native',
     FILE_NAME: '.solo-file-name',

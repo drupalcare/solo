@@ -214,24 +214,45 @@
       });
 
       // Handle broken images by adding placeholder.
-      // Uses once() to prevent duplicate error handlers.
+      // Only triggers for images that actually fail to load.
       once('solo-broken-images', 'img', context).forEach(img => {
+        if (img.complete && img.naturalHeight > 0) {
+          return;
+        }
+
         img.addEventListener('error', function() {
-          if (!this.classList.contains('broken-image')) {
+          if (!this.classList.contains('broken-image') && this.complete) {
             this.classList.add('broken-image');
+
             const placeholder = document.createElement('div');
             placeholder.className = 'img-placeholder';
-            placeholder.textContent = Drupal.t('Image not available');
-            this.style.display = 'none';
-            this.parentNode.insertBefore(placeholder, this.nextSibling);
-          }
-        });
-        // Trigger error check if image is already broken.
-        if (!img.complete || img.naturalHeight === 0) {
-          img.dispatchEvent(new Event('error'));
-        }
-      });
 
+            // ONLY set dimensions if image actually has them
+            if (this.offsetWidth > 0) {
+              placeholder.style.width = this.offsetWidth + 'px';
+            }
+            if (this.offsetHeight > 0) {
+              placeholder.style.height = this.offsetHeight + 'px';
+            }
+
+            // Copy CSS classes to inherit responsive behavior
+            if (this.className) {
+              placeholder.className = 'img-placeholder ' + this.className;
+            }
+
+            placeholder.textContent = Drupal.t('Image not available');
+            placeholder.setAttribute('role', 'img');
+            placeholder.setAttribute('aria-label', Drupal.t('Image not available'));
+
+            this.style.display = 'none';
+            this.parentNode.insertBefore(placeholder, this);
+
+            if (Drupal.announce) {
+              Drupal.announce(Drupal.t('An image failed to load'));
+            }
+          }
+        }, { once: true });
+      });
       // Setup skip links for accessibility.
       // Uses once() to prevent duplicate event listeners on AJAX updates.
       once('solo-skip-links', 'body', context).forEach(() => {

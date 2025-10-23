@@ -197,13 +197,13 @@ div.page-title.lone {
 
 .page-wrapper .selectify *:hover,
 .page-wrapper .solo-select:hover,
-.page-wrapper .solo-ckeck:hover,
+.page-wrapper .solo-check:hover,
 .page-wrapper .solo-radio:hover,
 .page-wrapper .solo-input:hover,
 .page-wrapper .solo-textarea:hover,
 .page-wrapper .selectify *:focus,
 .page-wrapper .solo-select:focus,
-.page-wrapper .solo-ckeck:focus,
+.page-wrapper .solo-check:focus,
 .page-wrapper .solo-radio:focus,
 .page-wrapper .solo-input:focus,
 .page-wrapper .solo-textarea:focus {

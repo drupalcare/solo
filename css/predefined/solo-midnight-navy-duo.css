@@ -262,7 +262,7 @@ header.header h3 a span {
 .page-wrapper .primary-menu.solo-sticky,
 .fixed-search-block-inner .fixed-search-wrapper,
 .page-wrapper .solo-outer.animate-hover .region-inner.top-box-inner {
-  --s-b: rgb(6, 12, 24);
+  --s-b: 6, 12, 24;
 }
 
 .page-wrapper .solo-outer.animate-hover .region-inner.bottom-box-inner,

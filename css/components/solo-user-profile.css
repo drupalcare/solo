@@ -10,3 +10,7 @@
   margin-block-end: 0!important;
   font-weight: bold;
 }
+
+.user-profile-compact a {
+  display: inline-flex;
+}

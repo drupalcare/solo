@@ -34,23 +34,27 @@
     'comment-wrapper',
   ]
 %}
+
 {% set title_classes = [
     'title',
     label_display == 'visually_hidden' ? 'visually-hidden',
   ]
 %}
-<section{{ attributes.setAttribute('data-drupal-selector', 'comments').addClass(classes) }}>
+
+<section{{ attributes
+  .setAttribute('data-drupal-selector', 'comments')
+  .addClass(classes) }}>
   {% if not label_hidden %}
     {{ title_prefix }}
     <h2{{ title_attributes.addClass('comments__title') }}>
-      {{- label -}}
-      {%- if comments -%}
-        <span class="comments__count">{{ comment_count }}</span>
+      <span class="comments__icon">{% include '@solo/partials/svg/_comment.html.twig' %}</span>
+      <span class="comments__label">{{ label }}</span>
+      {%- if comment_count > 0 -%}
+        <span class="comments__count">({{ comment_count }})</span>
       {%- endif -%}
     </h2>
     {{ title_suffix }}
   {% endif %}
-
   {% if comment_form %}
     <div class="add-comment">
       {% if user_picture %}
@@ -65,7 +69,5 @@
       </div>
     </div>
   {% endif %}
-
   {{ comments }}
-
 </section>

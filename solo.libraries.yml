@@ -76,6 +76,7 @@ solo-global:
     js/components/solo-utils.js: { }
     js/components/solo-scripts.js: { }
     js/components/solo-messages.js: { }
+    js/components/solo-comments.js: { }
   dependencies:
     - core/drupal
     - core/once

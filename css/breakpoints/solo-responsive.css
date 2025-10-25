@@ -102,6 +102,20 @@
     max-width: 25rem;
   }
 
+  .comment .indented {
+    margin-inline-start: var(--solo-px16);
+    padding-inline-start: var(--solo-px12);
+  }
+
+  .comment__picture {
+    width: 32px;
+    height: 32px;
+  }
+
+  .comment__permalink {
+    opacity: 1;
+  }
+
 }
 
 @media (max-width:35.99875rem) {

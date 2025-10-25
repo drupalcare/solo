@@ -44,6 +44,9 @@
  * - title_attributes: Same as attributes, except applied to the main title
  *   tag that appears in the template.
  * - threaded: A flag indicating whether the comments are threaded or not.
+ * - new: A text string indicating if the comment is new (only for logged-in users).
+ * - new_indicator_timestamp: Unix timestamp of when the comment was created,
+ *   only present for new comments.
  *
  * These variables are provided to give context about the parent comment (if
  * any, optional):
@@ -66,9 +69,7 @@
  * @see template_preprocess_comment()
  */
 #}
-{% if threaded %}
-  {{ attach_library('claro/classy.indented') }}
-{% endif %}
+
 {% set classes = [
     'solo-clear',
     'comment',
@@ -76,38 +77,68 @@
     status != 'published' ? status,
     comment.owner.anonymous ? 'by-anonymous',
     author_id and author_id == commented_entity.getOwnerId() ? 'by-' ~ commented_entity.getEntityTypeId() ~ '-author',
+    threaded ? 'comment--threaded',
+    parent_comment ? 'comment--has-parent',
   ]
 %}
-<article{{ attributes.addClass(classes) }}>
-  {#
-    Hide the "new" indicator by default, let a piece of JavaScript ask the
-    server which comments are new for the user. Rendering the final "new"
-    indicator here would break the render cache.
-  #}
+{# Set base attributes #}
+{% set comment_attributes = attributes
+  .addClass(classes)
+  .setAttribute('data-threaded', threaded ? 'true' : 'false')
+  .setAttribute('data-changed', changed)
+  .setAttribute('data-comment-id', comment.id())
+  .setAttribute('data-drupal-selector', 'comment')
+%}
+{# Add parent ID only if exists #}
+{% if parent_comment %}
+  {% set comment_attributes = comment_attributes.setAttribute('data-parent-comment-id', parent_comment.id()) %}
+{% endif %}
+{# Add aria-labelledby if title exists #}
+{% if title %}
+  {% set comment_attributes = comment_attributes.setAttribute('aria-labelledby', 'comment-' ~ comment.id() ~ '-title') %}
+{% endif %}
 
-  <footer class="comment__meta">
-    {{ user_picture }}
-    <p class="comment__author">{{ author }}</p>
-    <p class="comment__time">{{ created }}</p>
-    <p class="comment__permalink">{{ permalink }}</p>
-    <p class="hidden new-comment" data-comment-timestamp="{{ new_indicator_timestamp }}"></p>
+<article{{ comment_attributes }}>
+  {# Comment Header - Who said it and when #}
+  <header class="comment__header">
+    {% if user_picture %}
+      <div class="comment__picture">
+        {{ user_picture }}
+      </div>
+    {% endif %}
+    <div class="comment__header-info">
+      <p class="comment__author">{{ author }}</p>
+      <time class="comment__time" datetime="{{ comment.created.value|date('c') }}">{{ created }}</time>
+    </div>
+    <div class="comment__permalink">
+      {{ permalink }}
+      {% include '@solo/partials/svg/_svg-link.html.twig' %}
+    </div>
+    {# New indicator - only rendered if comment is actually new #}
+    <mark class="new-comment hidden" data-comment-timestamp="{{ new_indicator_timestamp }}">
+      <span class="new-comment__dot" aria-hidden="true"></span>
+      <span class="new-comment__text">{{ 'New'|t }}</span>
+    </mark>
+  </header>
 
-    {#
-      Indicate the semantic relationship between parent and child comments for
-      accessibility. The list is difficult to navigate in a screen reader
-      without this information.
-    #}
+  {# Comment Body - What they said (content only) #}
+  <div{{ content_attributes.addClass('comment__body') }}>
+    {% if title %}
+      {{ title_prefix }}
+      <h3 id="comment-{{ comment.id() }}-title"{{ title_attributes.addClass('comment__title') }}>{{ title }}</h3>
+      {{ title_suffix }}
+    {% endif %}
+    {{ content|without('links') }}
+  </div>
+
+  {# Comment Footer - Actions and controls #}
+  <footer class="comment__footer">
+    <div class="comment__links">
+      {{ content.links }}
+    </div>
+    {# Parent relationship for accessibility #}
     {% if parent %}
       <p class="parent visually-hidden">{{ parent }}</p>
     {% endif %}
   </footer>
-
-  <div{{ content_attributes.addClass('comment__content') }}>
-    {% if title %}
-      {{ title_prefix }}
-      <h3{{ title_attributes }}>{{ title }}</h3>
-      {{ title_suffix }}
-    {% endif %}
-    {{ content }}
-  </div>
 </article>

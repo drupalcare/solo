@@ -1128,17 +1128,40 @@ function solo_preprocess_search_result(&$variables): void {
 function solo_preprocess_comment(&$variables): void {
   // Getting the node creation time stamp from the comment object.
   $date = $variables['comment']->getCreatedTime();
-
   // Getting the current request time.
   $request_time = DrupalDateTime::createFromTimestamp(\Drupal::time()->getRequestTime());
-
   // Getting the date formatter service.
   $date_formatter = \Drupal::service('date.formatter');
-
   // Formatting "created" as "X days ago".
   $variables['created'] = t('@time ago', [
     '@time' => $date_formatter->formatInterval($request_time->getTimestamp() - $date),
   ]);
+
+  // Check if this comment has replies (child comments).
+  /** @var \Drupal\comment\CommentInterface $comment */
+  $comment = $variables['comment'];
+
+  /** @var \Drupal\comment\CommentStorageInterface $comment_storage */
+  $comment_storage = \Drupal::entityTypeManager()->getStorage('comment');
+
+  // Query for direct child comments only.
+  $query = $comment_storage->getQuery()
+    ->accessCheck(TRUE)
+    ->condition('entity_id', $comment->getCommentedEntityId())
+    ->condition('entity_type', $comment->getCommentedEntityTypeId())
+    ->condition('field_name', $comment->getFieldName())
+    ->condition('pid', $comment->id())
+    ->condition('status', 1)
+    ->count();
+
+  $replies_count = $query->execute();
+
+  // Set has_replies flag and count.
+  $variables['has_replies'] = $replies_count > 0;
+  $variables['replies_count'] = $replies_count;
+
+  // Add cache tags for proper invalidation.
+  $variables['#cache']['tags'][] = 'comment_list';
 }
 
 /**

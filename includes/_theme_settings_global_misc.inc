@@ -298,7 +298,7 @@ $form["solo_settings"]["settings_global_misc"]["interface_behavior"]["site_toggl
   ],
 ];
 
-// Get all available menus
+// Get all available menus.
 $menus = \Drupal::entityTypeManager()->getStorage('menu')->loadMultiple();
 $menu_options = [];
 foreach ($menus as $menu_id => $menu) {

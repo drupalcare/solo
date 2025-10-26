@@ -24,7 +24,7 @@
 {% macro svg_icon(icon_value) %}
     {% include '@solo/partials/svg/_svg-menu-arrow.html.twig' %}
 {% endmacro %}
-<div class="solo-clear solo-menu navigation-sidebar navigation-sidebar-template navigation-sidebar-click">
+<div class="solo-clear solo-menu navigation-sidebar navigation-sidebar-template navigation-sidebar-click{{ keyboard_enabled ? ' solo-keyboard-enabled' }}">
     {{ menus.menu_links(items, attributes, 0, menu_name, aria_id) }}
 </div>
 {% macro menu_links(items, attributes, menu_level, menu_name, aria_id) %}

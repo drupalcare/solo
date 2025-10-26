@@ -16,9 +16,21 @@ solo.settings:
           label: 'Default config hash'
 
     # ===============================================
+    # DYNAMIC MENU TYPE PATTERNS
+    # ===============================================
+    # Layout overrides per menu type
+    keyboard_navigation_menus:
+      type: sequence
+      label: 'Menus with keyboard navigation enabled'
+      nullable: true
+      sequence:
+        type: string
+        label: 'Menu machine name'
+
+    # ===============================================
     # DYNAMIC CONTENT TYPE PATTERNS
     # ===============================================
-    # Layout overrides per content type (CORRECTED - single wildcards only)
+    # Layout overrides per content type
 
     search_result_content_types:
       type: sequence
@@ -325,10 +337,6 @@ solo.settings:
       type: boolean
       label: 'Primary menu expand left'
 
-    primary_menu_keyboard:
-      type: boolean
-      label: 'Primary menu keyboard'
-
     primary_menu_megamenu:
       type: boolean
       label: 'Primary menu megamenu'
@@ -369,11 +377,6 @@ solo.settings:
     primary_sidebar_menu_branding:
       type: boolean
       label: 'Primary sidebar menu branding'
-
-    primary_sidebar_menu_keyboard:
-      type: boolean
-      label: 'Primary sidebar menu keyboard'
-
 
     # ===============================================
     # HIGHLIGHTED REGION

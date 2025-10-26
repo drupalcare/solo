@@ -28,7 +28,7 @@
 {% macro svg_icon(icon_value) %}
     {% include '@solo/partials/svg/_svg-menu-arrow.html.twig' %}
 {% endmacro %}
-<div class="solo-clear solo-menu navigation-responsive navigation-primary-responsive{{ click_hover ? ' ' ~ click_hover }}{{ remove_arrow ? ' ' ~ remove_arrow }}{{ menu_alignment ? ' ' ~ menu_alignment }}{{ expand_left ? ' ' ~ expand_left }}{{ primary_menu_branding ? ' ' ~ primary_menu_branding }}{{ primary_menu_keyboard ? ' ' ~ primary_menu_keyboard }}"
+<div class="solo-clear solo-menu navigation-responsive navigation-primary-responsive{{ click_hover ? ' ' ~ click_hover }}{{ remove_arrow ? ' ' ~ remove_arrow }}{{ menu_alignment ? ' ' ~ menu_alignment }}{{ expand_left ? ' ' ~ expand_left }}{{ primary_menu_branding ? ' ' ~ primary_menu_branding }}{{ keyboard_enabled ? ' solo-keyboard-enabled' }}"
      aria-label="{{ 'Main navigation'|t }}"
      data-menu-name="{{ menu_name }}"
      data-interaction-type="{{ click_hover|default("click") }}">

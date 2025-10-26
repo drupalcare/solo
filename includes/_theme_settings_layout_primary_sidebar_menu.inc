@@ -67,12 +67,6 @@ if (array_key_exists("primary_sidebar_menu", $updated_regions["mix"])) {
     "#default_value" => theme_get_setting("primary_sidebar_menu_hover"),
   ];
 
-  $form["solo_settings"]["settings_{$region}"]["menu_behavior_accessibility"]["primary_sidebar_menu_keyboard"] = [
-    "#type" => "checkbox",
-    "#title" => t("Tick this box to enable Keyboard Compatibility for the sidebar menu."),
-    "#default_value" => theme_get_setting("primary_sidebar_menu_keyboard"),
-  ];
-
   // Color Settings Tab.
   $form["solo_settings"]["settings_{$region}"]["color_settings_tab"] = [
     "#type" => "details",

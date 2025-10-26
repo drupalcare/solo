@@ -28,7 +28,7 @@
 {% macro svg_icon(icon_value) %}
     {% include '@solo/partials/svg/_svg-menu-arrow.html.twig' %}
 {% endmacro %}
-<div class="solo-clear solo-menu navigation-responsive navigation-responsive-click"
+<div class="solo-clear solo-menu navigation-responsive navigation-responsive-click{{ keyboard_enabled ? ' solo-keyboard-enabled' }}"
      aria-label="{{ 'Responsive navigation'|t }}"
      data-menu-name="{{ menu_name }}"
      data-interaction-type="click">

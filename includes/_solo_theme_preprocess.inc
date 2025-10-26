@@ -534,8 +534,6 @@ function _get_theme_variables() {
       'primary_menu_justify_content',
       'primary_sidebar_menu_border',
       'primary_sidebar_menu_branding',
-      'primary_menu_keyboard',
-      'primary_sidebar_menu_keyboard',
       'site_regions_top_border',
       'site_regions_main_border',
       'site_regions_bottom_border',
@@ -626,6 +624,13 @@ function _get_node_width_class(NodeInterface $node): ?string {
  */
 function solo_preprocess_page(&$variables) {
 
+  $keyboard_menus = theme_get_setting('keyboard_navigation_menus');
+  if ($keyboard_menus) {
+    // Filter out unchecked items (checkboxes return 0 for unchecked)
+    $enabled_menus = array_filter($keyboard_menus);
+    $variables['#attached']['drupalSettings']['solo']['keyboardMenus'] = array_values($enabled_menus);
+  }
+
   // Get current content type.
   $node = \Drupal::routeMatch()->getParameter('node');
   $content_type = $node instanceof NodeInterface ? $node->bundle() : NULL;
@@ -647,9 +652,14 @@ function solo_preprocess_page(&$variables) {
     $variables['#attached']['library'][] = 'solo/solo-menu-breakpoints-' . $m_point;
   }
 
-  if (theme_get_setting('primary_menu_keyboard') || theme_get_setting('primary_sidebar_menu_keyboard')) {
+  $keyboard_menus = theme_get_setting('keyboard_navigation_menus');
+  if ($keyboard_menus && array_filter($keyboard_menus)) {
     $variables['#attached']['library'][] = 'solo/solo-menu-keyboard';
   }
+
+  // if (theme_get_setting('primary_menu_keyboard') || theme_get_setting('primary_sidebar_menu_keyboard')) {
+  //   $variables['#attached']['library'][] = 'solo/solo-menu-keyboard';
+  // }
 
   if ($layout_order = theme_get_setting('site_mobile_layout_order')) {
     $layout_class = str_replace('_', '-', $layout_order);
@@ -1304,10 +1314,6 @@ function solo_preprocess_menu__primary_menu(&$variables): void {
     $variables['logo_alt'] = theme_get_setting('header_logo_image_alt') ?: 'Home';
   }
 
-  if (theme_get_setting('primary_menu_keyboard')) {
-    $variables['primary_menu_keyboard'] = 'solo-keyboard-enabled';
-  }
-
 }
 
 /**
@@ -1320,10 +1326,6 @@ function solo_preprocess_menu__primary_sidebar_menu(&$variables): void {
   }
   else {
     $variables['click_hover_sidebar'] = 'navigation-sidebar-click';
-  }
-
-  if (theme_get_setting('primary_sidebar_menu_keyboard')) {
-    $variables['primary_sidebar_menu_keyboard'] = 'solo-keyboard-enabled';
   }
 
 }
@@ -1351,6 +1353,30 @@ function solo_preprocess_menu__account(&$variables): void {
         }
       }
     }
+  }
+}
+
+/**
+ * Implements hook_preprocess_menu().
+ */
+function solo_preprocess_menu(&$variables) {
+  $keyboard_menus = theme_get_setting('keyboard_navigation_menus');
+  if (!$keyboard_menus) {
+    return;
+  }
+
+  $enabled_menus = array_filter($keyboard_menus);
+  if (empty($enabled_menus)) {
+    return;
+  }
+
+  $menu_name = $variables['menu_name'] ?? NULL;
+  if (!$menu_name) {
+    return;
+  }
+
+  if (isset($enabled_menus[$menu_name])) {
+    $variables['keyboard_enabled'] = TRUE;
   }
 }
 

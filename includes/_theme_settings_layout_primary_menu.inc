@@ -179,12 +179,6 @@ if (array_key_exists("primary_menu", $updated_regions["mix"])) {
     "#default_value" => theme_get_setting("skip_navigation_content"),
   ];
 
-  $form["solo_settings"]["settings_{$region}"]["accessibility"]["primary_menu_keyboard"] = [
-    "#type" => "checkbox",
-    "#title" => t("Tick this box to enable Keyboard Compatibility for the main menu."),
-    "#default_value" => theme_get_setting("primary_menu_keyboard"),
-  ];
-
   $form["solo_settings"]["settings_{$region}"]["developer_tools"] = [
     "#type" => "details",
     "#title" => t("Developer Tools"),

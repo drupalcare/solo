@@ -297,3 +297,26 @@ $form["solo_settings"]["settings_global_misc"]["interface_behavior"]["site_toggl
     "slow" => t("Slow"),
   ],
 ];
+
+// Get all available menus
+$menus = \Drupal::entityTypeManager()->getStorage('menu')->loadMultiple();
+$menu_options = [];
+foreach ($menus as $menu_id => $menu) {
+  $menu_options[$menu_id] = $menu->label();
+}
+
+// Accessbility Tab.
+$form["solo_settings"]["settings_global_misc"]["accessibility"] = [
+  "#type" => "details",
+  "#title" => t("Accessibility"),
+  "#group" => "global_misc_tabs",
+  "#weight" => -1,
+];
+
+$form["solo_settings"]["settings_global_misc"]["accessibility"]['keyboard_navigation_menus'] = [
+  '#type' => 'checkboxes',
+  '#title' => t('Enable Keyboard Navigation for Menus'),
+  '#description' => t('Select which menus should have full keyboard navigation support (arrow keys, screen reader compatibility). Only applies to menus using Solo templates.'),
+  '#default_value' => theme_get_setting('keyboard_navigation_menus') ?? [],
+  '#options' => $menu_options,
+];

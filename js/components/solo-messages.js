@@ -39,8 +39,19 @@
     },
     aria: {
       label: Drupal.t('Close message'),
-      live: 'polite',
-      role: 'status'
+      // Default ARIA values if not set by template
+      // Template should set these based on message type
+      defaults: {
+        live: 'polite',
+        role: 'status'
+      },
+      // Map message types to appropriate ARIA live values
+      liveByType: {
+        error: 'assertive',
+        warning: 'assertive',
+        status: 'polite',
+        info: 'polite'
+      }
     }
   };
 
@@ -102,22 +113,24 @@
       // Add hidden class for CSS animation
       message.classList.add(CONFIG.selectors.hiddenClass);
 
-      // Announce closure to screen readers
-      if (message.getAttribute('role') === 'status') {
-        const announcement = document.createElement('div');
-        announcement.setAttribute('role', 'status');
-        announcement.setAttribute('aria-live', 'polite');
-        announcement.classList.add(CONFIG.selectors.visuallyHidden);
-        announcement.textContent = Drupal.t('Message closed');
-        document.body.appendChild(announcement);
+      // Announce closure to screen readers with appropriate priority
+      const messageAriaLive = message.getAttribute('aria-live') || 'polite';
+      const messageRole = message.getAttribute('role') || 'status';
 
-        // Remove announcement after screen readers have time to read it
-        setTimeout(() => {
-          if (announcement.parentNode) {
-            announcement.parentNode.removeChild(announcement);
-          }
-        }, 1000);
-      }
+      const announcement = document.createElement('div');
+      announcement.setAttribute('role', messageRole);
+      announcement.setAttribute('aria-live', messageAriaLive);
+      announcement.setAttribute('aria-atomic', 'true');
+      announcement.classList.add(CONFIG.selectors.visuallyHidden);
+      announcement.textContent = Drupal.t('Message closed');
+      document.body.appendChild(announcement);
+
+      // Remove announcement after screen readers have time to read it
+      setTimeout(() => {
+        if (announcement.parentNode) {
+          announcement.parentNode.removeChild(announcement);
+        }
+      }, 1000);
 
       // Remove from DOM after animation completes
       setTimeout(() => {
@@ -161,6 +174,28 @@
   };
 
   /**
+   * Determines the message type from CSS classes.
+   *
+   * @param {HTMLElement} message - The message element.
+   * @return {string} The message type (error, warning, status, info, or default).
+   */
+  const getMessageType = (message) => {
+    if (!message || !message.classList) {
+      return 'status'; // Default fallback
+    }
+
+    // Check for message type classes
+    const messageTypes = ['error', 'warning', 'status', 'info'];
+    for (const type of messageTypes) {
+      if (message.classList.contains(`messages--${type}`)) {
+        return type;
+      }
+    }
+
+    return 'status'; // Default fallback
+  };
+
+  /**
    * Adds a close button to the message with proper error handling.
    *
    * @param {HTMLElement} message - The message element.
@@ -191,11 +226,24 @@
       }
 
       // Set ARIA attributes for accessibility
+      // Respect existing attributes from template, only set if missing
       if (!message.hasAttribute('role')) {
-        message.setAttribute('role', 'status');
+        // Try to determine message type from CSS classes
+        const messageType = getMessageType(message);
+        const role = (messageType === 'error' || messageType === 'warning') ? 'alert' : 'status';
+        message.setAttribute('role', role);
       }
+
       if (!message.hasAttribute('aria-live')) {
-        message.setAttribute('aria-live', CONFIG.aria.live);
+        // Try to determine message type from CSS classes
+        const messageType = getMessageType(message);
+        const ariaLive = CONFIG.aria.liveByType[messageType] || CONFIG.aria.defaults.live;
+        message.setAttribute('aria-live', ariaLive);
+      }
+
+      // Set aria-atomic if not present (ensures complete message is announced)
+      if (!message.hasAttribute('aria-atomic')) {
+        message.setAttribute('aria-atomic', 'true');
       }
 
       // Create and add close button

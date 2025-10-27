@@ -23,24 +23,34 @@ use Drupal\webform\Entity\Webform;
 use Drupal\Core\Render\Element;
 
 /**
- * Helper function.
+ * Helper function to add node ID to body class.
+ *
+ * @param \Drupal\Core\Routing\RouteMatchInterface $route_match
+ *   The route match service.
+ * @param array $variables
+ *   The variables array (passed by reference).
  */
-function _add_node_id_to_body_class($route_match, &$variables): void {
-  $node_id = $route_match->getParameter('node')->id();
-  if ($node_id) {
+function _add_node_id_to_body_class(RouteMatchInterface $route_match, array &$variables): void {
+  $node = $route_match->getParameter('node');
+  if ($node && $node_id = $node->id()) {
     $variables['attributes']['class'][] = 'path-node-' . $node_id;
   }
 }
 
 /**
- * Helper function.
+ * Helper function to add taxonomy term to body class.
+ *
+ * @param \Drupal\Core\Routing\RouteMatchInterface $route_match
+ *   The route match service.
+ * @param array $variables
+ *   The variables array (passed by reference).
  */
-function _add_taxonomy_term_to_body_class($route_match, &$variables): void {
+function _add_taxonomy_term_to_body_class(RouteMatchInterface $route_match, array &$variables): void {
   $term = $route_match->getParameter('taxonomy_term');
-  if ($term->id()) {
+  if ($term && $term->id()) {
     $variables['attributes']['class'][] = 'path-taxonomy-term-' . $term->id();
   }
-  if ($term->bundle()) {
+  if ($term && $term->bundle()) {
     $variables['attributes']['class'][] = 'path-vocabulary-' . Html::cleanCssIdentifier($term->bundle());
   }
 }
@@ -58,9 +68,14 @@ function _add_user_path_to_body_class(&$variables): void {
 }
 
 /**
- * Helper function.
+ * Helper function to add view ID to body class.
+ *
+ * @param \Drupal\Core\Routing\RouteMatchInterface $route_match
+ *   The route match service.
+ * @param array $variables
+ *   The variables array (passed by reference).
  */
-function _add_view_id_to_body_class($route_match, &$variables): void {
+function _add_view_id_to_body_class(RouteMatchInterface $route_match, array &$variables): void {
   $view_id = $route_match->getParameter('view_id');
   if ($view_id) {
     $variables['attributes']['class'][] = 'views-page path-view-' . Html::cleanCssIdentifier($view_id);
@@ -1786,40 +1801,6 @@ function solo_preprocess_container(array &$variables): void {
   // Detect if container has min/max pattern.
   if (_solo_container_has_min_max($variables['element'])) {
     $variables['attributes']['class'][] = 'solo-has-date-range';
-  }
-}
-
-/**
- * Helper to recursively detect field types in container.
- *
- * @param array $element
- *   The element to check.
- * @param array $types
- *   Array to store found types (passed by reference).
- */
-function _solo_detect_container_field_types(array $element, array &$types): void {
-  foreach (Element::children($element) as $key) {
-    // Check direct field type.
-    if (isset($element[$key]['#type'])) {
-      $type = $element[$key]['#type'];
-      $types[$type] = ($types[$type] ?? 0) + 1;
-    }
-
-    // Check for fieldsets and their content.
-    if ($key === 'wrapper' || (isset($element[$key]['#type']) && $element[$key]['#type'] === 'fieldset')) {
-      // Mark that we have a fieldset.
-      $types['fieldset'] = ($types['fieldset'] ?? 0) + 1;
-    }
-
-    // Check for min/max pattern.
-    if ($key === 'min' || $key === 'max') {
-      $types['date-range-field'] = ($types['date-range-field'] ?? 0) + 1;
-    }
-
-    // Recurse into children.
-    if (is_array($element[$key])) {
-      _solo_detect_container_field_types($element[$key], $types);
-    }
   }
 }
 

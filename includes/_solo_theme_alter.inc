@@ -12,6 +12,63 @@ use Drupal\node\Entity\NodeType;
 use Drupal\Core\Render\Element;
 
 /**
+ * Recursively detect field types within a form element.
+ *
+ * This function is now defined here (in alter.inc) since it's primarily used
+ * for form alterations. Previously defined in preprocess.inc which caused
+ * potential load order issues.
+ *
+ * @param array $element
+ *   The form element to analyze.
+ * @param array $types
+ *   Array to store detected types and their counts (passed by reference).
+ * @param int $depth
+ *   Current recursion depth (internal use).
+ * @param int $max_depth
+ *   Maximum recursion depth to prevent infinite loops.
+ */
+function _solo_detect_container_field_types(array $element, array &$types, int $depth = 0, int $max_depth = 20): void {
+  // Prevent infinite recursion on circular form references.
+  if ($depth >= $max_depth) {
+    return;
+  }
+
+  foreach (Element::children($element) as $key) {
+    // Skip if not an array.
+    if (!isset($element[$key]) || !is_array($element[$key])) {
+      continue;
+    }
+
+    $child = $element[$key];
+
+    // Check direct field type.
+    if (isset($child['#type'])) {
+      $type = $child['#type'];
+      $types[$type] = ($types[$type] ?? 0) + 1;
+    }
+
+    // Check for fieldsets and their content.
+    if ($key === 'wrapper' || (isset($child['#type']) && $child['#type'] === 'fieldset')) {
+      // Mark that we have a fieldset.
+      $types['fieldset'] = ($types['fieldset'] ?? 0) + 1;
+    }
+
+    // Check for min/max pattern (date range fields).
+    if ($key === 'min' || $key === 'max') {
+      $types['date-range-field'] = ($types['date-range-field'] ?? 0) + 1;
+    }
+
+    // Check if this element contains both min and max children.
+    if (isset($child['min']) && isset($child['max'])) {
+      $types['date-range-field'] = ($types['date-range-field'] ?? 0) + 1;
+    }
+
+    // Recurse into children with incremented depth.
+    _solo_detect_container_field_types($child, $types, $depth + 1, $max_depth);
+  }
+}
+
+/**
  * Custom validation handler to apply hidden content types to the search query.
  */
 function solo_apply_hidden_content_types(array &$form, FormStateInterface $form_state): void {
@@ -106,11 +163,15 @@ function solo_form_comment_form_alter(&$form, FormStateInterface $form_state, $f
 
 /**
  * Implements hook_form_views_exposed_form_alter().
+ *
+ * Adds classes to Views exposed forms based on detected field types.
+ * Automatically detects date range fields and applies appropriate classes.
  */
 function solo_form_views_exposed_form_alter(&$form): void {
   $form['#attributes']['class'][] = 'form--inline';
+
   // Loop through ALL form elements - no hardcoded field names.
-  foreach (\Drupal\Core\Render\Element::children($form) as $key) {
+  foreach (Element::children($form) as $key) {
     if (!isset($form[$key]) || !is_array($form[$key])) {
       continue;
     }
@@ -141,6 +202,7 @@ function solo_form_views_exposed_form_alter(&$form): void {
     }
   }
 }
+
 /**
  * Implements hook_form_FORM_ID_alter() for search_block_form.
  */

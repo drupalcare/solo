@@ -22,35 +22,20 @@ function _load_google_fonts(array &$attachments): void {
 }
 
 /**
- * Helper function.
+ * Load external Google font library for a specific setting.
+ *
+ * Replaces three nearly identical functions with one parameterized version.
+ *
+ * @param array $attachments
+ *   The attachments array to modify.
+ * @param string $setting_name
+ *   The theme setting name to check (e.g., 'site_font_google_special_on').
  */
-function _load_special_fonts(array &$attachments): void {
-  if (theme_get_setting('site_font_google_special_on')) {
-    $ex_font_s = theme_get_setting('site_font_google_special_on');
-    $current_exgfs = 'solo/solo-gfex' . substr($ex_font_s, 4);
-    $attachments['#attached']['library'][] = $current_exgfs;
-  }
-}
-
-/**
- * Helper function.
- */
-function _load_site_name_fonts(array &$attachments): void {
-  if (theme_get_setting('site_name_google_font')) {
-    $ex_font_s = theme_get_setting('site_name_google_font');
-    $current_exgfs = 'solo/solo-gfex' . substr($ex_font_s, 4);
-    $attachments['#attached']['library'][] = $current_exgfs;
-  }
-}
-
-/**
- * Helper function.
- */
-function _load_page_title_fonts(array &$attachments): void {
-  if (theme_get_setting('site_pagetitle_google_font')) {
-    $ex_font_s = theme_get_setting('site_pagetitle_google_font');
-    $current_exgfs = 'solo/solo-gfex' . substr($ex_font_s, 4);
-    $attachments['#attached']['library'][] = $current_exgfs;
+function _load_external_google_font(array &$attachments, string $setting_name): void {
+  $font_setting = theme_get_setting($setting_name);
+  if ($font_setting) {
+    $library_name = 'solo/solo-gfex' . substr($font_setting, 4);
+    $attachments['#attached']['library'][] = $library_name;
   }
 }
 
@@ -182,16 +167,21 @@ function _load_enable_toggleable_radios(array &$attachments): void {
  * Implements hook_page_attachments_alter().
  */
 function solo_page_attachments_alter(array &$attachments): void {
+
   _load_google_fonts($attachments);
-  _load_special_fonts($attachments);
-  _load_site_name_fonts($attachments);
-  _load_page_title_fonts($attachments);
+
+  // NEW: Use single parameterized function instead of three separate ones.
+  _load_external_google_font($attachments, 'site_font_google_special_on');
+  _load_external_google_font($attachments, 'site_name_google_font');
+  _load_external_google_font($attachments, 'site_pagetitle_google_font');
+
   _load_predefined_color_theme($attachments);
   _load_font_awesome($attachments);
   _load_full_opacity($attachments);
   _site_load_w3css_library($attachments);
   _load_color_coded_system_tabs($attachments);
   _load_enable_toggleable_radios($attachments);
+
   // Check if debug mode is enabled in theme settings.
   if (theme_get_setting('solo_menu_debug')) {
     // NEW: Get verbosity setting.

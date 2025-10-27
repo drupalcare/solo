@@ -9,6 +9,7 @@ use Drupal\comment\CommentInterface;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\node\NodeInterface;
 use Drupal\node\Entity\NodeType;
+use Drupal\Core\Render\Element;
 
 /**
  * Custom validation handler to apply hidden content types to the search query.
@@ -108,8 +109,38 @@ function solo_form_comment_form_alter(&$form, FormStateInterface $form_state, $f
  */
 function solo_form_views_exposed_form_alter(&$form): void {
   $form['#attributes']['class'][] = 'form--inline';
-}
+  // Loop through ALL form elements - no hardcoded field names.
+  foreach (\Drupal\Core\Render\Element::children($form) as $key) {
+    if (!isset($form[$key]) || !is_array($form[$key])) {
+      continue;
+    }
 
+    $element = &$form[$key];
+
+    // Only process fieldsets and containers.
+    if (!isset($element['#type']) || !in_array($element['#type'], ['fieldset', 'container'])) {
+      continue;
+    }
+
+    // Detect field types within this element.
+    $types = [];
+    _solo_detect_container_field_types($element, $types);
+
+    // Apply classes based on detected types.
+    if (isset($types['date-range-field'])) {
+      $element['#attributes']['class'][] = 'solo-date-range';
+    }
+
+    if (isset($types['fieldset'])) {
+      $element['#attributes']['class'][] = 'solo-has-fieldset';
+    }
+
+    // Single date field (not a range).
+    if (!isset($types['date-range-field']) && isset($types['date'])) {
+      $element['#attributes']['class'][] = 'solo-single-date-container';
+    }
+  }
+}
 /**
  * Implements hook_form_FORM_ID_alter() for search_block_form.
  */

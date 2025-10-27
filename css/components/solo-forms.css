@@ -180,28 +180,38 @@ form .form-item__description {
 }
 
 /* Detect date ranges by looking for min/max fields */
-.solo-date-range-container {
+#page-wrapper .views-exposed-form .exposed-form .solo-date-range {
   display: flex;
   flex-wrap: wrap;
   align-items: flex-end;
+  max-width: 412px;
+}
+
+/* for default drupal field*/
+form.views-exposed-form .exposed-form fieldset.solo-date-range {
+  padding-block-start: 0.35em;
+  padding-inline: 0.75em;
+  padding-block-end: 0.625em;
+}
+
+form.views-exposed-form .exposed-form fieldset.solo-date-range > div {
+  gap: 2px;
 }
 
 form fieldset:has([name*="[min]"]):has([name*="[max]"]) .fieldset-wrapper {
   display: flex;
+  flex-wrap: wrap;
   align-items: flex-end;
   padding: 0;
 }
 
 form fieldset:has([name*="[min]"]):has([name*="[max]"]) .fieldset-wrapper > div {
   margin: 0;
+  min-width: 170px;
 }
 
+.solo-date-range .form-type-date,
 fieldset:has([name*="[min]"]):has([name*="[max]"]) .form-item {
   flex: 1;
-}
-
-/* Primary date range styling */
-.solo-date-range-container .form-type-date {
-  flex: 1;
-  min-width: 150px;
+  min-width: 170px;
 }

@@ -1780,7 +1780,7 @@ function solo_preprocess_container(array &$variables): void {
 
   // Special detection for date ranges.
   if (isset($field_types_found['date']) && $field_types_found['date'] === 2) {
-    $variables['attributes']['class'][] = 'solo-date-range-container';
+    $variables['attributes']['class'][] = 'solo-date-range';
   }
 
   // Detect if container has min/max pattern.

@@ -194,8 +194,6 @@ template {
 /* Custom Work
   ========================================================================== */
 img,
-object,
-embed,
 video {
   outline: none;
   padding: 0;
@@ -205,6 +203,16 @@ video {
   text-align: center;
   max-width: 100%;
   height: auto;
+  display: block;
+}
+
+object,
+embed {
+  outline: none;
+  padding: 0;
+  margin: 0;
+  border: none;
+  text-align: center;
   display: block;
 }
 

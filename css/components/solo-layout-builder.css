@@ -85,10 +85,7 @@
   margin-block: 0;
   margin-inline-end: var(--solo-px20);
   margin-inline-start: 0;
-  border-start-start-radius: var(--solo-px20);
-  border-start-end-radius: 0;
-  border-end-start-radius: var(--solo-px20);
-  border-end-end-radius: 0;
+  border-radius:var(--solo-px5);
 }
 
 .node-layout-builder-form {
@@ -96,6 +93,13 @@
   margin-inline: auto !important;
   padding: 0 !important;
   font-size: 90%;
+}
+
+.node-layout-builder-form .form-actions #edit-discard-changes+#edit-preview-toggle {
+  border: 1px solid var(--solo-green);
+  border-radius: 999px;
+  margin-inline-end: var(--solo-px16);
+  padding: var(--solo-px8);
 }
 
 .node-layout-builder-form .messages {
@@ -130,6 +134,7 @@
 .node__content .layout--fourcol-section {
   clear: both;
   content: "";
+  border-radius: var(--solo-px5);
 }
 
 .layout-builder {
@@ -137,15 +142,17 @@
   padding-block: var(--solo-px10);
   padding-inline: var(--solo-px15);
   border: 1px solid rgb(55, 170, 220);
+  border-radius: var(--solo-px5);
 }
 
 .layout-builder__region {
   outline: 1px dashed rgb(55, 170, 220);
+  border-radius: var(--solo-px5);
 }
 
 .layout-builder__link--configure,
 .layout-builder__link--remove {
-  font-size: var(--solo-px13);
+  font-size: var(--solo-px14);
   clear: none;
   display: inline-block;
   text-align: center;
@@ -160,26 +167,21 @@
 
 .layout-builder__link--remove,
 .layout-builder__link--configure {
-  border-start-start-radius: var(--solo-px20);
-  border-start-end-radius: 0;
-  border-end-start-radius: var(--solo-px20);
-  border-end-end-radius: 0;
+  border-radius: var(--solo-px5);
 }
 
 .layout-builder__add-block,
 .layout-builder__link--add,
 .layout-builder__add-section {
-  border-start-start-radius: var(--solo-px20);
-  border-start-end-radius: 0;
-  border-end-start-radius: var(--solo-px20);
-  border-end-end-radius: 0;
+  transition: all 0.2s ease;
+  border-radius: var(--solo-px5);
 }
 
 .layout-builder__link--add::before {
-  display: inline-block;
+  display: inline-flex;
   width: var(--solo-px16);
-  height: var(--solo-px16);
-  margin-inline-end: var(--solo-px10);
+  height: var(--solo-px20);
+  margin-inline-end: var(--solo-px4);
   margin-inline-start: 0;
   content: "";
   vertical-align: middle;
@@ -254,51 +256,51 @@
 }
 
 /* Button Colors */
-.layout-builder__link--add {
-  color: white;
+#page-wrapper .layout-builder__link--add {
+  --r-tx: var(--solo-white);
   background: rgb(55, 170, 220);
   background: -moz-linear-gradient(top, rgb(55, 170, 220) 0%, rgb(46, 147, 190) 100%);
   background: -webkit-linear-gradient(top, rgb(55, 170, 220) 0%, rgb(46, 147, 190) 100%);
   background: linear-gradient(to bottom, rgb(55, 170, 220) 0%, rgb(46, 147, 190) 100%);
 }
 
-.layout-builder__link--remove:hover,
-.layout-builder__link--remove,
-.layout-builder-revert-overrides .form-actions input,
-.node-layout-builder-form  .form-actions input:nth-child(2) {
-  color: white;
+#page-wrapper .layout-builder__link--remove:hover,
+#page-wrapper .layout-builder__link--remove,
+#page-wrapper .layout-builder-revert-overrides .form-actions input,
+#page-wrapper .node-layout-builder-form  .form-actions input:nth-child(2) {
+  --r-tx: var(--solo-white);
   background: rgb(213, 71, 43);
   background: -moz-linear-gradient(top, rgb(213, 71, 43) 0%, rgb(158, 46, 37) 100%);
   background: -webkit-linear-gradient(top, rgb(213, 71, 43) 0%, rgb(158, 46, 37) 100%);
   background: linear-gradient(to bottom, rgb(213, 71, 43) 0%, rgb(158, 46, 37) 100%);
 }
 
-.layout-builder__link--configure,
-.layout-builder-revert-overrides .form-actions a.button,
-.node-layout-builder-form  .form-actions input:nth-child(1) {
-  color: white;
+#page-wrapper .layout-builder__link--configure,
+#page-wrapper .layout-builder-revert-overrides .form-actions a.button,
+#page-wrapper .node-layout-builder-form  .form-actions input:nth-child(1) {
+  --r-tx: var(--solo-white);
   background: rgb(75, 187, 34);
   background: -moz-linear-gradient(top, rgb(75, 187, 34) 0%, rgb(52, 130, 24) 100%);
   background: -webkit-linear-gradient(top, rgb(75, 187, 34) 0%, rgb(52, 130, 24) 100%);
   background: linear-gradient(to bottom, rgb(75, 187, 34) 0%, rgb(52, 130, 24) 100%);
 }
 
-.node-layout-builder-form  .form-actions input:nth-child(3) {
-  color: white;
+#page-wrapper .node-layout-builder-form  .form-actions input:nth-child(3) {
+  --r-tx: var(--solo-white);
   background: rgb(107, 129, 205);
   background: -moz-linear-gradient(top, rgb(107, 129, 205) 0%, rgb(64, 84, 160) 100%);
   background: -webkit-linear-gradient(top, rgb(107, 129, 205) 0%, rgb(64, 84, 160) 100%);
   background: linear-gradient(to bottom, rgb(107, 129, 205) 0%, rgb(64, 84, 160) 100%);
 }
 
-.layout-builder__link--add:hover,
-.layout-builder__link--remove:hover,
-.layout-builder__link--configure:hover,
-.node-layout-builder-form .form-actions input:hover,
-.layout-builder-revert-overrides .form-actions a.button:hover,
-.layout-builder-revert-overrides .form-actions input:hover {
+#page-wrapper .layout-builder__link--add:hover,
+#page-wrapper .layout-builder__link--remove:hover,
+#page-wrapper .layout-builder__link--configure:hover,
+#page-wrapper .node-layout-builder-form .form-actions input:hover,
+#page-wrapper .layout-builder-revert-overrides .form-actions a.button:hover,
+#page-wrapper .layout-builder-revert-overrides .form-actions input:hover {
   border-radius: 0;
-  color: white !important;
+  color: var(--solo-white) !important;
   background: #45484d;
   background: -moz-linear-gradient(-45deg, #45484d 0%, #000000 100%);
   background: -webkit-linear-gradient(-45deg, #45484d 0%, #000000 100%);

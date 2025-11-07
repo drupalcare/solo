@@ -1689,6 +1689,10 @@ function solo_preprocess_views_view_table(array &$variables): void {
  * Implements hook_preprocess_HOOK() for fieldset.html.twig.
  */
 function solo_preprocess_fieldset(array &$variables): void {
+  // DEFENSIVE CHECK: Ensure element exists and is an array before processing.
+  if (!isset($variables['element']) || !is_array($variables['element'])) {
+    return;
+  }
   // Count different field types inside.
   $field_types = [];
   foreach (Element::children($variables['element']) as $child) {
@@ -1716,6 +1720,10 @@ function solo_preprocess_fieldset(array &$variables): void {
  * Implements hook_preprocess_HOOK() for form.html.twig.
  */
 function solo_preprocess_form(array &$variables): void {
+  // DEFENSIVE CHECK: Ensure element exists and is an array before processing.
+  if (!isset($variables['element']) || !is_array($variables['element'])) {
+    return;
+  }
   // Add data attributes for AJAX behaviors.
   _solo_mark_entity_reference_fields($variables['element']);
 }
@@ -1762,6 +1770,11 @@ function solo_preprocess_container(array &$variables): void {
   $container_id = $variables['attributes']['id'] ?? '';
   if ($container_id !== '' && str_contains($container_id, 'ajax-wrapper')) {
     $variables['attributes']['class'][] = 'ajax-container';
+  }
+
+  // DEFENSIVE CHECK: Ensure element exists and is an array before processing.
+  if (!isset($variables['element']) || !is_array($variables['element'])) {
+    return;
   }
 
   // Count and classify children.
@@ -1856,6 +1869,12 @@ function _solo_container_has_min_max(array $element): bool {
  * Implements hook_preprocess_HOOK() for field-multiple-value-form.html.twig.
  */
 function solo_preprocess_field_multiple_value_form(array &$variables): void {
+  // DEFENSIVE CHECK: Ensure element exists and is an array before processing.
+  if (!isset($variables['element']) || !is_array($variables['element'])) {
+    // Provide safe fallback even when element is missing.
+    $variables['attributes']['class'][] = 'field-multiple-count-0';
+    return;
+  }
   // Add classes for different table layouts.
   // Ensure #value exists and is countable before using count().
   $item_count = 0;

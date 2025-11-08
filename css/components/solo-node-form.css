@@ -310,3 +310,7 @@ form .form--inline .form-actions {
 form .pb-tab-display [data-drupal-selector="para-color-picker"] .form-color {
   min-height: 54px;
 }
+
+#page-wrapper form [data-drupal-selector="para-color-picker"] .form-color {
+  min-height: 50px;
+}

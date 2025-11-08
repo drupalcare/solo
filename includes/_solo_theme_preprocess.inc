@@ -23,6 +23,49 @@ use Drupal\webform\Entity\Webform;
 use Drupal\Core\Render\Element;
 
 /**
+ * Ensures the class attribute is an array before appending values.
+ *
+ * This defensive helper prevents "[] operator not supported for strings" errors
+ * that occur when Drupal's Attribute objects convert class arrays to strings
+ * during the rendering process.
+ *
+ * @param array $variables
+ *   The variables array containing attributes.
+ * @param string $attribute_path
+ *   The attribute path (default: 'attributes' for $variables['attributes']['class']).
+ */
+function _solo_ensure_class_array(array &$variables, string $attribute_path = 'attributes'): void {
+  // Handle standard attributes path.
+  if ($attribute_path === 'attributes') {
+    if (!isset($variables['attributes']['class'])) {
+      $variables['attributes']['class'] = [];
+    }
+    elseif (!is_array($variables['attributes']['class'])) {
+      // Convert string to array if already processed by Attribute object.
+      $variables['attributes']['class'] = [$variables['attributes']['class']];
+    }
+  }
+  // Handle nested paths like 'label.#attributes'.
+  elseif (str_contains($attribute_path, '.')) {
+    $parts = explode('.', $attribute_path);
+    $ref = &$variables;
+    foreach ($parts as $part) {
+      $part = trim($part, '#');
+      if (!isset($ref[$part])) {
+        $ref[$part] = [];
+      }
+      $ref = &$ref[$part];
+    }
+    if (!isset($ref['class'])) {
+      $ref['class'] = [];
+    }
+    elseif (!is_array($ref['class'])) {
+      $ref['class'] = [$ref['class']];
+    }
+  }
+}
+
+/**
  * Helper function to add node ID to body class.
  *
  * @param \Drupal\Core\Routing\RouteMatchInterface $route_match
@@ -33,6 +76,7 @@ use Drupal\Core\Render\Element;
 function _add_node_id_to_body_class(RouteMatchInterface $route_match, array &$variables): void {
   $node = $route_match->getParameter('node');
   if ($node && $node_id = $node->id()) {
+    _solo_ensure_class_array($variables);
     $variables['attributes']['class'][] = 'path-node-' . $node_id;
   }
 }
@@ -48,9 +92,11 @@ function _add_node_id_to_body_class(RouteMatchInterface $route_match, array &$va
 function _add_taxonomy_term_to_body_class(RouteMatchInterface $route_match, array &$variables): void {
   $term = $route_match->getParameter('taxonomy_term');
   if ($term && $term->id()) {
+    _solo_ensure_class_array($variables);
     $variables['attributes']['class'][] = 'path-taxonomy-term-' . $term->id();
   }
   if ($term && $term->bundle()) {
+    _solo_ensure_class_array($variables);
     $variables['attributes']['class'][] = 'path-vocabulary-' . Html::cleanCssIdentifier($term->bundle());
   }
 }
@@ -63,6 +109,7 @@ function _add_user_path_to_body_class(&$variables): void {
   $curr_path = ltrim($curr_path, '/');
   $user_url = explode('/', $curr_path);
   if (isset($user_url[0], $user_url[1]) && ($user_url[0] == 'user')) {
+    _solo_ensure_class_array($variables);
     $variables['attributes']['class'][] = 'path-user-' . $user_url[1];
   }
 }
@@ -78,6 +125,7 @@ function _add_user_path_to_body_class(&$variables): void {
 function _add_view_id_to_body_class(RouteMatchInterface $route_match, array &$variables): void {
   $view_id = $route_match->getParameter('view_id');
   if ($view_id) {
+    _solo_ensure_class_array($variables);
     $variables['attributes']['class'][] = 'views-page path-view-' . Html::cleanCssIdentifier($view_id);
   }
 }
@@ -89,6 +137,7 @@ function _add_admin_context_to_body_class(&$variables): void {
   /** @var \Drupal\Core\Routing\AdminContext $admin_context */
   $admin_context = \Drupal::service('router.admin_context');
   if ($admin_context->isAdminRoute()) {
+    _solo_ensure_class_array($variables);
     $variables['attributes']['class'][] = 'admin-context';
   }
 }
@@ -146,6 +195,9 @@ function solo_preprocess_html(&$variables): void {
   $solo_list = \Drupal::service('extension.list.theme')->getPath('solo');
   $solo_path = $solo_utilities . '/' . $solo_list;
   $variables['solo_path'] = $solo_path;
+
+  // Ensure class attribute is always an array before appending.
+  _solo_ensure_class_array($variables);
 
   // Add 'px' class if the setting is enabled.
   if (theme_get_setting('enable_px_based_widths')) {
@@ -902,6 +954,7 @@ function solo_preprocess_node(array &$variables) {
   $content_type = $variables['node']->getType();
   $reading_mode_enabled = theme_get_setting('site_reading_mode_content_type');
   if (is_array($reading_mode_enabled) && in_array($content_type, $reading_mode_enabled, TRUE)) {
+    _solo_ensure_class_array($variables);
     $variables['attributes']['class'][] = 'reading-mode';
   }
 }
@@ -1097,8 +1150,7 @@ function solo_preprocess_field(&$variables, $hook) {
         $class = $entity_type . '-entity';
 
         // Sanitize and add the CSS class to the field wrapper.
-        // Replace 'drupal_html_class()' with a custom sanitization or
-        // use Html::getClass() from Drupal\Component\Utility\Html.
+        _solo_ensure_class_array($variables);
         $variables['attributes']['class'][] = Html::getClass($class);
       }
     }
@@ -1397,10 +1449,8 @@ function solo_preprocess_menu(&$variables) {
 function solo_preprocess_form_element(array &$variables): void {
   $element = $variables['element'];
 
-  // Initialize attributes class array if not set.
-  if (!isset($variables['attributes']['class'])) {
-    $variables['attributes']['class'] = [];
-  }
+  // Ensure attributes class array is defensively initialized.
+  _solo_ensure_class_array($variables);
 
   // Field state detection.
   if (!empty($element['#value'])) {
@@ -1474,6 +1524,13 @@ function solo_preprocess_form_element(array &$variables): void {
 
   // Disabled state handling.
   if (!empty($variables['disabled'])) {
+    // Ensure label attributes class is an array.
+    if (!isset($variables['label']['#attributes']['class'])) {
+      $variables['label']['#attributes']['class'] = [];
+    }
+    elseif (!is_array($variables['label']['#attributes']['class'])) {
+      $variables['label']['#attributes']['class'] = [$variables['label']['#attributes']['class']];
+    }
     $variables['label']['#attributes']['class'][] = 'is-disabled';
   }
 }
@@ -1482,6 +1539,7 @@ function solo_preprocess_form_element(array &$variables): void {
  * Implements hook_preprocess_HOOK() for form-element-label.html.twig.
  */
 function solo_preprocess_form_element_label(array &$variables): void {
+  _solo_ensure_class_array($variables);
   $variables['attributes']['class'][] = 'form-item__label';
 }
 
@@ -1490,6 +1548,9 @@ function solo_preprocess_form_element_label(array &$variables): void {
  */
 function solo_preprocess_input(array &$variables): void {
   $element = $variables['element'] ?? [];
+
+  // Ensure attributes class array is defensively initialized.
+  _solo_ensure_class_array($variables);
 
   // Handle title display attribute.
   if (
@@ -1573,6 +1634,14 @@ function solo_preprocess_input(array &$variables): void {
  * Implements hook_preprocess_HOOK() for menu-local-task.html.twig.
  */
 function solo_preprocess_menu_local_task(array &$variables): void {
+  // Ensure link options attributes class is an array.
+  if (!isset($variables['link']['#options']['attributes']['class'])) {
+    $variables['link']['#options']['attributes']['class'] = [];
+  }
+  elseif (!is_array($variables['link']['#options']['attributes']['class'])) {
+    $variables['link']['#options']['attributes']['class'] = [$variables['link']['#options']['attributes']['class']];
+  }
+
   $variables['link']['#options']['attributes']['class'][] = 'tabs__link';
   $variables['link']['#options']['attributes']['class'][] = 'js-tabs-link';
 
@@ -1689,6 +1758,9 @@ function solo_preprocess_views_view_table(array &$variables): void {
  * Implements hook_preprocess_HOOK() for fieldset.html.twig.
  */
 function solo_preprocess_fieldset(array &$variables): void {
+  // Ensure attributes class array is defensively initialized.
+  _solo_ensure_class_array($variables);
+
   // DEFENSIVE CHECK: Ensure element exists and is an array before processing.
   if (!isset($variables['element']) || !is_array($variables['element'])) {
     return;
@@ -1742,11 +1814,26 @@ function _solo_mark_entity_reference_fields(array &$elements): void {
         $elements[$key]['#attributes']['data-entity-type'] = $elements[$key]['#target_type'] ?? '';
         $target_bundles = $elements[$key]['#selection_settings']['target_bundles'] ?? [];
         $elements[$key]['#attributes']['data-bundle'] = is_array($target_bundles) ? implode(',', $target_bundles) : '';
+        
+        // Ensure wrapper_attributes class is an array.
+        if (!isset($elements[$key]['#wrapper_attributes']['class'])) {
+          $elements[$key]['#wrapper_attributes']['class'] = [];
+        }
+        elseif (!is_array($elements[$key]['#wrapper_attributes']['class'])) {
+          $elements[$key]['#wrapper_attributes']['class'] = [$elements[$key]['#wrapper_attributes']['class']];
+        }
         $elements[$key]['#wrapper_attributes']['class'][] = 'entity-ref-wrapper';
       }
 
       // Detect select lists that are entity references.
       if ($elements[$key]['#type'] === 'select' && isset($elements[$key]['#entity_type'])) {
+        // Ensure wrapper_attributes class is an array.
+        if (!isset($elements[$key]['#wrapper_attributes']['class'])) {
+          $elements[$key]['#wrapper_attributes']['class'] = [];
+        }
+        elseif (!is_array($elements[$key]['#wrapper_attributes']['class'])) {
+          $elements[$key]['#wrapper_attributes']['class'] = [$elements[$key]['#wrapper_attributes']['class']];
+        }
         $elements[$key]['#wrapper_attributes']['class'][] = 'entity-select-wrapper';
       }
     }
@@ -1761,10 +1848,8 @@ function _solo_mark_entity_reference_fields(array &$elements): void {
  * Implements hook_preprocess_HOOK() for container.html.twig.
  */
 function solo_preprocess_container(array &$variables): void {
-  // Initialize attributes class if not exists.
-  if (!isset($variables['attributes']['class'])) {
-    $variables['attributes']['class'] = [];
-  }
+  // Ensure class attribute is an array (may be string if already processed).
+  _solo_ensure_class_array($variables);
 
   // Detect AJAX wrappers.
   $container_id = $variables['attributes']['id'] ?? '';
@@ -1869,6 +1954,9 @@ function _solo_container_has_min_max(array $element): bool {
  * Implements hook_preprocess_HOOK() for field-multiple-value-form.html.twig.
  */
 function solo_preprocess_field_multiple_value_form(array &$variables): void {
+  // Ensure attributes class array is defensively initialized.
+  _solo_ensure_class_array($variables);
+
   // DEFENSIVE CHECK: Ensure element exists and is an array before processing.
   if (!isset($variables['element']) || !is_array($variables['element'])) {
     // Provide safe fallback even when element is missing.

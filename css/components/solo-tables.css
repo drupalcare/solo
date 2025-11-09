@@ -104,3 +104,32 @@
 .page-wrapper .tabledrag-toggle-weight-wrapper + .tableresponsive-toggle-columns + table {
   margin-block-start: 0;
 }
+
+.solo-table-wrapper {
+  display: flow-root;
+  max-width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.solo-table-wrapper .tableresponsive-toggle-columns {
+  float: none !important;
+  clear: both;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.solo-table-wrapper .tableresponsive-toggle {
+  float: none !important;
+  margin: 0 !important;
+  display: inline-flex;
+  align-items: center;
+  max-width: 100%;
+  white-space: nowrap;
+}
+
+.solo-table-wrapper table {
+  max-width: 100%;
+  table-layout: auto;
+}

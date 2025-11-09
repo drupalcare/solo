@@ -10,6 +10,7 @@
   margin-inline: auto;
   margin-block: 0;
   max-width: 100%;
+  grid-auto-columns: minmax(0, 1fr);
 }
 
 .page-wrapper {
@@ -27,6 +28,8 @@
 .solo-col>*,
 .page-wrapper,
 .page-wrapper>* {
+  min-width: 0;
+  min-height: 0;
   width: 100%;
 }
 
@@ -73,6 +76,7 @@
 
 .solo-outer .region-inner {
   padding: var(--solo-gap);
+  min-width: 0;
 }
 
 /* We change it in big screen */

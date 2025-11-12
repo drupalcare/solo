@@ -1814,7 +1814,7 @@ function _solo_mark_entity_reference_fields(array &$elements): void {
         $elements[$key]['#attributes']['data-entity-type'] = $elements[$key]['#target_type'] ?? '';
         $target_bundles = $elements[$key]['#selection_settings']['target_bundles'] ?? [];
         $elements[$key]['#attributes']['data-bundle'] = is_array($target_bundles) ? implode(',', $target_bundles) : '';
-        
+
         // Ensure wrapper_attributes class is an array.
         if (!isset($elements[$key]['#wrapper_attributes']['class'])) {
           $elements[$key]['#wrapper_attributes']['class'] = [];

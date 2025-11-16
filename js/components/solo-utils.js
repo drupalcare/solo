@@ -256,7 +256,15 @@
    * @param {string} [componentName='utils'] - The component making the change.
    * @returns {boolean} Success status.
    */
-  const slideUp = (target, duration = animations.slideUp, componentName = 'utils') => {
+  /**
+   * Slides up an element with animation.
+   * @param {HTMLElement} target - The target element to slide up.
+   * @param {number} [duration=600] - Animation duration in milliseconds.
+   * @param {string} [componentName='utils'] - The component making the change.
+   * @param {boolean} [announce=false] - Whether to announce state change to screen readers.
+   * @returns {boolean} Success status.
+   */
+  const slideUp = (target, duration = animations.slideUp, componentName = 'utils', announce = false) => {
     if (!target || !(target instanceof HTMLElement)) {
       console.warn('Solo: Invalid target element provided to slideUp');
       return false;
@@ -275,7 +283,11 @@
       updateTabindex(target, false, componentName);
       target.style.display = 'none';
       removeStyles(target);
-      Drupal.announce(Drupal.t('Content collapsed'));
+      
+      // FIXED: Only announce if explicitly requested
+      if (announce && Drupal.announce) {
+        Drupal.announce(Drupal.t('Content collapsed'));
+      }
       return true;
     }
 
@@ -304,7 +316,11 @@
           target.style.display = 'none';
           removeStyles(target);
           activeAnimations.delete(target);
-          Drupal.announce(Drupal.t('Content collapsed'));
+          
+          // FIXED: Only announce if explicitly requested
+          if (announce && Drupal.announce) {
+            Drupal.announce(Drupal.t('Content collapsed'));
+          }
         }
       }, duration);
 
@@ -323,9 +339,10 @@
    * @param {number} [duration=600] - Animation duration in milliseconds.
    * @param {string} [menuDisplay='block'] - Display value when shown.
    * @param {string} [componentName='utils'] - The component making the change.
+   * @param {boolean} [announce=false] - Whether to announce state change to screen readers.
    * @returns {boolean} Success status.
    */
-  const slideDown = (target, duration = animations.slideDown, menuDisplay = 'block', componentName = 'utils') => {
+  const slideDown = (target, duration = animations.slideDown, menuDisplay = 'block', componentName = 'utils', announce = false) => {
     if (!target || !(target instanceof HTMLElement)) {
       console.warn('Solo: Invalid target element provided to slideDown');
       return false;
@@ -344,7 +361,11 @@
       }
       updateTabindex(target, true, componentName);
       removeStyles(target);
-      Drupal.announce(Drupal.t('Content expanded'));
+      
+      // FIXED: Only announce if explicitly requested
+      if (announce && Drupal.announce) {
+        Drupal.announce(Drupal.t('Content expanded'));
+      }
       return true;
     }
 
@@ -389,7 +410,11 @@
           ['height', 'overflow', 'transition-duration', 'transition-property', 'transition-timing-function', 'box-sizing'].forEach(property =>
             target.style.removeProperty(property));
           activeAnimations.delete(target);
-          Drupal.announce(Drupal.t('Content expanded'));
+          
+          // FIXED: Only announce if explicitly requested
+          if (announce && Drupal.announce) {
+            Drupal.announce(Drupal.t('Content expanded'));
+          }
         }
       }, duration);
 

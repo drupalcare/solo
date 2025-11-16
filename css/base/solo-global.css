@@ -562,3 +562,42 @@ html.gap-16 {
   align-items: center;
   justify-content: center;
 }
+
+/* Responsvie Iframe */
+.responsive-embed {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  aspect-ratio: 4 / 3;
+}
+
+.responsive-embed iframe {
+  width: 100%;
+  height: 100%;
+  border: 0;
+  display: block;
+}
+
+.aspect-ratio-1-1 {
+  aspect-ratio: 1 / 1;
+}
+
+.aspect-ratio-4-3 {
+  aspect-ratio: 4 / 3;
+}
+
+.aspect-ratio-3-2 {
+  aspect-ratio: 3 / 2;
+}
+
+.aspect-ratio-16-9 {
+  aspect-ratio: 16 / 9;
+}
+
+.aspect-ratio-21-9 {
+  aspect-ratio: 21 / 9;
+}
+
+.aspect-ratio-9-16 {
+  aspect-ratio: 9 / 16;
+}

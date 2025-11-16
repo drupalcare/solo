@@ -139,7 +139,8 @@
       Drupal.solo.animationQueue.add(elementKey, 'closing', animations.slideUp);
       rotated.style.removeProperty('transform');
       Drupal.solo.menuState.setExpanded(dropdownTogglerButton, false, COMPONENT_NAME);
-      Drupal.solo.slideUp(subMenu, animations.slideUp, COMPONENT_NAME);
+      // FIXED: Add true parameter to enable announcements for menu operations
+      Drupal.solo.slideUp(subMenu, animations.slideUp, COMPONENT_NAME, true);
     },
 
     openMenuHelper: (dropdownTogglerButton, subMenu) => {
@@ -156,11 +157,13 @@
         if (subMenu.classList.contains('sub-mega') && state.currentWidth >= state.brNum) {
           duration = animations.megaMenu;
           Drupal.solo.animationQueue.add(elementKey, 'opening', duration);
-          Drupal.solo.slideDown(subMenu, duration, 'grid', COMPONENT_NAME);
+          // FIXED: Add true parameter to enable announcements for menu operations
+          Drupal.solo.slideDown(subMenu, duration, 'grid', COMPONENT_NAME, true);
         } else {
           duration = animations.slideDown;
           Drupal.solo.animationQueue.add(elementKey, 'opening', duration);
-          Drupal.solo.slideDown(subMenu, duration, 'block', COMPONENT_NAME);
+          // FIXED: Add true parameter to enable announcements for menu operations
+          Drupal.solo.slideDown(subMenu, duration, 'block', COMPONENT_NAME, true);
         }
 
         Drupal.solo.menuState.setExpanded(dropdownTogglerButton, true, COMPONENT_NAME);
@@ -184,7 +187,8 @@
 
     resetSubMenus: (siteSubMenus, svgIcons) => {
       svgIcons.forEach(el => el.style.removeProperty('transform'));
-      siteSubMenus.forEach(el => Drupal.solo.slideUp(el, animations.slideUp, COMPONENT_NAME));
+      // FIXED: Reset operations shouldn't announce - pass false explicitly
+      siteSubMenus.forEach(el => Drupal.solo.slideUp(el, animations.slideUp, COMPONENT_NAME, false));
 
       setTimeout(() => {
         siteSubMenus.forEach(el => el.style.removeProperty('transform'));
@@ -193,7 +197,8 @@
 
     resetSpecificSubMenus: (specificSubMenus, specificSvgIcons) => {
       specificSvgIcons.forEach(el => el.style.removeProperty('transform'));
-      specificSubMenus.forEach(el => Drupal.solo.slideUp(el, animations.slideUp, COMPONENT_NAME));
+      // FIXED: Reset operations shouldn't announce - pass false explicitly
+      specificSubMenus.forEach(el => Drupal.solo.slideUp(el, animations.slideUp, COMPONENT_NAME, false));
 
       setTimeout(() => {
         specificSubMenus.forEach(el => el.style.removeProperty('transform'));

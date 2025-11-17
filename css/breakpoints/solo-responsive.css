@@ -1,3 +1,51 @@
+.region-inner.region-max-576 .button,
+.region-inner.region-max-576 .solo-button,
+.region-inner.region-max-576 nav li *:not(.solo__bc-scroll ul.breadcrumb-menu *) {
+  white-space: normal;
+}
+
+.region-inner.region-max-768 .node--view-mode-teaser .field--name-field-image {
+  min-width: 100%;
+}
+
+.region-inner.region-max-768 .view .node--view-mode-teaser .node__title,
+.region-inner.region-max-768 .view .node--view-mode-teaser .node__content .field--name-field-image {
+  padding-inline-end: 0 !important;
+  margin-inline-end: 0 !important;
+}
+
+#page-wrapper .region-inner.region-max-576 .views-exposed-form .exposed-form > div {
+  margin: var(--solo-px8) auto;
+  width: 100%;
+}
+
+#page-wrapper .region-inner.region-max-576 .views-exposed-form .exposed-form,
+#page-wrapper .region-inner.region-max-576 .views-exposed-form .exposed-form .form-actions {
+  flex-wrap: nowrap;
+  flex-direction: column;
+  justify-content: start;
+  align-items: center;
+  margin: 0;
+}
+
+#page-wrapper .region-inner.region-max-576 .selectify,
+#page-wrapper .region-inner.region-max-576 .selectify > * {
+  width: 100%;
+  max-width: 100%;
+}
+
+.region-inner.region-max-576 .solo-date-range .fieldset-wrapper {
+  flex-direction: column;
+}
+
+.region-inner.region-max-576 fieldset:has([name*="[min]"]):has([name*="[max]"]) .form-item {
+  max-width: 100%;
+}
+
+.region-inner.region-max-576 .solo-date-range .form-type-date {
+  width: 100%;
+}
+
 @media (min-width:36rem) {
   #page-wrapper .views-exposed-form .exposed-form>* {
     width: auto;
@@ -71,16 +119,6 @@
 }
 
 @media (max-width:47.99875rem) {
-  .node--view-mode-teaser .field--name-field-image {
-    min-width: 100%;
-  }
-
-  .view .node--view-mode-teaser .node__title,
-  .view .node--view-mode-teaser .node__content .field--name-field-image {
-    padding-inline-end: 0 !important;
-    margin-inline-end: 0 !important;
-  }
-
   h1 {
     font-size: var(--solo-px22);
   }
@@ -160,26 +198,6 @@
     padding-inline-start: var(--solo-px8);
   }
 
-  .button,
-  nav li *:not(.solo__bc-scroll ul.breadcrumb-menu *),
-  .solo-button {
-    white-space: normal;
-  }
-
-  #page-wrapper .views-exposed-form .exposed-form > div {
-    margin: var(--solo-px8) auto;
-    width: 100%;
-  }
-
-  #page-wrapper .views-exposed-form .exposed-form .form-actions,
-  #page-wrapper .views-exposed-form .exposed-form {
-    flex-wrap: nowrap;
-    flex-direction: column;
-    justify-content: start;
-    align-items: center;
-    margin: 0;
-  }
-
   .links.inline {
     justify-content: start;
     padding: 0;
@@ -199,18 +217,6 @@
     border-radius: 0;
     margin: 0;
     border: 1px solid var(--r-br);
-  }
-
-  .solo-date-range .fieldset-wrapper {
-    flex-direction: column;
-  }
-
-  fieldset:has([name*="[min]"]):has([name*="[max]"]) .form-item {
-    max-width: 100%;
-  }
-
-  .solo-date-range .form-type-date {
-    width: 100%;
   }
 
 }

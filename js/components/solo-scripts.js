@@ -11,6 +11,21 @@
   'use strict';
 
   /**
+   * Breakpoint configuration.
+   *
+   * Defines the thresholds for region width classes.
+   * Single source of truth for all responsive breakpoints.
+   */
+  const BREAKPOINTS = {
+    xxs: 260,
+    xs: 320,
+    s: 576,
+    m: 768,
+    l: 992,
+    xl: 1200
+  };
+
+  /**
    * Gets the current viewport width.
    *
    * @return {number}
@@ -22,30 +37,50 @@
    * Checks and updates region width classes.
    *
    * Assigns responsive classes to regions based on their current width.
-   * This allows CSS to target regions by their actual size, not just viewport.
+   * Adds two types of classes:
+   * 1. Exact breakpoint classes (region-xs, region-s, etc.) for precise targeting
+   * 2. Cumulative max-width classes (region-max-768, etc.) for range-based styling
+   *
+   * The cumulative classes mirror CSS max-width media queries, allowing
+   * mobile-first responsive patterns.
    */
   const checkRegionsWidth = () => {
     const regions = document.querySelectorAll('.region-inner, .copyright-inner, .footer-menu-inner');
+
     regions.forEach(region => {
       const regionWidth = region.getBoundingClientRect().width;
 
-      // Remove all previous size classes to prevent class duplication
-      region.classList.remove('region-xs', 'region-s', 'region-m', 'region-l', 'region-xl', 'region-xxl');
+      // Build arrays of classes to remove (prevents manual maintenance)
+      const exactClasses = ['region-xxs', 'region-xs', 'region-s', 'region-m', 'region-l', 'region-xl', 'region-xxl'];
+      const maxClasses = Object.values(BREAKPOINTS).map(bp => `region-max-${bp}`);
 
-      // Assign new class based on region width
-      if (regionWidth <= 320) {
-        region.classList.add('region-xs'); // Extra Small Devices
-      } else if (regionWidth > 320 && regionWidth <= 576) {
-        region.classList.add('region-s'); // Small Devices
-      } else if (regionWidth > 576 && regionWidth <= 768) {
-        region.classList.add('region-m'); // Medium Devices
-      } else if (regionWidth > 768 && regionWidth <= 992) {
-        region.classList.add('region-l'); // Large Devices
-      } else if (regionWidth > 992 && regionWidth <= 1200) {
-        region.classList.add('region-xl'); // Extra Large Devices
-      } else if (regionWidth > 1200) {
-        region.classList.add('region-xxl'); // Extra Extra Large Devices
+      // Remove all previous responsive classes
+      region.classList.remove(...exactClasses, ...maxClasses);
+
+      // Determine exact breakpoint class
+      // Note: Using 'region-xxs' to match removal array (original had 'region-xss' which appears to be a typo)
+      let exactClass = 'region-xxl'; // Default for widest regions
+      if (regionWidth <= BREAKPOINTS.xxs) {
+        exactClass = 'region-xxs';
+      } else if (regionWidth <= BREAKPOINTS.xs) {
+        exactClass = 'region-xs';
+      } else if (regionWidth <= BREAKPOINTS.s) {
+        exactClass = 'region-s';
+      } else if (regionWidth <= BREAKPOINTS.m) {
+        exactClass = 'region-m';
+      } else if (regionWidth <= BREAKPOINTS.l) {
+        exactClass = 'region-l';
+      } else if (regionWidth <= BREAKPOINTS.xl) {
+        exactClass = 'region-xl';
       }
+      region.classList.add(exactClass);
+
+      // Add cumulative max-width classes
+      Object.entries(BREAKPOINTS).forEach(([key, value]) => {
+        if (regionWidth <= value) {
+          region.classList.add(`region-max-${value}`);
+        }
+      });
     });
   };
 
@@ -62,15 +97,36 @@
     // Remove all previous size classes to prevent class duplication
     bodyTag.classList.remove('small-screen', 'medium-screen', 'large-screen');
 
-    if (currentWidth >= 992) {
+    if (currentWidth >= BREAKPOINTS.l) {
       bodyTag.classList.add('large-screen');
-    } else if (currentWidth >= 576 && currentWidth < 992) {
+    } else if (currentWidth >= BREAKPOINTS.s && currentWidth < BREAKPOINTS.l) {
       bodyTag.classList.add('medium-screen');
-    } else if (currentWidth < 576) {
+    } else if (currentWidth < BREAKPOINTS.s) {
       bodyTag.classList.add('small-screen');
     }
 
+    // Update region classes whenever viewport changes
     checkRegionsWidth();
+  };
+
+  /**
+   * Debounced resize handler.
+   *
+   * Prevents excessive function calls during window resize.
+   * Uses requestAnimationFrame for smooth, performant updates.
+   *
+   * @return {Function}
+   *   The debounced resize handler function.
+   */
+  const createResizeHandler = () => {
+    let resizeTimeout;
+    return () => {
+      clearTimeout(resizeTimeout);
+      resizeTimeout = setTimeout(() => {
+        // Use requestAnimationFrame to align with browser paint cycle
+        requestAnimationFrame(mediaSize);
+      }, 200); // Conservative 200ms debounce
+    };
   };
 
   /**
@@ -253,6 +309,7 @@
           }
         }, { once: true });
       });
+
       // Setup skip links for accessibility.
       // Uses once() to prevent duplicate event listeners on AJAX updates.
       once('solo-skip-links', 'body', context).forEach(() => {
@@ -265,22 +322,14 @@
       // Initialize media size detection.
       // Uses once() to prevent duplicate resize listeners.
       once('solo-media-size', 'body', context).forEach(() => {
-        // Run initial check.
+        // Run initial check
         mediaSize();
 
-        // Setup resize handler with debouncing.
-        let resizeTimeout;
-        const resizeHandler = () => {
-          clearTimeout(resizeTimeout);
-          resizeTimeout = setTimeout(() => {
-            mediaSize();
-          }, 200);
-        };
-
+        // Create and attach resize handler
+        const resizeHandler = createResizeHandler();
         window.addEventListener('resize', resizeHandler);
 
-        // Store handler reference for potential cleanup.
-        // This is important for proper memory management.
+        // Store handler reference for cleanup
         if (!window.soloResizeHandlers) {
           window.soloResizeHandlers = [];
         }

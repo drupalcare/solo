@@ -10,8 +10,9 @@
 
 .solo-inner ul.navigation__menubar,
 .solo-inner ul.navigation__menubar ul.sub__menu,
-.solo-inner ul.navigation__menubar a.nav__menu-link,
-.solo-inner ul.navigation__menubar li.nav__menu-item {
+.solo-inner ul.navigation__menubar li.nav__menu-item,
+.solo-inner ul.navigation__menubar li > a.nav__menu-link,
+.solo-inner ul.navigation__menubar li > button.nav__menu-button {
   margin: 0;
   padding: 0;
   list-style: none;
@@ -19,8 +20,12 @@
   white-space: nowrap;
 }
 
-.region-inner.region-s ul.navigation__menubar li.nav__menu-item a,
-.region-inner.region-s ul.navigation__menubar li.nav__menu-item button {
+.solo-inner .navigation__menubar li.nav__menu-item>a {
+  text-decoration: none;
+  -webkit-text-decoration: none;
+}
+
+.region-inner.region-max-576 ul.navigation__menubar li.nav__menu-item > * {
   white-space: normal;
   word-wrap: break-word;
 }
@@ -35,12 +40,6 @@
 .solo-inner ul.navigation__menubar li.is-active>a,
 .solo-inner ul.navigation__menubar li.is-active>button {
   font-weight: bold;
-}
-
-.solo-inner .navigation__menubar li.nav__menu-item>a {
-  text-decoration: none;
-  -webkit-text-decoration: none;
-  white-space: nowrap;
 }
 
 .page-wrapper .solo-inner nav .dropdown-arrow {

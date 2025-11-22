@@ -108,8 +108,11 @@
 .solo-table-wrapper {
   display: flow-root;
   max-width: 100%;
-  overflow-x: auto;
   -webkit-overflow-scrolling: touch;
+}
+
+.solo-table-wrapper:not(.wrapper-sticky) {
+  overflow-x: auto;
 }
 
 .solo-table-wrapper .tableresponsive-toggle-columns {

@@ -32,6 +32,15 @@
  */
 #}
 {%
+  set classes_wrapper = [
+    'solo-table-wrapper',
+    not responsive and not sticky ? ' solo-responsive',
+    responsive ? ' wrapper-responsive',
+    sticky ? ' wrapper-sticky',
+  ]
+%}
+
+{%
   set classes = [
     'solo-table-all',
     'views-table',
@@ -41,7 +50,7 @@
     sticky ? 'position-sticky sticky-header',
   ]
 %}
-<div class="{{ not responsive and not sticky ? 'solo-responsive ' : '' }}solo-table-wrapper">
+<div class="{{ classes_wrapper|join('') }}">
   <table{{ attributes.addClass(classes) }}>
   {% if caption_needed %}
     <caption>

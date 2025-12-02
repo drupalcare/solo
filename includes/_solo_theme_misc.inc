@@ -2,12 +2,6 @@
 
 /**
  * @file
- */
-
-declare(strict_types=1);
-
-/**
- * @file
  * Theme Setting.
  */
 

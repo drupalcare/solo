@@ -2,6 +2,11 @@
 
 /**
  * @file
+ */
+
+declare(strict_types=1);
+
+/**
  * Solo Theme.
  *
  * Filename:     theme-settings

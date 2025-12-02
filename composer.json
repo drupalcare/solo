@@ -1,24 +1,40 @@
 {
     "name": "drupal/solo",
-    "description": "Speed, Elegance & Ease of Development and Use.",
+    "description": "Modern, standalone Drupal theme built with pure JavaScript and W3.CSS framework. No jQuery dependency, mobile-first design, extensive regions, and built-in color schemes.",
     "type": "drupal-theme",
     "license": "GPL-2.0-or-later",
+    "homepage": "https://www.drupal.org/project/solo",
     "authors": [
         {
-            "name": "Alaa Haddad (alaahaddad.com)",
-            "homepage": "https://www.drupal.org/u/flashwebcenter",
+            "name": "Alaa Haddad",
+            "email": "info@alaahaddad.com",
+            "homepage": "https://alaahaddad.com",
             "role": "Maintainer"
+        },
+        {
+            "name": "Flash Web Center LLC",
+            "homepage": "https://flashwebcenter.com",
+            "role": "Organization"
         }
     ],
-    "homepage": "https://drupal.org/project/solo",
     "support": {
-        "issues": "https://drupal.org/project/issues/solo",
-        "source": "https://git.drupalcode.org/project/solo"
+        "issues": "https://www.drupal.org/project/issues/solo",
+        "source": "https://git.drupalcode.org/project/solo",
+        "docs": "https://www.drupal.org/node/3405889/"
     },
-    "repositories": [
-        {
-            "type": "composer",
-            "url": "https://packages.drupal.org/8"
+    "require": {
+        "php": ">=8.1",
+        "drupal/core": "^10 || ^11"
+    },
+    "require-dev": {
+        "drupal/core-dev": "^10 || ^11"
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "config": {
+        "allow-plugins": {
+            "composer/installers": true,
+            "drupal/core-composer-scaffold": true
         }
-    ]
+    }
 }

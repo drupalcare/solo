@@ -2,6 +2,12 @@
 
 /**
  * @file
+ */
+
+declare(strict_types=1);
+
+/**
+ * @file
  * Solo Theme - Popup Login Block Configuration (FIXED).
  *
  * Filename:     solo.theme

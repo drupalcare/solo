@@ -66,7 +66,20 @@
  * - comment: Full comment object.
  * - commented_entity: Entity the comments are attached to.
  *
+ * Solo theme additions:
+ * - heading_first: Whether to display heading before author info.
+ * - show_permalink: Whether to show the permalink.
+ * - show_author: Whether to show the author name.
+ * - show_date: Whether to show the comment date.
+ * - show_picture: Whether to show the user picture.
+ * - show_new_indicator: Whether to show the new comment indicator.
+ * - formatted_date: The date formatted per theme settings.
+ * - datetime: ISO 8601 formatted date for <time> element.
+ * - title_id: Unique ID for the title for aria-labelledby.
+ * - title_tag: The heading tag to use (h2-h6).
+ *
  * @see template_preprocess_comment()
+ * @see solo_preprocess_comment()
  */
 #}
 
@@ -79,8 +92,13 @@
     author_id and author_id == commented_entity.getOwnerId() ? 'by-' ~ commented_entity.getEntityTypeId() ~ '-author',
     threaded ? 'comment--threaded',
     parent_comment ? 'comment--has-parent',
+    heading_first ? 'comment--heading-first' : 'comment--heading-after',
   ]
 %}
+
+{# Set the title tag, default to h3 #}
+{% set heading_tag = title_tag|default('h3') %}
+
 {# Set base attributes #}
 {% set comment_attributes = attributes
   .addClass(classes)
@@ -95,41 +113,73 @@
 {% endif %}
 {# Add aria-labelledby if title exists #}
 {% if title %}
-  {% set comment_attributes = comment_attributes.setAttribute('aria-labelledby', 'comment-' ~ comment.id() ~ '-title') %}
+  {% set comment_attributes = comment_attributes.setAttribute('aria-labelledby', title_id|default('comment-' ~ comment.id() ~ '-title')) %}
 {% endif %}
 
 <article{{ comment_attributes }}>
+
+  {% if heading_first and title %}
+    {# Accessible order: Heading first for screen reader navigation #}
+    <div{{ content_attributes.addClass('comment__body') }}>
+      {{ title_prefix }}
+      <{{ heading_tag }} id="{{ title_id|default('comment-' ~ comment.id() ~ '-title') }}"{{ title_attributes.addClass('comment__title') }}>{{ title }}</{{ heading_tag }}>
+      {{ title_suffix }}
+    </div>
+  {% endif %}
+
   {# Comment Header - Who said it and when #}
   <header class="comment__header">
-    {% if user_picture %}
+    {% if show_picture|default(true) and user_picture %}
       <div class="comment__picture">
         {{ user_picture }}
       </div>
     {% endif %}
+
     <div class="comment__header-info">
-      <p class="comment__author">{{ author }}</p>
-      <time class="comment__time" datetime="{{ comment.created.value|date('c') }}">{{ created }}</time>
+      {% if show_author|default(true) %}
+        <p class="comment__author">{{ author }}</p>
+      {% endif %}
+
+      {% if show_date|default(true) %}
+        <time class="comment__time" datetime="{{ datetime|default(comment.created.value|date('c')) }}">
+          {{- formatted_date|default(created) -}}
+        </time>
+      {% endif %}
     </div>
-    <div class="comment__permalink">
-      {{ permalink }}
-      {% include '@solo/partials/svg/_svg-link.html.twig' %}
-    </div>
-    {# New indicator - only rendered if comment is actually new #}
-    <mark class="new-comment hidden" data-comment-timestamp="{{ new_indicator_timestamp }}">
-      <span class="new-comment__dot" aria-hidden="true"></span>
-      <span class="new-comment__text">{{ 'New'|t }}</span>
-    </mark>
+
+    {% if show_permalink|default(true) %}
+      <div class="comment__permalink">
+        {{ permalink }}
+        {% include '@solo/partials/svg/_svg-link.html.twig' %}
+      </div>
+    {% endif %}
+
+    {# New indicator - only rendered if comment is actually new and setting enabled #}
+    {% if show_new_indicator|default(true) %}
+      <mark class="new-comment hidden" data-comment-timestamp="{{ new_indicator_timestamp }}">
+        <span class="new-comment__dot" aria-hidden="true"></span>
+        <span class="new-comment__text">{{ 'New'|t }}</span>
+      </mark>
+    {% endif %}
   </header>
 
   {# Comment Body - What they said (content only) #}
-  <div{{ content_attributes.addClass('comment__body') }}>
-    {% if title %}
-      {{ title_prefix }}
-      <h3 id="comment-{{ comment.id() }}-title"{{ title_attributes.addClass('comment__title') }}>{{ title }}</h3>
-      {{ title_suffix }}
-    {% endif %}
-    {{ content|without('links') }}
-  </div>
+  {% if not heading_first or not title %}
+    {# Original order OR no title: show body section with optional title #}
+    <div{{ content_attributes.addClass('comment__body') }}>
+      {% if title and not heading_first %}
+        {{ title_prefix }}
+        <{{ heading_tag }} id="{{ title_id|default('comment-' ~ comment.id() ~ '-title') }}"{{ title_attributes.addClass('comment__title') }}>{{ title }}</{{ heading_tag }}>
+        {{ title_suffix }}
+      {% endif %}
+      {{ content|without('links') }}
+    </div>
+  {% else %}
+    {# Heading first mode with title: body content only (title already rendered) #}
+    <div class="comment__content">
+      {{ content|without('links') }}
+    </div>
+  {% endif %}
 
   {# Comment Footer - Actions and controls #}
   <footer class="comment__footer">

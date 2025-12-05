@@ -215,6 +215,129 @@ else {
   ];
 }
 
+// Comments Tab.
+$form["solo_settings"]["settings_global_misc"]["comments"] = [
+  "#type" => "details",
+  "#title" => t("Comments"),
+  "#group" => "global_misc_tabs",
+  "#weight" => -5,
+];
+
+// Accessibility notice.
+$form["solo_settings"]["settings_global_misc"]["comments"]["accessibility_notice"] = [
+  "#type" => "container",
+  "#attributes" => [
+    "class" => ["messages", "messages--status"],
+    "role" => "status",
+  ],
+  "content" => [
+    "#markup" => "<strong>" . t("Accessibility Tip:") . "</strong> " . t("For better screen reader navigation, enable 'Display comment subject before author information'. This allows users to navigate comments using heading navigation (typically the H key in screen readers)."),
+  ],
+];
+
+// Comment display order fieldset.
+$form["solo_settings"]["settings_global_misc"]["comments"]["comment_display_order"] = [
+  "#type" => "fieldset",
+  "#title" => t("Display Order"),
+  "#description" => t("Control the order of comment elements for improved accessibility."),
+];
+
+$form["solo_settings"]["settings_global_misc"]["comments"]["comment_display_order"]["comment_heading_first"] = [
+  "#type" => "checkbox",
+  "#title" => t("Display comment subject before author information"),
+  "#description" => t("When enabled, the comment subject (heading) appears before the author name and date. This improves accessibility by allowing screen reader users to navigate comments using heading navigation. <strong>Recommended for accessibility compliance.</strong>"),
+  "#default_value" => theme_get_setting("comment_heading_first") ?? TRUE,
+];
+
+// Comment visibility fieldset.
+$form["solo_settings"]["settings_global_misc"]["comments"]["comment_visibility"] = [
+  "#type" => "fieldset",
+  "#title" => t("Element Visibility"),
+  "#description" => t("Choose which comment metadata elements to display."),
+];
+
+$form["solo_settings"]["settings_global_misc"]["comments"]["comment_visibility"]["comment_show_author"] = [
+  "#type" => "checkbox",
+  "#title" => t("Show author name"),
+  "#default_value" => theme_get_setting("comment_show_author") ?? TRUE,
+];
+
+$form["solo_settings"]["settings_global_misc"]["comments"]["comment_visibility"]["comment_show_date"] = [
+  "#type" => "checkbox",
+  "#title" => t("Show comment date"),
+  "#default_value" => theme_get_setting("comment_show_date") ?? TRUE,
+];
+
+$form["solo_settings"]["settings_global_misc"]["comments"]["comment_visibility"]["comment_show_picture"] = [
+  "#type" => "checkbox",
+  "#title" => t("Show user picture"),
+  "#default_value" => theme_get_setting("comment_show_picture") ?? TRUE,
+];
+
+$form["solo_settings"]["settings_global_misc"]["comments"]["comment_visibility"]["comment_show_permalink"] = [
+  "#type" => "checkbox",
+  "#title" => t("Show permalink"),
+  "#default_value" => theme_get_setting("comment_show_permalink") ?? TRUE,
+];
+
+$form["solo_settings"]["settings_global_misc"]["comments"]["comment_visibility"]["comment_show_new_indicator"] = [
+  "#type" => "checkbox",
+  "#title" => t("Show new comment indicator"),
+  "#description" => t("Displays a 'New' badge for comments posted since the user's last visit."),
+  "#default_value" => theme_get_setting("comment_show_new_indicator") ?? TRUE,
+];
+
+// Comment date format fieldset.
+$form["solo_settings"]["settings_global_misc"]["comments"]["comment_date_settings"] = [
+  "#type" => "fieldset",
+  "#title" => t("Date Format"),
+];
+
+// Get available date formats.
+$date_format_options = [];
+try {
+  $date_formats = \Drupal::entityTypeManager()->getStorage('date_format')->loadMultiple();
+  foreach ($date_formats as $format) {
+    $date_format_options[$format->id()] = $format->label();
+  }
+}
+catch (\Exception $e) {
+  $date_format_options = [
+    'short' => t('Short'),
+    'medium' => t('Medium'),
+    'long' => t('Long'),
+  ];
+}
+// Add relative format option to the date formats.
+$date_format_options['solo_relative'] = t('Relative (e.g., "2 hours ago")');
+$form["solo_settings"]["settings_global_misc"]["comments"]["comment_date_settings"]["comment_date_format"] = [
+  "#type" => "select",
+  "#title" => t("Comment date format"),
+  "#description" => t("Select the format for displaying comment dates. You can create custom date formats at <a href='/admin/config/regional/date-time'>Date and time formats</a>."),
+  "#options" => $date_format_options,
+  "#default_value" => theme_get_setting("comment_date_format") ?? 'solo_relative',
+];
+
+// Comment title settings fieldset.
+$form["solo_settings"]["settings_global_misc"]["comments"]["comment_title_settings"] = [
+  "#type" => "fieldset",
+  "#title" => t("Subject/Title Settings"),
+];
+
+$form["solo_settings"]["settings_global_misc"]["comments"]["comment_title_settings"]["comment_title_tag"] = [
+  "#type" => "select",
+  "#title" => t("Heading level"),
+  "#description" => t("The HTML heading tag for comment subjects. Choose based on your page structure for proper document outline and accessibility."),
+  "#options" => [
+    "h2" => t("H2 - Second level"),
+    "h3" => t("H3 - Third level (default)"),
+    "h4" => t("H4 - Fourth level"),
+    "h5" => t("H5 - Fifth level"),
+    "h6" => t("H6 - Sixth level"),
+  ],
+  "#default_value" => theme_get_setting("comment_title_tag") ?? "h3",
+];
+
 // Custom Code Tab.
 $form["solo_settings"]["settings_global_misc"]["custom_code"] = [
   "#type" => "details",

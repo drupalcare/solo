@@ -2,6 +2,7 @@
  * @file
  * Comment layout styles for Solo theme.
  * Clean stacked design with no background colors.
+ * Supports accessible heading-first display order.
  */
 
 /* Comment wrapper */
@@ -63,6 +64,17 @@
 .user-profile-compact a {
   display: flex;
 }
+
+/* Heading-first modifier - title appears before header */
+.comment--heading-first .comment__body {
+  order: -1;
+  margin-block-end: var(--solo-px8);
+}
+
+.comment--heading-first .comment__title {
+  margin: 0;
+}
+
 /* Comment Header - picture, author, time in one row */
 .comment__header {
   display: flex;
@@ -203,6 +215,15 @@
 
 /* Comment Body - no left padding, stacked below header */
 .comment__body {
+  margin: 0;
+}
+
+/* Comment content wrapper (used in heading-first mode) */
+.comment__content {
+  margin: 0;
+}
+
+.comment__content .field {
   margin: 0;
 }
 
@@ -402,4 +423,16 @@ button.comment__replies-toggle {
   outline: 2px solid var(--r-lk);
   outline-offset: 2px;
   border-radius: var(--solo-px2);
+}
+
+/* High contrast mode support */
+@media (forced-colors: active) {
+  .new-comment {
+    forced-color-adjust: none;
+  }
+
+  .comment__permalink svg,
+  .comment__replies-toggle svg {
+    fill: CanvasText;
+  }
 }

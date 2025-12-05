@@ -1196,24 +1196,70 @@ function solo_preprocess_search_result(&$variables): void {
 }
 
 /**
- * Implements hook_preprocess_HOOK() for comment.html.twig.
+ * Implements hook_preprocess_HOOK() for comment templates.
+ *
+ * Provides configurable comment display based on theme settings.
+ * Supports accessible heading-first layout and customizable visibility
+ * of comment metadata elements.
  */
-function solo_preprocess_comment(&$variables): void {
-  // Getting the node creation time stamp from the comment object.
-  $date = $variables['comment']->getCreatedTime();
-  // Getting the current request time.
-  $request_time = DrupalDateTime::createFromTimestamp(\Drupal::time()->getRequestTime());
-  // Getting the date formatter service.
+function solo_preprocess_comment(array &$variables): void {
+  /** @var \Drupal\comment\CommentInterface $comment */
+  $comment = $variables['elements']['#comment'];
+  $comment_id = $comment->id();
+
+  // Get the date formatter service.
+  /** @var \Drupal\Core\Datetime\DateFormatterInterface $date_formatter */
   $date_formatter = \Drupal::service('date.formatter');
-  // Formatting "created" as "X days ago".
+
+  // Get theme settings with defaults.
+  $heading_first = theme_get_setting('comment_heading_first') ?? TRUE;
+  $date_format = theme_get_setting('comment_date_format') ?? 'medium';
+  $title_tag = theme_get_setting('comment_title_tag') ?? 'h3';
+  $show_permalink = theme_get_setting('comment_show_permalink') ?? TRUE;
+  $show_author = theme_get_setting('comment_show_author') ?? TRUE;
+  $show_date = theme_get_setting('comment_show_date') ?? TRUE;
+  $show_picture = theme_get_setting('comment_show_picture') ?? TRUE;
+  $show_new_indicator = theme_get_setting('comment_show_new_indicator') ?? TRUE;
+
+  // Pass settings to template.
+  $variables['heading_first'] = $heading_first;
+  $variables['show_permalink'] = $show_permalink;
+  $variables['show_author'] = $show_author;
+  $variables['show_date'] = $show_date;
+  $variables['show_picture'] = $show_picture;
+  $variables['show_new_indicator'] = $show_new_indicator;
+  $variables['title_tag'] = $title_tag;
+
+  // Format the date according to the selected format.
+  $created_time = $comment->getCreatedTime();
+
+  if ($show_date) {
+    // Check if we should use relative time format ("X time ago").
+    if ($date_format === 'solo_relative' || $date_format === 'relative') {
+      $request_time = DrupalDateTime::createFromTimestamp(\Drupal::time()->getRequestTime());
+      $variables['formatted_date'] = t('@time ago', [
+        '@time' => $date_formatter->formatInterval($request_time->getTimestamp() - $created_time),
+      ]);
+    }
+    else {
+      // Use the selected date format.
+      $variables['formatted_date'] = $date_formatter->format($created_time, $date_format);
+    }
+
+    // Provide ISO 8601 date for the <time> element datetime attribute.
+    $variables['datetime'] = $date_formatter->format($created_time, 'custom', 'c');
+  }
+
+  // Also update 'created' variable for backwards compatibility.
+  $request_time = DrupalDateTime::createFromTimestamp(\Drupal::time()->getRequestTime());
   $variables['created'] = t('@time ago', [
-    '@time' => $date_formatter->formatInterval($request_time->getTimestamp() - $date),
+    '@time' => $date_formatter->formatInterval($request_time->getTimestamp() - $created_time),
   ]);
 
-  // Check if this comment has replies (child comments).
-  /** @var \Drupal\comment\CommentInterface $comment */
-  $comment = $variables['comment'];
+  // Generate unique title ID for aria-labelledby reference.
+  $variables['title_id'] = 'comment-' . $comment_id . '-title';
 
+  // Check if this comment has replies (child comments).
   /** @var \Drupal\comment\CommentStorageInterface $comment_storage */
   $comment_storage = \Drupal::entityTypeManager()->getStorage('comment');
 

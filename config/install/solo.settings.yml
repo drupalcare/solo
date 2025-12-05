@@ -50,3 +50,11 @@ skip_navigation_content: true
 skip_main_content: true
 skip_footer_content: true
 keyboard_navigation_menus: []
+comment_heading_first: true
+comment_title_tag: 'h3'
+comment_show_permalink: true
+comment_show_author: true
+comment_show_date: true
+comment_show_picture: true
+comment_show_new_indicator: true
+comment_date_format: 'solo_relative'

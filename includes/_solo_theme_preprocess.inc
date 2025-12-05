@@ -1072,22 +1072,27 @@ function solo_preprocess_breadcrumb(&$variables) {
     $request        = \Drupal::request();
     $route_match    = \Drupal::service('current_route_match');
     $title_resolver = \Drupal::service('title_resolver');
-    $page_title     = $title_resolver->getTitle($request, $route_match->getRouteObject());
+    $route          = $route_match->getRouteObject();
     $body_classes   = $request->attributes->get('solo_body_classes', []);
 
-    if (!empty($page_title) && is_string($page_title)) {
-      $title_exists = FALSE;
-      // Check if the page title already exists in the breadcrumb.
-      foreach ($variables['breadcrumb'] as $breadcrumb_item) {
-        if (!empty($breadcrumb_item['text']) && $breadcrumb_item['text'] === $page_title) {
-          $title_exists = TRUE;
-          break;
+    // Only get the page title if we have a valid route object.
+    if ($route) {
+      $page_title = $title_resolver->getTitle($request, $route);
+
+      if (!empty($page_title) && is_string($page_title)) {
+        $title_exists = FALSE;
+        // Check if the page title already exists in the breadcrumb.
+        foreach ($variables['breadcrumb'] as $breadcrumb_item) {
+          if (!empty($breadcrumb_item['text']) && $breadcrumb_item['text'] === $page_title) {
+            $title_exists = TRUE;
+            break;
+          }
         }
-      }
-      // If not found, add the page title.
-      if (!$title_exists) {
-        $variables['breadcrumb'][] = ['text' => Html::decodeEntities($page_title)];
-        $variables['#cache']['contexts'][] = 'url';
+        // If not found, add the page title.
+        if (!$title_exists) {
+          $variables['breadcrumb'][] = ['text' => Html::decodeEntities($page_title)];
+          $variables['#cache']['contexts'][] = 'url';
+        }
       }
     }
 

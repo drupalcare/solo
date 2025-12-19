@@ -42,51 +42,44 @@
   font-weight: bold;
 }
 
-.page-wrapper .solo-inner nav .dropdown-arrow {
+.page-wrapper .solo-inner .solo-menu .dropdown-arrow {
   transition: all 0.3s ease;
 }
 
-.page-wrapper .solo-inner nav ul.navigation__menubar {
-  z-index: 10;
+/* Base: all menus start equal */
+.page-wrapper .solo-inner .solo-menu {
   position: relative;
+  z-index: var(--z-base);
 }
 
-.page-wrapper .solo-inner nav ul.navigation__menubar > li > ul {
-  z-index: 20;
+/* Active menu (mouse OR keyboard) rises above stacked menus */
+.page-wrapper .solo-inner .solo-menu:hover,
+.page-wrapper .solo-inner .solo-menu:focus-within {
+  z-index: calc(var(--z-base) + 1);
 }
 
-.page-wrapper .solo-inner nav ul.navigation__menubar > li > ul > li > ul {
-  z-index: 30;
+/* Primary menu region menus */
+.page-wrapper .primary-menu-inner .solo-menu {
+  z-index: var(--z-primary-menu);
 }
 
-.page-wrapper .solo-inner nav ul.navigation__menubar > li > ul > li > ul > li > ul {
-  z-index: 40;
+.page-wrapper .primary-menu-inner .solo-menu:hover,
+.page-wrapper .primary-menu-inner .solo-menu:focus-within {
+  z-index: calc(var(--z-primary-menu) + 1);
 }
 
-.page-wrapper .main-navigation-wrapper {
-  z-index: 1000;
+/* Header region menus */
+.page-wrapper .header-inner .solo-menu {
+  z-index: var(--z-header);
 }
 
-.page-wrapper .main-navigation-wrapper ul.navigation__menubar {
-  z-index: 1001 !important;
-}
-
-.page-wrapper .main-navigation-wrapper ul.navigation__menubar > li > ul {
-  z-index: 2000 !important;
-}
-
-.page-wrapper .main-navigation-wrapper ul.navigation__menubar > li > ul > li > ul {
-  z-index: 3000 !important;
-}
-
-.page-wrapper .main-navigation-wrapper ul.navigation__menubar > li > ul > li > ul > li > ul {
-  z-index: 4000 !important;
+.page-wrapper .header-inner .solo-menu:hover,
+.page-wrapper .header-inner .solo-menu:focus-within {
+  z-index: calc(var(--z-header) + 1);
 }
 
 /* Make sure this is bigger than the main menu */
-.page-wrapper:not(.menu-flipped) .header ul.navigation__menubar,
-.page-wrapper .fixed-search-block ul.navigation__menubar,
-.page-wrapper .popup-login-block ul.navigation__menubar {
+.page-wrapper:not(.menu-flipped) .header ul.navigation__menubar,.page-wrapper .fixed-search-block ul.navigation__menubar,.page-wrapper .popup-login-block ul.navigation__menubar {
   z-index: 1002 !important;
 }
 

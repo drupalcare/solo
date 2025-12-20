@@ -4,25 +4,15 @@
     "type": "drupal-theme",
     "license": "GPL-2.0-or-later",
     "homepage": "https://www.drupal.org/project/solo",
+    "support": {
+        "issues": "https://www.drupal.org/project/issues/solo",
+        "source": "https://git.drupalcode.org/project/solo"
+    },
     "authors": [
         {
             "name": "Alaa Haddad",
-            "email": "info@alaahaddad.com",
-            "homepage": "https://alaahaddad.com",
+            "homepage": "https://www.drupal.org/u/flashwebcenter",
             "role": "Maintainer"
-        },
-        {
-            "name": "Flash Web Center LLC",
-            "homepage": "https://flashwebcenter.com",
-            "role": "Organization"
         }
-    ],
-    "support": {
-        "issues": "https://www.drupal.org/project/issues/solo",
-        "source": "https://git.drupalcode.org/project/solo",
-        "docs": "https://www.drupal.org/docs/extending-drupal/themes/contributed-themes/solo"
-    },
-    "require": {
-        "drupal/core": "^10.3 || ^11"
-    }
+    ]
 }

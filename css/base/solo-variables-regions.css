@@ -195,6 +195,7 @@ h3 a):hover {
   -moz-box-shadow: -1px 0 5px 1px rgba(var(--s-b), 0.5);
   -webkit-box-shadow: -1px 0 5px 1px rgba(var(--s-b), 0.5);
   box-shadow: -1px 0 5px 1px rgba(var(--s-b), 0.5);
+  z-index: var(--z-primary-menu);
 }
 
 .primary-sidebar-menu {

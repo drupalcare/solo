@@ -1,4 +1,8 @@
 @media (max-width:61.99875rem) {
+  .page-wrapper .main-navigation-wrapper {
+    z-index: var(--z-primary-menu);
+  }
+
   .solo-inner .navigation__responsive,
   .solo-inner .navigation__responsive ul.sub__menu {
     justify-content: start;

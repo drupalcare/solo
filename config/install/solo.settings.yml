@@ -58,3 +58,4 @@ comment_show_date: true
 comment_show_picture: true
 comment_show_new_indicator: true
 comment_date_format: 'solo_relative'
+comment_form_position: 'before'

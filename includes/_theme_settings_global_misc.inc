@@ -249,6 +249,24 @@ $form["solo_settings"]["settings_global_misc"]["comments"]["comment_display_orde
   "#default_value" => theme_get_setting("comment_heading_first") ?? TRUE,
 ];
 
+// Comment form position fieldset.
+$form["solo_settings"]["settings_global_misc"]["comments"]["comment_form_position_settings"] = [
+  "#type" => "fieldset",
+  "#title" => t("Comment Form Position"),
+  "#description" => t("Control where the comment form appears relative to the list of existing comments."),
+];
+
+$form["solo_settings"]["settings_global_misc"]["comments"]["comment_form_position_settings"]["comment_form_position"] = [
+  "#type" => "radios",
+  "#title" => t("Comment form position"),
+  "#description" => t("Choose whether the 'Add new comment' form appears before or after the list of existing comments. Displaying the form after comments is useful when you want visitors to read existing discussion before adding their own comment."),
+  "#default_value" => theme_get_setting("comment_form_position") ?? "before",
+  "#options" => [
+    "before" => t("Before comments (default)"),
+    "after" => t("After comments"),
+  ],
+];
+
 // Comment visibility fieldset.
 $form["solo_settings"]["settings_global_misc"]["comments"]["comment_visibility"] = [
   "#type" => "fieldset",

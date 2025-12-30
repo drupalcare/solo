@@ -1749,6 +1749,10 @@ function solo_preprocess_field__comment(array &$variables): void {
 
     $variables['#cache']['contexts'][] = 'user';
   }
+  // Pass the comment form position setting to the template.
+  // This works for ALL comment fields (field_comments, field_reviews, etc.)
+  // because it's based on field_type, not field_name.
+  $variables['comment_form_position'] = theme_get_setting('comment_form_position') ?? 'before';
 }
 
 /**

@@ -15,7 +15,7 @@
 }
 
 .skip-link::after {
-  content: "\0020	➔";
+  content: "\0020\279C";
 }
 
 .skip-link.focusable:focus {

@@ -26,6 +26,62 @@
   };
 
   /**
+   * Human-readable labels for landmark sections.
+   *
+   * Maps section IDs to translatable, user-friendly labels for screen reader
+   * announcements. These are used by skip links to announce navigation targets.
+   *
+   * @type {Object<string, Function>}
+   */
+  const SECTION_LABELS = {
+    'header-content': () => Drupal.t('Header'),
+    'main-navigation-content': () => Drupal.t('Main navigation'),
+    'main-content': () => Drupal.t('Main content'),
+    'footer-content': () => Drupal.t('Footer')
+  };
+
+  /**
+   * Gets a human-readable label for a section element.
+   *
+   * Priority order:
+   * 1. aria-label attribute (most specific, already translatable)
+   * 2. Predefined translatable label from SECTION_LABELS
+   * 3. Formatted ID as fallback for custom sections
+   * 4. Generic "Target section" fallback
+   *
+   * @param {HTMLElement} element
+   *   The target section element.
+   *
+   * @return {string}
+   *   The translated human-readable label.
+   */
+  const getSectionLabel = (element) => {
+    // Priority 1: Use aria-label if present (most specific).
+    const ariaLabel = element.getAttribute('aria-label');
+    if (ariaLabel) {
+      return ariaLabel;
+    }
+
+    // Priority 2: Use predefined translatable label.
+    const id = element.getAttribute('id');
+    if (id && Object.prototype.hasOwnProperty.call(SECTION_LABELS, id)) {
+      return SECTION_LABELS[id]();
+    }
+
+    // Priority 3: Fallback - format ID as readable text.
+    // Removes common suffixes and formats for readability.
+    if (id) {
+      const cleanId = id
+        .replace(/-content$/i, '')
+        .replace(/-/g, ' ');
+      return cleanId.charAt(0).toUpperCase() + cleanId.slice(1);
+    }
+
+    // Priority 4: Generic fallback.
+    return Drupal.t('Target section');
+  };
+
+  /**
    * Gets the current viewport width.
    *
    * @return {number}
@@ -157,6 +213,9 @@
           targetElement.setAttribute('tabindex', '-1');
         }
 
+        const announcement = getSectionLabel(targetElement);
+        console.log('Announcement:', announcement);
+
         // Use scrollIntoView for better screen reader compatibility.
         // 'start' alignment works better with TalkBack than other options.
         targetElement.scrollIntoView({
@@ -169,18 +228,8 @@
         setTimeout(() => {
           targetElement.focus();
 
-          // Add aria-live announcement for screen readers.
-          // This helps ensure the target region is announced.
-          let announcement;
-          if (targetElement.getAttribute('aria-label')) {
-            announcement = targetElement.getAttribute('aria-label');
-          } else if (targetElement.getAttribute('id')) {
-            // Remove dashes and capitalize first letter
-            const cleanId = targetElement.getAttribute('id').replace(/-/g, ' ');
-            announcement = cleanId.charAt(0).toUpperCase() + cleanId.slice(1);
-          } else {
-            announcement = Drupal.t('Target section');
-          }
+          // Get translatable, human-friendly section label.
+          const announcement = getSectionLabel(targetElement);
 
           // Create temporary live region for announcement.
           const liveRegion = document.createElement('div');
@@ -189,6 +238,7 @@
           liveRegion.className = 'visually-hidden';
           liveRegion.textContent = Drupal.t('Navigated to @section', {'@section': announcement});
           document.body.appendChild(liveRegion);
+
           // Remove live region after announcement.
           setTimeout(() => {
             if (liveRegion.parentNode) {

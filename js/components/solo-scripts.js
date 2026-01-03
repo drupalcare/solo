@@ -36,7 +36,7 @@
   const SECTION_LABELS = {
     'header-content': () => Drupal.t('Header'),
     'main-navigation-content': () => Drupal.t('Main navigation'),
-    'main-content': () => Drupal.t('Main content'),
+    'main-content': () => Drupal.t('Content'),
     'footer-content': () => Drupal.t('Footer')
   };
 

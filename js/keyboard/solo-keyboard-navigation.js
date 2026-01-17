@@ -90,15 +90,15 @@
 
       switch (key) {
         case 'Tab':
-          // Check if we're in hover mode
+          // ARIA Authoring Practices: Tab should exit the menu, arrow keys navigate within.
+          // Allow natural Tab flow for all menu types - don't trap focus.
+
+          // For hover menus, ensure opened submenus have proper tabindex for Tab navigation
           const isHoverMode = this.core.templateInfo.interactionMode === 'hover';
           const isSmallScreen = this.core.isSmallScreen();
 
           if (isHoverMode && !isSmallScreen) {
-            // For hover menus on large screens: Allow natural Tab flow
-            // Don't prevent default - let Tab work naturally
-
-            // But ensure opened submenus have proper tabindex
+            // Ensure opened submenus have proper tabindex
             const currentSubmenu = target.closest('[role="menu"]');
             if (currentSubmenu && currentSubmenu !== this.menubar) {
               // We're in a submenu - ensure all items are focusable
@@ -120,14 +120,10 @@
                 }
               }
             }
-
-            // Don't prevent default - allow natural Tab navigation
-            return;
-          } else {
-            // For click menus or small screens: Use custom top-level navigation
-            event.preventDefault();
-            this.navigateTopLevel(target, !event.shiftKey);
           }
+
+          // Don't prevent default - allow natural Tab navigation to exit the menu.
+          // Arrow keys (handled below) are used for in-menu navigation.
           break;
 
         case 'Enter':

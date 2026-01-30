@@ -53,6 +53,7 @@ solo-global:
       css/components/solo-node-form.css: { weight: 0 }
       css/components/solo-page-title.css: { weight: 0 }
       css/components/solo-pager.css: { weight: 0 }
+      css/components/solo-text-content.css: { weight: 0 }
       css/components/solo-search-block.css: { weight: 0 }
       css/components/solo-search-page.css: { weight: 0 }
       css/components/solo-skip-link.css: { weight: 0 }

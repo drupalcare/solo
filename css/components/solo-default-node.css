@@ -3,7 +3,6 @@
   margin-block-end: var(--solo-px18);
 }
 
-
 #page-wrapper .text-align-left {
   text-align: var(--solo-text-align-start);
 }
@@ -168,22 +167,14 @@ article.node.node--view-mode-full .node__header .node__meta {
   margin-inline-end: 0;
 }
 
-.field--type-text-long img:not(.align-center,
-.media.align-center img),
-.field--type-text-long video:not(.align-center,
-.media.align-center img),
-.field--type-text-long embed:not(.align-center,
-.media.align-center img),
-.field--type-text-long object:not(.align-center,
-.media.align-center img),
-.field--type-text-with-summary img:not(.align-center,
-.media.align-center img),
-.field--type-text-with-summary video:not(.align-center,
-.media.align-center img),
-.field--type-text-with-summary embed:not(.align-center,
-.media.align-center img),
-.field--type-text-with-summary object:not(.align-center,
-.media.align-center img) {
+.field--type-text-long img:not(.align-center, .media.align-center img),
+.field--type-text-long video:not(.align-center, .media.align-center img),
+.field--type-text-long embed:not(.align-center, .media.align-center img),
+.field--type-text-long object:not(.align-center, .media.align-center img),
+.field--type-text-with-summary img:not(.align-center, .media.align-center img),
+.field--type-text-with-summary video:not(.align-center, .media.align-center img),
+.field--type-text-with-summary embed:not(.align-center, .media.align-center img),
+.field--type-text-with-summary object:not(.align-center, .media.align-center img) {
   display: inline-block;
 }
 
@@ -205,8 +196,8 @@ article.node.node--view-mode-full .node__header .node__meta {
 }
 
 /* For reading mode */
-.sidebar-box-main .reading-mode.node--view-mode-full .field--type-text-long:not(.field--type-comment .field--type-text-long),
-.sidebar-box-main .reading-mode.node--view-mode-full .field--type-text-with-summary:not(.field--type-comment .field--type-text-with-summary) {
+.sidebar-box-main .reading-mode.node--view-mode-full .node__content > .field--type-text-long,
+.sidebar-box-main .reading-mode.node--view-mode-full .node__content > .field--type-text-with-summary {
   max-width: 45rem;
   margin-inline: auto;
   margin-block: 0;

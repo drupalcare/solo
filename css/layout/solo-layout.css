@@ -13,6 +13,10 @@
   grid-auto-columns: minmax(0, 1fr);
 }
 
+.solo-outer > * {
+  min-width: 0;
+}
+
 .page-wrapper {
   grid-auto-columns: 100%;
   gap: 0px 0px;

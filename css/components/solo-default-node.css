@@ -72,10 +72,15 @@ article.node.node--view-mode-full {
 
 article.node.node--view-mode-full>* {
   width: 100%;
+  min-width: 0;
 }
 
 article.node.node--view-mode-full .node__header {
   display: grid;
+}
+
+article.node.node--view-mode-full .node__header > * {
+  min-width: 0;
 }
 
 article.node.node--view-mode-full .node__header .node__meta {
@@ -89,6 +94,7 @@ article.node.node--view-mode-full .node__header .node__meta {
 
 .path-node article.node.node--view-mode-full .node__content>* {
   width: 100%;
+  min-width: 0;
 }
 
 .field:not(:last-child) {
@@ -101,6 +107,10 @@ article.node.node--view-mode-full .node__header .node__meta {
 
 .field--label-above {
   display: grid;
+}
+
+.field--label-above > * {
+  min-width: 0;
 }
 
 .node--view-mode-teaser .field--type-image {

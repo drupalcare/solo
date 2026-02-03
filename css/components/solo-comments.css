@@ -11,6 +11,10 @@
   margin-block: var(--solo-px24);
 }
 
+.comment-wrapper > * {
+  min-width: 0;
+}
+
 .comment-wrapper .indented {
   margin-inline-start: clamp(12px, 2vw, 28px);
   padding-inline-start: clamp(12px, 2vw, 20px);

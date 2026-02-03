@@ -30,6 +30,7 @@
 }
 
 .primary-sidebar-menu-inner>* {
+  min-width: 0;
   width: 100%;
 }
 

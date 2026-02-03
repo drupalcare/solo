@@ -4,6 +4,10 @@ nav.tabs {
   display: grid;
 }
 
+nav.tabs > * {
+  min-width: 0;
+}
+
 ul.tabs li,
 .action-links > li {
   padding: 0 !important;

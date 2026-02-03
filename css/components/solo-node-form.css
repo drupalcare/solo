@@ -36,6 +36,10 @@ form .fieldset-wrapper .form-item {
   display: grid;
 }
 
+.details-wrapper > * {
+  min-width: 0;
+}
+
 .modules-wrapper details[open] {
   padding-block: var(--solo-px8) !important;
   padding-inline: var(--solo-px16) !important;

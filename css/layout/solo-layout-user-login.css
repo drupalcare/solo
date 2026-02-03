@@ -15,6 +15,12 @@
   display: grid;
 }
 
+.path-user-register .main-container-inner .sidebar-box-main > *,
+.path-user-password .main-container-inner .sidebar-box-main > *,
+.path-user-login .main-container-inner .sidebar-box-main > * {
+  min-width: 0;
+}
+
 .path-user-register .main-container-inner .sidebar-box-main>div,
 .path-user-password .main-container-inner .sidebar-box-main>div,
 .path-user-login .main-container-inner .sidebar-box-main>div {

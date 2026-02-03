@@ -39,6 +39,7 @@ form.solo-search-block-form {
 
 .solo-search-block-form>* {
   width: 100%;
+  min-width: 0;
 }
 
 .solo-search-block-form .form-type-search input {

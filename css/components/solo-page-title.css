@@ -8,6 +8,11 @@ h1.page-title-text {
   padding-inline: 0;
 }
 
+.block-page-title-block > *,
+h1.page-title-text > * {
+  min-width: 0;
+}
+
 h1.page-title-text span {
   display: inline-flex;
 }

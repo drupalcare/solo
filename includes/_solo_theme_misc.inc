@@ -91,13 +91,18 @@ function _solo_utilities_get_user_selected_library() {
  * Helper function.
  */
 function _load_font_awesome(array &$attachments): void {
+  $fw_version = theme_get_setting('site_font_awesome_on');
+  if ($fw_version === NULL) {
+    return;
+  }
+
   $font_awesome_versions = [
     1 => 'font-awesome-4-in',
     2 => 'font-awesome-4-ex',
     3 => 'font-awesome-5-ex',
     4 => 'font-awesome-6-ex',
   ];
-  $fw_version = theme_get_setting('site_font_awesome_on');
+
   if (isset($font_awesome_versions[$fw_version])) {
     $attachments['#attached']['library'][] = 'solo/' . $font_awesome_versions[$fw_version];
   }

@@ -7,6 +7,10 @@
   display: grid;
 }
 
+.breadcrumb-nav > * {
+  min-width: 0;
+}
+
 ul.breadcrumb-menu {
   list-style: none;
   padding: 0;

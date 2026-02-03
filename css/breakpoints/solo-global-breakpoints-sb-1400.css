@@ -305,6 +305,7 @@
 
   .header-inner.header-sitename-center-small .branding-wrapper>* {
     width: 100%;
+    min-width: 0;
   }
 
   .header-inner.header-sitename-center-small .branding-wrapper .branding-first,

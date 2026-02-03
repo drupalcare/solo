@@ -73,6 +73,10 @@
   display: grid;
 }
 
+.branding-second > * {
+  min-width: 0;
+}
+
 .branding-wrapper .branding-first a {
   display: inline-flex;
   justify-content: center;
@@ -196,6 +200,7 @@
 
 .header-inner.header-sitename-center .branding-wrapper>* {
   width: 100%;
+  min-width: 0;
 }
 
 .header-inner.header-sitename-center .branding-wrapper .branding-first,

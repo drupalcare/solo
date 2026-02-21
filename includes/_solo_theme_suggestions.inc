@@ -36,9 +36,10 @@ function solo_theme_suggestions_block_alter(array &$suggestions, array $variable
  * Implements hook_theme_suggestions_HOOK_alter() for menu.
  */
 function solo_theme_suggestions_menu_alter(array &$suggestions, array $variables): void {
+  $region_suggestions_added = [];
   $new_suggestions = [];
 
-  // Handle region-based suggestions.
+  // Handle region-based suggestions (collect them; add to list only if user has no choice).
   if (isset($variables['attributes']['region'])) {
     $region = $variables['attributes']['region'];
     $new_suggestions[] = 'menu__' . $region;
@@ -55,17 +56,61 @@ function solo_theme_suggestions_menu_alter(array &$suggestions, array $variables
         $new_suggestions[] = 'menu__' . $region . '__' . strtr($menu_name, '-', '_') . '__menu_block';
       }
 
-      // Add suggestion from menu_block configuration if it exists.
+      // Add suggestion from menu block configuration if it exists.
       if (!empty($config['suggestion'])) {
         $new_suggestions[] = 'menu__' . $region . '__' . $config['suggestion'];
       }
     }
+    $region_suggestions_added = $new_suggestions;
   }
 
-  // Add new suggestions to the beginning for higher priority.
-  foreach (array_reverse($new_suggestions) as $suggestion) {
-    if (!in_array($suggestion, $suggestions)) {
-      array_unshift($suggestions, $suggestion);
+  // Custom menu → template assignment: resolve user choice first so it can beat region.
+  $user_suggestion = NULL;
+  $menu_name = $variables['menu_name'] ?? $variables['#menu_name'] ?? NULL;
+  if ($menu_name !== '' && $menu_name !== NULL) {
+    $menu_name = (string) $menu_name;
+    $active_theme = \Drupal::theme()->getActiveTheme()->getName();
+    $assignments = \Drupal::config($active_theme . '.settings')->get('menu_template_assignments') ?? [];
+    if (is_array($assignments)) {
+      $menu_name_normalized = strtr($menu_name, '_', '-');
+      foreach ($assignments as $row) {
+        if (empty($row['menu_id']) || empty($row['template'])) {
+          continue;
+        }
+        $row_menu_normalized = strtr($row['menu_id'], '_', '-');
+        if ($row_menu_normalized !== $menu_name_normalized) {
+          continue;
+        }
+        $template = $row['template'];
+        if (substr($template, -10) === '.html.twig') {
+          $template = substr($template, 0, -10);
+        }
+        if (strpos($template, 'menu--') === 0) {
+          $user_suggestion = 'menu__' . strtr(substr($template, 6), '-', '_');
+        }
+        break;
+      }
+    }
+  }
+
+  // When the user chose a template: make it the single highest priority — put it first
+  // and remove region-based suggestions so the region template cannot take over.
+  if ($user_suggestion !== NULL) {
+    $suggestions = array_values(array_diff($suggestions, $region_suggestions_added));
+    if (!in_array($user_suggestion, $suggestions)) {
+      array_unshift($suggestions, $user_suggestion);
+    }
+    else {
+      $suggestions = array_values(array_diff($suggestions, [$user_suggestion]));
+      array_unshift($suggestions, $user_suggestion);
+    }
+  }
+  else {
+    // No user choice: add region-based suggestions to the beginning.
+    foreach (array_reverse($new_suggestions) as $suggestion) {
+      if (!in_array($suggestion, $suggestions)) {
+        array_unshift($suggestions, $suggestion);
+      }
     }
   }
 }

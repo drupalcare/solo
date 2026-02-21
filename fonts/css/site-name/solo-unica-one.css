@@ -1,5 +1,6 @@
 #page-wrapper .unica-one,
 #header.solo-unica-one .site-name-link,
-#page-wrapper.solo-unica-one .page-title-text {
+#page-wrapper.solo-unica-one .page-title-text,
+#solo-preloader.solo-unica-one .solo-preloader__text {
   font-family: "Unica One", sans-serif;
 }

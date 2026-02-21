@@ -1,4 +1,14 @@
-  {% if footer_copyright or footer_link %}
+  {% if footer_use_formatted_text and footer_copyright_formatted_rendered %}
+    <!-- Start: Copyright (formatted) -->
+    <div id="copyright" class="solo-outer lone copyright{{ classes_credit_copyright ? ' ' ~ classes_credit_copyright }}" {{ attributes_credit_copyright }} aria-label="{{ 'Site Copyright and Credit'|t }}">
+      <div id="copyright-inner" class="solo-inner solo-col copyright-inner solo-col-1">
+        <div class="copyright-formatted">
+          {{ footer_copyright_formatted_rendered }}
+        </div>
+      </div>
+    </div>
+    <!-- End: Copyright (formatted) -->
+  {% elseif footer_copyright or footer_link %}
     <!-- Start: Copyright -->
     <div id="copyright" class="solo-outer lone copyright{{ classes_credit_copyright ? ' ' ~ classes_credit_copyright }}" {{ attributes_credit_copyright }} aria-label="{{ 'Site Copyright and Credit'|t }}">
       <div id="copyright-inner" class="solo-inner solo-col copyright-inner{{ (footer_copyright and footer_link) ? ' solo-col-2' : ' solo-col-1' }}">

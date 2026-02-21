@@ -12,6 +12,8 @@
 
 use Drupal\Core\Cache\Cache;
 use Drupal\Core\Config\Config;
+use Drupal\Component\Utility\Html;
+use Drupal\Component\Utility\NestedArray;
 use Drupal\Component\Utility\UrlHelper;
 use Drupal\Core\Form\FormStateInterface;
 
@@ -79,6 +81,11 @@ function solo_form_system_theme_settings_alter(&$form, FormStateInterface $form_
  * Validation handler for the Solo system_theme_settings form.
  */
 function solo_theme_settings_validate($form, FormStateInterface $form_state) {
+  // Only validate the separate footer link fields when not using formatted text.
+  if ($form_state->getValue('footer_use_formatted_text')) {
+    return;
+  }
+
   $url = $form_state->getValue('footer_link');
   $text = $form_state->getValue('footer_link_text');
 
@@ -88,7 +95,6 @@ function solo_theme_settings_validate($form, FormStateInterface $form_state) {
     ]));
   }
 
-  // Validate that text is provided if URL is provided.
   if (!empty($url) && empty($text)) {
     $form_state->setErrorByName('footer_link_text', t('You must enter link text if you provide a URL.'));
   }
@@ -105,6 +111,9 @@ function solo_theme_settings_validate($form, FormStateInterface $form_state) {
  *   The user-submitted value.
  * @param mixed $global
  *   The global fallback value.
+ *
+ * @return void
+ *   This function does not return a value.
  */
 function _solo_set_or_clear_layout(Config $config, $key, $value, $global) {
   if ($value !== NULL && $value !== $global) {
@@ -223,6 +232,175 @@ function _solo_theme_settings_submit($form, FormStateInterface $form_state) {
     }
 
   }
+
+  // Menu template assignments: table at solo_settings > settings_global_misc > menu_template_assignment > menu_template_assignments (one row per menu, each row has menu_id + template).
+  $path = [
+    'solo_settings',
+    'settings_global_misc',
+    'menu_template_assignment',
+    'menu_template_assignments',
+  ];
+  $assignments = NestedArray::getValue($form_state->getValues(), $path);
+  if (!is_array($assignments)) {
+    $assignments = [];
+  }
+  $cleaned = [];
+  foreach ($assignments as $row) {
+    if (is_array($row) && !empty($row['menu_id']) && !empty($row['template'])) {
+      $cleaned[] = [
+        'menu_id' => $row['menu_id'],
+        'template' => $row['template'],
+      ];
+    }
+  }
+  $config->set('menu_template_assignments', $cleaned);
+
+  // Preloader settings (may be under global_misc_tabs when tab is used).
+  $preloader_paths = [
+    ['solo_settings', 'settings_global_misc', 'global_misc_tabs', 'preloader'],
+    ['solo_settings', 'settings_global_misc', 'preloader'],
+  ];
+  $preloader_form = [];
+  foreach ($preloader_paths as $path) {
+    $v = NestedArray::getValue($form_state->getValues(), $path);
+    if (is_array($v)) {
+      $preloader_form = $v;
+      break;
+    }
+  }
+  $preloader_keys = [
+    'preloader_enabled', 'preloader_force_show', 'preloader_once_per_session', 'preloader_disable_authenticated',
+    'preloader_disable_admin_routes', 'preloader_path_rules', 'preloader_style',
+    'preloader_logo_url', 'preloader_text', 'preloader_duration',
+  ];
+  foreach ($preloader_keys as $key) {
+    $val = $preloader_form[$key] ?? ($preloader_form['visibility'][$key] ?? NULL)
+      ?? ($preloader_form['appearance'][$key] ?? NULL);
+    if ($val !== NULL) {
+      $config->set($key, $val);
+    }
+  }
+  // Preloader colors: read from appearance and save to config (so they reload in the form).
+  $bg = $preloader_form['appearance']['settings_preloader___r_bg'] ?? NULL;
+  $tx = $preloader_form['appearance']['settings_preloader___r_tx'] ?? NULL;
+  if ($bg === NULL || $tx === NULL) {
+    $values = $form_state->getValues();
+    $with_tabs = NestedArray::getValue($values, [
+      'solo_settings',
+      'settings_global_misc',
+      'global_misc_tabs',
+      'preloader',
+      'appearance',
+    ]);
+    $no_tabs = NestedArray::getValue($values, [
+      'solo_settings',
+      'settings_global_misc',
+      'preloader',
+      'appearance',
+    ]);
+    $appearance = is_array($with_tabs) ? $with_tabs : (is_array($no_tabs) ? $no_tabs : []);
+    if ($bg === NULL && isset($appearance['settings_preloader___r_bg'])) {
+      $bg = $appearance['settings_preloader___r_bg'];
+    }
+    if ($tx === NULL && isset($appearance['settings_preloader___r_tx'])) {
+      $tx = $appearance['settings_preloader___r_tx'];
+    }
+  }
+  $config->set('settings_preloader___r_bg', $bg ?? '');
+  $config->set('settings_preloader___r_tx', $tx ?? '');
+
+  // Back to top: Enable, Visibility, Position, Style (nested; NestedArray for D11).
+  $back_to_top_paths = [
+    [
+      'solo_settings',
+      'settings_global_misc',
+      'global_misc_tabs',
+      'back_to_top',
+    ],
+    [
+      'solo_settings',
+      'settings_global_misc',
+      'back_to_top',
+    ],
+  ];
+  $values = $form_state->getValues();
+  $back_to_top_form = [];
+  foreach ($back_to_top_paths as $path) {
+    $v = NestedArray::getValue($values, $path);
+    if (is_array($v)) {
+      $back_to_top_form = $v;
+      break;
+    }
+  }
+  if (is_array($back_to_top_form)) {
+    $back_to_top_settings = [
+      'back_to_top_enabled' => $back_to_top_form['back_to_top_enabled'] ?? NULL,
+      'back_to_top_disable_admin_routes' => NestedArray::getValue($back_to_top_form, [
+        'visibility',
+        'back_to_top_disable_admin_routes',
+      ]),
+      'back_to_top_disable_authenticated' => NestedArray::getValue($back_to_top_form, [
+        'visibility',
+        'back_to_top_disable_authenticated',
+      ]),
+      'back_to_top_hide_small_screens' => NestedArray::getValue($back_to_top_form, [
+        'visibility',
+        'back_to_top_hide_small_screens',
+      ]),
+      'back_to_top_scroll_threshold' => NestedArray::getValue($back_to_top_form, [
+        'visibility',
+        'back_to_top_scroll_threshold',
+      ]),
+      'back_to_top_position' => NestedArray::getValue($back_to_top_form, [
+        'position',
+        'back_to_top_position',
+      ]),
+      'back_to_top_style' => NestedArray::getValue($back_to_top_form, [
+        'style',
+        'back_to_top_style',
+      ]),
+      'back_to_top_icon' => NestedArray::getValue($back_to_top_form, [
+        'style',
+        'back_to_top_icon',
+      ]),
+    ];
+    foreach ($back_to_top_settings as $key => $val) {
+      if ($val !== NULL) {
+        $config->set($key, $val);
+      }
+    }
+    $bt_style = $back_to_top_form['style'] ?? [];
+    $bt_bg = is_array($bt_style) ? ($bt_style['settings_back_to_top___r_bg'] ?? NULL) : NULL;
+    $bt_tx = is_array($bt_style) ? ($bt_style['settings_back_to_top___r_tx'] ?? NULL) : NULL;
+    if ($bt_bg === NULL || $bt_tx === NULL) {
+      $with_tabs = NestedArray::getValue($values, [
+        'solo_settings',
+        'settings_global_misc',
+        'global_misc_tabs',
+        'back_to_top',
+        'style',
+      ]);
+      $no_tabs = NestedArray::getValue($values, [
+        'solo_settings',
+        'settings_global_misc',
+        'back_to_top',
+        'style',
+      ]);
+      $style_arr = is_array($with_tabs) ? $with_tabs : (is_array($no_tabs) ? $no_tabs : []);
+      if ($bt_bg === NULL && isset($style_arr['settings_back_to_top___r_bg'])) {
+        $bt_bg = $style_arr['settings_back_to_top___r_bg'];
+      }
+      if ($bt_tx === NULL && isset($style_arr['settings_back_to_top___r_tx'])) {
+        $bt_tx = $style_arr['settings_back_to_top___r_tx'];
+      }
+    }
+    $config->set('settings_back_to_top___r_bg', $bt_bg !== NULL && $bt_bg !== '' ? $bt_bg : '');
+    $config->set('settings_back_to_top___r_tx', $bt_tx !== NULL && $bt_tx !== '' ? $bt_tx : '');
+  }
+
+  // Update file usage for embedded files in the copyright formatted text.
+  _solo_footer_formatted_file_usage($form_state, $theme);
+
   // Save configuration.
   \Drupal::configFactory()->reset($theme . '.settings');
   $config->save();
@@ -238,4 +416,76 @@ function _solo_theme_settings_submit($form, FormStateInterface $form_state) {
 
   // Invalidate config cache tags.
   Cache::invalidateTags(['config:' . $theme . '.settings']);
+}
+
+/**
+ * Parses HTML for file entity UUIDs (data-entity-type="file" data-entity-uuid).
+ *
+ * Mirrors the logic of editor_parse_file_uuids() so theme settings can track
+ * embedded file usage without requiring the editor module.
+ *
+ * @param string $text
+ *   Partial (X)HTML snippet.
+ *
+ * @return array
+ *   Array of file entity UUIDs found in the markup.
+ *
+ * @see editor_parse_file_uuids()
+ */
+function _solo_parse_file_uuids_from_html($text) {
+  if (empty($text) || !is_string($text)) {
+    return [];
+  }
+  $dom = Html::load($text);
+  $xpath = new \DOMXPath($dom);
+  $uuids = [];
+  foreach ($xpath->query('//*[@data-entity-type="file" and @data-entity-uuid]') as $node) {
+    $uuids[] = $node->getAttribute('data-entity-uuid');
+  }
+  return $uuids;
+}
+
+/**
+ * Updates file usage for files embedded in the copyright formatted text.
+ *
+ * Marks newly referenced files as permanent and tracks usage; removes usage
+ * for files no longer present when the content is updated.
+ *
+ * @param \Drupal\Core\Form\FormStateInterface $form_state
+ *   The form state (contains the new formatted value).
+ * @param string $theme
+ *   The theme machine name (used as the file usage module/theme identifier).
+ */
+function _solo_footer_formatted_file_usage(FormStateInterface $form_state, $theme) {
+  $formatted = $form_state->getValue('footer_copyright_formatted');
+  if (!is_array($formatted) || empty($formatted['value'])) {
+    $formatted = ['value' => '', 'format' => 'basic_html'];
+  }
+  $new_uuids = _solo_parse_file_uuids_from_html($formatted['value']);
+
+  $config = \Drupal::config($theme . '.settings');
+  $old_formatted = $config->get('footer_copyright_formatted');
+  $old_value = is_array($old_formatted) && isset($old_formatted['value']) ? $old_formatted['value'] : '';
+  $old_uuids = _solo_parse_file_uuids_from_html($old_value);
+
+  $entity_repository = \Drupal::service('entity.repository');
+  $file_usage = \Drupal::service('file.usage');
+
+  foreach (array_diff($new_uuids, $old_uuids) as $uuid) {
+    $file = $entity_repository->loadEntityByUuid('file', $uuid);
+    if ($file && $file->isTemporary()) {
+      $file->setPermanent();
+      $file->save();
+    }
+    if ($file) {
+      $file_usage->add($file, $theme, 'theme', $theme);
+    }
+  }
+
+  foreach (array_diff($old_uuids, $new_uuids) as $uuid) {
+    $file = $entity_repository->loadEntityByUuid('file', $uuid);
+    if ($file) {
+      $file_usage->delete($file, $theme, 'theme', $theme);
+    }
+  }
 }

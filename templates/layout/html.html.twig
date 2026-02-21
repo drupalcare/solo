@@ -39,6 +39,12 @@
     <js-placeholder token="{{ placeholder_token }}">
   </head>
   <body{{ attributes.addClass(body_classes) }}>
+    {% if preloader_show %}
+      {% include '@solo/partials/preloader.html.twig' %}
+    {% endif %}
+    {% if back_to_top_show %}
+      {% include '@solo/partials/back-to-top.html.twig' %}
+    {% endif %}
     {#
       Keyboard navigation/accessibility link to four sections in
       page.html.twig.

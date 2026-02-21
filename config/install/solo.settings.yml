@@ -29,6 +29,7 @@ sm_icon_telegram: 'https://www.drupal.org/u/flashwebcenter'
 sm_icon_rss: rss.xml
 sm_icon_email: '/#email'
 footer_copyright: 'Copyright © %year% Company Name - All rights reserved'
+footer_use_formatted_text: 0
 sm_show_icons: 1
 sm_icon_size: sm-icons-medium
 footer_link: 'https://www.alaahaddad.com/'
@@ -50,6 +51,26 @@ skip_navigation_content: true
 skip_main_content: true
 skip_footer_content: true
 keyboard_navigation_menus: []
+preloader_enabled: 0
+preloader_once_per_session: 1
+preloader_disable_authenticated: 1
+preloader_disable_admin_routes: 1
+preloader_path_rules: ''
+preloader_style: spinner
+preloader_logo_url: ''
+preloader_text: ''
+preloader_duration: 600
+preloader_force_show: 0
+back_to_top_enabled: 0
+back_to_top_disable_admin_routes: 1
+back_to_top_disable_authenticated: 0
+back_to_top_hide_small_screens: 0
+back_to_top_scroll_threshold: 400
+back_to_top_position: bottom-right
+back_to_top_style: solid
+back_to_top_icon: arrow-up
+settings_back_to_top___r_bg: ''
+settings_back_to_top___r_tx: ''
 comment_heading_first: true
 comment_title_tag: 'h3'
 comment_show_permalink: true

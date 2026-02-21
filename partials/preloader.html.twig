@@ -1,0 +1,22 @@
+{#
+  Preloader overlay. Inline style built in preprocess from theme settings (same as region colors).
+  Variables: preloader_config, preloader_inline_style.
+#}
+<div id="solo-preloader"
+  class="solo-preloader solo-preloader--{{ preloader_config.style|default('spinner') }}{{ preloader_config.text_font ? ' ' ~ preloader_config.text_font : '' }}"
+  role="presentation"
+  aria-hidden="true"
+  data-duration="{{ preloader_config.duration|default(600) }}"
+  data-once-per-session="{{ preloader_config.once_per_session ? 'true' : 'false' }}"
+  data-force-show="{{ preloader_config.force_show ? 'true' : 'false' }}"
+  {% if preloader_inline_style is not empty %}style="{{ preloader_inline_style }}"{% endif %}>
+  <div class="solo-preloader__inner">
+    {% if preloader_config.style == 'logo' and preloader_config.logo_url %}
+      <img class="solo-preloader__logo" src="{{ preloader_config.logo_url }}" alt="" width="160" height="80" loading="eager" decoding="sync">
+    {% elseif preloader_config.style == 'text' and preloader_config.text is not empty %}
+      <span class="solo-preloader__text{{ preloader_config.text_animate ? ' solo-preloader__text--animate' : '' }}" {% if preloader_config.text_font_size %}style="font-size: {{ preloader_config.text_font_size }}px"{% endif %}>{{ preloader_config.text }}</span>
+    {% else %}
+      <div class="solo-preloader__spinner"></div>
+    {% endif %}
+  </div>
+</div>

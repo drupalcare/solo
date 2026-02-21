@@ -186,6 +186,163 @@ function _get_enabled_skip_links() {
 }
 
 /**
+ * Sanitizes a value for use as a CSS custom property (hex color).
+ *
+ * Drupal 11 / commercial: only allow 6-digit hex to prevent XSS in inline styles.
+ *
+ * @param string|null $value
+ *   Raw value from theme setting (e.g. color picker).
+ *
+ * @return string
+ *   Sanitized hex (e.g. #ffffff) or empty string if invalid.
+ */
+function _solo_sanitize_hex_for_css($value): string {
+  if ($value === NULL || $value === '') {
+    return '';
+  }
+  $value = trim((string) $value);
+  return preg_match('/^#[a-fA-F0-9]{6}$/', $value) ? $value : '';
+}
+
+/**
+ * Attaches preloader variables, library, and cache to HTML preprocess.
+ *
+ * Loads library when preloader is enabled or force-show; sets markup vars only
+ * when the preloader should show for this request.
+ *
+ * @param array &$variables
+ *   The html preprocess variables (modified in place).
+ * @param string $active_theme
+ *   Active theme machine name.
+ */
+function _solo_preprocess_html_preloader(array &$variables, string $active_theme): void {
+  $preloader = _solo_preloader_decision($active_theme);
+  $variables['preloader_show'] = $preloader['show'];
+  $variables['preloader_config'] = $preloader['config'];
+
+  $preloader_enabled = (bool) theme_get_setting('preloader_enabled');
+  $preloader_force_show = (bool) theme_get_setting('preloader_force_show');
+
+  if ($preloader_enabled || $preloader_force_show) {
+    $variables['#attached']['library'][] = 'solo/solo-preloader';
+    $variables['#cache']['tags'] = array_values(array_unique(array_merge(
+      $variables['#cache']['tags'] ?? [],
+      ['config:' . $active_theme . '.settings']
+    )));
+  }
+
+  if ($preloader['show']) {
+    $variables['preloader_config']['once_per_session'] = (bool) theme_get_setting('preloader_once_per_session');
+    $preloader_style_parts = [];
+    $r_bg = _solo_sanitize_hex_for_css(theme_get_setting('settings_preloader___r_bg'));
+    $r_tx = _solo_sanitize_hex_for_css(theme_get_setting('settings_preloader___r_tx'));
+    if ($r_bg !== '') {
+      $preloader_style_parts[] = '--r-bg:' . $r_bg;
+    }
+    if ($r_tx !== '') {
+      $preloader_style_parts[] = '--r-tx:' . $r_tx;
+    }
+    $variables['preloader_inline_style'] = implode(';', $preloader_style_parts);
+    if (!empty($preloader['cache_contexts'])) {
+      $variables['#cache']['contexts'] = array_values(array_unique(array_merge(
+        $variables['#cache']['contexts'] ?? [],
+        $preloader['cache_contexts']
+      )));
+    }
+  }
+}
+
+/**
+ * Attaches back-to-top variables, library, and cache to HTML preprocess.
+ *
+ * Respects: enable, disable on admin routes, disable for authenticated, hide on small screens.
+ * Passes position, style, icon, scroll threshold, colors. Cache contexts: route, user.roles.
+ *
+ * @param array &$variables
+ *   The html preprocess variables (modified in place).
+ * @param string $active_theme
+ *   Active theme machine name.
+ */
+function _solo_preprocess_html_back_to_top(array &$variables, string $active_theme): void {
+  $enabled = (bool) theme_get_setting('back_to_top_enabled');
+  $variables['back_to_top_show'] = FALSE;
+  $cache_contexts = [];
+
+  if (!$enabled) {
+    $variables['back_to_top_config'] = [];
+    return;
+  }
+
+  $route_match = \Drupal::routeMatch();
+  $route_name = $route_match ? $route_match->getRouteName() : '';
+  $path = $route_match && $route_match->getRouteObject() ? $route_match->getRawParameters()->get('path', '') : '';
+  $disable_admin = (bool) theme_get_setting('back_to_top_disable_admin_routes');
+  if ($disable_admin && function_exists('_solo_preloader_is_admin_route') && _solo_preloader_is_admin_route($route_name, $path)) {
+    $cache_contexts[] = 'route';
+    $variables['#cache']['contexts'] = array_values(array_unique(array_merge($variables['#cache']['contexts'] ?? [], $cache_contexts)));
+    $variables['back_to_top_config'] = [];
+    return;
+  }
+
+  $disable_authenticated = (bool) theme_get_setting('back_to_top_disable_authenticated');
+  if ($disable_authenticated && !\Drupal::currentUser()->isAnonymous()) {
+    $cache_contexts[] = 'user.roles';
+    $variables['back_to_top_show'] = FALSE;
+    $variables['back_to_top_config'] = [];
+    $variables['#cache']['contexts'] = array_values(array_unique(array_merge($variables['#cache']['contexts'] ?? [], $cache_contexts)));
+    $variables['#cache']['tags'] = array_values(array_unique(array_merge($variables['#cache']['tags'] ?? [], ['config:' . $active_theme . '.settings'])));
+    return;
+  }
+
+  $cache_contexts[] = 'route';
+  if ($disable_authenticated) {
+    $cache_contexts[] = 'user.roles';
+  }
+
+  $scroll_threshold = (int) theme_get_setting('back_to_top_scroll_threshold');
+  $scroll_threshold = max(200, min(800, $scroll_threshold));
+  $position = theme_get_setting('back_to_top_position') ?: 'bottom-right';
+  if (!in_array($position, ['bottom-right', 'bottom-left'], TRUE)) {
+    $position = 'bottom-right';
+  }
+  $style = theme_get_setting('back_to_top_style') ?: 'solid';
+  if (!in_array($style, ['solid', 'outline'], TRUE)) {
+    $style = 'solid';
+  }
+  $icon = theme_get_setting('back_to_top_icon') ?: 'arrow-up';
+  if (!in_array($icon, ['arrow-up', 'chevron-up', 'arrow-minimal'], TRUE)) {
+    $icon = 'arrow-up';
+  }
+  $hide_small_screens = (bool) theme_get_setting('back_to_top_hide_small_screens');
+
+  $variables['back_to_top_show'] = TRUE;
+  $variables['back_to_top_config'] = [
+    'scroll_threshold' => $scroll_threshold,
+    'position' => $position,
+    'style' => $style,
+    'icon' => $icon,
+    'hide_small_screens' => $hide_small_screens,
+  ];
+
+  $style_parts = [];
+  $r_bg = _solo_sanitize_hex_for_css(theme_get_setting('settings_back_to_top___r_bg'));
+  $r_tx = _solo_sanitize_hex_for_css(theme_get_setting('settings_back_to_top___r_tx'));
+  if ($r_bg !== '') {
+    $style_parts[] = '--r-bg:' . $r_bg;
+  }
+  if ($r_tx !== '') {
+    $style_parts[] = '--r-tx:' . $r_tx;
+  }
+  $variables['back_to_top_inline_style'] = implode(';', $style_parts);
+
+  $variables['#attached']['library'][] = 'solo/solo-back-to-top';
+  $existing_contexts = $variables['#cache']['contexts'] ?? [];
+  $variables['#cache']['contexts'] = array_values(array_unique(array_merge($existing_contexts, $cache_contexts)));
+  $existing_tags = $variables['#cache']['tags'] ?? [];
+  $variables['#cache']['tags'] = array_values(array_unique(array_merge($existing_tags, ['config:' . $active_theme . '.settings'])));
+}
+
+/**
  * Implements hook_preprocess_HOOK() for HTML document templates.
  */
 function solo_preprocess_html(&$variables): void {
@@ -195,6 +352,10 @@ function solo_preprocess_html(&$variables): void {
   $solo_list = \Drupal::service('extension.list.theme')->getPath('solo');
   $solo_path = $solo_utilities . '/' . $solo_list;
   $variables['solo_path'] = $solo_path;
+
+  $active_theme = \Drupal::theme()->getActiveTheme()->getName();
+  _solo_preprocess_html_preloader($variables, $active_theme);
+  _solo_preprocess_html_back_to_top($variables, $active_theme);
 
   // Ensure class attribute is always an array before appending.
   _solo_ensure_class_array($variables);
@@ -658,6 +819,7 @@ function _get_theme_variables() {
       'footer_link',
       'footer_link_label',
       'footer_link_text',
+      'footer_use_formatted_text',
     ],
     'css_classes' => _get_css_classes(),
     'region_alignment' => _get_region_alignment(),
@@ -706,6 +868,20 @@ function solo_preprocess_page(&$variables) {
   foreach ($variables_lists as $variables_list) {
     foreach ($variables_list as $variable_list_value) {
       $variables[$variable_list_value] = theme_get_setting($variable_list_value);
+    }
+  }
+
+  // Copyright: render formatted text when "use formatted text" is enabled.
+  $variables['footer_copyright_formatted_rendered'] = '';
+  if (!empty($variables['footer_use_formatted_text'])) {
+    $formatted = theme_get_setting('footer_copyright_formatted');
+    if (!empty($formatted['value'])) {
+      $format = $formatted['format'] ?? 'basic_html';
+      $value = str_replace('%year%', date('Y'), $formatted['value']);
+      $variables['footer_copyright_formatted_rendered'] = check_markup(
+        $value,
+        $format
+      );
     }
   }
 

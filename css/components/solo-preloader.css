@@ -1,0 +1,98 @@
+/**
+ * @file
+ * Preloader: overlay and spinner/text/logo. Uses region color variables (--r-bg, --r-tx).
+ * Blocks interaction while visible; JS removes the element after fade-out.
+ * Respects prefers-reduced-motion.
+ */
+
+.solo-preloader {
+  position: fixed;
+  inset: 0;
+  z-index: 999999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 1;
+  transition: opacity 0.4s ease-out;
+  background-color: var(--r-bg);
+  color: var(--r-tx);
+}
+
+.solo-preloader.is-hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* Spinner */
+.solo-preloader__spinner {
+  width: 2.5rem;
+  height: 2.5rem;
+  border: 3px solid transparent;
+  border-top-color: var(--r-tx);
+  border-radius: 50%;
+  animation: solo-preloader-spin 0.7s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .solo-preloader__spinner {
+    animation: none;
+    border-top-color: var(--r-tx);
+    opacity: 0.8;
+  }
+}
+
+@keyframes solo-preloader-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Logo fade style */
+/* Text style */
+.solo-preloader__text {
+  font-size: 1.5rem;
+  font-weight: 500;
+  color: var(--r-tx);
+}
+
+.solo-preloader__text--animate {
+  animation: solo-preloader-fade 0.8s ease-in-out infinite alternate;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .solo-preloader__text--animate {
+    animation: none;
+    opacity: 0.9;
+  }
+}
+
+/* Logo style */
+.solo-preloader__logo {
+  max-width: 8rem;
+  max-height: 4rem;
+  object-fit: contain;
+  animation: solo-preloader-fade 0.8s ease-in-out infinite alternate;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .solo-preloader__logo {
+    animation: none;
+    opacity: 0.9;
+  }
+}
+
+@keyframes solo-preloader-fade {
+  from {
+    opacity: 0.5;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.solo-preloader__inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}

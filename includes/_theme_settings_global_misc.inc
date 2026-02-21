@@ -461,3 +461,297 @@ $form["solo_settings"]["settings_global_misc"]["accessibility"]['keyboard_naviga
   '#default_value' => theme_get_setting('keyboard_navigation_menus') ?? [],
   '#options' => $menu_options,
 ];
+
+// Preloader tab.
+$form["solo_settings"]["settings_global_misc"]["preloader"] = [
+  "#type" => "details",
+  "#title" => t("Preloader"),
+  "#group" => "global_misc_tabs",
+  "#weight" => 99,
+  "#description" => t("A subtle, short overlay shown once per session. Removed automatically after page load. Disabled by default."),
+];
+
+$form["solo_settings"]["settings_global_misc"]["preloader"]["preloader_enabled"] = [
+  '#type' => 'checkbox',
+  '#title' => t('Enable preloader'),
+  '#default_value' => theme_get_setting('preloader_enabled') ?? FALSE,
+  '#description' => t('Show a brief loading overlay. Disabled by default.'),
+  '#id' => 'edit-preloader-enabled',
+];
+
+$form["solo_settings"]["settings_global_misc"]["preloader"]["preloader_force_show"] = [
+  '#type' => 'checkbox',
+  '#title' => t('Force show for testing'),
+  '#default_value' => theme_get_setting('preloader_force_show') ?? FALSE,
+  '#description' => t('Show the preloader on every page for 30 seconds (logged in, admin, any path). Use this to test logo, text size, and colors. Uncheck when done.'),
+  '#weight' => -5,
+];
+
+$form["solo_settings"]["settings_global_misc"]["preloader"]["visibility"] = [
+  '#type' => 'fieldset',
+  '#title' => t('Visibility rules'),
+  '#states' => ['visible' => [':input#edit-preloader-enabled' => ['checked' => TRUE]]],
+];
+
+$form["solo_settings"]["settings_global_misc"]["preloader"]["visibility"]["preloader_once_per_session"] = [
+  '#type' => 'checkbox',
+  '#title' => t('Show once per session'),
+  '#default_value' => theme_get_setting('preloader_once_per_session') ?? TRUE,
+  '#description' => t('Show the preloader only once per browser session. Recommended.'),
+];
+
+$form["solo_settings"]["settings_global_misc"]["preloader"]["visibility"]["preloader_disable_authenticated"] = [
+  '#type' => 'checkbox',
+  '#title' => t('Disable for authenticated users'),
+  '#default_value' => theme_get_setting('preloader_disable_authenticated') ?? TRUE,
+  '#description' => t('Do not show the preloader to logged-in users. Recommended for editors.'),
+];
+
+$form["solo_settings"]["settings_global_misc"]["preloader"]["visibility"]["preloader_disable_admin_routes"] = [
+  '#type' => 'checkbox',
+  '#title' => t('Disable on admin routes'),
+  '#default_value' => theme_get_setting('preloader_disable_admin_routes') ?? TRUE,
+  '#description' => t('Do not show on /admin, layout builder, content editing, etc.'),
+];
+
+$form["solo_settings"]["settings_global_misc"]["preloader"]["visibility"]["preloader_path_rules"] = [
+  '#type' => 'textarea',
+  '#title' => t('Path include/exclude rules'),
+  '#default_value' => theme_get_setting('preloader_path_rules') ?? '',
+  '#description' => t('One path per line. Leave empty to use the default visibility above.<br><br><strong>Exclude:</strong> prefix with a minus sign to hide the preloader on that path (e.g. <code>-/contact</code>, <code>-/about</code>).<br><strong>Include only:</strong> list paths without a prefix to show the preloader only on those paths (e.g. <code>/</code> for front page only, or <code>/</code> and <code>/products</code>).'),
+  '#rows' => 4,
+];
+
+$form["solo_settings"]["settings_global_misc"]["preloader"]["appearance"] = [
+  '#type' => 'fieldset',
+  '#title' => t('Appearance'),
+  '#states' => ['visible' => [':input#edit-preloader-enabled' => ['checked' => TRUE]]],
+];
+
+$form["solo_settings"]["settings_global_misc"]["preloader"]["appearance"]["preloader_style"] = [
+  '#type' => 'select',
+  '#title' => t('Style'),
+  '#id' => 'edit-preloader-style',
+  '#options' => [
+    'spinner' => t('Spinner'),
+    'text' => t('Text'),
+    'logo' => t('Logo'),
+  ],
+  '#default_value' => theme_get_setting('preloader_style') ?? 'spinner',
+];
+
+$form["solo_settings"]["settings_global_misc"]["preloader"]["appearance"]["preloader_text"] = [
+  '#type' => 'textfield',
+  '#title' => t('Text'),
+  '#default_value' => theme_get_setting('preloader_text') ?? '',
+  '#description' => t('Shown when style is "Text".'),
+  '#states' => ['visible' => [':input#edit-preloader-style' => ['value' => 'text']]],
+];
+
+$form["solo_settings"]["settings_global_misc"]["preloader"]["appearance"]["preloader_text_font"] = [
+  '#type' => 'select',
+  '#title' => t('Text Font'),
+  '#options' => _get_name_title_google_font(),
+  '#default_value' => theme_get_setting('preloader_text_font') ?? '',
+  '#states' => ['visible' => [':input#edit-preloader-style' => ['value' => 'text']]],
+];
+
+$form["solo_settings"]["settings_global_misc"]["preloader"]["appearance"]["preloader_text_font_size"] = [
+  '#type' => 'number',
+  '#title' => t('Text size (px)'),
+  '#default_value' => theme_get_setting('preloader_text_font_size') ?? 24,
+  '#min' => 12,
+  '#max' => 100,
+  '#step' => 1,
+  '#field_suffix' => 'px',
+  '#states' => ['visible' => [':input#edit-preloader-style' => ['value' => 'text']]],
+];
+
+$form["solo_settings"]["settings_global_misc"]["preloader"]["appearance"]["preloader_logo_url"] = [
+  '#type' => 'textfield',
+  '#title' => t('Logo URL'),
+  '#default_value' => theme_get_setting('preloader_logo_url') ?? '',
+  '#description' => t('Shown when style is "Logo". Leave empty to hide.'),
+  '#states' => ['visible' => [':input#edit-preloader-style' => ['value' => 'logo']]],
+];
+
+$form["solo_settings"]["settings_global_misc"]["preloader"]["appearance"]["preloader_text_animate"] = [
+  '#type' => 'checkbox',
+  '#title' => t('Animate text (fade pulse)'),
+  '#default_value' => theme_get_setting('preloader_text_animate') ?? FALSE,
+  '#states' => ['visible' => [':input#edit-preloader-style' => ['value' => 'text']]],
+];
+
+$form["solo_settings"]["settings_global_misc"]["preloader"]["appearance"]["preloader_duration"] = [
+  '#type' => 'number',
+  '#title' => t('Duration (ms)'),
+  '#default_value' => theme_get_setting('preloader_duration') ?? 600,
+  '#min' => 300,
+  '#max' => 1500,
+  '#step' => 100,
+  '#description' => t('Maximum time to show (300–1500 ms). Removed on DOMContentLoaded or at this timeout.'),
+];
+
+$form["solo_settings"]["settings_global_misc"]["preloader"]["appearance"]["settings_preloader___r_bg"] = _generate_form_element('preloader', t('Preloader'), '__r_bg', t('Background'));
+$form["solo_settings"]["settings_global_misc"]["preloader"]["appearance"]["settings_preloader___r_tx"] = _generate_form_element('preloader', t('Preloader'), '__r_tx', t('Text'));
+
+// Back to top: Enable, Visibility, Position, Style (lean professional structure).
+$form["solo_settings"]["settings_global_misc"]["back_to_top"] = [
+  '#type' => 'details',
+  '#title' => t('Back to top'),
+  '#group' => 'global_misc_tabs',
+  '#weight' => 99,
+  '#description' => t('A fixed button that scrolls to the top when clicked. Default: off. Kept subtle and predictable.'),
+];
+
+$form["solo_settings"]["settings_global_misc"]["back_to_top"]["back_to_top_enabled"] = [
+  '#type' => 'checkbox',
+  '#title' => t('Enable back to top'),
+  '#default_value' => theme_get_setting('back_to_top_enabled') ?? FALSE,
+  '#description' => t('Show the button after the user scrolls down.'),
+  '#id' => 'edit-back-to-top-enabled',
+];
+
+$form["solo_settings"]["settings_global_misc"]["back_to_top"]["visibility"] = [
+  '#type' => 'fieldset',
+  '#title' => t('Visibility'),
+  '#states' => ['visible' => [':input#edit-back-to-top-enabled' => ['checked' => TRUE]]],
+];
+
+$form["solo_settings"]["settings_global_misc"]["back_to_top"]["visibility"]["back_to_top_disable_admin_routes"] = [
+  '#type' => 'checkbox',
+  '#title' => t('Disable on admin routes'),
+  '#default_value' => theme_get_setting('back_to_top_disable_admin_routes') ?? TRUE,
+  '#description' => t('Recommended. Editors should not see the button in the admin UI.'),
+];
+
+$form["solo_settings"]["settings_global_misc"]["back_to_top"]["visibility"]["back_to_top_disable_authenticated"] = [
+  '#type' => 'checkbox',
+  '#title' => t('Disable for authenticated users'),
+  '#default_value' => theme_get_setting('back_to_top_disable_authenticated') ?? FALSE,
+  '#description' => t('Optional. Some site owners prefer a cleaner UX for editors.'),
+];
+
+$form["solo_settings"]["settings_global_misc"]["back_to_top"]["visibility"]["back_to_top_hide_small_screens"] = [
+  '#type' => 'checkbox',
+  '#title' => t('Hide on small screens (&lt;768px)'),
+  '#default_value' => theme_get_setting('back_to_top_hide_small_screens') ?? FALSE,
+  '#description' => t('Optional. Mobile users often do not need it.'),
+];
+
+$form["solo_settings"]["settings_global_misc"]["back_to_top"]["visibility"]["back_to_top_scroll_threshold"] = [
+  '#type' => 'number',
+  '#title' => t('Show after scroll distance (px)'),
+  '#default_value' => theme_get_setting('back_to_top_scroll_threshold') ?? 400,
+  '#min' => 200,
+  '#max' => 800,
+  '#step' => 50,
+  '#description' => t('Button appears after the user scrolls this many pixels down (200–800).'),
+];
+
+$form["solo_settings"]["settings_global_misc"]["back_to_top"]["position"] = [
+  '#type' => 'fieldset',
+  '#title' => t('Position'),
+  '#states' => ['visible' => [':input#edit-back-to-top-enabled' => ['checked' => TRUE]]],
+];
+
+$form["solo_settings"]["settings_global_misc"]["back_to_top"]["position"]["back_to_top_position"] = [
+  '#type' => 'select',
+  '#title' => t('Placement'),
+  '#options' => [
+    'bottom-right' => t('Bottom right'),
+    'bottom-left' => t('Bottom left'),
+  ],
+  '#default_value' => theme_get_setting('back_to_top_position') ?? 'bottom-right',
+];
+
+$form["solo_settings"]["settings_global_misc"]["back_to_top"]["style"] = [
+  '#type' => 'fieldset',
+  '#title' => t('Style'),
+  '#states' => ['visible' => [':input#edit-back-to-top-enabled' => ['checked' => TRUE]]],
+];
+
+$form["solo_settings"]["settings_global_misc"]["back_to_top"]["style"]["back_to_top_style"] = [
+  '#type' => 'select',
+  '#title' => t('Button style'),
+  '#options' => [
+    'solid' => t('Solid circle'),
+    'outline' => t('Minimal outline'),
+  ],
+  '#default_value' => theme_get_setting('back_to_top_style') ?? 'solid',
+];
+
+$form["solo_settings"]["settings_global_misc"]["back_to_top"]["style"]["back_to_top_icon"] = [
+  '#type' => 'select',
+  '#title' => t('Icon'),
+  '#options' => [
+    'arrow-up' => t('Arrow up'),
+    'chevron-up' => t('Chevron up'),
+    'arrow-minimal' => t('Arrow (minimal)'),
+  ],
+  '#default_value' => theme_get_setting('back_to_top_icon') ?? 'arrow-up',
+];
+
+$form["solo_settings"]["settings_global_misc"]["back_to_top"]["style"]["settings_back_to_top___r_bg"] = _generate_form_element('back_to_top', t('Back to top'), '__r_bg', t('Background (optional)'));
+$form["solo_settings"]["settings_global_misc"]["back_to_top"]["style"]["settings_back_to_top___r_tx"] = _generate_form_element('back_to_top', t('Back to top'), '__r_tx', t('Icon color'));
+
+// Menu template assignment tab (last tab). One row per menu; same path/structure so save still works.
+$saved_assignments = theme_get_setting('menu_template_assignments') ?? [];
+$saved_assignments = is_array($saved_assignments) ? $saved_assignments : [];
+$saved_by_menu = [];
+foreach ($saved_assignments as $row) {
+  if (!empty($row['menu_id']) && !empty($row['template'])) {
+    $saved_by_menu[$row['menu_id']] = $row['template'];
+  }
+}
+
+$form["solo_settings"]["settings_global_misc"]["menu_template_assignment"] = [
+  "#type" => "details",
+  "#title" => t("Menu template assignment"),
+  "#group" => "global_misc_tabs",
+  "#weight" => 100,
+  "#id" => "edit-menu-template-assignment",
+  "#description" => t("Assign which Twig template is used when a menu is rendered. Every menu is listed; choose a template per menu or leave as default. Save configuration to apply."),
+];
+
+$allowed_menu_templates = [
+  'menu--responsive-menu-template-hover.html.twig',
+  'menu--responsive-menu-template-click.html.twig',
+  'menu--primary-sidebar-menu-template-hover.html.twig',
+  'menu--primary-sidebar-menu-template-click.html.twig',
+];
+$all_templates = _solo_get_menu_template_options();
+$template_select_options = ['' => t('- Select a template -')];
+foreach ($allowed_menu_templates as $key) {
+  $template_select_options[$key] = $all_templates[$key] ?? $key;
+}
+
+$form["solo_settings"]["settings_global_misc"]["menu_template_assignment"]["menu_template_assignments"] = [
+  '#type' => 'table',
+  '#header' => [t('Menu name'), t('Template name'), ''],
+  '#empty' => t('No menus found.'),
+  '#tree' => TRUE,
+  '#prefix' => '<div class="solo-menu-template-assignment-table-wrapper">',
+  '#suffix' => '</div>',
+];
+
+foreach ($menus as $menu_id => $menu) {
+  $form["solo_settings"]["settings_global_misc"]["menu_template_assignment"]["menu_template_assignments"][$menu_id]['menu_name'] = [
+    '#type' => 'item',
+    '#title' => t('Menu'),
+    '#title_display' => 'invisible',
+    '#markup' => $menu->label(),
+  ];
+  $form["solo_settings"]["settings_global_misc"]["menu_template_assignment"]["menu_template_assignments"][$menu_id]['template'] = [
+    '#type' => 'select',
+    '#title' => t('Template'),
+    '#title_display' => 'invisible',
+    '#options' => $template_select_options,
+    '#default_value' => $saved_by_menu[$menu_id] ?? '',
+  ];
+  // menu_id must be in the row for submit; 'value' submits but may add a column—put last.
+  $form["solo_settings"]["settings_global_misc"]["menu_template_assignment"]["menu_template_assignments"][$menu_id]['menu_id'] = [
+    '#type' => 'value',
+    '#value' => $menu_id,
+  ];
+}

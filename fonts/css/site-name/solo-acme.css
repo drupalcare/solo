@@ -1,5 +1,6 @@
 #page-wrapper .acme,
 #header.solo-acme .site-name-link,
-#page-wrapper.solo-acme .page-title-text {
+#page-wrapper.solo-acme .page-title-text,
+#solo-preloader.solo-acme .solo-preloader__text {
   font-family: "Acme", sans-serif;
 }

@@ -1,5 +1,6 @@
 #page-wrapper .italiana,
 #header.solo-italiana .site-name-link,
-#page-wrapper.solo-italiana .page-title-text {
+#page-wrapper.solo-italiana .page-title-text,
+#solo-preloader.solo-italiana .solo-preloader__text {
   font-family: "Italiana", sans-serif;
 }

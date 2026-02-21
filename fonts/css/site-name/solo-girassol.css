@@ -1,5 +1,6 @@
 #page-wrapper .girassol,
 #header.solo-girassol .site-name-link,
-#page-wrapper.solo-girassol .page-title-text {
+#page-wrapper.solo-girassol .page-title-text,
+#solo-preloader.solo-girassol .solo-preloader__text {
   font-family: "Girassol", serif;
 }

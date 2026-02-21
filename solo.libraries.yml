@@ -190,6 +190,28 @@ solo-form-theme-settings:
     - core/once
     - core/drupal.form
 
+# Preloader (DOMContentLoaded, timeout fallback, once per session; no jQuery).
+solo-preloader:
+  css:
+    component:
+      css/components/solo-preloader.css: { weight: 0 }
+  js:
+    js/components/solo-preloader.js: { }
+  dependencies:
+    - core/drupal
+    - core/once
+
+# Back to top (scroll threshold, smooth scroll; uses --r-bg, --r-tx like regions).
+solo-back-to-top:
+  css:
+    component:
+      css/components/solo-back-to-top.css: { weight: 0 }
+  js:
+    js/components/solo-back-to-top.js: { }
+  dependencies:
+    - core/drupal
+    - core/once
+
 # Full Opacity on Scroll.
 solo-full-opacity:
   header: true

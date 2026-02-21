@@ -343,7 +343,7 @@ form.system-theme-settings .form-type--textfield [type="text"] {
 }
 
 form.system-theme-settings .form-type--select select {
-  min-width: 400px;
+  min-width: 200px;
 }
 
 form.system-theme-settings .form-radio[value="solo-col-1"],
@@ -655,4 +655,40 @@ form.system-theme-settings .solo-accordion-toggle-container {
 form.system-theme-settings .solo-accordion-toggle-help {
   margin-top: 5px;
   font-size: 12px;
+}
+
+/* Menu template assignment: responsive scrollable table */
+.solo-menu-template-assignment-table-wrapper {
+  max-width: 100%;
+  max-height: 24rem;
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.solo-menu-template-assignment-table-wrapper table {
+  width: 100%;
+  min-width: 20rem;
+}
+
+/* Preloader */
+#edit-back-to-top select,
+#edit-preloader #edit-appearance select {
+  min-width: 200px;
+}
+
+#edit-back-to-top [data-drupal-selector="solo-color-picker"],
+#edit-preloader #edit-appearance [data-drupal-selector="solo-color-picker"] {
+  gap: 0;
+  border: none;
+  padding: 0 0 16px 0;
+  max-width: 160px;
+}
+
+#edit-comment-form-position > div {
+  display: flex;
+  align-items: center;
+}
+
+#edit-comment-form-position > div > label {
+  margin: 0 0 0 12px;
 }

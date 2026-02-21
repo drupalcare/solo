@@ -1,5 +1,6 @@
 #page-wrapper .prata,
 #header.solo-prata .site-name-link,
-#page-wrapper.solo-prata .page-title-text {
+#page-wrapper.solo-prata .page-title-text,
+#solo-preloader.solo-prata .solo-preloader__text {
   font-family: "Prata", serif;
 }

@@ -142,6 +142,19 @@ solo_subtheme.settings:
       type: string
       label: 'Toggle speed'
 
+    menu_template_assignments:
+      type: sequence
+      label: 'Menu template assignments'
+      sequence:
+        type: mapping
+        mapping:
+          menu_id:
+            type: string
+            label: 'Menu machine name'
+          template:
+            type: string
+            label: 'Menu template filename'
+
     site_breadcrumb_pagetitle_off:
       type: boolean
       label: 'Breadcrumb page title off'
@@ -729,6 +742,21 @@ solo_subtheme.settings:
     footer_link_text:
       type: string
       label: 'Footer link text'
+
+    footer_use_formatted_text:
+      type: boolean
+      label: 'Use formatted text for copyright and credit'
+
+    footer_copyright_formatted:
+      type: mapping
+      label: 'Copyright and credit formatted text'
+      mapping:
+        value:
+          type: string
+          label: 'Formatted text value'
+        format:
+          type: string
+          label: 'Text format'
 
     # ===============================================
     # POPUP LOGIN BLOCK REGION

@@ -179,6 +179,7 @@ function solo_page_attachments_alter(array &$attachments): void {
   _load_external_google_font($attachments, 'site_font_google_special_on');
   _load_external_google_font($attachments, 'site_name_google_font');
   _load_external_google_font($attachments, 'site_pagetitle_google_font');
+  _load_external_google_font($attachments, 'preloader_text_font');
 
   _load_predefined_color_theme($attachments);
   _load_font_awesome($attachments);

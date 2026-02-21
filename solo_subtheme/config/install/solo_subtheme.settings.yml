@@ -28,6 +28,7 @@ sm_icon_mastodon: 'https://mastodon.social/deck/@flashwebcenter'
 sm_icon_rss: rss.xml
 sm_icon_email: '/#email'
 footer_copyright: 'Copyright © %year% Company Name - All rights reserved'
+footer_use_formatted_text: 0
 sm_show_icons: 1
 sm_icon_size: 'sm-icons-small'
 footer_link: 'https://www.alaahaddad.com/'

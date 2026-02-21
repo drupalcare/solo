@@ -971,5 +971,56 @@ function _solo_get_layout_default($region, $col, $type_id) {
   return $val;
 }
 
+/**
+ * Returns available text format machine names for text_format form elements.
+ *
+ * @return array
+ *   Array of format machine names (ids) for #allowed_formats.
+ */
+function _solo_get_text_formats() {
+  $formats = \Drupal::entityTypeManager()
+    ->getStorage('filter_format')
+    ->loadMultiple();
+  return array_keys($formats);
+}
+
+/**
+ * Returns available menu Twig template options from the active theme and base themes.
+ *
+ * Scans templates/navigation for menu--*.html.twig files so users can assign
+ * any menu to any of the theme's menu templates via a select list.
+ *
+ * @return array
+ *   Options for a select element: template filename => human-readable label.
+ */
+function _solo_get_menu_template_options() {
+  $options = ['' => t('- Select a template -')];
+  $theme_manager = \Drupal::service('theme.manager');
+  $active_theme = $theme_manager->getActiveTheme();
+  $paths = [$active_theme->getPath()];
+  foreach ($active_theme->getBaseThemeExtensions() as $base) {
+    $paths[] = $base->getPath();
+  }
+  $paths = array_unique($paths);
+  $root = \Drupal::root();
+  foreach ($paths as $path) {
+    $dir = $root . '/' . $path . '/templates/navigation';
+    if (!is_dir($dir)) {
+      continue;
+    }
+    $files = glob($dir . '/menu--*.html.twig');
+    if ($files === FALSE) {
+      continue;
+    }
+    foreach ($files as $file) {
+      $basename = basename($file);
+      $options[$basename] = $basename;
+    }
+  }
+  asort($options);
+  $options = ['' => t('- Select a template -')] + $options;
+  return $options;
+}
+
 // Fetch content types.
 $content_types = _solo_get_content_types();

@@ -143,6 +143,93 @@ solo.settings:
       type: string
       label: 'Toggle speed'
 
+    menu_template_assignments:
+      type: sequence
+      label: 'Menu template assignments'
+      sequence:
+        type: mapping
+        mapping:
+          menu_id:
+            type: string
+            label: 'Menu machine name'
+          template:
+            type: string
+            label: 'Menu template filename'
+
+    # ===============================================
+    # PRELOADER
+    # ===============================================
+    preloader_enabled:
+      type: boolean
+      label: 'Preloader enabled'
+    preloader_once_per_session:
+      type: boolean
+      label: 'Preloader show once per session'
+    preloader_disable_authenticated:
+      type: boolean
+      label: 'Preloader disable for authenticated users'
+    preloader_disable_admin_routes:
+      type: boolean
+      label: 'Preloader disable on admin routes'
+    preloader_path_rules:
+      type: string
+      label: 'Preloader path include/exclude rules'
+    preloader_style:
+      type: string
+      label: 'Preloader style (spinner, text, or logo)'
+    preloader_logo_url:
+      type: string
+      label: 'Preloader optional logo URL'
+    preloader_text:
+      type: string
+      label: 'Preloader text (when style is text)'
+    settings_preloader___r_bg:
+      type: string
+      label: 'Preloader background color'
+    settings_preloader___r_tx:
+      type: string
+      label: 'Preloader text color'
+    preloader_duration:
+      type: integer
+      label: 'Preloader duration milliseconds'
+    preloader_force_show:
+      type: boolean
+      label: 'Preloader force show for testing'
+
+    # ===============================================
+    # BACK TO TOP
+    # ===============================================
+    back_to_top_enabled:
+      type: boolean
+      label: 'Back to top enabled'
+    back_to_top_disable_admin_routes:
+      type: boolean
+      label: 'Back to top disable on admin routes'
+    back_to_top_disable_authenticated:
+      type: boolean
+      label: 'Back to top disable for authenticated users'
+    back_to_top_hide_small_screens:
+      type: boolean
+      label: 'Back to top hide on small screens'
+    back_to_top_scroll_threshold:
+      type: integer
+      label: 'Back to top show after scroll (pixels)'
+    back_to_top_position:
+      type: string
+      label: 'Back to top position'
+    back_to_top_style:
+      type: string
+      label: 'Back to top style (solid or outline)'
+    back_to_top_icon:
+      type: string
+      label: 'Back to top icon'
+    settings_back_to_top___r_bg:
+      type: string
+      label: 'Back to top background color'
+    settings_back_to_top___r_tx:
+      type: string
+      label: 'Back to top icon color'
+
     site_breadcrumb_pagetitle_off:
       type: boolean
       label: 'Breadcrumb page title off'
@@ -730,6 +817,21 @@ solo.settings:
     footer_link_text:
       type: string
       label: 'Footer link text'
+
+    footer_use_formatted_text:
+      type: boolean
+      label: 'Use formatted text for copyright and credit'
+
+    footer_copyright_formatted:
+      type: mapping
+      label: 'Copyright and credit formatted text'
+      mapping:
+        value:
+          type: string
+          label: 'Formatted text value'
+        format:
+          type: string
+          label: 'Text format'
 
     # ===============================================
     # POPUP LOGIN BLOCK REGION

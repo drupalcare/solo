@@ -39,7 +39,7 @@ function solo_theme_suggestions_menu_alter(array &$suggestions, array $variables
   $region_suggestions_added = [];
   $new_suggestions = [];
 
-  // Handle region-based suggestions (collect them; add to list only if user has no choice).
+  // Region-based suggestions (add to list only if user has no choice).
   if (isset($variables['attributes']['region'])) {
     $region = $variables['attributes']['region'];
     $new_suggestions[] = 'menu__' . $region;
@@ -52,8 +52,9 @@ function solo_theme_suggestions_menu_alter(array &$suggestions, array $variables
       // Add various combinations.
       $new_suggestions[] = 'menu__' . $region . '__menu_block';
       if ($menu_name) {
-        $new_suggestions[] = 'menu__' . $region . '__' . strtr($menu_name, '-', '_');
-        $new_suggestions[] = 'menu__' . $region . '__' . strtr($menu_name, '-', '_') . '__menu_block';
+        $region_menu = 'menu__' . $region . '__' . strtr($menu_name, '-', '_');
+        $new_suggestions[] = $region_menu;
+        $new_suggestions[] = $region_menu . '__menu_block';
       }
 
       // Add suggestion from menu block configuration if it exists.
@@ -64,7 +65,7 @@ function solo_theme_suggestions_menu_alter(array &$suggestions, array $variables
     $region_suggestions_added = $new_suggestions;
   }
 
-  // Custom menu → template assignment: resolve user choice first so it can beat region.
+  // Custom menu → template assignment: user choice overrides region.
   $user_suggestion = NULL;
   $menu_name = $variables['menu_name'] ?? $variables['#menu_name'] ?? NULL;
   if ($menu_name !== '' && $menu_name !== NULL) {
@@ -93,8 +94,7 @@ function solo_theme_suggestions_menu_alter(array &$suggestions, array $variables
     }
   }
 
-  // When the user chose a template: make it the single highest priority — put it first
-  // and remove region-based suggestions so the region template cannot take over.
+  // User-chosen template: highest priority; remove region-based suggestions.
   if ($user_suggestion !== NULL) {
     $suggestions = array_values(array_diff($suggestions, $region_suggestions_added));
     if (!in_array($user_suggestion, $suggestions)) {

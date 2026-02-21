@@ -667,7 +667,7 @@ function _get_updated_regions() {
     ],
   ];
 
-  foreach ($active_regions as $key => $region) {
+  foreach ($active_regions as $region) {
 
     $label = ucwords(str_replace('_', ' ', $region));
 
@@ -739,7 +739,11 @@ function _count_regions() {
     }
   }
 
-  $config->set('count_top', $counts['top'])->set('count_main', $counts['main'])->set('count_bottom', $counts['bottom'])->set('count_footer', $counts['footer'])->save();
+  $config->set('count_top', $counts['top'])
+    ->set('count_main', $counts['main'])
+    ->set('count_bottom', $counts['bottom'])
+    ->set('count_footer', $counts['footer'])
+    ->save();
 
   \Drupal::messenger()->addMessage(t("<p class='settings-message'>
     <ul class='settings-message'>
@@ -985,13 +989,12 @@ function _solo_get_text_formats() {
 }
 
 /**
- * Returns available menu Twig template options from the active theme and base themes.
+ * Returns menu Twig template options (active theme + base themes).
  *
- * Scans templates/navigation for menu--*.html.twig files so users can assign
- * any menu to any of the theme's menu templates via a select list.
+ * Scans templates/navigation for menu--*.html.twig; assign via select list.
  *
  * @return array
- *   Options for a select element: template filename => human-readable label.
+ *   Options: template filename => human-readable label.
  */
 function _solo_get_menu_template_options() {
   $options = ['' => t('- Select a template -')];
@@ -1021,6 +1024,3 @@ function _solo_get_menu_template_options() {
   $options = ['' => t('- Select a template -')] + $options;
   return $options;
 }
-
-// Fetch content types.
-$content_types = _solo_get_content_types();

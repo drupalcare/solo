@@ -32,7 +32,7 @@ use Drupal\Core\Render\Element;
  * @param array $variables
  *   The variables array containing attributes.
  * @param string $attribute_path
- *   The attribute path (default: 'attributes' for $variables['attributes']['class']).
+ *   Attribute path (default: 'attributes').
  */
 function _solo_ensure_class_array(array &$variables, string $attribute_path = 'attributes'): void {
   // Handle standard attributes path.
@@ -188,7 +188,7 @@ function _get_enabled_skip_links() {
 /**
  * Sanitizes a value for use as a CSS custom property (hex color).
  *
- * Drupal 11 / commercial: only allow 6-digit hex to prevent XSS in inline styles.
+ * Drupal 11: only allow 6-digit hex to prevent XSS in inline styles.
  *
  * @param string|null $value
  *   Raw value from theme setting (e.g. color picker).
@@ -255,8 +255,8 @@ function _solo_preprocess_html_preloader(array &$variables, string $active_theme
 /**
  * Attaches back-to-top variables, library, and cache to HTML preprocess.
  *
- * Respects: enable, disable on admin routes, disable for authenticated, hide on small screens.
- * Passes position, style, icon, scroll threshold, colors. Cache contexts: route, user.roles.
+ * Respects: enable, admin routes, authenticated, hide on small screens.
+ * Passes position, style, icon, scroll threshold. Cache: route, user.roles.
  *
  * @param array &$variables
  *   The html preprocess variables (modified in place).

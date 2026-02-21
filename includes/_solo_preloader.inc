@@ -31,7 +31,7 @@ function _solo_preloader_decision($theme) {
     return ['show' => FALSE, 'config' => [], 'cache_contexts' => []];
   }
 
-  // Force show for testing: ignore all visibility rules, show for 30 seconds on every page.
+  // Force show for testing: ignore visibility rules, show 30s on every page.
   if ($force_show) {
     $cache_contexts[] = 'user.roles';
     $cache_contexts[] = 'route';
@@ -119,6 +119,7 @@ function _solo_preloader_decision($theme) {
  *   Path (may be empty).
  *
  * @return bool
+ *   TRUE if the route or path is considered admin/editor, FALSE otherwise.
  */
 function _solo_preloader_is_admin_route($route_name, $path) {
   if ($route_name === NULL || $route_name === '') {

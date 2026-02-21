@@ -42,11 +42,11 @@ $form["solo_settings"]["settings_{$region}"]["copyright_content"] = [
 $form["solo_settings"]["settings_{$region}"]["copyright_content"]["classes_{$region}"] = _generate_css_classes($region, $label);
 
 
-// Toggle between simple fields and a single formatted text field (HTML, e.g. ICP, approval info).
+// Toggle: simple fields vs one formatted text field (HTML, e.g. ICP).
 $form["solo_settings"]["settings_{$region}"]["copyright_content"]["footer_use_formatted_text"] = [
   "#type" => "checkbox",
   "#title" => t("Use a single formatted text field for copyright and credit"),
-  "#description" => t("Check this box to enter all copyright and credit information (including HTML such as links, ICP license, approval numbers) in one rich text field. You can choose the text format below. When checked, the four separate fields above are hidden."),
+  "#description" => t("One field for copyright. When checked, four fields hide."),
   "#default_value" => theme_get_setting("footer_use_formatted_text"),
 ];
 
@@ -68,8 +68,8 @@ $form["solo_settings"]["settings_{$region}"]["copyright_content"]["footer_copyri
   "#type" => "text_format",
   "#title" => t("Copyright and credit (formatted)"),
   "#description" => t("Enter copyright, credit, and any footer legal text (e.g. ICP license, approval number). You can use the chosen text format for links and basic HTML. Type %year% for the current year."),
-  "#default_value" => $footer_formatted["value"] ?? "",
-  "#format" => $footer_formatted["format"] ?? "basic_html",
+  "#default_value" => ($footer_formatted ?? [])["value"] ?? "",
+  "#format" => ($footer_formatted ?? [])["format"] ?? "basic_html",
   "#allowed_formats" => $allowed_formats,
   "#states" => [
     "visible" => [

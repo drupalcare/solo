@@ -592,16 +592,21 @@ $form["solo_settings"]["settings_global_misc"]["preloader"]["appearance"]["prelo
   '#description' => t('Maximum time to show (300–1500 ms). Removed on DOMContentLoaded or at this timeout.'),
 ];
 
-$form["solo_settings"]["settings_global_misc"]["preloader"]["appearance"]["settings_preloader___r_bg"] = _generate_form_element('preloader', t('Preloader'), '__r_bg', t('Background'));
-$form["solo_settings"]["settings_global_misc"]["preloader"]["appearance"]["settings_preloader___r_tx"] = _generate_form_element('preloader', t('Preloader'), '__r_tx', t('Text'));
+$preloader_app = &$form["solo_settings"]["settings_global_misc"]["preloader"]["appearance"];
+$preloader_app["settings_preloader___r_bg"] = _generate_form_element(
+  'preloader', t('Preloader'), '__r_bg', t('Background')
+);
+$preloader_app["settings_preloader___r_tx"] = _generate_form_element(
+  'preloader', t('Preloader'), '__r_tx', t('Text')
+);
 
-// Back to top: Enable, Visibility, Position, Style (lean professional structure).
+// Back to top: Enable, Visibility, Position, Style.
 $form["solo_settings"]["settings_global_misc"]["back_to_top"] = [
   '#type' => 'details',
   '#title' => t('Back to top'),
   '#group' => 'global_misc_tabs',
   '#weight' => 99,
-  '#description' => t('A fixed button that scrolls to the top when clicked. Default: off. Kept subtle and predictable.'),
+  '#description' => t('Fixed button that scrolls to top when clicked. Default: off.'),
 ];
 
 $form["solo_settings"]["settings_global_misc"]["back_to_top"]["back_to_top_enabled"] = [
@@ -692,10 +697,15 @@ $form["solo_settings"]["settings_global_misc"]["back_to_top"]["style"]["back_to_
   '#default_value' => theme_get_setting('back_to_top_icon') ?? 'arrow-up',
 ];
 
-$form["solo_settings"]["settings_global_misc"]["back_to_top"]["style"]["settings_back_to_top___r_bg"] = _generate_form_element('back_to_top', t('Back to top'), '__r_bg', t('Background (optional)'));
-$form["solo_settings"]["settings_global_misc"]["back_to_top"]["style"]["settings_back_to_top___r_tx"] = _generate_form_element('back_to_top', t('Back to top'), '__r_tx', t('Icon color'));
+$back_to_top_style = &$form["solo_settings"]["settings_global_misc"]["back_to_top"]["style"];
+$back_to_top_style["settings_back_to_top___r_bg"] = _generate_form_element(
+  'back_to_top', t('Back to top'), '__r_bg', t('Background (optional)')
+);
+$back_to_top_style["settings_back_to_top___r_tx"] = _generate_form_element(
+  'back_to_top', t('Back to top'), '__r_tx', t('Icon color')
+);
 
-// Menu template assignment tab (last tab). One row per menu; same path/structure so save still works.
+// Menu template assignment tab: one row per menu; same path so save works.
 $saved_assignments = theme_get_setting('menu_template_assignments') ?? [];
 $saved_assignments = is_array($saved_assignments) ? $saved_assignments : [];
 $saved_by_menu = [];
@@ -749,8 +759,9 @@ foreach ($menus as $menu_id => $menu) {
     '#options' => $template_select_options,
     '#default_value' => $saved_by_menu[$menu_id] ?? '',
   ];
-  // menu_id must be in the row for submit; 'value' submits but may add a column—put last.
-  $form["solo_settings"]["settings_global_misc"]["menu_template_assignment"]["menu_template_assignments"][$menu_id]['menu_id'] = [
+  // menu_id must be in the row for submit; 'value' submits but put last.
+  $menu_assignments = &$form["solo_settings"]["settings_global_misc"]["menu_template_assignment"]["menu_template_assignments"][$menu_id];
+  $menu_assignments['menu_id'] = [
     '#type' => 'value',
     '#value' => $menu_id,
   ];

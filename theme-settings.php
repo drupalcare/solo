@@ -29,12 +29,15 @@ function solo_form_system_theme_settings_alter(&$form, FormStateInterface $form_
   $form['theme_settings']['#weight'] = 99;
 
   $form['#attached']['library'][] = 'solo/solo-form-theme-settings';
+  // Variables below are used by required theme settings include files.
+  // phpcs:disable DrupalPractice.CodeAnalysis.VariableAnalysis.UnusedVariable
   $d_s = date('j  F,  Y');
   $d_m = date('D F d, o');
   $d_l = date('g:i A T, D F d, o');
   $updated_regions = _get_updated_regions();
   $counts = _count_regions();
   $attributes = _get_region_attributes();
+  // phpcs:enable DrupalPractice.CodeAnalysis.VariableAnalysis.UnusedVariable
 
   $layout_region_override_toggles = [
     'enable_per_type_layout_top' => 0,
@@ -81,7 +84,7 @@ function solo_form_system_theme_settings_alter(&$form, FormStateInterface $form_
  * Validation handler for the Solo system_theme_settings form.
  */
 function solo_theme_settings_validate($form, FormStateInterface $form_state) {
-  // Only validate the separate footer link fields when not using formatted text.
+  // Only validate separate footer link fields when not using formatted text.
   if ($form_state->getValue('footer_use_formatted_text')) {
     return;
   }
@@ -174,11 +177,6 @@ function _solo_theme_settings_submit($form, FormStateInterface $form_state) {
     $enabled = (bool) $form_state->getValue($enable_key, FALSE);
     $config->set($enable_key, $enabled);
 
-    // Get global layout values for this region.
-    $global_2col = $form_state->getValue("{$region}_2col");
-    $global_3col = $form_state->getValue("{$region}_3col");
-    $global_4col = $form_state->getValue("{$region}_4col");
-
     foreach ($content_types as $type_id => $type) {
       $key_2col = "solo_layout_{$region}_2col_$type_id";
       $key_3col = "solo_layout_{$region}_3col_$type_id";
@@ -233,7 +231,7 @@ function _solo_theme_settings_submit($form, FormStateInterface $form_state) {
 
   }
 
-  // Menu template assignments: table at solo_settings > settings_global_misc > menu_template_assignment > menu_template_assignments (one row per menu, each row has menu_id + template).
+  // Menu template assignments (menu_id + template per row).
   $path = [
     'solo_settings',
     'settings_global_misc',
@@ -269,20 +267,33 @@ function _solo_theme_settings_submit($form, FormStateInterface $form_state) {
     }
   }
   $preloader_keys = [
-    'preloader_enabled', 'preloader_force_show', 'preloader_once_per_session', 'preloader_disable_authenticated',
-    'preloader_disable_admin_routes', 'preloader_path_rules', 'preloader_style',
-    'preloader_logo_url', 'preloader_text', 'preloader_duration',
+    'preloader_enabled',
+    'preloader_force_show',
+    'preloader_once_per_session',
+    'preloader_disable_authenticated',
+    'preloader_disable_admin_routes',
+    'preloader_path_rules',
+    'preloader_style',
+    'preloader_logo_url',
+    'preloader_text',
+    'preloader_duration',
   ];
   foreach ($preloader_keys as $key) {
-    $val = $preloader_form[$key] ?? ($preloader_form['visibility'][$key] ?? NULL)
-      ?? ($preloader_form['appearance'][$key] ?? NULL);
+    $val = $preloader_form[$key] ?? NULL;
+    if ($val === NULL && isset($preloader_form['visibility'][$key])) {
+      $val = $preloader_form['visibility'][$key];
+    }
+    if ($val === NULL && isset($preloader_form['appearance'][$key])) {
+      $val = $preloader_form['appearance'][$key];
+    }
     if ($val !== NULL) {
       $config->set($key, $val);
     }
   }
-  // Preloader colors: read from appearance and save to config (so they reload in the form).
-  $bg = $preloader_form['appearance']['settings_preloader___r_bg'] ?? NULL;
-  $tx = $preloader_form['appearance']['settings_preloader___r_tx'] ?? NULL;
+  // Preloader colors: read from appearance and save to config (reload in form).
+  $app = $preloader_form['appearance'] ?? [];
+  $bg = $app['settings_preloader___r_bg'] ?? NULL;
+  $tx = $app['settings_preloader___r_tx'] ?? NULL;
   if ($bg === NULL || $tx === NULL) {
     $values = $form_state->getValues();
     $with_tabs = NestedArray::getValue($values, [
@@ -309,7 +320,7 @@ function _solo_theme_settings_submit($form, FormStateInterface $form_state) {
   $config->set('settings_preloader___r_bg', $bg ?? '');
   $config->set('settings_preloader___r_tx', $tx ?? '');
 
-  // Back to top: Enable, Visibility, Position, Style (nested; NestedArray for D11).
+  // Back to top: nested form values via NestedArray (D11).
   $back_to_top_paths = [
     [
       'solo_settings',

@@ -20,6 +20,8 @@
     <li><strong>4-Level Mega Menus:</strong> Complex navigation made simple. Choose between hover or click behaviors, configure 14 different mega menu layouts, and enjoy smart submenu positioning that automatically prevents viewport overflow.</li>
     <li><strong>No Build Tools Required:</strong> Unlike many contributed themes that require Node.js, Gulp, or CSS compilation, Solo works immediately after installation. No command line, no package managers, no compilation steps.</li>
     <li><strong>RTL Language Support:</strong> Full right-to-left language support throughout the theme, with automatic layout mirroring, adapted menu directions, and RTL-aware keyboard navigation.</li>
+    <li><strong>Preloader &amp; Back to Top:</strong> Optional full-page preloader (with logo, text, colors, and “force show” for testing) and an accessible back-to-top button—both configurable under Global Settings with visibility, position, and style options.</li>
+    <li><strong>Menu Template Assignment:</strong> Assign any of Solo’s responsive menu Twig templates to any menu in the system (primary, footer, or custom), so you can control how each menu looks and behaves without coding.</li>
     <li><strong>Developer-Friendly When You Need It:</strong> Clean, modular Twig structure with preprocess hooks, comprehensive template suggestions, and debug mode for troubleshooting. Extend Solo when needed without fighting the theme.</li>
   </ul>
 
@@ -155,6 +157,31 @@
   <p>Solo supports smooth scroll-based animations for elements and an optional reading mode that limits content width for long-form reading, improving user experience and readability on articles and blogs.</p>
   <h3>Optimized for Performance and SEO</h3>
   <p>Solo is <strong>lightweight and high-performance</strong>, using clean semantic HTML, no jQuery dependency, and optimized CSS for fast load times, helping your site maintain high Lighthouse scores while providing a polished, modern user experience.</p>
+  <h3>Preloader, Back to Top, Menu Template Assignment, and Formatted Copyright</h3>
+  <p>These features give site builders more control over the loading experience, scroll behavior, menu presentation, and footer content—all configurable from the theme settings.</p>
+  <h4>Preloader (Global Settings)</h4>
+  <p>Solo includes an optional <strong>preloader</strong> that displays while the page loads. Configure it under Global Settings:</p>
+  <ul>
+    <li>Enable or disable the preloader site-wide.</li>
+    <li>Visibility: hide on admin routes, hide for authenticated users, or use path rules.</li>
+    <li>Style (e.g. spinner), optional logo URL and text, duration, and “once per session” so returning visitors skip it.</li>
+    <li>Background and text colors (same pattern as region colors) for brand consistency.</li>
+    <li>“Force show for testing” option to display the preloader for a set time on every page for tuning logo, text, and colors.</li>
+  </ul>
+  <h4>Back to Top (Global Settings)</h4>
+  <p>Solo includes an accessible <strong>Back to top</strong> button, configurable under Global Settings:</p>
+  <ul>
+    <li>Enable or disable the button site-wide.</li>
+    <li>Visibility: disable on admin routes, for authenticated users, or hide on small screens; set scroll distance (e.g. 200–800 px) before the button appears.</li>
+    <li>Position: bottom-right or bottom-left.</li>
+    <li>Style: solid or outline, with optional background and icon colors.</li>
+    <li>Icon choice: arrow-up, chevron-up, or arrow-minimal.</li>
+    <li>Built for accessibility: proper button, aria-label, visibility controlled via IntersectionObserver, and respect for reduced motion.</li>
+  </ul>
+  <h4>Menu Template Assignment (Global Settings)</h4>
+  <p>Under Global Settings, Solo provides <strong>Menu template assignment</strong>: assign any of the theme’s responsive menu Twig templates to any menu in your system (primary menu, footer menu, or custom menus). You can place the main menu in the header and force it to use a specific responsive template, or give each menu its own look and behavior—all without writing code.</p>
+  <h4>Formatted Copyright and Credit Text</h4>
+  <p>Solo supports a <strong>single formatted text field</strong> for copyright and credit in the footer. When enabled, you enter all copyright, legal text, links, ICP, or approval info in one rich-text field with a chosen text format, instead of using separate plain-text fields. The four separate copyright/credit fields can still be used when this option is off.</p>
   <h3>Libraries and Font Management</h3>
   <p>Solo enables local use of w3.css, supports Font Awesome (versions 4, 5, 6), and offers Google Font integration with 50 fonts for global site typography, 26 fonts for headings, and 25 fonts for targeted HTML tags, giving you complete control over your site's typography without custom coding.</p>
   <h3>Integrated Social Media Icon Management</h3>
@@ -383,6 +410,22 @@
         <strong>Enhanced Reading Mode Options:</strong><br>
         Apply reading mode to any content type, with flexible controls and guidelines to optimize line length for better content readability.
     </li>
+    <li>
+        <strong>Preloader:</strong><br>
+        Enable an optional full-page preloader under Global Settings. Configure visibility (admin routes, authenticated users, path rules), style (e.g. spinner), optional logo and text, duration, once-per-session, and background/text colors. Use “Force show for testing” to display the preloader for a set time on every page when tuning appearance.
+    </li>
+    <li>
+        <strong>Back to Top:</strong><br>
+        Enable an accessible back-to-top button under Global Settings. Set visibility (admin routes, authenticated users, small screens), scroll distance (200–800 px), position (bottom-right or bottom-left), style (solid/outline), optional colors, and icon (arrow-up, chevron-up, arrow-minimal). The button uses proper semantics and respects reduced motion.
+    </li>
+    <li>
+        <strong>Menu Template Assignment:</strong><br>
+        Under Global Settings, assign any of Solo’s responsive menu Twig templates to any menu (primary, footer, or custom). Control how each menu is rendered—e.g. use the main menu in the header with a specific responsive template—without custom code.
+    </li>
+    <li>
+        <strong>Formatted Copyright and Credit:</strong><br>
+        In the footer/copyright settings, enable “Use a single formatted text field for copyright and credit” to enter all copyright, legal text, links, and ICP in one rich-text field with a chosen text format. When off, the four separate copyright/credit fields remain available.
+    </li>
 </ul>
   <h3>Libraries and Fonts Settings</h3>
   <ul>
@@ -556,6 +599,7 @@
     <li>Text field for footer link URL.</li>
     <li>Text field for footer link label.</li>
     <li>Text field for footer link text.</li>
+    <li><strong>Use a single formatted text field for copyright and credit:</strong> When enabled, one rich-text (formatted) field is used for all copyright and credit content (including HTML, links, ICP, approval numbers). When disabled, the four separate fields above are used.</li>
     <li>15 color input fields are available for use within this region.</li>
   </ul>
 </section>

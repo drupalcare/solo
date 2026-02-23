@@ -1,15 +1,16 @@
 {#
   Preloader overlay. Inline style built in preprocess from theme settings (same as region colors).
+  Markup in Twig (not JS) to avoid FOUC. Critical CSS in head for immediate display.
   Variables: preloader_config, preloader_inline_style.
 #}
 <div id="solo-preloader"
   class="solo-preloader solo-preloader--{{ preloader_config.style|default('spinner') }}{{ preloader_config.text_font ? ' ' ~ preloader_config.text_font : '' }}"
-  role="presentation"
-  aria-hidden="true"
-  data-duration="{{ preloader_config.duration|default(600) }}"
-  data-once-per-session="{{ preloader_config.once_per_session ? 'true' : 'false' }}"
+  role="status"
+  aria-live="polite"
+  aria-label="{{ 'Page is loading'|t }}"
   data-force-show="{{ preloader_config.force_show ? 'true' : 'false' }}"
   {% if preloader_inline_style is not empty %}style="{{ preloader_inline_style }}"{% endif %}>
+  <span class="visually-hidden">{{ 'Loading...'|t }}</span>
   <div class="solo-preloader__inner">
     {% if preloader_config.style == 'logo' and preloader_config.logo_url %}
       <img class="solo-preloader__logo" src="{{ preloader_config.logo_url }}" alt="" width="160" height="80" loading="eager" decoding="sync">

@@ -13,14 +13,23 @@
   align-items: center;
   justify-content: center;
   opacity: 1;
-  transition: opacity 0.4s ease-out;
+  visibility: visible;
+  transition: opacity 0.4s ease-out, visibility 0.4s ease-out;
   background-color: var(--r-bg);
   color: var(--r-tx);
+  pointer-events: auto;
 }
 
-.solo-preloader.is-hidden {
+.solo-preloader.solo-preloader--hidden {
   opacity: 0;
+  visibility: hidden;
   pointer-events: none;
+  transition: opacity 0.4s ease, visibility 0.4s ease;
+}
+
+/* Removed from layout after transition; state in class, not inline style */
+.solo-preloader--removed {
+  display: none;
 }
 
 /* Spinner */

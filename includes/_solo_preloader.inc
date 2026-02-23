@@ -48,7 +48,6 @@ function _solo_preloader_decision($theme) {
         'text_font' => trim((string) ($config->get('preloader_text_font') ?? '')),
         'text_font_size' => (int) ($config->get('preloader_text_font_size') ?: 24),
         'text_animate' => (bool) $config->get('preloader_text_animate'),
-        'duration' => 30000,
         'force_show' => TRUE,
       ],
       'cache_contexts' => array_unique($cache_contexts),
@@ -87,9 +86,6 @@ function _solo_preloader_decision($theme) {
     }
   }
 
-  $duration = (int) $config->get('preloader_duration');
-  $duration = max(300, min(1500, $duration));
-
   $r_bg = trim((string) ($config->get('settings_preloader___r_bg') ?? ''));
   $r_tx = trim((string) ($config->get('settings_preloader___r_tx') ?? ''));
   return [
@@ -103,7 +99,6 @@ function _solo_preloader_decision($theme) {
       'text_font' => trim((string) ($config->get('preloader_text_font') ?? '')),
       'text_font_size' => (int) ($config->get('preloader_text_font_size') ?: 24),
       'text_animate' => (bool) $config->get('preloader_text_animate'),
-      'duration' => $duration,
       'force_show' => FALSE,
     ],
     'cache_contexts' => array_unique($cache_contexts),

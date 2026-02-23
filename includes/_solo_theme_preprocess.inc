@@ -232,7 +232,6 @@ function _solo_preprocess_html_preloader(array &$variables, string $active_theme
   }
 
   if ($preloader['show']) {
-    $variables['preloader_config']['once_per_session'] = (bool) theme_get_setting('preloader_once_per_session');
     $preloader_style_parts = [];
     $r_bg = _solo_sanitize_hex_for_css(theme_get_setting('settings_preloader___r_bg'));
     $r_tx = _solo_sanitize_hex_for_css(theme_get_setting('settings_preloader___r_tx'));
@@ -243,6 +242,7 @@ function _solo_preprocess_html_preloader(array &$variables, string $active_theme
       $preloader_style_parts[] = '--r-tx:' . $r_tx;
     }
     $variables['preloader_inline_style'] = implode(';', $preloader_style_parts);
+    $variables['preloader_critical_css'] = '#solo-preloader{position:fixed;inset:0;z-index:999999;display:flex;align-items:center;justify-content:center;background-color:var(--r-bg,#fff);color:var(--r-tx,#333)}#solo-preloader .solo-preloader__inner{display:flex;flex-direction:column;align-items:center;gap:1rem}#solo-preloader .visually-hidden{position:absolute!important;width:1px!important;height:1px!important;padding:0!important;margin:-1px!important;overflow:hidden!important;clip:rect(0,0,0,0)!important;white-space:nowrap!important;border:0!important}';
     if (!empty($preloader['cache_contexts'])) {
       $variables['#cache']['contexts'] = array_values(array_unique(array_merge(
         $variables['#cache']['contexts'] ?? [],

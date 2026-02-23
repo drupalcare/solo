@@ -35,6 +35,9 @@
   <head>
     <head-placeholder token="{{ placeholder_token }}">
     <title>{{ head_title|safe_join(' | ') }}</title>
+    {% if preloader_critical_css is defined and preloader_critical_css is not empty %}
+    <style>{{ preloader_critical_css|raw }}</style>
+    {% endif %}
     <css-placeholder token="{{ placeholder_token }}">
     <js-placeholder token="{{ placeholder_token }}">
   </head>

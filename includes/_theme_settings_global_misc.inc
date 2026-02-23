@@ -479,25 +479,20 @@ $form["solo_settings"]["settings_global_misc"]["preloader"]["preloader_enabled"]
   '#id' => 'edit-preloader-enabled',
 ];
 
-$form["solo_settings"]["settings_global_misc"]["preloader"]["preloader_force_show"] = [
-  '#type' => 'checkbox',
-  '#title' => t('Force show for testing'),
-  '#default_value' => theme_get_setting('preloader_force_show') ?? FALSE,
-  '#description' => t('Show the preloader on every page for 30 seconds (logged in, admin, any path). Use this to test logo, text size, and colors. Uncheck when done.'),
-  '#weight' => -5,
-];
-
 $form["solo_settings"]["settings_global_misc"]["preloader"]["visibility"] = [
   '#type' => 'fieldset',
   '#title' => t('Visibility rules'),
   '#states' => ['visible' => [':input#edit-preloader-enabled' => ['checked' => TRUE]]],
 ];
 
-$form["solo_settings"]["settings_global_misc"]["preloader"]["visibility"]["preloader_once_per_session"] = [
+$form["solo_settings"]["settings_global_misc"]["preloader"]["visibility"]["preloader_force_show"] = [
   '#type' => 'checkbox',
-  '#title' => t('Show once per session'),
-  '#default_value' => theme_get_setting('preloader_once_per_session') ?? TRUE,
-  '#description' => t('Show the preloader only once per browser session. Recommended.'),
+  '#title' => t('Force show for testing'),
+  '#default_value' => theme_get_setting('preloader_force_show') ?? FALSE,
+  '#description' => t('Show the preloader on every page for 30 seconds (logged in, admin, any path). Use this to test logo, text size, and colors. Uncheck when done.'),
+  '#weight' => -10,
+  '#id' => 'edit-preloader-force-show',
+  '#attributes' => ['class' => ['solo-preloader-force-show']],
 ];
 
 $form["solo_settings"]["settings_global_misc"]["preloader"]["visibility"]["preloader_disable_authenticated"] = [
@@ -580,16 +575,6 @@ $form["solo_settings"]["settings_global_misc"]["preloader"]["appearance"]["prelo
   '#title' => t('Animate text (fade pulse)'),
   '#default_value' => theme_get_setting('preloader_text_animate') ?? FALSE,
   '#states' => ['visible' => [':input#edit-preloader-style' => ['value' => 'text']]],
-];
-
-$form["solo_settings"]["settings_global_misc"]["preloader"]["appearance"]["preloader_duration"] = [
-  '#type' => 'number',
-  '#title' => t('Duration (ms)'),
-  '#default_value' => theme_get_setting('preloader_duration') ?? 600,
-  '#min' => 300,
-  '#max' => 1500,
-  '#step' => 100,
-  '#description' => t('Maximum time to show (300–1500 ms). Removed on DOMContentLoaded or at this timeout.'),
 ];
 
 $preloader_app = &$form["solo_settings"]["settings_global_misc"]["preloader"]["appearance"];

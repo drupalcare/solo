@@ -101,19 +101,22 @@ three styles for three-column layouts, and four styles for four-column layouts.
 
 ### Preloader, Back to Top, Menu Template Assignment, and Formatted Copyright
 
-Features added for loading experience, scroll behavior, menu presentation, and footer content.
+Features added for loading experience, scroll behavior, menu presentation, and 
+footer content.
 
 #### Preloader (Global Settings)
 
-Optional full-page preloader configurable under Global Settings: enable/disable,
-visibility (admin routes, authenticated users, path rules), style (e.g. spinner),
-optional logo URL and text, duration, once-per-session, and background/text
-colors. "Force show for testing" displays the preloader for a set time on every
-page for tuning.
+Load-based preloader: displays while the page is loading and hides when the
+page has actually loaded (`window.load`). No minimum display time—fast loads
+show it briefly; slow loads keep it until load completes. Configure under
+Global Settings: enable/disable, visibility (admin routes, authenticated users,
+path rules), style (spinner, text, or logo), optional logo and text, and
+background/text colors. Critical CSS in head; 8s timeout fallback; "Force show
+for testing" for 30s when tuning.
 
 #### Back to Top (Global Settings)
 
-Accessible back-to-top button under Global Settings: enable/disable, visibility
+Accessible back-to-top button under Global Settings: enable/disable, visibility 
 (admin routes, authenticated users, small screens), scroll distance (200–800 px),
 position (bottom-right or bottom-left), style (solid/outline), optional colors,
 and icon (arrow-up, chevron-up, arrow-minimal). Uses proper button semantics and
@@ -251,7 +254,7 @@ and other site builders involved in the development process.
 - Modify login, register, and password pages; change header and menu order.
 - Offers animation features and layout changes for multiple value fields.
 - Apply reading mode to content types, setting max width for content regions.
-- **Preloader:** Enable optional full-page preloader; set visibility (admin, authenticated, path rules), style, logo/text, duration, once-per-session, colors; "Force show for testing" for tuning.
+- **Preloader:** Load-based preloader (hides when page has loaded; no minimum time). Set visibility, style, logo/text, colors; "Force show for testing" for 30s when tuning.
 - **Back to top:** Enable accessible back-to-top button; set visibility, scroll distance, position (bottom-right/left), style (solid/outline), colors, and icon.
 - **Menu template assignment:** Assign any responsive menu Twig template to any menu (primary, footer, or custom) so each menu can use a different template.
 

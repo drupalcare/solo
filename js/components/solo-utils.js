@@ -173,8 +173,8 @@
     DETAILS_WRAPPER: '.details-wrapper'
   };
 
-  // Store active animations for cleanup
-  const activeAnimations = new WeakMap();
+  // Store active animations for cleanup (Map instead of WeakMap so cleanup() can iterate).
+  const activeAnimations = new Map();
 
   /**
    * CSS styles for collapsed state.
@@ -199,8 +199,8 @@
       return;
     }
 
-    // Hyphenated property names for removeProperty()
-    const props = ['height','padding-top','padding-bottom','margin-top','margin-bottom', 'overflow','transition-duration','transition-property','transition-timing-function','box-sizing'];
+    // Hyphenated property names for removeProperty(); transform for iOS compositor layer cleanup.
+    const props = ['height', 'padding-top', 'padding-bottom', 'margin-top', 'margin-bottom', 'overflow', 'transition-duration', 'transition-property', 'transition-timing-function', 'box-sizing', 'transform', '-webkit-transform'];
 
     try {
       props.forEach((p) => target.style.removeProperty(p));
@@ -297,6 +297,8 @@
       target.style.transitionTimingFunction = 'ease-in-out';
       target.style.boxSizing = 'border-box';
       target.style.height = `${target.offsetHeight}px`;
+      target.style.webkitTransform = 'translateZ(0)';
+      target.style.transform = 'translateZ(0)';
       void target.offsetHeight;
 
       target.classList.remove('toggled');
@@ -307,22 +309,26 @@
       }
       updateTabindex(target, false, componentName);
 
-      Object.keys(cssStyles).forEach(style => {
-        target.style[style] = cssStyles[style];
-      });
+      // iOS Safari: apply collapse in next frame so "from" state is painted and transition runs.
+      const applySlideUpEnd = () => {
+        Object.keys(cssStyles).forEach(style => {
+          target.style[style] = cssStyles[style];
+        });
+      };
+      requestAnimationFrame(applySlideUpEnd);
 
       const timeoutId = setTimeout(() => {
         if (target && target.parentNode) {
           target.style.display = 'none';
           removeStyles(target);
           activeAnimations.delete(target);
-          
+
           // FIXED: Only announce if explicitly requested
           if (announce && Drupal.announce) {
             Drupal.announce(Drupal.t('Content collapsed'));
           }
         }
-      }, duration);
+      }, duration + 20);
 
       activeAnimations.set(target, timeoutId);
       return true;
@@ -381,43 +387,49 @@
       let height = target.offsetHeight;
       height = Math.round(height);
 
+      // Apply collapsed "from" state without transition.
       Object.keys(cssStyles).forEach(style => {
         target.style[style] = cssStyles[style];
       });
+      target.style.boxSizing = 'border-box';
 
+      // Force reflow to paint the collapsed state before enabling transition.
       void target.offsetHeight;
 
-      target.style.boxSizing = 'border-box';
+      // Now enable transition and GPU layer promotion.
       target.style.transitionProperty = 'height, margin, padding';
       target.style.transitionDuration = `${duration}ms`;
       target.style.transitionTimingFunction = 'ease-in-out';
-      target.style.height = `${height}px`;
+      target.style.webkitTransform = 'translateZ(0)';
+      target.style.transform = 'translateZ(0)';
 
-      target.classList.add('toggled');
-      if (Drupal.solo.menuState) {
-        Drupal.solo.menuState.setAriaAttribute(target, 'aria-hidden', 'false', componentName);
-      } else {
-        target.setAttribute('aria-hidden', 'false');
-      }
-      updateTabindex(target, true, componentName);
-
-      ['padding-top', 'padding-bottom', 'margin-top', 'margin-bottom'].forEach(property => {
-        target.style.removeProperty(property);
-      });
+      // iOS Safari: set expanded height in next frame so transition runs from 0 → target.
+      const applySlideDownEnd = () => {
+        if (!target.parentNode) return;
+        target.style.height = `${height}px`;
+        target.classList.add('toggled');
+        if (Drupal.solo.menuState) {
+          Drupal.solo.menuState.setAriaAttribute(target, 'aria-hidden', 'false', componentName);
+        } else {
+          target.setAttribute('aria-hidden', 'false');
+        }
+        updateTabindex(target, true, componentName);
+        ['padding-top', 'padding-bottom', 'margin-top', 'margin-bottom'].forEach(property => {
+          target.style.removeProperty(property);
+        });
+      };
+      requestAnimationFrame(applySlideDownEnd);
 
       const timeoutId = setTimeout(() => {
         if (target && target.parentNode) {
-          ['height', 'overflow', 'transition-duration', 'transition-property', 'transition-timing-function', 'box-sizing'].forEach(property =>
+          ['height', 'overflow', 'transition-duration', 'transition-property', 'transition-timing-function', 'box-sizing', 'transform', '-webkit-transform'].forEach(property =>
             target.style.removeProperty(property));
           activeAnimations.delete(target);
-          
-          // FIXED: Only announce if explicitly requested
           if (announce && Drupal.announce) {
             Drupal.announce(Drupal.t('Content expanded'));
           }
         }
-      }, duration);
-
+      }, duration + 20);
       activeAnimations.set(target, timeoutId);
       return true;
     } catch (error) {

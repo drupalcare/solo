@@ -99,6 +99,38 @@ navigation feedback.
 Customize your website's layout with seven styles for two-column layouts,
 three styles for three-column layouts, and four styles for four-column layouts.
 
+### Preloader, Back to Top, Menu Template Assignment, and Formatted Copyright
+
+Features added for loading experience, scroll behavior, menu presentation, and footer content.
+
+#### Preloader (Global Settings)
+
+Optional full-page preloader configurable under Global Settings: enable/disable,
+visibility (admin routes, authenticated users, path rules), style (e.g. spinner),
+optional logo URL and text, duration, once-per-session, and background/text
+colors. "Force show for testing" displays the preloader for a set time on every
+page for tuning.
+
+#### Back to Top (Global Settings)
+
+Accessible back-to-top button under Global Settings: enable/disable, visibility
+(admin routes, authenticated users, small screens), scroll distance (200–800 px),
+position (bottom-right or bottom-left), style (solid/outline), optional colors,
+and icon (arrow-up, chevron-up, arrow-minimal). Uses proper button semantics and
+respects reduced motion.
+
+#### Menu Template Assignment (Global Settings)
+
+Under Global Settings, assign any of Solo's responsive menu Twig templates to any
+menu (primary, footer, or custom). Control how each menu is rendered—e.g. use the
+main menu in the header with a specific responsive template—without custom code.
+
+#### Formatted Copyright and Credit
+
+Option to use a single formatted (rich-text) field for copyright and credit in the
+footer. Enter all copyright, legal text, links, and ICP in one field with a chosen
+text format. When off, the four separate copyright/credit fields remain available.
+
 ### Conclusion
 
 Solo is perfect for those who want a high degree of control over their
@@ -219,6 +251,9 @@ and other site builders involved in the development process.
 - Modify login, register, and password pages; change header and menu order.
 - Offers animation features and layout changes for multiple value fields.
 - Apply reading mode to content types, setting max width for content regions.
+- **Preloader:** Enable optional full-page preloader; set visibility (admin, authenticated, path rules), style, logo/text, duration, once-per-session, colors; "Force show for testing" for tuning.
+- **Back to top:** Enable accessible back-to-top button; set visibility, scroll distance, position (bottom-right/left), style (solid/outline), colors, and icon.
+- **Menu template assignment:** Assign any responsive menu Twig template to any menu (primary, footer, or custom) so each menu can use a different template.
 
 ## Libraries and Fonts Settings
 
@@ -325,6 +360,7 @@ and other site builders involved in the development process.
 - 15 color input fields for this region.
 - Text field for dynamic copyright year.
 - Checkbox to show or hide credit.
+- **Formatted copyright and credit:** Option to use a single formatted (rich-text) field for all copyright and credit content (HTML, links, ICP, etc.); when off, the four separate fields are used.
 
 ## Grouped Regions
 

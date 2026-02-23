@@ -266,59 +266,85 @@ function _solo_theme_settings_submit($form, FormStateInterface $form_state) {
       break;
     }
   }
-  $preloader_keys = [
-    'preloader_enabled',
-    'preloader_force_show',
-    'preloader_once_per_session',
-    'preloader_disable_authenticated',
-    'preloader_disable_admin_routes',
-    'preloader_path_rules',
-    'preloader_style',
-    'preloader_logo_url',
-    'preloader_text',
-    'preloader_duration',
-  ];
-  foreach ($preloader_keys as $key) {
-    $val = $preloader_form[$key] ?? NULL;
-    if ($val === NULL && isset($preloader_form['visibility'][$key])) {
-      $val = $preloader_form['visibility'][$key];
-    }
-    if ($val === NULL && isset($preloader_form['appearance'][$key])) {
-      $val = $preloader_form['appearance'][$key];
-    }
-    if ($val !== NULL) {
+  $preloader_enabled = !empty($preloader_form['preloader_enabled']);
+
+  if (!$preloader_enabled) {
+    // User disabled the preloader: reset all preloader settings to defaults.
+    $preloader_defaults = [
+      'preloader_enabled' => 0,
+      'preloader_force_show' => 0,
+      'preloader_disable_authenticated' => 1,
+      'preloader_disable_admin_routes' => 1,
+      'preloader_path_rules' => '',
+      'preloader_style' => 'spinner',
+      'preloader_logo_url' => '',
+      'preloader_text' => '',
+      'preloader_text_font' => '',
+      'preloader_text_font_size' => 24,
+      'preloader_text_animate' => FALSE,
+    ];
+    foreach ($preloader_defaults as $key => $val) {
       $config->set($key, $val);
     }
+    $config->set('settings_preloader___r_bg', '');
+    $config->set('settings_preloader___r_tx', '');
   }
-  // Preloader colors: read from appearance and save to config (reload in form).
-  $app = $preloader_form['appearance'] ?? [];
-  $bg = $app['settings_preloader___r_bg'] ?? NULL;
-  $tx = $app['settings_preloader___r_tx'] ?? NULL;
-  if ($bg === NULL || $tx === NULL) {
-    $values = $form_state->getValues();
-    $with_tabs = NestedArray::getValue($values, [
-      'solo_settings',
-      'settings_global_misc',
-      'global_misc_tabs',
-      'preloader',
-      'appearance',
-    ]);
-    $no_tabs = NestedArray::getValue($values, [
-      'solo_settings',
-      'settings_global_misc',
-      'preloader',
-      'appearance',
-    ]);
-    $appearance = is_array($with_tabs) ? $with_tabs : (is_array($no_tabs) ? $no_tabs : []);
-    if ($bg === NULL && isset($appearance['settings_preloader___r_bg'])) {
-      $bg = $appearance['settings_preloader___r_bg'];
+  else {
+    $preloader_keys = [
+      'preloader_enabled',
+      'preloader_force_show',
+      'preloader_disable_authenticated',
+      'preloader_disable_admin_routes',
+      'preloader_path_rules',
+      'preloader_style',
+      'preloader_logo_url',
+      'preloader_text',
+      'preloader_text_font',
+      'preloader_text_font_size',
+      'preloader_text_animate',
+    ];
+    foreach ($preloader_keys as $key) {
+      $val = $preloader_form[$key] ?? NULL;
+      if ($val === NULL && isset($preloader_form['visibility'][$key])) {
+        $val = $preloader_form['visibility'][$key];
+      }
+      if ($val === NULL && isset($preloader_form['appearance'][$key])) {
+        $val = $preloader_form['appearance'][$key];
+      }
+      if ($val !== NULL) {
+        $config->set($key, $val);
+      }
     }
-    if ($tx === NULL && isset($appearance['settings_preloader___r_tx'])) {
-      $tx = $appearance['settings_preloader___r_tx'];
+    // Preloader colors: read from appearance and save to config reload in form.
+    $app = $preloader_form['appearance'] ?? [];
+    $bg = $app['settings_preloader___r_bg'] ?? NULL;
+    $tx = $app['settings_preloader___r_tx'] ?? NULL;
+    if ($bg === NULL || $tx === NULL) {
+      $values = $form_state->getValues();
+      $with_tabs = NestedArray::getValue($values, [
+        'solo_settings',
+        'settings_global_misc',
+        'global_misc_tabs',
+        'preloader',
+        'appearance',
+      ]);
+      $no_tabs = NestedArray::getValue($values, [
+        'solo_settings',
+        'settings_global_misc',
+        'preloader',
+        'appearance',
+      ]);
+      $appearance = is_array($with_tabs) ? $with_tabs : (is_array($no_tabs) ? $no_tabs : []);
+      if ($bg === NULL && isset($appearance['settings_preloader___r_bg'])) {
+        $bg = $appearance['settings_preloader___r_bg'];
+      }
+      if ($tx === NULL && isset($appearance['settings_preloader___r_tx'])) {
+        $tx = $appearance['settings_preloader___r_tx'];
+      }
     }
+    $config->set('settings_preloader___r_bg', $bg ?? '');
+    $config->set('settings_preloader___r_tx', $tx ?? '');
   }
-  $config->set('settings_preloader___r_bg', $bg ?? '');
-  $config->set('settings_preloader___r_tx', $tx ?? '');
 
   // Back to top: nested form values via NestedArray (D11).
   $back_to_top_paths = [

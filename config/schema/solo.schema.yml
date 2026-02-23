@@ -162,9 +162,6 @@ solo.settings:
     preloader_enabled:
       type: boolean
       label: 'Preloader enabled'
-    preloader_once_per_session:
-      type: boolean
-      label: 'Preloader show once per session'
     preloader_disable_authenticated:
       type: boolean
       label: 'Preloader disable for authenticated users'
@@ -189,9 +186,15 @@ solo.settings:
     settings_preloader___r_tx:
       type: string
       label: 'Preloader text color'
-    preloader_duration:
+    preloader_text_font:
+      type: string
+      label: 'Preloader text font class'
+    preloader_text_font_size:
       type: integer
-      label: 'Preloader duration milliseconds'
+      label: 'Preloader text font size in pixels'
+    preloader_text_animate:
+      type: boolean
+      label: 'Preloader text fade animation'
     preloader_force_show:
       type: boolean
       label: 'Preloader force show for testing'

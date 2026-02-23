@@ -692,3 +692,9 @@ form.system-theme-settings .solo-accordion-toggle-help {
 #edit-comment-form-position > div > label {
   margin: 0 0 0 12px;
 }
+
+/* Preloader: "Force show for testing" — only this label turns red when checked */
+form.system-theme-settings #edit-preloader-force-show:checked + label[for="edit-preloader-force-show"],
+form.system-theme-settings .form-item:has(#edit-preloader-force-show:checked) label[for="edit-preloader-force-show"] {
+  color: #c00;
+}

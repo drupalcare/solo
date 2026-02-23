@@ -52,14 +52,15 @@ skip_main_content: true
 skip_footer_content: true
 keyboard_navigation_menus: []
 preloader_enabled: 0
-preloader_once_per_session: 1
 preloader_disable_authenticated: 1
 preloader_disable_admin_routes: 1
 preloader_path_rules: ''
 preloader_style: spinner
 preloader_logo_url: ''
 preloader_text: ''
-preloader_duration: 600
+preloader_text_font: ''
+preloader_text_font_size: 24
+preloader_text_animate: false
 preloader_force_show: 0
 back_to_top_enabled: 0
 back_to_top_disable_admin_routes: 1

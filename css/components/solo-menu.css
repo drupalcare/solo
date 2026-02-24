@@ -430,6 +430,6 @@
   width: auto;
 }
 
-.admin-toolbar {
-  z-index: 6000;
+#admin-toolbar {
+  z-index: calc(var(--z-primary-menu) + 100)!important;
 }

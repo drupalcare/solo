@@ -27,14 +27,17 @@ html.solo-preloader-enabled .solo-preloader {
   backface-visibility: hidden;
 }
 
+/* No transition when showing (e.g. on link click) so overlay appears instantly */
 html.solo-preloader-enabled .solo-preloader.solo-preloader--instant-show {
   transition: none;
 }
 
+/* Fade out for all styles when hiding; override instant-show so transition runs */
 html.solo-preloader-enabled .solo-preloader.solo-preloader--hidden {
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
+  transition: opacity 0.35s ease, visibility 0.35s ease;
 }
 
 html.solo-preloader-enabled #solo-preloader.solo-preloader--removed {

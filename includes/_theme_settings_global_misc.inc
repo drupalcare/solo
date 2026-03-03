@@ -468,7 +468,7 @@ $form["solo_settings"]["settings_global_misc"]["preloader"] = [
   "#title" => t("Preloader"),
   "#group" => "global_misc_tabs",
   "#weight" => 99,
-  "#description" => t("A subtle, short overlay shown once per session. Removed automatically after page load. Disabled by default."),
+  "#description" => t("A full-page overlay that shows while the page is loading and hides when the page has fully loaded. It improves perceived loading and gives a polished first impression. <strong>For best performance</strong>, keep the preloader light: use the <em>Spinner</em> style, leave text font and animation at default (none). Custom Google fonts and gradient text animation add extra requests and can delay the preloader from appearing. You can still use them if you prefer the look—they will apply after their resources load."),
 ];
 
 $form["solo_settings"]["settings_global_misc"]["preloader"]["preloader_enabled"] = [
@@ -481,8 +481,21 @@ $form["solo_settings"]["settings_global_misc"]["preloader"]["preloader_enabled"]
 
 $form["solo_settings"]["settings_global_misc"]["preloader"]["visibility"] = [
   '#type' => 'fieldset',
-  '#title' => t('Visibility rules'),
+  '#title' => t('Visibility'),
+  '#attributes' => ['class' => ['solo-preloader-visibility']],
   '#states' => ['visible' => [':input#edit-preloader-enabled' => ['checked' => TRUE]]],
+];
+
+$form["solo_settings"]["settings_global_misc"]["preloader"]["visibility"]["preloader_max_display_seconds"] = [
+  '#type' => 'number',
+  '#title' => t('Max display time (seconds)'),
+  '#weight' => -20,
+  '#default_value' => theme_get_setting('preloader_max_display_seconds') ?? 8,
+  '#min' => 3,
+  '#max' => 60,
+  '#step' => 1,
+  '#field_suffix' => t('sec'),
+  '#description' => t('Fallback only: the preloader hides as soon as the page has loaded (e.g. if the page loads in 2 seconds, it hides at 2 seconds). This value is the maximum time to show it if the load event never fires or is delayed.'),
 ];
 
 $form["solo_settings"]["settings_global_misc"]["preloader"]["visibility"]["preloader_force_show"] = [
@@ -520,6 +533,7 @@ $form["solo_settings"]["settings_global_misc"]["preloader"]["visibility"]["prelo
 $form["solo_settings"]["settings_global_misc"]["preloader"]["appearance"] = [
   '#type' => 'fieldset',
   '#title' => t('Appearance'),
+  '#attributes' => ['class' => ['solo-preloader-appearance']],
   '#states' => ['visible' => [':input#edit-preloader-enabled' => ['checked' => TRUE]]],
 ];
 
@@ -528,19 +542,37 @@ $form["solo_settings"]["settings_global_misc"]["preloader"]["appearance"]["prelo
   '#title' => t('Style'),
   '#id' => 'edit-preloader-style',
   '#options' => [
-    'spinner' => t('Spinner'),
+    'spinner' => t('Spinner (recommended for performance)'),
     'text' => t('Text'),
     'logo' => t('Logo'),
+    'logo_text' => t('Logo + text'),
   ],
   '#default_value' => theme_get_setting('preloader_style') ?? 'spinner',
+  '#description' => t('Spinner is lightest and shows immediately; text and logo can wait on fonts or images.'),
+];
+
+$form["solo_settings"]["settings_global_misc"]["preloader"]["appearance"]["preloader_spinner_show_percent"] = [
+  '#type' => 'checkbox',
+  '#title' => t('Show percentage (0%–100%) inside spinner'),
+  '#default_value' => theme_get_setting('preloader_spinner_show_percent') ?? FALSE,
+  '#description' => t('Estimated progress only (not real load %). Adds one timer and a small text update; minimal extra load.'),
+  '#states' => ['visible' => [':input#edit-preloader-style' => ['value' => 'spinner']]],
 ];
 
 $form["solo_settings"]["settings_global_misc"]["preloader"]["appearance"]["preloader_text"] = [
   '#type' => 'textfield',
   '#title' => t('Text'),
+  '#id' => 'edit-preloader-text',
   '#default_value' => theme_get_setting('preloader_text') ?? '',
-  '#description' => t('Shown when style is "Text".'),
-  '#states' => ['visible' => [':input#edit-preloader-style' => ['value' => 'text']]],
+  '#description' => t('Shown when style is "Text" or "Logo + text".'),
+  '#states' => [
+    'visible' => [
+      ':input#edit-preloader-style' => [
+        ['value' => 'text'],
+        ['value' => 'logo_text'],
+      ],
+    ],
+  ],
 ];
 
 $form["solo_settings"]["settings_global_misc"]["preloader"]["appearance"]["preloader_text_font"] = [
@@ -548,7 +580,31 @@ $form["solo_settings"]["settings_global_misc"]["preloader"]["appearance"]["prelo
   '#title' => t('Text Font'),
   '#options' => _get_name_title_google_font(),
   '#default_value' => theme_get_setting('preloader_text_font') ?? '',
-  '#states' => ['visible' => [':input#edit-preloader-style' => ['value' => 'text']]],
+  '#description' => t('Optional. For fastest display, leave at "None"—custom fonts load from the network and can delay the preloader.'),
+  '#states' => [
+    'visible' => [
+      ':input#edit-preloader-style' => [
+        ['value' => 'text'],
+        ['value' => 'logo_text'],
+      ],
+    ],
+  ],
+];
+
+$form["solo_settings"]["settings_global_misc"]["preloader"]["appearance"]["preloader_text_animate_effect"] = [
+  '#type' => 'select',
+  '#title' => t('Text animation effect'),
+  '#description' => t('Gradient text animation. Same options as Site Name and Page Title. For best performance leave at "None"—animation CSS can delay the preloader. Choose an effect only if you want the look.'),
+  '#options' => _get_animate_site_name(),
+  '#default_value' => theme_get_setting('preloader_text_animate_effect') ?? '',
+  '#states' => [
+    'visible' => [
+      ':input#edit-preloader-style' => [
+        ['value' => 'text'],
+        ['value' => 'logo_text'],
+      ],
+    ],
+  ],
 ];
 
 $form["solo_settings"]["settings_global_misc"]["preloader"]["appearance"]["preloader_text_font_size"] = [
@@ -556,33 +612,120 @@ $form["solo_settings"]["settings_global_misc"]["preloader"]["appearance"]["prelo
   '#title' => t('Text size (px)'),
   '#default_value' => theme_get_setting('preloader_text_font_size') ?? 24,
   '#min' => 12,
-  '#max' => 100,
+  '#max' => 124,
   '#step' => 1,
   '#field_suffix' => 'px',
-  '#states' => ['visible' => [':input#edit-preloader-style' => ['value' => 'text']]],
+  '#states' => [
+    'visible' => [
+      ':input#edit-preloader-style' => [
+        ['value' => 'text'],
+        ['value' => 'logo_text'],
+      ],
+    ],
+  ],
+];
+
+$form["solo_settings"]["settings_global_misc"]["preloader"]["appearance"]["preloader_logo_use_theme"] = [
+  '#type' => 'checkbox',
+  '#title' => t('Use logo supplied by the theme'),
+  '#default_value' => theme_get_setting('preloader_logo_use_theme') ?? TRUE,
+  '#description' => t('When checked, the preloader uses the same logo as the site (theme settings). Uncheck to set a custom path below.'),
+  '#states' => [
+    'visible' => [
+      ':input#edit-preloader-style' => [
+        ['value' => 'logo'],
+        ['value' => 'logo_text'],
+      ],
+    ],
+  ],
+  '#id' => 'edit-preloader-logo-use-theme',
 ];
 
 $form["solo_settings"]["settings_global_misc"]["preloader"]["appearance"]["preloader_logo_url"] = [
   '#type' => 'textfield',
-  '#title' => t('Logo URL'),
+  '#title' => t('Path to custom logo'),
+  '#id' => 'edit-preloader-logo-url',
   '#default_value' => theme_get_setting('preloader_logo_url') ?? '',
-  '#description' => t('Shown when style is "Logo". Leave empty to hide.'),
-  '#states' => ['visible' => [':input#edit-preloader-style' => ['value' => 'logo']]],
+  '#description' => t('Examples: logo.svg (for a file in the public filesystem), public://logo.svg, or themes/contrib/solo/logo.svg. Only used when "Use logo supplied by the theme" is unchecked.'),
+  '#states' => [
+    'visible' => [
+      ':input#edit-preloader-style' => [
+        ['value' => 'logo'],
+        ['value' => 'logo_text'],
+      ],
+      ':input#edit-preloader-logo-use-theme' => ['checked' => FALSE],
+    ],
+  ],
 ];
 
-$form["solo_settings"]["settings_global_misc"]["preloader"]["appearance"]["preloader_text_animate"] = [
-  '#type' => 'checkbox',
-  '#title' => t('Animate text (fade pulse)'),
-  '#default_value' => theme_get_setting('preloader_text_animate') ?? FALSE,
-  '#states' => ['visible' => [':input#edit-preloader-style' => ['value' => 'text']]],
+$form["solo_settings"]["settings_global_misc"]["preloader"]["appearance"]["preloader_logo_width"] = [
+  '#type' => 'number',
+  '#title' => t('Logo width (px)'),
+  '#default_value' => theme_get_setting('preloader_logo_width') ?? 160,
+  '#min' => 16,
+  '#max' => 800,
+  '#step' => 1,
+  '#field_suffix' => 'px',
+  '#states' => [
+    'visible' => [
+      ':input#edit-preloader-style' => [
+        ['value' => 'logo'],
+        ['value' => 'logo_text'],
+      ],
+    ],
+  ],
+];
+
+$form["solo_settings"]["settings_global_misc"]["preloader"]["appearance"]["preloader_logo_height"] = [
+  '#type' => 'number',
+  '#title' => t('Logo height (px)'),
+  '#default_value' => theme_get_setting('preloader_logo_height') ?? 80,
+  '#min' => 16,
+  '#max' => 600,
+  '#step' => 1,
+  '#field_suffix' => 'px',
+  '#states' => [
+    'visible' => [
+      ':input#edit-preloader-style' => [
+        ['value' => 'logo'],
+        ['value' => 'logo_text'],
+      ],
+    ],
+  ],
+];
+
+$form["solo_settings"]["settings_global_misc"]["preloader"]["appearance"]["preloader_logo_opacity"] = [
+  '#type' => 'number',
+  '#title' => t('Logo opacity (%)'),
+  '#default_value' => theme_get_setting('preloader_logo_opacity') ?? 100,
+  '#min' => 0,
+  '#max' => 100,
+  '#step' => 1,
+  '#field_suffix' => '%',
+  '#states' => [
+    'visible' => [
+      ':input#edit-preloader-style' => [
+        ['value' => 'logo'],
+        ['value' => 'logo_text'],
+      ],
+    ],
+  ],
 ];
 
 $preloader_app = &$form["solo_settings"]["settings_global_misc"]["preloader"]["appearance"];
 $preloader_app["settings_preloader___r_bg"] = _generate_form_element(
   'preloader', t('Preloader'), '__r_bg', t('Background')
 );
+$preloader_app["settings_preloader___r_bg"]['#attributes']['class'] = array_merge(
+  $preloader_app["settings_preloader___r_bg"]['#attributes']['class'] ?? [],
+  ['solo-preloader-color-field']
+);
 $preloader_app["settings_preloader___r_tx"] = _generate_form_element(
   'preloader', t('Preloader'), '__r_tx', t('Text')
+);
+$preloader_app["settings_preloader___r_tx"]['#attributes']['class'] = array_merge(
+  $preloader_app["settings_preloader___r_tx"]['#attributes']['class'] ?? [],
+  ['solo-preloader-color-field']
 );
 
 // Back to top: Enable, Visibility, Position, Style.

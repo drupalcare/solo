@@ -1,9 +1,10 @@
 {#
   Back to top: sentinel + button. Position, style, icon from config.
+  Inline style sets only CSS variables (--solo-back-to-top-sentinel-height, --r-bg, --r-tx); layout/visuals in CSS.
   Overridable via back-to-top.html.twig.
 #}
-<div class="solo-back-to-top-sentinel-wrapper" style="height: 0; overflow: hidden;">
-  <div id="solo-back-to-top-sentinel" aria-hidden="true" class="solo-back-to-top-sentinel" style="height: {{ back_to_top_config.scroll_threshold|default(400) }}px"></div>
+<div class="solo-back-to-top-sentinel-wrapper" style="--solo-back-to-top-sentinel-height: {{ back_to_top_config.scroll_threshold|default(400) }}px">
+  <div id="solo-back-to-top-sentinel" aria-hidden="true" class="solo-back-to-top-sentinel"></div>
 </div>
 <button type="button"
   id="solo-back-to-top"

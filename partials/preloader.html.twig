@@ -1,23 +1,34 @@
 {#
-  Preloader overlay. Inline style built in preprocess from theme settings (same as region colors).
+  Preloader overlay. Inline style sets only CSS variables (e.g. --solo-preloader-bg, --r-tx, --solo-preloader-logo-width); all layout/visuals in CSS.
   Markup in Twig (not JS) to avoid FOUC. Critical CSS in head for immediate display.
   Variables: preloader_config, preloader_inline_style.
 #}
 <div id="solo-preloader"
-  class="solo-preloader solo-preloader--{{ preloader_config.style|default('spinner') }}{{ preloader_config.text_font ? ' ' ~ preloader_config.text_font : '' }}"
+  class="solo-preloader solo-preloader--{{ preloader_config.style|default('spinner') }}{{ preloader_config.text_font ? ' ' ~ preloader_config.text_font : '' }}{{ preloader_config.text_animate_effect ? ' ' ~ preloader_config.text_animate_effect : '' }}"
   role="status"
   aria-live="polite"
   aria-label="{{ 'Page is loading'|t }}"
   data-force-show="{{ preloader_config.force_show ? 'true' : 'false' }}"
+  data-max-display="{{ preloader_config.max_display_seconds|default(8) }}"
   {% if preloader_inline_style is not empty %}style="{{ preloader_inline_style }}"{% endif %}>
   <span class="visually-hidden">{{ 'Loading...'|t }}</span>
   <div class="solo-preloader__inner">
     {% if preloader_config.style == 'logo' and preloader_config.logo_url %}
-      <img class="solo-preloader__logo" src="{{ preloader_config.logo_url }}" alt="" width="160" height="80" loading="eager" decoding="sync">
+      <img class="solo-preloader__logo" src="{{ preloader_config.logo_url }}" alt="" width="{{ preloader_config.logo_width|default(160) }}" height="{{ preloader_config.logo_height|default(80) }}" loading="eager" decoding="sync">
+    {% elseif preloader_config.style == 'logo_text' and preloader_config.logo_url and preloader_config.text is not empty %}
+      <div class="solo-preloader__hero">
+        <img class="solo-preloader__hero-logo" src="{{ preloader_config.logo_url }}" alt="" width="{{ preloader_config.logo_width|default(160) }}" height="{{ preloader_config.logo_height|default(80) }}" loading="eager" decoding="sync">
+        <span class="solo-preloader__hero-text">{{ preloader_config.text }}</span>
+      </div>
     {% elseif preloader_config.style == 'text' and preloader_config.text is not empty %}
-      <span class="solo-preloader__text{{ preloader_config.text_animate ? ' solo-preloader__text--animate' : '' }}" {% if preloader_config.text_font_size %}style="font-size: {{ preloader_config.text_font_size }}px"{% endif %}>{{ preloader_config.text }}</span>
+      <span class="solo-preloader__text">{{ preloader_config.text }}</span>
     {% else %}
-      <div class="solo-preloader__spinner"></div>
+      <div class="solo-preloader__spinner-wrapper">
+        <div class="solo-preloader__spinner"></div>
+        {% if preloader_config.spinner_show_percent %}
+          <span class="solo-preloader__percent" id="solo-preloader-percent" aria-hidden="true">0%</span>
+        {% endif %}
+      </div>
     {% endif %}
   </div>
 </div>

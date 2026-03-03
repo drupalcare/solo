@@ -670,7 +670,78 @@ form.system-theme-settings .solo-accordion-toggle-help {
   min-width: 20rem;
 }
 
-/* Preloader */
+/* Preloader appearance: smart grid layout per “style” (scoped to this fieldset only) */
+/* Gin/Claro use .fieldset__wrapper; Solo uses .fieldset-wrapper */
+.solo-preloader-appearance > .fieldset__wrapper,
+.solo-preloader-appearance > .fieldset-wrapper {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  gap: 1rem;
+  align-items: start;
+}
+
+/* Full width: Style, Text field, Logo URL, checkboxes */
+.solo-preloader-appearance .form-item:has(#edit-preloader-style),
+.solo-preloader-appearance .form-item:has(#edit-preloader-text),
+.solo-preloader-appearance .form-item:has(#edit-preloader-logo-url),
+.solo-preloader-appearance .form-type--checkbox,
+.solo-preloader-appearance .form-type--boolean {
+  grid-column: 1 / -1;
+}
+
+/* Style select: natural width, don’t stretch */
+.solo-preloader-appearance .form-item:has(#edit-preloader-style) .form-element {
+  width: auto;
+  min-width: 12rem;
+  max-width: 20rem;
+}
+
+/* Text and Logo URL: use full row width */
+.solo-preloader-appearance .form-item:has(#edit-preloader-text) .form-element,
+.solo-preloader-appearance .form-item:has(#edit-preloader-logo-url) .form-element {
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+/* Inline: number + select (font, animation, size, logo w/h/opacity) — natural width */
+.solo-preloader-appearance .form-type--number,
+.solo-preloader-appearance .form-type--select {
+  grid-column: span 4;
+}
+
+.solo-preloader-appearance .form-type--number .form-element,
+.solo-preloader-appearance .form-type--select .form-element {
+  width: auto;
+  min-width: 6rem;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+/* Two colors: same row; collapse below 768 */
+.solo-preloader-appearance .form-item:has(.solo-preloader-color-field) {
+  grid-column: span 6;
+}
+
+@media (max-width: 1100px) {
+  .solo-preloader-appearance .form-type--number,
+  .solo-preloader-appearance .form-type--select {
+    grid-column: span 6;
+  }
+}
+
+@media (max-width: 768px) {
+  .solo-preloader-appearance .form-type--number,
+  .solo-preloader-appearance .form-type--select {
+    grid-column: 1 / -1;
+  }
+
+  .solo-preloader-appearance .form-item:has(.solo-preloader-color-field) {
+    grid-column: 1 / -1;
+  }
+}
+
+/* Preloader & back-to-top: select and color picker */
 #edit-back-to-top select,
 #edit-preloader #edit-appearance select {
   min-width: 200px;

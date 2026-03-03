@@ -17,6 +17,253 @@ use Drupal\Component\Utility\NestedArray;
 use Drupal\Component\Utility\UrlHelper;
 use Drupal\Core\Form\FormStateInterface;
 
+// ============================================================================
+// FEATURE DEFAULT VALUE HELPERS
+// These functions are the single source of truth for default values.
+// Values MUST stay in sync with config/install/solo.settings.yml.
+// Called from both the reset path (disable) and the enabled-save path to
+// ensure any missing submitted values fall back to a known-good default.
+// ============================================================================
+
+/**
+ * Returns canonical default values for all preloader settings.
+ *
+ * These values MUST match config/install/solo.settings.yml exactly.
+ * Adding a new preloader setting? Add it here AND in the YAML.
+ *
+ * @return array
+ *   Keyed by config key, values are the schema-correct typed defaults.
+ */
+function _solo_get_preloader_defaults(): array {
+  return [
+    'preloader_enabled'               => FALSE,
+    'preloader_force_show'            => FALSE,
+    'preloader_disable_authenticated' => TRUE,
+    'preloader_disable_admin_routes'  => TRUE,
+    'preloader_path_rules'            => '',
+    'preloader_max_display_seconds'   => 8,
+    'preloader_style'                 => 'spinner',
+    'preloader_spinner_show_percent'  => FALSE,
+    'preloader_logo_use_theme'        => TRUE,
+    'preloader_logo_url'              => '',
+    'preloader_logo_width'            => 160,
+    'preloader_logo_height'           => 80,
+    'preloader_logo_opacity'          => 100,
+    'preloader_text'                  => '',
+    'preloader_text_font'             => '',
+    'preloader_text_font_size'        => 24,
+    'preloader_text_animate_effect'   => '',
+    'settings_preloader___r_bg'       => '',
+    'settings_preloader___r_tx'       => '',
+  ];
+}
+
+/**
+ * Returns canonical default values for all back-to-top settings.
+ *
+ * These values MUST match config/install/solo.settings.yml exactly.
+ * Adding a new back-to-top setting? Add it here AND in the YAML.
+ *
+ * @return array
+ *   Keyed by config key, values are the schema-correct typed defaults.
+ */
+function _solo_get_back_to_top_defaults(): array {
+  return [
+    'back_to_top_enabled'               => FALSE,
+    'back_to_top_disable_admin_routes'  => TRUE,
+    'back_to_top_disable_authenticated' => FALSE,
+    'back_to_top_hide_small_screens'    => FALSE,
+    'back_to_top_scroll_threshold'      => 400,
+    'back_to_top_position'              => 'bottom-right',
+    'back_to_top_style'                 => 'solid',
+    'back_to_top_icon'                  => 'arrow-up',
+    'settings_back_to_top___r_bg'       => '',
+    'settings_back_to_top___r_tx'       => '',
+  ];
+}
+
+/**
+ * Resets all config keys for a feature to their canonical defaults.
+ *
+ * Called when a feature is disabled so the config store contains clean
+ * schema-correct values, not stale user customisations. On re-enable the
+ * form will show defaults instead of the previous configuration.
+ *
+ * Using explicit set() (not clear()) guarantees the value is written to the
+ * active config store regardless of install/default config fallback behaviour,
+ * which is important for sub-themes that may not ship their own defaults.
+ *
+ * @param \Drupal\Core\Config\Config $config
+ *   Editable config object for the active theme.
+ * @param array $defaults
+ *   Array from _solo_get_preloader_defaults() or _solo_get_back_to_top_defaults().
+ */
+function _solo_reset_feature_config(Config $config, array $defaults): void {
+  foreach ($defaults as $key => $value) {
+    $config->set($key, $value);
+  }
+}
+
+/**
+ * Saves a feature's config from submitted form values, falling back to defaults.
+ *
+ * Iterates over the canonical defaults array so we always save every key.
+ * Values are type-cast to match the schema type of each default, preventing
+ * integer 1/0 from being stored when a boolean is expected.
+ *
+ * @param \Drupal\Core\Config\Config $config
+ *   Editable config object for the active theme.
+ * @param array $defaults
+ *   Array from _solo_get_preloader_defaults() or _solo_get_back_to_top_defaults().
+ * @param array $flat_values
+ *   Flat array of submitted values (from _solo_flatten_form_section()).
+ */
+function _solo_save_feature_config(Config $config, array $defaults, array $flat_values): void {
+  foreach ($defaults as $key => $default_value) {
+    $value = array_key_exists($key, $flat_values) ? $flat_values[$key] : $default_value;
+    // Cast to the same PHP type as the default to satisfy config schema.
+    if (is_bool($default_value)) {
+      $value = (bool) $value;
+    }
+    elseif (is_int($default_value)) {
+      $value = (int) $value;
+    }
+    $config->set($key, $value);
+  }
+}
+
+/**
+ * Extracts a nested form section from multiple candidate paths.
+ *
+ * Sub-theme fallback only. Solo's own form uses #tree = FALSE (Drupal default)
+ * on all container elements, meaning submitted values are stored flat at the
+ * root of $form_state->getValues(). This helper is therefore only reached when
+ * a sub-theme explicitly sets #tree = TRUE on a parent container, producing a
+ * nested values structure that requires path-based lookup.
+ *
+ * @param array $values
+ *   Full form_state->getValues() array.
+ * @param array $paths
+ *   List of candidate NestedArray key-path arrays, tried in order.
+ *
+ * @return array
+ *   The form section array, or an empty array if none found.
+ */
+function _solo_find_form_section(array $values, array $paths): array {
+  foreach ($paths as $path) {
+    $section = NestedArray::getValue($values, $path);
+    if (is_array($section)) {
+      return $section;
+    }
+  }
+  return [];
+}
+
+/**
+ * Flattens a nested form section into a single-level associative array.
+ *
+ * Sub-theme fallback only (paired with _solo_find_form_section()). When a
+ * sub-theme's #tree = TRUE produces nested form state values, fieldsets like
+ * 'visibility', 'appearance', 'style', and 'position' create additional
+ * nesting. This helper recurses into sub-arrays and hoists scalar values to
+ * the top level so every config key is reachable without caring which fieldset
+ * it lives in.
+ *
+ * Only scalar values are hoisted; array values (sub-fieldsets) are recursed
+ * into but not added themselves.
+ *
+ * @param array $section
+ *   The nested form section array.
+ *
+ * @return array
+ *   Flat associative array of all scalar values found in the section.
+ */
+function _solo_flatten_form_section(array $section): array {
+  $flat = [];
+  foreach ($section as $key => $value) {
+    if (is_array($value)) {
+      $flat += _solo_flatten_form_section($value);
+    }
+    else {
+      $flat[$key] = $value;
+    }
+  }
+  return $flat;
+}
+
+/**
+ * Returns TRUE if a URL is safe for use as an image src attribute.
+ *
+ * Allows root-relative URLs (starting with /) and absolute http/https URLs.
+ * Rejects javascript:, data:, and other non-image-safe schemes.
+ *
+ * @param string $url
+ *   URL to test.
+ *
+ * @return bool
+ *   TRUE if safe, FALSE otherwise.
+ */
+function _solo_is_safe_image_url(string $url): bool {
+  if ($url === '') {
+    return TRUE;
+  }
+  // Root-relative paths are always safe.
+  if (strpos($url, '/') === 0) {
+    return TRUE;
+  }
+  // Absolute URLs must be http or https.
+  if (!UrlHelper::isValid($url, TRUE)) {
+    return FALSE;
+  }
+  $scheme = strtolower((string) parse_url($url, PHP_URL_SCHEME));
+  return in_array($scheme, ['http', 'https'], TRUE);
+}
+
+/**
+ * Returns TRUE if a path is safe for use as a logo (theme settings / preloader).
+ *
+ * Allows: root-relative (/path), http(s), public://, themes/..., or a simple
+ * filename (e.g. logo.svg for public filesystem). Rejects javascript:, data:,
+ * and other unsafe schemes. Use for "Path to custom logo" validation (DRY).
+ *
+ * @param string $path
+ *   Path or URL to validate.
+ *
+ * @return bool
+ *   TRUE if safe.
+ */
+function _solo_is_safe_logo_path(string $path): bool {
+  if ($path === '') {
+    return TRUE;
+  }
+  $path = trim($path);
+  if ($path === '') {
+    return TRUE;
+  }
+  // Root-relative.
+  if (strpos($path, '/') === 0) {
+    return TRUE;
+  }
+  // Stream wrapper: only public://.
+  if (strpos($path, 'public://') === 0) {
+    return TRUE;
+  }
+  // Theme-relative path.
+  if (strpos($path, 'themes/') === 0) {
+    return TRUE;
+  }
+  // Simple filename (no scheme, no slash) — treated as public file.
+  if (strpos($path, '://') === FALSE && strpos($path, '/') === FALSE) {
+    return TRUE;
+  }
+  // Absolute http(s) URL.
+  if (UrlHelper::isValid($path, TRUE)) {
+    $scheme = strtolower((string) parse_url($path, PHP_URL_SCHEME));
+    return in_array($scheme, ['http', 'https'], TRUE);
+  }
+  return FALSE;
+}
+
 /**
  * Implements hook_form_system_theme_settings_alter().
  */
@@ -84,7 +331,38 @@ function solo_form_system_theme_settings_alter(&$form, FormStateInterface $form_
  * Validation handler for the Solo system_theme_settings form.
  */
 function solo_theme_settings_validate($form, FormStateInterface $form_state) {
-  // Only validate separate footer link fields when not using formatted text.
+  // -----------------------------------------------------------------------
+  // Preloader logo: when not using theme logo, validate custom path (DRY with
+  // theme logo path: public://, themes/, root-relative, http(s), filename).
+  // -----------------------------------------------------------------------
+  $preloader_enabled = $form_state->getValue('preloader_enabled');
+  $preloader_logo_use_theme = $form_state->getValue('preloader_logo_use_theme');
+  $preloader_logo_url = (string) ($form_state->getValue('preloader_logo_url') ?? '');
+
+  if ($preloader_enabled === NULL || $preloader_logo_use_theme === NULL) {
+    $preloader_section = _solo_find_form_section($form_state->getValues(), [
+      ['solo_settings', 'settings_global_misc', 'global_misc_tabs', 'preloader'],
+      ['solo_settings', 'settings_global_misc', 'preloader'],
+    ]);
+    $flat = $preloader_section ? _solo_flatten_form_section($preloader_section) : [];
+    $preloader_enabled = $preloader_enabled ?? $flat['preloader_enabled'] ?? NULL;
+    $preloader_logo_use_theme = $preloader_logo_use_theme ?? $flat['preloader_logo_use_theme'] ?? NULL;
+    $preloader_logo_url = $preloader_logo_url !== '' ? $preloader_logo_url : (string) ($flat['preloader_logo_url'] ?? '');
+  }
+
+  if (!empty($preloader_enabled) && empty($preloader_logo_use_theme)) {
+    $path = trim($preloader_logo_url);
+    if ($path !== '' && !_solo_is_safe_logo_path($path)) {
+      $form_state->setError(
+        $form,
+        t('The preloader logo path is not valid. Use a path like logo.svg (public filesystem), public://logo.svg, or themes/contrib/solo/logo.svg.')
+      );
+    }
+  }
+
+  // -----------------------------------------------------------------------
+  // Footer link: only validate separate fields when not using formatted text.
+  // -----------------------------------------------------------------------
   if ($form_state->getValue('footer_use_formatted_text')) {
     return;
   }
@@ -130,25 +408,27 @@ function _solo_set_or_clear_layout(Config $config, $key, $value, $global) {
 /**
  * Form submit handler for the Solo theme settings form.
  *
- * Saves layout configuration values for grouped regions (`top`, `main`,
- * `bottom`, `footer`),
- * including global layout selections and optional per-content-type overrides
- * for 2-column, 3-column, and 4-column layouts.
+ * Handles settings that require custom logic beyond what the core
+ * system_theme_settings_submit() provides:
  *
- *
- * If per-content-type layout overrides are enabled for a region, the handler
- * compares each value to the global default and saves only the differing ones.
- * If overrides are disabled, any previously stored overrides for that region
- * and content type are cleared.
- *
- * This ensures that all layout-related settings remain clean and fallback to
- * the global configuration when no override is present.
+ * - Per-content-type layout overrides (top, main, bottom, footer regions).
+ * - Popup login settings reset when the feature is disabled.
+ * - Preloader feature: reset to defaults on disable, save submitted values
+ *   on enable. Uses _solo_get_preloader_defaults() as the single source of
+ *   truth for default values and key enumeration.
+ * - Back-to-top feature: same pattern as preloader.
+ * - Menu template assignments (sequence config).
+ * - File usage tracking for the footer formatted text field.
  *
  * @param array $form
  *   The complete form structure.
  * @param \Drupal\Core\Form\FormStateInterface $form_state
  *   The current state of the submitted form.
  *
+ * @see _solo_get_preloader_defaults()
+ * @see _solo_get_back_to_top_defaults()
+ * @see _solo_reset_feature_config()
+ * @see _solo_save_feature_config()
  * @see _solo_set_or_clear_layout()
  */
 function _solo_theme_settings_submit($form, FormStateInterface $form_state) {
@@ -253,205 +533,125 @@ function _solo_theme_settings_submit($form, FormStateInterface $form_state) {
   }
   $config->set('menu_template_assignments', $cleaned);
 
-  // Preloader settings (may be under global_misc_tabs when tab is used).
-  $preloader_paths = [
-    ['solo_settings', 'settings_global_misc', 'global_misc_tabs', 'preloader'],
-    ['solo_settings', 'settings_global_misc', 'preloader'],
-  ];
-  $preloader_form = [];
-  foreach ($preloader_paths as $path) {
-    $v = NestedArray::getValue($form_state->getValues(), $path);
-    if (is_array($v)) {
-      $preloader_form = $v;
-      break;
-    }
-  }
-  $preloader_enabled = !empty($preloader_form['preloader_enabled']);
+  // -------------------------------------------------------------------------
+  // Preloader settings.
+  //
+  // Solo uses #tree = FALSE (Drupal default) on all container elements, so
+  // submitted values are flat at the root of $form_state->getValues().
+  //
+  // WHY we reset both form state AND config on disable:
+  // ThemeSettingsForm::submitForm() (the Drupal core form-class handler) runs
+  // AFTER all $form['#submit'] handlers, including ours. It iterates every
+  // flat form-state value and re-saves them all to config. Hidden fields
+  // controlled by #states still submit their last DOM value, so the old
+  // custom settings would be re-saved by core's handler even after we reset
+  // the config object. By also calling $form_state->setValue() we replace
+  // those stale values in form state BEFORE core's save runs, ensuring the
+  // final persisted values are always the canonical defaults.
+  //
+  // DISABLE path: reset form state values AND config to canonical defaults.
+  // ENABLE path:  read every config key from flat form state, save to config.
+  // -------------------------------------------------------------------------
+  $preloader_defaults = _solo_get_preloader_defaults();
 
-  if (!$preloader_enabled) {
-    // User disabled the preloader: reset all preloader settings to defaults.
-    $preloader_defaults = [
-      'preloader_enabled' => 0,
-      'preloader_force_show' => 0,
-      'preloader_disable_authenticated' => 1,
-      'preloader_disable_admin_routes' => 1,
-      'preloader_path_rules' => '',
-      'preloader_style' => 'spinner',
-      'preloader_logo_url' => '',
-      'preloader_text' => '',
-      'preloader_text_font' => '',
-      'preloader_text_font_size' => 24,
-      'preloader_text_animate' => FALSE,
-    ];
-    foreach ($preloader_defaults as $key => $val) {
-      $config->set($key, $val);
+  // Determine enabled state: flat first, nested fallback for sub-themes.
+  $preloader_enabled = $form_state->getValue('preloader_enabled');
+  $preloader_nested = NULL;
+  if ($preloader_enabled === NULL) {
+    $preloader_nested = _solo_find_form_section($form_state->getValues(), [
+      ['solo_settings', 'settings_global_misc', 'preloader'],
+    ]);
+    $preloader_enabled = $preloader_nested['preloader_enabled'] ?? NULL;
+  }
+
+  if (empty($preloader_enabled)) {
+    // DISABLE: overwrite form state values with defaults so ThemeSettingsForm
+    // ::submitForm() (runs after this handler) saves defaults, not stale
+    // hidden-field values. Also reset the config object directly.
+    foreach ($preloader_defaults as $key => $default_value) {
+      $form_state->setValue($key, $default_value);
     }
-    $config->set('settings_preloader___r_bg', '');
-    $config->set('settings_preloader___r_tx', '');
+    _solo_reset_feature_config($config, $preloader_defaults);
   }
   else {
-    $preloader_keys = [
-      'preloader_enabled',
-      'preloader_force_show',
-      'preloader_disable_authenticated',
-      'preloader_disable_admin_routes',
-      'preloader_path_rules',
-      'preloader_style',
-      'preloader_logo_url',
-      'preloader_text',
-      'preloader_text_font',
-      'preloader_text_font_size',
-      'preloader_text_animate',
-    ];
-    foreach ($preloader_keys as $key) {
-      $val = $preloader_form[$key] ?? NULL;
-      if ($val === NULL && isset($preloader_form['visibility'][$key])) {
-        $val = $preloader_form['visibility'][$key];
-      }
-      if ($val === NULL && isset($preloader_form['appearance'][$key])) {
-        $val = $preloader_form['appearance'][$key];
-      }
+    // ENABLE: collect submitted values from flat form state.
+    $flat_preloader = [];
+    foreach (array_keys($preloader_defaults) as $key) {
+      $val = $form_state->getValue($key);
       if ($val !== NULL) {
-        $config->set($key, $val);
+        $flat_preloader[$key] = $val;
       }
     }
-    // Preloader colors: read from appearance and save to config reload in form.
-    $app = $preloader_form['appearance'] ?? [];
-    $bg = $app['settings_preloader___r_bg'] ?? NULL;
-    $tx = $app['settings_preloader___r_tx'] ?? NULL;
-    if ($bg === NULL || $tx === NULL) {
-      $values = $form_state->getValues();
-      $with_tabs = NestedArray::getValue($values, [
-        'solo_settings',
-        'settings_global_misc',
-        'global_misc_tabs',
-        'preloader',
-        'appearance',
-      ]);
-      $no_tabs = NestedArray::getValue($values, [
-        'solo_settings',
-        'settings_global_misc',
-        'preloader',
-        'appearance',
-      ]);
-      $appearance = is_array($with_tabs) ? $with_tabs : (is_array($no_tabs) ? $no_tabs : []);
-      if ($bg === NULL && isset($appearance['settings_preloader___r_bg'])) {
-        $bg = $appearance['settings_preloader___r_bg'];
+    // Nested fallback for sub-themes that use #tree = TRUE on a parent.
+    if (empty($flat_preloader)) {
+      if ($preloader_nested === NULL) {
+        $preloader_nested = _solo_find_form_section($form_state->getValues(), [
+          ['solo_settings', 'settings_global_misc', 'preloader'],
+        ]);
       }
-      if ($tx === NULL && isset($appearance['settings_preloader___r_tx'])) {
-        $tx = $appearance['settings_preloader___r_tx'];
-      }
+      $flat_preloader = _solo_flatten_form_section($preloader_nested ?? []);
     }
-    $config->set('settings_preloader___r_bg', $bg ?? '');
-    $config->set('settings_preloader___r_tx', $tx ?? '');
+    _solo_save_feature_config($config, $preloader_defaults, $flat_preloader);
   }
 
-  // Back to top: nested form values via NestedArray (D11).
-  $back_to_top_paths = [
-    [
-      'solo_settings',
-      'settings_global_misc',
-      'global_misc_tabs',
-      'back_to_top',
-    ],
-    [
-      'solo_settings',
-      'settings_global_misc',
-      'back_to_top',
-    ],
-  ];
-  $values = $form_state->getValues();
-  $back_to_top_form = [];
-  foreach ($back_to_top_paths as $path) {
-    $v = NestedArray::getValue($values, $path);
-    if (is_array($v)) {
-      $back_to_top_form = $v;
-      break;
-    }
+  // -------------------------------------------------------------------------
+  // Back to top settings.  Same pattern as preloader above.
+  // -------------------------------------------------------------------------
+  $back_to_top_defaults = _solo_get_back_to_top_defaults();
+
+  $back_to_top_enabled = $form_state->getValue('back_to_top_enabled');
+  $back_to_top_nested = NULL;
+  if ($back_to_top_enabled === NULL) {
+    $back_to_top_nested = _solo_find_form_section($form_state->getValues(), [
+      ['solo_settings', 'settings_global_misc', 'back_to_top'],
+    ]);
+    $back_to_top_enabled = $back_to_top_nested['back_to_top_enabled'] ?? NULL;
   }
-  if (is_array($back_to_top_form)) {
-    $back_to_top_settings = [
-      'back_to_top_enabled' => $back_to_top_form['back_to_top_enabled'] ?? NULL,
-      'back_to_top_disable_admin_routes' => NestedArray::getValue($back_to_top_form, [
-        'visibility',
-        'back_to_top_disable_admin_routes',
-      ]),
-      'back_to_top_disable_authenticated' => NestedArray::getValue($back_to_top_form, [
-        'visibility',
-        'back_to_top_disable_authenticated',
-      ]),
-      'back_to_top_hide_small_screens' => NestedArray::getValue($back_to_top_form, [
-        'visibility',
-        'back_to_top_hide_small_screens',
-      ]),
-      'back_to_top_scroll_threshold' => NestedArray::getValue($back_to_top_form, [
-        'visibility',
-        'back_to_top_scroll_threshold',
-      ]),
-      'back_to_top_position' => NestedArray::getValue($back_to_top_form, [
-        'position',
-        'back_to_top_position',
-      ]),
-      'back_to_top_style' => NestedArray::getValue($back_to_top_form, [
-        'style',
-        'back_to_top_style',
-      ]),
-      'back_to_top_icon' => NestedArray::getValue($back_to_top_form, [
-        'style',
-        'back_to_top_icon',
-      ]),
-    ];
-    foreach ($back_to_top_settings as $key => $val) {
+
+  if (empty($back_to_top_enabled)) {
+    // DISABLE: same dual-reset pattern as preloader.
+    foreach ($back_to_top_defaults as $key => $default_value) {
+      $form_state->setValue($key, $default_value);
+    }
+    _solo_reset_feature_config($config, $back_to_top_defaults);
+  }
+  else {
+    $flat_btt = [];
+    foreach (array_keys($back_to_top_defaults) as $key) {
+      $val = $form_state->getValue($key);
       if ($val !== NULL) {
-        $config->set($key, $val);
+        $flat_btt[$key] = $val;
       }
     }
-    $bt_style = $back_to_top_form['style'] ?? [];
-    $bt_bg = is_array($bt_style) ? ($bt_style['settings_back_to_top___r_bg'] ?? NULL) : NULL;
-    $bt_tx = is_array($bt_style) ? ($bt_style['settings_back_to_top___r_tx'] ?? NULL) : NULL;
-    if ($bt_bg === NULL || $bt_tx === NULL) {
-      $with_tabs = NestedArray::getValue($values, [
-        'solo_settings',
-        'settings_global_misc',
-        'global_misc_tabs',
-        'back_to_top',
-        'style',
-      ]);
-      $no_tabs = NestedArray::getValue($values, [
-        'solo_settings',
-        'settings_global_misc',
-        'back_to_top',
-        'style',
-      ]);
-      $style_arr = is_array($with_tabs) ? $with_tabs : (is_array($no_tabs) ? $no_tabs : []);
-      if ($bt_bg === NULL && isset($style_arr['settings_back_to_top___r_bg'])) {
-        $bt_bg = $style_arr['settings_back_to_top___r_bg'];
+    if (empty($flat_btt)) {
+      if ($back_to_top_nested === NULL) {
+        $back_to_top_nested = _solo_find_form_section($form_state->getValues(), [
+          ['solo_settings', 'settings_global_misc', 'back_to_top'],
+        ]);
       }
-      if ($bt_tx === NULL && isset($style_arr['settings_back_to_top___r_tx'])) {
-        $bt_tx = $style_arr['settings_back_to_top___r_tx'];
-      }
+      $flat_btt = _solo_flatten_form_section($back_to_top_nested ?? []);
     }
-    $config->set('settings_back_to_top___r_bg', $bt_bg !== NULL && $bt_bg !== '' ? $bt_bg : '');
-    $config->set('settings_back_to_top___r_tx', $bt_tx !== NULL && $bt_tx !== '' ? $bt_tx : '');
+    _solo_save_feature_config($config, $back_to_top_defaults, $flat_btt);
   }
 
   // Update file usage for embedded files in the copyright formatted text.
   _solo_footer_formatted_file_usage($form_state, $theme);
 
-  // Save configuration.
-  \Drupal::configFactory()->reset($theme . '.settings');
+  // Save configuration first, then reset the static cache so subsequent
+  // theme_get_setting() calls within the same request read the saved values.
   $config->save();
+  \Drupal::configFactory()->reset($theme . '.settings');
 
   // Clear theme registry.
   \Drupal::service('theme.registry')->reset();
 
-  // Clear library discovery - use the correct service and method.
+  // Clear library discovery.
   \Drupal::service('library.discovery')->clearCachedDefinitions();
 
   // Clear Twig cache.
   \Drupal::service('twig')->invalidate();
 
-  // Invalidate config cache tags.
+  // Invalidate config cache tags so cached pages reflect the new settings.
   Cache::invalidateTags(['config:' . $theme . '.settings']);
 }
 

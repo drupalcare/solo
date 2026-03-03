@@ -171,12 +171,30 @@ solo.settings:
     preloader_path_rules:
       type: string
       label: 'Preloader path include/exclude rules'
+    preloader_max_display_seconds:
+      type: integer
+      label: 'Preloader max display time in seconds (fallback if load never fires)'
     preloader_style:
       type: string
-      label: 'Preloader style (spinner, text, or logo)'
+      label: 'Preloader style (spinner, text, logo, or logo_text)'
+    preloader_spinner_show_percent:
+      type: boolean
+      label: 'Preloader spinner show percentage (0-100%)'
+    preloader_logo_use_theme:
+      type: boolean
+      label: 'Preloader use logo supplied by the theme'
     preloader_logo_url:
       type: string
-      label: 'Preloader optional logo URL'
+      label: 'Preloader path to custom logo (when not using theme logo)'
+    preloader_logo_width:
+      type: integer
+      label: 'Preloader logo width in pixels'
+    preloader_logo_height:
+      type: integer
+      label: 'Preloader logo height in pixels'
+    preloader_logo_opacity:
+      type: integer
+      label: 'Preloader logo opacity (0-100)'
     preloader_text:
       type: string
       label: 'Preloader text (when style is text)'
@@ -192,9 +210,9 @@ solo.settings:
     preloader_text_font_size:
       type: integer
       label: 'Preloader text font size in pixels'
-    preloader_text_animate:
-      type: boolean
-      label: 'Preloader text fade animation'
+    preloader_text_animate_effect:
+      type: string
+      label: 'Preloader text gradient animation (same as site name)'
     preloader_force_show:
       type: boolean
       label: 'Preloader force show for testing'

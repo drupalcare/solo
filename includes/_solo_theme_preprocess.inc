@@ -220,11 +220,20 @@ function _solo_preprocess_html_preloader(array &$variables, string $active_theme
   $variables['preloader_show'] = $preloader['show'];
   $variables['preloader_config'] = $preloader['config'];
 
-  $preloader_enabled = (bool) theme_get_setting('preloader_enabled');
-  $preloader_force_show = (bool) theme_get_setting('preloader_force_show');
-
-  if ($preloader_enabled || $preloader_force_show) {
+  // Attach library and HTML state only when preloader is shown (no JS/CSS when disabled).
+  if ($preloader['show']) {
     $variables['#attached']['library'][] = 'solo/solo-preloader';
+    $variables['html_attributes']->addClass('solo-preloader-enabled');
+    $variables['#attached']['html_head'][] = [
+      [
+        '#tag' => 'meta',
+        '#attributes' => [
+          'name' => 'solo-preloader-active',
+          'content' => 'true',
+        ],
+      ],
+      'solo_preloader_flag',
+    ];
     $variables['#cache']['tags'] = array_values(array_unique(array_merge(
       $variables['#cache']['tags'] ?? [],
       ['config:' . $active_theme . '.settings']
@@ -232,17 +241,40 @@ function _solo_preprocess_html_preloader(array &$variables, string $active_theme
   }
 
   if ($preloader['show']) {
-    $preloader_style_parts = [];
-    $r_bg = _solo_sanitize_hex_for_css(theme_get_setting('settings_preloader___r_bg'));
-    $r_tx = _solo_sanitize_hex_for_css(theme_get_setting('settings_preloader___r_tx'));
-    if ($r_bg !== '') {
-      $preloader_style_parts[] = '--r-bg:' . $r_bg;
+    // Attach preloader text font only when style is text and a font is chosen (avoids loading when preloader disabled or uses spinner/logo).
+    $preloader_font = trim((string) ($preloader['config']['text_font'] ?? ''));
+    $preloader_style = $preloader['config']['style'] ?? 'spinner';
+    if ($preloader_font !== '' && in_array($preloader_style, ['text', 'logo_text'], TRUE)) {
+      $variables['#attached']['library'][] = 'solo/solo-gfex' . substr($preloader_font, 4);
     }
+
+    $preloader_style_parts = [];
+    // Preloader background: own variable, default transparent (not tied to region --r-bg).
+    $preloader_bg = _solo_sanitize_hex_for_css(theme_get_setting('settings_preloader___r_bg'));
+    $preloader_style_parts[] = '--solo-preloader-bg:' . ($preloader_bg !== '' ? $preloader_bg : 'transparent');
+    // Preloader text color: still from theme setting (optional).
+    $r_tx = _solo_sanitize_hex_for_css(theme_get_setting('settings_preloader___r_tx'));
     if ($r_tx !== '') {
       $preloader_style_parts[] = '--r-tx:' . $r_tx;
     }
+    // Logo dimensions and opacity (CSS variables) when style uses a logo.
+    if (in_array($preloader_style, ['logo', 'logo_text'], TRUE)) {
+      $logo_w = (int) ($preloader['config']['logo_width'] ?? 160);
+      $logo_h = (int) ($preloader['config']['logo_height'] ?? 80);
+      $logo_op = min(100, max(0, (int) ($preloader['config']['logo_opacity'] ?? 100))) / 100;
+      $preloader_style_parts[] = '--solo-preloader-logo-width:' . max(16, min(800, $logo_w)) . 'px';
+      $preloader_style_parts[] = '--solo-preloader-logo-height:' . max(16, min(600, $logo_h)) . 'px';
+      $preloader_style_parts[] = '--solo-preloader-logo-opacity:' . $logo_op;
+    }
+    // Text font size and line height (CSS variables) when style uses text. Line height derived from font size: unitless 1.2 so it scales (e.g. 50px font → effective 60px line height).
+    if (in_array($preloader_style, ['text', 'logo_text'], TRUE)) {
+      $text_size = (int) ($preloader['config']['text_font_size'] ?? 24);
+      $text_size = max(12, min(100, $text_size));
+      $preloader_style_parts[] = '--solo-preloader-text-font-size:' . $text_size . 'px';
+      $preloader_style_parts[] = '--solo-preloader-text-line-height:1.2';
+    }
     $variables['preloader_inline_style'] = implode(';', $preloader_style_parts);
-    $variables['preloader_critical_css'] = '#solo-preloader{position:fixed;inset:0;z-index:999999;display:flex;align-items:center;justify-content:center;background-color:var(--r-bg,#fff);color:var(--r-tx,#333)}#solo-preloader .solo-preloader__inner{display:flex;flex-direction:column;align-items:center;gap:1rem}#solo-preloader .visually-hidden{position:absolute!important;width:1px!important;height:1px!important;padding:0!important;margin:-1px!important;overflow:hidden!important;clip:rect(0,0,0,0)!important;white-space:nowrap!important;border:0!important}';
+    $variables['preloader_critical_css'] = 'html.solo-preloader-enabled #solo-preloader{position:fixed;inset:0;z-index:999999;display:flex;align-items:center;justify-content:center;opacity:1;visibility:visible;background-color:var(--solo-preloader-bg,transparent);color:var(--r-tx,#333)}html.solo-preloader-enabled #solo-preloader .solo-preloader__inner{display:flex;flex-direction:column;align-items:center;gap:1rem}html.solo-preloader-enabled #solo-preloader .visually-hidden{position:absolute!important;width:1px!important;height:1px!important;padding:0!important;margin:-1px!important;overflow:hidden!important;clip:rect(0,0,0,0)!important;white-space:nowrap!important;border:0!important}';
     if (!empty($preloader['cache_contexts'])) {
       $variables['#cache']['contexts'] = array_values(array_unique(array_merge(
         $variables['#cache']['contexts'] ?? [],
@@ -275,9 +307,11 @@ function _solo_preprocess_html_back_to_top(array &$variables, string $active_the
 
   $route_match = \Drupal::routeMatch();
   $route_name = $route_match ? $route_match->getRouteName() : '';
-  $path = $route_match && $route_match->getRouteObject() ? $route_match->getRawParameters()->get('path', '') : '';
+  // Pass an empty string so _solo_preloader_is_admin_route() resolves the path
+  // from the request itself; getRawParameters() returns route parameters
+  // (e.g. {node}), not the URL path.
   $disable_admin = (bool) theme_get_setting('back_to_top_disable_admin_routes');
-  if ($disable_admin && function_exists('_solo_preloader_is_admin_route') && _solo_preloader_is_admin_route($route_name, $path)) {
+  if ($disable_admin && _solo_preloader_is_admin_route($route_name, '')) {
     $cache_contexts[] = 'route';
     $variables['#cache']['contexts'] = array_values(array_unique(array_merge($variables['#cache']['contexts'] ?? [], $cache_contexts)));
     $variables['back_to_top_config'] = [];
@@ -489,7 +523,10 @@ function solo_preprocess_html(&$variables): void {
   }
 
   if (theme_get_setting('site_global_font_size') || theme_get_setting('site_global_regions_gap')) {
-    $variables['html_attributes']->setAttribute('class', _get_html_classes());
+    $extra_classes = trim(_get_html_classes());
+    if ($extra_classes !== '') {
+      $variables['html_attributes']->addClass(explode(' ', $extra_classes));
+    }
   }
 
   // Add node id to the body class.

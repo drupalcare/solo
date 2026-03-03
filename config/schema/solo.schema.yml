@@ -198,12 +198,15 @@ solo.settings:
     preloader_text:
       type: string
       label: 'Preloader text (when style is text)'
-    settings_preloader___r_bg:
-      type: string
-      label: 'Preloader background color'
     settings_preloader___r_tx:
       type: string
       label: 'Preloader text color'
+    settings_preloader___r_bg:
+      type: string
+      label: 'Preloader background color'
+    preloader_bg_opacity:
+      type: integer
+      label: 'Preloader background opacity (0-100). Applied only to background; combined with background color as rgba.'
     preloader_text_font:
       type: string
       label: 'Preloader text font class'

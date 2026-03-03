@@ -718,9 +718,13 @@ form.system-theme-settings .solo-accordion-toggle-help {
   box-sizing: border-box;
 }
 
-/* Two colors: same row; collapse below 768 */
-.solo-preloader-appearance .form-item:has(.solo-preloader-color-field) {
-  grid-column: span 6;
+/* Text color, background, background opacity: one row on big screen */
+@media (min-width: 769px) {
+  .solo-preloader-appearance .form-item:has(.solo-preloader-color-field),
+  .solo-preloader-appearance .form-item:has(#edit-preloader-bg-opacity) {
+    grid-column: span 4;
+    margin-top: 0;
+  }
 }
 
 @media (max-width: 1100px) {
@@ -736,7 +740,8 @@ form.system-theme-settings .solo-accordion-toggle-help {
     grid-column: 1 / -1;
   }
 
-  .solo-preloader-appearance .form-item:has(.solo-preloader-color-field) {
+  .solo-preloader-appearance .form-item:has(.solo-preloader-color-field),
+  .solo-preloader-appearance .form-item:has(#edit-preloader-bg-opacity) {
     grid-column: 1 / -1;
   }
 }

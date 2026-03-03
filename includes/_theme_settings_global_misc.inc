@@ -713,13 +713,7 @@ $form["solo_settings"]["settings_global_misc"]["preloader"]["appearance"]["prelo
 ];
 
 $preloader_app = &$form["solo_settings"]["settings_global_misc"]["preloader"]["appearance"];
-$preloader_app["settings_preloader___r_bg"] = _generate_form_element(
-  'preloader', t('Preloader'), '__r_bg', t('Background')
-);
-$preloader_app["settings_preloader___r_bg"]['#attributes']['class'] = array_merge(
-  $preloader_app["settings_preloader___r_bg"]['#attributes']['class'] ?? [],
-  ['solo-preloader-color-field']
-);
+// Order: text color, background color, background opacity (opacity is merged with bg as rgba in CSS).
 $preloader_app["settings_preloader___r_tx"] = _generate_form_element(
   'preloader', t('Preloader'), '__r_tx', t('Text')
 );
@@ -727,6 +721,23 @@ $preloader_app["settings_preloader___r_tx"]['#attributes']['class'] = array_merg
   $preloader_app["settings_preloader___r_tx"]['#attributes']['class'] ?? [],
   ['solo-preloader-color-field']
 );
+$preloader_app["settings_preloader___r_bg"] = _generate_form_element(
+  'preloader', t('Preloader'), '__r_bg', t('Background')
+);
+$preloader_app["settings_preloader___r_bg"]['#attributes']['class'] = array_merge(
+  $preloader_app["settings_preloader___r_bg"]['#attributes']['class'] ?? [],
+  ['solo-preloader-color-field']
+);
+$preloader_app["preloader_bg_opacity"] = [
+  '#type' => 'number',
+  '#title' => t('Background opacity'),
+  '#min' => 0,
+  '#max' => 100,
+  '#default_value' => theme_get_setting('preloader_bg_opacity') ?? 100,
+  '#description' => t('0–100. Combined with background color as rgba.'),
+  '#id' => 'edit-preloader-bg-opacity',
+  '#states' => ['visible' => [':input#edit-preloader-enabled' => ['checked' => TRUE]]],
+];
 
 // Back to top: Enable, Visibility, Position, Style.
 $form["solo_settings"]["settings_global_misc"]["back_to_top"] = [

@@ -8,6 +8,55 @@
  */
 
 /**
+ * Resolves a stored logo path to a URL for use in preloader img src.
+ *
+ * Supports: root-relative (/path), http(s), public://, themes/..., simple filename.
+ * Same path formats as theme logo (DRY).
+ *
+ * @param string $path
+ *   Path from config (preloader_logo_url).
+ *
+ * @return string
+ *   URL string, or empty if path is empty/invalid.
+ */
+function _solo_preloader_resolve_logo_url($path) {
+  $path = trim((string) $path);
+  if ($path === '') {
+    return '';
+  }
+  // Already absolute URL.
+  if (strpos($path, 'http://') === 0 || strpos($path, 'https://') === 0) {
+    return $path;
+  }
+  // Root-relative: use as-is.
+  if (strpos($path, '/') === 0) {
+    return $path;
+  }
+  // Stream wrapper or theme path: convert to URL.
+  if (strpos($path, 'public://') === 0) {
+    try {
+      return (string) \Drupal::service('file_url_generator')->generateAbsoluteString($path);
+    }
+    catch (\Exception $e) {
+      return '';
+    }
+  }
+  if (strpos($path, 'themes/') === 0) {
+    return '/' . $path;
+  }
+  // Simple filename: treat as public file.
+  if (strpos($path, '://') === FALSE && strpos($path, '/') === FALSE) {
+    try {
+      return (string) \Drupal::service('file_url_generator')->generateAbsoluteString('public://' . $path);
+    }
+    catch (\Exception $e) {
+      return '';
+    }
+  }
+  return '';
+}
+
+/**
  * Determines whether the preloader should be attached for this request.
  *
  * Call from preprocess_html only. Adds cache contexts when visibility
@@ -31,23 +80,35 @@ function _solo_preloader_decision($theme) {
     return ['show' => FALSE, 'config' => [], 'cache_contexts' => []];
   }
 
+  $logo_use_theme = (bool) $config->get('preloader_logo_use_theme');
+  $logo_url = $logo_use_theme
+    ? trim((string) (theme_get_setting('logo.url') ?? ''))
+    : _solo_preloader_resolve_logo_url($config->get('preloader_logo_url') ?? '');
+
   // Force show for testing: ignore visibility rules, show 30s on every page.
   if ($force_show) {
     $cache_contexts[] = 'user.roles';
     $cache_contexts[] = 'route';
     $r_bg = trim((string) ($config->get('settings_preloader___r_bg') ?? ''));
     $r_tx = trim((string) ($config->get('settings_preloader___r_tx') ?? ''));
+    $max_display = (int) ($config->get('preloader_max_display_seconds') ?: 8);
+    $max_display = max(3, min(60, $max_display));
     return [
       'show' => TRUE,
       'config' => [
         'style' => $config->get('preloader_style') ?? 'spinner',
+        'spinner_show_percent' => (bool) $config->get('preloader_spinner_show_percent'),
+        'max_display_seconds' => $max_display,
         'r_bg' => $r_bg !== '' ? $r_bg : '#ffffff',
         'r_tx' => $r_tx !== '' ? $r_tx : '#000000',
-        'logo_url' => trim((string) ($config->get('preloader_logo_url') ?? '')),
+        'logo_url' => $logo_url,
+        'logo_width' => (int) ($config->get('preloader_logo_width') ?: 160),
+        'logo_height' => (int) ($config->get('preloader_logo_height') ?: 80),
+        'logo_opacity' => min(100, max(0, (int) ($config->get('preloader_logo_opacity') ?: 100))),
         'text' => trim((string) ($config->get('preloader_text') ?? '')),
         'text_font' => trim((string) ($config->get('preloader_text_font') ?? '')),
         'text_font_size' => (int) ($config->get('preloader_text_font_size') ?: 24),
-        'text_animate' => (bool) $config->get('preloader_text_animate'),
+        'text_animate_effect' => trim((string) ($config->get('preloader_text_animate_effect') ?? '')),
         'force_show' => TRUE,
       ],
       'cache_contexts' => array_unique($cache_contexts),
@@ -57,7 +118,10 @@ function _solo_preloader_decision($theme) {
   $user = \Drupal::currentUser();
   $route_match = \Drupal::routeMatch();
   $route_name = $route_match ? $route_match->getRouteName() : '';
-  $path = $route_match && $route_match->getRouteObject() ? $route_match->getRawParameters()->get('path', '') : '';
+  // Pass an empty string so _solo_preloader_is_admin_route() resolves the path
+  // from the request itself; getRawParameters() returns route parameters
+  // (e.g. {node}), not the URL path.
+  $path = '';
 
   // Disable for authenticated users.
   if ($config->get('preloader_disable_authenticated') !== FALSE) {
@@ -88,17 +152,24 @@ function _solo_preloader_decision($theme) {
 
   $r_bg = trim((string) ($config->get('settings_preloader___r_bg') ?? ''));
   $r_tx = trim((string) ($config->get('settings_preloader___r_tx') ?? ''));
+  $max_display = (int) ($config->get('preloader_max_display_seconds') ?: 8);
+  $max_display = max(3, min(60, $max_display));
   return [
     'show' => TRUE,
     'config' => [
       'style' => $config->get('preloader_style') ?? 'spinner',
+      'spinner_show_percent' => (bool) $config->get('preloader_spinner_show_percent'),
+      'max_display_seconds' => $max_display,
       'r_bg' => $r_bg !== '' ? $r_bg : '#ffffff',
       'r_tx' => $r_tx !== '' ? $r_tx : '#000000',
-      'logo_url' => trim((string) ($config->get('preloader_logo_url') ?? '')),
+      'logo_url' => $logo_url,
+      'logo_width' => (int) ($config->get('preloader_logo_width') ?: 160),
+      'logo_height' => (int) ($config->get('preloader_logo_height') ?: 80),
+      'logo_opacity' => min(100, max(0, (int) ($config->get('preloader_logo_opacity') ?: 100))),
       'text' => trim((string) ($config->get('preloader_text') ?? '')),
       'text_font' => trim((string) ($config->get('preloader_text_font') ?? '')),
       'text_font_size' => (int) ($config->get('preloader_text_font_size') ?: 24),
-      'text_animate' => (bool) $config->get('preloader_text_animate'),
+      'text_animate_effect' => trim((string) ($config->get('preloader_text_animate_effect') ?? '')),
       'force_show' => FALSE,
     ],
     'cache_contexts' => array_unique($cache_contexts),
@@ -148,14 +219,14 @@ function _solo_preloader_is_admin_route($route_name, $path) {
 /**
  * Applies path include/exclude rules.
  *
- * Lines starting with - mean exclude; otherwise include only those paths.
- * Empty lines ignored. Paths are matched against the current path (path alias
- * or internal path).
+ * Exclude: prefix with a minus sign (e.g. -/contact, -/about or -contact, -about).
+ * Include only: list paths without prefix (e.g. / for front page, /products).
+ * Empty lines ignored. Paths are matched against the current request path.
  *
  * @param string $rules
  *   One path per line.
  * @param string $current_path
- *   Current path (e.g. request path).
+ *   Current path from request (e.g. getPathInfo()).
  *
  * @return bool|null
  *   TRUE if preloader should show, FALSE if not, NULL if rules don't apply.
@@ -166,29 +237,40 @@ function _solo_preloader_path_rules_match($rules, $current_path) {
     return NULL;
   }
   $normalize = function ($p) {
-    $p = trim($p, '/');
+    $p = trim((string) $p, "/ \t");
     return $p === '' ? '' : '/' . $p;
   };
   $current_path = $normalize($current_path);
   $include_only = [];
   $exclude = [];
   foreach ($lines as $line) {
-    // Lines starting with "-/" are exclusion rules (e.g. "-/contact").
-    if (strpos($line, '-/') === 0 || $line === '-') {
-      $exclude[] = $normalize(trim(substr($line, 1)));
+    if ($line === '') {
+      continue;
+    }
+    // Any line starting with minus is exclude (e.g. -/contact, -contact).
+    if ($line[0] === '-') {
+      $exclude[] = $normalize(substr($line, 1));
     }
     else {
       $include_only[] = $normalize($line);
     }
   }
+  // Apply excludes first: exact match or path prefix (e.g. /contact matches /contact/team).
   foreach ($exclude as $p) {
-    if ($current_path === $p || ($p !== '' && $p !== '/' && strpos($current_path, $p . '/') === 0)) {
+    if ($current_path === $p) {
+      return FALSE;
+    }
+    if ($p !== '' && strpos($current_path . '/', $p . '/') === 0) {
       return FALSE;
     }
   }
+  // If there are include-only rules, show only when current path matches one.
   if (!empty($include_only)) {
     foreach ($include_only as $p) {
-      if ($current_path === $p || ($p !== '' && $p !== '/' && strpos($current_path, $p . '/') === 0)) {
+      if ($current_path === $p) {
+        return TRUE;
+      }
+      if ($p !== '' && strpos($current_path . '/', $p . '/') === 0) {
         return TRUE;
       }
     }

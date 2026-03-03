@@ -11,11 +11,14 @@
 }
 
 .solo-back-to-top-sentinel-wrapper {
+  height: 0;
+  overflow: hidden;
   pointer-events: none;
 }
 
 .solo-back-to-top-sentinel {
   width: 1px;
+  height: var(--solo-back-to-top-sentinel-height, 400px);
   pointer-events: none;
 }
 

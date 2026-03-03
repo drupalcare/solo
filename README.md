@@ -108,19 +108,29 @@ footer content.
 
 Load-based preloader: displays while the page is loading and hides when the
 page has actually loaded (`window.load`). No minimum display time—fast loads
-show it briefly; slow loads keep it until load completes. Configure under
-Global Settings: enable/disable, visibility (admin routes, authenticated users,
-path rules), style (spinner, text, or logo), optional logo and text, and
-background/text colors. Critical CSS in head; 8s timeout fallback; "Force show
-for testing" for 30s when tuning.
+show it briefly; slow loads keep it until load completes. Configurable **max
+display time** (3–60 seconds) acts as a fallback only if the load event never
+fires. **Visibility:** enable/disable, max display (sec), “Force show for
+testing” (30s), disable on admin routes, disable for authenticated users, and
+**path include/exclude rules** (one path per line; prefix with minus to exclude,
+e.g. `-/contact`; list paths without prefix to show only on those paths).
+**Appearance:** style (spinner, text, logo, or logo + text). Spinner: modern
+thin ring with optional percentage inside. Text/logo: optional text, font,
+animation effect, font size; logo can **use theme logo** or a custom path
+(public://, themes/..., or filename). Background and text colors. Library and
+CSS are attached only when the preloader is enabled (scoped under
+`html.solo-preloader-enabled`). Shows **instantly on link click** (capture
+phase) and hides when the new page has loaded. Critical CSS in head; respects
+reduced motion.
 
 #### Back to Top (Global Settings)
 
-Accessible back-to-top button under Global Settings: enable/disable, visibility 
+Accessible back-to-top button under Global Settings: enable/disable, visibility
 (admin routes, authenticated users, small screens), scroll distance (200–800 px),
 position (bottom-right or bottom-left), style (solid/outline), optional colors,
-and icon (arrow-up, chevron-up, arrow-minimal). Uses proper button semantics and
-respects reduced motion.
+and icon (arrow-up, chevron-up, arrow-minimal). Styling uses **CSS variables**
+only (no inline layout); scroll threshold is set as a variable and applied in
+CSS. Uses proper button semantics and respects reduced motion.
 
 #### Menu Template Assignment (Global Settings)
 
@@ -254,9 +264,10 @@ and other site builders involved in the development process.
 - Modify login, register, and password pages; change header and menu order.
 - Offers animation features and layout changes for multiple value fields.
 - Apply reading mode to content types, setting max width for content regions.
-- **Preloader:** Load-based preloader (hides when page has loaded; no minimum time). Set visibility, style, logo/text, colors; "Force show for testing" for 30s when tuning.
-- **Back to top:** Enable accessible back-to-top button; set visibility, scroll distance, position (bottom-right/left), style (solid/outline), colors, and icon.
+- **Preloader:** Load-based preloader (no minimum time; configurable max display fallback). Path include/exclude rules, styles (spinner, text, logo, logo+text), optional theme or custom logo, text/font/effects, colors. Instant show on link click; modern spinner with optional % inside. Scoped CSS; “Force show for testing” 30s.
+- **Back to top:** Accessible button; visibility, scroll distance (200–800 px), position, style (solid/outline), colors, icon. CSS variables only (no inline layout).
 - **Menu template assignment:** Assign any responsive menu Twig template to any menu (primary, footer, or custom) so each menu can use a different template.
+- **Formatted copyright and credit:** Option to use one rich-text field for all copyright and credit in the footer; when off, the four separate fields are used.
 
 ## Libraries and Fonts Settings
 
@@ -363,7 +374,7 @@ and other site builders involved in the development process.
 - 15 color input fields for this region.
 - Text field for dynamic copyright year.
 - Checkbox to show or hide credit.
-- **Formatted copyright and credit:** Option to use a single formatted (rich-text) field for all copyright and credit content (HTML, links, ICP, etc.); when off, the four separate fields are used.
+- **Formatted copyright and credit:** When enabled, one rich-text field is used for all copyright and credit; when off, the four separate fields above are used. See *Formatted Copyright and Credit* above for details.
 
 ## Grouped Regions
 

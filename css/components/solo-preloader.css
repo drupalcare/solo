@@ -1,11 +1,16 @@
 /**
  * @file
- * Preloader: overlay and spinner/text/logo. Uses region color variables (--r-bg, --r-tx).
- * Blocks interaction while visible; JS removes the element after fade-out.
- * Respects prefers-reduced-motion.
+ * Solo Preloader. Scoped under html.solo-preloader-enabled.
+ * Each style has a unique modifier: --spinner, --text, --logo, --logo_text.
  */
 
-.solo-preloader {
+/* Lock scroll when active (JS adds solo-preloader-active) */
+html.solo-preloader-enabled.solo-preloader-active body {
+  overflow: hidden;
+}
+
+/* Base overlay (all styles) */
+html.solo-preloader-enabled .solo-preloader {
   position: fixed;
   inset: 0;
   z-index: 999999;
@@ -14,40 +19,68 @@
   justify-content: center;
   opacity: 1;
   visibility: visible;
-  transition: opacity 0.4s ease-out, visibility 0.4s ease-out;
-  background-color: var(--r-bg);
-  color: var(--r-tx);
+  background-color: var(--solo-preloader-bg, transparent);
+  color: var(--r-tx, #333);
   pointer-events: auto;
+  transition: opacity 0.35s ease, visibility 0.35s ease;
+  will-change: opacity;
+  backface-visibility: hidden;
 }
 
-.solo-preloader.solo-preloader--hidden {
+html.solo-preloader-enabled .solo-preloader.solo-preloader--instant-show {
+  transition: none;
+}
+
+html.solo-preloader-enabled .solo-preloader.solo-preloader--hidden {
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
-  transition: opacity 0.4s ease, visibility 0.4s ease;
 }
 
-/* Removed from layout after transition; state in class, not inline style */
-.solo-preloader--removed {
-  display: none;
+html.solo-preloader-enabled #solo-preloader.solo-preloader--removed {
+  display: none !important;
 }
 
-/* Spinner */
-.solo-preloader__spinner {
-  width: 2.5rem;
-  height: 2.5rem;
-  border: 3px solid transparent;
-  border-top-color: var(--r-tx);
+/* ========== Spinner style ========== */
+html.solo-preloader-enabled .solo-preloader--spinner .solo-preloader__inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+/* Modern spinner: thin ring + track, percentage centered inside */
+html.solo-preloader-enabled .solo-preloader--spinner .solo-preloader__spinner-wrapper {
+  position: relative;
+  width: 3rem;
+  height: 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Subtle full-circle track (behind the spinning arc) */
+html.solo-preloader-enabled .solo-preloader--spinner .solo-preloader__spinner-wrapper::before {
+  content: '';
+  position: absolute;
+  inset: 0;
   border-radius: 50%;
-  animation: solo-preloader-spin 0.7s linear infinite;
+  border: 2px solid color-mix(in srgb, var(--r-tx, #333) 14%, transparent);
+  box-sizing: border-box;
 }
 
-@media (prefers-reduced-motion: reduce) {
-  .solo-preloader__spinner {
-    animation: none;
-    border-top-color: var(--r-tx);
-    opacity: 0.8;
-  }
+/* Spinning arc (indeterminate progress) */
+html.solo-preloader-enabled .solo-preloader--spinner .solo-preloader__spinner {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  border: 2px solid transparent;
+  border-top-color: var(--r-tx, #333);
+  box-sizing: border-box;
+  animation: solo-preloader-spin 0.82s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+  will-change: transform;
 }
 
 @keyframes solo-preloader-spin {
@@ -56,52 +89,98 @@
   }
 }
 
-/* Logo fade style */
-/* Text style */
-.solo-preloader__text {
-  font-size: 1.5rem;
-  font-weight: 500;
-  color: var(--r-tx);
+/* Percentage centered inside the ring */
+html.solo-preloader-enabled .solo-preloader--spinner .solo-preloader__percent {
+  position: relative;
+  z-index: 1;
+  font-size: 0.625rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  line-height: 1;
+  color: var(--r-tx, #333);
+  text-align: center;
 }
 
-.solo-preloader__text--animate {
-  animation: solo-preloader-fade 0.8s ease-in-out infinite alternate;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .solo-preloader__text--animate {
-    animation: none;
-    opacity: 0.9;
-  }
-}
-
-/* Logo style */
-.solo-preloader__logo {
-  max-width: 8rem;
-  max-height: 4rem;
-  object-fit: contain;
-  animation: solo-preloader-fade 0.8s ease-in-out infinite alternate;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .solo-preloader__logo {
-    animation: none;
-    opacity: 0.9;
-  }
-}
-
-@keyframes solo-preloader-fade {
-  from {
-    opacity: 0.5;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
-.solo-preloader__inner {
+/* ========== Text style ========== */
+html.solo-preloader-enabled .solo-preloader--text .solo-preloader__inner {
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 1rem;
+}
+
+html.solo-preloader-enabled .solo-preloader--text .solo-preloader__text {
+  font-size: var(--solo-preloader-text-font-size, 1.5rem);
+  line-height: var(--solo-preloader-text-line-height, 1.2);
+  font-weight: 500;
+  color: var(--r-tx);
+}
+
+/* ========== Logo style ========== */
+html.solo-preloader-enabled .solo-preloader--logo .solo-preloader__inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+html.solo-preloader-enabled .solo-preloader--logo .solo-preloader__logo {
+  width: var(--solo-preloader-logo-width, 160px);
+  height: var(--solo-preloader-logo-height, 80px);
+  max-width: 100%;
+  object-fit: contain;
+  opacity: var(--solo-preloader-logo-opacity, 1);
+}
+
+/* ========== Logo + text style ========== */
+html.solo-preloader-enabled .solo-preloader--logo_text .solo-preloader__inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+html.solo-preloader-enabled .solo-preloader--logo_text .solo-preloader__hero {
+  position: relative;
+  display: block;
+  width: var(--solo-preloader-logo-width, 260px);
+  max-width: 80vw;
+  height: var(--solo-preloader-logo-height, 140px);
+  max-height: 50vh;
+}
+
+html.solo-preloader-enabled .solo-preloader--logo_text .solo-preloader__hero-logo {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  opacity: var(--solo-preloader-logo-opacity, 1);
+}
+
+html.solo-preloader-enabled .solo-preloader--logo_text .solo-preloader__hero-text {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 0 1rem;
+  color: var(--r-tx);
+  font-size: var(--solo-preloader-text-font-size, 1.5rem);
+  line-height: var(--solo-preloader-text-line-height, 1.2);
+  font-weight: 600;
+  word-break: break-word;
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  html.solo-preloader-enabled .solo-preloader--spinner .solo-preloader__spinner {
+    animation: none;
+    opacity: 0.8;
+  }
+
+  html.solo-preloader-enabled .solo-preloader {
+    transition: none;
+  }
 }

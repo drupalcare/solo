@@ -249,10 +249,18 @@ function _solo_preprocess_html_preloader(array &$variables, string $active_theme
     }
 
     $preloader_style_parts = [];
-    // Preloader background: own variable, default transparent (not tied to region --r-bg).
-    $preloader_bg = _solo_sanitize_hex_for_css(theme_get_setting('settings_preloader___r_bg'));
-    $preloader_style_parts[] = '--solo-preloader-bg:' . ($preloader_bg !== '' ? $preloader_bg : 'transparent');
-    // Preloader text color: still from theme setting (optional).
+    // Preloader background: merge background color + opacity into rgba (opacity applies to bg only).
+    $preloader_bg_hex = _solo_sanitize_hex_for_css(theme_get_setting('settings_preloader___r_bg'));
+    $preloader_bg_opacity = min(100, max(0, (int) (theme_get_setting('preloader_bg_opacity') ?? 100)));
+    if ($preloader_bg_hex !== '') {
+      $rgb = _solo_hex_to_rgb($preloader_bg_hex);
+      $alpha = $preloader_bg_opacity / 100;
+      $preloader_style_parts[] = '--solo-preloader-bg:rgba(' . $rgb['r'] . ',' . $rgb['g'] . ',' . $rgb['b'] . ',' . $alpha . ')';
+    }
+    else {
+      $preloader_style_parts[] = '--solo-preloader-bg:transparent';
+    }
+    // Preloader text color: from theme setting (optional); not affected by background opacity.
     $r_tx = _solo_sanitize_hex_for_css(theme_get_setting('settings_preloader___r_tx'));
     if ($r_tx !== '') {
       $preloader_style_parts[] = '--r-tx:' . $r_tx;

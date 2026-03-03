@@ -68,8 +68,9 @@ preloader_text_font: ''
 preloader_text_font_size: 24
 preloader_text_animate_effect: ''
 preloader_force_show: 0
-settings_preloader___r_bg: ''
 settings_preloader___r_tx: ''
+settings_preloader___r_bg: ''
+preloader_bg_opacity: 100
 back_to_top_enabled: 0
 back_to_top_disable_admin_routes: 1
 back_to_top_disable_authenticated: 0

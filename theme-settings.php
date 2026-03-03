@@ -53,8 +53,9 @@ function _solo_get_preloader_defaults(): array {
     'preloader_text_font'             => '',
     'preloader_text_font_size'        => 24,
     'preloader_text_animate_effect'   => '',
-    'settings_preloader___r_bg'       => '',
     'settings_preloader___r_tx'       => '',
+    'settings_preloader___r_bg'       => '',
+    'preloader_bg_opacity'            => 100,
   ];
 }
 

@@ -72,7 +72,7 @@ html.solo-preloader-enabled .solo-preloader--spinner .solo-preloader__spinner-wr
   box-sizing: border-box;
 }
 
-/* Spinning arc (indeterminate progress) */
+/* Spinning arc (indeterminate progress); GPU layer for smooth animation */
 html.solo-preloader-enabled .solo-preloader--spinner .solo-preloader__spinner {
   position: absolute;
   inset: 0;
@@ -84,6 +84,7 @@ html.solo-preloader-enabled .solo-preloader--spinner .solo-preloader__spinner {
   box-sizing: border-box;
   animation: solo-preloader-spin 0.82s cubic-bezier(0.4, 0, 0.2, 1) infinite;
   will-change: transform;
+  transform: translateZ(0);
 }
 
 @keyframes solo-preloader-spin {

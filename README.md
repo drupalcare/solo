@@ -106,22 +106,26 @@ footer content.
 
 #### Preloader (Global Settings)
 
-Load-based preloader: displays while the page is loading and hides when the
-page has actually loaded (`window.load`). No minimum display time—fast loads
-show it briefly; slow loads keep it until load completes. Configurable **max
-display time** (3–60 seconds) acts as a fallback only if the load event never
-fires. **Visibility:** enable/disable, max display (sec), “Force show for
-testing” (30s), disable on admin routes, disable for authenticated users, and
-**path include/exclude rules** (one path per line; prefix with minus to exclude,
-e.g. `-/contact`; list paths without prefix to show only on those paths).
-**Appearance:** style (spinner, text, logo, or logo + text). Spinner: modern
-thin ring with optional percentage inside. Text/logo: optional text, font,
-animation effect, font size; logo can **use theme logo** or a custom path
-(public://, themes/..., or filename). Background and text colors. Library and
-CSS are attached only when the preloader is enabled (scoped under
-`html.solo-preloader-enabled`). Shows **instantly on link click** (capture
-phase) and hides when the new page has loaded. Critical CSS in head; respects
-reduced motion.
+Load-based preloader: displays while the page is loading and hides when ready.
+No minimum display time—fast loads show it briefly; slow loads keep it until
+complete. Configurable **max display time** (3–60 seconds) acts as a fallback
+only if the load event never fires. **Visibility:** enable/disable, **hide
+trigger** (“Page appears” via `DOMContentLoaded` — default, or “Page fully
+loaded” via `window.load`), max display (sec), “Force show for testing” (30s),
+disable on admin routes, disable for authenticated users, and **path
+include/exclude rules** (one path per line; prefix with minus to exclude, e.g.
+`-/contact`; list paths without prefix to show only on those paths).
+**Appearance:** style (spinner, progress bar, text, logo, or logo + text).
+**Transition effect** (fade, slide up/down/left/right, zoom out, blur) controls
+how the preloader disappears. Spinner: modern thin ring with optional percentage
+inside. Progress bar: centered rounded bar (320px max-width) with animated fill
+and percentage label. Text/logo: optional text, font, animation effect, font
+size; logo can **use theme logo** or a custom path (public://, themes/..., or
+filename). Background color with **separate opacity** (0–100%, applied only to
+background, not content) and text color. Library and CSS are attached only when
+the preloader is enabled (scoped under `html.solo-preloader-enabled`). Shows
+**instantly on link click** (capture phase) and hides when the new page is
+ready. Critical CSS in head; respects reduced motion.
 
 #### Back to Top (Global Settings)
 
@@ -264,7 +268,7 @@ and other site builders involved in the development process.
 - Modify login, register, and password pages; change header and menu order.
 - Offers animation features and layout changes for multiple value fields.
 - Apply reading mode to content types, setting max width for content regions.
-- **Preloader:** Load-based preloader (no minimum time; configurable max display fallback). Path include/exclude rules, styles (spinner, text, logo, logo+text), optional theme or custom logo, text/font/effects, colors. Instant show on link click; modern spinner with optional % inside. Scoped CSS; “Force show for testing” 30s.
+- **Preloader:** Load-based preloader (no minimum time; configurable max display fallback). Hide trigger: “Page appears” (DOM ready, default) or “Page fully loaded”. Path include/exclude rules. Styles: spinner (with optional %), progress bar, text, logo, logo+text. Transition effects: fade, slide up/down/left/right, zoom out, blur. Background opacity (0–100%, bg only). Optional theme or custom logo, text/font/effects, colors. Instant show on link click; scoped CSS; “Force show for testing” 30s; respects reduced motion.
 - **Back to top:** Accessible button; visibility, scroll distance (200–800 px), position, style (solid/outline), colors, icon. CSS variables only (no inline layout).
 - **Menu template assignment:** Assign any responsive menu Twig template to any menu (primary, footer, or custom) so each menu can use a different template.
 - **Formatted copyright and credit:** Option to use one rich-text field for all copyright and credit in the footer; when off, the four separate fields are used.

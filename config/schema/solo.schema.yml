@@ -171,12 +171,18 @@ solo.settings:
     preloader_path_rules:
       type: string
       label: 'Preloader path include/exclude rules'
+    preloader_hide_on:
+      type: string
+      label: 'Preloader hide trigger (dom_ready or load)'
+    preloader_transition:
+      type: string
+      label: 'Preloader transition effect (fade, slide_up, slide_down, slide_left, slide_right, zoom_out, blur)'
     preloader_max_display_seconds:
       type: integer
       label: 'Preloader max display time in seconds (fallback if load never fires)'
     preloader_style:
       type: string
-      label: 'Preloader style (spinner, text, logo, or logo_text)'
+      label: 'Preloader style (spinner, progress_bar, text, logo, or logo_text)'
     preloader_spinner_show_percent:
       type: boolean
       label: 'Preloader spinner show percentage (0-100%)'

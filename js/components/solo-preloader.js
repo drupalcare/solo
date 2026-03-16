@@ -9,18 +9,19 @@
  * 2. Show preloader instantly on valid click (showPreloader): remove hidden/
  *    removed classes, set aria-hidden=false, lock scroll (solo-preloader-active
  *    on html). Uses capture phase so overlay appears before browser navigates.
- * 3. Hide when page fully loads: original logic unchanged — window.load, percent
- *    animation, fallback timeout, fade out, remove from layout; unlockPage()
- *    cleans up scroll lock after hide transition.
+ * 3. Hide when page is ready: DOMContentLoaded (dom_ready) or window.load,
+ *    configurable via data-hide-on attribute. Runs percent animation, fallback
+ *    timeout, then transition out (fade, slide, zoom, blur per CSS class) and
+ *    remove from layout; unlockPage() cleans up scroll lock after transition.
  *
  * Flow: click → validate → show overlay → browser navigates → new page load →
- * window.load → hide. Does not prevent default, use AJAX, or touch history API.
- * Does not run when library not attached (server-side disabled). Does not
- * trigger on back/forward or programmatic redirects.
+ * DOMContentLoaded or window.load → hide. Does not prevent default, use AJAX,
+ * or touch history API. Does not run when library not attached (server-side
+ * disabled). Does not trigger on back/forward or programmatic redirects.
  *
- * No minimum display time: hide as soon as window.load fires (depends on page
- * size). Max display is configurable (data-max-display seconds) as fallback
- * if load never fires.
+ * No minimum display time: hide as soon as the configured event fires (depends
+ * on page size). Max display is configurable (data-max-display seconds) as
+ * fallback if the event never fires.
  *
  * Also: force-show mode, reduced motion, once-binding, no duplicate listeners.
  */
@@ -29,7 +30,7 @@
   'use strict';
 
   const DEFAULT_MAX_DISPLAY_MS = 8000;
-  const HIDDEN_TRANSITION_MS = 350;
+  const HIDDEN_TRANSITION_MS = 400;
   const FORCE_SHOW_TIMEOUT_MS = 30000;
 
   function getPreloader() {
@@ -50,6 +51,12 @@
     const percentEl = el.querySelector('.solo-preloader__percent');
     if (percentEl) percentEl.textContent = '0%';
 
+    const barFillEl = el.querySelector('.solo-preloader__bar-fill');
+    if (barFillEl) barFillEl.style.width = '0%';
+
+    const barPercentEl = el.querySelector('.solo-preloader__bar-percent');
+    if (barPercentEl) barPercentEl.textContent = '0%';
+
     el.classList.remove('solo-preloader--hidden');
     el.classList.remove('solo-preloader--removed');
     el.classList.add('solo-preloader--instant-show');
@@ -60,6 +67,12 @@
 
   function hidePreloader(el, delay) {
     if (!el) return;
+
+    // Remove instant-show (transition: none) and force a reflow so the browser
+    // picks up the real transition before we add --hidden. Without the reflow,
+    // both class changes batch into one frame and the exit animation is skipped.
+    el.classList.remove('solo-preloader--instant-show');
+    void el.offsetHeight;
 
     el.classList.add('solo-preloader--hidden');
     el.setAttribute('aria-hidden', 'true');
@@ -125,6 +138,9 @@
 
     attachNavigationListener(el);
 
+    const hideOnAttr = el.getAttribute('data-hide-on');
+    const hideOn = hideOnAttr === 'dom_ready' ? 'dom_ready' : 'load';
+
     const prefersReducedMotion =
       window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
@@ -146,6 +162,9 @@
     }
 
     const percentEl = el.querySelector('.solo-preloader__percent');
+    const barFillEl = el.querySelector('.solo-preloader__bar-fill');
+    const barPercentEl = el.querySelector('.solo-preloader__bar-percent');
+    const hasProgress = percentEl || barFillEl;
     let percentIntervalId = null;
 
     function stopPercent() {
@@ -156,8 +175,15 @@
     }
 
     function setPercent(value) {
+      var v = Math.min(100, Math.round(value));
       if (percentEl) {
-        percentEl.textContent = Math.min(100, Math.round(value)) + '%';
+        percentEl.textContent = v + '%';
+      }
+      if (barFillEl) {
+        barFillEl.style.width = v + '%';
+      }
+      if (barPercentEl) {
+        barPercentEl.textContent = v + '%';
       }
     }
 
@@ -165,12 +191,13 @@
       clearFallback();
       stopPercent();
       window.removeEventListener('load', doHide);
+      document.removeEventListener('DOMContentLoaded', doHide);
       setPercent(100);
       hidePreloader(el, transitionDelay);
     }
 
     if (forceShow) {
-      if (percentEl) {
+      if (hasProgress) {
         const start = Date.now();
         percentIntervalId = setInterval(function () {
           const elapsed = (Date.now() - start) / FORCE_SHOW_TIMEOUT_MS;
@@ -189,13 +216,13 @@
       return;
     }
 
-    if (document.readyState === 'complete') {
-      if (percentEl) setPercent(0);
+    if (document.readyState === 'complete' || (hideOn === 'dom_ready' && document.readyState === 'interactive')) {
+      if (hasProgress) setPercent(0);
       hidePreloader(el, transitionDelay);
       return;
     }
 
-    if (percentEl) {
+    if (hasProgress) {
       setPercent(0);
       const start = Date.now();
 
@@ -205,7 +232,12 @@
       }, 80);
     }
 
-    window.addEventListener('load', doHide);
+    if (hideOn === 'dom_ready') {
+      document.addEventListener('DOMContentLoaded', doHide);
+    }
+    else {
+      window.addEventListener('load', doHide);
+    }
     fallbackTimeoutId = window.setTimeout(doHide, maxDisplayMs);
   }
 

@@ -41,6 +41,8 @@ function _solo_get_preloader_defaults(): array {
     'preloader_disable_authenticated' => TRUE,
     'preloader_disable_admin_routes'  => TRUE,
     'preloader_path_rules'            => '',
+    'preloader_hide_on'               => 'dom_ready',
+    'preloader_transition'            => 'fade',
     'preloader_max_display_seconds'   => 8,
     'preloader_style'                 => 'spinner',
     'preloader_spinner_show_percent'  => FALSE,

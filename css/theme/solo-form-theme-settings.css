@@ -681,12 +681,14 @@ form.system-theme-settings .solo-accordion-toggle-help {
 }
 
 /* Full width: Style, Text field, Logo URL, checkboxes */
+.solo-preloader-appearance .form-type--boolean,
+.solo-preloader-appearance .form-type--checkbox,
+.solo-preloader-appearance .form-type--select.form-item--preloader-transition,
 .solo-preloader-appearance .form-item:has(#edit-preloader-style),
 .solo-preloader-appearance .form-item:has(#edit-preloader-text),
-.solo-preloader-appearance .form-item:has(#edit-preloader-logo-url),
-.solo-preloader-appearance .form-type--checkbox,
-.solo-preloader-appearance .form-type--boolean {
+.solo-preloader-appearance .form-item:has(#edit-preloader-logo-url) {
   grid-column: 1 / -1;
+  margin-top: 0;
 }
 
 /* Style select: natural width, don’t stretch */

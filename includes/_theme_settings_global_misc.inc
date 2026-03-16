@@ -498,6 +498,18 @@ $form["solo_settings"]["settings_global_misc"]["preloader"]["visibility"]["prelo
   '#description' => t('Fallback only: the preloader hides as soon as the page has loaded (e.g. if the page loads in 2 seconds, it hides at 2 seconds). This value is the maximum time to show it if the load event never fires or is delayed.'),
 ];
 
+$form["solo_settings"]["settings_global_misc"]["preloader"]["visibility"]["preloader_hide_on"] = [
+  '#type' => 'radios',
+  '#title' => t('Hide preloader when'),
+  '#weight' => -19,
+  '#default_value' => theme_get_setting('preloader_hide_on') ?? 'dom_ready',
+  '#options' => [
+    'dom_ready' => t('Page appears (recommended)'),
+    'load' => t('Page fully loaded (images, scripts, etc.)'),
+  ],
+  '#description' => t('Choose when the preloader should disappear. "Page appears" hides it when the HTML and layout are ready so visitors can start reading while images continue loading. "Page fully loaded" waits for all resources before hiding (current behavior).'),
+];
+
 $form["solo_settings"]["settings_global_misc"]["preloader"]["visibility"]["preloader_force_show"] = [
   '#type' => 'checkbox',
   '#title' => t('Force show for testing'),
@@ -543,12 +555,29 @@ $form["solo_settings"]["settings_global_misc"]["preloader"]["appearance"]["prelo
   '#id' => 'edit-preloader-style',
   '#options' => [
     'spinner' => t('Spinner (recommended for performance)'),
+    'progress_bar' => t('Progress bar'),
     'text' => t('Text'),
     'logo' => t('Logo'),
     'logo_text' => t('Logo + text'),
   ],
   '#default_value' => theme_get_setting('preloader_style') ?? 'spinner',
-  '#description' => t('Spinner is lightest and shows immediately; text and logo can wait on fonts or images.'),
+  '#description' => t('Spinner is lightest and shows immediately; progress bar shows an animated bar centered on the page; text and logo can wait on fonts or images.'),
+];
+
+$form["solo_settings"]["settings_global_misc"]["preloader"]["appearance"]["preloader_transition"] = [
+  '#type' => 'select',
+  '#title' => t('Transition effect'),
+  '#options' => [
+    'fade' => t('Fade (default)'),
+    'slide_up' => t('Slide up'),
+    'slide_down' => t('Slide down'),
+    'slide_left' => t('Slide left'),
+    'slide_right' => t('Slide right'),
+    'zoom_out' => t('Zoom out'),
+    'blur' => t('Blur'),
+  ],
+  '#default_value' => theme_get_setting('preloader_transition') ?? 'fade',
+  '#description' => t('How the preloader disappears when the page is ready. All effects include a fade; slide/zoom/blur add motion.'),
 ];
 
 $form["solo_settings"]["settings_global_misc"]["preloader"]["appearance"]["preloader_spinner_show_percent"] = [

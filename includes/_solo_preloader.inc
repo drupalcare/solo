@@ -85,6 +85,11 @@ function _solo_preloader_decision($theme) {
     ? trim((string) (theme_get_setting('logo.url') ?? ''))
     : _solo_preloader_resolve_logo_url($config->get('preloader_logo_url') ?? '');
 
+  // Validate transition effect (shared by force_show and normal paths).
+  $valid_transitions = ['fade', 'slide_up', 'slide_down', 'slide_left', 'slide_right', 'zoom_out', 'blur'];
+  $transition = $config->get('preloader_transition') ?: 'fade';
+  $transition = in_array($transition, $valid_transitions, TRUE) ? $transition : 'fade';
+
   // Force show for testing: ignore visibility rules, show 30s on every page.
   if ($force_show) {
     $cache_contexts[] = 'user.roles';
@@ -109,6 +114,8 @@ function _solo_preloader_decision($theme) {
         'text_font' => trim((string) ($config->get('preloader_text_font') ?? '')),
         'text_font_size' => (int) ($config->get('preloader_text_font_size') ?: 24),
         'text_animate_effect' => trim((string) ($config->get('preloader_text_animate_effect') ?? '')),
+        'transition' => $transition,
+        'hide_on' => 'dom_ready',
         'force_show' => TRUE,
       ],
       'cache_contexts' => array_unique($cache_contexts),
@@ -154,6 +161,8 @@ function _solo_preloader_decision($theme) {
   $r_tx = trim((string) ($config->get('settings_preloader___r_tx') ?? ''));
   $max_display = (int) ($config->get('preloader_max_display_seconds') ?: 8);
   $max_display = max(3, min(60, $max_display));
+  $hide_on = $config->get('preloader_hide_on') ?: 'dom_ready';
+  $hide_on = $hide_on === 'dom_ready' ? 'dom_ready' : 'load';
   return [
     'show' => TRUE,
     'config' => [
@@ -170,6 +179,8 @@ function _solo_preloader_decision($theme) {
       'text_font' => trim((string) ($config->get('preloader_text_font') ?? '')),
       'text_font_size' => (int) ($config->get('preloader_text_font_size') ?: 24),
       'text_animate_effect' => trim((string) ($config->get('preloader_text_animate_effect') ?? '')),
+      'transition' => $transition,
+      'hide_on' => $hide_on,
       'force_show' => FALSE,
     ],
     'cache_contexts' => array_unique($cache_contexts),

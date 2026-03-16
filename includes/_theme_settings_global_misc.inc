@@ -893,15 +893,17 @@ $form["solo_settings"]["settings_global_misc"]["menu_template_assignment"] = [
 ];
 
 $allowed_menu_templates = [
-  'menu--responsive-menu-template-hover.html.twig',
-  'menu--responsive-menu-template-click.html.twig',
-  'menu--primary-sidebar-menu-template-hover.html.twig',
-  'menu--primary-sidebar-menu-template-click.html.twig',
+  'menu--responsive-menu-template-hover.html.twig' => t('Responsive menu (hover)'),
+  'menu--responsive-menu-template-click.html.twig' => t('Responsive menu (click)'),
+  'menu--primary-sidebar-menu-template-hover.html.twig' => t('Sidebar menu (hover)'),
+  'menu--primary-sidebar-menu-template-click.html.twig' => t('Sidebar menu (click)'),
 ];
 $all_templates = _solo_get_menu_template_options();
-$template_select_options = ['' => t('- Select a template -')];
-foreach ($allowed_menu_templates as $key) {
-  $template_select_options[$key] = $all_templates[$key] ?? $key;
+$template_select_options = ['' => t('- Default -')];
+foreach ($allowed_menu_templates as $key => $label) {
+  if (isset($all_templates[$key])) {
+    $template_select_options[$key] = $label;
+  }
 }
 
 $form["solo_settings"]["settings_global_misc"]["menu_template_assignment"]["menu_template_assignments"] = [

@@ -298,13 +298,8 @@ function solo_modules_disabled(array $modules): void {
       $keys_to_clear = [
         'enable_custom_widths',
         'enable_custom_node_width',
+        'site_widths',
       ];
-
-      // Add all per-content-type keys.
-      $content_types = \Drupal::entityTypeManager()->getStorage('node_type')->loadMultiple();
-      foreach ($content_types as $type) {
-        $keys_to_clear[] = "site_width_{$type->id()}";
-      }
 
       foreach ($keys_to_clear as $key) {
         if ($config->get($key) !== NULL) {

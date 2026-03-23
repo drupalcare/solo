@@ -30,7 +30,15 @@ solo.settings:
     # ===============================================
     # DYNAMIC CONTENT TYPE PATTERNS
     # ===============================================
-    # Layout overrides per content type
+    # Per-content-type width overrides (dynamic keys based on content types).
+    site_widths:
+      type: ignore
+      label: 'Per content type widths'
+
+    # Per-content-type layout overrides (dynamic keys based on content types).
+    solo_layouts:
+      type: ignore
+      label: 'Per content type layouts'
 
     search_result_content_types:
       type: sequence
@@ -144,17 +152,8 @@ solo.settings:
       label: 'Toggle speed'
 
     menu_template_assignments:
-      type: sequence
+      type: ignore
       label: 'Menu template assignments'
-      sequence:
-        type: mapping
-        mapping:
-          menu_id:
-            type: string
-            label: 'Menu machine name'
-          template:
-            type: string
-            label: 'Menu template filename'
 
     # ===============================================
     # PRELOADER
@@ -952,6 +951,10 @@ solo.settings:
       type: string
       label: 'Special Google font'
 
+    enable_toggleable_radios:
+      type: boolean
+      label: 'Enable toggleable radios'
+
     # ===============================================
     # SEARCH SETTINGS
     # ===============================================
@@ -1114,6 +1117,12 @@ solo.settings:
         use_default:
           type: boolean
           label: 'Use default'
+        path:
+          type: string
+          label: 'Path to custom logo'
+        url:
+          type: string
+          label: 'Logo URL'
 
     favicon:
       type: mapping
@@ -1122,8 +1131,61 @@ solo.settings:
         use_default:
           type: boolean
           label: 'Use default'
+        path:
+          type: string
+          label: 'Path to custom favicon'
+        mimetype:
+          type: string
+          label: 'Favicon MIME type'
 
 
+
+    # ===============================================
+    # COMMENT DISPLAY SETTINGS
+    # ===============================================
+    comment_heading_first:
+      type: boolean
+      label: 'Show comment heading first'
+    comment_title_tag:
+      type: string
+      label: 'Comment title HTML tag'
+    comment_show_permalink:
+      type: boolean
+      label: 'Show comment permalink'
+    comment_show_author:
+      type: boolean
+      label: 'Show comment author'
+    comment_show_date:
+      type: boolean
+      label: 'Show comment date'
+    comment_show_picture:
+      type: boolean
+      label: 'Show comment user picture'
+    comment_show_new_indicator:
+      type: boolean
+      label: 'Show new comment indicator'
+    comment_date_format:
+      type: string
+      label: 'Comment date format'
+    comment_form_position:
+      type: string
+      label: 'Comment form position'
+
+    # ===============================================
+    # MENU DEBUG AND MISC SETTINGS
+    # ===============================================
+    placeholder_info:
+      type: string
+      label: 'Placeholder info'
+    solo_menu_debug:
+      type: boolean
+      label: 'Enable Solo menu debug mode'
+    solo_menu_debug_verbosity:
+      type: string
+      label: 'Menu debug verbosity level'
+    debug_info:
+      type: string
+      label: 'Debug info'
 
     # ===============================================
     # REGION COLORS SECTION

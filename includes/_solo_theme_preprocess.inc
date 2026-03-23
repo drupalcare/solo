@@ -1037,7 +1037,8 @@ function solo_preprocess_page(&$variables) {
 
       // Override per content type.
       if ($content_type && theme_get_setting("enable_per_type_layout_{$region}")) {
-        $override = theme_get_setting("solo_layout_{$region}_2col_{$content_type}");
+        $layouts = theme_get_setting('solo_layouts') ?? [];
+        $override = $layouts[$region]['2col'][$content_type] ?? NULL;
         if (!empty($override)) {
           $layout = $override;
         }
@@ -1052,7 +1053,8 @@ function solo_preprocess_page(&$variables) {
       }
 
       if ($content_type && theme_get_setting("enable_per_type_layout_{$region}")) {
-        $override = theme_get_setting("solo_layout_{$region}_3col_{$content_type}");
+        $layouts = theme_get_setting('solo_layouts') ?? [];
+        $override = $layouts[$region]['3col'][$content_type] ?? NULL;
         if (!empty($override)) {
           $layout = $override;
         }
@@ -1063,7 +1065,8 @@ function solo_preprocess_page(&$variables) {
       $layout = theme_get_setting("{$region}_4col") ?? 'solo-col-1-1-1-1';
 
       if ($content_type && theme_get_setting("enable_per_type_layout_{$region}")) {
-        $override = theme_get_setting("solo_layout_{$region}_4col_{$content_type}");
+        $layouts = theme_get_setting('solo_layouts') ?? [];
+        $override = $layouts[$region]['4col'][$content_type] ?? NULL;
         if (!empty($override)) {
           $layout = $override;
         }
@@ -1099,7 +1102,8 @@ function solo_preprocess_page(&$variables) {
 
         // Check for content type-specific width override.
         if ($type_widths) {
-          $content_type_width = theme_get_setting('site_width_' . $content_type);
+          $site_widths = theme_get_setting('site_widths') ?? [];
+          $content_type_width = $site_widths[$content_type] ?? NULL;
           if (!empty($content_type_width)) {
             $final_widths = $content_type_width;
           }

@@ -963,12 +963,15 @@ function solo_settings_search_submit(array &$form, FormStateInterface $form_stat
  * Get Default value.
  */
 function _solo_get_layout_default($region, $col, $type_id) {
-  $key = "solo_layout_{$region}_{$col}_$type_id";
   $global = "{$region}_{$col}";
   $enabled = theme_get_setting("enable_per_type_layout_$region");
 
-  $val = theme_get_setting($key);
-  if (empty($val) || !$enabled) {
+  $val = NULL;
+  if ($enabled) {
+    $layouts = theme_get_setting('solo_layouts') ?? [];
+    $val = $layouts[$region][$col][$type_id] ?? NULL;
+  }
+  if (empty($val)) {
     $val = theme_get_setting($global);
   }
 

@@ -155,6 +155,9 @@ solo.settings:
           template:
             type: string
             label: 'Menu template filename'
+          menu_name:
+            type: string
+            label: 'Menu display name'
 
     # ===============================================
     # PRELOADER
@@ -1122,8 +1125,59 @@ solo.settings:
         use_default:
           type: boolean
           label: 'Use default'
+        path:
+          type: string
+          label: 'Favicon path'
+        mimetype:
+          type: string
+          label: 'Favicon MIME type'
 
+    # ===============================================
+    # COMMENT SETTINGS
+    # ===============================================
+    comment_heading_first:
+      type: integer
+      label: 'Comment heading first'
+    comment_title_tag:
+      type: string
+      label: 'Comment title tag'
+    comment_show_permalink:
+      type: integer
+      label: 'Comment show permalink'
+    comment_show_author:
+      type: integer
+      label: 'Comment show author'
+    comment_show_date:
+      type: integer
+      label: 'Comment show date'
+    comment_show_picture:
+      type: integer
+      label: 'Comment show picture'
+    comment_show_new_indicator:
+      type: integer
+      label: 'Comment show new indicator'
+    comment_date_format:
+      type: string
+      label: 'Comment date format'
+    comment_form_position:
+      type: string
+      label: 'Comment form position'
 
+    # ===============================================
+    # DEBUG / DEVELOPMENT SETTINGS
+    # ===============================================
+    placeholder_info:
+      type: string
+      label: 'Placeholder info'
+    solo_menu_debug:
+      type: integer
+      label: 'Menu debug mode'
+    solo_menu_debug_verbosity:
+      type: string
+      label: 'Menu debug verbosity'
+    debug_info:
+      type: string
+      label: 'Debug info'
 
     # ===============================================
     # REGION COLORS SECTION

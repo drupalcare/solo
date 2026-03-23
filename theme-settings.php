@@ -446,12 +446,19 @@ function _solo_theme_settings_submit($form, FormStateInterface $form_state) {
   $custom_widths_enabled = (bool) $form_state->getValue('enable_custom_widths', FALSE);
   $config->set('enable_custom_widths', $custom_widths_enabled);
 
-  if (!$custom_widths_enabled) {
-    foreach ($content_types as $type) {
-      $key = "site_width_{$type->id()}";
-      if ($config->get($key) !== NULL) {
-        $config->clear($key);
-      }
+  foreach ($content_types as $type) {
+    $type_id = $type->id();
+    $flat_key = "site_width_$type_id";
+    // Read from the flat form value (saved by default handler).
+    $val = $form_state->getValue($flat_key);
+    // Clear the flat key (default handler may have saved it).
+    $config->clear($flat_key);
+
+    if ($custom_widths_enabled && !empty($val)) {
+      $config->set("site_widths.$type_id", $val);
+    }
+    else {
+      $config->clear("site_widths.$type_id");
     }
   }
 
@@ -461,27 +468,20 @@ function _solo_theme_settings_submit($form, FormStateInterface $form_state) {
     $config->set($enable_key, $enabled);
 
     foreach ($content_types as $type_id => $type) {
-      $key_2col = "solo_layout_{$region}_2col_$type_id";
-      $key_3col = "solo_layout_{$region}_3col_$type_id";
-      $key_4col = "solo_layout_{$region}_4col_$type_id";
-      if ($enabled) {
-        foreach ([2, 3, 4] as $col) {
-          $key = "solo_layout_{$region}_{$col}col_$type_id";
-          $val = $form_state->getValue($key);
+      foreach ([2, 3, 4] as $col) {
+        $flat_key = "solo_layout_{$region}_{$col}col_$type_id";
+        $nested_key = "solo_layouts.$region.{$col}col.$type_id";
+        // Clear the flat key (default handler may have saved it).
+        $config->clear($flat_key);
+
+        if ($enabled) {
+          $val = $form_state->getValue($flat_key);
           $global = $form_state->getValue("{$region}_{$col}col");
-          _solo_set_or_clear_layout($config, $key, $val, $global);
+          _solo_set_or_clear_layout($config, $nested_key, $val, $global);
         }
-      }
-      else {
-        // On disable, always clear overrides (they will fallback to global).
-        if ($config->get($key_2col) !== NULL) {
-          $config->clear($key_2col);
-        }
-        if ($config->get($key_3col) !== NULL) {
-          $config->clear($key_3col);
-        }
-        if ($config->get($key_4col) !== NULL) {
-          $config->clear($key_4col);
+        else {
+          // On disable, clear overrides (they will fallback to global).
+          $config->clear($nested_key);
         }
       }
     }
@@ -528,8 +528,9 @@ function _solo_theme_settings_submit($form, FormStateInterface $form_state) {
   $cleaned = [];
   foreach ($assignments as $row) {
     if (is_array($row) && !empty($row['menu_id']) && !empty($row['template'])) {
-      $cleaned[] = [
+      $cleaned[$row['menu_id']] = [
         'menu_id' => $row['menu_id'],
+        'menu_name' => $row['menu_name'] ?? $row['menu_id'],
         'template' => $row['template'],
       ];
     }

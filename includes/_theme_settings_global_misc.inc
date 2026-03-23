@@ -77,9 +77,10 @@ if (\Drupal::moduleHandler()->moduleExists("solo_utilities") && solo_utilities__
     ],
   ];
 
+  $site_widths = theme_get_setting('site_widths') ?? [];
   foreach ($content_types as $type => $label) {
     $global_width = theme_get_setting("site_global_width") ?? "sw-1600";
-    $override = theme_get_setting("site_width_" . $type);
+    $override = $site_widths[$type] ?? NULL;
     $form["solo_settings"]["settings_global_misc"]["layout_dimensions"]["content_type_widths"]["site_width_" . $type] = [
       "#title" => t("Width for @content_type", ["@content_type" => $label]),
       "#type" => "select",

@@ -366,7 +366,8 @@ font-awesome-6-ex:
   js:
     https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/js/all.min.js: { type: external, minified: true, weight: -200, attributes: { defer: true } }
 
-# JS Dynamic.
+# JS Dynamic dependencies (the actual JS file is attached via html_head in
+# preprocess, written to public:// on theme settings save).
 solo-js-dynamic:
   js:
     js/base/placeholder.js: { attributes: { defer: true } }

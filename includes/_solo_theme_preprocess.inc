@@ -5,7 +5,6 @@
  * Theme preprocess functions.
  */
 
-use Drupal\Core\File\FileSystemInterface;
 use Drupal\Core\Render\Markup;
 use Drupal\Core\Url;
 use Drupal\views\Render\ViewsRenderPipelineMarkup;
@@ -13,7 +12,6 @@ use Drupal\Component\Utility\Html;
 use Drupal\Component\Utility\UrlHelper;
 use Drupal\Core\Datetime\DrupalDateTime;
 use Drupal\Core\Entity\EntityInterface;
-use Drupal\Core\File\FileExists;
 use Drupal\Core\Template\Attribute;
 use Drupal\Core\Routing\RouteMatchInterface;
 use Drupal\Core\Controller\TitleResolver;
@@ -423,7 +421,7 @@ function solo_preprocess_html(&$variables): void {
   }
 
   $google_font = theme_get_setting('site_import_google_font');
-  if (!empty($google_font)) {
+  if (!empty($google_font) && UrlHelper::isValid($google_font, TRUE)) {
     $variables['#attached']['html_head'][] = [
       [
         '#tag' => 'link',
@@ -454,86 +452,11 @@ function solo_preprocess_html(&$variables): void {
     ];
   }
 
-  $file_system = \Drupal::service('file_system');
-  $file_url_generator = \Drupal::service('file_url_generator');
-
-  // Assuming you've already retrieved your dynamic content.
-  $css_dynamic = theme_get_setting('site_css_dynamic');
-  $js_dynamic = theme_get_setting('site_js_dynamic');
-
-  // Define the file URIs.
-  $css_file_uri = 'public://solo/css/solo-css-dynamic.css';
-  $js_file_uri = 'public://solo/js/solo-js-dynamic.js';
-
-  // Check and prepare directories.
-  $css_directory = $file_system->dirname($css_file_uri);
-  $js_directory = $file_system->dirname($js_file_uri);
-  if (!$file_system->prepareDirectory($css_directory, FileSystemInterface::CREATE_DIRECTORY) ||
-      !$file_system->prepareDirectory($js_directory, FileSystemInterface::CREATE_DIRECTORY)) {
-    // Log an error if directories could not be prepared.
-    \Drupal::logger('solo_preprocess_html')->error('Failed to prepare directory for CSS or JS.');
-    return;
-  }
-
-  // Handle dynamic CSS.
-  if (!empty($css_dynamic)) {
-    // Write the CSS content to the file.
-    if ($file_system->saveData($css_dynamic, $css_file_uri, FileExists::Replace) !== FALSE) {
-      // Generate the absolute URL for the CSS file and attach it to the HTML.
-      $css_hash = md5($css_dynamic);
-      $css_url = $file_url_generator->generateAbsoluteString($css_file_uri) . '?v=' . $css_hash;
-      $variables['#attached']['html_head'][] = [
-        [
-          '#type' => 'html_tag',
-          '#tag' => 'link',
-          '#attributes' => ['href' => $css_url, 'rel' => 'stylesheet'],
-        ],
-        'solo_dynamic_css',
-      ];
-    }
-    else {
-      \Drupal::logger('solo_preprocess_html')->error('Failed to save dynamic CSS content.');
-    }
-  }
-  else {
-    // Delete the CSS file if $css_dynamic is empty.
-    $css_real_path = \Drupal::service('file_system')->realpath($css_file_uri);
-    if (file_exists($css_real_path)) {
-      $file_system->delete($css_file_uri);
-    }
-  }
-
-  // Handle dynamic JS.
-  if (!empty($js_dynamic)) {
-    // Attach the JS library.
+  // Attach JS dynamic library for its dependencies (jQuery, drupal, etc.).
+  // The actual dynamic CSS/JS files are injected via hook_css_alter() and
+  // hook_js_alter() in _solo_theme_alter.inc to ensure they load last.
+  if (!empty(theme_get_setting('site_js_dynamic'))) {
     $variables['#attached']['library'][] = 'solo/solo-js-dynamic';
-    // Write the JS content to the file.
-    if ($file_system->saveData($js_dynamic, $js_file_uri, FileExists::Replace) !== FALSE) {
-      // Generate the absolute URL for the JS file and attach it to the HTML.
-      $js_hash = md5($js_dynamic);
-      $js_url = $file_url_generator->generateAbsoluteString($js_file_uri) . '?v=' . $js_hash;
-      $variables['#attached']['html_head'][] = [
-        [
-          '#type' => 'html_tag',
-          '#tag' => 'script',
-          '#attributes' => [
-            'src' => $js_url,
-            'type' => 'application/javascript',
-          ],
-        ],
-        'solo_dynamic_js',
-      ];
-    }
-    else {
-      \Drupal::logger('solo_preprocess_html')->error('Failed to save dynamic JS content.');
-    }
-  }
-  else {
-    // Delete the JS file if $js_dynamic is empty.
-    $js_real_path = \Drupal::service('file_system')->realpath($js_file_uri);
-    if (file_exists($js_real_path)) {
-      $file_system->delete($js_file_uri);
-    }
   }
 
   if (theme_get_setting('site_global_font_size') || theme_get_setting('site_global_regions_gap')) {
@@ -888,15 +811,21 @@ function _get_theme_variables() {
  *   The width class string, or NULL if not defined or not supported.
  */
 function _get_node_width_class(NodeInterface $node): ?string {
+  $cache = &drupal_static(__FUNCTION__, []);
+  $nid = $node->id();
+  if (array_key_exists($nid, $cache)) {
+    return $cache[$nid];
+  }
+  $cache[$nid] = NULL;
   if (\Drupal::moduleHandler()->moduleExists('solo_utilities') &&
       \Drupal::entityTypeManager()->hasDefinition('node_width')) {
     $items = \Drupal::entityTypeManager()->getStorage('node_width')
-      ->loadByProperties(['node_id' => $node->id()]);
+      ->loadByProperties(['node_id' => $nid]);
     if (!empty($items)) {
-      return reset($items)->get('width_class')->value;
+      $cache[$nid] = reset($items)->get('width_class')->value;
     }
   }
-  return NULL;
+  return $cache[$nid];
 }
 
 /**
@@ -928,11 +857,17 @@ function solo_preprocess_page(&$variables) {
     $formatted = theme_get_setting('footer_copyright_formatted');
     if (!empty($formatted['value'])) {
       $format = $formatted['format'] ?? 'basic_html';
-      $value = str_replace('%year%', date('Y'), $formatted['value']);
-      $variables['footer_copyright_formatted_rendered'] = check_markup(
-        $value,
-        $format
-      );
+      $current_year = \Drupal::service('date.formatter')->format(\Drupal::time()->getRequestTime(), 'custom', 'Y');
+      $value = str_replace('%year%', $current_year, $formatted['value']);
+      try {
+        $variables['footer_copyright_formatted_rendered'] = check_markup(
+          $value,
+          $format
+        );
+      }
+      catch (\Exception $e) {
+        \Drupal::logger('solo')->error('Invalid text format %format in footer copyright.', ['%format' => $format]);
+      }
     }
   }
 

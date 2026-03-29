@@ -6,6 +6,7 @@
  */
 
 use Drupal\Core\File\FileSystemInterface;
+use Drupal\Core\Render\Markup;
 use Drupal\Core\Url;
 use Drupal\views\Render\ViewsRenderPipelineMarkup;
 use Drupal\Component\Utility\Html;
@@ -438,11 +439,16 @@ function solo_preprocess_html(&$variables): void {
 
   $css_injector = theme_get_setting('site_css_injector');
   if (!empty($css_injector)) {
+    // Sanitize: strip HTML tags to prevent XSS (e.g. </style><script>).
+    // Valid CSS never contains HTML tags, so this is safe for all CSS.
+    $css_injector_clean = strip_tags($css_injector);
+    $css_injector_clean = preg_replace('/\s+/', ' ', trim($css_injector_clean));
     $variables['#attached']['html_head'][] = [
       [
         '#type' => 'html_tag',
         '#tag' => 'style',
-        '#value' => $css_injector,
+        '#attributes' => ['id' => 'solo-css-injector'],
+        '#value' => Markup::create($css_injector_clean),
       ],
       'inline_css',
     ];

@@ -304,3 +304,60 @@ function solo_form_search_block_form_alter(&$form, FormStateInterface $form_stat
   // Attach the custom JS library.
   $form['#attached']['library'][] = 'solo/solo-search-settings';
 }
+
+/**
+ * Implements hook_css_alter().
+ *
+ * Injects the dynamic CSS file into Drupal's CSS pipeline with a high weight
+ * so it loads after all other stylesheets. The file is written to public:// on
+ * theme settings save by _solo_write_dynamic_assets().
+ */
+function solo_css_alter(&$css, \Drupal\Core\Asset\AttachedAssetsInterface $assets, \Drupal\Core\Language\LanguageInterface $language) {
+  $css_dynamic = theme_get_setting('site_css_dynamic');
+  if (empty($css_dynamic)) {
+    return;
+  }
+  $css_file_uri = 'public://solo/css/solo-css-dynamic.css';
+  $real_path = \Drupal::service('file_system')->realpath($css_file_uri);
+  if ($real_path && file_exists($real_path)) {
+    $css_url = \Drupal::service('file_url_generator')
+      ->generateString($css_file_uri);
+    $css[$css_url] = [
+      'weight' => 999,
+      'group' => CSS_THEME,
+      'type' => 'file',
+      'data' => $css_url,
+      'media' => 'all',
+      'preprocess' => TRUE,
+    ];
+  }
+}
+
+/**
+ * Implements hook_js_alter().
+ *
+ * Injects the dynamic JS file into Drupal's JS pipeline with a high weight
+ * so it loads after all other scripts. The file is written to public:// on
+ * theme settings save by _solo_write_dynamic_assets().
+ */
+function solo_js_alter(&$javascript, \Drupal\Core\Asset\AttachedAssetsInterface $assets, \Drupal\Core\Language\LanguageInterface $language) {
+  $js_dynamic = theme_get_setting('site_js_dynamic');
+  if (empty($js_dynamic)) {
+    return;
+  }
+  $js_file_uri = 'public://solo/js/solo-js-dynamic.js';
+  $real_path = \Drupal::service('file_system')->realpath($js_file_uri);
+  if ($real_path && file_exists($real_path)) {
+    $js_url = \Drupal::service('file_url_generator')
+      ->generateString($js_file_uri);
+    $javascript[$js_url] = [
+      'weight' => 999,
+      'group' => JS_DEFAULT,
+      'type' => 'file',
+      'data' => $js_url,
+      'scope' => 'header',
+      'preprocess' => TRUE,
+      'attributes' => ['defer' => TRUE],
+    ];
+  }
+}

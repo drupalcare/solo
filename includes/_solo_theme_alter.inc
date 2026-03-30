@@ -320,15 +320,19 @@ function solo_css_alter(&$css, \Drupal\Core\Asset\AttachedAssetsInterface $asset
   $css_file_uri = 'public://solo/css/solo-css-dynamic.css';
   $real_path = \Drupal::service('file_system')->realpath($css_file_uri);
   if ($real_path && file_exists($real_path)) {
-    $css_url = \Drupal::service('file_url_generator')
-      ->generateString($css_file_uri);
-    $css[$css_url] = [
+    $css[$css_file_uri] = [
       'weight' => 999,
       'group' => CSS_THEME,
       'type' => 'file',
-      'data' => $css_url,
+      'data' => $css_file_uri,
       'media' => 'all',
       'preprocess' => TRUE,
+      'version' => -1,
+      'license' => [
+        'name' => 'GPL-2.0-or-later',
+        'url' => 'https://www.drupal.org/licensing/faq',
+        'gpl-compatible' => TRUE,
+      ],
     ];
   }
 }
@@ -348,15 +352,19 @@ function solo_js_alter(&$javascript, \Drupal\Core\Asset\AttachedAssetsInterface 
   $js_file_uri = 'public://solo/js/solo-js-dynamic.js';
   $real_path = \Drupal::service('file_system')->realpath($js_file_uri);
   if ($real_path && file_exists($real_path)) {
-    $js_url = \Drupal::service('file_url_generator')
-      ->generateString($js_file_uri);
-    $javascript[$js_url] = [
+    $javascript[$js_file_uri] = [
       'weight' => 999,
       'group' => JS_DEFAULT,
       'type' => 'file',
-      'data' => $js_url,
+      'data' => $js_file_uri,
       'scope' => 'header',
       'preprocess' => TRUE,
+      'version' => -1,
+      'license' => [
+        'name' => 'GPL-2.0-or-later',
+        'url' => 'https://www.drupal.org/licensing/faq',
+        'gpl-compatible' => TRUE,
+      ],
       'attributes' => ['defer' => TRUE],
     ];
   }

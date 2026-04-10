@@ -359,6 +359,9 @@ function solo_js_alter(&$javascript, \Drupal\Core\Asset\AttachedAssetsInterface 
       'data' => $js_file_uri,
       'scope' => 'header',
       'preprocess' => TRUE,
+      // Required by JsCollectionRenderer (core) for file assets; omitting
+      // triggers "Undefined array key 'cache'" on PHP 8.2+.
+      'cache' => TRUE,
       'version' => -1,
       'license' => [
         'name' => 'GPL-2.0-or-later',

@@ -306,69 +306,55 @@ function solo_form_search_block_form_alter(&$form, FormStateInterface $form_stat
 }
 
 /**
- * Implements hook_css_alter().
+ * Implements hook_library_info_alter().
  *
- * Injects the dynamic CSS file into Drupal's CSS pipeline with a high weight
- * so it loads after all other stylesheets. The file is written to public:// on
- * theme settings save by _solo_write_dynamic_assets().
+ * Best-effort self-heal for the dynamic CSS/JS files that back the
+ * "CSS Dynamic" / "JavaScript Dynamic" theme settings fields. The files
+ * live in public://solo/{css,js}/... and are normally written by the
+ * theme settings submit handler in theme-settings.php. If theme config
+ * still has content but the on-disk file is missing — fresh deploy, a
+ * sites/*\/files restore that omitted the dynamic directory, a config
+ * import on an environment that never had the files — this hook rewrites
+ * them from config so the library resolves cleanly.
+ *
+ * LIMITATION (theme-only fix): this hook fires when library discovery
+ * rebuilds, not on every request. Rebuilds happen on drush cr, on a full
+ * cache rebuild, when the library discovery cache expires, or on a
+ * first-time discovery miss. It is NOT guaranteed to fire immediately
+ * after `drush config:import` alone — cim only clears its own caches, not
+ * library discovery. The standard deploy recipe `drush cim && drush cr`
+ * covers it, because `cr` clears library discovery. A site that imports
+ * config without running `drush cr` will keep serving the pre-import
+ * library definition until the discovery cache is cleared or rebuilt, at
+ * which point this hook fires and reconciles the on-disk files. For a
+ * guaranteed post-cim-only regeneration, a small companion module with a
+ * ConfigEvents::SAVE subscriber would be required — themes can't register
+ * event subscribers (DrupalKernel loads services.yml from modules only).
+ *
+ * The library definitions remain static. Attachment is guarded in
+ * preprocess_html() with file_exists(), which avoids caching transient
+ * filesystem failures into library discovery state.
  */
-function solo_css_alter(&$css, \Drupal\Core\Asset\AttachedAssetsInterface $assets, \Drupal\Core\Language\LanguageInterface $language) {
-  $css_dynamic = theme_get_setting('site_css_dynamic');
-  if (empty($css_dynamic)) {
+function solo_library_info_alter(array &$libraries, string $extension): void {
+  if ($extension !== 'solo') {
     return;
   }
-  $css_file_uri = 'public://solo/css/solo-css-dynamic.css';
-  $real_path = \Drupal::service('file_system')->realpath($css_file_uri);
-  if ($real_path && file_exists($real_path)) {
-    $css[$css_file_uri] = [
-      'weight' => 999,
-      'group' => CSS_THEME,
-      'type' => 'file',
-      'data' => $css_file_uri,
-      'media' => 'all',
-      'preprocess' => TRUE,
-      'version' => -1,
-      'license' => [
-        'name' => 'GPL-2.0-or-later',
-        'url' => 'https://www.drupal.org/licensing/faq',
-        'gpl-compatible' => TRUE,
-      ],
-    ];
-  }
-}
+  // Pass 'solo' explicitly: hook_library_info_alter() can fire before
+  // theme initialization, so theme_get_setting() without a $theme
+  // argument may return defaults from the wrong theme.
+  $css_dynamic = theme_get_setting('site_css_dynamic', 'solo');
+  $js_dynamic = theme_get_setting('site_js_dynamic', 'solo');
+  $css_uri = 'public://solo/css/solo-css-dynamic.css';
+  $js_uri = 'public://solo/js/solo-js-dynamic.js';
 
-/**
- * Implements hook_js_alter().
- *
- * Injects the dynamic JS file into Drupal's JS pipeline with a high weight
- * so it loads after all other scripts. The file is written to public:// on
- * theme settings save by _solo_write_dynamic_assets().
- */
-function solo_js_alter(&$javascript, \Drupal\Core\Asset\AttachedAssetsInterface $assets, \Drupal\Core\Language\LanguageInterface $language) {
-  $js_dynamic = theme_get_setting('site_js_dynamic');
-  if (empty($js_dynamic)) {
-    return;
+  // Self-heal any drift between config and the on-disk files.
+  $css_missing = !empty($css_dynamic) && !file_exists($css_uri);
+  $js_missing = !empty($js_dynamic) && !file_exists($js_uri);
+  if ($css_missing || $js_missing) {
+    _solo_write_dynamic_assets(
+      $css_missing ? $css_dynamic : NULL,
+      $js_missing ? $js_dynamic : NULL
+    );
   }
-  $js_file_uri = 'public://solo/js/solo-js-dynamic.js';
-  $real_path = \Drupal::service('file_system')->realpath($js_file_uri);
-  if ($real_path && file_exists($real_path)) {
-    $javascript[$js_file_uri] = [
-      'weight' => 999,
-      'group' => JS_DEFAULT,
-      'type' => 'file',
-      'data' => $js_file_uri,
-      'scope' => 'header',
-      'preprocess' => TRUE,
-      // Required by JsCollectionRenderer (core) for file assets; omitting
-      // triggers "Undefined array key 'cache'" on PHP 8.2+.
-      'cache' => TRUE,
-      'version' => -1,
-      'license' => [
-        'name' => 'GPL-2.0-or-later',
-        'url' => 'https://www.drupal.org/licensing/faq',
-        'gpl-compatible' => TRUE,
-      ],
-      'attributes' => ['defer' => TRUE],
-    ];
-  }
+
 }

@@ -366,16 +366,23 @@ font-awesome-6-ex:
   js:
     https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/js/all.min.js: { type: external, minified: true, weight: -200, attributes: { defer: true } }
 
-# JS Dynamic dependencies (the actual JS file is attached via html_head in
-# preprocess, written to public:// on theme settings save).
+# Dynamic CSS/JS support. CSS can safely use a public:// library asset and
+# flow through the normal asset pipeline. JS cannot: core's locale module
+# scans JS file assets for translatable strings and rejects stream-wrapper
+# URIs like public://. So solo-js-dynamic is intentionally a dependencies-only
+# helper library; the dynamic JS file itself is attached as a deferred
+# <script> tag in preprocess_html().
+solo-css-dynamic:
+  css:
+    theme:
+      public://solo/css/solo-css-dynamic.css: { weight: 999 }
 solo-js-dynamic:
-  js:
-    js/base/placeholder.js: { attributes: { defer: true } }
   dependencies:
     - core/jquery
-    - core/drupal.ajax
     - core/drupal
+    - core/drupal.ajax
     - core/drupalSettings
+    - core/drupal.message
     - core/once
 
 # Google Fonts - Global.

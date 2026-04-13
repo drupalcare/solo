@@ -22,6 +22,50 @@ use Drupal\webform\Entity\Webform;
 use Drupal\Core\Render\Element;
 
 /**
+ * Minifies trusted inline CSS without corrupting quoted strings.
+ *
+ * This is intentionally limited to whitespace/comment compaction for CSS that
+ * trusted administrators enter into the theme settings "CSS Injector" field.
+ * It mirrors the safe whitespace handling used by Drupal core's CSS optimizer
+ * for quoted strings and selector syntax, but does not rewrite URLs because
+ * this CSS is emitted inline.
+ *
+ * @param string $css
+ *   Raw CSS from theme settings.
+ *
+ * @return string
+ *   Compact CSS suitable for inline <style> output.
+ */
+function _solo_minify_inline_css(string $css): string {
+  // Remove an initial @charset if present; it is invalid inside inline CSS.
+  $css = preg_replace('/^@charset\s+[\'"](\S*?)\b[\'"];/i', '', $css);
+
+  // Match comment blocks and quoted strings so comments can be removed without
+  // touching string content.
+  $comment = '/\*[^*]*\*+(?:[^/*][^*]*\*+)*/';
+  $double_quot = '"[^"\\\\]*(?:\\\\.[^"\\\\]*)*"';
+  $single_quot = "'[^'\\\\]*(?:\\\\.[^'\\\\]*)*'";
+
+  $css = preg_replace(
+    "<($double_quot|$single_quot)|$comment>Ss",
+    '$1',
+    $css
+  );
+
+  // Collapse whitespace in a CSS-aware way. Preserve spaces where selectors or
+  // functional syntax require them, such as descendant combinators and
+  // @media conditions.
+  $css = preg_replace('<
+    (' . $double_quot . '|' . $single_quot . ')
+    | \s*([@{};,])\s*
+    | \s+([\)])
+    | ([\(:])\s+
+  >xSs', '$1$2$3$4', $css);
+
+  return trim((string) $css);
+}
+
+/**
  * Ensures the class attribute is an array before appending values.
  *
  * This defensive helper prevents "[] operator not supported for strings" errors
@@ -437,26 +481,47 @@ function solo_preprocess_html(&$variables): void {
 
   $css_injector = theme_get_setting('site_css_injector');
   if (!empty($css_injector)) {
-    // Sanitize: strip HTML tags to prevent XSS (e.g. </style><script>).
-    // Valid CSS never contains HTML tags, so this is safe for all CSS.
-    $css_injector_clean = strip_tags($css_injector);
-    $css_injector_clean = preg_replace('/\s+/', ' ', trim($css_injector_clean));
+    // Trusted site-builder CSS should be emitted raw, but compacted for a
+    // smaller inline <style> block. Do not HTML-escape it: that would corrupt
+    // valid CSS syntax and escaped selectors.
     $variables['#attached']['html_head'][] = [
       [
         '#type' => 'html_tag',
         '#tag' => 'style',
         '#attributes' => ['id' => 'solo-css-injector'],
-        '#value' => Markup::create($css_injector_clean),
+        '#value' => Markup::create(_solo_minify_inline_css((string) $css_injector)),
       ],
       'inline_css',
     ];
   }
 
-  // Attach JS dynamic library for its dependencies (jQuery, drupal, etc.).
-  // The actual dynamic CSS/JS files are injected via hook_css_alter() and
-  // hook_js_alter() in _solo_theme_alter.inc to ensure they load last.
-  if (!empty(theme_get_setting('site_js_dynamic'))) {
+  // Attach the dynamic CSS/JS assets. CSS is a normal library backed by a
+  // public:// URI. JS cannot be a public:// library asset because the locale
+  // module parses JS file assets for Drupal.t() strings and rejects
+  // stream-wrapper URIs. So we attach the dependency library plus a deferred
+  // script tag for the generated JS file itself.
+  if (!empty(theme_get_setting('site_css_dynamic'))
+    && file_exists('public://solo/css/solo-css-dynamic.css')) {
+    $variables['#attached']['library'][] = 'solo/solo-css-dynamic';
+  }
+  if (!empty(theme_get_setting('site_js_dynamic'))
+    && file_exists('public://solo/js/solo-js-dynamic.js')) {
     $variables['#attached']['library'][] = 'solo/solo-js-dynamic';
+    $dynamic_js_url = \Drupal::service('file_url_generator')
+      ->generateString('public://solo/js/solo-js-dynamic.js');
+    $asset_query_string = \Drupal::service('asset.query_string')->get();
+    $separator = str_contains($dynamic_js_url, '?') ? '&' : '?';
+    $variables['#attached']['html_head'][] = [
+      [
+        '#type' => 'html_tag',
+        '#tag' => 'script',
+        '#attributes' => [
+          'src' => $dynamic_js_url . $separator . $asset_query_string,
+          'defer' => TRUE,
+        ],
+      ],
+      'solo_js_dynamic',
+    ];
   }
 
   if (theme_get_setting('site_global_font_size') || theme_get_setting('site_global_regions_gap')) {

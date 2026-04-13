@@ -5,7 +5,80 @@
  * Theme Setting.
  */
 
+use Drupal\Core\File\FileExists;
+use Drupal\Core\File\FileSystemInterface;
 use Drupal\Core\Url;
+
+/**
+ * Writes the dynamic CSS/JS theme settings to public:// on disk.
+ *
+ * Backs the "CSS Dynamic" / "JavaScript Dynamic" theme settings fields.
+ * Called from the theme settings submit handler in theme-settings.php AND
+ * from solo_library_info_alter() as a best-effort self-heal on library
+ * discovery rebuilds. Lives in _solo_theme_misc.inc (always required from
+ * solo.theme) rather than theme-settings.php (only loaded when the
+ * settings form renders) so both call sites can reach it.
+ *
+ * Passing NULL for one of the arguments means "leave that file alone on
+ * this call" — used by the self-heal path in solo_library_info_alter()
+ * when only one of the two files is drifted.
+ *
+ * Passing an empty string means "the user cleared the field, delete the
+ * file" — used by the submit handler when the user wipes the textarea.
+ *
+ * @param string|null $css_dynamic
+ *   CSS source to persist. NULL to skip the CSS file entirely on this
+ *   call. Empty string to delete the CSS file if it exists.
+ * @param string|null $js_dynamic
+ *   JS source to persist. NULL to skip the JS file entirely on this
+ *   call. Empty string to delete the JS file if it exists.
+ */
+function _solo_write_dynamic_assets(?string $css_dynamic, ?string $js_dynamic): void {
+  $file_system = \Drupal::service('file_system');
+  $logger = \Drupal::logger('solo');
+  $css_file_uri = 'public://solo/css/solo-css-dynamic.css';
+  $js_file_uri = 'public://solo/js/solo-js-dynamic.js';
+
+  if ($css_dynamic !== NULL) {
+    $css_directory = $file_system->dirname($css_file_uri);
+    if (!$file_system->prepareDirectory($css_directory, FileSystemInterface::CREATE_DIRECTORY)) {
+      $logger->error('Failed to prepare directory for dynamic CSS.');
+    }
+    elseif ($css_dynamic !== '') {
+      if ($file_system->saveData($css_dynamic, $css_file_uri, FileExists::Replace) === FALSE) {
+        $logger->error('Failed to save dynamic CSS file.');
+      }
+    }
+    else {
+      try {
+        $file_system->delete($css_file_uri);
+      }
+      catch (\Exception $e) {
+        // Missing file is fine — nothing to remove.
+      }
+    }
+  }
+
+  if ($js_dynamic !== NULL) {
+    $js_directory = $file_system->dirname($js_file_uri);
+    if (!$file_system->prepareDirectory($js_directory, FileSystemInterface::CREATE_DIRECTORY)) {
+      $logger->error('Failed to prepare directory for dynamic JS.');
+    }
+    elseif ($js_dynamic !== '') {
+      if ($file_system->saveData($js_dynamic, $js_file_uri, FileExists::Replace) === FALSE) {
+        $logger->error('Failed to save dynamic JS file.');
+      }
+    }
+    else {
+      try {
+        $file_system->delete($js_file_uri);
+      }
+      catch (\Exception $e) {
+        // Missing file is fine — nothing to remove.
+      }
+    }
+  }
+}
 
 /**
  * Helper function.

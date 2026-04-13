@@ -15,8 +15,6 @@ use Drupal\Core\Config\Config;
 use Drupal\Component\Utility\Html;
 use Drupal\Component\Utility\NestedArray;
 use Drupal\Component\Utility\UrlHelper;
-use Drupal\Core\File\FileExists;
-use Drupal\Core\File\FileSystemInterface;
 use Drupal\Core\Form\FormStateInterface;
 
 // ============================================================================
@@ -650,13 +648,24 @@ function _solo_theme_settings_submit($form, FormStateInterface $form_state) {
 
   // Write dynamic CSS/JS files after config is saved so settings and files
   // stay in sync. Must happen before cache clears so aggregation picks up
-  // the new files.
-  _solo_write_dynamic_assets($form_state);
+  // the new files. An empty string tells the helper to delete the file
+  // (user wiped the textarea); a real value replaces it.
+  _solo_write_dynamic_assets(
+    (string) $form_state->getValue('site_css_dynamic'),
+    (string) $form_state->getValue('site_js_dynamic')
+  );
+
+  // Reset the global asset query string. When JS/CSS aggregation is OFF,
+  // browsers cache the dynamic files by their stable URI + the global
+  // asset query string. Without this reset the updated file bytes would
+  // remain stale in the browser until the next full cache rebuild.
+  \Drupal::service('asset.query_string')->reset();
 
   // Clear theme registry.
   \Drupal::service('theme.registry')->reset();
 
-  // Clear library discovery.
+  // Clear library discovery. Also forces solo_library_info_alter() to
+  // re-run on the next discovery, which re-checks the on-disk files.
   \Drupal::service('library.discovery')->clearCachedDefinitions();
 
   // Clear Twig cache.
@@ -664,60 +673,6 @@ function _solo_theme_settings_submit($form, FormStateInterface $form_state) {
 
   // Invalidate config cache tags so cached pages reflect the new settings.
   Cache::invalidateTags(['config:' . $theme . '.settings']);
-}
-
-/**
- * Writes dynamic CSS/JS files from theme settings to the public file system.
- *
- * Called only on theme settings save, not on every page load.
- */
-function _solo_write_dynamic_assets(FormStateInterface $form_state) {
-  $file_system = \Drupal::service('file_system');
-
-  $css_file_uri = 'public://solo/css/solo-css-dynamic.css';
-  $js_file_uri = 'public://solo/js/solo-js-dynamic.js';
-
-  $css_dynamic = $form_state->getValue('site_css_dynamic');
-  $js_dynamic = $form_state->getValue('site_js_dynamic');
-
-  // Prepare directories.
-  $css_directory = $file_system->dirname($css_file_uri);
-  $js_directory = $file_system->dirname($js_file_uri);
-  if (!$file_system->prepareDirectory($css_directory, FileSystemInterface::CREATE_DIRECTORY) ||
-      !$file_system->prepareDirectory($js_directory, FileSystemInterface::CREATE_DIRECTORY)) {
-    \Drupal::logger('solo')->error('Failed to prepare directory for dynamic CSS or JS.');
-    return;
-  }
-
-  // Handle dynamic CSS.
-  if (!empty($css_dynamic)) {
-    if ($file_system->saveData($css_dynamic, $css_file_uri, FileExists::Replace) === FALSE) {
-      \Drupal::logger('solo')->error('Failed to save dynamic CSS file.');
-    }
-  }
-  else {
-    try {
-      $file_system->delete($css_file_uri);
-    }
-    catch (\Exception $e) {
-      // File does not exist, nothing to delete.
-    }
-  }
-
-  // Handle dynamic JS.
-  if (!empty($js_dynamic)) {
-    if ($file_system->saveData($js_dynamic, $js_file_uri, FileExists::Replace) === FALSE) {
-      \Drupal::logger('solo')->error('Failed to save dynamic JS file.');
-    }
-  }
-  else {
-    try {
-      $file_system->delete($js_file_uri);
-    }
-    catch (\Exception $e) {
-      // File does not exist, nothing to delete.
-    }
-  }
 }
 
 /**

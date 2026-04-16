@@ -116,5 +116,5 @@ form.views-exposed-form .exposed-form > * {
 }
 
 form.views-exposed-form .exposed-form > *:last-child {
-  margin-inline-end: var(--solopx0);
+  margin-inline-end: var(--solo-px0);
 }

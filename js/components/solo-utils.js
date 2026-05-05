@@ -558,17 +558,22 @@
   Drupal.solo.getMyBreakpoints = getMyBreakpoints;
 
   /**
+   * Gets the Solo page wrapper when the current response includes one.
+   *
+   * Ajax/modal responses can attach Solo libraries without rendering the full
+   * page template, so the wrapper is optional in those contexts.
+   *
+   * @returns {HTMLElement|null} The page wrapper element.
+   */
+  const getPageWrapper = () => document.querySelector(SELECTORS.PAGE_WRAPPER);
+
+  /**
    * Get breakpoint number based on the specified class and breakpoint prefix.
    * @param {string} [breakpointPrefix='mn'] - The prefix for the breakpoint.
    * @returns {number} The numeric breakpoint value.
    */
   Drupal.solo.getBreakpointNumber = (breakpointPrefix = 'mn') => {
-    const pageClass = document.querySelector(SELECTORS.PAGE_WRAPPER);
-    if (!pageClass) {
-      console.warn('Solo: Page wrapper element not found');
-      return BREAKPOINTS.MD;
-    }
-    return Drupal.solo.getMyBreakpoints(pageClass, breakpointPrefix);
+    return Drupal.solo.getMyBreakpoints(getPageWrapper(), breakpointPrefix);
   };
 
   /**
@@ -576,9 +581,8 @@
    * @returns {string} 'large' if layout is large, 'small' otherwise.
    */
   const getLayout = () => {
-    const pageClass = document.querySelector(SELECTORS.PAGE_WRAPPER);
+    const pageClass = getPageWrapper();
     if (!pageClass) {
-      console.warn('Solo: Page wrapper element not found');
       return 'small';
     }
 

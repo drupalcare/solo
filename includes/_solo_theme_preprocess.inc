@@ -1789,6 +1789,9 @@ function solo_preprocess_form_element(array &$variables): void {
 
   // Check if element name suggests it's date-related.
   $element_name = $element['#name'] ?? '';
+  if (is_array($element_name)) {
+    $element_name = (string) (reset($element_name) ?: '');
+  }
   if ($element_name !== '') {
     $date_indicators = ['date', 'created', 'changed', 'published', 'authored', 'start', 'end', 'from', 'to'];
     foreach ($date_indicators as $indicator) {
@@ -2139,6 +2142,9 @@ function solo_preprocess_container(array &$variables): void {
 
   // Detect AJAX wrappers.
   $container_id = $variables['attributes']['id'] ?? '';
+  if (is_array($container_id)) {
+    $container_id = (string) (reset($container_id) ?: '');
+  }
   if ($container_id !== '' && str_contains($container_id, 'ajax-wrapper')) {
     $variables['attributes']['class'][] = 'ajax-container';
   }

@@ -15,6 +15,10 @@
   --r-lk: var(--solo-purple);
 }
 
+.page-wrapper ul.primary li.core-task a {
+  color: var(--r-lk);
+}
+
 .page-wrapper ul.primary > li.core-task > a {
   padding-inline-start: var(--solo-px32);
   position: relative;

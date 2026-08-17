@@ -1,7 +1,7 @@
 name: Solo Sub-theme
 type: theme
 base theme: solo
-core_version_requirement: ^10 || ^11
+core_version_requirement: ^10 || ^11 || ^12
 description: 'Solo Sub-theme is an empty theme for your customization.'
 libraries:
   - solo_subtheme/solo-subtheme-global

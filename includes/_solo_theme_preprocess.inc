@@ -1177,7 +1177,19 @@ function solo_preprocess_node(array &$variables) {
   }
 
   // Remove the "Add new comment" link on teasers or when comment form visible.
-  if ($variables['teaser'] || !empty($variables['content']['comments']['comment_form'])) {
+  //
+  // Drupal 12 NO LONGER SETS $variables['teaser']. Core's
+  // template_preprocess_node() is gone entirely -- node preprocessing moved to
+  // NodeThemeHooks::preprocessNode(), whose documented variables include
+  // view_mode but not teaser, and nothing in core sets the key any more.
+  // Reading it directly raised "Warning: Undefined array key \"teaser\"" on
+  // every node render. Measured on 12.0.0-alpha1, 2026-09-08.
+  //
+  // view_mode is the canonical source and always has been -- core's own
+  // node.html.twig derives its teaser handling from it -- so this is what the
+  // removed variable was computed from, not a workaround.
+  $is_teaser = ($variables['view_mode'] ?? '') === 'teaser';
+  if ($is_teaser || !empty($variables['content']['comments']['comment_form'])) {
     unset($variables['content']['links']['comment']['#links']['comment-add']);
   }
 

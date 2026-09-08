@@ -50,13 +50,18 @@ $form["solo_settings"]["settings_social_icons"]["general_settings"]["sm_icon_siz
 
 $form["solo_settings"]["settings_social_icons"]["general_settings"]["sm_icon_colors"] = [
   "#type" => "textfield",
-  "#maxlength" => 7,
-  "#size" => 10,
+  // Long enough for a var() reference; 7 only fitted a hex colour, which made
+  // the "enter var(--name)" advice impossible to follow.
+  "#maxlength" => 40,
+  "#size" => 20,
   "#title" => t("Change Social Media Default Colors"),
-  "#description" => t("Select this option if you wish to alter the color of the social media icons."),
+  "#description" => t("A hex colour such as #1877f2, or a custom property reference such as var(--solo-fb). A bare property name like --solo-fb will not work: browsers ignore it and the icons stay grey. Leave empty to use each network's default colour."),
   "#default_value" => theme_get_setting("sm_icon_colors"),
   "#attributes" => [
-    "pattern" => "^#[a-fA-F0-9]{6}",
+    // Mirrors Drupal\solo\SocialIconColor::ACCEPTED. This is a convenience
+    // only; the server-side check in solo_theme_settings_validate() is the
+    // boundary that actually holds.
+    "pattern" => "^(#[0-9A-Fa-f]{3}|#[0-9A-Fa-f]{6}|var\\(\\s*--[A-Za-z0-9_-]+\\s*\\))$",
   ],
   "#wrapper_attributes" => [
     "data-drupal-selector" => "solo-color-picker",

@@ -53,8 +53,8 @@ function _solo_minify_inline_css(string $css): string {
   );
 
   // Collapse whitespace in a CSS-aware way. Preserve spaces where selectors or
-  // functional syntax require them, such as descendant combinators and
-  // @media conditions.
+  // functional syntax require them, such as descendant combinators and media
+  // query conditions.
   $css = preg_replace('<
     (' . $double_quot . '|' . $single_quot . ')
     | \s*([@{};,])\s*

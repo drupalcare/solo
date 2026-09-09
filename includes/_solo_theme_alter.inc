@@ -4,14 +4,10 @@
  * @file
  * Solo Theme Alter.
  */
+
 use Drupal\Core\Hook\Attribute\LegacyHook;
 use Drupal\solo\Hook\SoloThemeAlterHooks;
-use Drupal\Component\Utility\DeprecationHelper;
-use Drupal\Core\Extension\ThemeSettingsProvider;
-use Drupal\comment\CommentInterface;
 use Drupal\Core\Form\FormStateInterface;
-use Drupal\node\NodeInterface;
-use Drupal\node\Entity\NodeType;
 use Drupal\Core\Render\Element;
 
 /**
@@ -87,18 +83,16 @@ function solo_apply_hidden_content_types(array &$form, FormStateInterface $form_
  * Implements hook_form_FORM_ID_alter().
  */
 #[LegacyHook]
-function solo_form_node_preview_form_select_alter(&$form, FormStateInterface $form_state, $form_id): void
-{
-    \Drupal::service(SoloThemeAlterHooks::class)->formNodePreviewFormSelectAlter($form, $form_state, $form_id);
+function solo_form_node_preview_form_select_alter(&$form, FormStateInterface $form_state, $form_id): void {
+  \Drupal::service(SoloThemeAlterHooks::class)->formNodePreviewFormSelectAlter($form, $form_state, $form_id);
 }
 
 /**
  * Implements hook_form_FORM_ID_alter() for node_form.
  */
 #[LegacyHook]
-function solo_form_node_form_alter(array &$form, FormStateInterface $form_state, $form_id): void
-{
-    \Drupal::service(SoloThemeAlterHooks::class)->formNodeFormAlter($form, $form_state, $form_id);
+function solo_form_node_form_alter(array &$form, FormStateInterface $form_state, $form_id): void {
+  \Drupal::service(SoloThemeAlterHooks::class)->formNodeFormAlter($form, $form_state, $form_id);
 }
 
 /**
@@ -108,18 +102,16 @@ function solo_form_node_form_alter(array &$form, FormStateInterface $form_state,
  * E.g., node_edit_form__article → node-edit-form--article.html.twig.
  */
 #[LegacyHook]
-function solo_theme_suggestions_node_edit_form_alter(array &$suggestions, array $variables): void
-{
-    \Drupal::service(SoloThemeAlterHooks::class)->themeSuggestionsNodeEditFormAlter($suggestions, $variables);
+function solo_theme_suggestions_node_edit_form_alter(array &$suggestions, array $variables): void {
+  \Drupal::service(SoloThemeAlterHooks::class)->themeSuggestionsNodeEditFormAlter($suggestions, $variables);
 }
 
 /**
  * Implements hook_form_FORM_ID_alter().
  */
 #[LegacyHook]
-function solo_form_comment_form_alter(&$form, FormStateInterface $form_state, $form_id): void
-{
-    \Drupal::service(SoloThemeAlterHooks::class)->formCommentFormAlter($form, $form_state, $form_id);
+function solo_form_comment_form_alter(&$form, FormStateInterface $form_state, $form_id): void {
+  \Drupal::service(SoloThemeAlterHooks::class)->formCommentFormAlter($form, $form_state, $form_id);
 }
 
 /**
@@ -129,27 +121,24 @@ function solo_form_comment_form_alter(&$form, FormStateInterface $form_state, $f
  * Automatically detects date range fields and applies appropriate classes.
  */
 #[LegacyHook]
-function solo_form_views_exposed_form_alter(&$form): void
-{
-    \Drupal::service(SoloThemeAlterHooks::class)->formViewsExposedFormAlter($form);
+function solo_form_views_exposed_form_alter(&$form): void {
+  \Drupal::service(SoloThemeAlterHooks::class)->formViewsExposedFormAlter($form);
 }
 
 /**
  * Implements hook_form_FORM_ID_alter() for search_block_form.
  */
 #[LegacyHook]
-function solo_form_search_form_alter(&$form, FormStateInterface $form_state): void
-{
-    \Drupal::service(SoloThemeAlterHooks::class)->formSearchFormAlter($form, $form_state);
+function solo_form_search_form_alter(&$form, FormStateInterface $form_state): void {
+  \Drupal::service(SoloThemeAlterHooks::class)->formSearchFormAlter($form, $form_state);
 }
 
 /**
  * Implements hook_form_FORM_ID_alter() for search_block_form.
  */
 #[LegacyHook]
-function solo_form_search_block_form_alter(&$form, FormStateInterface $form_state): void
-{
-    \Drupal::service(SoloThemeAlterHooks::class)->formSearchBlockFormAlter($form, $form_state);
+function solo_form_search_block_form_alter(&$form, FormStateInterface $form_state): void {
+  \Drupal::service(SoloThemeAlterHooks::class)->formSearchBlockFormAlter($form, $form_state);
 }
 
 /**
@@ -183,7 +172,6 @@ function solo_form_search_block_form_alter(&$form, FormStateInterface $form_stat
  * filesystem failures into library discovery state.
  */
 #[LegacyHook]
-function solo_library_info_alter(array &$libraries, string $extension): void
-{
-    \Drupal::service(SoloThemeAlterHooks::class)->libraryInfoAlter($libraries, $extension);
+function solo_library_info_alter(array &$libraries, string $extension): void {
+  \Drupal::service(SoloThemeAlterHooks::class)->libraryInfoAlter($libraries, $extension);
 }

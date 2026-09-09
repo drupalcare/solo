@@ -4,13 +4,13 @@
  * @file
  * Theme Setting.
  */
+
 use Drupal\Core\Hook\Attribute\LegacyHook;
 use Drupal\solo\Hook\SoloThemeMiscHooks;
 use Drupal\Component\Utility\DeprecationHelper;
 use Drupal\Core\Extension\ThemeSettingsProvider;
 use Drupal\Core\File\FileExists;
 use Drupal\Core\File\FileSystemInterface;
-use Drupal\Core\Url;
 
 /**
  * Writes the dynamic CSS/JS theme settings to public:// on disk.
@@ -248,9 +248,8 @@ function _load_enable_toggleable_radios(array &$attachments): void {
  * Implements hook_page_attachments_alter().
  */
 #[LegacyHook]
-function solo_page_attachments_alter(array &$attachments): void
-{
-    \Drupal::service(SoloThemeMiscHooks::class)->pageAttachmentsAlter($attachments);
+function solo_page_attachments_alter(array &$attachments): void {
+  \Drupal::service(SoloThemeMiscHooks::class)->pageAttachmentsAlter($attachments);
 }
 
 /**

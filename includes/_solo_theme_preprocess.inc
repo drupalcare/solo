@@ -4,16 +4,15 @@
  * @file
  * Theme preprocess functions.
  */
+
 use Drupal\Core\Hook\Attribute\LegacyHook;
 use Drupal\solo\Hook\SoloThemePreprocessHooks;
 use Drupal\Component\Utility\DeprecationHelper;
 use Drupal\Core\Extension\ThemeSettingsProvider;
-use Drupal\Core\Render\Markup;
 use Drupal\Core\Url;
 use Drupal\views\Render\ViewsRenderPipelineMarkup;
 use Drupal\Component\Utility\Html;
 use Drupal\Component\Utility\UrlHelper;
-use Drupal\Core\Datetime\DrupalDateTime;
 use Drupal\Core\Entity\EntityInterface;
 use Drupal\Core\Template\Attribute;
 use Drupal\Core\Routing\RouteMatchInterface;
@@ -434,9 +433,8 @@ function _solo_preprocess_html_back_to_top(array &$variables, string $active_the
  * Implements hook_preprocess_HOOK() for HTML document templates.
  */
 #[LegacyHook]
-function solo_preprocess_html(&$variables): void
-{
-    \Drupal::service(SoloThemePreprocessHooks::class)->preprocessHtml($variables);
+function solo_preprocess_html(&$variables): void {
+  \Drupal::service(SoloThemePreprocessHooks::class)->preprocessHtml($variables);
 }
 
 /**
@@ -741,18 +739,16 @@ function _get_node_width_class(NodeInterface $node): ?string {
  * Implements hook_preprocess_page() for page templates.
  */
 #[LegacyHook]
-function solo_preprocess_page(&$variables)
-{
-    \Drupal::service(SoloThemePreprocessHooks::class)->preprocessPage($variables);
+function solo_preprocess_page(&$variables) {
+  \Drupal::service(SoloThemePreprocessHooks::class)->preprocessPage($variables);
 }
 
 /**
  * Implements hook_preprocess_HOOK() for node.html.twig.
  */
 #[LegacyHook]
-function solo_preprocess_node(array &$variables)
-{
-    \Drupal::service(SoloThemePreprocessHooks::class)->preprocessNode($variables);
+function solo_preprocess_node(array &$variables) {
+  \Drupal::service(SoloThemePreprocessHooks::class)->preprocessNode($variables);
 }
 
 /**
@@ -948,9 +944,8 @@ function solo_preprocess_field__node__created(&$variables): void {
  * Implements hook_preprocess_HOOK() for setting classes.
  */
 #[LegacyHook]
-function solo_preprocess_filter_caption(&$variables): void
-{
-    \Drupal::service(SoloThemePreprocessHooks::class)->preprocessFilterCaption($variables);
+function solo_preprocess_filter_caption(&$variables): void {
+  \Drupal::service(SoloThemePreprocessHooks::class)->preprocessFilterCaption($variables);
 }
 
 /**
@@ -969,18 +964,16 @@ function solo_preprocess_search_result(&$variables): void {
  * of comment metadata elements.
  */
 #[LegacyHook]
-function solo_preprocess_comment(array &$variables): void
-{
-    \Drupal::service(SoloThemePreprocessHooks::class)->preprocessComment($variables);
+function solo_preprocess_comment(array &$variables): void {
+  \Drupal::service(SoloThemePreprocessHooks::class)->preprocessComment($variables);
 }
 
 /**
  * Implements hook_preprocess_HOOK() for block.html.twig.
  */
 #[LegacyHook]
-function solo_preprocess_block(&$variables): void
-{
-    \Drupal::service(SoloThemePreprocessHooks::class)->preprocessBlock($variables);
+function solo_preprocess_block(&$variables): void {
+  \Drupal::service(SoloThemePreprocessHooks::class)->preprocessBlock($variables);
 }
 
 /**
@@ -1132,54 +1125,48 @@ function solo_preprocess_menu__account(&$variables): void {
  * Implements hook_preprocess_menu().
  */
 #[LegacyHook]
-function solo_preprocess_menu(&$variables)
-{
-    \Drupal::service(SoloThemePreprocessHooks::class)->preprocessMenu($variables);
+function solo_preprocess_menu(&$variables) {
+  \Drupal::service(SoloThemePreprocessHooks::class)->preprocessMenu($variables);
 }
 
 /**
  * Implements hook_preprocess_HOOK() for form-element.html.twig.
  */
 #[LegacyHook]
-function solo_preprocess_form_element(array &$variables): void
-{
-    \Drupal::service(SoloThemePreprocessHooks::class)->preprocessFormElement($variables);
+function solo_preprocess_form_element(array &$variables): void {
+  \Drupal::service(SoloThemePreprocessHooks::class)->preprocessFormElement($variables);
 }
 
 /**
  * Implements hook_preprocess_HOOK() for form-element-label.html.twig.
  */
 #[LegacyHook]
-function solo_preprocess_form_element_label(array &$variables): void
-{
-    \Drupal::service(SoloThemePreprocessHooks::class)->preprocessFormElementLabel($variables);
+function solo_preprocess_form_element_label(array &$variables): void {
+  \Drupal::service(SoloThemePreprocessHooks::class)->preprocessFormElementLabel($variables);
 }
 
 /**
  * Implements hook_preprocess_HOOK() for input.html.twig.
  */
 #[LegacyHook]
-function solo_preprocess_input(array &$variables): void
-{
-    \Drupal::service(SoloThemePreprocessHooks::class)->preprocessInput($variables);
+function solo_preprocess_input(array &$variables): void {
+  \Drupal::service(SoloThemePreprocessHooks::class)->preprocessInput($variables);
 }
 
 /**
  * Implements hook_preprocess_HOOK() for menu-local-task.html.twig.
  */
 #[LegacyHook]
-function solo_preprocess_menu_local_task(array &$variables): void
-{
-    \Drupal::service(SoloThemePreprocessHooks::class)->preprocessMenuLocalTask($variables);
+function solo_preprocess_menu_local_task(array &$variables): void {
+  \Drupal::service(SoloThemePreprocessHooks::class)->preprocessMenuLocalTask($variables);
 }
 
 /**
  * Implements hook_preprocess_HOOK() for field--comment.html.twig.
  */
 #[LegacyHook]
-function solo_preprocess_field__comment(array &$variables): void
-{
-    \Drupal::service(SoloThemePreprocessHooks::class)->preprocessFieldComment($variables);
+function solo_preprocess_field__comment(array &$variables): void {
+  \Drupal::service(SoloThemePreprocessHooks::class)->preprocessFieldComment($variables);
 }
 
 /**
@@ -1213,9 +1200,8 @@ function _maintenance_library(array &$variables): void {
  * Implements hook_preprocess_HOOK() for maintenance-page.html.twig.
  */
 #[LegacyHook]
-function solo_preprocess_maintenance_page(array &$variables): void
-{
-    \Drupal::service(SoloThemePreprocessHooks::class)->preprocessMaintenancePage($variables);
+function solo_preprocess_maintenance_page(array &$variables): void {
+  \Drupal::service(SoloThemePreprocessHooks::class)->preprocessMaintenancePage($variables);
 }
 
 /**
@@ -1241,18 +1227,16 @@ function solo_preprocess_views_view_table(array &$variables): void {
  * Implements hook_preprocess_HOOK() for fieldset.html.twig.
  */
 #[LegacyHook]
-function solo_preprocess_fieldset(array &$variables): void
-{
-    \Drupal::service(SoloThemePreprocessHooks::class)->preprocessFieldset($variables);
+function solo_preprocess_fieldset(array &$variables): void {
+  \Drupal::service(SoloThemePreprocessHooks::class)->preprocessFieldset($variables);
 }
 
 /**
  * Implements hook_preprocess_HOOK() for form.html.twig.
  */
 #[LegacyHook]
-function solo_preprocess_form(array &$variables): void
-{
-    \Drupal::service(SoloThemePreprocessHooks::class)->preprocessForm($variables);
+function solo_preprocess_form(array &$variables): void {
+  \Drupal::service(SoloThemePreprocessHooks::class)->preprocessForm($variables);
 }
 
 /**
@@ -1303,9 +1287,8 @@ function _solo_mark_entity_reference_fields(array &$elements): void {
  * Implements hook_preprocess_HOOK() for container.html.twig.
  */
 #[LegacyHook]
-function solo_preprocess_container(array &$variables): void
-{
-    \Drupal::service(SoloThemePreprocessHooks::class)->preprocessContainer($variables);
+function solo_preprocess_container(array &$variables): void {
+  \Drupal::service(SoloThemePreprocessHooks::class)->preprocessContainer($variables);
 }
 
 /**
@@ -1360,7 +1343,6 @@ function _solo_container_has_min_max(array $element): bool {
  * Implements hook_preprocess_HOOK() for field-multiple-value-form.html.twig.
  */
 #[LegacyHook]
-function solo_preprocess_field_multiple_value_form(array &$variables): void
-{
-    \Drupal::service(SoloThemePreprocessHooks::class)->preprocessFieldMultipleValueForm($variables);
+function solo_preprocess_field_multiple_value_form(array &$variables): void {
+  \Drupal::service(SoloThemePreprocessHooks::class)->preprocessFieldMultipleValueForm($variables);
 }

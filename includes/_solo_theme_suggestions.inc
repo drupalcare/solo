@@ -4,6 +4,7 @@
  * @file
  * Theme Sugestions.
  */
+
 use Drupal\Core\Hook\Attribute\LegacyHook;
 use Drupal\solo\Hook\SoloThemeSuggestionsHooks;
 use Drupal\Core\Routing\RouteMatchInterface;
@@ -28,9 +29,8 @@ function solo_theme_suggestions_block_alter(array &$suggestions, array $variable
  * Implements hook_theme_suggestions_HOOK_alter() for menu.
  */
 #[LegacyHook]
-function solo_theme_suggestions_menu_alter(array &$suggestions, array $variables): void
-{
-    \Drupal::service(SoloThemeSuggestionsHooks::class)->themeSuggestionsMenuAlter($suggestions, $variables);
+function solo_theme_suggestions_menu_alter(array &$suggestions, array $variables): void {
+  \Drupal::service(SoloThemeSuggestionsHooks::class)->themeSuggestionsMenuAlter($suggestions, $variables);
 }
 
 /**
@@ -66,16 +66,14 @@ function _add_view_suggestions(RouteMatchInterface $route_match, array &$suggest
  * Implements hook_theme_suggestions_page_alter().
  */
 #[LegacyHook]
-function solo_theme_suggestions_page_alter(array &$suggestions, array $variables): void
-{
-    \Drupal::service(SoloThemeSuggestionsHooks::class)->themeSuggestionsPageAlter($suggestions, $variables);
+function solo_theme_suggestions_page_alter(array &$suggestions, array $variables): void {
+  \Drupal::service(SoloThemeSuggestionsHooks::class)->themeSuggestionsPageAlter($suggestions, $variables);
 }
 
 /**
  * Implements hook_theme_suggestions_HOOK_alter().
  */
 #[LegacyHook]
-function solo_theme_suggestions_user_alter(array &$suggestions, array $variables)
-{
-    \Drupal::service(SoloThemeSuggestionsHooks::class)->themeSuggestionsUserAlter($suggestions, $variables);
+function solo_theme_suggestions_user_alter(array &$suggestions, array $variables) {
+  \Drupal::service(SoloThemeSuggestionsHooks::class)->themeSuggestionsUserAlter($suggestions, $variables);
 }

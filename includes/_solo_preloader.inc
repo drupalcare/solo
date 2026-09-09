@@ -1,14 +1,14 @@
 <?php
 
-use Drupal\Component\Utility\DeprecationHelper;
-use Drupal\Core\Extension\ThemeSettingsProvider;
-
 /**
  * @file
  * Preloader: centralized visibility decision and config.
  *
  * Rule-based, cache-aware. No logic in Twig; library attached conditionally.
  */
+
+use Drupal\Component\Utility\DeprecationHelper;
+use Drupal\Core\Extension\ThemeSettingsProvider;
 
 /**
  * Resolves a stored logo path to a URL for use in preloader img src.

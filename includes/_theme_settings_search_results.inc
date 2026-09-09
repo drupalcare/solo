@@ -1,8 +1,5 @@
 <?php
 
-use Drupal\Component\Utility\DeprecationHelper;
-use Drupal\Core\Extension\ThemeSettingsProvider;
-
 /**
  * @file
  * Solo Theme.
@@ -12,6 +9,10 @@ use Drupal\Core\Extension\ThemeSettingsProvider;
  * Description:  template
  * Author:       Alaa Haddad http://www.alaahaddad.com.
  */
+
+use Drupal\Component\Utility\DeprecationHelper;
+use Drupal\Core\Extension\ThemeSettingsProvider;
+
 // Check if the Search module is enabled.
 if (\Drupal::moduleHandler()->moduleExists("search")) {
 

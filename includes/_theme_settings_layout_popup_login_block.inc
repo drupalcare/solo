@@ -1,8 +1,5 @@
 <?php
 
-use Drupal\Component\Utility\DeprecationHelper;
-use Drupal\Core\Extension\ThemeSettingsProvider;
-
 /**
  * @file
  * Solo Theme - Popup Login Block Configuration (FIXED).
@@ -12,6 +9,10 @@ use Drupal\Core\Extension\ThemeSettingsProvider;
  * Description:  template
  * Author:       Alaa Haddad http://www.alaahaddad.com.
  */
+
+use Drupal\Component\Utility\DeprecationHelper;
+use Drupal\Core\Extension\ThemeSettingsProvider;
+
 // Popup login block region.
 if (array_key_exists("popup_login_block", $updated_regions["mix"])) {
 

@@ -692,7 +692,14 @@ function _solo_theme_settings_submit($form, FormStateInterface $form_state) {
 
   // Clear library discovery. Also forces solo_library_info_alter() to
   // re-run on the next discovery, which re-checks the on-disk files.
-  \Drupal::service('library.discovery')->clearCachedDefinitions();
+  //
+  // clear(), NOT clearCachedDefinitions(). In Drupal 12 the 'library.discovery'
+  // service IS LibraryDiscoveryCollector (core.services.yml:1808-1809), and
+  // that class has no clearCachedDefinitions() -- it inherits clear() from
+  // CacheCollector. Core itself calls ->clear() here, in
+  // ModuleInstaller.php:420. The old call fataled when theme settings were
+  // saved. Measured on 12.0.0-alpha1, 2026-09-08.
+  \Drupal::service('library.discovery')->clear();
 
   // Clear Twig cache.
   \Drupal::service('twig')->invalidate();

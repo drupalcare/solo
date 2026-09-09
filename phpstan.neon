@@ -1,0 +1,30 @@
+# PHPStan configuration for the Solo theme.
+#
+# Added 2026-09-08. Until now Solo shipped no PHPStan config at all, so
+# measurement 2 of this lane's acceptance bar was not "zero errors" -- it was
+# NEVER TAKEN, which is a different and worse thing to report as clean.
+#
+# Level 5 rather than max on purpose: Solo is ~30 include files of procedural
+# theme code that predates any typing effort, and a level that produces a
+# thousand findings gates nothing and gets ignored. 5 is the level that catches
+# real defects -- wrong argument counts, undefined methods, impossible
+# conditions -- which is the class of bug that D12 actually introduced here
+# (see the removed $variables['teaser'] in _solo_theme_preprocess.inc).
+# Raising it is a deliberate follow-up, not an oversight.
+parameters:
+  level: 5
+  paths:
+    - src
+    - tests
+    - includes
+    - theme-settings.php
+    - solo.theme
+    - solo.post_update.php
+  excludePaths:
+    # A theme has no vendor/ of its own -- composer installs into the SITE's
+    # vendor dir. The (?) marker is REQUIRED: PHPStan treats a missing
+    # excludePath as a fatal config error and analyses nothing at all. That is
+    # not hypothetical -- selectify shipped this exact file without the marker
+    # and its analysis had never run once.
+    - vendor (?)
+  treatPhpDocTypesAsCertain: false

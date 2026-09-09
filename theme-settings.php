@@ -16,6 +16,7 @@ use Drupal\Component\Utility\Html;
 use Drupal\Component\Utility\NestedArray;
 use Drupal\Component\Utility\UrlHelper;
 use Drupal\Core\Form\FormStateInterface;
+use Drupal\solo\SocialIconColor;
 
 // ============================================================================
 // FEATURE DEFAULT VALUE HELPERS
@@ -364,6 +365,31 @@ function solo_theme_settings_validate($form, FormStateInterface $form_state) {
   }
 
   // -----------------------------------------------------------------------
+  // Social icon colour. This is printed into a style attribute, so it must be
+  // a CSS colour VALUE. A bare custom property name is the trap: CSS discards
+  // the whole declaration and the icons render grey with nothing logged.
+  //
+  // Deliberately placed ABOVE the footer-link block below, which returns early
+  // when formatted footer text is in use; a check placed after it would be
+  // skipped on exactly those sites.
+  // -----------------------------------------------------------------------
+  $sm_icon_colors = (string) ($form_state->getValue('sm_icon_colors') ?? '');
+
+  if (trim($sm_icon_colors) !== '') {
+    if (SocialIconColor::isBareCustomProperty($sm_icon_colors)) {
+      $form_state->setErrorByName('sm_icon_colors', t('%value is a CSS custom property name, not a colour, so browsers ignore it and the icons stay grey. Enter %suggestion instead.', [
+        '%value' => trim($sm_icon_colors),
+        '%suggestion' => SocialIconColor::suggest($sm_icon_colors),
+      ]));
+    }
+    elseif (!SocialIconColor::isAcceptable($sm_icon_colors)) {
+      $form_state->setErrorByName('sm_icon_colors', t('%value is not a colour this setting accepts. Enter a hex colour such as #1877f2, or a custom property reference such as var(--solo-fb).', [
+        '%value' => trim($sm_icon_colors),
+      ]));
+    }
+  }
+
+  // -----------------------------------------------------------------------
   // Footer link: only validate separate fields when not using formatted text.
   // -----------------------------------------------------------------------
   if ($form_state->getValue('footer_use_formatted_text')) {
@@ -666,7 +692,14 @@ function _solo_theme_settings_submit($form, FormStateInterface $form_state) {
 
   // Clear library discovery. Also forces solo_library_info_alter() to
   // re-run on the next discovery, which re-checks the on-disk files.
-  \Drupal::service('library.discovery')->clearCachedDefinitions();
+  //
+  // clear(), NOT clearCachedDefinitions(). In Drupal 12 the 'library.discovery'
+  // service IS LibraryDiscoveryCollector (core.services.yml:1808-1809), and
+  // that class has no clearCachedDefinitions() -- it inherits clear() from
+  // CacheCollector. Core itself calls ->clear() here, in
+  // ModuleInstaller.php:420. The old call fataled when theme settings were
+  // saved. Measured on 12.0.0-alpha1, 2026-09-08.
+  \Drupal::service('library.discovery')->clear();
 
   // Clear Twig cache.
   \Drupal::service('twig')->invalidate();

@@ -1,5 +1,8 @@
 <?php
 
+use Drupal\Component\Utility\DeprecationHelper;
+use Drupal\Core\Extension\ThemeSettingsProvider;
+
 /**
  * @file
  * Solo Theme.
@@ -40,7 +43,7 @@ $form["solo_settings"]["settings_social_icons"]["general_settings"] = [
 $form["solo_settings"]["settings_social_icons"]["general_settings"]["sm_icon_size"] = [
   "#type" => "select",
   "#title" => t("The size of the social media icons can be altered from here."),
-  "#default_value" => theme_get_setting("sm_icon_size"),
+  "#default_value" => DeprecationHelper::backwardsCompatibleCall(\Drupal::VERSION, '11.3.0', fn() => \Drupal::service(ThemeSettingsProvider::class)->getSetting("sm_icon_size"), fn() => theme_get_setting("sm_icon_size")),
   "#options" => [
     "sm-icons-small" => t("Small - Default"),
     "sm-icons-medium"  => t("Medium icons"),
@@ -56,7 +59,7 @@ $form["solo_settings"]["settings_social_icons"]["general_settings"]["sm_icon_col
   "#size" => 20,
   "#title" => t("Change Social Media Default Colors"),
   "#description" => t("A hex colour such as #1877f2, or a custom property reference such as var(--solo-fb). A bare property name like --solo-fb will not work: browsers ignore it and the icons stay grey. Leave empty to use each network's default colour."),
-  "#default_value" => theme_get_setting("sm_icon_colors"),
+  "#default_value" => DeprecationHelper::backwardsCompatibleCall(\Drupal::VERSION, '11.3.0', fn() => \Drupal::service(ThemeSettingsProvider::class)->getSetting("sm_icon_colors"), fn() => theme_get_setting("sm_icon_colors")),
   "#attributes" => [
     // Mirrors Drupal\solo\SocialIconColor::ACCEPTED. This is a convenience
     // only; the server-side check in solo_theme_settings_validate() is the
@@ -71,7 +74,7 @@ $form["solo_settings"]["settings_social_icons"]["general_settings"]["sm_icon_col
 $form["solo_settings"]["settings_social_icons"]["general_settings"]["sm_show_icons"] = [
   "#type" => "checkbox",
   "#title" => t("Show Social Icons"),
-  "#default_value" => theme_get_setting("sm_show_icons"),
+  "#default_value" => DeprecationHelper::backwardsCompatibleCall(\Drupal::VERSION, '11.3.0', fn() => \Drupal::service(ThemeSettingsProvider::class)->getSetting("sm_show_icons"), fn() => theme_get_setting("sm_show_icons")),
   "#description" => t("Select this option to display the Social Icon. Deselect it to conceal it."),
 ];
 
@@ -109,6 +112,6 @@ foreach ($social_icons as $key => $value) {
   // '#type' => $key === 'email' ? 'email' : 'textfield',.
     "#type" => "textfield",
     "#title" => $value,
-    "#default_value" => theme_get_setting("sm_icon_" . $key),
+    "#default_value" => DeprecationHelper::backwardsCompatibleCall(\Drupal::VERSION, '11.3.0', fn() => \Drupal::service(ThemeSettingsProvider::class)->getSetting("sm_icon_" . $key), fn() => theme_get_setting("sm_icon_" . $key)),
   ];
 }

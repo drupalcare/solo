@@ -1,0 +1,5 @@
+
+services:
+  Drupal\solo_subtheme\Hook\SoloSubthemeHooks:
+    class: Drupal\solo_subtheme\Hook\SoloSubthemeHooks
+    autowire: true

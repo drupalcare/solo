@@ -121,8 +121,8 @@ function solo_form_comment_form_alter(&$form, FormStateInterface $form_state, $f
  * Automatically detects date range fields and applies appropriate classes.
  */
 #[LegacyHook]
-function solo_form_views_exposed_form_alter(&$form): void {
-  \Drupal::service(SoloThemeAlterHooks::class)->formViewsExposedFormAlter($form);
+function solo_form_views_exposed_form_alter(&$form, FormStateInterface $form_state): void {
+  \Drupal::service(SoloThemeAlterHooks::class)->formViewsExposedFormAlter($form, $form_state);
 }
 
 /**

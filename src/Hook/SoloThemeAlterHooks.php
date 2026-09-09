@@ -98,7 +98,7 @@ class SoloThemeAlterHooks {
    * Automatically detects date range fields and applies appropriate classes.
    */
   #[Hook('form_views_exposed_form_alter')]
-  public static function formViewsExposedFormAlter(&$form): void {
+  public static function formViewsExposedFormAlter(&$form, FormStateInterface $form_state): void {
     $form['#attributes']['class'][] = 'form--inline';
     // Loop through ALL form elements - no hardcoded field names.
     foreach (Element::children($form) as $key) {

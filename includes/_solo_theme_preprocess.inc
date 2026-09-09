@@ -1074,7 +1074,7 @@ function solo_preprocess_menu__primary_menu(&$variables): void {
   if (DeprecationHelper::backwardsCompatibleCall(\Drupal::VERSION, '11.3.0', fn() => \Drupal::service(ThemeSettingsProvider::class)->getSetting('primary_menu_branding'), fn() => theme_get_setting('primary_menu_branding'))) {
     $variables['primary_menu_branding'] = 'activate-branding';
     $variables['site_logo'] = DeprecationHelper::backwardsCompatibleCall(\Drupal::VERSION, '11.3.0', fn() => \Drupal::service(ThemeSettingsProvider::class)->getSetting('logo.url'), fn() => theme_get_setting('logo.url'));
-    $variables['logo_default'] = _set_logo_default($variables);
+    _set_logo_default($variables);
     $variables['site_name'] = \Drupal::config('system.site')->get('name');
     $variables['logo_alt'] = DeprecationHelper::backwardsCompatibleCall(\Drupal::VERSION, '11.3.0', fn() => \Drupal::service(ThemeSettingsProvider::class)->getSetting('header_logo_image_alt'), fn() => theme_get_setting('header_logo_image_alt')) ?: 'Home';
   }

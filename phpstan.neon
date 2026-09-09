@@ -27,4 +27,26 @@ parameters:
     # not hypothetical -- selectify shipped this exact file without the marker
     # and its analysis had never run once.
     - vendor (?)
+  ignoreErrors:
+    # The theme-settings includes are require_once'd INTO the scope of
+    # solo_form_system_theme_settings_alter(), which defines the variables they
+    # use before pulling them in -- theme-settings.php sets $updated_regions at
+    # line 288 and $attributes at line 290, then requires the includes at 307+.
+    # None of those files assigns those variables itself (measured: 0
+    # assignments to $attributes in _theme_settings_layout_bottom.inc), because
+    # they are not meant to stand alone.
+    #
+    # PHPStan analyses each include as its own file and cannot see the caller's
+    # scope, so it reports every one of those reads as possibly-undefined: 79
+    # findings, all of them structurally impossible to fix without rewriting
+    # the include mechanism itself. They were checked against the code, not
+    # assumed to be noise.
+    #
+    # ⚠ Scoped to this ONE identifier and ONLY under includes/. Anything else
+    # in these files -- an undefined METHOD, a wrong argument count, an
+    # impossible condition -- still reports. This is not a baseline and it does
+    # not silence the file.
+    -
+      identifier: variable.undefined
+      path: includes/*.inc
   treatPhpDocTypesAsCertain: false

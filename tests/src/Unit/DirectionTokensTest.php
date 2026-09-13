@@ -154,6 +154,62 @@ class DirectionTokensTest extends TestCase {
   }
 
   /**
+   * Components with no RTL rules must not pin themselves to a physical side.
+   *
+   * These three carry no [dir=rtl] block of their own, so a physical
+   * margin-left / padding-left / left is never mirrored and the component
+   * renders on the wrong side in an RTL page. Measured on sts.local before the
+   * fix: ul.sitemap kept a 40px padding-right in RTL, because padding-left: 0
+   * zeroed the side the RTL list was not using.
+   *
+   * Scoped to the files that were fixed rather than the whole theme: the other
+   * components either carry their own [dir=rtl] rules or use physical sides
+   * deliberately, and .solo-back-to-top--bottom-right means bottom-right in
+   * both directions by design.
+   */
+  public function testFixedComponentsUseLogicalOffsets(): void {
+    $files = [
+      'css/components/solo-sitemap.css',
+      'css/components/solo-file-upload.css',
+      'css/components/solo-preloader.css',
+    ];
+    // .solo-file-native is width:100% height:100%, so it covers its wrapper
+    // from either side; left: 0 there is not a direction bug.
+    $allowed = ['.solo-file-native'];
+
+    $offenders = [];
+    foreach ($files as $relative) {
+      $css = $this->css($relative);
+      foreach (preg_split('/(?<=\})/', $css) ?: [] as $rule) {
+        if (!str_contains($rule, '{')) {
+          continue;
+        }
+        [$selector, $body] = explode('{', $rule, 2);
+        $selector = trim(preg_replace('/\s+/', ' ', $selector) ?? '');
+        foreach ($allowed as $skip) {
+          if (str_contains($selector, $skip)) {
+            continue 2;
+          }
+        }
+        $pattern = '/(?:^|;)\s*((?:margin|padding|border)-(?:left|right)|left|right)\s*:/';
+        if (preg_match_all($pattern, $body, $m)) {
+          foreach ($m[1] as $prop) {
+            $offenders[] = sprintf('%s -> %s { %s: ... }', $relative, $selector, $prop);
+          }
+        }
+      }
+    }
+
+    $this->assertSame([], $offenders, sprintf(
+      "%d physical offset(s) in components that have no RTL rules. Use the "
+      . "logical property (margin-inline-start, padding-inline-end, "
+      . "inset-inline-start) so the component mirrors:\n  - %s",
+      count($offenders),
+      implode("\n  - ", $offenders)
+    ));
+  }
+
+  /**
    * The tokens must have exactly one home.
    */
   public function testTokensAreDefinedOnlyInTheVariablesFile(): void {

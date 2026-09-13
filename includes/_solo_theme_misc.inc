@@ -236,15 +236,6 @@ function _load_color_coded_system_tabs(array &$attachments): void {
 }
 
 /**
- * Helper function.
- */
-function _load_enable_toggleable_radios(array &$attachments): void {
-  if (DeprecationHelper::backwardsCompatibleCall(\Drupal::VERSION, '11.3.0', fn() => \Drupal::service(ThemeSettingsProvider::class)->getSetting('enable_toggleable_radios'), fn() => theme_get_setting('enable_toggleable_radios'))) {
-    $attachments['#attached']['library'][] = 'solo/solo-toggleable-radios';
-  }
-}
-
-/**
  * Implements hook_page_attachments_alter().
  */
 #[LegacyHook]

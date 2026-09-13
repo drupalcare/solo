@@ -30,7 +30,6 @@ class SoloThemeMiscHooks {
     _load_full_opacity($attachments);
     _site_load_w3css_library($attachments);
     _load_color_coded_system_tabs($attachments);
-    _load_enable_toggleable_radios($attachments);
     // Check if debug mode is enabled in theme settings.
     if (DeprecationHelper::backwardsCompatibleCall(\Drupal::VERSION, '11.3.0', fn() => \Drupal::service(ThemeSettingsProvider::class)->getSetting('solo_menu_debug'), fn() => theme_get_setting('solo_menu_debug'))) {
       // NEW: Get verbosity setting.

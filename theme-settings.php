@@ -547,7 +547,12 @@ function _solo_theme_settings_submit($form, FormStateInterface $form_state) {
     'menu_template_assignment',
     'menu_template_assignments',
   ];
-  $assignments = NestedArray::getValue($form_state->getValues(), $path);
+  // NestedArray::getValue() takes its first argument BY REFERENCE, so the
+  // values have to be held in a variable first. Passing getValues() straight
+  // in raises "Only variables should be passed by reference" on every submit.
+  // Line 158 above already does it this way.
+  $values = $form_state->getValues();
+  $assignments = NestedArray::getValue($values, $path);
   if (!is_array($assignments)) {
     $assignments = [];
   }

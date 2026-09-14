@@ -15,3 +15,7 @@ services:
   Drupal\solo\Hook\SoloThemeSuggestionsHooks:
     class: Drupal\solo\Hook\SoloThemeSuggestionsHooks
     autowire: true
+
+  Drupal\solo\Hook\SoloThemeSettingsHooks:
+    class: Drupal\solo\Hook\SoloThemeSettingsHooks
+    autowire: true

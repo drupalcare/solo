@@ -2,11 +2,21 @@
 
 /**
  * @file
- * Solo Theme.
+ * Solo Theme - theme settings callbacks and helpers.
  *
- * Filename:     theme-settings
+ * These lived in theme-settings.php until Drupal 11.5.0 deprecated that file
+ * (removed in drupal:12.0.0 - see https://www.drupal.org/node/3587273). Core
+ * triggers that deprecation on the file merely EXISTING, so the file had to go
+ * and its contents had to land somewhere that solo.theme loads.
+ *
+ * The hook itself now lives in \Drupal\solo\Hook\SoloThemeSettingsHooks. The
+ * procedural function below is a #[LegacyHook] thin caller, kept so Drupal 10
+ * and Drupal 11 before 11.5 - which do not support attribute-based theme hooks
+ * - still get the settings form. Newer core skips it because of the attribute
+ * and runs the class instead.
+ *
+ * Filename:     _solo_theme_settings.inc
  * Website:      http://www.flashwebcenter.com
- * Description:  template
  * Author:       Alaa Haddad http://www.alaahaddad.com.
  */
 
@@ -16,15 +26,18 @@ use Drupal\Component\Utility\Html;
 use Drupal\Component\Utility\NestedArray;
 use Drupal\Component\Utility\UrlHelper;
 use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\Hook\Attribute\LegacyHook;
+use Drupal\solo\Hook\SoloThemeSettingsHooks;
 use Drupal\solo\SocialIconColor;
 
-// ============================================================================
-// FEATURE DEFAULT VALUE HELPERS
-// These functions are the single source of truth for default values.
-// Values MUST stay in sync with config/install/solo.settings.yml.
-// Called from both the reset path (disable) and the enabled-save path to
-// ensure any missing submitted values fall back to a known-good default.
-// ============================================================================
+/**
+ * Implements hook_form_system_theme_settings_alter().
+ */
+#[LegacyHook]
+function solo_form_system_theme_settings_alter(&$form, FormStateInterface $form_state) {
+  \Drupal::service(SoloThemeSettingsHooks::class)
+    ->formSystemThemeSettingsAlter($form, $form_state);
+}
 
 /**
  * Returns canonical default values for all preloader settings.
@@ -266,69 +279,6 @@ function _solo_is_safe_logo_path(string $path): bool {
     return in_array($scheme, ['http', 'https'], TRUE);
   }
   return FALSE;
-}
-
-/**
- * Implements hook_form_system_theme_settings_alter().
- */
-function solo_form_system_theme_settings_alter(&$form, FormStateInterface $form_state) {
-  $form['#validate'][] = 'solo_theme_settings_validate';
-  $form['logo']['#weight'] = 97;
-  $form['favicon']['#open'] = FALSE;
-  $form['favicon']['#weight'] = 98;
-  $form['theme_settings']['#open'] = FALSE;
-  $form['theme_settings']['#weight'] = 99;
-
-  $form['#attached']['library'][] = 'solo/solo-form-theme-settings';
-  // Variables below are used by required theme settings include files.
-  // phpcs:disable DrupalPractice.CodeAnalysis.VariableAnalysis.UnusedVariable
-  $d_s = date('j  F,  Y');
-  $d_m = date('D F d, o');
-  $d_l = date('g:i A T, D F d, o');
-  $updated_regions = _get_updated_regions();
-  $counts = _count_regions();
-  $attributes = _get_region_attributes();
-  // phpcs:enable DrupalPractice.CodeAnalysis.VariableAnalysis.UnusedVariable
-
-  $layout_region_override_toggles = [
-    'enable_per_type_layout_top' => 0,
-    'enable_per_type_layout_main' => 0,
-    'enable_per_type_layout_bottom' => 0,
-    'enable_per_type_layout_footer' => 0,
-  ];
-
-  foreach ($layout_region_override_toggles as $setting_key => $default_value) {
-    if (!isset($form_state->getValues()[$setting_key])) {
-      $form_state->setValue($setting_key, $default_value);
-    }
-  }
-
-  // Theme settings files.
-  require_once __DIR__ . '/includes/_theme_settings_blueprint.inc';
-  require_once __DIR__ . '/includes/_theme_settings_global_misc.inc';
-  require_once __DIR__ . '/includes/_theme_settings_libraries_fonts.inc';
-  require_once __DIR__ . '/includes/_theme_settings_search_results.inc';
-  require_once __DIR__ . '/includes/_theme_settings_predefined_themes.inc';
-  require_once __DIR__ . '/includes/_theme_settings_layout_page_wrapper.inc';
-  require_once __DIR__ . '/includes/_theme_settings_layout_highlighted.inc';
-  require_once __DIR__ . '/includes/_theme_settings_layout_popup_login_block.inc';
-  require_once __DIR__ . '/includes/_theme_settings_layout_fixed_search_block.inc';
-  require_once __DIR__ . '/includes/_theme_settings_layout_header.inc';
-  require_once __DIR__ . '/includes/_theme_settings_layout_primary_sidebar_menu.inc';
-  require_once __DIR__ . '/includes/_theme_settings_layout_primary_menu.inc';
-  require_once __DIR__ . '/includes/_theme_settings_layout_welcome_text.inc';
-  require_once __DIR__ . '/includes/_theme_settings_layout_top.inc';
-  require_once __DIR__ . '/includes/_theme_settings_layout_system_messages.inc';
-  require_once __DIR__ . '/includes/_theme_settings_layout_page_title.inc';
-  require_once __DIR__ . '/includes/_theme_settings_layout_breadcrumb.inc';
-  require_once __DIR__ . '/includes/_theme_settings_layout_main.inc';
-  require_once __DIR__ . '/includes/_theme_settings_layout_bottom.inc';
-  require_once __DIR__ . '/includes/_theme_settings_layout_footer.inc';
-  require_once __DIR__ . '/includes/_theme_settings_layout_footer_menu.inc';
-  require_once __DIR__ . '/includes/_theme_settings_sm_icons.inc';
-  require_once __DIR__ . '/includes/_theme_settings_credit_copyright.inc';
-
-  $form['#submit'][] = '_solo_theme_settings_submit';
 }
 
 /**

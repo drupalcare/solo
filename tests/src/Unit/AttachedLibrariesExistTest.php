@@ -126,6 +126,82 @@ class AttachedLibrariesExistTest extends TestCase {
   }
 
   /**
+   * Every path phpstan.neon analyses must exist.
+   *
+   * PHPStan treats a missing entry under paths: as a fatal configuration error
+   * and analyses NOTHING - it exits non-zero with "Path ... does not exist" and
+   * emits no findings at all. A run like that is indistinguishable from a clean
+   * run if only the finding count is read.
+   *
+   * That is not hypothetical here. theme-settings.php was removed when Drupal
+   * 11.5.0 deprecated it, and the dead entry left behind in phpstan.neon
+   * silently disabled the whole analysis until this test was written. The file
+   * already carried the same warning about excludePaths, where the (?) marker
+   * exists precisely to avoid this - the lesson simply had not been applied to
+   * paths:.
+   */
+  public function testEveryPhpstanPathExists(): void {
+    $theme = $this->themePath();
+    $neon = $theme . '/phpstan.neon';
+    $this->assertFileExists($neon, 'The theme ships no PHPStan config.');
+
+    $contents = (string) file_get_contents($neon);
+    $this->assertMatchesRegularExpression(
+      '/^\s*paths:/m',
+      $contents,
+      'phpstan.neon declares no paths: block.'
+    );
+
+    // Walk the block line by line rather than matching a run of list items.
+    // A regex that stops at the first non-item line is wrong here: the block
+    // legitimately contains YAML comments between entries, and the first
+    // version of this test did exactly that - it stayed GREEN with a known-bad
+    // path restored, because every entry after the first comment was invisible
+    // to it. Caught by red-proofing, not by reading it.
+    $paths = [];
+    $inBlock = FALSE;
+    foreach (explode("\n", $contents) as $line) {
+      if (preg_match('/^\s*paths:\s*$/', $line)) {
+        $inBlock = TRUE;
+        continue;
+      }
+      if (!$inBlock) {
+        continue;
+      }
+      $trimmed = trim($line);
+      // Blank lines and comments do not end the block.
+      if ($trimmed === '' || str_starts_with($trimmed, '#')) {
+        continue;
+      }
+      // A list item belongs to the block; any other key ends it.
+      if (preg_match('/^-\s*(\S+)/', $trimmed, $item)) {
+        $paths[] = $item[1];
+        continue;
+      }
+      break;
+    }
+    $this->assertNotEmpty($paths, 'No analysed paths parsed - the parser is wrong, not the config.');
+
+    $missing = [];
+    foreach ($paths as $path) {
+      // A trailing (?) marks a path PHPStan is allowed not to find.
+      if (str_ends_with($path, '(?)')) {
+        continue;
+      }
+      if (!file_exists($theme . '/' . $path)) {
+        $missing[] = $path;
+      }
+    }
+
+    $this->assertSame([], $missing, sprintf(
+      "%d path(s) in phpstan.neon do not exist. PHPStan aborts on these and "
+      . "analyses nothing, which reads as a clean run:\n  - %s",
+      count($missing),
+      implode("\n  - ", $missing)
+    ));
+  }
+
+  /**
    * No stylesheet under css/ should be unreachable.
    *
    * A CSS file that no library and no info.yml key names can never load. It is

@@ -17,7 +17,12 @@ parameters:
     - src
     - tests
     - includes
-    - theme-settings.php
+    # theme-settings.php was removed when Drupal 11.5.0 deprecated it (core
+    # removes it in 12.0.0). Its hook moved to src/Hook/SoloThemeSettingsHooks
+    # and its helpers to includes/_solo_theme_settings.inc, both already
+    # covered above. Leaving the dead entry here made PHPStan abort with
+    # "Path ... does not exist" and analyse NOTHING - the same silent-zero
+    # failure the excludePaths comment below describes, via a different key.
     - solo.theme
     - solo.post_update.php
   excludePaths:

@@ -752,6 +752,18 @@ function _solo_parse_file_uuids_from_html($text) {
  *   The theme machine name (used as the file usage module/theme identifier).
  */
 function _solo_footer_formatted_file_usage(FormStateInterface $form_state, $theme) {
+  // Everything below needs the File module: the file.usage service and the
+  // 'file' entity type both come from it, and a site need not have it
+  // installed. Without this guard, saving the theme settings on such a site
+  // throws ServiceNotFoundException for "file.usage", the whole form returns
+  // HTTP 500, and NOTHING is saved - not just the copyright text.
+  //
+  // Skipping is the right degradation: with no File module there are no file
+  // entities to track usage for, so there is nothing to leak.
+  if (!\Drupal::moduleHandler()->moduleExists('file')) {
+    return;
+  }
+
   $formatted = $form_state->getValue('footer_copyright_formatted');
   if (!is_array($formatted) || empty($formatted['value'])) {
     $formatted = ['value' => '', 'format' => 'basic_html'];

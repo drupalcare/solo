@@ -126,6 +126,49 @@ class AttachedLibrariesExistTest extends TestCase {
   }
 
   /**
+   * No stylesheet under css/ should be unreachable.
+   *
+   * A CSS file that no library and no info.yml key names can never load. It is
+   * dead weight in the release and, worse, it reads as live code: four such
+   * files totalling 30KB were found in this theme, one of them still carrying
+   * a "linear-gradient(45deg, red 0 50%, blue 50% 100%)" debug line that was
+   * immediately overridden on the next line.
+   *
+   * Two sources count as a reference, not just libraries:
+   * - solo.libraries.yml, the normal case.
+   * - solo.info.yml, which names the CKEditor stylesheets under
+   *   ckeditor_stylesheets / ckeditor5-stylesheets.
+   * The starter subtheme is skipped: it ships its own libraries file.
+   */
+  public function testNoOrphanedStylesheets(): void {
+    $theme = $this->themePath();
+    $haystack = (string) file_get_contents($theme . '/solo.libraries.yml')
+      . (string) file_get_contents($theme . '/solo.info.yml');
+
+    $orphans = [];
+    $checked = 0;
+    foreach (glob($theme . '/css/**/*.css') ?: [] as $file) {
+      $relative = str_replace($theme . '/', '', $file);
+      $checked++;
+      if (!str_contains($haystack, $relative) && !str_contains($haystack, basename($file))) {
+        $orphans[] = sprintf('%s (%d bytes)', $relative, filesize($file));
+      }
+    }
+
+    $this->assertGreaterThan(
+      50,
+      $checked,
+      'Parsed suspiciously few stylesheets - the glob is wrong, not the theme.'
+    );
+    $this->assertSame([], $orphans, sprintf(
+      "%d stylesheet(s) under css/ are named by neither solo.libraries.yml nor "
+      . "solo.info.yml, so nothing can ever load them:\n  - %s",
+      count($orphans),
+      implode("\n  - ", $orphans)
+    ));
+  }
+
+  /**
    * Returns the PHP sources that can attach a library.
    *
    * @return list<string>

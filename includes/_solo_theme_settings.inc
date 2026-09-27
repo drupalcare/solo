@@ -524,15 +524,15 @@ function _solo_theme_settings_submit($form, FormStateInterface $form_state) {
   // Solo uses #tree = FALSE (Drupal default) on all container elements, so
   // submitted values are flat at the root of $form_state->getValues().
   //
-  // WHY we reset both form state AND config on disable:
-  // ThemeSettingsForm::submitForm() (the Drupal core form-class handler) runs
-  // AFTER all $form['#submit'] handlers, including ours. It iterates every
-  // flat form-state value and re-saves them all to config. Hidden fields
-  // controlled by #states still submit their last DOM value, so the old
-  // custom settings would be re-saved by core's handler even after we reset
-  // the config object. By also calling $form_state->setValue() we replace
-  // those stale values in form state BEFORE core's save runs, ensuring the
-  // final persisted values are always the canonical defaults.
+  // ⚠ CORRECTED 2026-09-26: this comment used to say core's
+  // ThemeSettingsForm::submitForm() runs AFTER our handler. It runs BEFORE:
+  // FormBuilder::prepareForm() appends '::submitForm' to #submit before any
+  // form alter runs (FormBuilder.php, `$form['#submit'][] = '::submitForm'`
+  // ahead of the alter call), and this theme appends its handler in the
+  // alter. So core saves every flat value first, and the config writes below
+  // are the LAST word. That is also why clearing the flat site_width_* and
+  // solo_layout_* keys above works. Resetting form state too is harmless but
+  // not what makes the defaults stick.
   //
   // DISABLE path: reset form state values AND config to canonical defaults.
   // ENABLE path:  read every config key from flat form state, save to config.

@@ -41,6 +41,8 @@ use PHPUnit\Framework\TestCase;
  * milliseconds and on every core version alike.
  *
  * @license SPDX-License-Identifier: GPL-2.0-or-later
+ *
+ * @group solo
  */
 #[Group('solo')]
 class HookConversionDriftTest extends TestCase {

@@ -34,6 +34,8 @@ use PHPUnit\Framework\Attributes\RunTestsInSeparateProcesses;
  * failure mode being guarded against.
  *
  * @license SPDX-License-Identifier: GPL-2.0-or-later
+ *
+ * @group solo
  */
 #[Group('solo')]
 #[RunTestsInSeparateProcesses]

@@ -41,6 +41,8 @@ use PHPUnit\Framework\TestCase;
  * including the Drupal 10 job where the fatal actually happens.
  *
  * @license SPDX-License-Identifier: GPL-2.0-or-later
+ *
+ * @group solo
  */
 #[Group('solo')]
 class HookClassResolutionTest extends TestCase {

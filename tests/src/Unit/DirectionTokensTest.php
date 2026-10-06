@@ -31,6 +31,8 @@ use PHPUnit\Framework\TestCase;
  * rules are needed as well as — not instead of — it.
  *
  * @license SPDX-License-Identifier: GPL-2.0-or-later
+ *
+ * @group solo
  */
 #[Group('solo')]
 class DirectionTokensTest extends TestCase {

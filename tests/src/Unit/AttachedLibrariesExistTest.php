@@ -25,6 +25,8 @@ use PHPUnit\Framework\TestCase;
  * booting Drupal, so it stays a unit test and runs in milliseconds.
  *
  * @license SPDX-License-Identifier: GPL-2.0-or-later
+ *
+ * @group solo
  */
 #[Group('solo')]
 class AttachedLibrariesExistTest extends TestCase {

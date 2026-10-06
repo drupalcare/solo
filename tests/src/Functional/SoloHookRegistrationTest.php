@@ -34,6 +34,8 @@ use PHPUnit\Framework\Attributes\RunTestsInSeparateProcesses;
  *
  * Red-proofed by moving src/Hook aside: assertion 2 fails, which is exactly the
  * failure the manual check produced.
+ *
+ * @group solo
  */
 #[Group('solo')]
 #[RunTestsInSeparateProcesses]

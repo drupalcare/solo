@@ -20,6 +20,8 @@ use PHPUnit\Framework\TestCase;
  * half where the value comes from the site builder.
  *
  * @license SPDX-License-Identifier: GPL-2.0-or-later
+ *
+ * @group solo
  */
 #[CoversClass(SocialIconColor::class)]
 #[Group('solo')]

@@ -84,7 +84,7 @@ function solo_apply_hidden_content_types(array &$form, FormStateInterface $form_
  */
 #[LegacyHook]
 function solo_form_node_preview_form_select_alter(&$form, FormStateInterface $form_state, $form_id): void {
-  \Drupal::service(SoloThemeAlterHooks::class)->formNodePreviewFormSelectAlter($form, $form_state, $form_id);
+  \Drupal::classResolver(SoloThemeAlterHooks::class)->formNodePreviewFormSelectAlter($form, $form_state, $form_id);
 }
 
 /**
@@ -92,7 +92,7 @@ function solo_form_node_preview_form_select_alter(&$form, FormStateInterface $fo
  */
 #[LegacyHook]
 function solo_form_node_form_alter(array &$form, FormStateInterface $form_state, $form_id): void {
-  \Drupal::service(SoloThemeAlterHooks::class)->formNodeFormAlter($form, $form_state, $form_id);
+  \Drupal::classResolver(SoloThemeAlterHooks::class)->formNodeFormAlter($form, $form_state, $form_id);
 }
 
 /**
@@ -103,7 +103,7 @@ function solo_form_node_form_alter(array &$form, FormStateInterface $form_state,
  */
 #[LegacyHook]
 function solo_theme_suggestions_node_edit_form_alter(array &$suggestions, array $variables): void {
-  \Drupal::service(SoloThemeAlterHooks::class)->themeSuggestionsNodeEditFormAlter($suggestions, $variables);
+  \Drupal::classResolver(SoloThemeAlterHooks::class)->themeSuggestionsNodeEditFormAlter($suggestions, $variables);
 }
 
 /**
@@ -111,7 +111,7 @@ function solo_theme_suggestions_node_edit_form_alter(array &$suggestions, array 
  */
 #[LegacyHook]
 function solo_form_comment_form_alter(&$form, FormStateInterface $form_state, $form_id): void {
-  \Drupal::service(SoloThemeAlterHooks::class)->formCommentFormAlter($form, $form_state, $form_id);
+  \Drupal::classResolver(SoloThemeAlterHooks::class)->formCommentFormAlter($form, $form_state, $form_id);
 }
 
 /**
@@ -122,7 +122,7 @@ function solo_form_comment_form_alter(&$form, FormStateInterface $form_state, $f
  */
 #[LegacyHook]
 function solo_form_views_exposed_form_alter(&$form, FormStateInterface $form_state): void {
-  \Drupal::service(SoloThemeAlterHooks::class)->formViewsExposedFormAlter($form, $form_state);
+  \Drupal::classResolver(SoloThemeAlterHooks::class)->formViewsExposedFormAlter($form, $form_state);
 }
 
 /**
@@ -130,7 +130,7 @@ function solo_form_views_exposed_form_alter(&$form, FormStateInterface $form_sta
  */
 #[LegacyHook]
 function solo_form_search_form_alter(&$form, FormStateInterface $form_state): void {
-  \Drupal::service(SoloThemeAlterHooks::class)->formSearchFormAlter($form, $form_state);
+  \Drupal::classResolver(SoloThemeAlterHooks::class)->formSearchFormAlter($form, $form_state);
 }
 
 /**
@@ -138,7 +138,7 @@ function solo_form_search_form_alter(&$form, FormStateInterface $form_state): vo
  */
 #[LegacyHook]
 function solo_form_search_block_form_alter(&$form, FormStateInterface $form_state): void {
-  \Drupal::service(SoloThemeAlterHooks::class)->formSearchBlockFormAlter($form, $form_state);
+  \Drupal::classResolver(SoloThemeAlterHooks::class)->formSearchBlockFormAlter($form, $form_state);
 }
 
 /**
@@ -173,5 +173,5 @@ function solo_form_search_block_form_alter(&$form, FormStateInterface $form_stat
  */
 #[LegacyHook]
 function solo_library_info_alter(array &$libraries, string $extension): void {
-  \Drupal::service(SoloThemeAlterHooks::class)->libraryInfoAlter($libraries, $extension);
+  \Drupal::classResolver(SoloThemeAlterHooks::class)->libraryInfoAlter($libraries, $extension);
 }

@@ -22,6 +22,7 @@
 
 use Drupal\Core\Cache\Cache;
 use Drupal\Core\Config\Config;
+use Drupal\Component\Utility\DeprecationHelper;
 use Drupal\Component\Utility\Html;
 use Drupal\Component\Utility\NestedArray;
 use Drupal\Component\Utility\UrlHelper;
@@ -35,7 +36,7 @@ use Drupal\solo\SocialIconColor;
  */
 #[LegacyHook]
 function solo_form_system_theme_settings_alter(&$form, FormStateInterface $form_state) {
-  \Drupal::service(SoloThemeSettingsHooks::class)
+  \Drupal::classResolver(SoloThemeSettingsHooks::class)
     ->formSystemThemeSettingsAlter($form, $form_state);
 }
 
@@ -648,13 +649,23 @@ function _solo_theme_settings_submit($form, FormStateInterface $form_state) {
   // Clear library discovery. Also forces solo_library_info_alter() to
   // re-run on the next discovery, which re-checks the on-disk files.
   //
-  // clear(), NOT clearCachedDefinitions(). In Drupal 12 the 'library.discovery'
-  // service IS LibraryDiscoveryCollector (core.services.yml:1808-1809), and
-  // that class has no clearCachedDefinitions() -- it inherits clear() from
-  // CacheCollector. Core itself calls ->clear() here, in
-  // ModuleInstaller.php:420. The old call fataled when theme settings were
-  // saved. Measured on 12.0.0-alpha1, 2026-09-08.
-  \Drupal::service('library.discovery')->clear();
+  // The method depends on the core version, and each wrong choice is a fatal
+  // on theme-settings save:
+  // - From 11.1.0 'library.discovery' IS LibraryDiscoveryCollector, which
+  //   inherits clear() from CacheCollector; clearCachedDefinitions() is
+  //   deprecated there and gone in 12.0.0 (measured on 12.0.0-alpha1,
+  //   2026-09-08). Core calls ->clear() itself in ModuleInstaller.
+  // - Before 11.1.0 'library.discovery' is the LibraryDiscovery wrapper, which
+  //   has clearCachedDefinitions() and NO clear(). Calling clear() there is
+  //   "Call to undefined method", measured on 10.6.18, 2026-10-06.
+  DeprecationHelper::backwardsCompatibleCall(
+    \Drupal::VERSION,
+    '11.1.0',
+    fn() => \Drupal::service('library.discovery')->clear(),
+    // Drupal 10-11.0 only; PHPStan analyses against 11.1+ where it is gone.
+    // @phpstan-ignore method.notFound
+    fn() => \Drupal::service('library.discovery')->clearCachedDefinitions(),
+  );
 
   // Clear Twig cache.
   \Drupal::service('twig')->invalidate();

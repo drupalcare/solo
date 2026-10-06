@@ -433,7 +433,7 @@ function _solo_preprocess_html_back_to_top(array &$variables, string $active_the
  */
 #[LegacyHook]
 function solo_preprocess_html(&$variables): void {
-  \Drupal::service(SoloThemePreprocessHooks::class)->preprocessHtml($variables);
+  \Drupal::classResolver(SoloThemePreprocessHooks::class)->preprocessHtml($variables);
 }
 
 /**
@@ -739,7 +739,7 @@ function _get_node_width_class(NodeInterface $node): ?string {
  */
 #[LegacyHook]
 function solo_preprocess_page(&$variables) {
-  \Drupal::service(SoloThemePreprocessHooks::class)->preprocessPage($variables);
+  \Drupal::classResolver(SoloThemePreprocessHooks::class)->preprocessPage($variables);
 }
 
 /**
@@ -747,7 +747,7 @@ function solo_preprocess_page(&$variables) {
  */
 #[LegacyHook]
 function solo_preprocess_node(array &$variables) {
-  \Drupal::service(SoloThemePreprocessHooks::class)->preprocessNode($variables);
+  \Drupal::classResolver(SoloThemePreprocessHooks::class)->preprocessNode($variables);
 }
 
 /**
@@ -857,7 +857,7 @@ function _add_view_breadcrumb(RouteMatchInterface $route_match, array &$breadcru
  */
 #[LegacyHook]
 function solo_preprocess_breadcrumb(&$variables): void {
-  \Drupal::service(SoloThemePreprocessHooks::class)->preprocessBreadcrumb($variables);
+  \Drupal::classResolver(SoloThemePreprocessHooks::class)->preprocessBreadcrumb($variables);
 }
 
 /**
@@ -865,7 +865,7 @@ function solo_preprocess_breadcrumb(&$variables): void {
  */
 #[LegacyHook]
 function solo_preprocess_field(&$variables, $hook) {
-  \Drupal::service(SoloThemePreprocessHooks::class)->preprocessField($variables, $hook);
+  \Drupal::classResolver(SoloThemePreprocessHooks::class)->preprocessField($variables, $hook);
 }
 
 /**
@@ -873,7 +873,7 @@ function solo_preprocess_field(&$variables, $hook) {
  */
 #[LegacyHook]
 function solo_preprocess_field__node__created(&$variables): void {
-  \Drupal::service(SoloThemePreprocessHooks::class)->preprocessFieldNodeCreated($variables);
+  \Drupal::classResolver(SoloThemePreprocessHooks::class)->preprocessFieldNodeCreated($variables);
 }
 
 /**
@@ -881,7 +881,7 @@ function solo_preprocess_field__node__created(&$variables): void {
  */
 #[LegacyHook]
 function solo_preprocess_filter_caption(&$variables): void {
-  \Drupal::service(SoloThemePreprocessHooks::class)->preprocessFilterCaption($variables);
+  \Drupal::classResolver(SoloThemePreprocessHooks::class)->preprocessFilterCaption($variables);
 }
 
 /**
@@ -889,7 +889,7 @@ function solo_preprocess_filter_caption(&$variables): void {
  */
 #[LegacyHook]
 function solo_preprocess_search_result(&$variables): void {
-  \Drupal::service(SoloThemePreprocessHooks::class)->preprocessSearchResult($variables);
+  \Drupal::classResolver(SoloThemePreprocessHooks::class)->preprocessSearchResult($variables);
 }
 
 /**
@@ -901,7 +901,7 @@ function solo_preprocess_search_result(&$variables): void {
  */
 #[LegacyHook]
 function solo_preprocess_comment(array &$variables): void {
-  \Drupal::service(SoloThemePreprocessHooks::class)->preprocessComment($variables);
+  \Drupal::classResolver(SoloThemePreprocessHooks::class)->preprocessComment($variables);
 }
 
 /**
@@ -909,7 +909,7 @@ function solo_preprocess_comment(array &$variables): void {
  */
 #[LegacyHook]
 function solo_preprocess_block(&$variables): void {
-  \Drupal::service(SoloThemePreprocessHooks::class)->preprocessBlock($variables);
+  \Drupal::classResolver(SoloThemePreprocessHooks::class)->preprocessBlock($variables);
 }
 
 /**
@@ -1062,7 +1062,7 @@ function solo_preprocess_menu__account(&$variables): void {
  */
 #[LegacyHook]
 function solo_preprocess_menu(&$variables) {
-  \Drupal::service(SoloThemePreprocessHooks::class)->preprocessMenu($variables);
+  \Drupal::classResolver(SoloThemePreprocessHooks::class)->preprocessMenu($variables);
 }
 
 /**
@@ -1070,7 +1070,7 @@ function solo_preprocess_menu(&$variables) {
  */
 #[LegacyHook]
 function solo_preprocess_form_element(array &$variables): void {
-  \Drupal::service(SoloThemePreprocessHooks::class)->preprocessFormElement($variables);
+  \Drupal::classResolver(SoloThemePreprocessHooks::class)->preprocessFormElement($variables);
 }
 
 /**
@@ -1078,7 +1078,7 @@ function solo_preprocess_form_element(array &$variables): void {
  */
 #[LegacyHook]
 function solo_preprocess_form_element_label(array &$variables): void {
-  \Drupal::service(SoloThemePreprocessHooks::class)->preprocessFormElementLabel($variables);
+  \Drupal::classResolver(SoloThemePreprocessHooks::class)->preprocessFormElementLabel($variables);
 }
 
 /**
@@ -1086,7 +1086,7 @@ function solo_preprocess_form_element_label(array &$variables): void {
  */
 #[LegacyHook]
 function solo_preprocess_input(array &$variables): void {
-  \Drupal::service(SoloThemePreprocessHooks::class)->preprocessInput($variables);
+  \Drupal::classResolver(SoloThemePreprocessHooks::class)->preprocessInput($variables);
 }
 
 /**
@@ -1094,7 +1094,7 @@ function solo_preprocess_input(array &$variables): void {
  */
 #[LegacyHook]
 function solo_preprocess_menu_local_task(array &$variables): void {
-  \Drupal::service(SoloThemePreprocessHooks::class)->preprocessMenuLocalTask($variables);
+  \Drupal::classResolver(SoloThemePreprocessHooks::class)->preprocessMenuLocalTask($variables);
 }
 
 /**
@@ -1102,7 +1102,7 @@ function solo_preprocess_menu_local_task(array &$variables): void {
  */
 #[LegacyHook]
 function solo_preprocess_field__comment(array &$variables): void {
-  \Drupal::service(SoloThemePreprocessHooks::class)->preprocessFieldComment($variables);
+  \Drupal::classResolver(SoloThemePreprocessHooks::class)->preprocessFieldComment($variables);
 }
 
 /**
@@ -1137,7 +1137,7 @@ function _maintenance_library(array &$variables): void {
  */
 #[LegacyHook]
 function solo_preprocess_maintenance_page(array &$variables): void {
-  \Drupal::service(SoloThemePreprocessHooks::class)->preprocessMaintenancePage($variables);
+  \Drupal::classResolver(SoloThemePreprocessHooks::class)->preprocessMaintenancePage($variables);
 }
 
 /**
@@ -1145,7 +1145,7 @@ function solo_preprocess_maintenance_page(array &$variables): void {
  */
 #[LegacyHook]
 function solo_preprocess_views_view_table(array &$variables): void {
-  \Drupal::service(SoloThemePreprocessHooks::class)->preprocessViewsViewTable($variables);
+  \Drupal::classResolver(SoloThemePreprocessHooks::class)->preprocessViewsViewTable($variables);
 }
 
 /**
@@ -1153,7 +1153,7 @@ function solo_preprocess_views_view_table(array &$variables): void {
  */
 #[LegacyHook]
 function solo_preprocess_fieldset(array &$variables): void {
-  \Drupal::service(SoloThemePreprocessHooks::class)->preprocessFieldset($variables);
+  \Drupal::classResolver(SoloThemePreprocessHooks::class)->preprocessFieldset($variables);
 }
 
 /**
@@ -1161,7 +1161,7 @@ function solo_preprocess_fieldset(array &$variables): void {
  */
 #[LegacyHook]
 function solo_preprocess_form(array &$variables): void {
-  \Drupal::service(SoloThemePreprocessHooks::class)->preprocessForm($variables);
+  \Drupal::classResolver(SoloThemePreprocessHooks::class)->preprocessForm($variables);
 }
 
 /**
@@ -1213,7 +1213,7 @@ function _solo_mark_entity_reference_fields(array &$elements): void {
  */
 #[LegacyHook]
 function solo_preprocess_container(array &$variables): void {
-  \Drupal::service(SoloThemePreprocessHooks::class)->preprocessContainer($variables);
+  \Drupal::classResolver(SoloThemePreprocessHooks::class)->preprocessContainer($variables);
 }
 
 /**
@@ -1269,5 +1269,5 @@ function _solo_container_has_min_max(array $element): bool {
  */
 #[LegacyHook]
 function solo_preprocess_field_multiple_value_form(array &$variables): void {
-  \Drupal::service(SoloThemePreprocessHooks::class)->preprocessFieldMultipleValueForm($variables);
+  \Drupal::classResolver(SoloThemePreprocessHooks::class)->preprocessFieldMultipleValueForm($variables);
 }

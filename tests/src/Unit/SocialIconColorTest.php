@@ -59,6 +59,11 @@ class SocialIconColorTest extends TestCase {
 
   /**
    * A bare custom property name is recognised as such.
+   *
+   * The docblock tag is for PHPUnit 9 (Drupal 10), which does not read the
+   * attribute; PHPUnit 10+ reads the attribute and ignores the tag.
+   *
+   * @dataProvider bareCustomProperties
    */
   #[DataProvider('bareCustomProperties')]
   public function testBareCustomPropertyIsDetected(string $value): void {
@@ -71,6 +76,8 @@ class SocialIconColorTest extends TestCase {
 
   /**
    * Anything else is not mistaken for a bare custom property name.
+   *
+   * @dataProvider notBareCustomProperties
    */
   #[DataProvider('notBareCustomProperties')]
   public function testOtherValuesAreNotBareCustomProperties(string $value): void {

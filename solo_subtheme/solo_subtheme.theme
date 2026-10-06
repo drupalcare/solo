@@ -14,5 +14,5 @@ use Drupal\solo_subtheme\Hook\SoloSubthemeHooks;
 #[LegacyHook]
 function solo_subtheme_theme_suggestions_block_alter(&$suggestions, $variables) {
 
-  \Drupal::service(SoloSubthemeHooks::class)->themeSuggestionsBlockAlter($suggestions, $variables);
+  \Drupal::classResolver(SoloSubthemeHooks::class)->themeSuggestionsBlockAlter($suggestions, $variables);
 }

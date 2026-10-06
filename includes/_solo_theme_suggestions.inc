@@ -14,7 +14,7 @@ use Drupal\Core\Routing\RouteMatchInterface;
  */
 #[LegacyHook]
 function solo_theme_suggestions_form_alter(array &$suggestions, array $variables): void {
-  \Drupal::service(SoloThemeSuggestionsHooks::class)->themeSuggestionsFormAlter($suggestions, $variables);
+  \Drupal::classResolver(SoloThemeSuggestionsHooks::class)->themeSuggestionsFormAlter($suggestions, $variables);
 }
 
 /**
@@ -22,7 +22,7 @@ function solo_theme_suggestions_form_alter(array &$suggestions, array $variables
  */
 #[LegacyHook]
 function solo_theme_suggestions_block_alter(array &$suggestions, array $variables): void {
-  \Drupal::service(SoloThemeSuggestionsHooks::class)->themeSuggestionsBlockAlter($suggestions, $variables);
+  \Drupal::classResolver(SoloThemeSuggestionsHooks::class)->themeSuggestionsBlockAlter($suggestions, $variables);
 }
 
 /**
@@ -30,7 +30,7 @@ function solo_theme_suggestions_block_alter(array &$suggestions, array $variable
  */
 #[LegacyHook]
 function solo_theme_suggestions_menu_alter(array &$suggestions, array $variables): void {
-  \Drupal::service(SoloThemeSuggestionsHooks::class)->themeSuggestionsMenuAlter($suggestions, $variables);
+  \Drupal::classResolver(SoloThemeSuggestionsHooks::class)->themeSuggestionsMenuAlter($suggestions, $variables);
 }
 
 /**
@@ -67,7 +67,7 @@ function _add_view_suggestions(RouteMatchInterface $route_match, array &$suggest
  */
 #[LegacyHook]
 function solo_theme_suggestions_page_alter(array &$suggestions, array $variables): void {
-  \Drupal::service(SoloThemeSuggestionsHooks::class)->themeSuggestionsPageAlter($suggestions, $variables);
+  \Drupal::classResolver(SoloThemeSuggestionsHooks::class)->themeSuggestionsPageAlter($suggestions, $variables);
 }
 
 /**
@@ -75,5 +75,5 @@ function solo_theme_suggestions_page_alter(array &$suggestions, array $variables
  */
 #[LegacyHook]
 function solo_theme_suggestions_user_alter(array &$suggestions, array $variables) {
-  \Drupal::service(SoloThemeSuggestionsHooks::class)->themeSuggestionsUserAlter($suggestions, $variables);
+  \Drupal::classResolver(SoloThemeSuggestionsHooks::class)->themeSuggestionsUserAlter($suggestions, $variables);
 }

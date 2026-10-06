@@ -240,7 +240,7 @@ function _load_color_coded_system_tabs(array &$attachments): void {
  */
 #[LegacyHook]
 function solo_page_attachments_alter(array &$attachments): void {
-  \Drupal::service(SoloThemeMiscHooks::class)->pageAttachmentsAlter($attachments);
+  \Drupal::classResolver(SoloThemeMiscHooks::class)->pageAttachmentsAlter($attachments);
 }
 
 /**
@@ -308,5 +308,5 @@ function _solo_convert_hex_to_hsl(string $hex_string): array {
  */
 #[LegacyHook]
 function solo_modules_disabled(array $modules): void {
-  \Drupal::service(SoloThemeMiscHooks::class)->modulesDisabled($modules);
+  \Drupal::classResolver(SoloThemeMiscHooks::class)->modulesDisabled($modules);
 }

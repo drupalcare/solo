@@ -47,7 +47,7 @@ class SoloHookRegistrationTest extends BrowserTestBase {
   /**
    * {@inheritdoc}
    */
-  protected static $modules = ['node', 'block', 'user'];
+  protected static $modules = ['node', 'block', 'user', 'views'];
 
   /**
    * Hooks Solo preprocesses that core always builds, so they always exist.
@@ -126,6 +126,45 @@ class SoloHookRegistrationTest extends BrowserTestBase {
 
     // And the node itself rendered, so preprocess_node ran without dying.
     $this->assertSession()->pageTextContains('Solo hook registration probe');
+  }
+
+  /**
+   * Solo's breadcrumb preprocess runs: the page title is appended.
+   *
+   * Core's breadcrumb on a node page is "Home" alone; the trailing title item
+   * exists only because solo_preprocess_breadcrumb ran. Measured 2026-10-05:
+   * on Drupal 12.0.0-beta1 that function had no #[Hook] twin, never ran, and
+   * the breadcrumb rendered "Home" alone -- while every other assertion in
+   * this class stayed green.
+   */
+  public function testBreadcrumbPreprocessRuns(): void {
+    $node = $this->drupalCreateNode([
+      'type' => 'page',
+      'title' => 'Solo breadcrumb probe',
+    ]);
+
+    $this->drupalGet($node->toUrl());
+    $this->assertSession()->statusCodeEquals(200);
+    $this->assertSession()->elementExists('css', 'nav.breadcrumb-nav');
+    $this->assertSession()->elementTextContains('css', 'nav.breadcrumb-nav .breadcrumb-title', 'Solo breadcrumb probe');
+  }
+
+  /**
+   * Solo's views-table preprocess runs: sortable headings get their class.
+   *
+   * The 'sortable-heading' class is added only by
+   * solo_preprocess_views_view_table, to header cells whose link carries an
+   * order and sort. /admin/content is core's table view with such headers,
+   * rendered in Solo because no admin theme is set. Dead on Drupal
+   * 12.0.0-beta1 for the same reason as the breadcrumb, measured 2026-10-05.
+   */
+  public function testViewsTablePreprocessRuns(): void {
+    $this->drupalCreateNode(['type' => 'page', 'title' => 'Solo table probe']);
+    $this->drupalLogin($this->drupalCreateUser(['access content overview']));
+
+    $this->drupalGet('admin/content');
+    $this->assertSession()->statusCodeEquals(200);
+    $this->assertSession()->elementExists('css', 'table th.sortable-heading');
   }
 
   /**

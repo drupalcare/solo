@@ -449,6 +449,78 @@ class SoloThemePreprocessHooks {
   }
 
   /**
+   * Implements hook_preprocess_HOOK() for breadcrumb.html.twig.
+   */
+  #[Hook('preprocess_breadcrumb')]
+  public static function preprocessBreadcrumb(&$variables): void {
+    if (!empty($variables['breadcrumb']) && !DeprecationHelper::backwardsCompatibleCall(\Drupal::VERSION, '11.3.0', fn() => \Drupal::service(ThemeSettingsProvider::class)->getSetting('site_breadcrumb_pagetitle_off'), fn() => theme_get_setting('site_breadcrumb_pagetitle_off'))) {
+      $variables['breadcrumb'] = $variables['breadcrumb'] ?? [];
+
+      $breadcrumb     = [];
+      $request        = \Drupal::request();
+      $route_match    = \Drupal::service('current_route_match');
+      $title_resolver = \Drupal::service('title_resolver');
+      $route          = $route_match->getRouteObject();
+      $body_classes   = $request->attributes->get('solo_body_classes', []);
+
+      // Only get the page title if we have a valid route object.
+      if ($route) {
+        $page_title = $title_resolver->getTitle($request, $route);
+
+        if (!empty($page_title) && is_string($page_title)) {
+          $title_exists = FALSE;
+          // Check if the page title already exists in the breadcrumb.
+          foreach ($variables['breadcrumb'] as $breadcrumb_item) {
+            if (!empty($breadcrumb_item['text']) && $breadcrumb_item['text'] === $page_title) {
+              $title_exists = TRUE;
+              break;
+            }
+          }
+          // If not found, add the page title.
+          if (!$title_exists) {
+            $variables['breadcrumb'][] = ['text' => Html::decodeEntities($page_title)];
+            $variables['#cache']['contexts'][] = 'url';
+          }
+        }
+      }
+
+      _add_node_breadcrumb($route_match, $breadcrumb);
+      _add_taxonomy_breadcrumb($route_match, $breadcrumb);
+      _add_user_breadcrumb($route_match, $breadcrumb);
+      _add_webform_breadcrumb($route_match, $breadcrumb);
+      _add_view_breadcrumb($route_match, $breadcrumb, $title_resolver, $body_classes);
+
+      $variables['breadcrumb'] = array_merge($variables['breadcrumb'], $breadcrumb);
+      if (!empty($variables['breadcrumb'])) {
+        $unique_breadcrumb = [];
+        $seen_texts = [];
+
+        foreach ($variables['breadcrumb'] as $item) {
+          if (!empty($item['text'])) {
+            $text = $item['text'];
+            if (is_array($text)) {
+              if (isset($text['#markup']) && is_string($text['#markup'])) {
+                $text = $text['#markup'];
+              }
+              else {
+                continue;
+              }
+            }
+            $decoded_text = Html::decodeEntities($text);
+
+            if (!in_array($decoded_text, $seen_texts, TRUE)) {
+              $seen_texts[] = $decoded_text;
+              $unique_breadcrumb[] = $item;
+            }
+          }
+        }
+
+        $variables['breadcrumb'] = $unique_breadcrumb;
+      }
+    }
+  }
+
+  /**
    * Implements hook_preprocess_field().
    */
   #[Hook('preprocess_field')]
@@ -889,6 +961,26 @@ class SoloThemePreprocessHooks {
   public static function preprocessMaintenancePage(array &$variables): void {
     _set_site_name($variables);
     _maintenance_library($variables);
+  }
+
+  /**
+   * Implements hook_preprocess_HOOK() for views-view-table.html.twig.
+   */
+  #[Hook('preprocess_views_view_table')]
+  public static function preprocessViewsViewTable(array &$variables): void {
+    // Apply sortable-heading logic if needed.
+    if (!empty($variables['header'])) {
+      foreach ($variables['header'] as &$header_cell) {
+        if (!empty($header_cell['url'])) {
+          $parsed_url = UrlHelper::parse($header_cell['url']);
+          $query = $parsed_url['query'] ?? [];
+
+          if (isset($query['order'], $query['sort'])) {
+            $header_cell['attributes']->addClass('sortable-heading');
+          }
+        }
+      }
+    }
   }
 
   /**

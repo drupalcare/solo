@@ -67,24 +67,28 @@
 }
 
 
-/* Link only — Zeroed specificity so dynamic paragraph links preserve their variables */
-:where(.page-wrapper) :where(a:not(.nav__menu-link,
+/* Link only — specificity (0,1,1): above solo-normalize.css (`a { all: unset }`,
+   `li a { color: inherit }`) so the region link colour applies (#3629228), and
+   below a paragraph's own link rules (0,2,0)+, so section link colours win.
+   Only the .page-wrapper part is zeroed; zeroing the whole selector (1.0.35)
+   let normalize win and every link fell back to the text colour. */
+:where(.page-wrapper) a:not(.nav__menu-link,
 .button,
 .site-name-link,
 .site-logo,
 h1 a,
 h2 a,
-h3 a)) {
+h3 a) {
   color: var(--r-lk, var(--r-tx));
 }
 
-:where(.page-wrapper) :where(a:not(.nav__menu-link,
+:where(.page-wrapper) a:not(.nav__menu-link,
 .button,
 .site-name-link,
 .site-logo,
 h1 a,
 h2 a,
-h3 a)):hover {
+h3 a):hover {
   color: var(--r-lk-h, var(--r-tx));
 }
 

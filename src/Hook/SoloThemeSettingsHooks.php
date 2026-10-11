@@ -4,6 +4,7 @@ namespace Drupal\solo\Hook;
 
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Hook\Attribute\Hook;
+use Drupal\solo\SoloIncludes;
 
 /**
  * Theme settings form hook for solo.
@@ -28,7 +29,11 @@ class SoloThemeSettingsHooks {
    */
   #[Hook('form_system_theme_settings_alter')]
   public function formSystemThemeSettingsAlter(&$form, FormStateInterface $form_state): void {
+    SoloIncludes::load();
     $form['#validate'][] = 'solo_theme_settings_validate';
+    // The callbacks this form names live in the include files; a cached
+    // rebuild must load them without solo.theme.
+    SoloIncludes::addToFormBuildInfo($form_state);
     $form['logo']['#weight'] = 97;
     $form['favicon']['#open'] = FALSE;
     $form['favicon']['#weight'] = 98;

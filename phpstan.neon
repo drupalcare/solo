@@ -54,4 +54,16 @@ parameters:
     -
       identifier: variable.undefined
       path: includes/*.inc
+    # #[ExtensionFileIsConverted] is how solo.theme tells Drupal >= 11.5 that
+    # it is kept only for older core (see the file's own docblock). The class
+    # does not exist before that release -- measured absent in Drupal 11.4.8
+    # and 10.6.18 -- and PHP never instantiates an attribute nobody reflects,
+    # so it is inert there. Scoped to that one class, that one identifier and
+    # solo.theme; reportUnmatched is off because on Drupal 12, where the class
+    # exists, this entry matches nothing.
+    -
+      message: '#^Attribute class Drupal\\Core\\Hook\\Attribute\\ExtensionFileIsConverted does not exist\.$#'
+      identifier: attribute.notFound
+      path: solo.theme
+      reportUnmatched: false
   treatPhpDocTypesAsCertain: false

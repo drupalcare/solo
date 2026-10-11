@@ -11,6 +11,7 @@ use Drupal\node\NodeInterface;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Hook\Attribute\Hook;
 use Drupal\Core\StringTranslation\StringTranslationTrait;
+use Drupal\solo\SoloIncludes;
 
 /**
  * Hook implementations for solo.
@@ -23,6 +24,7 @@ class SoloThemeAlterHooks {
    */
   #[Hook('form_node_preview_form_select_alter')]
   public static function formNodePreviewFormSelectAlter(&$form, FormStateInterface $form_state, $form_id): void {
+    SoloIncludes::load();
     $form['backlink']['#options']['attributes']['class'][] = 'button';
     $form['backlink']['#options']['attributes']['class'][] = 'button--small';
     $form['backlink']['#options']['attributes']['class'][] = 'button--icon-back';
@@ -35,6 +37,7 @@ class SoloThemeAlterHooks {
    */
   #[Hook('form_node_form_alter')]
   public static function formNodeFormAlter(array &$form, FormStateInterface $form_state, $form_id): void {
+    SoloIncludes::load();
     // Set the theme for the form.
     $form['#theme'] = [
       'node_edit_form',
@@ -60,6 +63,7 @@ class SoloThemeAlterHooks {
    */
   #[Hook('theme_suggestions_node_edit_form_alter')]
   public static function themeSuggestionsNodeEditFormAlter(array &$suggestions, array $variables): void {
+    SoloIncludes::load();
     $bundle = NULL;
     // Attempt to retrieve the bundle from the form's #node property (edit form).
     if (isset($variables['form']['#node']) && $variables['form']['#node'] instanceof NodeInterface) {
@@ -85,6 +89,7 @@ class SoloThemeAlterHooks {
    */
   #[Hook('form_comment_form_alter')]
   public function formCommentFormAlter(&$form, FormStateInterface $form_state, $form_id): void {
+    SoloIncludes::load();
     $is_comment = $form_state->getFormObject()->getEntity();
     if ($is_comment instanceof CommentInterface) {
       $form['actions']['submit']['#value'] = $is_comment->hasParentComment() ? $this->t('Reply to comment') : $this->t('Post comment');
@@ -99,6 +104,7 @@ class SoloThemeAlterHooks {
    */
   #[Hook('form_views_exposed_form_alter')]
   public static function formViewsExposedFormAlter(&$form, FormStateInterface $form_state): void {
+    SoloIncludes::load();
     $form['#attributes']['class'][] = 'form--inline';
     // Loop through ALL form elements - no hardcoded field names.
     foreach (Element::children($form) as $key) {
@@ -135,6 +141,7 @@ class SoloThemeAlterHooks {
    */
   #[Hook('form_search_form_alter')]
   public function formSearchFormAlter(&$form, FormStateInterface $form_state): void {
+    SoloIncludes::load();
     // Remove the help link if it exists.
     if (isset($form['help_link'])) {
       unset($form['help_link']);
@@ -185,6 +192,7 @@ class SoloThemeAlterHooks {
         ];
         // Add validation to apply these content types to the search query.
         $form['#validate'][] = 'solo_apply_hidden_content_types';
+        SoloIncludes::addToFormBuildInfo($form_state);
       }
       else {
         // Remove the "Types" filter if no content types are specified.
@@ -198,6 +206,7 @@ class SoloThemeAlterHooks {
    */
   #[Hook('form_search_block_form_alter')]
   public function formSearchBlockFormAlter(&$form, FormStateInterface $form_state): void {
+    SoloIncludes::load();
     // Add placeholder text to keys input.
     $form['keys']['#attributes']['placeholder'] = $this->t('Search by keyword or phrase.');
     // Add a class to the submit button.
@@ -247,6 +256,7 @@ class SoloThemeAlterHooks {
    */
   #[Hook('library_info_alter')]
   public static function libraryInfoAlter(array &$libraries, string $extension): void {
+    SoloIncludes::load();
     if ($extension !== 'solo') {
       return;
     }

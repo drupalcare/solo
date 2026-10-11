@@ -3,6 +3,7 @@
 namespace Drupal\solo\Hook;
 
 use Drupal\Core\Hook\Attribute\Hook;
+use Drupal\solo\SoloIncludes;
 
 /**
  * Hook implementations for solo.
@@ -14,6 +15,7 @@ class SoloThemeSuggestionsHooks {
    */
   #[Hook('theme_suggestions_form_alter')]
   public static function themeSuggestionsFormAlter(array &$suggestions, array $variables): void {
+    SoloIncludes::load();
     // Check if form_id exists in variables.
     if (isset($variables['element']['#form_id'])) {
       // Get the form ID.
@@ -30,6 +32,7 @@ class SoloThemeSuggestionsHooks {
    */
   #[Hook('theme_suggestions_block_alter')]
   public static function themeSuggestionsBlockAlter(array &$suggestions, array $variables): void {
+    SoloIncludes::load();
     if (isset($variables['elements']['content']['#block_content'])) {
       array_splice($suggestions, 1, 0, 'block__type__' . $variables['elements']['content']['#block_content']->bundle());
     }
@@ -40,6 +43,7 @@ class SoloThemeSuggestionsHooks {
    */
   #[Hook('theme_suggestions_menu_alter')]
   public static function themeSuggestionsMenuAlter(array &$suggestions, array $variables): void {
+    SoloIncludes::load();
     $region_suggestions_added = [];
     $new_suggestions = [];
     // Region-based suggestions (add to list only if user has no choice).
@@ -120,6 +124,7 @@ class SoloThemeSuggestionsHooks {
    */
   #[Hook('theme_suggestions_page_alter')]
   public static function themeSuggestionsPageAlter(array &$suggestions, array $variables): void {
+    SoloIncludes::load();
     $route_match = \Drupal::service('current_route_match');
     _add_node_suggestions($route_match, $suggestions);
     _add_taxonomy_suggestions($route_match, $suggestions);
@@ -131,6 +136,7 @@ class SoloThemeSuggestionsHooks {
    */
   #[Hook('theme_suggestions_user_alter')]
   public static function themeSuggestionsUserAlter(array &$suggestions, array $variables) {
+    SoloIncludes::load();
     $viewModeKey = '#view_mode';
     $elements = $variables['elements'] ?? [];
     if (isset($elements[$viewModeKey])) {

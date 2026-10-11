@@ -14,6 +14,7 @@ use Drupal\Core\Extension\ThemeSettingsProvider;
 use Drupal\Component\Utility\DeprecationHelper;
 use Drupal\Core\Hook\Attribute\Hook;
 use Drupal\Core\StringTranslation\StringTranslationTrait;
+use Drupal\solo\SoloIncludes;
 
 /**
  * Hook implementations for solo.
@@ -26,6 +27,7 @@ class SoloThemePreprocessHooks {
    */
   #[Hook('preprocess_html')]
   public static function preprocessHtml(&$variables): void {
+    SoloIncludes::load();
     $route_match = \Drupal::routeMatch();
     $route_name = $route_match->getRouteName();
     $solo_utilities = \Drupal::request()->getBasePath();
@@ -170,6 +172,7 @@ class SoloThemePreprocessHooks {
    */
   #[Hook('preprocess_page')]
   public static function preprocessPage(&$variables) {
+    SoloIncludes::load();
     $keyboard_menus = DeprecationHelper::backwardsCompatibleCall(\Drupal::VERSION, '11.3.0', fn() => \Drupal::service(ThemeSettingsProvider::class)->getSetting('keyboard_navigation_menus'), fn() => theme_get_setting('keyboard_navigation_menus'));
     if ($keyboard_menus) {
       // Filter out unchecked items (checkboxes return 0 for unchecked)
@@ -420,6 +423,7 @@ class SoloThemePreprocessHooks {
    */
   #[Hook('preprocess_node')]
   public static function preprocessNode(array &$variables) {
+    SoloIncludes::load();
     $d_format = DeprecationHelper::backwardsCompatibleCall(\Drupal::VERSION, '11.3.0', fn() => \Drupal::service(ThemeSettingsProvider::class)->getSetting('site_node_date_format'), fn() => theme_get_setting('site_node_date_format'));
     // Do not override if the user selected "none" (i.e., use Drupal's default).
     if (is_string($d_format) && $d_format !== 'none' && !empty($variables['date']) && !empty($variables['display_submitted']) && $variables['display_submitted'] === TRUE) {
@@ -453,6 +457,7 @@ class SoloThemePreprocessHooks {
    */
   #[Hook('preprocess_breadcrumb')]
   public static function preprocessBreadcrumb(&$variables): void {
+    SoloIncludes::load();
     if (!empty($variables['breadcrumb']) && !DeprecationHelper::backwardsCompatibleCall(\Drupal::VERSION, '11.3.0', fn() => \Drupal::service(ThemeSettingsProvider::class)->getSetting('site_breadcrumb_pagetitle_off'), fn() => theme_get_setting('site_breadcrumb_pagetitle_off'))) {
       $variables['breadcrumb'] = $variables['breadcrumb'] ?? [];
 
@@ -525,6 +530,7 @@ class SoloThemePreprocessHooks {
    */
   #[Hook('preprocess_field')]
   public static function preprocessField(&$variables, $hook) {
+    SoloIncludes::load();
     // Check if the field is of type 'entity_reference'.
     if (isset($variables['element']['#field_type']) && $variables['element']['#field_type'] === 'entity_reference') {
       // Check if items are set and not empty.
@@ -552,6 +558,7 @@ class SoloThemePreprocessHooks {
    */
   #[Hook('preprocess_field__node__created')]
   public static function preprocessFieldNodeCreated(&$variables): void {
+    SoloIncludes::load();
     array_walk($variables['items'], function (&$item) {
       if (isset($item['content']['#prefix'])) {
             unset($item['content']['#prefix']);
@@ -564,6 +571,7 @@ class SoloThemePreprocessHooks {
    */
   #[Hook('preprocess_filter_caption')]
   public static function preprocessFilterCaption(&$variables): void {
+    SoloIncludes::load();
     $variables['classes'] = $variables['classes'] ?? '';
     $variables['classes'] .= ' caption';
   }
@@ -573,6 +581,7 @@ class SoloThemePreprocessHooks {
    */
   #[Hook('preprocess_search_result')]
   public static function preprocessSearchResult(&$variables): void {
+    SoloIncludes::load();
     // Check if teaser mode is enabled.
     if (DeprecationHelper::backwardsCompatibleCall(\Drupal::VERSION, '11.3.0', fn() => \Drupal::service(ThemeSettingsProvider::class)->getSetting('enable_teaser_mode'), fn() => theme_get_setting('enable_teaser_mode'))) {
       // Render the teaser view mode for the node, if available.
@@ -592,6 +601,7 @@ class SoloThemePreprocessHooks {
    */
   #[Hook('preprocess_comment')]
   public function preprocessComment(array &$variables): void {
+    SoloIncludes::load();
     /** @var \Drupal\comment\CommentInterface $comment */
     $comment = $variables['elements']['#comment'];
     $comment_id = $comment->id();
@@ -657,6 +667,7 @@ class SoloThemePreprocessHooks {
    */
   #[Hook('preprocess_block')]
   public static function preprocessBlock(&$variables): void {
+    SoloIncludes::load();
     // Check if page title block has an actual title.
     if ($variables['plugin_id'] === 'page_title_block') {
       $request = \Drupal::request();
@@ -690,6 +701,7 @@ class SoloThemePreprocessHooks {
    */
   #[Hook('preprocess_menu')]
   public static function preprocessMenu(&$variables) {
+    SoloIncludes::load();
     $keyboard_menus = DeprecationHelper::backwardsCompatibleCall(\Drupal::VERSION, '11.3.0', fn() => \Drupal::service(ThemeSettingsProvider::class)->getSetting('keyboard_navigation_menus'), fn() => theme_get_setting('keyboard_navigation_menus'));
     if (!$keyboard_menus) {
       return;
@@ -708,10 +720,99 @@ class SoloThemePreprocessHooks {
   }
 
   /**
+   * Implements hook_preprocess_HOOK() for menu--primary-menu.html.twig.
+   */
+  #[Hook('preprocess_menu__primary_menu')]
+  public static function preprocessMenuPrimaryMenu(&$variables): void {
+    SoloIncludes::load();
+    if (DeprecationHelper::backwardsCompatibleCall(\Drupal::VERSION, '11.3.0', fn() => \Drupal::service(ThemeSettingsProvider::class)->getSetting('primary_menu_on_hover'), fn() => theme_get_setting('primary_menu_on_hover'))) {
+      $variables['click_hover'] = 'navigation-responsive-hover';
+      if (DeprecationHelper::backwardsCompatibleCall(\Drupal::VERSION, '11.3.0', fn() => \Drupal::service(ThemeSettingsProvider::class)->getSetting('primary_menu_arrow_hover'), fn() => theme_get_setting('primary_menu_arrow_hover'))) {
+        $variables['remove_arrow'] = 'remove-arrow';
+      }
+    }
+    else {
+      $variables['click_hover'] = 'navigation-responsive-click';
+    }
+
+    if (DeprecationHelper::backwardsCompatibleCall(\Drupal::VERSION, '11.3.0', fn() => \Drupal::service(ThemeSettingsProvider::class)->getSetting('primary_menu_alignment'), fn() => theme_get_setting('primary_menu_alignment'))) {
+      $alignment = DeprecationHelper::backwardsCompatibleCall(\Drupal::VERSION, '11.3.0', fn() => \Drupal::service(ThemeSettingsProvider::class)->getSetting('primary_menu_alignment'), fn() => theme_get_setting('primary_menu_alignment'));
+      $variables['menu_alignment'] = 'menu-align-' . $alignment;
+    }
+
+    if (DeprecationHelper::backwardsCompatibleCall(\Drupal::VERSION, '11.3.0', fn() => \Drupal::service(ThemeSettingsProvider::class)->getSetting('primary_menu_expand_left'), fn() => theme_get_setting('primary_menu_expand_left'))) {
+      $variables['expand_left'] = 'expand-left';
+    }
+    else {
+      $variables['expand_left'] = 'expand-right';
+    }
+
+    if (DeprecationHelper::backwardsCompatibleCall(\Drupal::VERSION, '11.3.0', fn() => \Drupal::service(ThemeSettingsProvider::class)->getSetting('primary_menu_megamenu'), fn() => theme_get_setting('primary_menu_megamenu'))) {
+      $variables['megamenu'] = 'navigation__megamenu';
+      $variables['sub_mega'] = 'sub-mega';
+      $variables['megamenu_layout'] = (DeprecationHelper::backwardsCompatibleCall(\Drupal::VERSION, '11.3.0', fn() => \Drupal::service(ThemeSettingsProvider::class)->getSetting('primary_menu_megamenu_layout'), fn() => theme_get_setting('primary_menu_megamenu_layout')));
+      if (DeprecationHelper::backwardsCompatibleCall(\Drupal::VERSION, '11.3.0', fn() => \Drupal::service(ThemeSettingsProvider::class)->getSetting('primary_menu_submenu_header'), fn() => theme_get_setting('primary_menu_submenu_header'))) {
+        $variables['sub_menu_header'] = 'sub__menu-header';
+      }
+    }
+
+    if (DeprecationHelper::backwardsCompatibleCall(\Drupal::VERSION, '11.3.0', fn() => \Drupal::service(ThemeSettingsProvider::class)->getSetting('primary_menu_branding'), fn() => theme_get_setting('primary_menu_branding'))) {
+      $variables['primary_menu_branding'] = 'activate-branding';
+      $variables['site_logo'] = DeprecationHelper::backwardsCompatibleCall(\Drupal::VERSION, '11.3.0', fn() => \Drupal::service(ThemeSettingsProvider::class)->getSetting('logo.url'), fn() => theme_get_setting('logo.url'));
+      _set_logo_default($variables);
+      $variables['site_name'] = \Drupal::config('system.site')->get('name');
+      $variables['logo_alt'] = DeprecationHelper::backwardsCompatibleCall(\Drupal::VERSION, '11.3.0', fn() => \Drupal::service(ThemeSettingsProvider::class)->getSetting('header_logo_image_alt'), fn() => theme_get_setting('header_logo_image_alt')) ?: 'Home';
+    }
+  }
+
+  /**
+   * Implements hook_preprocess_HOOK() for menu--primary-sidebar-menu.html.twig.
+   */
+  #[Hook('preprocess_menu__primary_sidebar_menu')]
+  public static function preprocessMenuPrimarySidebarMenu(&$variables): void {
+    SoloIncludes::load();
+    if (DeprecationHelper::backwardsCompatibleCall(\Drupal::VERSION, '11.3.0', fn() => \Drupal::service(ThemeSettingsProvider::class)->getSetting('primary_sidebar_menu_hover'), fn() => theme_get_setting('primary_sidebar_menu_hover'))) {
+      $variables['click_hover_sidebar'] = 'navigation-sidebar-hover';
+    }
+    else {
+      $variables['click_hover_sidebar'] = 'navigation-sidebar-click';
+    }
+  }
+
+  /**
+   * Implements hook_preprocess_HOOK() for menu--account.html.twig.
+   */
+  #[Hook('preprocess_menu__account')]
+  public static function preprocessMenuAccount(&$variables): void {
+    SoloIncludes::load();
+    if (!$variables['user']->isAuthenticated()) {
+      $enableLoginBlock = DeprecationHelper::backwardsCompatibleCall(\Drupal::VERSION, '11.3.0', fn() => \Drupal::service(ThemeSettingsProvider::class)->getSetting('header_popup_login'), fn() => theme_get_setting('header_popup_login'));
+
+      if ($enableLoginBlock) {
+        $loginText = DeprecationHelper::backwardsCompatibleCall(\Drupal::VERSION, '11.3.0', fn() => \Drupal::service(ThemeSettingsProvider::class)->getSetting('header_login_links'), fn() => theme_get_setting('header_login_links'));
+        $currentPath = \Drupal::service('path.current')->getPath();
+        $variables['login_popup_block'] = $enableLoginBlock;
+        $variables['login_text'] = $loginText;
+        $variables['current_path'] = $currentPath;
+
+        foreach ($variables['items'] as $key => $item) {
+          $url = $item['url'];
+          if ($url instanceof Url && $url->isRouted()) {
+            if ($url->getRouteName() === 'user.login') {
+              unset($variables['items'][$key]);
+            }
+          }
+        }
+      }
+    }
+  }
+
+  /**
    * Implements hook_preprocess_HOOK() for form-element.html.twig.
    */
   #[Hook('preprocess_form_element')]
   public static function preprocessFormElement(array &$variables): void {
+    SoloIncludes::load();
     $element = $variables['element'];
     // Ensure attributes class array is defensively initialized.
     _solo_ensure_class_array($variables);
@@ -809,6 +910,7 @@ class SoloThemePreprocessHooks {
    */
   #[Hook('preprocess_form_element_label')]
   public static function preprocessFormElementLabel(array &$variables): void {
+    SoloIncludes::load();
     _solo_ensure_class_array($variables);
     $variables['attributes']['class'][] = 'form-item__label';
   }
@@ -818,6 +920,7 @@ class SoloThemePreprocessHooks {
    */
   #[Hook('preprocess_input')]
   public function preprocessInput(array &$variables): void {
+    SoloIncludes::load();
     $element = $variables['element'] ?? [];
     // Ensure attributes class array is defensively initialized.
     _solo_ensure_class_array($variables);
@@ -896,6 +999,7 @@ class SoloThemePreprocessHooks {
    */
   #[Hook('preprocess_menu_local_task')]
   public static function preprocessMenuLocalTask(array &$variables): void {
+    SoloIncludes::load();
     // Ensure link options attributes class is an array.
     if (!isset($variables['link']['#options']['attributes']['class'])) {
       $variables['link']['#options']['attributes']['class'] = [];
@@ -934,6 +1038,7 @@ class SoloThemePreprocessHooks {
    */
   #[Hook('preprocess_field__comment')]
   public static function preprocessFieldComment(array &$variables): void {
+    SoloIncludes::load();
     // Add a comment_count.
     $variables['comment_count'] = count(array_filter($variables['comments'], 'is_numeric', ARRAY_FILTER_USE_KEY));
     // Add user.compact to field-comment if profile's avatar
@@ -959,6 +1064,7 @@ class SoloThemePreprocessHooks {
    */
   #[Hook('preprocess_maintenance_page')]
   public static function preprocessMaintenancePage(array &$variables): void {
+    SoloIncludes::load();
     _set_site_name($variables);
     _maintenance_library($variables);
   }
@@ -968,6 +1074,7 @@ class SoloThemePreprocessHooks {
    */
   #[Hook('preprocess_views_view_table')]
   public static function preprocessViewsViewTable(array &$variables): void {
+    SoloIncludes::load();
     // Apply sortable-heading logic if needed.
     if (!empty($variables['header'])) {
       foreach ($variables['header'] as &$header_cell) {
@@ -988,6 +1095,7 @@ class SoloThemePreprocessHooks {
    */
   #[Hook('preprocess_fieldset')]
   public static function preprocessFieldset(array &$variables): void {
+    SoloIncludes::load();
     // Ensure attributes class array is defensively initialized.
     _solo_ensure_class_array($variables);
     // DEFENSIVE CHECK: Ensure element exists and is an array before processing.
@@ -1020,6 +1128,7 @@ class SoloThemePreprocessHooks {
    */
   #[Hook('preprocess_form')]
   public static function preprocessForm(array &$variables): void {
+    SoloIncludes::load();
     // DEFENSIVE CHECK: Ensure element exists and is an array before processing.
     if (!isset($variables['element']) || !is_array($variables['element'])) {
       return;
@@ -1033,6 +1142,7 @@ class SoloThemePreprocessHooks {
    */
   #[Hook('preprocess_container')]
   public static function preprocessContainer(array &$variables): void {
+    SoloIncludes::load();
     // Ensure class attribute is an array (may be string if already processed).
     _solo_ensure_class_array($variables);
     // Detect AJAX wrappers.
@@ -1087,6 +1197,7 @@ class SoloThemePreprocessHooks {
    */
   #[Hook('preprocess_field_multiple_value_form')]
   public static function preprocessFieldMultipleValueForm(array &$variables): void {
+    SoloIncludes::load();
     // Ensure attributes class array is defensively initialized.
     _solo_ensure_class_array($variables);
     // DEFENSIVE CHECK: Ensure element exists and is an array before processing.

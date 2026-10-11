@@ -9,7 +9,6 @@ use Drupal\Core\Hook\Attribute\LegacyHook;
 use Drupal\solo\Hook\SoloThemePreprocessHooks;
 use Drupal\Component\Utility\DeprecationHelper;
 use Drupal\Core\Extension\ThemeSettingsProvider;
-use Drupal\Core\Url;
 use Drupal\views\Render\ViewsRenderPipelineMarkup;
 use Drupal\Component\Utility\Html;
 use Drupal\Core\Entity\EntityInterface;
@@ -974,87 +973,25 @@ function _process_system_branding_block(&$variables): void {
 /**
  * Implements hook_preprocess_menu().
  */
+#[LegacyHook]
 function solo_preprocess_menu__primary_menu(&$variables): void {
-
-  if (DeprecationHelper::backwardsCompatibleCall(\Drupal::VERSION, '11.3.0', fn() => \Drupal::service(ThemeSettingsProvider::class)->getSetting('primary_menu_on_hover'), fn() => theme_get_setting('primary_menu_on_hover'))) {
-    $variables['click_hover'] = 'navigation-responsive-hover';
-    if (DeprecationHelper::backwardsCompatibleCall(\Drupal::VERSION, '11.3.0', fn() => \Drupal::service(ThemeSettingsProvider::class)->getSetting('primary_menu_arrow_hover'), fn() => theme_get_setting('primary_menu_arrow_hover'))) {
-      $variables['remove_arrow'] = 'remove-arrow';
-    }
-  }
-  else {
-    $variables['click_hover'] = 'navigation-responsive-click';
-  }
-
-  if (DeprecationHelper::backwardsCompatibleCall(\Drupal::VERSION, '11.3.0', fn() => \Drupal::service(ThemeSettingsProvider::class)->getSetting('primary_menu_alignment'), fn() => theme_get_setting('primary_menu_alignment'))) {
-    $alignment = DeprecationHelper::backwardsCompatibleCall(\Drupal::VERSION, '11.3.0', fn() => \Drupal::service(ThemeSettingsProvider::class)->getSetting('primary_menu_alignment'), fn() => theme_get_setting('primary_menu_alignment'));
-    $variables['menu_alignment'] = 'menu-align-' . $alignment;
-  }
-
-  if (DeprecationHelper::backwardsCompatibleCall(\Drupal::VERSION, '11.3.0', fn() => \Drupal::service(ThemeSettingsProvider::class)->getSetting('primary_menu_expand_left'), fn() => theme_get_setting('primary_menu_expand_left'))) {
-    $variables['expand_left'] = 'expand-left';
-  }
-  else {
-    $variables['expand_left'] = 'expand-right';
-  }
-
-  if (DeprecationHelper::backwardsCompatibleCall(\Drupal::VERSION, '11.3.0', fn() => \Drupal::service(ThemeSettingsProvider::class)->getSetting('primary_menu_megamenu'), fn() => theme_get_setting('primary_menu_megamenu'))) {
-    $variables['megamenu'] = 'navigation__megamenu';
-    $variables['sub_mega'] = 'sub-mega';
-    $variables['megamenu_layout'] = (DeprecationHelper::backwardsCompatibleCall(\Drupal::VERSION, '11.3.0', fn() => \Drupal::service(ThemeSettingsProvider::class)->getSetting('primary_menu_megamenu_layout'), fn() => theme_get_setting('primary_menu_megamenu_layout')));
-    if (DeprecationHelper::backwardsCompatibleCall(\Drupal::VERSION, '11.3.0', fn() => \Drupal::service(ThemeSettingsProvider::class)->getSetting('primary_menu_submenu_header'), fn() => theme_get_setting('primary_menu_submenu_header'))) {
-      $variables['sub_menu_header'] = 'sub__menu-header';
-    }
-  }
-
-  if (DeprecationHelper::backwardsCompatibleCall(\Drupal::VERSION, '11.3.0', fn() => \Drupal::service(ThemeSettingsProvider::class)->getSetting('primary_menu_branding'), fn() => theme_get_setting('primary_menu_branding'))) {
-    $variables['primary_menu_branding'] = 'activate-branding';
-    $variables['site_logo'] = DeprecationHelper::backwardsCompatibleCall(\Drupal::VERSION, '11.3.0', fn() => \Drupal::service(ThemeSettingsProvider::class)->getSetting('logo.url'), fn() => theme_get_setting('logo.url'));
-    _set_logo_default($variables);
-    $variables['site_name'] = \Drupal::config('system.site')->get('name');
-    $variables['logo_alt'] = DeprecationHelper::backwardsCompatibleCall(\Drupal::VERSION, '11.3.0', fn() => \Drupal::service(ThemeSettingsProvider::class)->getSetting('header_logo_image_alt'), fn() => theme_get_setting('header_logo_image_alt')) ?: 'Home';
-  }
-
+  \Drupal::classResolver(SoloThemePreprocessHooks::class)->preprocessMenuPrimaryMenu($variables);
 }
 
 /**
  * Implements hook_preprocess_menu().
  */
+#[LegacyHook]
 function solo_preprocess_menu__primary_sidebar_menu(&$variables): void {
-
-  if (DeprecationHelper::backwardsCompatibleCall(\Drupal::VERSION, '11.3.0', fn() => \Drupal::service(ThemeSettingsProvider::class)->getSetting('primary_sidebar_menu_hover'), fn() => theme_get_setting('primary_sidebar_menu_hover'))) {
-    $variables['click_hover_sidebar'] = 'navigation-sidebar-hover';
-  }
-  else {
-    $variables['click_hover_sidebar'] = 'navigation-sidebar-click';
-  }
-
+  \Drupal::classResolver(SoloThemePreprocessHooks::class)->preprocessMenuPrimarySidebarMenu($variables);
 }
 
 /**
  * Implements hook_preprocess_menu().
  */
+#[LegacyHook]
 function solo_preprocess_menu__account(&$variables): void {
-  if (!$variables['user']->isAuthenticated()) {
-    $enableLoginBlock = DeprecationHelper::backwardsCompatibleCall(\Drupal::VERSION, '11.3.0', fn() => \Drupal::service(ThemeSettingsProvider::class)->getSetting('header_popup_login'), fn() => theme_get_setting('header_popup_login'));
-
-    if ($enableLoginBlock) {
-      $loginText = DeprecationHelper::backwardsCompatibleCall(\Drupal::VERSION, '11.3.0', fn() => \Drupal::service(ThemeSettingsProvider::class)->getSetting('header_login_links'), fn() => theme_get_setting('header_login_links'));
-      $currentPath = \Drupal::service('path.current')->getPath();
-      $variables['login_popup_block'] = $enableLoginBlock;
-      $variables['login_text'] = $loginText;
-      $variables['current_path'] = $currentPath;
-
-      foreach ($variables['items'] as $key => $item) {
-        $url = $item['url'];
-        if ($url instanceof Url && $url->isRouted()) {
-          if ($url->getRouteName() === 'user.login') {
-            unset($variables['items'][$key]);
-          }
-        }
-      }
-    }
-  }
+  \Drupal::classResolver(SoloThemePreprocessHooks::class)->preprocessMenuAccount($variables);
 }
 
 /**

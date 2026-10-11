@@ -49,7 +49,13 @@ class SoloHookRegistrationTest extends BrowserTestBase {
   /**
    * {@inheritdoc}
    */
-  protected static $modules = ['node', 'block', 'user', 'views'];
+  protected static $modules = [
+    'node',
+    'block',
+    'user',
+    'views',
+    'menu_link_content',
+  ];
 
   /**
    * Hooks Solo preprocesses that core always builds, so they always exist.
@@ -167,6 +173,62 @@ class SoloHookRegistrationTest extends BrowserTestBase {
     $this->drupalGet('admin/content');
     $this->assertSession()->statusCodeEquals(200);
     $this->assertSession()->elementExists('css', 'table th.sortable-heading');
+  }
+
+  /**
+   * Solo's three menu SUGGESTION preprocesses run, and are registered once.
+   *
+   * The functions solo_preprocess_menu__primary_menu, __primary_sidebar_menu
+   * and __account were procedural-only until 2026-10-11: Drupal 12 found them
+   * through the registry's defined-functions scan, which works only while core
+   * loads solo.theme. They are now #[Hook] methods with #[LegacyHook] callers,
+   * as solo.theme's #[ExtensionFileIsConverted] requires. Each sets markup
+   * that exists only when it ran (on a node page: the testing profile's front
+   * page is /user/login, where the account template hides the login button):
+   *
+   * - primary menu: the "navigation-responsive-click" class (click_hover);
+   * - primary sidebar menu: the "navigation-sidebar-click" class;
+   * - account menu: the popup login button, and the "Log in" link removed.
+   *
+   * "Once" is asserted on the registry: each suggestion lists Solo's
+   * preprocess exactly once, so neither the #[Hook] method nor the procedural
+   * caller is added a second time.
+   */
+  public function testMenuSuggestionPreprocessRuns(): void {
+    $this->config('solo.settings')->set('header_popup_login', TRUE)->save();
+    \Drupal::entityTypeManager()->getStorage('menu_link_content')->create([
+      'title' => 'Solo menu probe',
+      'link' => ['uri' => 'internal:/'],
+      'menu_name' => 'main',
+    ])->save();
+    $this->drupalPlaceBlock('system_menu_block:main', ['region' => 'primary_menu', 'id' => 'solo_probe_primary']);
+    $this->drupalPlaceBlock('system_menu_block:main', ['region' => 'primary_sidebar_menu', 'id' => 'solo_probe_sidebar']);
+    $this->drupalPlaceBlock('system_menu_block:account', ['region' => 'header', 'id' => 'solo_probe_account']);
+
+    $node = $this->drupalCreateNode([
+      'type' => 'page',
+      'title' => 'Solo menu probe page',
+    ]);
+
+    $this->drupalGet($node->toUrl());
+    $this->assertSession()->statusCodeEquals(200);
+    $this->assertSession()->elementExists('css', '.navigation-primary-responsive.navigation-responsive-click');
+    $this->assertSession()->elementExists('css', '.navigation-primary-sidebar.navigation-sidebar-click');
+    $this->assertSession()->elementExists('css', '.solo-account-menu #login-button-open');
+    $this->assertSession()->elementNotExists('css', '.solo-account-menu a[href$="/user/login"]');
+
+    $registry = \Drupal::service('theme.registry')->getRuntime();
+    foreach (['primary_menu', 'primary_sidebar_menu', 'account'] as $suggestion) {
+      $hook = 'menu__' . $suggestion;
+      $this->assertTrue($registry->has($hook), sprintf('Theme registry has the "%s" hook.', $hook));
+      $functions = array_filter($registry->get($hook)['preprocess functions'] ?? [], 'is_string');
+      $counts = array_count_values($functions);
+      $this->assertSame(1, $counts['solo_preprocess_' . $hook] ?? 0, sprintf(
+        'solo_preprocess_%s is registered exactly once. Registered: %s',
+        $hook,
+        implode(', ', $functions)
+      ));
+    }
   }
 
   /**

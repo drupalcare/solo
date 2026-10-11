@@ -30,12 +30,12 @@ use PHPUnit\Framework\TestCase;
  * calling the procedural function, while newer core skips it and calls the
  * class, so the hook runs exactly once on every supported major.
  *
- * WHAT IT DOES NOT COVER, on purpose: preprocess functions for a theme hook
- * SUGGESTION (a name containing "__", e.g. solo_preprocess_menu__account).
- * Drupal 12 still finds those through the registry's defined-functions scan,
- * measured running on 12.0.0-beta1, so they are not dead there. That scan
- * depends on solo.theme being loaded, which core removes in Drupal 13; when
- * they are converted, delete the exclusion below and this test covers them.
+ * Preprocess functions for a theme hook SUGGESTION (a name containing "__",
+ * e.g. solo_preprocess_menu__account) are covered too. They used to be
+ * excluded because Drupal 12 still found them through the registry's
+ * defined-functions scan, which depends on solo.theme being loaded; since
+ * solo.theme declares #[ExtensionFileIsConverted], Solo must work without it
+ * on Drupal >= 11.3, so they are now #[Hook] methods like every other hook.
  *
  * Reads the files as tokens rather than booting Drupal, so it runs in
  * milliseconds and on every core version alike.
@@ -151,10 +151,6 @@ class HookConversionDriftTest extends TestCase {
           continue;
         }
         $hook = substr($function, strlen('solo_'));
-        // Suggestion preprocess still runs on Drupal 12; see the class doc.
-        if (str_starts_with($hook, 'preprocess_') && str_contains($hook, '__')) {
-          continue;
-        }
         $checked++;
         if (!isset($attribute_hooks[$hook])) {
           $missing[] = sprintf("%s (%s): no #[Hook('%s')] in src/Hook -- dead on Drupal 12", $function, basename($file), $hook);

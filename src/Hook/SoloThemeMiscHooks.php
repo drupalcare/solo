@@ -7,6 +7,7 @@ use Drupal\Core\Extension\ThemeSettingsProvider;
 use Drupal\Component\Utility\DeprecationHelper;
 use Drupal\Core\Hook\Attribute\Hook;
 use Drupal\Core\StringTranslation\StringTranslationTrait;
+use Drupal\solo\SoloIncludes;
 
 /**
  * Hook implementations for solo.
@@ -19,6 +20,7 @@ class SoloThemeMiscHooks {
    */
   #[Hook('page_attachments_alter')]
   public function pageAttachmentsAlter(array &$attachments): void {
+    SoloIncludes::load();
     _load_google_fonts($attachments);
     // NEW: Use single parameterized function instead of three separate ones.
     _load_external_google_font($attachments, 'site_font_google_special_on');
@@ -56,6 +58,7 @@ class SoloThemeMiscHooks {
    */
   #[Hook('modules_disabled')]
   public static function modulesDisabled(array $modules): void {
+    SoloIncludes::load();
     if (in_array('solo_utilities', $modules, TRUE)) {
       // Detect all installed themes that are using Solo as a base or are Solo.
       $theme_handler = \Drupal::service('theme_handler');

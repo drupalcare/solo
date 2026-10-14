@@ -4,7 +4,7 @@ Solo is the third generation of the W3CSS Theme and has been thoroughly
 revamped. This version does not rely on jQuery, making the inclusion of
 the w3.css library optional.
 
-Should you wish to construct a more complex website, consider utilizing
+Should you wish to construct a more complex website, consider using
 the [Paragraphs Bundles](https://www.drupal.org/project/paragraphs_bundles)
 module. This module equips you with strong capabilities to create complex
 components such as 3D cards, slideshows, 3D carousel, tabs, cards,

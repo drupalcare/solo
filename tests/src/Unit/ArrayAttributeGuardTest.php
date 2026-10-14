@@ -46,6 +46,11 @@ class ArrayAttributeGuardTest extends TestCase {
 
   /**
    * The container hook adds ajax-container only for a recognised id.
+   *
+   * The docblock tag is for PHPUnit 9 (Drupal 10), which does not read the
+   * attribute; PHPUnit 10+ reads the attribute and ignores the tag.
+   *
+   * @dataProvider valueProvider
    */
   #[DataProvider('valueProvider')]
   public function testContainerId(mixed $id, bool $expected): void {
@@ -56,6 +61,11 @@ class ArrayAttributeGuardTest extends TestCase {
 
   /**
    * The form element hook adds solo-date-related only for a recognised name.
+   *
+   * The docblock tag is for PHPUnit 9 (Drupal 10), which does not read the
+   * attribute; PHPUnit 10+ reads the attribute and ignores the tag.
+   *
+   * @dataProvider nameProvider
    */
   #[DataProvider('nameProvider')]
   public function testElementName(mixed $name, bool $expected): void {

@@ -10,6 +10,25 @@ module. This module equips you with strong capabilities to create complex
 components such as 3D cards, slideshows, 3D carousel, tabs, cards,
 accordions, and more.
 
+## Recommended install: use a sub-theme
+
+Install Solo, then build your site on a **sub-theme** of it rather than
+on Solo itself. Your colors, templates, CSS and settings then live in a
+theme you own, and updating Solo never overwrites them.
+
+1. Download Solo: `composer require drupal/solo`. You do not need to
+   install it yourself; installing your sub-theme installs Solo with it
+   as its base theme.
+2. Copy the `solo_subtheme` folder that ships inside Solo to
+   `themes/custom/my_theme`, and rename it as described in
+   `solo_subtheme/README.md`. Every `solo_subtheme` must become your
+   theme's machine name, including inside the PHP files.
+3. Clear the cache (`drush cr`), then enable your sub-theme and set it as
+   the default theme under **Appearance**.
+
+Full guide:
+[Solo how-to: install Solo theme](https://www.drupal.org/docs/extending-drupal/themes/contributed-themes/solo/solo-how-to#install-solo-theme).
+
 ## Features
 
 ### 24 Regions

@@ -10,21 +10,30 @@ module. This module equips you with strong capabilities to create complex
 components such as 3D cards, slideshows, 3D carousel, tabs, cards,
 accordions, and more.
 
-## Recommended install: use a sub-theme
+## Install, and when you need a sub-theme
 
-Install Solo, then build your site on a **sub-theme** of it rather than
-on Solo itself. Your colors, templates, CSS and settings then live in a
-theme you own, and updating Solo never overwrites them.
+Install Solo with `composer require drupal/solo`, then click **Install and
+set as default** under **Appearance**. No sub-theme is needed for most
+sites:
 
-1. Download Solo: `composer require drupal/solo`. You do not need to
-   install it yourself; installing your sub-theme installs Solo with it
-   as its base theme.
-2. Copy the `solo_subtheme` folder that ships inside Solo to
-   `themes/custom/my_theme`, and rename it as described in
+- **Everything you set in the theme settings** (colors, layout, menus,
+  regions) is stored in your site's configuration, so updating Solo never
+  overwrites it.
+- **Your own CSS and JavaScript** go in the theme settings too, under
+  **Global Site Settings > Custom Code**: *CSS Injector*, *CSS Dynamic* and
+  *JavaScript Dynamic*. They are saved with your settings, or to files in
+  `sites/*/files/solo/`, never inside Solo's folder.
+
+**Create a sub-theme when you need to override Twig templates.** Never
+edit Solo's own files: the next update replaces them. Solo ships a
+starter, the `solo_subtheme` folder:
+
+1. Copy it to `themes/custom/my_theme` and rename it as described in
    `solo_subtheme/README.md`. Every `solo_subtheme` must become your
    theme's machine name, including inside the PHP files.
-3. Clear the cache (`drush cr`), then enable your sub-theme and set it as
-   the default theme under **Appearance**.
+2. Clear the cache (`drush cr`), then install your sub-theme and set it as
+   the default theme under **Appearance**. Drupal installs Solo with it
+   as its base theme.
 
 Full guide:
 [Solo how-to: install Solo theme](https://www.drupal.org/docs/extending-drupal/themes/contributed-themes/solo/solo-how-to#install-solo-theme).

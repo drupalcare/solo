@@ -25,8 +25,18 @@ sites:
   `sites/*/files/solo/`, never inside Solo's folder.
 
 **Create a sub-theme when you need to override Twig templates.** Never
-edit Solo's own files: the next update replaces them. Solo ships a
-starter, the `solo_subtheme` folder:
+edit Solo's own files: the next update replaces them.
+
+The quickest way is one Drush command from the
+[Solo Utilities](https://www.drupal.org/project/solo_utilities) module
+(1.0.10 or later, Drush 12 or later). It copies the starter to
+`themes/custom/my_theme` and renames everything for you:
+
+```
+drush solo:subtheme my_theme
+```
+
+Or do it by hand from the starter Solo ships, the `solo_subtheme` folder:
 
 1. Copy it to `themes/custom/my_theme` and rename it as described in
    `solo_subtheme/README.md`. Every `solo_subtheme` must become your

@@ -333,23 +333,21 @@
     const currentWidth = getCurrentWidth();
 
     if (currentWidth > brNum) {
-      const menuElement = document.querySelector('.navigation__responsive');
-      if (menuElement) {
-        updateFirstLevelTabindex(menuElement, '0');
-        updateAriaHidden(menuElement, 'false');
+      // Every responsive menu bar, and the bar itself: closing the hamburger
+      // set its first-level items to tabindex -1, and looking for the bar
+      // inside itself left them there, so the desktop menu had no Tab stop.
+      document.querySelectorAll('ul.navigation__responsive').forEach(menubar => {
+        Drupal.solo.menuState.updateMenuTabindex(menubar, true, COMPONENT_NAME);
+        updateAriaHidden(menubar, 'false');
 
         // Remove inert attribute on large screens
-        const menubar = menuElement.querySelector('.navigation__menubar');
-        if (menubar) {
-          Drupal.solo.setInert(menubar, false);
-        }
+        Drupal.solo.setInert(menubar, false);
 
         // Remove inert from all submenus
-        const submenus = menuElement.querySelectorAll('.sub__menu');
-        submenus.forEach(submenu => {
+        menubar.querySelectorAll('.sub__menu').forEach(submenu => {
           Drupal.solo.setInert(submenu, false);
         });
-      }
+      });
     }
   };
 
@@ -414,8 +412,11 @@
 
       if (isSmallScreen && previousLayout !== currentLayout) {
         resetMenusOnResize(hamburgerIcons);
-        previousLayout = currentLayout;
       }
+      // Track the layout at every width. Updated only on small screens, a
+      // small, large, small round trip never reset the hamburger, which then
+      // stayed aria-expanded="true" over a hidden menu.
+      previousLayout = currentLayout;
 
       // If resizing to large screen, ensure inert is removed
       if (!isSmallScreen) {

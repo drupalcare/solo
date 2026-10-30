@@ -46,17 +46,13 @@
 ] %}
 {% set menubar_attributes = create_attribute({
     'id': menu_name ~'__menubar'|clean_unique_id,
-    'role': 'menubar',
     'data-menu-level': menu_level,
-    'aria-orientation': 'vertical',
 }) %}
 {% set submenu_attributes = create_attribute({
     'id': menu_name ~'__submenu'|clean_unique_id,
-    'role': 'menu',
     'tabindex': '-1',
     'aria-hidden': 'true',
     'data-menu-level': menu_level,
-    'aria-orientation': 'vertical',
 }) %}
 {% if items %}
 
@@ -111,11 +107,8 @@
 
   {% set dorpdown_toggler_attributes = create_attribute({
     'data-drupal-selector': menu_name ~ '__level-' ~ (menu_level + 1),
-    'role': 'menuitem',
     'aria-controls': aria_id,
-    'aria-haspopup': 'true',
     'aria-expanded': 'false',
-    'tabindex': '-1',
     'type': 'button',
     'data-menu-item-id': loop.index,
   }) %}
@@ -129,7 +122,7 @@
 
     {# The parent menu and it has children #}
     {% if item.is_expanded %}
-    <li{{ item.attributes.addClass(item_classes) }} role='none' data-menu-parent="true" data-link-type="{{ link_type }}">
+    <li{{ item.attributes.addClass(item_classes) }} data-menu-parent="true" data-link-type="{{ link_type }}">
     {% if is_linkable %}
         {# The parent link is clickable and it has children #}
         {% set c_link_classes = ['nav__menu-link nav__menu-link-' ~ menu_name|clean_class, 'url-added'] %}
@@ -141,7 +134,7 @@
             {%- if item.url and item.url.getOption('attributes') and item.url.getOption('attributes').target %} target="{{ item.url.getOption('attributes').target }}" {% endif -%}
             {%- if item.url and item.url.getOption('attributes') and item.url.getOption('attributes').rel %} rel="{{ item.url.getOption('attributes').rel }}" {% endif -%}
             {%- if is_external %} target="_blank" rel="noopener"{% endif -%}
-            tabindex="-1" data-drupal-link-system-path="{{ system_path }}" role='menuitem'
+            data-drupal-link-system-path="{{ system_path }}"
             {%- if item.in_active_trail and item.url and item.url.toString() == path('<current>') %} aria-current="page"{% endif -%}>
             <span class="menu__url-title-enabled">{{ item.title }}</span>
         </a>
@@ -172,20 +165,16 @@
     {% set link_title %}
       <span class="menu__url-title">{{ item.title }}</span>
     {% endset %}
-    <li{{ item.attributes.addClass(item_classes) }} role='none' data-link-type="{{ link_type }}">
+    <li{{ item.attributes.addClass(item_classes) }} data-link-type="{{ link_type }}">
       {% if link_type == 'nolink' %}
           {# Display as text only #}
           <span class="nav__menu-nolink nav__menu-nolink-{{ menu_name|clean_class }} {{ class_list }}"
-                role="menuitem"
-                tabindex="-1"
                 {%- if item.url and item.url.getOption('attributes') and item.url.getOption('attributes').title %} title="{{ item.url.getOption('attributes').title }}" {% endif -%}>
               {{ link_title }}
           </span>
       {% elseif link_type == 'button' %}
           {# Display as keyboard-accessible button #}
           <button class="nav__menu-button nav__menu-button-{{ menu_name|clean_class }} {{ class_list }}"
-                  role="menuitem"
-                  tabindex="-1"
                   type="button"
                   {%- if item.url and item.url.getOption('attributes') and item.url.getOption('attributes').title %} title="{{ item.url.getOption('attributes').title }}" {% endif -%}>
               {{ link_title }}
@@ -202,8 +191,6 @@
           {# For external links, add security and accessibility attributes #}
           {% if is_external %}
               <a href="{{ item.url }}" class="{{ link_classes|join(' ') }}"
-                 role="menuitem"
-                 tabindex="-1"
                  target="_blank"
                  rel="noopener"
                  data-drupal-link-system-path="{{ system_path }}"
@@ -217,8 +204,7 @@
               link_title,
               item.url,
               item.attributes.removeClass(item_classes).addClass(link_classes),
-              item.attributes.setAttribute('role', 'menuitem').setAttribute('tabindex', '-1')
-              .setAttribute('data-drupal-link-system-path', system_path)
+              item.attributes.setAttribute('data-drupal-link-system-path', system_path)
               .setAttribute(item.in_active_trail and item.url and item.url.toString() == path('<current>') ? 'aria-current' : 'data-inactive',
               item.in_active_trail and item.url and item.url.toString() == path('<current>') ? 'page' : 'true')
               )

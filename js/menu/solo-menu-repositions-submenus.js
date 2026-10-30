@@ -181,10 +181,8 @@
           const submenu = li.querySelector(':scope > .sub__menu');
 
           if (button && submenu) {
-            // Just set initial ARIA attributes if missing
-            if (!button.hasAttribute('aria-haspopup')) {
-              button.setAttribute('aria-haspopup', 'true');
-            }
+            // Just set initial ARIA attributes if missing. Disclosure
+            // buttons (W3C APG) use aria-expanded, not aria-haspopup.
             if (!button.hasAttribute('aria-expanded')) {
               button.setAttribute('aria-expanded', 'false');
             }
@@ -200,11 +198,13 @@
             });
           });
 
-          // Add keyboard support separately - only for repositioning
+          // Add keyboard support separately - only for repositioning.
+          // Do not prevent default: Enter and Space must still fire the
+          // button's click, which opens the submenu when keyboard
+          // navigation is off for this menu.
           li.addEventListener('keydown', function(event) {
             if (event.key === 'Enter' || event.key === ' ') {
               if (event.target === button) {
-                event.preventDefault();
                 adjustFunction(this);
               }
             }

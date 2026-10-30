@@ -84,46 +84,15 @@
       const itemStructure = parser.getItemStructure(target);
       const isSidebar = this.core.templateInfo.isSidebar;
 
-      if (['ArrowRight', 'ArrowLeft', 'ArrowDown', 'ArrowUp', 'Home', 'End', 'Escape'].includes(key)) {
+      if (['ArrowRight', 'ArrowLeft', 'ArrowDown', 'ArrowUp', 'Home', 'End'].includes(key)) {
         event.preventDefault();
       }
 
       switch (key) {
         case 'Tab':
-          // ARIA Authoring Practices: Tab should exit the menu, arrow keys navigate within.
-          // Allow natural Tab flow for all menu types - don't trap focus.
-
-          // For hover menus, ensure opened submenus have proper tabindex for Tab navigation
-          const isHoverMode = this.core.templateInfo.interactionMode === 'hover';
-          const isSmallScreen = this.core.isSmallScreen();
-
-          if (isHoverMode && !isSmallScreen) {
-            // Ensure opened submenus have proper tabindex
-            const currentSubmenu = target.closest('[role="menu"]');
-            if (currentSubmenu && currentSubmenu !== this.menubar) {
-              // We're in a submenu - ensure all items are focusable
-              const submenuItems = currentSubmenu.querySelectorAll(':scope > li > a, :scope > li > button');
-              submenuItems.forEach(item => {
-                if (item.getAttribute('tabindex') === '-1') {
-                  this.setTabindexSafe(item, '0');
-                }
-              });
-            }
-
-            // If tabbing forward and there's an open submenu, make sure it's in tab order
-            if (!event.shiftKey) {
-              const openSubmenu = target.parentElement?.querySelector(':scope > ul.sub__menu.toggled');
-              if (openSubmenu) {
-                const firstSubmenuItem = openSubmenu.querySelector(':scope > li > a, :scope > li > button');
-                if (firstSubmenuItem && firstSubmenuItem.getAttribute('tabindex') === '-1') {
-                  this.setTabindexSafe(firstSubmenuItem, '0');
-                }
-              }
-            }
-          }
-
-          // Don't prevent default - allow natural Tab navigation to exit the menu.
-          // Arrow keys (handled below) are used for in-menu navigation.
+          // Disclosure navigation (W3C APG): Tab and Shift+Tab move through
+          // every visible link and button, into an open dropdown, and out of
+          // the menu. Nothing to do here.
           break;
 
         case 'Enter':
@@ -175,7 +144,11 @@
           break;
 
         case 'Escape':
-          this.handleEscape(target);
+          // Claim the key only when something closed, so an outer handler
+          // (the sidebar panel) gets the next Escape.
+          if (this.handleEscape(target)) {
+            event.preventDefault();
+          }
           break;
 
         case 'Home':
@@ -363,12 +336,12 @@
         return;
       }
 
-      const container = current.closest('[role="menubar"], [role="menu"]');
+      const container = current.closest('.navigation__menubar, ul.sub__menu');
       const items = this.getAllFocusableItems(container);
       const currentIndex = items.indexOf(current);
 
       if (direction === -1 && currentIndex === 0 && this.core.mobileNavButton && this.core.isSmallScreen()) {
-        const parentMenu = container.closest('[role="menu"]');
+        const parentMenu = container.closest('ul.sub__menu');
         if (!parentMenu) {
           this.core.mobileNavButton.focus();
           return;
@@ -381,14 +354,6 @@
 
       if (items[newIndex]) {
         items[newIndex].focus();
-      }
-    }
-
-    setTabindexSafe(element, value) {
-      if (Drupal.solo.menuState) {
-        Drupal.solo.menuState.setTabindex(element, value, 'keyboard-navigation');
-      } else {
-        element.setAttribute('tabindex', value);
       }
     }
 
@@ -420,17 +385,6 @@
 
         // Focus handling after operation
         this.setTimeoutSafe(() => {
-          // For hover menus, make submenu items focusable via Tab
-          const isHoverMode = this.core.templateInfo.interactionMode === 'hover';
-          const isSmallScreen = this.core.isSmallScreen();
-
-          if (isHoverMode && !isSmallScreen) {
-            const submenuItems = itemStructure.submenu.querySelectorAll(':scope > li > a, :scope > li > button');
-            submenuItems.forEach(item => {
-              this.setTabindexSafe(item, '0');
-            });
-          }
-
           const firstItem = this.getFirstFocusableItem(itemStructure.submenu);
           if (firstItem) firstItem.focus();
         }, 100);
@@ -451,7 +405,7 @@
         return;
       }
 
-      const submenu = current.closest('[role="menu"]');
+      const submenu = current.closest('ul.sub__menu');
 
       if (!submenu || submenu === this.menubar) {
         return;
@@ -497,19 +451,34 @@
     }
 
     handleEscape(current) {
-      const submenu = current.closest('[role="menu"]');
+      const submenu = current.closest('ul.sub__menu');
+      const ownSubmenu = current.classList.contains('dropdown-toggler') ? current.nextElementSibling : null;
       if (submenu && submenu !== this.menubar) {
         this.exitSubmenu(current);
-      } else if (this.core.isSmallScreen() && this.core.mobileNavButton) {
+        return true;
+      }
+      if (ownSubmenu && ownSubmenu.classList.contains('toggled') && Drupal.solo.menuOperations) {
+        // W3C APG disclosure: Escape closes the open dropdown; focus stays on
+        // the button that controls it.
+        if (current.parentElement.classList.contains('nav__menubar-item')) {
+          Drupal.solo.menuOperations.closeMenubar(current, ownSubmenu);
+        } else {
+          Drupal.solo.menuOperations.closeSubMenu(current, ownSubmenu);
+        }
+        return true;
+      }
+      if (this.core.isSmallScreen() && this.core.mobileNavButton) {
         if (this.menubar.classList.contains('toggled')) {
           this.core.mobileNavButton.click();
         }
         this.core.mobileNavButton.focus();
+        return true;
       }
+      return false;
     }
 
     navigateToEnd(current, toFirst) {
-      const container = current.closest('[role="menubar"], [role="menu"]');
+      const container = current.closest('.navigation__menubar, ul.sub__menu');
       const items = this.getAllFocusableItems(container);
       const target = toFirst ? items[0] : items[items.length - 1];
       if (target) target.focus();

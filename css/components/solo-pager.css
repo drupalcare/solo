@@ -37,7 +37,6 @@
 .pager__item a:hover,
 .pager__item a:focus {
   text-decoration: underline;
-  outline: none;
 }
 
 .pager__item.solo-active-pager {
@@ -55,10 +54,6 @@
   padding: var(--solo-px8) var(--solo-px16);
   font-style: italic;
   opacity: 0.7;
-}
-
-.pager__item.pager__item--ellipsis:focus {
-  outline: none;
 }
 
 /* Responsive adjustments */

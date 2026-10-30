@@ -58,7 +58,8 @@
     currentLayout: null,
     previousLayout: null,
     brNum: 0,
-    animationQueue: new Map()
+    animationQueue: new Map(),
+    disclosureKeysAdded: false
   };
 
   const getCurrentWidth = () => Drupal.solo.menuState.getCurrentWidth()
@@ -422,6 +423,9 @@
         });
 
         item.addEventListener('mouseleave', () => {
+          // A dropdown opened with Enter or Space stays open, and stays
+          // announced as open, until the keyboard or a click closes it.
+          if (subMenu.classList.contains('toggled')) return;
           Drupal.solo.menuState.setExpanded(toggler, false, COMPONENT_NAME);
           Drupal.solo.menuState.setHidden(subMenu, true, COMPONENT_NAME);
         });
@@ -455,6 +459,50 @@
           iconManagement.resetSpecificSubMenus(specificSubMenus, specificSvgIcons);
         }
       });
+    });
+  };
+
+  // W3C APG disclosure navigation keys for every Solo menu, whether or not
+  // the optional keyboard script is enabled for it: Escape closes the open
+  // dropdown and returns focus to its button; Enter and Space toggle a
+  // dropdown whose button has no click handler (hover menus on large
+  // screens). Skipped when the keyboard script already handled the key.
+  const addDisclosureKeyboardSupport = () => {
+    if (state.disclosureKeysAdded) return;
+    state.disclosureKeysAdded = true;
+
+    document.addEventListener('keydown', (event) => {
+      if (event.defaultPrevented) return;
+      const target = event.target;
+      if (!(target instanceof Element) || !target.closest('.solo-inner .solo-menu .navigation__menubar')) return;
+
+      if (event.key === 'Escape') {
+        const isOpenToggler = target.classList.contains('dropdown-toggler') &&
+          target.getAttribute('aria-expanded') === 'true';
+        const button = isOpenToggler ? target : target.closest('ul.sub__menu')?.previousElementSibling;
+        if (!button || !button.classList.contains('dropdown-toggler') ||
+            button.getAttribute('aria-expanded') !== 'true') return;
+        const subMenu = button.nextElementSibling;
+        if (!subMenu) return;
+
+        event.preventDefault();
+        if (button.parentElement.classList.contains('nav__menubar-item')) {
+          menuOperations.closeMenubar(button, subMenu);
+        } else {
+          menuOperations.closeSubMenu(button, subMenu);
+        }
+        button.focus();
+        return;
+      }
+
+      if ((event.key === 'Enter' || event.key === ' ') &&
+          target.classList.contains('dropdown-toggler') &&
+          !eventHandlers.clickHandlers.has(target) &&
+          target.style.pointerEvents !== 'none' &&
+          target.nextElementSibling) {
+        event.preventDefault();
+        eventHandlers.dropdownTogglerButtonIsClicked(target, target.nextElementSibling);
+      }
     });
   };
 
@@ -660,6 +708,7 @@
 
       // Initialize close on outside click
       closeSubMenusOnClick();
+      addDisclosureKeyboardSupport();
 
       // Expose public API
       exposePublicAPI();

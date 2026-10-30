@@ -23,7 +23,7 @@
       console.log('Classes:', Array.from(wrapper.classList));
       console.log('Template Info:', wrapper._soloKeyboardInstance?.templateInfo);
 
-      const menubar = wrapper.querySelector('[role="menubar"]');
+      const menubar = wrapper.querySelector('.navigation__menubar');
       console.log('Menubar:', menubar);
       console.log('Is Open:', menubar?.classList.contains('toggled'));
 

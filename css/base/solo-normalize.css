@@ -250,7 +250,6 @@ li a {
   font-size: inherit;
   text-decoration: none;
   color: inherit;
-  outline: none;
 }
 
 h1 a span,
@@ -276,24 +275,26 @@ a:visited,
 input:visited,
 button:visited,
 textarea:visited,
-a:focus-within,
-input:focus-within,
-button:focus-within,
-textarea:focus-within,
 a:hover,
 input:hover,
 button:hover,
 textarea:hover,
-a:focus,
-input:focus,
-button:focus,
-textarea:focus,
 a:active,
 input:active,
 button:active,
-textarea:active {
+textarea:active,
+a:focus-within,
+input:focus-within,
+button:focus-within,
+textarea:focus-within,
+a:focus,
+input:focus,
+button:focus,
+textarea:focus {
+  /* No outline reset here: the browser focus ring must stay
+     (WCAG 2.4.7 Focus Visible). Browsers draw it for keyboard focus only,
+     through :focus-visible. */
   text-decoration: none;
-  outline: none;
 }
 
 input[type=textarea],
@@ -303,7 +304,6 @@ input[type=textfield] {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
-  outline: none;
 }
 
 a,

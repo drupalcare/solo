@@ -42,9 +42,10 @@
           }
         });
 
-        if (!li.hasAttribute('role') ||
-            (li.getAttribute('role') !== 'none' && li.getAttribute('role') !== 'presentation')) {
-          li.setAttribute('role', 'none');
+        // Disclosure navigation (W3C APG): list items keep their native role.
+        if (li.hasAttribute('role')) {
+          li.removeAttribute('role');
+          cleaned++;
         }
       });
 
@@ -54,23 +55,13 @@
     },
 
     ensureProperRoles() {
-      document.querySelectorAll('.navigation__menubar').forEach(menubar => {
-        if (!menubar.hasAttribute('role')) {
-          const isTopLevel = !menubar.classList.contains('sub__menu');
-          menubar.setAttribute('role', isTopLevel ? 'menubar' : 'menu');
-        }
-      });
-
-      document.querySelectorAll('.sub__menu').forEach(submenu => {
-        if (!submenu.hasAttribute('role')) {
-          submenu.setAttribute('role', 'menu');
-        }
-      });
-
-      document.querySelectorAll('.solo-menu a, .solo-menu button.dropdown-toggler').forEach(item => {
-        if (!item.hasAttribute('role')) {
-          item.setAttribute('role', 'menuitem');
-        }
+      // Disclosure navigation (W3C APG) uses no menu roles: lists, links and
+      // buttons keep their native semantics. Remove any left by old markup.
+      const menuRoles = '[role="menubar"], [role="menu"], [role="menuitem"], [role="none"], [role="presentation"]';
+      document.querySelectorAll('.solo-menu').forEach(menu => {
+        menu.querySelectorAll(menuRoles).forEach(element => {
+          element.removeAttribute('role');
+        });
       });
     },
 
@@ -78,8 +69,9 @@
       document.querySelectorAll('button.dropdown-toggler').forEach(button => {
         const submenu = button.nextElementSibling;
 
-        if (submenu && submenu.tagName === 'UL' && !button.hasAttribute('aria-haspopup')) {
-          button.setAttribute('aria-haspopup', 'true');
+        // aria-haspopup announces a menu; a disclosure button has none.
+        if (button.getAttribute('aria-haspopup') === 'true') {
+          button.removeAttribute('aria-haspopup');
         }
 
         if (submenu && !button.hasAttribute('aria-expanded')) {
@@ -151,8 +143,8 @@
         report.ariaIssues.push(`LI element has ARIA attributes: ${li.className}`);
       });
 
-      document.querySelectorAll('.solo-menu li:not([role])').forEach(li => {
-        report.roleIssues.push(`LI element missing role attribute`);
+      document.querySelectorAll('.solo-menu [role="menubar"], .solo-menu [role="menu"], .solo-menu [role="menuitem"], .solo-menu li[role]').forEach(element => {
+        report.roleIssues.push(`Menu role on disclosure navigation: ${element.tagName} role="${element.getAttribute('role')}"`);
       });
 
       console.table(report);

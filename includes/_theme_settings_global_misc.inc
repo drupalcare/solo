@@ -460,8 +460,8 @@ $form["solo_settings"]["settings_global_misc"]["accessibility"] = [
 
 $form["solo_settings"]["settings_global_misc"]["accessibility"]['keyboard_navigation_menus'] = [
   '#type' => 'checkboxes',
-  '#title' => t('Enable Keyboard Navigation for Menus'),
-  '#description' => t('Select which menus should have full keyboard navigation support (arrow keys, screen reader compatibility). Only applies to menus using Solo templates.'),
+  '#title' => t('Arrow-key navigation for menus'),
+  '#description' => t('Every Solo menu already works with the keyboard: Tab moves through the links, Enter or Space opens and closes a submenu, and Escape closes it. Select menus that should also move between items with the arrow keys, Home and End. Only applies to menus using Solo templates.'),
   '#default_value' => DeprecationHelper::backwardsCompatibleCall(\Drupal::VERSION, '11.3.0', fn() => \Drupal::service(ThemeSettingsProvider::class)->getSetting('keyboard_navigation_menus'), fn() => theme_get_setting('keyboard_navigation_menus')) ?? [],
   '#options' => $menu_options,
 ];

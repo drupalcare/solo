@@ -203,7 +203,7 @@ body.solo-debug-mode::before {
    ============================================ */
 
 /* Missing aria-labels */
-.solo-debug-mode [role="menubar"]:not([aria-label])::before {
+.solo-debug-mode .navigation__menubar:not([aria-label])::before {
   content: '⚠️ Missing aria-label';
   display: block;
   background: #F44336;
@@ -213,8 +213,10 @@ body.solo-debug-mode::before {
   font-weight: bold;
 }
 
-/* Incorrect roles on li elements */
-.solo-debug-mode li[role="menuitem"] {
+/* Menu roles do not belong in disclosure navigation (W3C APG) */
+.solo-debug-mode .navigation__menubar [role="menu"],
+.solo-debug-mode .navigation__menubar [role="menuitem"],
+.solo-debug-mode .navigation__menubar [role="none"] {
   outline: 3px solid red !important;
 }
 

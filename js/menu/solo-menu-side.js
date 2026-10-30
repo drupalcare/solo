@@ -137,21 +137,23 @@
     const openBtns = document.querySelectorAll('.sidebar-button-open>button');
     const firstLevelSelector = '#primary-sidebar-menu .nav__menubar-item > a, #primary-sidebar-menu .nav__menubar-item > button';
 
-    // Cache for focusable elements
-    let cachedFocusableElements = null;
     let lastFocusedElement = null;
 
-    // Function to update the focusable elements cache
-    const updateFocusableElementsCache = () => {
-      cachedFocusableElements = Array.from(verticalNav.querySelectorAll(firstLevelSelector))
-        .filter(el => el.getAttribute('tabindex') === '0');
-
-      // Add close buttons to focusable elements
+    // Everything Tab can reach inside the open sidebar, in DOM order. Read on
+    // every Tab press, not cached: opening a dropdown adds its links, and a
+    // list taken from the first-level items alone made them unreachable by
+    // keyboard (WCAG 2.1.1).
+    const getFocusableElements = () => {
+      const focusable = 'a[href], button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]';
+      const elements = Array.from(verticalNav.querySelectorAll(focusable));
       closeBtns.forEach(button => {
-        if (button.getAttribute('tabindex') === '0') {
-          cachedFocusableElements.push(button);
+        if (!verticalNav.contains(button)) {
+          elements.push(button);
         }
       });
+      return elements.filter(el => el.getAttribute('tabindex') !== '-1' &&
+        el.getClientRects().length > 0 &&
+        !el.closest('[inert]'));
     };
 
     // Function to add a click event listener to specified elements
@@ -211,12 +213,14 @@
         Drupal.solo.menuState.setTabindex(button, isOpen ? '0' : '-1', COMPONENT_NAME);
       });
 
-      // Clear cache when tabindex changes
-      cachedFocusableElements = null;
     };
 
     // Function to trap focus within the sidebar
     const trapFocus = (event) => {
+      // Already handled, e.g. Escape closing an open dropdown inside the
+      // sidebar (solo-menu.js). The next Escape closes the sidebar.
+      if (event.defaultPrevented) return;
+
       // Check both key and code for better support
       const isTab = event.key === 'Tab' || event.code === 'Tab';
       const isEscape = event.key === 'Escape' || event.code === 'Escape' || event.keyCode === 27;
@@ -237,23 +241,19 @@
 
       // Handle Tab key
       if (isTab) {
-        // Update cache if needed
-        if (!cachedFocusableElements) {
-          updateFocusableElementsCache();
-        }
-
-        const currentIndex = cachedFocusableElements.indexOf(document.activeElement);
+        const focusableElements = getFocusableElements();
+        const currentIndex = focusableElements.indexOf(document.activeElement);
         let nextIndex;
 
         if (event.shiftKey) { // Shift + Tab
-          nextIndex = currentIndex > 0 ? currentIndex - 1 : cachedFocusableElements.length - 1;
+          nextIndex = currentIndex > 0 ? currentIndex - 1 : focusableElements.length - 1;
         } else { // Tab
-          nextIndex = currentIndex < cachedFocusableElements.length - 1 ? currentIndex + 1 : 0;
+          nextIndex = currentIndex < focusableElements.length - 1 ? currentIndex + 1 : 0;
         }
 
         event.preventDefault();
-        if (cachedFocusableElements[nextIndex]) {
-          cachedFocusableElements[nextIndex].focus();
+        if (focusableElements[nextIndex]) {
+          focusableElements[nextIndex].focus();
         }
       }
     };
@@ -336,9 +336,6 @@
         eventManager.off(document, 'keydown', 'solo.sidebar.focus');
         eventManager.off(document, 'click', 'solo.sidebar.outside');
 
-        // Clear cache
-        cachedFocusableElements = null;
-
         // CRITICAL: Set aria-hidden AFTER removing focus
         // This prevents the "Blocked aria-hidden" warning
         Drupal.solo.menuState.setHidden(verticalNav, true, COMPONENT_NAME);
@@ -402,8 +399,6 @@
           });
           focusVisibleHandlers = [];
 
-          // Clear cache
-          cachedFocusableElements = null;
           lastFocusedElement = null;
 
           // Unregister from state manager

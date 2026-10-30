@@ -18,39 +18,17 @@
     }
 
     ensureProperRoles() {
-      // Ensure all <li> elements have role="none" - ARIA best practice
+      // Disclosure navigation (W3C APG): no menu roles are added. The only
+      // state is aria-expanded on the disclosure button, never on the <li>.
       this.menubar.querySelectorAll('li').forEach(li => {
-        if (!li.hasAttribute('role') || li.getAttribute('role') !== 'none') {
-          li.setAttribute('role', 'none');
-        }
-
-        // Remove any incorrectly placed ARIA attributes from li elements
-        if (li.hasAttribute('aria-haspopup')) {
-          li.removeAttribute('aria-haspopup');
-        }
         if (li.hasAttribute('aria-expanded')) {
+          const toggler = li.querySelector(':scope > button.dropdown-toggler');
+          if (toggler) {
+            toggler.setAttribute('aria-expanded', li.getAttribute('aria-expanded'));
+          }
           li.removeAttribute('aria-expanded');
         }
-      });
-
-      // Ensure all interactive elements have proper roles
-      this.menubar.querySelectorAll('a, button').forEach(item => {
-        if (!item.hasAttribute('role') && (item.tagName === 'A' || item.classList.contains('dropdown-toggler'))) {
-          item.setAttribute('role', 'menuitem');
-        }
-
-        // Move aria-haspopup and aria-expanded from parent li to button if needed
-        const parentLi = item.closest('li');
-        if (parentLi && item.classList.contains('dropdown-toggler')) {
-          if (parentLi.hasAttribute('aria-haspopup')) {
-            item.setAttribute('aria-haspopup', 'true');
-            parentLi.removeAttribute('aria-haspopup');
-          }
-          if (parentLi.hasAttribute('aria-expanded')) {
-            item.setAttribute('aria-expanded', parentLi.getAttribute('aria-expanded'));
-            parentLi.removeAttribute('aria-expanded');
-          }
-        }
+        li.removeAttribute('aria-haspopup');
       });
     }
 

@@ -86,10 +86,6 @@
         const targetItem = targetItems[targetIndex];
         if (targetItem) {
           targetItem.focus();
-          const focusModule = this.core.getModule('focus');
-          if (focusModule) {
-            focusModule.updateRovingTabindex(targetItem);
-          }
         }
       }
     }

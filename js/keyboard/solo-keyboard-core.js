@@ -29,38 +29,9 @@
         }
         this.loadModules();
         this.initializeModules();
-        this.initializeTabindex();
         this.setupResizeHandler();
       } catch (error) {
         console.error('Solo Keyboard Core: Initialization error', error);
-      }
-    }
-
-    initializeTabindex() {
-      const isSmallScreen = this.isSmallScreen();
-
-      if (isSmallScreen) {
-        // On small screens, ensure hamburger button is accessible
-        if (this.mobileNavButton) {
-          this.mobileNavButton.setAttribute('tabindex', '0');
-        }
-        // Keep all menu items at -1 since menu is hidden
-        return;
-      }
-
-      // On large screens, check if menu is visible
-      const isSidebar = this.templateInfo.isSidebar;
-
-      if (isSidebar) {
-        // Sidebar menus start closed even on large screens
-        // Don't set tabindex="0" on hidden menu items
-        return;
-      }
-
-      // For horizontal/default menus on large screens
-      const firstMenuItem = this.menubar.querySelector(':scope > li > a, :scope > li > button');
-      if (firstMenuItem && firstMenuItem.offsetParent !== null) {
-        firstMenuItem.setAttribute('tabindex', '0');
       }
     }
 
@@ -97,16 +68,14 @@
     }
 
     findMenuElements() {
-      this.menubar = this.menuWrapper.querySelector('[role="menubar"]') ||
-                     this.menuWrapper.querySelector('.navigation__menubar');
+      // Solo menus follow the W3C disclosure navigation pattern: plain lists
+      // of links and disclosure buttons, no menu roles, natural Tab order.
+      // Arrow keys are an optional enhancement on top of that.
+      this.menubar = this.menuWrapper.querySelector('.navigation__menubar');
 
       if (!this.menubar) return false;
 
-      if (!this.menubar.hasAttribute('role')) {
-        this.menubar.setAttribute('role', 'menubar');
-      }
-
-      this.menuItems = this.menubar.querySelectorAll('a[role="menuitem"], button[role="menuitem"], a, button');
+      this.menuItems = this.menubar.querySelectorAll('a, button');
       this.mobileNavButton = this.menuWrapper.querySelector('.mobile-menubar-toggler-button');
 
       return true;

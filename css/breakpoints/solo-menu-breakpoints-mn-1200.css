@@ -352,8 +352,10 @@
     cursor: default;
   }
 
-  .solo-inner .navigation-responsive-hover .navigation__responsive:not(.navigation__megamenu) li:hover>ul.sub__menu,
-  .solo-inner .navigation-responsive-hover .navigation__responsive:not(.navigation__megamenu) li:focus-within>ul.sub__menu {
+  /* Hover only. Keyboard users open a dropdown with its button (Enter or
+     Space) and close it with Escape; opening on focus could not be dismissed
+     without moving focus (WCAG 1.4.13) and left aria-expanded false. */
+  .solo-inner .navigation-responsive-hover .navigation__responsive:not(.navigation__megamenu) li:hover>ul.sub__menu {
     display: flex !important;
     visibility: visible !important;
   }

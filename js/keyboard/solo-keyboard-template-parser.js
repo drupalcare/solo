@@ -58,24 +58,6 @@
       };
     }
 
-    shouldAutoOpen(element) {
-      if (this.core.isSmallScreen()) {
-        return false;
-      }
-
-      const isHoverMode = this.templateInfo.interactionMode === 'hover';
-      if (!isHoverMode) {
-        return false;
-      }
-
-      const itemStructure = this.getItemStructure(element);
-      if (!itemStructure || !itemStructure.hasSubmenu) {
-        return false;
-      }
-
-      return element === itemStructure.link || element === itemStructure.button;
-    }
-
     getMenuLevel(element) {
       if (!element) return 0;
 
@@ -83,7 +65,7 @@
       let current = element.closest('ul');
 
       while (current) {
-        if (current.hasAttribute('role')) {
+        if (current.classList.contains('navigation__menubar') || current.classList.contains('sub__menu')) {
           level++;
         }
         current = current.parentElement?.closest('ul');
@@ -94,8 +76,7 @@
 
     isMenuItem(element) {
       if (!element) return false;
-      return element.getAttribute('role') === 'menuitem' ||
-             element.tagName === 'A' ||
+      return element.tagName === 'A' ||
              (element.tagName === 'BUTTON' && element.classList.contains('dropdown-toggler'));
     }
 
@@ -112,31 +93,12 @@
 
     ensureAccessibilityCompliance() {
       if (!this.menubar) return;
-      // Ensure all menu items have proper roles
+      // Disclosure navigation (W3C APG): links and disclosure buttons keep
+      // their native roles; no menu, menubar, menuitem or none roles.
       this.menubar.querySelectorAll('a, button').forEach(item => {
-        const role = item.getAttribute('role');
-        if (!role || role !== 'menuitem') {
-          item.setAttribute('role', 'menuitem');
-        }
-
         // Ensure focus-visible support
         if (!item.classList.contains('solo-menu-item')) {
           item.classList.add('solo-menu-item');
-        }
-      });
-
-      // Ensure proper menu structure
-      this.menubar.querySelectorAll('ul').forEach(ul => {
-        if (!ul.hasAttribute('role')) {
-          const isTopLevel = ul === this.menubar;
-          ul.setAttribute('role', isTopLevel ? 'menubar' : 'menu');
-        }
-      });
-
-      // Ensure li elements have role="none"
-      this.menubar.querySelectorAll('li').forEach(li => {
-        if (!li.hasAttribute('role')) {
-          li.setAttribute('role', 'none');
         }
       });
 
@@ -148,17 +110,15 @@
         this.menubar.setAttribute('aria-label', menuLabel);
       }
 
-      // Ensure buttons have proper ARIA attributes
+      // Disclosure buttons always carry aria-expanded.
       this.menubar.querySelectorAll('button.dropdown-toggler').forEach(button => {
-        if (Drupal.solo.menuState) {
-          Drupal.solo.menuState.setAriaAttribute(button, 'aria-haspopup', 'true', 'templateParser');
+        if (Drupal.solo.menuState && !button.hasAttribute('aria-expanded')) {
           Drupal.solo.menuState.setAriaAttribute(button, 'aria-expanded', 'false', 'templateParser');
         }
-
       });
 
       // Ensure submenus have proper initial state
-      this.menubar.querySelectorAll('ul[role="menu"]').forEach(submenu => {
+      this.menubar.querySelectorAll('ul.sub__menu').forEach(submenu => {
         if (!submenu.hasAttribute('aria-hidden')) {
           const isOpen = submenu.classList.contains('toggled');
           if (Drupal.solo.menuState) {

@@ -42,7 +42,7 @@
     }
 
     getAllMenuItems(container = this.core.menubar) {
-      return Array.from(container.querySelectorAll('a[role="menuitem"], button[role="menuitem"]'))
+      return Array.from(container.querySelectorAll('a, button'))
         .filter(item => this.isVisible(item));
     }
 

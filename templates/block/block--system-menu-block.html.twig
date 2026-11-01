@@ -41,7 +41,7 @@
 ]
 %}
 {% set heading_id = attributes.id ~ '-menu'|clean_id %}
-<nav {{ attributes.addClass(classes).setAttribute('aria-labelledby', heading_id).setAttribute('role', 'navigation') }}>
+<nav {{ attributes.addClass(classes).setAttribute('aria-labelledby', heading_id) }}>
 
   {% if solo_block_title_visibility_enabled %}
     {% include '@solo/templates/block/block-title.html.twig' %}

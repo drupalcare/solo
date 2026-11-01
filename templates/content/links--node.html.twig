@@ -34,5 +34,7 @@
  */
 #}
 {% if links %}
-    {% include "links.html.twig" %}
+  <div class="node__links">
+    {{ include('links.html.twig') }}
+  </div>
 {% endif %}

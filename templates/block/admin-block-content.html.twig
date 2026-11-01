@@ -21,7 +21,7 @@
 #}
 {% set classes = [
     'admin-list',
-    compact ? 'compact',
+    (compact is defined and compact) ? 'compact',
   ]
 %}
 {% if content %}

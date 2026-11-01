@@ -11,7 +11,8 @@
   min-width: 0;
 }
 
-ul.breadcrumb-menu {
+ul.breadcrumb-menu,
+ol.breadcrumb-menu {
   list-style: none;
   padding: 0;
   margin: 0;
@@ -21,7 +22,8 @@ ul.breadcrumb-menu {
   list-style: none;
 }
 
-ul.breadcrumb-menu li {
+ul.breadcrumb-menu li,
+ol.breadcrumb-menu li {
   padding: 0;
   margin: 0;
   display: flex;
@@ -30,7 +32,8 @@ ul.breadcrumb-menu li {
   font-size: var(--solo-px14);
 }
 
-ul.breadcrumb-menu li > a {
+ul.breadcrumb-menu li > a,
+ol.breadcrumb-menu li > a {
   display: flex;
   align-items: center;
   padding-block: var(--solo-px16);
@@ -38,7 +41,8 @@ ul.breadcrumb-menu li > a {
   padding-inline-start: var(--solo-px2);
 }
 
-ul.breadcrumb-menu li > span {
+ul.breadcrumb-menu li > span,
+ol.breadcrumb-menu li > span {
   display: flex;
   align-items: center;
   padding-block: var(--solo-px16);
@@ -52,7 +56,8 @@ ul.breadcrumb-menu li > span {
   fill: var(--r-tx);
 }
 
-.solo__bc-scroll ul.breadcrumb-menu {
+.solo__bc-scroll ul.breadcrumb-menu,
+.solo__bc-scroll ol.breadcrumb-menu {
   overflow-x: auto;
   white-space: nowrap;
   flex-wrap: nowrap;

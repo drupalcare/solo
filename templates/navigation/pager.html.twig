@@ -33,7 +33,7 @@
  */
 #}
 {% if items %}
-  <nav class="pager" role="navigation" aria-labelledby="{{ heading_id }}">
+  <nav class="pager" aria-labelledby="{{ heading_id }}">
     {# Core renders a real heading here, not a span, so assistive technology
        can reach the pager by heading. pagination_heading_level is provided by
        Views (configurable per pager) and defaults to h4 in core itself - see
@@ -63,7 +63,7 @@
       {% endif %}
       {# Add an ellipsis if there are further previous pages. #}
       {% if ellipses.previous %}
-        <li class="solo-button pager__item pager__item--ellipsis" role="presentation">&hellip;</li>
+        <li class="solo-button pager__item pager__item--ellipsis">&hellip;</li>
       {% endif %}
       {# Now generate the actual pager piece. #}
       {% for key, item in items.pages %}
@@ -83,7 +83,7 @@
       {% endfor %}
       {# Add an ellipsis if there are further next pages. #}
       {% if ellipses.next %}
-        <li class="solo-button pager__item pager__item--ellipsis" role="presentation">&hellip;</li>
+        <li class="solo-button pager__item pager__item--ellipsis">&hellip;</li>
       {% endif %}
       {# Print next item if we are not on the last page. #}
       {% if items.next %}

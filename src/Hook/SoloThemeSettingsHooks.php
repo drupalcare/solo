@@ -4,6 +4,7 @@ namespace Drupal\solo\Hook;
 
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Hook\Attribute\Hook;
+use Drupal\Core\StringTranslation\StringTranslationTrait;
 use Drupal\solo\SoloIncludes;
 
 /**
@@ -24,6 +25,8 @@ use Drupal\solo\SoloIncludes;
  */
 class SoloThemeSettingsHooks {
 
+  use StringTranslationTrait;
+
   /**
    * Implements hook_form_system_theme_settings_alter().
    */
@@ -34,6 +37,7 @@ class SoloThemeSettingsHooks {
     // The callbacks this form names live in the include files; a cached
     // rebuild must load them without solo.theme.
     SoloIncludes::addToFormBuildInfo($form_state);
+    $form['solo_readiness'] = $this->buildReadinessPanel();
     $form['logo']['#weight'] = 97;
     $form['favicon']['#open'] = FALSE;
     $form['favicon']['#weight'] = 98;
@@ -90,6 +94,72 @@ class SoloThemeSettingsHooks {
     require_once dirname(__DIR__, 2) . '/includes/_theme_settings_credit_copyright.inc';
 
     $form['#submit'][] = '_solo_theme_settings_submit';
+  }
+
+  /**
+   * Builds the read-only "Solo 2 readiness" panel.
+   *
+   * The scanner lives in the Solo Utilities module so Solo carries one
+   * scanner and no second copy. Without the module the panel only says so.
+   *
+   * @return array<string, mixed>
+   *   A details element. It saves nothing: it has no form input.
+   */
+  protected function buildReadinessPanel(): array {
+    $panel = [
+      '#type' => 'details',
+      '#title' => $this->t('Solo 2 readiness'),
+      '#open' => FALSE,
+      '#weight' => 96,
+    ];
+    if (!\Drupal::hasService('solo_utilities.readiness_scanner')) {
+      $panel['note'] = [
+        '#markup' => '<p>' . $this->t('Solo 2 needs the Solo Utilities module. Enable Solo Utilities (1.x) to check your Solo sub-themes for what Solo 2 will change. Nothing was scanned.') . '</p>',
+      ];
+      return $panel;
+    }
+
+    $result = \Drupal::service('solo_utilities.readiness_scanner')->scan();
+    $panel['intro'] = [
+      '#markup' => '<p>' . $this->t('This check only reads your Solo sub-themes. It changes no file and no setting. The same list is available with <code>drush solo:preflight</code>.') . '</p>',
+    ];
+    if ($result['subthemes'] === []) {
+      $panel['none'] = ['#markup' => '<p>' . $this->t('No installed Solo sub-theme was found. Nothing to change.') . '</p>'];
+      return $panel;
+    }
+    $total = 0;
+    foreach ($result['subthemes'] as $name => $subtheme) {
+      $count = count($subtheme['findings']);
+      $total += $count;
+      $panel[$name] = [
+        '#type' => 'details',
+        '#title' => $count === 0
+          ? $this->t('@name: ready', ['@name' => $name])
+          : $this->formatPlural($count, '@name: 1 item to change', '@name: @count items to change', ['@name' => $name]),
+        '#open' => $count > 0,
+      ];
+      if ($count === 0) {
+        $panel[$name]['ok'] = ['#markup' => '<p>' . $this->t('Nothing to change.') . '</p>'];
+        continue;
+      }
+      $rows = [];
+      foreach ($subtheme['findings'] as $finding) {
+        $rows[] = [
+          $finding['type'],
+          $finding['file'] . ($finding['line'] > 0 ? ':' . $finding['line'] : ''),
+          $finding['detail'],
+        ];
+      }
+      $panel[$name]['table'] = [
+        '#type' => 'table',
+        '#header' => [$this->t('Kind'), $this->t('Where'), $this->t('What to change')],
+        '#rows' => $rows,
+      ];
+    }
+    if ($total > 0) {
+      $panel['#open'] = TRUE;
+    }
+    return $panel;
   }
 
 }

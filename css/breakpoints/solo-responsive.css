@@ -1,6 +1,6 @@
 .region-inner.region-max-576 .button,
 .region-inner.region-max-576 .solo-button,
-.region-inner.region-max-576 nav li *:not(.solo__bc-scroll ul.breadcrumb-menu *) {
+.region-inner.region-max-576 nav li *:not(.solo__bc-scroll :is(ul, ol).breadcrumb-menu *) {
   white-space: normal;
 }
 

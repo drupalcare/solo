@@ -270,8 +270,9 @@ function _solo_is_safe_logo_path(string $path): bool {
   if (strpos($path, 'themes/') === 0) {
     return TRUE;
   }
-  // Simple filename (no scheme, no slash) — treated as public file.
-  if (strpos($path, '://') === FALSE && strpos($path, '/') === FALSE) {
+  // Simple filename (no slash) — treated as public file. A colon is refused:
+  // "javascript:x" and "data:x" have no slash either and would pass as a name.
+  if (strpos($path, ':') === FALSE && strpos($path, '/') === FALSE) {
     return TRUE;
   }
   // Absolute http(s) URL.

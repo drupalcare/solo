@@ -54,8 +54,6 @@ solo-global:
       css/components/solo-page-title.css: { weight: 0 }
       css/components/solo-pager.css: { weight: 0 }
       css/components/solo-text-content.css: { weight: 0 }
-      css/components/solo-search-block.css: { weight: 0 }
-      css/components/solo-search-page.css: { weight: 0 }
       css/components/solo-skip-link.css: { weight: 0 }
       css/components/solo-sitemap.css: { weight: 0 }
       css/components/solo-system-admin.css: { weight: 0 }
@@ -166,6 +164,16 @@ solo-popup-login-block:
     - core/drupal.announce
     - solo/solo-global
 
+# Search block and search page styles. Attached only by the search form
+# templates, so nothing loads when the core Search module is not installed.
+solo-search:
+  css:
+    component:
+      css/components/solo-search-block.css: { weight: 0 }
+      css/components/solo-search-page.css: { weight: 0 }
+  dependencies:
+    - solo/solo-global
+
 # Custom Cookies
 solo-search-settings:
   js:
@@ -181,11 +189,15 @@ solo-form-theme-settings:
   css:
     theme:
       css/theme/solo-form-theme-settings.css: { weight: 200 }
+      css/theme/solo-form-class-swatches.css: { weight: 201 }
+      css/theme/solo-form-scheme-picker.css: { weight: 202 }
   js:
     js/base/solo-form-theme-settings.js: { }
     js/base/solo-color-picker.js: { }
+    js/base/solo-form-scheme-picker.js: { }
   dependencies:
     - core/drupal
+    - core/drupal.announce
     - core/drupalSettings
     - core/once
     - core/drupal.form
@@ -1537,252 +1549,587 @@ solo-gfex-yeseva-one:
       fonts/css/site-name/solo-yeseva-one.css: { weight: -50 }
 
 # Custom predefined color scheme.
+solo-scheme-shared:
+  css:
+    theme:
+      css/theme/solo-scheme-shared.css: { weight: -10 }
+
+solo-scheme-region-paint-1:
+  css:
+    theme:
+      css/theme/solo-scheme-region-paint-1.css: { weight: -10 }
+
+solo-scheme-region-paint-2:
+  css:
+    theme:
+      css/theme/solo-scheme-region-paint-2.css: { weight: -10 }
+
+solo-scheme-region-paint-3:
+  css:
+    theme:
+      css/theme/solo-scheme-region-paint-3.css: { weight: -10 }
+
+solo-scheme-region-rule:
+  css:
+    theme:
+      css/theme/solo-scheme-region-rule.css: { weight: -10 }
+
+solo-scheme-multi-span:
+  css:
+    theme:
+      css/theme/solo-scheme-multi-span.css: { weight: -10 }
+
+solo-scheme-control-border:
+  css:
+    theme:
+      css/theme/solo-scheme-control-border.css: { weight: -10 }
+
 solo-berry-blue-dreams:
+  dependencies:
+    - solo/solo-scheme-shared
+    - solo/solo-scheme-region-rule
+    - solo/solo-scheme-control-border
+    - solo/solo-scheme-region-paint-1
+    - solo/solo-scheme-region-paint-2
+    - solo/solo-scheme-region-paint-3
   css:
     theme:
       css/predefined/solo-berry-blue-dreams.css: { weight: -9 }
 
 solo-blueberry-skies-quartet:
+  dependencies:
+    - solo/solo-scheme-shared
+    - solo/solo-scheme-multi-span
+    - solo/solo-scheme-region-paint-1
+    - solo/solo-scheme-region-paint-2
+    - solo/solo-scheme-region-paint-3
   css:
     theme:
       css/predefined/solo-blueberry-skies-quartet.css: { weight: -9 }
 
 solo-blushing-magnolia:
+  dependencies:
+    - solo/solo-scheme-shared
+    - solo/solo-scheme-region-rule
+    - solo/solo-scheme-region-paint-1
+    - solo/solo-scheme-region-paint-2
+    - solo/solo-scheme-region-paint-3
   css:
     theme:
       css/predefined/solo-blushing-magnolia.css: { weight: -9 }
 
 solo-celestial-blue-depths:
+  dependencies:
+    - solo/solo-scheme-shared
+    - solo/solo-scheme-multi-span
+    - solo/solo-scheme-region-paint-1
+    - solo/solo-scheme-region-paint-2
+    - solo/solo-scheme-region-paint-3
   css:
     theme:
       css/predefined/solo-celestial-blue-depths.css: { weight: -9 }
 
 solo-classic-ivory-lace:
+  dependencies:
+    - solo/solo-scheme-shared
+    - solo/solo-scheme-region-rule
+    - solo/solo-scheme-region-paint-1
+    - solo/solo-scheme-region-paint-2
+    - solo/solo-scheme-region-paint-3
   css:
     theme:
       css/predefined/solo-classic-ivory-lace.css: { weight: -9 }
 
 solo-cotton-candy-whispers:
+  dependencies:
+    - solo/solo-scheme-shared
+    - solo/solo-scheme-multi-span
+    - solo/solo-scheme-region-paint-1
+    - solo/solo-scheme-region-paint-2
+    - solo/solo-scheme-region-paint-3
   css:
     theme:
       css/predefined/solo-cotton-candy-whispers.css: { weight: -9 }
 
 solo-crimson-denim-night:
+  dependencies:
+    - solo/solo-scheme-shared
+    - solo/solo-scheme-multi-span
+    - solo/solo-scheme-region-paint-1
+    - solo/solo-scheme-region-paint-2
+    - solo/solo-scheme-region-paint-3
   css:
     theme:
       css/predefined/solo-crimson-denim-night.css: { weight: -9 }
 
 solo-deep-ocean-shadows:
+  dependencies:
+    - solo/solo-scheme-shared
+    - solo/solo-scheme-region-rule
+    - solo/solo-scheme-region-paint-1
+    - solo/solo-scheme-region-paint-2
+    - solo/solo-scheme-region-paint-3
   css:
     theme:
       css/predefined/solo-deep-ocean-shadows.css: { weight: -9 }
 
 solo-deep-sea-echo:
+  dependencies:
+    - solo/solo-scheme-shared
+    - solo/solo-scheme-region-rule
+    - solo/solo-scheme-control-border
+    - solo/solo-scheme-region-paint-1
+    - solo/solo-scheme-region-paint-2
+    - solo/solo-scheme-region-paint-3
   css:
     theme:
       css/predefined/solo-deep-sea-echo.css: { weight: -9 }
 
 solo-denim-twilight:
+  dependencies:
+    - solo/solo-scheme-shared
+    - solo/solo-scheme-multi-span
+    - solo/solo-scheme-region-paint-3
   css:
     theme:
       css/predefined/solo-denim-twilight.css: { weight: -9 }
 
 solo-dusk-shadow-fusion:
+  dependencies:
+    - solo/solo-scheme-shared
+    - solo/solo-scheme-multi-span
+    - solo/solo-scheme-region-paint-1
+    - solo/solo-scheme-region-paint-2
+    - solo/solo-scheme-region-paint-3
   css:
     theme:
       css/predefined/solo-dusk-shadow-fusion.css: { weight: -9 }
 
 solo-eclipse-noir:
+  dependencies:
+    - solo/solo-scheme-shared
+    - solo/solo-scheme-region-rule
+    - solo/solo-scheme-region-paint-1
+    - solo/solo-scheme-region-paint-2
+    - solo/solo-scheme-region-paint-3
   css:
     theme:
       css/predefined/solo-eclipse-noir.css: { weight: -9 }
 
 solo-charcoal-gray:
+  dependencies:
+    - solo/solo-scheme-shared
+    - solo/solo-scheme-region-rule
+    - solo/solo-scheme-region-paint-1
+    - solo/solo-scheme-region-paint-2
+    - solo/solo-scheme-region-paint-3
   css:
     theme:
       css/predefined/solo-charcoal-gray.css: { weight: -9 }
 
 solo-enchanted-forest-zest:
+  dependencies:
+    - solo/solo-scheme-shared
+    - solo/solo-scheme-region-rule
+    - solo/solo-scheme-region-paint-1
+    - solo/solo-scheme-region-paint-2
+    - solo/solo-scheme-region-paint-3
   css:
     theme:
       css/predefined/solo-enchanted-forest-zest.css: { weight: -9 }
 
 solo-ethereal-white-harmony:
+  dependencies:
+    - solo/solo-scheme-shared
+    - solo/solo-scheme-region-rule
+    - solo/solo-scheme-region-paint-1
+    - solo/solo-scheme-region-paint-2
   css:
     theme:
       css/predefined/solo-ethereal-white-harmony.css: { weight: -9 }
 
 solo-flaming-sapphire:
+  dependencies:
+    - solo/solo-scheme-shared
+    - solo/solo-scheme-region-rule
+    - solo/solo-scheme-region-paint-1
+    - solo/solo-scheme-region-paint-2
+    - solo/solo-scheme-region-paint-3
   css:
     theme:
       css/predefined/solo-flaming-sapphire.css: { weight: -9 }
 
 solo-galactic-stone-hues:
+  dependencies:
+    - solo/solo-scheme-shared
+    - solo/solo-scheme-region-rule
+    - solo/solo-scheme-region-paint-1
+    - solo/solo-scheme-region-paint-2
+    - solo/solo-scheme-region-paint-3
   css:
     theme:
       css/predefined/solo-galactic-stone-hues.css: { weight: -9 }
 
 solo-gentle-ivory-breeze:
+  dependencies:
+    - solo/solo-scheme-shared
+    - solo/solo-scheme-region-rule
+    - solo/solo-scheme-region-paint-1
+    - solo/solo-scheme-region-paint-2
+    - solo/solo-scheme-region-paint-3
   css:
     theme:
       css/predefined/solo-gentle-ivory-breeze.css: { weight: -9 }
 
 solo-gunmetal-echo:
+  dependencies:
+    - solo/solo-scheme-shared
+    - solo/solo-scheme-multi-span
+    - solo/solo-scheme-region-paint-1
+    - solo/solo-scheme-region-paint-2
+    - solo/solo-scheme-region-paint-3
   css:
     theme:
       css/predefined/solo-gunmetal-echo.css: { weight: -9 }
 
 solo-indigo-pulse:
+  dependencies:
+    - solo/solo-scheme-shared
+    - solo/solo-scheme-multi-span
+    - solo/solo-scheme-region-paint-1
+    - solo/solo-scheme-region-paint-2
+    - solo/solo-scheme-region-paint-3
   css:
     theme:
       css/predefined/solo-indigo-pulse.css: { weight: -9 }
 
 solo-ivory-whisper:
+  dependencies:
+    - solo/solo-scheme-shared
+    - solo/solo-scheme-region-rule
+    - solo/solo-scheme-region-paint-1
+    - solo/solo-scheme-region-paint-2
+    - solo/solo-scheme-region-paint-3
   css:
     theme:
       css/predefined/solo-ivory-whisper.css: { weight: -9 }
 
 solo-jungle-denim-fusion:
+  dependencies:
+    - solo/solo-scheme-shared
+    - solo/solo-scheme-multi-span
+    - solo/solo-scheme-region-paint-1
+    - solo/solo-scheme-region-paint-2
+    - solo/solo-scheme-region-paint-3
   css:
     theme:
       css/predefined/solo-jungle-denim-fusion.css: { weight: -9 }
 
 solo-lemon-lime-forest:
+  dependencies:
+    - solo/solo-scheme-shared
+    - solo/solo-scheme-region-rule
+    - solo/solo-scheme-region-paint-1
+    - solo/solo-scheme-region-paint-2
+    - solo/solo-scheme-region-paint-3
   css:
     theme:
       css/predefined/solo-lemon-lime-forest.css: { weight: -9 }
 
 solo-luminous-alabaster:
+  dependencies:
+    - solo/solo-scheme-shared
+    - solo/solo-scheme-region-rule
+    - solo/solo-scheme-region-paint-1
+    - solo/solo-scheme-region-paint-2
+    - solo/solo-scheme-region-paint-3
   css:
     theme:
       css/predefined/solo-luminous-alabaster.css: { weight: -9 }
 
 solo-magnolia-afternoon:
+  dependencies:
+    - solo/solo-scheme-shared
+    - solo/solo-scheme-multi-span
+    - solo/solo-scheme-region-paint-1
+    - solo/solo-scheme-region-paint-2
+    - solo/solo-scheme-region-paint-3
   css:
     theme:
       css/predefined/solo-magnolia-afternoon.css: { weight: -9 }
 
 solo-metallic-nebula:
+  dependencies:
+    - solo/solo-scheme-shared
+    - solo/solo-scheme-multi-span
+    - solo/solo-scheme-region-paint-1
+    - solo/solo-scheme-region-paint-2
+    - solo/solo-scheme-region-paint-3
   css:
     theme:
       css/predefined/solo-metallic-nebula.css: { weight: -9 }
 
 solo-midnight-denim-swirl:
+  dependencies:
+    - solo/solo-scheme-shared
+    - solo/solo-scheme-region-rule
+    - solo/solo-scheme-region-paint-1
+    - solo/solo-scheme-region-paint-2
+    - solo/solo-scheme-region-paint-3
   css:
     theme:
       css/predefined/solo-midnight-denim-swirl.css: { weight: -9 }
 
 solo-midnight-garden-trio:
+  dependencies:
+    - solo/solo-scheme-shared
+    - solo/solo-scheme-region-rule
+    - solo/solo-scheme-region-paint-1
+    - solo/solo-scheme-region-paint-2
+    - solo/solo-scheme-region-paint-3
   css:
     theme:
       css/predefined/solo-midnight-garden-trio.css: { weight: -9 }
 
 solo-midnight-navy-duo:
+  dependencies:
+    - solo/solo-scheme-shared
+    - solo/solo-scheme-multi-span
+    - solo/solo-scheme-region-paint-1
+    - solo/solo-scheme-region-paint-2
+    - solo/solo-scheme-region-paint-3
   css:
     theme:
       css/predefined/solo-midnight-navy-duo.css: { weight: -9 }
 
 solo-midnight-whispers:
+  dependencies:
+    - solo/solo-scheme-shared
+    - solo/solo-scheme-multi-span
+    - solo/solo-scheme-region-paint-1
   css:
     theme:
       css/predefined/solo-midnight-whispers.css: { weight: -9 }
 
 solo-monochrome-splash:
+  dependencies:
+    - solo/solo-scheme-shared
+    - solo/solo-scheme-multi-span
+    - solo/solo-scheme-region-paint-1
+    - solo/solo-scheme-region-paint-2
+    - solo/solo-scheme-region-paint-3
   css:
     theme:
       css/predefined/solo-monochrome-splash.css: { weight: -9 }
 
 solo-mystic-ash-twilight:
+  dependencies:
+    - solo/solo-scheme-shared
+    - solo/solo-scheme-region-rule
+    - solo/solo-scheme-control-border
+    - solo/solo-scheme-region-paint-1
+    - solo/solo-scheme-region-paint-2
+    - solo/solo-scheme-region-paint-3
   css:
     theme:
       css/predefined/solo-mystic-ash-twilight.css: { weight: -9 }
 
 solo-nightfall-paris:
+  dependencies:
+    - solo/solo-scheme-shared
+    - solo/solo-scheme-region-rule
+    - solo/solo-scheme-region-paint-1
+    - solo/solo-scheme-region-paint-2
+    - solo/solo-scheme-region-paint-3
   css:
     theme:
       css/predefined/solo-nightfall-paris.css: { weight: -9 }
 
 solo-nocturnal-velvet:
+  dependencies:
+    - solo/solo-scheme-shared
+    - solo/solo-scheme-region-rule
+    - solo/solo-scheme-region-paint-1
+    - solo/solo-scheme-region-paint-2
+    - solo/solo-scheme-region-paint-3
   css:
     theme:
       css/predefined/solo-nocturnal-velvet.css: { weight: -9 }
 
 solo-obsidian-cascade:
+  dependencies:
+    - solo/solo-scheme-shared
+    - solo/solo-scheme-multi-span
+    - solo/solo-scheme-region-paint-1
+    - solo/solo-scheme-region-paint-2
+    - solo/solo-scheme-region-paint-3
   css:
     theme:
       css/predefined/solo-obsidian-cascade.css: { weight: -9 }
 
 solo-ocean-depths-mystery:
+  dependencies:
+    - solo/solo-scheme-shared
+    - solo/solo-scheme-region-rule
+    - solo/solo-scheme-control-border
+    - solo/solo-scheme-region-paint-1
+    - solo/solo-scheme-region-paint-2
+    - solo/solo-scheme-region-paint-3
   css:
     theme:
       css/predefined/solo-ocean-depths-mystery.css: { weight: -9 }
 
 solo-parisian-skyline:
+  dependencies:
+    - solo/solo-scheme-shared
+    - solo/solo-scheme-region-rule
+    - solo/solo-scheme-region-paint-1
+    - solo/solo-scheme-region-paint-2
+    - solo/solo-scheme-region-paint-3
   css:
     theme:
       css/predefined/solo-parisian-skyline.css: { weight: -9 }
 
 solo-porcelain-brilliance:
+  dependencies:
+    - solo/solo-scheme-shared
+    - solo/solo-scheme-region-rule
+    - solo/solo-scheme-region-paint-1
+    - solo/solo-scheme-region-paint-2
+    - solo/solo-scheme-region-paint-3
   css:
     theme:
       css/predefined/solo-porcelain-brilliance.css: { weight: -9 }
 
 solo-porpoise-dream:
+  dependencies:
+    - solo/solo-scheme-shared
+    - solo/solo-scheme-multi-span
+    - solo/solo-scheme-region-paint-1
+    - solo/solo-scheme-region-paint-2
+    - solo/solo-scheme-region-paint-3
   css:
     theme:
       css/predefined/solo-porpoise-dream.css: { weight: -9 }
 
 solo-pristine-porcelain-glow:
+  dependencies:
+    - solo/solo-scheme-shared
+    - solo/solo-scheme-region-rule
+    - solo/solo-scheme-region-paint-1
+    - solo/solo-scheme-region-paint-2
+    - solo/solo-scheme-region-paint-3
   css:
     theme:
       css/predefined/solo-pristine-porcelain-glow.css: { weight: -9 }
 
 solo-raspberry-nightfall:
+  dependencies:
+    - solo/solo-scheme-shared
+    - solo/solo-scheme-region-rule
+    - solo/solo-scheme-region-paint-1
+    - solo/solo-scheme-region-paint-2
+    - solo/solo-scheme-region-paint-3
   css:
     theme:
       css/predefined/solo-raspberry-nightfall.css: { weight: -9 }
 
 solo-razzle-onyx-elegance:
+  dependencies:
+    - solo/solo-scheme-shared
+    - solo/solo-scheme-multi-span
+    - solo/solo-scheme-region-paint-1
+    - solo/solo-scheme-region-paint-2
+    - solo/solo-scheme-region-paint-3
   css:
     theme:
       css/predefined/solo-razzle-onyx-elegance.css: { weight: -9 }
 
 solo-royal-azure-flame:
+  dependencies:
+    - solo/solo-scheme-shared
+    - solo/solo-scheme-region-rule
+    - solo/solo-scheme-region-paint-1
+    - solo/solo-scheme-region-paint-2
+    - solo/solo-scheme-region-paint-3
   css:
     theme:
       css/predefined/solo-royal-azure-flame.css: { weight: -9 }
 
 solo-rustic-redwood-charm:
+  dependencies:
+    - solo/solo-scheme-shared
+    - solo/solo-scheme-region-rule
+    - solo/solo-scheme-region-paint-1
+    - solo/solo-scheme-region-paint-2
+    - solo/solo-scheme-region-paint-3
   css:
     theme:
       css/predefined/solo-rustic-redwood-charm.css: { weight: -9 }
 
 solo-salmon-denim-fade:
+  dependencies:
+    - solo/solo-scheme-shared
+    - solo/solo-scheme-multi-span
+    - solo/solo-scheme-region-paint-1
+    - solo/solo-scheme-region-paint-2
+    - solo/solo-scheme-region-paint-3
   css:
     theme:
       css/predefined/solo-salmon-denim-fade.css: { weight: -9 }
 
 solo-silken-shadow-whisper:
+  dependencies:
+    - solo/solo-scheme-shared
+    - solo/solo-scheme-region-rule
+    - solo/solo-scheme-region-paint-1
+    - solo/solo-scheme-region-paint-2
+    - solo/solo-scheme-region-paint-3
   css:
     theme:
       css/predefined/solo-silken-shadow-whisper.css: { weight: -9 }
 
 solo-smokey-quartz-symphony:
+  dependencies:
+    - solo/solo-scheme-shared
+    - solo/solo-scheme-multi-span
+    - solo/solo-scheme-region-paint-1
+    - solo/solo-scheme-region-paint-2
+    - solo/solo-scheme-region-paint-3
   css:
     theme:
       css/predefined/solo-smokey-quartz-symphony.css: { weight: -9 }
 
 solo-soft-silk-elegance:
+  dependencies:
+    - solo/solo-scheme-shared
+    - solo/solo-scheme-region-rule
+    - solo/solo-scheme-region-paint-1
+    - solo/solo-scheme-region-paint-2
+    - solo/solo-scheme-region-paint-3
   css:
     theme:
       css/predefined/solo-soft-silk-elegance.css: { weight: -9 }
 
 solo-twilight-ash-mystique:
+  dependencies:
+    - solo/solo-scheme-shared
+    - solo/solo-scheme-region-rule
+    - solo/solo-scheme-control-border
+    - solo/solo-scheme-region-paint-1
+    - solo/solo-scheme-region-paint-2
+    - solo/solo-scheme-region-paint-3
   css:
     theme:
       css/predefined/solo-twilight-ash-mystique.css: { weight: -9 }
 
 solo-urban-stone-shadows:
+  dependencies:
+    - solo/solo-scheme-shared
+    - solo/solo-scheme-region-rule
+    - solo/solo-scheme-region-paint-1
+    - solo/solo-scheme-region-paint-2
+    - solo/solo-scheme-region-paint-3
   css:
     theme:
       css/predefined/solo-urban-stone-shadows.css: { weight: -9 }

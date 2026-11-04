@@ -19,47 +19,47 @@ Variable Definitions:
 */
 
 /*
-Regions Names, each region has an ID and a Class with the same name.
-You can use .page-wrapper or #page-wrapper
-#page-wrapper {}
-#primary-sidebar-menu {}
-#fixed-search-block {}
-#popup-login-block {}
-#header {}
-#primary-menu {}
-#welcome-text {}
+Region names, each region wrapper has an ID that starts with solo-.
+The page wrapper also has the class .solo-page, so you can use .solo-page or #solo-page-wrapper
+#solo-page-wrapper {}
+#solo-primary-sidebar-menu {}
+#solo-fixed-search-block {}
+#solo-popup-login-block {}
+#solo-header {}
+#solo-primary-menu {}
+#solo-welcome-text {}
 
-#top-container {}
-#top-box-first {}
-#top-box-second {}
-#top-box-third {}
+#solo-top-container {}
+#solo-top-box-first {}
+#solo-top-box-second {}
+#solo-top-box-third {}
 
-#system-messages {}
-#breadcrumb {}
-#page-title {}
+#solo-system-messages {}
+#solo-breadcrumb {}
+#solo-page-title {}
 
-#main-container {}
-#sidebar-box-first {}
-#sidebar-box-main {}
-#sidebar-box-second {}
+#solo-main-container {}
+#solo-sidebar-box-first {}
+#solo-sidebar-box-main {}
+#solo-sidebar-box-second {}
 
-#bottom-container {}
-#bottom-box-first {}
-#bottom-box-second {}
-#bottom-box-third {}
-#bottom-box-fourth {}
+#solo-bottom-container {}
+#solo-bottom-box-first {}
+#solo-bottom-box-second {}
+#solo-bottom-box-third {}
+#solo-bottom-box-fourth {}
 
-#footer-container {}
-#footer-box-first {}
-#footer-box-second {}
-#footer-box-third {}
+#solo-footer-container {}
+#solo-footer-box-first {}
+#solo-footer-box-second {}
+#solo-footer-box-third {}
 
-#footer-menu {}
-#copyright {}
+#solo-footer-menu {}
+#solo-copyright {}
 
 Examples:
 
-#page-wrapper {
+#solo-page-wrapper {
   background-color: var(--r-bg);
   color: var(--r-tx);
   border-color: var(--r-br);
@@ -69,7 +69,7 @@ h1, h2, h3 {
   color: var(--r-h1);
 }
 
-a:not(li.nav__menu-item a) {
+a:not(li.solo-menu-tree__item a) {
   color: var(--r-lk);
   color: var(--r-lk-h);
 }
@@ -78,22 +78,22 @@ input:not(.button) {
   background-color: var(--r-bg-fr);
 }
 
-li.nav__menu-item a {
+li.solo-menu-tree__item a {
   color: var(--r-tx-lk);
   background-color: var(--r-bg-lk);
 }
 
-li.nav__menu-item a:hover {
+li.solo-menu-tree__item a:hover {
   color: var(--r-tx-lk-h);
   background-color: var(--r-bg-lk-h);
 }
 
-button:not(li.nav__menu-item button) {
+button:not(li.solo-menu-tree__item button) {
   color: var(--r-tx-bt);
   background-color: var(--r-bg-bt);
 }
 
-button:not(li.nav__menu-item button):hover {
+button:not(li.solo-menu-tree__item button):hover {
   color: var(--r-tx-bt-h);
   background-color: var(--r-bg-bt-h);
 }

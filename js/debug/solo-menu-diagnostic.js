@@ -111,7 +111,7 @@
           submenu: submenu ? {
             found: true,
             className: submenu.className,
-            wasToggled: submenu.classList.contains('toggled'),
+            wasToggled: submenu.classList.contains('solo-is-open'),
             display: window.getComputedStyle(submenu).display,
             visibility: window.getComputedStyle(submenu).visibility
           } : { found: false },
@@ -125,7 +125,7 @@
         // Check if click worked (after animation delay)
         setTimeout(() => {
           if (submenu) {
-            const nowToggled = submenu.classList.contains('toggled');
+            const nowToggled = submenu.classList.contains('solo-is-open');
             clickData.afterClick = {
               isToggled: nowToggled,
               display: window.getComputedStyle(submenu).display,
@@ -150,16 +150,16 @@
      */
     findMenuButton(target) {
       // Direct button
-      if (target.matches('button.dropdown-toggler')) return target;
+      if (target.matches('button.solo-menu-tree__toggler')) return target;
 
       // Parent button
-      const button = target.closest('button.dropdown-toggler');
+      const button = target.closest('button.solo-menu-tree__toggler');
       if (button) return button;
 
       // Sibling approach (for icons inside buttons)
-      const parent = target.closest('.nav__menubar-item, li');
+      const parent = target.closest('.solo-menu-tree__menubar-item, li');
       if (parent) {
-        const btn = parent.querySelector('button.dropdown-toggler');
+        const btn = parent.querySelector('button.solo-menu-tree__toggler');
         if (btn) return btn;
       }
 
@@ -207,7 +207,7 @@
     }
 
     captureStateSnapshot() {
-      const buttons = document.querySelectorAll('button.dropdown-toggler, .dropdown-toggler');
+      const buttons = document.querySelectorAll('button.solo-menu-tree__toggler, .solo-menu-tree__toggler');
       const snapshot = {
         timestamp: Date.now() - this.startTime,
         totalButtons: buttons.length,

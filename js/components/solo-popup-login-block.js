@@ -21,7 +21,7 @@
   Drupal.behaviors.soloPopupLoginBlock = {
     attach: function (context, settings) {
       // Initialize popup instance on the login block.
-      once('solo-popup-login-init', '#popup-login-block', context).forEach((loginBlock) => {
+      once('solo-popup-login-init', '#solo-popup-login-block', context).forEach((loginBlock) => {
         try {
           const popupLogin = new Drupal.solo.PopupLogin(loginBlock, context);
           loginBlock.soloPopupLogin = popupLogin;
@@ -34,7 +34,7 @@
       });
 
       // Attach click/keyboard handlers to standard triggers.
-      once('solo-login-trigger', '[data-solo-login-popup-trigger], .login-popup-trigger', context)
+      once('solo-login-trigger', '[data-solo-login-popup-trigger], .solo-popup-login__trigger', context)
         .forEach((trigger) => {
           trigger.addEventListener('click', Drupal.solo.handleLoginTriggerClick);
 
@@ -84,7 +84,7 @@
     detach: function (context, settings, trigger) {
       if (trigger === 'unload' || trigger === 'move') {
         // Destroy popup instances and remove their listeners.
-        once.remove('solo-popup-login-init', '#popup-login-block', context).forEach((loginBlock) => {
+        once.remove('solo-popup-login-init', '#solo-popup-login-block', context).forEach((loginBlock) => {
           if (loginBlock.soloPopupLogin && typeof loginBlock.soloPopupLogin.destroy === 'function') {
             loginBlock.soloPopupLogin.destroy();
             delete loginBlock.soloPopupLogin;
@@ -92,7 +92,7 @@
         });
 
         // Remove standard trigger listeners.
-        once.remove('solo-login-trigger', '[data-solo-login-popup-trigger], .login-popup-trigger', context)
+        once.remove('solo-login-trigger', '[data-solo-login-popup-trigger], .solo-popup-login__trigger', context)
           .forEach((triggerEl) => {
             triggerEl.removeEventListener('click', Drupal.solo.handleLoginTriggerClick);
             triggerEl.removeEventListener('keydown', Drupal.solo.handleLoginTriggerKeydown);
@@ -127,7 +127,7 @@
   Drupal.solo.handleLoginTriggerClick = function (event) {
     event.preventDefault();
     event.stopPropagation();
-    const loginBlock = document.getElementById('popup-login-block');
+    const loginBlock = document.getElementById('solo-popup-login-block');
     if (loginBlock && loginBlock.soloPopupLogin) {
       loginBlock.soloPopupLogin.open();
     }
@@ -188,12 +188,12 @@
    */
   Drupal.solo.PopupLogin.prototype.init = function () {
     // Find buttons.
-    this.openButton = document.querySelector('.login-button-open > button') ||
-                      document.querySelector('.login-button-open button') ||
+    this.openButton = document.querySelector('.solo-popup-login__open > button') ||
+                      document.querySelector('.solo-popup-login__open button') ||
                       document.querySelector('[data-solo-login-popup-trigger]');
 
-    this.closeButton = this.loginBlock.querySelector('.login-button-close button') ||
-                       this.loginBlock.querySelector('.login-block-button-close-inner');
+    this.closeButton = this.loginBlock.querySelector('.solo-popup-login__close button') ||
+                       this.loginBlock.querySelector('.solo-popup-login__close-inner');
 
     if (!this.closeButton) {
       if (window.console && console.warn) {
@@ -237,7 +237,7 @@
    * Setup ARIA attributes.
    */
   Drupal.solo.PopupLogin.prototype.setupAria = function () {
-    const loginId = this.loginBlock.id || 'popup-login-block';
+    const loginId = this.loginBlock.id || 'solo-popup-login-block';
 
     if (this.openButton) {
       this.openButton.setAttribute('aria-controls', loginId);
@@ -249,7 +249,7 @@
     this.loginBlock.setAttribute('aria-modal', 'true');
 
     // Strengthen dialog labeling: aria-labelledby / aria-describedby when possible.
-    let labelEl = this.loginBlock.querySelector('[data-sr-dialog-title], .popup-login-title, h1, h2, h3');
+    let labelEl = this.loginBlock.querySelector('[data-sr-dialog-title], .solo-popup-login__title, h1, h2, h3');
     if (labelEl) {
       if (!labelEl.id) {
         labelEl.id = 'solo-login-title-' + Math.random().toString(36).slice(2);
@@ -257,7 +257,7 @@
       this.loginBlock.setAttribute('aria-labelledby', labelEl.id);
     }
 
-    let descEl = this.loginBlock.querySelector('[data-sr-dialog-description], .popup-login-description, .description');
+    let descEl = this.loginBlock.querySelector('[data-sr-dialog-description], .solo-popup-login__description, .description');
     if (descEl) {
       if (!descEl.id) {
         descEl.id = 'solo-login-desc-' + Math.random().toString(36).slice(2);
@@ -267,7 +267,7 @@
 
     // Mirror aria-controls on all known triggers.
     const allTriggers = document.querySelectorAll(
-      '[data-solo-login-popup-trigger], .login-popup-trigger, .login-button-open button, .login-button-open > button'
+      '[data-solo-login-popup-trigger], .solo-popup-login__trigger, .solo-popup-login__open button, .solo-popup-login__open > button'
     );
     allTriggers.forEach((el) => {
       el.setAttribute('aria-controls', loginId);
@@ -329,15 +329,15 @@
         if (!this.isOpen) return;
 
         // Inner popup container.
-        const popupInner = this.loginBlock.querySelector('.popup-login-block-inner');
+        const popupInner = this.loginBlock.querySelector('.solo-popup-login__inner');
 
         // Fallback if inner container is missing.
         if (!popupInner) {
           if (
             !this.loginBlock.contains(e.target) &&
-            !e.target.closest('.login-button-open') &&
+            !e.target.closest('.solo-popup-login__open') &&
             !e.target.closest('[data-solo-login-popup-trigger]') &&
-            !e.target.closest('.login-popup-trigger')
+            !e.target.closest('.solo-popup-login__trigger')
           ) {
             this.close();
           }
@@ -347,9 +347,9 @@
         // Close only if click is outside the inner popup and not on any trigger.
         if (
           !popupInner.contains(e.target) &&
-          !e.target.closest('.login-button-open') &&
+          !e.target.closest('.solo-popup-login__open') &&
           !e.target.closest('[data-solo-login-popup-trigger]') &&
-          !e.target.closest('.login-popup-trigger')
+          !e.target.closest('.solo-popup-login__trigger')
         ) {
           this.close();
         }
@@ -419,7 +419,7 @@
 
     // Add classes and update ARIA.
     requestAnimationFrame(() => {
-      this.loginBlock.classList.add('toggled');
+      this.loginBlock.classList.add('solo-is-open');
       this.updateAriaAttributes(true);
       this.setElementsTabindex(true);
       this.focusFirstInput();
@@ -466,7 +466,7 @@
    * Close the login popup.
    */
   Drupal.solo.PopupLogin.prototype.close = function (announce = true) {
-    if (!this.isOpen && !this.loginBlock.classList.contains('toggled')) return;
+    if (!this.isOpen && !this.loginBlock.classList.contains('solo-is-open')) return;
 
     this.isOpen = false;
 
@@ -481,11 +481,11 @@
     );
 
     // Remove classes (but NOT aria-hidden yet)
-    this.loginBlock.classList.remove('toggled');
+    this.loginBlock.classList.remove('solo-is-open');
 
     // Update aria-expanded on triggers (but NOT aria-hidden on dialog yet)
     const triggers = document.querySelectorAll(
-      '[data-solo-login-popup-trigger], .login-popup-trigger, .login-button-open button, .login-button-open > button'
+      '[data-solo-login-popup-trigger], .solo-popup-login__trigger, .solo-popup-login__open button, .solo-popup-login__open > button'
     );
     triggers.forEach((el) => el.setAttribute('aria-expanded', 'false'));
 
@@ -561,7 +561,7 @@
   Drupal.solo.PopupLogin.prototype.updateAriaAttributes = function (isOpen) {
     // Keep all triggers in sync.
     const triggers = document.querySelectorAll(
-      '[data-solo-login-popup-trigger], .login-popup-trigger, .login-button-open button, .login-button-open > button'
+      '[data-solo-login-popup-trigger], .solo-popup-login__trigger, .solo-popup-login__open button, .solo-popup-login__open > button'
     );
     triggers.forEach((el) => el.setAttribute('aria-expanded', String(isOpen)));
 
@@ -658,7 +658,7 @@
     }
 
     // Clean up ARIA live region if this was the last popup.
-    if (this.liveRegion && document.querySelectorAll('#popup-login-block').length <= 1) {
+    if (this.liveRegion && document.querySelectorAll('#solo-popup-login-block').length <= 1) {
       try {
         this.liveRegion.remove();
       } catch (e) {

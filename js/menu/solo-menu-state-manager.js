@@ -120,7 +120,7 @@
      * Update screen size cache
      */
     updateScreenSize() {
-      const pageWrapper = document.querySelector('.page-wrapper');
+      const pageWrapper = document.querySelector('.solo-page');
       if (!pageWrapper) return;
 
       this.screenSize.width = this.getCurrentWidth();
@@ -141,7 +141,7 @@
         return false;
       }
 
-      const pageWrapper = document.querySelector('.page-wrapper, body');
+      const pageWrapper = document.querySelector('.solo-page, body');
       if (!pageWrapper) {
         if (drupalSettings?.solo?.debug) {
           console.debug('Solo Menu: No page wrapper found for ResizeObserver');
@@ -352,7 +352,7 @@
       this.setHidden(subMenu, true, componentName);
 
       const toggler = subMenu.previousElementSibling;
-      if (toggler?.classList.contains('dropdown-toggler')) {
+      if (toggler?.classList.contains('solo-menu-tree__toggler')) {
         this.setExpanded(toggler, false, componentName);
       }
     },
@@ -372,7 +372,7 @@
      * Get consistent menu state
      */
     getMenuState(menuElement) {
-      const isOpen = menuElement.classList.contains('toggled');
+      const isOpen = menuElement.classList.contains('solo-is-open');
       const ariaExpanded = menuElement.getAttribute('aria-expanded') === 'true';
       const ariaHidden = menuElement.getAttribute('aria-hidden') === 'false';
 
@@ -431,12 +431,12 @@
 
       const operations = {
         'open': () => {
-          menuElement.classList.add('toggled');
+          menuElement.classList.add('solo-is-open');
           this.setAriaAttribute(menuElement, 'aria-expanded', 'true', componentName);
           this.setAriaAttribute(menuElement, 'aria-hidden', 'false', componentName);
         },
         'close': () => {
-          menuElement.classList.remove('toggled');
+          menuElement.classList.remove('solo-is-open');
           this.setAriaAttribute(menuElement, 'aria-expanded', 'false', componentName);
           this.setAriaAttribute(menuElement, 'aria-hidden', 'true', componentName);
         },

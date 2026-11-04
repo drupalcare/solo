@@ -45,7 +45,7 @@
      */
     attach: function (context, settings) {
       // Initialize search block functionality with once() to prevent duplicates
-      once('solo-search-block-init', '[id="fixed-search-block"]', context).forEach((searchBlock) => {
+      once('solo-search-block-init', '[id="solo-fixed-search-block"]', context).forEach((searchBlock) => {
         try {
           this.initializeSearchBlock(searchBlock, context);
         } catch (error) {
@@ -54,7 +54,7 @@
       });
 
       // Attach open button handlers
-      once('solo-search-open-btn', '.search-button-open > button', context).forEach((button) => {
+      once('solo-search-open-btn', '.solo-fixed-search__open > button', context).forEach((button) => {
         this.attachOpenButtonHandler(button);
       });
     },
@@ -69,9 +69,9 @@
     detach: function (context, settings, trigger) {
       if (trigger === 'unload') {
         // Clean up event listeners and animations
-        once.remove('solo-search-block-init', '[id="fixed-search-block"]', context);
-        once.remove('solo-search-open-btn', '.search-button-open > button', context);
-        once.remove('solo-search-close-btn', '.search-button-close > button', context);
+        once.remove('solo-search-block-init', '[id="solo-fixed-search-block"]', context);
+        once.remove('solo-search-open-btn', '.solo-fixed-search__open > button', context);
+        once.remove('solo-search-close-btn', '.solo-fixed-search__close > button', context);
         once.remove('solo-search-outside-click', 'body', document);
 
         // Cancel any pending animations
@@ -88,7 +88,7 @@
      * @param {HTMLElement} context - The context element
      */
     initializeSearchBlock: function (searchBlock, context) {
-      const closeButton = searchBlock.querySelector('.search-button-close > button');
+      const closeButton = searchBlock.querySelector('.solo-fixed-search__close > button');
 
       if (!searchBlock) {
         this.logWarning('Search block element not found');
@@ -115,7 +115,7 @@
       this.attachOutsideClickHandler(searchBlock, context);
 
        // Set initial ARIA attributes based on current DOM state.
-       const initiallyOpen = searchBlock.classList.contains('toggled');
+       const initiallyOpen = searchBlock.classList.contains('solo-is-open');
        Drupal.solo.searchBlock.isOpen = initiallyOpen;
        this.setInitialAriaAttributes(searchBlock, cache);
        this.setAriaAttributes(initiallyOpen, searchBlock, cache);
@@ -130,11 +130,11 @@
      */
     createElementCache: function (searchBlock) {
       return {
-        openButtons: document.querySelectorAll('.search-button-open > button'),
-        closeButton: searchBlock.querySelector('.search-button-close > button'),
+        openButtons: document.querySelectorAll('.solo-fixed-search__open > button'),
+        closeButton: searchBlock.querySelector('.solo-fixed-search__close > button'),
         inputs: searchBlock.querySelectorAll('input'),
         focusableElements: searchBlock.querySelectorAll('button, input, [tabindex]:not([tabindex="-1"])'),
-        mainSideNav: document.getElementById('primary-sidebar-menu')
+        mainSideNav: document.getElementById('solo-primary-sidebar-menu')
       };
     },
 
@@ -195,7 +195,7 @@
      * @param {Object} cache - Cached element references
      */
     openSearchBlock: function (searchBlock, cache) {
-      searchBlock.classList.add('toggled');
+      searchBlock.classList.add('solo-is-open');
 
       // Prepare for animation
       const targetHeight = this.calculateHeight(searchBlock);
@@ -260,7 +260,7 @@
       // Handle transition end
       const onCloseEnd = (event) => {
         if (event.propertyName === 'height') {
-          searchBlock.classList.remove('toggled');
+          searchBlock.classList.remove('solo-is-open');
           searchBlock.style.height = '';
 
          searchBlock.removeEventListener('transitionend', onCloseEnd);
@@ -421,7 +421,7 @@
           // If we know who opened it, return focus there; otherwise focus the first opener.
           const opener =
             Drupal.solo.searchBlock.triggerElement ||
-            document.querySelector('.search-button-open > button');
+            document.querySelector('.solo-fixed-search__open > button');
           if (opener) {
             opener.focus();
           }
@@ -505,7 +505,7 @@
             // Treat clicks as "outside" if they are neither inside the block nor on any open button.
             const isOutsideClick =
               !searchBlock.contains(target) &&
-              !(target.closest && target.closest('.search-button-open'));
+              !(target.closest && target.closest('.solo-fixed-search__open'));
 
             if (isOutsideClick && typeof Drupal.solo.searchBlockToggle === 'function') {
               Drupal.solo.searchBlockToggle(false);

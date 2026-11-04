@@ -1,4 +1,4 @@
-.page-wrapper .barriecito {
+.solo-page .barriecito {
   --solo-font-s: 'Barriecito', cursive;
   font-family: var(--solo-font-s) !important;
 }

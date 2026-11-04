@@ -79,7 +79,7 @@
       function adjustSecondLevelSubmenu(li) {
         const windowWidth = getWindowWidth();
         if (windowWidth < breakpoint) return;
-        const submenu = li.querySelector(':scope > .sub__menu');
+        const submenu = li.querySelector(':scope > .solo-menu-tree__submenu');
         if (!submenu) return;
         submenu.style.visibility = 'hidden';
         const liRect = getLiPosition(li);
@@ -103,9 +103,9 @@
       function adjustThirdLevelSubmenu(li) {
         const windowWidth = getWindowWidth();
         if (windowWidth < breakpoint) return;
-        const submenu = li.querySelector(':scope > .sub__menu');
+        const submenu = li.querySelector(':scope > .solo-menu-tree__submenu');
         if (!submenu) return;
-        const parentLi = li.closest('li.has-sub__menu');
+        const parentLi = li.closest('li.solo-menu-tree__item--has-submenu');
         if (!parentLi) return;
         submenu.style.visibility = 'hidden';
         const parentRect = getLiPosition(parentLi);
@@ -113,11 +113,11 @@
         const spaceLeft = getSpaceLeft(parentRect);
         const spaceRight = getSpaceRight(parentRect, windowWidth);
         // NEW: Dynamically get 4th-level submenu width (if present)
-        const fourthLevelLi = submenu.querySelector('li.has-sub__menu');
+        const fourthLevelLi = submenu.querySelector('li.solo-menu-tree__item--has-submenu');
         let fourthLevelWidth = 0;
         if (fourthLevelLi) {
           const fourthSubmenu = fourthLevelLi.querySelector(
-            ':scope > .sub__menu');
+            ':scope > .solo-menu-tree__submenu');
           if (fourthSubmenu) {
             const originalDisplay = fourthSubmenu.style.display;
             fourthSubmenu.style.visibility = 'hidden';
@@ -133,14 +133,14 @@
           submenu.style.left = 'auto';
           submenu.style.right = '100%';
           submenu.dataset.flipped = 'left';
-          li.classList.add('submenu-flipped-left');
-          li.classList.remove('submenu-flipped-right');
+          li.classList.add('solo-menu-tree__submenu--flipped-left');
+          li.classList.remove('solo-menu-tree__submenu--flipped-right');
         } else if (submenuWidth + SUBMENU_BUFFER > spaceLeft) {
           submenu.style.right = 'auto';
           submenu.style.left = '100%';
           submenu.dataset.flipped = 'right';
-          li.classList.add('submenu-flipped-right');
-          li.classList.remove('submenu-flipped-left');
+          li.classList.add('solo-menu-tree__submenu--flipped-right');
+          li.classList.remove('solo-menu-tree__submenu--flipped-left');
         } else {
           submenu.style.left = '';
           submenu.style.right = '';
@@ -151,13 +151,13 @@
       function adjustFourthLevelSubmenu(li) {
         const windowWidth = getWindowWidth();
         if (windowWidth < breakpoint) return;
-        const submenu = li.querySelector(':scope > .sub__menu');
+        const submenu = li.querySelector(':scope > .solo-menu-tree__submenu');
         if (!submenu) return;
-        const parentLi = li.closest('ul.sub__menu').closest(
-          'li.has-sub__menu');
+        const parentLi = li.closest('ul.solo-menu-tree__submenu').closest(
+          'li.solo-menu-tree__item--has-submenu');
         if (!parentLi) return;
         const parentSubmenu = parentLi.querySelector(
-          ':scope > .sub__menu');
+          ':scope > .solo-menu-tree__submenu');
         if (!parentSubmenu) return;
         submenu.style.visibility = 'hidden';
         // Determine if parent (3rd level) is flipped left
@@ -177,8 +177,8 @@
       function applySubmenuFix(menuSelector, adjustFunction) {
         once('soloMenuFix', document.querySelectorAll(menuSelector, context)).forEach((li) => {
           // Simple ARIA initialization only - don't interfere with positioning
-          const button = li.querySelector(':scope > button.dropdown-toggler');
-          const submenu = li.querySelector(':scope > .sub__menu');
+          const button = li.querySelector(':scope > button.solo-menu-tree__toggler');
+          const submenu = li.querySelector(':scope > .solo-menu-tree__submenu');
 
           if (button && submenu) {
             // Just set initial ARIA attributes if missing. Disclosure
@@ -216,13 +216,13 @@
       }
       // Apply fixes to second, third, and fourth-level submenus
       applySubmenuFix(
-        '.primary-menu .navigation__primary > li.has-sub__menu',
+        '.solo-primary-menu .solo-menu-tree--primary > li.solo-menu-tree__item--has-submenu',
         adjustSecondLevelSubmenu);
       applySubmenuFix(
-        '.primary-menu .navigation__primary > li.has-sub__menu > ul > li.has-sub__menu',
+        '.solo-primary-menu .solo-menu-tree--primary > li.solo-menu-tree__item--has-submenu > ul > li.solo-menu-tree__item--has-submenu',
         adjustThirdLevelSubmenu);
       applySubmenuFix(
-        '.primary-menu .navigation__primary > li.has-sub__menu > ul > li.has-sub__menu > ul > li.has-sub__menu',
+        '.solo-primary-menu .solo-menu-tree--primary > li.solo-menu-tree__item--has-submenu > ul > li.solo-menu-tree__item--has-submenu > ul > li.solo-menu-tree__item--has-submenu',
         adjustFourthLevelSubmenu);
 
       // Function to reapply fixes on window resize
@@ -230,13 +230,13 @@
       function handleResize() {
         if (window.innerWidth >= breakpoint) {
           applySubmenuFix(
-            '.primary-menu .navigation__primary > li.has-sub__menu',
+            '.solo-primary-menu .solo-menu-tree--primary > li.solo-menu-tree__item--has-submenu',
             adjustSecondLevelSubmenu);
           applySubmenuFix(
-            '.primary-menu .navigation__primary > li.has-sub__menu > ul > li.has-sub__menu',
+            '.solo-primary-menu .solo-menu-tree--primary > li.solo-menu-tree__item--has-submenu > ul > li.solo-menu-tree__item--has-submenu',
             adjustThirdLevelSubmenu);
           applySubmenuFix(
-            '.primary-menu .navigation__primary > li.has-sub__menu > ul > li.has-sub__menu > ul > li.has-sub__menu',
+            '.solo-primary-menu .solo-menu-tree--primary > li.solo-menu-tree__item--has-submenu > ul > li.solo-menu-tree__item--has-submenu > ul > li.solo-menu-tree__item--has-submenu',
             adjustFourthLevelSubmenu);
         }
       }

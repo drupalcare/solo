@@ -49,6 +49,23 @@
   };
 
   /**
+   * Marks the field as having no color when its value is empty.
+   *
+   * @param {HTMLElement} input - Either input of the field.
+   * @param {string} value - The current value.
+   */
+  const updateEmptyState = (input, value) => {
+    const field = input.closest('[data-drupal-selector="solo-color-picker"]');
+    if (field) {
+      field.classList.toggle('solo-color-empty', !value);
+      const clear = field.querySelector('.solo-color__clear');
+      if (clear) {
+        clear.disabled = !value;
+      }
+    }
+  };
+
+  /**
    * Input event callback to keep text & color inputs in sync.
    *
    * @param {HTMLElement} changedInput - Input element changed by user.
@@ -72,8 +89,9 @@
             // Normalize hex for color inputs
             inputToSync.value = (inputToSync.type === 'color')
               ? toSixDigitHex(value)
-              : value;
+              : value.toUpperCase();
           }
+          updateEmptyState(changedInput, value);
 
           // Always update data attributes to maintain state
           changedInput.setAttribute('data-solo-custom-color', value);
@@ -135,6 +153,37 @@
   };
 
   /**
+   * Creates the button that clears the color.
+   *
+   * @param {HTMLElement} textInput - The text input element.
+   * @param {HTMLElement} colorInput - The color input element.
+   * @param {HTMLElement} label - The field's label.
+   * @return {HTMLElement} - The button.
+   */
+  const createClearButton = (textInput, colorInput, label) => {
+    const button = document.createElement('button');
+    const name = Drupal.t('Clear color: @label', { '@label': label.textContent.trim() });
+    button.type = 'button';
+    button.className = 'solo-color__clear';
+    button.title = name;
+    button.setAttribute('aria-label', name);
+    // The icon comes from the settings navigation's template, one file on disk.
+    const icon = document.querySelector('template[data-solo-icon="close"]');
+    if (icon) {
+      button.append(icon.content.cloneNode(true));
+    }
+    button.addEventListener('click', () => {
+      textInput.value = '';
+      colorInput.value = '#000000';
+      updateEmptyState(textInput, '');
+      // The button is disabled now, so focus moves to the field it cleared.
+      textInput.focus();
+      textInput.dispatchEvent(new Event('change', { bubbles: true }));
+    });
+    return button;
+  };
+
+  /**
    * Updates label to work with both inputs while maintaining click behavior.
    *
    * @param {HTMLElement} textInput - The text input element.
@@ -157,8 +206,10 @@
         wrapper.className = 'solo-color-picker-wrapper';
         if (!textInput.parentNode) {return;}
         textInput.parentNode.insertBefore(wrapper, textInput);
-        wrapper.appendChild(textInput);
         wrapper.appendChild(colorInput);
+        wrapper.appendChild(textInput);
+        wrapper.appendChild(createClearButton(textInput, colorInput, label));
+        updateEmptyState(textInput, textInput.value);
       } else if (!wrapper.contains(colorInput)) {
         wrapper.appendChild(colorInput);
       }

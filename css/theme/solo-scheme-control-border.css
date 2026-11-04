@@ -1,0 +1,12 @@
+/* Form controls and buttons draw their border in the scheme border colour. */
+.solo-page .selectify,
+.solo-page .solo-select,
+.solo-page .solo-radio,
+.solo-page .solo-check,
+.solo-page .solo-input,
+.solo-page .solo-textarea,
+.solo-page a.button,
+.solo-page input.button,
+.solo-page .solo-fixed-search__close button {
+  border-color: var(--r-br);
+}

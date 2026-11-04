@@ -90,9 +90,9 @@
     status != 'published' ? status,
     comment.owner.anonymous ? 'by-anonymous',
     author_id and author_id == commented_entity.getOwnerId() ? 'by-' ~ commented_entity.getEntityTypeId() ~ '-author',
-    threaded ? 'comment--threaded',
-    parent_comment ? 'comment--has-parent',
-    heading_first ? 'comment--heading-first' : 'comment--heading-after',
+    threaded ? 'solo-comment--threaded',
+    parent_comment ? 'solo-comment--has-parent',
+    heading_first ? 'solo-comment--heading-first' : 'solo-comment--heading-after',
   ]
 %}
 
@@ -120,22 +120,22 @@
 
   {% if heading_first and title %}
     {# Accessible order: Heading first for screen reader navigation #}
-    <div{{ content_attributes.addClass('comment__body') }}>
+    <div{{ content_attributes.addClass('solo-comment__body') }}>
       {{ title_prefix }}
-      <{{ heading_tag }} id="{{ title_id|default('comment-' ~ comment.id() ~ '-title') }}"{{ title_attributes.addClass('comment__title') }}>{{ title }}</{{ heading_tag }}>
+      <{{ heading_tag }} id="{{ title_id|default('comment-' ~ comment.id() ~ '-title') }}"{{ title_attributes.addClass('solo-comment__title') }}>{{ title }}</{{ heading_tag }}>
       {{ title_suffix }}
     </div>
   {% endif %}
 
   {# Comment Header - Who said it and when #}
-  <header class="comment__header">
+  <header class="solo-comment__header">
     {% if show_picture|default(true) and user_picture %}
       <div class="comment__picture">
         {{ user_picture }}
       </div>
     {% endif %}
 
-    <div class="comment__header-info">
+    <div class="solo-comment__header-info">
       {% if show_author|default(true) %}
         <p class="comment__author">{{ author }}</p>
       {% endif %}
@@ -148,7 +148,7 @@
     </div>
 
     {% if show_permalink|default(true) %}
-      <div class="comment__permalink">
+      <div class="solo-comment__permalink">
         {{ permalink }}
         {% include '@solo/partials/svg/_svg-link.html.twig' %}
       </div>
@@ -166,10 +166,10 @@
   {# Comment Body - What they said (content only) #}
   {% if not heading_first or not title %}
     {# Original order OR no title: show body section with optional title #}
-    <div{{ content_attributes.addClass('comment__body') }}>
+    <div{{ content_attributes.addClass('solo-comment__body') }}>
       {% if title and not heading_first %}
         {{ title_prefix }}
-        <{{ heading_tag }} id="{{ title_id|default('comment-' ~ comment.id() ~ '-title') }}"{{ title_attributes.addClass('comment__title') }}>{{ title }}</{{ heading_tag }}>
+        <{{ heading_tag }} id="{{ title_id|default('comment-' ~ comment.id() ~ '-title') }}"{{ title_attributes.addClass('solo-comment__title') }}>{{ title }}</{{ heading_tag }}>
         {{ title_suffix }}
       {% endif %}
       {{ content|without('links') }}
@@ -182,7 +182,7 @@
   {% endif %}
 
   {# Comment Footer - Actions and controls #}
-  <footer class="comment__footer">
+  <footer class="solo-comment__footer">
     <div class="comment__links">
       {{ content.links }}
     </div>

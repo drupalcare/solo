@@ -1,7 +1,7 @@
   {% if page.highlighted %}
     <!-- Start: Highlighted -->
-    <div id="highlighted"{% if enable_aria_highlighted %} role="region" aria-label="{{ 'Highlighted Section'|t }}"{% endif %} class="solo-outer lone highlighted{{ classes_highlighted ? ' ' ~ classes_highlighted }}" {{ attributes_highlighted }}>
-      <div id="highlighted-inner" class="solo-inner solo-col solo-col-1 highlighted-inner">
+    <div id="solo-highlighted"{% if enable_aria_highlighted %} role="region" aria-label="{{ 'Highlighted Section'|t }}"{% endif %} class="solo-outer solo-container--single solo-highlighted{{ classes_highlighted ? ' ' ~ classes_highlighted }}" {{ attributes_highlighted }}>
+      <div id="solo-highlighted-inner" class="solo-inner solo-col solo-col-1 solo-highlighted__inner">
         {{ page.highlighted }}
       </div>
     </div>

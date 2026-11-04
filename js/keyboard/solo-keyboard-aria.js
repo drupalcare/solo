@@ -22,7 +22,7 @@
       // state is aria-expanded on the disclosure button, never on the <li>.
       this.menubar.querySelectorAll('li').forEach(li => {
         if (li.hasAttribute('aria-expanded')) {
-          const toggler = li.querySelector(':scope > button.dropdown-toggler');
+          const toggler = li.querySelector(':scope > button.solo-menu-tree__toggler');
           if (toggler) {
             toggler.setAttribute('aria-expanded', li.getAttribute('aria-expanded'));
           }
@@ -46,7 +46,7 @@
         });
       });
 
-      this.menubar.querySelectorAll('button.dropdown-toggler').forEach(button => {
+      this.menubar.querySelectorAll('button.solo-menu-tree__toggler').forEach(button => {
         observer.observe(button, {
           attributes: true,
           attributeFilter: ['aria-expanded'],

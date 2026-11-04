@@ -1,4 +1,4 @@
-.page-wrapper .new-rocker {
+.solo-page .new-rocker {
   --solo-font-s: 'New Rocker', cursive;
   font-family: var(--solo-font-s) !important;
 }

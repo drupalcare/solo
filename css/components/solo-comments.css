@@ -42,7 +42,7 @@
 }
 
 .comments__title,
-.comments__title .comments__icon {
+.comments__title .solo-comments__icon {
   display: inline-flex;
   justify-content: start;
   align-items: center;
@@ -61,34 +61,34 @@
   direction: rtl;
 }
 
-[dir="rtl"] .comment__header {
+[dir="rtl"] .solo-comment__header {
   direction: rtl;
 }
 
-.user-profile-compact a {
+.solo-user-profile--compact a {
   display: flex;
 }
 
 /* Heading-first modifier - title appears before header */
-.comment--heading-first .comment__body {
+.solo-comment--heading-first .solo-comment__body {
   order: -1;
   margin-block-end: var(--solo-px8);
 }
 
-.comment--heading-first .comment__title {
+.solo-comment--heading-first .solo-comment__title {
   margin: 0;
 }
 
 /* Comment Header - picture, author, time in one row */
-.comment__header {
+.solo-comment__header {
   display: flex;
   align-items: flex-start;
   gap: var(--solo-px12);
   position: relative;
 }
 
-.comment__header p,
-.comment__header time {
+.solo-comment__header p,
+.solo-comment__header time {
   margin: 0;
   line-height: 1.6;
 }
@@ -107,7 +107,7 @@
   object-fit: cover;
 }
 
-.comment__header-info {
+.solo-comment__header-info {
   flex-grow: 1;
   min-width: 0;
 }
@@ -136,7 +136,7 @@
 }
 
 /* Permalink icon */
-.comment__permalink {
+.solo-comment__permalink {
   width: var(--solo-px48);
   height: var(--solo-px48);
   display: flex;
@@ -146,12 +146,12 @@
   transition: all 0.2s ease;
 }
 
-.comment:hover .comment__permalink,
-.comment:focus-within .comment__permalink {
+.comment:hover .solo-comment__permalink,
+.comment:focus-within .solo-comment__permalink {
   opacity: 1;
 }
 
-.comment__permalink a {
+.solo-comment__permalink a {
   top: 0;
   inset-inline-end: 0;
   position: absolute;
@@ -164,20 +164,20 @@
   height: 100%;
 }
 
-.comment__permalink a:hover,
-.comment__permalink a:focus {
+.solo-comment__permalink a:hover,
+.solo-comment__permalink a:focus {
   opacity: 1;
   background-color: var(--r-bg-lk-h);
 }
 
-.comment__permalink svg {
+.solo-comment__permalink svg {
   width: 24px;
   height: 24px;
   fill: var(--r-tx);
 }
 
 /* New comment indicator - semantic mark element */
-.page-wrapper .new-comment {
+.solo-page .new-comment {
   position: absolute;
   top: 0;
   inset-inline-end: var(--solo-px48);
@@ -218,7 +218,7 @@
 }
 
 /* Comment Body - no left padding, stacked below header */
-.comment__body {
+.solo-comment__body {
   margin: 0;
 }
 
@@ -231,30 +231,30 @@
   margin: 0;
 }
 
-.comment__title {
+.solo-comment__title {
   margin: 0 0 var(--solo-px12);
 }
 
-.comment__title a {
+.solo-comment__title a {
   text-decoration: none;
 }
 
-.comment__title a:hover,
-.comment__title a:focus {
+.solo-comment__title a:hover,
+.solo-comment__title a:focus {
   color: var(--r-lk-h);
   text-decoration: underline;
 }
 
-.comment__body .field {
+.solo-comment__body .field {
   margin: 0;
 }
 
-.comment__body p:last-child {
+.solo-comment__body p:last-child {
   margin-block-end: 0;
 }
 
 /* Comment Footer - stacked below body */
-.comment__footer {
+.solo-comment__footer {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -299,27 +299,27 @@
   transition: all 0.2s ease;
 }
 
-button.comment__replies-toggle:hover,
-button.comment__replies-toggle:focus,
+button.solo-comment__replies-toggle:hover,
+button.solo-comment__replies-toggle:focus,
 .comment__links a:hover,
 .comment__links a:focus {
   color: var(--r-lk-h);
   background-color: var(--r-bg-lk-h);
 }
 
-button.comment__replies-toggle:hover,
+button.solo-comment__replies-toggle:hover,
 .comment__links ul.links li a:hover {
   transform: translateY(2px);
   border-color: var(--r-tx);
 }
 
 /* Replies toggle button */
-.comment__replies-wrapper {
+.solo-comment__replies-wrapper {
   display: flex;
   align-items: center;
 }
 
-button.comment__replies-toggle {
+button.solo-comment__replies-toggle {
   transition: all 0.2s ease;
   line-height: 1;
   border-radius: var(--solo-px4);
@@ -331,25 +331,25 @@ button.comment__replies-toggle {
   gap: var(--solo-px8);
 }
 
-.comment__replies-toggle .comment__replies-text {
+.solo-comment__replies-toggle .solo-comment__replies-text {
   font-size: var(--solo-px13);
 }
 
-.comment__replies-toggle svg {
+.solo-comment__replies-toggle svg {
   fill: var(--r-tx);
 }
 
-.comment__replies-toggle:hover,
-.comment__replies-toggle:focus {
+.solo-comment__replies-toggle:hover,
+.solo-comment__replies-toggle:focus {
   background-color: var(--r-bg-lk-h);
   border-color: var(--r-lk);
 }
 
-.comment__replies-toggle:active {
+.solo-comment__replies-toggle:active {
   transform: scale(0.98);
 }
 
-.comment__replies-icon {
+.solo-comment__replies-icon {
   display: inline-flex;
   align-items: center;
   width: 16px;
@@ -357,21 +357,21 @@ button.comment__replies-toggle {
   transition: all 0.3s ease;
 }
 
-.comment__replies-icon svg {
+.solo-comment__replies-icon svg {
   width: 100%;
   height: 100%;
 }
 
 /* Toggle icon visibility */
-.comment__replies-toggle[aria-expanded="true"] .comment__replies-icon--close {
+.solo-comment__replies-toggle[aria-expanded="true"] .solo-comment__replies-icon--close {
   display: none;
 }
 
-.comment__replies-toggle[aria-expanded="false"] .comment__replies-icon--open {
+.solo-comment__replies-toggle[aria-expanded="false"] .solo-comment__replies-icon--open {
   display: none;
 }
 
-.comment__replies-toggle[aria-expanded="false"] .comment__replies-icon--close {
+.solo-comment__replies-toggle[aria-expanded="false"] .solo-comment__replies-icon--close {
   display: inline-flex;
 }
 
@@ -412,10 +412,10 @@ button.comment__replies-toggle {
 
 /* Reduced motion */
 @media (prefers-reduced-motion:reduce) {
-  .comment__permalink,
+  .solo-comment__permalink,
   .comment__links a,
-  .comment__replies-toggle,
-  .comment__replies-icon {
+  .solo-comment__replies-toggle,
+  .solo-comment__replies-icon {
     transition: none;
   }
 
@@ -435,8 +435,8 @@ button.comment__replies-toggle {
     forced-color-adjust: none;
   }
 
-  .comment__permalink svg,
-  .comment__replies-toggle svg {
+  .solo-comment__permalink svg,
+  .solo-comment__replies-toggle svg {
     fill: CanvasText;
   }
 }

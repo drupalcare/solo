@@ -1,0 +1,381 @@
+/**
+ * @file
+ * The color of each class in the CSS classes section of the settings form.
+ *
+ * Generated from solo/css/w3-css/w3css-extended-classes.css by
+ * planning/spike-tools/class-swatches-gen.py. Do not edit by hand.
+ */
+
+.solo-classes__swatch--w3-black,
+.solo-classes__swatch--w3-button-black,
+.solo-classes__swatch--w3-button-hover-black,
+.solo-classes__swatch--w3-hover-black,
+.solo-classes__swatch--w3-hover-text-black,
+.solo-classes__swatch--w3-link-bg-black,
+.solo-classes__swatch--w3-link-black,
+.solo-classes__swatch--w3-link-hover-black,
+.solo-classes__swatch--w3-text-black {
+  --swatch: #000;
+}
+
+.solo-classes__swatch--w3-button-hover-teal,
+.solo-classes__swatch--w3-button-teal,
+.solo-classes__swatch--w3-hover-teal,
+.solo-classes__swatch--w3-hover-text-teal,
+.solo-classes__swatch--w3-link-bg-teal,
+.solo-classes__swatch--w3-link-hover-teal,
+.solo-classes__swatch--w3-link-teal,
+.solo-classes__swatch--w3-teal,
+.solo-classes__swatch--w3-text-teal {
+  --swatch: #009688;
+}
+
+.solo-classes__swatch--w3-button-cyan,
+.solo-classes__swatch--w3-button-hover-cyan,
+.solo-classes__swatch--w3-cyan,
+.solo-classes__swatch--w3-hover-cyan,
+.solo-classes__swatch--w3-hover-text-cyan,
+.solo-classes__swatch--w3-link-bg-cyan,
+.solo-classes__swatch--w3-link-cyan,
+.solo-classes__swatch--w3-link-hover-cyan,
+.solo-classes__swatch--w3-text-cyan {
+  --swatch: #00bcd4;
+}
+
+.solo-classes__swatch--w3-aqua,
+.solo-classes__swatch--w3-button-aqua,
+.solo-classes__swatch--w3-button-hover-aqua,
+.solo-classes__swatch--w3-hover-aqua,
+.solo-classes__swatch--w3-hover-text-aqua,
+.solo-classes__swatch--w3-link-aqua,
+.solo-classes__swatch--w3-link-bg-aqua,
+.solo-classes__swatch--w3-link-hover-aqua,
+.solo-classes__swatch--w3-text-aqua {
+  --swatch: #00ffff;
+}
+
+.solo-classes__swatch--w3-blue,
+.solo-classes__swatch--w3-button-blue,
+.solo-classes__swatch--w3-button-hover-blue,
+.solo-classes__swatch--w3-hover-blue,
+.solo-classes__swatch--w3-hover-text-blue,
+.solo-classes__swatch--w3-link-bg-blue,
+.solo-classes__swatch--w3-link-blue,
+.solo-classes__swatch--w3-link-hover-blue,
+.solo-classes__swatch--w3-text-blue {
+  --swatch: #2196f3;
+}
+
+.solo-classes__swatch--w3-button-dark-gray,
+.solo-classes__swatch--w3-button-dark-grey,
+.solo-classes__swatch--w3-button-hover-dark-gray,
+.solo-classes__swatch--w3-button-hover-dark-grey,
+.solo-classes__swatch--w3-dark-grey,
+.solo-classes__swatch--w3-hover-dark-grey,
+.solo-classes__swatch--w3-hover-text-dark-grey,
+.solo-classes__swatch--w3-link-bg-dark-gray,
+.solo-classes__swatch--w3-link-bg-dark-grey,
+.solo-classes__swatch--w3-link-dark-grey,
+.solo-classes__swatch--w3-link-hover-dark-gray,
+.solo-classes__swatch--w3-link-hover-dark-grey,
+.solo-classes__swatch--w3-text-dark-grey {
+  --swatch: #3a3a3a;
+}
+
+.solo-classes__swatch--w3-button-hover-indigo,
+.solo-classes__swatch--w3-button-indigo,
+.solo-classes__swatch--w3-hover-indigo,
+.solo-classes__swatch--w3-hover-text-indigo,
+.solo-classes__swatch--w3-indigo,
+.solo-classes__swatch--w3-link-bg-indigo,
+.solo-classes__swatch--w3-link-hover-indigo,
+.solo-classes__swatch--w3-link-indigo,
+.solo-classes__swatch--w3-text-indigo {
+  --swatch: #3f51b5;
+}
+
+.solo-classes__swatch--w3-button-green,
+.solo-classes__swatch--w3-button-hover-green,
+.solo-classes__swatch--w3-green,
+.solo-classes__swatch--w3-hover-green,
+.solo-classes__swatch--w3-hover-text-green,
+.solo-classes__swatch--w3-link-bg-green,
+.solo-classes__swatch--w3-link-green,
+.solo-classes__swatch--w3-link-hover-green,
+.solo-classes__swatch--w3-text-green {
+  --swatch: #4caf50;
+}
+
+.solo-classes__swatch--w3-blue-grey,
+.solo-classes__swatch--w3-button-blue-gray,
+.solo-classes__swatch--w3-button-blue-grey,
+.solo-classes__swatch--w3-button-hover-blue-gray,
+.solo-classes__swatch--w3-button-hover-blue-grey,
+.solo-classes__swatch--w3-hover-blue-grey,
+.solo-classes__swatch--w3-hover-text-blue-grey,
+.solo-classes__swatch--w3-link-bg-blue-gray,
+.solo-classes__swatch--w3-link-bg-blue-grey,
+.solo-classes__swatch--w3-link-blue-grey,
+.solo-classes__swatch--w3-link-hover-blue-gray,
+.solo-classes__swatch--w3-link-hover-blue-grey,
+.solo-classes__swatch--w3-text-blue-grey {
+  --swatch: #607d8b;
+}
+
+.solo-classes__swatch--w3-button-deep-purple,
+.solo-classes__swatch--w3-button-hover-deep-purple,
+.solo-classes__swatch--w3-deep-purple,
+.solo-classes__swatch--w3-hover-deep-purple,
+.solo-classes__swatch--w3-hover-text-deep-purple,
+.solo-classes__swatch--w3-link-bg-deep-purple,
+.solo-classes__swatch--w3-link-deep-purple,
+.solo-classes__swatch--w3-link-hover-deep-purple,
+.solo-classes__swatch--w3-text-deep-purple {
+  --swatch: #673ab7;
+}
+
+.solo-classes__swatch--w3-button-gray,
+.solo-classes__swatch--w3-button-grey,
+.solo-classes__swatch--w3-button-hover-gray,
+.solo-classes__swatch--w3-button-hover-grey,
+.solo-classes__swatch--w3-grey,
+.solo-classes__swatch--w3-hover-grey,
+.solo-classes__swatch--w3-hover-text-grey,
+.solo-classes__swatch--w3-link-bg-grey,
+.solo-classes__swatch--w3-link-grey,
+.solo-classes__swatch--w3-link-hover-grey,
+.solo-classes__swatch--w3-text-grey {
+  --swatch: #757575;
+}
+
+.solo-classes__swatch--w3-brown,
+.solo-classes__swatch--w3-button-brown,
+.solo-classes__swatch--w3-button-hover-brown,
+.solo-classes__swatch--w3-hover-brown,
+.solo-classes__swatch--w3-hover-text-brown,
+.solo-classes__swatch--w3-link-bg-brown,
+.solo-classes__swatch--w3-link-brown,
+.solo-classes__swatch--w3-link-hover-brown,
+.solo-classes__swatch--w3-text-brown {
+  --swatch: #795548;
+}
+
+.solo-classes__swatch--w3-button-hover-light-blue,
+.solo-classes__swatch--w3-button-light-blue,
+.solo-classes__swatch--w3-hover-light-blue,
+.solo-classes__swatch--w3-hover-text-light-blue,
+.solo-classes__swatch--w3-light-blue,
+.solo-classes__swatch--w3-link-bg-light-blue,
+.solo-classes__swatch--w3-link-hover-light-blue,
+.solo-classes__swatch--w3-link-light-blue,
+.solo-classes__swatch--w3-text-light-blue {
+  --swatch: #87ceeb;
+}
+
+.solo-classes__swatch--w3-button-hover-light-green,
+.solo-classes__swatch--w3-button-light-green,
+.solo-classes__swatch--w3-hover-light-green,
+.solo-classes__swatch--w3-hover-text-light-green,
+.solo-classes__swatch--w3-light-green,
+.solo-classes__swatch--w3-link-bg-light-green,
+.solo-classes__swatch--w3-link-hover-light-green,
+.solo-classes__swatch--w3-link-light-green,
+.solo-classes__swatch--w3-text-light-green {
+  --swatch: #8bc34a;
+}
+
+.solo-classes__swatch--w3-button-hover-purple,
+.solo-classes__swatch--w3-button-purple,
+.solo-classes__swatch--w3-hover-purple,
+.solo-classes__swatch--w3-hover-text-purple,
+.solo-classes__swatch--w3-link-bg-purple,
+.solo-classes__swatch--w3-link-hover-purple,
+.solo-classes__swatch--w3-link-purple,
+.solo-classes__swatch--w3-purple,
+.solo-classes__swatch--w3-text-purple {
+  --swatch: #9c27b0;
+}
+
+.solo-classes__swatch--w3-button-hover-khaki,
+.solo-classes__swatch--w3-button-khaki,
+.solo-classes__swatch--w3-hover-khaki,
+.solo-classes__swatch--w3-hover-text-khaki,
+.solo-classes__swatch--w3-khaki,
+.solo-classes__swatch--w3-link-bg-khaki,
+.solo-classes__swatch--w3-link-hover-khaki,
+.solo-classes__swatch--w3-link-khaki,
+.solo-classes__swatch--w3-text-khaki {
+  --swatch: #b4aa50;
+}
+
+.solo-classes__swatch--w3-button-hover-lime,
+.solo-classes__swatch--w3-button-lime,
+.solo-classes__swatch--w3-hover-lime,
+.solo-classes__swatch--w3-hover-text-lime,
+.solo-classes__swatch--w3-lime,
+.solo-classes__swatch--w3-link-bg-lime,
+.solo-classes__swatch--w3-link-hover-lime,
+.solo-classes__swatch--w3-link-lime,
+.solo-classes__swatch--w3-text-lime {
+  --swatch: #cddc39;
+}
+
+.solo-classes__swatch--w3-button-hover-pale-green,
+.solo-classes__swatch--w3-button-pale-green,
+.solo-classes__swatch--w3-hover-pale-green,
+.solo-classes__swatch--w3-hover-text-pale-green,
+.solo-classes__swatch--w3-link-bg-pale-green,
+.solo-classes__swatch--w3-link-hover-pale-green,
+.solo-classes__swatch--w3-link-pale-green,
+.solo-classes__swatch--w3-pale-green,
+.solo-classes__swatch--w3-text-pale-green {
+  --swatch: #ddffdd;
+}
+
+.solo-classes__swatch--w3-button-hover-pale-blue,
+.solo-classes__swatch--w3-button-pale-blue,
+.solo-classes__swatch--w3-hover-pale-blue,
+.solo-classes__swatch--w3-hover-text-pale-blue,
+.solo-classes__swatch--w3-link-bg-pale-blue,
+.solo-classes__swatch--w3-link-hover-pale-blue,
+.solo-classes__swatch--w3-link-pale-blue,
+.solo-classes__swatch--w3-pale-blue,
+.solo-classes__swatch--w3-text-pale-blue {
+  --swatch: #ddffff;
+}
+
+.solo-classes__swatch--w3-button-hover-pink,
+.solo-classes__swatch--w3-button-pink,
+.solo-classes__swatch--w3-hover-pink,
+.solo-classes__swatch--w3-hover-text-pink,
+.solo-classes__swatch--w3-link-bg-pink,
+.solo-classes__swatch--w3-link-hover-pink,
+.solo-classes__swatch--w3-link-pink,
+.solo-classes__swatch--w3-pink,
+.solo-classes__swatch--w3-text-pink {
+  --swatch: #e91e63;
+}
+
+.solo-classes__swatch--w3-button-hover-light-gray,
+.solo-classes__swatch--w3-button-hover-light-grey,
+.solo-classes__swatch--w3-button-light-gray,
+.solo-classes__swatch--w3-button-light-grey,
+.solo-classes__swatch--w3-hover-light-grey,
+.solo-classes__swatch--w3-hover-text-light-grey,
+.solo-classes__swatch--w3-light-grey,
+.solo-classes__swatch--w3-link-bg-light-gray,
+.solo-classes__swatch--w3-link-bg-light-grey,
+.solo-classes__swatch--w3-link-hover-light-gray,
+.solo-classes__swatch--w3-link-hover-light-grey,
+.solo-classes__swatch--w3-link-light-grey,
+.solo-classes__swatch--w3-text-light-grey {
+  --swatch: #f1f1f1;
+}
+
+.solo-classes__swatch--w3-button-hover-red,
+.solo-classes__swatch--w3-button-red,
+.solo-classes__swatch--w3-hover-red,
+.solo-classes__swatch--w3-hover-text-red,
+.solo-classes__swatch--w3-link-bg-red,
+.solo-classes__swatch--w3-link-hover-red,
+.solo-classes__swatch--w3-link-red,
+.solo-classes__swatch--w3-red,
+.solo-classes__swatch--w3-text-red {
+  --swatch: #f44336;
+}
+
+.solo-classes__swatch--w3-button-hover-sand,
+.solo-classes__swatch--w3-button-sand,
+.solo-classes__swatch--w3-hover-sand,
+.solo-classes__swatch--w3-hover-text-sand,
+.solo-classes__swatch--w3-link-bg-sand,
+.solo-classes__swatch--w3-link-hover-sand,
+.solo-classes__swatch--w3-link-sand,
+.solo-classes__swatch--w3-sand,
+.solo-classes__swatch--w3-text-sand {
+  --swatch: #fdf5e6;
+}
+
+.solo-classes__swatch--w3-button-deep-orange,
+.solo-classes__swatch--w3-button-hover-deep-orange,
+.solo-classes__swatch--w3-deep-orange,
+.solo-classes__swatch--w3-hover-deep-orange,
+.solo-classes__swatch--w3-hover-text-deep-orange,
+.solo-classes__swatch--w3-link-bg-deep-orange,
+.solo-classes__swatch--w3-link-deep-orange,
+.solo-classes__swatch--w3-link-hover-deep-orange,
+.solo-classes__swatch--w3-text-deep-orange {
+  --swatch: #ff5722;
+}
+
+.solo-classes__swatch--w3-button-hover-orange,
+.solo-classes__swatch--w3-button-orange,
+.solo-classes__swatch--w3-hover-orange,
+.solo-classes__swatch--w3-hover-text-orange,
+.solo-classes__swatch--w3-link-bg-orange,
+.solo-classes__swatch--w3-link-hover-orange,
+.solo-classes__swatch--w3-link-orange,
+.solo-classes__swatch--w3-orange,
+.solo-classes__swatch--w3-text-orange {
+  --swatch: #ff9800;
+}
+
+.solo-classes__swatch--w3-amber,
+.solo-classes__swatch--w3-button-amber,
+.solo-classes__swatch--w3-button-hover-amber,
+.solo-classes__swatch--w3-hover-amber,
+.solo-classes__swatch--w3-hover-text-amber,
+.solo-classes__swatch--w3-link-amber,
+.solo-classes__swatch--w3-link-bg-amber,
+.solo-classes__swatch--w3-link-hover-amber,
+.solo-classes__swatch--w3-text-amber {
+  --swatch: #ffc107;
+}
+
+.solo-classes__swatch--w3-button-hover-yellow,
+.solo-classes__swatch--w3-button-yellow,
+.solo-classes__swatch--w3-hover-text-yellow,
+.solo-classes__swatch--w3-hover-yellow,
+.solo-classes__swatch--w3-link-bg-yellow,
+.solo-classes__swatch--w3-link-hover-yellow,
+.solo-classes__swatch--w3-link-yellow,
+.solo-classes__swatch--w3-text-yellow,
+.solo-classes__swatch--w3-yellow {
+  --swatch: #ffcd3a;
+}
+
+.solo-classes__swatch--w3-button-hover-pale-red,
+.solo-classes__swatch--w3-button-pale-red,
+.solo-classes__swatch--w3-hover-pale-red,
+.solo-classes__swatch--w3-hover-text-pale-red,
+.solo-classes__swatch--w3-link-bg-pale-red,
+.solo-classes__swatch--w3-link-hover-pale-red,
+.solo-classes__swatch--w3-link-pale-red,
+.solo-classes__swatch--w3-pale-red,
+.solo-classes__swatch--w3-text-pale-red {
+  --swatch: #ffdddd;
+}
+
+.solo-classes__swatch--w3-button-hover-white,
+.solo-classes__swatch--w3-button-white,
+.solo-classes__swatch--w3-hover-text-white,
+.solo-classes__swatch--w3-hover-white,
+.solo-classes__swatch--w3-link-bg-white,
+.solo-classes__swatch--w3-link-hover-white,
+.solo-classes__swatch--w3-link-white,
+.solo-classes__swatch--w3-text-white,
+.solo-classes__swatch--w3-white {
+  --swatch: #fff;
+}
+
+.solo-classes__swatch--w3-button-hover-pale-yellow,
+.solo-classes__swatch--w3-button-pale-yellow,
+.solo-classes__swatch--w3-hover-pale-yellow,
+.solo-classes__swatch--w3-hover-text-pale-yellow,
+.solo-classes__swatch--w3-link-bg-pale-yellow,
+.solo-classes__swatch--w3-link-hover-pale-yellow,
+.solo-classes__swatch--w3-link-pale-yellow,
+.solo-classes__swatch--w3-pale-yellow,
+.solo-classes__swatch--w3-text-pale-yellow {
+  --swatch: #ffffcc;
+}

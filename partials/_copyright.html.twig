@@ -1,8 +1,8 @@
   {% if footer_use_formatted_text and footer_copyright_formatted_rendered %}
     <!-- Start: Copyright (formatted) -->
-    <footer id="copyright" class="solo-outer lone copyright{{ classes_credit_copyright ? ' ' ~ classes_credit_copyright }}" {{ attributes_credit_copyright }}>
-      <div id="copyright-inner" class="solo-inner solo-col copyright-inner solo-col-1">
-        <div class="copyright-formatted">
+    <footer id="solo-copyright" class="solo-outer solo-container--single solo-copyright{{ classes_credit_copyright ? ' ' ~ classes_credit_copyright }}" {{ attributes_credit_copyright }}>
+      <div id="solo-copyright-inner" class="solo-inner solo-col solo-copyright__inner solo-col-1">
+        <div class="solo-copyright__text">
           {{ footer_copyright_formatted_rendered }}
         </div>
       </div>
@@ -10,18 +10,18 @@
     <!-- End: Copyright (formatted) -->
   {% elseif footer_copyright or footer_link %}
     <!-- Start: Copyright -->
-    <footer id="copyright" class="solo-outer lone copyright{{ classes_credit_copyright ? ' ' ~ classes_credit_copyright }}" {{ attributes_credit_copyright }}>
-      <div id="copyright-inner" class="solo-inner solo-col copyright-inner{{ (footer_copyright and footer_link) ? ' solo-col-2' : ' solo-col-1' }}">
+    <footer id="solo-copyright" class="solo-outer solo-container--single solo-copyright{{ classes_credit_copyright ? ' ' ~ classes_credit_copyright }}" {{ attributes_credit_copyright }}>
+      <div id="solo-copyright-inner" class="solo-inner solo-col solo-copyright__inner{{ (footer_copyright and footer_link) ? ' solo-col-2' : ' solo-col-1' }}">
       {% if footer_copyright %}
       <!-- Start: Copyright -->
-      <p class="copyright-first">
+      <p class="solo-copyright__first">
         {{ footer_copyright|replace({"%year%": "now"|date("Y")}) }}
       </p>
       <!-- End: Copyright -->
       {% endif %}
       {% if footer_link %}
           <!-- Start: Credit Link -->
-      <p class="copyright-second">
+      <p class="solo-copyright__second">
         {{ footer_link_label }} <a href="{{ footer_link }}" title="{{ footer_link_text }}" target="_blank" rel="noopener noreferrer">{{ footer_link_text }}</a>
       </p>
       <!-- End: Credit Link -->

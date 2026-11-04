@@ -1,46 +1,46 @@
-.solo-inner .hamburger-icon,
-.solo-inner .hamburger-icon>button>span {
+.solo-inner .solo-hamburger,
+.solo-inner .solo-hamburger>button>span {
   display: flex;
   justify-content: end;
   align-items: baseline;
 }
 
-.solo-inner .hamburger-icon span>svg {
+.solo-inner .solo-hamburger span>svg {
   min-width: 3.25rem;
   height: 3.25rem;
 }
 
-.solo-inner .hamburger-icon #svg-top,
-.solo-inner .hamburger-icon #svg-bottom,
-.solo-inner .hamburger-icon #svg-middle {
+.solo-inner .solo-hamburger #solo-svg-top,
+.solo-inner .solo-hamburger #solo-svg-bottom,
+.solo-inner .solo-hamburger #solo-svg-middle {
   transform-box: fill-box;
   transform-origin: center;
 }
 
-.solo-inner .hamburger-icon #svg-top {
+.solo-inner .solo-hamburger #solo-svg-top {
   animation: rotate-line-top 0.7s ease-in both;
 }
 
-.solo-inner .hamburger-icon #svg-bottom {
+.solo-inner .solo-hamburger #solo-svg-bottom {
   animation: rotate-line-bottom 0.7s ease-in both;
 }
 
-.solo-inner .hamburger-icon #svg-middle {
+.solo-inner .solo-hamburger #solo-svg-middle {
   animation: show-line 0.7s ease-in forwards;
 }
 
-.solo-inner .hamburger-icon-close #svg-top,
-.solo-inner .hamburger-icon.toggled #svg-top {
+.solo-inner .solo-hamburger--close #solo-svg-top,
+.solo-inner .solo-hamburger.solo-is-open #solo-svg-top {
   animation: rotate-down 0.7s ease-out both !important;
 }
 
-.solo-inner .hamburger-icon-close #svg-bottom,
-.solo-inner .hamburger-icon.toggled #svg-bottom {
+.solo-inner .solo-hamburger--close #solo-svg-bottom,
+.solo-inner .solo-hamburger.solo-is-open #solo-svg-bottom {
   animation: rotate-up 0.7s ease-out both !important;
 }
 
-.solo-inner .hamburger-icon-close #svg-middle,
-.solo-inner .hamburger-icon.toggled #svg-middle {
+.solo-inner .solo-hamburger--close #solo-svg-middle,
+.solo-inner .solo-hamburger.solo-is-open #solo-svg-middle {
   animation: hide-line 0.7s ease-out both !important;
 }
 

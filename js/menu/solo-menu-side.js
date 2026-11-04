@@ -41,11 +41,11 @@
       const pointerHandler = () => { hadKeyboardEvent = false; };
       const focusHandler = (e) => {
         if (hadKeyboardEvent || e.target.matches(':focus-visible')) {
-          e.target.classList.add('focus-visible');
+          e.target.classList.add('solo-is-focus-visible');
         }
       };
       const blurHandler = (e) => {
-        e.target.classList.remove('focus-visible');
+        e.target.classList.remove('solo-is-focus-visible');
       };
 
       // Track keyboard vs pointer interaction
@@ -124,7 +124,7 @@
   initFocusVisible();
 
   // Get the primary sidebar menu and all the sidebar hamburger icons
-  const verticalNav = document.getElementById('primary-sidebar-menu');
+  const verticalNav = document.getElementById('solo-primary-sidebar-menu');
   if (verticalNav) {
     // Validate the element has a proper ID
     if (!verticalNav.id) {
@@ -133,9 +133,9 @@
     }
     const openDuration = Drupal.solo.animations.slideDown || 400;
     const closeDuration = Drupal.solo.animations.slideUp || 350;
-    const closeBtns = document.querySelectorAll('.sidebar-button-close>button');
-    const openBtns = document.querySelectorAll('.sidebar-button-open>button');
-    const firstLevelSelector = '#primary-sidebar-menu .nav__menubar-item > a, #primary-sidebar-menu .nav__menubar-item > button';
+    const closeBtns = document.querySelectorAll('.solo-sidebar-menu__close>button');
+    const openBtns = document.querySelectorAll('.solo-sidebar-menu__open>button');
+    const firstLevelSelector = '#solo-primary-sidebar-menu .solo-menu-tree__menubar-item > a, #solo-primary-sidebar-menu .solo-menu-tree__menubar-item > button';
 
     let lastFocusedElement = null;
 
@@ -188,7 +188,7 @@
 
       // IMPORTANT: Don't set aria-hidden on parent if it contains focusable buttons
       // Instead, set it only on the menubar content, not the wrapper
-      const menubar = el.querySelector('.navigation__sidebar, .nav__menubar');
+      const menubar = el.querySelector('.solo-menu-tree--sidebar, .solo-menu-tree__menubar');
       if (menubar) {
         Drupal.solo.menuState.setHidden(menubar, value === 'true', COMPONENT_NAME);
       } else {
@@ -260,7 +260,7 @@
 
     const outsideClickListener = (event) => {
       // Check if click is outside the sidebar and not on open button
-      if (verticalNav && !verticalNav.contains(event.target) && !event.target.closest('.sidebar-button-open')) {
+      if (verticalNav && !verticalNav.contains(event.target) && !event.target.closest('.solo-sidebar-menu__open')) {
         sideMenubarToggleNav(false);
       }
     };
@@ -303,7 +303,7 @@
         if (Drupal.solo.menuState) {
           Drupal.solo.menuState.coordinateMenuOperation('open', verticalNav, COMPONENT_NAME);
         } else {
-          verticalNav.classList.add('toggled');
+          verticalNav.classList.add('solo-is-open');
         }
 
         // Focus the first interactive element after opening the sidebar
@@ -326,10 +326,10 @@
         if (Drupal.solo.menuState) {
           Drupal.solo.menuState.coordinateMenuOperation('close', verticalNav, COMPONENT_NAME);
         } else {
-          verticalNav.classList.remove('toggled');
+          verticalNav.classList.remove('solo-is-open');
         }
 
-        const subMenus = verticalNav.querySelectorAll('.navigation__sidebar li ul.sub__menu');
+        const subMenus = verticalNav.querySelectorAll('.solo-menu-tree--sidebar li ul.solo-menu-tree__submenu');
         subMenus?.forEach(subMenu => Drupal.solo.hideSubMenus(subMenu, COMPONENT_NAME));
 
         // Remove namespaced event listeners when closing
@@ -348,7 +348,7 @@
 
     // Legacy function for backward compatibility
     function addOutsideClickListener(enable) {
-      if (enable === true && verticalNav.classList.contains('toggled')) {
+      if (enable === true && verticalNav.classList.contains('solo-is-open')) {
         eventManager.on(document, 'click', 'solo.sidebar.outside', outsideClickListener);
       } else {
         eventManager.off(document, 'click', 'solo.sidebar.outside');
@@ -361,7 +361,7 @@
     Drupal.behaviors.soloPrimarySideMenu = {
       attach: function (context, settings) {
         // Only initialize once per context
-        once('solo-sidebar-init', '#primary-sidebar-menu', context).forEach(() => {
+        once('solo-sidebar-init', '#solo-primary-sidebar-menu', context).forEach(() => {
           // Close nav button event
           sideMenubarCloseOpen(closeBtns, () => sideMenubarToggleNav(false), context);
 
@@ -369,7 +369,7 @@
           sideMenubarCloseOpen(openBtns, () => sideMenubarToggleNav(true), context);
 
           // Ensure the tabindex is always set correctly on load
-          if (verticalNav.classList.contains('toggled')) {
+          if (verticalNav.classList.contains('solo-is-open')) {
             updateTabindex(true);
             // If already open on load, add the event listeners
             eventManager.on(document, 'keydown', 'solo.sidebar.focus', trapFocus);
@@ -388,7 +388,7 @@
           eventManager.off(document, 'keydown', 'solo.sidebar.focus');
 
           // Clean up button event listeners
-          const buttons = context.querySelectorAll('.sidebar-button-close>button, .sidebar-button-open>button');
+          const buttons = context.querySelectorAll('.solo-sidebar-menu__close>button, .solo-sidebar-menu__open>button');
           buttons.forEach(button => {
             eventManager.offAll(button, 'solo.sidebar');
           });

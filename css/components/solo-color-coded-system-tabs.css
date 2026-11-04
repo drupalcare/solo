@@ -1,12 +1,12 @@
 /* Custom core buttons hover */
-.page-wrapper ul.primary > li.core-task {
+.solo-page ul.primary > li.solo-local-task--core {
   position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.page-wrapper ul.primary > li.core-task .task-icon {
+.solo-page ul.primary > li.solo-local-task--core .solo-local-task__icon {
   display: block;
   z-index: 1;
   position: absolute;
@@ -15,7 +15,7 @@
   transition: fill 0.4s ease;
 }
 
-.page-wrapper ul.primary > li.core-task > a {
+.solo-page ul.primary > li.solo-local-task--core > a {
   color: var(--r-lk);
   padding-inline-start: var(--solo-px32);
   position: relative;
@@ -28,23 +28,23 @@
   z-index: 1;
 }
 
-.page-wrapper ul.primary li.core-task a.view-link {
+.solo-page ul.primary li.solo-local-task--core a.view-link {
   --r-lk: var(--solo-green);
 }
 
-.page-wrapper ul.primary li.core-task a.edit-link {
+.solo-page ul.primary li.solo-local-task--core a.edit-link {
   --r-lk: var(--solo-blue);
 }
 
-.page-wrapper ul.primary li.core-task a.delete-link {
+.solo-page ul.primary li.solo-local-task--core a.delete-link {
   --r-lk: var(--solo-red);
 }
 
-.page-wrapper ul.primary li.core-task a.revisions-link {
+.solo-page ul.primary li.solo-local-task--core a.revisions-link {
   --r-lk: var(--solo-purple);
 }
 
-.page-wrapper ul.primary > li.core-task > a::before {
+.solo-page ul.primary > li.solo-local-task--core > a::before {
   content: "";
   position: absolute;
   inset-block-end: 0;
@@ -57,49 +57,49 @@
   transform: translateY(100%);
 }
 
-.page-wrapper ul.primary > li.core-task > a.view-link::before {
+.solo-page ul.primary > li.solo-local-task--core > a.view-link::before {
   background-color: var(--solo-green);
 }
 
-.page-wrapper ul.primary > li.core-task > a.edit-link::before {
+.solo-page ul.primary > li.solo-local-task--core > a.edit-link::before {
   background-color: var(--solo-blue);
 }
 
-.page-wrapper ul.primary > li.core-task > a.delete-link::before {
+.solo-page ul.primary > li.solo-local-task--core > a.delete-link::before {
   background-color: var(--solo-red);
 }
 
-.page-wrapper ul.primary > li.core-task > a.revisions-link::before {
+.solo-page ul.primary > li.solo-local-task--core > a.revisions-link::before {
   background-color: var(--solo-purple);
 }
 
-.page-wrapper ul.primary > li.core-task > a:hover::before {
+.solo-page ul.primary > li.solo-local-task--core > a:hover::before {
   transform: translateY(0);
 }
 
-.page-wrapper ul.primary > li.core-task .task-icon.icon-view {
+.solo-page ul.primary > li.solo-local-task--core .solo-local-task__icon.solo-icon--view {
   fill: var(--solo-green);
 }
 
-.page-wrapper ul.primary > li.core-task .task-icon.icon-edit {
+.solo-page ul.primary > li.solo-local-task--core .solo-local-task__icon.solo-icon--edit {
   fill: var(--solo-blue);
 }
 
-.page-wrapper ul.primary > li.core-task .task-icon.icon-delete {
+.solo-page ul.primary > li.solo-local-task--core .solo-local-task__icon.solo-icon--delete {
   fill: var(--solo-red);
 }
 
-.page-wrapper ul.primary > li.core-task .task-icon.icon-revisions {
+.solo-page ul.primary > li.solo-local-task--core .solo-local-task__icon.solo-icon--revisions {
   fill: var(--solo-purple);
 }
 
-#page-wrapper ul.primary > li.core-task > a:hover {
+#solo-page-wrapper ul.primary > li.solo-local-task--core > a:hover {
   --r-bg: transparent !important;
   background-color: transparent;
   color: var(--solo-white);
 }
 
-.page-wrapper ul.primary > li.core-task a:hover + .task-icon {
+.solo-page ul.primary > li.solo-local-task--core a:hover + .solo-local-task__icon {
   fill: var(--solo-white);
   transition: fill 0.4s ease;
 }

@@ -11,7 +11,7 @@
   border: var(--solo-px1) solid var(--solo-black) !important;
 }
 
-.page-wrapper .system-messages {
+.solo-page .solo-system-messages {
   --r-bg: var(--solo-black) !important;
   --r-tx: var(--solo-white) !important;
 }

@@ -7,44 +7,44 @@
 {% set main_regions = 0 %}
 {% if main_left %}
   {% set main_regions = main_regions + 1 %}
-  {% set sidebar_first_outer_classes = 'region-outer main-box main-box-sides sidebar-box-first' %}
-  {% set sidebar_first_inner_classes = 'region-inner main-box-inner sidebar-box-first-inner fade-inner' ~ (align_sidebar_first ? ' ' ~ align_sidebar_first) ~ (classes_sidebar_first ? ' ' ~ classes_sidebar_first) %}
+  {% set sidebar_first_outer_classes = 'solo-region-box solo-region-box--main solo-region-box--main-sides solo-region-box--sidebar-first' %}
+  {% set sidebar_first_inner_classes = 'solo-region-box__inner solo-region-box__inner--main solo-region-box__inner--sidebar-first solo-fade-target' ~ (align_sidebar_first ? ' ' ~ align_sidebar_first) ~ (classes_sidebar_first ? ' ' ~ classes_sidebar_first) %}
 {% endif %}
 
 {% if main_middle %}
   {% set main_regions = main_regions + 1 %}
-  {% set content_outer_classes = 'region-outer main-box sidebar-box-main' %}
-  {% set content_inner_classes = 'region-inner main-box-inner sidebar-box-main-inner fade-inner' ~ (align_content ? ' ' ~ align_content) ~ (classes_content ? ' ' ~ classes_content) %}
+  {% set content_outer_classes = 'solo-region-box solo-region-box--main solo-region-box--content' %}
+  {% set content_inner_classes = 'solo-region-box__inner solo-region-box__inner--main solo-region-box__inner--content solo-fade-target' ~ (align_content ? ' ' ~ align_content) ~ (classes_content ? ' ' ~ classes_content) %}
 {% endif %}
 
 {% if main_right %}
   {% set main_regions = main_regions + 1 %}
-  {% set sidebar_second_outer_classes = 'region-outer main-box main-box-sides sidebar-box-second' %}
-  {% set sidebar_second_inner_classes = 'region-inner main-box-inner sidebar-box-second-inner fade-inner' ~ (align_sidebar_second ? ' ' ~ align_sidebar_second) ~ (classes_sidebar_second ? ' ' ~ classes_sidebar_second) %}
+  {% set sidebar_second_outer_classes = 'solo-region-box solo-region-box--main solo-region-box--main-sides solo-region-box--sidebar-second' %}
+  {% set sidebar_second_inner_classes = 'solo-region-box__inner solo-region-box__inner--main solo-region-box__inner--sidebar-second solo-fade-target' ~ (align_sidebar_second ? ' ' ~ align_sidebar_second) ~ (classes_sidebar_second ? ' ' ~ classes_sidebar_second) %}
 {% endif %}
 
-{% set main_active = 'active-main-' ~ main_regions %}
+{% set main_active = 'solo-container--main-active-' ~ main_regions %}
 
-{% set main_outer = 'solo-outer multi main-container' ~
+{% set main_outer = 'solo-outer solo-container--multi solo-container--main' ~
   (main_active ? ' ' ~ main_active) ~
-  (site_regions_main_border ? ' has-border') ~
+  (site_regions_main_border ? ' solo-container--has-border') ~
   (site_regions_main_rounded ? ' ' ~ site_regions_main_rounded) ~
   (classes_main_container ? ' ' ~ classes_main_container)
 %}
 
-{% set main_inner = 'solo-inner solo-col main-container-inner' ~
+{% set main_inner = 'solo-inner solo-col solo-container__inner--main' ~
   (main_layout ? ' ' ~ main_layout) ~
   (main_layout_order ? ' ' ~ main_layout_order)
 %}
 
   <!-- Start: Main -->
-  <div id="main-container" class="{{ main_outer }}" {{ attributes_main_container }}>
-    <div id="main-container-inner" class="{{ main_inner }}">
+  <div id="solo-main-container" class="{{ main_outer }}" {{ attributes_main_container }}>
+    <div id="solo-main-container-inner" class="{{ main_inner }}">
       <!-- Start: Main Container -->
 
     {% if main_left %}
       <!-- Start: Left SideBar -->
-      <aside id="sidebar-box-first" class="{{ sidebar_first_outer_classes }}" aria-label="{{ 'Sidebar First'|t }}">
+      <aside id="solo-sidebar-box-first" class="{{ sidebar_first_outer_classes }}" aria-label="{{ 'Sidebar First'|t }}">
         <div class="{{ sidebar_first_inner_classes }}" {{ attributes_sidebar_first }}>
           {{ main_left }}
         </div>
@@ -54,7 +54,7 @@
 
     {% if main_middle %}
       <!-- Start: Main Content -->
-      <main id="sidebar-box-main" class="{{ content_outer_classes }}">
+      <main id="solo-sidebar-box-main" class="{{ content_outer_classes }}">
         <div class="{{ content_inner_classes }}" {{ attributes_content }}>
           {% if enabled_skip_links.skip_main_content %}
           <a id="main-content" tabindex="-1"></a>
@@ -67,7 +67,7 @@
 
     {% if main_right %}
       <!-- Start: Right SideBar -->
-      <aside id="sidebar-box-second" class="{{ sidebar_second_outer_classes }}" aria-label="{{ 'Sidebar Second'|t }}">
+      <aside id="solo-sidebar-box-second" class="{{ sidebar_second_outer_classes }}" aria-label="{{ 'Sidebar Second'|t }}">
         <div class="{{ sidebar_second_inner_classes }}" {{ attributes_sidebar_second }}>
           {{ main_right }}
         </div>

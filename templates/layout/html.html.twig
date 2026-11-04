@@ -33,9 +33,6 @@
 <!DOCTYPE html>
 <html{{ html_attributes }}>
   <head>
-    {% if preloader_critical_css is defined and preloader_critical_css is not empty %}
-    <style>{{ preloader_critical_css|raw }}</style>
-    {% endif %}
     <head-placeholder token="{{ placeholder_token }}">
     <title>{{ head_title|safe_join(' | ') }}</title>
     <css-placeholder token="{{ placeholder_token }}">
@@ -53,16 +50,16 @@
       page.html.twig.
     #}
     {% if enabled_skip_links.skip_header_content %}
-      <a href="#header-content" class="visually-hidden focusable skip-link">{{ 'Skip to header'|t }}</a>
+      <a href="#solo-header-content" class="visually-hidden focusable skip-link">{{ 'Skip to header'|t }}</a>
     {% endif %}
     {% if enabled_skip_links.skip_navigation_content %}
-      <a href="#main-navigation-content" class="visually-hidden focusable skip-link">{{ 'Skip to main navigation'|t }}</a>
+      <a href="#solo-main-navigation-content" class="visually-hidden focusable skip-link">{{ 'Skip to main navigation'|t }}</a>
     {% endif %}
     {% if enabled_skip_links.skip_main_content %}
       <a href="#main-content" class="visually-hidden focusable skip-link">{{ 'Skip to main content'|t }}</a>
     {% endif %}
     {% if enabled_skip_links.skip_footer_content %}
-      <a href="#footer-content" class="visually-hidden focusable skip-link">{{ 'Skip to footer'|t }}</a>
+      <a href="#solo-footer-content" class="visually-hidden focusable skip-link">{{ 'Skip to footer'|t }}</a>
     {% endif %}
 
     {{ page_top }}

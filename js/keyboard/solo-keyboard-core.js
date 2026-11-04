@@ -42,26 +42,26 @@
       this.templateInfo = {
         menuType: this.detectMenuType(classList),
         interactionMode: this.detectInteractionMode(wrapper),
-        hasMobileNav: wrapper.querySelector('.mobile-menubar-toggler-button') !== null,
-        isMegamenu: wrapper.querySelector('.navigation__megamenu') !== null,
-        isResponsive: classList.contains('navigation-responsive'),
-        isSidebar: classList.contains('navigation-sidebar'),
-        isPrimary: classList.contains('navigation-primary-responsive') || classList.contains('navigation-primary-sidebar'),
+        hasMobileNav: wrapper.querySelector('.solo-hamburger__button') !== null,
+        isMegamenu: wrapper.querySelector('.solo-menu-tree--megamenu') !== null,
+        isResponsive: classList.contains('solo-menu--responsive'),
+        isSidebar: classList.contains('solo-menu--sidebar'),
+        isPrimary: classList.contains('solo-menu--primary-responsive') || classList.contains('solo-menu--primary-sidebar'),
         hasKeyboardEnabled: classList.contains('solo-keyboard-enabled')
       };
     }
 
     detectMenuType(classList) {
-      if (classList.contains('navigation-sidebar')) return 'sidebar';
-      if (classList.contains('navigation-responsive')) return 'responsive';
-      if (classList.contains('navigation-default')) return 'default';
+      if (classList.contains('solo-menu--sidebar')) return 'sidebar';
+      if (classList.contains('solo-menu--responsive')) return 'responsive';
+      if (classList.contains('solo-menu--default')) return 'default';
       return 'unknown';
     }
 
     detectInteractionMode(wrapper) {
       if (wrapper.querySelector('[data-hover-toggle]') ||
-          wrapper.classList.contains('navigation-responsive-hover') ||
-          wrapper.classList.contains('navigation-sidebar-hover')) {
+          wrapper.classList.contains('solo-menu--responsive-hover') ||
+          wrapper.classList.contains('solo-menu--sidebar-hover')) {
         return 'hover';
       }
       return 'click';
@@ -71,12 +71,12 @@
       // Solo menus follow the W3C disclosure navigation pattern: plain lists
       // of links and disclosure buttons, no menu roles, natural Tab order.
       // Arrow keys are an optional enhancement on top of that.
-      this.menubar = this.menuWrapper.querySelector('.navigation__menubar');
+      this.menubar = this.menuWrapper.querySelector('.solo-menu-tree__menubar');
 
       if (!this.menubar) return false;
 
       this.menuItems = this.menubar.querySelectorAll('a, button');
-      this.mobileNavButton = this.menuWrapper.querySelector('.mobile-menubar-toggler-button');
+      this.mobileNavButton = this.menuWrapper.querySelector('.solo-hamburger__button');
 
       return true;
     }

@@ -48,7 +48,7 @@ body.solo-debug-mode::before {
    ============================================ */
 
 /* Menu items with submenu */
-.solo-debug-mode li.has-sub__menu > button.dropdown-toggler::after {
+.solo-debug-mode li.solo-menu-tree__item--has-submenu > button.solo-menu-tree__toggler::after {
   content: ' [SM]';
   color: #9C27B0;
   font-size: 10px;
@@ -64,7 +64,7 @@ body.solo-debug-mode::before {
 }
 
 /* Toggled state */
-.solo-debug-mode .toggled::after {
+.solo-debug-mode .solo-is-open::after {
   content: ' [OPEN]';
   color: #FF9800;
   font-size: 10px;
@@ -126,17 +126,17 @@ body.solo-debug-mode::before {
    ============================================ */
 
 /* Show flipped submenus */
-.solo-debug-mode .submenu-flipped-left > .sub__menu {
+.solo-debug-mode .solo-menu-tree__submenu--flipped-left > .solo-menu-tree__submenu {
   border-left: 4px solid #FF9800 !important;
 }
 
-.solo-debug-mode .submenu-flipped-right > .sub__menu {
+.solo-debug-mode .solo-menu-tree__submenu--flipped-right > .solo-menu-tree__submenu {
   border-right: 4px solid #2196F3 !important;
 }
 
 /* Show mega menus */
-.solo-debug-mode .sub-mega,
-.solo-debug-mode .sub__mega {
+.solo-debug-mode .solo-menu-tree__submenu--mega,
+.solo-debug-mode .solo-menu-tree__submenu--mega {
   outline: 2px dashed #9C27B0 !important;
 }
 
@@ -144,16 +144,16 @@ body.solo-debug-mode::before {
    MENU DEPTH VISUALIZATION
    ============================================ */
 
-.solo-debug-mode .ul-1 { border-left: 3px solid #f44336; }
-.solo-debug-mode .ul-2 { border-left: 3px solid #2196F3; }
-.solo-debug-mode .ul-3 { border-left: 3px solid #4CAF50; }
-.solo-debug-mode .ul-4 { border-left: 3px solid #FF9800; }
+.solo-debug-mode .solo-list-depth-1 { border-left: 3px solid #f44336; }
+.solo-debug-mode .solo-list-depth-2 { border-left: 3px solid #2196F3; }
+.solo-debug-mode .solo-list-depth-3 { border-left: 3px solid #4CAF50; }
+.solo-debug-mode .solo-list-depth-4 { border-left: 3px solid #FF9800; }
 
 /* ============================================
    HOVER STATE DEBUG
    ============================================ */
 
-.solo-debug-mode .navigation-responsive-hover li:hover::after {
+.solo-debug-mode .solo-menu--responsive-hover li:hover::after {
   content: ' [HOVER]';
   color: #2196F3;
   font-size: 10px;
@@ -164,11 +164,11 @@ body.solo-debug-mode::before {
    MOBILE NAV DEBUG
    ============================================ */
 
-.solo-debug-mode .mobile-nav button::before {
+.solo-debug-mode .solo-mobile-nav button::before {
   content: '📱 ';
 }
 
-.solo-debug-mode .mobile-nav button[aria-expanded="true"]::after {
+.solo-debug-mode .solo-mobile-nav button[aria-expanded="true"]::after {
   content: ' [MENU OPEN]';
   color: #4CAF50;
   font-size: 10px;
@@ -203,7 +203,7 @@ body.solo-debug-mode::before {
    ============================================ */
 
 /* Missing aria-labels */
-.solo-debug-mode .navigation__menubar:not([aria-label])::before {
+.solo-debug-mode .solo-menu-tree__menubar:not([aria-label])::before {
   content: '⚠️ Missing aria-label';
   display: block;
   background: #F44336;
@@ -214,9 +214,9 @@ body.solo-debug-mode::before {
 }
 
 /* Menu roles do not belong in disclosure navigation (W3C APG) */
-.solo-debug-mode .navigation__menubar [role="menu"],
-.solo-debug-mode .navigation__menubar [role="menuitem"],
-.solo-debug-mode .navigation__menubar [role="none"] {
+.solo-debug-mode .solo-menu-tree__menubar [role="menu"],
+.solo-debug-mode .solo-menu-tree__menubar [role="menuitem"],
+.solo-debug-mode .solo-menu-tree__menubar [role="none"] {
   outline: 3px solid red !important;
 }
 

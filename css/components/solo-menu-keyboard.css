@@ -1,8 +1,8 @@
 /* currentColor, not the region border colour: the border colour measured
    1.35:1 to 2.53:1 against the menu background (WCAG 1.4.11 wants 3:1).
    The item's own text colour is designed to contrast with that background. */
-.solo-inner .solo-keyboard-enabled .mobile-nav button:focus-visible,
-.solo-inner .solo-keyboard-enabled .navigation__menubar a:focus-visible,
-.solo-inner .solo-keyboard-enabled .navigation__menubar button:focus-visible {
+.solo-inner .solo-keyboard-enabled .solo-mobile-nav button:focus-visible,
+.solo-inner .solo-keyboard-enabled .solo-menu-tree__menubar a:focus-visible,
+.solo-inner .solo-keyboard-enabled .solo-menu-tree__menubar button:focus-visible {
   outline: 3px solid currentColor;
 }

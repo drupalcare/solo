@@ -30,7 +30,7 @@
         return;
       }
 
-      const footer = parentComment.querySelector('.comment__footer');
+      const footer = parentComment.querySelector('.solo-comment__footer');
       if (!footer) {
         return;
       }
@@ -40,30 +40,30 @@
 
       // Create toggle button wrapper
       const toggleWrapper = document.createElement('div');
-      toggleWrapper.setAttribute('class', 'comment__replies-wrapper');
+      toggleWrapper.setAttribute('class', 'solo-comment__replies-wrapper');
 
       // Create toggle button
       const toggleButton = document.createElement('button');
       toggleButton.setAttribute('type', 'button');
-      toggleButton.setAttribute('class', 'comment__replies-toggle solo-button');
+      toggleButton.setAttribute('class', 'solo-comment__replies-toggle solo-button');
       toggleButton.setAttribute('aria-expanded', 'true');
-      toggleButton.setAttribute('aria-controls', 'replies-' + parentComment.getAttribute('data-comment-id'));
+      toggleButton.setAttribute('aria-controls', 'solo-comment-replies-' + parentComment.getAttribute('data-comment-id'));
 
       // Create icon wrapper for open state (minus icon)
       const iconOpen = document.createElement('span');
-      iconOpen.setAttribute('class', 'comment__replies-icon comment__replies-icon--open');
+      iconOpen.setAttribute('class', 'solo-comment__replies-icon solo-comment__replies-icon--open');
       iconOpen.innerHTML = '<svg fill="var(--r-tx)" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px"><path d="M240-440v-80h480v80H240Z"/></svg>';
 
 
       // Create icon wrapper for close state (plus icon)
       const iconClose = document.createElement('span');
-      iconClose.setAttribute('class', 'comment__replies-icon comment__replies-icon--close');
+      iconClose.setAttribute('class', 'solo-comment__replies-icon solo-comment__replies-icon--close');
       iconClose.setAttribute('hidden', '');
       iconClose.innerHTML = '<svg fill="var(--r-tx)" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px"><path d="M440-80v-340H120v-120h320v-340h80v340h320v120H520v340h-80Z"/></svg>';
 
       // Create text
       const text = document.createElement('span');
-      text.setAttribute('class', 'comment__replies-text');
+      text.setAttribute('class', 'solo-comment__replies-text');
       text.textContent = Drupal.t('Replies') + ' (' + replyCount + ')';
 
       // Append elements
@@ -74,7 +74,7 @@
       footer.appendChild(toggleWrapper);
 
       // Set ID for aria-controls
-      commentGroup.id = 'replies-' + parentComment.getAttribute('data-comment-id');
+      commentGroup.id = 'solo-comment-replies-' + parentComment.getAttribute('data-comment-id');
 
       // Add click event using Solo slideUp/slideDown
       toggleButton.addEventListener('click', function (e) {

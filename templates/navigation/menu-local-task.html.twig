@@ -18,7 +18,7 @@
 {%
   set classes = [
     'solo-button',
-    'task-local',
+    'solo-local-task',
     is_active ? 'is-active',
   ]
 %}
@@ -26,16 +26,16 @@
 
 {# Determine and add a specific class based on the route name #}
 {% if route_name == 'entity.node.canonical' %}
-  {% set classes = classes|merge(['core-task view-task']) %}
+  {% set classes = classes|merge(['solo-local-task--core solo-local-task--view']) %}
   {% set icon_include = '@solo/partials/svg/_view-icon.html.twig' %}
 {% elseif route_name == 'entity.node.edit_form' %}
-  {% set classes = classes|merge(['core-task edit-task']) %}
+  {% set classes = classes|merge(['solo-local-task--core edit-task']) %}
   {% set icon_include = '@solo/partials/svg/_edit-icon.html.twig' %}
 {% elseif route_name == 'entity.node.delete_form' %}
-  {% set classes = classes|merge(['core-task delete-task']) %}
+  {% set classes = classes|merge(['solo-local-task--core solo-local-task--delete']) %}
   {% set icon_include = '@solo/partials/svg/_delete-icon.html.twig' %}
 {% elseif route_name == 'entity.node.version_history' %}
-  {% set classes = classes|merge(['core-task revisions-task']) %}
+  {% set classes = classes|merge(['solo-local-task--core solo-local-task--revisions']) %}
   {% set icon_include = '@solo/partials/svg/_revisions-icon.html.twig' %}
 {% else %}
   {% set icon_include = '' %}

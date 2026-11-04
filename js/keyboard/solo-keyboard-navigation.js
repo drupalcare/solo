@@ -41,7 +41,7 @@
 
     handleMobileNavClick() {
       this.setTimeoutSafe(() => {
-        const isOpen = this.menubar.classList.contains('toggled') || this.menubar.classList.contains('is-active');
+        const isOpen = this.menubar.classList.contains('solo-is-open') || this.menubar.classList.contains('is-active');
         if (isOpen) {
           const firstItem = this.getFirstFocusableItem(this.menubar);
           if (firstItem) firstItem.focus();
@@ -167,7 +167,7 @@
 
       if (currentIndex === -1) {
         const parentLi = current.closest('li');
-        const topLevelFocus = this.getPrimaryFocusElement(parentLi?.closest('.nav__menubar-item') || parentLi);
+        const topLevelFocus = this.getPrimaryFocusElement(parentLi?.closest('.solo-menu-tree__menubar-item') || parentLi);
         targetIndex = topLevelItems.indexOf(topLevelFocus);
       } else {
         targetIndex = currentIndex;
@@ -185,7 +185,7 @@
     }
 
     handleButtonActivation(target, itemStructure) {
-      if (target.classList.contains('mobile-menubar-toggler-button')) {
+      if (target.classList.contains('solo-hamburger__button')) {
         target.click();
         return;
       }
@@ -196,8 +196,8 @@
         const button = itemStructure.button || target;
 
         if (subMenu && button) {
-          const isMenubar = button.parentElement.classList.contains('nav__menubar-item');
-          const isToggled = subMenu.classList.contains('toggled');
+          const isMenubar = button.parentElement.classList.contains('solo-menu-tree__menubar-item');
+          const isToggled = subMenu.classList.contains('solo-is-open');
 
           if (isToggled) {
             if (isMenubar) {
@@ -303,7 +303,7 @@
       }
 
       if (current === this.core.mobileNavButton && direction === 1) {
-        if (!this.menubar.classList.contains('toggled')) {
+        if (!this.menubar.classList.contains('solo-is-open')) {
           current.click();
 
           this.setTimeoutSafe(() => {
@@ -322,7 +322,7 @@
       }
 
       if (direction === 1 && itemStructure?.hasSubmenu && itemStructure.button && current === itemStructure.button) {
-        if (!itemStructure.submenu.classList.contains('toggled')) {
+        if (!itemStructure.submenu.classList.contains('solo-is-open')) {
           this.openSubmenu(current, itemStructure);
         } else {
           const firstChild = this.getFirstFocusableItem(itemStructure.submenu);
@@ -336,12 +336,12 @@
         return;
       }
 
-      const container = current.closest('.navigation__menubar, ul.sub__menu');
+      const container = current.closest('.solo-menu-tree__menubar, ul.solo-menu-tree__submenu');
       const items = this.getAllFocusableItems(container);
       const currentIndex = items.indexOf(current);
 
       if (direction === -1 && currentIndex === 0 && this.core.mobileNavButton && this.core.isSmallScreen()) {
-        const parentMenu = container.closest('ul.sub__menu');
+        const parentMenu = container.closest('ul.solo-menu-tree__submenu');
         if (!parentMenu) {
           this.core.mobileNavButton.focus();
           return;
@@ -375,7 +375,7 @@
           return;
         }
 
-        const isMenubar = itemStructure.button.parentElement?.classList.contains('nav__menubar-item');
+        const isMenubar = itemStructure.button.parentElement?.classList.contains('solo-menu-tree__menubar-item');
 
         if (isMenubar) {
           Drupal.solo.menuOperations.openMenubar(itemStructure.button, itemStructure.submenu);
@@ -405,7 +405,7 @@
         return;
       }
 
-      const submenu = current.closest('ul.sub__menu');
+      const submenu = current.closest('ul.solo-menu-tree__submenu');
 
       if (!submenu || submenu === this.menubar) {
         return;
@@ -431,11 +431,11 @@
       }
 
       const parentStructure = parser.getItemStructure(parentLi);
-      const parentButton = parentStructure?.button || parentLi.querySelector(':scope > button.dropdown-toggler');
+      const parentButton = parentStructure?.button || parentLi.querySelector(':scope > button.solo-menu-tree__toggler');
 
       if (parentButton && document.contains(parentButton)) {
         parentButton.focus();
-        if (submenu.classList.contains('toggled')) {
+        if (submenu.classList.contains('solo-is-open')) {
           if (Drupal.solo.menuOperations) {
             Drupal.solo.menuOperations.closeSubMenu(parentButton, submenu);
           } else {
@@ -451,16 +451,16 @@
     }
 
     handleEscape(current) {
-      const submenu = current.closest('ul.sub__menu');
-      const ownSubmenu = current.classList.contains('dropdown-toggler') ? current.nextElementSibling : null;
+      const submenu = current.closest('ul.solo-menu-tree__submenu');
+      const ownSubmenu = current.classList.contains('solo-menu-tree__toggler') ? current.nextElementSibling : null;
       if (submenu && submenu !== this.menubar) {
         this.exitSubmenu(current);
         return true;
       }
-      if (ownSubmenu && ownSubmenu.classList.contains('toggled') && Drupal.solo.menuOperations) {
+      if (ownSubmenu && ownSubmenu.classList.contains('solo-is-open') && Drupal.solo.menuOperations) {
         // W3C APG disclosure: Escape closes the open dropdown; focus stays on
         // the button that controls it.
-        if (current.parentElement.classList.contains('nav__menubar-item')) {
+        if (current.parentElement.classList.contains('solo-menu-tree__menubar-item')) {
           Drupal.solo.menuOperations.closeMenubar(current, ownSubmenu);
         } else {
           Drupal.solo.menuOperations.closeSubMenu(current, ownSubmenu);
@@ -468,7 +468,7 @@
         return true;
       }
       if (this.core.isSmallScreen() && this.core.mobileNavButton) {
-        if (this.menubar.classList.contains('toggled')) {
+        if (this.menubar.classList.contains('solo-is-open')) {
           this.core.mobileNavButton.click();
         }
         this.core.mobileNavButton.focus();
@@ -478,7 +478,7 @@
     }
 
     navigateToEnd(current, toFirst) {
-      const container = current.closest('.navigation__menubar, ul.sub__menu');
+      const container = current.closest('.solo-menu-tree__menubar, ul.solo-menu-tree__submenu');
       const items = this.getAllFocusableItems(container);
       const target = toFirst ? items[0] : items[items.length - 1];
       if (target) target.focus();

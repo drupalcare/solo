@@ -1,7 +1,7 @@
 {#
-  Preloader overlay. Inline style sets only CSS variables (e.g. --solo-preloader-bg, --r-tx, --solo-preloader-logo-width); all layout/visuals in CSS.
-  Markup in Twig (not JS) to avoid FOUC. Critical CSS in head for immediate display.
-  Variables: preloader_config, preloader_inline_style.
+  Preloader overlay. Layout and visuals are in CSS; solo_utilities attaches the critical CSS and custom properties to the head.
+  Markup in Twig (not JS) to avoid FOUC.
+  Variables: preloader_config.
 #}
 <div id="solo-preloader"
   class="solo-preloader solo-preloader--{{ preloader_config.style|default('spinner') }}{{ preloader_config.transition is defined and preloader_config.transition != 'fade' ? ' solo-preloader--transition-' ~ preloader_config.transition : '' }}{{ preloader_config.text_font ? ' ' ~ preloader_config.text_font : '' }}{{ preloader_config.text_animate_effect ? ' ' ~ preloader_config.text_animate_effect : '' }}"
@@ -10,8 +10,7 @@
   aria-label="{{ 'Page is loading'|t }}"
   data-force-show="{{ preloader_config.force_show ? 'true' : 'false' }}"
   data-hide-on="{{ preloader_config.hide_on|default('dom_ready') }}"
-  data-max-display="{{ preloader_config.max_display_seconds|default(8) }}"
-  {% if preloader_inline_style is not empty %}style="{{ preloader_inline_style }}"{% endif %}>
+  data-max-display="{{ preloader_config.max_display_seconds|default(8) }}">
   <span class="visually-hidden">{{ 'Loading...'|t }}</span>
   <div class="solo-preloader__inner">
     {% if preloader_config.style == 'progress_bar' %}

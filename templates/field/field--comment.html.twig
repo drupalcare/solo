@@ -47,7 +47,7 @@
 
 {% set title_classes = [
     'title',
-    label_display == 'visually_hidden' ? 'visually-hidden',
+    label_display == 'visually-hidden' ? 'visually-hidden',
   ]
 %}
 
@@ -62,8 +62,8 @@
   {% if not label_hidden and comment_count > 0 %}
     {{ title_prefix }}
     <h2{{ title_attributes.addClass('comments__title') }}>
-      <span class="comments__icon">{% include '@solo/partials/svg/_comment.html.twig' %}</span>
-      <span class="comments__label">{{ label }}</span>
+      <span class="solo-comments__icon">{% include '@solo/partials/svg/_comment.html.twig' %}</span>
+      <span class="solo-comments__label">{{ label }}</span>
       <span class="comments__count">({{ comment_count }})</span>
     </h2>
     {{ title_suffix }}
@@ -71,7 +71,7 @@
 
   {# Comment form BEFORE comments (default behavior) #}
   {% if comment_form and form_position == 'before' %}
-    <div class="add-comment add-comment--before">
+    <div class="add-comment solo-add-comment--before">
       {% if user_picture %}
       <div class="add-comment__picture-wrapper">
         <div class="add-comment__picture">
@@ -90,7 +90,7 @@
 
   {# Comment form AFTER comments #}
   {% if comment_form and form_position == 'after' %}
-    <div class="add-comment add-comment--after">
+    <div class="add-comment solo-add-comment--after">
       {% if user_picture %}
       <div class="add-comment__picture-wrapper">
         <div class="add-comment__picture">

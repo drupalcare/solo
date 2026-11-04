@@ -62,10 +62,10 @@
   padding-block-end: var(--solo-px16) !important;
 }
 
-.admin-context .block-local-tasks-block,
-.admin-context #drupal-off-canvas:not(.drupal-off-canvas-reset),
-.admin-context #drupal-off-canvas-wrapper,
-.admin-context .block-system-main-block {
+.solo-body--admin-context .block-local-tasks-block,
+.solo-body--admin-context #drupal-off-canvas:not(.drupal-off-canvas-reset),
+.solo-body--admin-context #drupal-off-canvas-wrapper,
+.solo-body--admin-context .block-system-main-block {
   font-family: "Helvetica", sans-serif;
 }
 
@@ -145,7 +145,7 @@
   margin: 0;
 }
 
-.layout-node-form .description .des-spacer {
+.layout-node-form .description .solo-file-upload-help__spacer {
   font-weight: bold;
 }
 

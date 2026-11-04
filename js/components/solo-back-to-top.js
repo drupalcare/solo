@@ -16,10 +16,10 @@
 
     function setVisible(visible) {
       if (visible) {
-        button.classList.add('is-visible');
+        button.classList.add('solo-is-visible');
         button.setAttribute('aria-hidden', 'false');
       } else {
-        button.classList.remove('is-visible');
+        button.classList.remove('solo-is-visible');
         button.setAttribute('aria-hidden', 'true');
       }
     }

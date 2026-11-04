@@ -27,33 +27,33 @@ ul.sitemap .menu-item.has-children > .menu-label::after {
   margin-inline-start: 0.25em;
 }
 
-ul.sitemap.menu-level-0 > .menu-item::before,
-ul.sitemap.menu-level-0 > .menu-item > .menu-link,
-ul.sitemap.menu-level-0 > .menu-item > .menu-label,
-ul.sitemap.menu-level-0 > .menu-item.has-children > .menu-label::after {
+ul.sitemap.solo-menu-tree--level-0 > .menu-item::before,
+ul.sitemap.solo-menu-tree--level-0 > .menu-item > .solo-menu__link,
+ul.sitemap.solo-menu-tree--level-0 > .menu-item > .menu-label,
+ul.sitemap.solo-menu-tree--level-0 > .menu-item.has-children > .menu-label::after {
   text-transform: uppercase;
   font-weight: 700;
 }
 
-ul.sitemap .menu-level-1 > .menu-item::before,
-ul.sitemap .menu-level-1 > .menu-item > .menu-link,
-ul.sitemap .menu-level-1 > .menu-item > .menu-label,
-ul.sitemap .menu-level-1 > .menu-item.has-children > .menu-label::after {
+ul.sitemap .solo-menu-tree--level-1 > .menu-item::before,
+ul.sitemap .solo-menu-tree--level-1 > .menu-item > .solo-menu__link,
+ul.sitemap .solo-menu-tree--level-1 > .menu-item > .menu-label,
+ul.sitemap .solo-menu-tree--level-1 > .menu-item.has-children > .menu-label::after {
   font-weight: 600;
 }
 
-ul.sitemap .menu-level-2 > .menu-item::before,
-ul.sitemap .menu-level-2 > .menu-item > .menu-link,
-ul.sitemap .menu-level-2 > .menu-item > .menu-label,
-ul.sitemap .menu-level-2 > .menu-item.has-children > .menu-label::after {
+ul.sitemap .solo-menu-tree--level-2 > .menu-item::before,
+ul.sitemap .solo-menu-tree--level-2 > .menu-item > .solo-menu__link,
+ul.sitemap .solo-menu-tree--level-2 > .menu-item > .menu-label,
+ul.sitemap .solo-menu-tree--level-2 > .menu-item.has-children > .menu-label::after {
   font-weight: 500;
 }
 
-ul.sitemap .menu-level-3 > .menu-item > .menu-link,
-ul.sitemap .menu-level-4 > .menu-item > .menu-link,
-ul.sitemap .menu-level-5 > .menu-item > .menu-link,
-ul.sitemap .menu-level-3 > .menu-item > .menu-label,
-ul.sitemap .menu-level-4 > .menu-item > .menu-label,
-ul.sitemap .menu-level-5 > .menu-item > .menu-label {
+ul.sitemap .solo-menu-tree--level-3 > .menu-item > .solo-menu__link,
+ul.sitemap .solo-menu-tree--level-4 > .menu-item > .solo-menu__link,
+ul.sitemap .solo-menu-tree--level-5 > .menu-item > .solo-menu__link,
+ul.sitemap .solo-menu-tree--level-3 > .menu-item > .menu-label,
+ul.sitemap .solo-menu-tree--level-4 > .menu-item > .menu-label,
+ul.sitemap .solo-menu-tree--level-5 > .menu-item > .menu-label {
   font-weight: 400;
 }

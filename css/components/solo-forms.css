@@ -134,8 +134,8 @@ abbr.ajax-changed {
 input,
 textarea,
 .region-title__action a,
-.admin-context  form .form-actions > a,
-.admin-context  .action-links li > a,
+.solo-body--admin-context  form .form-actions > a,
+.solo-body--admin-context  .action-links li > a,
 .view-filters details.form-wrapper {
   -webkit-box-shadow: inset 0 0 var(--solo-px5) rgba(51, 44, 51, 0.1);
   -moz-box-shadow: inset 0 0 var(--solo-px5) rgba(51, 44, 51, 0.1);
@@ -180,7 +180,7 @@ form .form-item__description {
 }
 
 /* Detect date ranges by looking for min/max fields */
-#page-wrapper .views-exposed-form .exposed-form .solo-date-range {
+#solo-page-wrapper .views-exposed-form .solo-exposed-form .solo-date-range {
   display: flex;
   flex-wrap: wrap;
   align-items: flex-end;
@@ -188,13 +188,13 @@ form .form-item__description {
 }
 
 /* for default drupal field*/
-form.views-exposed-form .exposed-form fieldset.solo-date-range {
+form.views-exposed-form .solo-exposed-form fieldset.solo-date-range {
   padding-block-start: 0.35em;
   padding-inline: 0.75em;
   padding-block-end: 0.625em;
 }
 
-form.views-exposed-form .exposed-form fieldset.solo-date-range > div {
+form.views-exposed-form .solo-exposed-form fieldset.solo-date-range > div {
   gap: 2px;
 }
 

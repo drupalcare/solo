@@ -130,8 +130,8 @@ pre.sf-dump .sf-dump-default) {
   border-inline-start: solid 0.375rem var(--solo-red) !important;
 }
 
-#system-messages .messages__content,
-#system-messages .messages__content > *:not(pre,
+#solo-system-messages .messages__content,
+#solo-system-messages .messages__content > *:not(pre,
 pre.sf-dump *,
 pre.sf-dump *,
 pre.sf-dump .sf-dump-default) {

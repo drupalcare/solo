@@ -41,7 +41,7 @@ h3,
 h4,
 h5,
 h6,
-.page-title-text {
+.solo-page-title__text {
   overflow-wrap: anywhere;
 }
 
@@ -95,7 +95,7 @@ h6 {
   text-align: var(--solo-text-align-start);
 }
 
-[dir="rtl"] .breadcrumb-menu li .breadcrumb-sep {
+[dir="rtl"] .solo-breadcrumb__menu li .solo-breadcrumb__separator {
   direction: rtl;
   transform: scaleX(-1);
 }
@@ -118,7 +118,7 @@ img {
   height: auto;
 }
 
-.img-placeholder {
+.solo-image--placeholder {
   width: 100%;
   height: auto;
   display: block;
@@ -586,7 +586,7 @@ html.gap-16 {
   width: auto;
 }
 
-.img-placeholder {
+.solo-image--placeholder {
   display: flex;
   align-items: center;
   justify-content: center;

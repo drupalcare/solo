@@ -3,7 +3,7 @@
  * Solo Theme - Full Opacity Animation
  *
  * Provides fade-in animation effects on scroll for elements with the
- * 'fade-inner' class. Implements smooth opacity transitions based on
+ * 'solo-fade-target' class. Implements smooth opacity transitions based on
  * viewport position with performance optimizations.
  *
  * Filename:     solo-full-opacity.js
@@ -21,7 +21,7 @@
    * @namespace Drupal.behaviors.soloFullOpacity
    *
    * @prop {Function} attach
-   *   Attaches the fade animation behavior to fade-inner elements.
+   *   Attaches the fade animation behavior to solo-fade-target elements.
    * @prop {Function} detach
    *   Detaches the behavior and cleans up event listeners.
    */
@@ -43,8 +43,8 @@
         return;
       }
 
-      // Process each fade-inner container only once
-      const fadeContainers = once('solo-full-opacity', '.fade-inner', context);
+      // Process each solo-fade-target container only once
+      const fadeContainers = once('solo-full-opacity', '.solo-fade-target', context);
 
       if (fadeContainers.length === 0) {
         return;
@@ -103,7 +103,7 @@
     detach: function (context, settings, trigger) {
       if (trigger === 'unload') {
         // Find all processed elements and clean up
-        const processedElements = context.querySelectorAll('.fade-inner.solo-full-opacity-processed');
+        const processedElements = context.querySelectorAll('.solo-fade-target.solo-full-opacity-processed');
 
         processedElements.forEach(element => {
           const handler = this.instances.get(element);

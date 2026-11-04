@@ -1,18 +1,18 @@
-.breadcrumb>.breadcrumb-inner {
+.breadcrumb>.solo-breadcrumb__inner {
   padding-block-end: 0 !important;
   padding-block-start: 0 !important;
 }
 
-.breadcrumb-nav {
+.solo-breadcrumb__nav {
   display: grid;
 }
 
-.breadcrumb-nav > * {
+.solo-breadcrumb__nav > * {
   min-width: 0;
 }
 
-ul.breadcrumb-menu,
-ol.breadcrumb-menu {
+ul.solo-breadcrumb__menu,
+ol.solo-breadcrumb__menu {
   list-style: none;
   padding: 0;
   margin: 0;
@@ -22,8 +22,8 @@ ol.breadcrumb-menu {
   list-style: none;
 }
 
-ul.breadcrumb-menu li,
-ol.breadcrumb-menu li {
+ul.solo-breadcrumb__menu li,
+ol.solo-breadcrumb__menu li {
   padding: 0;
   margin: 0;
   display: flex;
@@ -32,8 +32,8 @@ ol.breadcrumb-menu li {
   font-size: var(--solo-px14);
 }
 
-ul.breadcrumb-menu li > a,
-ol.breadcrumb-menu li > a {
+ul.solo-breadcrumb__menu li > a,
+ol.solo-breadcrumb__menu li > a {
   display: flex;
   align-items: center;
   padding-block: var(--solo-px16);
@@ -41,8 +41,8 @@ ol.breadcrumb-menu li > a {
   padding-inline-start: var(--solo-px2);
 }
 
-ul.breadcrumb-menu li > span,
-ol.breadcrumb-menu li > span {
+ul.solo-breadcrumb__menu li > span,
+ol.solo-breadcrumb__menu li > span {
   display: flex;
   align-items: center;
   padding-block: var(--solo-px16);
@@ -50,19 +50,19 @@ ol.breadcrumb-menu li > span {
   padding-inline-start: var(--solo-px4);
 }
 
-.breadcrumb-menu li .breadcrumb-sep {
+.solo-breadcrumb__menu li .solo-breadcrumb__separator {
   display: flex;
   align-items: center;
   fill: var(--r-tx);
 }
 
-.solo__bc-scroll ul.breadcrumb-menu,
-.solo__bc-scroll ol.breadcrumb-menu {
+.solo-page--breadcrumb-scroll ul.solo-breadcrumb__menu,
+.solo-page--breadcrumb-scroll ol.solo-breadcrumb__menu {
   overflow-x: auto;
   white-space: nowrap;
   flex-wrap: nowrap;
 }
 
-.breadcrumb-menu > li:first-child > * {
+.solo-breadcrumb__menu > li:first-child > * {
   padding-inline-start: 0;
 }

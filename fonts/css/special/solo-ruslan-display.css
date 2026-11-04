@@ -1,4 +1,4 @@
-.page-wrapper .ruslan-display {
+.solo-page .ruslan-display {
   --solo-font-s: 'Ruslan Display', cursive;
   font-family: var(--solo-font-s) !important;
 }

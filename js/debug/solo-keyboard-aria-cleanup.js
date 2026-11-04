@@ -33,7 +33,7 @@
 
         attributesToRemove.forEach(attr => {
           if (li.hasAttribute(attr)) {
-            const button = li.querySelector(':scope > button.dropdown-toggler');
+            const button = li.querySelector(':scope > button.solo-menu-tree__toggler');
             if (button && !button.hasAttribute(attr)) {
               button.setAttribute(attr, li.getAttribute(attr));
             }
@@ -66,7 +66,7 @@
     },
 
     fixAriaAttributes() {
-      document.querySelectorAll('button.dropdown-toggler').forEach(button => {
+      document.querySelectorAll('button.solo-menu-tree__toggler').forEach(button => {
         const submenu = button.nextElementSibling;
 
         // aria-haspopup announces a menu; a disclosure button has none.
@@ -75,7 +75,7 @@
         }
 
         if (submenu && !button.hasAttribute('aria-expanded')) {
-          const isExpanded = submenu.classList.contains('toggled') ||
+          const isExpanded = submenu.classList.contains('solo-is-open') ||
                            submenu.style.display !== 'none';
           button.setAttribute('aria-expanded', isExpanded ? 'true' : 'false');
         }
@@ -85,9 +85,9 @@
         }
       });
 
-      document.querySelectorAll('.sub__menu').forEach(submenu => {
+      document.querySelectorAll('.solo-menu-tree__submenu').forEach(submenu => {
         if (!submenu.hasAttribute('aria-hidden')) {
-          const isHidden = !submenu.classList.contains('toggled') &&
+          const isHidden = !submenu.classList.contains('solo-is-open') &&
                           submenu.style.display === 'none';
           submenu.setAttribute('aria-hidden', isHidden ? 'true' : 'false');
         }
@@ -97,7 +97,7 @@
     validateMenuStructure() {
       const issues = [];
 
-      document.querySelectorAll('.sub__menu').forEach(submenu => {
+      document.querySelectorAll('.solo-menu-tree__submenu').forEach(submenu => {
         if (!submenu.parentElement || submenu.parentElement.tagName !== 'LI') {
           issues.push('Submenu not properly nested within LI element');
         }

@@ -28,13 +28,13 @@
 {% macro svg_icon(icon_value) %}
     {% include '@solo/partials/svg/_svg-menu-arrow.html.twig' %}
 {% endmacro %}
-<div class="solo-clear solo-menu navigation-responsive navigation-responsive-hover{{ keyboard_enabled ? ' solo-keyboard-enabled' }}"
+<div class="solo-clear solo-menu solo-menu--responsive solo-menu--responsive-hover{{ keyboard_enabled ? ' solo-keyboard-enabled' }}"
      aria-label="{{ 'Responsive navigation'|t }}"
      data-menu-name="{{ menu_name }}"
      data-interaction-type="hover">
-    <div class="mobile-nav hamburger-icon solo-block">
-        <button class="solo-button-menu mobile-menubar-toggler-button"
-                data-drupal-selector="mobile-menubar-toggler-button"
+    <div class="solo-mobile-nav solo-hamburger solo-block">
+        <button class="solo-button-menu solo-hamburger__button"
+                data-drupal-selector="solo-hamburger__button"
                 aria-label="{{ 'Toggle menu'|t }}"
                 aria-expanded="false"
                 aria-controls="{{ menu_name ~'__menubar'|clean_unique_id }}"
@@ -48,13 +48,13 @@
 {% macro menu_links(items, attributes, menu_level, menu_name, aria_id) %}
     {% set menu_level = menu_level + 1 %}
     {% set menu_classes = [
-            'navigation__menubar',
-            'navigation__responsive',
-            'navigation__responsive__hover',
-            'navigation__menubar-' ~ menu_name|clean_class,
+            'solo-menu-tree__menubar',
+            'solo-menu-tree--responsive',
+            'solo-menu-tree--responsive-hover',
+            'solo-menu-tree__menubar--' ~ menu_name|clean_class,
         ] %}
 {% set submenu_classes = [
-    'sub__menu sub__menu-' ~ menu_name|clean_class,
+    'solo-menu-tree__submenu solo-menu-tree__submenu--' ~ menu_name|clean_class,
 ] %}
 {% set menubar_attributes = create_attribute({
     'id': menu_name ~'__menubar'|clean_unique_id,
@@ -100,20 +100,20 @@
 
     {% import _self as macros %}
     {% set aria_id = (menu_name ~ '-sub__menu-' ~ loop.index )|clean_unique_id %}
-    {% set dropdown_toggler_class = (menu_level == 1) ? 'dropdown-toggler-parent' : 'dropdown-toggler-child' %}
+    {% set dropdown_toggler_class = (menu_level == 1) ? 'solo-menu-tree__toggler--parent' : 'solo-menu-tree__toggler--child' %}
     {% set rendered_url = item.url|render %}
 
     {% set item_classes = [
-    'btn-animate nav__menu-item nav__menu-item-' ~ menu_name|clean_class,
-    (item and menu_level == 1 ) ? 'nav__menubar-item',
-    (item and menu_level > 1 ) ? 'nav__submenu-item',
-    item.is_expanded ? 'has-sub__menu',
-    item.is_expanded and is_linkable ? 'link-and-button',
-    item.is_expanded and not is_linkable ? 'button-only',
-    not item.is_expanded and is_linkable ? 'link-only',
-    not item.is_expanded and link_type == 'nolink' ? 'no-link',
-    not item.is_expanded and link_type == 'button' ? 'keyboard-button',
-    not item.is_expanded and is_external ? 'external-link',
+    'solo-btn-animate solo-menu-tree__item solo-menu-tree__item--' ~ menu_name|clean_class,
+    (item and menu_level == 1 ) ? 'solo-menu-tree__menubar-item',
+    (item and menu_level > 1 ) ? 'solo-menu-tree__submenu-item',
+    item.is_expanded ? 'solo-menu-tree__item--has-submenu',
+    item.is_expanded and is_linkable ? 'solo-menu-tree__item--link-and-button',
+    item.is_expanded and not is_linkable ? 'solo-menu-tree__item--button-only',
+    not item.is_expanded and is_linkable ? 'solo-menu-tree__item--link-only',
+    not item.is_expanded and link_type == 'nolink' ? 'solo-menu-tree__item--no-link',
+    not item.is_expanded and link_type == 'button' ? 'solo-menu-tree__button--keyboard',
+    not item.is_expanded and is_external ? 'solo-menu-tree__link--external',
     item.in_active_trail ? 'is-active',
     ]
     %}
@@ -138,7 +138,7 @@
     <li{{ item.attributes.addClass(item_classes) }} data-link-type="{{ link_type }}">
     {% if is_linkable %}
         {# The parent link is clickable and it has children #}
-        {% set c_link_classes = ['nav__menu-link nav__menu-link-' ~ menu_name|clean_class, 'url-added'] %}
+        {% set c_link_classes = ['solo-menu-tree__link solo-menu-tree__link--' ~ menu_name|clean_class, 'solo-menu-tree__link--has-url'] %}
         {% if class_list %}
             {% set c_link_classes = c_link_classes|merge([class_list]) %}
         {% endif %}
@@ -149,45 +149,45 @@
             {%- if is_external %} target="_blank" rel="noopener"{% endif -%}
             data-drupal-link-system-path="{{ system_path }}"
             {%- if item.in_active_trail and item.url and item.url.toString() == path('<current>') %} aria-current="page"{% endif -%}>
-            <span class="menu__url-title-enabled">{{ item.title }}</span>
+            <span class="solo-menu-tree__title--enabled">{{ item.title }}</span>
         </a>
-        <button class="en-link dropdown-toggler {{ dropdown_toggler_class }}" {{ dorpdown_toggler_attributes }}>
+        <button class="solo-menu-tree__toggler--link-enabled solo-menu-tree__toggler {{ dropdown_toggler_class }}" {{ dorpdown_toggler_attributes }}>
             <span class="visually-hidden">{{ '@title sub-navigation'|t({'@title': item.title}) }}</span>
-            <span class="toggler-icon dropdown-arrow">{{ macros.svg_icon('M6 9l6 6 6-6') }}</span>
+            <span class="solo-menu-tree__toggler-icon solo-menu-tree__arrow">{{ macros.svg_icon('M6 9l6 6 6-6') }}</span>
         </button>
     {% else %}
         {# The parent link is NOT clickable and it has children #}
         {% set button_classes = [
-          'ds-link',
-          'dropdown-toggler',
-          'nav__menu-button',
-          'nav__menu-button-' ~ menu_name|clean_class,
+          'solo-menu-tree__toggler--link-disabled',
+          'solo-menu-tree__toggler',
+          'solo-menu-tree__button',
+          'solo-menu-tree__button--' ~ menu_name|clean_class,
           dropdown_toggler_class
         ] %}
         {% if class_list %}
           {% set button_classes = button_classes|merge([class_list]) %}
         {% endif %}
         <button class="{{ button_classes|join(' ') }}" {{ dorpdown_toggler_attributes }} {%- if item.url and item.url.getOption('attributes') and item.url.getOption('attributes').title %} title="{{ item.url.getOption('attributes').title }}" {% endif -%} data-link-type="{{ link_type }}">
-            <span class="menu__url-title-disabled">{{ item.title }}</span>
+            <span class="solo-menu-tree__title--disabled">{{ item.title }}</span>
             <span class="visually-hidden">{{ '@title sub-navigation'|t({'@title': item.title}) }}</span>
-            <span class="toggler-icon dropdown-arrow">{{ macros.svg_icon('M6 9l6 6 6-6') }}</span>
+            <span class="solo-menu-tree__toggler-icon solo-menu-tree__arrow">{{ macros.svg_icon('M6 9l6 6 6-6') }}</span>
         </button>
     {% endif %}{# End of is_linkable check #}
 
     {% else %} {# if item is not expanded #}
       {% set link_title %}
-        <span class="menu__url-title">{{ item.title }}</span>
+        <span class="solo-menu-tree__title">{{ item.title }}</span>
       {% endset %}
     <li{{ item.attributes.addClass(item_classes) }} data-link-type="{{ link_type }}">
         {% if link_type == 'nolink' %}
             {# Display as text only #}
-            <span class="nav__menu-nolink nav__menu-nolink-{{ menu_name|clean_class }} {{ class_list }}"
+            <span class="solo-menu-tree__nolink solo-menu-tree__nolink--{{ menu_name|clean_class }} {{ class_list }}"
                   {%- if item.url and item.url.getOption('attributes') and item.url.getOption('attributes').title %} title="{{ item.url.getOption('attributes').title }}" {% endif -%}>
                 {{ link_title }}
             </span>
         {% elseif link_type == 'button' %}
             {# Display as keyboard-accessible button #}
-            <button class="nav__menu-button nav__menu-button-{{ menu_name|clean_class }} {{ class_list }}"
+            <button class="solo-menu-tree__button solo-menu-tree__button--{{ menu_name|clean_class }} {{ class_list }}"
                     type="button"
                     {%- if item.url and item.url.getOption('attributes') and item.url.getOption('attributes').title %} title="{{ item.url.getOption('attributes').title }}" {% endif -%}>
                 {{ link_title }}
@@ -195,7 +195,7 @@
         {% else %}
             {# All other links (internal and external) #}
             {% set link_classes = [
-                'nav__menu-link nav__menu-link-' ~ menu_name|clean_class,
+                'solo-menu-tree__link solo-menu-tree__link--' ~ menu_name|clean_class,
             ] %}
             {% if class_list %}
                 {% set link_classes = link_classes|merge([class_list]) %}

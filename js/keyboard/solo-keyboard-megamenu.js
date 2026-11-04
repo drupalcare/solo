@@ -16,7 +16,7 @@
     }
 
     enhanceMegamenuNavigation() {
-      const megaMenus = this.menubar.querySelectorAll('.sub-mega, .sub__mega, [class*="sub-mega"]');
+      const megaMenus = this.menubar.querySelectorAll('.solo-menu-tree__submenu--mega, .solo-menu-tree__submenu--mega, [class*="solo-menu-tree__submenu--mega"]');
       megaMenus.forEach(megaMenu => {
         megaMenu.querySelectorAll('a, button').forEach(item => {
           item.addEventListener('keydown', this.handleMegamenuKeydown);
@@ -25,7 +25,7 @@
     }
 
     handleMegamenuKeydown(event) {
-      const megaMenu = event.target.closest('.sub-mega, .sub__mega, [class*="sub-mega"]');
+      const megaMenu = event.target.closest('.solo-menu-tree__submenu--mega, .solo-menu-tree__submenu--mega, [class*="solo-menu-tree__submenu--mega"]');
       if (!megaMenu) return;
 
       const columns = this.getMegamenuColumns(megaMenu);
@@ -48,7 +48,7 @@
 
     getMegamenuColumns(megaMenu) {
       const columns = [];
-      const columnElements = megaMenu.querySelectorAll(':scope > li, .megamenu-column');
+      const columnElements = megaMenu.querySelectorAll(':scope > li, .solo-menu-tree__megamenu-column');
 
       columnElements.forEach(column => {
         const items = Array.from(column.querySelectorAll('a, button'))
@@ -98,7 +98,7 @@
     destroy() {
       if (!this.core.templateInfo.isMegamenu) return;
 
-      const megaMenus = this.menubar.querySelectorAll('.sub-mega, .sub__mega, [class*="sub-mega"]');
+      const megaMenus = this.menubar.querySelectorAll('.solo-menu-tree__submenu--mega, .solo-menu-tree__submenu--mega, [class*="solo-menu-tree__submenu--mega"]');
       megaMenus.forEach(megaMenu => {
         megaMenu.querySelectorAll('a, button').forEach(item => {
           item.removeEventListener('keydown', this.handleMegamenuKeydown);

@@ -137,14 +137,14 @@ html.solo-preloader-enabled .solo-preloader--logo .solo-preloader__logo {
 }
 
 /* ========== Logo + text style ========== */
-html.solo-preloader-enabled .solo-preloader--logo_text .solo-preloader__inner {
+html.solo-preloader-enabled .solo-preloader--logo-text .solo-preloader__inner {
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 1rem;
 }
 
-html.solo-preloader-enabled .solo-preloader--logo_text .solo-preloader__hero {
+html.solo-preloader-enabled .solo-preloader--logo-text .solo-preloader__hero {
   position: relative;
   display: block;
   width: var(--solo-preloader-logo-width, 260px);
@@ -153,7 +153,7 @@ html.solo-preloader-enabled .solo-preloader--logo_text .solo-preloader__hero {
   max-height: 50vh;
 }
 
-html.solo-preloader-enabled .solo-preloader--logo_text .solo-preloader__hero-logo {
+html.solo-preloader-enabled .solo-preloader--logo-text .solo-preloader__hero-logo {
   position: absolute;
   inset: 0;
   width: 100%;
@@ -162,7 +162,7 @@ html.solo-preloader-enabled .solo-preloader--logo_text .solo-preloader__hero-log
   opacity: var(--solo-preloader-logo-opacity, 1);
 }
 
-html.solo-preloader-enabled .solo-preloader--logo_text .solo-preloader__hero-text {
+html.solo-preloader-enabled .solo-preloader--logo-text .solo-preloader__hero-text {
   position: absolute;
   inset: 0;
   display: flex;
@@ -178,7 +178,7 @@ html.solo-preloader-enabled .solo-preloader--logo_text .solo-preloader__hero-tex
 }
 
 /* ========== Progress bar style ========== */
-html.solo-preloader-enabled .solo-preloader--progress_bar .solo-preloader__inner {
+html.solo-preloader-enabled .solo-preloader--progress-bar .solo-preloader__inner {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -189,7 +189,7 @@ html.solo-preloader-enabled .solo-preloader--progress_bar .solo-preloader__inner
   box-sizing: border-box;
 }
 
-html.solo-preloader-enabled .solo-preloader--progress_bar .solo-preloader__bar-track {
+html.solo-preloader-enabled .solo-preloader--progress-bar .solo-preloader__bar-track {
   position: relative;
   width: 100%;
   height: 6px;
@@ -198,7 +198,7 @@ html.solo-preloader-enabled .solo-preloader--progress_bar .solo-preloader__bar-t
   overflow: hidden;
 }
 
-html.solo-preloader-enabled .solo-preloader--progress_bar .solo-preloader__bar-fill {
+html.solo-preloader-enabled .solo-preloader--progress-bar .solo-preloader__bar-fill {
   position: absolute;
   top: 0;
   inset-inline-start: 0;
@@ -210,7 +210,7 @@ html.solo-preloader-enabled .solo-preloader--progress_bar .solo-preloader__bar-f
   will-change: width;
 }
 
-html.solo-preloader-enabled .solo-preloader--progress_bar .solo-preloader__bar-percent {
+html.solo-preloader-enabled .solo-preloader--progress-bar .solo-preloader__bar-percent {
   font-size: 0.75rem;
   font-weight: 600;
   letter-spacing: 0.02em;
@@ -313,7 +313,7 @@ html.solo-preloader-enabled .solo-preloader.solo-preloader--transition-blur.solo
     filter: none;
   }
 
-  html.solo-preloader-enabled .solo-preloader--progress_bar .solo-preloader__bar-fill {
+  html.solo-preloader-enabled .solo-preloader--progress-bar .solo-preloader__bar-fill {
     transition: none;
   }
 }

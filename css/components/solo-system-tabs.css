@@ -81,6 +81,6 @@ ul.secondary > li > a {
   color: inherit;
 }
 
-ul.primary .task-icon {
+ul.primary .solo-local-task__icon {
   display: none;
 }

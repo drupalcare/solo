@@ -29,8 +29,8 @@
       if (!li) return null;
 
       const link = li.querySelector(':scope > a');
-      const button = li.querySelector(':scope > button.dropdown-toggler');
-      const nolink = li.querySelector(':scope > span.nav__menu-nolink');
+      const button = li.querySelector(':scope > button.solo-menu-tree__toggler');
+      const nolink = li.querySelector(':scope > span.solo-menu-tree__nolink');
       const submenu = li.querySelector(':scope > ul');
 
       let type = 'unknown';
@@ -52,8 +52,8 @@
         submenu: submenu,
         hasSubmenu: !!submenu,
         type: type,
-        isExpanded: submenu ? submenu.classList.contains('toggled') : false,
-        isMenubarItem: li.classList.contains('nav__menubar-item'),
+        isExpanded: submenu ? submenu.classList.contains('solo-is-open') : false,
+        isMenubarItem: li.classList.contains('solo-menu-tree__menubar-item'),
         isActive: li.classList.contains('is-active')
       };
     }
@@ -65,7 +65,7 @@
       let current = element.closest('ul');
 
       while (current) {
-        if (current.classList.contains('navigation__menubar') || current.classList.contains('sub__menu')) {
+        if (current.classList.contains('solo-menu-tree__menubar') || current.classList.contains('solo-menu-tree__submenu')) {
           level++;
         }
         current = current.parentElement?.closest('ul');
@@ -77,7 +77,7 @@
     isMenuItem(element) {
       if (!element) return false;
       return element.tagName === 'A' ||
-             (element.tagName === 'BUTTON' && element.classList.contains('dropdown-toggler'));
+             (element.tagName === 'BUTTON' && element.classList.contains('solo-menu-tree__toggler'));
     }
 
     getSubmenuDirection(element) {
@@ -111,16 +111,16 @@
       }
 
       // Disclosure buttons always carry aria-expanded.
-      this.menubar.querySelectorAll('button.dropdown-toggler').forEach(button => {
+      this.menubar.querySelectorAll('button.solo-menu-tree__toggler').forEach(button => {
         if (Drupal.solo.menuState && !button.hasAttribute('aria-expanded')) {
           Drupal.solo.menuState.setAriaAttribute(button, 'aria-expanded', 'false', 'templateParser');
         }
       });
 
       // Ensure submenus have proper initial state
-      this.menubar.querySelectorAll('ul.sub__menu').forEach(submenu => {
+      this.menubar.querySelectorAll('ul.solo-menu-tree__submenu').forEach(submenu => {
         if (!submenu.hasAttribute('aria-hidden')) {
-          const isOpen = submenu.classList.contains('toggled');
+          const isOpen = submenu.classList.contains('solo-is-open');
           if (Drupal.solo.menuState) {
             Drupal.solo.menuState.setAriaAttribute(submenu, 'aria-hidden', isOpen ? 'false' : 'true', 'templateParser');
           }

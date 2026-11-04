@@ -1,7 +1,36 @@
 /* Page wrapper
-Black Rock #010127, Neutral Black #0B0B0B, Black Denim #191C27
-*/
-.page-wrapper {
+Black Rock #010127, Neutral Black #0B0B0B, Black Denim #191C27 */
+:root {
+  --sc-head-tx: #a1a1fd;
+  --sc-link-tx: #b5b5b5;
+  --sc-link-hover-tx: #c3c3fd;
+  --sc-menu-bg: #000006;
+  --sc-menu-tx: #a1a1fd;
+  --sc-menu-hover-tx: #ffffff;
+  --sc-menu-hover-bg: #010138;
+  --sc-tab-hover-tx: #ffffff;
+  --sc-menu-open-tx: #ffffff;
+  --sc-menu-open-bg: #010138;
+  --sc-button-bg: #020248;
+  --sc-button-tx: #e8e8e8;
+  --sc-button-hover-tx: #d3d3fe;
+  --sc-button-hover-bg: #1c1c1c;
+  --sc-main-container-bg: linear-gradient(45deg, #000006, #0b0b0b);
+  --sc-top-container-bg: linear-gradient(45deg, #000006, #0b0b0b);
+  --sc-fixed-search-block-bg: linear-gradient(45deg, #000006, #0b0b0b);
+  --sc-popup-login-block-inner-bg: linear-gradient(45deg, #000006, #0b0b0b);
+  --sc-bottom-container-bg: linear-gradient(45deg, #000006, #0b0b0b);
+  --sc-footer-container-bg: linear-gradient(45deg, #000006, #0b0b0b);
+  --sc-footer-menu-bg: linear-gradient(45deg, #000006, #0b0b0b);
+  --sc-copyright-bg: linear-gradient(180deg, #000006, #000000);
+  --sc-social-fill: #828282;
+  --sc-control-br: #03037a;
+  --sc-fixed-search-block-shadow: 249, 249, 249;
+  --sc-social-box-shadow: 215, 215, 215;
+  --sc-region-rule-br: var(--solo-black);
+}
+
+.solo-page {
   --r-br: #030369;
   --r-bg: #000000;
   --r-tx: #e4e4fe;
@@ -11,332 +40,87 @@ Black Rock #010127, Neutral Black #0B0B0B, Black Denim #191C27
   --r-menu-bg-h: #010138;
 }
 
-/* inner regions */
-.page-wrapper .region-inner:where(:not([style*="--r-br:"] *)) {
+.solo-page .solo-region-box__inner:where(:not([style*="--r-br:"] *)) {
   --r-br: #030369;
 }
 
-.page-wrapper .solo-outer:not(.fixed-search-block,
-.popup-login-block,
-.header,
-.primary-sidebar-menu,
-.primary-menu,
-.system-messages,
-.copyright) {
-  border-bottom-width: var(--solo-px2);
-  border-bottom-style: solid;
-  border-color: var(--solo-black);
-}
-
-/* Heads */
-.page-wrapper h1:not(.page-title-text),
-.page-wrapper h2,
-.page-wrapper h3,
-.page-wrapper h1 a,
-.page-wrapper h2 a,
-.page-wrapper h3 a,
-.page-wrapper h1 a span,
-.page-wrapper h2 a span,
-.page-wrapper h3 a span,
-.page-wrapper .site-name,
-.page-wrapper .site-slogan,
-.page-wrapper .site-name-link {
-  --r-tx: #a1a1fd;
-}
-
-/* Link only */
-.page-wrapper a:not(.nav__menu-link,
-.button,
-.site-name-link,
-.site-logo,
-h1 a,
-h2 a,
-h3 a) {
-  --r-tx: #b5b5b5;
-}
-
-.page-wrapper a:hover:not(.nav__menu-link,
-.button,
-.site-name-link,
-.site-logo,
-h1 a,
-h2 a,
-h3 a) {
-  --r-tx: #c3c3fd;
-}
-
-/* Menu Links */
-.page-wrapper .login-button-open,
-.page-wrapper .hamburger-icon button,
-.page-wrapper .main-navigation-wrapper,
-.page-wrapper .main-navigation-wrapper ul,
-.page-wrapper .main-navigation-wrapper li,
-.page-wrapper .header li.nav__menu-item>a,
-.page-wrapper .main-navigation-wrapper li>a,
-.page-wrapper .header li.nav__menu-item>button,
-.page-wrapper .main-navigation-wrapper li>button {
-  --r-bg: #000006;
-  --r-tx: #a1a1fd;
-}
-
-.page-wrapper .login-button-open:hover,
-.page-wrapper .hamburger-icon button:hover,
-.page-wrapper .header ul li.nav__menu-item>*:hover,
-.page-wrapper .main-navigation-wrapper li>*:hover {
-  --r-tx: #ffffff;
+.solo-page ul.tabs.secondary li a:hover,
+.solo-page ul.tabs.primary li a:hover {
   --r-bg: #010138;
 }
 
-.page-wrapper ul.tabs.secondary li a:hover,
-.page-wrapper ul.tabs.primary li a:hover {
-  --r-tx: #ffffff;
-  --r-bg: #010138;
-  background-color: var(--r-bg);
-}
-
-/* The same colors as hover for the main menu */
-.page-wrapper .navigation-sidebar-hover .navigation__sidebar li.has-sub__menu:hover>a,
-.page-wrapper .navigation-sidebar-hover .navigation__sidebar li.has-sub__menu:hover>button,
-.page-wrapper .navigation-responsive-hover .navigation__megamenu>li.has-sub__menu:hover>a,
-.page-wrapper .navigation-responsive-hover .navigation__megamenu>li.has-sub__menu:hover>button,
-.page-wrapper .navigation-responsive-hover .navigation__responsive:not(.navigation__megamenu) li.has-sub__menu:hover>a,
-.page-wrapper .navigation-responsive-hover .navigation__responsive:not(.navigation__megamenu) li.has-sub__menu:hover>button {
-  --r-tx: #ffffff;
-  --r-bg: #010138;
-}
-
-/* Form Button */
-.page-wrapper a.button,
-.page-wrapper input.button,
-.page-wrapper .search-button-close button,
-.block-user-login-block form+.item-list ul li a {
-  --r-bg: #020248;
-  --r-tx: #e8e8e8;
-}
-
-.page-wrapper a.button:hover,
-.page-wrapper input.button:hover,
-.page-wrapper .search-button-close button:hover,
-.block-user-login-block form+.item-list ul li a:hover {
-  --r-tx: #d3d3fe;
-  --r-bg: #1c1c1c;
-}
-
-/* Regions */
-.welcome-text,
-.main-container .main-box {
+.solo-welcome-text,
+.solo-container--main .solo-region-box--main {
   --r-bg: var(--solo-black);
 }
 
-header.header,
-div.page-title.lone {
+header.solo-header,
+div.solo-page-title.solo-container--single {
   --r-bg: linear-gradient(0deg, #000006, #010116);
-  background: var(--r-bg);
 }
 
-.top-container,
-.main-container,
-.bottom-container,
-.footer-container,
-.footer-menu,
-.fixed-search-block,
-.popup-login-block-inner {
-  --r-bg: linear-gradient(45deg, #000006, #0b0b0b);
-  background: var(--r-bg);
-}
-
-.top-container .top-box-inner,
-.bottom-container .bottom-box-inner,
-.footer-container .footer-box-inner {
+.solo-container--top .solo-region-box__inner--top,
+.solo-container--bottom .solo-region-box__inner--bottom,
+.solo-container--footer .solo-region-box__inner--footer {
   --r-bg: linear-gradient(0deg, #000000, #000006);
-  background: var(--r-bg);
 }
 
-.top-container .top-box-inner:where(:not([style*="--r-br:"] *)),
-.bottom-container .bottom-box-inner:where(:not([style*="--r-br:"] *)),
-.footer-container .footer-box-inner:where(:not([style*="--r-br:"] *)) {
+:is(.solo-container--top .solo-region-box__inner--top, .solo-container--bottom .solo-region-box__inner--bottom, .solo-container--footer .solo-region-box__inner--footer):where(:not([style*="--r-br:"] *)) {
   --r-br: #0202a4;
 }
 
-.page-wrapper .selectify:where(:not([style*="--r-br:"] *)),
-.page-wrapper .solo-select:where(:not([style*="--r-br:"] *)),
-.page-wrapper .solo-radio:where(:not([style*="--r-br:"] *)),
-.page-wrapper .solo-check:where(:not([style*="--r-br:"] *)),
-.page-wrapper .solo-input:where(:not([style*="--r-br:"] *)),
-.page-wrapper .solo-textarea:where(:not([style*="--r-br:"] *)),
-.page-wrapper a.button:where(:not([style*="--r-br:"] *)),
-.page-wrapper input.button:where(:not([style*="--r-br:"] *)),
-.page-wrapper .search-button-close button:where(:not([style*="--r-br:"] *)) {
-  --r-br: #03037a;
+.solo-page .selectify:where(:not([style*="--r-br:"] *)),
+.solo-page .solo-select:where(:not([style*="--r-br:"] *)),
+.solo-page .solo-radio:where(:not([style*="--r-br:"] *)),
+.solo-page .solo-check:where(:not([style*="--r-br:"] *)),
+.solo-page .solo-input:where(:not([style*="--r-br:"] *)),
+.solo-page .solo-textarea:where(:not([style*="--r-br:"] *)),
+.solo-page .solo-fixed-search__close button:where(:not([style*="--r-br:"] *)) {
+  --r-br: #5252a8;
 }
 
-.page-wrapper .selectify *:hover,
-.page-wrapper .solo-select:hover,
-.page-wrapper .solo-check:hover,
-.page-wrapper .solo-radio:hover,
-.page-wrapper .solo-input:hover,
-.page-wrapper .solo-textarea:hover,
-.page-wrapper .selectify *:focus,
-.page-wrapper .solo-select:focus,
-.page-wrapper .solo-check:focus,
-.page-wrapper .solo-radio:focus,
-.page-wrapper .solo-input:focus,
-.page-wrapper .solo-textarea:focus {
-  --r-br: #0505cd;
+.solo-page :is(.selectify *:hover, .solo-select:hover, .solo-check:hover, .solo-radio:hover, .solo-input:hover, .solo-textarea:hover, .selectify *:focus, .solo-select:focus, .solo-check:focus, .solo-radio:focus, .solo-input:focus, .solo-textarea:focus) {
+  --r-br: #3535fb;
 }
 
-.sm-icons .snapchat svg,
-.sm-icons .threads svg,
-.sm-icons .whatsapp svg,
-.sm-icons .tiktok svg,
-.sm-icons .reddit svg,
-.sm-icons .facebook svg,
-.sm-icons .twitter svg,
-.sm-icons .bluesky svg,
-.sm-icons .pinterest svg,
-.sm-icons .linkedin svg,
-.sm-icons .instagram svg,
-.sm-icons .youtube svg,
-.sm-icons .drupal svg,
-.sm-icons .mastodon svg,
-.sm-icons .telegram svg,
-.sm-icons .email svg,
-.sm-icons .rss svg {
-  fill: #828282;
-}
-
-/* Copyright */
-.breadcrumb,
-.copyright {
+.breadcrumb {
   --r-bg: linear-gradient(180deg, #000006, #000000);
-  background: var(--r-bg);
 }
 
-#fixed-search-block,
-.primary-sidebar-menu,
-.solo-inner .navigation__responsive,
-.page-wrapper .primary-menu.solo-sticky,
-.fixed-search-block-inner .fixed-search-wrapper,
-.page-wrapper .solo-outer.animate-hover .region-inner.top-box-inner,
-.page-wrapper .solo-outer.animate-hover .region-inner.bottom-box-inner,
-.page-wrapper .solo-outer.animate-hover .region-inner.footer-box-inner {
+.solo-primary-sidebar-menu,
+.solo-inner .solo-menu-tree--responsive,
+.solo-fixed-search__inner .solo-fixed-search__wrapper,
+.solo-page .solo-outer.solo-container--animate-hover .solo-region-box__inner.solo-region-box__inner--top,
+.solo-page .solo-outer.solo-container--animate-hover .solo-region-box__inner.solo-region-box__inner--bottom,
+.solo-page .solo-outer.solo-container--animate-hover .solo-region-box__inner.solo-region-box__inner--footer {
   --s-b: 249, 249, 249;
 }
 
-.sm-icons a > span {
-  --s-b: 215, 215, 215;
+.solo-page :is(.selectify-radio, .selectify-checkbox, .selectify-radio *, .selectify-checkbox *) {
+  --selectify-checkbox-bg: color-mix(in srgb, #3535fb 6%, transparent);
+  --selectify-checkbox-checked-bg: color-mix(in srgb, #3535fb 16%, transparent);
+  --selectify-checkbox-check-circle: #03037a;
+  --selectify-checkbox-checked-circle: #3535fb;
+  --selectify-checkbox-disabled-bg: color-mix(in srgb, currentColor 5%, transparent);
+  --selectify-checkbox-disabled-circle: color-mix(in srgb, currentColor 22%, transparent);
+  --selectify-checkbox-border-color: #03037a;
+  --selectify-checkbox-hover-border-color: #3535fb;
+  --selectify-checkbox-hover-bg: color-mix(in srgb, #3535fb 10%, transparent);
+  --selectify-checkbox-active-border-color: #3535fb;
+  --selectify-checkbox-active-bg: color-mix(in srgb, #3535fb 14%, transparent);
+  --selectify-checkbox-checked-border-color: #3535fb;
 }
 
-.page-wrapper .pager__item a {
-  transition: background .3s;
-}
-
-.page-wrapper .pager__item a:hover {
-  color: var(--r-header-tx);
-  background: var(--r-header-bg);
-}
-/* Dark Theme Styles */
-.page-wrapper .selectify-radio,
-.page-wrapper .selectify-checkbox,
-.page-wrapper .selectify-radio *,
-.page-wrapper .selectify-checkbox * {
-  --selectify-checkbox-bg: linear-gradient(180deg, var(--r-header-tx) 0%, #010138 50%, #030369 100%);
-  --selectify-checkbox-checked-bg: linear-gradient(180deg, #030369 0%, #010138 50%, #e4e4fe 100%);
-  --selectify-checkbox-check-circle: radial-gradient(circle at 35% 35%, #a1a1fd 0%, #e4e4fe 40%, #010138 100%);
-  --selectify-checkbox-checked-circle: radial-gradient(circle at 40% 40%, #e4e4fe 0%, #a1a1fd 40%, #030369 100%);
-  --selectify-checkbox-disabled-bg: linear-gradient(180deg, #030369 0%, #010138 50%, var(--r-br) 100%);
-  --selectify-checkbox-disabled-circle: radial-gradient(circle at 40% 40%, #6a6aff 0%, #a1a1fd 40%, #010138 100%);
-}
-
-.page-wrapper .selectify-select,
-.page-wrapper .selectify-select * {
-  --selectify-select-bg: linear-gradient(180deg, var(--r-bg) 0%, #010116 100%);
-  --selectify-select-hover-bg: linear-gradient(0deg, #010116 0%, #030369 100%);
+.solo-page .selectify-select,
+.solo-page .selectify-select * {
+  --selectify-select-bg: #000000;
+  --selectify-select-hover-bg: #03030f;
   --selectify-select-color: var(--r-tx);
   --selectify-select-border-color: var(--r-br);
-  --selectify-select-focus-border-color: var(--r-br);
-  --selectify-select-disabled-bg: linear-gradient(180deg, #010116 0%, #030369 100%);
-  --selectify-select-arrow-color: #a1a1fd;
-  --selectify-dropdown-shadow: 0px 4px 14px rgba(255, 255, 255, 0.12);
-  --selectify-option-hover-bg: linear-gradient(180deg, #010116 0%, #030369 100%);
-  --selectify-option-active-bg: linear-gradient(180deg, #030369 0%, #a1a1fd 100%);
-}
-
-/* Border animation  */
-@keyframes borderLeftColors {
-  0% {
-    width: 0;
-    height: 0;
-    border-top-color: var(--r-br, var(--r-br-b));
-    border-right-color: transparent;
-    border-bottom-color: transparent;
-    border-left-color: transparent;
-  }
-
-  50% {
-    width: 100%;
-    height: 0;
-    border-top-color: var(--r-br, var(--r-br-b));
-    border-right-color: var(--r-br, var(--r-br-b));
-    border-bottom-color: transparent;
-    border-left-color: transparent;
-  }
-
-  99.9999% {
-    width: 100%;
-    height: 100%;
-    border-top-color: var(--r-br, var(--r-br-b));
-    border-right-color: var(--r-br, var(--r-br-b));
-    border-bottom-color: transparent;
-    border-left-color: transparent;
-  }
-
-  100% {
-    width: 0;
-    height: 0;
-    border-top-color: transparent;
-    border-right-color: transparent;
-    border-bottom-color: transparent;
-    border-left-color: transparent;
-  }
-
-}
-
-@keyframes borderRightColors {
-  0% {
-    width: 0;
-    height: 0;
-    border-top-color: transparent;
-    border-right-color: transparent;
-    border-bottom-color: var(--r-br, var(--r-br-b));
-    border-left-color: transparent;
-  }
-
-  50% {
-    width: 100%;
-    height: 0;
-    border-top-color: transparent;
-    border-right-color: transparent;
-    border-bottom-color: var(--r-br, var(--r-br-b));
-    border-left-color: var(--r-br, var(--r-br-b));
-  }
-
-  99.9999% {
-    width: 100%;
-    height: 100%;
-    border-top-color: transparent;
-    border-right-color: transparent;
-    border-bottom-color: var(--r-br, var(--r-br-b));
-    border-left-color: var(--r-br, var(--r-br-b));
-  }
-
-  100% {
-    width: 0;
-    height: 0;
-    border-top-color: transparent;
-    border-right-color: transparent;
-    border-bottom-color: transparent;
-    border-left-color: transparent;
-  }
-
+  --selectify-select-focus-border-color: #3535fb;
+  --selectify-select-disabled-bg: #0b0b0d;
+  --selectify-select-arrow-color: #3535fb;
+  --selectify-dropdown-shadow: 0 10px 28px -12px color-mix(in srgb, #e4e4fe 22%, transparent);
+  --selectify-option-hover-bg: #040414;
+  --selectify-option-active-bg: #070723;
 }

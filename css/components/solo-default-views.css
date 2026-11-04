@@ -107,7 +107,7 @@ form.views-exposed-form.form--inline .form-actions input {
   margin: 0;
 }
 
-form.views-exposed-form .exposed-form > * {
+form.views-exposed-form .solo-exposed-form > * {
   margin-block-end: var(--solo-px12);
   margin-inline-end: var(--solo-px12);
   margin-block-start: 0;
@@ -115,6 +115,6 @@ form.views-exposed-form .exposed-form > * {
   padding: 0;
 }
 
-form.views-exposed-form .exposed-form > *:last-child {
+form.views-exposed-form .solo-exposed-form > *:last-child {
   margin-inline-end: var(--solo-px0);
 }

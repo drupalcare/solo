@@ -1,0 +1,241 @@
+/**
+ * @file
+ * The color scheme picker of the theme settings form: 120x160 thumbnails in a
+ * responsive grid. The input keeps the keyboard, a screen reader and forced
+ * colors working; it covers the thumbnail, invisible. The label holds the image
+ * and the name, and the name is a tag at the top right on hover and focus.
+ */
+
+.solo-schemes__current {
+  margin-block: 0 0.75rem;
+  color: var(--s-muted);
+}
+
+.solo-schemes__current strong {
+  color: var(--s-ink);
+}
+
+/* The settings form lays radio groups out as a wrapping flex row. Here that
+   would make each category grid a shrink-to-fit flex item, one thumbnail wide,
+   so the picker's radios stay a plain block and each grid takes the full width. */
+form.system-theme-settings .solo-schemes .form-radios {
+  display: block;
+}
+
+form.system-theme-settings .solo-schemes__group {
+  inline-size: 100%;
+}
+
+form.system-theme-settings .solo-schemes__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 7.5rem);
+  gap: 1rem;
+  margin-block: 0.75rem 0;
+}
+
+form.system-theme-settings .solo-schemes__grid .form-item {
+  position: relative;
+  display: block;
+  box-sizing: border-box;
+  inline-size: 7.5rem;
+  block-size: 10rem;
+  margin: 0;
+  padding: 0;
+}
+
+form.system-theme-settings .solo-schemes__grid .form-item input {
+  position: absolute;
+  z-index: 1;
+  inset: 0;
+  inline-size: 100%;
+  block-size: 100%;
+  margin: 0;
+  cursor: pointer;
+  opacity: 0;
+}
+
+form.system-theme-settings .solo-schemes__grid .form-item label {
+  position: relative;
+  display: block;
+  overflow: hidden;
+  box-sizing: border-box;
+  inline-size: 100%;
+  block-size: 100%;
+  margin: 0;
+  padding: 0;
+  border: 1px solid var(--s-line);
+  border-radius: 0.5rem;
+  background: var(--s-surface);
+}
+
+form.system-theme-settings .solo-schemes__grid .form-item:hover label {
+  border-color: var(--s-accent);
+}
+
+form.system-theme-settings .solo-schemes__grid .form-item input:checked ~ label {
+  border: 3px solid var(--s-accent);
+}
+
+form.system-theme-settings .solo-schemes__grid .form-item input:focus-visible ~ label {
+  outline: 3px solid var(--s-accent);
+  outline-offset: 2px;
+}
+
+.solo-schemes__image {
+  display: block;
+  inline-size: 100%;
+  block-size: 100%;
+  object-fit: cover;
+  object-position: top;
+}
+
+/* Always in the accessibility tree: opacity, never display. */
+.solo-schemes__name {
+  position: absolute;
+  inset-block-start: 0.25rem;
+  inset-inline-end: 0.25rem;
+  max-inline-size: calc(100% - 0.5rem);
+  padding: 0.125rem 0.375rem;
+  transition: opacity 0.12s ease;
+  text-align: end;
+  opacity: 0;
+  color: var(--s-surface);
+  border-radius: 0.25rem;
+  background: var(--s-ink);
+  font-size: 0.6875rem;
+  font-weight: 600;
+  line-height: 1.25;
+}
+
+form.system-theme-settings .solo-schemes__grid .form-item:hover .solo-schemes__name,
+form.system-theme-settings .solo-schemes__grid .form-item input:focus-visible ~ label .solo-schemes__name {
+  opacity: 1;
+}
+
+/* A touch screen has no hover, so the name stays on the thumbnail. */
+@media (hover: none) {
+  .solo-schemes__name {
+    opacity: 1;
+  }
+}
+
+/* The selected mark: a shape as well as the ring, not color alone. Google
+   Material "check", trimmed. */
+form.system-theme-settings .solo-schemes__grid .form-item input:checked ~ label::before,
+form.system-theme-settings .solo-schemes__grid .form-item input:checked ~ label::after {
+  position: absolute;
+  inset-block-end: 0.25rem;
+  inset-inline-end: 0.25rem;
+  inline-size: 1.5rem;
+  block-size: 1.5rem;
+  content: "";
+}
+
+form.system-theme-settings .solo-schemes__grid .form-item input:checked ~ label::before {
+  border-radius: 50%;
+  background: var(--s-accent);
+}
+
+form.system-theme-settings .solo-schemes__grid .form-item input:checked ~ label::after {
+  background: var(--s-on-accent);
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='3.41 5.59 17.59 13.41'%3E%3Cpath d='M9 16.17 4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z'/%3E%3C/svg%3E") center / 0.875rem no-repeat;
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='3.41 5.59 17.59 13.41'%3E%3Cpath d='M9 16.17 4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z'/%3E%3C/svg%3E") center / 0.875rem no-repeat;
+}
+
+/* Without script each category is a heading above its grid. */
+.solo-schemes__group + .solo-schemes__group {
+  margin-block-start: 1.5rem;
+}
+
+.solo-schemes__group-title {
+  margin: 0;
+  font-size: 0.9375rem;
+}
+
+/* Top tabs: with script, one per category. */
+.solo-schemes__tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem;
+  margin-block-end: 1rem;
+  padding-block-end: 0.25rem;
+  border-block-end: 1px solid var(--s-line);
+}
+
+.solo-schemes__tab {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  padding: 0.375rem 0.75rem;
+  cursor: pointer;
+  color: var(--s-muted);
+  border: 1px solid transparent;
+  border-radius: 0.375rem;
+  background: none;
+  font: inherit;
+}
+
+.solo-schemes__tab:hover {
+  color: var(--s-ink);
+  background: var(--s-soft);
+}
+
+.solo-schemes__tab[aria-selected="true"] {
+  color: var(--s-ink);
+  border-color: var(--s-accent);
+  background: var(--s-soft);
+  font-weight: 700;
+}
+
+.solo-schemes__tab-mark {
+  inline-size: 0.5rem;
+  block-size: 0.5rem;
+  border-radius: 50%;
+  background: var(--s-accent);
+}
+
+.solo-schemes__tab-mark[hidden] {
+  display: none;
+}
+
+.solo-schemes__group[role="tabpanel"]:focus-visible {
+  outline: 3px solid var(--s-accent);
+  outline-offset: 2px;
+}
+
+@media (forced-colors: active) {
+  .solo-schemes__tab[aria-selected="true"] {
+    border-color: Highlight;
+  }
+
+  .solo-schemes__tab-mark {
+    forced-color-adjust: none;
+    background: Highlight;
+  }
+}
+
+@media (forced-colors: active) {
+  .solo-schemes__name {
+    border: 1px solid CanvasText;
+  }
+
+  form.system-theme-settings .solo-schemes__grid .form-item input:checked ~ label {
+    border-color: Highlight;
+  }
+
+  form.system-theme-settings .solo-schemes__grid .form-item input:checked ~ label::before {
+    forced-color-adjust: none;
+    background: Highlight;
+  }
+
+  form.system-theme-settings .solo-schemes__grid .form-item input:checked ~ label::after {
+    forced-color-adjust: none;
+    background: HighlightText;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .solo-schemes__name {
+    transition: none;
+  }
+}

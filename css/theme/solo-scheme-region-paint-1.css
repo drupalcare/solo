@@ -1,0 +1,5 @@
+/* Paint these regions, gradients included. Not used by: denim-twilight. */
+.solo-container--top,
+.solo-container--main {
+  background: var(--r-bg);
+}

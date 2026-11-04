@@ -23,11 +23,11 @@
   Drupal.behaviors.globalMenu = {
     attach: function (context, settings) {
       // Use once to prevent duplicate processing
-      const menus = once('solo-menu-init', '#primary-menu', context);
+      const menus = once('solo-menu-init', '#solo-primary-menu', context);
 
       menus.forEach(mainNavigation => {
         // Check for required navigation structure
-        if (!mainNavigation.querySelector('.solo-inner .navigation__menubar')) {
+        if (!mainNavigation.querySelector('.solo-inner .solo-menu-tree__menubar')) {
           return;
         }
 
@@ -75,10 +75,10 @@
       });
 
       // Apply background colors to submenus (only process new elements)
-      const submenus = once('solo-submenu-bg', '.solo-inner nav .navigation__menubar ul', context);
+      const submenus = once('solo-submenu-bg', '.solo-inner nav .solo-menu-tree__menubar ul', context);
 
       submenus.forEach(submenu => {
-        const closestParent = submenu.closest('.page-wrapper > div, .page-wrapper > header');
+        const closestParent = submenu.closest('.solo-page > div, .solo-page > header');
         if (closestParent) {
           const bgColor = window.getComputedStyle(closestParent).backgroundColor;
           submenu.style.backgroundColor = bgColor || 'transparent';

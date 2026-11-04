@@ -12,8 +12,10 @@ accordions, and more.
 
 ## Install, and when you need a sub-theme
 
-Install Solo with `composer require drupal/solo`, then click **Install and
-set as default** under **Appearance**. No sub-theme is needed for most
+Install Solo with `composer require drupal/solo`, which also brings the
+[Solo Utilities](https://www.drupal.org/project/solo_utilities) module that
+holds Solo's logic, then click **Install and set as default** under
+**Appearance**. No sub-theme is needed for most
 sites:
 
 - **Everything you set in the theme settings** (colors, layout, menus,
@@ -27,9 +29,8 @@ sites:
 **Create a sub-theme when you need to override Twig templates.** Never
 edit Solo's own files: the next update replaces them.
 
-The quickest way is one Drush command from the
-[Solo Utilities](https://www.drupal.org/project/solo_utilities) module
-(1.0.10 or later, Drush 12 or later). It copies the starter to
+The quickest way is one Drush command from Solo Utilities (Drush 12 or
+later). It copies the starter to
 `themes/custom/my_theme` and renames everything for you:
 
 ```
@@ -40,13 +41,72 @@ Or do it by hand from the starter Solo ships, the `solo_subtheme` folder:
 
 1. Copy it to `themes/custom/my_theme` and rename it as described in
    `solo_subtheme/README.md`. Every `solo_subtheme` must become your
-   theme's machine name, including inside the PHP files.
+   theme's machine name.
 2. Clear the cache (`drush cr`), then install your sub-theme and set it as
    the default theme under **Appearance**. Drupal installs Solo with it
    as its base theme.
 
 Full guide:
 [Solo how-to: install Solo theme](https://www.drupal.org/docs/extending-drupal/themes/contributed-themes/solo/solo-how-to#install-solo-theme).
+
+## Upgrading from Solo 1
+
+**Sub-theme owners: this release renames Solo's CSS classes and element IDs, so your sub-theme's CSS, Twig and JavaScript break until you migrate them.** Run `drush solo:migrate-classes my_theme` first. It is a dry run and changes nothing. Read the list, then run it again with `--apply`. `drush updatedb` also rewrites the inline CSS saved in Solo's settings. The full list of old and new names is in `docs/CLASS-MIGRATION.md`.
+
+Solo 2 keeps templates, CSS, JavaScript and settings data in the theme and moves
+all PHP into the required Solo Utilities module. Setting names change, and the
+update migrates them for Solo and every sub-theme.
+
+**Before you start:** be on Solo 1.0.35 or later and Drupal 11.3 or later, and
+run `drush solo:preflight` to list what your own code must change. If you upload
+code by hand, add the `solo_utilities` folder too, or every database update
+stops at the requirements check. Take a database snapshot.
+
+**The route, in this order:**
+
+```
+drush maintenance:mode 1     # older Drush: drush state:set system.maintenance_mode 1
+composer update drupal/solo drupal/solo_utilities --with-dependencies
+drush updatedb
+drush config:export
+drush maintenance:mode 0
+```
+
+Keep maintenance mode on until `drush updatedb` finishes without an error. Between
+the new code landing and the update, a page that is not already cached can fail
+with a 500 error, because compiled templates and services still expect Solo 1. No
+design can close that gap; the route hides it. If the update names a theme it could
+not migrate, that theme is left unchanged and shows default settings until you fix
+it and run `drush updatedb` again.
+
+**Run `drush config:export`.** Solo now declares the module as a dependency, so an
+old export would uninstall it on the next import, which drops its node width table.
+A stale export holding old setting names is converted on import, but your first
+export after the update shows a whole-file difference once.
+
+**To roll back:** restore the database snapshot together with the old code, then run
+`drush cr`. With no snapshot, run `drush solo:settings-restore` **before** putting
+the old code back, and restore `config/sync` from version control by hand. That path
+loses settings saved after the migration. Solo 1 cannot read the new names, so
+rolling back code alone shows default settings. Never uninstall Solo Utilities as a
+rollback: uninstalling clears the width settings.
+
+**Four things the update cannot change for you.** Each makes no error, it just stops
+working. `drush solo:preflight` lists them by file and line:
+
+1. Code reading a setting directly, such as
+   `\Drupal::config('my_theme.settings')->get('old_name')`, or a Twig config function
+   from a contributed module. It now returns NULL.
+2. A sub-theme's own settings form alter aimed at an old element path. It stops
+   matching.
+3. Sub-theme code that writes `->set('old_name', ...)`. It creates a key nothing
+   reads.
+4. An override in `settings.php`, such as `$config['my_theme.settings']['old_name']`.
+   It stops applying.
+
+Sub-theme code calling Solo 1's PHP helper functions or classes must change as well:
+they are gone. `theme_get_setting('old_name')` keeps working only while the optional
+`solo_utilities_compat` sub-module is on.
 
 ## Features
 

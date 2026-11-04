@@ -1,0 +1,5 @@
+/* Paint these regions, gradients included. Not used by: ethereal-white-harmony, midnight-whispers. */
+.solo-container--bottom .solo-region-box__inner--bottom,
+.solo-container--footer .solo-region-box__inner--footer {
+  background: var(--r-bg);
+}

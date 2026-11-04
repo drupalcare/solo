@@ -27,7 +27,7 @@
 {% macro menu_links(items, attributes, menu_level) %}
   {% import _self as menus %}
   {% if items %}
-    {% set level_class = 'menu-level-' ~ menu_level %}
+    {% set level_class = 'solo-menu-tree--level-' ~ menu_level %}
     {% set aria_level = menu_level + 1 %}
 
     {% if menu_level == 0 %}
@@ -42,7 +42,7 @@
       <li{{ item.attributes.addClass('menu-item', has_children ? 'has-children' : '') }}>
 
         {% if is_clickable %}
-          <a href="{{ item.url.toString() }}" class="menu-link" role="treeitem" aria-level="{{ aria_level }}">
+          <a href="{{ item.url.toString() }}" class="solo-menu__link" role="treeitem" aria-level="{{ aria_level }}">
             {{ item.title }}
           </a>
         {% else %}

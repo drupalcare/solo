@@ -3,15 +3,15 @@
    ============================================ */
 
 /* Modern underline animation */
-.page-wrapper nav ul li > a,
-.page-wrapper nav ul li > button {
+.solo-page nav ul li > a,
+.solo-page nav ul li > button {
   position: relative;
   overflow: hidden;
 }
 
 /* Simple underline effect on hover */
-.page-wrapper nav ul li > a::after,
-.page-wrapper nav ul li > button::after {
+.solo-page nav ul li > a::after,
+.solo-page nav ul li > button::after {
   content: '';
   position: absolute;
   inset-block-end: 0;
@@ -23,31 +23,31 @@
 }
 
 /* Activate underline on hover */
-.page-wrapper nav ul li > a:hover::after,
-.page-wrapper nav ul li > button:hover::after {
+.solo-page nav ul li > a:hover::after,
+.solo-page nav ul li > button:hover::after {
   width: 100%;
 }
 
 /* Disable animation for mega menu nested items (2nd, 3rd, 4th levels) */
-.page-wrapper nav .navigation__megamenu ul li > a,
-.page-wrapper nav .navigation__megamenu ul li > button {
+.solo-page nav .solo-menu-tree--megamenu ul li > a,
+.solo-page nav .solo-menu-tree--megamenu ul li > button {
   overflow: visible;
 }
 
-.page-wrapper nav .navigation__megamenu ul li > a::after,
-.page-wrapper nav .navigation__megamenu ul li > button::after {
+.solo-page nav .solo-menu-tree--megamenu ul li > a::after,
+.solo-page nav .solo-menu-tree--megamenu ul li > button::after {
   display: none;
 }
 
 /* Disable for other excluded areas */
-.page-wrapper .header ul li > a::after,
-.page-wrapper .header ul li > button::after,
-.page-wrapper .solo-ul li > a::after,
-.page-wrapper .solo-ul li > button::after,
-.page-wrapper .field ul li > a::after,
-.page-wrapper .field ul li > button::after,
-.page-wrapper .pager ul li > a::after,
-.page-wrapper .pager ul li > button::after {
+.solo-page .solo-header ul li > a::after,
+.solo-page .solo-header ul li > button::after,
+.solo-page .solo-ul li > a::after,
+.solo-page .solo-ul li > button::after,
+.solo-page .field ul li > a::after,
+.solo-page .field ul li > button::after,
+.solo-page .pager ul li > a::after,
+.solo-page .pager ul li > button::after {
   display: none;
 }
 
@@ -64,7 +64,7 @@ input.button {
    MODERN BUTTON HOVER - SUBTLE LIFT
    ============================================ */
 
-.page-wrapper form input.button.form-submit:hover {
+.solo-page form input.button.form-submit:hover {
   transform: translateY(-1px);
   box-shadow: 0 2px 4px rgba(var(--s-b, var(--s-w)), 0.1);
 }
@@ -72,7 +72,7 @@ input.button {
 /* ============================================
    EXISTING ANIMATIONS - PRESERVED
    ============================================ */
-.solo__fade-in,
+.solo-page--fade-in,
 .solo-animate-opacity {
   animation: opac 0.8s;
   animation-timing-function: cubic-bezier(0.25, 0.8, 0.25, 1);
@@ -258,8 +258,8 @@ input.button {
 }
 
 /* Enable legacy border animation */
-.enable-legacy-animations nav ul li > a::before,
-.enable-legacy-animations nav ul li > button::before {
+.solo-body--legacy-animations nav ul li > a::before,
+.solo-body--legacy-animations nav ul li > button::before {
   content: '';
   position: absolute;
   inset-block-end: 0;
@@ -270,8 +270,8 @@ input.button {
   border-block-end: 5px solid transparent;
 }
 
-.enable-legacy-animations nav ul li > a::after,
-.enable-legacy-animations nav ul li > button::after {
+.solo-body--legacy-animations nav ul li > a::after,
+.solo-body--legacy-animations nav ul li > button::after {
   inset-inline-end: 0;
   width: 0;
   height: 0;
@@ -280,23 +280,23 @@ input.button {
   transition: none;
 }
 
-.enable-legacy-animations nav ul li > a:hover::after,
-.enable-legacy-animations nav ul li > a:hover::before,
-.enable-legacy-animations nav ul li > button:hover::after,
-.enable-legacy-animations nav ul li > button:hover::before {
+.solo-body--legacy-animations nav ul li > a:hover::after,
+.solo-body--legacy-animations nav ul li > a:hover::before,
+.solo-body--legacy-animations nav ul li > button:hover::after,
+.solo-body--legacy-animations nav ul li > button:hover::before {
   animation: btnBorderAnimation 0.5s ease-out forwards;
   width: auto;
 }
 
 /* Enable legacy wiggle animation */
-.enable-legacy-animations form input.button.form-submit:hover {
+.solo-body--legacy-animations form input.button.form-submit:hover {
   animation: wiggle 0.6s ease-out both;
   transform: none;
   box-shadow: none;
 }
 
 /* Disable legacy animations in mega menu nested items */
-.enable-legacy-animations nav .navigation__megamenu ul li > a::before,
-.enable-legacy-animations nav .navigation__megamenu ul li > button::before {
+.solo-body--legacy-animations nav .solo-menu-tree--megamenu ul li > a::before,
+.solo-body--legacy-animations nav .solo-menu-tree--megamenu ul li > button::before {
   display: none;
 }

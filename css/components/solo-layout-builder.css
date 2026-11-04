@@ -256,7 +256,7 @@
 }
 
 /* Button Colors */
-#page-wrapper .layout-builder__link--add {
+#solo-page-wrapper .layout-builder__link--add {
   --r-tx: var(--solo-white);
   background: rgb(55, 170, 220);
   background: -moz-linear-gradient(top, rgb(55, 170, 220) 0%, rgb(46, 147, 190) 100%);
@@ -264,10 +264,10 @@
   background: linear-gradient(to bottom, rgb(55, 170, 220) 0%, rgb(46, 147, 190) 100%);
 }
 
-#page-wrapper .layout-builder__link--remove:hover,
-#page-wrapper .layout-builder__link--remove,
-#page-wrapper .layout-builder-revert-overrides .form-actions input,
-#page-wrapper .node-layout-builder-form  .form-actions input:nth-child(2) {
+#solo-page-wrapper .layout-builder__link--remove:hover,
+#solo-page-wrapper .layout-builder__link--remove,
+#solo-page-wrapper .layout-builder-revert-overrides .form-actions input,
+#solo-page-wrapper .node-layout-builder-form  .form-actions input:nth-child(2) {
   --r-tx: var(--solo-white);
   background: rgb(213, 71, 43);
   background: -moz-linear-gradient(top, rgb(213, 71, 43) 0%, rgb(158, 46, 37) 100%);
@@ -275,9 +275,9 @@
   background: linear-gradient(to bottom, rgb(213, 71, 43) 0%, rgb(158, 46, 37) 100%);
 }
 
-#page-wrapper .layout-builder__link--configure,
-#page-wrapper .layout-builder-revert-overrides .form-actions a.button,
-#page-wrapper .node-layout-builder-form  .form-actions input:nth-child(1) {
+#solo-page-wrapper .layout-builder__link--configure,
+#solo-page-wrapper .layout-builder-revert-overrides .form-actions a.button,
+#solo-page-wrapper .node-layout-builder-form  .form-actions input:nth-child(1) {
   --r-tx: var(--solo-white);
   background: rgb(75, 187, 34);
   background: -moz-linear-gradient(top, rgb(75, 187, 34) 0%, rgb(52, 130, 24) 100%);
@@ -285,7 +285,7 @@
   background: linear-gradient(to bottom, rgb(75, 187, 34) 0%, rgb(52, 130, 24) 100%);
 }
 
-#page-wrapper .node-layout-builder-form  .form-actions input:nth-child(3) {
+#solo-page-wrapper .node-layout-builder-form  .form-actions input:nth-child(3) {
   --r-tx: var(--solo-white);
   background: rgb(107, 129, 205);
   background: -moz-linear-gradient(top, rgb(107, 129, 205) 0%, rgb(64, 84, 160) 100%);
@@ -293,12 +293,12 @@
   background: linear-gradient(to bottom, rgb(107, 129, 205) 0%, rgb(64, 84, 160) 100%);
 }
 
-#page-wrapper .layout-builder__link--add:hover,
-#page-wrapper .layout-builder__link--remove:hover,
-#page-wrapper .layout-builder__link--configure:hover,
-#page-wrapper .node-layout-builder-form .form-actions input:hover,
-#page-wrapper .layout-builder-revert-overrides .form-actions a.button:hover,
-#page-wrapper .layout-builder-revert-overrides .form-actions input:hover {
+#solo-page-wrapper .layout-builder__link--add:hover,
+#solo-page-wrapper .layout-builder__link--remove:hover,
+#solo-page-wrapper .layout-builder__link--configure:hover,
+#solo-page-wrapper .node-layout-builder-form .form-actions input:hover,
+#solo-page-wrapper .layout-builder-revert-overrides .form-actions a.button:hover,
+#solo-page-wrapper .layout-builder-revert-overrides .form-actions input:hover {
   border-radius: 0;
   color: var(--solo-white) !important;
   background: #45484d;

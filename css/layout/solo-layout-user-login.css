@@ -1,12 +1,12 @@
-.path-user-register #main-container-inner,
-.path-user-password #main-container-inner,
-.path-user-login #main-container-inner {
+.path-user-register #solo-main-container-inner,
+.path-user-password #solo-main-container-inner,
+.path-user-login #solo-main-container-inner {
   grid-template-columns: auto;
 }
 
-.path-user-register .main-container-inner .sidebar-box-main,
-.path-user-password .main-container-inner .sidebar-box-main,
-.path-user-login .main-container-inner .sidebar-box-main {
+.path-user-register .solo-container__inner--main .solo-region-box--content,
+.path-user-password .solo-container__inner--main .solo-region-box--content,
+.path-user-login .solo-container__inner--main .solo-region-box--content {
   width: 100% !important;
   max-width: 1100px;
   margin-block: var(--solo-px16) !important;
@@ -15,29 +15,29 @@
   display: grid;
 }
 
-.path-user-register .main-container-inner .sidebar-box-main > *,
-.path-user-password .main-container-inner .sidebar-box-main > *,
-.path-user-login .main-container-inner .sidebar-box-main > * {
+.path-user-register .solo-container__inner--main .solo-region-box--content > *,
+.path-user-password .solo-container__inner--main .solo-region-box--content > *,
+.path-user-login .solo-container__inner--main .solo-region-box--content > * {
   min-width: 0;
 }
 
-.path-user-register .main-container-inner .sidebar-box-main>div,
-.path-user-password .main-container-inner .sidebar-box-main>div,
-.path-user-login .main-container-inner .sidebar-box-main>div {
+.path-user-register .solo-container__inner--main .solo-region-box--content>div,
+.path-user-password .solo-container__inner--main .solo-region-box--content>div,
+.path-user-login .solo-container__inner--main .solo-region-box--content>div {
   box-shadow: 0 2.8px 2.2px rgba(var(--s-b), .034), 0 6.7px 5.3px rgba(var(--s-b), .048), 0 12.5px 10px rgba(var(--s-b), .06), 0 22.3px 17.9px rgba(var(--s-b), .072), 0 41.8px 33.4px rgba(var(--s-b), .086), 0 100px 80px rgba(var(--s-b), .12);
 }
 
-.path-user-register .main-container-inner nav.tabs > ul.tabs,
-.path-user-password .main-container-inner nav.tabs > ul.tabs,
-.path-user-login .main-container-inner nav.tabs > ul.tabs {
+.path-user-register .solo-container__inner--main nav.tabs > ul.tabs,
+.path-user-password .solo-container__inner--main nav.tabs > ul.tabs,
+.path-user-login .solo-container__inner--main nav.tabs > ul.tabs {
   display: flex;
   flex-direction: row;
   align-items: stretch;
   width: 100%;
 }
 
-.path-user-register .main-container-inner nav.tabs > ul.tabs > li,
-.path-user-password .main-container-inner nav.tabs > ul.tabs > li,
-.path-user-login .main-container-inner nav.tabs > ul.tabs > li {
+.path-user-register .solo-container__inner--main nav.tabs > ul.tabs > li,
+.path-user-password .solo-container__inner--main nav.tabs > ul.tabs > li,
+.path-user-login .solo-container__inner--main nav.tabs > ul.tabs > li {
   flex: 1;
 }

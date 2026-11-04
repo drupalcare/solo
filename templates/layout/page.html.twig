@@ -64,7 +64,7 @@
 {% endset %}
 
 <!-- Start: Page Wrapper -->
-{% set page_wrapper_classes = 'page-wrapper' ~
+{% set page_wrapper_classes = 'solo-page' ~
   (site_width_class ? ' ' ~ site_width_class) ~
   (site_global_breakpoints ? ' ' ~ site_global_breakpoints) ~
   (site_menu_breakpoints ? ' ' ~ site_menu_breakpoints) ~
@@ -74,14 +74,14 @@
   (title_size_l ? ' ' ~ title_size_l) ~
   (title_size_s ? ' ' ~ title_size_s) ~
   (classes_page_wrapper ? ' ' ~ classes_page_wrapper) ~
-  (opacity_page_wrapper ? ' solo__fade-in' : '') ~
-  (site_breadcrumb_scroll ? ' solo__bc-scroll' : '') ~
+  (opacity_page_wrapper ? ' solo-page--fade-in' : '') ~
+  (site_breadcrumb_scroll ? ' solo-page--breadcrumb-scroll' : '') ~
   (site_regions_collapse_order ? ' solo__collapse-order' : '') ~
-  (site_flip_header_menu ? ' menu-flipped' : '') ~
-  (site_inline_items_on ? ' solo__inline-items' : '')
+  (site_flip_header_menu ? ' solo-menu--flipped' : '') ~
+  (site_inline_items_on ? ' solo-page--inline-items' : '')
 %}
 
-<div id="page-wrapper" class="{{ page_wrapper_classes }}" {{ attributes_page_wrapper }}>
+<div id="solo-page-wrapper" class="{{ page_wrapper_classes }}" {{ attributes_page_wrapper }}>
 
   {% if site_regions_highlighted_disable == 0 %}
   {% include '@solo/partials/_highlighted.html.twig' %}

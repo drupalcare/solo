@@ -45,10 +45,10 @@
                     item.is_expanded ? 'expanded' : null,
                     item.is_collapsed ? 'collapsed' : null,
                     item.in_active_trail ? 'is-active' : null,
-                    is_linkable ? 'link-only' : null,
-                    link_type == 'nolink' ? 'no-link' : null,
-                    link_type == 'button' ? 'keyboard-button' : null,
-                    is_external ? 'external-link' : null,
+                    is_linkable ? 'solo-menu-tree__item--link-only' : null,
+                    link_type == 'nolink' ? 'solo-menu-tree__item--no-link' : null,
+                    link_type == 'button' ? 'solo-menu-tree__button--keyboard' : null,
+                    is_external ? 'solo-menu-tree__link--external' : null,
                 ] %}
 
                 {% set is_current_page = item.in_active_trail and item.url and item.url.toString() == path('<current>') %}

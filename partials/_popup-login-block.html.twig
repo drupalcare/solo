@@ -1,18 +1,18 @@
 {% if page.popup_login_block and header_popup_login %}
 {{ attach_library('solo/solo-popup-login-block') }}
   <!-- Start: Popup Login Block -->
-  <div id="popup-login-block"
-       class="solo-outer lone popup-login-block solo-animate-opacity"
+  <div id="solo-popup-login-block"
+       class="solo-outer solo-container--single solo-popup-login solo-animate-opacity"
        role="{{ attributes_popup_login_block.role|default('dialog') }}"
        aria-hidden="true"
        aria-label="{{ attributes_popup_login_block['aria-label']|default('Login Block'|t) }}"
        {{ attributes_popup_login_block|without('role', 'aria-label') }}>
-    <div id="popup-login-block-inner" class="solo-inner solo-col popup-login-block-inner{{ classes_popup_login_block ? ' ' ~ classes_popup_login_block }}">
-      <div id="login-button-close" class="hamburger-icon hamburger-icon-close login-button-close">
-        <button class="solo-button-menu login-block-button-close-inner"
-                data-drupal-selector="login-block-button-close-inner"
+    <div id="solo-popup-login-block-inner" class="solo-inner solo-col solo-popup-login__inner{{ classes_popup_login_block ? ' ' ~ classes_popup_login_block }}">
+      <div id="solo-login-button-close" class="solo-hamburger solo-hamburger--close solo-popup-login__close">
+        <button class="solo-button-menu solo-popup-login__close-inner"
+                data-drupal-selector="solo-popup-login__close-inner"
                 aria-label="{{ 'Close Login Popup Block'|t }}"
-                aria-controls="popup-login-block"
+                aria-controls="solo-popup-login-block"
                 aria-expanded="false">
           <span aria-hidden="true">{{ svg_bars|raw }}</span>
           <span class="visually-hidden">{{ 'Close Login Popup Block'|t }}</span>

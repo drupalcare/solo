@@ -34,10 +34,10 @@
    * @type {Object<string, Function>}
    */
   const SECTION_LABELS = {
-    'header-content': () => Drupal.t('Header'),
-    'main-navigation-content': () => Drupal.t('Main navigation'),
+    'solo-header-content': () => Drupal.t('Header'),
+    'solo-main-navigation-content': () => Drupal.t('Main navigation'),
     'main-content': () => Drupal.t('Content'),
-    'footer-content': () => Drupal.t('Footer')
+    'solo-footer-content': () => Drupal.t('Footer')
   };
 
   /**
@@ -94,47 +94,47 @@
    *
    * Assigns responsive classes to regions based on their current width.
    * Adds two types of classes:
-   * 1. Exact breakpoint classes (region-xs, region-s, etc.) for precise targeting
-   * 2. Cumulative max-width classes (region-max-768, etc.) for range-based styling
+   * 1. Exact breakpoint classes (solo-is-region-xs, solo-is-region-s, etc.) for precise targeting
+   * 2. Cumulative max-width classes (solo-is-region-max-768, etc.) for range-based styling
    *
    * The cumulative classes mirror CSS max-width media queries, allowing
    * mobile-first responsive patterns.
    */
   const checkRegionsWidth = () => {
-    const regions = document.querySelectorAll('.region-inner, .copyright-inner, .footer-menu-inner');
+    const regions = document.querySelectorAll('.solo-region-box__inner, .solo-copyright__inner, .solo-footer-nav__inner');
 
     regions.forEach(region => {
       const regionWidth = region.getBoundingClientRect().width;
 
       // Build arrays of classes to remove (prevents manual maintenance)
-      const exactClasses = ['region-xxs', 'region-xs', 'region-s', 'region-m', 'region-l', 'region-xl', 'region-xxl'];
-      const maxClasses = Object.values(BREAKPOINTS).map(bp => `region-max-${bp}`);
+      const exactClasses = ['solo-is-region-xxs', 'solo-is-region-xs', 'solo-is-region-s', 'solo-is-region-m', 'solo-is-region-l', 'solo-is-region-xl', 'solo-is-region-xxl'];
+      const maxClasses = Object.values(BREAKPOINTS).map(bp => `solo-is-region-max-${bp}`);
 
       // Remove all previous responsive classes
       region.classList.remove(...exactClasses, ...maxClasses);
 
       // Determine exact breakpoint class
-      // Note: Using 'region-xxs' to match removal array (original had 'region-xss' which appears to be a typo)
-      let exactClass = 'region-xxl'; // Default for widest regions
+      // Note: Using 'solo-is-region-xxs' to match removal array (original had 'region-xss' which appears to be a typo)
+      let exactClass = 'solo-is-region-xxl'; // Default for widest regions
       if (regionWidth <= BREAKPOINTS.xxs) {
-        exactClass = 'region-xxs';
+        exactClass = 'solo-is-region-xxs';
       } else if (regionWidth <= BREAKPOINTS.xs) {
-        exactClass = 'region-xs';
+        exactClass = 'solo-is-region-xs';
       } else if (regionWidth <= BREAKPOINTS.s) {
-        exactClass = 'region-s';
+        exactClass = 'solo-is-region-s';
       } else if (regionWidth <= BREAKPOINTS.m) {
-        exactClass = 'region-m';
+        exactClass = 'solo-is-region-m';
       } else if (regionWidth <= BREAKPOINTS.l) {
-        exactClass = 'region-l';
+        exactClass = 'solo-is-region-l';
       } else if (regionWidth <= BREAKPOINTS.xl) {
-        exactClass = 'region-xl';
+        exactClass = 'solo-is-region-xl';
       }
       region.classList.add(exactClass);
 
       // Add cumulative max-width classes
       Object.entries(BREAKPOINTS).forEach(([key, value]) => {
         if (regionWidth <= value) {
-          region.classList.add(`region-max-${value}`);
+          region.classList.add(`solo-is-region-max-${value}`);
         }
       });
     });
@@ -151,14 +151,14 @@
     const bodyTag = document.body;
 
     // Remove all previous size classes to prevent class duplication
-    bodyTag.classList.remove('small-screen', 'medium-screen', 'large-screen');
+    bodyTag.classList.remove('solo-is-small-screen', 'solo-is-medium-screen', 'solo-is-large-screen');
 
     if (currentWidth >= BREAKPOINTS.l) {
-      bodyTag.classList.add('large-screen');
+      bodyTag.classList.add('solo-is-large-screen');
     } else if (currentWidth >= BREAKPOINTS.s && currentWidth < BREAKPOINTS.l) {
-      bodyTag.classList.add('medium-screen');
+      bodyTag.classList.add('solo-is-medium-screen');
     } else if (currentWidth < BREAKPOINTS.s) {
-      bodyTag.classList.add('small-screen');
+      bodyTag.classList.add('solo-is-small-screen');
     }
 
     // Update region classes whenever viewport changes
@@ -274,7 +274,7 @@
 
       // Style footer menu forms to match footer menu colors.
       // Uses once() to prevent duplicate processing.
-      once('solo-footer-menu-form', '#footer-menu', context).forEach(footerMenu => {
+      once('solo-footer-menu-form', '#solo-footer-menu', context).forEach(footerMenu => {
         const footerFormBg = window.getComputedStyle(footerMenu).backgroundColor;
         const footerFormTxt = window.getComputedStyle(footerMenu).color;
         const footerMenuForm = footerMenu.querySelector('form');
@@ -312,7 +312,7 @@
         }
 
         if (!shouldExclude) {
-          el.parentElement.classList.add('img--is-clickable');
+          el.parentElement.classList.add('solo-image--clickable');
         }
       });
 
@@ -324,11 +324,11 @@
         }
 
         img.addEventListener('error', function() {
-          if (!this.classList.contains('broken-image') && this.complete) {
-            this.classList.add('broken-image');
+          if (!this.classList.contains('solo-is-broken') && this.complete) {
+            this.classList.add('solo-is-broken');
 
             const placeholder = document.createElement('div');
-            placeholder.className = 'img-placeholder';
+            placeholder.className = 'solo-image--placeholder';
 
             // ONLY set dimensions if image actually has them
             if (this.offsetWidth > 0) {
@@ -340,7 +340,7 @@
 
             // Copy CSS classes to inherit responsive behavior
             if (this.className) {
-              placeholder.className = 'img-placeholder ' + this.className;
+              placeholder.className = 'solo-image--placeholder ' + this.className;
             }
 
             placeholder.textContent = Drupal.t('Image not available');
@@ -360,10 +360,10 @@
       // Setup skip links for accessibility.
       // Uses once() to prevent duplicate event listeners on AJAX updates.
       once('solo-skip-links', 'body', context).forEach(() => {
-        handleSkipLinkClick('.skip-link[href="#header-content"]', '#header-content');
-        handleSkipLinkClick('.skip-link[href="#main-navigation-content"]', '#main-navigation-content');
+        handleSkipLinkClick('.skip-link[href="#solo-header-content"]', '#solo-header-content');
+        handleSkipLinkClick('.skip-link[href="#solo-main-navigation-content"]', '#solo-main-navigation-content');
         handleSkipLinkClick('.skip-link[href="#main-content"]', '#main-content');
-        handleSkipLinkClick('.skip-link[href="#footer-content"]', '#footer-content');
+        handleSkipLinkClick('.skip-link[href="#solo-footer-content"]', '#solo-footer-content');
       });
 
       // Initialize media size detection.

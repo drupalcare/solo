@@ -23,11 +23,11 @@
       console.log('Classes:', Array.from(wrapper.classList));
       console.log('Template Info:', wrapper._soloKeyboardInstance?.templateInfo);
 
-      const menubar = wrapper.querySelector('.navigation__menubar');
+      const menubar = wrapper.querySelector('.solo-menu-tree__menubar');
       console.log('Menubar:', menubar);
-      console.log('Is Open:', menubar?.classList.contains('toggled'));
+      console.log('Is Open:', menubar?.classList.contains('solo-is-open'));
 
-      const buttons = wrapper.querySelectorAll('.dropdown-toggler');
+      const buttons = wrapper.querySelectorAll('.solo-menu-tree__toggler');
       console.log('Dropdown buttons:', buttons.length);
 
       buttons.forEach((button, i) => {
@@ -36,7 +36,7 @@
         console.log('Button:', button);
         console.log('Aria-expanded:', button.getAttribute('aria-expanded'));
         console.log('Submenu:', submenu);
-        console.log('Submenu toggled:', submenu?.classList.contains('toggled'));
+        console.log('Submenu toggled:', submenu?.classList.contains('solo-is-open'));
         console.groupEnd();
       });
       console.groupEnd();

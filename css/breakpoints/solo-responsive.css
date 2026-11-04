@@ -1,26 +1,26 @@
-.region-inner.region-max-576 .button,
-.region-inner.region-max-576 .solo-button,
-.region-inner.region-max-576 nav li *:not(.solo__bc-scroll :is(ul, ol).breadcrumb-menu *) {
+.solo-region-box__inner.solo-is-region-max-576 .button,
+.solo-region-box__inner.solo-is-region-max-576 .solo-button,
+.solo-region-box__inner.solo-is-region-max-576 nav li *:not(.solo-page--breadcrumb-scroll :is(ul, ol).solo-breadcrumb__menu *) {
   white-space: normal;
 }
 
-.region-inner.region-max-768 .node--view-mode-teaser .field--name-field-image {
+.solo-region-box__inner.solo-is-region-max-768 .node--view-mode-teaser .field--name-field-image {
   min-width: 100%;
 }
 
-.region-inner.region-max-768 .view .node--view-mode-teaser .node__title,
-.region-inner.region-max-768 .view .node--view-mode-teaser .node__content .field--name-field-image {
+.solo-region-box__inner.solo-is-region-max-768 .view .node--view-mode-teaser .node__title,
+.solo-region-box__inner.solo-is-region-max-768 .view .node--view-mode-teaser .node__content .field--name-field-image {
   padding-inline-end: 0 !important;
   margin-inline-end: 0 !important;
 }
 
-#page-wrapper .region-inner.region-max-576 .views-exposed-form .exposed-form > div {
+#solo-page-wrapper .solo-region-box__inner.solo-is-region-max-576 .views-exposed-form .solo-exposed-form > div {
   margin: var(--solo-px8) auto;
   width: 100%;
 }
 
-#page-wrapper .region-inner.region-max-576 .views-exposed-form .exposed-form,
-#page-wrapper .region-inner.region-max-576 .views-exposed-form .exposed-form .form-actions {
+#solo-page-wrapper .solo-region-box__inner.solo-is-region-max-576 .views-exposed-form .solo-exposed-form,
+#solo-page-wrapper .solo-region-box__inner.solo-is-region-max-576 .views-exposed-form .solo-exposed-form .form-actions {
   flex-wrap: nowrap;
   flex-direction: column;
   justify-content: start;
@@ -28,33 +28,33 @@
   margin: 0;
 }
 
-#page-wrapper .region-inner.region-max-576 .selectify,
-#page-wrapper .region-inner.region-max-576 .selectify > * {
+#solo-page-wrapper .solo-region-box__inner.solo-is-region-max-576 .selectify,
+#solo-page-wrapper .solo-region-box__inner.solo-is-region-max-576 .selectify > * {
   width: 100%;
   max-width: 100%;
 }
 
-.region-inner.region-max-576 .solo-date-range .fieldset-wrapper {
+.solo-region-box__inner.solo-is-region-max-576 .solo-date-range .fieldset-wrapper {
   flex-direction: column;
 }
 
-.region-inner.region-max-576 fieldset:has([name*="[min]"]):has([name*="[max]"]) .form-item {
+.solo-region-box__inner.solo-is-region-max-576 fieldset:has([name*="[min]"]):has([name*="[max]"]) .form-item {
   max-width: 100%;
 }
 
-.region-inner.region-max-576 .solo-date-range .form-type-date {
+.solo-region-box__inner.solo-is-region-max-576 .solo-date-range .form-type-date {
   width: 100%;
 }
 
 @media (min-width:36rem) {
-  #page-wrapper .views-exposed-form .exposed-form>* {
+  #solo-page-wrapper .views-exposed-form .solo-exposed-form>* {
     width: auto;
   }
 
 }
 
 @media (min-width:62rem) {
-  #primary-sidebar-menu {
+  #solo-primary-sidebar-menu {
     min-width: 25rem;
     max-width: 35.99875rem;
   }
@@ -111,7 +111,7 @@
     font-size: var(--solo-px18);
   }
 
-  #primary-sidebar-menu {
+  #solo-primary-sidebar-menu {
     min-width: 18rem;
     max-width: 32rem;
   }
@@ -135,7 +135,7 @@
     font-size: var(--solo-px16);
   }
 
-  #primary-sidebar-menu {
+  #solo-primary-sidebar-menu {
     min-width: 18rem;
     max-width: 25rem;
   }
@@ -150,7 +150,7 @@
     height: 32px;
   }
 
-  .comment__permalink {
+  .solo-comment__permalink {
     opacity: 1;
   }
 
@@ -175,7 +175,7 @@
     line-height: var(--solo-px28);
   }
 
-  #primary-sidebar-menu {
+  #solo-primary-sidebar-menu {
     min-width: 18rem;
     max-width: 22rem;
   }
@@ -208,12 +208,12 @@
     padding-inline-start: 0;
   }
 
-  #page-wrapper nav.tabs ul {
+  #solo-page-wrapper nav.tabs ul {
     flex-direction: column;
     gap: var(--solo-px12);
   }
 
-  #page-wrapper nav.tabs ul li a {
+  #solo-page-wrapper nav.tabs ul li a {
     border-radius: 0;
     margin: 0;
     border: 1px solid var(--r-br);
@@ -222,7 +222,7 @@
 }
 
 @media (max-width:20rem) {
-  #primary-sidebar-menu {
+  #solo-primary-sidebar-menu {
     min-width: 12rem;
     max-width: 16rem;
   }

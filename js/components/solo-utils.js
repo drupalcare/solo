@@ -90,7 +90,7 @@
         mutation.removedNodes.forEach((node) => {
           if (node.nodeType === 1 && node.querySelectorAll) {
             // Clean up event listeners on removed elements
-            const buttons = node.querySelectorAll('.dropdown-toggler');
+            const buttons = node.querySelectorAll('.solo-menu-tree__toggler');
             buttons.forEach(btn => {
               const handler = handlerMap.get(btn);
               if (handler) {
@@ -163,7 +163,7 @@
   };
 
   const SELECTORS = {
-    PAGE_WRAPPER: '.page-wrapper',
+    PAGE_WRAPPER: '.solo-page',
     SOLO_MENUS: '.solo-inner nav ul:not(.field ul)',
     SOLO_MENUS_ALL: '.solo-inner nav ul',
     FILE_UPLOAD_WRAPPER: '.solo-file-upload-wrapper',
@@ -274,7 +274,7 @@
     clearAnimationTimeout(target);
 
     if (prefersReducedMotion()) {
-      target.classList.remove('toggled');
+      target.classList.remove('solo-is-open');
       if (Drupal.solo.menuState) {
         Drupal.solo.menuState.setHidden(target, true, componentName);
       } else {
@@ -301,7 +301,7 @@
       target.style.transform = 'translateZ(0)';
       void target.offsetHeight;
 
-      target.classList.remove('toggled');
+      target.classList.remove('solo-is-open');
       if (Drupal.solo.menuState) {
         Drupal.solo.menuState.setHidden(target, true, componentName);
       } else {
@@ -359,7 +359,7 @@
 
     if (prefersReducedMotion()) {
       target.style.display = menuDisplay;
-      target.classList.add('toggled');
+      target.classList.add('solo-is-open');
       if (Drupal.solo.menuState) {
         Drupal.solo.menuState.setAriaAttribute(target, 'aria-hidden', 'false', componentName);
       } else {
@@ -407,7 +407,7 @@
       const applySlideDownEnd = () => {
         if (!target.parentNode) return;
         target.style.height = `${height}px`;
-        target.classList.add('toggled');
+        target.classList.add('solo-is-open');
         if (Drupal.solo.menuState) {
           Drupal.solo.menuState.setAriaAttribute(target, 'aria-hidden', 'false', componentName);
         } else {
@@ -457,7 +457,7 @@
       return false;
     }
 
-    if (!target.classList.contains('toggled')) {
+    if (!target.classList.contains('solo-is-open')) {
       return slideDown(target, duration, 'flex', componentName);
     } else {
       return slideUp(target, duration, componentName);
@@ -512,12 +512,12 @@
     }
 
     try {
-      element.classList.add(`ul-${depth}`);
+      element.classList.add(`solo-list-depth-${depth}`);
 
       const children = element.children;
       for (let i = 0; i < children.length; i++) {
         if (children[i] instanceof HTMLElement) {
-          children[i].classList.add(`li-${depth}`);
+          children[i].classList.add(`solo-item-depth-${depth}`);
         }
       }
     } catch (error) {
@@ -619,12 +619,12 @@
 
           processedMenus.forEach((element) => {
             Array.from(element.classList).forEach((cn) => {
-              if (/^ul-\d+$/.test(cn)) element.classList.remove(cn);
+              if (/^solo-list-depth-\d+$/.test(cn)) element.classList.remove(cn);
             });
             Array.from(element.children).forEach((child) => {
               if (child instanceof HTMLElement) {
                 Array.from(child.classList).forEach((cn) => {
-                  if (/^li-\d+$/.test(cn)) child.classList.remove(cn);
+                  if (/^solo-item-depth-\d+$/.test(cn)) child.classList.remove(cn);
                 });
               }
             });

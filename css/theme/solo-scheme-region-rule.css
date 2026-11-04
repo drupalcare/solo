@@ -1,0 +1,6 @@
+/* A rule under each region, for the schemes that draw one. */
+.solo-page .solo-outer:not(.solo-fixed-search, .solo-popup-login, .solo-header, .solo-primary-sidebar-menu, .solo-primary-menu, .solo-system-messages, .solo-copyright) {
+  border-block-end-style: solid;
+  border-block-end-width: var(--solo-px2);
+  border-color: var(--sc-region-rule-br);
+}

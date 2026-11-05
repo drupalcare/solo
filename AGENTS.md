@@ -8,7 +8,7 @@
 
 1. **Solo 2 keeps templates, CSS, JavaScript and settings data in the theme and no logic.** The PHP in this repository is `solo.post_update.php` and the five classes in `src/Hook/`. Those classes are tombstones: a compiled container from Solo 1 still names them, so they exist, do nothing, take no constructor argument and carry no hook attribute. Do not add logic to them.
 2. **Solo requires Solo Utilities** (`solo.info.yml` `dependencies`, `composer.json` `^2.0`). A theme feature that needs PHP is a Solo Utilities change plus a theme template, library or setting here.
-3. **Read the template or library you are about to edit.** `solo.libraries.yml` is large (about 70 KB) and its library names are used by sub-themes.
+3. **Read the template or library you are about to edit.** Only `solo-global` and `solo-menu` are written in `solo.libraries.yml`; every other `solo/*` library is built by solo_utilities (`src/Asset/SoloLibraryDefinitions.php`) from `fonts/solo-fonts.json`, `schemes/*.yml`, `scripts/breakpoints/breakpoints.json` and `libraries/solo-components.json` (see `libraries/README.md`). Library names are used by sub-themes: never rename one.
 
 ## Where facts live (one owner each)
 
@@ -18,7 +18,7 @@
 | Default settings and settings schema | `config/install/solo.settings.yml`, `config/schema/solo.schema.yml` |
 | Old and new CSS class and id names | `docs/CLASS-MIGRATION.md`, generated from `solo_utilities/config/map/solo-class-map.yml` in Solo Utilities. Do not edit it by hand. |
 | Breakpoints | `solo.breakpoints.yml` |
-| Libraries | `solo.libraries.yml` |
+| Libraries | `solo.libraries.yml` (2 static) + `libraries/README.md` (the generated set; `python3 -I scripts/solo_libraries.py --dump`) |
 | Templates | `templates/` (admin, block, content, content-edit, dataset, field, form, layout, misc, navigation, user, views) |
 | Starter sub-theme | `solo_subtheme/`, copied and renamed by `drush solo:subtheme` from Solo Utilities |
 | Theme settings form, generated CSS, preprocess, suggestions | Solo Utilities |

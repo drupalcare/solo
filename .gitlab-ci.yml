@@ -42,6 +42,8 @@ variables:
 # plus Composer's vendor tree from the `composer` job's artifact.
 #
 # What runs, and why each one can go red:
+#   solo_libraries              the generated library data (fonts, schemes, breakpoints, libraries/) reads
+#                               without a problem; check-schemes and check-cascade read the same set
 #   build-breakpoints --check   the 15 generated breakpoint files match their sources
 #   contrast-scan --strict      every predefined scheme keeps its text/border contrast
 #   check-css-budget            declarations above 0,2,0, with an id, with !important:
@@ -61,6 +63,7 @@ css-checks:
   image: python:3.12-bookworm
   needs: [composer]
   script:
+    - python3 -I scripts/solo_libraries.py
     - python3 -I scripts/build-breakpoints.py --check
     - python3 -I scripts/contrast-scan.py --strict
     - python3 -I scripts/check-css-budget.py

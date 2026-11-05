@@ -6,6 +6,12 @@ mode: dark
 categories:
   - urban_and_modern_hues
 css: css/predefined/solo-nightfall-paris.css
+dependencies:
+  - solo/solo-scheme-shared
+  - solo/solo-scheme-region-rule
+  - solo/solo-scheme-region-paint-1
+  - solo/solo-scheme-region-paint-2
+  - solo/solo-scheme-region-paint-3
 thumbnail: images/schemes/solo-nightfall-paris.webp
 palette:
   --sc-head-tx: "#7979a5"

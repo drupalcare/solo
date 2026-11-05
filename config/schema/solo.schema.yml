@@ -86,62 +86,137 @@ solo_theme_settings:
                   type: string
                   label: Form background color
                   description: Sets the background color for forms within this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 background:
                   type: string
                   label: Background color
                   description: Sets the overall background color for this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 text:
                   type: string
                   label: Text color
                   description: Sets the default text color for this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 heading:
                   type: string
                   label: Heading color
                   description: Sets the color for h1, h2, h3 headings within this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 link:
                   type: string
                   label: Link color
                   description: Sets the color for links within this region in their normal state.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 link_hover:
                   type: string
                   label: Link hover color
                   description: Sets the color for links within this region when hovered or focused.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 border:
                   type: string
                   label: Border color
                   description: Sets the border color for this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 menu_link_text:
                   type: string
                   label: Menu link text color
                   description: Sets the text color for menu links within this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 menu_link_text_hover:
                   type: string
                   label: Menu link hover text color
                   description: Sets the hover/focus text color for menu links within this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 menu_link_background:
                   type: string
                   label: Menu link background color
                   description: Sets the background color for menu links within this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 menu_link_background_hover:
                   type: string
                   label: Menu link hover background color
                   description: Sets the hover/focus background color for menu links within this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 button_text:
                   type: string
                   label: Button text color
                   description: Sets the text color for buttons within this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 button_text_hover:
                   type: string
                   label: Button hover text color
                   description: Sets the hover/focus text color for buttons within this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 button_background:
                   type: string
                   label: Button background color
                   description: Sets the background color for buttons within this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 button_background_hover:
                   type: string
                   label: Button hover background color
                   description: Sets the hover/focus background color for buttons within this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
         header:
           type: mapping
           label: 'Header region'
@@ -157,62 +232,137 @@ solo_theme_settings:
                   type: string
                   label: Form background color
                   description: Sets the background color for forms within this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 background:
                   type: string
                   label: Background color
                   description: Sets the overall background color for this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 text:
                   type: string
                   label: Text color
                   description: Sets the default text color for this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 heading:
                   type: string
                   label: Heading color
                   description: Sets the color for h1, h2, h3 headings within this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 link:
                   type: string
                   label: Link color
                   description: Sets the color for links within this region in their normal state.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 link_hover:
                   type: string
                   label: Link hover color
                   description: Sets the color for links within this region when hovered or focused.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 border:
                   type: string
                   label: Border color
                   description: Sets the border color for this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 menu_link_text:
                   type: string
                   label: Menu link text color
                   description: Sets the text color for menu links within this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 menu_link_text_hover:
                   type: string
                   label: Menu link hover text color
                   description: Sets the hover/focus text color for menu links within this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 menu_link_background:
                   type: string
                   label: Menu link background color
                   description: Sets the background color for menu links within this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 menu_link_background_hover:
                   type: string
                   label: Menu link hover background color
                   description: Sets the hover/focus background color for menu links within this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 button_text:
                   type: string
                   label: Button text color
                   description: Sets the text color for buttons within this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 button_text_hover:
                   type: string
                   label: Button hover text color
                   description: Sets the hover/focus text color for buttons within this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 button_background:
                   type: string
                   label: Button background color
                   description: Sets the background color for buttons within this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 button_background_hover:
                   type: string
                   label: Button hover background color
                   description: Sets the hover/focus background color for buttons within this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
         primary_menu:
           type: mapping
           label: 'Primary menu region'
@@ -228,62 +378,137 @@ solo_theme_settings:
                   type: string
                   label: Form background color
                   description: Sets the background color for forms within this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 background:
                   type: string
                   label: Background color
                   description: Sets the overall background color for this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 text:
                   type: string
                   label: Text color
                   description: Sets the default text color for this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 heading:
                   type: string
                   label: Heading color
                   description: Sets the color for h1, h2, h3 headings within this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 link:
                   type: string
                   label: Link color
                   description: Sets the color for links within this region in their normal state.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 link_hover:
                   type: string
                   label: Link hover color
                   description: Sets the color for links within this region when hovered or focused.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 border:
                   type: string
                   label: Border color
                   description: Sets the border color for this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 menu_link_text:
                   type: string
                   label: Menu link text color
                   description: Sets the text color for menu links within this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 menu_link_text_hover:
                   type: string
                   label: Menu link hover text color
                   description: Sets the hover/focus text color for menu links within this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 menu_link_background:
                   type: string
                   label: Menu link background color
                   description: Sets the background color for menu links within this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 menu_link_background_hover:
                   type: string
                   label: Menu link hover background color
                   description: Sets the hover/focus background color for menu links within this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 button_text:
                   type: string
                   label: Button text color
                   description: Sets the text color for buttons within this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 button_text_hover:
                   type: string
                   label: Button hover text color
                   description: Sets the hover/focus text color for buttons within this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 button_background:
                   type: string
                   label: Button background color
                   description: Sets the background color for buttons within this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 button_background_hover:
                   type: string
                   label: Button hover background color
                   description: Sets the hover/focus background color for buttons within this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
         primary_sidebar_menu:
           type: mapping
           label: 'Primary sidebar menu region'
@@ -299,62 +524,137 @@ solo_theme_settings:
                   type: string
                   label: Form background color
                   description: Sets the background color for forms within this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 background:
                   type: string
                   label: Background color
                   description: Sets the overall background color for this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 text:
                   type: string
                   label: Text color
                   description: Sets the default text color for this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 heading:
                   type: string
                   label: Heading color
                   description: Sets the color for h1, h2, h3 headings within this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 link:
                   type: string
                   label: Link color
                   description: Sets the color for links within this region in their normal state.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 link_hover:
                   type: string
                   label: Link hover color
                   description: Sets the color for links within this region when hovered or focused.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 border:
                   type: string
                   label: Border color
                   description: Sets the border color for this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 menu_link_text:
                   type: string
                   label: Menu link text color
                   description: Sets the text color for menu links within this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 menu_link_text_hover:
                   type: string
                   label: Menu link hover text color
                   description: Sets the hover/focus text color for menu links within this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 menu_link_background:
                   type: string
                   label: Menu link background color
                   description: Sets the background color for menu links within this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 menu_link_background_hover:
                   type: string
                   label: Menu link hover background color
                   description: Sets the hover/focus background color for menu links within this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 button_text:
                   type: string
                   label: Button text color
                   description: Sets the text color for buttons within this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 button_text_hover:
                   type: string
                   label: Button hover text color
                   description: Sets the hover/focus text color for buttons within this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 button_background:
                   type: string
                   label: Button background color
                   description: Sets the background color for buttons within this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 button_background_hover:
                   type: string
                   label: Button hover background color
                   description: Sets the hover/focus background color for buttons within this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
         highlighted:
           type: mapping
           label: 'Highlighted region'
@@ -376,62 +676,137 @@ solo_theme_settings:
                   type: string
                   label: Form background color
                   description: Sets the background color for forms within this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 background:
                   type: string
                   label: Background color
                   description: Sets the overall background color for this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 text:
                   type: string
                   label: Text color
                   description: Sets the default text color for this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 heading:
                   type: string
                   label: Heading color
                   description: Sets the color for h1, h2, h3 headings within this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 link:
                   type: string
                   label: Link color
                   description: Sets the color for links within this region in their normal state.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 link_hover:
                   type: string
                   label: Link hover color
                   description: Sets the color for links within this region when hovered or focused.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 border:
                   type: string
                   label: Border color
                   description: Sets the border color for this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 menu_link_text:
                   type: string
                   label: Menu link text color
                   description: Sets the text color for menu links within this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 menu_link_text_hover:
                   type: string
                   label: Menu link hover text color
                   description: Sets the hover/focus text color for menu links within this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 menu_link_background:
                   type: string
                   label: Menu link background color
                   description: Sets the background color for menu links within this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 menu_link_background_hover:
                   type: string
                   label: Menu link hover background color
                   description: Sets the hover/focus background color for menu links within this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 button_text:
                   type: string
                   label: Button text color
                   description: Sets the text color for buttons within this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 button_text_hover:
                   type: string
                   label: Button hover text color
                   description: Sets the hover/focus text color for buttons within this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 button_background:
                   type: string
                   label: Button background color
                   description: Sets the background color for buttons within this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 button_background_hover:
                   type: string
                   label: Button hover background color
                   description: Sets the hover/focus background color for buttons within this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
         welcome_text:
           type: mapping
           label: 'Welcome text region'
@@ -456,62 +831,137 @@ solo_theme_settings:
                   type: string
                   label: Form background color
                   description: Sets the background color for forms within this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 background:
                   type: string
                   label: Background color
                   description: Sets the overall background color for this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 text:
                   type: string
                   label: Text color
                   description: Sets the default text color for this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 heading:
                   type: string
                   label: Heading color
                   description: Sets the color for h1, h2, h3 headings within this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 link:
                   type: string
                   label: Link color
                   description: Sets the color for links within this region in their normal state.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 link_hover:
                   type: string
                   label: Link hover color
                   description: Sets the color for links within this region when hovered or focused.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 border:
                   type: string
                   label: Border color
                   description: Sets the border color for this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 menu_link_text:
                   type: string
                   label: Menu link text color
                   description: Sets the text color for menu links within this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 menu_link_text_hover:
                   type: string
                   label: Menu link hover text color
                   description: Sets the hover/focus text color for menu links within this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 menu_link_background:
                   type: string
                   label: Menu link background color
                   description: Sets the background color for menu links within this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 menu_link_background_hover:
                   type: string
                   label: Menu link hover background color
                   description: Sets the hover/focus background color for menu links within this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 button_text:
                   type: string
                   label: Button text color
                   description: Sets the text color for buttons within this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 button_text_hover:
                   type: string
                   label: Button hover text color
                   description: Sets the hover/focus text color for buttons within this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 button_background:
                   type: string
                   label: Button background color
                   description: Sets the background color for buttons within this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 button_background_hover:
                   type: string
                   label: Button hover background color
                   description: Sets the hover/focus background color for buttons within this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
         top_container:
           type: mapping
           label: 'Top container region'
@@ -527,62 +977,137 @@ solo_theme_settings:
                   type: string
                   label: Form background color
                   description: Sets the background color for forms within this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 background:
                   type: string
                   label: Background color
                   description: Sets the overall background color for this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 text:
                   type: string
                   label: Text color
                   description: Sets the default text color for this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 heading:
                   type: string
                   label: Heading color
                   description: Sets the color for h1, h2, h3 headings within this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 link:
                   type: string
                   label: Link color
                   description: Sets the color for links within this region in their normal state.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 link_hover:
                   type: string
                   label: Link hover color
                   description: Sets the color for links within this region when hovered or focused.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 border:
                   type: string
                   label: Border color
                   description: Sets the border color for this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 menu_link_text:
                   type: string
                   label: Menu link text color
                   description: Sets the text color for menu links within this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 menu_link_text_hover:
                   type: string
                   label: Menu link hover text color
                   description: Sets the hover/focus text color for menu links within this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 menu_link_background:
                   type: string
                   label: Menu link background color
                   description: Sets the background color for menu links within this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 menu_link_background_hover:
                   type: string
                   label: Menu link hover background color
                   description: Sets the hover/focus background color for menu links within this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 button_text:
                   type: string
                   label: Button text color
                   description: Sets the text color for buttons within this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 button_text_hover:
                   type: string
                   label: Button hover text color
                   description: Sets the hover/focus text color for buttons within this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 button_background:
                   type: string
                   label: Button background color
                   description: Sets the background color for buttons within this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 button_background_hover:
                   type: string
                   label: Button hover background color
                   description: Sets the hover/focus background color for buttons within this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
         top_first:
           type: mapping
           label: 'Top first region'
@@ -601,62 +1126,137 @@ solo_theme_settings:
                   type: string
                   label: Form background color
                   description: Sets the background color for forms within this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 background:
                   type: string
                   label: Background color
                   description: Sets the overall background color for this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 text:
                   type: string
                   label: Text color
                   description: Sets the default text color for this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 heading:
                   type: string
                   label: Heading color
                   description: Sets the color for h1, h2, h3 headings within this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 link:
                   type: string
                   label: Link color
                   description: Sets the color for links within this region in their normal state.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 link_hover:
                   type: string
                   label: Link hover color
                   description: Sets the color for links within this region when hovered or focused.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 border:
                   type: string
                   label: Border color
                   description: Sets the border color for this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 menu_link_text:
                   type: string
                   label: Menu link text color
                   description: Sets the text color for menu links within this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 menu_link_text_hover:
                   type: string
                   label: Menu link hover text color
                   description: Sets the hover/focus text color for menu links within this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 menu_link_background:
                   type: string
                   label: Menu link background color
                   description: Sets the background color for menu links within this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 menu_link_background_hover:
                   type: string
                   label: Menu link hover background color
                   description: Sets the hover/focus background color for menu links within this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 button_text:
                   type: string
                   label: Button text color
                   description: Sets the text color for buttons within this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 button_text_hover:
                   type: string
                   label: Button hover text color
                   description: Sets the hover/focus text color for buttons within this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 button_background:
                   type: string
                   label: Button background color
                   description: Sets the background color for buttons within this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 button_background_hover:
                   type: string
                   label: Button hover background color
                   description: Sets the hover/focus background color for buttons within this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
         top_second:
           type: mapping
           label: 'Top second region'
@@ -675,62 +1275,137 @@ solo_theme_settings:
                   type: string
                   label: Form background color
                   description: Sets the background color for forms within this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 background:
                   type: string
                   label: Background color
                   description: Sets the overall background color for this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 text:
                   type: string
                   label: Text color
                   description: Sets the default text color for this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 heading:
                   type: string
                   label: Heading color
                   description: Sets the color for h1, h2, h3 headings within this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 link:
                   type: string
                   label: Link color
                   description: Sets the color for links within this region in their normal state.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 link_hover:
                   type: string
                   label: Link hover color
                   description: Sets the color for links within this region when hovered or focused.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 border:
                   type: string
                   label: Border color
                   description: Sets the border color for this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 menu_link_text:
                   type: string
                   label: Menu link text color
                   description: Sets the text color for menu links within this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 menu_link_text_hover:
                   type: string
                   label: Menu link hover text color
                   description: Sets the hover/focus text color for menu links within this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 menu_link_background:
                   type: string
                   label: Menu link background color
                   description: Sets the background color for menu links within this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 menu_link_background_hover:
                   type: string
                   label: Menu link hover background color
                   description: Sets the hover/focus background color for menu links within this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 button_text:
                   type: string
                   label: Button text color
                   description: Sets the text color for buttons within this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 button_text_hover:
                   type: string
                   label: Button hover text color
                   description: Sets the hover/focus text color for buttons within this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 button_background:
                   type: string
                   label: Button background color
                   description: Sets the background color for buttons within this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 button_background_hover:
                   type: string
                   label: Button hover background color
                   description: Sets the hover/focus background color for buttons within this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
         top_third:
           type: mapping
           label: 'Top third region'
@@ -749,62 +1424,137 @@ solo_theme_settings:
                   type: string
                   label: Form background color
                   description: Sets the background color for forms within this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 background:
                   type: string
                   label: Background color
                   description: Sets the overall background color for this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 text:
                   type: string
                   label: Text color
                   description: Sets the default text color for this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 heading:
                   type: string
                   label: Heading color
                   description: Sets the color for h1, h2, h3 headings within this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 link:
                   type: string
                   label: Link color
                   description: Sets the color for links within this region in their normal state.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 link_hover:
                   type: string
                   label: Link hover color
                   description: Sets the color for links within this region when hovered or focused.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 border:
                   type: string
                   label: Border color
                   description: Sets the border color for this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 menu_link_text:
                   type: string
                   label: Menu link text color
                   description: Sets the text color for menu links within this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 menu_link_text_hover:
                   type: string
                   label: Menu link hover text color
                   description: Sets the hover/focus text color for menu links within this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 menu_link_background:
                   type: string
                   label: Menu link background color
                   description: Sets the background color for menu links within this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 menu_link_background_hover:
                   type: string
                   label: Menu link hover background color
                   description: Sets the hover/focus background color for menu links within this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 button_text:
                   type: string
                   label: Button text color
                   description: Sets the text color for buttons within this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 button_text_hover:
                   type: string
                   label: Button hover text color
                   description: Sets the hover/focus text color for buttons within this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 button_background:
                   type: string
                   label: Button background color
                   description: Sets the background color for buttons within this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 button_background_hover:
                   type: string
                   label: Button hover background color
                   description: Sets the hover/focus background color for buttons within this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
         system_messages:
           type: mapping
           label: 'System messages region'
@@ -823,62 +1573,137 @@ solo_theme_settings:
                   type: string
                   label: Form background color
                   description: Sets the background color for forms within this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 background:
                   type: string
                   label: Background color
                   description: Sets the overall background color for this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 text:
                   type: string
                   label: Text color
                   description: Sets the default text color for this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 heading:
                   type: string
                   label: Heading color
                   description: Sets the color for h1, h2, h3 headings within this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 link:
                   type: string
                   label: Link color
                   description: Sets the color for links within this region in their normal state.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 link_hover:
                   type: string
                   label: Link hover color
                   description: Sets the color for links within this region when hovered or focused.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 border:
                   type: string
                   label: Border color
                   description: Sets the border color for this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 menu_link_text:
                   type: string
                   label: Menu link text color
                   description: Sets the text color for menu links within this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 menu_link_text_hover:
                   type: string
                   label: Menu link hover text color
                   description: Sets the hover/focus text color for menu links within this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 menu_link_background:
                   type: string
                   label: Menu link background color
                   description: Sets the background color for menu links within this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 menu_link_background_hover:
                   type: string
                   label: Menu link hover background color
                   description: Sets the hover/focus background color for menu links within this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 button_text:
                   type: string
                   label: Button text color
                   description: Sets the text color for buttons within this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 button_text_hover:
                   type: string
                   label: Button hover text color
                   description: Sets the hover/focus text color for buttons within this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 button_background:
                   type: string
                   label: Button background color
                   description: Sets the background color for buttons within this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 button_background_hover:
                   type: string
                   label: Button hover background color
                   description: Sets the hover/focus background color for buttons within this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
         page_title:
           type: mapping
           label: 'Page title region'
@@ -894,62 +1719,137 @@ solo_theme_settings:
                   type: string
                   label: Form background color
                   description: Sets the background color for forms within this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 background:
                   type: string
                   label: Background color
                   description: Sets the overall background color for this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 text:
                   type: string
                   label: Text color
                   description: Sets the default text color for this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 heading:
                   type: string
                   label: Heading color
                   description: Sets the color for h1, h2, h3 headings within this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 link:
                   type: string
                   label: Link color
                   description: Sets the color for links within this region in their normal state.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 link_hover:
                   type: string
                   label: Link hover color
                   description: Sets the color for links within this region when hovered or focused.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 border:
                   type: string
                   label: Border color
                   description: Sets the border color for this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 menu_link_text:
                   type: string
                   label: Menu link text color
                   description: Sets the text color for menu links within this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 menu_link_text_hover:
                   type: string
                   label: Menu link hover text color
                   description: Sets the hover/focus text color for menu links within this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 menu_link_background:
                   type: string
                   label: Menu link background color
                   description: Sets the background color for menu links within this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 menu_link_background_hover:
                   type: string
                   label: Menu link hover background color
                   description: Sets the hover/focus background color for menu links within this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 button_text:
                   type: string
                   label: Button text color
                   description: Sets the text color for buttons within this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 button_text_hover:
                   type: string
                   label: Button hover text color
                   description: Sets the hover/focus text color for buttons within this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 button_background:
                   type: string
                   label: Button background color
                   description: Sets the background color for buttons within this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 button_background_hover:
                   type: string
                   label: Button hover background color
                   description: Sets the hover/focus background color for buttons within this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
         breadcrumb:
           type: mapping
           label: 'Breadcrumb region'
@@ -965,62 +1865,137 @@ solo_theme_settings:
                   type: string
                   label: Form background color
                   description: Sets the background color for forms within this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 background:
                   type: string
                   label: Background color
                   description: Sets the overall background color for this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 text:
                   type: string
                   label: Text color
                   description: Sets the default text color for this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 heading:
                   type: string
                   label: Heading color
                   description: Sets the color for h1, h2, h3 headings within this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 link:
                   type: string
                   label: Link color
                   description: Sets the color for links within this region in their normal state.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 link_hover:
                   type: string
                   label: Link hover color
                   description: Sets the color for links within this region when hovered or focused.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 border:
                   type: string
                   label: Border color
                   description: Sets the border color for this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 menu_link_text:
                   type: string
                   label: Menu link text color
                   description: Sets the text color for menu links within this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 menu_link_text_hover:
                   type: string
                   label: Menu link hover text color
                   description: Sets the hover/focus text color for menu links within this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 menu_link_background:
                   type: string
                   label: Menu link background color
                   description: Sets the background color for menu links within this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 menu_link_background_hover:
                   type: string
                   label: Menu link hover background color
                   description: Sets the hover/focus background color for menu links within this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 button_text:
                   type: string
                   label: Button text color
                   description: Sets the text color for buttons within this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 button_text_hover:
                   type: string
                   label: Button hover text color
                   description: Sets the hover/focus text color for buttons within this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 button_background:
                   type: string
                   label: Button background color
                   description: Sets the background color for buttons within this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 button_background_hover:
                   type: string
                   label: Button hover background color
                   description: Sets the hover/focus background color for buttons within this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
         main_container:
           type: mapping
           label: 'Main container region'
@@ -1036,62 +2011,137 @@ solo_theme_settings:
                   type: string
                   label: Form background color
                   description: Sets the background color for forms within this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 background:
                   type: string
                   label: Background color
                   description: Sets the overall background color for this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 text:
                   type: string
                   label: Text color
                   description: Sets the default text color for this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 heading:
                   type: string
                   label: Heading color
                   description: Sets the color for h1, h2, h3 headings within this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 link:
                   type: string
                   label: Link color
                   description: Sets the color for links within this region in their normal state.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 link_hover:
                   type: string
                   label: Link hover color
                   description: Sets the color for links within this region when hovered or focused.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 border:
                   type: string
                   label: Border color
                   description: Sets the border color for this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 menu_link_text:
                   type: string
                   label: Menu link text color
                   description: Sets the text color for menu links within this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 menu_link_text_hover:
                   type: string
                   label: Menu link hover text color
                   description: Sets the hover/focus text color for menu links within this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 menu_link_background:
                   type: string
                   label: Menu link background color
                   description: Sets the background color for menu links within this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 menu_link_background_hover:
                   type: string
                   label: Menu link hover background color
                   description: Sets the hover/focus background color for menu links within this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 button_text:
                   type: string
                   label: Button text color
                   description: Sets the text color for buttons within this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 button_text_hover:
                   type: string
                   label: Button hover text color
                   description: Sets the hover/focus text color for buttons within this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 button_background:
                   type: string
                   label: Button background color
                   description: Sets the background color for buttons within this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 button_background_hover:
                   type: string
                   label: Button hover background color
                   description: Sets the hover/focus background color for buttons within this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
         sidebar_first:
           type: mapping
           label: 'Sidebar first region'
@@ -1110,62 +2160,137 @@ solo_theme_settings:
                   type: string
                   label: Form background color
                   description: Sets the background color for forms within this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 background:
                   type: string
                   label: Background color
                   description: Sets the overall background color for this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 text:
                   type: string
                   label: Text color
                   description: Sets the default text color for this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 heading:
                   type: string
                   label: Heading color
                   description: Sets the color for h1, h2, h3 headings within this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 link:
                   type: string
                   label: Link color
                   description: Sets the color for links within this region in their normal state.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 link_hover:
                   type: string
                   label: Link hover color
                   description: Sets the color for links within this region when hovered or focused.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 border:
                   type: string
                   label: Border color
                   description: Sets the border color for this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 menu_link_text:
                   type: string
                   label: Menu link text color
                   description: Sets the text color for menu links within this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 menu_link_text_hover:
                   type: string
                   label: Menu link hover text color
                   description: Sets the hover/focus text color for menu links within this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 menu_link_background:
                   type: string
                   label: Menu link background color
                   description: Sets the background color for menu links within this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 menu_link_background_hover:
                   type: string
                   label: Menu link hover background color
                   description: Sets the hover/focus background color for menu links within this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 button_text:
                   type: string
                   label: Button text color
                   description: Sets the text color for buttons within this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 button_text_hover:
                   type: string
                   label: Button hover text color
                   description: Sets the hover/focus text color for buttons within this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 button_background:
                   type: string
                   label: Button background color
                   description: Sets the background color for buttons within this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 button_background_hover:
                   type: string
                   label: Button hover background color
                   description: Sets the hover/focus background color for buttons within this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
         content:
           type: mapping
           label: 'Content region'
@@ -1184,62 +2309,137 @@ solo_theme_settings:
                   type: string
                   label: Form background color
                   description: Sets the background color for forms within this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 background:
                   type: string
                   label: Background color
                   description: Sets the overall background color for this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 text:
                   type: string
                   label: Text color
                   description: Sets the default text color for this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 heading:
                   type: string
                   label: Heading color
                   description: Sets the color for h1, h2, h3 headings within this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 link:
                   type: string
                   label: Link color
                   description: Sets the color for links within this region in their normal state.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 link_hover:
                   type: string
                   label: Link hover color
                   description: Sets the color for links within this region when hovered or focused.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 border:
                   type: string
                   label: Border color
                   description: Sets the border color for this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 menu_link_text:
                   type: string
                   label: Menu link text color
                   description: Sets the text color for menu links within this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 menu_link_text_hover:
                   type: string
                   label: Menu link hover text color
                   description: Sets the hover/focus text color for menu links within this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 menu_link_background:
                   type: string
                   label: Menu link background color
                   description: Sets the background color for menu links within this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 menu_link_background_hover:
                   type: string
                   label: Menu link hover background color
                   description: Sets the hover/focus background color for menu links within this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 button_text:
                   type: string
                   label: Button text color
                   description: Sets the text color for buttons within this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 button_text_hover:
                   type: string
                   label: Button hover text color
                   description: Sets the hover/focus text color for buttons within this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 button_background:
                   type: string
                   label: Button background color
                   description: Sets the background color for buttons within this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 button_background_hover:
                   type: string
                   label: Button hover background color
                   description: Sets the hover/focus background color for buttons within this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
         sidebar_second:
           type: mapping
           label: 'Sidebar second region'
@@ -1258,62 +2458,137 @@ solo_theme_settings:
                   type: string
                   label: Form background color
                   description: Sets the background color for forms within this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 background:
                   type: string
                   label: Background color
                   description: Sets the overall background color for this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 text:
                   type: string
                   label: Text color
                   description: Sets the default text color for this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 heading:
                   type: string
                   label: Heading color
                   description: Sets the color for h1, h2, h3 headings within this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 link:
                   type: string
                   label: Link color
                   description: Sets the color for links within this region in their normal state.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 link_hover:
                   type: string
                   label: Link hover color
                   description: Sets the color for links within this region when hovered or focused.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 border:
                   type: string
                   label: Border color
                   description: Sets the border color for this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 menu_link_text:
                   type: string
                   label: Menu link text color
                   description: Sets the text color for menu links within this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 menu_link_text_hover:
                   type: string
                   label: Menu link hover text color
                   description: Sets the hover/focus text color for menu links within this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 menu_link_background:
                   type: string
                   label: Menu link background color
                   description: Sets the background color for menu links within this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 menu_link_background_hover:
                   type: string
                   label: Menu link hover background color
                   description: Sets the hover/focus background color for menu links within this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 button_text:
                   type: string
                   label: Button text color
                   description: Sets the text color for buttons within this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 button_text_hover:
                   type: string
                   label: Button hover text color
                   description: Sets the hover/focus text color for buttons within this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 button_background:
                   type: string
                   label: Button background color
                   description: Sets the background color for buttons within this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 button_background_hover:
                   type: string
                   label: Button hover background color
                   description: Sets the hover/focus background color for buttons within this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
         bottom_container:
           type: mapping
           label: 'Bottom container region'
@@ -1329,62 +2604,137 @@ solo_theme_settings:
                   type: string
                   label: Form background color
                   description: Sets the background color for forms within this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 background:
                   type: string
                   label: Background color
                   description: Sets the overall background color for this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 text:
                   type: string
                   label: Text color
                   description: Sets the default text color for this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 heading:
                   type: string
                   label: Heading color
                   description: Sets the color for h1, h2, h3 headings within this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 link:
                   type: string
                   label: Link color
                   description: Sets the color for links within this region in their normal state.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 link_hover:
                   type: string
                   label: Link hover color
                   description: Sets the color for links within this region when hovered or focused.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 border:
                   type: string
                   label: Border color
                   description: Sets the border color for this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 menu_link_text:
                   type: string
                   label: Menu link text color
                   description: Sets the text color for menu links within this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 menu_link_text_hover:
                   type: string
                   label: Menu link hover text color
                   description: Sets the hover/focus text color for menu links within this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 menu_link_background:
                   type: string
                   label: Menu link background color
                   description: Sets the background color for menu links within this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 menu_link_background_hover:
                   type: string
                   label: Menu link hover background color
                   description: Sets the hover/focus background color for menu links within this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 button_text:
                   type: string
                   label: Button text color
                   description: Sets the text color for buttons within this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 button_text_hover:
                   type: string
                   label: Button hover text color
                   description: Sets the hover/focus text color for buttons within this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 button_background:
                   type: string
                   label: Button background color
                   description: Sets the background color for buttons within this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 button_background_hover:
                   type: string
                   label: Button hover background color
                   description: Sets the hover/focus background color for buttons within this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
         bottom_first:
           type: mapping
           label: 'Bottom first region'
@@ -1403,62 +2753,137 @@ solo_theme_settings:
                   type: string
                   label: Form background color
                   description: Sets the background color for forms within this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 background:
                   type: string
                   label: Background color
                   description: Sets the overall background color for this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 text:
                   type: string
                   label: Text color
                   description: Sets the default text color for this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 heading:
                   type: string
                   label: Heading color
                   description: Sets the color for h1, h2, h3 headings within this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 link:
                   type: string
                   label: Link color
                   description: Sets the color for links within this region in their normal state.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 link_hover:
                   type: string
                   label: Link hover color
                   description: Sets the color for links within this region when hovered or focused.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 border:
                   type: string
                   label: Border color
                   description: Sets the border color for this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 menu_link_text:
                   type: string
                   label: Menu link text color
                   description: Sets the text color for menu links within this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 menu_link_text_hover:
                   type: string
                   label: Menu link hover text color
                   description: Sets the hover/focus text color for menu links within this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 menu_link_background:
                   type: string
                   label: Menu link background color
                   description: Sets the background color for menu links within this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 menu_link_background_hover:
                   type: string
                   label: Menu link hover background color
                   description: Sets the hover/focus background color for menu links within this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 button_text:
                   type: string
                   label: Button text color
                   description: Sets the text color for buttons within this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 button_text_hover:
                   type: string
                   label: Button hover text color
                   description: Sets the hover/focus text color for buttons within this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 button_background:
                   type: string
                   label: Button background color
                   description: Sets the background color for buttons within this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 button_background_hover:
                   type: string
                   label: Button hover background color
                   description: Sets the hover/focus background color for buttons within this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
         bottom_second:
           type: mapping
           label: 'Bottom second region'
@@ -1477,62 +2902,137 @@ solo_theme_settings:
                   type: string
                   label: Form background color
                   description: Sets the background color for forms within this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 background:
                   type: string
                   label: Background color
                   description: Sets the overall background color for this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 text:
                   type: string
                   label: Text color
                   description: Sets the default text color for this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 heading:
                   type: string
                   label: Heading color
                   description: Sets the color for h1, h2, h3 headings within this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 link:
                   type: string
                   label: Link color
                   description: Sets the color for links within this region in their normal state.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 link_hover:
                   type: string
                   label: Link hover color
                   description: Sets the color for links within this region when hovered or focused.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 border:
                   type: string
                   label: Border color
                   description: Sets the border color for this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 menu_link_text:
                   type: string
                   label: Menu link text color
                   description: Sets the text color for menu links within this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 menu_link_text_hover:
                   type: string
                   label: Menu link hover text color
                   description: Sets the hover/focus text color for menu links within this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 menu_link_background:
                   type: string
                   label: Menu link background color
                   description: Sets the background color for menu links within this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 menu_link_background_hover:
                   type: string
                   label: Menu link hover background color
                   description: Sets the hover/focus background color for menu links within this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 button_text:
                   type: string
                   label: Button text color
                   description: Sets the text color for buttons within this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 button_text_hover:
                   type: string
                   label: Button hover text color
                   description: Sets the hover/focus text color for buttons within this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 button_background:
                   type: string
                   label: Button background color
                   description: Sets the background color for buttons within this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 button_background_hover:
                   type: string
                   label: Button hover background color
                   description: Sets the hover/focus background color for buttons within this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
         bottom_third:
           type: mapping
           label: 'Bottom third region'
@@ -1551,62 +3051,137 @@ solo_theme_settings:
                   type: string
                   label: Form background color
                   description: Sets the background color for forms within this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 background:
                   type: string
                   label: Background color
                   description: Sets the overall background color for this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 text:
                   type: string
                   label: Text color
                   description: Sets the default text color for this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 heading:
                   type: string
                   label: Heading color
                   description: Sets the color for h1, h2, h3 headings within this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 link:
                   type: string
                   label: Link color
                   description: Sets the color for links within this region in their normal state.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 link_hover:
                   type: string
                   label: Link hover color
                   description: Sets the color for links within this region when hovered or focused.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 border:
                   type: string
                   label: Border color
                   description: Sets the border color for this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 menu_link_text:
                   type: string
                   label: Menu link text color
                   description: Sets the text color for menu links within this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 menu_link_text_hover:
                   type: string
                   label: Menu link hover text color
                   description: Sets the hover/focus text color for menu links within this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 menu_link_background:
                   type: string
                   label: Menu link background color
                   description: Sets the background color for menu links within this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 menu_link_background_hover:
                   type: string
                   label: Menu link hover background color
                   description: Sets the hover/focus background color for menu links within this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 button_text:
                   type: string
                   label: Button text color
                   description: Sets the text color for buttons within this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 button_text_hover:
                   type: string
                   label: Button hover text color
                   description: Sets the hover/focus text color for buttons within this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 button_background:
                   type: string
                   label: Button background color
                   description: Sets the background color for buttons within this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 button_background_hover:
                   type: string
                   label: Button hover background color
                   description: Sets the hover/focus background color for buttons within this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
         bottom_fourth:
           type: mapping
           label: 'Bottom fourth region'
@@ -1625,62 +3200,137 @@ solo_theme_settings:
                   type: string
                   label: Form background color
                   description: Sets the background color for forms within this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 background:
                   type: string
                   label: Background color
                   description: Sets the overall background color for this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 text:
                   type: string
                   label: Text color
                   description: Sets the default text color for this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 heading:
                   type: string
                   label: Heading color
                   description: Sets the color for h1, h2, h3 headings within this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 link:
                   type: string
                   label: Link color
                   description: Sets the color for links within this region in their normal state.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 link_hover:
                   type: string
                   label: Link hover color
                   description: Sets the color for links within this region when hovered or focused.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 border:
                   type: string
                   label: Border color
                   description: Sets the border color for this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 menu_link_text:
                   type: string
                   label: Menu link text color
                   description: Sets the text color for menu links within this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 menu_link_text_hover:
                   type: string
                   label: Menu link hover text color
                   description: Sets the hover/focus text color for menu links within this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 menu_link_background:
                   type: string
                   label: Menu link background color
                   description: Sets the background color for menu links within this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 menu_link_background_hover:
                   type: string
                   label: Menu link hover background color
                   description: Sets the hover/focus background color for menu links within this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 button_text:
                   type: string
                   label: Button text color
                   description: Sets the text color for buttons within this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 button_text_hover:
                   type: string
                   label: Button hover text color
                   description: Sets the hover/focus text color for buttons within this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 button_background:
                   type: string
                   label: Button background color
                   description: Sets the background color for buttons within this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 button_background_hover:
                   type: string
                   label: Button hover background color
                   description: Sets the hover/focus background color for buttons within this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
         footer_container:
           type: mapping
           label: 'Footer container region'
@@ -1696,62 +3346,137 @@ solo_theme_settings:
                   type: string
                   label: Form background color
                   description: Sets the background color for forms within this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 background:
                   type: string
                   label: Background color
                   description: Sets the overall background color for this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 text:
                   type: string
                   label: Text color
                   description: Sets the default text color for this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 heading:
                   type: string
                   label: Heading color
                   description: Sets the color for h1, h2, h3 headings within this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 link:
                   type: string
                   label: Link color
                   description: Sets the color for links within this region in their normal state.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 link_hover:
                   type: string
                   label: Link hover color
                   description: Sets the color for links within this region when hovered or focused.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 border:
                   type: string
                   label: Border color
                   description: Sets the border color for this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 menu_link_text:
                   type: string
                   label: Menu link text color
                   description: Sets the text color for menu links within this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 menu_link_text_hover:
                   type: string
                   label: Menu link hover text color
                   description: Sets the hover/focus text color for menu links within this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 menu_link_background:
                   type: string
                   label: Menu link background color
                   description: Sets the background color for menu links within this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 menu_link_background_hover:
                   type: string
                   label: Menu link hover background color
                   description: Sets the hover/focus background color for menu links within this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 button_text:
                   type: string
                   label: Button text color
                   description: Sets the text color for buttons within this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 button_text_hover:
                   type: string
                   label: Button hover text color
                   description: Sets the hover/focus text color for buttons within this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 button_background:
                   type: string
                   label: Button background color
                   description: Sets the background color for buttons within this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 button_background_hover:
                   type: string
                   label: Button hover background color
                   description: Sets the hover/focus background color for buttons within this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
         footer_first:
           type: mapping
           label: 'Footer first region'
@@ -1770,62 +3495,137 @@ solo_theme_settings:
                   type: string
                   label: Form background color
                   description: Sets the background color for forms within this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 background:
                   type: string
                   label: Background color
                   description: Sets the overall background color for this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 text:
                   type: string
                   label: Text color
                   description: Sets the default text color for this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 heading:
                   type: string
                   label: Heading color
                   description: Sets the color for h1, h2, h3 headings within this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 link:
                   type: string
                   label: Link color
                   description: Sets the color for links within this region in their normal state.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 link_hover:
                   type: string
                   label: Link hover color
                   description: Sets the color for links within this region when hovered or focused.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 border:
                   type: string
                   label: Border color
                   description: Sets the border color for this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 menu_link_text:
                   type: string
                   label: Menu link text color
                   description: Sets the text color for menu links within this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 menu_link_text_hover:
                   type: string
                   label: Menu link hover text color
                   description: Sets the hover/focus text color for menu links within this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 menu_link_background:
                   type: string
                   label: Menu link background color
                   description: Sets the background color for menu links within this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 menu_link_background_hover:
                   type: string
                   label: Menu link hover background color
                   description: Sets the hover/focus background color for menu links within this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 button_text:
                   type: string
                   label: Button text color
                   description: Sets the text color for buttons within this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 button_text_hover:
                   type: string
                   label: Button hover text color
                   description: Sets the hover/focus text color for buttons within this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 button_background:
                   type: string
                   label: Button background color
                   description: Sets the background color for buttons within this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 button_background_hover:
                   type: string
                   label: Button hover background color
                   description: Sets the hover/focus background color for buttons within this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
         footer_second:
           type: mapping
           label: 'Footer second region'
@@ -1844,62 +3644,137 @@ solo_theme_settings:
                   type: string
                   label: Form background color
                   description: Sets the background color for forms within this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 background:
                   type: string
                   label: Background color
                   description: Sets the overall background color for this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 text:
                   type: string
                   label: Text color
                   description: Sets the default text color for this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 heading:
                   type: string
                   label: Heading color
                   description: Sets the color for h1, h2, h3 headings within this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 link:
                   type: string
                   label: Link color
                   description: Sets the color for links within this region in their normal state.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 link_hover:
                   type: string
                   label: Link hover color
                   description: Sets the color for links within this region when hovered or focused.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 border:
                   type: string
                   label: Border color
                   description: Sets the border color for this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 menu_link_text:
                   type: string
                   label: Menu link text color
                   description: Sets the text color for menu links within this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 menu_link_text_hover:
                   type: string
                   label: Menu link hover text color
                   description: Sets the hover/focus text color for menu links within this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 menu_link_background:
                   type: string
                   label: Menu link background color
                   description: Sets the background color for menu links within this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 menu_link_background_hover:
                   type: string
                   label: Menu link hover background color
                   description: Sets the hover/focus background color for menu links within this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 button_text:
                   type: string
                   label: Button text color
                   description: Sets the text color for buttons within this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 button_text_hover:
                   type: string
                   label: Button hover text color
                   description: Sets the hover/focus text color for buttons within this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 button_background:
                   type: string
                   label: Button background color
                   description: Sets the background color for buttons within this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 button_background_hover:
                   type: string
                   label: Button hover background color
                   description: Sets the hover/focus background color for buttons within this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
         footer_third:
           type: mapping
           label: 'Footer third region'
@@ -1918,62 +3793,137 @@ solo_theme_settings:
                   type: string
                   label: Form background color
                   description: Sets the background color for forms within this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 background:
                   type: string
                   label: Background color
                   description: Sets the overall background color for this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 text:
                   type: string
                   label: Text color
                   description: Sets the default text color for this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 heading:
                   type: string
                   label: Heading color
                   description: Sets the color for h1, h2, h3 headings within this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 link:
                   type: string
                   label: Link color
                   description: Sets the color for links within this region in their normal state.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 link_hover:
                   type: string
                   label: Link hover color
                   description: Sets the color for links within this region when hovered or focused.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 border:
                   type: string
                   label: Border color
                   description: Sets the border color for this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 menu_link_text:
                   type: string
                   label: Menu link text color
                   description: Sets the text color for menu links within this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 menu_link_text_hover:
                   type: string
                   label: Menu link hover text color
                   description: Sets the hover/focus text color for menu links within this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 menu_link_background:
                   type: string
                   label: Menu link background color
                   description: Sets the background color for menu links within this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 menu_link_background_hover:
                   type: string
                   label: Menu link hover background color
                   description: Sets the hover/focus background color for menu links within this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 button_text:
                   type: string
                   label: Button text color
                   description: Sets the text color for buttons within this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 button_text_hover:
                   type: string
                   label: Button hover text color
                   description: Sets the hover/focus text color for buttons within this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 button_background:
                   type: string
                   label: Button background color
                   description: Sets the background color for buttons within this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 button_background_hover:
                   type: string
                   label: Button hover background color
                   description: Sets the hover/focus background color for buttons within this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
         footer_menu:
           type: mapping
           label: 'Footer menu region'
@@ -1989,62 +3939,137 @@ solo_theme_settings:
                   type: string
                   label: Form background color
                   description: Sets the background color for forms within this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 background:
                   type: string
                   label: Background color
                   description: Sets the overall background color for this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 text:
                   type: string
                   label: Text color
                   description: Sets the default text color for this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 heading:
                   type: string
                   label: Heading color
                   description: Sets the color for h1, h2, h3 headings within this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 link:
                   type: string
                   label: Link color
                   description: Sets the color for links within this region in their normal state.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 link_hover:
                   type: string
                   label: Link hover color
                   description: Sets the color for links within this region when hovered or focused.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 border:
                   type: string
                   label: Border color
                   description: Sets the border color for this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 menu_link_text:
                   type: string
                   label: Menu link text color
                   description: Sets the text color for menu links within this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 menu_link_text_hover:
                   type: string
                   label: Menu link hover text color
                   description: Sets the hover/focus text color for menu links within this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 menu_link_background:
                   type: string
                   label: Menu link background color
                   description: Sets the background color for menu links within this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 menu_link_background_hover:
                   type: string
                   label: Menu link hover background color
                   description: Sets the hover/focus background color for menu links within this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 button_text:
                   type: string
                   label: Button text color
                   description: Sets the text color for buttons within this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 button_text_hover:
                   type: string
                   label: Button hover text color
                   description: Sets the hover/focus text color for buttons within this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 button_background:
                   type: string
                   label: Button background color
                   description: Sets the background color for buttons within this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 button_background_hover:
                   type: string
                   label: Button hover background color
                   description: Sets the hover/focus background color for buttons within this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
         credit_copyright:
           type: mapping
           label: 'Credit copyright region'
@@ -2060,62 +4085,137 @@ solo_theme_settings:
                   type: string
                   label: Form background color
                   description: Sets the background color for forms within this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 background:
                   type: string
                   label: Background color
                   description: Sets the overall background color for this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 text:
                   type: string
                   label: Text color
                   description: Sets the default text color for this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 heading:
                   type: string
                   label: Heading color
                   description: Sets the color for h1, h2, h3 headings within this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 link:
                   type: string
                   label: Link color
                   description: Sets the color for links within this region in their normal state.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 link_hover:
                   type: string
                   label: Link hover color
                   description: Sets the color for links within this region when hovered or focused.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 border:
                   type: string
                   label: Border color
                   description: Sets the border color for this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 menu_link_text:
                   type: string
                   label: Menu link text color
                   description: Sets the text color for menu links within this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 menu_link_text_hover:
                   type: string
                   label: Menu link hover text color
                   description: Sets the hover/focus text color for menu links within this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 menu_link_background:
                   type: string
                   label: Menu link background color
                   description: Sets the background color for menu links within this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 menu_link_background_hover:
                   type: string
                   label: Menu link hover background color
                   description: Sets the hover/focus background color for menu links within this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 button_text:
                   type: string
                   label: Button text color
                   description: Sets the text color for buttons within this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 button_text_hover:
                   type: string
                   label: Button hover text color
                   description: Sets the hover/focus text color for buttons within this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 button_background:
                   type: string
                   label: Button background color
                   description: Sets the background color for buttons within this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 button_background_hover:
                   type: string
                   label: Button hover background color
                   description: Sets the hover/focus background color for buttons within this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
         popup_login_block:
           type: mapping
           label: 'Popup login block region'
@@ -2131,62 +4231,137 @@ solo_theme_settings:
                   type: string
                   label: Form background color
                   description: Sets the background color for forms within this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 background:
                   type: string
                   label: Background color
                   description: Sets the overall background color for this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 text:
                   type: string
                   label: Text color
                   description: Sets the default text color for this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 heading:
                   type: string
                   label: Heading color
                   description: Sets the color for h1, h2, h3 headings within this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 link:
                   type: string
                   label: Link color
                   description: Sets the color for links within this region in their normal state.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 link_hover:
                   type: string
                   label: Link hover color
                   description: Sets the color for links within this region when hovered or focused.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 border:
                   type: string
                   label: Border color
                   description: Sets the border color for this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 menu_link_text:
                   type: string
                   label: Menu link text color
                   description: Sets the text color for menu links within this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 menu_link_text_hover:
                   type: string
                   label: Menu link hover text color
                   description: Sets the hover/focus text color for menu links within this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 menu_link_background:
                   type: string
                   label: Menu link background color
                   description: Sets the background color for menu links within this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 menu_link_background_hover:
                   type: string
                   label: Menu link hover background color
                   description: Sets the hover/focus background color for menu links within this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 button_text:
                   type: string
                   label: Button text color
                   description: Sets the text color for buttons within this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 button_text_hover:
                   type: string
                   label: Button hover text color
                   description: Sets the hover/focus text color for buttons within this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 button_background:
                   type: string
                   label: Button background color
                   description: Sets the background color for buttons within this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 button_background_hover:
                   type: string
                   label: Button hover background color
                   description: Sets the hover/focus background color for buttons within this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
         fixed_search_block:
           type: mapping
           label: 'Fixed search block region'
@@ -2202,62 +4377,137 @@ solo_theme_settings:
                   type: string
                   label: Form background color
                   description: Sets the background color for forms within this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 background:
                   type: string
                   label: Background color
                   description: Sets the overall background color for this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 text:
                   type: string
                   label: Text color
                   description: Sets the default text color for this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 heading:
                   type: string
                   label: Heading color
                   description: Sets the color for h1, h2, h3 headings within this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 link:
                   type: string
                   label: Link color
                   description: Sets the color for links within this region in their normal state.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 link_hover:
                   type: string
                   label: Link hover color
                   description: Sets the color for links within this region when hovered or focused.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 border:
                   type: string
                   label: Border color
                   description: Sets the border color for this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 menu_link_text:
                   type: string
                   label: Menu link text color
                   description: Sets the text color for menu links within this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 menu_link_text_hover:
                   type: string
                   label: Menu link hover text color
                   description: Sets the hover/focus text color for menu links within this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 menu_link_background:
                   type: string
                   label: Menu link background color
                   description: Sets the background color for menu links within this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 menu_link_background_hover:
                   type: string
                   label: Menu link hover background color
                   description: Sets the hover/focus background color for menu links within this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 button_text:
                   type: string
                   label: Button text color
                   description: Sets the text color for buttons within this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 button_text_hover:
                   type: string
                   label: Button hover text color
                   description: Sets the hover/focus text color for buttons within this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 button_background:
                   type: string
                   label: Button background color
                   description: Sets the background color for buttons within this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
                 button_background_hover:
                   type: string
                   label: Button hover background color
                   description: Sets the hover/focus background color for buttons within this region.
+                  constraints:
+                    Length:
+                      max: 7
+                    Regex:
+                      pattern: '/^#[0-9a-fA-F]{6}$/'
     region_groups:
       type: mapping
       label: 'Region groups'
@@ -2605,6 +4855,10 @@ solo_theme_settings:
         animation_duration:
           type: integer
           label: 'Popup login animation duration'
+          constraints:
+            Range:
+              min: 0
+              max: 5000
         close_on_escape:
           type: boolean
           label: 'Popup login close on escape'
@@ -2626,9 +4880,17 @@ solo_theme_settings:
         z_index:
           type: integer
           label: 'Popup login z index'
+          constraints:
+            Range:
+              min: 1
+              max: 999999
         overlay_opacity:
           type: integer
           label: 'Popup login overlay opacity'
+          constraints:
+            Range:
+              min: 0
+              max: 100
     search:
       type: mapping
       label: 'Search'
@@ -2719,6 +4981,9 @@ solo_theme_settings:
         color:
           type: string
           label: 'Icon colors'
+          constraints:
+            Length:
+              max: 40
         enabled:
           type: boolean
           label: 'Show icons'
@@ -2809,6 +5074,10 @@ solo_theme_settings:
         max_display_seconds:
           type: integer
           label: 'Preloader max display time in seconds (fallback if load never fires)'
+          constraints:
+            Range:
+              min: 3
+              max: 60
         style:
           type: string
           label: 'Preloader style (spinner, progress_bar, text, logo, or logo_text)'
@@ -2828,12 +5097,24 @@ solo_theme_settings:
             width:
               type: integer
               label: 'Preloader logo width in pixels'
+              constraints:
+                Range:
+                  min: 16
+                  max: 800
             height:
               type: integer
               label: 'Preloader logo height in pixels'
+              constraints:
+                Range:
+                  min: 16
+                  max: 600
             opacity:
               type: integer
               label: 'Preloader logo opacity (0-100)'
+              constraints:
+                Range:
+                  min: 0
+                  max: 100
         text:
           type: mapping
           label: 'Text'
@@ -2847,6 +5128,10 @@ solo_theme_settings:
             font_size:
               type: integer
               label: 'Preloader text font size in pixels'
+              constraints:
+                Range:
+                  min: 12
+                  max: 124
             animate_effect:
               type: string
               label: 'Preloader text gradient animation (same as site name)'
@@ -2857,12 +5142,26 @@ solo_theme_settings:
             text:
               type: string
               label: 'Preloader text color'
+              constraints:
+                Length:
+                  max: 7
+                Regex:
+                  pattern: '/^#[0-9a-fA-F]{6}$/'
             background:
               type: string
               label: 'Preloader background color'
+              constraints:
+                Length:
+                  max: 7
+                Regex:
+                  pattern: '/^#[0-9a-fA-F]{6}$/'
         bg_opacity:
           type: integer
           label: 'Preloader background opacity (0-100). Applied only to background; combined with background color as rgba.'
+          constraints:
+            Range:
+              min: 0
+              max: 100
         force_show:
           type: boolean
           label: 'Preloader force show for testing'
@@ -2885,6 +5184,10 @@ solo_theme_settings:
         scroll_threshold:
           type: integer
           label: 'Back to top show after scroll (pixels)'
+          constraints:
+            Range:
+              min: 200
+              max: 800
         position:
           type: string
           label: 'Back to top position'
@@ -2901,9 +5204,19 @@ solo_theme_settings:
             background:
               type: string
               label: 'Back to top background color'
+              constraints:
+                Length:
+                  max: 7
+                Regex:
+                  pattern: '/^#[0-9a-fA-F]{6}$/'
             text:
               type: string
               label: 'Back to top icon color'
+              constraints:
+                Length:
+                  max: 7
+                Regex:
+                  pattern: '/^#[0-9a-fA-F]{6}$/'
     comments:
       type: mapping
       label: 'Comments'

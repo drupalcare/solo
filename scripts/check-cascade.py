@@ -2,7 +2,7 @@
 """Solo cascade contract check: who wins between the CSS sources on a Solo page.
 
 Encodes the ranked list in planning/solo-cascade-contract.md as pair checks.
-Static only: reads CSS, libraries.yml and ThemeCssBuilder.php; no site, no DOM.
+Static only: reads CSS, the Solo library set (solo_libraries.py) and ThemeCssBuilder.php; no site, no DOM.
 
 Winner model (CSS Cascade 5): !important beats normal; for normal declarations
 unlayered beats layered, for !important layered beats unlayered; then
@@ -31,6 +31,9 @@ Exit 0: every pair holds or is a recorded exception. Exit 1: a winner flipped.
 import argparse, collections, os, re, sys
 
 HERE = os.path.dirname(os.path.abspath(__file__))
+sys.dont_write_bytecode = True
+sys.path.insert(0, HERE)
+import solo_libraries  # the full Solo library set: static yml plus the generated libraries
 CAT = {'base': -200, 'layout': -100, 'component': 0, 'state': 100, 'theme': 200}
 ADMIN_LIBS = {'solo-form-theme-settings', 'solo-node-edit-form', 'solo-debug'}
 ADMIN_FILES = ('css/theme/solo-ckeditor', 'css/debug/', 'css/components/solo-layout-builder.css')
@@ -159,6 +162,18 @@ def libraries(path):
             o.setdefault(m.group(1), (CAT[cat] + (int(w.group(1)) if w else 0), i, lib))
     return o
 
+def solo_libraries_order(solo):
+    """file -> (category weight, file index, library name) for Solo, from the full library set.
+
+    The set is solo_libraries.py: static solo.libraries.yml plus the generated libraries. Other
+    projects keep their own *.libraries.yml and are read by libraries() above.
+    """
+    o = {}
+    for idx, (lib, cat, f, w) in enumerate(solo_libraries.css_entries(solo_libraries.load(solo))):
+        if re.fullmatch(r'[\w./-]+\.css', f):
+            o.setdefault(f, (CAT[cat] + w, idx, lib))
+    return o
+
 def decl(src, f, ln, ctx, sel, p, v, imp, group, w, idx, lib):
     lay = [c for c in ctx if c.startswith('@layer ')]
     return dict(src=src, f=f, ln=ln, sel=sel, p=p, v=v, imp=imp, layered=bool(lay),
@@ -167,7 +182,7 @@ def decl(src, f, ln, ctx, sel, p, v, imp, group, w, idx, lib):
 
 def solo_decls(solo):
     out = []
-    for f, (w, idx, lib) in libraries(os.path.join(solo, 'solo.libraries.yml')).items():
+    for f, (w, idx, lib) in solo_libraries_order(solo).items():
         if lib in ADMIN_LIBS or f.startswith(ADMIN_FILES): continue
         fp = os.path.join(solo, f)
         if not os.path.exists(fp): continue

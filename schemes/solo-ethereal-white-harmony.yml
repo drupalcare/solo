@@ -6,6 +6,11 @@ mode: light
 categories:
   - elegant_whites_and_neutrals
 css: css/predefined/solo-ethereal-white-harmony.css
+dependencies:
+  - solo/solo-scheme-shared
+  - solo/solo-scheme-region-rule
+  - solo/solo-scheme-region-paint-1
+  - solo/solo-scheme-region-paint-2
 thumbnail: images/schemes/solo-ethereal-white-harmony.webp
 palette:
   --sc-head-tx: "#1f3550"

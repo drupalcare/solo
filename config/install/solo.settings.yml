@@ -21,16 +21,73 @@ layout:
     page: sb-992
     menu: mn-992
   regions_gap: '16'
+regions:
+  highlighted:
+    aria_landmark: false
+  welcome_text:
+    aria_landmark: false
+  top_first:
+    alignment: region-left
+  top_second:
+    alignment: region-left
+  top_third:
+    alignment: region-left
+  sidebar_first:
+    alignment: region-left
+  content:
+    alignment: region-left
+  sidebar_second:
+    alignment: region-left
+  bottom_first:
+    alignment: region-left
+  bottom_second:
+    alignment: region-left
+  bottom_third:
+    alignment: region-left
+  bottom_fourth:
+    alignment: region-left
+  footer_first:
+    alignment: region-left
+  footer_second:
+    alignment: region-left
+  footer_third:
+    alignment: region-left
+region_groups:
+  top:
+    aria_landmark: false
+  bottom:
+    aria_landmark: false
+  footer:
+    aria_landmark: false
 color_scheme:
   name: solo-midnight-whispers
   category: midnight_and_twilight
   colored_system_tabs: true
 typography:
   font_size: '16'
+  node_date_format: solo_date_l
+  reading_mode_content_types: []
 menus:
   keyboard_navigation: []
+  toggle_speed: normal
+  debug:
+    verbosity: normal
 popup_login:
   link_text: Login
+  animation_duration: 300
+  z_index: 10000
+  overlay_opacity: 50
+  custom_triggers: ''
+  use_inline_styles: false
+  close_on_escape: true
+  close_on_outside_click: true
+  focus_trap: true
+  announce_to_screen_readers: true
+  return_focus_on_close: true
+search:
+  disabled_filters: []
+  result_content_types: []
+  teaser_mode: false
 breadcrumb:
   scroll: true
 skip_links:
@@ -47,23 +104,23 @@ footer:
     text: 'Alaa Haddad at Flash Web Center, LLC'
 social_icons:
   links:
-    facebook: ''
-    twitter: ''
-    bluesky: ''
-    pinterest: ''
-    linkedin: ''
-    instagram: ''
-    youtube: ''
-    snapchat: ''
-    reddit: ''
-    tiktok: ''
-    whatsapp: ''
-    threads: ''
-    drupal: ''
-    mastodon: ''
-    telegram: ''
-    rss: ''
-    email: ''
+    facebook: 'https://www.facebook.com/flashwebcenter'
+    twitter: 'https://x.com/flashwebcenter'
+    bluesky: 'https://bsky.app/profile/alaahaddad.bsky.social'
+    pinterest: 'https://www.pinterest.com/alaahaddad'
+    linkedin: 'https://www.linkedin.com/company/flash-web-center'
+    instagram: 'https://www.instagram.com/flashwebcenter'
+    youtube: 'https://www.youtube.com/user/flashwebcenter'
+    snapchat: 'https://www.drupal.org/u/flashwebcenter'
+    reddit: 'https://www.reddit.com/user/flashwebcenter/'
+    tiktok: 'https://www.tiktok.com/@flashwebcenter'
+    whatsapp: 'https://www.drupal.org/u/flashwebcenter'
+    threads: 'https://www.drupal.org/u/flashwebcenter'
+    drupal: 'https://www.drupal.org/u/flashwebcenter'
+    mastodon: 'https://mastodon.social/deck/@flashwebcenter'
+    telegram: 'https://www.drupal.org/u/flashwebcenter'
+    rss: rss.xml
+    email: '/#email'
   enabled: true
   size: sm-icons-medium
 preloader:

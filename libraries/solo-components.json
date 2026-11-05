@@ -1,0 +1,157 @@
+{
+  "libraries": [
+    {
+      "id": "solo-sitemap",
+      "css": ["css/components/solo-sitemap.css"],
+      "dependencies": ["solo/solo-global"]
+    },
+    {
+      "id": "solo-menu-keyboard",
+      "css": ["css/components/solo-menu-keyboard.css"],
+      "js": [
+        "js/keyboard/solo-keyboard-template-parser.js",
+        "js/keyboard/solo-keyboard-utils.js",
+        "js/keyboard/solo-keyboard-aria.js",
+        "js/keyboard/solo-keyboard-focus.js",
+        "js/keyboard/solo-keyboard-navigation.js",
+        "js/keyboard/solo-keyboard-megamenu.js",
+        "js/keyboard/solo-keyboard-core.js"
+      ],
+      "dependencies": [
+        "core/drupal",
+        "core/drupalSettings",
+        "core/once",
+        "core/drupal.announce",
+        "solo/solo-global",
+        "solo/solo-menu"
+      ]
+    },
+    {
+      "id": "solo-debug",
+      "css": [{ "path": "css/debug/solo-debug.css", "minified": false, "preprocess": false }],
+      "js": [
+        { "path": "js/debug/solo-menu-debugger.js", "minified": false, "preprocess": false },
+        { "path": "js/debug/solo-keyboard-debug.js", "minified": false, "preprocess": false },
+        { "path": "js/debug/solo-menu-diagnostic.js", "minified": false, "preprocess": false },
+        { "path": "js/debug/solo-keyboard-aria-cleanup.js", "minified": false, "preprocess": false }
+      ],
+      "dependencies": ["solo/solo-menu", "solo/solo-menu-keyboard"]
+    },
+    {
+      "id": "solo-fixed-search-block",
+      "css": ["css/components/solo-fixed-search-block.css"],
+      "js": ["js/components/solo-fixed-search-block.js"],
+      "dependencies": [
+        "core/drupal",
+        "core/drupalSettings",
+        "core/once",
+        "core/drupal.announce",
+        "solo/solo-global"
+      ]
+    },
+    {
+      "id": "solo-popup-login-block",
+      "css": ["css/components/solo-popup-login-block.css"],
+      "js": ["js/components/solo-popup-login-block.js"],
+      "dependencies": [
+        "core/drupal",
+        "core/drupalSettings",
+        "core/once",
+        "core/drupal.debounce",
+        "core/drupal.announce",
+        "solo/solo-global"
+      ]
+    },
+    {
+      "id": "solo-search",
+      "css": ["css/components/solo-search-block.css", "css/components/solo-search-page.css"],
+      "dependencies": ["solo/solo-global"]
+    },
+    {
+      "id": "solo-search-settings",
+      "js": ["js/components/solo-search-settings.js"],
+      "dependencies": ["core/drupal", "core/once", "core/drupalSettings", "solo/solo-global"]
+    },
+    {
+      "id": "solo-form-theme-settings",
+      "css": [
+        "css/theme/solo-form-theme-settings.css",
+        { "path": "css/theme/solo-form-class-swatches.css", "weight": 201 },
+        { "path": "css/theme/solo-form-scheme-picker.css", "weight": 202 }
+      ],
+      "js": [
+        "js/base/solo-form-theme-settings.js",
+        "js/base/solo-color-picker.js",
+        "js/base/solo-form-scheme-picker.js"
+      ],
+      "dependencies": [
+        "core/drupal",
+        "core/drupal.announce",
+        "core/drupalSettings",
+        "core/once",
+        "core/drupal.form"
+      ]
+    },
+    {
+      "id": "solo-preloader",
+      "css": ["css/components/solo-preloader.css"],
+      "js": ["js/components/solo-preloader.js"],
+      "dependencies": ["core/drupal", "core/once"]
+    },
+    {
+      "id": "solo-back-to-top",
+      "css": ["css/components/solo-back-to-top.css"],
+      "js": ["js/components/solo-back-to-top.js"],
+      "dependencies": ["core/drupal", "core/once"]
+    },
+    {
+      "id": "solo-full-opacity",
+      "meta": { "header": true },
+      "js": ["js/base/solo-full-opacity.js"],
+      "dependencies": ["core/drupal", "core/once"]
+    },
+    { "id": "solo-system-messages-dark", "css": ["css/components/solo-system-messages-dark.css"] },
+    { "id": "solo-cookies", "css": ["css/theme/solo-cookies.css"] },
+    { "id": "solo-color-coded-system-tabs", "css": ["css/components/solo-color-coded-system-tabs.css"] },
+    { "id": "solo-user-login-custom", "css": ["css/layout/solo-layout-user-login.css"] },
+    { "id": "solo-node-edit-form", "css": ["css/layout/solo-layout-node-edit.css"] },
+    {
+      "id": "solo-action-links",
+      "css": [{ "path": "css/components/solo-action-links.css", "category": "theme" }]
+    },
+    {
+      "id": "solo-css-dynamic",
+      "css": [{ "path": "public://solo/css/solo-css-dynamic.css", "category": "theme", "weight": 999 }]
+    },
+    {
+      "id": "solo-js-dynamic",
+      "dependencies": [
+        "core/jquery",
+        "core/drupal",
+        "core/drupal.ajax",
+        "core/drupalSettings",
+        "core/drupal.message",
+        "core/once"
+      ]
+    }
+  ],
+  "globs": [
+    { "pattern": "css/theme/solo-scheme-*.css", "category": "theme", "weight": -10 },
+    {
+      "id": "w3-css",
+      "meta": {
+        "remote": "https://www.w3schools.com/w3css/",
+        "version": 4.13,
+        "license": {
+          "name": "MIT",
+          "url": "https://www.w3schools.com/w3css/w3css_downloads.asp",
+          "gpl-compatible": true
+        }
+      },
+      "pattern": "css/w3-css/*.css",
+      "category": "base",
+      "weight": -201,
+      "first": { "css/w3-css/w3.css": -202, "css/w3-css/w3css-extended-classes.css": -201 }
+    }
+  ]
+}

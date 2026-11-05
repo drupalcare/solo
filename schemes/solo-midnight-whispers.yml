@@ -6,6 +6,10 @@ mode: mixed
 categories:
   - midnight_and_twilight
 css: css/predefined/solo-midnight-whispers.css
+dependencies:
+  - solo/solo-scheme-shared
+  - solo/solo-scheme-multi-span
+  - solo/solo-scheme-region-paint-1
 thumbnail: images/schemes/solo-midnight-whispers.webp
 palette:
   --sc-head-tx: "#6c738c"

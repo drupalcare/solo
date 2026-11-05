@@ -6,6 +6,12 @@ mode: light
 categories:
   - elegant_whites_and_neutrals
 css: css/predefined/solo-silken-shadow-whisper.css
+dependencies:
+  - solo/solo-scheme-shared
+  - solo/solo-scheme-region-rule
+  - solo/solo-scheme-region-paint-1
+  - solo/solo-scheme-region-paint-2
+  - solo/solo-scheme-region-paint-3
 thumbnail: images/schemes/solo-silken-shadow-whisper.webp
 palette:
   --sc-head-tx: "#375d8c"

@@ -6,6 +6,12 @@ mode: dark
 categories:
   - berry_and_fruit_tones
 css: css/predefined/solo-lemon-lime-forest.css
+dependencies:
+  - solo/solo-scheme-shared
+  - solo/solo-scheme-region-rule
+  - solo/solo-scheme-region-paint-1
+  - solo/solo-scheme-region-paint-2
+  - solo/solo-scheme-region-paint-3
 thumbnail: images/schemes/solo-lemon-lime-forest.webp
 palette:
   --sc-head-tx: "#c4bf15"

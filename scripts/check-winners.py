@@ -8,7 +8,7 @@ but the property sequence of each file must not. For every declaration whose sel
 property (or shorthand family) with a different value is checked: if the winner between the two
 differs before and after, that is a CHANGED WINNER and the script exits 1.
 
-Universe: every CSS file in solo.libraries.yml (schemes included, css/debug excluded); core
+Universe: every CSS file in the Solo library set (solo_libraries.py; schemes included, css/debug excluded); core
 modules, core/misc and modules/contrib of a Drupal docroot (symlinks followed, apex-named paths
 skipped); Claro only against solo-form-theme-settings; ThemeCssBuilder's generated region rules
 synthesised from solo_utilities. Order key: importance, layer (external @layer honoured; Solo is
@@ -38,6 +38,10 @@ import re
 import subprocess
 import sys
 import tempfile
+
+sys.dont_write_bytecode = True
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import solo_libraries  # the full library set: static yml plus the generated libraries
 
 SOLO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 UTIL = os.path.join(os.path.dirname(SOLO), 'solo_utilities', 'src', 'Css', 'ThemeCssBuilder.php')
@@ -186,18 +190,24 @@ def split_complex(sel):
 
 # ---- the trees -------------------------------------------------------------------------------
 def order(root):
-    """css file -> (category weight + weight, file index, library), from solo.libraries.yml."""
-    o = {}; lib = cat = None; idx = 0
-    for ln in open(os.path.join(root, 'solo.libraries.yml'), encoding='utf-8'):
-        m = re.match(r'^([\w-]+):\s*$', ln)
-        if m: lib = m.group(1); continue
-        m = re.match(r'^    (base|layout|component|state|theme):\s*$', ln)
-        if m: cat = m.group(1); continue
-        m = re.match(r'^      (css/\S+\.css):\s*\{(.*)\}', ln)
-        if m:
-            w = re.search(r'weight:\s*(-?\d+)', m.group(2)); w = int(w.group(1)) if w else 0
-            o.setdefault(m.group(1), (CAT[cat] + w, idx, lib)); idx += 1
+    """css file -> (category weight + weight, file index, library), from the full Solo library set.
+
+    The set is solo_libraries.py: static solo.libraries.yml plus the generated libraries. A tree
+    without libraries/solo-components.json (an older revision) is its full yml alone.
+    """
+    # Libraries are indexed by name, files keep their order inside a library. The old index was the
+    # position in solo.libraries.yml, which most libraries no longer have (they are generated), and
+    # Drupal itself breaks a same-weight tie by attach order, not by definition order. One fixed order
+    # for both trees means a winner changes only when a declaration, a weight or a category does.
+    o = {}; idx = 0
+    for lib, cat, f, w in sorted(solo_libraries.css_entries(solo_libraries.load(root)), key=lambda e: e[0]):
+        if f.startswith('css/') and f.endswith('.css'):
+            o.setdefault(f, (CAT[cat] + w, idx, lib)); idx += 1
     return o
+
+
+# Libraries split out of solo-global for occasional loading: paired as solo-global so the move is judged, not unpaired.
+LIB_ALIAS = {'solo-sitemap': 'solo-global'}
 
 
 def decls_tree(root):
@@ -206,7 +216,7 @@ def decls_tree(root):
         if f.startswith('css/debug/') or not os.path.exists(os.path.join(root, f)): continue
         for n, (ln, ctx, sel, p, v, imp) in enumerate(parse(open(os.path.join(root, f), encoding='utf-8').read())):
             out.append(dict(f=f, n=n, ln=ln, ctx=ctx, sel=sel, p=p, v=v, imp=imp, lay=False, o=(w, i, ln),
-                            sp=specificity(sel), lib=lib))
+                            sp=specificity(sel), lib=LIB_ALIAS.get(lib, lib)))
     return out
 
 
@@ -385,7 +395,15 @@ def compare(after, ext):
 
 
 def git_tree(rev, dest):
-    data = subprocess.run(['git', '-C', SOLO, 'archive', rev, 'css', 'solo.libraries.yml'], check=True, capture_output=True).stdout
+    """Extract css, the libraries yml and, when the revision has them, the generated-library data."""
+    paths = ['css', 'solo.libraries.yml']
+    listed = subprocess.run(['git', '-C', SOLO, 'ls-tree', '-r', '--name-only', rev, '--', 'libraries/solo-components.json'],
+                            check=True, capture_output=True, text=True).stdout
+    if listed.strip():
+        for extra in ('libraries', 'fonts/solo-fonts.json', 'schemes', 'scripts/breakpoints/breakpoints.json'):
+            if subprocess.run(['git', '-C', SOLO, 'ls-tree', '--name-only', rev, '--', extra], check=True, capture_output=True, text=True).stdout.strip():
+                paths.append(extra)
+    data = subprocess.run(['git', '-C', SOLO, 'archive', rev] + paths, check=True, capture_output=True).stdout
     subprocess.run(['tar', '-x', '-C', dest], input=data, check=True)
     return dest
 

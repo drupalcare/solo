@@ -6,6 +6,13 @@ mode: light
 categories:
   - ocean_and_deep_sea
 css: css/predefined/solo-deep-sea-echo.css
+dependencies:
+  - solo/solo-scheme-shared
+  - solo/solo-scheme-region-rule
+  - solo/solo-scheme-control-border
+  - solo/solo-scheme-region-paint-1
+  - solo/solo-scheme-region-paint-2
+  - solo/solo-scheme-region-paint-3
 thumbnail: images/schemes/solo-deep-sea-echo.webp
 palette:
   --sc-head-tx: "#012e3d"

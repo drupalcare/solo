@@ -21,16 +21,18 @@ Usage:
                                   its source (drift check); writes nothing
 """
 
+import json
 import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 SRC = ROOT / "scripts" / "breakpoints"
 
-# The five collapse breakpoints in px: the one owner of the values. The rem pair is derived
-# (px / 16, max-width = min - 0.00125rem), the form apex's css.md "Layout Collapse Breakpoints"
-# table lists (35.99875rem ... 87.49875rem), so a range query never overlaps its neighbour.
-PX = (576, 768, 992, 1200, 1400)
+# The five collapse breakpoints in px live in scripts/breakpoints/breakpoints.json, the one owner of
+# the values. The rem pair is derived (px / 16, max-width = min - 0.00125rem), the form apex's css.md
+# "Layout Collapse Breakpoints" table lists (35.99875rem ... 87.49875rem), so a range query never
+# overlaps its neighbour.
+PX = tuple(json.loads((SRC / "breakpoints.json").read_text(encoding="utf-8")))
 
 
 def _rem(value: float) -> str:

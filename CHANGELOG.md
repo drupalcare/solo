@@ -7,3 +7,4 @@
 - Every Solo class and ID now starts with `solo-` and follows one naming pattern. The full list of old and new names is in `docs/CLASS-MIGRATION.md`.
 - The starter sub-theme (`solo_subtheme`) uses the new names.
 - Solo and Solo Utilities work without the Search module, which Drupal 12 core no longer ships. The Search Results settings show a short note asking you to install Search, and the saved search settings are kept.
+- `solo.libraries.yml` now holds only `solo-global` and `solo-menu`. Solo Utilities builds every other library (fonts, color schemes, breakpoints, components, w3-css) from the data files in `fonts/`, `schemes/`, `scripts/breakpoints/` and `libraries/`. Library names and their files are unchanged, so `libraries-override` and `libraries-extend` in a sub-theme keep working.

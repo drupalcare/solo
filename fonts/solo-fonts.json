@@ -1,0 +1,843 @@
+{
+  "fonts": [
+    {
+      "slug": "abel",
+      "category": "global",
+      "query": "Abel",
+      "local": true
+    },
+    {
+      "slug": "alegreya-sans",
+      "category": "global",
+      "query": "Alegreya+Sans:ital,wght@0,400;0,700;0,800;1,400",
+      "local": true
+    },
+    {
+      "slug": "alegreya-sans-sc",
+      "category": "global",
+      "query": "Alegreya+Sans+SC:ital,wght@0,400;0,700;0,800;0,900;1,400",
+      "local": true
+    },
+    {
+      "slug": "amita",
+      "category": "global",
+      "query": "Amita",
+      "local": true
+    },
+    {
+      "slug": "archivo-narrow",
+      "category": "global",
+      "query": "Archivo+Narrow:ital,wght@0,400;0,700;1,400",
+      "local": true
+    },
+    {
+      "slug": "arimo",
+      "category": "global",
+      "query": "Arimo:ital,wght@0,400;0,700;1,400",
+      "local": true
+    },
+    {
+      "slug": "arvo",
+      "category": "global",
+      "query": "Arvo:ital,wght@0,400;0,700;1,400",
+      "local": true
+    },
+    {
+      "slug": "barlow",
+      "category": "global",
+      "query": "Barlow:ital,wght@0,400;0,700;0,800;0,900;1,400",
+      "local": true
+    },
+    {
+      "slug": "barlow-semi-condensed",
+      "category": "global",
+      "query": "Barlow+Semi+Condensed:ital,wght@0,400;0,700;0,800;0,900;1,400",
+      "local": true
+    },
+    {
+      "slug": "be-vietnam-pro",
+      "category": "global",
+      "query": "Be+Vietnam+Pro:wght@100;200;300;400;500;600;700;800;900",
+      "local": true
+    },
+    {
+      "slug": "bitter",
+      "category": "global",
+      "query": "Bitter:ital,wght@0,400;0,700;0,800;0,900;1,400",
+      "local": true
+    },
+    {
+      "slug": "cairo",
+      "category": "global",
+      "query": "Cairo:wght@400;700;800;900",
+      "local": true
+    },
+    {
+      "slug": "comfortaa",
+      "category": "global",
+      "query": "Comfortaa:wght@400;700",
+      "local": true
+    },
+    {
+      "slug": "courgette",
+      "category": "global",
+      "query": "Courgette",
+      "local": true
+    },
+    {
+      "slug": "domine",
+      "category": "global",
+      "query": "Domine:wght@400;700",
+      "local": true
+    },
+    {
+      "slug": "dosis",
+      "category": "global",
+      "query": "Dosis:wght@400;700",
+      "local": true
+    },
+    {
+      "slug": "exo-2",
+      "category": "global",
+      "query": "Exo+2:ital,wght@0,400;0,700;0,800;0,900;1,400",
+      "local": true
+    },
+    {
+      "slug": "fira-sans",
+      "category": "global",
+      "query": "Fira+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400",
+      "local": true
+    },
+    {
+      "slug": "glegoo",
+      "category": "global",
+      "query": "Glegoo:wght@400;700",
+      "local": true
+    },
+    {
+      "slug": "hind-siliguri",
+      "category": "global",
+      "query": "Hind+Siliguri:wght@400;700",
+      "local": true
+    },
+    {
+      "slug": "ibm-plex-sans",
+      "category": "global",
+      "query": "IBM+Plex+Sans:ital,wght@0,400;0,700;1,400",
+      "local": true
+    },
+    {
+      "slug": "inconsolata",
+      "category": "global",
+      "query": "Inconsolata:wght@400;700",
+      "local": true
+    },
+    {
+      "slug": "josefin-sans",
+      "category": "global",
+      "query": "Josefin+Sans:ital,wght@0,400;0,700;1,400",
+      "local": true
+    },
+    {
+      "slug": "kanit",
+      "category": "global",
+      "query": "Kanit:ital,wght@0,400;0,700;0,800;0,900;1,400",
+      "local": true
+    },
+    {
+      "slug": "kavivanar",
+      "category": "global",
+      "query": "Kavivanar",
+      "local": true
+    },
+    {
+      "slug": "lato",
+      "category": "global",
+      "query": "Lato:ital,wght@0,400;0,700;0,900;1,400",
+      "local": true
+    },
+    {
+      "slug": "libre-baskerville",
+      "category": "global",
+      "query": "Libre+Baskerville:ital,wght@0,400;0,700;1,400",
+      "local": true
+    },
+    {
+      "slug": "lora",
+      "category": "global",
+      "query": "Lora:ital,wght@0,400;0,700;1,400",
+      "local": true
+    },
+    {
+      "slug": "merienda",
+      "category": "global",
+      "query": "Merienda:wght@400;700",
+      "local": true
+    },
+    {
+      "slug": "merriweather",
+      "category": "global",
+      "query": "Merriweather:ital,wght@0,400;0,700;1,400",
+      "local": true
+    },
+    {
+      "slug": "montserrat",
+      "category": "global",
+      "query": "Montserrat:ital,wght@0,400;0,700;0,800;0,900;1,400",
+      "local": true
+    },
+    {
+      "slug": "mukta",
+      "category": "global",
+      "query": "Mukta:wght@400;700",
+      "local": true
+    },
+    {
+      "slug": "nunito",
+      "category": "global",
+      "query": "Nunito:ital,wght@0,400;0,700;0,800;0,900;1,400",
+      "local": true
+    },
+    {
+      "slug": "open-sans",
+      "category": "global",
+      "query": "Open+Sans:ital,wght@0,400;0,700;0,800;1,400",
+      "local": true
+    },
+    {
+      "slug": "oranienbaum",
+      "category": "global",
+      "query": "Oranienbaum",
+      "local": true
+    },
+    {
+      "slug": "oswald",
+      "category": "global",
+      "query": "Oswald:wght@400;700",
+      "local": true
+    },
+    {
+      "slug": "oxygen",
+      "category": "global",
+      "query": "Oxygen:wght@400;700",
+      "local": true
+    },
+    {
+      "slug": "playfair-display",
+      "category": "global",
+      "query": "Playfair+Display:ital,wght@0,400;0,700;0,800;0,900;1,400",
+      "local": true
+    },
+    {
+      "slug": "poppins",
+      "category": "global",
+      "query": "Poppins:ital,wght@0,400;0,700;0,800;0,900;1,400",
+      "local": true
+    },
+    {
+      "slug": "prompt",
+      "category": "global",
+      "query": "Prompt:ital,wght@0,400;0,700;0,800;0,900;1,400",
+      "local": true
+    },
+    {
+      "slug": "pt-serif",
+      "category": "global",
+      "query": "PT+Serif:ital,wght@0,400;0,700;1,400",
+      "local": true
+    },
+    {
+      "slug": "quicksand",
+      "category": "global",
+      "query": "Quicksand:wght@400;700",
+      "local": true
+    },
+    {
+      "slug": "raleway",
+      "category": "global",
+      "query": "Raleway:ital,wght@0,400;0,700;0,800;0,900;1,400",
+      "local": true
+    },
+    {
+      "slug": "roboto",
+      "category": "global",
+      "query": "Roboto:ital,wght@0,400;0,700;1,400",
+      "local": true
+    },
+    {
+      "slug": "roboto-condensed",
+      "category": "global",
+      "query": "Roboto+Condensed:ital,wght@0,400;0,700;1,400",
+      "local": true
+    },
+    {
+      "slug": "roboto-mono",
+      "category": "global",
+      "query": "Roboto+Mono:ital,wght@0,400;0,700;1,400",
+      "local": true
+    },
+    {
+      "slug": "source-sans-3",
+      "category": "global",
+      "query": "Source+Sans+Pro",
+      "local": true
+    },
+    {
+      "slug": "spline-sans",
+      "category": "global",
+      "query": "Spline+Sans:wght@400;700",
+      "local": true
+    },
+    {
+      "slug": "titillium-web",
+      "category": "global",
+      "query": "Titillium+Web:ital,wght@0,400;0,700;1,400",
+      "local": true
+    },
+    {
+      "slug": "ubuntu",
+      "category": "global",
+      "query": "Ubuntu:ital,wght@0,400;0,700;1,400",
+      "local": true
+    },
+    {
+      "slug": "work-sans",
+      "category": "global",
+      "query": "Work+Sans:ital,wght@0,400;0,700;0,800;0,900;1,400",
+      "local": true
+    },
+    {
+      "slug": "abril-fatface",
+      "category": "heading",
+      "query": "Abril+Fatface",
+      "local": true
+    },
+    {
+      "slug": "aladin",
+      "category": "heading",
+      "query": "Aladin",
+      "local": true
+    },
+    {
+      "slug": "anton",
+      "category": "heading",
+      "query": "Anton",
+      "local": true
+    },
+    {
+      "slug": "archivo-black",
+      "category": "heading",
+      "query": "Archivo+Black",
+      "local": true
+    },
+    {
+      "slug": "bebas-neue",
+      "category": "heading",
+      "query": "Bebas+Neue",
+      "local": true
+    },
+    {
+      "slug": "big-shoulders-stencil-display",
+      "category": "heading",
+      "query": "Big+Shoulders+Stencil+Display:wght@700",
+      "local": true
+    },
+    {
+      "slug": "big-shoulders-stencil-text",
+      "category": "heading",
+      "query": "Big+Shoulders+Stencil+Text:wght@700",
+      "local": true
+    },
+    {
+      "slug": "black-ops-one",
+      "category": "heading",
+      "query": "Black+Ops+One",
+      "local": true
+    },
+    {
+      "slug": "bree-serif",
+      "category": "heading",
+      "query": "Bree+Serif",
+      "local": true
+    },
+    {
+      "slug": "cinzel",
+      "category": "heading",
+      "query": "Cinzel",
+      "local": true
+    },
+    {
+      "slug": "dancing-script",
+      "category": "heading",
+      "query": "Dancing+Script:wght@700",
+      "local": true
+    },
+    {
+      "slug": "dm-serif-display",
+      "category": "heading",
+      "query": "DM+Serif+Display",
+      "local": true
+    },
+    {
+      "slug": "doppio-one",
+      "category": "heading",
+      "query": "Doppio+One",
+      "local": true
+    },
+    {
+      "slug": "fjalla-one",
+      "category": "heading",
+      "query": "Fjalla+One",
+      "local": true
+    },
+    {
+      "slug": "francois-one",
+      "category": "heading",
+      "query": "Francois+One",
+      "local": true
+    },
+    {
+      "slug": "fredericka-the-great",
+      "category": "heading",
+      "query": "Fredericka+the+Great",
+      "local": true
+    },
+    {
+      "slug": "fredoka",
+      "category": "heading",
+      "query": "Fredoka:wght@700",
+      "local": true
+    },
+    {
+      "slug": "hammersmith-one",
+      "category": "heading",
+      "query": "Hammersmith+One",
+      "local": true
+    },
+    {
+      "slug": "indie-flower",
+      "category": "heading",
+      "query": "Indie+Flower",
+      "local": true
+    },
+    {
+      "slug": "kalam",
+      "category": "heading",
+      "query": "Kalam:wght@700",
+      "local": true
+    },
+    {
+      "slug": "lobster-two",
+      "category": "heading",
+      "query": "Lobster+Two:wght@700",
+      "local": true
+    },
+    {
+      "slug": "patrick-hand",
+      "category": "heading",
+      "query": "Patrick+Hand",
+      "local": true
+    },
+    {
+      "slug": "prosto-one",
+      "category": "heading",
+      "query": "Prosto+One",
+      "local": true
+    },
+    {
+      "slug": "righteous",
+      "category": "heading",
+      "query": "Righteous",
+      "local": true
+    },
+    {
+      "slug": "staatliches",
+      "category": "heading",
+      "query": "Staatliches",
+      "local": true
+    },
+    {
+      "slug": "yanone-kaffeesatz",
+      "category": "heading",
+      "query": "Yanone+Kaffeesatz:wght@700",
+      "local": true
+    },
+    {
+      "slug": "akronim",
+      "category": "special",
+      "query": "Akronim",
+      "local": false
+    },
+    {
+      "slug": "barriecito",
+      "category": "special",
+      "query": "Barriecito",
+      "local": false
+    },
+    {
+      "slug": "bungee-shade",
+      "category": "special",
+      "query": "Bungee+Shade",
+      "local": false
+    },
+    {
+      "slug": "ceviche-one",
+      "category": "special",
+      "query": "Ceviche+One",
+      "local": false
+    },
+    {
+      "slug": "creepster",
+      "category": "special",
+      "query": "Creepster",
+      "local": false
+    },
+    {
+      "slug": "faster-one",
+      "category": "special",
+      "query": "Faster+One",
+      "local": false
+    },
+    {
+      "slug": "finger-paint",
+      "category": "special",
+      "query": "Finger+Paint",
+      "local": false
+    },
+    {
+      "slug": "frijole",
+      "category": "special",
+      "query": "Frijole",
+      "local": false
+    },
+    {
+      "slug": "irish-grover",
+      "category": "special",
+      "query": "Irish+Grover",
+      "local": false
+    },
+    {
+      "slug": "kumar-one",
+      "category": "special",
+      "query": "Kumar+One",
+      "local": false
+    },
+    {
+      "slug": "londrina-outline",
+      "category": "special",
+      "query": "Londrina+Outline",
+      "local": false
+    },
+    {
+      "slug": "megrim",
+      "category": "special",
+      "query": "Megrim",
+      "local": false
+    },
+    {
+      "slug": "metal-mania",
+      "category": "special",
+      "query": "Metal+Mania",
+      "local": false
+    },
+    {
+      "slug": "monoton",
+      "category": "special",
+      "query": "Monoton",
+      "local": false
+    },
+    {
+      "slug": "moo-lah-lah",
+      "category": "special",
+      "query": "Moo+Lah+Lah",
+      "local": false
+    },
+    {
+      "slug": "new-rocker",
+      "category": "special",
+      "query": "New+Rocker",
+      "local": false
+    },
+    {
+      "slug": "nosifer",
+      "category": "special",
+      "query": "Nosifer",
+      "local": false
+    },
+    {
+      "slug": "pirata-one",
+      "category": "special",
+      "query": "Pirata+One",
+      "local": false
+    },
+    {
+      "slug": "ruslan-display",
+      "category": "special",
+      "query": "Ruslan+Display",
+      "local": false
+    },
+    {
+      "slug": "rye",
+      "category": "special",
+      "query": "Rye",
+      "local": false
+    },
+    {
+      "slug": "sancreek",
+      "category": "special",
+      "query": "Sancreek",
+      "local": false
+    },
+    {
+      "slug": "slackey",
+      "category": "special",
+      "query": "Slackey",
+      "local": false
+    },
+    {
+      "slug": "trade-winds",
+      "category": "special",
+      "query": "Trade+Winds",
+      "local": false
+    },
+    {
+      "slug": "train-one",
+      "category": "special",
+      "query": "Train+One",
+      "local": false
+    },
+    {
+      "slug": "unifrakturmaguntia",
+      "category": "special",
+      "query": "UnifrakturMaguntia",
+      "local": false
+    },
+    {
+      "slug": "acme",
+      "category": "site-name",
+      "query": "Acme",
+      "local": false
+    },
+    {
+      "slug": "audiowide",
+      "category": "site-name",
+      "query": "Audiowide",
+      "local": false
+    },
+    {
+      "slug": "berkshire-swash",
+      "category": "site-name",
+      "query": "Berkshire+Swash",
+      "local": false
+    },
+    {
+      "slug": "contrail-one",
+      "category": "site-name",
+      "query": "Contrail+One",
+      "local": false
+    },
+    {
+      "slug": "cookie",
+      "category": "site-name",
+      "query": "Cookie",
+      "local": false
+    },
+    {
+      "slug": "croissant-one",
+      "category": "site-name",
+      "query": "Croissant+One",
+      "local": false
+    },
+    {
+      "slug": "crushed",
+      "category": "site-name",
+      "query": "Crushed",
+      "local": false
+    },
+    {
+      "slug": "eagle-lake",
+      "category": "site-name",
+      "query": "Eagle+Lake",
+      "local": false
+    },
+    {
+      "slug": "fugaz-one",
+      "category": "site-name",
+      "query": "Fugaz+One",
+      "local": false
+    },
+    {
+      "slug": "gilda-display",
+      "category": "site-name",
+      "query": "Gilda+Display",
+      "local": false
+    },
+    {
+      "slug": "girassol",
+      "category": "site-name",
+      "query": "Girassol",
+      "local": false
+    },
+    {
+      "slug": "italiana",
+      "category": "site-name",
+      "query": "Italiana",
+      "local": false
+    },
+    {
+      "slug": "joan",
+      "category": "site-name",
+      "query": "Joan",
+      "local": false
+    },
+    {
+      "slug": "julius-sans-one",
+      "category": "site-name",
+      "query": "Julius+Sans+One",
+      "local": false
+    },
+    {
+      "slug": "katibeh",
+      "category": "site-name",
+      "query": "Katibeh",
+      "local": false
+    },
+    {
+      "slug": "kaushan-script",
+      "category": "site-name",
+      "query": "Kaushan+Script",
+      "local": false
+    },
+    {
+      "slug": "overlock-sc",
+      "category": "site-name",
+      "query": "Overlock+SC",
+      "local": false
+    },
+    {
+      "slug": "poiret-one",
+      "category": "site-name",
+      "query": "Poiret+One",
+      "local": false
+    },
+    {
+      "slug": "prata",
+      "category": "site-name",
+      "query": "Prata",
+      "local": false
+    },
+    {
+      "slug": "redressed",
+      "category": "site-name",
+      "query": "Redressed",
+      "local": false
+    },
+    {
+      "slug": "tapestry",
+      "category": "site-name",
+      "query": "Tapestry",
+      "local": false
+    },
+    {
+      "slug": "uncial-antiqua",
+      "category": "site-name",
+      "query": "Uncial+Antiqua",
+      "local": false
+    },
+    {
+      "slug": "unica-one",
+      "category": "site-name",
+      "query": "Unica+One",
+      "local": false
+    },
+    {
+      "slug": "yatra-one",
+      "category": "site-name",
+      "query": "Yatra+One",
+      "local": false
+    },
+    {
+      "slug": "yeseva-one",
+      "category": "site-name",
+      "query": "Yeseva+One",
+      "local": false
+    }
+  ],
+  "icons": [
+    {
+      "id": "font-awesome-4-in",
+      "meta": { "Version": "4.7.0" },
+      "css": [{ "path": "fonts/font-awesome.4.7.0.css", "weight": -200 }]
+    },
+    {
+      "id": "font-awesome-4-ex",
+      "meta": {
+        "remote": "https://github.com/FortAwesome/Font-Awesome",
+        "version": "4.7.0",
+        "license": { "name": "MIT", "url": "https://fontawesome.com/license/free", "gpl-compatible": true }
+      },
+      "css": [
+        {
+          "path": "https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css",
+          "type": "external",
+          "minified": true,
+          "weight": -200
+        }
+      ]
+    },
+    {
+      "id": "font-awesome-5-ex",
+      "meta": {
+        "remote": "https://use.fontawesome.com/releases/v5.15.4/fontawesome-free-5.15.4-web.zip",
+        "license": { "name": "CC BY 4.0", "url": "https://fontawesome.com/license/free", "gpl-compatible": true },
+        "version": "5.15.4",
+        "header": true
+      },
+      "css": [
+        {
+          "path": "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css",
+          "type": "external",
+          "minified": true,
+          "weight": -200,
+          "attributes": { "defer": true }
+        }
+      ],
+      "js": [
+        {
+          "path": "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/js/all.min.js",
+          "type": "external",
+          "minified": true,
+          "weight": -200,
+          "attributes": { "defer": true }
+        }
+      ]
+    },
+    {
+      "id": "font-awesome-6-ex",
+      "meta": {
+        "remote": "https://use.fontawesome.com/releases/v6.1.1/fontawesome-free-6.1.1-web.zip",
+        "license": { "name": "CC BY 4.0", "url": "https://fontawesome.com/license/free", "gpl-compatible": true },
+        "version": "6.1.1",
+        "header": true
+      },
+      "css": [
+        {
+          "path": "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css",
+          "type": "external",
+          "minified": true,
+          "weight": -200,
+          "attributes": { "defer": true }
+        }
+      ],
+      "js": [
+        {
+          "path": "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/js/all.min.js",
+          "type": "external",
+          "minified": true,
+          "weight": -200,
+          "attributes": { "defer": true }
+        }
+      ]
+    }
+  ]
+}

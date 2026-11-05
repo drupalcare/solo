@@ -2,7 +2,7 @@
 """Drift check: the scheme records (schemes/<id>.yml) against everything else.
 
 Fails (exit 1) when any of these disagree with the records:
-  solo.libraries.yml                              one library per scheme, same CSS file
+  Solo library set (solo_libraries.py)            one library per scheme, same CSS file
   ../solo_utilities/src/Form/SettingsOptions.php  predefinedTheme(): category|id => label
   images/schemes/                                 one <id>.webp per scheme (none.webp is the "None" option)
   css/predefined/                                 one CSS file per scheme, palette values equal to the record
@@ -14,6 +14,10 @@ import argparse
 import re
 import sys
 from pathlib import Path
+
+sys.dont_write_bytecode = True
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+import solo_libraries  # noqa: E402  the full library set: static yml plus the generated libraries
 
 
 def read_record(path):
@@ -97,22 +101,18 @@ def main():
 
     # Libraries: top-level keys whose css points at css/predefined/.
     libs = {}
-    cur = None
-    for line in (theme / "solo.libraries.yml").read_text().splitlines():
-        m = re.match(r"^([\w-]+):\s*$", line)
+    for name, _cat, f, _w in solo_libraries.css_entries(solo_libraries.load(str(theme))):
+        m = re.fullmatch(r"css/predefined/[\w.-]+\.css", f)
         if m:
-            cur = m.group(1)
-        m = re.search(r"(css/predefined/[\w.-]+\.css)", line)
-        if m and cur:
-            libs[cur] = m.group(1)
+            libs[name] = f
     for id_, r in recs.items():
         if id_ not in libs:
-            errs.append(f"{id_}: no library in solo.libraries.yml")
+            errs.append(f"{id_}: no library in the Solo library set")
         elif libs[id_] != r.get("css"):
             errs.append(f"{id_}: library CSS {libs[id_]} differs from record {r.get('css')}")
     for id_ in libs:
         if id_ not in recs:
-            errs.append(f"{id_}: library in solo.libraries.yml has no record")
+            errs.append(f"{id_}: library in the Solo library set has no record")
 
     # SettingsOptions::predefinedTheme().
     php = (util / "src/Form/SettingsOptions.php").read_text()

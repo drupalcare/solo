@@ -6,6 +6,12 @@ mode: light
 categories:
   - elegant_whites_and_neutrals
 css: css/predefined/solo-gentle-ivory-breeze.css
+dependencies:
+  - solo/solo-scheme-shared
+  - solo/solo-scheme-region-rule
+  - solo/solo-scheme-region-paint-1
+  - solo/solo-scheme-region-paint-2
+  - solo/solo-scheme-region-paint-3
 thumbnail: images/schemes/solo-gentle-ivory-breeze.webp
 palette:
   --sc-head-tx: "#1f3550"

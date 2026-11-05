@@ -6,6 +6,12 @@ mode: dark
 categories:
   - bold_and_dramatic_colors
 css: css/predefined/solo-eclipse-noir.css
+dependencies:
+  - solo/solo-scheme-shared
+  - solo/solo-scheme-region-rule
+  - solo/solo-scheme-region-paint-1
+  - solo/solo-scheme-region-paint-2
+  - solo/solo-scheme-region-paint-3
 thumbnail: images/schemes/solo-eclipse-noir.webp
 palette:
   --sc-head-tx: "#c16382"

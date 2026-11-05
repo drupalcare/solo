@@ -10,105 +10,19 @@ module. This module equips you with strong capabilities to create complex
 components such as 3D cards, slideshows, 3D carousel, tabs, cards,
 accordions, and more.
 
-## Install, and when you need a sub-theme
+## Table of contents
 
-Install Solo with `composer require drupal/solo`, which also brings the
-[Solo Utilities](https://www.drupal.org/project/solo_utilities) module that
-holds Solo's logic, then click **Install and set as default** under
-**Appearance**. No sub-theme is needed for most
-sites:
+- Overview
+- Requirements
+- Installation
+- Configuration
+- Usage
+- Troubleshooting
+- Changelog
+- Maintainers
+- License
 
-- **Everything you set in the theme settings** (colors, layout, menus,
-  regions) is stored in your site's configuration, so updating Solo never
-  overwrites it.
-- **Your own CSS and JavaScript** go in the theme settings too, under
-  **Global Site Settings > Custom Code**: *CSS Injector*, *CSS Dynamic* and
-  *JavaScript Dynamic*. They are saved with your settings, or to files in
-  `sites/*/files/solo/`, never inside Solo's folder.
-
-**Create a sub-theme when you need to override Twig templates.** Never
-edit Solo's own files: the next update replaces them.
-
-The quickest way is one Drush command from Solo Utilities (Drush 12 or
-later). It copies the starter to
-`themes/custom/my_theme` and renames everything for you:
-
-```
-drush solo:subtheme my_theme
-```
-
-Or do it by hand from the starter Solo ships, the `solo_subtheme` folder:
-
-1. Copy it to `themes/custom/my_theme` and rename it as described in
-   `solo_subtheme/README.md`. Every `solo_subtheme` must become your
-   theme's machine name.
-2. Clear the cache (`drush cr`), then install your sub-theme and set it as
-   the default theme under **Appearance**. Drupal installs Solo with it
-   as its base theme.
-
-Full guide:
-[Solo how-to: install Solo theme](https://www.drupal.org/docs/extending-drupal/themes/contributed-themes/solo/solo-how-to#install-solo-theme).
-
-## Upgrading from Solo 1
-
-**Sub-theme owners: this release renames Solo's CSS classes and element IDs, so your sub-theme's CSS, Twig and JavaScript break until you migrate them.** Run `drush solo:migrate-classes my_theme` first. It is a dry run and changes nothing. Read the list, then run it again with `--apply`. `drush updatedb` also rewrites the inline CSS saved in Solo's settings. The full list of old and new names is in `docs/CLASS-MIGRATION.md`.
-
-Solo 2 keeps templates, CSS, JavaScript and settings data in the theme and moves
-all PHP into the required Solo Utilities module. Setting names change, and the
-update migrates them for Solo and every sub-theme.
-
-**Before you start:** be on Solo 1.0.35 or later and Drupal 11.3 or later, and
-run `drush solo:preflight` to list what your own code must change. If you upload
-code by hand, add the `solo_utilities` folder too, or every database update
-stops at the requirements check. Take a database snapshot.
-
-**The route, in this order:**
-
-```
-drush maintenance:mode 1     # older Drush: drush state:set system.maintenance_mode 1
-composer update drupal/solo drupal/solo_utilities --with-dependencies
-drush updatedb
-drush config:export
-drush maintenance:mode 0
-```
-
-Keep maintenance mode on until `drush updatedb` finishes without an error. Between
-the new code landing and the update, a page that is not already cached can fail
-with a 500 error, because compiled templates and services still expect Solo 1. No
-design can close that gap; the route hides it. If the update names a theme it could
-not migrate, that theme is left unchanged and shows default settings until you fix
-it and run `drush updatedb` again.
-
-**Run `drush config:export`.** Solo now declares the module as a dependency, so an
-old export would uninstall it on the next import, which drops its node width table.
-A stale export holding old setting names is converted on import, but your first
-export after the update shows a whole-file difference once.
-
-**To roll back:** restore the database snapshot together with the old code, then run
-`drush cr`. With no snapshot, run `drush solo:settings-restore` **before** putting
-the old code back, and restore `config/sync` from version control by hand. That path
-loses settings saved after the migration. Solo 1 cannot read the new names, so
-rolling back code alone shows default settings. Never uninstall Solo Utilities as a
-rollback: uninstalling clears the width settings.
-
-**Four things the update cannot change for you.** Each makes no error, it just stops
-working. `drush solo:preflight` lists them by file and line:
-
-1. Code reading a setting directly, such as
-   `\Drupal::config('my_theme.settings')->get('old_name')`, or a Twig config function
-   from a contributed module. It now returns NULL.
-2. A sub-theme's own settings form alter aimed at an old element path. It stops
-   matching.
-3. Sub-theme code that writes `->set('old_name', ...)`. It creates a key nothing
-   reads.
-4. An override in `settings.php`, such as `$config['my_theme.settings']['old_name']`.
-   It stops applying.
-
-Sub-theme code calling Solo 1's PHP helper functions or classes must change as well:
-they are gone. `theme_get_setting('old_name')` keeps working only while the optional
-`solo_utilities_compat` sub-module is on.
-
-## Features
+## Overview
 
 ### 24 Regions
 
@@ -148,49 +62,23 @@ main menu, providing an additional navigation option.
 Customize 15 color fields per region to align the colors with your brand
 identity.
 
-Variable Definitions:
-Solo theme uses CSS custom properties for region-specific theming, providing 
-granular control while ensuring consistency across layouts. Below are the 
-available region variables:
+Solo uses CSS custom properties for region-specific theming, providing granular control while keeping layouts consistent. These are the region variables:
 
---r-bg: Region background color. Sets the overall background color of the 
-region wrapper.
-
---r-tx: Region text color. Sets the default text color for all paragraph and 
-inline text within the region.
-
---r-h1: Region heading color. Specifically controls the color for headings (h1,
- h2, h3) within the region.
-
---r-lk: Region link color. Sets the color for anchor (<a>) links in their 
-  normal (non-hover) state.
-
---r-lk-h: Region link hover color. Sets the color for links when hovered or 
-focused, aiding user feedback.
-
---r-br: Region border color. Sets the border color for the region, allowing 
-clear section separation.
-
---r-bg-fr: Form background color within the region. Targets backgrounds of 
-forms such as login and search blocks within the region.
-
---r-tx-lk: Menu link text color within the region. Sets the text color for 
-navigation/menu links.
-
---r-tx-lk-h: Menu link hover text color within the region, aiding clear 
-navigation feedback.
-
---r-bg-lk: Menu link background color in the region (normal state).
-
---r-bg-lk-h: Menu link background hover color in the region.
-
---r-tx-bt: Button text color within the region (normal state).
-
---r-tx-bt-h: Button text hover color within the region.
-
---r-bg-bt: Button background color within the region (normal state).
-
---r-bg-bt-h: Button background hover color within the region.
+- `--r-bg`: Region background color. Sets the overall background color of the region wrapper.
+- `--r-tx`: Region text color. Sets the default text color for all paragraph and inline text within the region.
+- `--r-h1`: Region heading color. Controls the color of headings (h1, h2, h3) within the region.
+- `--r-lk`: Region link color. Sets the color of links (`<a>`) in their normal, non-hover state.
+- `--r-lk-h`: Region link hover color. Sets the color of links when hovered or focused.
+- `--r-br`: Region border color. Sets the border color of the region.
+- `--r-bg-fr`: Form background color within the region. Targets backgrounds of forms such as login and search blocks.
+- `--r-tx-lk`: Menu link text color within the region.
+- `--r-tx-lk-h`: Menu link hover text color within the region.
+- `--r-bg-lk`: Menu link background color in the region (normal state).
+- `--r-bg-lk-h`: Menu link background hover color in the region.
+- `--r-tx-bt`: Button text color within the region (normal state).
+- `--r-tx-bt-h`: Button text hover color within the region.
+- `--r-bg-bt`: Button background color within the region (normal state).
+- `--r-bg-bt-h`: Button background hover color within the region.
 
 ### Customized Layout
 
@@ -253,11 +141,11 @@ website's design, but also value simplicity and ease of use. Whether you are
 creating a simple blog or a complex corporate website, Solo theme will provide
 you with the tools you need to create an effective online presence.
 
-## Solo Regions
+### Solo Regions
 
 The Solo theme encompasses two types of regions: **Single and Grouped regions**.
 
-### [1] Single Regions
+#### [1] Single Regions
 
 The theme consists of the following single regions:
 
@@ -276,7 +164,7 @@ The theme consists of the following single regions:
 All single regions are visible on all site pages, except 'Page Title' (not
 visible on the home page) and 'Welcome Text' (visible on the home page only).
 
-### [2] Grouped Regions
+#### [2] Grouped Regions
 
 The theme also includes the following grouped regions:
 
@@ -287,14 +175,13 @@ The theme also includes the following grouped regions:
 | 3. Top 3    | 3. Sidebar R | 3. Bottom 3   | 3. Footer 3   |
 |             |              | 4. Bottom 4   |               |
 
-# Theme Architecture
+### Theme Architecture
 
-The `div` element with the class `page-wrapper` wraps around 2
-4 distinct regions.
+The `div` element with the class `page-wrapper` wraps around 24 distinct regions.
 Both the `page-wrapper` and each of these regions can have up to 15 different
 color inputs applied to them. The color inputs can be categorized as follows:
 
-## Color Categories
+#### Color Categories
 
 - **General**
   - Background color
@@ -323,9 +210,116 @@ color inputs applied to them. The color inputs can be categorized as follows:
 colors to the page wrapper. Then, for each region, apply specific colors. Note
 that the colors of the regions will override the global colors.
 
-# Theme Settings
+## Requirements
 
-## Blueprint
+- **Drupal core** `^11.3 || ^12` and **PHP** 8.3 or later (`solo.info.yml`, `composer.json`).
+- **[Solo Utilities](https://www.drupal.org/project/solo_utilities)** `^2.0`: the module that holds Solo's logic. Solo 2 requires it, and Composer installs it with the theme.
+
+## Installation
+
+### Install, and when you need a sub-theme
+
+Install Solo with `composer require drupal/solo`, which also brings the
+[Solo Utilities](https://www.drupal.org/project/solo_utilities) module that
+holds Solo's logic, then click **Install and set as default** under
+**Appearance**. No sub-theme is needed for most
+sites:
+
+- **Everything you set in the theme settings** (colors, layout, menus,
+  regions) is stored in your site's configuration, so updating Solo never
+  overwrites it.
+- **Your own CSS and JavaScript** go in the theme settings too, under
+  **Global Site Settings > Custom Code**: *CSS Injector*, *CSS Dynamic* and
+  *JavaScript Dynamic*. They are saved with your settings, or to files in
+  `sites/*/files/solo/`, never inside Solo's folder.
+
+**Create a sub-theme when you need to override Twig templates.** Never
+edit Solo's own files: the next update replaces them.
+
+The quickest way is one Drush command from Solo Utilities (Drush 12 or
+later). It copies the starter to
+`themes/custom/my_theme` and renames everything for you:
+
+```
+drush solo:subtheme my_theme
+```
+
+Or do it by hand from the starter Solo ships, the `solo_subtheme` folder:
+
+1. Copy it to `themes/custom/my_theme` and rename it as described in
+   `solo_subtheme/README.md`. Every `solo_subtheme` must become your
+   theme's machine name.
+2. Clear the cache (`drush cr`), then install your sub-theme and set it as
+   the default theme under **Appearance**. Drupal installs Solo with it
+   as its base theme.
+
+Full guide:
+[Solo how-to: install Solo theme](https://www.drupal.org/docs/extending-drupal/themes/contributed-themes/solo/solo-how-to#install-solo-theme).
+
+### Upgrading from Solo 1
+
+**Sub-theme owners: this release renames Solo's CSS classes and element IDs, so your sub-theme's CSS, Twig and JavaScript break until you migrate them.** Run `drush solo:migrate-classes my_theme` first. It is a dry run and changes nothing. Read the list, then run it again with `--apply`. `drush updatedb` also rewrites the inline CSS saved in Solo's settings. The full list of old and new names is in `docs/CLASS-MIGRATION.md`.
+
+Solo 2 keeps templates, CSS, JavaScript and settings data in the theme and moves
+all PHP into the required Solo Utilities module. Setting names change, and the
+update migrates them for Solo and every sub-theme.
+
+**Before you start:** be on Solo 1.0.35 or later and Drupal 11.3 or later, and
+run `drush solo:preflight` to list what your own code must change. If you upload
+code by hand, add the `solo_utilities` folder too, or every database update
+stops at the requirements check. Take a database snapshot.
+
+**The route, in this order:**
+
+```
+drush maintenance:mode 1     # older Drush: drush state:set system.maintenance_mode 1
+composer update drupal/solo drupal/solo_utilities --with-dependencies
+drush updatedb
+drush config:export
+drush maintenance:mode 0
+```
+
+Keep maintenance mode on until `drush updatedb` finishes without an error. Between
+the new code landing and the update, a page that is not already cached can fail
+with a 500 error, because compiled templates and services still expect Solo 1. No
+design can close that gap; the route hides it. If the update names a theme it could
+not migrate, that theme is left unchanged and shows default settings until you fix
+it and run `drush updatedb` again.
+
+**Run `drush config:export`.** Solo now declares the module as a dependency, so an
+old export would uninstall it on the next import, which drops its node width table.
+A stale export holding old setting names is converted on import, but your first
+export after the update shows a whole-file difference once.
+
+**To roll back:** restore the database snapshot together with the old code, then run
+`drush cr`. With no snapshot, run `drush solo:settings-restore` **before** putting
+the old code back, and restore `config/sync` from version control by hand. That path
+loses settings saved after the migration. Solo 1 cannot read the new names, so
+rolling back code alone shows default settings. Never uninstall Solo Utilities as a
+rollback: uninstalling clears the width settings.
+
+**Four things the update cannot change for you.** Each makes no error, it just stops
+working. `drush solo:preflight` lists them by file and line:
+
+1. Code reading a setting directly, such as
+   `\Drupal::config('my_theme.settings')->get('old_name')`, or a Twig config function
+   from a contributed module. It now returns NULL.
+2. A sub-theme's own settings form alter aimed at an old element path. It stops
+   matching.
+3. Sub-theme code that writes `->set('old_name', ...)`. It creates a key nothing
+   reads.
+4. An override in `settings.php`, such as `$config['my_theme.settings']['old_name']`.
+   It stops applying.
+
+Sub-theme code calling Solo 1's PHP helper functions or classes must change as well:
+they are gone. `theme_get_setting('old_name')` keeps working only while the optional
+`solo_utilities_compat` sub-module is on.
+
+## Configuration
+
+Everything you set in the theme settings is stored in your site's configuration, so updating Solo never overwrites it.
+
+### Blueprint
 
 The blueprint for the Solo theme regions is a structured layout that defines
 the various sections of a web page. A brief description of each region follows:
@@ -357,7 +351,7 @@ images, links, and more, depending on the needs of the website.
 This blueprint is a starting point and guide for developers, designers,
 and other site builders involved in the development process.
 
-## Global Site Settings
+### Global Site Settings
 
 - Solo theme provides features to adjust website width and breakpoints.
 - It allows altering spaces between regions and modifying layout settings.
@@ -371,52 +365,52 @@ and other site builders involved in the development process.
 - **Menu template assignment:** Assign any responsive menu Twig template to any menu (primary, footer, or custom) so each menu can use a different template.
 - **Formatted copyright and credit:** Option to use one rich-text field for all copyright and credit in the footer; when off, the four separate fields are used.
 
-## Libraries and Fonts Settings
+### Libraries and Fonts Settings
 
 - Feature to upload and use the w3.css library locally.
 - Modify the font family of the entire website with Google fonts.
 - Alter font family of h1, h2, h3 with Google fonts selections.
 - Offers 25 special Google fonts for application to HTML tags.
 
-## Page Wrapper Settings
+### Page Wrapper Settings
 
 - Input field for predefined CSS classes from Solo or third-party libraries.
 - 15 color input fields for global use across the site.
 
-## Predefined Color Scheme Settings
+### Predefined Color Scheme Settings
 
 - Dropdown select list with 50 predefined Color Scheme Themes for the site.
 
-## Social Media Links Settings
+### Social Media Links Settings
 
 - Options for social media icon sizes (Small, Medium, Large).
 - Input color field to change social media icon colors.
 - Checkbox to show or hide social icons.
 - Eight social text fields and one RSS field.
 
-# Single Regions Settings
+### Single Regions Settings
 
-## Highlighted Settings
+#### Highlighted Settings
 
 - Change visibility options for the highlighted block.
 - Text input for predefined CSS classes.
 - 15 color input fields for this region.
 
-## Popup Login Block Settings
+#### Popup Login Block Settings
 
 - Input field for predefined CSS classes.
 - Checkbox for popup block login feature.
 - Text field to customize login wording.
 - 15 color input fields for this region.
 
-## Fixed Search Block Settings
+#### Fixed Search Block Settings
 
 - Input field for predefined CSS classes.
 - 15 color input fields for this region.
 
-# Theme Settings Documentation
+### Theme Settings Documentation
 
-## Header Settings
+#### Header Settings
 
 - Text input for predefined CSS classes from Solo or third-party libraries.
 - Checkbox to center Site's Name, Slogan, and Logo.
@@ -425,13 +419,13 @@ and other site builders involved in the development process.
 - Dropdown for 24 predefined CSS text animations for the Site name.
 - 15 color input fields for this region.
 
-## Primary Sidebar Menu Settings
+#### Primary Sidebar Menu Settings
 
 - Text input for predefined CSS classes.
 - Checkbox to apply borders to menu items.
 - 15 color input fields for this region.
 
-## Primary Menu Settings
+#### Primary Menu Settings
 
 - Text input for predefined CSS classes.
 - Checkbox for hover-to-show main menu dropdowns.
@@ -442,35 +436,35 @@ and other site builders involved in the development process.
   - Mega Menu Layout options (2-4 columns with various percentages).
   - Mega Menu Header checkbox for second level headers.
 
-## Welcome Settings
+#### Welcome Settings
 
 - Text input for predefined CSS classes.
 - 15 color input fields for this region.
 
-## System Message Settings
+#### System Message Settings
 
 - Text input for predefined CSS classes.
 - 15 color input fields for this region.
 
-## Page Title Settings
+#### Page Title Settings
 
 - Text input for predefined CSS classes.
 - Dropdown for 24 predefined CSS text animations for the page title.
 - 15 color input fields for this region.
 
-## Breadcrumb Settings
+#### Breadcrumb Settings
 
 - Text input for predefined CSS classes.
 - Checkbox to hide page title from the breadcrumb.
 - 15 color input fields for this region.
 
-## Footer Menu Settings
+#### Footer Menu Settings
 
 - Text input for predefined CSS classes.
 - Dropdown for 24 predefined CSS text animations for the page title.
 - 15 color input fields for this region.
 
-## Copyright and Credit Settings
+#### Copyright and Credit Settings
 
 - Text input for predefined CSS classes.
 - 15 color input fields for this region.
@@ -478,12 +472,12 @@ and other site builders involved in the development process.
 - Checkbox to show or hide credit.
 - **Formatted copyright and credit:** When enabled, one rich-text field is used for all copyright and credit; when off, the four separate fields above are used. See *Formatted Copyright and Credit* above for details.
 
-## Grouped Regions
+#### Grouped Regions
 
 Regions grouped together are enclosed within a div. While the region wrapper
 has its own settings, individual regions maintain their own settings.
 
-### The (TOP, MAIN, BOTTOM, FOOTER) Region Wrapper Settings
+##### The (TOP, MAIN, BOTTOM, FOOTER) Region Wrapper Settings
 
 - Two, three, and four columns settings with various percentage distributions.
 - Change visibility options (Visible on all pages, Home Page Only, All Pages
@@ -494,12 +488,12 @@ Except Home Page).
 - Text input for predefined CSS classes.
 - 15 color input fields for this region.
 
-### Individual Region Settings
+##### Individual Region Settings
 
 - Text input for predefined CSS classes.
 - 15 color input fields for this region.
 
-## Content-Security-Policy
+### Content-Security-Policy
 
 Measured, so that a site running a strict CSP knows what this theme puts on a
 page:
@@ -527,3 +521,33 @@ not discover them automatically and your policy has to allow them explicitly:
 The script tag is an external same-origin reference, not inline code; it is
 attached this way because the locale module rejects stream-wrapper URIs for
 library JS assets.
+
+## Usage
+
+- **Theme settings** (colors, layout, menus, regions): see [Configuration](#configuration).
+- **Your own CSS and JavaScript:** **Global Site Settings > Custom Code**, as described in [Installation](#installation).
+- **Create a sub-theme:** `drush solo:subtheme my_theme` (Solo Utilities, Drush 12 or later).
+- **Check a Solo 1 sub-theme for Solo 2:** `drush solo:preflight`.
+- **Rename Solo 1 classes and ids:** `drush solo:migrate-classes my_theme`. The list of old and new names is in `docs/CLASS-MIGRATION.md`.
+- **Go back to the earlier settings after an upgrade:** `drush solo:settings-restore`, or the **Restore earlier settings** button on **Configuration > System > Solo upgrade**.
+
+## Troubleshooting
+
+- **A page returns a 500 error right after the code update.** Compiled templates and services still expect Solo 1 until `drush updatedb` finishes. Keep maintenance mode on until it does. See "Upgrading from Solo 1".
+- **The site shows default settings after an update or a code rollback.** Solo 1 cannot read the new setting names. If the update named a theme it could not migrate, fix it and run `drush updatedb` again; to go back, follow the rollback steps in "Upgrading from Solo 1".
+- **A sub-theme's CSS, Twig or JavaScript stopped matching.** Solo 2 renames its classes and ids. Run `drush solo:migrate-classes my_theme` (a dry run until you add `--apply`).
+- **Custom code reading a setting returns NULL.** See "Four things the update cannot change for you" under "Upgrading from Solo 1". `drush solo:preflight` lists each by file and line.
+- **A strict Content-Security-Policy blocks Solo's dynamic script or the Google font.** See [Content-Security-Policy](#content-security-policy).
+- Report anything else in the [issue queue](https://www.drupal.org/project/issues/solo).
+
+## Changelog
+
+See [CHANGELOG.md](./CHANGELOG.md).
+
+## Maintainers
+
+- Alaa Haddad - [flashwebcenter](https://www.drupal.org/u/flashwebcenter)
+
+## License
+
+GPL-2.0-or-later. See [LICENSE.txt](./LICENSE.txt).

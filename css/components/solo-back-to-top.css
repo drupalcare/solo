@@ -65,7 +65,7 @@
   color: var(--r-tx, #fff);
 }
 
-@media (max-width: 767px) {
+@media (width <= 767px) {
   .solo-back-to-top.solo-back-to-top--hide-small {
     display: none !important;
   }

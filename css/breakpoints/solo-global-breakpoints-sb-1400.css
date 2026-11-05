@@ -1,4 +1,4 @@
-@media (min-width:87.5rem) {
+@media (width >= 87.5rem) {
   .solo-desktop-hide {
     display: none !important;
   }
@@ -135,7 +135,7 @@
 
 }
 
-@media (max-width:87.49875rem) {
+@media (width <= 87.49875rem) {
   .solo-mobile-hide {
     display: none !important;
   }
@@ -350,7 +350,7 @@
 
 }
 
-@media (min-width:48rem) and (max-width:87.49875rem) {
+@media (48rem <= width <= 87.49875rem) {
   :where(.solo-page.solo__collapse-order .solo-container--bottom-active-4) .solo-container__inner--bottom {
     grid-auto-flow: row;
     grid-template-columns: 1fr 1fr;

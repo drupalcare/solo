@@ -19,7 +19,7 @@ figcaption {
   margin-inline-end: auto;
 }
 
-@media (min-width:36rem) {
+@media (width >= 36rem) {
   figcaption {
     padding: 1rem;
   }
@@ -40,7 +40,7 @@ figcaption {
 
 }
 
-@media (min-width:48rem) {
+@media (width >= 48rem) {
   .align-right {
     float: inline-end;
     max-width: 50%;
@@ -50,7 +50,7 @@ figcaption {
 
 }
 
-@media (min-width:36rem) {
+@media (width >= 36rem) {
 
   :where([dir="rtl"]) .align-right {
     float: inline-start;
@@ -60,7 +60,7 @@ figcaption {
 
 }
 
-@media (min-width:48rem) {
+@media (width >= 48rem) {
 
   :where([dir="rtl"]) .align-right {
     float: inline-start;
@@ -77,7 +77,7 @@ figcaption {
 
 }
 
-@media (min-width:36rem) {
+@media (width >= 36rem) {
 
   :where([dir="rtl"]) .align-left {
     float: inline-end;
@@ -87,7 +87,7 @@ figcaption {
 
 }
 
-@media (min-width:48rem) {
+@media (width >= 48rem) {
 
   :where([dir="rtl"]) .align-left {
     float: inline-end;

@@ -144,7 +144,7 @@ body.solo-login-popup-open {
 }
 
 /* Responsive adjustments */
-@media (max-width: 48rem) {
+@media (width <= 48rem) {
   .solo-popup-login__inner {
     max-width: 95%;
     margin-inline: 2.5%;

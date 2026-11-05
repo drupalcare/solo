@@ -71,7 +71,7 @@ html.gap-14 .solo-inner .solo-menu-tree__menubar li.solo-menu-tree__item > butto
   padding-block-end: var(--solo-px10);
 }
 
-@media (min-width:26rem) {
+@media (width >= 26rem) {
 
   /* Region gaps 20 */
   html.gap-20 .solo-inner .solo-menu-tree__menubar li.solo-menu-tree__item > a,
@@ -167,7 +167,7 @@ html.gap-14 .solo-inner .solo-menu-tree__menubar li.solo-menu-tree__item > butto
   inset-block-start: 20px;
 }
 
-@media (min-width:26rem) {
+@media (width >= 26rem) {
 
   :where(html.fs-18 .solo-fixed-search__inner) .solo-search-block-form .form-type-search::before {
     inset-block-start: 30px;

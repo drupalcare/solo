@@ -182,9 +182,6 @@ img {
   text-overflow: ellipsis;
   -webkit-touch-callout: none;
   -webkit-user-select: none;
-  -khtml-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
   user-select: none;
   border-radius: 0.25rem;
 }
@@ -390,7 +387,6 @@ ol {
 
 /* Global Classes */
 .solo-sticky {
-  position: -webkit-sticky;
   position: sticky;
   inset-block-start: 0;
   inset-inline-start: 0;
@@ -482,8 +478,7 @@ ol {
 }
 
 .solo-align-center {
-  margin-left: auto !important;
-  margin-right: auto !important;
+  margin-inline: auto !important;
   display: block !important;
 }
 
@@ -500,9 +495,7 @@ ol {
 }
 
 .solo-card {
-  -webkit-box-shadow: 0 var(--solo-px1) var(--solo-px3) 0 rgba(0, 0, 0, 0.12);
-  -moz-box-shadow: 0 var(--solo-px1) var(--solo-px3) 0 rgba(0, 0, 0, 0.12);
-  box-shadow: 0 var(--solo-px1) var(--solo-px3) 0 rgba(0, 0, 0, 0.12);
+  box-shadow: 0 var(--solo-px1) var(--solo-px3) 0 rgb(0 0 0 / 0.12);
 }
 
 .visually-hidden {
@@ -535,7 +528,7 @@ ol {
   --solo-gap: var(--solo-px16);
 }
 
-@media (min-width:26rem) {
+@media (width >= 26rem) {
   :where(html).gap-20,
   :where(html).gap-20 {
     --solo-gap: var(--solo-px20);

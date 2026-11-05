@@ -147,7 +147,7 @@
 }
 
 /* Size for icons */
-@media (min-width:26rem) {
+@media (width >= 26rem) {
   .solo-social.sm-icons-medium a > span {
     background-size: calc(2 * var(--solo-px20));
     width: calc(2 * var(--solo-px20));
@@ -162,7 +162,7 @@
 
 }
 
-@media (max-width:61.99875rem) {
+@media (width <= 61.99875rem) {
   .solo-social.sm-icons-large a {
     margin-block: var(--solo-px8);
     margin-inline: var(--solo-px16);

@@ -1,4 +1,4 @@
-@media (min-width:36rem) {
+@media (width >= 36rem) {
   .solo-desktop-hide {
     display: none !important;
   }
@@ -135,7 +135,7 @@
 
 }
 
-@media (max-width:35.99875rem) {
+@media (width <= 35.99875rem) {
   .solo-mobile-hide {
     display: none !important;
   }
@@ -346,14 +346,14 @@
 
 }
 
-@media (min-width:36rem) and (max-width:74.99875rem) {
+@media (36rem <= width <= 74.99875rem) {
   :where(.solo-page.solo__collapse-order .solo-container--bottom-active-4) .solo-container__inner--bottom {
     grid-auto-flow: row;
     grid-template-columns: 1fr 1fr;
   }
 }
 
-@media (min-width:36rem) and (max-width:61.99875rem) {
+@media (36rem <= width <= 61.99875rem) {
   :where(.solo-page.solo__collapse-order .solo-container--top-active-3) .solo-container__inner--top,
   :where(.solo-page.solo__collapse-order .solo-container--bottom-active-3) .solo-container__inner--bottom,
   :where(.solo-page.solo__collapse-order .solo-container--footer-active-3) .solo-container__inner--footer {

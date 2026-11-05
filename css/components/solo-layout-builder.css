@@ -141,12 +141,12 @@
   margin: var(--solo-px10);
   padding-block: var(--solo-px10);
   padding-inline: var(--solo-px15);
-  border: 1px solid rgb(55, 170, 220);
+  border: 1px solid rgb(55 170 220);
   border-radius: var(--solo-px5);
 }
 
 .layout-builder__region {
-  outline: 1px dashed rgb(55, 170, 220);
+  outline: 1px dashed rgb(55 170 220);
   border-radius: var(--solo-px5);
 }
 
@@ -258,10 +258,10 @@
 /* Button Colors */
 #solo-page-wrapper .layout-builder__link--add {
   --r-tx: var(--solo-white);
-  background: rgb(55, 170, 220);
-  background: -moz-linear-gradient(top, rgb(55, 170, 220) 0%, rgb(46, 147, 190) 100%);
-  background: -webkit-linear-gradient(top, rgb(55, 170, 220) 0%, rgb(46, 147, 190) 100%);
-  background: linear-gradient(to bottom, rgb(55, 170, 220) 0%, rgb(46, 147, 190) 100%);
+  background: rgb(55 170 220);
+  background: -moz-linear-gradient(top, rgb(55 170 220) 0%, rgb(46 147 190) 100%);
+  background: -webkit-linear-gradient(top, rgb(55 170 220) 0%, rgb(46 147 190) 100%);
+  background: linear-gradient(to bottom, rgb(55 170 220) 0%, rgb(46 147 190) 100%);
 }
 
 #solo-page-wrapper .layout-builder__link--remove:hover,
@@ -269,28 +269,28 @@
 #solo-page-wrapper .layout-builder-revert-overrides .form-actions input,
 #solo-page-wrapper .node-layout-builder-form  .form-actions input:nth-child(2) {
   --r-tx: var(--solo-white);
-  background: rgb(213, 71, 43);
-  background: -moz-linear-gradient(top, rgb(213, 71, 43) 0%, rgb(158, 46, 37) 100%);
-  background: -webkit-linear-gradient(top, rgb(213, 71, 43) 0%, rgb(158, 46, 37) 100%);
-  background: linear-gradient(to bottom, rgb(213, 71, 43) 0%, rgb(158, 46, 37) 100%);
+  background: rgb(213 71 43);
+  background: -moz-linear-gradient(top, rgb(213 71 43) 0%, rgb(158 46 37) 100%);
+  background: -webkit-linear-gradient(top, rgb(213 71 43) 0%, rgb(158 46 37) 100%);
+  background: linear-gradient(to bottom, rgb(213 71 43) 0%, rgb(158 46 37) 100%);
 }
 
 #solo-page-wrapper .layout-builder__link--configure,
 #solo-page-wrapper .layout-builder-revert-overrides .form-actions a.button,
 #solo-page-wrapper .node-layout-builder-form  .form-actions input:nth-child(1) {
   --r-tx: var(--solo-white);
-  background: rgb(75, 187, 34);
-  background: -moz-linear-gradient(top, rgb(75, 187, 34) 0%, rgb(52, 130, 24) 100%);
-  background: -webkit-linear-gradient(top, rgb(75, 187, 34) 0%, rgb(52, 130, 24) 100%);
-  background: linear-gradient(to bottom, rgb(75, 187, 34) 0%, rgb(52, 130, 24) 100%);
+  background: rgb(75 187 34);
+  background: -moz-linear-gradient(top, rgb(75 187 34) 0%, rgb(52 130 24) 100%);
+  background: -webkit-linear-gradient(top, rgb(75 187 34) 0%, rgb(52 130 24) 100%);
+  background: linear-gradient(to bottom, rgb(75 187 34) 0%, rgb(52 130 24) 100%);
 }
 
 #solo-page-wrapper .node-layout-builder-form  .form-actions input:nth-child(3) {
   --r-tx: var(--solo-white);
-  background: rgb(107, 129, 205);
-  background: -moz-linear-gradient(top, rgb(107, 129, 205) 0%, rgb(64, 84, 160) 100%);
-  background: -webkit-linear-gradient(top, rgb(107, 129, 205) 0%, rgb(64, 84, 160) 100%);
-  background: linear-gradient(to bottom, rgb(107, 129, 205) 0%, rgb(64, 84, 160) 100%);
+  background: rgb(107 129 205);
+  background: -moz-linear-gradient(top, rgb(107 129 205) 0%, rgb(64 84 160) 100%);
+  background: -webkit-linear-gradient(top, rgb(107 129 205) 0%, rgb(64 84 160) 100%);
+  background: linear-gradient(to bottom, rgb(107 129 205) 0%, rgb(64 84 160) 100%);
 }
 
 #solo-page-wrapper .layout-builder__link--add:hover,

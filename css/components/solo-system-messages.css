@@ -182,42 +182,42 @@
 :where(.messages.messages--error) .messages__close:hover::before,
 :where(.messages.messages--error) .messages__close:hover::after {
   border-color: var(--solo-red) !important;
-  box-shadow: rgba(244, 67, 54, 0.3) 0px 2px 8px 0px;
+  box-shadow: rgb(244 67 54 / 0.3) 0px 2px 8px 0px;
 }
 
 :where(.messages.messages--warning) .messages__close,
 :where(.messages.messages--warning) .messages__close:hover::before,
 :where(.messages.messages--warning) .messages__close:hover::after {
   border-color: var(--solo-yellow) !important;
-  box-shadow: rgba(255, 205, 58, 0.3) 0px 2px 8px 0px;
+  box-shadow: rgb(255 205 58 / 0.3) 0px 2px 8px 0px;
 }
 
 :where(.messages.messages--status) .messages__close,
 :where(.messages.messages--status) .messages__close:hover::before,
 :where(.messages.messages--status) .messages__close:hover::after {
   border-color: var(--solo-green) !important;
-  box-shadow: rgba(76, 175, 80, 0.3) 0px 2px 8px 0px;
+  box-shadow: rgb(76 175 80 / 0.3) 0px 2px 8px 0px;
 }
 
 :where(.messages.messages--info) .messages__close,
 :where(.messages.messages--info) .messages__close:hover::before,
 :where(.messages.messages--info) .messages__close:hover::after {
   border-color: var(--solo-blue) !important;
-  box-shadow: rgba(33, 150, 243, 0.3) 0px 2px 8px 0px;
+  box-shadow: rgb(33 150 243 / 0.3) 0px 2px 8px 0px;
 }
 
 .messages.messages--error {
-  box-shadow: rgba(244, 67, 54, 0.3) 0px 2px 8px 0px;
+  box-shadow: rgb(244 67 54 / 0.3) 0px 2px 8px 0px;
 }
 
 .messages.messages--warning {
-  box-shadow: rgba(255, 205, 58, 0.3) 0px 2px 8px 0px;
+  box-shadow: rgb(255 205 58 / 0.3) 0px 2px 8px 0px;
 }
 
 .messages.messages--status {
-  box-shadow: rgba(76, 175, 80, 0.3) 0px 2px 8px 0px;
+  box-shadow: rgb(76 175 80 / 0.3) 0px 2px 8px 0px;
 }
 
 .messages.messages--info {
-  box-shadow: rgba(33, 150, 243, 0.3) 0px 2px 8px 0px;
+  box-shadow: rgb(33 150 243 / 0.3) 0px 2px 8px 0px;
 }

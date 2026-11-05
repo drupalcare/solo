@@ -122,7 +122,7 @@ form.search-form > .form-wrapper > .form-submit {
   flex-grow: 1;
 }
 
-@media(min-width:48rem) {
+@media (width >= 48rem) {
   :where(form.search-form) .search-advanced fieldset[data-drupal-selector="edit-keywords-fieldset"] .fieldset-wrapper {
     display: flex;
     flex-wrap: wrap;
@@ -152,7 +152,7 @@ form.search-form > .form-wrapper > .form-submit {
 
 }
 
-@media (min-width:48rem) and (max-width:61.99875rem) {
+@media (48rem <= width <= 61.99875rem) {
   :where(form.search-form .search-advanced fieldset[data-drupal-selector="edit-keywords-fieldset"] .fieldset-wrapper) > * {
     flex: 1 1 calc(50% - var(--solo-px12));
     max-width: calc(50% - var(--solo-px12));
@@ -165,7 +165,7 @@ form.search-form > .form-wrapper > .form-submit {
 
 }
 
-@media(max-width:26rem) {
+@media (width <= 26rem) {
   :where(.path-search) #edit-basic {
     display: flex;
     flex-direction: column;

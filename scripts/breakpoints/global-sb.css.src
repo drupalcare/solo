@@ -1,4 +1,4 @@
-@media (min-width:{{MIN}}) {
+@media (width >= {{MIN}}) {
   .solo-desktop-hide {
     display: none !important;
   }
@@ -140,7 +140,7 @@
 
 }
 
-@media (max-width:{{MAX}}) {
+@media (width <= {{MAX}}) {
 @@1400|  .solo-mobile-hide {
 @@1400|    display: none !important;
 @@1400|  }
@@ -355,8 +355,8 @@
 
 }
 
-@@576|@media (min-width:36rem) and (max-width:74.99875rem) {
-@@768,992,1200|@media (min-width:48rem) and (max-width:74.99875rem) {
+@@576|@media (36rem <= width <= 74.99875rem) {
+@@768,992,1200|@media (48rem <= width <= 74.99875rem) {
 @@576,768,992|  :where(.solo-page.solo__collapse-order .solo-container--bottom-active-4) .solo-container__inner--bottom {
 @@576,768,992|    grid-auto-flow: row;
 @@576,768,992|    grid-template-columns: 1fr 1fr;
@@ -364,9 +364,9 @@
 @@992|
 @@576,768,992|}
 @@576,768,992|
-@@576|@media (min-width:36rem) and (max-width:61.99875rem) {
-@@768,992|@media (min-width:48rem) and (max-width:61.99875rem) {
-@@1400|@media (min-width:48rem) and (max-width:87.49875rem) {
+@@576|@media (36rem <= width <= 61.99875rem) {
+@@768,992|@media (48rem <= width <= 61.99875rem) {
+@@1400|@media (48rem <= width <= 87.49875rem) {
 @@768,1200,1400|  :where(.solo-page.solo__collapse-order .solo-container--bottom-active-4) .solo-container__inner--bottom {
 @@768,1200,1400|    grid-auto-flow: row;
 @@768,1200,1400|    grid-template-columns: 1fr 1fr;

@@ -317,10 +317,20 @@ def norm_sel(sel):
     return ' '.join(s.replace('>', ' > ').replace('+', ' + ').replace('~', ' ~ ').split())
 
 
+def norm_media(ctx):
+    """An at-rule prelude with media range syntax mapped back to the legacy min-width / max-width form, so a
+    value-identical range rewrite keeps its stable_key: '(a <= width <= b)' and '(width >= a)' / '(width <= b)'."""
+    c = re.sub(r'\(\s*([\d.]+(?:px|rem|em))\s*<=\s*width\s*<=\s*([\d.]+(?:px|rem|em))\s*\)', r'(min-width:\1) and (max-width:\2)', ctx)
+    c = re.sub(r'\(\s*width\s*>=\s*([\d.]+(?:px|rem|em))\s*\)', r'(min-width:\1)', c)
+    c = re.sub(r'\(\s*width\s*<=\s*([\d.]+(?:px|rem|em))\s*\)', r'(max-width:\1)', c)
+    c = re.sub(r'\(\s*(min|max)-width\s*:\s*', r'(\1-width:', c)
+    return re.sub(r'^@media\s*\(', '@media (', c)
+
+
 def stable_key(d):
     """Identity that survives a flatten rewrite and a reorder: library, media, normalised selector, property, value.
     !important is not part of the key, so removing it pairs with its baseline and is judged as a change."""
-    return (d['lib'], d['ctx'], norm_sel(d['sel']), d['p'], d['v'])
+    return (d['lib'], tuple(norm_media(c) for c in d['ctx']), norm_sel(d['sel']), d['p'], d['v'])
 
 
 def pair_stable(before, after):

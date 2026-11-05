@@ -1,4 +1,4 @@
-@media (min-width:75rem) {
+@media (width >= 75rem) {
 
   /*  layout file*/
   .solo-col-1 {

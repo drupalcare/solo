@@ -332,7 +332,7 @@
   font-weight: bold;
 }
 
-@media (max-width:35.99875rem) {
+@media (width <= 35.99875rem) {
   .pager__items,
   :where(.solo-inner) .solo-menu-tree--default {
     justify-content: start;

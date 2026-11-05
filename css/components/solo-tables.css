@@ -84,7 +84,7 @@
   display: none;
 }
 
-@media (min-width:36rem) {
+@media (width >= 36rem) {
   .solo-page table th.priority-medium,
   .solo-page table td.priority-medium {
     display: table-cell;
@@ -92,7 +92,7 @@
 
 }
 
-@media (min-width:62rem) {
+@media (width >= 62rem) {
   .solo-page table th.priority-low,
   .solo-page table td.priority-low {
     display: table-cell;
@@ -136,7 +136,7 @@
   overflow-x: auto;
 }
 
-@media (min-width: 48rem) {
+@media (width >= 48rem) {
   .solo-table-wrapper.solo-menu-wrapper--sticky {
     overflow-x: visible;
   }

@@ -30,7 +30,7 @@ h1.solo-page-title__text span {
   text-align: center;
 }
 
-@media (max-width:74.99875rem) {
+@media (width <= 74.99875rem) {
   :where(h1).solo-page-title__text {
     font-size: calc(2 * var(--solo-px24));
     line-height: calc(2 * var(--solo-px28));
@@ -38,7 +38,7 @@ h1.solo-page-title__text span {
 
 }
 
-@media (max-width:61.99875rem) {
+@media (width <= 61.99875rem) {
   :where(h1).solo-page-title__text {
     font-size: var(--solo-px36);
     line-height: calc(2 * var(--solo-px22));
@@ -48,7 +48,7 @@ h1.solo-page-title__text span {
 
 }
 
-@media (max-width:47.99875rem) {
+@media (width <= 47.99875rem) {
   :where(h1).solo-page-title__text {
     font-size: var(--solo-px24);
     line-height: calc(2 * var(--solo-px14));
@@ -58,7 +58,7 @@ h1.solo-page-title__text span {
 
 }
 
-@media (max-width:35.99875rem) {
+@media (width <= 35.99875rem) {
   :where(h1).solo-page-title__text {
     font-size: var(--solo-px18);
     line-height: var(--solo-px22);

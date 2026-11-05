@@ -167,7 +167,7 @@
 
 .solo-primary-sidebar-menu.solo-icons-left:not([dir="rtl"] .solo-primary-sidebar-menu.solo-icons-left) {
   inset-inline-start: -600px;
-  box-shadow: 3.125rem 0 3.125rem -1.875rem rgba(0, 0, 0, 0.2);
+  box-shadow: 3.125rem 0 3.125rem -1.875rem rgb(0 0 0 / 0.2);
 }
 
 .solo-primary-sidebar-menu.solo-icons-left.solo-is-open:not([dir="rtl"] .solo-primary-sidebar-menu.solo-icons-left.solo-is-open) {

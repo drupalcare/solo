@@ -1,4 +1,4 @@
-@media (max-width:61.99875rem) {
+@media (width <= 61.99875rem) {
   :where(.solo-page) .solo-main-nav {
     z-index: var(--z-primary-menu);
   }
@@ -170,10 +170,9 @@
 
 }
 
-@media (min-width:62rem) {
+@media (width >= 62rem) {
   :where(.solo-primary-menu) .solo-primary-menu__inner {
-    padding-left: var(--solo-gap);
-    padding-right: var(--solo-gap);
+    padding-inline: var(--solo-gap);
   }
 
   /* Smooth dropdown for regular menu - all levels */

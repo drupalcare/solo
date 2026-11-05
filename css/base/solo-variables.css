@@ -153,8 +153,8 @@
   --solo-shadow: 0, 0, 0;
   --s-b: 0, 0, 0;
   --s-w: 255, 255, 255;
-  --solo-box-shadow-light: 0 2px 8px rgba(0, 0, 0, 0.15);
-  --solo-box-shadow-dark: 0 2px 8px rgba(255, 255, 255, 0.1);
+  --solo-box-shadow-light: 0 2px 8px rgb(0 0 0 / 0.15);
+  --solo-box-shadow-dark: 0 2px 8px rgb(255 255 255 / 0.1);
   /* Z index */
   --z-base: 10;
   --z-header: 1005;

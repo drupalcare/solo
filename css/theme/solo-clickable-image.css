@@ -33,3 +33,13 @@ a.solo-image--clickable:hover > img.solo-image,
 a.solo-image--clickable:hover > picture > img.solo-image {
   animation: animateimg 5s;
 }
+
+/* Reduced motion: end states are kept, movement is not (WCAG 2.3.3). */
+@media (prefers-reduced-motion: reduce) {
+  :where(a.solo-image--clickable:hover > img.solo-image),
+  :where(a.solo-image--clickable:hover > picture > img.solo-image) {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

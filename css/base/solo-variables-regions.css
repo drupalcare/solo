@@ -104,9 +104,9 @@ h3 a):hover {
 }
 
 /* These links paint their own background, so a region's link colours do not apply. */
-.solo-page ul.tabs a,
-.solo-page .pager__item a,
-.solo-page .solo-social a {
+:where(.solo-page ul.tabs) a,
+:where(.solo-page .pager__item) a,
+:where(.solo-page .solo-social) a {
   --r-sc-lk: initial;
   --r-sc-lk-h: initial;
 }
@@ -123,7 +123,7 @@ h3 a):hover {
 
 .solo-page a.button:hover,
 .solo-page input.button:hover,
-.solo-page .solo-file-button:hover,
+:where(.solo-page) .solo-file-button:hover,
 .solo-page .solo-fixed-search__close button:hover {
   color: var(--r-tx-bt-h, var(--r-sc-tx-bt-h, var(--r-tx)));
   background-color: var(--r-bg-bt-h, var(--r-bg));
@@ -133,7 +133,7 @@ h3 a):hover {
 /* Menu Link */
 .solo-page li.solo-menu-tree__item > a,
 .solo-page li.solo-menu-tree__item > button,
-.solo-page .solo-popup-login__open,
+:where(.solo-page) .solo-popup-login__open,
 .solo-page .solo-hamburger button,
 .block-user-login-block form + .item-list ul li a {
   border-color: var(--r-br, var(--r-br-b));
@@ -143,36 +143,36 @@ h3 a):hover {
 
 .solo-page li.solo-menu-tree__item > a:hover,
 .solo-page li.solo-menu-tree__item > button:hover,
-.solo-page .solo-popup-login__open:hover,
+:where(.solo-page) .solo-popup-login__open:hover,
 .solo-page .solo-hamburger button:hover,
 .block-user-login-block form + .item-list ul li a:hover {
   color: var(--r-tx-lk-h, var(--r-tx));
   background-color: var(--r-bg-lk-h, var(--r-bg));
 }
 
-.solo-page .solo-logo .solo-svg-icon__path,
-.solo-page .dis-icon-colors .solo-svg-icon .solo-svg-icon__path {
+:where(.solo-page .solo-logo) .solo-svg-icon__path,
+:where(.solo-page .dis-icon-colors .solo-svg-icon) .solo-svg-icon__path {
   color: var(--r-tx) !important;
-  fill: var(--r-tx) !important;
+  fill: var(--r-tx);
 }
 
-.solo-page svg.ext path,
-.solo-page svg.mailto path {
+:where(.solo-page svg.ext) path,
+:where(.solo-page svg.mailto) path {
   color: var(--r-tx) !important;
   stroke: var(--r-tx) !important;
 }
 
-.solo-page .ck-focused,
+:where(.solo-page) .ck-focused,
 .solo-page .solo-select:focus,
 .solo-page .solo-check:focus,
 .solo-page .solo-radio:focus,
-.solo-page .solo-input:focus,
-.solo-page .solo-textarea:focus {
+:where(.solo-page) .solo-input:focus,
+:where(.solo-page) .solo-textarea:focus {
   box-shadow: inset 0 -40px 40px -40px var(--r-br);
   border-color: var(--r-br);
 }
 
-.solo-page .solo-primary-menu.solo-sticky {
+:where(.solo-page) .solo-primary-menu.solo-sticky {
   box-shadow: -1px 0 5px 1px rgba(var(--s-b), 0.5);
   z-index: var(--z-primary-menu);
 }
@@ -182,7 +182,7 @@ h3 a):hover {
 }
 
 /* Inner regions borders */
-.solo-page .solo-outer.solo-container--animate-hover .solo-region-box__inner:not(.solo-region-box__inner--main):hover {
+:where(.solo-page .solo-outer.solo-container--animate-hover) :where(.solo-region-box__inner):not(.solo-region-box__inner--main):hover {
   box-shadow: 0 25px 50px 0 rgba(var(--s-b), .35);
 }
 
@@ -192,21 +192,30 @@ h3 a):hover {
   z-index: 10000;
 }
 
-#solo-fixed-search-block {
+.solo-fixed-search {
   box-shadow: 0 var(--solo-px2) var(--solo-px5) 0 rgba(var(--s-b), 0.16), 0 var(--solo-px2) var(--solo-px10) 0 rgba(var(--s-b), 0.12);
 }
 
-.solo-fixed-search__inner .solo-fixed-search__wrapper {
+:where(.solo-fixed-search__inner) .solo-fixed-search__wrapper {
   box-shadow: 0px 30px 90px rgba(var(--s-b), 0.4);
 }
 
-.solo-page .solo-container--top.solo-container--has-border .solo-region-box__inner,
-.solo-page .solo-container--main.solo-container--has-border .solo-region-box__inner,
-.solo-page .solo-container--bottom.solo-container--has-border .solo-region-box__inner,
-.solo-page .solo-container--footer.solo-container--has-border .solo-region-box__inner {
+:where(.solo-page .solo-container--top.solo-container--has-border) .solo-region-box__inner,
+:where(.solo-page .solo-container--main.solo-container--has-border) .solo-region-box__inner,
+:where(.solo-page .solo-container--bottom.solo-container--has-border) .solo-region-box__inner,
+:where(.solo-page .solo-container--footer.solo-container--has-border) .solo-region-box__inner {
   border: 1px solid var(--r-br);
 }
 
-.solo-page .dropbutton {
+:where(.solo-page) .dropbutton {
   transition: all 0.3s ease;
+}
+
+/* Reduced motion: end states are kept, movement is not (WCAG 2.3.3). */
+@media (prefers-reduced-motion: reduce) {
+  :where(:where(.solo-page) .dropbutton) {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }

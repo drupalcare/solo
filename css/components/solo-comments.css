@@ -11,26 +11,26 @@
   margin-block: var(--solo-px24);
 }
 
-.comment-wrapper > * {
+:where(.comment-wrapper) > * {
   min-width: 0;
 }
 
-.comment-wrapper .indented {
+:where(.comment-wrapper) .indented {
   margin-inline-start: clamp(12px, 2vw, 28px);
   padding-inline-start: clamp(12px, 2vw, 20px);
   display: grid;
 }
 
-.comment-wrapper .comment {
+:where(.comment-wrapper) .comment {
   border-block-start: 1px solid var(--r-br);
 }
 
-.comment-wrapper .indented .comment {
+:where(.comment-wrapper .indented) .comment {
   border-block-start: 1px dashed var(--r-br);
 }
 
-.comment-wrapper .add-comment + .comment {
-  border-block-start: 0!important;
+:where(.comment-wrapper .add-comment) + .comment {
+  border-block-start: 0;
 }
 
 .comment-wrapper h2.comment-form__title {
@@ -42,7 +42,7 @@
 }
 
 .comments__title,
-.comments__title .solo-comments__icon {
+:where(.comments__title) .solo-comments__icon {
   display: inline-flex;
   justify-content: start;
   align-items: center;
@@ -57,26 +57,16 @@
   gap: var(--solo-px16);
 }
 
-[dir="rtl"] .comment {
+:where([dir="rtl"]) .comment {
   direction: rtl;
 }
 
-[dir="rtl"] .solo-comment__header {
+:where([dir="rtl"]) .solo-comment__header {
   direction: rtl;
 }
 
 .solo-user-profile--compact a {
   display: flex;
-}
-
-/* Heading-first modifier - title appears before header */
-.solo-comment--heading-first .solo-comment__body {
-  order: -1;
-  margin-block-end: var(--solo-px8);
-}
-
-.solo-comment--heading-first .solo-comment__title {
-  margin: 0;
 }
 
 /* Comment Header - picture, author, time in one row */
@@ -88,7 +78,7 @@
 }
 
 .solo-comment__header p,
-.solo-comment__header time {
+:where(.solo-comment__header) time {
   margin: 0;
   line-height: 1.6;
 }
@@ -146,8 +136,8 @@
   transition: all 0.2s ease;
 }
 
-.comment:hover .solo-comment__permalink,
-.comment:focus-within .solo-comment__permalink {
+:where(.comment:hover) .solo-comment__permalink,
+:where(.comment:focus-within) .solo-comment__permalink {
   opacity: 1;
 }
 
@@ -177,7 +167,7 @@
 }
 
 /* New comment indicator - semantic mark element */
-.solo-page .new-comment {
+:where(.solo-page) .new-comment {
   position: absolute;
   top: 0;
   inset-inline-end: var(--solo-px48);
@@ -222,17 +212,27 @@
   margin: 0;
 }
 
+/* Heading-first modifier - title appears before header */
+:where(.solo-comment--heading-first) .solo-comment__body {
+  order: -1;
+  margin-block-end: var(--solo-px8);
+}
+
 /* Comment content wrapper (used in heading-first mode) */
 .comment__content {
   margin: 0;
 }
 
-.comment__content .field {
+:where(.comment__content) .field {
   margin: 0;
 }
 
 .solo-comment__title {
   margin: 0 0 var(--solo-px12);
+}
+
+:where(.solo-comment--heading-first) .solo-comment__title {
+  margin: 0;
 }
 
 .solo-comment__title a {
@@ -245,7 +245,7 @@
   text-decoration: underline;
 }
 
-.solo-comment__body .field {
+:where(.solo-comment__body) .field {
   margin: 0;
 }
 
@@ -331,7 +331,7 @@ button.solo-comment__replies-toggle {
   gap: var(--solo-px8);
 }
 
-.solo-comment__replies-toggle .solo-comment__replies-text {
+:where(.solo-comment__replies-toggle) .solo-comment__replies-text {
   font-size: var(--solo-px13);
 }
 
@@ -363,20 +363,20 @@ button.solo-comment__replies-toggle {
 }
 
 /* Toggle icon visibility */
-.solo-comment__replies-toggle[aria-expanded="true"] .solo-comment__replies-icon--close {
+:where(.solo-comment__replies-toggle[aria-expanded="true"]) .solo-comment__replies-icon--close {
   display: none;
 }
 
-.solo-comment__replies-toggle[aria-expanded="false"] .solo-comment__replies-icon--open {
+:where(.solo-comment__replies-toggle[aria-expanded="false"]) .solo-comment__replies-icon--open {
   display: none;
 }
 
-.solo-comment__replies-toggle[aria-expanded="false"] .solo-comment__replies-icon--close {
+:where(.solo-comment__replies-toggle[aria-expanded="false"]) .solo-comment__replies-icon--close {
   display: inline-flex;
 }
 
 /* Threaded comments indentation */
-.comment .indented {
+:where(.comment) .indented {
   margin-inline-start: var(--solo-px32);
   padding-inline-start: var(--solo-px16);
   border-inline-start: 2px solid var(--r-br);
@@ -388,7 +388,7 @@ button.solo-comment__replies-toggle {
 }
 
 /* Comment by node author */
-.by-node-author .comment__author {
+:where(.by-node-author) .comment__author {
   color: var(--r-lk);
 }
 

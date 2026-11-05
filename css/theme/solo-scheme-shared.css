@@ -3,22 +3,22 @@
    css/predefined/*.css as --sc-* tokens on :root; a site's region colours are --r-* on
    #page-wrapper selectors, which outrank every selector here. */
 
-.solo-page h1:not(.solo-page-title__text),
-.solo-page h2,
-.solo-page h3,
-.solo-page h1 a,
-.solo-page h2 a,
-.solo-page h3 a,
-.solo-page h1 a span,
-.solo-page h2 a span,
-.solo-page h3 a span,
-.solo-page .site-name,
-.solo-page .site-slogan,
-.solo-page .solo-branding__site-name-link {
+:where(.solo-page) h1:not(.solo-page-title__text),
+:where(.solo-page) h2,
+:where(.solo-page) h3,
+:where(.solo-page h1) a,
+:where(.solo-page h2) a,
+:where(.solo-page h3) a,
+:where(.solo-page h1 a) span,
+:where(.solo-page h2 a) span,
+:where(.solo-page h3 a) span,
+:where(.solo-page) .site-name,
+:where(.solo-page) .site-slogan,
+:where(.solo-page) .solo-branding__site-name-link {
   --r-tx: var(--sc-head-tx);
 }
 
-.solo-page a:not(.solo-menu-tree__link, .button, .solo-branding__site-name-link, .site-logo, h1 a, h2 a, h3 a) {
+:where(.solo-page) a:not(.solo-menu-tree__link, .button, .solo-branding__site-name-link, .site-logo, h1 a, h2 a, h3 a) {
   --r-tx: var(--sc-link-tx);
 }
 
@@ -26,23 +26,23 @@
   --r-tx: var(--sc-link-hover-tx);
 }
 
-.solo-page .solo-popup-login__open,
-.solo-page .solo-hamburger button,
-.solo-page .solo-main-nav,
-.solo-page .solo-main-nav ul,
-.solo-page .solo-main-nav li,
-.solo-page .solo-header li.solo-menu-tree__item>a,
-.solo-page .solo-main-nav li>a,
-.solo-page .solo-header li.solo-menu-tree__item>button,
-.solo-page .solo-main-nav li>button {
+:where(.solo-page) .solo-popup-login__open,
+:where(.solo-page .solo-hamburger) button,
+:where(.solo-page) .solo-main-nav,
+:where(.solo-page .solo-main-nav) ul,
+:where(.solo-page .solo-main-nav) li,
+.solo-page .solo-header li.solo-menu-tree__item > a,
+:where(.solo-page) .solo-main-nav li > a,
+:where(.solo-page .solo-header) li.solo-menu-tree__item > button,
+:where(.solo-page .solo-main-nav) li > button {
   --r-bg: var(--sc-menu-bg);
   --r-tx: var(--sc-menu-tx);
 }
 
-.solo-page .solo-popup-login__open:hover,
-.solo-page .solo-hamburger button:hover,
-.solo-page .solo-header ul li.solo-menu-tree__item>*:hover,
-.solo-page .solo-main-nav li>*:hover {
+:where(.solo-page) .solo-popup-login__open:hover,
+:where(.solo-page .solo-hamburger) button:hover,
+:where(.solo-page .solo-header ul li.solo-menu-tree__item) > *:hover,
+:where(.solo-page .solo-main-nav li) > *:hover {
   --r-tx: var(--sc-menu-hover-tx);
   --r-bg: var(--sc-menu-hover-bg);
 }
@@ -52,28 +52,28 @@
   --r-tx: var(--sc-tab-hover-tx);
 }
 
-.solo-page .solo-menu--sidebar-hover .solo-menu-tree--sidebar li.solo-menu-tree__item--has-submenu:hover>a,
-.solo-page .solo-menu--sidebar-hover .solo-menu-tree--sidebar li.solo-menu-tree__item--has-submenu:hover>button,
-.solo-page .solo-menu--responsive-hover .solo-menu-tree--megamenu>li.solo-menu-tree__item--has-submenu:hover>a,
-.solo-page .solo-menu--responsive-hover .solo-menu-tree--megamenu>li.solo-menu-tree__item--has-submenu:hover>button,
-.solo-page .solo-menu--responsive-hover .solo-menu-tree--responsive:not(.solo-menu-tree--megamenu) li.solo-menu-tree__item--has-submenu:hover>a,
-.solo-page .solo-menu--responsive-hover .solo-menu-tree--responsive:not(.solo-menu-tree--megamenu) li.solo-menu-tree__item--has-submenu:hover>button {
+.solo-page .solo-menu--sidebar-hover .solo-menu-tree--sidebar li.solo-menu-tree__item--has-submenu:hover > a,
+:where(.solo-page .solo-menu--sidebar-hover .solo-menu-tree--sidebar) li.solo-menu-tree__item--has-submenu:hover > button,
+.solo-page .solo-menu--responsive-hover .solo-menu-tree--megamenu > li.solo-menu-tree__item--has-submenu:hover > a,
+:where(.solo-page .solo-menu--responsive-hover .solo-menu-tree--megamenu) > li.solo-menu-tree__item--has-submenu:hover > button,
+:where(.solo-page) .solo-menu--responsive-hover .solo-menu-tree--responsive:not(.solo-menu-tree--megamenu) li.solo-menu-tree__item--has-submenu:hover > a,
+:where(.solo-page .solo-menu--responsive-hover .solo-menu-tree--responsive:not(.solo-menu-tree--megamenu)) li.solo-menu-tree__item--has-submenu:hover > button {
   --r-tx: var(--sc-menu-open-tx);
   --r-bg: var(--sc-menu-open-bg);
 }
 
-.solo-page a.button,
-.solo-page input.button,
-.solo-page .solo-fixed-search__close button,
-.block-user-login-block form+.item-list ul li a {
+:where(.solo-page) a.button,
+:where(.solo-page) :where(input).button,
+:where(.solo-page .solo-fixed-search__close) button,
+.block-user-login-block form + .item-list ul li a {
   --r-bg: var(--sc-button-bg);
   --r-tx: var(--sc-button-tx);
 }
 
 .solo-page a.button:hover,
-.solo-page input.button:hover,
-.solo-page .solo-fixed-search__close button:hover,
-.block-user-login-block form+.item-list ul li a:hover {
+:where(.solo-page) :where(input).button:hover,
+:where(.solo-page .solo-fixed-search__close) button:hover,
+.block-user-login-block form + .item-list ul li a:hover {
   --r-tx: var(--sc-button-hover-tx);
   --r-bg: var(--sc-button-hover-bg);
 }
@@ -117,7 +117,7 @@
   fill: var(--sc-social-fill);
 }
 
-.solo-page a.button:where(:not([style*="--r-br:"] *)) {
+:where(.solo-page) :where(a).button:where(:not([style*="--r-br:"] *)) {
   --r-br: var(--sc-control-br);
 }
 
@@ -125,7 +125,7 @@
   fill: var(--sc-social-fill);
 }
 
-.solo-page input.button:where(:not([style*="--r-br:"] *)) {
+:where(.solo-page) :where(input).button:where(:not([style*="--r-br:"] *)) {
   --r-br: var(--sc-control-br);
 }
 
@@ -145,11 +145,11 @@
 }
 
 #solo-fixed-search-block,
-.solo-page .solo-primary-menu.solo-sticky {
+:where(.solo-page) .solo-primary-menu.solo-sticky {
   --s-b: var(--sc-fixed-search-block-shadow);
 }
 
-.solo-social a>span {
+:where(.solo-social a) > span {
   --s-b: var(--sc-social-box-shadow);
 }
 
@@ -180,4 +180,13 @@ div.solo-page-title.solo-container--single,
 .solo-page ul.tabs.secondary li a:hover,
 .solo-page ul.tabs.primary li a:hover {
   background-color: var(--sc-tab-hover-bg, var(--r-bg));
+}
+
+/* Reduced motion: end states are kept, movement is not (WCAG 2.3.3). */
+@media (prefers-reduced-motion: reduce) {
+  :where(.solo-page .pager__item a) {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }

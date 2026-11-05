@@ -1,0 +1,44 @@
+# Scheme record in the shape of the apex scheme sidecar (id, name, category, mode). Palette values are copied verbatim from css/predefined/solo-smokey-quartz-symphony.css.
+id: solo-smokey-quartz-symphony
+name: "Smokey Quartz Symphony"
+category: earthy_and_smokey_tones
+mode: mixed
+categories:
+  - earthy_and_smokey_tones
+css: css/predefined/solo-smokey-quartz-symphony.css
+thumbnail: images/schemes/solo-smokey-quartz-symphony.webp
+palette:
+  --sc-head-tx: "#767676"
+  --sc-link-tx: "#424242"
+  --sc-link-hover-tx: "#202020"
+  --sc-menu-bg: "#2a2a2a"
+  --sc-menu-tx: "#dfdedd"
+  --sc-menu-hover-tx: "#f8f7f7"
+  --sc-menu-hover-bg: "#0a0909"
+  --sc-tab-hover-tx: "#f8f7f7"
+  --sc-menu-open-tx: "#f8f7f7"
+  --sc-menu-open-bg: "#0a0909"
+  --sc-button-bg: "#545454"
+  --sc-button-tx: "#fefefe"
+  --sc-button-hover-tx: "#dcdcdc"
+  --sc-button-hover-bg: "#3b3b3b"
+  --sc-main-container-bg: "linear-gradient(45deg, #fefefe, #ececec)"
+  --sc-top-container-bg: "linear-gradient(45deg, #fefefe, #ececec)"
+  --sc-fixed-search-block-bg: "linear-gradient(45deg, #fefefe, #ececec)"
+  --sc-popup-login-block-inner-bg: "linear-gradient(45deg, #fefefe, #ececec)"
+  --sc-bottom-container-bg: "linear-gradient(0deg, #070707, #2c2b2b)"
+  --sc-footer-container-bg: "linear-gradient(0deg, #070707, #2c2b2b)"
+  --sc-footer-menu-bg: "linear-gradient(0deg, #070707, #2c2b2b)"
+  --sc-copyright-bg: "linear-gradient(180deg, #101010, #090809)"
+  --sc-social-fill: "#b1b1b1"
+  --sc-control-br: "#343233"
+  --sc-fixed-search-block-shadow: "26, 25, 26"
+  --sc-social-box-shadow: "122, 116, 120"
+page:
+  --r-br: "#d4d4d4"
+  --r-bg: "#f7f6f7"
+  --r-tx: "#1a191a"
+  --r-header-bg: "linear-gradient(0deg, #2c292b, #080808)"
+  --r-header-tx: "#909090"
+  --r-menu-tx-h: "#f8f7f7"
+  --r-menu-bg-h: "#0a0909"

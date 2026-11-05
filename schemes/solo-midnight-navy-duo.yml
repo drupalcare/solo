@@ -1,0 +1,45 @@
+# Scheme record in the shape of the apex scheme sidecar (id, name, category, mode). Palette values are copied verbatim from css/predefined/solo-midnight-navy-duo.css.
+id: solo-midnight-navy-duo
+name: "Midnight Navy Duo"
+category: bold_and_dramatic_colors
+mode: mixed
+categories:
+  - bold_and_dramatic_colors
+css: css/predefined/solo-midnight-navy-duo.css
+thumbnail: images/schemes/solo-midnight-navy-duo.webp
+palette:
+  --sc-head-tx: "#2e75cc"
+  --sc-link-tx: "#234994"
+  --sc-link-hover-tx: "#006bea"
+  --sc-menu-bg: "#002d62"
+  --sc-menu-tx: "#fbfdff"
+  --sc-menu-hover-tx: "#d9eaff"
+  --sc-menu-hover-bg: "#00162f"
+  --sc-tab-hover-tx: "#d9eaff"
+  --sc-menu-open-tx: "#d9eaff"
+  --sc-menu-open-bg: "#00162f"
+  --sc-button-bg: "#1a356a"
+  --sc-button-tx: "#c5d4f1"
+  --sc-button-hover-tx: "#fcfdfe"
+  --sc-button-hover-bg: "#102041"
+  --sc-main-container-bg: "linear-gradient(135deg, #fbfdff, #eef2fb)"
+  --sc-top-container-bg: "linear-gradient(135deg, #fbfdff, #eef2fb)"
+  --sc-fixed-search-block-bg: "linear-gradient(135deg, #fbfdff, #eef2fb)"
+  --sc-popup-login-block-inner-bg: "linear-gradient(135deg, #fbfdff, #eef2fb)"
+  --sc-bottom-container-bg: "linear-gradient(180deg, #00060d, #060c18)"
+  --sc-footer-container-bg: "linear-gradient(180deg, #00060d, #060c18)"
+  --sc-footer-menu-bg: "linear-gradient(180deg, #00060d, #060c18)"
+  --sc-copyright-bg: "linear-gradient(180deg, #03050a, #00060d)"
+  --sc-social-fill: "#2a56af"
+  --sc-control-br: "#0054b7"
+  --sc-fixed-search-block-shadow: "6, 12, 24"
+  --sc-social-box-shadow: "252, 253, 254"
+page:
+  --r-br: "#84bcff"
+  --r-bg: "#eef2fb"
+  --r-tx: "#060c18"
+  --r-header-bg: "linear-gradient(0deg, #0c1934, #13274f)"
+  --r-header-tx: "#7ab6ff"
+  --r-menu-tx-h: "#d9eaff"
+  --r-menu-bg-h: "#00162f"
+  --r-br-light: "#b8daff"

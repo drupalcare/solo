@@ -7,7 +7,7 @@
   padding: 0;
 }
 
-.webform-submission-form .form-actions {
+:where(.webform-submission-form) .form-actions {
   text-align: center;
 }
 
@@ -40,13 +40,13 @@
   clear: none;
 }
 
-.webform-multiple-add > div,
+:where(.webform-multiple-add) > div,
 .webform-multiple-add > input {
   float: inline-start;
   margin-inline-end: var(--solo-px10);
 }
 
-.webform-multiple-add .field-suffix {
+:where(.webform-multiple-add) .field-suffix {
   font-size: 90%;
 }
 

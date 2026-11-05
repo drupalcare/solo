@@ -1,0 +1,46 @@
+# Scheme record in the shape of the apex scheme sidecar (id, name, category, mode). Palette values are copied verbatim from css/predefined/solo-raspberry-nightfall.css.
+id: solo-raspberry-nightfall
+name: "Raspberry Nightfall"
+category: berry_and_fruit_tones
+mode: dark
+categories:
+  - berry_and_fruit_tones
+css: css/predefined/solo-raspberry-nightfall.css
+thumbnail: images/schemes/solo-raspberry-nightfall.webp
+palette:
+  --sc-head-tx: "#f9d2da"
+  --sc-link-tx: "#7c817c"
+  --sc-link-hover-tx: "#c9cac9"
+  --sc-menu-bg: "#1e0409"
+  --sc-menu-tx: "#f8c2cd"
+  --sc-menu-hover-tx: "#fdf0f2"
+  --sc-menu-hover-bg: "#4c0917"
+  --sc-tab-hover-tx: "#fdf0f2"
+  --sc-menu-open-tx: "#fdf0f2"
+  --sc-menu-open-bg: "#4c0917"
+  --sc-button-bg: "#1f201f"
+  --sc-button-tx: "#d1d3d1"
+  --sc-button-hover-tx: "#060606"
+  --sc-button-hover-bg: "#afb1af"
+  --sc-main-container-bg: "linear-gradient(45deg, #000000, #0f0205)"
+  --sc-top-container-bg: "linear-gradient(45deg, #000000, #0f0205)"
+  --sc-fixed-search-block-bg: "linear-gradient(45deg, #000000, #0f0205)"
+  --sc-popup-login-block-inner-bg: "linear-gradient(45deg, #000000, #0f0205)"
+  --sc-bottom-container-bg: "linear-gradient(45deg, #000000, #0f0205)"
+  --sc-footer-container-bg: "linear-gradient(45deg, #000000, #0f0205)"
+  --sc-footer-menu-bg: "linear-gradient(45deg, #000000, #0f0205)"
+  --sc-copyright-bg: "linear-gradient(180deg, #2d060e, #171717)"
+  --sc-social-fill: "#5b0b1b"
+  --sc-control-br: "#494b49"
+  --sc-fixed-search-block-shadow: "240, 134, 155"
+  --sc-social-box-shadow: "229, 43, 80"
+  --sc-tab-hover-bg: "#4c0917"
+  --sc-region-rule-br: "var(--solo-black)"
+page:
+  --r-br: "#6a0d20"
+  --r-bg: "#0f0205"
+  --r-tx: "#fdf0f2"
+  --r-header-bg: "linear-gradient(0deg, #000000, #0f0205)"
+  --r-header-tx: "#f9d2da"
+  --r-menu-tx-h: "#fdf0f2"
+  --r-menu-bg-h: "#4c0917"

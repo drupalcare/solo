@@ -1,5 +1,5 @@
 /* For Primary Sidenav menu and any sidenav menu. */
-#solo-primary-sidebar-menu {
+.solo-primary-sidebar-menu {
   z-index: 5001;
   display: flex;
   justify-content: space-between;
@@ -8,7 +8,7 @@
   overflow: auto;
 }
 
-#solo-primary-sidebar-menu  h2.block__title {
+.solo-primary-sidebar-menu h2.block__title {
   padding: var(--solo-px16);
 }
 
@@ -29,7 +29,7 @@
   height: 100vh;
 }
 
-.solo-primary-sidebar-menu__inner>* {
+:where(.solo-primary-sidebar-menu__inner) > * {
   min-width: 0;
   width: 100%;
 }
@@ -39,13 +39,13 @@
   transform: translateX(-100%);
 }
 
-[dir="rtl"] .solo-primary-sidebar-menu.solo-icons-left {
+:where([dir="rtl"]) .solo-primary-sidebar-menu.solo-icons-left {
   right: 0;
   transform: translateX(100%);
   visibility: hidden;
 }
 
-[dir="rtl"] .solo-primary-sidebar-menu.solo-icons-left.solo-is-open {
+:where([dir="rtl"]) .solo-primary-sidebar-menu.solo-icons-left.solo-is-open {
   transform: translateX(0);
   visibility: visible;
 }
@@ -62,7 +62,7 @@
   flex-direction: column;
 }
 
-.solo-inner .solo-menu--sidebar .solo-menu-tree--sidebar,
+:where(.solo-inner .solo-menu--sidebar) .solo-menu-tree--sidebar,
 .solo-inner .solo-menu--sidebar .solo-menu-tree--sidebar ul.solo-menu-tree__submenu {
   display: flex;
   justify-content: start;
@@ -72,29 +72,29 @@
   flex-wrap: wrap;
 }
 
-.solo-inner .solo-menu--sidebar .solo-menu-tree--sidebar li.solo-menu-tree__item--link-only>a,
-.solo-inner .solo-menu--sidebar .solo-menu-tree--sidebar li.solo-menu-tree__item--button-only>button,
-.solo-inner .solo-menu--sidebar .solo-menu-tree--sidebar li.solo-menu-tree__item {
+.solo-inner .solo-menu--sidebar .solo-menu-tree--sidebar li.solo-menu-tree__item--link-only > a,
+.solo-inner .solo-menu--sidebar .solo-menu-tree--sidebar li.solo-menu-tree__item--button-only > button,
+:where(.solo-inner .solo-menu--sidebar .solo-menu-tree--sidebar) :where(li).solo-menu-tree__item {
   flex-basis: 100%;
   flex-grow: 1;
 }
 
-.solo-inner .solo-menu--sidebar .solo-menu-tree--sidebar li.solo-menu-tree__item--has-submenu ul.solo-menu-tree__submenu {
+:where(.solo-inner) .solo-menu--sidebar .solo-menu-tree--sidebar li.solo-menu-tree__item--has-submenu ul.solo-menu-tree__submenu {
   overflow: hidden;
 }
 
-.solo-inner .solo-menu--sidebar .solo-menu-tree--sidebar>li.solo-menu-tree__item>ul.solo-menu-tree__submenu>li.solo-menu-tree__item>a:first-child,
-.solo-inner .solo-menu--sidebar .solo-menu-tree--sidebar>li.solo-menu-tree__item>ul.solo-menu-tree__submenu>li.solo-menu-tree__item>button:first-child {
+:where(.solo-inner .solo-menu--sidebar) .solo-menu-tree--sidebar > li.solo-menu-tree__item > ul.solo-menu-tree__submenu > li.solo-menu-tree__item > a:first-child,
+:where(.solo-inner .solo-menu--sidebar .solo-menu-tree--sidebar > li.solo-menu-tree__item) > ul.solo-menu-tree__submenu > li.solo-menu-tree__item > button:first-child {
   padding-inline-start: 24px;
 }
 
-.solo-inner .solo-menu--sidebar .solo-menu-tree--sidebar>li.solo-menu-tree__item>ul.solo-menu-tree__submenu>li.solo-menu-tree__item>ul.solo-menu-tree__submenu>li.solo-menu-tree__item>a:first-child,
-.solo-inner .solo-menu--sidebar .solo-menu-tree--sidebar>li.solo-menu-tree__item>ul.solo-menu-tree__submenu>li.solo-menu-tree__item>ul.solo-menu-tree__submenu>li.solo-menu-tree__item>button:first-child {
+:where(.solo-inner .solo-menu--sidebar .solo-menu-tree--sidebar > li.solo-menu-tree__item) > ul.solo-menu-tree__submenu > li.solo-menu-tree__item > ul.solo-menu-tree__submenu > li.solo-menu-tree__item > a:first-child,
+:where(.solo-inner .solo-menu--sidebar .solo-menu-tree--sidebar > li.solo-menu-tree__item > ul.solo-menu-tree__submenu > li.solo-menu-tree__item) > ul.solo-menu-tree__submenu > li.solo-menu-tree__item > button:first-child {
   padding-inline-start: 32px;
 }
 
-.solo-inner .solo-menu--sidebar .solo-menu-tree--sidebar>li.solo-menu-tree__item>ul.solo-menu-tree__submenu>li.solo-menu-tree__item>ul.solo-menu-tree__submenu>li.solo-menu-tree__item> ul.solo-menu-tree__submenu>li.solo-menu-tree__item>a:first-child,
-.solo-inner .solo-menu--sidebar .solo-menu-tree--sidebar>li.solo-menu-tree__item>ul.solo-menu-tree__submenu>li.solo-menu-tree__item>ul.solo-menu-tree__submenu>li.solo-menu-tree__item> ul.solo-menu-tree__submenu>li.solo-menu-tree__item>button:first-child {
+:where(.solo-inner .solo-menu--sidebar .solo-menu-tree--sidebar > li.solo-menu-tree__item > ul.solo-menu-tree__submenu > li.solo-menu-tree__item) > ul.solo-menu-tree__submenu > li.solo-menu-tree__item > ul.solo-menu-tree__submenu > li.solo-menu-tree__item > a:first-child,
+:where(.solo-inner .solo-menu--sidebar .solo-menu-tree--sidebar > li.solo-menu-tree__item > ul.solo-menu-tree__submenu > li.solo-menu-tree__item > ul.solo-menu-tree__submenu) > li.solo-menu-tree__item > ul.solo-menu-tree__submenu > li.solo-menu-tree__item > button:first-child {
   padding-inline-start: 40px;
 }
 
@@ -107,11 +107,11 @@
   display: none;
 }
 
-.solo-inner .solo-menu--sidebar .solo-menu-tree--sidebar li.solo-menu-tree__item--link-and-button>button {
+.solo-inner .solo-menu--sidebar .solo-menu-tree--sidebar li.solo-menu-tree__item--link-and-button > button {
   margin-inline-start: auto;
 }
 
-.solo-inner .solo-menu--sidebar-hover  .solo-menu-tree__toggler {
+:where(.solo-inner .solo-menu--sidebar-hover) .solo-menu-tree__toggler {
   pointer-events: none;
   cursor: default;
 }
@@ -122,32 +122,32 @@
 }
 
 /* Add borders to primary side menu. */
-#solo-primary-sidebar-menu.solo-container--has-border h2.block__title {
+:where(.solo-primary-sidebar-menu.solo-container--has-border) :where(h2).block__title {
   border-block-end: 1px solid var(--r-br);
 }
 
-.solo-page .solo-container--has-border .solo-primary-sidebar-menu {
+:where(.solo-page .solo-container--has-border) .solo-primary-sidebar-menu {
   border-block-start: 1px solid var(--r-br);
   border-block-end: 1px solid var(--r-br);
 }
 
-.solo-page .solo-container--has-border .solo-primary-sidebar-menu__inner ul.solo-is-open {
+:where(.solo-page .solo-container--has-border .solo-primary-sidebar-menu__inner) :where(ul).solo-is-open {
   border-block-start: 1px solid var(--r-br) !important;
 }
 
-.solo-page .solo-container--has-border .solo-primary-sidebar-menu__inner .solo-sidebar-menu__close,
-.solo-page .solo-container--has-border .solo-primary-sidebar-menu__inner .solo-menu-tree__menubar li {
+:where(.solo-page .solo-container--has-border .solo-primary-sidebar-menu__inner) .solo-sidebar-menu__close,
+:where(.solo-page .solo-container--has-border .solo-primary-sidebar-menu__inner .solo-menu-tree__menubar) li {
   border-block-end: 1px solid var(--r-br) !important;
 }
 
 /* Menu brandiong. */
-#solo-primary-sidebar-menu .solo-sidebar-menu__close.solo-menu--has-branding {
+:where(.solo-primary-sidebar-menu) .solo-sidebar-menu__close.solo-menu--has-branding {
   display: flex;
   flex-wrap: nowrap;
   flex-direction: row-reverse;
 }
 
-#solo-primary-sidebar-menu .solo-sidebar-menu__close.solo-menu--has-branding .solo-menu-branding {
+:where(.solo-primary-sidebar-menu .solo-sidebar-menu__close.solo-menu--has-branding) .solo-menu-branding {
   margin: 0;
   padding-block: var(--solo-px4);
   padding-inline: var(--solo-px12);
@@ -185,4 +185,15 @@
     opacity: 1;
   }
 
+}
+
+/* Reduced motion: end states are kept, movement is not (WCAG 2.3.3). */
+@media (prefers-reduced-motion: reduce) {
+  :where(.solo-primary-sidebar-menu),
+  :where(.solo-is-sliding-out),
+  :where(.solo-is-sliding-in) {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }

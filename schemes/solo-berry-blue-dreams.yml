@@ -1,0 +1,48 @@
+# Scheme record in the shape of the apex scheme sidecar (id, name, category, mode). Palette values are copied verbatim from css/predefined/solo-berry-blue-dreams.css.
+id: solo-berry-blue-dreams
+name: "Berry Blue Dreams"
+category: berry_and_fruit_tones
+mode: mixed
+categories:
+  - berry_and_fruit_tones
+css: css/predefined/solo-berry-blue-dreams.css
+thumbnail: images/schemes/solo-berry-blue-dreams.webp
+palette:
+  --sc-head-tx: "#2d1a8e"
+  --sc-link-tx: "#03607f"
+  --sc-link-hover-tx: "#012e3d"
+  --sc-menu-bg: "#241571"
+  --sc-menu-tx: "#f1effc"
+  --sc-menu-hover-tx: "#ffffff"
+  --sc-menu-hover-bg: "#4f35d9"
+  --sc-tab-hover-tx: "#5a40dd"
+  --sc-menu-open-tx: "#ffffff"
+  --sc-menu-open-bg: "#4f35d9"
+  --sc-button-bg: "#0492c2"
+  --sc-button-tx: "#002437"
+  --sc-button-hover-tx: "#037ea8"
+  --sc-button-hover-bg: "#f9fdff"
+  --sc-main-container-bg: "linear-gradient(45deg, #ffffff, #e5e1f9)"
+  --sc-top-container-bg: "linear-gradient(45deg, #ffffff, #e5e1f9)"
+  --sc-fixed-search-block-bg: "linear-gradient(45deg, #ffffff, #e5e1f9)"
+  --sc-popup-login-block-inner-bg: "linear-gradient(45deg, #ffffff, #e5e1f9)"
+  --sc-bottom-container-bg: "linear-gradient(45deg, #ffffff, #e5e1f9)"
+  --sc-footer-container-bg: "linear-gradient(45deg, #ffffff, #e5e1f9)"
+  --sc-footer-menu-bg: "linear-gradient(45deg, #ffffff, #e5e1f9)"
+  --sc-copyright-bg: "linear-gradient(180deg, #e5e1f9, #d8f4fe)"
+  --sc-social-fill: "#3620aa"
+  --sc-control-br: "#74dafc"
+  --sc-fixed-search-block-shadow: "2, 71, 94"
+  --sc-social-box-shadow: "4, 146, 194"
+  --sc-tab-hover-bg: "#d8d2f7"
+  --sc-region-rule-br: "var(--solo-white)"
+page:
+  --r-br: "#7560e1"
+  --r-bg: "#f1effc"
+  --r-tx: "#1b1054"
+  --r-header-bg: "linear-gradient(to start top, #ffffff, #e5e1f9)"
+  --r-header-tx: "#2d1a8e"
+  --r-menu-tx-h: "#ffffff"
+  --r-menu-bg-h: "#4f35d9"
+  --r-br-dark: "#bfb6f1"
+  --r-br-light: "#e9e7f9"

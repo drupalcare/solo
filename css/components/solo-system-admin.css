@@ -1,4 +1,4 @@
-dl dd {
+:where(dl) dd {
   margin-block-end: var(--solo-px8);
   margin-inline-start: var(--solo-px8);
 }
@@ -34,14 +34,14 @@ ul.admin-list {
 }
 
 /*Admin pages */
-.ui-dialog-content .solo-content,
-.solo-body--admin-context .block-system-main-block .solo-content {
+:where(.ui-dialog-content) .solo-content,
+:where(.solo-body--admin-context .block-system-main-block) .solo-content {
   max-width: 100%;
   width: 100%;
   display: inline-block;
 }
 
-.solo-body--admin-context .block-system-main-block .modules-tabs__menu + form.system-modules {
+:where(.solo-body--admin-context .block-system-main-block .modules-tabs__menu) + form.system-modules {
   width: auto;
 }
 
@@ -85,12 +85,12 @@ form .field--widget-entity-reference-paragraphs td.field-multiple-drag {
   padding-inline-start: 0;
 }
 
-.solo-body--admin-context .block-system-main-block > div,
-.solo-body--admin-context .block-system-main-block > form {
+:where(.solo-body--admin-context .block-system-main-block) > div,
+:where(.solo-body--admin-context .block-system-main-block) > form {
   padding: 0 !important;
 }
 
-.solo-body--admin-context nav.action-links {
+:where(.solo-body--admin-context) nav.action-links {
   list-style: none;
   margin-inline-start: var(--solo-px1);
 }
@@ -128,17 +128,17 @@ form .field--widget-entity-reference-paragraphs td.field-multiple-drag {
 }
 
 /* admin pages  */
-.solo-body--admin-context .block-system-main-block .modules-tabs {
+:where(.solo-body--admin-context .block-system-main-block) .modules-tabs {
   margin-inline-end: var(--solo-px16);
   margin-inline-start: var(--solo-px16);
   border-color: #eaeaea;
 }
 
-.solo-body--admin-context .modules-tabs__pane {
-  margin-block: 0 !important;
-  margin-inline-start: 240px !important;
-  padding-block: var(--solo-px12) !important;
-  padding-inline: var(--solo-px16) !important;
+:where(.solo-body--admin-context) .modules-tabs__pane {
+  margin-block: 0;
+  margin-inline-start: 240px;
+  padding-block: var(--solo-px12);
+  padding-inline: var(--solo-px16);
   background: #f8f8f8;
   border-inline-start: 1px solid #eaeaea;
   width: auto;
@@ -148,7 +148,7 @@ form .field--widget-entity-reference-paragraphs td.field-multiple-drag {
   padding: var(--solo-px6);
 }
 
-.solo-body--admin-context .system-modules td details {
+:where(.solo-body--admin-context) .system-modules td details {
   margin-block-end: var(--solo-px6) !important;
   margin-inline: 0 !important;
 }
@@ -157,7 +157,7 @@ form .field--widget-entity-reference-paragraphs td.field-multiple-drag {
   padding: var(--solo-px6) !important;
 }
 
-.solo-body--admin-context .modules-wrapper .requirements {
+:where(.solo-body--admin-context) .modules-wrapper .requirements {
   max-width: 100%;
 }
 
@@ -165,19 +165,19 @@ form .field--widget-entity-reference-paragraphs td.field-multiple-drag {
   display: inline-block;
 }
 
-.solo-body--admin-context .item-list--comma-list::before,
-.solo-body--admin-context .item-list--comma-list::after,
+:where(.solo-body--admin-context) .item-list--comma-list::before,
+:where(.solo-body--admin-context) .item-list--comma-list::after,
 .solo-body--admin-context .item-list--comma-list li.solo-panel::after,
 .solo-body--admin-context .item-list--comma-list li.solo-panel::before {
   display: inline-block;
-  clear: none !important;
+  clear: none;
 }
 
-.solo-body--admin-context .admin-requirements {
+:where(.solo-body--admin-context) .admin-requirements {
   text-align: var(--solo-text-align-start);
 }
 
-.solo-body--admin-context .item-list--comma-list {
+:where(.solo-body--admin-context) .item-list--comma-list {
   display: inline-block;
 }
 
@@ -186,25 +186,25 @@ form .field--widget-entity-reference-paragraphs td.field-multiple-drag {
   padding-inline: var(--solo-px4);
 }
 
-.solo-body--admin-context .system-status-report__status-title {
+:where(.solo-body--admin-context) .system-status-report__status-title {
   padding: var(--solo-px8) !important;
 }
 
-.solo-body--admin-context .system-status-report__requirements-group details,
-.solo-body--admin-context .system-status-report__requirements-group summary {
+:where(.solo-body--admin-context .system-status-report__requirements-group) details,
+:where(.solo-body--admin-context .system-status-report__requirements-group) summary {
   list-style-type: none;
 }
 
-.solo-body--admin-context .system-status-report__entry__value {
-  padding-block-start: 0 !important;
+:where(.solo-body--admin-context) .system-status-report__entry__value {
+  padding-block-start: 0;
 }
 
-.solo-body--admin-context .system-status-report__status-icon::before {
+:where(.solo-body--admin-context) .system-status-report__status-icon::before {
   inset-block-start: var(--solo-px15);
   inset-inline-start: -15px;
 }
 
-.solo-body--admin-context .system-status-report__requirements-group details {
+:where(.solo-body--admin-context) .system-status-report__requirements-group details {
   margin-block-end: var(--solo-px5) !important;
 }
 
@@ -227,3 +227,13 @@ form .field--widget-entity-reference-paragraphs td.field-multiple-drag {
 }
 
 /* CKE */
+
+/* Reduced motion: end states are kept, movement is not (WCAG 2.3.3). */
+@media (prefers-reduced-motion: reduce) {
+  :where(.dropbutton input.solo-margin-bottom),
+  :where(.dropbutton input.solo-margin-top) {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

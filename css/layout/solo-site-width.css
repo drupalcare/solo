@@ -1,8 +1,4 @@
-/* Default rule for sw-100 */
-.solo-page.sw-100 > .solo-outer > .solo-inner:not(.solo-primary-sidebar-menu__inner,
-.page-node-type-pb-content .solo-container__inner--main) {
-  max-width: 100%;
-}
+
 
 /* Define CSS variables for different screen widths */
 .solo-page.sw-2560 {
@@ -28,30 +24,34 @@
 }
 
 /* Override when .px class is added */
-.solo-body--px-widths .solo-page.sw-2560 {
+:where(.solo-body--px-widths) .solo-page.sw-2560 {
   --solo-width: var(--solo-px2560);
 }
-.solo-body--px-widths .solo-page.sw-1920 {
+:where(.solo-body--px-widths) .solo-page.sw-1920 {
   --solo-width: var(--solo-px1920);
 }
-.solo-body--px-widths .solo-page.sw-1600 {
+:where(.solo-body--px-widths) .solo-page.sw-1600 {
   --solo-width: var(--solo-px1600);
 }
-.solo-body--px-widths .solo-page.sw-1440 {
+:where(.solo-body--px-widths) .solo-page.sw-1440 {
   --solo-width: var(--solo-px1440);
 }
-.solo-body--px-widths .solo-page.sw-1280 {
+:where(.solo-body--px-widths) .solo-page.sw-1280 {
   --solo-width: var(--solo-px1280);
 }
-.solo-body--px-widths .solo-page.sw-1024 {
+:where(.solo-body--px-widths) .solo-page.sw-1024 {
   --solo-width: var(--solo-px1024);
 }
-.solo-body--px-widths .solo-page.sw-800 {
+:where(.solo-body--px-widths) .solo-page.sw-800 {
   --solo-width: var(--solo-px800);
 }
 
 /* Apply max-width dynamically */
-.solo-page > .solo-outer > .solo-inner:not(.solo-primary-sidebar-menu__inner,
-.page-node-type-pb-content .solo-container__inner--main) {
+:where(.solo-page > .solo-outer) > .solo-inner:not(.solo-primary-sidebar-menu__inner, .page-node-type-pb-content .solo-container__inner--main)
+ {
   max-width: var(--solo-width);
+}/* Default rule for sw-100 */
+:where(.solo-page.sw-100 > .solo-outer) > .solo-inner:not(.solo-primary-sidebar-menu__inner, .page-node-type-pb-content .solo-container__inner--main)
+ {
+  max-width: 100%;
 }

@@ -1,0 +1,44 @@
+# Scheme record in the shape of the apex scheme sidecar (id, name, category, mode). Palette values are copied verbatim from css/predefined/solo-gunmetal-echo.css.
+id: solo-gunmetal-echo
+name: "Gunmetal Echo"
+category: earthy_and_smokey_tones
+mode: mixed
+categories:
+  - earthy_and_smokey_tones
+css: css/predefined/solo-gunmetal-echo.css
+thumbnail: images/schemes/solo-gunmetal-echo.webp
+palette:
+  --sc-head-tx: "#718296"
+  --sc-link-tx: "#474243"
+  --sc-link-hover-tx: "#5c737e"
+  --sc-menu-bg: "#20262c"
+  --sc-menu-tx: "#f0f2f4"
+  --sc-menu-hover-tx: "#dde1e5"
+  --sc-menu-hover-bg: "#030405"
+  --sc-tab-hover-tx: "#dde1e5"
+  --sc-menu-open-tx: "#dde1e5"
+  --sc-menu-open-bg: "#030405"
+  --sc-button-bg: "#5c737e"
+  --sc-button-tx: "#f2f4f5"
+  --sc-button-hover-tx: "#14191c"
+  --sc-button-hover-bg: "#748d99"
+  --sc-main-container-bg: "linear-gradient(45deg, #fafafb, #e1e2e1)"
+  --sc-top-container-bg: "linear-gradient(45deg, #fafafb, #e1e2e1)"
+  --sc-fixed-search-block-bg: "linear-gradient(45deg, #fafafb, #e1e2e1)"
+  --sc-popup-login-block-inner-bg: "linear-gradient(45deg, #fafafb, #e1e2e1)"
+  --sc-bottom-container-bg: "linear-gradient(0deg, #1a1d1e, #0a0c0c)"
+  --sc-footer-container-bg: "linear-gradient(0deg, #1a1d1e, #0a0c0c)"
+  --sc-footer-menu-bg: "linear-gradient(0deg, #1a1d1e, #0a0c0c)"
+  --sc-copyright-bg: "linear-gradient(180deg, #030405, #010000)"
+  --sc-social-fill: "#394143"
+  --sc-control-br: "#b8c1c3"
+  --sc-fixed-search-block-shadow: "27, 34, 38"
+  --sc-social-box-shadow: "114, 140, 155"
+page:
+  --r-br: "#cecbcb"
+  --r-bg: "#fafafb"
+  --r-tx: "#14191c"
+  --r-header-bg: "linear-gradient(0deg, #0c1318, #14191c)"
+  --r-header-tx: "#718296"
+  --r-menu-tx-h: "#dde1e5"
+  --r-menu-bg-h: "#030405"

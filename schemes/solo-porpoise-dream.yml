@@ -1,0 +1,44 @@
+# Scheme record in the shape of the apex scheme sidecar (id, name, category, mode). Palette values are copied verbatim from css/predefined/solo-porpoise-dream.css.
+id: solo-porpoise-dream
+name: "Porpoise Dream"
+category: earthy_and_smokey_tones
+mode: mixed
+categories:
+  - earthy_and_smokey_tones
+css: css/predefined/solo-porpoise-dream.css
+thumbnail: images/schemes/solo-porpoise-dream.webp
+palette:
+  --sc-head-tx: "#9290ab"
+  --sc-link-tx: "#3d3d49"
+  --sc-link-hover-tx: "#9d91a0"
+  --sc-menu-bg: "#757395"
+  --sc-menu-tx: "#ffffff"
+  --sc-menu-hover-tx: "#f1f1f4"
+  --sc-menu-hover-bg: "#4d4c5c"
+  --sc-tab-hover-tx: "#f1f1f4"
+  --sc-menu-open-tx: "#f1f1f4"
+  --sc-menu-open-bg: "#4d4c5c"
+  --sc-button-bg: "#1e1e24"
+  --sc-button-tx: "#dedee5"
+  --sc-button-hover-tx: "#1e1e24"
+  --sc-button-hover-bg: "#dedee5"
+  --sc-main-container-bg: "linear-gradient(45deg, #e8e7ed, #ecebef)"
+  --sc-top-container-bg: "linear-gradient(45deg, #e8e7ed, #ecebef)"
+  --sc-fixed-search-block-bg: "linear-gradient(45deg, #e8e7ed, #ecebef)"
+  --sc-popup-login-block-inner-bg: "linear-gradient(45deg, #e8e7ed, #ecebef)"
+  --sc-bottom-container-bg: "linear-gradient(180deg, #131318, #1a171b)"
+  --sc-footer-container-bg: "linear-gradient(180deg, #131318, #1a171b)"
+  --sc-footer-menu-bg: "linear-gradient(180deg, #131318, #1a171b)"
+  --sc-copyright-bg: "linear-gradient(180deg, #080709, #16161b)"
+  --sc-social-fill: "#4d4c5c"
+  --sc-control-br: "#9998aa"
+  --sc-fixed-search-block-shadow: "27, 26, 34"
+  --sc-social-box-shadow: "251, 250, 252"
+page:
+  --r-br: "#c6bfc7"
+  --r-bg: "#f6f5f7"
+  --r-tx: "#231f24"
+  --r-header-bg: "linear-gradient(0deg, #4d4c5c, #3d3d49)"
+  --r-header-tx: "#bebdcd"
+  --r-menu-tx-h: "#f1f1f4"
+  --r-menu-bg-h: "#4d4c5c"

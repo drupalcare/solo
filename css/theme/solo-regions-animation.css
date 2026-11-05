@@ -11,17 +11,17 @@
 }
 }
 
-.solo-page .solo-outer.solo-container--animate-hover .solo-region-box__inner:not(.solo-region-box__inner--main),
-.solo-page .solo-outer.solo-container--animate-border .solo-region-box__inner:not(.solo-region-box__inner--main) {
+:where(.solo-page .solo-outer.solo-container--animate-hover) .solo-region-box__inner:not(.solo-region-box__inner--main),
+:where(.solo-page .solo-outer.solo-container--animate-border) .solo-region-box__inner:not(.solo-region-box__inner--main) {
   position: relative;
   transition: all 0.3s ease;
 }
 
-.solo-page .solo-outer.solo-container--animate-hover .solo-region-box__inner:not(.solo-region-box__inner--main):hover {
+:where(.solo-page .solo-outer.solo-container--animate-hover) .solo-region-box__inner:not(.solo-region-box__inner--main):hover {
   animation: animateregion 2s;
 }
 
-.solo-page .solo-outer.solo-container--animate-border .solo-region-box__inner:not(.solo-region-box__inner--main)::before {
+:where(.solo-page .solo-outer.solo-container--animate-border) .solo-region-box__inner:not(.solo-region-box__inner--main)::before {
   content: '';
   position: absolute;
   inset-block-start: 0;
@@ -32,11 +32,11 @@
   border: var(--solo-px4) solid transparent;
 }
 
-.solo-page .solo-outer.solo-container--animate-border .solo-region-box__inner:not(.solo-region-box__inner--main):hover::before {
+:where(.solo-page .solo-outer.solo-container--animate-border) .solo-region-box__inner:not(.solo-region-box__inner--main):hover::before {
   animation: borderLeftColors 1.5s linear forwards;
 }
 
-.solo-page .solo-outer.solo-container--animate-border .solo-region-box__inner:not(.solo-region-box__inner--main)::after {
+:where(.solo-page .solo-outer.solo-container--animate-border) .solo-region-box__inner:not(.solo-region-box__inner--main)::after {
   content: '';
   position: absolute;
   inset-block-end: 0;
@@ -47,38 +47,38 @@
   border: var(--solo-px4) solid transparent;
 }
 
-.solo-page .solo-outer.solo-container--animate-border .solo-region-box__inner:not(.solo-region-box__inner--main):hover::after {
+:where(.solo-page .solo-outer.solo-container--animate-border) .solo-region-box__inner:not(.solo-region-box__inner--main):hover::after {
   animation: borderRightColors 1.5s linear forwards;
 }
 
 /* Shadows */
-.solo-page .solo-outer.solo-container--animate-border .solo-region-box__inner:not(.solo-region-box__inner--main) {
+:where(.solo-page .solo-outer.solo-container--animate-border) .solo-region-box__inner:not(.solo-region-box__inner--main) {
   transition: 0.4s !important;
   overflow: hidden !important;
 }
 
 /* Radios */
-.solo-page .solo-outer.radius-4 .solo-region-box__inner,
-.solo-page .solo-outer.solo-container--animate-border.radius-4 .solo-region-box__inner:not(.solo-region-box__inner--main)::before,
-.solo-page .solo-outer.solo-container--animate-border.radius-4 .solo-region-box__inner:not(.solo-region-box__inner--main)::after {
+:where(.solo-page .solo-outer.radius-4) .solo-region-box__inner,
+:where(.solo-page .solo-outer.solo-container--animate-border.radius-4) .solo-region-box__inner:not(.solo-region-box__inner--main)::before,
+:where(.solo-page .solo-outer.solo-container--animate-border.radius-4) .solo-region-box__inner:not(.solo-region-box__inner--main)::after {
   border-radius: var(--solo-px4);
 }
 
-.solo-page .solo-outer.radius-8 .solo-region-box__inner,
-.solo-page .solo-outer.solo-container--animate-border.radius-8 .solo-region-box__inner:not(.solo-region-box__inner--main)::before,
-.solo-page .solo-outer.solo-container--animate-border.radius-8 .solo-region-box__inner:not(.solo-region-box__inner--main)::after {
+:where(.solo-page .solo-outer.radius-8) .solo-region-box__inner,
+:where(.solo-page .solo-outer.solo-container--animate-border.radius-8) .solo-region-box__inner:not(.solo-region-box__inner--main)::before,
+:where(.solo-page .solo-outer.solo-container--animate-border.radius-8) .solo-region-box__inner:not(.solo-region-box__inner--main)::after {
   border-radius: var(--solo-px8);
 }
 
-.solo-page .solo-outer.radius-16 .solo-region-box__inner,
-.solo-page .solo-outer.solo-container--animate-border.radius-16 .solo-region-box__inner:not(.solo-region-box__inner--main)::before,
-.solo-page .solo-outer.solo-container--animate-border.radius-16 .solo-region-box__inner:not(.solo-region-box__inner--main)::after {
+:where(.solo-page .solo-outer.radius-16) .solo-region-box__inner,
+:where(.solo-page .solo-outer.solo-container--animate-border.radius-16) .solo-region-box__inner:not(.solo-region-box__inner--main)::before,
+:where(.solo-page .solo-outer.solo-container--animate-border.radius-16) .solo-region-box__inner:not(.solo-region-box__inner--main)::after {
   border-radius: var(--solo-px16);
 }
 
-.solo-page .solo-outer.radius-24 .solo-region-box__inner,
-.solo-page .solo-outer.solo-container--animate-border.radius-24 .solo-region-box__inner:not(.solo-region-box__inner--main)::before,
-.solo-page .solo-outer.solo-container--animate-border.radius-24 .solo-region-box__inner:not(.solo-region-box__inner--main)::after {
+:where(.solo-page .solo-outer.radius-24) .solo-region-box__inner,
+:where(.solo-page .solo-outer.solo-container--animate-border.radius-24) .solo-region-box__inner:not(.solo-region-box__inner--main)::before,
+:where(.solo-page .solo-outer.solo-container--animate-border.radius-24) .solo-region-box__inner:not(.solo-region-box__inner--main)::after {
   border-radius: var(--solo-px24);
 }
 
@@ -159,4 +159,17 @@
     border-left-color: transparent;
   }
 
+}
+
+/* Reduced motion: end states are kept, movement is not (WCAG 2.3.3). */
+@media (prefers-reduced-motion: reduce) {
+  :where(:where(.solo-page .solo-outer.solo-container--animate-hover) .solo-region-box__inner:not(.solo-region-box__inner--main)),
+  :where(:where(.solo-page .solo-outer.solo-container--animate-border) .solo-region-box__inner:not(.solo-region-box__inner--main)),
+  :where(:where(.solo-page .solo-outer.solo-container--animate-hover) .solo-region-box__inner:not(.solo-region-box__inner--main):hover),
+  :where(:where(.solo-page .solo-outer.solo-container--animate-border) .solo-region-box__inner:not(.solo-region-box__inner--main):hover)::before,
+  :where(:where(.solo-page .solo-outer.solo-container--animate-border) .solo-region-box__inner:not(.solo-region-box__inner--main):hover)::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }

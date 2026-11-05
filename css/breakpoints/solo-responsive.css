@@ -1,17 +1,17 @@
 .solo-region-box__inner.solo-is-region-max-576 .button,
-.solo-region-box__inner.solo-is-region-max-576 .solo-button,
-.solo-region-box__inner.solo-is-region-max-576 nav li *:not(.solo-page--breadcrumb-scroll :is(ul, ol).solo-breadcrumb__menu *) {
+:where(.solo-region-box__inner.solo-is-region-max-576) .solo-button,
+:where(.solo-region-box__inner.solo-is-region-max-576 nav li) *:not(.solo-page--breadcrumb-scroll :is(ul, ol).solo-breadcrumb__menu *) {
   white-space: normal;
 }
 
-.solo-region-box__inner.solo-is-region-max-768 .node--view-mode-teaser .field--name-field-image {
+:where(.solo-region-box__inner.solo-is-region-max-768 .node--view-mode-teaser) .field--name-field-image {
   min-width: 100%;
 }
 
-.solo-region-box__inner.solo-is-region-max-768 .view .node--view-mode-teaser .node__title,
-.solo-region-box__inner.solo-is-region-max-768 .view .node--view-mode-teaser .node__content .field--name-field-image {
-  padding-inline-end: 0 !important;
-  margin-inline-end: 0 !important;
+:where(.solo-region-box__inner.solo-is-region-max-768 .view .node--view-mode-teaser) .node__title,
+:where(.solo-region-box__inner.solo-is-region-max-768 .view .node--view-mode-teaser .node__content) .field--name-field-image {
+  padding-inline-end: 0;
+  margin-inline-end: 0;
 }
 
 #solo-page-wrapper .solo-region-box__inner.solo-is-region-max-576 .views-exposed-form .solo-exposed-form > div {
@@ -19,8 +19,8 @@
   width: 100%;
 }
 
-#solo-page-wrapper .solo-region-box__inner.solo-is-region-max-576 .views-exposed-form .solo-exposed-form,
-#solo-page-wrapper .solo-region-box__inner.solo-is-region-max-576 .views-exposed-form .solo-exposed-form .form-actions {
+:where(.solo-page .solo-region-box__inner.solo-is-region-max-576 .views-exposed-form) .solo-exposed-form,
+:where(.solo-page) .solo-region-box__inner.solo-is-region-max-576 .views-exposed-form .solo-exposed-form .form-actions {
   flex-wrap: nowrap;
   flex-direction: column;
   justify-content: start;
@@ -28,33 +28,33 @@
   margin: 0;
 }
 
-#solo-page-wrapper .solo-region-box__inner.solo-is-region-max-576 .selectify,
-#solo-page-wrapper .solo-region-box__inner.solo-is-region-max-576 .selectify > * {
+:where(.solo-page .solo-region-box__inner.solo-is-region-max-576) .selectify,
+:where(.solo-page .solo-region-box__inner.solo-is-region-max-576 .selectify) > * {
   width: 100%;
   max-width: 100%;
 }
 
-.solo-region-box__inner.solo-is-region-max-576 .solo-date-range .fieldset-wrapper {
+:where(.solo-region-box__inner.solo-is-region-max-576 .solo-date-range) .fieldset-wrapper {
   flex-direction: column;
 }
 
-.solo-region-box__inner.solo-is-region-max-576 fieldset:has([name*="[min]"]):has([name*="[max]"]) .form-item {
+:where(.solo-region-box__inner.solo-is-region-max-576 fieldset:has([name*="[min]"]):has([name*="[max]"])) .form-item {
   max-width: 100%;
 }
 
-.solo-region-box__inner.solo-is-region-max-576 .solo-date-range .form-type-date {
+:where(.solo-region-box__inner.solo-is-region-max-576 .solo-date-range) .form-type-date {
   width: 100%;
 }
 
 @media (min-width:36rem) {
-  #solo-page-wrapper .views-exposed-form .solo-exposed-form>* {
+  :where(.solo-page .views-exposed-form .solo-exposed-form) > * {
     width: auto;
   }
 
 }
 
 @media (min-width:62rem) {
-  #solo-primary-sidebar-menu {
+  .solo-primary-sidebar-menu {
     min-width: 25rem;
     max-width: 35.99875rem;
   }
@@ -111,7 +111,7 @@
     font-size: var(--solo-px18);
   }
 
-  #solo-primary-sidebar-menu {
+  .solo-primary-sidebar-menu {
     min-width: 18rem;
     max-width: 32rem;
   }
@@ -135,12 +135,12 @@
     font-size: var(--solo-px16);
   }
 
-  #solo-primary-sidebar-menu {
+  .solo-primary-sidebar-menu {
     min-width: 18rem;
     max-width: 25rem;
   }
 
-  .comment .indented {
+  :where(.comment) .indented {
     margin-inline-start: var(--solo-px16);
     padding-inline-start: var(--solo-px12);
   }
@@ -171,26 +171,26 @@
 
   .field p,
   .field li,
-  .field span {
+  :where(.field) span {
     line-height: var(--solo-px28);
   }
 
-  #solo-primary-sidebar-menu {
+  .solo-primary-sidebar-menu {
     min-width: 18rem;
     max-width: 22rem;
   }
 
-  form ol,
-  form ul,
+  :where(form) ol,
+  :where(form) ul,
   .field ol,
   .field ul {
     padding-inline-start: var(--solo-px16);
   }
 
-  form ol ul,
-  form ol ol,
-  form ul ul,
-  form ul ol,
+  :where(form ol) ul,
+  :where(form ol) ol,
+  :where(form ul) ul,
+  :where(form ul) ol,
   .field ol ul,
   .field ol ol,
   .field ul ul,
@@ -222,7 +222,7 @@
 }
 
 @media (max-width:20rem) {
-  #solo-primary-sidebar-menu {
+  .solo-primary-sidebar-menu {
     min-width: 12rem;
     max-width: 16rem;
   }

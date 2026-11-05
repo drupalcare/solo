@@ -6,7 +6,7 @@
   display: table;
 }
 
-.solo-page .solo-table-wrapper {
+:where(.solo-page) .solo-table-wrapper {
   border: var(--solo-px1) solid var(--r-br, var(--r-br-b));
 }
 
@@ -23,7 +23,7 @@
   margin: 0;
 }
 
-.solo-page table td li {
+:where(.solo-page table td) li {
   list-style: none;
 }
 
@@ -32,12 +32,12 @@
   background-color: var(--r-bg);
 }
 
-.solo-page .region-title td {
+:where(.solo-page .region-title) td {
   font-weight: bold !important;
   text-transform: uppercase;
 }
 
-.solo-page .region-title td a {
+:where(.solo-page .region-title td) a {
   text-transform: capitalize;
 }
 
@@ -70,15 +70,15 @@
   padding-inline-start: var(--solo-px16);
 }
 
-.solo-page table td .form-type-radio,
-.solo-page table td .form-type-checkbox {
+:where(.solo-page table td) .form-type-radio,
+:where(.solo-page table td) .form-type-checkbox {
   margin: 0 !important;
 }
 
-.solo-page table th.hide-empty-column,
+:where(.solo-page) table th.hide-empty-column,
 .solo-page table td.hide-empty-column,
-.solo-page table th.priority-low,
-.solo-page table th.priority-medium,
+:where(.solo-page) table th.priority-low,
+:where(.solo-page) table th.priority-medium,
 .solo-page table td.priority-low,
 .solo-page table td.priority-medium {
   display: none;
@@ -101,7 +101,7 @@
 }
 
 .solo-page .tabledrag-toggle-weight-wrapper + table,
-.solo-page .tabledrag-toggle-weight-wrapper + .tableresponsive-toggle-columns + table {
+:where(.solo-page) .tabledrag-toggle-weight-wrapper + .tableresponsive-toggle-columns + table {
   margin-block-start: 0;
 }
 
@@ -143,15 +143,15 @@
 }
 
 .solo-table-wrapper .tableresponsive-toggle-columns {
-  float: none !important;
+  float: none;
   clear: both;
   display: flex;
   justify-content: flex-end;
   align-items: center;
 }
 
-.solo-table-wrapper .tableresponsive-toggle {
-  float: none !important;
+:where(.solo-table-wrapper) .tableresponsive-toggle {
+  float: none;
   margin: 0 !important;
   display: inline-flex;
   align-items: center;
@@ -159,7 +159,7 @@
   white-space: nowrap;
 }
 
-.solo-table-wrapper table {
+:where(.solo-table-wrapper) table {
   max-width: 100%;
   table-layout: auto;
 }

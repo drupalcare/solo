@@ -1,0 +1,46 @@
+# Scheme record in the shape of the apex scheme sidecar (id, name, category, mode). Palette values are copied verbatim from css/predefined/solo-urban-stone-shadows.css.
+id: solo-urban-stone-shadows
+name: "Urban Stone Shadows"
+category: urban_and_modern_hues
+mode: mixed
+categories:
+  - urban_and_modern_hues
+css: css/predefined/solo-urban-stone-shadows.css
+thumbnail: images/schemes/solo-urban-stone-shadows.webp
+palette:
+  --sc-head-tx: "#495355"
+  --sc-link-tx: "#292f31"
+  --sc-link-hover-tx: "#0a0c0c"
+  --sc-menu-bg: "#6f6c64"
+  --sc-menu-tx: "#fafafa"
+  --sc-menu-hover-tx: "#ffffff"
+  --sc-menu-hover-bg: "#3a3833"
+  --sc-tab-hover-tx: "#ffffff"
+  --sc-menu-open-tx: "#ffffff"
+  --sc-menu-open-bg: "#3a3833"
+  --sc-button-bg: "#414a4c"
+  --sc-button-tx: "#dde1e2"
+  --sc-button-hover-tx: "#394143"
+  --sc-button-hover-bg: "#dde1e2"
+  --sc-main-container-bg: "linear-gradient(45deg, #ffffff, #dad9d6)"
+  --sc-top-container-bg: "linear-gradient(45deg, #ffffff, #dad9d6)"
+  --sc-fixed-search-block-bg: "linear-gradient(45deg, #ffffff, #dad9d6)"
+  --sc-popup-login-block-inner-bg: "linear-gradient(45deg, #ffffff, #dad9d6)"
+  --sc-bottom-container-bg: "linear-gradient(45deg, #ffffff, #dad9d6)"
+  --sc-footer-container-bg: "linear-gradient(45deg, #ffffff, #dad9d6)"
+  --sc-footer-menu-bg: "linear-gradient(45deg, #ffffff, #dad9d6)"
+  --sc-copyright-bg: "linear-gradient(180deg, #eae9e8, #dde1e2)"
+  --sc-social-fill: "#55524b"
+  --sc-control-br: "#96a8ab"
+  --sc-fixed-search-block-shadow: "18, 20, 21"
+  --sc-social-box-shadow: "184, 193, 195"
+  --sc-tab-hover-bg: "#55524b"
+  --sc-region-rule-br: "var(--solo-white)"
+page:
+  --r-br: "#b2afa9"
+  --r-bg: "#f2f2f1"
+  --r-tx: "#1f1e1b"
+  --r-header-bg: "linear-gradient(to start top, #ffffff, #dad9d6)"
+  --r-header-tx: "#495355"
+  --r-menu-tx-h: "#ffffff"
+  --r-menu-bg-h: "#3a3833"

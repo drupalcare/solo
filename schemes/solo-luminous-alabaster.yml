@@ -1,0 +1,45 @@
+# Scheme record in the shape of the apex scheme sidecar (id, name, category, mode). Palette values are copied verbatim from css/predefined/solo-luminous-alabaster.css.
+id: solo-luminous-alabaster
+name: "Luminous Alabaster"
+category: elegant_whites_and_neutrals
+mode: light
+categories:
+  - elegant_whites_and_neutrals
+css: css/predefined/solo-luminous-alabaster.css
+thumbnail: images/schemes/solo-luminous-alabaster.webp
+palette:
+  --sc-head-tx: "#306000"
+  --sc-link-tx: "#0b35bf"
+  --sc-link-hover-tx: "#051a5f"
+  --sc-menu-bg: "#ebffd7"
+  --sc-menu-tx: "#060b00"
+  --sc-menu-hover-tx: "#172d00"
+  --sc-menu-hover-bg: "#ffffff"
+  --sc-tab-hover-tx: "#172d00"
+  --sc-menu-open-tx: "#172d00"
+  --sc-menu-open-bg: "#ffffff"
+  --sc-button-bg: "#8a9463"
+  --sc-button-tx: "#232b1a"
+  --sc-button-hover-tx: "#181a11"
+  --sc-button-hover-bg: "#e5e7dc"
+  --sc-main-container-bg: "linear-gradient(45deg, #fcfff9, #fdfeff)"
+  --sc-top-container-bg: "linear-gradient(45deg, #fcfff9, #fdfeff)"
+  --sc-fixed-search-block-bg: "linear-gradient(45deg, #fcfff9, #fdfeff)"
+  --sc-popup-login-block-inner-bg: "linear-gradient(45deg, #fcfff9, #fdfeff)"
+  --sc-bottom-container-bg: "linear-gradient(45deg, #fcfff9, #fdfeff)"
+  --sc-footer-container-bg: "linear-gradient(45deg, #fcfff9, #fdfeff)"
+  --sc-footer-menu-bg: "linear-gradient(45deg, #fcfff9, #fdfeff)"
+  --sc-copyright-bg: "linear-gradient(180deg, #fdfeff, #fcfff9)"
+  --sc-social-fill: "#6cd700"
+  --sc-control-br: "#c0c5a9"
+  --sc-fixed-search-block-shadow: "62, 67, 44"
+  --sc-social-box-shadow: "192, 197, 169"
+  --sc-region-rule-br: "var(--solo-white)"
+page:
+  --r-br: "#daffb5"
+  --r-bg: "#f4ffe8"
+  --r-tx: "#0e1c00"
+  --r-header-bg: "linear-gradient(45deg, #fdfeff, #fcfff9)"
+  --r-header-tx: "#306000"
+  --r-menu-tx-h: "#172d00"
+  --r-menu-bg-h: "#ffffff"

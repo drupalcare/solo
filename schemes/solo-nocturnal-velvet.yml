@@ -1,0 +1,46 @@
+# Scheme record in the shape of the apex scheme sidecar (id, name, category, mode). Palette values are copied verbatim from css/predefined/solo-nocturnal-velvet.css.
+id: solo-nocturnal-velvet
+name: "Nocturnal Velvet"
+category: bold_and_dramatic_colors
+mode: dark
+categories:
+  - bold_and_dramatic_colors
+css: css/predefined/solo-nocturnal-velvet.css
+thumbnail: images/schemes/solo-nocturnal-velvet.webp
+palette:
+  --sc-head-tx: "#eac6ff"
+  --sc-link-tx: "#7c817c"
+  --sc-link-hover-tx: "#c9cac9"
+  --sc-menu-bg: "#12001c"
+  --sc-menu-tx: "#f0d7ff"
+  --sc-menu-hover-tx: "#e4b5ff"
+  --sc-menu-hover-bg: "#3d0060"
+  --sc-tab-hover-tx: "#e4b5ff"
+  --sc-menu-open-tx: "#e4b5ff"
+  --sc-menu-open-bg: "#3d0060"
+  --sc-button-bg: "#1f201f"
+  --sc-button-tx: "#d1d3d1"
+  --sc-button-hover-tx: "#060606"
+  --sc-button-hover-bg: "#afb1af"
+  --sc-main-container-bg: "linear-gradient(45deg, #000000, #07000b)"
+  --sc-top-container-bg: "linear-gradient(45deg, #000000, #07000b)"
+  --sc-fixed-search-block-bg: "linear-gradient(45deg, #000000, #07000b)"
+  --sc-popup-login-block-inner-bg: "linear-gradient(45deg, #000000, #07000b)"
+  --sc-bottom-container-bg: "linear-gradient(45deg, #000000, #07000b)"
+  --sc-footer-container-bg: "linear-gradient(45deg, #000000, #07000b)"
+  --sc-footer-menu-bg: "linear-gradient(45deg, #000000, #07000b)"
+  --sc-copyright-bg: "linear-gradient(180deg, #1d002d, #171717)"
+  --sc-social-fill: "#3d0060"
+  --sc-control-br: "#494b49"
+  --sc-fixed-search-block-shadow: "216, 147, 255"
+  --sc-social-box-shadow: "185, 62, 255"
+  --sc-tab-hover-bg: "#3d0060"
+  --sc-region-rule-br: "var(--solo-black)"
+page:
+  --r-br: "#25003a"
+  --r-bg: "#07000b"
+  --r-tx: "#fdf9ff"
+  --r-header-bg: "linear-gradient(0deg, #000000, #12001c)"
+  --r-header-tx: "#eac6ff"
+  --r-menu-tx-h: "#e4b5ff"
+  --r-menu-bg-h: "#3d0060"

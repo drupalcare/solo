@@ -2,14 +2,14 @@
   display: grid;
 }
 
-h1.solo-page-title__text {
+:where(h1).solo-page-title__text {
   display: grid;
   padding-block: var(--solo-px32);
   padding-inline: 0;
 }
 
-.block-page-title-block > *,
-h1.solo-page-title__text > * {
+:where(.block-page-title-block) > *,
+:where(h1.solo-page-title__text) > * {
   min-width: 0;
 }
 
@@ -17,12 +17,12 @@ h1.solo-page-title__text span {
   display: inline-flex;
 }
 
-h1.solo-page-title__text {
+:where(h1).solo-page-title__text {
   font-size: calc(2 * var(--solo-px32));
   line-height: calc(2 * var(--solo-px38));
 }
 
-#solo-page-wrapper.pt-center h1.solo-page-title__text,
+:where(.solo-page.pt-center) :where(h1).solo-page-title__text,
 #solo-page-wrapper.pt-center h1.solo-page-title__text span {
   width: 100%;
   justify-content: center;
@@ -31,7 +31,7 @@ h1.solo-page-title__text {
 }
 
 @media (max-width:74.99875rem) {
-  h1.solo-page-title__text {
+  :where(h1).solo-page-title__text {
     font-size: calc(2 * var(--solo-px24));
     line-height: calc(2 * var(--solo-px28));
   }
@@ -39,7 +39,7 @@ h1.solo-page-title__text {
 }
 
 @media (max-width:61.99875rem) {
-  h1.solo-page-title__text {
+  :where(h1).solo-page-title__text {
     font-size: var(--solo-px36);
     line-height: calc(2 * var(--solo-px22));
     padding-block: var(--solo-px16);
@@ -49,7 +49,7 @@ h1.solo-page-title__text {
 }
 
 @media (max-width:47.99875rem) {
-  h1.solo-page-title__text {
+  :where(h1).solo-page-title__text {
     font-size: var(--solo-px24);
     line-height: calc(2 * var(--solo-px14));
     padding-block: var(--solo-px8);
@@ -59,7 +59,7 @@ h1.solo-page-title__text {
 }
 
 @media (max-width:35.99875rem) {
-  h1.solo-page-title__text {
+  :where(h1).solo-page-title__text {
     font-size: var(--solo-px18);
     line-height: var(--solo-px22);
     padding-block: var(--solo-px8);

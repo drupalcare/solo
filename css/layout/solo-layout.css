@@ -13,7 +13,7 @@
   grid-auto-columns: minmax(0, 1fr);
 }
 
-.solo-outer > * {
+:where(.solo-outer) > * {
   min-width: 0;
 }
 
@@ -29,21 +29,21 @@
 }
 
 .solo-col,
-.solo-col>*,
+:where(.solo-col) > *,
 .solo-page,
-.solo-page>* {
+:where(.solo-page) > * {
   min-width: 0;
   min-height: 0;
   width: 100%;
 }
 
-.solo-container--single>.solo-col:not(.solo-header__inner,
-.solo-primary-menu__inner,
-.solo-fixed-search__inner) {
+:where(.solo-container--single) > .solo-col:not(.solo-header__inner, .solo-primary-menu__inner, .solo-fixed-search__inner)
+
+ {
   grid-auto-flow: row;
 }
 
-.solo-outer .solo-region-box__inner {
+:where(.solo-outer) .solo-region-box__inner {
   height: 100%;
 }
 
@@ -62,10 +62,10 @@
   padding: var(--solo-gap);
 }
 
-.solo-container--top-active-1 > .solo-inner,
-.solo-container--main-active-1 > .solo-inner,
-.solo-container--bottom-active-1 > .solo-inner,
-.solo-container--footer-active-1 > .solo-inner {
+:where(.solo-container--top-active-1) > .solo-inner,
+:where(.solo-container--main-active-1) > .solo-inner,
+:where(.solo-container--bottom-active-1) > .solo-inner,
+:where(.solo-container--footer-active-1) > .solo-inner {
   padding-top: var(--solo-gap);
   padding-bottom: var(--solo-gap);
 }
@@ -78,13 +78,13 @@
   margin: 0 auto;
 }
 
-.solo-outer .solo-region-box__inner {
+:where(.solo-outer) .solo-region-box__inner {
   padding: var(--solo-gap);
   min-width: 0;
 }
 
 /* We change it in big screen */
-.solo-container--multi>.solo-col {
+:where(.solo-container--multi) > .solo-col {
   gap: var(--solo-gap);
   grid-auto-flow: column;
 }

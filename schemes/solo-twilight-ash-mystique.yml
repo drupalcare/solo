@@ -1,0 +1,46 @@
+# Scheme record in the shape of the apex scheme sidecar (id, name, category, mode). Palette values are copied verbatim from css/predefined/solo-twilight-ash-mystique.css.
+id: solo-twilight-ash-mystique
+name: "Twilight Ash Mystique"
+category: midnight_and_twilight
+mode: mixed
+categories:
+  - midnight_and_twilight
+css: css/predefined/solo-twilight-ash-mystique.css
+thumbnail: images/schemes/solo-twilight-ash-mystique.webp
+palette:
+  --sc-head-tx: "#3b3435"
+  --sc-link-tx: "#31303f"
+  --sc-link-hover-tx: "#1a1a22"
+  --sc-menu-bg: "#3b3435"
+  --sc-menu-tx: "#f3f2f2"
+  --sc-menu-hover-tx: "#fbfbfb"
+  --sc-menu-hover-bg: "#201c1d"
+  --sc-tab-hover-tx: "#fbfbfb"
+  --sc-menu-open-tx: "#fbfbfb"
+  --sc-menu-open-bg: "#201c1d"
+  --sc-button-bg: "#47465c"
+  --sc-button-tx: "#fbfafc"
+  --sc-button-hover-tx: "#47465c"
+  --sc-button-hover-bg: "#fbfafc"
+  --sc-main-container-bg: "linear-gradient(45deg, #ffffff, #ebe9e9)"
+  --sc-top-container-bg: "linear-gradient(45deg, #ffffff, #ebe9e9)"
+  --sc-fixed-search-block-bg: "linear-gradient(45deg, #ffffff, #ebe9e9)"
+  --sc-popup-login-block-inner-bg: "linear-gradient(45deg, #ffffff, #ebe9e9)"
+  --sc-bottom-container-bg: "linear-gradient(45deg, #ffffff, #ebe9e9)"
+  --sc-footer-container-bg: "linear-gradient(45deg, #ffffff, #ebe9e9)"
+  --sc-footer-menu-bg: "linear-gradient(45deg, #ffffff, #ebe9e9)"
+  --sc-copyright-bg: "linear-gradient(180deg, #b8b7c8, #e3e0e0)"
+  --sc-social-fill: "#5f5455"
+  --sc-control-br: "#9c9ab2"
+  --sc-fixed-search-block-shadow: "26, 26, 34"
+  --sc-social-box-shadow: "146, 144, 171"
+  --sc-tab-hover-bg: "#201c1d"
+  --sc-region-rule-br: "var(--solo-white)"
+page:
+  --r-br: "#aba1a2"
+  --r-bg: "#f3f2f2"
+  --r-tx: "#171414"
+  --r-header-bg: "linear-gradient(to start top, #ffffff, #ebe9e9)"
+  --r-header-tx: "#3b3435"
+  --r-menu-tx-h: "#fbfbfb"
+  --r-menu-bg-h: "#201c1d"

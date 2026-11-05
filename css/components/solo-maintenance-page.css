@@ -10,15 +10,15 @@ body:has(.solo-maintenance-page) {
   background-color: var(--r-bg);
 }
 
-.solo-maintenance-page main {
+:where(.solo-maintenance-page) main {
   min-height: 43.75rem;
-  margin-block-start: calc(2* var(--solo-px16)) !important;
+  margin-block-start: calc(2* var(--solo-px16));
   max-width: 800px;
   margin-inline-start: auto;
   margin-inline-end: auto;
 }
 
-.solo-maintenance-page main header,
+:where(.solo-maintenance-page main) header,
 .solo-maintenance-page main header a {
   display: grid;
   justify-content: center;
@@ -26,7 +26,7 @@ body:has(.solo-maintenance-page) {
   text-align: center;
 }
 
-.solo-maintenance-page main header>* {
+:where(.solo-maintenance-page main header) > * {
   width: 100%;
 }
 

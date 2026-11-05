@@ -1,0 +1,46 @@
+# Scheme record in the shape of the apex scheme sidecar (id, name, category, mode). Palette values are copied verbatim from css/predefined/solo-blueberry-skies-quartet.css.
+id: solo-blueberry-skies-quartet
+name: "Blueberry Skies Quartet"
+category: berry_and_fruit_tones
+mode: mixed
+categories:
+  - berry_and_fruit_tones
+css: css/predefined/solo-blueberry-skies-quartet.css
+thumbnail: images/schemes/solo-blueberry-skies-quartet.webp
+palette:
+  --sc-head-tx: "#85725f"
+  --sc-link-tx: "#0083e5"
+  --sc-link-hover-tx: "#0066b2"
+  --sc-menu-bg: "#0066b2"
+  --sc-menu-tx: "#f6fbff"
+  --sc-menu-hover-tx: "#000508"
+  --sc-menu-hover-bg: "#008df6"
+  --sc-tab-hover-tx: "#000508"
+  --sc-menu-open-tx: "#000508"
+  --sc-menu-open-bg: "#008df6"
+  --sc-button-bg: "#4a3f35"
+  --sc-button-tx: "#b2deff"
+  --sc-button-hover-tx: "#0e0c0a"
+  --sc-button-hover-bg: "#f6fbff"
+  --sc-main-container-bg: "linear-gradient(135deg, #fbfdff, #f4f2ef)"
+  --sc-top-container-bg: "linear-gradient(135deg, #fbfdff, #f4f2ef)"
+  --sc-fixed-search-block-bg: "linear-gradient(135deg, #fbfdff, #f4f2ef)"
+  --sc-popup-login-block-inner-bg: "linear-gradient(135deg, #fbfdff, #f4f2ef)"
+  --sc-bottom-container-bg: "linear-gradient(180deg, #0e0c0a, #000508)"
+  --sc-footer-container-bg: "linear-gradient(180deg, #0e0c0a, #000508)"
+  --sc-footer-menu-bg: "linear-gradient(180deg, #0e0c0a, #000508)"
+  --sc-copyright-bg: "linear-gradient(0deg, #0e0c0a, #000508)"
+  --sc-social-fill: "#5d5043"
+  --sc-control-br: "#2c261f"
+  --sc-fixed-search-block-shadow: "24, 20, 17"
+  --sc-social-box-shadow: "8, 150, 255"
+page:
+  --r-br: "#bbaea0"
+  --r-bg: "#f6fbff"
+  --r-tx: "#2c261f"
+  --r-header-bg: "linear-gradient(0deg, #0e0c0a, #221d18)"
+  --r-header-tx: "#96826d"
+  --r-menu-tx-h: "#000508"
+  --r-menu-bg-h: "#008df6"
+  --r-br-dark: "#003157"
+  --r-br-light: "#dcd0c7"

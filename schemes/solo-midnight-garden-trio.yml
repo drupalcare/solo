@@ -1,0 +1,46 @@
+# Scheme record in the shape of the apex scheme sidecar (id, name, category, mode). Palette values are copied verbatim from css/predefined/solo-midnight-garden-trio.css.
+id: solo-midnight-garden-trio
+name: "Midnight Garden Trio"
+category: midnight_and_twilight
+mode: mixed
+categories:
+  - midnight_and_twilight
+css: css/predefined/solo-midnight-garden-trio.css
+thumbnail: images/schemes/solo-midnight-garden-trio.webp
+palette:
+  --sc-head-tx: "#39752e"
+  --sc-link-tx: "#494a45"
+  --sc-link-hover-tx: "#383835"
+  --sc-menu-bg: "#3164ca"
+  --sc-menu-tx: "#fcfdfe"
+  --sc-menu-hover-tx: "#ffffff"
+  --sc-menu-hover-bg: "#1d3b78"
+  --sc-tab-hover-tx: "#ffffff"
+  --sc-menu-open-tx: "#fcfdfe"
+  --sc-menu-open-bg: "#3c6dd0"
+  --sc-button-bg: "#56b045"
+  --sc-button-tx: "#343434"
+  --sc-button-hover-tx: "#081107"
+  --sc-button-hover-bg: "#e2f3df"
+  --sc-main-container-bg: "linear-gradient(45deg, #ffffff, #eef2fb)"
+  --sc-top-container-bg: "#f9fcf8"
+  --sc-fixed-search-block-bg: "linear-gradient(45deg, #ffffff, #eef2fb)"
+  --sc-popup-login-block-inner-bg: "linear-gradient(45deg, #ffffff, #eef2fb)"
+  --sc-bottom-container-bg: "linear-gradient(45deg, #ffffff, #eef2fb)"
+  --sc-footer-container-bg: "linear-gradient(45deg, #ffffff, #eef2fb)"
+  --sc-footer-menu-bg: "linear-gradient(45deg, #ffffff, #eef2fb)"
+  --sc-copyright-bg: "linear-gradient(180deg, #e0e8f8, #e9eae8)"
+  --sc-social-fill: "#2a56af"
+  --sc-control-br: "#85c779"
+  --sc-fixed-search-block-shadow: "8, 17, 7"
+  --sc-social-box-shadow: "215, 238, 211"
+  --sc-tab-hover-bg: "#1d3b78"
+  --sc-region-rule-br: "var(--solo-white)"
+page:
+  --r-br: "#d3def4"
+  --r-bg: "#fcfdfe"
+  --r-tx: "#060c18"
+  --r-header-bg: "linear-gradient(to start top, #edf7ec, #eef2fb)"
+  --r-header-tx: "#3d7c31"
+  --r-menu-tx-h: "#ffffff"
+  --r-menu-bg-h: "#1d3b78"

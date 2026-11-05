@@ -1,0 +1,46 @@
+# Scheme record in the shape of the apex scheme sidecar (id, name, category, mode). Palette values are copied verbatim from css/predefined/solo-flaming-sapphire.css.
+id: solo-flaming-sapphire
+name: "Flaming Sapphire"
+category: bold_and_dramatic_colors
+mode: dark
+categories:
+  - bold_and_dramatic_colors
+css: css/predefined/solo-flaming-sapphire.css
+thumbnail: images/schemes/solo-flaming-sapphire.webp
+palette:
+  --sc-head-tx: "#eb4900"
+  --sc-link-tx: "#a7aced"
+  --sc-link-hover-tx: "#7078e2"
+  --sc-menu-bg: "#110500"
+  --sc-menu-tx: "#ffe8dd"
+  --sc-menu-hover-tx: "#fff3ee"
+  --sc-menu-hover-bg: "#993000"
+  --sc-tab-hover-tx: "#fff3ee"
+  --sc-menu-open-tx: "#fff3ee"
+  --sc-menu-open-bg: "#bb3a00"
+  --sc-button-bg: "#1f2798"
+  --sc-button-tx: "#eeeefb"
+  --sc-button-hover-tx: "#1f2798"
+  --sc-button-hover-bg: "#eeeefb"
+  --sc-main-container-bg: "linear-gradient(45deg, #000000, #110500)"
+  --sc-top-container-bg: "linear-gradient(45deg, #000000, #110500)"
+  --sc-fixed-search-block-bg: "linear-gradient(45deg, #000000, #110500)"
+  --sc-popup-login-block-inner-bg: "linear-gradient(45deg, #000000, #110500)"
+  --sc-bottom-container-bg: "linear-gradient(45deg, #000000, #110500)"
+  --sc-footer-container-bg: "linear-gradient(45deg, #000000, #110500)"
+  --sc-footer-menu-bg: "linear-gradient(45deg, #000000, #110500)"
+  --sc-copyright-bg: "linear-gradient(180deg, #110500, #02030b)"
+  --sc-social-fill: "#882a00"
+  --sc-control-br: "#363eab"
+  --sc-fixed-search-block-shadow: "238, 238, 251"
+  --sc-social-box-shadow: "111, 118, 225"
+  --sc-tab-hover-bg: "#993000"
+  --sc-region-rule-br: "var(--solo-black)"
+page:
+  --r-br: "#662000"
+  --r-bg: "#110500"
+  --r-tx: "#fff3ee"
+  --r-header-bg: "linear-gradient(0deg, #000000, #331000)"
+  --r-header-tx: "#eb4900"
+  --r-menu-tx-h: "#fff3ee"
+  --r-menu-bg-h: "#bb3a00"

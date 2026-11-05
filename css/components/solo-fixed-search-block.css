@@ -1,4 +1,4 @@
-#solo-fixed-search-block {
+.solo-fixed-search {
   display: block;
   width: 100%;
   z-index: 5000;
@@ -11,7 +11,7 @@
   background-color: var(--r-bg);
 }
 
-#solo-fixed-search-block .solo-fixed-search__inner {
+:where(.solo-fixed-search) .solo-fixed-search__inner {
   position: relative;
   padding-block-start: 3.125rem;
   padding-block-end: 3.125rem;
@@ -24,26 +24,26 @@
   max-width: 1100px;
 }
 
-.solo-fixed-search__inner .solo-fixed-search__wrapper {
+:where(.solo-fixed-search__inner) .solo-fixed-search__wrapper {
   border-radius: var(--solo-px16);
   display: flex;
 }
 
-.solo-fixed-search__inner form .form-search,
-.solo-fixed-search__inner form .form-submit {
+:where(.solo-fixed-search__inner form) .form-search,
+:where(.solo-fixed-search__inner form) .form-submit {
   padding-block-start: var(--solo-px20);
   padding-block-end: var(--solo-px20);
 }
 
-.solo-fixed-search__inner .solo-search-block-form .form-type-search::before {
+:where(.solo-fixed-search__inner) .solo-search-block-form .form-type-search::before {
   inset-block-start: 26px;
 }
 
-.solo-fixed-search__inner .solo-fixed-search__close {
+:where(.solo-fixed-search__inner) .solo-fixed-search__close {
   flex-basis: 60px;
 }
 
-.solo-fixed-search__inner form .form-submit {
+:where(.solo-fixed-search__inner form) .form-submit {
   border-start-start-radius: 0;
   border-start-end-radius: var(--solo-px4);
   border-end-start-radius: 0;
@@ -69,16 +69,25 @@
   border-end-end-radius: 0;
 }
 
-.solo-inner.solo-fixed-search__inner .solo-hamburger span>svg {
+.solo-inner.solo-fixed-search__inner .solo-hamburger span > svg {
   height: 4.5rem;
   width: 4.688rem;
 }
 
-.solo-fixed-search__inner .solo-search-block-form {
+:where(.solo-fixed-search__inner) .solo-search-block-form {
   flex-basis: calc(100% - 65px);
   flex-grow: 1;
 }
 
 .solo-fixed-search__inner {
   position: relative;
+}
+
+/* Reduced motion: end states are kept, movement is not (WCAG 2.3.3). */
+@media (prefers-reduced-motion: reduce) {
+  :where(.solo-fixed-search) {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }

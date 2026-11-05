@@ -5,18 +5,18 @@
 }
 
 .messages,
-.webform-message .messages.messages--webform {
+:where(.webform-message) .messages.messages--webform {
   color: var(--solo-white) !important;
   background-color: var(--solo-dark-gray) !important;
   border: var(--solo-px1) solid var(--solo-black) !important;
 }
 
-.solo-page .solo-system-messages {
+:where(.solo-page) .solo-system-messages {
   --r-bg: var(--solo-black) !important;
   --r-tx: var(--solo-white) !important;
 }
 
-.messages a {
+:where(.messages) a {
   color: var(--solo-white) !important;
 }
 

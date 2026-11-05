@@ -1,0 +1,46 @@
+# Scheme record in the shape of the apex scheme sidecar (id, name, category, mode). Palette values are copied verbatim from css/predefined/solo-celestial-blue-depths.css.
+id: solo-celestial-blue-depths
+name: "Celestial Blue Depths"
+category: galactic_and_celestial
+mode: mixed
+categories:
+  - galactic_and_celestial
+css: css/predefined/solo-celestial-blue-depths.css
+thumbnail: images/schemes/solo-celestial-blue-depths.webp
+palette:
+  --sc-head-tx: "#7b6a58"
+  --sc-link-tx: "#1443d5"
+  --sc-link-hover-tx: "#2151ea"
+  --sc-menu-bg: "#040d2a"
+  --sc-menu-tx: "#bac4e6"
+  --sc-menu-hover-tx: "#fafbff"
+  --sc-menu-hover-bg: "#1034a6"
+  --sc-tab-hover-tx: "#fafbff"
+  --sc-menu-open-tx: "#fafbff"
+  --sc-menu-open-bg: "#1034a6"
+  --sc-button-bg: "#00356b"
+  --sc-button-tx: "#c0dfff"
+  --sc-button-hover-tx: "#f5f9ff"
+  --sc-button-hover-bg: "#0070e2"
+  --sc-main-container-bg: "linear-gradient(135deg, #ebeffd, #dfe4f4)"
+  --sc-top-container-bg: "linear-gradient(135deg, #ebeffd, #dfe4f4)"
+  --sc-fixed-search-block-bg: "linear-gradient(135deg, #ebeffd, #dfe4f4)"
+  --sc-popup-login-block-inner-bg: "linear-gradient(135deg, #ebeffd, #dfe4f4)"
+  --sc-bottom-container-bg: "linear-gradient(180deg, #020306, #040d2a)"
+  --sc-footer-container-bg: "linear-gradient(180deg, #020306, #040d2a)"
+  --sc-footer-menu-bg: "linear-gradient(180deg, #020306, #040d2a)"
+  --sc-copyright-bg: "linear-gradient(0deg, #020306, #040d2a)"
+  --sc-social-fill: "#a1afdd"
+  --sc-control-br: "#0a2168"
+  --sc-fixed-search-block-shadow: "4, 13, 42"
+  --sc-social-box-shadow: "22, 71, 228"
+page:
+  --r-br: "#bccbf9"
+  --r-bg: "#fafbff"
+  --r-tx: "#040d2a"
+  --r-header-bg: "linear-gradient(180deg, #1034a6, #0a2168)"
+  --r-header-tx: "#b8ab9c"
+  --r-menu-tx-h: "#fafbff"
+  --r-menu-bg-h: "#1034a6"
+  --r-br-dark: "#0a2580"
+  --r-br-light: "#c4cade"

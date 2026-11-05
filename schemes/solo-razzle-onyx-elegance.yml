@@ -1,0 +1,44 @@
+# Scheme record in the shape of the apex scheme sidecar (id, name, category, mode). Palette values are copied verbatim from css/predefined/solo-razzle-onyx-elegance.css.
+id: solo-razzle-onyx-elegance
+name: "Razzle Onyx Elegance"
+category: bold_and_dramatic_colors
+mode: mixed
+categories:
+  - bold_and_dramatic_colors
+css: css/predefined/solo-razzle-onyx-elegance.css
+thumbnail: images/schemes/solo-razzle-onyx-elegance.webp
+palette:
+  --sc-head-tx: "#a952d4"
+  --sc-link-tx: "#7d2aa7"
+  --sc-link-hover-tx: "#69238c"
+  --sc-menu-bg: "#e52b50"
+  --sc-menu-tx: "#19040b"
+  --sc-menu-hover-tx: "#fff"
+  --sc-menu-hover-bg: "#ae164e"
+  --sc-tab-hover-tx: "#fff"
+  --sc-menu-open-tx: "#fff"
+  --sc-menu-open-bg: "#ae164e"
+  --sc-button-bg: "#e31c44"
+  --sc-button-tx: "#fefbfb"
+  --sc-button-hover-tx: "#d91b41"
+  --sc-button-hover-bg: "#fdf0f2"
+  --sc-main-container-bg: "linear-gradient(135deg, #faf5fd, #fef8fa)"
+  --sc-top-container-bg: "linear-gradient(180deg, #e52b50, #e3256b)"
+  --sc-fixed-search-block-bg: "linear-gradient(135deg, #faf5fd, #fef8fa)"
+  --sc-popup-login-block-inner-bg: "linear-gradient(135deg, #faf5fd, #fef8fa)"
+  --sc-bottom-container-bg: "linear-gradient(180deg, #0d0412, #17030a)"
+  --sc-footer-container-bg: "linear-gradient(180deg, #0d0412, #17030a)"
+  --sc-footer-menu-bg: "linear-gradient(180deg, #0d0412, #17030a)"
+  --sc-copyright-bg: "linear-gradient(180deg, #030104, #0f0205)"
+  --sc-social-fill: "#5f207e"
+  --sc-control-br: "#d8b1ec"
+  --sc-fixed-search-block-shadow: "24, 8, 31"
+  --sc-social-box-shadow: "224, 191, 239"
+page:
+  --r-br: "#f9d2da"
+  --r-bg: "#faf5fd"
+  --r-tx: "#17081f"
+  --r-header-bg: "linear-gradient(0deg, #220b2d, #0d0412)"
+  --r-header-tx: "#ad5ad6"
+  --r-menu-tx-h: "#fff"
+  --r-menu-bg-h: "#ae164e"

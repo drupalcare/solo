@@ -19,7 +19,7 @@
 }
 
 /* Adjust for RTL */
-[dir="rtl"] .file:not(.imce-item) {
+:where([dir="rtl"]) .file:not(.imce-item) {
   --file-icon: right;
 }
 

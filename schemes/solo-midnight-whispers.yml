@@ -1,0 +1,46 @@
+# Scheme record in the shape of the apex scheme sidecar (id, name, category, mode). Palette values are copied verbatim from css/predefined/solo-midnight-whispers.css.
+id: solo-midnight-whispers
+name: "Midnight Whispers"
+category: midnight_and_twilight
+mode: mixed
+categories:
+  - midnight_and_twilight
+css: css/predefined/solo-midnight-whispers.css
+thumbnail: images/schemes/solo-midnight-whispers.webp
+palette:
+  --sc-head-tx: "#6c738c"
+  --sc-link-tx: "#850b00"
+  --sc-link-hover-tx: "#c91000"
+  --sc-menu-bg: "#19242c"
+  --sc-menu-tx: "#fafbfc"
+  --sc-menu-hover-tx: "#ffffff"
+  --sc-menu-hover-bg: "#394558"
+  --sc-tab-hover-tx: "#ffffff"
+  --sc-menu-open-tx: "#ffffff"
+  --sc-menu-open-bg: "#394558"
+  --sc-button-bg: "#252d39"
+  --sc-button-tx: "#fafbfc"
+  --sc-button-hover-tx: "#47556c"
+  --sc-button-hover-bg: "#f1f2f5"
+  --sc-main-container-bg: "#eff3f6"
+  --sc-top-container-bg: "linear-gradient(0deg, #fafafb, #d1d7e1)"
+  --sc-fixed-search-block-bg: "linear-gradient(0deg, #f5f5f6, #e6e9ee)"
+  --sc-popup-login-block-inner-bg: "linear-gradient(45deg, #fafafb, #e6e9ee)"
+  --sc-bottom-container-bg: "linear-gradient(45deg, #181d24, #070708)"
+  --sc-footer-container-bg: "linear-gradient(45deg, #181d24, #070708)"
+  --sc-footer-menu-bg: "linear-gradient(45deg, #181d24, #070708)"
+  --sc-copyright-bg: "#040405"
+  --sc-social-fill: "#93a2b9"
+  --sc-control-br: "#dadee2"
+  --sc-fixed-search-block-shadow: "17, 21, 26"
+  --sc-social-box-shadow: "230, 234, 238"
+page:
+  --r-br: "#a5aab9"
+  --r-bg: "#fbfbfc"
+  --r-tx: "#383c49"
+  --r-header-bg: "linear-gradient(0deg, #f5f5f6, #e6e9ee)"
+  --r-header-tx: "#62687f"
+  --r-menu-bg-h: "#394558"
+  --r-menu-tx-h: "#ffffff"
+  --r-br-dark: "#313845"
+  --r-br-light: "#e0e0e1"

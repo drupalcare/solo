@@ -1,0 +1,45 @@
+# Scheme record in the shape of the apex scheme sidecar (id, name, category, mode). Palette values are copied verbatim from css/predefined/solo-blushing-magnolia.css.
+id: solo-blushing-magnolia
+name: "Blushing Magnolia"
+category: soft_and_subtle_hues
+mode: light
+categories:
+  - soft_and_subtle_hues
+css: css/predefined/solo-blushing-magnolia.css
+thumbnail: images/schemes/solo-blushing-magnolia.webp
+palette:
+  --sc-head-tx: "#21005b"
+  --sc-link-tx: "#610000"
+  --sc-link-hover-tx: "#d30000"
+  --sc-menu-bg: "#ffe9e9"
+  --sc-menu-tx: "#500000"
+  --sc-menu-hover-tx: "#3f0000"
+  --sc-menu-hover-bg: "#ff7272"
+  --sc-tab-hover-tx: "#3f0000"
+  --sc-menu-open-tx: "#3f0000"
+  --sc-menu-open-bg: "#ff7272"
+  --sc-button-bg: "#e2d2ff"
+  --sc-button-tx: "#3a009f"
+  --sc-button-hover-tx: "#150039"
+  --sc-button-hover-bg: "#cdb0ff"
+  --sc-main-container-bg: "linear-gradient(45deg, #ffe9e9, #ede3ff)"
+  --sc-top-container-bg: "linear-gradient(45deg, #ffe9e9, #ede3ff)"
+  --sc-fixed-search-block-bg: "linear-gradient(45deg, #ffe9e9, #ede3ff)"
+  --sc-popup-login-block-inner-bg: "linear-gradient(45deg, #ffe9e9, #ede3ff)"
+  --sc-bottom-container-bg: "linear-gradient(45deg, #ffe9e9, #ede3ff)"
+  --sc-footer-container-bg: "linear-gradient(45deg, #ffe9e9, #ede3ff)"
+  --sc-footer-menu-bg: "linear-gradient(45deg, #ffe9e9, #ede3ff)"
+  --sc-copyright-bg: "linear-gradient(180deg, #ffe9e9, #f8f4ff)"
+  --sc-social-fill: "#5900f4"
+  --sc-control-br: "#d8c1ff"
+  --sc-fixed-search-block-shadow: "39, 0, 108"
+  --sc-social-box-shadow: "172, 125, 255"
+  --sc-region-rule-br: "var(--solo-white)"
+page:
+  --r-br: "#e2d2ff"
+  --r-bg: "#f8f4ff"
+  --r-tx: "#1b004a"
+  --r-header-bg: "linear-gradient(0deg, #f8f4ff, #fffafa)"
+  --r-header-tx: "#21005b"
+  --r-menu-tx-h: "#3f0000"
+  --r-menu-bg-h: "#ff7272"

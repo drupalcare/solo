@@ -1,18 +1,18 @@
-.breadcrumb>.solo-breadcrumb__inner {
-  padding-block-end: 0 !important;
-  padding-block-start: 0 !important;
+:where(.breadcrumb) > .solo-breadcrumb__inner {
+  padding-block-end: 0;
+  padding-block-start: 0;
 }
 
 .solo-breadcrumb__nav {
   display: grid;
 }
 
-.solo-breadcrumb__nav > * {
+:where(.solo-breadcrumb__nav) > * {
   min-width: 0;
 }
 
 ul.solo-breadcrumb__menu,
-ol.solo-breadcrumb__menu {
+:where(ol).solo-breadcrumb__menu {
   list-style: none;
   padding: 0;
   margin: 0;
@@ -50,19 +50,19 @@ ol.solo-breadcrumb__menu li > span {
   padding-inline-start: var(--solo-px4);
 }
 
-.solo-breadcrumb__menu li .solo-breadcrumb__separator {
+:where(.solo-breadcrumb__menu li) .solo-breadcrumb__separator {
   display: flex;
   align-items: center;
   fill: var(--r-tx);
 }
 
 .solo-page--breadcrumb-scroll ul.solo-breadcrumb__menu,
-.solo-page--breadcrumb-scroll ol.solo-breadcrumb__menu {
+:where(.solo-page--breadcrumb-scroll) ol.solo-breadcrumb__menu {
   overflow-x: auto;
   white-space: nowrap;
   flex-wrap: nowrap;
 }
 
-.solo-breadcrumb__menu > li:first-child > * {
+:where(.solo-breadcrumb__menu > li:first-child) > * {
   padding-inline-start: 0;
 }

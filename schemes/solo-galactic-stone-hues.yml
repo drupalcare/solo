@@ -1,0 +1,46 @@
+# Scheme record in the shape of the apex scheme sidecar (id, name, category, mode). Palette values are copied verbatim from css/predefined/solo-galactic-stone-hues.css.
+id: solo-galactic-stone-hues
+name: "Galactic Stone Hues"
+category: galactic_and_celestial
+mode: mixed
+categories:
+  - galactic_and_celestial
+css: css/predefined/solo-galactic-stone-hues.css
+thumbnail: images/schemes/solo-galactic-stone-hues.webp
+palette:
+  --sc-head-tx: "#4c4943"
+  --sc-link-tx: "#43403b"
+  --sc-link-hover-tx: "#1f1e1b"
+  --sc-menu-bg: "#606e71"
+  --sc-menu-tx: "#ebedee"
+  --sc-menu-hover-tx: "#ffffff"
+  --sc-menu-hover-bg: "#31383a"
+  --sc-tab-hover-tx: "#ffffff"
+  --sc-menu-open-tx: "#ffffff"
+  --sc-menu-open-bg: "#31383a"
+  --sc-button-bg: "#4c4943"
+  --sc-button-tx: "#d2d1cd"
+  --sc-button-hover-tx: "#43403b"
+  --sc-button-hover-bg: "#d2d1cd"
+  --sc-main-container-bg: "linear-gradient(45deg, #ffffff, #dde1e2)"
+  --sc-top-container-bg: "linear-gradient(45deg, #ffffff, #dde1e2)"
+  --sc-fixed-search-block-bg: "linear-gradient(45deg, #ffffff, #dde1e2)"
+  --sc-popup-login-block-inner-bg: "linear-gradient(45deg, #ffffff, #dde1e2)"
+  --sc-bottom-container-bg: "linear-gradient(45deg, #ffffff, #dde1e2)"
+  --sc-footer-container-bg: "linear-gradient(45deg, #ffffff, #dde1e2)"
+  --sc-footer-menu-bg: "linear-gradient(45deg, #ffffff, #dde1e2)"
+  --sc-copyright-bg: "linear-gradient(180deg, #dde1e2, #eae9e8)"
+  --sc-social-fill: "#495355"
+  --sc-control-br: "#c0b8a5"
+  --sc-fixed-search-block-shadow: "22, 21, 19"
+  --sc-social-box-shadow: "226, 225, 223"
+  --sc-tab-hover-bg: "#31383a"
+  --sc-region-rule-br: "var(--solo-white)"
+page:
+  --r-br: "#94a0a3"
+  --r-bg: "#eff1f2"
+  --r-tx: "#121415"
+  --r-header-bg: "linear-gradient(to start top, #ffffff, #dde1e2)"
+  --r-header-tx: "#4c4943"
+  --r-menu-tx-h: "#ffffff"
+  --r-menu-bg-h: "#31383a"

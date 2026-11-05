@@ -9,246 +9,246 @@
 
 }
 
-#solo-page-wrapper .animate-solo-electric-surge,
+:where(.solo-page) .animate-solo-electric-surge,
 #solo-header.animate-site-electric-surge a.solo-branding__site-name-link,
-#solo-page-wrapper.animate-title-electric-surge .solo-page-title__text,
+:where(.solo-page.animate-title-electric-surge) .solo-page-title__text,
 #solo-page-wrapper.animate-title-electric-surge .solo-page-title__text span,
-html.solo-preloader-enabled #solo-preloader.animate-site-electric-surge .solo-preloader__text,
-html.solo-preloader-enabled #solo-preloader.animate-site-electric-surge .solo-preloader__hero-text {
+:where(html.solo-preloader-enabled .solo-preloader.animate-site-electric-surge) .solo-preloader__text,
+:where(html.solo-preloader-enabled .solo-preloader.animate-site-electric-surge) .solo-preloader__hero-text {
   background: linear-gradient(45deg, #f44336, #e91e63, #9c27b0, #673ab7, #3f51b5, #2196f3, #87ceeb, #00bcd4, #00ffff, #009688, #4caf50, #8bc34a, #8bc34a, #8bc34a, #8bc34a, #4caf50, #009688, #00ffff, #00bcd4, #87ceeb, #2196f3, #3f51b5, #673ab7, #9c27b0, #e91e63, #f44336);
 }
 
-#solo-page-wrapper .animate-solo-aurora-wave,
+:where(.solo-page) .animate-solo-aurora-wave,
 #solo-header.animate-site-aurora-wave a.solo-branding__site-name-link,
-#solo-page-wrapper.animate-title-aurora-wave .solo-page-title__text,
+:where(.solo-page.animate-title-aurora-wave) .solo-page-title__text,
 #solo-page-wrapper.animate-title-aurora-wave .solo-page-title__text span,
-html.solo-preloader-enabled #solo-preloader.animate-site-aurora-wave .solo-preloader__text,
-html.solo-preloader-enabled #solo-preloader.animate-site-aurora-wave .solo-preloader__hero-text {
+:where(html.solo-preloader-enabled .solo-preloader.animate-site-aurora-wave) .solo-preloader__text,
+:where(html.solo-preloader-enabled .solo-preloader.animate-site-aurora-wave) .solo-preloader__hero-text {
   background: linear-gradient(45deg, #5f2879, #5f2879, #4c3c83, #00418d, #00418d, #0075a5, #00c2de, #00c2de, #16d1c8, #fad717, #fad717, #95e569, #00ba71, #00ba71, #4daa36, #fa8901, #fa8901, #fc614a, #f43545, #f43545, #d93658, #ccc, #ccc, #d93658, #f43545, #f43545, #fc614a, #fa8901, #fa8901, #4daa36, #00ba71, #00ba71, #95e569, #fad717, #fad717, #16d1c8, #00c2de, #00c2de, #0075a5, #00418d, #00418d, #4c3c83, #5f2879, #5f2879);
 }
 
-#solo-page-wrapper .animate-solo-dreamy-bloom,
+:where(.solo-page) .animate-solo-dreamy-bloom,
 #solo-header.animate-site-dreamy-bloom a.solo-branding__site-name-link,
-#solo-page-wrapper.animate-title-dreamy-bloom .solo-page-title__text,
+:where(.solo-page.animate-title-dreamy-bloom) .solo-page-title__text,
 #solo-page-wrapper.animate-title-dreamy-bloom .solo-page-title__text span,
-html.solo-preloader-enabled #solo-preloader.animate-site-dreamy-bloom .solo-preloader__text,
-html.solo-preloader-enabled #solo-preloader.animate-site-dreamy-bloom .solo-preloader__hero-text {
+:where(html.solo-preloader-enabled .solo-preloader.animate-site-dreamy-bloom) .solo-preloader__text,
+:where(html.solo-preloader-enabled .solo-preloader.animate-site-dreamy-bloom) .solo-preloader__hero-text {
   background: linear-gradient(45deg, #095fab, #25abe8, #57d75b, #ccc, #57d75b, #25abe8, #095fab);
 }
 
-#solo-page-wrapper .animate-solo-echo-pulse,
+:where(.solo-page) .animate-solo-echo-pulse,
 #solo-header.animate-site-echo-pulse a.solo-branding__site-name-link,
-#solo-page-wrapper.animate-title-echo-pulse .solo-page-title__text,
+:where(.solo-page.animate-title-echo-pulse) .solo-page-title__text,
 #solo-page-wrapper.animate-title-echo-pulse .solo-page-title__text span,
-html.solo-preloader-enabled #solo-preloader.animate-site-echo-pulse .solo-preloader__text,
-html.solo-preloader-enabled #solo-preloader.animate-site-echo-pulse .solo-preloader__hero-text {
+:where(html.solo-preloader-enabled .solo-preloader.animate-site-echo-pulse) .solo-preloader__text,
+:where(html.solo-preloader-enabled .solo-preloader.animate-site-echo-pulse) .solo-preloader__hero-text {
   background: linear-gradient(45deg, #d0e4f7, #73b1e7, #e2d40b, #539fe1, #87bcea, #539fe1, #e2d40b, #73b1e7, #d0e4f7);
 }
 
-#solo-page-wrapper .animate-solo-gravity-defy,
+:where(.solo-page) .animate-solo-gravity-defy,
 #solo-header.animate-site-gravity-defy a.solo-branding__site-name-link,
-#solo-page-wrapper.animate-title-gravity-defy .solo-page-title__text,
+:where(.solo-page.animate-title-gravity-defy) .solo-page-title__text,
 #solo-page-wrapper.animate-title-gravity-defy .solo-page-title__text span,
-html.solo-preloader-enabled #solo-preloader.animate-site-gravity-defy .solo-preloader__text,
-html.solo-preloader-enabled #solo-preloader.animate-site-gravity-defy .solo-preloader__hero-text {
+:where(html.solo-preloader-enabled .solo-preloader.animate-site-gravity-defy) .solo-preloader__text,
+:where(html.solo-preloader-enabled .solo-preloader.animate-site-gravity-defy) .solo-preloader__hero-text {
   background: linear-gradient(45deg, #009688, #2196f3, #ffeb3b, #ff9800, #f44336, #9c27b0, #9c27b0, #f44336, #ff9800, #ffeb3b, #2196f3, #009688);
 }
 
-#solo-page-wrapper .animate-solo-gliding-letters,
+:where(.solo-page) .animate-solo-gliding-letters,
 #solo-header.animate-site-gliding-letters a.solo-branding__site-name-link,
-#solo-page-wrapper.animate-title-gliding-letters .solo-page-title__text,
+:where(.solo-page.animate-title-gliding-letters) .solo-page-title__text,
 #solo-page-wrapper.animate-title-gliding-letters .solo-page-title__text span,
-html.solo-preloader-enabled #solo-preloader.animate-site-gliding-letters .solo-preloader__text,
-html.solo-preloader-enabled #solo-preloader.animate-site-gliding-letters .solo-preloader__hero-text {
+:where(html.solo-preloader-enabled .solo-preloader.animate-site-gliding-letters) .solo-preloader__text,
+:where(html.solo-preloader-enabled .solo-preloader.animate-site-gliding-letters) .solo-preloader__hero-text {
   background: linear-gradient(45deg, #f44336, #9c27b0, #2196f3, #4caf50, #ff9800, #ff9800, #4caf50, #2196f3, #9c27b0, #f44336);
 }
 
-#solo-page-wrapper .animate-solo-holographic-spin,
+:where(.solo-page) .animate-solo-holographic-spin,
 #solo-header.animate-site-holographic-spin a.solo-branding__site-name-link,
-#solo-page-wrapper.animate-title-holographic-spin .solo-page-title__text,
+:where(.solo-page.animate-title-holographic-spin) .solo-page-title__text,
 #solo-page-wrapper.animate-title-holographic-spin .solo-page-title__text span,
-html.solo-preloader-enabled #solo-preloader.animate-site-holographic-spin .solo-preloader__text,
-html.solo-preloader-enabled #solo-preloader.animate-site-holographic-spin .solo-preloader__hero-text {
+:where(html.solo-preloader-enabled .solo-preloader.animate-site-holographic-spin) .solo-preloader__text,
+:where(html.solo-preloader-enabled .solo-preloader.animate-site-holographic-spin) .solo-preloader__hero-text {
   background: linear-gradient(45deg, #ffb5ba, #ff796c, #ce4676, #87ceeb, #00bcd4, #2196f3, #00bcd4, #87ceeb, #ce4676, #ff796c, #ffb5ba);
 }
 
-#solo-page-wrapper .animate-solo-moonlight-dance,
+:where(.solo-page) .animate-solo-moonlight-dance,
 #solo-header.animate-site-moonlight-dance a.solo-branding__site-name-link,
-#solo-page-wrapper.animate-title-moonlight-dance .solo-page-title__text,
+:where(.solo-page.animate-title-moonlight-dance) .solo-page-title__text,
 #solo-page-wrapper.animate-title-moonlight-dance .solo-page-title__text span,
-html.solo-preloader-enabled #solo-preloader.animate-site-moonlight-dance .solo-preloader__text,
-html.solo-preloader-enabled #solo-preloader.animate-site-moonlight-dance .solo-preloader__hero-text {
+:where(html.solo-preloader-enabled .solo-preloader.animate-site-moonlight-dance) .solo-preloader__text,
+:where(html.solo-preloader-enabled .solo-preloader.animate-site-moonlight-dance) .solo-preloader__hero-text {
   background: linear-gradient(45deg, #8db600, #6bc026, #27a64c, #009688, #0085a1, #0077b3, #0085a1, #009688, #27a64c, #6bc026, #8db600);
 }
 
-#solo-page-wrapper .animate-solo-mystic-fade,
+:where(.solo-page) .animate-solo-mystic-fade,
 #solo-header.animate-site-mystic-fade a.solo-branding__site-name-link,
-#solo-page-wrapper.animate-title-mystic-fade .solo-page-title__text,
+:where(.solo-page.animate-title-mystic-fade) .solo-page-title__text,
 #solo-page-wrapper.animate-title-mystic-fade .solo-page-title__text span,
-html.solo-preloader-enabled #solo-preloader.animate-site-mystic-fade .solo-preloader__text,
-html.solo-preloader-enabled #solo-preloader.animate-site-mystic-fade .solo-preloader__hero-text {
+:where(html.solo-preloader-enabled .solo-preloader.animate-site-mystic-fade) .solo-preloader__text,
+:where(html.solo-preloader-enabled .solo-preloader.animate-site-mystic-fade) .solo-preloader__hero-text {
   background: linear-gradient(45deg, #ffb7a5, #e25822, #f6a600, #dcd300, #8c52ff, #34d2eb, #dcd300, #f6a600, #e25822, #ffb7a5);
 }
 
-#solo-page-wrapper .animate-solo-phoenix-rise,
+:where(.solo-page) .animate-solo-phoenix-rise,
 #solo-header.animate-site-phoenix-rise a.solo-branding__site-name-link,
-#solo-page-wrapper.animate-title-phoenix-rise .solo-page-title__text,
+:where(.solo-page.animate-title-phoenix-rise) .solo-page-title__text,
 #solo-page-wrapper.animate-title-phoenix-rise .solo-page-title__text span,
-html.solo-preloader-enabled #solo-preloader.animate-site-phoenix-rise .solo-preloader__text,
-html.solo-preloader-enabled #solo-preloader.animate-site-phoenix-rise .solo-preloader__hero-text {
+:where(html.solo-preloader-enabled .solo-preloader.animate-site-phoenix-rise) .solo-preloader__text,
+:where(html.solo-preloader-enabled .solo-preloader.animate-site-phoenix-rise) .solo-preloader__hero-text {
   background: linear-gradient(45deg, #008856, #00a1c2, #9065ca, #9a4eae, #9a4eae, #9065ca, #00a1c2, #008856);
 }
 
-#solo-page-wrapper .animate-solo-quantum-leap,
+:where(.solo-page) .animate-solo-quantum-leap,
 #solo-header.animate-site-quantum-leap a.solo-branding__site-name-link,
-#solo-page-wrapper.animate-title-quantum-leap .solo-page-title__text,
+:where(.solo-page.animate-title-quantum-leap) .solo-page-title__text,
 #solo-page-wrapper.animate-title-quantum-leap .solo-page-title__text span,
-html.solo-preloader-enabled #solo-preloader.animate-site-quantum-leap .solo-preloader__text,
-html.solo-preloader-enabled #solo-preloader.animate-site-quantum-leap .solo-preloader__hero-text {
+:where(html.solo-preloader-enabled .solo-preloader.animate-site-quantum-leap) .solo-preloader__text,
+:where(html.solo-preloader-enabled .solo-preloader.animate-site-quantum-leap) .solo-preloader__hero-text {
   background: linear-gradient(45deg, #ffb5ba, #be0032, #f38400, #f3c300, #f3c300, #f38400, #be0032, #ffb5ba);
 }
 
-#solo-page-wrapper .animate-solo-serene-float,
+:where(.solo-page) .animate-solo-serene-float,
 #solo-header.animate-site-serene-float a.solo-branding__site-name-link,
-#solo-page-wrapper.animate-title-serene-float .solo-page-title__text,
+:where(.solo-page.animate-title-serene-float) .solo-page-title__text,
 #solo-page-wrapper.animate-title-serene-float .solo-page-title__text span,
-html.solo-preloader-enabled #solo-preloader.animate-site-serene-float .solo-preloader__text,
-html.solo-preloader-enabled #solo-preloader.animate-site-serene-float .solo-preloader__hero-text {
+:where(html.solo-preloader-enabled .solo-preloader.animate-site-serene-float) .solo-preloader__text,
+:where(html.solo-preloader-enabled .solo-preloader.animate-site-serene-float) .solo-preloader__hero-text {
   background: linear-gradient(45deg, #bd1e24, #e97600, #f6c700, #007256, #0067a7, #964f8e, #964f8e, #0067a7, #007256, #f6c700, #e97600, #bd1e24);
 }
 
-#solo-page-wrapper .animate-solo-shimmering-wave,
+:where(.solo-page) .animate-solo-shimmering-wave,
 #solo-header.animate-site-shimmering-wave a.solo-branding__site-name-link,
-#solo-page-wrapper.animate-title-shimmering-wave .solo-page-title__text,
+:where(.solo-page.animate-title-shimmering-wave) .solo-page-title__text,
 #solo-page-wrapper.animate-title-shimmering-wave .solo-page-title__text span,
-html.solo-preloader-enabled #solo-preloader.animate-site-shimmering-wave .solo-preloader__text,
-html.solo-preloader-enabled #solo-preloader.animate-site-shimmering-wave .solo-preloader__hero-text {
+:where(html.solo-preloader-enabled .solo-preloader.animate-site-shimmering-wave) .solo-preloader__text,
+:where(html.solo-preloader-enabled .solo-preloader.animate-site-shimmering-wave) .solo-preloader__hero-text {
   background: linear-gradient(45deg, #5f2879, #00418d, #00c2de, #fad717, #00ba71, #fa8901, #f43545, #fa8901, #00ba71, #fad717, #00c2de, #00418d, #5f2879);
 }
 
-#solo-page-wrapper .animate-solo-solar-flare,
+:where(.solo-page) .animate-solo-solar-flare,
 #solo-header.animate-site-solar-flare a.solo-branding__site-name-link,
-#solo-page-wrapper.animate-title-solar-flare .solo-page-title__text,
+:where(.solo-page.animate-title-solar-flare) .solo-page-title__text,
 #solo-page-wrapper.animate-title-solar-flare .solo-page-title__text span,
-html.solo-preloader-enabled #solo-preloader.animate-site-solar-flare .solo-preloader__text,
-html.solo-preloader-enabled #solo-preloader.animate-site-solar-flare .solo-preloader__hero-text {
+:where(html.solo-preloader-enabled .solo-preloader.animate-site-solar-flare) .solo-preloader__text,
+:where(html.solo-preloader-enabled .solo-preloader.animate-site-solar-flare) .solo-preloader__hero-text {
   background: linear-gradient(45deg, #fad717, #fa8901, #f43545, #fa8901, #fad717);
 }
 
-#solo-page-wrapper .animate-solo-starry-glide,
+:where(.solo-page) .animate-solo-starry-glide,
 #solo-header.animate-site-starry-glide a.solo-branding__site-name-link,
-#solo-page-wrapper.animate-title-starry-glide .solo-page-title__text,
+:where(.solo-page.animate-title-starry-glide) .solo-page-title__text,
 #solo-page-wrapper.animate-title-starry-glide .solo-page-title__text span,
-html.solo-preloader-enabled #solo-preloader.animate-site-starry-glide .solo-preloader__text,
-html.solo-preloader-enabled #solo-preloader.animate-site-starry-glide .solo-preloader__hero-text {
+:where(html.solo-preloader-enabled .solo-preloader.animate-site-starry-glide) .solo-preloader__text,
+:where(html.solo-preloader-enabled .solo-preloader.animate-site-starry-glide) .solo-preloader__hero-text {
   background: linear-gradient(45deg, #aebcbf, #6e7774, #cefc00, #ccc, #444, #ccc, #cefc00, #6e7774, #aebcbf);
 }
 
-#solo-page-wrapper .animate-solo-swirling-entrance,
+:where(.solo-page) .animate-solo-swirling-entrance,
 #solo-header.animate-site-swirling-entrance a.solo-branding__site-name-link,
-#solo-page-wrapper.animate-title-swirling-entrance .solo-page-title__text,
+:where(.solo-page.animate-title-swirling-entrance) .solo-page-title__text,
 #solo-page-wrapper.animate-title-swirling-entrance .solo-page-title__text span,
-html.solo-preloader-enabled #solo-preloader.animate-site-swirling-entrance .solo-preloader__text,
-html.solo-preloader-enabled #solo-preloader.animate-site-swirling-entrance .solo-preloader__hero-text {
+:where(html.solo-preloader-enabled .solo-preloader.animate-site-swirling-entrance) .solo-preloader__text,
+:where(html.solo-preloader-enabled .solo-preloader.animate-site-swirling-entrance) .solo-preloader__hero-text {
   background: linear-gradient(45deg, #aebcbf, #6e7774, #ff6a00, #ccc, #444, #ccc, #ff6a00, #6e7774, #aebcbf);
 }
 
-#solo-page-wrapper .animate-solo-timeless-flip,
+:where(.solo-page) .animate-solo-timeless-flip,
 #solo-header.animate-site-timeless-flip a.solo-branding__site-name-link,
-#solo-page-wrapper.animate-title-timeless-flip .solo-page-title__text,
+:where(.solo-page.animate-title-timeless-flip) .solo-page-title__text,
 #solo-page-wrapper.animate-title-timeless-flip .solo-page-title__text span,
-html.solo-preloader-enabled #solo-preloader.animate-site-timeless-flip .solo-preloader__text,
-html.solo-preloader-enabled #solo-preloader.animate-site-timeless-flip .solo-preloader__hero-text {
+:where(html.solo-preloader-enabled .solo-preloader.animate-site-timeless-flip) .solo-preloader__text,
+:where(html.solo-preloader-enabled .solo-preloader.animate-site-timeless-flip) .solo-preloader__hero-text {
   background: linear-gradient(45deg, #aebcbf, #6e7774, #ffee00, #ccc, #444, #ccc, #ffee00, #6e7774, #aebcbf);
 }
 
-#solo-page-wrapper .animate-solo-cosmic-drift,
+:where(.solo-page) .animate-solo-cosmic-drift,
 #solo-header.animate-site-cosmic-drift a.solo-branding__site-name-link,
-#solo-page-wrapper.animate-title-cosmic-drift .solo-page-title__text,
+:where(.solo-page.animate-title-cosmic-drift) .solo-page-title__text,
 #solo-page-wrapper.animate-title-cosmic-drift .solo-page-title__text span,
-html.solo-preloader-enabled #solo-preloader.animate-site-cosmic-drift .solo-preloader__text,
-html.solo-preloader-enabled #solo-preloader.animate-site-cosmic-drift .solo-preloader__hero-text {
+:where(html.solo-preloader-enabled .solo-preloader.animate-site-cosmic-drift) .solo-preloader__text,
+:where(html.solo-preloader-enabled .solo-preloader.animate-site-cosmic-drift) .solo-preloader__hero-text {
   background: linear-gradient(45deg, #aebcbf, #6e7774, #46f900, #ccc, #444, #ccc, #46f900, #6e7774, #aebcbf);
 }
 
-#solo-page-wrapper .animate-solo-velvet-slide,
+:where(.solo-page) .animate-solo-velvet-slide,
 #solo-header.animate-site-velvet-slide a.solo-branding__site-name-link,
-#solo-page-wrapper.animate-title-velvet-slide .solo-page-title__text,
+:where(.solo-page.animate-title-velvet-slide) .solo-page-title__text,
 #solo-page-wrapper.animate-title-velvet-slide .solo-page-title__text span,
-html.solo-preloader-enabled #solo-preloader.animate-site-velvet-slide .solo-preloader__text,
-html.solo-preloader-enabled #solo-preloader.animate-site-velvet-slide .solo-preloader__hero-text {
+:where(html.solo-preloader-enabled .solo-preloader.animate-site-velvet-slide) .solo-preloader__text,
+:where(html.solo-preloader-enabled .solo-preloader.animate-site-velvet-slide) .solo-preloader__hero-text {
   background: linear-gradient(45deg, #aebcbf, #6e7774, #00fcde, #ccc, #444, #ccc, #00fcde, #6e7774, #aebcbf);
 }
 
-#solo-page-wrapper .animate-solo-whispering-shadows,
+:where(.solo-page) .animate-solo-whispering-shadows,
 #solo-header.animate-site-whispering-shadows a.solo-branding__site-name-link,
-#solo-page-wrapper.animate-title-whispering-shadows .solo-page-title__text,
+:where(.solo-page.animate-title-whispering-shadows) .solo-page-title__text,
 #solo-page-wrapper.animate-title-whispering-shadows .solo-page-title__text span,
-html.solo-preloader-enabled #solo-preloader.animate-site-whispering-shadows .solo-preloader__text,
-html.solo-preloader-enabled #solo-preloader.animate-site-whispering-shadows .solo-preloader__hero-text {
+:where(html.solo-preloader-enabled .solo-preloader.animate-site-whispering-shadows) .solo-preloader__text,
+:where(html.solo-preloader-enabled .solo-preloader.animate-site-whispering-shadows) .solo-preloader__hero-text {
   background: linear-gradient(45deg, #aebcbf, #6e7774, #00c9fc, #ccc, #444, #ccc, #00c9fc, #6e7774, #aebcbf);
 }
 
-#solo-page-wrapper .animate-solo-whisper-fade,
+:where(.solo-page) .animate-solo-whisper-fade,
 #solo-header.animate-site-whisper-fade a.solo-branding__site-name-link,
-#solo-page-wrapper.animate-title-whisper-fade .solo-page-title__text,
+:where(.solo-page.animate-title-whisper-fade) .solo-page-title__text,
 #solo-page-wrapper.animate-title-whisper-fade .solo-page-title__text span,
-html.solo-preloader-enabled #solo-preloader.animate-site-whisper-fade .solo-preloader__text,
-html.solo-preloader-enabled #solo-preloader.animate-site-whisper-fade .solo-preloader__hero-text {
+:where(html.solo-preloader-enabled .solo-preloader.animate-site-whisper-fade) .solo-preloader__text,
+:where(html.solo-preloader-enabled .solo-preloader.animate-site-whisper-fade) .solo-preloader__hero-text {
   background: linear-gradient(45deg, #aebcbf, #6e7774, #e000f4, #ccc, #444, #ccc, #e000f4, #6e7774, #aebcbf);
 }
 
-#solo-page-wrapper .animate-solo-sapphire-zoom,
+:where(.solo-page) .animate-solo-sapphire-zoom,
 #solo-header.animate-site-sapphire-zoom a.solo-branding__site-name-link,
-#solo-page-wrapper.animate-title-sapphire-zoom .solo-page-title__text,
+:where(.solo-page.animate-title-sapphire-zoom) .solo-page-title__text,
 #solo-page-wrapper.animate-title-sapphire-zoom .solo-page-title__text span,
-html.solo-preloader-enabled #solo-preloader.animate-site-sapphire-zoom .solo-preloader__text,
-html.solo-preloader-enabled #solo-preloader.animate-site-sapphire-zoom .solo-preloader__hero-text {
+:where(html.solo-preloader-enabled .solo-preloader.animate-site-sapphire-zoom) .solo-preloader__text,
+:where(html.solo-preloader-enabled .solo-preloader.animate-site-sapphire-zoom) .solo-preloader__hero-text {
   background: linear-gradient(45deg, #aebcbf, #6e7774, #f7001c, #0f52ba, #444, #3b4d57, #0f52ba, #f7001c, #6e7774, #aebcbf);
 }
 
-#solo-page-wrapper .animate-solo-rhythmic-slide,
+:where(.solo-page) .animate-solo-rhythmic-slide,
 #solo-header.animate-site-rhythmic-slide a.solo-branding__site-name-link,
-#solo-page-wrapper.animate-title-rhythmic-slide .solo-page-title__text,
+:where(.solo-page.animate-title-rhythmic-slide) .solo-page-title__text,
 #solo-page-wrapper.animate-title-rhythmic-slide .solo-page-title__text span,
-html.solo-preloader-enabled #solo-preloader.animate-site-rhythmic-slide .solo-preloader__text,
-html.solo-preloader-enabled #solo-preloader.animate-site-rhythmic-slide .solo-preloader__hero-text {
+:where(html.solo-preloader-enabled .solo-preloader.animate-site-rhythmic-slide) .solo-preloader__text,
+:where(html.solo-preloader-enabled .solo-preloader.animate-site-rhythmic-slide) .solo-preloader__hero-text {
   background: linear-gradient(45deg, #6a1b9a, #ab47bc, #ce93d8, #e1bee7, #f8bbd0, #f48fb1, #f06292, #ec407a, #ff80ab, #ff4081, #f50057, #c51162, #c51162, #f50057, #ff4081, #ff80ab, #ec407a, #f06292, #f48fb1, #f8bbd0, #e1bee7, #ce93d8, #ab47bc, #6a1b9a);
 }
 
-#solo-page-wrapper .animate-solo-zen-rotation,
+:where(.solo-page) .animate-solo-zen-rotation,
 #solo-header.animate-site-zen-rotation a.solo-branding__site-name-link,
-#solo-page-wrapper.animate-title-zen-rotation .solo-page-title__text,
+:where(.solo-page.animate-title-zen-rotation) .solo-page-title__text,
 #solo-page-wrapper.animate-title-zen-rotation .solo-page-title__text span,
-html.solo-preloader-enabled #solo-preloader.animate-site-zen-rotation .solo-preloader__text,
-html.solo-preloader-enabled #solo-preloader.animate-site-zen-rotation .solo-preloader__hero-text {
+:where(html.solo-preloader-enabled .solo-preloader.animate-site-zen-rotation) .solo-preloader__text,
+:where(html.solo-preloader-enabled .solo-preloader.animate-site-zen-rotation) .solo-preloader__hero-text {
   background: linear-gradient(45deg, #30267a, #0085a1, #870074, #ce4676, #ce4676, #870074, #0085a1, #30267a);
 }
 
-#solo-page-wrapper .animate-solo-aurora-wave,
-#solo-page-wrapper .animate-solo-dreamy-bloom,
-#solo-page-wrapper .animate-solo-echo-pulse,
-#solo-page-wrapper .animate-solo-electric-surge,
-#solo-page-wrapper .animate-solo-gravity-defy,
-#solo-page-wrapper .animate-solo-gliding-letters,
-#solo-page-wrapper .animate-solo-holographic-spin,
-#solo-page-wrapper .animate-solo-moonlight-dance,
-#solo-page-wrapper .animate-solo-mystic-fade,
-#solo-page-wrapper .animate-solo-phoenix-rise,
-#solo-page-wrapper .animate-solo-quantum-leap,
-#solo-page-wrapper .animate-solo-serene-float,
-#solo-page-wrapper .animate-solo-shimmering-wave,
-#solo-page-wrapper .animate-solo-solar-flare,
-#solo-page-wrapper .animate-solo-starry-glide,
-#solo-page-wrapper .animate-solo-swirling-entrance,
-#solo-page-wrapper .animate-solo-timeless-flip,
-#solo-page-wrapper .animate-solo-cosmic-drift,
-#solo-page-wrapper .animate-solo-velvet-slide,
-#solo-page-wrapper .animate-solo-whispering-shadows,
-#solo-page-wrapper .animate-solo-whisper-fade,
-#solo-page-wrapper .animate-solo-sapphire-zoom,
-#solo-page-wrapper .animate-solo-rhythmic-slide,
-#solo-page-wrapper .animate-solo-zen-rotation,
+:where(.solo-page) .animate-solo-aurora-wave,
+:where(.solo-page) .animate-solo-dreamy-bloom,
+:where(.solo-page) .animate-solo-echo-pulse,
+:where(.solo-page) .animate-solo-electric-surge,
+:where(.solo-page) .animate-solo-gravity-defy,
+:where(.solo-page) .animate-solo-gliding-letters,
+:where(.solo-page) .animate-solo-holographic-spin,
+:where(.solo-page) .animate-solo-moonlight-dance,
+:where(.solo-page) .animate-solo-mystic-fade,
+:where(.solo-page) .animate-solo-phoenix-rise,
+:where(.solo-page) .animate-solo-quantum-leap,
+:where(.solo-page) .animate-solo-serene-float,
+:where(.solo-page) .animate-solo-shimmering-wave,
+:where(.solo-page) .animate-solo-solar-flare,
+:where(.solo-page) .animate-solo-starry-glide,
+:where(.solo-page) .animate-solo-swirling-entrance,
+:where(.solo-page) .animate-solo-timeless-flip,
+:where(.solo-page) .animate-solo-cosmic-drift,
+:where(.solo-page) .animate-solo-velvet-slide,
+:where(.solo-page) .animate-solo-whispering-shadows,
+:where(.solo-page) .animate-solo-whisper-fade,
+:where(.solo-page) .animate-solo-sapphire-zoom,
+:where(.solo-page) .animate-solo-rhythmic-slide,
+:where(.solo-page) .animate-solo-zen-rotation,
 #solo-header.animate-site-aurora-wave a.solo-branding__site-name-link,
 #solo-header.animate-site-dreamy-bloom a.solo-branding__site-name-link,
 #solo-header.animate-site-echo-pulse a.solo-branding__site-name-link,
@@ -273,30 +273,30 @@ html.solo-preloader-enabled #solo-preloader.animate-site-zen-rotation .solo-prel
 #solo-header.animate-site-sapphire-zoom a.solo-branding__site-name-link,
 #solo-header.animate-site-rhythmic-slide a.solo-branding__site-name-link,
 #solo-header.animate-site-zen-rotation a.solo-branding__site-name-link,
-#solo-page-wrapper.animate-title-aurora-wave .solo-page-title__text,
-#solo-page-wrapper.animate-title-dreamy-bloom .solo-page-title__text,
-#solo-page-wrapper.animate-title-echo-pulse .solo-page-title__text,
-#solo-page-wrapper.animate-title-electric-surge .solo-page-title__text,
-#solo-page-wrapper.animate-title-gravity-defy .solo-page-title__text,
-#solo-page-wrapper.animate-title-gliding-letters .solo-page-title__text,
-#solo-page-wrapper.animate-title-holographic-spin .solo-page-title__text,
-#solo-page-wrapper.animate-title-moonlight-dance .solo-page-title__text,
-#solo-page-wrapper.animate-title-mystic-fade .solo-page-title__text,
-#solo-page-wrapper.animate-title-phoenix-rise .solo-page-title__text,
-#solo-page-wrapper.animate-title-quantum-leap .solo-page-title__text,
-#solo-page-wrapper.animate-title-serene-float .solo-page-title__text,
-#solo-page-wrapper.animate-title-shimmering-wave .solo-page-title__text,
-#solo-page-wrapper.animate-title-solar-flare .solo-page-title__text,
-#solo-page-wrapper.animate-title-starry-glide .solo-page-title__text,
-#solo-page-wrapper.animate-title-swirling-entrance .solo-page-title__text,
-#solo-page-wrapper.animate-title-timeless-flip .solo-page-title__text,
-#solo-page-wrapper.animate-title-cosmic-drift .solo-page-title__text,
-#solo-page-wrapper.animate-title-velvet-slide .solo-page-title__text,
-#solo-page-wrapper.animate-title-whispering-shadows .solo-page-title__text,
-#solo-page-wrapper.animate-title-whisper-fade .solo-page-title__text,
-#solo-page-wrapper.animate-title-sapphire-zoom .solo-page-title__text,
-#solo-page-wrapper.animate-title-rhythmic-slide .solo-page-title__text,
-#solo-page-wrapper.animate-title-zen-rotation .solo-page-title__text,
+:where(.solo-page.animate-title-aurora-wave) .solo-page-title__text,
+:where(.solo-page.animate-title-dreamy-bloom) .solo-page-title__text,
+:where(.solo-page.animate-title-echo-pulse) .solo-page-title__text,
+:where(.solo-page.animate-title-electric-surge) .solo-page-title__text,
+:where(.solo-page.animate-title-gravity-defy) .solo-page-title__text,
+:where(.solo-page.animate-title-gliding-letters) .solo-page-title__text,
+:where(.solo-page.animate-title-holographic-spin) .solo-page-title__text,
+:where(.solo-page.animate-title-moonlight-dance) .solo-page-title__text,
+:where(.solo-page.animate-title-mystic-fade) .solo-page-title__text,
+:where(.solo-page.animate-title-phoenix-rise) .solo-page-title__text,
+:where(.solo-page.animate-title-quantum-leap) .solo-page-title__text,
+:where(.solo-page.animate-title-serene-float) .solo-page-title__text,
+:where(.solo-page.animate-title-shimmering-wave) .solo-page-title__text,
+:where(.solo-page.animate-title-solar-flare) .solo-page-title__text,
+:where(.solo-page.animate-title-starry-glide) .solo-page-title__text,
+:where(.solo-page.animate-title-swirling-entrance) .solo-page-title__text,
+:where(.solo-page.animate-title-timeless-flip) .solo-page-title__text,
+:where(.solo-page.animate-title-cosmic-drift) .solo-page-title__text,
+:where(.solo-page.animate-title-velvet-slide) .solo-page-title__text,
+:where(.solo-page.animate-title-whispering-shadows) .solo-page-title__text,
+:where(.solo-page.animate-title-whisper-fade) .solo-page-title__text,
+:where(.solo-page.animate-title-sapphire-zoom) .solo-page-title__text,
+:where(.solo-page.animate-title-rhythmic-slide) .solo-page-title__text,
+:where(.solo-page.animate-title-zen-rotation) .solo-page-title__text,
 #solo-page-wrapper.animate-title-aurora-wave .solo-page-title__text span,
 #solo-page-wrapper.animate-title-dreamy-bloom .solo-page-title__text span,
 #solo-page-wrapper.animate-title-echo-pulse .solo-page-title__text span,
@@ -321,57 +321,71 @@ html.solo-preloader-enabled #solo-preloader.animate-site-zen-rotation .solo-prel
 #solo-page-wrapper.animate-title-sapphire-zoom .solo-page-title__text span,
 #solo-page-wrapper.animate-title-rhythmic-slide .solo-page-title__text span,
 #solo-page-wrapper.animate-title-zen-rotation .solo-page-title__text span,
-html.solo-preloader-enabled #solo-preloader.animate-site-aurora-wave .solo-preloader__text,
-html.solo-preloader-enabled #solo-preloader.animate-site-aurora-wave .solo-preloader__hero-text,
-html.solo-preloader-enabled #solo-preloader.animate-site-cosmic-drift .solo-preloader__text,
-html.solo-preloader-enabled #solo-preloader.animate-site-cosmic-drift .solo-preloader__hero-text,
-html.solo-preloader-enabled #solo-preloader.animate-site-dreamy-bloom .solo-preloader__text,
-html.solo-preloader-enabled #solo-preloader.animate-site-dreamy-bloom .solo-preloader__hero-text,
-html.solo-preloader-enabled #solo-preloader.animate-site-echo-pulse .solo-preloader__text,
-html.solo-preloader-enabled #solo-preloader.animate-site-echo-pulse .solo-preloader__hero-text,
-html.solo-preloader-enabled #solo-preloader.animate-site-electric-surge .solo-preloader__text,
-html.solo-preloader-enabled #solo-preloader.animate-site-electric-surge .solo-preloader__hero-text,
-html.solo-preloader-enabled #solo-preloader.animate-site-gliding-letters .solo-preloader__text,
-html.solo-preloader-enabled #solo-preloader.animate-site-gliding-letters .solo-preloader__hero-text,
-html.solo-preloader-enabled #solo-preloader.animate-site-gravity-defy .solo-preloader__text,
-html.solo-preloader-enabled #solo-preloader.animate-site-gravity-defy .solo-preloader__hero-text,
-html.solo-preloader-enabled #solo-preloader.animate-site-holographic-spin .solo-preloader__text,
-html.solo-preloader-enabled #solo-preloader.animate-site-holographic-spin .solo-preloader__hero-text,
-html.solo-preloader-enabled #solo-preloader.animate-site-moonlight-dance .solo-preloader__text,
-html.solo-preloader-enabled #solo-preloader.animate-site-moonlight-dance .solo-preloader__hero-text,
-html.solo-preloader-enabled #solo-preloader.animate-site-mystic-fade .solo-preloader__text,
-html.solo-preloader-enabled #solo-preloader.animate-site-mystic-fade .solo-preloader__hero-text,
-html.solo-preloader-enabled #solo-preloader.animate-site-phoenix-rise .solo-preloader__text,
-html.solo-preloader-enabled #solo-preloader.animate-site-phoenix-rise .solo-preloader__hero-text,
-html.solo-preloader-enabled #solo-preloader.animate-site-quantum-leap .solo-preloader__text,
-html.solo-preloader-enabled #solo-preloader.animate-site-quantum-leap .solo-preloader__hero-text,
-html.solo-preloader-enabled #solo-preloader.animate-site-rhythmic-slide .solo-preloader__text,
-html.solo-preloader-enabled #solo-preloader.animate-site-rhythmic-slide .solo-preloader__hero-text,
-html.solo-preloader-enabled #solo-preloader.animate-site-sapphire-zoom .solo-preloader__text,
-html.solo-preloader-enabled #solo-preloader.animate-site-sapphire-zoom .solo-preloader__hero-text,
-html.solo-preloader-enabled #solo-preloader.animate-site-serene-float .solo-preloader__text,
-html.solo-preloader-enabled #solo-preloader.animate-site-serene-float .solo-preloader__hero-text,
-html.solo-preloader-enabled #solo-preloader.animate-site-shimmering-wave .solo-preloader__text,
-html.solo-preloader-enabled #solo-preloader.animate-site-shimmering-wave .solo-preloader__hero-text,
-html.solo-preloader-enabled #solo-preloader.animate-site-solar-flare .solo-preloader__text,
-html.solo-preloader-enabled #solo-preloader.animate-site-solar-flare .solo-preloader__hero-text,
-html.solo-preloader-enabled #solo-preloader.animate-site-starry-glide .solo-preloader__text,
-html.solo-preloader-enabled #solo-preloader.animate-site-starry-glide .solo-preloader__hero-text,
-html.solo-preloader-enabled #solo-preloader.animate-site-swirling-entrance .solo-preloader__text,
-html.solo-preloader-enabled #solo-preloader.animate-site-swirling-entrance .solo-preloader__hero-text,
-html.solo-preloader-enabled #solo-preloader.animate-site-timeless-flip .solo-preloader__text,
-html.solo-preloader-enabled #solo-preloader.animate-site-timeless-flip .solo-preloader__hero-text,
-html.solo-preloader-enabled #solo-preloader.animate-site-velvet-slide .solo-preloader__text,
-html.solo-preloader-enabled #solo-preloader.animate-site-velvet-slide .solo-preloader__hero-text,
-html.solo-preloader-enabled #solo-preloader.animate-site-whisper-fade .solo-preloader__text,
-html.solo-preloader-enabled #solo-preloader.animate-site-whisper-fade .solo-preloader__hero-text,
-html.solo-preloader-enabled #solo-preloader.animate-site-whispering-shadows .solo-preloader__text,
-html.solo-preloader-enabled #solo-preloader.animate-site-whispering-shadows .solo-preloader__hero-text,
-html.solo-preloader-enabled #solo-preloader.animate-site-zen-rotation .solo-preloader__text,
-html.solo-preloader-enabled #solo-preloader.animate-site-zen-rotation .solo-preloader__hero-text {
+:where(html.solo-preloader-enabled .solo-preloader.animate-site-aurora-wave) .solo-preloader__text,
+:where(html.solo-preloader-enabled .solo-preloader.animate-site-aurora-wave) .solo-preloader__hero-text,
+:where(html.solo-preloader-enabled .solo-preloader.animate-site-cosmic-drift) .solo-preloader__text,
+:where(html.solo-preloader-enabled .solo-preloader.animate-site-cosmic-drift) .solo-preloader__hero-text,
+:where(html.solo-preloader-enabled .solo-preloader.animate-site-dreamy-bloom) .solo-preloader__text,
+:where(html.solo-preloader-enabled .solo-preloader.animate-site-dreamy-bloom) .solo-preloader__hero-text,
+:where(html.solo-preloader-enabled .solo-preloader.animate-site-echo-pulse) .solo-preloader__text,
+:where(html.solo-preloader-enabled .solo-preloader.animate-site-echo-pulse) .solo-preloader__hero-text,
+:where(html.solo-preloader-enabled .solo-preloader.animate-site-electric-surge) .solo-preloader__text,
+:where(html.solo-preloader-enabled .solo-preloader.animate-site-electric-surge) .solo-preloader__hero-text,
+:where(html.solo-preloader-enabled .solo-preloader.animate-site-gliding-letters) .solo-preloader__text,
+:where(html.solo-preloader-enabled .solo-preloader.animate-site-gliding-letters) .solo-preloader__hero-text,
+:where(html.solo-preloader-enabled .solo-preloader.animate-site-gravity-defy) .solo-preloader__text,
+:where(html.solo-preloader-enabled .solo-preloader.animate-site-gravity-defy) .solo-preloader__hero-text,
+:where(html.solo-preloader-enabled .solo-preloader.animate-site-holographic-spin) .solo-preloader__text,
+:where(html.solo-preloader-enabled .solo-preloader.animate-site-holographic-spin) .solo-preloader__hero-text,
+:where(html.solo-preloader-enabled .solo-preloader.animate-site-moonlight-dance) .solo-preloader__text,
+:where(html.solo-preloader-enabled .solo-preloader.animate-site-moonlight-dance) .solo-preloader__hero-text,
+:where(html.solo-preloader-enabled .solo-preloader.animate-site-mystic-fade) .solo-preloader__text,
+:where(html.solo-preloader-enabled .solo-preloader.animate-site-mystic-fade) .solo-preloader__hero-text,
+:where(html.solo-preloader-enabled .solo-preloader.animate-site-phoenix-rise) .solo-preloader__text,
+:where(html.solo-preloader-enabled .solo-preloader.animate-site-phoenix-rise) .solo-preloader__hero-text,
+:where(html.solo-preloader-enabled .solo-preloader.animate-site-quantum-leap) .solo-preloader__text,
+:where(html.solo-preloader-enabled .solo-preloader.animate-site-quantum-leap) .solo-preloader__hero-text,
+:where(html.solo-preloader-enabled .solo-preloader.animate-site-rhythmic-slide) .solo-preloader__text,
+:where(html.solo-preloader-enabled .solo-preloader.animate-site-rhythmic-slide) .solo-preloader__hero-text,
+:where(html.solo-preloader-enabled .solo-preloader.animate-site-sapphire-zoom) .solo-preloader__text,
+:where(html.solo-preloader-enabled .solo-preloader.animate-site-sapphire-zoom) .solo-preloader__hero-text,
+:where(html.solo-preloader-enabled .solo-preloader.animate-site-serene-float) .solo-preloader__text,
+:where(html.solo-preloader-enabled .solo-preloader.animate-site-serene-float) .solo-preloader__hero-text,
+:where(html.solo-preloader-enabled .solo-preloader.animate-site-shimmering-wave) .solo-preloader__text,
+:where(html.solo-preloader-enabled .solo-preloader.animate-site-shimmering-wave) .solo-preloader__hero-text,
+:where(html.solo-preloader-enabled .solo-preloader.animate-site-solar-flare) .solo-preloader__text,
+:where(html.solo-preloader-enabled .solo-preloader.animate-site-solar-flare) .solo-preloader__hero-text,
+:where(html.solo-preloader-enabled .solo-preloader.animate-site-starry-glide) .solo-preloader__text,
+:where(html.solo-preloader-enabled .solo-preloader.animate-site-starry-glide) .solo-preloader__hero-text,
+:where(html.solo-preloader-enabled .solo-preloader.animate-site-swirling-entrance) .solo-preloader__text,
+:where(html.solo-preloader-enabled .solo-preloader.animate-site-swirling-entrance) .solo-preloader__hero-text,
+:where(html.solo-preloader-enabled .solo-preloader.animate-site-timeless-flip) .solo-preloader__text,
+:where(html.solo-preloader-enabled .solo-preloader.animate-site-timeless-flip) .solo-preloader__hero-text,
+:where(html.solo-preloader-enabled .solo-preloader.animate-site-velvet-slide) .solo-preloader__text,
+:where(html.solo-preloader-enabled .solo-preloader.animate-site-velvet-slide) .solo-preloader__hero-text,
+:where(html.solo-preloader-enabled .solo-preloader.animate-site-whisper-fade) .solo-preloader__text,
+:where(html.solo-preloader-enabled .solo-preloader.animate-site-whisper-fade) .solo-preloader__hero-text,
+:where(html.solo-preloader-enabled .solo-preloader.animate-site-whispering-shadows) .solo-preloader__text,
+:where(html.solo-preloader-enabled .solo-preloader.animate-site-whispering-shadows) .solo-preloader__hero-text,
+:where(html.solo-preloader-enabled .solo-preloader.animate-site-zen-rotation) .solo-preloader__text,
+:where(html.solo-preloader-enabled .solo-preloader.animate-site-zen-rotation) .solo-preloader__hero-text {
   background-size: 200% 200%;
   animation: animateSiteName 10s linear infinite;
   background-clip: text;
   -webkit-background-clip: text;
   color: transparent !important;
+}
+
+/* Reduced motion: end states are kept, movement is not (WCAG 2.3.3). */
+@media (prefers-reduced-motion: reduce) {
+  :where(:where(.solo-page) [class*="animate-solo-"]),
+  :where(#solo-header[class*="animate-site-"] a.solo-branding__site-name-link),
+  :where(:where(.solo-page[class*="animate-title-"]) .solo-page-title__text),
+  :where(#solo-page-wrapper[class*="animate-title-"] .solo-page-title__text span),
+  :where(:where(html.solo-preloader-enabled .solo-preloader[class*="animate-site-"]) .solo-preloader__text),
+  :where(:where(html.solo-preloader-enabled .solo-preloader[class*="animate-site-"]) .solo-preloader__hero-text) {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }

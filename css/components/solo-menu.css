@@ -1,10 +1,10 @@
 /* For all site menus */
-.solo-inner .solo-hamburger__button {
+:where(.solo-inner) .solo-hamburger__button {
   padding: var(--solo-px6);
   display: flex;
   align-items: end;
   flex-grow: 1;
-  flex-basis: 100% !important;
+  flex-basis: 100%;
   flex-direction: column;
 }
 
@@ -20,12 +20,12 @@
   white-space: nowrap;
 }
 
-.solo-inner .solo-menu-tree__menubar li.solo-menu-tree__item>a {
+.solo-inner .solo-menu-tree__menubar li.solo-menu-tree__item > a {
   text-decoration: none;
   -webkit-text-decoration: none;
 }
 
-.solo-region-box__inner.solo-is-region-max-576 ul.solo-menu-tree__menubar li.solo-menu-tree__item > * {
+:where(.solo-region-box__inner.solo-is-region-max-576 ul.solo-menu-tree__menubar li.solo-menu-tree__item) > * {
   white-space: normal;
   word-wrap: break-word;
 }
@@ -36,30 +36,30 @@
   background-color: inherit;
 }
 
-.solo-inner ul.solo-menu-tree__menubar li>a.is-active,
-.solo-inner ul.solo-menu-tree__menubar li.is-active>a,
-.solo-inner ul.solo-menu-tree__menubar li.is-active>button {
+.solo-inner ul.solo-menu-tree__menubar li > a.is-active,
+.solo-inner ul.solo-menu-tree__menubar li.is-active > a,
+.solo-inner ul.solo-menu-tree__menubar li.is-active > button {
   font-weight: bold;
 }
 
-.solo-page .solo-inner .solo-menu .solo-menu-tree__arrow {
+:where(.solo-page .solo-inner .solo-menu) .solo-menu-tree__arrow {
   transition: all 0.3s ease;
 }
 
 /* Base: all menus start equal */
-.solo-page .solo-inner .solo-menu,
+:where(.solo-page .solo-inner) .solo-menu,
 .solo-page .solo-inner .solo-menu ul.solo-menu-tree__menubar {
   position: relative;
 }
 
-.solo-page .solo-inner .solo-menu,
+:where(.solo-page .solo-inner) .solo-menu,
 .solo-page .solo-inner .solo-menu ul.solo-menu-tree__menubar {
   z-index: var(--z-base);
 }
 
 /* Active menu (mouse OR keyboard) rises above stacked menus */
-.solo-page .solo-inner .solo-menu:hover,
-.solo-page .solo-inner .solo-menu:focus-within {
+:where(.solo-page .solo-inner) .solo-menu:hover,
+:where(.solo-page .solo-inner) .solo-menu:focus-within {
   z-index: calc(var(--z-base) + 1);
 }
 
@@ -80,12 +80,12 @@
 }
 
 /* Primary menu region menus */
-.solo-page .solo-primary-menu__inner .solo-menu {
+:where(.solo-page .solo-primary-menu__inner) .solo-menu {
   z-index: var(--z-primary-menu);
 }
 
-.solo-page .solo-primary-menu__inner .solo-menu:hover,
-.solo-page .solo-primary-menu__inner .solo-menu:focus-within {
+:where(.solo-page .solo-primary-menu__inner) .solo-menu:hover,
+:where(.solo-page .solo-primary-menu__inner) .solo-menu:focus-within {
   z-index: calc(var(--z-primary-menu) + 1);
 }
 
@@ -106,18 +106,18 @@
 }
 
 /* Header region menus */
-.solo-page .solo-popup-login .solo-menu,
-.solo-page .solo-fixed-search .solo-menu,
-.solo-page:not(.solo-menu--flipped) .solo-header__inner .solo-menu{
+:where(.solo-page .solo-popup-login) .solo-menu,
+:where(.solo-page .solo-fixed-search) .solo-menu,
+:where(.solo-page:not(.solo-menu--flipped)) .solo-header__inner .solo-menu{
   z-index: var(--z-header);
 }
 
-.solo-page .solo-popup-login .solo-menu:hover,
-.solo-page .solo-popup-login .solo-menu:focus-within,
-.solo-page .solo-fixed-search .solo-menu:hover,
-.solo-page .solo-fixed-search .solo-menu:focus-within,
-.solo-page:not(.solo-menu--flipped) .solo-header__inner .solo-menu:hover,
-.solo-page:not(.solo-menu--flipped) .solo-header__inner .solo-menu:hover {
+:where(.solo-page .solo-popup-login) .solo-menu:hover,
+:where(.solo-page .solo-popup-login) .solo-menu:focus-within,
+:where(.solo-page .solo-fixed-search) .solo-menu:hover,
+:where(.solo-page .solo-fixed-search) .solo-menu:focus-within,
+:where(.solo-page:not(.solo-menu--flipped) .solo-header__inner) .solo-menu:hover,
+:where(.solo-page:not(.solo-menu--flipped) .solo-header__inner) .solo-menu:hover {
   z-index: calc(var(--z-header) + 1);
 }
 
@@ -146,64 +146,64 @@
 }
 
 /* First level padding is bigger */
-.solo-inner ul.solo-menu-tree__menubar>li.solo-menu-tree__item>a,
-.solo-inner ul.solo-menu-tree__menubar>li.solo-menu-tree__item>span,
-.solo-inner ul.solo-menu-tree__menubar>li.solo-menu-tree__item>button {
+.solo-inner ul.solo-menu-tree__menubar > li.solo-menu-tree__item > a,
+.solo-inner ul.solo-menu-tree__menubar > li.solo-menu-tree__item > span,
+.solo-inner ul.solo-menu-tree__menubar > li.solo-menu-tree__item > button {
   padding: var(--solo-px10) var(--solo-px12);
 }
 
 /* 2,3,4 level padding is smaller */
-.solo-inner .solo-menu-tree__menubar:not(.solo-menu-tree--megamenu) li li.solo-menu-tree__item>a,
-.solo-inner .solo-menu-tree__menubar:not(.solo-menu-tree--megamenu) li li.solo-menu-tree__item>span,
-.solo-inner .solo-menu-tree__menubar:not(.solo-menu-tree--megamenu) li li.solo-menu-tree__item>button {
+.solo-inner .solo-menu-tree__menubar:not(.solo-menu-tree--megamenu) li li.solo-menu-tree__item > a,
+:where(.solo-inner) .solo-menu-tree__menubar:not(.solo-menu-tree--megamenu) li li.solo-menu-tree__item > span,
+:where(.solo-inner) .solo-menu-tree__menubar:not(.solo-menu-tree--megamenu) li li.solo-menu-tree__item > button {
   padding: var(--solo-px8) var(--solo-px12);
 }
 
-.solo-inner .solo-menu-tree__menubar:not(.solo-menu-tree--megamenu) li.solo-menu-tree__item--link-only>a,
-.solo-inner .solo-menu-tree__menubar:not(.solo-menu-tree--megamenu) li.solo-menu-tree__item--link-only>span,
-.solo-inner .solo-menu-tree__menubar:not(.solo-menu-tree--megamenu) li.solo-menu-tree__item--button-only>button {
+.solo-inner .solo-menu-tree__menubar:not(.solo-menu-tree--megamenu) li.solo-menu-tree__item--link-only > a,
+:where(.solo-inner) .solo-menu-tree__menubar:not(.solo-menu-tree--megamenu) li.solo-menu-tree__item--link-only > span,
+.solo-inner .solo-menu-tree__menubar:not(.solo-menu-tree--megamenu) li.solo-menu-tree__item--button-only > button {
   flex-basis: 100%;
   flex-grow: 1;
 }
 
-.solo-inner .solo-menu-tree--megamenu>li.solo-menu-tree__item>button.solo-menu-tree__toggler--link-disabled>span.solo-menu-tree__title--disabled,
-.solo-inner .solo-menu-tree__menubar:not(.solo-menu-tree--megamenu) li.solo-menu-tree__item>button.solo-menu-tree__toggler--link-disabled>span.solo-menu-tree__title--disabled {
+:where(.solo-inner .solo-menu-tree--megamenu) > li.solo-menu-tree__item > button.solo-menu-tree__toggler--link-disabled > span.solo-menu-tree__title--disabled,
+:where(.solo-inner .solo-menu-tree__menubar:not(.solo-menu-tree--megamenu)) li.solo-menu-tree__item > button.solo-menu-tree__toggler--link-disabled > span.solo-menu-tree__title--disabled {
   flex-grow: 1;
   margin-inline-end: var(--solo-px12);
 }
 
-.solo-inner .solo-menu-tree__menubar li.solo-menu-tree__item>.solo-menu-tree__toggler .solo-menu-tree__toggler-icon svg {
+:where(.solo-inner) .solo-menu-tree__menubar li.solo-menu-tree__item > .solo-menu-tree__toggler .solo-menu-tree__toggler-icon svg {
   transition: 0.2s;
 }
 
-.solo-inner .solo-menu-tree--megamenu>li.solo-menu-tree__item>.solo-menu-tree__toggler,
-.solo-inner .solo-menu-tree__menubar:not(.solo-menu-tree--megamenu) li.solo-menu-tree__item .solo-menu-tree__toggler {
+:where(.solo-inner .solo-menu-tree--megamenu > li.solo-menu-tree__item) > .solo-menu-tree__toggler,
+:where(.solo-inner .solo-menu-tree__menubar:not(.solo-menu-tree--megamenu) li.solo-menu-tree__item) .solo-menu-tree__toggler {
   cursor: context-menu !important;
 }
 
-.solo-inner .solo-menu-tree__menubar,
-.solo-inner .solo-menu-tree--megamenu>li.solo-menu-tree__item,
-.solo-inner .solo-menu-tree--megamenu>li.solo-menu-tree__item>a,
-.solo-inner .solo-menu-tree--megamenu>li.solo-menu-tree__item>button,
+:where(.solo-inner) .solo-menu-tree__menubar,
+.solo-inner .solo-menu-tree--megamenu > li.solo-menu-tree__item,
+.solo-inner .solo-menu-tree--megamenu > li.solo-menu-tree__item > a,
+.solo-inner .solo-menu-tree--megamenu > li.solo-menu-tree__item > button,
 .solo-inner .solo-menu-tree__menubar:not(.solo-menu-tree--megamenu) ul.solo-menu-tree__submenu,
 .solo-inner .solo-menu-tree__menubar:not(.solo-menu-tree--megamenu) li.solo-menu-tree__item,
-.solo-inner .solo-menu-tree__menubar:not(.solo-menu-tree--megamenu) li.solo-menu-tree__item>a,
-.solo-inner .solo-menu-tree__menubar:not(.solo-menu-tree--megamenu) li.solo-menu-tree__item>button {
+.solo-inner .solo-menu-tree__menubar:not(.solo-menu-tree--megamenu) li.solo-menu-tree__item > a,
+.solo-inner .solo-menu-tree__menubar:not(.solo-menu-tree--megamenu) li.solo-menu-tree__item > button {
   display: flex;
 }
 
-.solo-inner .solo-menu-tree__menubar:not(.solo-menu-tree--megamenu) li.solo-menu-tree__item--has-submenu {
+:where(.solo-inner) .solo-menu-tree__menubar:not(.solo-menu-tree--megamenu) li.solo-menu-tree__item--has-submenu {
   position: relative;
 }
 
-.solo-inner .solo-menu-tree__menubar:not(.solo-menu-tree--megamenu) ul.solo-menu-tree__submenu,
-.solo-inner .solo-menu-tree__menubar:not(.solo-menu-tree--megamenu) li.solo-menu-tree__item--link-only {
+:where(.solo-inner) .solo-menu-tree__menubar:not(.solo-menu-tree--megamenu) ul.solo-menu-tree__submenu,
+:where(.solo-inner .solo-menu-tree__menubar:not(.solo-menu-tree--megamenu)) li.solo-menu-tree__item--link-only {
   flex-direction: column;
   flex-wrap: wrap;
 }
 
-.solo-inner .solo-menu-tree--megamenu>li.solo-menu-tree__item--link-and-button>button,
-.solo-inner .solo-menu-tree__menubar:not(.solo-menu-tree--megamenu) li.solo-menu-tree__item--link-and-button>button {
+.solo-inner .solo-menu-tree--megamenu > li.solo-menu-tree__item--link-and-button > button,
+.solo-inner .solo-menu-tree__menubar:not(.solo-menu-tree--megamenu) li.solo-menu-tree__item--link-and-button > button {
   position: relative;
   flex-basis: 50px;
   width: 50px;
@@ -211,90 +211,90 @@
   align-items: center;
 }
 
-.solo-inner .solo-menu-tree--megamenu>li.solo-menu-tree__item--link-and-button>a,
-.solo-inner .solo-menu-tree__menubar:not(.solo-menu-tree--megamenu) li.solo-menu-tree__item--link-and-button>a {
+.solo-inner .solo-menu-tree--megamenu > li.solo-menu-tree__item--link-and-button > a,
+.solo-inner .solo-menu-tree__menubar:not(.solo-menu-tree--megamenu) li.solo-menu-tree__item--link-and-button > a {
   position: relative;
   flex-basis: calc(100% - 50px);
   width: calc(100% - 50px);
   flex-grow: 1;
 }
 
-.solo-inner .solo-menu-tree--megamenu>li.solo-menu-tree__item--button-only>button>span.solo-menu-tree__title--disabled,
-.solo-inner .solo-menu-tree__menubar:not(.solo-menu-tree--megamenu) li.solo-menu-tree__item--button-only>button>span.solo-menu-tree__title--disabled {
+:where(.solo-inner) .solo-menu-tree--megamenu > li.solo-menu-tree__item--button-only > button > span.solo-menu-tree__title--disabled,
+:where(.solo-inner) .solo-menu-tree__menubar:not(.solo-menu-tree--megamenu) li.solo-menu-tree__item--button-only > button > span.solo-menu-tree__title--disabled {
   flex-basis: calc(100% - 24px);
   position: relative;
   flex-grow: 1;
 }
 
-.solo-inner .solo-menu-tree--megamenu>li.solo-menu-tree__item--button-only>button>span.solo-menu-tree__toggler-icon,
-.solo-inner .solo-menu-tree__menubar:not(.solo-menu-tree--megamenu) li.solo-menu-tree__item--button-only>button>span.solo-menu-tree__toggler-icon {
+:where(.solo-inner) .solo-menu-tree--megamenu > li.solo-menu-tree__item--button-only > button > span.solo-menu-tree__toggler-icon,
+:where(.solo-inner) .solo-menu-tree__menubar:not(.solo-menu-tree--megamenu) li.solo-menu-tree__item--button-only > button > span.solo-menu-tree__toggler-icon {
   flex-basis: 24px;
   margin-inline-start: var(--solo-px12);
 }
 
-.solo-inner .solo-menu-tree--megamenu>li.solo-menu-tree__item--button-only>button>span.solo-menu-tree__toggler-icon,
-.solo-inner .solo-menu-tree--megamenu>li.solo-menu-tree__item--link-and-button>button>span.solo-menu-tree__toggler-icon,
-.solo-inner .solo-menu-tree__menubar:not(.solo-menu-tree--megamenu) li.solo-menu-tree__item--button-only>button>span.solo-menu-tree__toggler-icon,
-.solo-inner .solo-menu-tree__menubar:not(.solo-menu-tree--megamenu) li.solo-menu-tree__item--link-and-button>button>span.solo-menu-tree__toggler-icon {
+.solo-inner .solo-menu-tree--megamenu > li.solo-menu-tree__item--button-only > button > span.solo-menu-tree__toggler-icon,
+.solo-inner .solo-menu-tree--megamenu > li.solo-menu-tree__item--link-and-button > button > span.solo-menu-tree__toggler-icon,
+.solo-inner .solo-menu-tree__menubar:not(.solo-menu-tree--megamenu) li.solo-menu-tree__item--button-only > button > span.solo-menu-tree__toggler-icon,
+.solo-inner .solo-menu-tree__menubar:not(.solo-menu-tree--megamenu) li.solo-menu-tree__item--link-and-button > button > span.solo-menu-tree__toggler-icon {
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
 /* For the default menu */
-.solo-inner .solo-menu-tree--default {
+:where(.solo-inner) .solo-menu-tree--default {
   justify-content: center;
   flex-wrap: wrap;
 }
 
-.solo-inner .solo-menu-tree--default>li.solo-menu-tree__item ul.solo-menu-tree__submenu {
+.solo-inner .solo-menu-tree--default > li.solo-menu-tree__item ul.solo-menu-tree__submenu {
   min-width: 12.5rem;
   display: none;
 }
 
 /* For the second tier */
-.solo-inner .solo-menu-tree--default>li>ul.solo-menu-tree__submenu {
+:where(.solo-inner .solo-menu-tree--default > li) > :where(ul).solo-menu-tree__submenu {
   position: absolute;
   inset-inline-start: 0;
   inset-block-start: 100%;
 }
 
 /* For the third tier */
-.solo-inner .solo-menu-tree--default>li>ul>li>ul.solo-menu-tree__submenu {
+:where(.solo-inner .solo-menu-tree--default > li > ul > li) > ul.solo-menu-tree__submenu {
   position: absolute;
   inset-inline-start: 100%;
   inset-block-start: 0;
 }
 
 /* For the fourth tier */
-.solo-inner .solo-menu-tree--default>li>ul>li>ul>li>ul.solo-menu-tree__submenu {
+:where(.solo-inner .solo-menu-tree--default > li > ul > li > ul > li) > ul.solo-menu-tree__submenu {
   position: absolute;
   inset-inline-start: 100%;
   inset-block-start: 0;
 }
 
-.solo-inner .solo-menu-tree--default li:hover>ul.solo-menu-tree__submenu {
+:where(.solo-inner .solo-menu-tree--default li:hover) > :where(ul).solo-menu-tree__submenu {
   display: flex !important;
 }
 
-.solo-inner .solo-menu-tree--default>li.solo-menu-tree__item--has-submenu:hover .solo-menu-tree__arrow {
+:where(.solo-inner .solo-menu-tree--default > li.solo-menu-tree__item--has-submenu:hover) .solo-menu-tree__arrow {
   transition: all 0.3s ease;
   transform: rotate(180deg);
 }
 
-.solo-inner .solo-menu-tree--default>li>ul>li.solo-menu-tree__item--has-submenu:hover .solo-menu-tree__arrow {
+:where(.solo-inner .solo-menu-tree--default > li > ul > li.solo-menu-tree__item--has-submenu:hover) .solo-menu-tree__arrow {
   transition: all 0.3s ease;
   transform: rotate(-90deg);
 }
 
-.solo-page .solo-menu-tree--default li.solo-menu-tree__item--has-submenu:hover>*,
-.solo-page .solo-menu-tree--default li.solo-menu-tree__item--has-submenu>*:hover {
+:where(.solo-page .solo-menu-tree--default li.solo-menu-tree__item--has-submenu:hover) > *,
+:where(.solo-page .solo-menu-tree--default li.solo-menu-tree__item--has-submenu) > *:hover {
   color: var(--r-tx-lk-h, var(--r-tx-lk, var(--r-tx))) !important;
   background-color: var(--r-bg-lk-h, var(--r-bg-lk, var(--r-bg))) !important;
 }
 
 /* Add borders to menu item */
-.solo-page .solo-container--has-border.solo-primary-menu {
+:where(.solo-page) .solo-container--has-border.solo-primary-menu {
   border-block-start: 1px solid var(--r-br);
   border-block-end: 1px solid var(--r-br);
 }
@@ -328,13 +328,13 @@
 }
 
 .solo-footer-menu li a.is-active,
-.solo-footer-menu li.active-trail {
+:where(.solo-footer-menu) :where(li).active-trail {
   font-weight: bold;
 }
 
 @media (max-width:35.99875rem) {
   .pager__items,
-  .solo-inner .solo-menu-tree--default {
+  :where(.solo-inner) .solo-menu-tree--default {
     justify-content: start;
     padding: 0;
   }
@@ -342,12 +342,12 @@
 }
 
 /* plain menu in sidebar and footer for devices smaller than 320px */
-.solo-copyright__inner.solo-is-region-xs .solo-side-menu,
-.solo-copyright__inner.solo-is-region-xs .solo-footer-menu,
-.solo-footer-nav__inner.solo-is-region-xs .solo-side-menu,
-.solo-footer-nav__inner.solo-is-region-xs .solo-footer-menu,
-.solo-region-box__inner.solo-is-region-xs .solo-side-menu,
-.solo-region-box__inner.solo-is-region-xs .solo-footer-menu {
+:where(.solo-copyright__inner.solo-is-region-xs) .solo-side-menu,
+:where(.solo-copyright__inner.solo-is-region-xs) .solo-footer-menu,
+:where(.solo-footer-nav__inner.solo-is-region-xs) .solo-side-menu,
+:where(.solo-footer-nav__inner.solo-is-region-xs) .solo-footer-menu,
+:where(.solo-region-box__inner.solo-is-region-xs) .solo-side-menu,
+:where(.solo-region-box__inner.solo-is-region-xs) .solo-footer-menu {
   justify-content: start;
   flex-direction: column;
 }
@@ -365,7 +365,7 @@
 
 /* Menu branding */
 #solo-primary-menu .solo-menu-branding a,
-#solo-primary-menu .solo-menu--has-branding.solo-menu--primary-responsive {
+:where(.solo-primary-menu) .solo-menu--has-branding.solo-menu--primary-responsive {
   display: flex;
 }
 
@@ -415,8 +415,8 @@
   max-height: 42px;
 }
 
-#solo-primary-menu .solo-menu-branding .solo-menu-branding__site-name,
-#solo-primary-sidebar-menu .solo-menu-branding .solo-menu-branding__site-name {
+:where(.solo-primary-menu .solo-menu-branding) .solo-menu-branding__site-name,
+:where(.solo-primary-sidebar-menu .solo-menu-branding) .solo-menu-branding__site-name {
   display: none;
   height: 0;
   width: 0;
@@ -431,5 +431,17 @@
 }
 
 #admin-toolbar {
-  z-index: calc(var(--z-primary-menu) + 100)!important;
+  z-index: calc(var(--z-primary-menu) + 100);
+}
+
+/* Reduced motion: end states are kept, movement is not (WCAG 2.3.3). */
+@media (prefers-reduced-motion: reduce) {
+  :where(:where(.solo-page .solo-inner .solo-menu) .solo-menu-tree__arrow),
+  :where(:where(.solo-inner) .solo-menu-tree__menubar li.solo-menu-tree__item > .solo-menu-tree__toggler .solo-menu-tree__toggler-icon svg),
+  :where(:where(.solo-inner .solo-menu-tree--default > li.solo-menu-tree__item--has-submenu:hover) .solo-menu-tree__arrow),
+  :where(:where(.solo-inner .solo-menu-tree--default > li > ul > li.solo-menu-tree__item--has-submenu:hover) .solo-menu-tree__arrow) {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }

@@ -1,0 +1,46 @@
+# Scheme record in the shape of the apex scheme sidecar (id, name, category, mode). Palette values are copied verbatim from css/predefined/solo-royal-azure-flame.css.
+id: solo-royal-azure-flame
+name: "Royal Azure Flame"
+category: bold_and_dramatic_colors
+mode: dark
+categories:
+  - bold_and_dramatic_colors
+css: css/predefined/solo-royal-azure-flame.css
+thumbnail: images/schemes/solo-royal-azure-flame.webp
+palette:
+  --sc-head-tx: "#6a72e0"
+  --sc-link-tx: "#ffc4aa"
+  --sc-link-hover-tx: "#ff4f00"
+  --sc-menu-bg: "#050619"
+  --sc-menu-tx: "#d1d4f6"
+  --sc-menu-hover-tx: "#fcfcfe"
+  --sc-menu-hover-bg: "#2b36d0"
+  --sc-tab-hover-tx: "#fcfcfe"
+  --sc-menu-open-tx: "#fcfcfe"
+  --sc-menu-open-bg: "#2b36d0"
+  --sc-button-bg: "#992f00"
+  --sc-button-tx: "#ffe8dd"
+  --sc-button-hover-tx: "#ff4f00"
+  --sc-button-hover-bg: "#110500"
+  --sc-main-container-bg: "linear-gradient(45deg, #000000, #02030b)"
+  --sc-top-container-bg: "linear-gradient(45deg, #000000, #02030b)"
+  --sc-fixed-search-block-bg: "linear-gradient(45deg, #000000, #02030b)"
+  --sc-popup-login-block-inner-bg: "linear-gradient(45deg, #000000, #02030b)"
+  --sc-bottom-container-bg: "linear-gradient(45deg, #000000, #02030b)"
+  --sc-footer-container-bg: "linear-gradient(45deg, #000000, #02030b)"
+  --sc-footer-menu-bg: "linear-gradient(45deg, #000000, #02030b)"
+  --sc-copyright-bg: "linear-gradient(180deg, #02030b, #110500)"
+  --sc-social-fill: "#171c6d"
+  --sc-control-br: "#4c1700"
+  --sc-fixed-search-block-shadow: "255, 243, 238"
+  --sc-social-box-shadow: "255, 243, 238"
+  --sc-tab-hover-bg: "#2b36d0"
+  --sc-region-rule-br: "var(--solo-black)"
+page:
+  --r-br: "#1c238a"
+  --r-bg: "#02030b"
+  --r-tx: "#dfe1f9"
+  --r-header-bg: "linear-gradient(0deg, #000000, #0b0e35)"
+  --r-header-tx: "#6a72e0"
+  --r-menu-bg-h: "#050619"
+  --r-menu-tx-h: "#d1d4f6"

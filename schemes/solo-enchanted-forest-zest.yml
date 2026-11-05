@@ -1,0 +1,46 @@
+# Scheme record in the shape of the apex scheme sidecar (id, name, category, mode). Palette values are copied verbatim from css/predefined/solo-enchanted-forest-zest.css.
+id: solo-enchanted-forest-zest
+name: "Enchanted Forest Zest"
+category: forest_and_nature_tones
+mode: dark
+categories:
+  - forest_and_nature_tones
+css: css/predefined/solo-enchanted-forest-zest.css
+thumbnail: images/schemes/solo-enchanted-forest-zest.webp
+palette:
+  --sc-head-tx: "#589c6b"
+  --sc-link-tx: "#959210"
+  --sc-link-hover-tx: "#e2dd19"
+  --sc-menu-bg: "#080e0a"
+  --sc-menu-tx: "#d7e8dc"
+  --sc-menu-hover-tx: "#f7fbf8"
+  --sc-menu-hover-bg: "#396546"
+  --sc-tab-hover-tx: "#f7fbf8"
+  --sc-menu-open-tx: "#f7fbf8"
+  --sc-menu-open-bg: "#396546"
+  --sc-button-bg: "#a5a112"
+  --sc-button-tx: "#393606"
+  --sc-button-hover-tx: "#181800"
+  --sc-button-hover-bg: "#86830f"
+  --sc-main-container-bg: "linear-gradient(45deg, #000000, #020302)"
+  --sc-top-container-bg: "linear-gradient(45deg, #000000, #020302)"
+  --sc-fixed-search-block-bg: "linear-gradient(45deg, #000000, #020302)"
+  --sc-popup-login-block-inner-bg: "linear-gradient(45deg, #000000, #020302)"
+  --sc-bottom-container-bg: "linear-gradient(45deg, #000000, #020302)"
+  --sc-footer-container-bg: "linear-gradient(45deg, #000000, #020302)"
+  --sc-footer-menu-bg: "linear-gradient(45deg, #000000, #020302)"
+  --sc-copyright-bg: "linear-gradient(180deg, #0e1911, #2a2905)"
+  --sc-social-fill: "#2d4f37"
+  --sc-control-br: "#494708"
+  --sc-fixed-search-block-shadow: "241, 238, 129"
+  --sc-social-box-shadow: "241, 238, 129"
+  --sc-tab-hover-bg: "#396546"
+  --sc-region-rule-br: "var(--solo-black)"
+page:
+  --r-br: "#1d3524"
+  --r-bg: "#020302"
+  --r-tx: "#b6d6bf"
+  --r-header-bg: "linear-gradient(0deg, #000000, #0e1911)"
+  --r-header-tx: "#4f8c60"
+  --r-menu-tx-h: "#f7fbf8"
+  --r-menu-bg-h: "#396546"

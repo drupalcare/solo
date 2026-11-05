@@ -1,0 +1,45 @@
+# Scheme record in the shape of the apex scheme sidecar (id, name, category, mode). Palette values are copied verbatim from css/predefined/solo-ivory-whisper.css.
+id: solo-ivory-whisper
+name: "Ivory Whisper"
+category: elegant_whites_and_neutrals
+mode: light
+categories:
+  - elegant_whites_and_neutrals
+css: css/predefined/solo-ivory-whisper.css
+thumbnail: images/schemes/solo-ivory-whisper.webp
+palette:
+  --sc-head-tx: "#3b351f"
+  --sc-link-tx: "#1f3550"
+  --sc-link-hover-tx: "#3e6ba1"
+  --sc-menu-bg: "#e9e5d6"
+  --sc-menu-tx: "#302b19"
+  --sc-menu-hover-tx: "#19170e"
+  --sc-menu-hover-bg: "#ddd7c0"
+  --sc-tab-hover-tx: "#19170e"
+  --sc-menu-open-tx: "#19170e"
+  --sc-menu-open-bg: "#ddd7c0"
+  --sc-button-bg: "#718458"
+  --sc-button-tx: "#080a06"
+  --sc-button-hover-tx: "#1a1e14"
+  --sc-button-hover-bg: "#c5cfb7"
+  --sc-main-container-bg: "linear-gradient(45deg, #edf2f8, #efece1)"
+  --sc-top-container-bg: "linear-gradient(45deg, #edf2f8, #efece1)"
+  --sc-fixed-search-block-bg: "linear-gradient(45deg, #edf2f8, #efece1)"
+  --sc-popup-login-block-inner-bg: "linear-gradient(45deg, #edf2f8, #efece1)"
+  --sc-bottom-container-bg: "linear-gradient(45deg, #edf2f8, #efece1)"
+  --sc-footer-container-bg: "linear-gradient(45deg, #edf2f8, #efece1)"
+  --sc-footer-menu-bg: "linear-gradient(45deg, #edf2f8, #efece1)"
+  --sc-copyright-bg: "linear-gradient(180deg, #efece1, #eef1ea)"
+  --sc-social-fill: "#839866"
+  --sc-control-br: "#c0c5a9"
+  --sc-fixed-search-block-shadow: "147, 133, 79"
+  --sc-social-box-shadow: "198, 187, 147"
+  --sc-region-rule-br: "var(--solo-white)"
+page:
+  --r-br: "#d1c9aa"
+  --r-bg: "#efece1"
+  --r-tx: "#252113"
+  --r-header-bg: "linear-gradient(180deg, #efece1, #eef1ea)"
+  --r-header-tx: "#3b351f"
+  --r-menu-tx-h: "#19170e"
+  --r-menu-bg-h: "#ddd7c0"

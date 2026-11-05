@@ -6,7 +6,7 @@
   justify-content: center;
 }
 
-.solo-page ul.primary > li.solo-local-task--core .solo-local-task__icon {
+:where(.solo-page ul.primary > li.solo-local-task--core) .solo-local-task__icon {
   display: block;
   z-index: 1;
   position: absolute;
@@ -28,19 +28,19 @@
   z-index: 1;
 }
 
-.solo-page ul.primary li.solo-local-task--core a.view-link {
+:where(.solo-page ul.primary li.solo-local-task--core) :where(a).view-link {
   --r-lk: var(--solo-green);
 }
 
-.solo-page ul.primary li.solo-local-task--core a.edit-link {
+:where(.solo-page ul.primary li.solo-local-task--core) :where(a).edit-link {
   --r-lk: var(--solo-blue);
 }
 
-.solo-page ul.primary li.solo-local-task--core a.delete-link {
+:where(.solo-page ul.primary li.solo-local-task--core) :where(a).delete-link {
   --r-lk: var(--solo-red);
 }
 
-.solo-page ul.primary li.solo-local-task--core a.revisions-link {
+:where(.solo-page ul.primary li.solo-local-task--core) :where(a).revisions-link {
   --r-lk: var(--solo-purple);
 }
 
@@ -73,33 +73,45 @@
   background-color: var(--solo-purple);
 }
 
-.solo-page ul.primary > li.solo-local-task--core > a:hover::before {
+:where(.solo-page) ul.primary > li.solo-local-task--core > a:hover::before {
   transform: translateY(0);
 }
 
-.solo-page ul.primary > li.solo-local-task--core .solo-local-task__icon.solo-icon--view {
+:where(.solo-page ul.primary > li.solo-local-task--core) .solo-local-task__icon.solo-icon--view {
   fill: var(--solo-green);
 }
 
-.solo-page ul.primary > li.solo-local-task--core .solo-local-task__icon.solo-icon--edit {
+:where(.solo-page ul.primary > li.solo-local-task--core) .solo-local-task__icon.solo-icon--edit {
   fill: var(--solo-blue);
 }
 
-.solo-page ul.primary > li.solo-local-task--core .solo-local-task__icon.solo-icon--delete {
+:where(.solo-page ul.primary > li.solo-local-task--core) .solo-local-task__icon.solo-icon--delete {
   fill: var(--solo-red);
 }
 
-.solo-page ul.primary > li.solo-local-task--core .solo-local-task__icon.solo-icon--revisions {
+:where(.solo-page ul.primary > li.solo-local-task--core) .solo-local-task__icon.solo-icon--revisions {
   fill: var(--solo-purple);
 }
 
 #solo-page-wrapper ul.primary > li.solo-local-task--core > a:hover {
-  --r-bg: transparent !important;
+  --r-bg: transparent;
   background-color: transparent;
   color: var(--solo-white);
 }
 
-.solo-page ul.primary > li.solo-local-task--core a:hover + .solo-local-task__icon {
+:where(.solo-page ul.primary > li.solo-local-task--core) a:hover + .solo-local-task__icon {
   fill: var(--solo-white);
   transition: fill 0.4s ease;
+}
+
+/* Reduced motion: end states are kept, movement is not (WCAG 2.3.3). */
+@media (prefers-reduced-motion: reduce) {
+  :where(:where(.solo-page ul.primary > li.solo-local-task--core) .solo-local-task__icon),
+  :where(.solo-page ul.primary > li.solo-local-task--core > a),
+  :where(.solo-page ul.primary > li.solo-local-task--core > a)::before,
+  :where(:where(.solo-page ul.primary > li.solo-local-task--core) a:hover + .solo-local-task__icon) {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }

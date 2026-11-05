@@ -1,0 +1,46 @@
+# Scheme record in the shape of the apex scheme sidecar (id, name, category, mode). Palette values are copied verbatim from css/predefined/solo-denim-twilight.css.
+id: solo-denim-twilight
+name: "Denim Twilight"
+category: denim_influences
+mode: mixed
+categories:
+  - denim_influences
+css: css/predefined/solo-denim-twilight.css
+thumbnail: images/schemes/solo-denim-twilight.webp
+palette:
+  --sc-head-tx: "#141a1d"
+  --sc-link-tx: "#614ec6"
+  --sc-link-hover-tx: "#5641c2"
+  --sc-menu-bg: "#0c1224"
+  --sc-menu-tx: "#f0f2fa"
+  --sc-menu-hover-tx: "#cad2ed"
+  --sc-menu-hover-bg: "#1e2a56"
+  --sc-tab-hover-tx: "#f4f6f7"
+  --sc-menu-open-tx: "#f4f6f7"
+  --sc-menu-open-bg: "#2f3e46"
+  --sc-button-bg: "#0d1113"
+  --sc-button-tx: "#eaeef0"
+  --sc-button-hover-tx: "#0d1113"
+  --sc-button-hover-bg: "#eaeef0"
+  --sc-main-container-bg: "linear-gradient(to start top, #ccd6db, #ebf1f4)"
+  --sc-top-container-bg: "linear-gradient(45deg, #ccd6db, #d6dee2)"
+  --sc-fixed-search-block-bg: "#fefefe"
+  --sc-popup-login-block-inner-bg: "#ebf1f4"
+  --sc-bottom-container-bg: "#1b2327"
+  --sc-footer-container-bg: "#141a1d"
+  --sc-footer-menu-bg: "#0d1113"
+  --sc-copyright-bg: "#060809"
+  --sc-social-fill: "#658798"
+  --sc-control-br: "#c2ccd1"
+  --sc-fixed-search-block-shadow: "20, 26, 29"
+  --sc-social-box-shadow: "254, 254, 254"
+page:
+  --r-br: "#adbec7"
+  --r-bg: "#eaeef0"
+  --r-tx: "#0d1113"
+  --r-header-bg: "linear-gradient(to start top, #fefefe, #f4f6f7)"
+  --r-header-tx: "#141a1d"
+  --r-menu-bg-h: "#1e2a56"
+  --r-menu-tx-h: "#cad2ed"
+  --r-br-light: "var(--r-br)"
+  --r-br-dark: "#42545c"

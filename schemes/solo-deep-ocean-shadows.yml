@@ -1,0 +1,47 @@
+# Scheme record in the shape of the apex scheme sidecar (id, name, category, mode). Palette values are copied verbatim from css/predefined/solo-deep-ocean-shadows.css.
+id: solo-deep-ocean-shadows
+name: "Deep Ocean Shadows"
+category: ocean_and_deep_sea
+mode: mixed
+categories:
+  - ocean_and_deep_sea
+css: css/predefined/solo-deep-ocean-shadows.css
+thumbnail: images/schemes/solo-deep-ocean-shadows.webp
+palette:
+  --sc-head-tx: "#3b444b"
+  --sc-link-tx: "#1f456e"
+  --sc-link-hover-tx: "#456177"
+  --sc-menu-bg: "#3b444b"
+  --sc-menu-tx: "#fbfcf8"
+  --sc-menu-hover-tx: "#070808"
+  --sc-menu-hover-bg: "#fbfcf8"
+  --sc-tab-hover-tx: "#fbfcf8"
+  --sc-menu-open-tx: "#070808"
+  --sc-menu-open-bg: "#fbfcf8"
+  --sc-button-bg: "#1f456e"
+  --sc-button-tx: "#f5f7f9"
+  --sc-button-hover-tx: "#1f456e"
+  --sc-button-hover-bg: "#f5f7f9"
+  --sc-main-container-bg: "linear-gradient(45deg, #ffffff, #e1e5e8)"
+  --sc-top-container-bg: "linear-gradient(45deg, #ffffff, #e1e5e8)"
+  --sc-fixed-search-block-bg: "linear-gradient(45deg, #ffffff, #e1e5e8)"
+  --sc-popup-login-block-inner-bg: "linear-gradient(45deg, #ffffff, #e1e5e8)"
+  --sc-bottom-container-bg: "linear-gradient(45deg, #ffffff, #e1e5e8)"
+  --sc-footer-container-bg: "linear-gradient(45deg, #ffffff, #e1e5e8)"
+  --sc-footer-menu-bg: "linear-gradient(45deg, #ffffff, #e1e5e8)"
+  --sc-copyright-bg: "linear-gradient(180deg, #e8f0f9, #cedff1)"
+  --sc-social-fill: "#424d55"
+  --sc-control-br: "#bdddff"
+  --sc-fixed-search-block-shadow: "14, 16, 18"
+  --sc-social-box-shadow: "60, 127, 200"
+  --sc-tab-hover-bg: "#070808"
+  --sc-region-rule-br: "var(--solo-white)"
+page:
+  --r-br: "#798995"
+  --r-bg: "#f4f6f7"
+  --r-tx: "#3b444b"
+  --r-header-bg: "linear-gradient(to start top, #ffffff, #e1e5e8)"
+  --r-header-tx: "#3b444b"
+  --r-menu-bg-h: "#fbfcf8"
+  --r-menu-tx-h: "#070808"
+  --r-br-light: "#ccd5db"

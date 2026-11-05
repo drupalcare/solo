@@ -1,0 +1,46 @@
+# Scheme record in the shape of the apex scheme sidecar (id, name, category, mode). Palette values are copied verbatim from css/predefined/solo-dusk-shadow-fusion.css.
+id: solo-dusk-shadow-fusion
+name: "Dusk Shadow Fusion"
+category: earthy_and_smokey_tones
+mode: mixed
+categories:
+  - earthy_and_smokey_tones
+css: css/predefined/solo-dusk-shadow-fusion.css
+thumbnail: images/schemes/solo-dusk-shadow-fusion.webp
+palette:
+  --sc-head-tx: "#363635"
+  --sc-link-tx: "#4b4747"
+  --sc-link-hover-tx: "#474746"
+  --sc-menu-bg: "#616161"
+  --sc-menu-tx: "#fafafa"
+  --sc-menu-hover-tx: "#0b0b0b"
+  --sc-menu-hover-bg: "#b6b6b4"
+  --sc-tab-hover-tx: "#0b0b0b"
+  --sc-menu-open-tx: "#0b0b0b"
+  --sc-menu-open-bg: "#b6b6b4"
+  --sc-button-bg: "#1c1b1b"
+  --sc-button-tx: "#e0dede"
+  --sc-button-hover-tx: "#f9f8f8"
+  --sc-button-hover-bg: "#0b0a0a"
+  --sc-main-container-bg: "linear-gradient(45deg, #f9f9f9, #f9f8f8)"
+  --sc-top-container-bg: "linear-gradient(45deg, #f9f9f9, #f9f8f8)"
+  --sc-fixed-search-block-bg: "linear-gradient(45deg, #f9f9f9, #f9f8f8)"
+  --sc-popup-login-block-inner-bg: "linear-gradient(45deg, #f9f9f9, #f9f8f8)"
+  --sc-bottom-container-bg: "linear-gradient(0deg, #030302, #0c0c0c)"
+  --sc-footer-container-bg: "linear-gradient(0deg, #030302, #0c0c0c)"
+  --sc-footer-menu-bg: "linear-gradient(0deg, #030302, #0c0c0c)"
+  --sc-copyright-bg: "linear-gradient(180deg, #020202, #080808)"
+  --sc-social-fill: "#73736f"
+  --sc-control-br: "#c7c4c4"
+  --sc-fixed-search-block-shadow: "20, 20, 19"
+  --sc-social-box-shadow: "89, 89, 86"
+page:
+  --r-br: "#b6b3b3"
+  --r-bg: "#f6f6f6"
+  --r-tx: "#2b2b2b"
+  --r-header-bg: "linear-gradient(0deg, #b6b6b4, #a5a5a3)"
+  --r-header-tx: "#363635"
+  --r-menu-tx-h: "#0b0b0b"
+  --r-menu-bg-h: "#b6b6b4"
+  --r-br-light: "#dbdbdb"
+  --r-br-dark: "#404040"

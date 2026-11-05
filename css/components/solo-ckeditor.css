@@ -36,9 +36,9 @@
   border-block-start: none !important;
 }
 
-.text-format-wrapper > .solo-form__element-container {
-  margin-block: var(--solo-px8) auto !important;
-  margin-inline: auto !important;
+:where(.text-format-wrapper) > .solo-form__element-container {
+  margin-block: var(--solo-px8) auto;
+  margin-inline: auto;
   border-radius: var(--solo-px6);
   border: var(--solo-px1) solid var(--r-br, var(--r-br-b)) !important;
   background-color: var(--r-bg) !important;
@@ -48,10 +48,10 @@
 }
 
 
-.ck-rounded-corners .ck.ck-editor__top .ck-sticky-panel .ck-toolbar,
-.ck.ck-editor__top .ck-sticky-panel .ck-toolbar.ck-rounded-corners,
-.ck.ck-editor__main>.ck-editor__editable.ck-rounded-corners,
-.ck-rounded-corners .ck.ck-editor__top .ck-sticky-panel .ck-toolbar {
+:where(.ck-rounded-corners .ck.ck-editor__top .ck-sticky-panel) .ck-toolbar,
+:where(.ck.ck-editor__top .ck-sticky-panel) .ck-toolbar.ck-rounded-corners,
+:where(.ck.ck-editor__main) > .ck-editor__editable.ck-rounded-corners,
+:where(.ck-rounded-corners .ck.ck-editor__top .ck-sticky-panel) .ck-toolbar {
   border: 0;
 }
 
@@ -66,12 +66,12 @@
 .cke_top,
 .cke_bottom,
 .cke_contents,
-.text-format-wrapper > .solo-form__element-container {
+:where(.text-format-wrapper) > .solo-form__element-container {
   border-color: var(--r-br, var(--r-br-b)) !important;
 }
 
-.ck.ck-toolbar.ck-toolbar_grouping>.ck-toolbar__items {
-  flex-wrap: wrap !important;
+:where(.ck.ck-toolbar.ck-toolbar_grouping) > .ck-toolbar__items {
+  flex-wrap: wrap;
 }
 
 .ck-reset_all:not(.ck-reset_all-excluded *),

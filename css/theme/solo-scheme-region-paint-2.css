@@ -1,4 +1,4 @@
 /* Paint these regions, gradients included. Not used by: denim-twilight, midnight-whispers. */
-.solo-container--top .solo-region-box__inner--top {
+:where(.solo-container--top) .solo-region-box__inner--top {
   background: var(--r-bg);
 }

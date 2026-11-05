@@ -1,0 +1,46 @@
+# Scheme record in the shape of the apex scheme sidecar (id, name, category, mode). Palette values are copied verbatim from css/predefined/solo-midnight-denim-swirl.css.
+id: solo-midnight-denim-swirl
+name: "Midnight Denim Swirl"
+category: midnight_and_twilight
+mode: dark
+categories:
+  - midnight_and_twilight
+  - denim_influences
+css: css/predefined/solo-midnight-denim-swirl.css
+thumbnail: images/schemes/solo-midnight-denim-swirl.webp
+palette:
+  --sc-head-tx: "#a1a1fd"
+  --sc-link-tx: "#b5b5b5"
+  --sc-link-hover-tx: "#c3c3fd"
+  --sc-menu-bg: "#000006"
+  --sc-menu-tx: "#a1a1fd"
+  --sc-menu-hover-tx: "#ffffff"
+  --sc-menu-hover-bg: "#010138"
+  --sc-tab-hover-tx: "#ffffff"
+  --sc-menu-open-tx: "#ffffff"
+  --sc-menu-open-bg: "#010138"
+  --sc-button-bg: "#020248"
+  --sc-button-tx: "#e8e8e8"
+  --sc-button-hover-tx: "#d3d3fe"
+  --sc-button-hover-bg: "#1c1c1c"
+  --sc-main-container-bg: "linear-gradient(45deg, #000006, #0b0b0b)"
+  --sc-top-container-bg: "linear-gradient(45deg, #000006, #0b0b0b)"
+  --sc-fixed-search-block-bg: "linear-gradient(45deg, #000006, #0b0b0b)"
+  --sc-popup-login-block-inner-bg: "linear-gradient(45deg, #000006, #0b0b0b)"
+  --sc-bottom-container-bg: "linear-gradient(45deg, #000006, #0b0b0b)"
+  --sc-footer-container-bg: "linear-gradient(45deg, #000006, #0b0b0b)"
+  --sc-footer-menu-bg: "linear-gradient(45deg, #000006, #0b0b0b)"
+  --sc-copyright-bg: "linear-gradient(180deg, #000006, #000000)"
+  --sc-social-fill: "#828282"
+  --sc-control-br: "#03037a"
+  --sc-fixed-search-block-shadow: "249, 249, 249"
+  --sc-social-box-shadow: "215, 215, 215"
+  --sc-region-rule-br: "var(--solo-black)"
+page:
+  --r-br: "#030369"
+  --r-bg: "#000000"
+  --r-tx: "#e4e4fe"
+  --r-header-bg: "linear-gradient(0deg, #000006, #010116)"
+  --r-header-tx: "#a1a1fd"
+  --r-menu-tx-h: "#ffffff"
+  --r-menu-bg-h: "#010138"

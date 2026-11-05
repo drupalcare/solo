@@ -229,7 +229,7 @@ embed {
   display: block;
 }
 
-a img {
+:where(a) img {
   border: none;
   outline: none;
 }
@@ -238,12 +238,12 @@ svg:not(:root) {
   overflow: hidden;
 }
 
-h1 a,
-h2 a,
-h3 a,
-h4 a,
-h5 a,
-li a {
+:where(h1) a,
+:where(h2) a,
+:where(h3) a,
+:where(h4) a,
+:where(h5) a,
+:where(li) a {
   font-family: inherit;
   line-height: inherit;
   font-weight: inherit;
@@ -252,12 +252,12 @@ li a {
   color: inherit;
 }
 
-h1 a span,
-h2 a span,
-h3 a span,
-h4 a span,
-h5 a span,
-li a span {
+:where(h1 a) span,
+:where(h2 a) span,
+:where(h3 a) span,
+:where(h4 a) span,
+:where(h5 a) span,
+:where(li a) span {
   font-family: inherit;
   line-height: inherit;
   font-weight: inherit;

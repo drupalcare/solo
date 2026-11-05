@@ -1,0 +1,46 @@
+# Scheme record in the shape of the apex scheme sidecar (id, name, category, mode). Palette values are copied verbatim from css/predefined/solo-indigo-pulse.css.
+id: solo-indigo-pulse
+name: "Indigo Pulse"
+category: denim_influences
+mode: mixed
+categories:
+  - denim_influences
+css: css/predefined/solo-indigo-pulse.css
+thumbnail: images/schemes/solo-indigo-pulse.webp
+palette:
+  --sc-head-tx: "#042844"
+  --sc-link-tx: "#332677"
+  --sc-link-hover-tx: "#6d5bca"
+  --sc-menu-bg: "#0f8ef4"
+  --sc-menu-tx: "#000204"
+  --sc-menu-hover-tx: "#f3f9fe"
+  --sc-menu-hover-bg: "#075796"
+  --sc-tab-hover-tx: "#f3f9fe"
+  --sc-menu-open-tx: "#f3f9fe"
+  --sc-menu-open-bg: "#075796"
+  --sc-button-bg: "#281e5d"
+  --sc-button-tx: "#f6f5fc"
+  --sc-button-hover-tx: "#281e5d"
+  --sc-button-hover-bg: "#f6f5fc"
+  --sc-main-container-bg: "#f3f9fe"
+  --sc-top-container-bg: "#e3f1fd"
+  --sc-fixed-search-block-bg: "#e3f1fd"
+  --sc-popup-login-block-inner-bg: "#f3f9fe"
+  --sc-bottom-container-bg: "#031e34"
+  --sc-footer-container-bg: "#021524"
+  --sc-footer-menu-bg: "#010c14"
+  --sc-copyright-bg: "#000204"
+  --sc-social-fill: "#91ccfa"
+  --sc-control-br: "#d9d1ff"
+  --sc-fixed-search-block-shadow: "17, 21, 26"
+  --sc-social-box-shadow: "230, 234, 238"
+page:
+  --r-br: "#b2dbfb"
+  --r-bg: "#f3f9fe"
+  --r-tx: "#000204"
+  --r-header-bg: "#f3f9fe"
+  --r-header-tx: "#042844"
+  --r-menu-bg-h: "#0f8ef4"
+  --r-menu-tx-h: "#000204"
+  --r-br-light: "#d4e8f7"
+  --r-br-dark: "#053357"

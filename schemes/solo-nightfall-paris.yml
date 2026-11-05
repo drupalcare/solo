@@ -1,0 +1,46 @@
+# Scheme record in the shape of the apex scheme sidecar (id, name, category, mode). Palette values are copied verbatim from css/predefined/solo-nightfall-paris.css.
+id: solo-nightfall-paris
+name: "Nightfall in Paris"
+category: urban_and_modern_hues
+mode: dark
+categories:
+  - urban_and_modern_hues
+css: css/predefined/solo-nightfall-paris.css
+thumbnail: images/schemes/solo-nightfall-paris.webp
+palette:
+  --sc-head-tx: "#7979a5"
+  --sc-link-tx: "#1a7ee0"
+  --sc-link-hover-tx: "#7db7f0"
+  --sc-menu-bg: "#0b0b10"
+  --sc-menu-tx: "#c8c8da"
+  --sc-menu-hover-tx: "#f1f1f5"
+  --sc-menu-hover-bg: "#3a3a58"
+  --sc-tab-hover-tx: "#f1f1f5"
+  --sc-menu-open-tx: "#f1f1f5"
+  --sc-menu-open-bg: "#3a3a58"
+  --sc-button-bg: "#166abe"
+  --sc-button-tx: "#e8f2fc"
+  --sc-button-hover-tx: "#abd0f5"
+  --sc-button-hover-bg: "#061e35"
+  --sc-main-container-bg: "linear-gradient(45deg, #000000, #12121a)"
+  --sc-top-container-bg: "linear-gradient(45deg, #000000, #12121a)"
+  --sc-fixed-search-block-bg: "linear-gradient(45deg, #000000, #12121a)"
+  --sc-popup-login-block-inner-bg: "linear-gradient(45deg, #000000, #12121a)"
+  --sc-bottom-container-bg: "linear-gradient(45deg, #000000, #12121a)"
+  --sc-footer-container-bg: "linear-gradient(45deg, #000000, #12121a)"
+  --sc-footer-menu-bg: "linear-gradient(45deg, #000000, #12121a)"
+  --sc-copyright-bg: "linear-gradient(180deg, #12121a, #030d16)"
+  --sc-social-fill: "#3a3a58"
+  --sc-control-br: "#0d4073"
+  --sc-fixed-search-block-shadow: "190, 190, 211"
+  --sc-social-box-shadow: "128, 128, 171"
+  --sc-tab-hover-bg: "#3a3a58"
+  --sc-region-rule-br: "var(--solo-black)"
+page:
+  --r-br: "#262639"
+  --r-bg: "#040406"
+  --r-tx: "#bebed3"
+  --r-header-bg: "linear-gradient(0deg, #000000, #12121a)"
+  --r-header-tx: "#7979a5"
+  --r-menu-tx-h: "#f1f1f5"
+  --r-menu-bg-h: "#3a3a58"

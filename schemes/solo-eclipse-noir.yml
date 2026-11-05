@@ -1,0 +1,46 @@
+# Scheme record in the shape of the apex scheme sidecar (id, name, category, mode). Palette values are copied verbatim from css/predefined/solo-eclipse-noir.css.
+id: solo-eclipse-noir
+name: "Eclipse Noir"
+category: bold_and_dramatic_colors
+mode: dark
+categories:
+  - bold_and_dramatic_colors
+css: css/predefined/solo-eclipse-noir.css
+thumbnail: images/schemes/solo-eclipse-noir.webp
+palette:
+  --sc-head-tx: "#c16382"
+  --sc-link-tx: "#7d827d"
+  --sc-link-hover-tx: "#c9cac9"
+  --sc-menu-bg: "#11070b"
+  --sc-menu-tx: "#e4bbc9"
+  --sc-menu-hover-tx: "#fcf8f9"
+  --sc-menu-hover-bg: "#421a27"
+  --sc-tab-hover-tx: "#fcf8f9"
+  --sc-menu-open-tx: "#fcf8f9"
+  --sc-menu-open-bg: "#421a27"
+  --sc-button-bg: "#1f201f"
+  --sc-button-tx: "#d1d3d1"
+  --sc-button-hover-tx: "#060606"
+  --sc-button-hover-bg: "#afb1af"
+  --sc-main-container-bg: "linear-gradient(45deg, #000000, #050203)"
+  --sc-top-container-bg: "linear-gradient(45deg, #000000, #050203)"
+  --sc-fixed-search-block-bg: "linear-gradient(45deg, #000000, #050203)"
+  --sc-popup-login-block-inner-bg: "linear-gradient(45deg, #000000, #050203)"
+  --sc-bottom-container-bg: "linear-gradient(45deg, #000000, #050203)"
+  --sc-footer-container-bg: "linear-gradient(45deg, #000000, #050203)"
+  --sc-footer-menu-bg: "linear-gradient(45deg, #000000, #050203)"
+  --sc-copyright-bg: "linear-gradient(180deg, #1d0c12, #171717)"
+  --sc-social-fill: "#7e334c"
+  --sc-control-br: "#494b49"
+  --sc-fixed-search-block-shadow: "218, 219, 218"
+  --sc-social-box-shadow: "166, 169, 166"
+  --sc-tab-hover-bg: "#421a27"
+  --sc-region-rule-br: "var(--solo-black)"
+page:
+  --r-br: "#5a2436"
+  --r-bg: "#050203"
+  --r-tx: "#eed3dc"
+  --r-header-bg: "linear-gradient(0deg, #000000, #291119)"
+  --r-header-tx: "#c16382"
+  --r-menu-tx-h: "#fcf8f9"
+  --r-menu-bg-h: "#421a27"

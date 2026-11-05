@@ -37,7 +37,7 @@
 .solo-popup-login__inner {
   color: var(--r-tx);
   background-color: var(--r-bg);
-  max-width: 900px !important;
+  max-width: 900px;
   margin-inline: auto;
   margin-block: 0;
   padding: calc(2 * var(--solo-px16));
@@ -47,7 +47,7 @@
 }
 
 /* Animate inner container when parent is toggled */
-.solo-popup-login.solo-is-open .solo-popup-login__inner {
+:where(.solo-popup-login.solo-is-open) .solo-popup-login__inner {
   transform: translateY(0);
 }
 
@@ -65,7 +65,14 @@
 .solo-popup-login input:focus,
 .solo-popup-login select:focus,
 .solo-popup-login textarea:focus,
-.solo-popup-login a:focus {
+.solo-popup-login a:focus,
+.solo-popup-login__close button:focus-visible,
+.solo-popup-login__open button:focus-visible,
+.solo-popup-login button:focus-visible,
+.solo-popup-login input:focus-visible,
+.solo-popup-login select:focus-visible,
+.solo-popup-login textarea:focus-visible,
+.solo-popup-login a:focus-visible {
   outline: 2px solid var(--r-br, currentColor);
   outline-offset: 2px;
 }
@@ -139,7 +146,7 @@ body.solo-login-popup-open {
 /* Responsive adjustments */
 @media (max-width: 48rem) {
   .solo-popup-login__inner {
-    max-width: 95% !important;
+    max-width: 95%;
     margin-inline: 2.5%;
     padding: var(--solo-px16);
   }
@@ -153,14 +160,21 @@ body.solo-login-popup-open {
 }
 
 /* High contrast mode support - no color changes, just ensure visibility */
-@media (prefers-contrast: high) {
+@media (prefers-contrast: more) {
   .solo-popup-login__close button:focus,
   .solo-popup-login__open button:focus,
   .solo-popup-login button:focus,
   .solo-popup-login input:focus,
   .solo-popup-login select:focus,
   .solo-popup-login textarea:focus,
-  .solo-popup-login a:focus {
+  .solo-popup-login a:focus,
+  .solo-popup-login__close button:focus-visible,
+  .solo-popup-login__open button:focus-visible,
+  .solo-popup-login button:focus-visible,
+  .solo-popup-login input:focus-visible,
+  .solo-popup-login select:focus-visible,
+  .solo-popup-login textarea:focus-visible,
+  .solo-popup-login a:focus-visible {
     outline-width: 3px;
   }
 }
@@ -189,12 +203,12 @@ body.solo-login-popup-open {
 }
 
 /* Keyboard navigation enhancement */
-.solo-popup-login [tabindex="-1"] {
+:where(.solo-popup-login) [tabindex="-1"] {
   outline: none;
 }
 
 /* Loading state (optional) */
-.solo-popup-login.loading .solo-popup-login__inner::after {
+:where(.solo-popup-login.loading) .solo-popup-login__inner::after {
   content: "";
   position: absolute;
   top: 0;

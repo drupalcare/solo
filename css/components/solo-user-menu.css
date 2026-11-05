@@ -1,12 +1,12 @@
-.solo-header__inner nav .solo-menu-tree__menubar,
+:where(.solo-header__inner nav) .solo-menu-tree__menubar,
 .solo-header__inner nav .solo-menu-tree__menubar > li,
-.solo-inner .solo-menu-tree__menubar--account,
+:where(.solo-inner) .solo-menu-tree__menubar--account,
 .solo-inner .solo-menu-tree__menubar--account li {
   margin: 0;
   padding: 0;
 }
 
-.solo-inner .solo-menu-tree__menubar--account {
+:where(.solo-inner) .solo-menu-tree__menubar--account {
   display: flex;
   flex-wrap: wrap;
   justify-content: end;
@@ -14,7 +14,7 @@
   padding: 0;
 }
 
-.solo-header__inner nav .solo-menu-tree__menubar {
+:where(.solo-header__inner nav) .solo-menu-tree__menubar {
   justify-content: center;
 }
 
@@ -27,7 +27,7 @@
   font-size: var(--solo-px16);
 }
 
-.solo-header__inner nav .solo-menu-tree__menubar > li > button,
+:where(.solo-header__inner nav) .solo-menu-tree__menubar > li > button,
 .solo-header__inner nav .solo-menu-tree__menubar > li > a,
 .solo-inner .solo-menu-tree__menubar--account li a {
   padding-block: 0.563rem !important;
@@ -35,7 +35,7 @@
   line-height: 1.5;
 }
 
-.solo-header__inner nav .solo-menu-tree__menubar > li > a {
+:where(.solo-header__inner nav) .solo-menu-tree__menubar > li > a {
   min-width: 90px;
 }
 

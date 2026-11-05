@@ -15,7 +15,7 @@
   border: var(--solo-px1) solid var(--r-br, var(--r-br-b));
 }
 
-.view-filters details.form-wrapper:hover {
+:where(.view-filters) :where(details).form-wrapper:hover {
   cursor: pointer;
 }
 
@@ -28,16 +28,16 @@
   padding-block-start: 11px;
 }
 
-form #edit-reset {
+:where(form) #edit-reset {
   margin-block: 0;
   margin-inline: var(--solo-px12);
 }
 
-.js .views-edit-view .dropbutton-wrapper .dropbutton .dropbutton-action > *,
+:where(.js .views-edit-view .dropbutton-wrapper .dropbutton .dropbutton-action) > *,
 .views-display-setting,
-.views-display-setting input,
-.views-display-setting .label,
-.views-display-extra-actions a {
+:where(.views-display-setting) input,
+:where(.views-display-setting) .label,
+:where(.views-display-extra-actions) a {
   font-size: var(--solo-px14) !important;
 }
 
@@ -58,8 +58,8 @@ form #edit-reset {
   text-align: var(--solo-text-align-start);
 }
 
-.view-preview-form > h2,
-.view-preview-form > .solo-section {
+:where(.view-preview-form) > h2,
+:where(.view-preview-form) > .solo-section {
   width: 100%;
   display: block;
   clear: both;
@@ -75,7 +75,7 @@ form #edit-reset {
   padding-block-end: var(--solo-px5);
 }
 
-.views-ui-display-tab-bucket .dropbutton-wrapper {
+:where(.views-ui-display-tab-bucket) .dropbutton-wrapper {
   inset-block-start: var(--solo-px1);
 }
 
@@ -91,13 +91,13 @@ form #edit-reset {
   text-align: center !important;
 }
 
-form.views-exposed-form .form--inline {
+:where(form.views-exposed-form) .form--inline {
   align-items: end;
 }
 
 form.views-exposed-form.form--inline .form-actions {
-  flex-grow: unset !important;
-  flex-basis: unset !important;
+  flex-grow: unset;
+  flex-basis: unset;
   vertical-align: bottom;
   width: auto;
 }
@@ -107,7 +107,7 @@ form.views-exposed-form.form--inline .form-actions input {
   margin: 0;
 }
 
-form.views-exposed-form .solo-exposed-form > * {
+:where(form.views-exposed-form .solo-exposed-form) > * {
   margin-block-end: var(--solo-px12);
   margin-inline-end: var(--solo-px12);
   margin-block-start: 0;
@@ -115,6 +115,6 @@ form.views-exposed-form .solo-exposed-form > * {
   padding: 0;
 }
 
-form.views-exposed-form .solo-exposed-form > *:last-child {
+:where(form.views-exposed-form .solo-exposed-form) > *:last-child {
   margin-inline-end: var(--solo-px0);
 }

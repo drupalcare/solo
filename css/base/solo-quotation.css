@@ -10,6 +10,6 @@ blockquote {
   border-inline-start: 4px solid var(--r-br, var(--r-br-b));
 }
 
-blockquote p:last-child {
+:where(blockquote) p:last-child {
   margin-block-end: 0;
 }

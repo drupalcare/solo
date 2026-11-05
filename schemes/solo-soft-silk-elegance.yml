@@ -1,0 +1,45 @@
+# Scheme record in the shape of the apex scheme sidecar (id, name, category, mode). Palette values are copied verbatim from css/predefined/solo-soft-silk-elegance.css.
+id: solo-soft-silk-elegance
+name: "Soft Silk Elegance"
+category: elegant_whites_and_neutrals
+mode: light
+categories:
+  - elegant_whites_and_neutrals
+css: css/predefined/solo-soft-silk-elegance.css
+thumbnail: images/schemes/solo-soft-silk-elegance.webp
+palette:
+  --sc-head-tx: "#455136"
+  --sc-link-tx: "#463f25"
+  --sc-link-hover-tx: "#796d41"
+  --sc-menu-bg: "#e6eae0"
+  --sc-menu-tx: "#2b3222"
+  --sc-menu-hover-tx: "#11140d"
+  --sc-menu-hover-bg: "#cdd6c1"
+  --sc-tab-hover-tx: "#11140d"
+  --sc-menu-open-tx: "#11140d"
+  --sc-menu-open-bg: "#cdd6c1"
+  --sc-button-bg: "#d5e0ee"
+  --sc-button-tx: "#325681"
+  --sc-button-hover-tx: "#030406"
+  --sc-button-hover-bg: "#c8d7ea"
+  --sc-main-container-bg: "linear-gradient(45deg, #eef1ea, #edf2f8)"
+  --sc-top-container-bg: "linear-gradient(45deg, #eef1ea, #edf2f8)"
+  --sc-fixed-search-block-bg: "linear-gradient(45deg, #eef1ea, #edf2f8)"
+  --sc-popup-login-block-inner-bg: "linear-gradient(45deg, #eef1ea, #edf2f8)"
+  --sc-bottom-container-bg: "linear-gradient(45deg, #eef1ea, #edf2f8)"
+  --sc-footer-container-bg: "linear-gradient(45deg, #eef1ea, #edf2f8)"
+  --sc-footer-menu-bg: "linear-gradient(45deg, #eef1ea, #edf2f8)"
+  --sc-copyright-bg: "linear-gradient(180deg, #f5f3ec, #eef1ea)"
+  --sc-social-fill: "#a8985c"
+  --sc-control-br: "#93854f"
+  --sc-fixed-search-block-shadow: "147, 133, 79"
+  --sc-social-box-shadow: "147, 166, 122"
+  --sc-region-rule-br: "var(--solo-white)"
+page:
+  --r-br: "#dde3d6"
+  --r-bg: "#fffffe"
+  --r-tx: "#2b3222"
+  --r-header-bg: "linear-gradient(0deg, #edf2f8, #eef1ea)"
+  --r-header-tx: "#455136"
+  --r-menu-tx-h: "#11140d"
+  --r-menu-bg-h: "#cdd6c1"

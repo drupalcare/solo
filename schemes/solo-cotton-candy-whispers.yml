@@ -1,0 +1,46 @@
+# Scheme record in the shape of the apex scheme sidecar (id, name, category, mode). Palette values are copied verbatim from css/predefined/solo-cotton-candy-whispers.css.
+id: solo-cotton-candy-whispers
+name: "Cotton Candy Whispers"
+category: soft_and_subtle_hues
+mode: mixed
+categories:
+  - soft_and_subtle_hues
+css: css/predefined/solo-cotton-candy-whispers.css
+thumbnail: images/schemes/solo-cotton-candy-whispers.webp
+palette:
+  --sc-head-tx: "#f66d93"
+  --sc-link-tx: "#cf3165"
+  --sc-link-hover-tx: "#dc688e"
+  --sc-menu-bg: "#e50d4a"
+  --sc-menu-tx: "#ffffff"
+  --sc-menu-hover-tx: "#3d001f"
+  --sc-menu-hover-bg: "#ff016f"
+  --sc-tab-hover-tx: "#3d001f"
+  --sc-menu-open-tx: "#3d001f"
+  --sc-menu-open-bg: "#ff016f"
+  --sc-button-bg: "#8f082e"
+  --sc-button-tx: "#feedf2"
+  --sc-button-hover-tx: "#8f082e"
+  --sc-button-hover-bg: "#feedf2"
+  --sc-main-container-bg: "linear-gradient(45deg, #fffdfe, #fdfdfd)"
+  --sc-top-container-bg: "linear-gradient(45deg, #fffdfe, #fdfdfd)"
+  --sc-fixed-search-block-bg: "linear-gradient(45deg, #fffdfe, #fdfdfd)"
+  --sc-popup-login-block-inner-bg: "linear-gradient(45deg, #fffdfe, #fdfdfd)"
+  --sc-bottom-container-bg: "linear-gradient(180deg, #0e0105, #010000)"
+  --sc-footer-container-bg: "linear-gradient(180deg, #0e0105, #010000)"
+  --sc-footer-menu-bg: "linear-gradient(180deg, #0e0105, #010000)"
+  --sc-copyright-bg: "linear-gradient(180deg, #010000, #120008)"
+  --sc-social-fill: "#8f082e"
+  --sc-control-br: "#ffabcf"
+  --sc-fixed-search-block-shadow: "62, 4, 20"
+  --sc-social-box-shadow: "255, 253, 254"
+page:
+  --r-br: "#e592ad"
+  --r-bg: "#fcf2f5"
+  --r-tx: "#380d1b"
+  --r-header-bg: "linear-gradient(0deg, #cf3165, #e50d4a)"
+  --r-header-tx: "#ffffff"
+  --r-menu-tx-h: "#39001c"
+  --r-menu-bg-h: "#ff016f"
+  --r-br-dark: "#47001f"
+  --r-br-light: "#f8dde5"

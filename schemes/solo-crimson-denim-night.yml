@@ -1,0 +1,46 @@
+# Scheme record in the shape of the apex scheme sidecar (id, name, category, mode). Palette values are copied verbatim from css/predefined/solo-crimson-denim-night.css.
+id: solo-crimson-denim-night
+name: "Crimson Denim Night"
+category: bold_and_dramatic_colors
+mode: mixed
+categories:
+  - bold_and_dramatic_colors
+  - denim_influences
+css: css/predefined/solo-crimson-denim-night.css
+thumbnail: images/schemes/solo-crimson-denim-night.webp
+palette:
+  --sc-head-tx: "#565680"
+  --sc-link-tx: "#c22e2a"
+  --sc-link-hover-tx: "#da5956"
+  --sc-menu-bg: "#d0312d"
+  --sc-menu-tx: "#fbf0f0"
+  --sc-menu-hover-tx: "#f9e2e1"
+  --sc-menu-hover-bg: "#a62724"
+  --sc-tab-hover-tx: "#f9e2e1"
+  --sc-menu-open-tx: "#f9e2e1"
+  --sc-menu-open-bg: "#a62724"
+  --sc-button-bg: "#8a211e"
+  --sc-button-tx: "#fcf0ef"
+  --sc-button-hover-tx: "#8a211e"
+  --sc-button-hover-bg: "#fcf0ef"
+  --sc-main-container-bg: "linear-gradient(45deg, #d7ddf1, #eff8f3)"
+  --sc-top-container-bg: "linear-gradient(45deg, #d7ddf1, #eff8f3)"
+  --sc-fixed-search-block-bg: "linear-gradient(45deg, #d7ddf1, #eff8f3)"
+  --sc-popup-login-block-inner-bg: "linear-gradient(45deg, #d7ddf1, #eff8f3)"
+  --sc-bottom-container-bg: "linear-gradient(180deg, #000000, #030001)"
+  --sc-footer-container-bg: "linear-gradient(180deg, #000000, #030001)"
+  --sc-footer-menu-bg: "linear-gradient(180deg, #000000, #030001)"
+  --sc-copyright-bg: "linear-gradient(0deg, #000000, #030001)"
+  --sc-social-fill: "#a62724"
+  --sc-control-br: "#6e1a18"
+  --sc-fixed-search-block-shadow: "43, 61, 124"
+  --sc-social-box-shadow: "227, 232, 246"
+page:
+  --r-br: "#a9a9c6"
+  --r-bg: "#fffdfd"
+  --r-tx: "#262639"
+  --r-header-bg: "linear-gradient(180deg, #000000, #030001)"
+  --r-header-tx: "#71719f"
+  --r-menu-tx-h: "#f9e2e1"
+  --r-menu-bg-h: "#a62724"
+  --r-br-light: "#fddddd"

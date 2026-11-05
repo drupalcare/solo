@@ -1,0 +1,46 @@
+# Scheme record in the shape of the apex scheme sidecar (id, name, category, mode). Palette values are copied verbatim from css/predefined/solo-monochrome-splash.css.
+id: solo-monochrome-splash
+name: "Monochrome Splash"
+category: miscellaneous
+mode: mixed
+categories:
+  - miscellaneous
+css: css/predefined/solo-monochrome-splash.css
+thumbnail: images/schemes/solo-monochrome-splash.webp
+palette:
+  --sc-head-tx: "#21020a"
+  --sc-link-tx: "#ce103d"
+  --sc-link-hover-tx: "#af0d34"
+  --sc-menu-bg: "#000000"
+  --sc-menu-tx: "#ffffff"
+  --sc-menu-hover-tx: "#bbbbbb"
+  --sc-menu-hover-bg: "#1a1a1a"
+  --sc-tab-hover-tx: "#999999"
+  --sc-menu-open-tx: "#bbbbbb"
+  --sc-menu-open-bg: "#1a1a1a"
+  --sc-button-bg: "#000000"
+  --sc-button-tx: "#ffffff"
+  --sc-button-hover-tx: "#fef0f3"
+  --sc-button-hover-bg: "#bf0e38"
+  --sc-main-container-bg: "#e8e8e8"
+  --sc-top-container-bg: "#dddddd"
+  --sc-fixed-search-block-bg: "#eeeeee"
+  --sc-popup-login-block-inner-bg: "#f6f6f6"
+  --sc-bottom-container-bg: "#1a1a1a"
+  --sc-footer-container-bg: "#111111"
+  --sc-footer-menu-bg: "#090909"
+  --sc-copyright-bg: "#000000"
+  --sc-social-fill: "#b3b3b3"
+  --sc-control-br: "#b3b3b3"
+  --sc-fixed-search-block-shadow: "9, 9, 9"
+  --sc-social-box-shadow: "102, 102, 102"
+page:
+  --r-br: "#a2a2a2"
+  --r-bg: "#ffffff"
+  --r-tx: "#000000"
+  --r-header-bg: "#d5d5d5"
+  --r-header-tx: "#21020a"
+  --r-menu-bg-h: "#1a1a1a"
+  --r-menu-tx-h: "#bbbbbb"
+  --r-br-dark: "#313845"
+  --r-br-light: "#e0e0e1"

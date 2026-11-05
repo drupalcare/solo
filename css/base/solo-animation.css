@@ -56,7 +56,7 @@
    ============================================ */
 a,
 button,
-input.button {
+:where(input).button {
   transition: color 0.3s ease, background 0.3s ease, border-color 0.3s ease, border 0.3s ease, transform 0.3s ease;
 }
 
@@ -182,29 +182,22 @@ input.button {
    ============================================ */
 
 /* Disable menu link animations */
-.dis-anim-link nav ul li > a::after,
-.dis-anim-link nav ul li > button::after {
+:where(.dis-anim-link nav ul li) > a::after,
+:where(.dis-anim-link nav ul li) > button::after {
   display: none !important;
 }
 
-.dis-anim-link nav ul li > a:hover::after,
-.dis-anim-link nav ul li > button:hover::after {
+:where(.dis-anim-link nav ul li) > a:hover::after,
+:where(.dis-anim-link nav ul li) > button:hover::after {
   animation: none !important;
   width: 0 !important;
 }
 
-/* Disable submit button animations */
-.dis-anim-submit form input.button.form-submit:hover {
-  animation: none !important;
-  transform: none !important;
-  box-shadow: none !important;
-}
-
 /* Disable ALL animations - accessibility option */
-.dis-all-animations *,
-.dis-all-animations *::before,
-.dis-all-animations *::after {
-  animation: none !important;
+:where(.dis-all-animations) *,
+:where(.dis-all-animations) *::before,
+:where(.dis-all-animations) *::after {
+  animation: none;
   transition: none !important;
 }
 
@@ -295,8 +288,41 @@ input.button {
   box-shadow: none;
 }
 
+/* Disable submit button animations */
+.dis-anim-submit form input.button.form-submit:hover {
+  animation: none;
+  transform: none !important;
+  box-shadow: none !important;
+}
+
 /* Disable legacy animations in mega menu nested items */
 .solo-body--legacy-animations nav .solo-menu-tree--megamenu ul li > a::before,
 .solo-body--legacy-animations nav .solo-menu-tree--megamenu ul li > button::before {
   display: none;
+}
+
+/* Reduced motion: end states are kept, movement is not (WCAG 2.3.3). */
+@media (prefers-reduced-motion: reduce) {
+  :where(.solo-page nav ul li > a)::after,
+  :where(.solo-page nav ul li > button)::after,
+  :where(a),
+  :where(button),
+  :where(:where(input).button),
+  :where(.solo-page--fade-in),
+  :where(.solo-animate-opacity),
+  :where(.solo-animate-top),
+  :where(.solo-animate-left),
+  :where(.solo-animate-right),
+  :where(.solo-animate-bottom),
+  :where(.solo-animate-zoom),
+  :where(.solo-animate-input),
+  :where(.solo-body--legacy-animations nav ul li > a:hover)::after,
+  :where(.solo-body--legacy-animations nav ul li > a:hover)::before,
+  :where(.solo-body--legacy-animations nav ul li > button:hover)::after,
+  :where(.solo-body--legacy-animations nav ul li > button:hover)::before,
+  :where(.solo-body--legacy-animations form input.button.form-submit:hover) {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }

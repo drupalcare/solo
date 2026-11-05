@@ -1,0 +1,46 @@
+# Scheme record in the shape of the apex scheme sidecar (id, name, category, mode). Palette values are copied verbatim from css/predefined/solo-magnolia-afternoon.css.
+id: solo-magnolia-afternoon
+name: "Magnolia Afternoon"
+category: soft_and_subtle_hues
+mode: mixed
+categories:
+  - soft_and_subtle_hues
+css: css/predefined/solo-magnolia-afternoon.css
+thumbnail: images/schemes/solo-magnolia-afternoon.webp
+palette:
+  --sc-head-tx: "#9c8490"
+  --sc-link-tx: "#252d39"
+  --sc-link-hover-tx: "#5b6e8b"
+  --sc-menu-bg: "#120f10"
+  --sc-menu-tx: "#e8e2e5"
+  --sc-menu-hover-tx: "#fffeff"
+  --sc-menu-hover-bg: "#251e21"
+  --sc-tab-hover-tx: "#fffeff"
+  --sc-menu-open-tx: "#fffeff"
+  --sc-menu-open-bg: "#251e21"
+  --sc-button-bg: "#251e21"
+  --sc-button-tx: "#e8e2e5"
+  --sc-button-hover-tx: "#4b3c44"
+  --sc-button-hover-bg: "#fffeff"
+  --sc-main-container-bg: "linear-gradient(45deg, #fffeff, #e8e2e5)"
+  --sc-top-container-bg: "linear-gradient(45deg, #fffeff, #e8e2e5)"
+  --sc-fixed-search-block-bg: "linear-gradient(45deg, #fffeff, #e8e2e5)"
+  --sc-popup-login-block-inner-bg: "linear-gradient(45deg, #fffeff, #e8e2e5)"
+  --sc-bottom-container-bg: "linear-gradient(0deg, #090708, #120f10)"
+  --sc-footer-container-bg: "linear-gradient(0deg, #090708, #120f10)"
+  --sc-footer-menu-bg: "linear-gradient(0deg, #090708, #120f10)"
+  --sc-copyright-bg: "linear-gradient(180deg, #090708, #000000)"
+  --sc-social-fill: "#bca8b2"
+  --sc-control-br: "#8d717f"
+  --sc-fixed-search-block-shadow: "232, 226, 229"
+  --sc-social-box-shadow: "105, 81, 93"
+page:
+  --r-br: "#ab97a1"
+  --r-bg: "#fffeff"
+  --r-tx: "#2f252a"
+  --r-header-bg: "linear-gradient(0deg, #1c1619, #090708)"
+  --r-header-tx: "#9c8490"
+  --r-menu-tx-h: "#fffeff"
+  --r-menu-bg-h: "#251e21"
+  --r-br-light: "#dcdbdb"
+  --r-br-dark: "#413539"

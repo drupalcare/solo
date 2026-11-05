@@ -40,7 +40,7 @@
 }
 
 .pager__item.solo-active-pager {
-  cursor: default !important;
+  cursor: default;
 }
 
 .pager__item.solo-active-pager a {
@@ -67,4 +67,13 @@
     font-size: var(--solo-px14);
   }
 
+}
+
+/* Reduced motion: end states are kept, movement is not (WCAG 2.3.3). */
+@media (prefers-reduced-motion: reduce) {
+  :where(.pager__item a) {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }

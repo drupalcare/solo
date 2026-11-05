@@ -1,0 +1,45 @@
+# Scheme record in the shape of the apex scheme sidecar (id, name, category, mode). Palette values are copied verbatim from css/predefined/solo-ethereal-white-harmony.css.
+id: solo-ethereal-white-harmony
+name: "Ethereal White Harmony"
+category: elegant_whites_and_neutrals
+mode: light
+categories:
+  - elegant_whites_and_neutrals
+css: css/predefined/solo-ethereal-white-harmony.css
+thumbnail: images/schemes/solo-ethereal-white-harmony.webp
+palette:
+  --sc-head-tx: "#1f3550"
+  --sc-link-tx: "#3d472f"
+  --sc-link-hover-tx: "#63744d"
+  --sc-menu-bg: "#e9eaec"
+  --sc-menu-tx: "#33383d"
+  --sc-menu-hover-tx: "#0c0d0f"
+  --sc-menu-hover-bg: "#c4c8cd"
+  --sc-tab-hover-tx: "#0c0d0f"
+  --sc-menu-open-tx: "#0c0d0f"
+  --sc-menu-open-bg: "#c4c8cd"
+  --sc-button-bg: "#838d97"
+  --sc-button-tx: "#1c1e21"
+  --sc-button-hover-tx: "#050505"
+  --sc-button-hover-bg: "#727c86"
+  --sc-main-container-bg: "linear-gradient(45deg, #edf2f8, #f5f3ec)"
+  --sc-top-container-bg: "#f7f5f6"
+  --sc-fixed-search-block-bg: "linear-gradient(45deg, #edf2f8, #f5f3ec)"
+  --sc-popup-login-block-inner-bg: "linear-gradient(45deg, #edf2f8, #f5f3ec)"
+  --sc-bottom-container-bg: "linear-gradient(45deg, #edf2f8, #f5f3ec)"
+  --sc-footer-container-bg: "linear-gradient(45deg, #edf2f8, #f5f3ec)"
+  --sc-footer-menu-bg: "linear-gradient(45deg, #edf2f8, #f5f3ec)"
+  --sc-copyright-bg: "linear-gradient(180deg, #fffffe, #f9fbfd)"
+  --sc-social-fill: "#294668"
+  --sc-control-br: "#bcc8ad"
+  --sc-fixed-search-block-shadow: "70, 63, 37"
+  --sc-social-box-shadow: "168, 152, 92"
+  --sc-region-rule-br: "var(--solo-white)"
+page:
+  --r-br: "#e5e6e6"
+  --r-bg: "#fbfbfc"
+  --r-tx: "#1a2d44"
+  --r-header-bg: "linear-gradient(to start top, #ffffff, #f8f4ff)"
+  --r-header-tx: "#1f3550"
+  --r-menu-tx-h: "#0c0d0f"
+  --r-menu-bg-h: "#c4c8cd"

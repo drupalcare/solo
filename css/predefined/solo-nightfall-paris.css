@@ -42,12 +42,12 @@ Natural Black #07000B, Bleu De France #318CE7 */
   --r-menu-bg-h: #3a3a58;
 }
 
-.solo-page .solo-region-box__inner:where(:not([style*="--r-br:"] *)) {
+:where(.solo-page) .solo-region-box__inner:where(:not([style*="--r-br:"] *)) {
   --r-br: #34344e;
 }
 
 .solo-welcome-text,
-.solo-container--main .solo-region-box--main {
+:where(.solo-container--main) .solo-region-box--main {
   --r-bg: var(--solo-black);
 }
 
@@ -62,30 +62,30 @@ div.solo-page-title.solo-container--single {
   --r-bg: linear-gradient(0deg, #000000, #12121a);
 }
 
-.solo-page .selectify:where(:not([style*="--r-br:"] *)),
-.solo-page .solo-select:where(:not([style*="--r-br:"] *)),
-.solo-page .solo-radio:where(:not([style*="--r-br:"] *)),
-.solo-page .solo-check:where(:not([style*="--r-br:"] *)),
-.solo-page .solo-input:where(:not([style*="--r-br:"] *)),
-.solo-page .solo-textarea:where(:not([style*="--r-br:"] *)),
-.solo-page .solo-fixed-search__close button:where(:not([style*="--r-br:"] *)) {
-  --r-br: #375e8a;
+:where(.solo-page) .selectify:where(:not([style*="--r-br:"] *)),
+:where(.solo-page) .solo-select:where(:not([style*="--r-br:"] *)),
+:where(.solo-page) .solo-radio:where(:not([style*="--r-br:"] *)),
+:where(.solo-page) .solo-check:where(:not([style*="--r-br:"] *)),
+:where(.solo-page) .solo-input:where(:not([style*="--r-br:"] *)),
+:where(.solo-page) .solo-textarea:where(:not([style*="--r-br:"] *)),
+:where(.solo-page .solo-fixed-search__close) button:where(:not([style*="--r-br:"] *)) {
+  --r-br: #3a6492;
 }
 
-.solo-page :is(.selectify *:hover, .solo-select:hover, .solo-check:hover, .solo-radio:hover, .solo-input:hover, .solo-textarea:hover, .selectify *:focus, .solo-select:focus, .solo-check:focus, .solo-radio:focus, .solo-input:focus, .solo-textarea:focus) {
+:where(.solo-page) :is(.selectify *:hover, .solo-select:hover, .solo-check:hover, .solo-radio:hover, .solo-input:hover, .solo-textarea:hover, .selectify *:focus, .solo-select:focus, .solo-check:focus, .solo-radio:focus, .solo-input:focus, .solo-textarea:focus) {
   --r-br: #575785;
 }
 
 .solo-primary-sidebar-menu,
-.solo-inner .solo-menu-tree--responsive,
-.solo-fixed-search__inner .solo-fixed-search__wrapper,
-.solo-page .solo-outer.solo-container--animate-hover .solo-region-box__inner.solo-region-box__inner--top,
-.solo-page .solo-outer.solo-container--animate-hover .solo-region-box__inner.solo-region-box__inner--bottom,
-.solo-page .solo-outer.solo-container--animate-hover .solo-region-box__inner.solo-region-box__inner--footer {
+:where(.solo-inner) .solo-menu-tree--responsive,
+:where(.solo-fixed-search__inner) .solo-fixed-search__wrapper,
+:where(.solo-page .solo-outer.solo-container--animate-hover) .solo-region-box__inner.solo-region-box__inner--top,
+:where(.solo-page .solo-outer.solo-container--animate-hover) .solo-region-box__inner.solo-region-box__inner--bottom,
+:where(.solo-page .solo-outer.solo-container--animate-hover) .solo-region-box__inner.solo-region-box__inner--footer {
   --s-b: 190, 190, 211;
 }
 
-.solo-page :is(.selectify-radio, .selectify-checkbox, .selectify-radio *, .selectify-checkbox *) {
+:where(.solo-page) :is(.selectify-radio, .selectify-checkbox, .selectify-radio *, .selectify-checkbox *) {
   --selectify-checkbox-bg: color-mix(in srgb, #575785 6%, transparent);
   --selectify-checkbox-checked-bg: color-mix(in srgb, #575785 16%, transparent);
   --selectify-checkbox-check-circle: #0d4073;
@@ -101,7 +101,7 @@ div.solo-page-title.solo-container--single {
 }
 
 .solo-page .selectify-select,
-.solo-page .selectify-select * {
+:where(.solo-page .selectify-select) * {
   --selectify-select-bg: #040406;
   --selectify-select-hover-bg: #09090e;
   --selectify-select-color: var(--r-tx);

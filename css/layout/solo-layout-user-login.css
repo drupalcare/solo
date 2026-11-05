@@ -4,26 +4,26 @@
   grid-template-columns: auto;
 }
 
-.path-user-register .solo-container__inner--main .solo-region-box--content,
-.path-user-password .solo-container__inner--main .solo-region-box--content,
-.path-user-login .solo-container__inner--main .solo-region-box--content {
+:where(.path-user-register .solo-container__inner--main) .solo-region-box--content,
+:where(.path-user-password .solo-container__inner--main) .solo-region-box--content,
+:where(.path-user-login .solo-container__inner--main) .solo-region-box--content {
   width: 100% !important;
   max-width: 1100px;
-  margin-block: var(--solo-px16) !important;
-  margin-inline: auto !important;
-  float: none !important;
+  margin-block: var(--solo-px16);
+  margin-inline: auto;
+  float: none;
   display: grid;
 }
 
-.path-user-register .solo-container__inner--main .solo-region-box--content > *,
-.path-user-password .solo-container__inner--main .solo-region-box--content > *,
-.path-user-login .solo-container__inner--main .solo-region-box--content > * {
+:where(.path-user-register .solo-container__inner--main .solo-region-box--content) > *,
+:where(.path-user-password .solo-container__inner--main .solo-region-box--content) > *,
+:where(.path-user-login .solo-container__inner--main .solo-region-box--content) > * {
   min-width: 0;
 }
 
-.path-user-register .solo-container__inner--main .solo-region-box--content>div,
-.path-user-password .solo-container__inner--main .solo-region-box--content>div,
-.path-user-login .solo-container__inner--main .solo-region-box--content>div {
+:where(.path-user-register .solo-container__inner--main .solo-region-box--content) > div,
+:where(.path-user-password .solo-container__inner--main .solo-region-box--content) > div,
+:where(.path-user-login .solo-container__inner--main .solo-region-box--content) > div {
   box-shadow: 0 2.8px 2.2px rgba(var(--s-b), .034), 0 6.7px 5.3px rgba(var(--s-b), .048), 0 12.5px 10px rgba(var(--s-b), .06), 0 22.3px 17.9px rgba(var(--s-b), .072), 0 41.8px 33.4px rgba(var(--s-b), .086), 0 100px 80px rgba(var(--s-b), .12);
 }
 

@@ -31,3 +31,47 @@ variables:
   _AUTORUN_PREVIOUS_MINOR: 'all'
   # No previous-major job: 2.0.x requires ^11.3 || ^12, so Drupal 10 is not
   # claimed (it stays on 1.0.x).
+
+################
+# Static CSS checks (no site, no browser).
+#
+# The drupal.org template image is PHP; whether it carries python3 is not
+# established (needs checking), so this job does not rely on it. It runs in the
+# official python:3.12-bookworm image (the full Debian-based tag, which carries
+# python3 and git; needs checking on the first pipeline) and takes the project
+# plus Composer's vendor tree from the `composer` job's artifact.
+#
+# What runs, and why each one can go red:
+#   build-breakpoints --check   the 15 generated breakpoint files match their sources
+#   contrast-scan --strict      every predefined scheme keeps its text/border contrast
+#   check-css-budget            declarations above 0,2,0, with an id, with !important:
+#                               per folder, counts may fall and never rise
+#   check-schemes               scheme records vs libraries, options, thumbnails, CSS
+#   check-cascade               who wins between Solo, schemes and the generated region colours
+# check-schemes and check-cascade read solo_utilities, which solo's composer.json
+# requires (`drupal/solo_utilities: ^2.0`), so Composer is expected to have put it
+# under web/modules. If it is not there the job prints SKIPPED with the reason and
+# those two checks do not run; the log never shows a pass for a check that did not run.
+# check-winners.py is NOT run here: it needs a Drupal docroot of contrib modules.
+# Run it locally (see AGENTS.md).
+# Each script prints how many files or declarations it read; read that line.
+################
+css-checks:
+  stage: validate
+  image: python:3.12-bookworm
+  needs: [composer]
+  script:
+    - python3 -I scripts/build-breakpoints.py --check
+    - python3 -I scripts/contrast-scan.py --strict
+    - python3 -I scripts/check-css-budget.py
+    - |
+      UTIL=$(find -L web/modules -maxdepth 3 -type d -name solo_utilities -print -quit 2>/dev/null || true)
+      if [ -z "$UTIL" ] || [ ! -f "$UTIL/src/Css/ThemeLibraryRegistrar.php" ]; then
+        echo "SKIPPED check-schemes and check-cascade: solo_utilities (with src/Css/ThemeLibraryRegistrar.php) not found under web/modules; Composer did not install it. These two checks did NOT run."
+      else
+        echo "solo_utilities found at $UTIL"
+        python3 -I scripts/check-schemes.py --utilities "$UTIL"
+        LANE=$(mktemp -d "${TMPDIR:-/tmp}/solo-lane.XXXXXX")
+        ln -s "$PWD/$UTIL" "$LANE/solo_utilities"
+        python3 -I scripts/check-cascade.py --solo "$PWD" --lane "$LANE"
+      fi

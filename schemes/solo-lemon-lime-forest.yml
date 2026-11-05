@@ -1,0 +1,46 @@
+# Scheme record in the shape of the apex scheme sidecar (id, name, category, mode). Palette values are copied verbatim from css/predefined/solo-lemon-lime-forest.css.
+id: solo-lemon-lime-forest
+name: "Lemon Lime Forest"
+category: berry_and_fruit_tones
+mode: dark
+categories:
+  - berry_and_fruit_tones
+css: css/predefined/solo-lemon-lime-forest.css
+thumbnail: images/schemes/solo-lemon-lime-forest.webp
+palette:
+  --sc-head-tx: "#c4bf15"
+  --sc-link-tx: "#589d6b"
+  --sc-link-hover-tx: "#75b186"
+  --sc-menu-bg: "#1b1a03"
+  --sc-menu-tx: "#ebe643"
+  --sc-menu-hover-tx: "#fbfadd"
+  --sc-menu-hover-bg: "#68650b"
+  --sc-tab-hover-tx: "#fbfadd"
+  --sc-menu-open-tx: "#fbfadd"
+  --sc-menu-open-bg: "#68650b"
+  --sc-button-bg: "#2d4f37"
+  --sc-button-tx: "#c1dcc9"
+  --sc-button-hover-tx: "#2d4f37"
+  --sc-button-hover-bg: "#c1dcc9"
+  --sc-main-container-bg: "linear-gradient(45deg, #000000, #0c0b01)"
+  --sc-top-container-bg: "linear-gradient(45deg, #000000, #0c0b01)"
+  --sc-fixed-search-block-bg: "linear-gradient(45deg, #000000, #0c0b01)"
+  --sc-popup-login-block-inner-bg: "linear-gradient(45deg, #000000, #0c0b01)"
+  --sc-bottom-container-bg: "linear-gradient(45deg, #000000, #0c0b01)"
+  --sc-footer-container-bg: "linear-gradient(45deg, #000000, #0c0b01)"
+  --sc-footer-menu-bg: "linear-gradient(45deg, #000000, #0c0b01)"
+  --sc-copyright-bg: "linear-gradient(180deg, #2a2905, #0e1911)"
+  --sc-social-fill: "#77740d"
+  --sc-control-br: "#3f704d"
+  --sc-fixed-search-block-shadow: "171, 208, 182"
+  --sc-social-box-shadow: "171, 208, 182"
+  --sc-tab-hover-bg: "#68650b"
+  --sc-region-rule-br: "var(--solo-black)"
+page:
+  --r-br: "#77740d"
+  --r-bg: "#0c0b01"
+  --r-tx: "#fbfadd"
+  --r-header-bg: "linear-gradient(0deg, #000000, #1b1a03)"
+  --r-header-tx: "#c4bf15"
+  --r-menu-tx-h: "#fbfadd"
+  --r-menu-bg-h: "#68650b"

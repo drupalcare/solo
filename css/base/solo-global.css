@@ -89,13 +89,13 @@ h6 {
   margin-inline: 0;
 }
 
-[dir="rtl"] ol,
-[dir="rtl"] ul {
+:where([dir="rtl"]) ol,
+:where([dir="rtl"]) ul {
   direction: rtl;
   text-align: var(--solo-text-align-start);
 }
 
-[dir="rtl"] .solo-breadcrumb__menu li .solo-breadcrumb__separator {
+:where([dir="rtl"] .solo-breadcrumb__menu li) .solo-breadcrumb__separator {
   direction: rtl;
   transform: scaleX(-1);
 }
@@ -193,7 +193,7 @@ img {
 [type="submit"],
 .solo-file-button,
 .solo-button.button--primary,
-.block-user-login-block form+.item-list ul li a {
+.block-user-login-block form + .item-list ul li a {
   border-width: var(--solo-px1);
   border-style: solid;
   padding-block: var(--solo-px8);
@@ -216,7 +216,7 @@ img {
 }
 
 /* Forms Elements */
-.form-type-date > input {
+:where(.form-type-date) > input {
   max-height: 3.125rem;
 }
 
@@ -267,8 +267,8 @@ select,
 }
 
 /* Adjust for RTL */
-[dir="rtl"] select,
-[dir="rtl"] .solo-select {
+:where([dir="rtl"]) select,
+:where([dir="rtl"]) .solo-select {
   --select-arrow: left var(--solo-px10);
 }
 
@@ -278,7 +278,7 @@ select,
   padding-block-end: var(--solo-px6);
 }
 
-.dropbutton-multiple.open .dropbutton-arrow {
+:where(.dropbutton-multiple.open) .dropbutton-arrow {
   inset-block-start: var(--solo-px20);
 }
 
@@ -302,7 +302,7 @@ select[multiple] {
   padding-inline: var(--solo-px8);
 }
 
-select[multiple] option {
+:where(select[multiple]) option {
   padding-block: var(--solo-px4);
   padding-inline: var(--solo-px8);
 }
@@ -311,7 +311,7 @@ ol {
   display: block;
 }
 
-.form-type-number>label {
+.form-type-number > label {
   width: 100%;
 }
 
@@ -353,7 +353,7 @@ ol {
   overflow: hidden;
 }
 
-.solo-bar .solo-bar-item {
+:where(.solo-bar) .solo-bar-item {
   padding-block: var(--solo-px8);
   padding-inline: var(--solo-px16);
   float: inline-start;
@@ -383,7 +383,7 @@ ol {
   font-size: var(--solo-px14);
 }
 
-form fieldset:not(td fieldset) {
+:where(form) fieldset:not(td fieldset) {
   border: 1px solid var(--r-br, var(--r-br-b)) !important;
   margin-block-start: var(--solo-px12);
 }
@@ -435,16 +435,16 @@ form fieldset:not(td fieldset) {
   text-transform: none !important;
 }
 
-.solo-text-left * {
-  text-align: left !important;
+:where(.solo-text-left) * {
+  text-align: left;
 }
 
-.solo-text-center * {
-  text-align: center !important;
+:where(.solo-text-center) * {
+  text-align: center;
 }
 
-.solo-text-right * {
-  text-align: right !important;
+:where(.solo-text-right) * {
+  text-align: right;
 }
 
 .solo-display-none {
@@ -515,64 +515,64 @@ form fieldset:not(td fieldset) {
   border: 0;
 }
 
-html.gap-no,
-html.gap-no {
+:where(html).gap-no,
+:where(html).gap-no {
   --solo-gap: var(--solo-px0);
 }
 
-html.gap-12,
-html.gap-12 {
+:where(html).gap-12,
+:where(html).gap-12 {
   --solo-gap: var(--solo-px12);
 }
 
-html.gap-14,
-html.gap-14 {
+:where(html).gap-14,
+:where(html).gap-14 {
   --solo-gap: var(--solo-px14);
 }
 
-html.gap-16,
-html.gap-16 {
+:where(html).gap-16,
+:where(html).gap-16 {
   --solo-gap: var(--solo-px16);
 }
 
 @media (min-width:26rem) {
-  html.gap-20,
-  html.gap-20 {
+  :where(html).gap-20,
+  :where(html).gap-20 {
     --solo-gap: var(--solo-px20);
   }
 
-  html.gap-24,
-  html.gap-24 {
+  :where(html).gap-24,
+  :where(html).gap-24 {
     --solo-gap: var(--solo-px24);
   }
 
-  html.gap-36,
-  html.gap-36 {
+  :where(html).gap-36,
+  :where(html).gap-36 {
     --solo-gap: var(--solo-px36);
   }
 
-  html.gap-48,
-  html.gap-48 {
+  :where(html).gap-48,
+  :where(html).gap-48 {
     --solo-gap: var(--solo-px48);
   }
 
-  html.gap-64,
-  html.gap-64 {
+  :where(html).gap-64,
+  :where(html).gap-64 {
     --solo-gap: var(--solo-px64);
   }
 
 }
 
-.inline-radio-checkbox form .form-wrapper.solo-clear::after,
-.inline-radio-checkbox form .form-wrapper.solo-clear::before,
-.inline-radio-checkbox form .form-wrapper .solo-clear::after,
-.inline-radio-checkbox form .form-wrapper .solo-clear::before {
+:where(.inline-radio-checkbox form) .form-wrapper.solo-clear::after,
+:where(.inline-radio-checkbox form) .form-wrapper.solo-clear::before,
+:where(.inline-radio-checkbox form) .form-wrapper .solo-clear::after,
+:where(.inline-radio-checkbox form) .form-wrapper .solo-clear::before {
   content: none;
   display: none;
   clear: none;
 }
 
-.inline-radio-checkbox form .form-radios,
+.inline-radio-checkbox :where(form) .form-radios,
 .inline-radio-checkbox form .form-checkboxes {
   display: inline-flex;
   gap: 1rem;
@@ -580,7 +580,7 @@ html.gap-16 {
   align-items: center;
 }
 
-.inline-radio-checkbox form .form-radios .form-type-radio,
+:where(.inline-radio-checkbox) form .form-radios .form-type-radio,
 .inline-radio-checkbox form .form-checkboxes .form-type-checkbox {
   margin: 0;
   width: auto;

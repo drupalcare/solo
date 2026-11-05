@@ -1,0 +1,46 @@
+# Scheme record in the shape of the apex scheme sidecar (id, name, category, mode). Palette values are copied verbatim from css/predefined/solo-rustic-redwood-charm.css.
+id: solo-rustic-redwood-charm
+name: "Rustic Redwood Charm"
+category: bold_and_dramatic_colors
+mode: dark
+categories:
+  - bold_and_dramatic_colors
+css: css/predefined/solo-rustic-redwood-charm.css
+thumbnail: images/schemes/solo-rustic-redwood-charm.webp
+palette:
+  --sc-head-tx: "#e43c33"
+  --sc-link-tx: "#daaa8f"
+  --sc-link-hover-tx: "#b6673c"
+  --sc-menu-bg: "#060101"
+  --sc-menu-tx: "#fce8e7"
+  --sc-menu-hover-tx: "#ffffff"
+  --sc-menu-hover-bg: "#ab1f17"
+  --sc-tab-hover-tx: "#ffffff"
+  --sc-menu-open-tx: "#ffffff"
+  --sc-menu-open-bg: "#ab1f17"
+  --sc-button-bg: "#432616"
+  --sc-button-tx: "#fcf8f5"
+  --sc-button-hover-tx: "#030201"
+  --sc-button-hover-bg: "#c16f42"
+  --sc-main-container-bg: "linear-gradient(45deg, #000000, #060101)"
+  --sc-top-container-bg: "linear-gradient(45deg, #000000, #060101)"
+  --sc-fixed-search-block-bg: "linear-gradient(45deg, #000000, #060101)"
+  --sc-popup-login-block-inner-bg: "linear-gradient(45deg, #000000, #060101)"
+  --sc-bottom-container-bg: "linear-gradient(45deg, #000000, #060101)"
+  --sc-footer-container-bg: "linear-gradient(45deg, #000000, #060101)"
+  --sc-footer-menu-bg: "linear-gradient(45deg, #000000, #060101)"
+  --sc-copyright-bg: "linear-gradient(180deg, #150403, #100905)"
+  --sc-social-fill: "#8d1a13"
+  --sc-control-br: "#693c23"
+  --sc-fixed-search-block-shadow: "197, 121, 79"
+  --sc-social-box-shadow: "243, 228, 220"
+  --sc-tab-hover-bg: "#ab1f17"
+  --sc-region-rule-br: "var(--solo-black)"
+page:
+  --r-br: "#60110d"
+  --r-bg: "#060101"
+  --r-tx: "#fef7f6"
+  --r-header-bg: "linear-gradient(0deg, #000000, #240705)"
+  --r-header-tx: "#e43c33"
+  --r-menu-tx-h: "#ffffff"
+  --r-menu-bg-h: "#ab1f17"

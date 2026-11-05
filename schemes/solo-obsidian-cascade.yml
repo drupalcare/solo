@@ -1,0 +1,44 @@
+# Scheme record in the shape of the apex scheme sidecar (id, name, category, mode). Palette values are copied verbatim from css/predefined/solo-obsidian-cascade.css.
+id: solo-obsidian-cascade
+name: "Obsidian Cascade"
+category: earthy_and_smokey_tones
+mode: mixed
+categories:
+  - earthy_and_smokey_tones
+css: css/predefined/solo-obsidian-cascade.css
+thumbnail: images/schemes/solo-obsidian-cascade.webp
+palette:
+  --sc-head-tx: "#717171"
+  --sc-link-tx: "#0505bc"
+  --sc-link-hover-tx: "#2d2dfa"
+  --sc-menu-bg: "#010127"
+  --sc-menu-tx: "#e4e4fe"
+  --sc-menu-hover-tx: "#cfcfcf"
+  --sc-menu-hover-bg: "#0b0b0b"
+  --sc-tab-hover-tx: "#cfcfcf"
+  --sc-menu-open-tx: "#cfcfcf"
+  --sc-menu-open-bg: "#0b0b0b"
+  --sc-button-bg: "#3e3e3e"
+  --sc-button-tx: "#f1f1f1"
+  --sc-button-hover-tx: "#3e3e3e"
+  --sc-button-hover-bg: "#f1f1f1"
+  --sc-main-container-bg: "linear-gradient(45deg, #f9f9f9, #f4f4ff)"
+  --sc-top-container-bg: "linear-gradient(45deg, #f9f9f9, #f4f4ff)"
+  --sc-fixed-search-block-bg: "linear-gradient(45deg, #f9f9f9, #f4f4ff)"
+  --sc-popup-login-block-inner-bg: "linear-gradient(45deg, #f9f9f9, #f4f4ff)"
+  --sc-bottom-container-bg: "linear-gradient(0deg, #0c0d12, #010116)"
+  --sc-footer-container-bg: "linear-gradient(0deg, #0c0d12, #010116)"
+  --sc-footer-menu-bg: "linear-gradient(0deg, #0c0d12, #010116)"
+  --sc-copyright-bg: "linear-gradient(180deg, #050608, #000006)"
+  --sc-social-fill: "#3a415b"
+  --sc-control-br: "#0404ac"
+  --sc-fixed-search-block-shadow: "2, 2, 38"
+  --sc-social-box-shadow: "17, 17, 244"
+page:
+  --r-br: "#dde0ea"
+  --r-bg: "#fdfdfd"
+  --r-tx: "#202331"
+  --r-header-bg: "linear-gradient(180deg, #030303, #0b0b0b)"
+  --r-header-tx: "#919191"
+  --r-menu-tx-h: "#cfcfcf"
+  --r-menu-bg-h: "#0b0b0b"

@@ -1,0 +1,44 @@
+# Scheme record in the shape of the apex scheme sidecar (id, name, category, mode). Palette values are copied verbatim from css/predefined/solo-metallic-nebula.css.
+id: solo-metallic-nebula
+name: "Metallic Nebula"
+category: galactic_and_celestial
+mode: mixed
+categories:
+  - galactic_and_celestial
+css: css/predefined/solo-metallic-nebula.css
+thumbnail: images/schemes/solo-metallic-nebula.webp
+palette:
+  --sc-head-tx: "#767676"
+  --sc-link-tx: "#675e6a"
+  --sc-link-hover-tx: "#9a919d"
+  --sc-menu-bg: "#262726"
+  --sc-menu-tx: "#e4e2e5"
+  --sc-menu-hover-tx: "#fdfdfd"
+  --sc-menu-hover-bg: "#0f0e10"
+  --sc-tab-hover-tx: "#fdfdfd"
+  --sc-menu-open-tx: "#fdfdfd"
+  --sc-menu-open-bg: "#0f0e10"
+  --sc-button-bg: "#31383a"
+  --sc-button-tx: "#e6e9ea"
+  --sc-button-hover-tx: "#1e1e1e"
+  --sc-button-hover-bg: "#78888c"
+  --sc-main-container-bg: "linear-gradient(45deg, #dde1e2, #e1e2e1)"
+  --sc-top-container-bg: "linear-gradient(45deg, #dde1e2, #e1e2e1)"
+  --sc-fixed-search-block-bg: "linear-gradient(45deg, #dde1e2, #e1e2e1)"
+  --sc-popup-login-block-inner-bg: "linear-gradient(45deg, #dde1e2, #e1e2e1)"
+  --sc-bottom-container-bg: "linear-gradient(0deg, #1a1d1e, #0a0c0c)"
+  --sc-footer-container-bg: "linear-gradient(0deg, #1a1d1e, #0a0c0c)"
+  --sc-footer-menu-bg: "linear-gradient(0deg, #1a1d1e, #0a0c0c)"
+  --sc-copyright-bg: "linear-gradient(180deg, #040504, #000000)"
+  --sc-social-fill: "#394143"
+  --sc-control-br: "#495355"
+  --sc-fixed-search-block-shadow: "10, 12, 12"
+  --sc-social-box-shadow: "128, 149, 149"
+page:
+  --r-br: "#eaeaea"
+  --r-bg: "#f7f6f7"
+  --r-tx: "#1a191a"
+  --r-header-bg: "linear-gradient(0deg, #121415, #222627)"
+  --r-header-tx: "#8c8c8c"
+  --r-menu-tx-h: "#fdfdfd"
+  --r-menu-bg-h: "#0f0e10"

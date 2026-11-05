@@ -41,27 +41,27 @@ BLUEBERRY #241571, CERULEAN #0492C2 */
   --r-menu-bg-h: #05b8f4;
 }
 
-.solo-page .selectify:where(:not([style*="--r-br:"] *)),
-.solo-page .solo-select:where(:not([style*="--r-br:"] *)),
-.solo-page .solo-radio:where(:not([style*="--r-br:"] *)),
-.solo-page .solo-check:where(:not([style*="--r-br:"] *)),
-.solo-page .solo-input:where(:not([style*="--r-br:"] *)),
-.solo-page .solo-textarea:where(:not([style*="--r-br:"] *)),
-.solo-page .solo-fixed-search__close button:where(:not([style*="--r-br:"] *)) {
-  --r-br: #8b90b4;
+:where(.solo-page) .selectify:where(:not([style*="--r-br:"] *)),
+:where(.solo-page) .solo-select:where(:not([style*="--r-br:"] *)),
+:where(.solo-page) .solo-radio:where(:not([style*="--r-br:"] *)),
+:where(.solo-page) .solo-check:where(:not([style*="--r-br:"] *)),
+:where(.solo-page) .solo-input:where(:not([style*="--r-br:"] *)),
+:where(.solo-page) .solo-textarea:where(:not([style*="--r-br:"] *)),
+:where(.solo-page .solo-fixed-search__close) button:where(:not([style*="--r-br:"] *)) {
+  --r-br: #888db2;
 }
 
-.solo-page .solo-region-box__inner:where(:not([style*="--r-br:"] *)) {
+:where(.solo-page) .solo-region-box__inner:where(:not([style*="--r-br:"] *)) {
   --r-br: #b4dfee;
 }
 
-.solo-page .solo-primary-sidebar-menu:where(:not([style*="--r-br:"] *)),
-.solo-page .solo-primary-menu:where(:not([style*="--r-br:"] *)) {
+:where(.solo-page) .solo-primary-sidebar-menu:where(:not([style*="--r-br:"] *)),
+:where(.solo-page) .solo-primary-menu:where(:not([style*="--r-br:"] *)) {
   --r-br: #03a3dd;
 }
 
 .solo-welcome-text,
-.solo-container--main .solo-region-box--main {
+:where(.solo-container--main) .solo-region-box--main {
   --r-bg: var(--solo-white);
 }
 
@@ -76,11 +76,11 @@ div.solo-page-title.solo-container--single {
   --r-bg: linear-gradient(0deg, #fafeff, #d8f4fe);
 }
 
-.solo-page :is(.selectify *:hover, .solo-select:hover, .solo-check:hover, .solo-radio:hover, .solo-input:hover, .solo-textarea:hover, .selectify *:focus, .solo-select:focus, .solo-check:focus, .solo-radio:focus, .solo-input:focus, .solo-textarea:focus) {
+:where(.solo-page) :is(.selectify *:hover, .solo-select:hover, .solo-check:hover, .solo-radio:hover, .solo-input:hover, .solo-textarea:hover, .selectify *:focus, .solo-select:focus, .solo-check:focus, .solo-radio:focus, .solo-input:focus, .solo-textarea:focus) {
   --r-br: #04a0d4;
 }
 
-.solo-inner .solo-menu-tree--responsive {
+:where(.solo-inner) .solo-menu-tree--responsive {
   --s-b: 36, 21, 113;
 }
 
@@ -88,20 +88,20 @@ div.solo-page-title.solo-container--single {
   --s-b: 36, 21, 113;
 }
 
-.solo-page .solo-outer.solo-container--animate-hover .solo-region-box__inner.solo-region-box__inner--top {
+:where(.solo-page .solo-outer.solo-container--animate-hover) .solo-region-box__inner.solo-region-box__inner--top {
   --s-b: 36, 21, 113;
 }
 
-.solo-page .solo-outer.solo-container--animate-hover .solo-region-box__inner.solo-region-box__inner--bottom,
-.solo-page .solo-outer.solo-container--animate-hover .solo-region-box__inner.solo-region-box__inner--footer {
+:where(.solo-page .solo-outer.solo-container--animate-hover) .solo-region-box__inner.solo-region-box__inner--bottom,
+:where(.solo-page .solo-outer.solo-container--animate-hover) .solo-region-box__inner.solo-region-box__inner--footer {
   --s-b: 36, 21, 113;
 }
 
-.solo-fixed-search__inner .solo-fixed-search__wrapper {
+:where(.solo-fixed-search__inner) .solo-fixed-search__wrapper {
   --s-b: 36, 21, 113;
 }
 
-.solo-page :is(.selectify-radio, .selectify-checkbox, .selectify-radio *, .selectify-checkbox *) {
+:where(.solo-page) :is(.selectify-radio, .selectify-checkbox, .selectify-radio *, .selectify-checkbox *) {
   --selectify-checkbox-bg: color-mix(in srgb, #04a0d4 6%, transparent);
   --selectify-checkbox-checked-bg: color-mix(in srgb, #04a0d4 16%, transparent);
   --selectify-checkbox-check-circle: #ccc4f4;
@@ -117,7 +117,7 @@ div.solo-page-title.solo-container--single {
 }
 
 .solo-page .selectify-select,
-.solo-page .selectify-select * {
+:where(.solo-page .selectify-select) * {
   --selectify-select-bg: #ffffff;
   --selectify-select-hover-bg: #f0f9fc;
   --selectify-select-color: var(--r-tx);

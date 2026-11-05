@@ -1,0 +1,44 @@
+# Scheme record in the shape of the apex scheme sidecar (id, name, category, mode). Palette values are copied verbatim from css/predefined/solo-salmon-denim-fade.css.
+id: solo-salmon-denim-fade
+name: "Salmon Denim Fade"
+category: denim_influences
+mode: mixed
+categories:
+  - denim_influences
+css: css/predefined/solo-salmon-denim-fade.css
+thumbnail: images/schemes/solo-salmon-denim-fade.webp
+palette:
+  --sc-head-tx: "#5b668f"
+  --sc-link-tx: "#c00"
+  --sc-link-hover-tx: "#f00"
+  --sc-menu-bg: "#ff9999"
+  --sc-menu-tx: "#200"
+  --sc-menu-hover-tx: "#400"
+  --sc-menu-hover-bg: "#fbb"
+  --sc-tab-hover-tx: "#400"
+  --sc-menu-open-tx: "#400"
+  --sc-menu-open-bg: "#fbb"
+  --sc-button-bg: "#d00"
+  --sc-button-tx: "#fee"
+  --sc-button-hover-tx: "#100"
+  --sc-button-hover-bg: "#f00"
+  --sc-main-container-bg: "linear-gradient(135deg, #fdfdfd, #f3e8e8)"
+  --sc-top-container-bg: "linear-gradient(135deg, #fdfdfd, #f3e8e8)"
+  --sc-fixed-search-block-bg: "linear-gradient(135deg, #fdfdfd, #f3e8e8)"
+  --sc-popup-login-block-inner-bg: "linear-gradient(135deg, #fdfdfd, #f3e8e8)"
+  --sc-bottom-container-bg: "linear-gradient(180deg, #100, #0c0d12)"
+  --sc-footer-container-bg: "linear-gradient(180deg, #100, #0c0d12)"
+  --sc-footer-menu-bg: "linear-gradient(180deg, #100, #0c0d12)"
+  --sc-copyright-bg: "linear-gradient(180deg, #100, #191c27)"
+  --sc-social-fill: "#600"
+  --sc-control-br: "#700"
+  --sc-fixed-search-block-shadow: "34, 0, 0"
+  --sc-social-box-shadow: "255, 0, 0"
+page:
+  --r-br: "#f99"
+  --r-bg: "#fee"
+  --r-tx: "#191c27"
+  --r-header-bg: "linear-gradient(0deg, #202331, #2d3246)"
+  --r-header-tx: "#9199b9"
+  --r-menu-tx-h: "#400"
+  --r-menu-bg-h: "#fbb"

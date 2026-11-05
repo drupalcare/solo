@@ -41,15 +41,15 @@ Bayern Blue #0066B2, Berry Blue #4F86F7, Blue Yonder #5072A7, OIL #050100 */
   --r-br-light: #dcd0c7;
 }
 
-.solo-page .solo-popup-login__open:where(:not([style*="--r-br:"] *)),
-.solo-page .solo-hamburger button:where(:not([style*="--r-br:"] *)),
-.solo-page .solo-main-nav:where(:not([style*="--r-br:"] *)),
-.solo-page .solo-main-nav ul:where(:not([style*="--r-br:"] *)),
-.solo-page .solo-main-nav li:where(:not([style*="--r-br:"] *)),
-.solo-page .solo-header li.solo-menu-tree__item>a:where(:not([style*="--r-br:"] *)),
-.solo-page .solo-main-nav li>a:where(:not([style*="--r-br:"] *)),
-.solo-page .solo-header li.solo-menu-tree__item>button:where(:not([style*="--r-br:"] *)),
-.solo-page .solo-main-nav li>button:where(:not([style*="--r-br:"] *)) {
+:where(.solo-page) .solo-popup-login__open:where(:not([style*="--r-br:"] *)),
+:where(.solo-page .solo-hamburger) button:where(:not([style*="--r-br:"] *)),
+:where(.solo-page) .solo-main-nav:where(:not([style*="--r-br:"] *)),
+:where(.solo-page .solo-main-nav) ul:where(:not([style*="--r-br:"] *)),
+:where(.solo-page) .solo-main-nav li:where(:not([style*="--r-br:"] *)),
+:where(.solo-page) .solo-header li.solo-menu-tree__item > a:where(:not([style*="--r-br:"] *)),
+:where(.solo-page) .solo-main-nav li > a:where(:not([style*="--r-br:"] *)),
+:where(.solo-page .solo-header) li.solo-menu-tree__item > button:where(:not([style*="--r-br:"] *)),
+:where(.solo-page .solo-main-nav) li > button:where(:not([style*="--r-br:"] *)) {
   --r-br: #005390;
 }
 
@@ -77,16 +77,16 @@ div.solo-page-title.solo-container--single {
 }
 
 div.solo-page-title.solo-container--single h1 a,
-div.solo-page-title.solo-container--single h1 span,
-header.solo-header h1,
-header.solo-header h2,
-header.solo-header h3,
-header.solo-header h1 a,
-header.solo-header h2 a,
-header.solo-header h3 a,
-header.solo-header h1 a span,
-header.solo-header h2 a span,
-header.solo-header h3 a span {
+:where(div.solo-page-title.solo-container--single) h1 span,
+:where(header.solo-header) h1,
+:where(header.solo-header) h2,
+:where(header.solo-header) h3,
+:where(header.solo-header h1) a,
+:where(header.solo-header h2) a,
+:where(header.solo-header h3) a,
+:where(header.solo-header h1 a) span,
+:where(header.solo-header h2 a) span,
+:where(header.solo-header h3 a) span {
   --r-tx: #c9bfb4;
 }
 
@@ -114,45 +114,45 @@ header.solo-header h3 a span {
   --r-bg: linear-gradient(180deg, #000508, #0c0908);
 }
 
-.solo-page :is(.solo-container--bottom a, .solo-container--footer a, .solo-footer-nav a, .breadcrumb a, .solo-copyright a) {
+:where(.solo-page) :is(.solo-container--bottom a, .solo-container--footer a, .solo-footer-nav a, .breadcrumb a, .solo-copyright a) {
   --r-tx: #b8aa9b;
 }
 
-.solo-page :is(.solo-container--bottom h1, .solo-container--bottom h2, .solo-container--bottom h3, .solo-container--footer h1, .solo-container--footer h2, .solo-container--footer h3, .solo-footer-nav h1, .solo-footer-nav h2, .solo-footer-nav h3) {
+:where(.solo-page) :is(.solo-container--bottom h1, .solo-container--bottom h2, .solo-container--bottom h3, .solo-container--footer h1, .solo-container--footer h2, .solo-container--footer h3, .solo-footer-nav h1, .solo-footer-nav h2, .solo-footer-nav h3) {
   --r-tx: #007cd7;
 }
 
-.solo-page .selectify:where(:not([style*="--r-br:"] *)),
-.solo-page .solo-select:where(:not([style*="--r-br:"] *)),
-.solo-page .solo-radio:where(:not([style*="--r-br:"] *)),
-.solo-page .solo-check:where(:not([style*="--r-br:"] *)),
-.solo-page .solo-input:where(:not([style*="--r-br:"] *)),
-.solo-page .solo-textarea:where(:not([style*="--r-br:"] *)),
-.solo-page .solo-fixed-search__close button:where(:not([style*="--r-br:"] *)) {
+:where(.solo-page) .selectify:where(:not([style*="--r-br:"] *)),
+:where(.solo-page) .solo-select:where(:not([style*="--r-br:"] *)),
+:where(.solo-page) .solo-radio:where(:not([style*="--r-br:"] *)),
+:where(.solo-page) .solo-check:where(:not([style*="--r-br:"] *)),
+:where(.solo-page) .solo-input:where(:not([style*="--r-br:"] *)),
+:where(.solo-page) .solo-textarea:where(:not([style*="--r-br:"] *)),
+:where(.solo-page .solo-fixed-search__close) button:where(:not([style*="--r-br:"] *)) {
   --r-br: #2c261f;
 }
 
-.solo-page :is(.selectify *:hover, .solo-select:hover, .solo-check:hover, .solo-radio:hover, .solo-input:hover, .solo-textarea:hover, .selectify *:focus, .solo-select:focus, .solo-check:focus, .solo-radio:focus, .solo-input:focus, .solo-textarea:focus) {
+:where(.solo-page) :is(.selectify *:hover, .solo-select:hover, .solo-check:hover, .solo-radio:hover, .solo-input:hover, .solo-textarea:hover, .selectify *:focus, .solo-select:focus, .solo-check:focus, .solo-radio:focus, .solo-input:focus, .solo-textarea:focus) {
   --r-br: #008df6;
 }
 
 .solo-primary-sidebar-menu,
-.solo-inner .solo-menu-tree--responsive,
-.solo-fixed-search__inner .solo-fixed-search__wrapper,
-.solo-page .solo-outer.solo-container--animate-hover .solo-region-box__inner.solo-region-box__inner--top {
+:where(.solo-inner) .solo-menu-tree--responsive,
+:where(.solo-fixed-search__inner) .solo-fixed-search__wrapper,
+:where(.solo-page .solo-outer.solo-container--animate-hover) .solo-region-box__inner.solo-region-box__inner--top {
   --s-b: 24, 20, 17;
 }
 
-.solo-page .solo-outer.solo-container--animate-hover .solo-region-box__inner.solo-region-box__inner--bottom,
-.solo-page .solo-outer.solo-container--animate-hover .solo-region-box__inner.solo-region-box__inner--footer {
+:where(.solo-page .solo-outer.solo-container--animate-hover) .solo-region-box__inner.solo-region-box__inner--bottom,
+:where(.solo-page .solo-outer.solo-container--animate-hover) .solo-region-box__inner.solo-region-box__inner--footer {
   --s-b: 208, 199, 190;
 }
 
-.solo-page :is(.solo-container--top, .solo-container--top , .solo-container--main, .solo-container--main ):where(:not([style*="--r-br:"] *)) {
+:where(.solo-page) :is(.solo-container--top, .solo-container--top , .solo-container--main, .solo-container--main ):where(:not([style*="--r-br:"] *)) {
   --r-br: var(--r-br-light);
 }
 
-.solo-page :is(.selectify-radio, .selectify-checkbox, .selectify-radio *, .selectify-checkbox *) {
+:where(.solo-page) :is(.selectify-radio, .selectify-checkbox, .selectify-radio *, .selectify-checkbox *) {
   --selectify-checkbox-bg: color-mix(in srgb, #008df6 6%, transparent);
   --selectify-checkbox-checked-bg: color-mix(in srgb, #008df6 16%, transparent);
   --selectify-checkbox-check-circle: #2c261f;
@@ -168,7 +168,7 @@ header.solo-header h3 a span {
 }
 
 .solo-page .selectify-select,
-.solo-page .selectify-select * {
+:where(.solo-page .selectify-select) * {
   --selectify-select-bg: #ffffff;
   --selectify-select-hover-bg: #f0f8fe;
   --selectify-select-color: var(--r-tx);
@@ -182,18 +182,18 @@ header.solo-header h3 a span {
 }
 
 /* Per-region text colours: a region setting still wins. */
-.solo-page .solo-header,
-.solo-page .solo-page-title { --r-sc-h1: #96826d; --r-sc-lk: #0087eb; --r-sc-lk-h: #0092fd; }
-.solo-page .solo-highlighted { --r-sc-h1: #6c5c4d; --r-sc-lk: #0061aa; --r-sc-lk-h: #005799; }
-.solo-page .solo-welcome-text { --r-sc-h1: #83705e; --r-sc-lk: #0075cd; }
-.solo-page .breadcrumb,
-.solo-page .solo-copyright { --r-sc-h1: #8a7662; --r-sc-lk-h: #007cd8; }
-.solo-page .solo-container--top,
-.solo-page .solo-container--main,
-.solo-page .solo-fixed-search,
-.solo-page .solo-popup-login__inner { --r-sc-h1: #7d6b59; --r-sc-lk: #0071c5; }
-.solo-page .solo-container--bottom,
-.solo-page .solo-container--footer { --r-sc-lk-h: #007bd6; }
-.solo-page .solo-footer-nav { --r-sc-lk-h: #007cd8; }
-.solo-page .pager__item a { --r-tx: #0071c5; }
+:where(.solo-page) .solo-header,
+:where(.solo-page) .solo-page-title { --r-sc-h1: #96826d; --r-sc-lk: #0087eb; --r-sc-lk-h: #0092fd; }
+:where(.solo-page) .solo-highlighted { --r-sc-h1: #6c5c4d; --r-sc-lk: #0061aa; --r-sc-lk-h: #005799; }
+:where(.solo-page) .solo-welcome-text { --r-sc-h1: #83705e; --r-sc-lk: #0075cd; }
+:where(.solo-page) .breadcrumb,
+:where(.solo-page) .solo-copyright { --r-sc-h1: #8a7662; --r-sc-lk-h: #007cd8; }
+:where(.solo-page) .solo-container--top,
+:where(.solo-page) .solo-container--main,
+:where(.solo-page) .solo-fixed-search,
+:where(.solo-page) .solo-popup-login__inner { --r-sc-h1: #7d6b59; --r-sc-lk: #0071c5; }
+:where(.solo-page) .solo-container--bottom,
+:where(.solo-page) .solo-container--footer { --r-sc-lk-h: #007bd6; }
+:where(.solo-page) .solo-footer-nav { --r-sc-lk-h: #007cd8; }
+:where(.solo-page) .pager__item a { --r-tx: #0071c5; }
 /* End per-region text colours */

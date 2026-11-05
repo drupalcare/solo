@@ -1,0 +1,46 @@
+# Scheme record in the shape of the apex scheme sidecar (id, name, category, mode). Palette values are copied verbatim from css/predefined/solo-parisian-skyline.css.
+id: solo-parisian-skyline
+name: "Parisian Skyline"
+category: urban_and_modern_hues
+mode: dark
+categories:
+  - urban_and_modern_hues
+css: css/predefined/solo-parisian-skyline.css
+thumbnail: images/schemes/solo-parisian-skyline.webp
+palette:
+  --sc-head-tx: "#1a7ee0"
+  --sc-link-tx: "#7979a5"
+  --sc-link-hover-tx: "#7979a5"
+  --sc-menu-bg: "#030d16"
+  --sc-menu-tx: "#d8eafb"
+  --sc-menu-hover-tx: "#f7fbfe"
+  --sc-menu-hover-bg: "#13599f"
+  --sc-tab-hover-tx: "#f7fbfe"
+  --sc-menu-open-tx: "#f7fbfe"
+  --sc-menu-open-bg: "#13599f"
+  --sc-button-bg: "#48486c"
+  --sc-button-tx: "#e6e6ef"
+  --sc-button-hover-tx: "#48486c"
+  --sc-button-hover-bg: "#e6e6ef"
+  --sc-main-container-bg: "linear-gradient(45deg, #000000, #030d16)"
+  --sc-top-container-bg: "linear-gradient(45deg, #000000, #030d16)"
+  --sc-fixed-search-block-bg: "linear-gradient(45deg, #000000, #030d16)"
+  --sc-popup-login-block-inner-bg: "linear-gradient(45deg, #000000, #030d16)"
+  --sc-bottom-container-bg: "linear-gradient(45deg, #000000, #030d16)"
+  --sc-footer-container-bg: "linear-gradient(45deg, #000000, #030d16)"
+  --sc-footer-menu-bg: "linear-gradient(45deg, #000000, #030d16)"
+  --sc-copyright-bg: "linear-gradient(180deg, #030d16, #12121a)"
+  --sc-social-fill: "#0b3763"
+  --sc-control-br: "#414162"
+  --sc-fixed-search-block-shadow: "216, 234, 251"
+  --sc-social-box-shadow: "26, 123, 220"
+  --sc-tab-hover-bg: "#13599f"
+  --sc-region-rule-br: "var(--solo-black)"
+page:
+  --r-br: "#0a2f53"
+  --r-bg: "#010407"
+  --r-tx: "#c9e1f9"
+  --r-header-bg: "linear-gradient(0deg, #000000, #030d16)"
+  --r-header-tx: "#197ada"
+  --r-menu-tx-h: "#f7fbfe"
+  --r-menu-bg-h: "#13599f"

@@ -31,23 +31,11 @@ figcaption {
     margin-inline-start: 1rem;
   }
 
-  [dir="rtl"] .align-right {
-    float: inline-start;
-    margin-inline-start: 0;
-    margin-inline-end: 1rem;
-  }
-
   .align-left {
     float: inline-start;
     max-width: 74.99875%;
     margin-block: 1rem;
     margin-inline-end: 1rem;
-  }
-
-  [dir="rtl"] .align-left {
-    float: inline-end;
-    margin-inline-end: 0;
-    margin-inline-start: 1rem;
   }
 
 }
@@ -60,7 +48,21 @@ figcaption {
     margin-inline-start: 1rem;
   }
 
-  [dir="rtl"] .align-right {
+}
+
+@media (min-width:36rem) {
+
+  :where([dir="rtl"]) .align-right {
+    float: inline-start;
+    margin-inline-start: 0;
+    margin-inline-end: 1rem;
+  }
+
+}
+
+@media (min-width:48rem) {
+
+  :where([dir="rtl"]) .align-right {
     float: inline-start;
     margin-inline-start: 0;
     margin-inline-end: 1rem;
@@ -73,7 +75,11 @@ figcaption {
     margin-inline-end: 1rem;
   }
 
-  [dir="rtl"] .align-left {
+}
+
+@media (min-width:36rem) {
+
+  :where([dir="rtl"]) .align-left {
     float: inline-end;
     margin-inline-end: 0;
     margin-inline-start: 1rem;
@@ -81,9 +87,19 @@ figcaption {
 
 }
 
-.align-center img,
-.align-center video,
-.align-center audio {
+@media (min-width:48rem) {
+
+  :where([dir="rtl"]) .align-left {
+    float: inline-end;
+    margin-inline-end: 0;
+    margin-inline-start: 1rem;
+  }
+
+}
+
+:where(.align-center) img,
+:where(.align-center) video,
+:where(.align-center) audio {
   margin-inline: auto;
 }
 

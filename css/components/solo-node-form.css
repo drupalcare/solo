@@ -1,4 +1,4 @@
-details.form-wrapper::after {
+:where(details).form-wrapper::after {
   content: "";
   clear: both;
   display: table;
@@ -19,7 +19,7 @@ details.form-wrapper > summary {
   padding-inline: var(--solo-px16);
 }
 
-form div.container-inline>* {
+:where(form div.container-inline) > * {
   margin-block-start: var(--solo-px8);
   margin-block-end: var(--solo-px8);
   margin-inline-end: var(--solo-px8);
@@ -36,41 +36,41 @@ form .fieldset-wrapper .form-item {
   display: grid;
 }
 
-.details-wrapper > * {
+:where(.details-wrapper) > * {
   min-width: 0;
 }
 
-.modules-wrapper details[open] {
+:where(.modules-wrapper) details[open] {
   padding-block: var(--solo-px8) !important;
   padding-inline: var(--solo-px16) !important;
 }
 
-.vertical-tabs details[open] {
+:where(.vertical-tabs) details[open] {
   padding: 0 !important;
 }
 
-form .tableselect-sort th:first-child,
+:where(form) .tableselect-sort th:first-child,
 form .tableselect-sort td:first-child {
   width: 85px;
 }
 
-form tr.draggable td > a,
-form tr.draggable td > div.form-type-radio,
-form tr.draggable td > div.form-type-checkbox {
+:where(form) tr.draggable td > a,
+:where(form) tr.draggable td > div.form-type-radio,
+:where(form) tr.draggable td > div.form-type-checkbox {
   float: inline-start !important;
   padding: 0 !important;
   margin: 0 !important;
-  clear: none !important;
+  clear: none;
 }
 
-form a.tabledrag-handle .handle {
+:where(form) a.tabledrag-handle .handle {
   width: 100%;
   height: 100%;
   margin: 0;
   padding: 0;
 }
 
-form .draggable a.tabledrag-handle {
+:where(form) .draggable a.tabledrag-handle {
   margin-block-start: 0 !important;
   margin-block-end: -3px !important;
   margin-inline-end: 5px !important;
@@ -78,16 +78,16 @@ form .draggable a.tabledrag-handle {
   width: 25px;
 }
 
-form tr.draggable .solo-check,
-form tr.draggable .solo-radio {
+:where(form tr.draggable) .solo-check,
+:where(form tr.draggable) .solo-radio {
   inset-block-start: 0;
 }
 
-form .field-multiple-drag {
+:where(form) .field-multiple-drag {
   width: 50px;
 }
 
-form div.form-type-datelist.solo-section.form-item {
+:where(form) div.form-type-datelist.solo-section.form-item {
   width: auto;
   clear: none;
 }
@@ -96,25 +96,25 @@ form div.form-type-datelist.solo-section.form-item {
   padding-inline-start: 0;
 }
 
-form #edit-datelist,
-form #edit-datetime {
+:where(form) #edit-datelist,
+:where(form) #edit-datetime {
   padding: 0;
   margin: 0;
 }
 
-form #edit-datetime > div {
+:where(form) #edit-datetime > div {
   float: inline-start;
   margin: 0 !important;
   width: 50%;
 }
 
-form  #edit-datetime > div input {
+:where(form) #edit-datetime > div input {
   min-width: 165px;
 }
 
-form .form-type-date,
-form .form-type-datetime,
-form .form-type-webform-time {
+:where(form) .form-type-date,
+:where(form) .form-type-datetime,
+:where(form) .form-type-webform-time {
   max-width: 20rem;
   width: 100%;
 }
@@ -126,7 +126,7 @@ form .form-type-webform-time input {
 }
 
 form .form-item-range > span.field-suffix,
-form .form-item-range .form-item-range__output {
+:where(form .form-item-range) .form-item-range__output {
   display: block;
   float: inline-start;
   width: 100%;
@@ -138,7 +138,7 @@ form .form-item-range .form-item-range__output input {
   clear: none;
 }
 
-form .form-item-datelist #edit-datelist > div select {
+:where(form .form-item-datelist) #edit-datelist > div select {
   padding-inline-start: 10px;
   padding-inline-end: 10px;
 }
@@ -147,7 +147,7 @@ form .table-sort-weight.form-select {
   width: auto;
 }
 
-form select {
+:where(form) select {
   min-width: 75px;
 }
 
@@ -156,7 +156,7 @@ form select {
 }
 
 /* Adjust for RTL */
-[dir="rtl"] .messages.messages--info {
+:where([dir="rtl"]) .messages.messages--info {
   --background-position-inline: calc(100% - 2px);
 }
 
@@ -168,7 +168,7 @@ form select {
   padding-block-end: 0;
 }
 
-form .form-item {
+:where(form) .form-item {
   text-align: var(--solo-text-align-start);
 }
 
@@ -176,7 +176,7 @@ fieldset.form-item > .fieldset-wrapper {
   padding: var(--solo-px8);
 }
 
-.field-ui-overview .field-plugin-settings-edit {
+:where(.field-ui-overview) .field-plugin-settings-edit {
   width: auto !important;
   max-width: 40px;
 }
@@ -185,15 +185,15 @@ form .form-item label {
   padding-inline-end: 10px;
 }
 
-table ul.dropbutton li.solo-left.dropbutton-action {
+:where(table) ul.dropbutton li.solo-left.dropbutton-action {
   float: none !important;
   z-index: 1;
   margin-inline-end: 0 !important;
   line-height: 26px;
 }
 
-table ul.dropbutton,
-.js .dropbutton-widget .dropbutton {
+:where(table) :where(ul).dropbutton,
+:where(.js .dropbutton-widget) .dropbutton {
   padding: 0 !important;
 }
 
@@ -239,14 +239,14 @@ table ul.dropbutton li.dropbutton-toggle {
   background-color: transparent;
 }
 
-.node-preview-container .node-preview-form-select {
+:where(.node-preview-container) .node-preview-form-select {
   display: flex;
   align-items: center;
   justify-content: start;
   width: auto;
   height: 100%;
-  margin-block: 0 !important;
-  margin-inline: auto !important;
+  margin-block: 0;
+  margin-inline: auto;
 }
 
 .node-preview-container a.node-preview-backlink {
@@ -260,7 +260,7 @@ table ul.dropbutton li.dropbutton-toggle {
   text-decoration: underline;
 }
 
-div.node-preview-container .form-item-view-mode {
+:where(div.node-preview-container) .form-item-view-mode {
   display: inline-flex;
   align-items: center;
 }
@@ -272,7 +272,7 @@ div.node-preview-container .form-item-view-mode select {
   border: none !important;
 }
 
-div.node-preview-container .form-item-view-mode select {
+:where(div.node-preview-container) .form-item-view-mode select {
   min-width: 130px;
 }
 
@@ -282,39 +282,48 @@ div.node-preview-container .form-item-view-mode select {
 }
 
 .ui-dialog,
-.ui-dialog > div {
+:where(.ui-dialog) > div {
   border-width: 0 !important;
 }
 
-body .ui-dialog {
-  z-index: 1001 !important;
+:where(body) .ui-dialog {
+  z-index: 1001;
 }
 
-span.admin-link button,
-span.field-edit-link button {
+:where(span.admin-link) button,
+:where(span.field-edit-link) button {
   border: none !important;
   background-color: transparent !important;
 }
 
-.fieldset-wrapper>.form-checkboxes {
+.fieldset-wrapper > .form-checkboxes {
   display: grid;
 }
 
-form .form--inline {
+:where(form) .form--inline {
   display: flex;
   flex-wrap: wrap;
   justify-content: start;
 }
 
-form .form--inline .form-actions {
+:where(form) .form--inline .form-actions {
   flex-grow: 1;
   flex-basis: 100%;
 }
 
-form .pb-tab-display [data-drupal-selector="para-color-picker"] .form-color {
+:where(form) .pb-tab-display [data-drupal-selector="para-color-picker"] .form-color {
   min-height: 54px;
 }
 
-#solo-page-wrapper form [data-drupal-selector="para-color-picker"] .form-color {
+.solo-page form [data-drupal-selector="para-color-picker"] .form-color {
   min-height: 50px;
+}
+
+/* Reduced motion: end states are kept, movement is not (WCAG 2.3.3). */
+@media (prefers-reduced-motion: reduce) {
+  :where(.dropbutton-widget) {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }

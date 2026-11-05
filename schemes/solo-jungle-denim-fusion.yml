@@ -1,0 +1,45 @@
+# Scheme record in the shape of the apex scheme sidecar (id, name, category, mode). Palette values are copied verbatim from css/predefined/solo-jungle-denim-fusion.css.
+id: solo-jungle-denim-fusion
+name: "Jungle Denim Fusion"
+category: forest_and_nature_tones
+mode: mixed
+categories:
+  - forest_and_nature_tones
+  - denim_influences
+css: css/predefined/solo-jungle-denim-fusion.css
+thumbnail: images/schemes/solo-jungle-denim-fusion.webp
+palette:
+  --sc-head-tx: "#639c7c"
+  --sc-link-tx: "#263770"
+  --sc-link-hover-tx: "#3850a2"
+  --sc-menu-bg: "#3b7a57"
+  --sc-menu-tx: "#e9f3ed"
+  --sc-menu-hover-tx: "#0e1e16"
+  --sc-menu-hover-bg: "#469167"
+  --sc-tab-hover-tx: "#0e1e16"
+  --sc-menu-open-tx: "#0e1e16"
+  --sc-menu-open-bg: "#469167"
+  --sc-button-bg: "#2f4389"
+  --sc-button-tx: "#fdfdfe"
+  --sc-button-hover-tx: "#080b17"
+  --sc-button-hover-bg: "#cad2ed"
+  --sc-main-container-bg: "linear-gradient(45deg, #d7ddf1, #eff8f3)"
+  --sc-top-container-bg: "linear-gradient(45deg, #d7ddf1, #eff8f3)"
+  --sc-fixed-search-block-bg: "linear-gradient(45deg, #d7ddf1, #eff8f3)"
+  --sc-popup-login-block-inner-bg: "linear-gradient(45deg, #d7ddf1, #eff8f3)"
+  --sc-bottom-container-bg: "linear-gradient(180deg, #080b17, #04050a)"
+  --sc-footer-container-bg: "linear-gradient(180deg, #080b17, #04050a)"
+  --sc-footer-menu-bg: "linear-gradient(180deg, #080b17, #04050a)"
+  --sc-copyright-bg: "linear-gradient(0deg, #09130d, #080b17)"
+  --sc-social-fill: "#356f4f"
+  --sc-control-br: "#d2eadd"
+  --sc-fixed-search-block-shadow: "9, 19, 14"
+  --sc-social-box-shadow: "166, 148, 130"
+page:
+  --r-br: "#9fd1b5"
+  --r-bg: "#fbfdfc"
+  --r-tx: "#0f1e16"
+  --r-header-bg: "linear-gradient(180deg, #151e3d, #0c1224)"
+  --r-header-tx: "#94cbac"
+  --r-menu-tx-h: "#0d1c14"
+  --r-menu-bg-h: "#469167"

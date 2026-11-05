@@ -1,0 +1,46 @@
+# Scheme record in the shape of the apex scheme sidecar (id, name, category, mode). Palette values are copied verbatim from css/predefined/solo-pristine-porcelain-glow.css.
+id: solo-pristine-porcelain-glow
+name: "Pristine Porcelain Glow"
+category: elegant_whites_and_neutrals
+mode: light
+categories:
+  - elegant_whites_and_neutrals
+css: css/predefined/solo-pristine-porcelain-glow.css
+thumbnail: images/schemes/solo-pristine-porcelain-glow.webp
+palette:
+  --sc-head-tx: "#3b4046"
+  --sc-link-tx: "#04164f"
+  --sc-link-hover-tx: "#030d2e"
+  --sc-menu-bg: "#edf1fe"
+  --sc-menu-tx: "#02081e"
+  --sc-menu-hover-tx: "#030d2e"
+  --sc-menu-hover-bg: "#dde4fd"
+  --sc-tab-hover-tx: "#030d2e"
+  --sc-menu-open-tx: "#030d2e"
+  --sc-menu-open-bg: "#dde4fd"
+  --sc-button-bg: "#f4f5f0"
+  --sc-button-tx: "#050504"
+  --sc-button-hover-tx: "#181a11"
+  --sc-button-hover-bg: "#e5e7dc"
+  --sc-main-container-bg: "linear-gradient(45deg, #fcfff9, #edf1fe)"
+  --sc-top-container-bg: "linear-gradient(45deg, #fcfff9, #edf1fe)"
+  --sc-fixed-search-block-bg: "linear-gradient(45deg, #fcfff9, #edf1fe)"
+  --sc-popup-login-block-inner-bg: "linear-gradient(45deg, #fcfff9, #edf1fe)"
+  --sc-bottom-container-bg: "linear-gradient(45deg, #fcfff9, #edf1fe)"
+  --sc-footer-container-bg: "linear-gradient(45deg, #fcfff9, #edf1fe)"
+  --sc-footer-menu-bg: "linear-gradient(45deg, #fcfff9, #edf1fe)"
+  --sc-copyright-bg: "linear-gradient(180deg, #f4f5f0, #edf1fe)"
+  --sc-social-fill: "#7c99f8"
+  --sc-control-br: "#dde4fd"
+  --sc-fixed-search-block-shadow: "72, 77, 51"
+  --sc-social-box-shadow: "192, 197, 169"
+  --sc-tab-hover-bg: "#dde4fd"
+  --sc-region-rule-br: "var(--solo-white)"
+page:
+  --r-br: "#727c86"
+  --r-bg: "#fcfff9"
+  --r-tx: "#24272a"
+  --r-header-bg: "linear-gradient(45deg, #f4f5f0, #edf1fe)"
+  --r-header-tx: "#3b4046"
+  --r-menu-tx-h: "#030d2e"
+  --r-menu-bg-h: "#dde4fd"

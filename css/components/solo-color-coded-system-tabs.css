@@ -1,3 +1,12 @@
+/* Tab colors: each fill keeps white text at 4.5:1 or more (view 5.1, edit 5.8,
+   delete 5.6, revisions 8.2). The label itself keeps the region link color. */
+:where(.solo-page ul.primary > li.solo-local-task--core) {
+  --solo-tab-view: #2e7d32;
+  --solo-tab-edit: #1565c0;
+  --solo-tab-delete: #c62828;
+  --solo-tab-revisions: #7b1fa2;
+}
+
 /* Custom core buttons hover */
 .solo-page ul.primary > li.solo-local-task--core {
   position: relative;
@@ -31,22 +40,6 @@
   color: var(--r-lk);
 }
 
-:where(.solo-page ul.primary li.solo-local-task--core) :where(a).view-link {
-  --r-lk: var(--solo-green);
-}
-
-:where(.solo-page ul.primary li.solo-local-task--core) :where(a).edit-link {
-  --r-lk: var(--solo-blue);
-}
-
-:where(.solo-page ul.primary li.solo-local-task--core) :where(a).delete-link {
-  --r-lk: var(--solo-red);
-}
-
-:where(.solo-page ul.primary li.solo-local-task--core) :where(a).revisions-link {
-  --r-lk: var(--solo-purple);
-}
-
 .solo-page ul.primary > li.solo-local-task--core > a::before {
   position: absolute;
   z-index: -1;
@@ -61,19 +54,19 @@
 }
 
 .solo-page ul.primary > li.solo-local-task--core > a.view-link::before {
-  background-color: var(--solo-green);
+  background-color: var(--solo-tab-view);
 }
 
 .solo-page ul.primary > li.solo-local-task--core > a.edit-link::before {
-  background-color: var(--solo-blue);
+  background-color: var(--solo-tab-edit);
 }
 
 .solo-page ul.primary > li.solo-local-task--core > a.delete-link::before {
-  background-color: var(--solo-red);
+  background-color: var(--solo-tab-delete);
 }
 
 .solo-page ul.primary > li.solo-local-task--core > a.revisions-link::before {
-  background-color: var(--solo-purple);
+  background-color: var(--solo-tab-revisions);
 }
 
 :where(.solo-page) ul.primary > li.solo-local-task--core > a:hover::before {
@@ -81,19 +74,19 @@
 }
 
 :where(.solo-page ul.primary > li.solo-local-task--core) .solo-local-task__icon.solo-icon--view {
-  fill: var(--solo-green);
+  fill: var(--solo-tab-view);
 }
 
 :where(.solo-page ul.primary > li.solo-local-task--core) .solo-local-task__icon.solo-icon--edit {
-  fill: var(--solo-blue);
+  fill: var(--solo-tab-edit);
 }
 
 :where(.solo-page ul.primary > li.solo-local-task--core) .solo-local-task__icon.solo-icon--delete {
-  fill: var(--solo-red);
+  fill: var(--solo-tab-delete);
 }
 
 :where(.solo-page ul.primary > li.solo-local-task--core) .solo-local-task__icon.solo-icon--revisions {
-  fill: var(--solo-purple);
+  fill: var(--solo-tab-revisions);
 }
 
 #solo-page-wrapper ul.primary > li.solo-local-task--core > a:hover {

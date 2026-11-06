@@ -7,6 +7,7 @@
 - A new site starts with the social icons off and no social links filled in (they used to point to the maintainer's accounts). The footer credit link stays. Existing sites keep what they saved.
 - Every Solo class and ID now starts with `solo-` and follows one naming pattern. The full list of old and new names is in `docs/CLASS-MIGRATION.md`.
 - The starter sub-theme (`solo_subtheme`) uses the new names.
+- Accessibility: the color-coded system tabs (View, Edit, Delete, Revisions) use darker fills, so the white label on hover and on the active tab reads at 4.5:1 or more. The label at rest keeps the region link color instead of a light green or blue that failed 4.5:1.
 - Mega menu: the script that moves dropdowns away from the screen edge no longer touches mega menu panels, which lay out their own columns.
 - Accessibility: a skip link (header, main navigation, main content, footer) shows only when its region has content, so it never jumps to a target that is not on the page.
 - `solo_subtheme` is now a Drupal core starterkit (`solo_subtheme.starterkit.yml`, `src/StarterKit.php`), so `php core/scripts/drupal generate-theme my_theme --starterkit solo_subtheme --path themes/custom` works. `drush solo:subtheme` is unchanged for users.

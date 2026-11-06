@@ -50,6 +50,14 @@ def css_blocks(text):
     return d(root), d(page)
 
 
+def same_hex(values):
+    """#fff and #ffffff are one color: the CSS formatter writes the short form, records keep the long one."""
+    def long(m):
+        h = m.group(1).lower()
+        return "#" + ("".join(c * 2 for c in h) if len(h) in (3, 4) else h)
+    return {k: re.sub(r"#([0-9a-fA-F]{3,8})\b", long, v) for k, v in values.items()}
+
+
 def luminance(hexcol):
     h = hexcol.lstrip("#")
     if len(h) in (3, 4):
@@ -164,6 +172,7 @@ def main():
         if r.get("mode") != mode:
             errs.append(f"{id_}: mode '{r.get('mode')}' differs from the mode measured in the CSS '{mode}'")
         for name, got, rec in (("palette", root, r["palette"]), ("page", page, r["page"])):
+            got, rec = same_hex(got), same_hex(rec)
             if got != rec:
                 bad = sorted(k for k in set(got) | set(rec) if got.get(k) != rec.get(k))
                 errs.append(f"{id_}: {name} differs from CSS in {', '.join(bad[:4])}{'...' if len(bad) > 4 else ''}")

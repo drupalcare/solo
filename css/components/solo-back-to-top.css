@@ -83,7 +83,7 @@
 
 /* The login popup is modal: keep the button out of sight and out of reach
    while it is open (z-index 99999 would otherwise paint it above the dialog). */
-body.solo-login-popup-open .solo-back-to-top.solo-is-visible {
+:where(body.solo-login-popup-open) .solo-back-to-top.solo-is-visible {
   visibility: hidden;
   pointer-events: none;
   opacity: 0;

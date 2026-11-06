@@ -1,46 +1,46 @@
 {
   "folders": {
     "base": {
-      "declarations": 1291,
+      "declarations": 1297,
       "files": 7,
-      "important": 133,
+      "important": 132,
       "over_020": 141,
       "with_id": 15
     },
     "breakpoints": {
-      "declarations": 2633,
+      "declarations": 2638,
       "files": 10,
       "important": 351,
       "over_020": 1285,
       "with_id": 340
     },
     "components": {
-      "declarations": 3080,
+      "declarations": 3074,
       "files": 39,
       "important": 396,
-      "over_020": 985,
-      "with_id": 243
+      "over_020": 983,
+      "with_id": 242
     },
     "layout": {
-      "declarations": 420,
+      "declarations": 440,
       "files": 9,
       "important": 38,
       "over_020": 91,
       "with_id": 5
     },
     "predefined": {
-      "declarations": 5583,
+      "declarations": 6743,
       "files": 50,
       "important": 0,
-      "over_020": 173,
+      "over_020": 176,
       "with_id": 0
     },
     "theme": {
-      "declarations": 2418,
+      "declarations": 2421,
       "files": 18,
-      "important": 252,
-      "over_020": 967,
-      "with_id": 369
+      "important": 256,
+      "over_020": 965,
+      "with_id": 367
     },
     "w3-css": {
       "declarations": 3067,

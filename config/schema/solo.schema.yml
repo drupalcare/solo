@@ -5286,6 +5286,9 @@ solo_theme_settings:
         title_tag:
           type: string
           label: 'Comment title HTML tag'
+          constraints:
+            Choice:
+              choices: ['h2', 'h3', 'h4', 'h5', 'h6']
         show_permalink:
           type: boolean
           label: 'Show comment permalink'
@@ -5307,3 +5310,6 @@ solo_theme_settings:
         form_position:
           type: string
           label: 'Comment form position'
+          constraints:
+            Choice:
+              choices: ['before', 'after']

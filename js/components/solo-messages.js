@@ -2,7 +2,7 @@
  * @file
  * Solo Theme Message Handler
  *
- * Provides close functionality for Drupal messages with proper AJAX support,
+ * Provides close functionality for Drupal messages with proper Ajax support,
  * error handling, and accessibility features.
  *
  * Filename:     solo-message.js

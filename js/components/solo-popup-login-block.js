@@ -3,7 +3,7 @@
  * Solo Popup Login Block functionality.
  *
  * Provides an accessible popup login block with keyboard navigation,
- * ARIA support, and proper AJAX compatibility.
+ * ARIA support, and proper Ajax compatibility.
  *
  * @package Solo
  * @author Alaa Haddad
@@ -129,7 +129,7 @@
             );
           });
 
-        // Remove custom trigger listeners to avoid leaks across AJAX updates.
+        // Remove custom trigger listeners to avoid leaks across Ajax updates.
         const popupSettings =
           (drupalSettings.solo && drupalSettings.solo.popupLogin) || {};
         if (popupSettings.customTriggers) {

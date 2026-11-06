@@ -354,7 +354,7 @@
    */
   Drupal.behaviors.soloColorPicker = {
     attach(context, settings) {
-      // Use context for AJAX compatibility
+      // Use context for Ajax compatibility
       const colorTextInputs = once(
         'solo-color-picker',
         '[data-drupal-selector="solo-color-picker"] input[type="text"]',

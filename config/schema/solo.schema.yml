@@ -35,7 +35,7 @@ solo_theme_settings:
               label: 'Enable custom widths'
             per_node_enabled:
               type: boolean
-              label: 'Enable custom node width'
+              label: 'Enable a custom width per content item'
         breakpoints:
           type: mapping
           label: 'Breakpoints'
@@ -4731,7 +4731,7 @@ solo_theme_settings:
           label: 'Global font size'
         node_date_format:
           type: string
-          label: 'Site node date format'
+          label: 'Content date format'
         imported_google_font:
           type: string
           label: 'Import Google font'
@@ -5088,7 +5088,7 @@ solo_theme_settings:
               label: 'Instagram'
             youtube:
               type: string
-              label: 'Youtube'
+              label: 'YouTube'
             drupal:
               type: string
               label: 'Drupal'

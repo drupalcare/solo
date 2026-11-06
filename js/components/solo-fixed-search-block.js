@@ -639,7 +639,7 @@
      */
     attachOutsideClickHandler(searchBlock, context) {
       // Attach a single, global outside-click listener for the page lifetime.
-      // Using document as the context ensures this runs once even after AJAX attaches.
+      // Using document as the context ensures this runs once even after Ajax attaches.
       once('solo-search-outside-click', 'body', document).forEach(() => {
         document.addEventListener('click', (event) => {
           if (!searchBlock || !Drupal.solo.searchBlock.isOpen) {

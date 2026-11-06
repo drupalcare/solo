@@ -10,7 +10,7 @@
   data-force-show="{{ preloader_config.force_show ? 'true' : 'false' }}"
   data-hide-on="{{ preloader_config.hide_on|default('dom_ready') }}"
   data-max-display="{{ preloader_config.max_display_seconds|default(8) }}">
-  <span class="visually-hidden">{{ 'Loading...'|t }}</span>
+  <span class="visually-hidden">{{ 'Loading…'|t }}</span>
   <div class="solo-preloader__inner">
     {% if preloader_config.style == 'progress_bar' %}
       <div class="solo-preloader__bar-track">

@@ -275,7 +275,7 @@
   Drupal.behaviors.soloTheme = {
     attach(context, settings) {
       // Add file extension classes to file field spans.
-      // Uses once() to prevent duplicate processing on AJAX updates.
+      // Uses once() to prevent duplicate processing on Ajax updates.
       once(
         'solo-file-extensions',
         '.field--type-file span.file',
@@ -401,7 +401,7 @@
       });
 
       // Setup skip links for accessibility.
-      // Uses once() to prevent duplicate event listeners on AJAX updates.
+      // Uses once() to prevent duplicate event listeners on Ajax updates.
       once('solo-skip-links', 'body', context).forEach(() => {
         handleSkipLinkClick(
           '.skip-link[href="#solo-header-content"]',
@@ -443,7 +443,7 @@
      * Detaches Solo theme behaviors.
      *
      * This is called when content is removed from the page.
-     * Proper cleanup prevents memory leaks in AJAX-heavy applications.
+     * Proper cleanup prevents memory leaks in Ajax-heavy applications.
      *
      * @param {HTMLElement} context
      *   The context element being removed.

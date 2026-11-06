@@ -5,7 +5,7 @@
  * Three responsibilities:
  * 1. Detect real navigation clicks (isRealNavigationClick): left click only, no
  *    modifiers, real href, same origin, not toolbar/excluded. Prevents false
- *    triggers (AJAX, modals, #anchors, admin). Only full page reloads.
+ *    triggers (Ajax, modals, #anchors, admin). Only full page reloads.
  * 2. Show preloader instantly on valid click (showPreloader): remove hidden/
  *    removed classes, set aria-hidden=false, lock scroll (solo-preloader-active
  *    on html). Uses capture phase so overlay appears before browser navigates.
@@ -15,7 +15,7 @@
  *    remove from layout; unlockPage() cleans up scroll lock after transition.
  *
  * Flow: click → validate → show overlay → browser navigates → new page load →
- * DOMContentLoaded or window.load → hide. Does not prevent default, use AJAX,
+ * DOMContentLoaded or window.load → hide. Does not prevent default, use Ajax,
  * or touch history API. Does not run when library not attached (server-side
  * disabled). Does not trigger on back/forward or programmatic redirects.
  *

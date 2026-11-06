@@ -104,24 +104,24 @@ footer:
     text: 'Alaa Haddad at Flash Web Center, LLC'
 social_icons:
   links:
-    facebook: 'https://www.facebook.com/flashwebcenter'
-    twitter: 'https://x.com/flashwebcenter'
-    bluesky: 'https://bsky.app/profile/alaahaddad.bsky.social'
-    pinterest: 'https://www.pinterest.com/alaahaddad'
-    linkedin: 'https://www.linkedin.com/company/flash-web-center'
-    instagram: 'https://www.instagram.com/flashwebcenter'
-    youtube: 'https://www.youtube.com/user/flashwebcenter'
-    snapchat: 'https://www.drupal.org/u/flashwebcenter'
-    reddit: 'https://www.reddit.com/user/flashwebcenter/'
-    tiktok: 'https://www.tiktok.com/@flashwebcenter'
-    whatsapp: 'https://www.drupal.org/u/flashwebcenter'
-    threads: 'https://www.drupal.org/u/flashwebcenter'
-    drupal: 'https://www.drupal.org/u/flashwebcenter'
-    mastodon: 'https://mastodon.social/deck/@flashwebcenter'
-    telegram: 'https://www.drupal.org/u/flashwebcenter'
-    rss: rss.xml
-    email: '/#email'
-  enabled: true
+    facebook: ''
+    twitter: ''
+    bluesky: ''
+    pinterest: ''
+    linkedin: ''
+    instagram: ''
+    youtube: ''
+    snapchat: ''
+    reddit: ''
+    tiktok: ''
+    whatsapp: ''
+    threads: ''
+    drupal: ''
+    mastodon: ''
+    telegram: ''
+    rss: ''
+    email: ''
+  enabled: false
   size: sm-icons-medium
 preloader:
   enabled: false

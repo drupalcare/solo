@@ -1,6 +1,6 @@
 name: 'Solo'
 type: theme
-description: 'Provides a responsive, accessible theme built on W3.CSS, with 24 regions, color schemes and layout settings. The third generation of the <a href=https://www.drupal.org/project/d8w3css>W3CSS Theme</a>; for richer pages, add the <a href=https://www.drupal.org/project/paragraphs_bundles>Paragraphs Bundles</a> module.<br/><a href=https://www.drupal.org/node/3405889>Documentation</a> - <a href=https://www.drupal.org/project/issues/solo>Issue queue</a> - <a href=https://unitedstarsofamerica.com>Demo site</a> - <a href=https://unitedstarsofamerica.com/color-schemes>Color schemes</a><br/>Designed and developed by <a href=https://www.alaahaddad.com>Alaa Haddad</a> - <a href=https://www.flashwebcenter.com>Drupal development</a> and <a href=https://www.drupalcare.com>Drupal maintenance</a>'
+description: 'Provides a responsive, accessible theme built on W3.CSS, with 24 regions, 50 color schemes and layout settings, all set from the theme settings.'
 package: 'Solo'
 base theme: false
 core_version_requirement: ^11.3 || ^12

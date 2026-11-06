@@ -2,6 +2,8 @@
 
 ## Next release
 
+- Extend and Appearance pages: every module and theme description is a short, professional statement that begins with a verb; credits, links and version notes moved out of the info files.
+
 **Sub-theme owners: this release renames Solo's CSS classes and element IDs, so your sub-theme's CSS, Twig and JavaScript break until you migrate them.** Run `drush solo:migrate-classes my_theme` first. It is a dry run and changes nothing. Read the list, then run it again with `--apply`. `drush updatedb` also rewrites the inline CSS saved in Solo's settings.
 
 - A new site starts with the social icons off and no social links filled in (they used to point to the maintainer's accounts). The footer credit link stays. Existing sites keep what they saved.

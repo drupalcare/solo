@@ -2,7 +2,7 @@
 
 Pairs, each resolved the way the CSS resolves them (css/base/solo-variables-regions.css,
 css/theme/solo-scheme-shared.css):
-  site name   header heading colour (header h1/h2/h3 --r-tx, else --r-header-tx, else --sc-head-tx) on the header background
+  site name   header heading color (header h1/h2/h3 --r-tx, else --r-header-tx, else --sc-head-tx) on the header background
   heading     the region's --r-sc-h1, else --sc-head-tx, on each content region background (main card, top, bottom, footer)
   link        the region's --r-sc-lk, else --sc-link-tx, on each content region background (main card included)
   link hover  same with --r-sc-lk-h / --sc-link-hover-tx
@@ -109,7 +109,7 @@ def scan(path):
             bgs = cs.colors(env.get('--r-bg'), env) or [cs.hexrgb(cs.WHITE)]
         if label == 'main card' and not bgs:
             continue
-        # footer-like regions set their own text/link colour; light regions use the tokens.
+        # footer-like regions set their own text/link color; light regions use the tokens.
         r_tx = first(blocks, env, tkeys, '--r-tx') or page_tx
         r_lk = first(blocks, env, tkeys, '--r-sc-lk')
         r_lkh = first(blocks, env, tkeys, '--r-sc-lk-h')

@@ -62,7 +62,7 @@ def luminance(hexcol):
 
 
 def tone(value):
-    """light or dark by the mean luminance of the colour stops (0.179 is where white and black give equal contrast)."""
+    """light or dark by the mean luminance of the color stops (0.179 is where white and black give equal contrast)."""
     stops = re.findall(r"#[0-9a-fA-F]{3,8}\b", value or "")
     if not stops:
         return None

@@ -248,7 +248,7 @@ def region_rules(php_path):
 
 
 def generated(php_path, before_path=None):
-    """The region colour rules, every colour set. With before_path (a baseline ThemeCssBuilder.php), each rule is
+    """The region color rules, every color set. With before_path (a baseline ThemeCssBuilder.php), each rule is
     paired with its baseline by region and property and judged as a changed selector (subjects: both selectors)."""
     if not os.path.exists(php_path): return []
 

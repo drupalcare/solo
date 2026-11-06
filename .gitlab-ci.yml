@@ -63,7 +63,7 @@ variables:
 #   check-css-budget            declarations above 0,2,0, with an id, with !important:
 #                               per folder, counts may fall and never rise
 #   check-schemes               scheme records vs libraries, options, thumbnails, CSS
-#   check-cascade               who wins between Solo, schemes and the generated region colours
+#   check-cascade               who wins between Solo, schemes and the generated region colors
 # check-schemes and check-cascade read solo_utilities, which solo's composer.json
 # requires (`drupal/solo_utilities: ^2.0`), so Composer is expected to have put it
 # under web/modules. If it is not there the job prints SKIPPED with the reason and

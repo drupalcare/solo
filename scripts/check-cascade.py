@@ -219,7 +219,7 @@ def registrar_order(lane):
             num('INLINE_WEIGHT') + CAT['theme'])
 
 def region_selectors(lane):
-    """(region, selector) pairs and colour properties, read from ThemeCssBuilder.php (the source of truth)."""
+    """(region, selector) pairs and color properties, read from ThemeCssBuilder.php (the source of truth)."""
     path = os.path.join(lane, 'solo_utilities/src/Css/ThemeCssBuilder.php')
     php = open(path, encoding='utf-8').read()
     reg = need(r'REGION_SELECTORS = \[(.*?)\];', php, path, 'constant REGION_SELECTORS', re.S).group(1)
@@ -227,7 +227,7 @@ def region_selectors(lane):
     return re.findall(r"'([\w]+)' => '([^']+)'", reg), re.findall(r"'[\w]+' => '(--[\w-]+)'", props)
 
 def generated_decls(lane, group, w):
-    """Region colour rules ThemeCssBuilder writes when every colour is set."""
+    """Region color rules ThemeCssBuilder writes when every color is set."""
     reg, props = region_selectors(lane)
     return [decl('generated', 'generated:' + name, n, (), sel, p, '#123456', False, group, w, 0, 'solo_utilities')
             for n, (name, sel) in enumerate(reg) for p in props]

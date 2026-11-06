@@ -222,17 +222,18 @@
           li.dataset.soloMenuHandler = 'true';
         });
       }
-      // Apply fixes to second, third, and fourth-level submenus
+      // Apply fixes to second, third, and fourth-level submenus. A mega menu
+      // lays out its own panels, so it is left alone (as in solo-menu.js).
       applySubmenuFix(
-        '.solo-primary-menu .solo-menu-tree--primary > li.solo-menu-tree__item--has-submenu',
+        '.solo-primary-menu .solo-menu-tree--primary:not(.solo-menu-tree--megamenu) > li.solo-menu-tree__item--has-submenu',
         adjustSecondLevelSubmenu,
       );
       applySubmenuFix(
-        '.solo-primary-menu .solo-menu-tree--primary > li.solo-menu-tree__item--has-submenu > ul > li.solo-menu-tree__item--has-submenu',
+        '.solo-primary-menu .solo-menu-tree--primary:not(.solo-menu-tree--megamenu) > li.solo-menu-tree__item--has-submenu > ul > li.solo-menu-tree__item--has-submenu',
         adjustThirdLevelSubmenu,
       );
       applySubmenuFix(
-        '.solo-primary-menu .solo-menu-tree--primary > li.solo-menu-tree__item--has-submenu > ul > li.solo-menu-tree__item--has-submenu > ul > li.solo-menu-tree__item--has-submenu',
+        '.solo-primary-menu .solo-menu-tree--primary:not(.solo-menu-tree--megamenu) > li.solo-menu-tree__item--has-submenu > ul > li.solo-menu-tree__item--has-submenu > ul > li.solo-menu-tree__item--has-submenu',
         adjustFourthLevelSubmenu,
       );
 
@@ -241,15 +242,15 @@
       function handleResize() {
         if (Drupal.solo.isLargeLayout(window.innerWidth, breakpoint)) {
           applySubmenuFix(
-            '.solo-primary-menu .solo-menu-tree--primary > li.solo-menu-tree__item--has-submenu',
+            '.solo-primary-menu .solo-menu-tree--primary:not(.solo-menu-tree--megamenu) > li.solo-menu-tree__item--has-submenu',
             adjustSecondLevelSubmenu,
           );
           applySubmenuFix(
-            '.solo-primary-menu .solo-menu-tree--primary > li.solo-menu-tree__item--has-submenu > ul > li.solo-menu-tree__item--has-submenu',
+            '.solo-primary-menu .solo-menu-tree--primary:not(.solo-menu-tree--megamenu) > li.solo-menu-tree__item--has-submenu > ul > li.solo-menu-tree__item--has-submenu',
             adjustThirdLevelSubmenu,
           );
           applySubmenuFix(
-            '.solo-primary-menu .solo-menu-tree--primary > li.solo-menu-tree__item--has-submenu > ul > li.solo-menu-tree__item--has-submenu > ul > li.solo-menu-tree__item--has-submenu',
+            '.solo-primary-menu .solo-menu-tree--primary:not(.solo-menu-tree--megamenu) > li.solo-menu-tree__item--has-submenu > ul > li.solo-menu-tree__item--has-submenu > ul > li.solo-menu-tree__item--has-submenu',
             adjustFourthLevelSubmenu,
           );
         }

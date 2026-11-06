@@ -7,6 +7,8 @@
 - A new site starts with the social icons off and no social links filled in (they used to point to the maintainer's accounts). The footer credit link stays. Existing sites keep what they saved.
 - Every Solo class and ID now starts with `solo-` and follows one naming pattern. The full list of old and new names is in `docs/CLASS-MIGRATION.md`.
 - The starter sub-theme (`solo_subtheme`) uses the new names.
+- Mega menu: the script that moves dropdowns away from the screen edge no longer touches mega menu panels, which lay out their own columns.
+- Accessibility: a skip link (header, main navigation, main content, footer) shows only when its region has content, so it never jumps to a target that is not on the page.
 - `solo_subtheme` is now a Drupal core starterkit (`solo_subtheme.starterkit.yml`, `src/StarterKit.php`), so `php core/scripts/drupal generate-theme my_theme --starterkit solo_subtheme --path themes/custom` works. `drush solo:subtheme` is unchanged for users.
 - Solo and Solo Utilities work without the Search module, which Drupal 12 core no longer ships. The Search Results settings show a short note asking you to install Search, and the saved search settings are kept.
 - `solo.libraries.yml` now holds only `solo-global` and `solo-menu`. Solo Utilities builds every other library (fonts, color schemes, breakpoints, components, w3-css) from the data files in `fonts/`, `schemes/`, `scripts/breakpoints/` and `libraries/`. Library names and their files are unchanged, so `libraries-override` and `libraries-extend` in a sub-theme keep working.

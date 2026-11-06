@@ -47,18 +47,19 @@
     {% endif %}
     {#
       Keyboard navigation/accessibility link to four sections in
-      page.html.twig.
+      page.html.twig. A link shows only when its region has content, so it
+      never points at a target that was not rendered.
     #}
-    {% if enabled_skip_links.skip_header_content %}
+    {% if enabled_skip_links.skip_header_content and page.header %}
       <a href="#solo-header-content" class="visually-hidden focusable skip-link">{{ 'Skip to header'|t }}</a>
     {% endif %}
-    {% if enabled_skip_links.skip_navigation_content %}
+    {% if enabled_skip_links.skip_navigation_content and page.primary_menu %}
       <a href="#solo-main-navigation-content" class="visually-hidden focusable skip-link">{{ 'Skip to main navigation'|t }}</a>
     {% endif %}
-    {% if enabled_skip_links.skip_main_content %}
+    {% if enabled_skip_links.skip_main_content and page.content %}
       <a href="#main-content" class="visually-hidden focusable skip-link">{{ 'Skip to main content'|t }}</a>
     {% endif %}
-    {% if enabled_skip_links.skip_footer_content %}
+    {% if enabled_skip_links.skip_footer_content and page.footer_menu %}
       <a href="#solo-footer-content" class="visually-hidden focusable skip-link">{{ 'Skip to footer'|t }}</a>
     {% endif %}
 

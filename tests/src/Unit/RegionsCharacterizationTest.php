@@ -274,7 +274,7 @@ class RegionsCharacterizationTest extends SoloCharacterizationBase {
     return new SettingsOptions(
       $this->createStub(EntityTypeManagerInterface::class),
       $list,
-      dirname(__DIR__, 6),
+      self::siteRoot(),
       $this->createStub(SoloThemeDetectionInterface::class),
     );
   }

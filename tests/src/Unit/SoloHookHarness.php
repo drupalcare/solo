@@ -175,7 +175,7 @@ trait SoloHookHarness {
     $resolver->method('getPath')->willReturnCallback(
       fn(string $type, string $name) => $name === 'solo_utilities' ? 'modules/contrib/solo_utilities' : 'themes/contrib/solo'
     );
-    $this->catalog = new SettingsCatalog($typed, $resolver, dirname(__DIR__, 6));
+    $this->catalog = new SettingsCatalog($typed, $resolver, self::siteRoot());
     $config = $this->createStub(ImmutableConfig::class);
     $config->method('get')->willReturnCallback(fn($key = '') => $key === 'name' ? $this->siteName : NULL);
     $factory = $this->createStub(ConfigFactoryInterface::class);
@@ -292,7 +292,7 @@ trait SoloHookHarness {
       new BackToTop($context),
     );
     $this->contentPreprocessor = new ContentPreprocessor($date, $attributes);
-    $theme = new Extension(dirname(__DIR__, 6), 'theme', 'themes/contrib/solo/solo.info.yml');
+    $theme = new Extension(self::siteRoot(), 'theme', 'themes/contrib/solo/solo.info.yml');
     $themes = $this->createStub(ThemeHandlerInterface::class);
     $themes->method('themeExists')->willReturn(TRUE);
     $themes->method('getTheme')->willReturnCallback(function () use ($theme) {
@@ -300,6 +300,30 @@ trait SoloHookHarness {
       return $theme;
     });
     $this->inventory = new RegionInventory($themes, $types);
+  }
+
+  /**
+   * Returns a directory laid out like a Drupal root for the two extensions.
+   *
+   * The tests name Solo and Solo Utilities by their usual site paths. On a
+   * site that is where they live; in drupal.org CI the theme is the project
+   * root and Solo Utilities is a Composer dependency. Linking both into one
+   * temporary root makes the same paths valid in either place.
+   */
+  protected static function siteRoot(): string {
+    $root = sys_get_temp_dir() . '/solo-unit-root-' . getmypid();
+    $links = [
+      'themes/contrib/solo' => dirname(__DIR__, 3),
+      'modules/contrib/solo_utilities' => dirname((new \ReflectionClass(SettingsCatalog::class))->getFileName(), 3),
+    ];
+    foreach ($links as $path => $target) {
+      $link = $root . '/' . $path;
+      if (!is_link($link)) {
+        @mkdir(dirname($link), 0777, TRUE);
+        symlink($target, $link);
+      }
+    }
+    return $root;
   }
 
 }

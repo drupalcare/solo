@@ -4,7 +4,9 @@ declare(strict_types=1);
 
 namespace Drupal\Tests\solo\Unit;
 
+use Drupal\solo_utilities\Asset\SoloLibraryDefinitions;
 use PHPUnit\Framework\Attributes\Group;
+use Symfony\Component\Yaml\Yaml;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -21,8 +23,11 @@ use PHPUnit\Framework\TestCase;
  * empty watchdog. The library, its form element and its JavaScript were all
  * deleted in that commit; the loader and the CSS file were missed.
  *
- * This test reads the loaders and the library declarations as text rather than
- * booting Drupal, so it stays a unit test and runs in milliseconds.
+ * Solo 2 keeps only solo-global and solo-menu in solo.libraries.yml; Solo
+ * Utilities builds every other Solo library from Solo's data files
+ * (SoloLibraryDefinitions) and holds the code that attaches them. So the
+ * declared set here is that full set, and the attaching code is Solo
+ * Utilities' src/. Still a unit test: nothing boots Drupal.
  *
  * @license SPDX-License-Identifier: GPL-2.0-or-later
  *
@@ -39,16 +44,34 @@ class AttachedLibrariesExistTest extends TestCase {
   }
 
   /**
-   * Every 'solo/<name>' this theme attaches must be declared as a library.
+   * The solo_utilities directory, found through the class loader.
+   */
+  protected function utilitiesPath(): string {
+    $this->assertTrue(class_exists(SoloLibraryDefinitions::class), 'solo_utilities is not installed; Solo 2 requires it.');
+    return dirname((string) (new \ReflectionClass(SoloLibraryDefinitions::class))->getFileName(), 3);
+  }
+
+  /**
+   * Solo's full library set: solo.libraries.yml plus the built libraries.
+   *
+   * @return array<string, array<string, mixed>>
+   *   Library definitions keyed by name; a written one wins, as in Drupal.
+   */
+  protected function libraries(): array {
+    $problems = [];
+    $theme = $this->themePath();
+    $libraries = Yaml::parseFile($theme . '/solo.libraries.yml') + (new SoloLibraryDefinitions())->build($theme, $problems);
+    $this->assertSame([], $problems, 'Solo library data has problems.');
+    return $libraries;
+  }
+
+  /**
+   * Every 'solo/<name>' Solo's code attaches must be declared as a library.
    */
   public function testEveryAttachedLibraryIsDeclared(): void {
     $theme = $this->themePath();
-
-    $libraries = file_get_contents($theme . '/solo.libraries.yml');
-    $this->assertIsString($libraries, 'solo.libraries.yml is unreadable.');
-    preg_match_all('/^([a-z0-9][a-z0-9._-]*)\s*:\s*$/m', $libraries, $m);
-    $declared = array_flip($m[1]);
-    $this->assertNotEmpty($declared, 'No library names parsed - the parser is wrong, not the theme.');
+    $declared = $this->libraries();
+    $this->assertGreaterThan(100, count($declared), 'Suspiciously few libraries - the builder is wrong, not the theme.');
 
     $attached = [];
     foreach ($this->sourceFiles() as $file) {
@@ -60,13 +83,9 @@ class AttachedLibrariesExistTest extends TestCase {
       // and report a library that was never attached under that name. A
       // concatenated name cannot be resolved statically, so this test does
       // not pretend to check it.
-      preg_match_all(
-        "/\\[['\"]library['\"]\\]\\[\\]\\s*=\\s*'solo\\/([a-z0-9._-]+)'\\s*;/i",
-        $code,
-        $found
-      );
+      preg_match_all("/'solo\\/([a-z0-9._-]+)'(?!\\s*\\.)/i", $code, $found);
       foreach ($found[1] as $name) {
-        $attached[$name][] = str_replace($theme . '/', '', $file);
+        $attached[$name][] = basename($file);
       }
     }
     $this->assertNotEmpty(
@@ -82,7 +101,7 @@ class AttachedLibrariesExistTest extends TestCase {
     }
 
     $this->assertSame([], $missing, sprintf(
-      "%d attached librar%s not declared in solo.libraries.yml. Drupal ignores "
+      "%d attached librar%s not declared by Solo. Drupal ignores "
       . "these silently - the feature never loads and nothing is logged:\n  - %s",
       count($missing),
       count($missing) === 1 ? 'y is' : 'ies are',
@@ -95,23 +114,16 @@ class AttachedLibrariesExistTest extends TestCase {
    */
   public function testEveryDeclaredCssFileExists(): void {
     $theme = $this->themePath();
-    $lines = file($theme . '/solo.libraries.yml', FILE_IGNORE_NEW_LINES) ?: [];
-
     $missing = [];
     $checked = 0;
-    foreach ($lines as $n => $line) {
-      // Asset keys are indented under css:/js:; a bare theme-relative path.
-      if (!preg_match('/^\s{4,}([^\s:][^:]*\.(?:css|js))\s*:/', $line, $m)) {
-        continue;
-      }
-      $path = trim($m[1]);
+    foreach ($this->assetPaths() as $path => $library) {
       // External URLs and stream wrappers are not files in this theme.
       if (str_contains($path, '://') || str_starts_with($path, '//')) {
         continue;
       }
       $checked++;
       if (!file_exists($theme . '/' . $path)) {
-        $missing[] = sprintf('%s (solo.libraries.yml line %d)', $path, $n + 1);
+        $missing[] = sprintf('%s (library %s)', $path, $library);
       }
     }
 
@@ -121,7 +133,7 @@ class AttachedLibrariesExistTest extends TestCase {
       'Parsed suspiciously few asset paths - the parser is wrong, not the theme.'
     );
     $this->assertSame([], $missing, sprintf(
-      "%d asset(s) declared in solo.libraries.yml do not exist:\n  - %s",
+      "%d asset(s) declared by Solo's libraries do not exist:\n  - %s",
       count($missing),
       implode("\n  - ", $missing)
     ));
@@ -213,14 +225,14 @@ class AttachedLibrariesExistTest extends TestCase {
    * immediately overridden on the next line.
    *
    * Two sources count as a reference, not just libraries:
-   * - solo.libraries.yml, the normal case.
+   * - the full library set (written and built), the normal case.
    * - solo.info.yml, which names the CKEditor stylesheets under
    *   ckeditor_stylesheets / ckeditor5-stylesheets.
    * The starter subtheme is skipped: it ships its own libraries file.
    */
   public function testNoOrphanedStylesheets(): void {
     $theme = $this->themePath();
-    $haystack = (string) file_get_contents($theme . '/solo.libraries.yml')
+    $haystack = implode("\n", array_keys($this->assetPaths()))
       . (string) file_get_contents($theme . '/solo.info.yml');
 
     $orphans = [];
@@ -239,7 +251,7 @@ class AttachedLibrariesExistTest extends TestCase {
       'Parsed suspiciously few stylesheets - the glob is wrong, not the theme.'
     );
     $this->assertSame([], $orphans, sprintf(
-      "%d stylesheet(s) under css/ are named by neither solo.libraries.yml nor "
+      "%d stylesheet(s) under css/ are named by neither a Solo library nor "
       . "solo.info.yml, so nothing can ever load them:\n  - %s",
       count($orphans),
       implode("\n  - ", $orphans)
@@ -247,16 +259,35 @@ class AttachedLibrariesExistTest extends TestCase {
   }
 
   /**
-   * Returns the PHP sources that can attach a library.
+   * Every css and js path of every Solo library.
+   *
+   * @return array<string, string>
+   *   Theme-relative path => the library that names it.
+   */
+  protected function assetPaths(): array {
+    $paths = [];
+    foreach ($this->libraries() as $name => $library) {
+      foreach ($library['css'] ?? [] as $files) {
+        foreach (array_keys($files) as $path) {
+          $paths[(string) $path] = $name;
+        }
+      }
+      foreach (array_keys($library['js'] ?? []) as $path) {
+        $paths[(string) $path] = $name;
+      }
+    }
+    return $paths;
+  }
+
+  /**
+   * Returns the PHP sources that can attach a Solo library.
    *
    * @return list<string>
-   *   Absolute file paths.
+   *   Absolute file paths: Solo's own src/ and Solo Utilities' src/.
    */
   protected function sourceFiles(): array {
-    $theme = $this->themePath();
     $out = [];
-    foreach (['includes', 'src'] as $dir) {
-      $base = $theme . '/' . $dir;
+    foreach ([$this->themePath() . '/src', $this->utilitiesPath() . '/src'] as $base) {
       if (!is_dir($base)) {
         continue;
       }
@@ -266,9 +297,6 @@ class AttachedLibrariesExistTest extends TestCase {
           $out[] = $file->getPathname();
         }
       }
-    }
-    foreach (glob($theme . '/*.theme') ?: [] as $f) {
-      $out[] = $f;
     }
     sort($out);
     return $out;

@@ -12,10 +12,11 @@ use PHPUnit\Framework\TestCase;
  * Shared set-up for the Solo characterization tests.
  *
  * WHY THIS EXISTS
- * Solo 2 moves the procedural helpers in includes/ into solo_utilities. These
- * tests record what the helpers do TODAY, oddities included, so the move can
- * prove identical output. A test here asserts current behaviour; when the
- * assertion looks wrong, the answer is a note in the result file, not a fix.
+ * These tests recorded what Solo 1's procedural helpers in includes/ did,
+ * oddities included, so the move to Solo Utilities could prove identical
+ * output. Solo 2 has no includes/: each test now runs the same cases against
+ * the Solo Utilities class that took the helper over. A case whose 2.0 answer
+ * differs on purpose cites the CHANGELOG line that made the change.
  *
  * The helpers read services through \Drupal::, so each test builds a small
  * container holding only mocks for what the helper under test asks for. The
@@ -51,10 +52,6 @@ abstract class SoloCharacterizationBase extends TestCase {
     // the parent process, where another test may have loaded another copy.
     $core = dirname((string) (new \ReflectionClass(\Drupal::class))->getFileName(), 2);
     require_once $core . '/includes/bootstrap.inc';
-    $theme = dirname(__DIR__, 3);
-    require_once $theme . '/includes/_solo_theme_preprocess.inc';
-    require_once $theme . '/includes/_theme_settings_helper_functions.inc';
-    require_once $theme . '/includes/_solo_theme_suggestions.inc';
     $this->settings = [];
     $this->container = new ContainerBuilder();
     $provider = $this->createMock(ThemeSettingsProvider::class);

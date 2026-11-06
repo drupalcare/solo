@@ -4,26 +4,33 @@ declare(strict_types=1);
 
 namespace Drupal\Tests\solo\Unit;
 
-use Drupal\solo\SocialIconColor;
+use Drupal\solo_utilities\Security\CssValueValidator;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\Attributes\Group;
 use PHPUnit\Framework\TestCase;
 
 /**
- * Tests the social-icon colour rules.
+ * Tests the social icon color rules.
  *
  * The setting is printed into a style attribute, so a bare custom property
- * name — "--solo-fb" rather than "var(--solo-fb)" — makes CSS discard the
- * whole declaration and the icons render grey, with nothing logged. Commit
- * 6827481 fixed that in the templates' own fallback; these rules close the
- * half where the value comes from the site builder.
+ * name ("--solo-fb" rather than "var(--solo-fb)") makes CSS discard the whole
+ * declaration and the icons render gray, with nothing logged. In Solo 1 the
+ * rules lived in Drupal\solo\SocialIconColor. In Solo 2 they live in Solo
+ * Utilities: CssValueValidator decides what a color value is, and
+ * SettingsFormValidator::validateSocialIconColor() turns a bare name into the
+ * "enter var(--name)" error. This test pins the validator half.
+ *
+ * Two intended differences from 1.x: 4 and 8 digit hex, rgb(), rgba(),
+ * transparent and currentcolor are now accepted (the validator is shared with
+ * every other color setting), and an empty value is skipped by the form
+ * validator before it reaches here, so the validator answers NULL for it.
  *
  * @license SPDX-License-Identifier: GPL-2.0-or-later
  *
  * @group solo
  */
-#[CoversClass(SocialIconColor::class)]
+#[CoversClass(CssValueValidator::class)]
 #[Group('solo')]
 class SocialIconColorTest extends TestCase {
 
@@ -60,20 +67,15 @@ class SocialIconColorTest extends TestCase {
   }
 
   /**
-   * A bare custom property name is recognised as such.
-   *
-   * The docblock tag is for PHPUnit 9 (Drupal 10), which does not read the
-   * attribute; PHPUnit 10+ reads the attribute and ignores the tag.
+   * A bare custom property name is recognized, and is never a color value.
    *
    * @dataProvider bareCustomProperties
    */
   #[DataProvider('bareCustomProperties')]
   public function testBareCustomPropertyIsDetected(string $value): void {
-    $this->assertTrue(SocialIconColor::isBareCustomProperty($value));
-    $this->assertFalse(
-      SocialIconColor::isAcceptable($value),
-      'A bare custom property name is never an acceptable value.'
-    );
+    $validator = new CssValueValidator();
+    $this->assertSame(trim($value), $validator->customPropertyName($value));
+    $this->assertNull($validator->color($value), 'A bare custom property name is never an acceptable value.');
   }
 
   /**
@@ -83,40 +85,38 @@ class SocialIconColorTest extends TestCase {
    */
   #[DataProvider('notBareCustomProperties')]
   public function testOtherValuesAreNotBareCustomProperties(string $value): void {
-    $this->assertFalse(SocialIconColor::isBareCustomProperty($value));
+    $this->assertNull((new CssValueValidator())->customPropertyName($value));
   }
 
   /**
-   * The values the setting accepts.
+   * The values the setting accepts come back unchanged.
    */
   public function testAcceptedValues(): void {
-    $this->assertTrue(SocialIconColor::isAcceptable(''), 'Empty means use the default.');
-    $this->assertTrue(SocialIconColor::isAcceptable('   '), 'Whitespace only is empty.');
-    $this->assertTrue(SocialIconColor::isAcceptable('#1877f2'));
-    $this->assertTrue(SocialIconColor::isAcceptable('#ABC'));
-    $this->assertTrue(SocialIconColor::isAcceptable('var(--solo-fb)'));
-    $this->assertTrue(SocialIconColor::isAcceptable('var( --solo-fb )'), 'Inner spacing is tolerated.');
+    $validator = new CssValueValidator();
+    $this->assertSame('#1877f2', $validator->color('#1877f2'));
+    $this->assertSame('#ABC', $validator->color('#ABC'));
+    $this->assertSame('var(--solo-fb)', $validator->color('var(--solo-fb)'));
+    $this->assertSame('var( --solo-fb )', $validator->color('var( --solo-fb )'), 'Inner spacing is tolerated.');
+    $this->assertSame('#1877f2', $validator->color('  #1877f2  '), 'Outer whitespace is trimmed.');
+    // New in 2.0: the shared validator also accepts these.
+    $this->assertSame('rgb(24, 119, 242)', $validator->color('rgb(24, 119, 242)'));
+    $this->assertSame('transparent', $validator->color('TRANSPARENT'));
   }
 
   /**
    * The values the setting refuses.
    */
   public function testRefusedValues(): void {
-    $this->assertFalse(SocialIconColor::isAcceptable('--solo-fb'), 'The bug this exists for.');
-    $this->assertFalse(SocialIconColor::isAcceptable('#12345'), 'Five hex digits is not a colour.');
-    $this->assertFalse(SocialIconColor::isAcceptable('red'), 'Named colours are out of scope here.');
-    $this->assertFalse(SocialIconColor::isAcceptable('var(--a); background:url(x)'), 'No trailing CSS.');
-    $this->assertFalse(SocialIconColor::isAcceptable('"><script>alert(1)</script>'), 'No markup.');
-  }
-
-  /**
-   * The suggestion shows the site builder exactly what to type.
-   */
-  public function testSuggestWrapsOnlyBareNames(): void {
-    $this->assertSame('var(--solo-fb)', SocialIconColor::suggest('--solo-fb'));
-    $this->assertSame('var(--solo-fb)', SocialIconColor::suggest('  --solo-fb  '));
-    $this->assertSame('#1877f2', SocialIconColor::suggest('#1877f2'), 'A valid value is returned unchanged.');
-    $this->assertSame('var(--solo-fb)', SocialIconColor::suggest('var(--solo-fb)'), 'Not double wrapped.');
+    $validator = new CssValueValidator();
+    $this->assertNull($validator->color(''), 'Empty is skipped by the form validator; nothing is emitted for it.');
+    $this->assertNull($validator->color('--solo-fb'), 'The bug this exists for.');
+    $this->assertNull($validator->color('#12345'), 'Five hex digits is not a color.');
+    $this->assertNull($validator->color('red'), 'Named colors are out of scope here.');
+    $this->assertNull($validator->color('var(--a); background:url(x)'), 'No trailing CSS.');
+    $this->assertNull($validator->color('"><script>alert(1)</script>'), 'No markup.');
+    $this->assertNull($validator->color('rgb(300, 0, 0)'), 'A channel above 255 is refused.');
+    $this->assertNull($validator->color("#fff\n;x"), 'Anything after a newline is refused, not trimmed away.');
+    $this->assertNull($validator->color(['#fff']), 'A non-string is refused.');
   }
 
 }

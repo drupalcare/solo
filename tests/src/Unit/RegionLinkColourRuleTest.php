@@ -52,8 +52,8 @@ class RegionLinkColourRuleTest extends TestCase {
           continue;
         }
         $found[$var]++;
-        $this->assertStringStartsWith(':where(.page-wrapper) a:not(', $selector,
-          "The rule using $var must be ':where(.page-wrapper) a:not(...)'. "
+        $this->assertStringStartsWith(':where(.solo-page) a:not(', $selector,
+          "The rule using $var must be ':where(.solo-page) a:not(...)'. "
           . 'Wrapping a:not(...) in :where() drops it to zero specificity and '
           . 'solo-normalize.css wins (#3629228).');
       }

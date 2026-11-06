@@ -12,26 +12,14 @@ use PHPUnit\Framework\Attributes\RunTestsInSeparateProcesses;
  * Guards the Solo theme settings form end to end.
  *
  * WHY THIS EXISTS
- * Solo builds its entire settings UI from hook_form_system_theme_settings_alter
- * by require_once'ing 23 include files INTO that function's scope. The includes
- * read $form, $form_state, $attributes, $updated_regions and $counts from the
- * caller; none of them stands alone.
+ * Solo 2 builds its settings UI in Solo Utilities (Form\ThemeSettings, one
+ * section class per area), attached to Solo's settings page by a #[Hook]
+ * form alter. If that hook stops running, the page still returns HTTP 200
+ * with only core's handful of fields.
  *
- * That arrangement has to survive two things:
- *
- *   1. Drupal 11.5.0 deprecated shipping a theme-settings.php file at all, and
- *      core says it is removed in 12.0.0. Core triggers on the FILE EXISTING,
- *      not on its contents, so clearing it means moving the hook out and
- *      deleting the file.
- *   2. On Drupal 12 core only scans "<theme>.theme" and "theme-settings.php"
- *      for PROCEDURAL theme hooks. A hook moved into includes/ is invisible to
- *      that scan, so the same hook must also exist as a #[Hook] class method or
- *      the settings form silently loses every Solo section while still
- *      returning HTTP 200.
- *
- * Point 2 is why this test asserts on CONTENT and on a round-trip SAVE rather
- * than on the status code: an empty-but-successful settings page is exactly the
- * failure mode being guarded against.
+ * So this test asserts on CONTENT and on a round-trip SAVE rather than on the
+ * status code: an empty-but-successful settings page is exactly the failure
+ * mode being guarded against.
  *
  * @license SPDX-License-Identifier: GPL-2.0-or-later
  *
@@ -43,13 +31,25 @@ class SoloThemeSettingsFormTest extends BrowserTestBase {
 
   /**
    * {@inheritdoc}
+   *
+   * Core installs the default theme BEFORE $modules, and Solo 2 depends on
+   * Solo Utilities, so Solo is installed and made default in setUp().
    */
-  protected $defaultTheme = 'solo';
+  protected $defaultTheme = 'stark';
 
   /**
    * {@inheritdoc}
    */
-  protected static $modules = ['node', 'block', 'user'];
+  protected static $modules = ['node', 'block', 'user', 'solo_utilities'];
+
+  /**
+   * {@inheritdoc}
+   */
+  protected function setUp(): void {
+    parent::setUp();
+    $this->container->get('theme_installer')->install(['solo']);
+    $this->config('system.theme')->set('default', 'solo')->save();
+  }
 
   /**
    * The settings route for this theme.
@@ -64,8 +64,8 @@ class SoloThemeSettingsFormTest extends BrowserTestBase {
     $this->drupalGet(self::SETTINGS_PATH);
     $this->assertSession()->statusCodeEquals(200);
 
-    // Solo's hook builds the overwhelming majority of this form: 356 named
-    // fields with it, barely a dozen without. A count is a far better guard
+    // Solo Utilities builds the overwhelming majority of this form: hundreds
+    // of named fields with it, barely a dozen without. A count is a far better guard
     // than any single field name, because the failure being caught is "the
     // hook stopped running and the page still returned 200".
     //
@@ -78,22 +78,15 @@ class SoloThemeSettingsFormTest extends BrowserTestBase {
     preg_match_all('/<(?:input|select|textarea)\b[^>]*\bname="([^"]+)"/i', $html, $matches);
     $fieldCount = count(array_unique($matches[1]));
     $this->assertGreaterThan(100, $fieldCount, sprintf(
-      'Only %d named fields rendered. Solo builds this form from 23 includes '
-      . 'pulled into hook_form_system_theme_settings_alter; a collapse to a '
-      . 'handful means the hook is no longer running.',
+      'Only %d named fields rendered. Solo Utilities builds this form; a '
+      . 'collapse to a handful means its form alter is no longer running.',
       $fieldCount
     ));
 
-    // Solo's sections. These come from the includes that are require_once'd
-    // into the hook's scope - if the hook stops running, the page still
-    // returns 200 and these disappear.
-    $this->assertSession()->fieldExists('theme_category');
-    $this->assertSession()->fieldExists('predefined_current_theme');
-    // Deliberately NOT asserting the section's visible title. That #title is
-    // built from markup ("<strong class='warning'>Predefined Color
-    // Schemes</strong> Settings - Solo Theme"), so the phrase is present in
-    // the raw HTML but not in the tag-stripped page text Mink compares
-    // against. The two fields above prove the same section rendered.
+    // The color scheme picker, from ColorSchemesSection. The category is a
+    // value element derived from the chosen scheme, so it has no field.
+    $this->assertSession()->fieldExists('color_scheme[name]');
+    $this->assertSession()->elementExists('css', '#edit-color-scheme-selection');
   }
 
   /**
@@ -107,14 +100,21 @@ class SoloThemeSettingsFormTest extends BrowserTestBase {
     $this->drupalGet(self::SETTINGS_PATH);
     $this->assertSession()->statusCodeEquals(200);
 
-    $this->submitForm(['theme_category' => 'none'], 'Save configuration');
+    // A real scheme, read from the page: its option value is
+    // "category|name", and the validator stores the two keys apart.
+    $option = $this->getSession()->getPage()->find('css', 'input[name="color_scheme[name]"][value*="|"]');
+    $this->assertNotNull($option, 'The scheme picker offers no scheme.');
+    $value = (string) $option->getAttribute('value');
+    [$category, $name] = explode('|', $value, 2);
+
+    $this->submitForm(['color_scheme[name]' => $value], 'Save configuration');
     $this->assertSession()->statusCodeEquals(200);
 
-    $saved = \Drupal::config('solo.settings')->get('theme_category');
+    $saved = \Drupal::config('solo.settings');
     $this->assertSame(
-      'none',
-      $saved,
-      'The Solo setting did not persist, so the submit path is not wired.'
+      [$category, $name],
+      [$saved->get('color_scheme.category'), $saved->get('color_scheme.name')],
+      'The chosen scheme did not persist, so the submit path is not wired.'
     );
   }
 

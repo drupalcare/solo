@@ -5,6 +5,7 @@
 **Sub-theme owners: this release renames Solo's CSS classes and element IDs, so your sub-theme's CSS, Twig and JavaScript break until you migrate them.** Run `drush solo:migrate-classes my_theme` first. It is a dry run and changes nothing. Read the list, then run it again with `--apply`. `drush updatedb` also rewrites the inline CSS saved in Solo's settings.
 
 - A new site starts with the social icons off and no social links filled in (they used to point to the maintainer's accounts). The footer credit link stays. Existing sites keep what they saved.
+- Region border colors: in Berry Blue Dreams, Cotton Candy Whispers and Monochrome Splash, a region's own border color now reaches the content inside the region. Four leftover scheme rules re-declared the scheme's border color on every element inside the main or top container, which blocked it.
 - Every Solo class and ID now starts with `solo-` and follows one naming pattern. The full list of old and new names is in `docs/CLASS-MIGRATION.md`.
 - The starter sub-theme (`solo_subtheme`) uses the new names.
 - Accessibility: the color-coded system tabs (View, Edit, Delete, Revisions) use darker fills, so the white label on hover and on the active tab reads at 4.5:1 or more. The label at rest keeps the region link color instead of a light green or blue that failed 4.5:1.

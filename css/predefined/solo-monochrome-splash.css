@@ -45,13 +45,11 @@ PUNCH #F25278 */
   --r-bg: #d5d5d5;
 }
 
-:where(.solo-page) .solo-container--top:where(:not([style*="--r-br:"] *)),
-:where(.solo-page .solo-container--top) :where(:not([style*="--r-br:"] *)) {
+:where(.solo-page) .solo-container--top:where(:not([style*="--r-br:"] *)) {
   --r-br: #f2f2f2;
 }
 
-:where(.solo-page) .solo-container--main:where(:not([style*="--r-br:"] *)),
-:where(.solo-page .solo-container--main) :where(:not([style*="--r-br:"] *)) {
+:where(.solo-page) .solo-container--main:where(:not([style*="--r-br:"] *)) {
   --r-br: #d4d4d4;
 }
 

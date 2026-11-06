@@ -4,7 +4,10 @@ declare(strict_types=1);
 
 namespace Drupal\Tests\solo\Unit;
 
-use Drupal\solo\Hook\SoloThemePreprocessHooks;
+use Drupal\Core\StringTranslation\TranslationInterface;
+use Drupal\solo_utilities\Feature\FormDecorator;
+use Drupal\solo_utilities\Render\AttributeHelper;
+use Drupal\solo_utilities\Render\FormElementInspector;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\Attributes\Group;
 use PHPUnit\Framework\TestCase;
@@ -17,6 +20,9 @@ use PHPUnit\Framework\TestCase;
  * attributes['id'] is an array made str_contains() throw a TypeError and the
  * page returned a 500. The same guard was shipped in 1.0.35 for #3609300 and
  * was lost when the procedural hooks were converted into src/Hook classes.
+ * In Solo 2 the logic lives in Solo Utilities' FormDecorator; Solo's own
+ * SoloThemePreprocessHooks is an empty tombstone, so this test calls the real
+ * class.
  * The contract: an array is reduced to its first element, and anything that is
  * not then a string is treated as empty.
  *
@@ -26,6 +32,14 @@ use PHPUnit\Framework\TestCase;
  */
 #[Group('solo')]
 class ArrayAttributeGuardTest extends TestCase {
+
+  /**
+   * Builds the class that now holds the form preprocess logic.
+   */
+  private function decorator(): FormDecorator {
+    $attributes = new AttributeHelper();
+    return new FormDecorator($attributes, new FormElementInspector($attributes), $this->createStub(TranslationInterface::class));
+  }
 
   /**
    * Values for an id / #name and whether each should count as a match.
@@ -55,7 +69,7 @@ class ArrayAttributeGuardTest extends TestCase {
   #[DataProvider('valueProvider')]
   public function testContainerId(mixed $id, bool $expected): void {
     $variables = ['attributes' => ['id' => $id, 'class' => []]];
-    SoloThemePreprocessHooks::preprocessContainer($variables);
+    $this->decorator()->preprocessContainer($variables);
     $this->assertSame($expected, in_array('ajax-container', $variables['attributes']['class'], TRUE));
   }
 
@@ -70,7 +84,7 @@ class ArrayAttributeGuardTest extends TestCase {
   #[DataProvider('nameProvider')]
   public function testElementName(mixed $name, bool $expected): void {
     $variables = ['attributes' => ['class' => []], 'element' => ['#name' => $name]];
-    SoloThemePreprocessHooks::preprocessFormElement($variables);
+    $this->decorator()->preprocessFormElement($variables);
     $this->assertSame($expected, in_array('solo-date-related', $variables['attributes']['class'], TRUE));
   }
 

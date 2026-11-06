@@ -62,8 +62,7 @@ BLUEBERRY #241571, CERULEAN #0492C2 */
   --r-bg: var(--solo-white);
 }
 
-:where(.solo-page) .solo-container--main:where(:not([style*="--r-br:"] *)),
-:where(.solo-page .solo-container--main) :where(:not([style*="--r-br:"] *)) {
+:where(.solo-page) .solo-container--main:where(:not([style*="--r-br:"] *)) {
   --r-br: var(--r-br-light);
 }
 

@@ -158,8 +158,7 @@ div.solo-page-title.solo-container--single {
   --s-b: 253, 221, 230;
 }
 
-:where(.solo-page) .solo-container--main:where(:not([style*="--r-br:"] *)),
-:where(.solo-page .solo-container--main) :where(:not([style*="--r-br:"] *)) {
+:where(.solo-page) .solo-container--main:where(:not([style*="--r-br:"] *)) {
   --r-br: var(--r-br-light);
 }
 

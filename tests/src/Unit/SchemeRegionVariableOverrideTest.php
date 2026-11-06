@@ -8,28 +8,25 @@ use PHPUnit\Framework\Attributes\Group;
 use PHPUnit\Framework\TestCase;
 
 /**
- * Tests that a colour scheme cannot out-rank a region's own colour setting.
+ * Tests that a color scheme cannot cut a region's own color off its content.
  *
- * A region's colour settings are emitted as inline custom properties on the
- * region wrapper (style="--r-br:#hex;..."). Inline style beats any stylesheet
- * rule on the wrapper itself, and descendants inherit from it, so the setting
- * reaches the region's content as long as nothing re-declares the variable on
- * the descendants.
+ * In Solo 1 a region's color settings were inline custom properties on the
+ * region wrapper (style="--r-br:#hex"). Schemes then pinned --r-br on every
+ * descendant ("<container> *"), which beat the inherited inline value, so a
+ * region's "borders" setting colored only the wrapper (#3629228). The fix was
+ * a guard on each descendant rule: :where(:not([style*="--r-br:"] *)).
  *
- * Fourteen colour schemes did exactly that for --r-br, with selectors such as
- * ".page-wrapper .main-container *". A rule on "*" matches every descendant
- * directly, and a directly matched declaration always beats an inherited
- * value, so a region's "borders" setting coloured only the wrapper's own
- * border and nothing inside it. Measured on sts.local with
- * solo-midnight-whispers: r_br failed in 14 of 30 regions; every other
- * variable passed.
+ * Solo 2 prints no inline style. Solo Utilities writes each region's colors as
+ * a rule on the region element (ThemeCssBuilder::REGION_SELECTORS), and the
+ * content inherits them. The guard can no longer match anything, so a scheme
+ * rule that declares a region variable on a region's DESCENDANTS always wins
+ * over the inherited setting, at any specificity, because a directly matched
+ * declaration beats an inherited value. Four such rules survived the class
+ * rename and were removed; this test keeps them out.
  *
- * The "*" was not a mistake to delete: it pins the scheme colour on every
- * descendant regardless of anything in between. The fix keeps it and only
- * skips descendants of an element whose inline style sets the variable, via
- * :where(:not([style*="--r-br:"] *)). :where() keeps the specificity of the
- * old "*", so the scheme's other --r-br rules (form fields, buttons, menus)
- * win or lose exactly as before.
+ * What the two Solo 1 tests checked on the region element itself (a scheme
+ * rule against the generated region rule) is now check-cascade.py P1, run in
+ * the css-checks CI job, which reads the generated selectors.
  *
  * @license SPDX-License-Identifier: GPL-2.0-or-later
  *
@@ -51,129 +48,75 @@ class SchemeRegionVariableOverrideTest extends TestCase {
    * @return array<int, array{0: string, 1: string}>
    *   One entry per rule.
    */
-  protected function rules(string $path): array {
-    $raw = file_get_contents($path);
-    $this->assertIsString($raw);
-    $css = (string) preg_replace('#/\*.*?\*/#s', '', $raw);
+  protected function rules(string $css): array {
+    $css = (string) preg_replace('#/\*.*?\*/#s', '', $css);
     preg_match_all('#([^{}]+)\{([^{}]*)\}#', $css, $m, PREG_SET_ORDER);
     return array_map(fn(array $r): array => [trim($r[1]), $r[2]], $m);
   }
 
   /**
-   * No scheme may declare a region variable on a bare descendant "*".
+   * Lists selectors that set a region variable on every descendant.
+   *
+   * The last compound of such a selector names no element: a bare "*", or
+   * the Solo 1 guard :where(:not([style*="--r-xx:"] *)) alone after a
+   * descendant combinator.
+   *
+   * @return list<string>
+   *   "selector declares --r-xx" entries.
    */
-  public function testSchemesDoNotPinRegionVariablesOnEveryDescendant(): void {
+  protected function descendantPins(string $css): array {
+    $pins = [];
+    foreach ($this->rules($css) as [$selectors, $body]) {
+      if (!preg_match_all('/(--r-[a-z-]+)\s*:/', $body, $vars)) {
+        continue;
+      }
+      // Split on top-level commas only: :not(a, b) is one selector.
+      foreach (preg_split('/,(?![^()]*\))/', $selectors) ?: [] as $selector) {
+        $selector = trim((string) preg_replace('/\s+/', ' ', $selector));
+        if (preg_match('/\s(\*|:where\(:not\(\[style\*="--r-[a-z-]+:"\] \*\)\))$/', $selector) === 1) {
+          $pins[] = sprintf('"%s" declares %s', $selector, implode(', ', array_unique($vars[1])));
+        }
+      }
+    }
+    return $pins;
+  }
+
+  /**
+   * No scheme declares a region variable on every descendant of an element.
+   */
+  public function testSchemesDoNotPinRegionVariablesOnDescendants(): void {
     $files = glob($this->themePath() . '/css/predefined/*.css') ?: [];
-    $this->assertGreaterThan(40, count($files), 'The colour schemes were not found.');
+    $this->assertGreaterThan(40, count($files), 'The color schemes were not found.');
 
     $offenders = [];
-    $guarded = 0;
+    $declaring = 0;
     foreach ($files as $file) {
-      foreach ($this->rules($file) as [$selectors, $body]) {
-        if (!preg_match_all('/(--r-[a-z-]+)\s*:/', $body, $vars)) {
-          continue;
-        }
-        // Split on top-level commas only: :not(a, b) is one selector.
-        $list = preg_split('/,(?![^()]*\))/', $selectors) ?: [];
-        foreach (array_map('trim', $list) as $selector) {
-          $selector = (string) preg_replace('/\s+/', ' ', $selector);
-          foreach (array_unique($vars[1]) as $var) {
-            $guard = ':where(:not([style*="' . $var . ':"] *))';
-            if (str_ends_with($selector, ' ' . $guard)) {
-              $guarded++;
-              continue;
-            }
-            if (preg_match('/\s\*$/', $selector)) {
-              $offenders[] = sprintf('%s: "%s" declares %s', basename($file), $selector, $var);
-            }
-          }
-        }
+      $css = (string) file_get_contents($file);
+      $declaring += preg_match_all('/--r-[a-z-]+\s*:/', $css);
+      foreach ($this->descendantPins($css) as $pin) {
+        $offenders[] = basename($file) . ': ' . $pin;
       }
     }
+    // Control: the schemes really declare region variables.
+    $this->assertGreaterThan(500, $declaring, 'Almost no region variables read; the scan is wrong, not the schemes.');
     $this->assertSame([], $offenders,
-      'A scheme rule on a bare descendant "*" re-declares a region variable on '
-      . 'every element, so the region\'s own setting (inline on the wrapper) '
-      . 'only colours the wrapper. Use "<container> :where(:not([style*="'
-      . '--r-xx:"] *))" instead.');
-    // The guard must actually be in use; a regex that matches nothing would
-    // pass the assertion above on any input.
-    $this->assertGreaterThanOrEqual(50, $guarded, 'Expected the 50 guarded scheme selectors.');
+      'A scheme rule on a region\'s descendants re-declares a region variable '
+      . 'on each element, so the region\'s own color (a rule on the region, '
+      . 'inherited by its content) never reaches the content. Set it on the '
+      . 'region element only.');
   }
 
   /**
-   * Every scheme --r-br rule yields to a region's own "borders" setting.
-   *
-   * All 50 schemes also set --r-br directly on form fields, buttons and menu
-   * items (".page-wrapper .solo-input" and friends). A rule that matches the
-   * element itself beats the value it would inherit from the region wrapper,
-   * so a region's borders setting never reached a real Drupal form field.
-   * Measured on sts.local: the login form's username field in Content kept
-   * the scheme's #a2a2a2 while the region set #8b69c3.
-   *
-   * Each selector must end in the guard, except ".page-wrapper" (the root,
-   * never under a region) and hover/focus/active states, which keep the
-   * scheme's interaction colour on purpose: a region has no hover-border
-   * setting, and dropping them would remove the visible state change.
-   *
-   * A guarded rule must declare nothing but --r-br, or the guard would also
-   * hand that region's other colours back to inheritance.
+   * The scan flags both shapes of a descendant pin and passes element rules.
    */
-  public function testSchemeBorderRulesYieldToRegionSetting(): void {
-    $files = glob($this->themePath() . '/css/predefined/*.css') ?: [];
-    $this->assertGreaterThan(40, count($files), 'The colour schemes were not found.');
+  public function testScanCatchesDescendantPins(): void {
     $guard = ':where(:not([style*="--r-br:"] *))';
-
-    $unguarded = [];
-    $overreach = [];
-    $guarded = 0;
-    foreach ($files as $file) {
-      foreach ($this->rules($file) as [$selectors, $body]) {
-        if (!preg_match('/--r-br\s*:/', $body)) {
-          continue;
-        }
-        $list = preg_split('/,(?![^()]*\))/', $selectors) ?: [];
-        $rule_guarded = FALSE;
-        foreach ($list as $selector) {
-          $selector = trim((string) preg_replace('/\s+/', ' ', $selector));
-          if (str_ends_with($selector, $guard)) {
-            $guarded++;
-            $rule_guarded = TRUE;
-            continue;
-          }
-          if ($selector === '.page-wrapper' || preg_match('/:(hover|focus|focus-within|focus-visible|active)\b/', $selector)) {
-            continue;
-          }
-          $unguarded[] = sprintf('%s: "%s"', basename($file), $selector);
-        }
-        if ($rule_guarded && preg_match_all('/(--?[a-z][\w-]*)\s*:/', $body, $props) && array_diff($props[1], ['--r-br'])) {
-          $overreach[] = sprintf('%s: "%s"', basename($file), substr($selectors, 0, 80));
-        }
-      }
-    }
-    $this->assertSame([], $unguarded,
-      'These scheme selectors set --r-br without the guard, so they beat a '
-      . 'region\'s own borders setting. Append ' . $guard . '.');
-    $this->assertSame([], $overreach, 'A guarded rule must declare only --r-br.');
-    $this->assertGreaterThanOrEqual(900, $guarded, 'Expected the guarded scheme border selectors.');
-  }
-
-  /**
-   * The guard matches the inline style text the theme actually emits.
-   *
-   * The CSS guard is a substring match on "--r-br:" (no space). That is only
-   * correct while _get_region_attributes_for_region() joins name and value
-   * with a bare colon, so this pins the two together.
-   */
-  public function testInlineStyleFormatMatchesTheGuard(): void {
-    $source = file_get_contents($this->themePath() . '/includes/_solo_theme_preprocess.inc');
-    $this->assertIsString($source);
-    $this->assertStringContainsString(
-      '$css_var = "{$css_var}:{$css_val}";',
-      $source,
-      'The region inline style format changed; the [style*="--r-xx:"] guard in '
-      . 'css/predefined/*.css must change with it.'
-    );
-    $this->assertStringContainsString("'__r_br'", $source, 'The borders region variable was renamed.');
+    $this->assertCount(1, $this->descendantPins(":where(.solo-page .solo-container--main) $guard { --r-br: red; }"));
+    $this->assertCount(1, $this->descendantPins('.solo-page .solo-container--main * { --r-br: red; }'));
+    $this->assertSame([], $this->descendantPins(":where(.solo-page) .solo-container--main$guard { --r-br: red; }"));
+    $this->assertSame([], $this->descendantPins(":where(.solo-page) .solo-input$guard, .a :is(.b, .c) .d { --r-br: red; }"));
+    $this->assertSame([], $this->descendantPins(':where(.solo-page) :is(.solo-container--footer a, .solo-copyright a) { --r-tx: red; }'), 'Real elements in :is().');
+    $this->assertSame([], $this->descendantPins('.solo-page .x * { color: red; }'), 'Only region variables count.');
   }
 
 }

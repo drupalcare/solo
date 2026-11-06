@@ -9,31 +9,28 @@ use PHPUnit\Framework\Attributes\Group;
 use PHPUnit\Framework\Attributes\RunTestsInSeparateProcesses;
 
 /**
- * Guards Solo's hook registration end to end.
+ * Guards Solo's preprocess end to end on a real page.
  *
  * WHY THIS EXISTS
- * Solo's 35 hooks were converted to the Drupal.org bot's shape: the body of
- * each hook lives in a class under src/Hook, and the procedural function in
- * includes/ is a thin caller marked #[LegacyHook]. Until this test, NOTHING
- * automated guarded that arrangement -- the whole suite was one unit test for
- * SocialIconColor, and the only proof the hooks still fired was a human hiding
- * src/Hook and reloading a page by hand.
+ * Solo 2 ships no PHP of its own: every preprocess Solo 1 kept in solo.theme,
+ * includes/ and src/Hook now lives in Solo Utilities as #[Hook] methods
+ * (solo_utilities/CHANGELOG.md, "Holds all of the Solo theme's PHP"). If that
+ * module's hooks stop reaching Solo's pages, the theme still returns HTTP 200
+ * and quietly loses its markup.
  *
- * That manual proof is what this class automates, and it deliberately makes two
- * DIFFERENT assertions, because either one alone can pass while the theme is
- * broken:
+ * Two DIFFERENT assertions, because either one alone can pass while the
+ * theme is broken:
  *
- *   1. REGISTRATION -- the theme registry still lists Solo's preprocess for the
- *      core hooks. This catches the registry never picking Solo up at all.
+ *   1. REGISTRATION -- the theme registry lists Solo Utilities' preprocess
+ *      for the core hooks Solo styles.
+ *   2. EXECUTION -- a real page carries markup that exists only if those
+ *      hooks ran: Solo's utility classes, the breadcrumb title, the sortable
+ *      table heading and the three menu suggestions.
  *
- *   2. EXECUTION -- a real page carries markup that only exists if the Hook
- *      CLASS ran. This is the assertion that matters most: for a theme the
- *      registry records the PROCEDURAL name (solo_preprocess_node), so deleting
- *      src/Hook leaves registration looking perfectly healthy while every page
- *      fatals the moment that function delegates into the missing class.
+ * That Solo's own src/Hook classes stay empty tombstones is
+ * SoloPhpSurfaceTest's job.
  *
- * Red-proofed by moving src/Hook aside: assertion 2 fails, which is exactly the
- * failure the manual check produced.
+ * @license SPDX-License-Identifier: GPL-2.0-or-later
  *
  * @group solo
  */
@@ -43,8 +40,11 @@ class SoloHookRegistrationTest extends BrowserTestBase {
 
   /**
    * {@inheritdoc}
+   *
+   * Core installs the default theme BEFORE $modules, and Solo 2 depends on
+   * Solo Utilities, so Solo is installed and made default in setUp().
    */
-  protected $defaultTheme = 'solo';
+  protected $defaultTheme = 'stark';
 
   /**
    * {@inheritdoc}
@@ -55,18 +55,19 @@ class SoloHookRegistrationTest extends BrowserTestBase {
     'user',
     'views',
     'menu_link_content',
+    'solo_utilities',
   ];
 
   /**
-   * Hooks Solo preprocesses that core always builds, so they always exist.
+   * Hooks Solo Utilities preprocesses for Solo that core always builds, so they always exist.
    */
   private const EXPECTED_PREPROCESS = [
-    'html' => 'solo_preprocess_html',
-    'page' => 'solo_preprocess_page',
-    'node' => 'solo_preprocess_node',
-    'block' => 'solo_preprocess_block',
-    'menu' => 'solo_preprocess_menu',
-    'field' => 'solo_preprocess_field',
+    'html' => 'solo_utilities_preprocess_html',
+    'page' => 'solo_utilities_preprocess_page',
+    'node' => 'solo_utilities_preprocess_node',
+    'block' => 'solo_utilities_preprocess_block',
+    'menu' => 'solo_utilities_preprocess_menu',
+    'field' => 'solo_utilities_preprocess_field',
   ];
 
   /**
@@ -74,11 +75,13 @@ class SoloHookRegistrationTest extends BrowserTestBase {
    */
   protected function setUp(): void {
     parent::setUp();
+    $this->container->get('theme_installer')->install(['solo']);
+    $this->config('system.theme')->set('default', 'solo')->save();
     $this->drupalCreateContentType(['type' => 'page', 'name' => 'Basic page']);
   }
 
   /**
-   * Assertion 1: the theme registry still registers Solo's preprocess hooks.
+   * Assertion 1: the theme registry registers Solo Utilities' preprocess hooks.
    */
   public function testPreprocessHooksAreRegistered(): void {
     $registry = \Drupal::service('theme.registry')->getRuntime();
@@ -97,7 +100,7 @@ class SoloHookRegistrationTest extends BrowserTestBase {
       }
 
       $this->assertContains($expected, $names, sprintf(
-        'Solo registers %s for the "%s" hook. Registered: %s',
+        'Solo Utilities registers %s for the "%s" hook. Registered: %s',
         $expected,
         $hook,
         implode(', ', $names) ?: '(none)'
@@ -106,9 +109,7 @@ class SoloHookRegistrationTest extends BrowserTestBase {
   }
 
   /**
-   * Assertion 2: the Hook CLASSES actually run and reach the page.
-   *
-   * This is the one that goes red when src/Hook is broken or missing.
+   * Assertion 2: the preprocess hooks actually run and reach the page.
    */
   public function testHookClassesActuallyRunOnRealPage(): void {
     $node = $this->drupalCreateNode([
@@ -121,7 +122,7 @@ class SoloHookRegistrationTest extends BrowserTestBase {
 
     // A status code is not a page check -- Drupal 12 can return 200 with a PHP
     // fatal printed into the body, which is how solo_utilities' alpha1 fatal
-    // hid on this very site.
+    // hid on a test site.
     $body = $this->getSession()->getPage()->getContent();
     foreach (['Fatal error', 'Declaration of', 'Undefined array key', 'Error:'] as $needle) {
       $this->assertStringNotContainsString($needle, $body, sprintf('No "%s" in the response body.', $needle));
@@ -140,10 +141,9 @@ class SoloHookRegistrationTest extends BrowserTestBase {
    * Solo's breadcrumb preprocess runs: the page title is appended.
    *
    * Core's breadcrumb on a node page is "Home" alone; the trailing title item
-   * exists only because solo_preprocess_breadcrumb ran. Measured 2026-10-05:
-   * on Drupal 12.0.0-beta1 that function had no #[Hook] twin, never ran, and
-   * the breadcrumb rendered "Home" alone -- while every other assertion in
-   * this class stayed green.
+   * exists only because the breadcrumb preprocess (Feature\Breadcrumb) ran.
+   * In Solo 1 on Drupal 12.0.0-beta1 that hook never ran and the breadcrumb
+   * rendered "Home" alone, while every other assertion here stayed green.
    */
   public function testBreadcrumbPreprocessRuns(): void {
     $node = $this->drupalCreateNode([
@@ -153,18 +153,17 @@ class SoloHookRegistrationTest extends BrowserTestBase {
 
     $this->drupalGet($node->toUrl());
     $this->assertSession()->statusCodeEquals(200);
-    $this->assertSession()->elementExists('css', 'nav.breadcrumb-nav');
-    $this->assertSession()->elementTextContains('css', 'nav.breadcrumb-nav .breadcrumb-title', 'Solo breadcrumb probe');
+    $this->assertSession()->elementExists('css', 'nav.solo-breadcrumb__nav');
+    $this->assertSession()->elementTextContains('css', 'nav.solo-breadcrumb__nav .solo-breadcrumb__title', 'Solo breadcrumb probe');
   }
 
   /**
    * Solo's views-table preprocess runs: sortable headings get their class.
    *
-   * The 'sortable-heading' class is added only by
-   * solo_preprocess_views_view_table, to header cells whose link carries an
-   * order and sort. /admin/content is core's table view with such headers,
-   * rendered in Solo because no admin theme is set. Dead on Drupal
-   * 12.0.0-beta1 for the same reason as the breadcrumb, measured 2026-10-05.
+   * The 'sortable-heading' class is added only by the views table
+   * preprocess, to header cells whose link carries an order and sort.
+   * /admin/content is core's table view with such headers, rendered in Solo
+   * because no admin theme is set.
    */
   public function testViewsTablePreprocessRuns(): void {
     $this->drupalCreateNode(['type' => 'page', 'title' => 'Solo table probe']);
@@ -178,24 +177,21 @@ class SoloHookRegistrationTest extends BrowserTestBase {
   /**
    * Solo's three menu SUGGESTION preprocesses run, and are registered once.
    *
-   * The functions solo_preprocess_menu__primary_menu, __primary_sidebar_menu
-   * and __account were procedural-only until 2026-10-11: Drupal 12 found them
-   * through the registry's defined-functions scan, which works only while core
-   * loads solo.theme. They are now #[Hook] methods with #[LegacyHook] callers,
-   * as solo.theme's #[ExtensionFileIsConverted] requires. Each sets markup
-   * that exists only when it ran (on a node page: the testing profile's front
-   * page is /user/login, where the account template hides the login button):
+   * Solo 1 found preprocess_menu__primary_menu, __primary_sidebar_menu and
+   * __account only through the registry's scan of solo.theme; in Solo 2 they
+   * are Solo Utilities #[Hook] methods. Each sets markup that exists only when
+   * it ran (on a node page: the testing profile's front page is /user/login,
+   * where the account template hides the login button):
    *
-   * - primary menu: the "navigation-responsive-click" class (click_hover);
-   * - primary sidebar menu: the "navigation-sidebar-click" class;
+   * - primary menu: the "solo-menu--responsive-click" class (click_hover);
+   * - primary sidebar menu: the "solo-menu--sidebar-click" class;
    * - account menu: the popup login button, and the "Log in" link removed.
    *
-   * "Once" is asserted on the registry: each suggestion lists Solo's
-   * preprocess exactly once, so neither the #[Hook] method nor the procedural
-   * caller is added a second time.
+   * "Once" is asserted on the registry: each suggestion lists the preprocess
+   * exactly once.
    */
   public function testMenuSuggestionPreprocessRuns(): void {
-    $this->config('solo.settings')->set('header_popup_login', TRUE)->save();
+    $this->config('solo.settings')->set('popup_login.enabled', TRUE)->save();
     \Drupal::entityTypeManager()->getStorage('menu_link_content')->create([
       'title' => 'Solo menu probe',
       'link' => ['uri' => 'internal:/'],
@@ -212,9 +208,9 @@ class SoloHookRegistrationTest extends BrowserTestBase {
 
     $this->drupalGet($node->toUrl());
     $this->assertSession()->statusCodeEquals(200);
-    $this->assertSession()->elementExists('css', '.navigation-primary-responsive.navigation-responsive-click');
-    $this->assertSession()->elementExists('css', '.navigation-primary-sidebar.navigation-sidebar-click');
-    $this->assertSession()->elementExists('css', '.solo-account-menu #login-button-open');
+    $this->assertSession()->elementExists('css', '.solo-menu--primary-responsive.solo-menu--responsive-click');
+    $this->assertSession()->elementExists('css', '.solo-menu--primary-sidebar.solo-menu--sidebar-click');
+    $this->assertSession()->elementExists('css', '.solo-account-menu .solo-popup-login__open');
     $this->assertSession()->elementNotExists('css', '.solo-account-menu a[href$="/user/login"]');
 
     $registry = \Drupal::service('theme.registry')->getRuntime();
@@ -223,49 +219,12 @@ class SoloHookRegistrationTest extends BrowserTestBase {
       $this->assertTrue($registry->has($hook), sprintf('Theme registry has the "%s" hook.', $hook));
       $functions = array_filter($registry->get($hook)['preprocess functions'] ?? [], 'is_string');
       $counts = array_count_values($functions);
-      $this->assertSame(1, $counts['solo_preprocess_' . $hook] ?? 0, sprintf(
-        'solo_preprocess_%s is registered exactly once. Registered: %s',
+      $this->assertSame(1, $counts['solo_utilities_preprocess_' . $hook] ?? 0, sprintf(
+        'solo_utilities_preprocess_%s is registered exactly once. Registered: %s',
         $hook,
         implode(', ', $functions)
       ));
     }
-  }
-
-  /**
-   * Every #[LegacyHook] caller must still resolve to a real class method.
-   *
-   * A thin caller whose target has been renamed is a fatal that only fires when
-   * that specific hook runs -- which a render test can easily never reach.
-   */
-  public function testEveryHookClassMethodIsCallable(): void {
-    $classes = [
-      'Drupal\solo\Hook\SoloThemePreprocessHooks',
-      'Drupal\solo\Hook\SoloThemeAlterHooks',
-      'Drupal\solo\Hook\SoloThemeSuggestionsHooks',
-      'Drupal\solo\Hook\SoloThemeMiscHooks',
-    ];
-
-    $total = 0;
-    foreach ($classes as $class) {
-      $this->assertTrue(class_exists($class), sprintf('Hook class %s exists.', $class));
-
-      $reflection = new \ReflectionClass($class);
-      foreach ($reflection->getMethods(\ReflectionMethod::IS_PUBLIC) as $method) {
-        foreach ($method->getAttributes() as $attribute) {
-          if (str_ends_with($attribute->getName(), '\\Hook')) {
-            $total++;
-          }
-        }
-      }
-    }
-
-    // Solo registered 35 hooks at the time this guard was written. Asserting a
-    // floor rather than the exact number lets hooks be added without a failing
-    // test, while a conversion that silently loses them still goes red.
-    $this->assertGreaterThanOrEqual(30, $total, sprintf(
-      'Solo still registers its hooks as attributes (found %d).',
-      $total
-    ));
   }
 
 }

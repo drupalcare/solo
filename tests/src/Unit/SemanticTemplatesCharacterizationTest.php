@@ -49,10 +49,16 @@ class SemanticTemplatesCharacterizationTest extends TestCase {
    * SS-D2: the wrappers keep their id, classes and attribute hooks.
    */
   public function testWrappersKeepIdsAndClasses(): void {
-    $this->assertStringContainsString('<div id="breadcrumb" class="solo-outer lone breadcrumb{{ classes_breadcrumb ? \' \' ~ classes_breadcrumb }}" {{ attributes_breadcrumb }}>', $this->tpl('partials/_breadcrumb.html.twig'));
-    $this->assertStringContainsString('<div id="footer-menu" class="solo-outer lone footer-menu{{ classes_footer_menu ? \' \' ~ classes_footer_menu }}" {{ attributes_footer_menu }}>', $this->tpl('partials/_footer-menu.html.twig'));
+    // CHANGED ON PURPOSE: ids and classes carry the solo- prefix
+    // (docs/CLASS-MIGRATION.md: breadcrumb to solo-breadcrumb, lone to
+    // solo-container--single, footer-menu to solo-footer-nav). The attribute
+    // hooks are unchanged.
+    $this->assertStringContainsString('<div id="solo-breadcrumb" class="solo-outer solo-container--single breadcrumb{{ classes_breadcrumb ? \' \' ~ classes_breadcrumb }}" {{ attributes_breadcrumb }}>', $this->tpl('partials/_breadcrumb.html.twig'));
+    $this->assertStringContainsString('<div id="solo-footer-menu" class="solo-outer solo-container--single solo-footer-nav{{ classes_footer_menu ? \' \' ~ classes_footer_menu }}" {{ attributes_footer_menu }}>', $this->tpl('partials/_footer-menu.html.twig'));
     $copyright = $this->tpl('partials/_copyright.html.twig');
-    $this->assertSame(2, substr_count($copyright, '<footer id="copyright" class="solo-outer lone copyright{{ classes_credit_copyright ? \' \' ~ classes_credit_copyright }}" {{ attributes_credit_copyright }}>'));
+    // CHANGED ON PURPOSE: "the copyright band is now a <div> inside [the
+    // footer landmark]" (CHANGELOG), with the solo- names above.
+    $this->assertSame(2, substr_count($copyright, '<div id="solo-copyright" class="solo-outer solo-container--single solo-copyright{{ classes_credit_copyright ? \' \' ~ classes_credit_copyright }}" {{ attributes_credit_copyright }}>'));
   }
 
   /**
@@ -62,10 +68,18 @@ class SemanticTemplatesCharacterizationTest extends TestCase {
     $src = $this->tpl('templates/block/block--system-branding-block.html.twig');
     $this->assertSame(3, substr_count($src, 'rel="home"'));
     $this->assertDoesNotMatchRegularExpression('/rel="\{\{/', $src);
-    $this->assertSame(3, substr_count($src, 'title="{{ logo_alt | t }}"'));
-    $this->assertSame(1, substr_count($src, 'class="site-name-link"'));
+    // CHANGED ON PURPOSE: "the repeated title attributes are gone"
+    // (CHANGELOG, branding link entry).
+    $this->assertStringNotContainsString('title="', $src);
+    // CHANGED ON PURPOSE: site-name-link is solo-branding__site-name-link
+    // (docs/CLASS-MIGRATION.md).
+    $this->assertSame(1, substr_count($src, 'class="solo-branding__site-name-link"'));
     $this->assertSame(2, substr_count($src, 'class="site-logo"'));
-    $this->assertStringContainsString('alt="{{ logo_alt | t }}"', $src);
+    // CHANGED ON PURPOSE: "the logo and the site name are one link"; the logo
+    // image is decorative beside the name, and the logo name is the site's own
+    // alt text, only the fallback "Home" translated (CHANGELOG).
+    $this->assertSame(1, substr_count($src, 'alt="{{ site_name ? \'\' : logo_label }}"'));
+    $this->assertStringContainsString("{% set logo_label = logo_alt == 'Home' ? 'Home'|t : logo_alt %}", $src);
   }
 
   /**
@@ -84,9 +98,15 @@ class SemanticTemplatesCharacterizationTest extends TestCase {
    */
   public function testNavigationKeepsLabelsAndClasses(): void {
     $bc = $this->tpl('templates/navigation/breadcrumb.html.twig');
-    $this->assertStringContainsString('class="solo-block breadcrumb-nav" aria-labelledby="system-breadcrumb"', $bc);
-    $this->assertStringContainsString('<h2 id="system-breadcrumb" class="visually-hidden">', $bc);
-    $this->assertStringContainsString('class="solo-ul solo-medium breadcrumb-menu"', $bc);
+    // CHANGED ON PURPOSE: breadcrumb-nav and breadcrumb-menu are
+    // solo-breadcrumb__nav and solo-breadcrumb__menu (docs/CLASS-MIGRATION.md).
+    // CHANGED ON PURPOSE (weak citation, needs a CHANGELOG line): the heading
+    // id is now made unique with clean_unique_id, so two breadcrumbs on a page
+    // no longer share one id; only commit 11c9940's diff says so.
+    $this->assertStringContainsString("{% set breadcrumb_heading_id = 'system-breadcrumb'|clean_unique_id %}", $bc);
+    $this->assertStringContainsString('class="solo-block solo-breadcrumb__nav" aria-labelledby="{{ breadcrumb_heading_id }}"', $bc);
+    $this->assertStringContainsString('<h2 id="{{ breadcrumb_heading_id }}" class="visually-hidden">', $bc);
+    $this->assertStringContainsString('class="solo-ul solo-medium solo-breadcrumb__menu"', $bc);
     $this->assertStringContainsString('<nav class="pager" aria-labelledby="{{ heading_id }}">', $this->tpl('templates/navigation/pager.html.twig'));
     $this->assertSame(2, substr_count($this->tpl('templates/navigation/pager.html.twig'), 'class="solo-button pager__item pager__item--ellipsis"'));
     $this->assertStringContainsString("setAttribute('aria-labelledby', heading_id)", $this->tpl('templates/block/block--system-menu-block.html.twig'));
@@ -97,13 +117,18 @@ class SemanticTemplatesCharacterizationTest extends TestCase {
    */
   public function testBreadcrumbIsOrderedList(): void {
     $tpl = $this->tpl('templates/navigation/breadcrumb.html.twig');
-    $this->assertStringContainsString('<ol class="solo-ul solo-medium breadcrumb-menu">', $tpl);
+    // CHANGED ON PURPOSE: breadcrumb-menu is solo-breadcrumb__menu and
+    // solo__bc-scroll is solo-page--breadcrumb-scroll (docs/CLASS-MIGRATION.md).
+    // The :where(ol) and :where(.solo-page--breadcrumb-scroll) forms keep the
+    // ol rule at the specificity of the ul rule: the CSS follows core's
+    // Stylelint rules (CHANGELOG, CSS lint entry; weak citation).
+    $this->assertStringContainsString('<ol class="solo-ul solo-medium solo-breadcrumb__menu">', $tpl);
     $this->assertStringNotContainsString('<ul', $tpl);
     $css = $this->tpl('css/components/solo-breadcrumb.css');
-    $this->assertStringContainsString("ul.breadcrumb-menu,\nol.breadcrumb-menu {", $css);
-    $this->assertStringContainsString("ul.breadcrumb-menu li > a,\nol.breadcrumb-menu li > a {", $css);
-    $this->assertStringContainsString("ul.breadcrumb-menu li > span,\nol.breadcrumb-menu li > span {", $css);
-    $this->assertStringContainsString('.solo__bc-scroll ol.breadcrumb-menu {', $css);
+    $this->assertStringContainsString("ul.solo-breadcrumb__menu,\n:where(ol).solo-breadcrumb__menu {", $css);
+    $this->assertStringContainsString("ul.solo-breadcrumb__menu li > a,\nol.solo-breadcrumb__menu li > a {", $css);
+    $this->assertStringContainsString("ul.solo-breadcrumb__menu li > span,\nol.solo-breadcrumb__menu li > span {", $css);
+    $this->assertStringContainsString(".solo-page--breadcrumb-scroll ul.solo-breadcrumb__menu,\n:where(.solo-page--breadcrumb-scroll) ol.solo-breadcrumb__menu {", $css);
   }
 
   /**
@@ -111,19 +136,29 @@ class SemanticTemplatesCharacterizationTest extends TestCase {
    */
   public function testLandmarkElements(): void {
     $src = $this->tpl('partials/_main-regions.html.twig');
-    $this->assertStringContainsString('<main id="sidebar-box-main" class="{{ content_outer_classes }}">', $src);
-    $this->assertStringContainsString('<aside id="sidebar-box-first" class="{{ sidebar_first_outer_classes }}" aria-label="{{ \'Sidebar First\'|t }}">', $src);
-    $this->assertStringContainsString('<aside id="sidebar-box-second" class="{{ sidebar_second_outer_classes }}" aria-label="{{ \'Sidebar Second\'|t }}">', $src);
+    // CHANGED ON PURPOSE: the ids carry the solo- prefix (docs/CLASS-MIGRATION.md:
+    // sidebar-box-main, sidebar-box-first and sidebar-box-second).
+    $this->assertStringContainsString('<main id="solo-sidebar-box-main" class="{{ content_outer_classes }}">', $src);
+    $this->assertStringContainsString('<aside id="solo-sidebar-box-first" class="{{ sidebar_first_outer_classes }}" aria-label="{{ \'Sidebar First\'|t }}">', $src);
+    $this->assertStringContainsString('<aside id="solo-sidebar-box-second" class="{{ sidebar_second_outer_classes }}" aria-label="{{ \'Sidebar Second\'|t }}">', $src);
     $this->assertSame(1, substr_count($src, '<main '));
     $this->assertSame(1, substr_count($src, '</main>'));
     $this->assertSame(2, substr_count($src, '</aside>'));
     $this->assertStringNotContainsString('role="main"', $src);
     $this->assertStringNotContainsString('role="complementary"', $src);
-    $this->assertStringContainsString('<a id="main-content" tabindex="-1"></a>', $src);
+    // CHANGED ON PURPOSE: the skip target prints only with its skip link
+    // ("a skip link ... shows only when its region has content", CHANGELOG).
+    $this->assertStringContainsString("{% if enabled_skip_links.skip_main_content %}\n          <a id=\"main-content\" tabindex=\"-1\"></a>\n          {% endif %}", $src);
+    // CHANGED ON PURPOSE: "the footer regions, footer menu and copyright band
+    // sit in one <footer> landmark (#solo-footer-landmark); the copyright band
+    // is now a <div> inside it" (CHANGELOG).
     $copy = $this->tpl('partials/_copyright.html.twig');
-    $this->assertSame(2, substr_count($copy, '<footer id="copyright"'));
-    $this->assertSame(2, substr_count($copy, '</footer>'));
-    $this->assertStringNotContainsString('<div id="copyright"', $copy);
+    $this->assertStringNotContainsString('<footer', $copy);
+    $this->assertStringNotContainsString('</footer>', $copy);
+    $this->assertSame(2, substr_count($copy, '<div id="solo-copyright"'));
+    $page = $this->tpl('templates/layout/page.html.twig');
+    $this->assertSame(1, substr_count($page, '<footer id="solo-footer-landmark" class="solo-footer-landmark">'));
+    $this->assertSame(1, substr_count($page, '</footer>'));
   }
 
   /**

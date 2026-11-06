@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Drupal\Tests\solo\Unit;
 
+use Drupal\Core\File\FileUrlGeneratorInterface;
+use Drupal\solo_utilities\Security\UrlSafety;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\Attributes\Group;
 use PHPUnit\Framework\TestCase;
@@ -22,14 +24,6 @@ use PHPUnit\Framework\TestCase;
  */
 #[Group('solo')]
 class LogoPathValidatorTest extends TestCase {
-
-  /**
-   * {@inheritdoc}
-   */
-  public static function setUpBeforeClass(): void {
-    parent::setUpBeforeClass();
-    require_once dirname(__DIR__, 3) . '/includes/_solo_theme_settings.inc';
-  }
 
   /**
    * Paths and whether the check should accept each.
@@ -68,7 +62,11 @@ class LogoPathValidatorTest extends TestCase {
    */
   #[DataProvider('pathProvider')]
   public function testPath(string $path, bool $expected): void {
-    $this->assertSame($expected, _solo_is_safe_logo_path($path));
+    // Solo 1 returned a bool and treated an empty path as acceptable. In
+    // Solo 2 UrlSafety::logoPath() returns the safe path or NULL, and an empty
+    // value is NULL: whether a blank field is acceptable is the caller's call.
+    $safe = (new UrlSafety($this->createStub(FileUrlGeneratorInterface::class)))->logoPath($path);
+    $this->assertSame($expected, $path === '' || $safe !== NULL);
   }
 
 }

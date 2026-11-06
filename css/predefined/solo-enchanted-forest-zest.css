@@ -16,13 +16,13 @@ Hunter Green #3F704D */
   --sc-button-tx: #393606;
   --sc-button-hover-tx: #181800;
   --sc-button-hover-bg: #86830f;
-  --sc-main-container-bg: linear-gradient(45deg, #000000, #020302);
-  --sc-top-container-bg: linear-gradient(45deg, #000000, #020302);
-  --sc-fixed-search-block-bg: linear-gradient(45deg, #000000, #020302);
-  --sc-popup-login-block-inner-bg: linear-gradient(45deg, #000000, #020302);
-  --sc-bottom-container-bg: linear-gradient(45deg, #000000, #020302);
-  --sc-footer-container-bg: linear-gradient(45deg, #000000, #020302);
-  --sc-footer-menu-bg: linear-gradient(45deg, #000000, #020302);
+  --sc-main-container-bg: linear-gradient(45deg, #000, #020302);
+  --sc-top-container-bg: linear-gradient(45deg, #000, #020302);
+  --sc-fixed-search-block-bg: linear-gradient(45deg, #000, #020302);
+  --sc-popup-login-block-inner-bg: linear-gradient(45deg, #000, #020302);
+  --sc-bottom-container-bg: linear-gradient(45deg, #000, #020302);
+  --sc-footer-container-bg: linear-gradient(45deg, #000, #020302);
+  --sc-footer-menu-bg: linear-gradient(45deg, #000, #020302);
   --sc-copyright-bg: linear-gradient(180deg, #0e1911, #2a2905);
   --sc-social-fill: #2d4f37;
   --sc-control-br: #494708;
@@ -36,7 +36,7 @@ Hunter Green #3F704D */
   --r-br: #1d3524;
   --r-bg: #020302;
   --r-tx: #b6d6bf;
-  --r-header-bg: linear-gradient(0deg, #000000, #0e1911);
+  --r-header-bg: linear-gradient(0deg, #000, #0e1911);
   --r-header-tx: #4f8c60;
   --r-menu-tx-h: #f7fbf8;
   --r-menu-bg-h: #396546;
@@ -53,13 +53,13 @@ Hunter Green #3F704D */
 
 header.solo-header,
 div.solo-page-title.solo-container--single {
-  --r-bg: linear-gradient(0deg, #000000, #0e1911);
+  --r-bg: linear-gradient(0deg, #000, #0e1911);
 }
 
 .solo-container--top .solo-region-box__inner--top,
 .solo-container--bottom .solo-region-box__inner--bottom,
 .solo-container--footer .solo-region-box__inner--footer {
-  --r-bg: linear-gradient(0deg, #000000, #020302);
+  --r-bg: linear-gradient(0deg, #000, #020302);
 }
 
 :where(.solo-page) .selectify:where(:not([style*="--r-br:"] *)),
@@ -90,8 +90,8 @@ div.solo-page-title.solo-container--single {
   --selectify-checkbox-checked-bg: color-mix(in srgb, #4f8c61 16%, transparent);
   --selectify-checkbox-check-circle: #494708;
   --selectify-checkbox-checked-circle: #4f8c61;
-  --selectify-checkbox-disabled-bg: color-mix(in srgb, currentColor 5%, transparent);
-  --selectify-checkbox-disabled-circle: color-mix(in srgb, currentColor 22%, transparent);
+  --selectify-checkbox-disabled-bg: color-mix(in sRGB, currentColor 5%, transparent);
+  --selectify-checkbox-disabled-circle: color-mix(in sRGB, currentColor 22%, transparent);
   --selectify-checkbox-border-color: #494708;
   --selectify-checkbox-hover-border-color: #4f8c61;
   --selectify-checkbox-hover-bg: color-mix(in srgb, #4f8c61 10%, transparent);
@@ -112,4 +112,86 @@ div.solo-page-title.solo-container--single {
   --selectify-dropdown-shadow: 0 10px 28px -12px color-mix(in srgb, #b6d6bf 22%, transparent);
   --selectify-option-hover-bg: #24422d;
   --selectify-option-active-bg: #274730;
+}
+
+/* Region text colors: one block per region with its heading (--r-sc-h1), link
+   (--r-sc-lk) and link hover (--r-sc-lk-h) colors, and button hover text where the
+   scheme sets one. Backgrounds above are the scheme's own. Every color here reaches
+   WCAG AA (4.5:1) on the grounds named in its comment. A site's region colors still win. */
+/* Header: on #000000, #0e1911. */
+.solo-header {
+  --r-sc-lk: #959210;
+  --r-sc-lk-h: #e2dd19;
+}
+
+/* Highlighted: on #020302. */
+.solo-highlighted {
+  --r-sc-lk: #959210;
+  --r-sc-lk-h: #e2dd19;
+}
+
+/* Fixed search: on #000000, #020302. */
+.solo-fixed-search {
+  --r-sc-lk: #959210;
+  --r-sc-lk-h: #e2dd19;
+}
+
+/* Popup login: on #000000, #020302. */
+.solo-popup-login__inner {
+  --r-sc-lk: #959210;
+  --r-sc-lk-h: #e2dd19;
+}
+
+/* Welcome text: on #020302. */
+.solo-welcome-text {
+  --r-sc-lk: #959210;
+  --r-sc-lk-h: #e2dd19;
+}
+
+/* Top: on #000000, #020302. */
+.solo-container--top {
+  --r-sc-lk: #959210;
+  --r-sc-lk-h: #e2dd19;
+}
+
+/* Main: on #000000. */
+.solo-container--main {
+  --r-sc-lk: #959210;
+  --r-sc-lk-h: #e2dd19;
+}
+
+/* Page title: on #000000, #0e1911. */
+.solo-page-title {
+  --r-sc-lk: #959210;
+  --r-sc-lk-h: #e2dd19;
+}
+
+/* Breadcrumb: on #020302. */
+.breadcrumb {
+  --r-sc-lk: #959210;
+  --r-sc-lk-h: #e2dd19;
+}
+
+/* Bottom: on #000000, #020302. */
+.solo-container--bottom {
+  --r-sc-lk: #959210;
+  --r-sc-lk-h: #e2dd19;
+}
+
+/* Footer: on #000000, #020302. */
+.solo-container--footer {
+  --r-sc-lk: #959210;
+  --r-sc-lk-h: #e2dd19;
+}
+
+/* Footer menu: on #000000, #020302. */
+.solo-footer-nav {
+  --r-sc-lk: #959210;
+  --r-sc-lk-h: #e2dd19;
+}
+
+/* Copyright: on #0e1911, #2a2905. */
+.solo-copyright {
+  --r-sc-lk: #959210;
+  --r-sc-lk-h: #e2dd19;
 }

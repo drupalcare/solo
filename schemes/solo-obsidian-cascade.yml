@@ -3,6 +3,13 @@ id: solo-obsidian-cascade
 name: "Obsidian Cascade"
 category: earthy_and_smokey_tones
 mode: mixed
+description: "Light content on white, a deep indigo menu bar and a near-black footer."
+brand:
+  primary: "#010127"
+  secondary: "#3e3e3e"
+  accent: "#0505bc"
+  ink_light: "#e4e4fe"
+  ink_dark: "#202331"
 categories:
   - earthy_and_smokey_tones
 css: css/predefined/solo-obsidian-cascade.css

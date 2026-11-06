@@ -8,8 +8,6 @@
  */
 
 ((Drupal, drupalSettings, once) => {
-  'use strict';
-
   /**
    * Breakpoint configuration.
    *
@@ -22,7 +20,7 @@
     s: 576,
     m: 768,
     l: 992,
-    xl: 1200
+    xl: 1200,
   };
 
   /**
@@ -37,7 +35,7 @@
     'solo-header-content': () => Drupal.t('Header'),
     'solo-main-navigation-content': () => Drupal.t('Main navigation'),
     'main-content': () => Drupal.t('Content'),
-    'solo-footer-content': () => Drupal.t('Footer')
+    'solo-footer-content': () => Drupal.t('Footer'),
   };
 
   /**
@@ -71,9 +69,7 @@
     // Priority 3: Fallback - format ID as readable text.
     // Removes common suffixes and formats for readability.
     if (id) {
-      const cleanId = id
-        .replace(/-content$/i, '')
-        .replace(/-/g, ' ');
+      const cleanId = id.replace(/-content$/i, '').replace(/-/g, ' ');
       return cleanId.charAt(0).toUpperCase() + cleanId.slice(1);
     }
 
@@ -87,7 +83,10 @@
    * @return {number}
    *   The current width in pixels.
    */
-  const getCurrentWidth = () => window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
+  const getCurrentWidth = () =>
+    window.innerWidth ||
+    document.documentElement.clientWidth ||
+    document.body.clientWidth;
 
   /**
    * Checks and updates region width classes.
@@ -101,14 +100,26 @@
    * mobile-first responsive patterns.
    */
   const checkRegionsWidth = () => {
-    const regions = document.querySelectorAll('.solo-region-box__inner, .solo-copyright__inner, .solo-footer-nav__inner');
+    const regions = document.querySelectorAll(
+      '.solo-region-box__inner, .solo-copyright__inner, .solo-footer-nav__inner',
+    );
 
-    regions.forEach(region => {
+    regions.forEach((region) => {
       const regionWidth = region.getBoundingClientRect().width;
 
       // Build arrays of classes to remove (prevents manual maintenance)
-      const exactClasses = ['solo-is-region-xxs', 'solo-is-region-xs', 'solo-is-region-s', 'solo-is-region-m', 'solo-is-region-l', 'solo-is-region-xl', 'solo-is-region-xxl'];
-      const maxClasses = Object.values(BREAKPOINTS).map(bp => `solo-is-region-max-${bp}`);
+      const exactClasses = [
+        'solo-is-region-xxs',
+        'solo-is-region-xs',
+        'solo-is-region-s',
+        'solo-is-region-m',
+        'solo-is-region-l',
+        'solo-is-region-xl',
+        'solo-is-region-xxl',
+      ];
+      const maxClasses = Object.values(BREAKPOINTS).map(
+        (bp) => `solo-is-region-max-${bp}`,
+      );
 
       // Remove all previous responsive classes
       region.classList.remove(...exactClasses, ...maxClasses);
@@ -151,7 +162,11 @@
     const bodyTag = document.body;
 
     // Remove all previous size classes to prevent class duplication
-    bodyTag.classList.remove('solo-is-small-screen', 'solo-is-medium-screen', 'solo-is-large-screen');
+    bodyTag.classList.remove(
+      'solo-is-small-screen',
+      'solo-is-medium-screen',
+      'solo-is-large-screen',
+    );
 
     if (currentWidth >= BREAKPOINTS.l) {
       bodyTag.classList.add('solo-is-large-screen');
@@ -217,7 +232,7 @@
         // 'start' alignment works better with TalkBack than other options.
         targetElement.scrollIntoView({
           behavior: 'smooth',
-          block: 'start'
+          block: 'start',
         });
 
         // Small delay before focusing helps TalkBack register the target.
@@ -233,7 +248,9 @@
           liveRegion.setAttribute('role', 'status');
           liveRegion.setAttribute('aria-live', 'polite');
           liveRegion.className = 'visually-hidden';
-          liveRegion.textContent = Drupal.t('Navigated to @section', {'@section': announcement});
+          liveRegion.textContent = Drupal.t('Navigated to @section', {
+            '@section': announcement,
+          });
           document.body.appendChild(liveRegion);
 
           // Remove live region after announcement.
@@ -256,11 +273,14 @@
    *   Attaches Solo theme behaviors.
    */
   Drupal.behaviors.soloTheme = {
-    attach: function(context, settings) {
-
+    attach(context, settings) {
       // Add file extension classes to file field spans.
       // Uses once() to prevent duplicate processing on AJAX updates.
-      once('solo-file-extensions', '.field--type-file span.file', context).forEach(span => {
+      once(
+        'solo-file-extensions',
+        '.field--type-file span.file',
+        context,
+      ).forEach((span) => {
         const link = span.querySelector('a');
         if (link && span.contains(link)) {
           const url = link.getAttribute('href');
@@ -274,96 +294,131 @@
 
       // Style footer menu forms to match footer menu colors.
       // Uses once() to prevent duplicate processing.
-      once('solo-footer-menu-form', '#solo-footer-menu', context).forEach(footerMenu => {
-        const footerFormBg = window.getComputedStyle(footerMenu).backgroundColor;
-        const footerFormTxt = window.getComputedStyle(footerMenu).color;
-        const footerMenuForm = footerMenu.querySelector('form');
+      once('solo-footer-menu-form', '#solo-footer-menu', context).forEach(
+        (footerMenu) => {
+          const footerFormBg =
+            window.getComputedStyle(footerMenu).backgroundColor;
+          const footerFormTxt = window.getComputedStyle(footerMenu).color;
+          const footerMenuForm = footerMenu.querySelector('form');
 
-        if (footerMenuForm) {
-          footerMenuForm.style.background = footerFormBg;
-          footerMenuForm.style.color = footerFormTxt;
-        }
-      });
+          if (footerMenuForm) {
+            footerMenuForm.style.background = footerFormBg;
+            footerMenuForm.style.color = footerFormTxt;
+          }
+        },
+      );
 
       // Remove 'open' attribute from details in theme settings.
       // This prevents all fieldsets from being expanded by default.
-      once('solo-theme-settings-details', '#system-theme-settings details', context).forEach(element => {
+      once(
+        'solo-theme-settings-details',
+        '#system-theme-settings details',
+        context,
+      ).forEach((element) => {
         element.removeAttribute('open');
       });
 
       // Add clickable class to images/pictures inside links.
       // Excludes specific contexts like logos and user pictures.
-      once('solo-clickable-images', 'a > img, a > picture', context).forEach(el => {
-        // Check if any parent has specific classes to exclude.
-        let ancestor = el.parentElement;
-        let shouldExclude = false;
+      once('solo-clickable-images', 'a > img, a > picture', context).forEach(
+        (el) => {
+          // Check if any parent has specific classes to exclude.
+          let ancestor = el.parentElement;
+          let shouldExclude = false;
 
-        while (ancestor && ancestor !== document.body) {
-          if (ancestor.matches('.site-logo, .field--name-user-picture, .field--type-text-long, .field--type-text-with-summary')) {
-            shouldExclude = true;
-            break;
+          while (ancestor && ancestor !== document.body) {
+            if (
+              ancestor.matches(
+                '.site-logo, .field--name-user-picture, .field--type-text-long, .field--type-text-with-summary',
+              )
+            ) {
+              shouldExclude = true;
+              break;
+            }
+            ancestor = ancestor.parentElement;
           }
-          ancestor = ancestor.parentElement;
-        }
 
-        // Exclude elements with "icon" in their class or parent's class.
-        if (el.classList.contains('icon') || (el.parentElement && el.parentElement.classList.contains('icon'))) {
-          shouldExclude = true;
-        }
+          // Exclude elements with "icon" in their class or parent's class.
+          if (
+            el.classList.contains('icon') ||
+            (el.parentElement && el.parentElement.classList.contains('icon'))
+          ) {
+            shouldExclude = true;
+          }
 
-        if (!shouldExclude) {
-          el.parentElement.classList.add('solo-image--clickable');
-        }
-      });
+          if (!shouldExclude) {
+            el.parentElement.classList.add('solo-image--clickable');
+          }
+        },
+      );
 
       // Handle broken images by adding placeholder.
       // Only triggers for images that actually fail to load.
-      once('solo-broken-images', 'img', context).forEach(img => {
+      once('solo-broken-images', 'img', context).forEach((img) => {
         if (img.complete && img.naturalHeight > 0) {
           return;
         }
 
-        img.addEventListener('error', function() {
-          if (!this.classList.contains('solo-is-broken') && this.complete) {
-            this.classList.add('solo-is-broken');
+        img.addEventListener(
+          'error',
+          function () {
+            if (!this.classList.contains('solo-is-broken') && this.complete) {
+              this.classList.add('solo-is-broken');
 
-            const placeholder = document.createElement('div');
-            placeholder.className = 'solo-image--placeholder';
+              const placeholder = document.createElement('div');
+              placeholder.className = 'solo-image--placeholder';
 
-            // ONLY set dimensions if image actually has them
-            if (this.offsetWidth > 0) {
-              placeholder.style.width = this.offsetWidth + 'px';
+              // ONLY set dimensions if image actually has them
+              if (this.offsetWidth > 0) {
+                placeholder.style.width = `${this.offsetWidth}px`;
+              }
+              if (this.offsetHeight > 0) {
+                placeholder.style.height = `${this.offsetHeight}px`;
+              }
+
+              // Copy CSS classes to inherit responsive behavior
+              if (this.className) {
+                placeholder.className = `solo-image--placeholder ${this.className}`;
+              }
+
+              placeholder.textContent = Drupal.t('Image not available');
+              placeholder.setAttribute('role', 'img');
+              placeholder.setAttribute(
+                'aria-label',
+                Drupal.t('Image not available'),
+              );
+
+              this.style.display = 'none';
+              this.parentNode.insertBefore(placeholder, this);
+
+              if (Drupal.announce) {
+                Drupal.announce(Drupal.t('An image failed to load'));
+              }
             }
-            if (this.offsetHeight > 0) {
-              placeholder.style.height = this.offsetHeight + 'px';
-            }
-
-            // Copy CSS classes to inherit responsive behavior
-            if (this.className) {
-              placeholder.className = 'solo-image--placeholder ' + this.className;
-            }
-
-            placeholder.textContent = Drupal.t('Image not available');
-            placeholder.setAttribute('role', 'img');
-            placeholder.setAttribute('aria-label', Drupal.t('Image not available'));
-
-            this.style.display = 'none';
-            this.parentNode.insertBefore(placeholder, this);
-
-            if (Drupal.announce) {
-              Drupal.announce(Drupal.t('An image failed to load'));
-            }
-          }
-        }, { once: true });
+          },
+          { once: true },
+        );
       });
 
       // Setup skip links for accessibility.
       // Uses once() to prevent duplicate event listeners on AJAX updates.
       once('solo-skip-links', 'body', context).forEach(() => {
-        handleSkipLinkClick('.skip-link[href="#solo-header-content"]', '#solo-header-content');
-        handleSkipLinkClick('.skip-link[href="#solo-main-navigation-content"]', '#solo-main-navigation-content');
-        handleSkipLinkClick('.skip-link[href="#main-content"]', '#main-content');
-        handleSkipLinkClick('.skip-link[href="#solo-footer-content"]', '#solo-footer-content');
+        handleSkipLinkClick(
+          '.skip-link[href="#solo-header-content"]',
+          '#solo-header-content',
+        );
+        handleSkipLinkClick(
+          '.skip-link[href="#solo-main-navigation-content"]',
+          '#solo-main-navigation-content',
+        );
+        handleSkipLinkClick(
+          '.skip-link[href="#main-content"]',
+          '#main-content',
+        );
+        handleSkipLinkClick(
+          '.skip-link[href="#solo-footer-content"]',
+          '#solo-footer-content',
+        );
       });
 
       // Initialize media size detection.
@@ -397,15 +452,14 @@
      * @param {string} trigger
      *   The trigger for detachment.
      */
-    detach: function(context, settings, trigger) {
+    detach(context, settings, trigger) {
       // Clean up resize event listeners when content is removed.
       if (trigger === 'unload' && window.soloResizeHandlers) {
-        window.soloResizeHandlers.forEach(handler => {
+        window.soloResizeHandlers.forEach((handler) => {
           window.removeEventListener('resize', handler);
         });
         window.soloResizeHandlers = [];
       }
-    }
+    },
   };
-
 })(Drupal, drupalSettings, once);

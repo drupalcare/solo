@@ -1,6 +1,6 @@
 ul.sitemap {
-  padding-inline-start: 0;
   margin: 0;
+  padding-inline-start: 0;
 }
 
 :where(ul).sitemap,
@@ -10,8 +10,8 @@ ul.sitemap {
 
 /* --- Visual indicator for menu items --- */
 :where(ul.sitemap) .menu-item::before {
-  content: "› ";
   margin-inline-end: 0.25em;
+  content: "› ";
 }
 
 /* --- Non-clickable text-only menu items --- */
@@ -22,9 +22,9 @@ ul.sitemap {
 
 /* --- Dropdown indicator for parents with children --- */
 :where(ul.sitemap .menu-item.has-children) > .menu-label::after {
+  margin-inline-start: 0.25em;
   content: " ▼";
   font-size: 0.75em;
-  margin-inline-start: 0.25em;
 }
 
 :where(ul.sitemap.solo-menu-tree--level-0) > .menu-item::before,

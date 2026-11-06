@@ -1,22 +1,22 @@
 /* General pager styles */
 .pager {
   display: flex;
-  justify-content: center;
   align-items: center;
-  gap: var(--solo-px8);
+  justify-content: center;
   margin: var(--solo-px24) 0;
+  gap: var(--solo-px8);
 }
 
 .pager__items {
   display: flex;
   flex-wrap: wrap;
-  list-style: none;
-  padding: 0;
-  margin: 0;
   align-items: center;
   justify-content: center;
-  line-height: var(--solo-px24);
+  margin: 0;
+  padding: 0;
+  list-style: none;
   font-size: var(--solo-px14);
+  line-height: var(--solo-px24);
 }
 
 .pager__item {
@@ -28,10 +28,13 @@
 .pager__item a {
   display: inline-block;
   padding: var(--solo-px8) var(--solo-px16);
+  transition:
+    background-color 0.3s,
+    color 0.3s,
+    border-color 0.3s;
+  text-decoration: none;
   border: 1px solid var(--r-br);
   border-radius: var(--solo-px4);
-  text-decoration: none;
-  transition: background-color 0.3s, color 0.3s, border-color 0.3s;
 }
 
 .pager__item a:hover,
@@ -44,20 +47,20 @@
 }
 
 .pager__item.solo-active-pager a {
-  pointer-events: none !important;
-  font-weight: bold;
   cursor: default;
   text-decoration: none !important;
+  pointer-events: none !important;
+  font-weight: bold;
 }
 
 .pager__item.pager__item--ellipsis {
   padding: var(--solo-px8) var(--solo-px16);
-  font-style: italic;
   opacity: 0.7;
+  font-style: italic;
 }
 
 /* Responsive adjustments */
-@media (width <= 47.99875rem) {
+@media (max-width: 47.99875rem) {
   .pager__items {
     gap: var(--solo-px4);
   }
@@ -66,14 +69,13 @@
     padding: var(--solo-px5) var(--solo-px12);
     font-size: var(--solo-px14);
   }
-
 }
 
 /* Reduced motion: end states are kept, movement is not (WCAG 2.3.3). */
 @media (prefers-reduced-motion: reduce) {
   :where(.pager__item a) {
+    transition-duration: 0.01ms !important;
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
   }
 }

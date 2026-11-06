@@ -7,25 +7,28 @@
 }
 
 :where(.solo-page ul.primary > li.solo-local-task--core) .solo-local-task__icon {
-  display: block;
-  z-index: 1;
   position: absolute;
-  inset-inline-start: var(--solo-px6);
-  pointer-events: none;
+  z-index: 1;
+  display: block;
   transition: fill 0.4s ease;
+  pointer-events: none;
+  inset-inline-start: var(--solo-px6);
 }
 
 .solo-page ul.primary > li.solo-local-task--core > a {
-  color: var(--r-lk);
-  padding-inline-start: var(--solo-px32);
   position: relative;
+  z-index: 1;
   display: flex;
+  overflow: hidden;
   flex-grow: 1;
   align-items: center;
   justify-content: center;
-  transition: color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
-  overflow: hidden;
-  z-index: 1;
+  padding-inline-start: var(--solo-px32);
+  transition:
+    color 0.3s ease,
+    box-shadow 0.3s ease,
+    transform 0.3s ease;
+  color: var(--r-lk);
 }
 
 :where(.solo-page ul.primary li.solo-local-task--core) :where(a).view-link {
@@ -45,16 +48,16 @@
 }
 
 .solo-page ul.primary > li.solo-local-task--core > a::before {
-  content: "";
   position: absolute;
-  inset-block-end: 0;
-  inset-inline-start: 0;
+  z-index: -1;
   width: 100%;
   height: 100%;
-  background-color: transparent;
+  content: "";
   transition: transform 0.3s ease-out;
-  z-index: -1;
   transform: translateY(100%);
+  background-color: transparent;
+  inset-block-end: 0;
+  inset-inline-start: 0;
 }
 
 .solo-page ul.primary > li.solo-local-task--core > a.view-link::before {
@@ -95,8 +98,9 @@
 
 #solo-page-wrapper ul.primary > li.solo-local-task--core > a:hover {
   --r-bg: transparent;
-  background-color: transparent;
+
   color: var(--solo-white);
+  background-color: transparent;
 }
 
 :where(.solo-page ul.primary > li.solo-local-task--core) a:hover + .solo-local-task__icon {
@@ -110,8 +114,8 @@
   :where(.solo-page ul.primary > li.solo-local-task--core > a),
   :where(.solo-page ul.primary > li.solo-local-task--core > a)::before,
   :where(:where(.solo-page ul.primary > li.solo-local-task--core) a:hover + .solo-local-task__icon) {
+    transition-duration: 0.01ms !important;
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
   }
 }

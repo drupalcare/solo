@@ -3,6 +3,13 @@ id: solo-eclipse-noir
 name: "Eclipse Noir"
 category: bold_and_dramatic_colors
 mode: dark
+description: "Dark content on near-black, a near-black menu bar and a near-black footer."
+brand:
+  primary: "#11070b"
+  secondary: "#1f201f"
+  accent: "#7d827d"
+  ink_light: "#e4bbc9"
+  ink_dark: "#eed3dc"
 categories:
   - bold_and_dramatic_colors
 css: css/predefined/solo-eclipse-noir.css

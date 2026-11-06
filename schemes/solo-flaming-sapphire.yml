@@ -3,6 +3,13 @@ id: solo-flaming-sapphire
 name: "Flaming Sapphire"
 category: bold_and_dramatic_colors
 mode: dark
+description: "Dark content on near-black, a deep orange menu bar and a near-black footer."
+brand:
+  primary: "#110500"
+  secondary: "#1f2798"
+  accent: "#a7aced"
+  ink_light: "#ffe8dd"
+  ink_dark: "#fff3ee"
 categories:
   - bold_and_dramatic_colors
 css: css/predefined/solo-flaming-sapphire.css

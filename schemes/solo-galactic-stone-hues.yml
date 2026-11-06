@@ -3,6 +3,13 @@ id: solo-galactic-stone-hues
 name: "Galactic Stone Hues"
 category: galactic_and_celestial
 mode: mixed
+description: "Light content on white, a gray menu bar and a white footer."
+brand:
+  primary: "#606e71"
+  secondary: "#4c4943"
+  accent: "#43403b"
+  ink_light: "#ebedee"
+  ink_dark: "#121415"
 categories:
   - galactic_and_celestial
 css: css/predefined/solo-galactic-stone-hues.css

@@ -3,6 +3,13 @@ id: solo-silken-shadow-whisper
 name: "Silken Shadow Whisper"
 category: elegant_whites_and_neutrals
 mode: light
+description: "Light content on white, an amber menu bar and a white footer."
+brand:
+  primary: "#9e8f55"
+  secondary: "#687a51"
+  accent: "#343d28"
+  ink_light: "#2e2917"
+  ink_dark: "#5a5130"
 categories:
   - elegant_whites_and_neutrals
 css: css/predefined/solo-silken-shadow-whisper.css

@@ -3,6 +3,13 @@ id: solo-blushing-magnolia
 name: "Blushing Magnolia"
 category: soft_and_subtle_hues
 mode: light
+description: "Light content on white, a white menu bar and a white footer."
+brand:
+  primary: "#ffe9e9"
+  secondary: "#e2d2ff"
+  accent: "#610000"
+  ink_light: "#500000"
+  ink_dark: "#1b004a"
 categories:
   - soft_and_subtle_hues
 css: css/predefined/solo-blushing-magnolia.css

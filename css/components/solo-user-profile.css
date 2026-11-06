@@ -6,7 +6,7 @@
 :where(.solo-body--user-profile .solo-region-box--content) .field--name-field-first-name,
 :where(.solo-body--user-profile .solo-region-box--content) .field--name-field-last-name {
   float: inline-start;
-  margin-inline-end: var(--solo-px8);
   margin-block-end: 0;
+  margin-inline-end: var(--solo-px8);
   font-weight: bold;
 }

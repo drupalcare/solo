@@ -9,8 +9,9 @@
 #}
 
 {% if breadcrumb %}
-  <nav class="solo-block solo-breadcrumb__nav" aria-labelledby="system-breadcrumb">
-    <h2 id="system-breadcrumb" class="visually-hidden">{{ 'Breadcrumb'|t }}</h2>
+  {% set breadcrumb_heading_id = 'system-breadcrumb'|clean_unique_id %}
+  <nav class="solo-block solo-breadcrumb__nav" aria-labelledby="{{ breadcrumb_heading_id }}">
+    <h2 id="{{ breadcrumb_heading_id }}" class="visually-hidden">{{ 'Breadcrumb'|t }}</h2>
     <ol class="solo-ul solo-medium solo-breadcrumb__menu">
       {% for item in breadcrumb %}
         <li>
@@ -18,11 +19,11 @@
             {% if item.url %}
               <a class="solo-btn-animate" href="{{ item.url }}">{{ item.text }}</a>
             {% else %}
-              <span class="solo-breadcrumb__title">{{ item.text }}</span>
+              <span class="solo-breadcrumb__title"{{ loop.last ? ' aria-current="page"' }}>{{ item.text }}</span>
             {% endif %}
             {# Add the separator if it's not the last item and the text is not empty. #}
             {% if not loop.last %}
-              <svg class="solo-breadcrumb__separator" height="24" viewBox="0 -960 960 960" width="24" xmlns="http://www.w3.org/2000/svg">
+              <svg class="solo-breadcrumb__separator" aria-hidden="true" focusable="false" height="24" viewBox="0 -960 960 960" width="24" xmlns="http://www.w3.org/2000/svg">
                 <path d="m504-480-184-184 56-56 240 240-240 240-56-56z"/>
               </svg>
             {% endif %}

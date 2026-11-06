@@ -1,6 +1,6 @@
 :where(.breadcrumb) > .solo-breadcrumb__inner {
-  padding-block-end: 0;
   padding-block-start: 0;
+  padding-block-end: 0;
 }
 
 .solo-breadcrumb__nav {
@@ -13,21 +13,20 @@
 
 ul.solo-breadcrumb__menu,
 :where(ol).solo-breadcrumb__menu {
-  list-style: none;
-  padding: 0;
-  margin: 0;
   display: flex;
-  align-items: center;
   flex-wrap: wrap;
+  align-items: center;
+  margin: 0;
+  padding: 0;
   list-style: none;
 }
 
 ul.solo-breadcrumb__menu li,
 ol.solo-breadcrumb__menu li {
-  padding: 0;
-  margin: 0;
   display: flex;
   align-items: center;
+  margin: 0;
+  padding: 0;
   border-block-end: none;
   font-size: var(--solo-px14);
 }
@@ -36,18 +35,19 @@ ul.solo-breadcrumb__menu li > a,
 ol.solo-breadcrumb__menu li > a {
   display: flex;
   align-items: center;
-  padding-block: var(--solo-px16);
-  padding-inline-end: var(--solo-px6);
+  min-height: 1.5rem;
   padding-inline-start: var(--solo-px2);
+  padding-inline-end: var(--solo-px6);
+  padding-block: var(--solo-px8);
 }
 
 ul.solo-breadcrumb__menu li > span,
 ol.solo-breadcrumb__menu li > span {
   display: flex;
   align-items: center;
-  padding-block: var(--solo-px16);
-  padding-inline-end: var(--solo-px6);
   padding-inline-start: var(--solo-px4);
+  padding-inline-end: var(--solo-px6);
+  padding-block: var(--solo-px8);
 }
 
 :where(.solo-breadcrumb__menu li) .solo-breadcrumb__separator {
@@ -59,10 +59,15 @@ ol.solo-breadcrumb__menu li > span {
 .solo-page--breadcrumb-scroll ul.solo-breadcrumb__menu,
 :where(.solo-page--breadcrumb-scroll) ol.solo-breadcrumb__menu {
   overflow-x: auto;
-  white-space: nowrap;
   flex-wrap: nowrap;
+  white-space: nowrap;
 }
 
 :where(.solo-breadcrumb__menu > li:first-child) > * {
   padding-inline-start: 0;
+}
+
+/* The band sits directly under the page title as one slim line, not a second hero-sized band */
+.solo-outer.breadcrumb > .solo-inner.solo-breadcrumb__inner {
+  padding-block: var(--solo-px4);
 }

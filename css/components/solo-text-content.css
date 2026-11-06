@@ -16,9 +16,9 @@
 .field--type-text-with-summary code,
 .cke_editable code,
 .ck-content code {
-  background-color: var(--solo-odd-light, var(--r-bg));
   color: var(--r-tx);
   border: 1px solid var(--r-br, var(--r-br-b));
+  background-color: var(--solo-odd-light, var(--r-bg));
 }
 
 /* -------------------------------------------------
@@ -29,24 +29,24 @@
 .field--type-text-with-summary pre,
 .cke_editable pre,
 .ck-content pre {
-  max-inline-size: 100%;
   overflow-x: auto;
   overflow-y: hidden;
   white-space: pre;
-  background-color: var(--r-bg);
-  border: 1px solid var(--r-br, var(--r-br-b));
   color: var(--r-tx);
+  border: 1px solid var(--r-br, var(--r-br-b));
+  background-color: var(--r-bg);
+  max-inline-size: 100%;
   -webkit-overflow-scrolling: touch;
 }
 
 .field--type-text-long pre code,
-.field--type-text-with-summary  pre code,
+.field--type-text-with-summary pre code,
 .cke_editable pre code,
 .ck-content pre code {
   display: inline-block;
-  min-inline-size: 100%;
-  white-space: pre;
   overflow-x: auto;
   padding: var(--solo-px16);
+  white-space: pre;
   background-color: transparent;
+  min-inline-size: 100%;
 }

@@ -1,16 +1,16 @@
 :where(details).form-wrapper::after {
-  content: "";
-  clear: both;
   display: table;
+  clear: both;
+  content: "";
 }
 
 details.form-wrapper {
-  padding: 0 !important;
   margin-block-end: var(--solo-px16) !important;
-  margin-inline: 0 !important;
-  line-height: inherit;
+  padding: 0 !important;
   color: inherit;
   box-shadow: 0 1px 4px var(--r-br, var(--r-br-b));
+  line-height: inherit;
+  margin-inline: 0 !important;
 }
 
 details.form-wrapper > summary {
@@ -22,8 +22,8 @@ details.form-wrapper > summary {
 :where(form div.container-inline) > * {
   margin-block-start: var(--solo-px8);
   margin-block-end: var(--solo-px8);
-  margin-inline-end: var(--solo-px8);
   margin-inline-start: 0;
+  margin-inline-end: var(--solo-px8);
 }
 
 form .fieldset-wrapper .form-item {
@@ -32,8 +32,8 @@ form .fieldset-wrapper .form-item {
 }
 
 .details-wrapper {
-  margin: var(--solo-px16);
   display: grid;
+  margin: var(--solo-px16);
 }
 
 :where(.details-wrapper) > * {
@@ -58,9 +58,9 @@ form .tableselect-sort td:first-child {
 :where(form) tr.draggable td > div.form-type-radio,
 :where(form) tr.draggable td > div.form-type-checkbox {
   float: inline-start !important;
-  padding: 0 !important;
-  margin: 0 !important;
   clear: none;
+  margin: 0 !important;
+  padding: 0 !important;
 }
 
 :where(form) a.tabledrag-handle .handle {
@@ -71,11 +71,11 @@ form .tableselect-sort td:first-child {
 }
 
 :where(form) .draggable a.tabledrag-handle {
+  width: 25px;
   margin-block-start: 0 !important;
   margin-block-end: -3px !important;
-  margin-inline-end: 5px !important;
   margin-inline-start: 0 !important;
-  width: 25px;
+  margin-inline-end: 5px !important;
 }
 
 :where(form tr.draggable) .solo-check,
@@ -88,8 +88,8 @@ form .tableselect-sort td:first-child {
 }
 
 :where(form) div.form-type-datelist.solo-section.form-item {
-  width: auto;
   clear: none;
+  width: auto;
 }
 
 .form-type-datelist > div {
@@ -98,14 +98,14 @@ form .tableselect-sort td:first-child {
 
 :where(form) #edit-datelist,
 :where(form) #edit-datetime {
-  padding: 0;
   margin: 0;
+  padding: 0;
 }
 
 :where(form) #edit-datetime > div {
   float: inline-start;
-  margin: 0 !important;
   width: 50%;
+  margin: 0 !important;
 }
 
 :where(form) #edit-datetime > div input {
@@ -115,8 +115,8 @@ form .tableselect-sort td:first-child {
 :where(form) .form-type-date,
 :where(form) .form-type-datetime,
 :where(form) .form-type-webform-time {
-  max-width: 20rem;
   width: 100%;
+  max-width: 20rem;
 }
 
 form .form-type-date input,
@@ -133,9 +133,9 @@ form .form-item-range > span.field-suffix,
 }
 
 form .form-item-range .form-item-range__output input {
-  width: 4em;
   display: inline-block;
   clear: none;
+  width: 4em;
 }
 
 :where(form .form-item-datelist) #edit-datelist > div select {
@@ -186,8 +186,8 @@ form .form-item label {
 }
 
 :where(table) ul.dropbutton li.solo-left.dropbutton-action {
-  float: none !important;
   z-index: 1;
+  float: none !important;
   margin-inline-end: 0 !important;
   line-height: 26px;
 }
@@ -202,10 +202,10 @@ form .form-item label {
 }
 
 .dropbutton li a {
+  font-size: 14px;
+  line-height: 26px;
   padding-block: 6px;
   padding-inline: 12px;
-  line-height: 26px;
-  font-size: 14px;
 }
 
 .dropbutton button {
@@ -229,8 +229,8 @@ table ul.dropbutton li:first-child {
 }
 
 table ul.dropbutton li.dropbutton-toggle {
-  margin-inline-end: 0 !important;
   margin-inline-start: 10px;
+  margin-inline-end: 0 !important;
 }
 
 /* Node preview */
@@ -286,8 +286,9 @@ div.node-preview-container .form-item-view-mode select {
   border-width: 0 !important;
 }
 
+/* Core's dialog level: above Solo's menu and Drupal's admin toolbar. */
 :where(body) .ui-dialog {
-  z-index: 1001;
+  z-index: 1260;
 }
 
 :where(span.admin-link) button,
@@ -307,8 +308,8 @@ div.node-preview-container .form-item-view-mode select {
 }
 
 :where(form) .form--inline .form-actions {
-  flex-grow: 1;
   flex-basis: 100%;
+  flex-grow: 1;
 }
 
 :where(form) .pb-tab-display [data-drupal-selector="para-color-picker"] .form-color {
@@ -322,8 +323,8 @@ div.node-preview-container .form-item-view-mode select {
 /* Reduced motion: end states are kept, movement is not (WCAG 2.3.3). */
 @media (prefers-reduced-motion: reduce) {
   :where(.dropbutton-widget) {
+    transition-duration: 0.01ms !important;
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
   }
 }

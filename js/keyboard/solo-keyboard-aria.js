@@ -1,5 +1,4 @@
 ((Drupal) => {
-  'use strict';
   Drupal.solo = Drupal.solo || {};
   Drupal.solo.keyboard = Drupal.solo.keyboard || {};
 
@@ -20,11 +19,16 @@
     ensureProperRoles() {
       // Disclosure navigation (W3C APG): no menu roles are added. The only
       // state is aria-expanded on the disclosure button, never on the <li>.
-      this.menubar.querySelectorAll('li').forEach(li => {
+      this.menubar.querySelectorAll('li').forEach((li) => {
         if (li.hasAttribute('aria-expanded')) {
-          const toggler = li.querySelector(':scope > button.solo-menu-tree__toggler');
+          const toggler = li.querySelector(
+            ':scope > button.solo-menu-tree__toggler',
+          );
           if (toggler) {
-            toggler.setAttribute('aria-expanded', li.getAttribute('aria-expanded'));
+            toggler.setAttribute(
+              'aria-expanded',
+              li.getAttribute('aria-expanded'),
+            );
           }
           li.removeAttribute('aria-expanded');
         }
@@ -33,9 +37,12 @@
     }
 
     observeAriaChanges() {
-      const observer = new MutationObserver(mutations => {
-        mutations.forEach(mutation => {
-          if (mutation.type === 'attributes' && mutation.attributeName === 'aria-expanded') {
+      const observer = new MutationObserver((mutations) => {
+        mutations.forEach((mutation) => {
+          if (
+            mutation.type === 'attributes' &&
+            mutation.attributeName === 'aria-expanded'
+          ) {
             // FIX: Prevent redundant calls by checking if value actually changed
             const oldValue = mutation.oldValue;
             const newValue = mutation.target.getAttribute('aria-expanded');
@@ -46,14 +53,16 @@
         });
       });
 
-      this.menubar.querySelectorAll('button.solo-menu-tree__toggler').forEach(button => {
-        observer.observe(button, {
-          attributes: true,
-          attributeFilter: ['aria-expanded'],
-          attributeOldValue: true // Track old values to prevent redundant updates
+      this.menubar
+        .querySelectorAll('button.solo-menu-tree__toggler')
+        .forEach((button) => {
+          observer.observe(button, {
+            attributes: true,
+            attributeFilter: ['aria-expanded'],
+            attributeOldValue: true, // Track old values to prevent redundant updates
+          });
+          this.observers.push({ element: button, observer });
         });
-        this.observers.push({ element: button, observer });
-      });
     }
 
     syncAriaStates(button) {
@@ -67,7 +76,12 @@
 
         if (currentHidden !== newHidden) {
           if (Drupal.solo.menuState) {
-            Drupal.solo.menuState.setAriaAttribute(submenu, 'aria-hidden', newHidden, COMPONENT_NAME);
+            Drupal.solo.menuState.setAriaAttribute(
+              submenu,
+              'aria-hidden',
+              newHidden,
+              COMPONENT_NAME,
+            );
           } else {
             submenu.setAttribute('aria-hidden', newHidden);
           }
@@ -93,10 +107,12 @@
         const text = textElement.textContent.trim();
         if (Drupal.announce) {
           const state = isOpen ? Drupal.t('opened') : Drupal.t('closed');
-          Drupal.announce(Drupal.t('@item submenu @state', {
-            '@item': text,
-            '@state': state
-          }));
+          Drupal.announce(
+            Drupal.t('@item submenu @state', {
+              '@item': text,
+              '@state': state,
+            }),
+          );
         }
       }
     }

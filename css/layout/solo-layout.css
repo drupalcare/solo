@@ -7,10 +7,10 @@
 
 .solo-col {
   display: grid;
+  grid-auto-columns: minmax(0, 1fr);
+  max-width: 100%;
   margin-inline: auto;
   margin-block: 0;
-  max-width: 100%;
-  grid-auto-columns: minmax(0, 1fr);
 }
 
 :where(.solo-outer) > * {
@@ -18,28 +18,26 @@
 }
 
 .solo-page {
-  grid-auto-columns: 100%;
-  gap: 0px 0px;
-  grid-auto-flow: row;
   grid-template-rows: 1fr;
-  justify-content: start;
+  grid-auto-columns: 100%;
+  grid-auto-flow: row;
   align-content: start;
-  justify-items: start;
   align-items: start;
+  justify-content: start;
+  justify-items: start;
+  gap: 0 0;
 }
 
 .solo-col,
 :where(.solo-col) > *,
 .solo-page,
 :where(.solo-page) > * {
+  width: 100%;
   min-width: 0;
   min-height: 0;
-  width: 100%;
 }
 
-:where(.solo-container--single) > .solo-col:not(.solo-header__inner, .solo-primary-menu__inner, .solo-fixed-search__inner)
-
- {
+:where(.solo-container--single) > .solo-col:not(.solo-header__inner, .solo-primary-menu__inner, .solo-fixed-search__inner) {
   grid-auto-flow: row;
 }
 
@@ -51,21 +49,24 @@
   padding: 0 !important;
 }
 
-.solo-inner:not( .solo-primary-menu__inner,
-.solo-primary-sidebar-menu__inner,
-.solo-system-messages__inner,
-.solo-highlighted__inner,
-.solo-container--top-active-1 > .solo-inner,
-.solo-container--main-active-1 > .solo-inner,
-.solo-container--bottom-active-1 > .solo-inner,
-.solo-container--footer-active-1 > .solo-inner) {
+.solo-inner:not(.solo-primary-menu__inner, .solo-primary-sidebar-menu__inner, .solo-system-messages__inner, .solo-highlighted__inner, .solo-container--top-active-1 > .solo-inner, .solo-container--main-active-1 > .solo-inner, .solo-container--bottom-active-1 > .solo-inner, .solo-container--footer > .solo-inner, .solo-copyright__inner) {
   padding: var(--solo-gap);
+}
+
+/* Footer and copyright bands: the region box inside already pads the band, so the
+   container adds only the side gap. Vertical padding stays 24-32px. */
+:where(.solo-container--footer-active-2, .solo-container--footer-active-3) > .solo-inner {
+  padding-inline: var(--solo-gap);
+}
+
+.solo-copyright__inner {
+  padding-block: clamp(var(--solo-px24), var(--solo-gap), var(--solo-px32));
+  padding-inline: var(--solo-gap);
 }
 
 :where(.solo-container--top-active-1) > .solo-inner,
 :where(.solo-container--main-active-1) > .solo-inner,
-:where(.solo-container--bottom-active-1) > .solo-inner,
-:where(.solo-container--footer-active-1) > .solo-inner {
+:where(.solo-container--bottom-active-1) > .solo-inner {
   padding-top: var(--solo-gap);
   padding-bottom: var(--solo-gap);
 }
@@ -79,8 +80,8 @@
 }
 
 :where(.solo-outer) .solo-region-box__inner {
-  padding: var(--solo-gap);
   min-width: 0;
+  padding: var(--solo-gap);
 }
 
 /* We change it in big screen */
@@ -99,10 +100,15 @@
 .solo-region-box__inner--footer {
   display: flex;
   flex-direction: column;
+  flex-grow: 1;
   width: 100%;
   height: 100%;
-  flex-grow: 1;
 }
+
+.solo-region-box__inner--footer {
+  padding-block: clamp(var(--solo-px24), var(--solo-gap), var(--solo-px32));
+}
+
 .solo-popup-login {
   display: none;
 }

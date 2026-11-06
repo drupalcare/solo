@@ -1,8 +1,16 @@
-# Scheme record in the shape of the apex scheme sidecar (id, name, category, mode). Palette values are copied verbatim from css/predefined/solo-midnight-whispers.css.
+# Scheme record: id, name, category, mode, description, brand colors. The palette and page values are copied
+# verbatim from css/predefined/solo-midnight-whispers.css, which lists every region once with its full color set.
 id: solo-midnight-whispers
 name: "Midnight Whispers"
 category: midnight_and_twilight
 mode: mixed
+description: "Cool slate and spruce grays: a light header and content, a deep near-black footer and title band."
+brand:
+  primary: "#2c3e4c"
+  secondary: "#4c5866"
+  accent: "#850b00"
+  ink_light: "#fafbfc"
+  ink_dark: "#383c49"
 categories:
   - midnight_and_twilight
 css: css/predefined/solo-midnight-whispers.css
@@ -12,7 +20,7 @@ dependencies:
   - solo/solo-scheme-region-paint-1
 thumbnail: images/schemes/solo-midnight-whispers.webp
 palette:
-  --sc-head-tx: "#6c738c"
+  --sc-head-tx: "#60677f"
   --sc-link-tx: "#850b00"
   --sc-link-hover-tx: "#c91000"
   --sc-menu-bg: "#19242c"

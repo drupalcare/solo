@@ -22,7 +22,7 @@ Nickel #727472, Outer Space #414A4C, Rocket Metallic #8A7F8D */
   --sc-bottom-container-bg: linear-gradient(0deg, #1a1d1e, #0a0c0c);
   --sc-footer-container-bg: linear-gradient(0deg, #1a1d1e, #0a0c0c);
   --sc-footer-menu-bg: linear-gradient(0deg, #1a1d1e, #0a0c0c);
-  --sc-copyright-bg: linear-gradient(180deg, #040504, #000000);
+  --sc-copyright-bg: linear-gradient(180deg, #040504, #000);
   --sc-social-fill: #394143;
   --sc-control-br: #495355;
   --sc-fixed-search-block-shadow: 10, 12, 12;
@@ -70,7 +70,7 @@ Nickel #727472, Outer Space #414A4C, Rocket Metallic #8A7F8D */
 }
 
 .solo-container--top .solo-region-box__inner--top {
-  --r-bg: linear-gradient(180deg, #d4d9da, #ffffff);
+  --r-bg: linear-gradient(180deg, #d4d9da, #fff);
 }
 
 header.solo-header,
@@ -81,7 +81,7 @@ div.solo-page-title.solo-container--single {
 
 .breadcrumb {
   --r-tx: #fefefe;
-  --r-bg: linear-gradient(180deg, #040504, #000000);
+  --r-bg: linear-gradient(180deg, #040504, #000);
 }
 
 .solo-copyright {
@@ -143,8 +143,8 @@ div.solo-page-title.solo-container--single {
   --selectify-checkbox-checked-bg: color-mix(in srgb, #0f0e10 16%, transparent);
   --selectify-checkbox-check-circle: #495355;
   --selectify-checkbox-checked-circle: #0f0e10;
-  --selectify-checkbox-disabled-bg: color-mix(in srgb, currentColor 5%, transparent);
-  --selectify-checkbox-disabled-circle: color-mix(in srgb, currentColor 22%, transparent);
+  --selectify-checkbox-disabled-bg: color-mix(in sRGB, currentColor 5%, transparent);
+  --selectify-checkbox-disabled-circle: color-mix(in sRGB, currentColor 22%, transparent);
   --selectify-checkbox-border-color: #495355;
   --selectify-checkbox-hover-border-color: #0f0e10;
   --selectify-checkbox-hover-bg: color-mix(in srgb, #0f0e10 10%, transparent);
@@ -155,7 +155,7 @@ div.solo-page-title.solo-container--single {
 
 .solo-page .selectify-select,
 :where(.solo-page .selectify-select) * {
-  --selectify-select-bg: #ffffff;
+  --selectify-select-bg: #fff;
   --selectify-select-hover-bg: #f1f1f1;
   --selectify-select-color: var(--r-tx);
   --selectify-select-border-color: var(--r-br);
@@ -167,15 +167,93 @@ div.solo-page-title.solo-container--single {
   --selectify-option-active-bg: #ddddde;
 }
 
-/* Per-region text colours: a region setting still wins. */
-:where(.solo-page) .solo-header,
-:where(.solo-page) .solo-page-title { --r-sc-h1: #8c8c8c; --r-sc-lk: #938996; --r-sc-lk-h: #9e95a0; }
-:where(.solo-page) .solo-highlighted,
-:where(.solo-page) .solo-fixed-search,
-:where(.solo-page) .solo-popup-login__inner { --r-sc-h1: #636363; --r-sc-lk-h: #5e5560; }
-:where(.solo-page) .solo-welcome-text,
-:where(.solo-page) .solo-container--main { --r-sc-lk-h: #7e7382; }
-:where(.solo-page) .breadcrumb,
-:where(.solo-page) .solo-copyright { --r-sc-h1: #777777; }
-:where(.solo-page) .solo-container--top { --r-sc-h1: #5e5e5e; --r-sc-lk: #645c67; --r-sc-lk-h: #5b535d; }
-/* End per-region text colours */
+/* Region text colors: one block per region with its heading (--r-sc-h1), link
+   (--r-sc-lk) and link hover (--r-sc-lk-h) colors, and button hover text where the
+   scheme sets one. Backgrounds above are the scheme's own. Every color here reaches
+   WCAG AA (4.5:1) on the grounds named in its comment. A site's region colors still win. */
+/* Header: on #121415, #222627. */
+.solo-header {
+  --r-sc-h1: #8c8c8c;
+  --r-sc-lk: #938996;
+  --r-sc-lk-h: #9e95a0;
+}
+
+/* Highlighted: on #dde1e2, #e1e2e1. */
+.solo-highlighted {
+  --r-sc-h1: #636363;
+  --r-sc-lk: #675e6a;
+  --r-sc-lk-h: #5e5560;
+}
+
+/* Fixed search: on #dde1e2, #e1e2e1. */
+.solo-fixed-search {
+  --r-sc-h1: #636363;
+  --r-sc-lk: #675e6a;
+  --r-sc-lk-h: #5e5560;
+}
+
+/* Popup login: on #dde1e2, #e1e2e1. */
+.solo-popup-login__inner {
+  --r-sc-h1: #636363;
+  --r-sc-lk: #675e6a;
+  --r-sc-lk-h: #5e5560;
+}
+
+/* Welcome text: on #f7f6f7. */
+.solo-welcome-text {
+  --r-sc-h1: #6f6f6f;
+  --r-sc-lk: #675e6a;
+  --r-sc-lk-h: #776c7b;
+}
+
+/* Top: on #d4d9da, #ffffff. */
+.solo-container--top {
+  --r-sc-h1: #5e5e5e;
+  --r-sc-lk: #645c67;
+  --r-sc-lk-h: #5b535d;
+}
+
+/* Main: on #ffffff. */
+.solo-container--main {
+  --r-sc-lk: #675e6a;
+  --r-sc-lk-h: #7e7382;
+}
+
+/* Page title: on #121415, #222627. */
+.solo-page-title {
+  --r-sc-h1: #8c8c8c;
+  --r-sc-lk: #938996;
+  --r-sc-lk-h: #9e95a0;
+}
+
+/* Breadcrumb: on #040504, #000000. */
+.breadcrumb {
+  --r-sc-h1: #777;
+  --r-sc-lk: #94a2a4;
+  --r-sc-lk-h: #9a919d;
+}
+
+/* Bottom: on #1a1d1e, #121415. */
+.solo-container--bottom {
+  --r-sc-lk: #94a2a4;
+  --r-sc-lk-h: #9a919d;
+}
+
+/* Footer: on #1a1d1e, #121415. */
+.solo-container--footer {
+  --r-sc-lk: #94a2a4;
+  --r-sc-lk-h: #9a919d;
+}
+
+/* Footer menu: on #1a1d1e, #0a0c0c. */
+.solo-footer-nav {
+  --r-sc-lk: #94a2a4;
+  --r-sc-lk-h: #9a919d;
+}
+
+/* Copyright: on #040504, #000000. */
+.solo-copyright {
+  --r-sc-h1: #777;
+  --r-sc-lk: #94a2a4;
+  --r-sc-lk-h: #9a919d;
+}

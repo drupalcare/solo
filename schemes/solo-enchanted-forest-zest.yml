@@ -3,6 +3,13 @@ id: solo-enchanted-forest-zest
 name: "Enchanted Forest Zest"
 category: forest_and_nature_tones
 mode: dark
+description: "Dark content on near-black, a near-black menu bar and a near-black footer."
+brand:
+  primary: "#080e0a"
+  secondary: "#a5a112"
+  accent: "#959210"
+  ink_light: "#d7e8dc"
+  ink_dark: "#b6d6bf"
 categories:
   - forest_and_nature_tones
 css: css/predefined/solo-enchanted-forest-zest.css

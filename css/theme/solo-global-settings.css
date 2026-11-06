@@ -33,17 +33,16 @@ html.fs-12 #solo-sidebar-button-open button span {
   inset-inline-start: 2px;
 }
 
-
 html.fs-12 .solo-inner .solo-popup-login__open > button,
 html.fs-12 .solo-inner .solo-menu-tree__menubar--account li a {
+  padding: 0.688rem !important;
   line-height: 1.5;
-  padding: 0.688rem!important;
 }
 
 html.fs-14 .solo-inner .solo-popup-login__open > button,
 html.fs-14 .solo-inner .solo-menu-tree__menubar--account li a {
+  padding: 0.688rem !important;
   line-height: 1.5;
-  padding: 0.688rem!important;
 }
 
 /* Font zie 14 */
@@ -71,8 +70,7 @@ html.gap-14 .solo-inner .solo-menu-tree__menubar li.solo-menu-tree__item > butto
   padding-block-end: var(--solo-px10);
 }
 
-@media (width >= 26rem) {
-
+@media (min-width: 26rem) {
   /* Region gaps 20 */
   html.gap-20 .solo-inner .solo-menu-tree__menubar li.solo-menu-tree__item > a,
   html.gap-20 .solo-inner .solo-menu-tree__menubar li.solo-menu-tree__item > button {
@@ -156,7 +154,6 @@ html.gap-14 .solo-inner .solo-menu-tree__menubar li.solo-menu-tree__item > butto
     inset-block-start: 28px;
     inset-inline-start: 8px;
   }
-
 }
 
 :where(html.fs-12 .solo-fixed-search__inner) .solo-search-block-form .form-type-search::before {
@@ -167,8 +164,7 @@ html.gap-14 .solo-inner .solo-menu-tree__menubar li.solo-menu-tree__item > butto
   inset-block-start: 20px;
 }
 
-@media (width >= 26rem) {
-
+@media (min-width: 26rem) {
   :where(html.fs-18 .solo-fixed-search__inner) .solo-search-block-form .form-type-search::before {
     inset-block-start: 30px;
   }
@@ -182,5 +178,4 @@ html.gap-14 .solo-inner .solo-menu-tree__menubar li.solo-menu-tree__item > butto
     padding: 0.813rem !important;
     line-height: 1.5;
   }
-
 }

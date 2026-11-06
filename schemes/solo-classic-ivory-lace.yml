@@ -3,6 +3,13 @@ id: solo-classic-ivory-lace
 name: "Classic Ivory Lace"
 category: elegant_whites_and_neutrals
 mode: light
+description: "Light content on pale lime, a lime menu bar and a pale lime footer."
+brand:
+  primary: "#839866"
+  secondary: "#406ea6"
+  accent: "#2d4e75"
+  ink_light: "#2c2c00"
+  ink_dark: "#22281b"
 categories:
   - elegant_whites_and_neutrals
 css: css/predefined/solo-classic-ivory-lace.css

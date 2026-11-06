@@ -14,7 +14,7 @@ Two declarations "meet" when they set the same property and their subjects
 share a class or id (aliases below). This is a heuristic: it ignores media
 queries and DOM nesting, so a pair may never meet on a real page.
 
-The generated library (region colours), the typed custom CSS file and the typed
+The generated library (region colors), the typed custom CSS file and the typed
 inline box are module libraries that solo_utilities moves into their own group
 after every theme stylesheet (ThemeLibraryRegistrar::GROUP, via hook_css_alter);
 the group and weights are read from that class, not copied here. Typed CSS is
@@ -51,16 +51,16 @@ LANE = VVJ + ['paragraphs_bundles', 'selectify', 'w3css_paragraphs', 'utilikit']
 # {system_messages} is filled from ThemeCssBuilder::REGION_SELECTORS at run time,
 # so the generated selector is never copied here.
 EXCEPTION_TEMPLATES = {
-    # Owner call: the "dark system messages" option forces its colours with
-    # !important, so it beats the region colours set for system_messages.
+    # Owner call: the "dark system messages" option forces its colors with
+    # !important, so it beats the region colors set for system_messages.
     'generated:system_messages:12 {system_messages} {{--r-bg}} | css/components/solo-system-messages-dark.css:14 :where(.solo-page) .solo-system-messages {{--r-bg}}',
     'generated:system_messages:12 {system_messages} {{--r-tx}} | css/components/solo-system-messages-dark.css:14 :where(.solo-page) .solo-system-messages {{--r-tx}}',
 }
 EXCEPTIONS = {
     # The control border base rule (0,3,0) outranks the scheme rule (0,2,0).
-    'css/theme/solo-scheme-control-border.css:10 .solo-page .solo-check {border-color} | css/base/solo-variables-regions.css:63 .solo-page .solo-check:not(.selectify-checkbox) {border-color}',
-    'css/theme/solo-scheme-control-border.css:10 .solo-page .solo-radio {border-color} | css/base/solo-variables-regions.css:63 .solo-page .solo-radio:not(.selectify-radio) {border-color}',
-    'css/theme/solo-scheme-control-border.css:10 .solo-page .solo-select {border-color} | css/base/solo-variables-regions.css:63 .solo-page .solo-select:not(.selectify-select) {border-color}',
+    'css/theme/solo-scheme-control-border.css:10 .solo-page .solo-check {border-color} | css/base/solo-variables-regions.css:50 .solo-page .solo-check:not(.selectify-checkbox) {border-color}',
+    'css/theme/solo-scheme-control-border.css:10 .solo-page .solo-radio {border-color} | css/base/solo-variables-regions.css:50 .solo-page .solo-radio:not(.selectify-radio) {border-color}',
+    'css/theme/solo-scheme-control-border.css:10 .solo-page .solo-select {border-color} | css/base/solo-variables-regions.css:50 .solo-page .solo-select:not(.selectify-select) {border-color}',
 }
 
 # ---------------------------------------------------------------- parser
@@ -191,19 +191,39 @@ def solo_decls(solo):
             out.append(dict(decl(kind, f, *r, 100, w, idx, lib)))
     return out
 
+def need(pattern, text, path, what, flags=0):
+    """The regex match on a source this script reads, or a clear stop.
+
+    The check reads values out of solo_utilities' PHP. When the copy it was
+    given is older (or newer) than this script expects, a missing match must
+    say which file and which value, not crash with an AttributeError. Exit 2:
+    the check did not run, which is neither a pass nor a cascade failure.
+    """
+    m = re.search(pattern, text, flags)
+    if m is None:
+        sys.stderr.write(
+            'check-cascade: ERROR: %s not found in %s.\n'
+            'This solo_utilities copy does not match what this Solo checkout expects '
+            '(in CI: the version Composer installed for drupal/solo_utilities). '
+            'The cascade check did NOT run.\nRESULT: ERROR\n' % (what, path))
+        sys.exit(2)
+    return m
+
 def registrar_order(lane):
     """(group, settings, custom file, inline box weights) from ThemeLibraryRegistrar.php."""
-    reglib = open(os.path.join(lane, 'solo_utilities/src/Css/ThemeLibraryRegistrar.php'), encoding='utf-8').read()
-    num = lambda name: int(re.search(name + r' = (-?\d+);', reglib).group(1))
+    path = os.path.join(lane, 'solo_utilities/src/Css/ThemeLibraryRegistrar.php')
+    reglib = open(path, encoding='utf-8').read()
+    num = lambda name: int(need(r'\b' + name + r' = (-?\d+);', reglib, path, 'constant ' + name).group(1))
     # The library lists all three files under the theme category.
     return (num('GROUP'), num('SETTINGS_WEIGHT') + CAT['theme'], num('CUSTOM_WEIGHT') + CAT['theme'],
             num('INLINE_WEIGHT') + CAT['theme'])
 
 def region_selectors(lane):
     """(region, selector) pairs and colour properties, read from ThemeCssBuilder.php (the source of truth)."""
-    php = open(os.path.join(lane, 'solo_utilities/src/Css/ThemeCssBuilder.php'), encoding='utf-8').read()
-    reg = re.search(r'REGION_SELECTORS = \[(.*?)\];', php, re.S).group(1)
-    props = re.search(r'COLOR_PROPERTIES = \[(.*?)\];', php, re.S).group(1)
+    path = os.path.join(lane, 'solo_utilities/src/Css/ThemeCssBuilder.php')
+    php = open(path, encoding='utf-8').read()
+    reg = need(r'REGION_SELECTORS = \[(.*?)\];', php, path, 'constant REGION_SELECTORS', re.S).group(1)
+    props = need(r'COLOR_PROPERTIES = \[(.*?)\];', php, path, 'constant COLOR_PROPERTIES', re.S).group(1)
     return re.findall(r"'([\w]+)' => '([^']+)'", reg), re.findall(r"'[\w]+' => '(--[\w-]+)'", props)
 
 def generated_decls(lane, group, w):
@@ -310,8 +330,8 @@ def main():
                   for d in solo + gen]
     vvj_layered = [d for p in VVJ for d in lane.get(p, []) if d['layered']]
     checks = [
-        pair_check('P1 region colours beat schemes', gen, schemes, '--r-'),
-        pair_check('P2 region colours beat other Solo CSS', gen, [d for d in solo if d['src'] != 'scheme'], '--r-'),
+        pair_check('P1 region colors beat schemes', gen, schemes, '--r-'),
+        pair_check('P2 region colors beat other Solo CSS', gen, [d for d in solo if d['src'] != 'scheme'], '--r-'),
         pair_check('P3 schemes beat Solo components', schemes, comps),
         pair_check('P4 Solo beats vvj.* layers', solo, vvj_layered),
         ownership(dict([('solo', solo), ('generated', gen)] + [('vvj' if p in VVJ else p, lane[p]) for p in lane])),

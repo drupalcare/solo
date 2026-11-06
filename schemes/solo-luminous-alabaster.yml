@@ -3,6 +3,13 @@ id: solo-luminous-alabaster
 name: "Luminous Alabaster"
 category: elegant_whites_and_neutrals
 mode: light
+description: "Light content on white, a pale green menu bar and a white footer."
+brand:
+  primary: "#ebffd7"
+  secondary: "#8a9463"
+  accent: "#0b35bf"
+  ink_light: "#060b00"
+  ink_dark: "#0e1c00"
 categories:
   - elegant_whites_and_neutrals
 css: css/predefined/solo-luminous-alabaster.css

@@ -16,9 +16,9 @@
 }
 
 :where(.comment-wrapper) .indented {
+  display: grid;
   margin-inline-start: clamp(12px, 2vw, 28px);
   padding-inline-start: clamp(12px, 2vw, 20px);
-  display: grid;
 }
 
 :where(.comment-wrapper) .comment {
@@ -44,16 +44,16 @@
 .comments__title,
 :where(.comments__title) .solo-comments__icon {
   display: inline-flex;
-  justify-content: start;
   align-items: center;
+  justify-content: start;
   gap: var(--solo-px4);
 }
 
 /* Individual comment - stacked layout */
 .comment {
-  margin-block-end: var(--solo-px24);
   display: flex;
   flex-direction: column;
+  margin-block-end: var(--solo-px24);
   gap: var(--solo-px16);
 }
 
@@ -71,10 +71,10 @@
 
 /* Comment Header - picture, author, time in one row */
 .solo-comment__header {
+  position: relative;
   display: flex;
   align-items: flex-start;
   gap: var(--solo-px12);
-  position: relative;
 }
 
 .solo-comment__header p,
@@ -90,11 +90,11 @@
 }
 
 .comment__picture img {
-  border-radius: 50%;
   display: block;
   width: 100%;
   height: 100%;
   object-fit: cover;
+  border-radius: 50%;
 }
 
 .solo-comment__header-info {
@@ -114,26 +114,26 @@
 
 .comment__author a:hover,
 .comment__author a:focus {
-  color: var(--r-lk-h);
   text-decoration: underline;
+  color: var(--r-lk-h);
 }
 
 .comment__time {
   display: block;
   margin: 0;
-  font-size: var(--solo-px13);
   opacity: 0.7;
+  font-size: var(--solo-px13);
 }
 
 /* Permalink icon */
 .solo-comment__permalink {
-  width: var(--solo-px48);
-  height: var(--solo-px48);
   display: flex;
   align-items: center;
   justify-content: center;
-  opacity: 0.5;
+  width: var(--solo-px48);
+  height: var(--solo-px48);
   transition: all 0.2s ease;
+  opacity: 0.5;
 }
 
 :where(.comment:hover) .solo-comment__permalink,
@@ -142,16 +142,16 @@
 }
 
 .solo-comment__permalink a {
-  top: 0;
-  inset-inline-end: 0;
   position: absolute;
-  background-color: transparent !important;
-  font-size: 0;
+  top: 0;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   width: 100%;
   height: 100%;
+  background-color: transparent !important;
+  font-size: 0;
+  inset-inline-end: 0;
 }
 
 .solo-comment__permalink a:hover,
@@ -170,30 +170,30 @@
 :where(.solo-page) .new-comment {
   position: absolute;
   top: 0;
-  inset-inline-end: var(--solo-px48);
-  width: var(--solo-px48);
-  height: var(--solo-px48);
   display: inline-flex;
   align-items: center;
-  gap: var(--solo-px4);
+  width: var(--solo-px48);
+  height: var(--solo-px48);
   padding: var(--solo-px4) var(--solo-px8);
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
   color: #10b981;
-  background-color:transparent;
+  border-radius: 0;
+  background-color: transparent;
   font-size: var(--solo-px12);
   font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
   line-height: 1;
-  border-radius: 0;
+  inset-inline-end: var(--solo-px48);
+  gap: var(--solo-px4);
 }
 
 /* Dot indicator before text */
 .new-comment__dot {
   display: inline-block;
+  flex-shrink: 0;
   width: 6px;
   height: 6px;
   border-radius: 50%;
-  flex-shrink: 0;
 }
 
 /* Text wrapper */
@@ -241,8 +241,8 @@
 
 .solo-comment__title a:hover,
 .solo-comment__title a:focus {
-  color: var(--r-lk-h);
   text-decoration: underline;
+  color: var(--r-lk-h);
 }
 
 :where(.solo-comment__body) .field {
@@ -256,11 +256,11 @@
 /* Comment Footer - stacked below body */
 .solo-comment__footer {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
-  gap: var(--solo-px16);
-  flex-wrap: wrap;
   padding-block-start: var(--solo-px12);
+  gap: var(--solo-px16);
 }
 
 .comment__links {
@@ -272,16 +272,16 @@
 
 .comment__links ul {
   display: flex;
-  gap: var(--solo-px8);
+  justify-content: start;
   margin: 0;
   padding: 0;
-  justify-content: start;
   list-style: none;
+  gap: var(--solo-px8);
 }
 
 .comment__links li {
-  padding: var(--solo-px8);
   margin: 0;
+  padding: var(--solo-px8);
 }
 
 .comment__links ul.links li:first-child {
@@ -292,11 +292,11 @@
 .comment__links a {
   display: inline-block;
   padding: var(--solo-px6) var(--solo-px12);
-  font-size: var(--solo-px13);
-  text-decoration: none;
-  border-radius: var(--solo-px4);
-  border: 1px solid var(--r-br);
   transition: all 0.2s ease;
+  text-decoration: none;
+  border: 1px solid var(--r-br);
+  border-radius: var(--solo-px4);
+  font-size: var(--solo-px13);
 }
 
 button.solo-comment__replies-toggle:hover,
@@ -320,14 +320,14 @@ button.solo-comment__replies-toggle:hover,
 }
 
 button.solo-comment__replies-toggle {
-  transition: all 0.2s ease;
-  line-height: 1;
-  border-radius: var(--solo-px4);
-  border: 1px solid var(--r-br);
-  cursor: pointer;
-  background: transparent;
   display: inline-flex;
   align-items: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border: 1px solid var(--r-br);
+  border-radius: var(--solo-px4);
+  background: transparent;
+  line-height: 1;
   gap: var(--solo-px8);
 }
 
@@ -341,8 +341,8 @@ button.solo-comment__replies-toggle {
 
 .solo-comment__replies-toggle:hover,
 .solo-comment__replies-toggle:focus {
-  background-color: var(--r-bg-lk-h);
   border-color: var(--r-lk);
+  background-color: var(--r-bg-lk-h);
 }
 
 .solo-comment__replies-toggle:active {
@@ -400,33 +400,32 @@ button.solo-comment__replies-toggle {
 /* Parent relationship (visually hidden) */
 .parent.visually-hidden {
   position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
   overflow: hidden;
   clip: rect(0, 0, 0, 0);
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
   white-space: nowrap;
   border-width: 0;
 }
 
 /* Reduced motion */
-@media (prefers-reduced-motion:reduce) {
+@media (prefers-reduced-motion: reduce) {
   .solo-comment__permalink,
   .comment__links a,
   .solo-comment__replies-toggle,
   .solo-comment__replies-icon {
     transition: none;
   }
-
 }
 
 /* Focus visible */
 .comment a:focus-visible,
 .comment button:focus-visible {
+  border-radius: var(--solo-px2);
   outline: 2px solid var(--r-lk);
   outline-offset: 2px;
-  border-radius: var(--solo-px2);
 }
 
 /* High contrast mode support */

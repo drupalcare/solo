@@ -15,13 +15,13 @@ BLUEBERRY #241571, CERULEAN #0492C2 */
   --sc-button-tx: #fefdff;
   --sc-button-hover-tx: #241571;
   --sc-button-hover-bg: #fefdff;
-  --sc-main-container-bg: linear-gradient(45deg, #ffffff, #ebfaff);
-  --sc-top-container-bg: linear-gradient(45deg, #ffffff, #ebfaff);
-  --sc-fixed-search-block-bg: linear-gradient(45deg, #ffffff, #ebfaff);
-  --sc-popup-login-block-inner-bg: linear-gradient(45deg, #ffffff, #ebfaff);
-  --sc-bottom-container-bg: linear-gradient(45deg, #ffffff, #ebfaff);
-  --sc-footer-container-bg: linear-gradient(45deg, #ffffff, #ebfaff);
-  --sc-footer-menu-bg: linear-gradient(45deg, #ffffff, #ebfaff);
+  --sc-main-container-bg: linear-gradient(45deg, #fff, #ebfaff);
+  --sc-top-container-bg: linear-gradient(45deg, #fff, #ebfaff);
+  --sc-fixed-search-block-bg: linear-gradient(45deg, #fff, #ebfaff);
+  --sc-popup-login-block-inner-bg: linear-gradient(45deg, #fff, #ebfaff);
+  --sc-bottom-container-bg: linear-gradient(45deg, #fff, #ebfaff);
+  --sc-footer-container-bg: linear-gradient(45deg, #fff, #ebfaff);
+  --sc-footer-menu-bg: linear-gradient(45deg, #fff, #ebfaff);
   --sc-copyright-bg: linear-gradient(180deg, #d8f4fe, #e5e1f9);
   --sc-social-fill: #05abe3;
   --sc-control-br: #ccc4f4;
@@ -35,7 +35,7 @@ BLUEBERRY #241571, CERULEAN #0492C2 */
   --r-br: #53d1fb;
   --r-bg: #f9fdff;
   --r-tx: #01212c;
-  --r-header-bg: linear-gradient(to start top, #ffffff, #d8f4fe);
+  --r-header-bg: linear-gradient(to start top, #fff, #d8f4fe);
   --r-header-tx: #012e3d;
   --r-menu-tx-h: #3e3e3e;
   --r-menu-bg-h: #05b8f4;
@@ -106,8 +106,8 @@ div.solo-page-title.solo-container--single {
   --selectify-checkbox-checked-bg: color-mix(in srgb, #04a0d4 16%, transparent);
   --selectify-checkbox-check-circle: #ccc4f4;
   --selectify-checkbox-checked-circle: #04a0d4;
-  --selectify-checkbox-disabled-bg: color-mix(in srgb, currentColor 5%, transparent);
-  --selectify-checkbox-disabled-circle: color-mix(in srgb, currentColor 22%, transparent);
+  --selectify-checkbox-disabled-bg: color-mix(in sRGB, currentColor 5%, transparent);
+  --selectify-checkbox-disabled-circle: color-mix(in sRGB, currentColor 22%, transparent);
   --selectify-checkbox-border-color: #ccc4f4;
   --selectify-checkbox-hover-border-color: #04a0d4;
   --selectify-checkbox-hover-bg: color-mix(in srgb, #04a0d4 10%, transparent);
@@ -118,7 +118,7 @@ div.solo-page-title.solo-container--single {
 
 .solo-page .selectify-select,
 :where(.solo-page .selectify-select) * {
-  --selectify-select-bg: #ffffff;
+  --selectify-select-bg: #fff;
   --selectify-select-hover-bg: #f0f9fc;
   --selectify-select-color: var(--r-tx);
   --selectify-select-border-color: var(--r-br);
@@ -128,4 +128,86 @@ div.solo-page-title.solo-container--single {
   --selectify-dropdown-shadow: 0 10px 28px -12px color-mix(in srgb, #01212c 22%, transparent);
   --selectify-option-hover-bg: #ebf7fc;
   --selectify-option-active-bg: #dcf2f9;
+}
+
+/* Region text colors: one block per region with its heading (--r-sc-h1), link
+   (--r-sc-lk) and link hover (--r-sc-lk-h) colors, and button hover text where the
+   scheme sets one. Backgrounds above are the scheme's own. Every color here reaches
+   WCAG AA (4.5:1) on the grounds named in its comment. A site's region colors still win. */
+/* Header: on #f9fdff. */
+.solo-header {
+  --r-sc-lk: #29187f;
+  --r-sc-lk-h: #4f35d9;
+}
+
+/* Highlighted: on #f9fdff. */
+.solo-highlighted {
+  --r-sc-lk: #29187f;
+  --r-sc-lk-h: #4f35d9;
+}
+
+/* Fixed search: on #ffffff, #ebfaff. */
+.solo-fixed-search {
+  --r-sc-lk: #29187f;
+  --r-sc-lk-h: #4f35d9;
+}
+
+/* Popup login: on #ffffff, #ebfaff. */
+.solo-popup-login__inner {
+  --r-sc-lk: #29187f;
+  --r-sc-lk-h: #4f35d9;
+}
+
+/* Welcome text: on #f9fdff. */
+.solo-welcome-text {
+  --r-sc-lk: #29187f;
+  --r-sc-lk-h: #4f35d9;
+}
+
+/* Top: on #fafeff, #d8f4fe. */
+.solo-container--top {
+  --r-sc-lk: #29187f;
+  --r-sc-lk-h: #4f35d9;
+}
+
+/* Main: on #ffffff. */
+.solo-container--main {
+  --r-sc-lk: #29187f;
+  --r-sc-lk-h: #4f35d9;
+}
+
+/* Page title: on #f9fdff. */
+.solo-page-title {
+  --r-sc-lk: #29187f;
+  --r-sc-lk-h: #4f35d9;
+}
+
+/* Breadcrumb: on #f9fdff. */
+.breadcrumb {
+  --r-sc-lk: #29187f;
+  --r-sc-lk-h: #4f35d9;
+}
+
+/* Bottom: on #fafeff, #d8f4fe. */
+.solo-container--bottom {
+  --r-sc-lk: #29187f;
+  --r-sc-lk-h: #4f35d9;
+}
+
+/* Footer: on #fafeff, #d8f4fe. */
+.solo-container--footer {
+  --r-sc-lk: #29187f;
+  --r-sc-lk-h: #4f35d9;
+}
+
+/* Footer menu: on #ffffff, #ebfaff. */
+.solo-footer-nav {
+  --r-sc-lk: #29187f;
+  --r-sc-lk-h: #4f35d9;
+}
+
+/* Copyright: on #d8f4fe, #e5e1f9. */
+.solo-copyright {
+  --r-sc-lk: #29187f;
+  --r-sc-lk-h: #4f35d9;
 }

@@ -11,47 +11,55 @@
  */
 
 (function (Drupal, drupalSettings, once) {
-  'use strict';
-
   Drupal.solo = Drupal.solo || {};
 
   /**
    * Popup login block behavior.
    */
   Drupal.behaviors.soloPopupLoginBlock = {
-    attach: function (context, settings) {
+    attach(context, settings) {
       // Initialize popup instance on the login block.
-      once('solo-popup-login-init', '#solo-popup-login-block', context).forEach((loginBlock) => {
-        try {
-          const popupLogin = new Drupal.solo.PopupLogin(loginBlock, context);
-          loginBlock.soloPopupLogin = popupLogin;
-          popupLogin.init();
-        } catch (error) {
-          if (window.console && console.error) {
-            console.error('Solo popup login initialization error:', error);
+      once('solo-popup-login-init', '#solo-popup-login-block', context).forEach(
+        (loginBlock) => {
+          try {
+            const popupLogin = new Drupal.solo.PopupLogin(loginBlock, context);
+            loginBlock.soloPopupLogin = popupLogin;
+            popupLogin.init();
+          } catch (error) {
+            if (window.console && console.error) {
+              console.error('Solo popup login initialization error:', error);
+            }
           }
-        }
-      });
+        },
+      );
 
       // Attach click/keyboard handlers to standard triggers.
-      once('solo-login-trigger', '[data-solo-login-popup-trigger], .solo-popup-login__trigger', context)
-        .forEach((trigger) => {
-          trigger.addEventListener('click', Drupal.solo.handleLoginTriggerClick);
+      once(
+        'solo-login-trigger',
+        '[data-solo-login-popup-trigger], .solo-popup-login__trigger',
+        context,
+      ).forEach((trigger) => {
+        trigger.addEventListener('click', Drupal.solo.handleLoginTriggerClick);
 
-          // Ensure non-interactive elements act like buttons for accessibility.
-          const tag = trigger.tagName.toLowerCase();
-          const isInteractive = tag === 'button' || tag === 'a' || trigger.hasAttribute('role');
-          if (!isInteractive) {
-            trigger.setAttribute('role', 'button');
-          }
-          if (!trigger.hasAttribute('tabindex')) {
-            trigger.setAttribute('tabindex', '0');
-          }
-          trigger.addEventListener('keydown', Drupal.solo.handleLoginTriggerKeydown);
-        });
+        // Ensure non-interactive elements act like buttons for accessibility.
+        const tag = trigger.tagName.toLowerCase();
+        const isInteractive =
+          tag === 'button' || tag === 'a' || trigger.hasAttribute('role');
+        if (!isInteractive) {
+          trigger.setAttribute('role', 'button');
+        }
+        if (!trigger.hasAttribute('tabindex')) {
+          trigger.setAttribute('tabindex', '0');
+        }
+        trigger.addEventListener(
+          'keydown',
+          Drupal.solo.handleLoginTriggerKeydown,
+        );
+      });
 
       // Custom triggers provided via drupalSettings.
-      const popupSettings = (drupalSettings.solo && drupalSettings.solo.popupLogin) || {};
+      const popupSettings =
+        (drupalSettings.solo && drupalSettings.solo.popupLogin) || {};
       if (popupSettings.customTriggers) {
         const selectors = popupSettings.customTriggers
           .split(',')
@@ -59,20 +67,27 @@
           .filter((s) => s);
         selectors.forEach((selector) => {
           try {
-            const onceKey = 'solo-custom-trigger-' + selector.replace(/[^a-zA-Z0-9]/g, '-');
+            const onceKey = `solo-custom-trigger-${selector.replace(/[^a-zA-Z0-9]/g, '-')}`;
             once(onceKey, selector, context).forEach((trigger) => {
-              trigger.addEventListener('click', Drupal.solo.handleLoginTriggerClick);
+              trigger.addEventListener(
+                'click',
+                Drupal.solo.handleLoginTriggerClick,
+              );
 
               // Apply the same keyboard and focusability enhancements.
               const tag = trigger.tagName.toLowerCase();
-              const isInteractive = tag === 'button' || tag === 'a' || trigger.hasAttribute('role');
+              const isInteractive =
+                tag === 'button' || tag === 'a' || trigger.hasAttribute('role');
               if (!isInteractive) {
                 trigger.setAttribute('role', 'button');
               }
               if (!trigger.hasAttribute('tabindex')) {
                 trigger.setAttribute('tabindex', '0');
               }
-              trigger.addEventListener('keydown', Drupal.solo.handleLoginTriggerKeydown);
+              trigger.addEventListener(
+                'keydown',
+                Drupal.solo.handleLoginTriggerKeydown,
+              );
             });
           } catch (e) {
             // Ignore invalid selectors
@@ -81,25 +96,42 @@
       }
     },
 
-    detach: function (context, settings, trigger) {
+    detach(context, settings, trigger) {
       if (trigger === 'unload' || trigger === 'move') {
         // Destroy popup instances and remove their listeners.
-        once.remove('solo-popup-login-init', '#solo-popup-login-block', context).forEach((loginBlock) => {
-          if (loginBlock.soloPopupLogin && typeof loginBlock.soloPopupLogin.destroy === 'function') {
-            loginBlock.soloPopupLogin.destroy();
-            delete loginBlock.soloPopupLogin;
-          }
-        });
+        once
+          .remove('solo-popup-login-init', '#solo-popup-login-block', context)
+          .forEach((loginBlock) => {
+            if (
+              loginBlock.soloPopupLogin &&
+              typeof loginBlock.soloPopupLogin.destroy === 'function'
+            ) {
+              loginBlock.soloPopupLogin.destroy();
+              delete loginBlock.soloPopupLogin;
+            }
+          });
 
         // Remove standard trigger listeners.
-        once.remove('solo-login-trigger', '[data-solo-login-popup-trigger], .solo-popup-login__trigger', context)
+        once
+          .remove(
+            'solo-login-trigger',
+            '[data-solo-login-popup-trigger], .solo-popup-login__trigger',
+            context,
+          )
           .forEach((triggerEl) => {
-            triggerEl.removeEventListener('click', Drupal.solo.handleLoginTriggerClick);
-            triggerEl.removeEventListener('keydown', Drupal.solo.handleLoginTriggerKeydown);
+            triggerEl.removeEventListener(
+              'click',
+              Drupal.solo.handleLoginTriggerClick,
+            );
+            triggerEl.removeEventListener(
+              'keydown',
+              Drupal.solo.handleLoginTriggerKeydown,
+            );
           });
 
         // Remove custom trigger listeners to avoid leaks across AJAX updates.
-        const popupSettings = (drupalSettings.solo && drupalSettings.solo.popupLogin) || {};
+        const popupSettings =
+          (drupalSettings.solo && drupalSettings.solo.popupLogin) || {};
         if (popupSettings.customTriggers) {
           popupSettings.customTriggers
             .split(',')
@@ -107,10 +139,19 @@
             .filter(Boolean)
             .forEach((selector) => {
               try {
-                const onceKey = 'solo-custom-trigger-' + selector.replace(/[^a-zA-Z0-9]/g, '-');
+                const onceKey = `solo-custom-trigger-${selector.replace(
+                  /[^a-zA-Z0-9]/g,
+                  '-',
+                )}`;
                 once.remove(onceKey, selector, context).forEach((triggerEl) => {
-                  triggerEl.removeEventListener('click', Drupal.solo.handleLoginTriggerClick);
-                  triggerEl.removeEventListener('keydown', Drupal.solo.handleLoginTriggerKeydown);
+                  triggerEl.removeEventListener(
+                    'click',
+                    Drupal.solo.handleLoginTriggerClick,
+                  );
+                  triggerEl.removeEventListener(
+                    'keydown',
+                    Drupal.solo.handleLoginTriggerKeydown,
+                  );
                 });
               } catch (e) {
                 // Ignore invalid selectors
@@ -118,7 +159,7 @@
             });
         }
       }
-    }
+    },
   };
 
   /**
@@ -156,6 +197,8 @@
     this.isOpen = false;
     this.boundHandlers = {};
     this.lastFocusedElement = null;
+    // Background nodes this instance made inert; only these are restored.
+    this.inertedNodes = [];
 
     // Settings with defaults.
     this.settings = {
@@ -169,7 +212,7 @@
       zIndex: 10000,
       overlayOpacity: 50,
       useInlineStyles: false,
-      backgroundColorRgb: ''
+      backgroundColorRgb: '',
     };
 
     // Merge with drupalSettings.
@@ -178,9 +221,17 @@
     }
 
     // Sanitize numeric settings.
-    this.settings.animationDuration = Math.max(0, Number(this.settings.animationDuration) || 0);
-    this.settings.overlayOpacity = Math.min(100, Math.max(0, Number(this.settings.overlayOpacity) || 0));
-    this.settings.zIndex = Number.isFinite(Number(this.settings.zIndex)) ? Number(this.settings.zIndex) : 10000;
+    this.settings.animationDuration = Math.max(
+      0,
+      Number(this.settings.animationDuration) || 0,
+    );
+    this.settings.overlayOpacity = Math.min(
+      100,
+      Math.max(0, Number(this.settings.overlayOpacity) || 0),
+    );
+    this.settings.zIndex = Number.isFinite(Number(this.settings.zIndex))
+      ? Number(this.settings.zIndex)
+      : 10000;
   };
 
   /**
@@ -188,12 +239,14 @@
    */
   Drupal.solo.PopupLogin.prototype.init = function () {
     // Find buttons.
-    this.openButton = document.querySelector('.solo-popup-login__open > button') ||
-                      document.querySelector('.solo-popup-login__open button') ||
-                      document.querySelector('[data-solo-login-popup-trigger]');
+    this.openButton =
+      document.querySelector('.solo-popup-login__open > button') ||
+      document.querySelector('.solo-popup-login__open button') ||
+      document.querySelector('[data-solo-login-popup-trigger]');
 
-    this.closeButton = this.loginBlock.querySelector('.solo-popup-login__close button') ||
-                       this.loginBlock.querySelector('.solo-popup-login__close-inner');
+    this.closeButton =
+      this.loginBlock.querySelector('.solo-popup-login__close button') ||
+      this.loginBlock.querySelector('.solo-popup-login__close-inner');
 
     if (!this.closeButton) {
       if (window.console && console.warn) {
@@ -216,9 +269,18 @@
     }
 
     // ALWAYS set CSS variables - they are used by CSS regardless of inline styles mode.
-    this.loginBlock.style.setProperty('--solo-popup-z-index', this.settings.zIndex);
-    this.loginBlock.style.setProperty('--solo-popup-overlay-opacity', this.settings.overlayOpacity / 100);
-    this.loginBlock.style.setProperty('--solo-popup-animation-duration', this.settings.animationDuration + 'ms');
+    this.loginBlock.style.setProperty(
+      '--solo-popup-z-index',
+      this.settings.zIndex,
+    );
+    this.loginBlock.style.setProperty(
+      '--solo-popup-overlay-opacity',
+      this.settings.overlayOpacity / 100,
+    );
+    this.loginBlock.style.setProperty(
+      '--solo-popup-animation-duration',
+      `${this.settings.animationDuration}ms`,
+    );
 
     // Set background RGB (default to black if not provided)
     const bgRgb = this.settings.backgroundColorRgb || '0, 0, 0';
@@ -241,7 +303,14 @@
 
     if (this.openButton) {
       this.openButton.setAttribute('aria-controls', loginId);
-      this.openButton.setAttribute('aria-label', Drupal.t('Open login form'));
+      // Name an icon-only opener; never replace a visible label such as
+      // "Log in", so the spoken name matches what is shown (WCAG 2.5.3).
+      if (
+        !this.openButton.hasAttribute('aria-label') &&
+        !this.openButton.textContent.trim()
+      ) {
+        this.openButton.setAttribute('aria-label', Drupal.t('Open login form'));
+      }
     }
 
     this.closeButton.setAttribute('aria-label', Drupal.t('Close login form'));
@@ -249,25 +318,29 @@
     this.loginBlock.setAttribute('aria-modal', 'true');
 
     // Strengthen dialog labeling: aria-labelledby / aria-describedby when possible.
-    let labelEl = this.loginBlock.querySelector('[data-sr-dialog-title], .solo-popup-login__title, h1, h2, h3');
+    const labelEl = this.loginBlock.querySelector(
+      '[data-sr-dialog-title], .solo-popup-login__title, h1, h2, h3',
+    );
     if (labelEl) {
       if (!labelEl.id) {
-        labelEl.id = 'solo-login-title-' + Math.random().toString(36).slice(2);
+        labelEl.id = `solo-login-title-${Math.random().toString(36).slice(2)}`;
       }
       this.loginBlock.setAttribute('aria-labelledby', labelEl.id);
     }
 
-    let descEl = this.loginBlock.querySelector('[data-sr-dialog-description], .solo-popup-login__description, .description');
+    const descEl = this.loginBlock.querySelector(
+      '[data-sr-dialog-description], .solo-popup-login__description, .description',
+    );
     if (descEl) {
       if (!descEl.id) {
-        descEl.id = 'solo-login-desc-' + Math.random().toString(36).slice(2);
+        descEl.id = `solo-login-desc-${Math.random().toString(36).slice(2)}`;
       }
       this.loginBlock.setAttribute('aria-describedby', descEl.id);
     }
 
     // Mirror aria-controls on all known triggers.
     const allTriggers = document.querySelectorAll(
-      '[data-solo-login-popup-trigger], .solo-popup-login__trigger, .solo-popup-login__open button, .solo-popup-login__open > button'
+      '[data-solo-login-popup-trigger], .solo-popup-login__trigger, .solo-popup-login__open button, .solo-popup-login__open > button',
     );
     allTriggers.forEach((el) => {
       el.setAttribute('aria-controls', loginId);
@@ -329,7 +402,9 @@
         if (!this.isOpen) return;
 
         // Inner popup container.
-        const popupInner = this.loginBlock.querySelector('.solo-popup-login__inner');
+        const popupInner = this.loginBlock.querySelector(
+          '.solo-popup-login__inner',
+        );
 
         // Fallback if inner container is missing.
         if (!popupInner) {
@@ -386,6 +461,57 @@
         }
       };
     }
+
+    // Close when the fixed search opens. Attached only while the popup is
+    // open. Focus is not returned to the popup opener, so the search keeps it.
+    this.boundHandlers.searchBlockOpen = () => {
+      if (!this.isOpen) return;
+      this.lastFocusedElement = null;
+      this.close();
+    };
+  };
+
+  /**
+   * Make the page behind the popup inert.
+   *
+   * Sets native inert on the siblings of every ancestor of the popup, up to
+   * body. Skips nodes that are already inert and aria-live regions, so
+   * announcements still reach screen readers. Records what it set.
+   */
+  Drupal.solo.PopupLogin.prototype.setBackgroundInert = function () {
+    this.releaseBackgroundInert();
+    if (!('inert' in HTMLElement.prototype)) return;
+
+    const skipTags = ['SCRIPT', 'STYLE', 'LINK', 'TEMPLATE', 'NOSCRIPT'];
+    let node = this.loginBlock;
+    while (node && node !== document.body && node.parentElement) {
+      const parent = node.parentElement;
+      const current = node;
+      Array.from(parent.children).forEach((sibling) => {
+        if (
+          sibling === current ||
+          skipTags.indexOf(sibling.tagName) !== -1 ||
+          sibling.hasAttribute('inert') ||
+          sibling.hasAttribute('aria-live')
+        ) {
+          return;
+        }
+        sibling.inert = true;
+        this.inertedNodes.push(sibling);
+      });
+      node = parent;
+    }
+  };
+
+  /**
+   * Remove inert from the nodes setBackgroundInert() set, and only those.
+   */
+  Drupal.solo.PopupLogin.prototype.releaseBackgroundInert = function () {
+    if (!this.inertedNodes) return;
+    this.inertedNodes.forEach((sibling) => {
+      sibling.inert = false;
+    });
+    this.inertedNodes = [];
   };
 
   /**
@@ -405,7 +531,19 @@
 
     // Dispatch custom event.
     this.loginBlock.dispatchEvent(
-      new CustomEvent('solo:loginPopupOpen', { detail: { loginBlock: this.loginBlock }, bubbles: true })
+      new CustomEvent('solo:loginPopupOpen', {
+        detail: { loginBlock: this.loginBlock },
+        bubbles: true,
+      }),
+    );
+
+    // Background is inert while the dialog is open.
+    this.setBackgroundInert();
+
+    // Close if the fixed search opens while the popup is open.
+    document.addEventListener(
+      'solo:searchBlockOpen',
+      this.boundHandlers.searchBlockOpen,
     );
 
     // Apply styles based on useInlineStyles setting.
@@ -431,30 +569,44 @@
       // Attach global handlers with a short delay.
       setTimeout(() => {
         if (this.boundHandlers.documentClick) {
-          document.addEventListener('click', this.boundHandlers.documentClick, true);
+          document.addEventListener(
+            'click',
+            this.boundHandlers.documentClick,
+            true,
+          );
           // Helper to check passive support
           const supportsPassive = (() => {
             let passive = false;
             try {
               const opts = Object.defineProperty({}, 'passive', {
-                get: function() { passive = true; }
+                get() {
+                  passive = true;
+                  return undefined;
+                },
               });
               window.addEventListener('testPassive', null, opts);
               window.removeEventListener('testPassive', null, opts);
-            } catch (e) {}
+            } catch (e) {
+              // Passive listeners are not supported; keep the default.
+            }
             return passive;
           })();
 
           // Then use it
-          document.addEventListener('touchstart', this.boundHandlers.documentClick,
-            supportsPassive ? { capture: true, passive: true } : true
+          document.addEventListener(
+            'touchstart',
+            this.boundHandlers.documentClick,
+            supportsPassive ? { capture: true, passive: true } : true,
           );
         }
         if (this.boundHandlers.escapeKey) {
           document.addEventListener('keydown', this.boundHandlers.escapeKey);
         }
         if (this.boundHandlers.focusTrap) {
-          this.loginBlock.addEventListener('keydown', this.boundHandlers.focusTrap);
+          this.loginBlock.addEventListener(
+            'keydown',
+            this.boundHandlers.focusTrap,
+          );
         }
       }, 100);
 
@@ -466,9 +618,19 @@
    * Close the login popup.
    */
   Drupal.solo.PopupLogin.prototype.close = function (announce = true) {
-    if (!this.isOpen && !this.loginBlock.classList.contains('solo-is-open')) return;
+    if (!this.isOpen && !this.loginBlock.classList.contains('solo-is-open'))
+      return;
 
     this.isOpen = false;
+
+    // Restore the background synchronously, before focus is returned to it.
+    this.releaseBackgroundInert();
+    if (this.boundHandlers.searchBlockOpen) {
+      document.removeEventListener(
+        'solo:searchBlockOpen',
+        this.boundHandlers.searchBlockOpen,
+      );
+    }
 
     // CRITICAL: Remove focus from any element inside popup BEFORE hiding
     if (this.loginBlock.contains(document.activeElement)) {
@@ -477,7 +639,10 @@
 
     // Dispatch custom event.
     this.loginBlock.dispatchEvent(
-      new CustomEvent('solo:loginPopupClose', { detail: { loginBlock: this.loginBlock }, bubbles: true })
+      new CustomEvent('solo:loginPopupClose', {
+        detail: { loginBlock: this.loginBlock },
+        bubbles: true,
+      }),
     );
 
     // Remove classes (but NOT aria-hidden yet)
@@ -485,7 +650,7 @@
 
     // Update aria-expanded on triggers (but NOT aria-hidden on dialog yet)
     const triggers = document.querySelectorAll(
-      '[data-solo-login-popup-trigger], .solo-popup-login__trigger, .solo-popup-login__open button, .solo-popup-login__open > button'
+      '[data-solo-login-popup-trigger], .solo-popup-login__trigger, .solo-popup-login__open button, .solo-popup-login__open > button',
     );
     triggers.forEach((el) => el.setAttribute('aria-expanded', 'false'));
 
@@ -543,15 +708,26 @@
 
     // Remove global handlers.
     if (this.boundHandlers.documentClick) {
-      document.removeEventListener('click', this.boundHandlers.documentClick, true);
+      document.removeEventListener(
+        'click',
+        this.boundHandlers.documentClick,
+        true,
+      );
       // Must match capture setting used when adding.
-      document.removeEventListener('touchstart', this.boundHandlers.documentClick, { capture: true });
+      document.removeEventListener(
+        'touchstart',
+        this.boundHandlers.documentClick,
+        { capture: true },
+      );
     }
     if (this.boundHandlers.escapeKey) {
       document.removeEventListener('keydown', this.boundHandlers.escapeKey);
     }
     if (this.boundHandlers.focusTrap) {
-      this.loginBlock.removeEventListener('keydown', this.boundHandlers.focusTrap);
+      this.loginBlock.removeEventListener(
+        'keydown',
+        this.boundHandlers.focusTrap,
+      );
     }
   };
   /**
@@ -561,7 +737,7 @@
   Drupal.solo.PopupLogin.prototype.updateAriaAttributes = function (isOpen) {
     // Keep all triggers in sync.
     const triggers = document.querySelectorAll(
-      '[data-solo-login-popup-trigger], .solo-popup-login__trigger, .solo-popup-login__open button, .solo-popup-login__open > button'
+      '[data-solo-login-popup-trigger], .solo-popup-login__trigger, .solo-popup-login__open button, .solo-popup-login__open > button',
     );
     triggers.forEach((el) => el.setAttribute('aria-expanded', String(isOpen)));
 
@@ -581,7 +757,9 @@
    * Set tabindex on elements within the dialog.
    */
   Drupal.solo.PopupLogin.prototype.setElementsTabindex = function (isOpen) {
-    const elements = this.loginBlock.querySelectorAll('button, input, select, textarea, a[href]');
+    const elements = this.loginBlock.querySelectorAll(
+      'button, input, select, textarea, a[href]',
+    );
     elements.forEach((element) => {
       if (isOpen) {
         const original = element.getAttribute('data-original-tabindex');
@@ -614,11 +792,16 @@
       'textarea:not([disabled]):not([tabindex="-1"])',
       'a[href]:not([tabindex="-1"])',
       '[tabindex]:not([tabindex="-1"])',
-      '[contenteditable="true"]:not([tabindex="-1"])'
+      '[contenteditable="true"]:not([tabindex="-1"])',
     ].join(', ');
-    return Array.from(this.loginBlock.querySelectorAll(selector)).filter((el) => {
-      return el.offsetParent !== null && getComputedStyle(el).visibility !== 'hidden';
-    });
+    return Array.from(this.loginBlock.querySelectorAll(selector)).filter(
+      (el) => {
+        return (
+          el.offsetParent !== null &&
+          getComputedStyle(el).visibility !== 'hidden'
+        );
+      },
+    );
   };
 
   /**
@@ -626,7 +809,9 @@
    */
   Drupal.solo.PopupLogin.prototype.focusFirstInput = function () {
     const focusableElements = this.getFocusableElements();
-    const firstInput = focusableElements.find((el) => el.tagName === 'INPUT' && el.type !== 'hidden');
+    const firstInput = focusableElements.find(
+      (el) => el.tagName === 'INPUT' && el.type !== 'hidden',
+    );
 
     setTimeout(() => {
       try {
@@ -648,6 +833,7 @@
     if (this.isOpen) {
       this.close(false);
     }
+    this.releaseBackgroundInert();
 
     // Remove event listeners specific to this instance.
     if (this.openButton && this.boundHandlers.open) {
@@ -658,7 +844,10 @@
     }
 
     // Clean up ARIA live region if this was the last popup.
-    if (this.liveRegion && document.querySelectorAll('#solo-popup-login-block').length <= 1) {
+    if (
+      this.liveRegion &&
+      document.querySelectorAll('#solo-popup-login-block').length <= 1
+    ) {
       try {
         this.liveRegion.remove();
       } catch (e) {
@@ -674,7 +863,10 @@
     // Clean up classes.
     document.body.classList.remove('solo-login-popup-open');
     if (this.loginBlock) {
-      this.loginBlock.classList.remove('solo-popup-css-vars', 'solo-popup-visible');
+      this.loginBlock.classList.remove(
+        'solo-popup-css-vars',
+        'solo-popup-visible',
+      );
     }
 
     // Clear references.
@@ -686,5 +878,4 @@
     this.liveRegion = null;
     this.lastFocusedElement = null;
   };
-
 })(Drupal, drupalSettings, once);

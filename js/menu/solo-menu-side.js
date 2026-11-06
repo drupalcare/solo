@@ -7,12 +7,9 @@
  * Developer:    Alaa Haddad https://www.alaahaddad.com.
  */
 ((Drupal, drupalSettings, once) => {
-  'use strict';
-
   // Component name for state manager
   const COMPONENT_NAME = 'sidebar';
   let focusVisibleHandlers = [];
-
 
   // Initialize Drupal.solo if it doesn't exist
   Drupal.solo = Drupal.solo || {};
@@ -21,7 +18,7 @@
   if (Drupal.solo.menuState) {
     Drupal.solo.menuState.registerComponent(COMPONENT_NAME, {
       name: 'Solo Sidebar Menu',
-      version: '1.0'
+      version: '1.0',
     });
   }
 
@@ -37,8 +34,12 @@
       const pointerEvents = ['mousedown', 'mouseup', 'touchstart', 'touchend'];
 
       // Create named handlers for cleanup
-      const keyHandler = () => { hadKeyboardEvent = true; };
-      const pointerHandler = () => { hadKeyboardEvent = false; };
+      const keyHandler = () => {
+        hadKeyboardEvent = true;
+      };
+      const pointerHandler = () => {
+        hadKeyboardEvent = false;
+      };
       const focusHandler = (e) => {
         if (hadKeyboardEvent || e.target.matches(':focus-visible')) {
           e.target.classList.add('solo-is-focus-visible');
@@ -49,22 +50,38 @@
       };
 
       // Track keyboard vs pointer interaction
-      keyboardEvents.forEach(event => {
+      keyboardEvents.forEach((event) => {
         document.addEventListener(event, keyHandler, true);
-        focusVisibleHandlers.push({ event, handler: keyHandler, capture: true });
+        focusVisibleHandlers.push({
+          event,
+          handler: keyHandler,
+          capture: true,
+        });
       });
 
-      pointerEvents.forEach(event => {
+      pointerEvents.forEach((event) => {
         document.addEventListener(event, pointerHandler, true);
-        focusVisibleHandlers.push({ event, handler: pointerHandler, capture: true });
+        focusVisibleHandlers.push({
+          event,
+          handler: pointerHandler,
+          capture: true,
+        });
       });
 
       // Add/remove focus-visible class
       document.addEventListener('focus', focusHandler, true);
-      focusVisibleHandlers.push({ event: 'focus', handler: focusHandler, capture: true });
+      focusVisibleHandlers.push({
+        event: 'focus',
+        handler: focusHandler,
+        capture: true,
+      });
 
       document.addEventListener('blur', blurHandler, true);
-      focusVisibleHandlers.push({ event: 'blur', handler: blurHandler, capture: true });
+      focusVisibleHandlers.push({
+        event: 'blur',
+        handler: blurHandler,
+        capture: true,
+      });
     }
   };
 
@@ -117,7 +134,7 @@
       if (elementListeners.size === 0) {
         this.listeners.delete(element);
       }
-    }
+    },
   };
 
   // Initialize focus-visible on page load
@@ -133,9 +150,14 @@
     }
     const openDuration = Drupal.solo.animations.slideDown || 400;
     const closeDuration = Drupal.solo.animations.slideUp || 350;
-    const closeBtns = document.querySelectorAll('.solo-sidebar-menu__close>button');
-    const openBtns = document.querySelectorAll('.solo-sidebar-menu__open>button');
-    const firstLevelSelector = '#solo-primary-sidebar-menu .solo-menu-tree__menubar-item > a, #solo-primary-sidebar-menu .solo-menu-tree__menubar-item > button';
+    const closeBtns = document.querySelectorAll(
+      '.solo-sidebar-menu__close>button',
+    );
+    const openBtns = document.querySelectorAll(
+      '.solo-sidebar-menu__open>button',
+    );
+    const firstLevelSelector =
+      '#solo-primary-sidebar-menu .solo-menu-tree__menubar-item > a, #solo-primary-sidebar-menu .solo-menu-tree__menubar-item > button';
 
     let lastFocusedElement = null;
 
@@ -144,21 +166,25 @@
     // list taken from the first-level items alone made them unreachable by
     // keyboard (WCAG 2.1.1).
     const getFocusableElements = () => {
-      const focusable = 'a[href], button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]';
+      const focusable =
+        'a[href], button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]';
       const elements = Array.from(verticalNav.querySelectorAll(focusable));
-      closeBtns.forEach(button => {
+      closeBtns.forEach((button) => {
         if (!verticalNav.contains(button)) {
           elements.push(button);
         }
       });
-      return elements.filter(el => el.getAttribute('tabindex') !== '-1' &&
-        el.getClientRects().length > 0 &&
-        !el.closest('[inert]'));
+      return elements.filter(
+        (el) =>
+          el.getAttribute('tabindex') !== '-1' &&
+          el.getClientRects().length > 0 &&
+          !el.closest('[inert]'),
+      );
     };
 
     // Function to add a click event listener to specified elements
     const sideMenubarCloseOpen = (buttons, callback, context) => {
-      buttons.forEach(button => {
+      buttons.forEach((button) => {
         if (button && context.contains(button)) {
           // Use once to prevent duplicate listeners
           once('solo-sidebar-button', button).forEach(() => {
@@ -172,13 +198,21 @@
     const setAriaExpanded = (elements, value) => {
       // Handle both single elements and NodeLists
       if (elements instanceof NodeList || Array.isArray(elements)) {
-        elements.forEach(el => {
+        elements.forEach((el) => {
           if (el && el instanceof HTMLElement) {
-            Drupal.solo.menuState.setExpanded(el, value === 'true', COMPONENT_NAME);
+            Drupal.solo.menuState.setExpanded(
+              el,
+              value === 'true',
+              COMPONENT_NAME,
+            );
           }
         });
       } else if (elements && elements instanceof HTMLElement) {
-        Drupal.solo.menuState.setExpanded(elements, value === 'true', COMPONENT_NAME);
+        Drupal.solo.menuState.setExpanded(
+          elements,
+          value === 'true',
+          COMPONENT_NAME,
+        );
       }
     };
 
@@ -188,9 +222,15 @@
 
       // IMPORTANT: Don't set aria-hidden on parent if it contains focusable buttons
       // Instead, set it only on the menubar content, not the wrapper
-      const menubar = el.querySelector('.solo-menu-tree--sidebar, .solo-menu-tree__menubar');
+      const menubar = el.querySelector(
+        '.solo-menu-tree--sidebar, .solo-menu-tree__menubar',
+      );
       if (menubar) {
-        Drupal.solo.menuState.setHidden(menubar, value === 'true', COMPONENT_NAME);
+        Drupal.solo.menuState.setHidden(
+          menubar,
+          value === 'true',
+          COMPONENT_NAME,
+        );
       } else {
         // Fallback to setting on element itself
         Drupal.solo.menuState.setHidden(el, value === 'true', COMPONENT_NAME);
@@ -199,7 +239,8 @@
 
     // Function to focus the first interactive element in the vertical navigation
     const focusFirstInteractiveElement = () => {
-      const firstInteractiveElement = verticalNav.querySelector(firstLevelSelector);
+      const firstInteractiveElement =
+        verticalNav.querySelector(firstLevelSelector);
       if (firstInteractiveElement) {
         firstInteractiveElement.focus();
       }
@@ -207,13 +248,24 @@
 
     // Function to update tabindex of first level menu items using state manager
     const updateTabindex = (isOpen) => {
-      Drupal.solo.menuState.updateMenuTabindex(verticalNav, isOpen, COMPONENT_NAME);
+      Drupal.solo.menuState.updateMenuTabindex(
+        verticalNav,
+        isOpen,
+        COMPONENT_NAME,
+      );
 
-      closeBtns.forEach(button => {
-        Drupal.solo.menuState.setTabindex(button, isOpen ? '0' : '-1', COMPONENT_NAME);
+      closeBtns.forEach((button) => {
+        Drupal.solo.menuState.setTabindex(
+          button,
+          isOpen ? '0' : '-1',
+          COMPONENT_NAME,
+        );
       });
-
     };
+
+    // Assigned below; trapFocus and outsideClickListener call it, and it adds
+    // and removes them, so one of the three must be declared first.
+    let sideMenubarToggleNav;
 
     // Function to trap focus within the sidebar
     const trapFocus = (event) => {
@@ -223,7 +275,10 @@
 
       // Check both key and code for better support
       const isTab = event.key === 'Tab' || event.code === 'Tab';
-      const isEscape = event.key === 'Escape' || event.code === 'Escape' || event.keyCode === 27;
+      const isEscape =
+        event.key === 'Escape' ||
+        event.code === 'Escape' ||
+        event.keyCode === 27;
 
       // Only process Tab and Escape keys
       if (!isTab && !isEscape) return;
@@ -245,10 +300,14 @@
         const currentIndex = focusableElements.indexOf(document.activeElement);
         let nextIndex;
 
-        if (event.shiftKey) { // Shift + Tab
-          nextIndex = currentIndex > 0 ? currentIndex - 1 : focusableElements.length - 1;
-        } else { // Tab
-          nextIndex = currentIndex < focusableElements.length - 1 ? currentIndex + 1 : 0;
+        if (event.shiftKey) {
+          // Shift + Tab
+          nextIndex =
+            currentIndex > 0 ? currentIndex - 1 : focusableElements.length - 1;
+        } else {
+          // Tab
+          nextIndex =
+            currentIndex < focusableElements.length - 1 ? currentIndex + 1 : 0;
         }
 
         event.preventDefault();
@@ -260,12 +319,16 @@
 
     const outsideClickListener = (event) => {
       // Check if click is outside the sidebar and not on open button
-      if (verticalNav && !verticalNav.contains(event.target) && !event.target.closest('.solo-sidebar-menu__open')) {
+      if (
+        verticalNav &&
+        !verticalNav.contains(event.target) &&
+        !event.target.closest('.solo-sidebar-menu__open')
+      ) {
         sideMenubarToggleNav(false);
       }
     };
 
-    const sideMenubarToggleNav = (isOpen) => {
+    sideMenubarToggleNav = (isOpen) => {
       // Set duration based on open or close
       const duration = isOpen
         ? Drupal.solo.animations.slideDown
@@ -274,13 +337,13 @@
       verticalNav.style.setProperty('--solo-sidebar-speed', `${duration}ms`);
 
       // Set aria-expanded for buttons (iterate through NodeLists)
-      closeBtns.forEach(btn => {
+      closeBtns.forEach((btn) => {
         if (btn && btn instanceof HTMLElement) {
           Drupal.solo.menuState.setExpanded(btn, isOpen, COMPONENT_NAME);
         }
       });
 
-      openBtns.forEach(btn => {
+      openBtns.forEach((btn) => {
         if (btn && btn instanceof HTMLElement) {
           Drupal.solo.menuState.setExpanded(btn, isOpen, COMPONENT_NAME);
         }
@@ -301,7 +364,11 @@
         Drupal.solo.setInert(verticalNav, false);
 
         if (Drupal.solo.menuState) {
-          Drupal.solo.menuState.coordinateMenuOperation('open', verticalNav, COMPONENT_NAME);
+          Drupal.solo.menuState.coordinateMenuOperation(
+            'open',
+            verticalNav,
+            COMPONENT_NAME,
+          );
         } else {
           verticalNav.classList.add('solo-is-open');
         }
@@ -311,7 +378,12 @@
 
         // Add namespaced event listeners only when opening
         eventManager.on(document, 'keydown', 'solo.sidebar.focus', trapFocus);
-        eventManager.on(document, 'click', 'solo.sidebar.outside', outsideClickListener);
+        eventManager.on(
+          document,
+          'click',
+          'solo.sidebar.outside',
+          outsideClickListener,
+        );
       } else {
         // CRITICAL: Remove focus from any element inside sidebar BEFORE hiding
         if (verticalNav.contains(document.activeElement)) {
@@ -324,13 +396,21 @@
         }
 
         if (Drupal.solo.menuState) {
-          Drupal.solo.menuState.coordinateMenuOperation('close', verticalNav, COMPONENT_NAME);
+          Drupal.solo.menuState.coordinateMenuOperation(
+            'close',
+            verticalNav,
+            COMPONENT_NAME,
+          );
         } else {
           verticalNav.classList.remove('solo-is-open');
         }
 
-        const subMenus = verticalNav.querySelectorAll('.solo-menu-tree--sidebar li ul.solo-menu-tree__submenu');
-        subMenus?.forEach(subMenu => Drupal.solo.hideSubMenus(subMenu, COMPONENT_NAME));
+        const subMenus = verticalNav.querySelectorAll(
+          '.solo-menu-tree--sidebar li ul.solo-menu-tree__submenu',
+        );
+        subMenus?.forEach((subMenu) =>
+          Drupal.solo.hideSubMenus(subMenu, COMPONENT_NAME),
+        );
 
         // Remove namespaced event listeners when closing
         eventManager.off(document, 'keydown', 'solo.sidebar.focus');
@@ -347,40 +427,67 @@
     Drupal.solo.sideMenubarToggleNav = sideMenubarToggleNav;
 
     // Legacy function for backward compatibility
-    function addOutsideClickListener(enable) {
+    const addOutsideClickListener = function addOutsideClickListener(enable) {
       if (enable === true && verticalNav.classList.contains('solo-is-open')) {
-        eventManager.on(document, 'click', 'solo.sidebar.outside', outsideClickListener);
+        eventManager.on(
+          document,
+          'click',
+          'solo.sidebar.outside',
+          outsideClickListener,
+        );
       } else {
         eventManager.off(document, 'click', 'solo.sidebar.outside');
       }
-    }
+    };
 
     // Expose the function to the Drupal namespace
     Drupal.solo.addOutsideClickListener = addOutsideClickListener;
 
     Drupal.behaviors.soloPrimarySideMenu = {
-      attach: function (context, settings) {
+      attach(context, settings) {
         // Only initialize once per context
-        once('solo-sidebar-init', '#solo-primary-sidebar-menu', context).forEach(() => {
+        once(
+          'solo-sidebar-init',
+          '#solo-primary-sidebar-menu',
+          context,
+        ).forEach(() => {
           // Close nav button event
-          sideMenubarCloseOpen(closeBtns, () => sideMenubarToggleNav(false), context);
+          sideMenubarCloseOpen(
+            closeBtns,
+            () => sideMenubarToggleNav(false),
+            context,
+          );
 
           // Open nav button event
-          sideMenubarCloseOpen(openBtns, () => sideMenubarToggleNav(true), context);
+          sideMenubarCloseOpen(
+            openBtns,
+            () => sideMenubarToggleNav(true),
+            context,
+          );
 
           // Ensure the tabindex is always set correctly on load
           if (verticalNav.classList.contains('solo-is-open')) {
             updateTabindex(true);
             // If already open on load, add the event listeners
-            eventManager.on(document, 'keydown', 'solo.sidebar.focus', trapFocus);
-            eventManager.on(document, 'click', 'solo.sidebar.outside', outsideClickListener);
+            eventManager.on(
+              document,
+              'keydown',
+              'solo.sidebar.focus',
+              trapFocus,
+            );
+            eventManager.on(
+              document,
+              'click',
+              'solo.sidebar.outside',
+              outsideClickListener,
+            );
           } else {
             updateTabindex(false);
           }
         });
       },
 
-      detach: function (context, settings, trigger) {
+      detach(context, settings, trigger) {
         // Clean up event listeners when unloading
         if (trigger === 'unload') {
           // Remove all namespaced event listeners
@@ -388,8 +495,10 @@
           eventManager.off(document, 'keydown', 'solo.sidebar.focus');
 
           // Clean up button event listeners
-          const buttons = context.querySelectorAll('.solo-sidebar-menu__close>button, .solo-sidebar-menu__open>button');
-          buttons.forEach(button => {
+          const buttons = context.querySelectorAll(
+            '.solo-sidebar-menu__close>button, .solo-sidebar-menu__open>button',
+          );
+          buttons.forEach((button) => {
             eventManager.offAll(button, 'solo.sidebar');
           });
 
@@ -406,8 +515,7 @@
             Drupal.solo.menuState.unregisterComponent(COMPONENT_NAME);
           }
         }
-      }
+      },
     };
-
   }
 })(Drupal, drupalSettings, once);

@@ -1,9 +1,9 @@
 .solo-page table {
-  margin: 0 auto;
-  border-collapse: collapse;
-  border-spacing: 0;
-  width: 100%;
   display: table;
+  width: 100%;
+  margin: 0 auto;
+  border-spacing: 0;
+  border-collapse: collapse;
 }
 
 :where(.solo-page) .solo-table-wrapper {
@@ -33,8 +33,8 @@
 }
 
 :where(.solo-page .region-title) td {
-  font-weight: bold !important;
   text-transform: uppercase;
+  font-weight: bold !important;
 }
 
 :where(.solo-page .region-title td) a {
@@ -56,11 +56,11 @@
 
 .solo-page table td,
 .solo-page table th {
-  padding: var(--solo-px8);
   display: table-cell;
-  vertical-align: middle;
-  text-align: var(--solo-text-align-start);
   box-sizing: border-box;
+  padding: var(--solo-px8);
+  text-align: var(--solo-text-align-start);
+  vertical-align: middle;
   word-wrap: break-word;
   overflow-wrap: break-word;
 }
@@ -84,20 +84,18 @@
   display: none;
 }
 
-@media (width >= 36rem) {
+@media (min-width: 36rem) {
   .solo-page table th.priority-medium,
   .solo-page table td.priority-medium {
     display: table-cell;
   }
-
 }
 
-@media (width >= 62rem) {
+@media (min-width: 62rem) {
   .solo-page table th.priority-low,
   .solo-page table td.priority-low {
     display: table-cell;
   }
-
 }
 
 .solo-page .tabledrag-toggle-weight-wrapper + table,
@@ -130,32 +128,32 @@
  *
  * So below the tablet breakpoint the wrapper scrolls and the header gives up
  * stickiness; from 48rem up, where the table usually fits, the sticky header
- * is restored and behaviour is exactly as before.
+ * is restored and behavior is exactly as before.
  */
 .solo-table-wrapper.solo-menu-wrapper--sticky {
   overflow-x: auto;
 }
 
-@media (width >= 48rem) {
+@media (min-width: 48rem) {
   .solo-table-wrapper.solo-menu-wrapper--sticky {
     overflow-x: visible;
   }
 }
 
 .solo-table-wrapper .tableresponsive-toggle-columns {
+  display: flex;
   float: none;
   clear: both;
-  display: flex;
-  justify-content: flex-end;
   align-items: center;
+  justify-content: flex-end;
 }
 
 :where(.solo-table-wrapper) .tableresponsive-toggle {
-  float: none;
-  margin: 0 !important;
   display: inline-flex;
+  float: none;
   align-items: center;
   max-width: 100%;
+  margin: 0 !important;
   white-space: nowrap;
 }
 

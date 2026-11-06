@@ -24,46 +24,47 @@ h1.solo-page-title__text span {
 
 :where(.solo-page.pt-center) :where(h1).solo-page-title__text,
 #solo-page-wrapper.pt-center h1.solo-page-title__text span {
-  width: 100%;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
+  width: 100%;
   text-align: center;
 }
 
-@media (width <= 74.99875rem) {
+@media (max-width: 74.99875rem) {
   :where(h1).solo-page-title__text {
     font-size: calc(2 * var(--solo-px24));
     line-height: calc(2 * var(--solo-px28));
   }
-
 }
 
-@media (width <= 61.99875rem) {
+@media (max-width: 61.99875rem) {
   :where(h1).solo-page-title__text {
     font-size: var(--solo-px36);
     line-height: calc(2 * var(--solo-px22));
     padding-block: var(--solo-px16);
     padding-inline: 0;
   }
-
 }
 
-@media (width <= 47.99875rem) {
+@media (max-width: 47.99875rem) {
   :where(h1).solo-page-title__text {
     font-size: var(--solo-px24);
     line-height: calc(2 * var(--solo-px14));
     padding-block: var(--solo-px8);
     padding-inline: 0;
   }
-
 }
 
-@media (width <= 35.99875rem) {
+@media (max-width: 35.99875rem) {
   :where(h1).solo-page-title__text {
     font-size: var(--solo-px18);
     line-height: var(--solo-px22);
     padding-block: var(--solo-px8);
     padding-inline: 0;
   }
+}
 
+/* The hero title takes the hero region's text color, not a scheme heading tint. */
+:where(.solo-page) h1.solo-page-title__text {
+  --r-sc-h1: initial;
 }

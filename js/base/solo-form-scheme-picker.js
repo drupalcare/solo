@@ -5,8 +5,6 @@
  * this file every category shows, each with its heading.
  */
 ((Drupal, once) => {
-  'use strict';
-
   /**
    * The name a radio's label shows.
    *
@@ -17,7 +15,10 @@
    *   The name.
    */
   const schemeName = (radio) => {
-    const name = radio.labels && radio.labels[0] ? radio.labels[0].querySelector('.solo-schemes__name') : null;
+    const name =
+      radio.labels && radio.labels[0]
+        ? radio.labels[0].querySelector('.solo-schemes__name')
+        : null;
     return name ? name.textContent.trim() : '';
   };
 
@@ -76,14 +77,18 @@
     };
 
     tablist.addEventListener('click', (event) => {
-      const entry = entries.find((candidate) => candidate.tab === event.target.closest('[role="tab"]'));
+      const entry = entries.find(
+        (candidate) => candidate.tab === event.target.closest('[role="tab"]'),
+      );
       if (entry) {
         select(entry);
       }
     });
 
     tablist.addEventListener('keydown', (event) => {
-      const index = entries.findIndex((candidate) => candidate.tab === event.target.closest('[role="tab"]'));
+      const index = entries.findIndex(
+        (candidate) => candidate.tab === event.target.closest('[role="tab"]'),
+      );
       if (index < 0) {
         return;
       }
@@ -92,11 +97,9 @@
       let next = null;
       if (event.key in steps) {
         next = (index + steps[event.key] + entries.length) % entries.length;
-      }
-      else if (event.key === 'Home') {
+      } else if (event.key === 'Home') {
         next = 0;
-      }
-      else if (event.key === 'End') {
+      } else if (event.key === 'End') {
         next = entries.length - 1;
       }
       if (next !== null) {
@@ -106,7 +109,14 @@
       }
     });
 
-    const enterKeys = ['ArrowDown', 'ArrowUp', 'ArrowLeft', 'ArrowRight', 'Enter', ' '];
+    const enterKeys = [
+      'ArrowDown',
+      'ArrowUp',
+      'ArrowLeft',
+      'ArrowRight',
+      'Enter',
+      ' ',
+    ];
     panels.forEach((panel) => {
       panel.addEventListener('keydown', (event) => {
         if (event.target === panel && enterKeys.includes(event.key)) {
@@ -121,18 +131,22 @@
 
     const mark = () => {
       entries.forEach(({ panel, mark: tabMark }) => {
-        const holds = panel.querySelector('input[type="radio"]:checked') !== null;
+        const holds =
+          panel.querySelector('input[type="radio"]:checked') !== null;
         tabMark.hidden = !holds;
         if (holds) {
           panel.removeAttribute('tabindex');
-        }
-        else {
+        } else {
           panel.tabIndex = 0;
         }
       });
     };
     mark();
-    select(entries.find(({ panel }) => panel.querySelector('input[type="radio"]:checked')) || entries[0]);
+    select(
+      entries.find(({ panel }) =>
+        panel.querySelector('input[type="radio"]:checked'),
+      ) || entries[0],
+    );
     return mark;
   };
 

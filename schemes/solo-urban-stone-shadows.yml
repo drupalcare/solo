@@ -3,6 +3,13 @@ id: solo-urban-stone-shadows
 name: "Urban Stone Shadows"
 category: urban_and_modern_hues
 mode: mixed
+description: "Light content on white, a gray menu bar and a white footer."
+brand:
+  primary: "#6f6c64"
+  secondary: "#414a4c"
+  accent: "#292f31"
+  ink_light: "#fafafa"
+  ink_dark: "#1f1e1b"
 categories:
   - urban_and_modern_hues
 css: css/predefined/solo-urban-stone-shadows.css

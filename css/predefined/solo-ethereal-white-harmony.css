@@ -3,7 +3,7 @@ Anti-Flash White #F2F3F4
 
 Aircraft White #EDF2F8 blue
 Shadow White #EEF1EA green
-Acoustic White #EFECE1 beig */
+Acoustic White #EFECE1 beige */
 :root {
   --sc-head-tx: #1f3550;
   --sc-link-tx: #3d472f;
@@ -38,7 +38,7 @@ Acoustic White #EFECE1 beig */
   --r-br: #e5e6e6;
   --r-bg: #fbfbfc;
   --r-tx: #1a2d44;
-  --r-header-bg: linear-gradient(to start top, #ffffff, #f8f4ff);
+  --r-header-bg: linear-gradient(to start top, #fff, #f8f4ff);
   --r-header-tx: #1f3550;
   --r-menu-tx-h: #0c0d0f;
   --r-menu-bg-h: #c4c8cd;
@@ -68,7 +68,7 @@ Acoustic White #EFECE1 beig */
 
 header.solo-header,
 div.solo-page-title.solo-container--single {
-  --r-bg: linear-gradient(to start top, #ffffff, #f8f4ff);
+  --r-bg: linear-gradient(to start top, #fff, #f8f4ff);
 }
 
 .solo-container--top .solo-region-box__inner--top-first {
@@ -186,8 +186,8 @@ div.solo-page-title.solo-container--single {
   --selectify-checkbox-checked-bg: color-mix(in srgb, #3d472f 16%, transparent);
   --selectify-checkbox-check-circle: #bcc8ad;
   --selectify-checkbox-checked-circle: #3d472f;
-  --selectify-checkbox-disabled-bg: color-mix(in srgb, currentColor 5%, transparent);
-  --selectify-checkbox-disabled-circle: color-mix(in srgb, currentColor 22%, transparent);
+  --selectify-checkbox-disabled-bg: color-mix(in sRGB, currentColor 5%, transparent);
+  --selectify-checkbox-disabled-circle: color-mix(in sRGB, currentColor 22%, transparent);
   --selectify-checkbox-border-color: #bcc8ad;
   --selectify-checkbox-hover-border-color: #3d472f;
   --selectify-checkbox-hover-bg: color-mix(in srgb, #3d472f 10%, transparent);
@@ -198,7 +198,7 @@ div.solo-page-title.solo-container--single {
 
 .solo-page .selectify-select,
 :where(.solo-page .selectify-select) * {
-  --selectify-select-bg: #ffffff;
+  --selectify-select-bg: #fff;
   --selectify-select-hover-bg: #f3f4f3;
   --selectify-select-color: var(--r-tx);
   --selectify-select-border-color: var(--r-br);
@@ -210,7 +210,96 @@ div.solo-page-title.solo-container--single {
   --selectify-option-active-bg: #e4e5e2;
 }
 
-/* Per-region text colours: a region setting still wins. */
-:where(.solo-page) .solo-region-box__inner--footer-second,
-:where(.solo-page) .solo-region-box__inner--footer-third { --r-sc-lk-h: #60704b; }
-/* End per-region text colours */
+/* Region text colors: one block per region with its heading (--r-sc-h1), link
+   (--r-sc-lk) and link hover (--r-sc-lk-h) colors, and button hover text where the
+   scheme sets one. Backgrounds above are the scheme's own. Every color here reaches
+   WCAG AA (4.5:1) on the grounds named in its comment. A site's region colors still win. */
+/* Header: on #fbfbfc. */
+.solo-header {
+  --r-sc-lk: #3d472f;
+  --r-sc-lk-h: #63744d;
+}
+
+/* Highlighted: on #fbfbfc. */
+.solo-highlighted {
+  --r-sc-lk: #3d472f;
+  --r-sc-lk-h: #63744d;
+}
+
+/* Fixed search: on #edf2f8, #f5f3ec. */
+.solo-fixed-search {
+  --r-sc-lk: #3d472f;
+  --r-sc-lk-h: #63744d;
+}
+
+/* Popup login: on #edf2f8, #f5f3ec. */
+.solo-popup-login__inner {
+  --r-sc-lk: #3d472f;
+  --r-sc-lk-h: #63744d;
+}
+
+/* Welcome text: on #fbfbfc. */
+.solo-welcome-text {
+  --r-sc-lk: #3d472f;
+  --r-sc-lk-h: #63744d;
+}
+
+/* Top: on #f5fefd, #fef9f3, #fbfcf8. */
+.solo-container--top {
+  --r-sc-lk: #3d472f;
+  --r-sc-lk-h: #63744d;
+}
+
+/* Main: on #ffffff. */
+.solo-container--main {
+  --r-sc-lk: #3d472f;
+  --r-sc-lk-h: #63744d;
+}
+
+/* Page title: on #fbfbfc. */
+.solo-page-title {
+  --r-sc-lk: #3d472f;
+  --r-sc-lk-h: #63744d;
+}
+
+/* Breadcrumb: on #fbfbfc. */
+.breadcrumb {
+  --r-sc-lk: #3d472f;
+  --r-sc-lk-h: #63744d;
+}
+
+/* Bottom: on #f2f7fd, #f7f5f6, #fdf9ef, #f8f8e8. */
+.solo-container--bottom {
+  --r-sc-lk: #3d472f;
+  --r-sc-lk-h: #63744d;
+}
+
+/* Footer: on #edf2f8, #efece1, #eef1ea. */
+.solo-container--footer {
+  --r-sc-lk: #3d472f;
+  --r-sc-lk-h: #5e6f49;
+}
+
+.solo-container--footer .solo-region-box__inner--footer-second {
+  --r-sc-h1: #1f3550;
+  --r-sc-lk: #3d472f;
+  --r-sc-lk-h: #60704b;
+}
+
+.solo-container--footer .solo-region-box__inner--footer-third {
+  --r-sc-h1: #1f3550;
+  --r-sc-lk: #3d472f;
+  --r-sc-lk-h: #60704b;
+}
+
+/* Footer menu: on #edf2f8, #f5f3ec. */
+.solo-footer-nav {
+  --r-sc-lk: #3d472f;
+  --r-sc-lk-h: #63744d;
+}
+
+/* Copyright: on #fffffe, #f9fbfd. */
+.solo-copyright {
+  --r-sc-lk: #3d472f;
+  --r-sc-lk-h: #63744d;
+}

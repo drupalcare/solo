@@ -70,7 +70,7 @@ Gunmetal #2A3439, Marengo #4C5866, Gray Wolf #504A4B */
 }
 
 .solo-container--top .solo-region-box__inner--top {
-  --r-bg: linear-gradient(180deg, #d4d9da, #ffffff);
+  --r-bg: linear-gradient(180deg, #d4d9da, #fff);
 }
 
 header.solo-header,
@@ -143,8 +143,8 @@ div.solo-page-title.solo-container--single {
   --selectify-checkbox-checked-bg: color-mix(in srgb, #030405 16%, transparent);
   --selectify-checkbox-check-circle: #b8c1c3;
   --selectify-checkbox-checked-circle: #030405;
-  --selectify-checkbox-disabled-bg: color-mix(in srgb, currentColor 5%, transparent);
-  --selectify-checkbox-disabled-circle: color-mix(in srgb, currentColor 22%, transparent);
+  --selectify-checkbox-disabled-bg: color-mix(in sRGB, currentColor 5%, transparent);
+  --selectify-checkbox-disabled-circle: color-mix(in sRGB, currentColor 22%, transparent);
   --selectify-checkbox-border-color: #b8c1c3;
   --selectify-checkbox-hover-border-color: #030405;
   --selectify-checkbox-hover-bg: color-mix(in srgb, #030405 10%, transparent);
@@ -155,7 +155,7 @@ div.solo-page-title.solo-container--single {
 
 .solo-page .selectify-select,
 :where(.solo-page .selectify-select) * {
-  --selectify-select-bg: #ffffff;
+  --selectify-select-bg: #fff;
   --selectify-select-hover-bg: #f0f0f0;
   --selectify-select-color: var(--r-tx);
   --selectify-select-border-color: var(--r-br);
@@ -167,18 +167,90 @@ div.solo-page-title.solo-container--single {
   --selectify-option-active-bg: #dcdcdc;
 }
 
-/* Per-region text colours: a region setting still wins. */
-:where(.solo-page) .solo-header,
-:where(.solo-page) .solo-page-title { --r-sc-lk: #887e80; --r-sc-lk-h: #92898a; }
-:where(.solo-page) .solo-highlighted { --r-sc-h1: #637386; }
-:where(.solo-page) .solo-welcome-text,
-:where(.solo-page) .solo-container--main { --r-sc-h1: #68788c; }
-:where(.solo-page) .breadcrumb,
-:where(.solo-page) .solo-copyright { --r-sc-lk-h: #617a85; }
-:where(.solo-page) .solo-container--top { --r-sc-h1: #52606f; --r-sc-lk-h: #4e616b; }
-:where(.solo-page) .solo-container--bottom,
-:where(.solo-page) .solo-container--footer,
-:where(.solo-page) .solo-footer-nav { --r-sc-lk-h: #6d8894; }
-:where(.solo-page) .solo-fixed-search,
-:where(.solo-page) .solo-popup-login__inner { --r-sc-h1: #586677; --r-sc-lk-h: #536872; }
-/* End per-region text colours */
+/* Region text colors: one block per region with its heading (--r-sc-h1), link
+   (--r-sc-lk) and link hover (--r-sc-lk-h) colors, and button hover text where the
+   scheme sets one. Backgrounds above are the scheme's own. Every color here reaches
+   WCAG AA (4.5:1) on the grounds named in its comment. A site's region colors still win. */
+/* Header: on #0c1318, #14191c. */
+.solo-header {
+  --r-sc-lk: #887e80;
+  --r-sc-lk-h: #92898a;
+}
+
+/* Highlighted: on #f7f7f7. */
+.solo-highlighted {
+  --r-sc-h1: #637386;
+  --r-sc-lk: #474243;
+  --r-sc-lk-h: #5c737e;
+}
+
+/* Fixed search: on #fafafb, #e1e2e1. */
+.solo-fixed-search {
+  --r-sc-h1: #586677;
+  --r-sc-lk: #474243;
+  --r-sc-lk-h: #536872;
+}
+
+/* Popup login: on #fafafb, #e1e2e1. */
+.solo-popup-login__inner {
+  --r-sc-h1: #586677;
+  --r-sc-lk: #474243;
+  --r-sc-lk-h: #536872;
+}
+
+/* Welcome text: on #fafafb. */
+.solo-welcome-text {
+  --r-sc-h1: #637387;
+  --r-sc-lk: #474243;
+  --r-sc-lk-h: #5c737e;
+}
+
+/* Top: on #d4d9da, #ffffff. */
+.solo-container--top {
+  --r-sc-h1: #52606f;
+  --r-sc-lk: #474243;
+  --r-sc-lk-h: #4e616b;
+}
+
+/* Main: on #ffffff. */
+.solo-container--main {
+  --r-sc-h1: #68788c;
+  --r-sc-lk: #474243;
+  --r-sc-lk-h: #5c737e;
+}
+
+/* Page title: on #0c1318, #14191c. */
+.solo-page-title {
+  --r-sc-lk: #887e80;
+  --r-sc-lk-h: #92898a;
+}
+
+/* Breadcrumb: on #030405, #010000. */
+.breadcrumb {
+  --r-sc-lk: #f1f4f5;
+  --r-sc-lk-h: #617a85;
+}
+
+/* Bottom: on #1a1d1e, #121415. */
+.solo-container--bottom {
+  --r-sc-lk: #f1f4f5;
+  --r-sc-lk-h: #6d8894;
+}
+
+/* Footer: on #1a1d1e, #121415. */
+.solo-container--footer {
+  --r-sc-lk: #f1f4f5;
+  --r-sc-lk-h: #6d8894;
+}
+
+/* Footer menu: on #1a1d1e, #0a0c0c. */
+.solo-footer-nav {
+  --r-sc-lk: #f1f4f5;
+  --r-sc-lk-h: #6d8894;
+}
+
+/* Copyright: on #030405, #010000. */
+.solo-copyright {
+  --r-sc-lk: #f1f4f5;
+  --r-sc-lk-h: #617a85;
+}

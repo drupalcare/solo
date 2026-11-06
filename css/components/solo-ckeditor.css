@@ -4,9 +4,9 @@
 .cke_bottom,
 .cke_contents {
   border: none !important;
-  box-shadow: none;
   border-radius: 0;
   background-color: var(--r-bg);
+  box-shadow: none;
 }
 
 .cke {
@@ -37,16 +37,15 @@
 }
 
 :where(.text-format-wrapper) > .solo-form__element-container {
+  border: var(--solo-px1) solid var(--r-br, var(--r-br-b)) !important;
+  border-radius: var(--solo-px6);
+  background-color: var(--r-bg) !important;
+  font-size: var(--solo-px14);
   margin-block: var(--solo-px8) auto;
   margin-inline: auto;
-  border-radius: var(--solo-px6);
-  border: var(--solo-px1) solid var(--r-br, var(--r-br-b)) !important;
-  background-color: var(--r-bg) !important;
   padding-block: var(--solo-px8);
   padding-inline: var(--solo-px16);
-  font-size: var(--solo-px14);
 }
-
 
 :where(.ck-rounded-corners .ck.ck-editor__top .ck-sticky-panel) .ck-toolbar,
 :where(.ck.ck-editor__top .ck-sticky-panel) .ck-toolbar.ck-rounded-corners,

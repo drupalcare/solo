@@ -42,16 +42,16 @@ nav.action-links > li > a {
 ul.primary > li > a {
   display: flex;
   align-items: center;
-  padding-block: var(--solo-px6);
-  padding-inline: var(--solo-px16);
+  margin-inline-end: var(--solo-px6);
   border: 1px solid var(--r-br, var(--r-br-b));
   border-block-end: none;
-  margin-inline-end: var(--solo-px6);
+  line-height: 1.4;
+  padding-block: var(--solo-px6);
+  padding-inline: var(--solo-px16);
   border-start-start-radius: var(--solo-px8);
   border-start-end-radius: var(--solo-px8);
   border-end-end-radius: 0;
   border-end-start-radius: 0;
-  line-height: 1.4;
 }
 
 ul.primary > li:last-child > a {
@@ -67,11 +67,11 @@ ul.secondary > li > a {
 
 ul.primary > li > a,
 nav.action-links > li > a {
+  display: block;
   text-align: center;
+  color: inherit;
   padding-block: var(--solo-px8);
   padding-inline: var(--solo-px16);
-  display: block;
-  color: inherit;
 }
 
 ul.secondary > li > a {

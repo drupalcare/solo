@@ -3,6 +3,13 @@ id: solo-dusk-shadow-fusion
 name: "Dusk Shadow Fusion"
 category: earthy_and_smokey_tones
 mode: mixed
+description: "Light content on white, a gray menu bar and a near-black footer."
+brand:
+  primary: "#616161"
+  secondary: "#1c1b1b"
+  accent: "#4b4747"
+  ink_light: "#fafafa"
+  ink_dark: "#2b2b2b"
 categories:
   - earthy_and_smokey_tones
 css: css/predefined/solo-dusk-shadow-fusion.css

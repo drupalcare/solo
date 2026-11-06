@@ -3,6 +3,13 @@ id: solo-crimson-denim-night
 name: "Crimson Denim Night"
 category: bold_and_dramatic_colors
 mode: mixed
+description: "Light content on pale blue, a red menu bar and a near-black footer."
+brand:
+  primary: "#d0312d"
+  secondary: "#8a211e"
+  accent: "#c22e2a"
+  ink_light: "#fbf0f0"
+  ink_dark: "#262639"
 categories:
   - bold_and_dramatic_colors
   - denim_influences

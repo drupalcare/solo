@@ -7,8 +7,6 @@
  * Developer:    Alaa Haddad https://www.alaahaddad.com.
  */
 ((Drupal, drupalSettings, once) => {
-  'use strict';
-
   // Component name for state manager
   const COMPONENT_NAME = 'scripts';
 
@@ -16,18 +14,20 @@
   if (Drupal.solo.menuState) {
     Drupal.solo.menuState.registerComponent(COMPONENT_NAME, {
       name: 'Solo Menu Scripts',
-      version: '1.0'
+      version: '1.0',
     });
   }
 
   Drupal.behaviors.globalMenu = {
-    attach: function (context, settings) {
+    attach(context, settings) {
       // Use once to prevent duplicate processing
       const menus = once('solo-menu-init', '#solo-primary-menu', context);
 
-      menus.forEach(mainNavigation => {
+      menus.forEach((mainNavigation) => {
         // Check for required navigation structure
-        if (!mainNavigation.querySelector('.solo-inner .solo-menu-tree__menubar')) {
+        if (
+          !mainNavigation.querySelector('.solo-inner .solo-menu-tree__menubar')
+        ) {
           return;
         }
 
@@ -39,7 +39,10 @@
         const handleScroll = () => {
           if (!scrollTicking) {
             window.requestAnimationFrame(() => {
-              mainNavigation.classList.toggle('solo-sticky', window.scrollY > origOffsetY);
+              mainNavigation.classList.toggle(
+                'solo-sticky',
+                window.scrollY > origOffsetY,
+              );
               scrollTicking = false;
             });
             scrollTicking = true;
@@ -48,9 +51,13 @@
 
         // Use state manager for resize handling if available
         if (Drupal.solo.menuState) {
-          Drupal.solo.menuState.addResizeHandler(COMPONENT_NAME, (screenInfo) => {
-            origOffsetY = mainNavigation.offsetTop;
-          }, 250);
+          Drupal.solo.menuState.addResizeHandler(
+            COMPONENT_NAME,
+            (screenInfo) => {
+              origOffsetY = mainNavigation.offsetTop;
+            },
+            250,
+          );
         } else {
           // Fallback to traditional resize handler
           let resizeTimeout;
@@ -67,7 +74,7 @@
 
         // Store handlers for potential cleanup
         mainNavigation._soloHandlers = {
-          scroll: handleScroll
+          scroll: handleScroll,
         };
 
         // Attach scroll event listener
@@ -75,30 +82,43 @@
       });
 
       // Apply background colors to submenus (only process new elements)
-      const submenus = once('solo-submenu-bg', '.solo-inner nav .solo-menu-tree__menubar ul', context);
+      const submenus = once(
+        'solo-submenu-bg',
+        '.solo-inner nav .solo-menu-tree__menubar ul',
+        context,
+      );
 
-      submenus.forEach(submenu => {
-        const closestParent = submenu.closest('.solo-page > div, .solo-page > header');
+      submenus.forEach((submenu) => {
+        const closestParent = submenu.closest(
+          '.solo-page > div, .solo-page > header',
+        );
         if (closestParent) {
-          const bgColor = window.getComputedStyle(closestParent).backgroundColor;
+          const bgColor =
+            window.getComputedStyle(closestParent).backgroundColor;
           submenu.style.backgroundColor = bgColor || 'transparent';
         }
       });
     },
 
-    detach: function (context, settings, trigger) {
+    detach(context, settings, trigger) {
       if (trigger === 'unload') {
         const menus = once.find('solo-menu-init', context);
 
-        menus.forEach(mainNavigation => {
+        menus.forEach((mainNavigation) => {
           if (mainNavigation._soloHandlers?.scroll) {
-            window.removeEventListener('scroll', mainNavigation._soloHandlers.scroll);
+            window.removeEventListener(
+              'scroll',
+              mainNavigation._soloHandlers.scroll,
+            );
             delete mainNavigation._soloHandlers.scroll;
           }
 
           // Clean up resize handler if not using state manager
           if (mainNavigation._soloResizeHandler && !Drupal.solo.menuState) {
-            window.removeEventListener('resize', mainNavigation._soloResizeHandler);
+            window.removeEventListener(
+              'resize',
+              mainNavigation._soloResizeHandler,
+            );
             delete mainNavigation._soloResizeHandler;
           }
         });
@@ -108,6 +128,6 @@
           Drupal.solo.menuState.unregisterComponent(COMPONENT_NAME);
         }
       }
-    }
+    },
   };
 })(Drupal, drupalSettings, once);

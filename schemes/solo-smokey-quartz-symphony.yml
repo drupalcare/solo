@@ -3,6 +3,13 @@ id: solo-smokey-quartz-symphony
 name: "Smokey Quartz Symphony"
 category: earthy_and_smokey_tones
 mode: mixed
+description: "Light content on white, a charcoal menu bar and a near-black footer."
+brand:
+  primary: "#2a2a2a"
+  secondary: "#545454"
+  accent: "#424242"
+  ink_light: "#dfdedd"
+  ink_dark: "#1a191a"
 categories:
   - earthy_and_smokey_tones
 css: css/predefined/solo-smokey-quartz-symphony.css

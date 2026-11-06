@@ -3,6 +3,13 @@ id: solo-soft-silk-elegance
 name: "Soft Silk Elegance"
 category: elegant_whites_and_neutrals
 mode: light
+description: "Light content on white, a pale lime menu bar and a white footer."
+brand:
+  primary: "#e6eae0"
+  secondary: "#d5e0ee"
+  accent: "#463f25"
+  ink_light: "#2b3222"
+  ink_dark: "#2b3222"
 categories:
   - elegant_whites_and_neutrals
 css: css/predefined/solo-soft-silk-elegance.css

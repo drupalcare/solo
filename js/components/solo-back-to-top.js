@@ -6,8 +6,6 @@
  * @see partials/back-to-top.html.twig
  */
 (function (Drupal, once) {
-  'use strict';
-
   function run(button) {
     const sentinel = document.getElementById('solo-back-to-top-sentinel');
     if (!sentinel || !button) {
@@ -30,19 +28,35 @@
           setVisible(!entry.isIntersecting);
         });
       },
-      { root: null, rootMargin: '0px', threshold: 0 }
+      { root: null, rootMargin: '0px', threshold: 0 },
     );
     observer.observe(sentinel);
 
     button.addEventListener('click', function (e) {
       e.preventDefault();
-      var motionOk = !window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      const motionOk = !window.matchMedia('(prefers-reduced-motion: reduce)')
+        .matches;
       window.scrollTo({ top: 0, behavior: motionOk ? 'smooth' : 'instant' });
+      // The button hides once the top is reached; move focus to the top of
+      // the page first, so the next Tab starts there instead of from a
+      // hidden button (WCAG 2.4.3).
+      const top = document.getElementById('solo-page-wrapper') || document.body;
+      if (!top.hasAttribute('tabindex')) {
+        top.setAttribute('tabindex', '-1');
+        top.addEventListener(
+          'blur',
+          function () {
+            top.removeAttribute('tabindex');
+          },
+          { once: true },
+        );
+      }
+      top.focus({ preventScroll: true });
     });
   }
 
   Drupal.behaviors.soloBackToTop = {
-    attach: function (context, settings) {
+    attach(context, settings) {
       once('solo-back-to-top', '#solo-back-to-top', context).forEach(run);
     },
   };

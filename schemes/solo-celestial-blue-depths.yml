@@ -3,6 +3,13 @@ id: solo-celestial-blue-depths
 name: "Celestial Blue Depths"
 category: galactic_and_celestial
 mode: mixed
+description: "Light content on white, a deep blue menu bar and a deep blue footer."
+brand:
+  primary: "#040d2a"
+  secondary: "#00356b"
+  accent: "#1443d5"
+  ink_light: "#bac4e6"
+  ink_dark: "#040d2a"
 categories:
   - galactic_and_celestial
 css: css/predefined/solo-celestial-blue-depths.css

@@ -1,8 +1,8 @@
 .solo-clear::after,
 .solo-clear::before {
-  content: "";
   display: table;
   clear: both;
+  content: "";
 }
 
 body:has(.solo-maintenance-page) {
@@ -11,9 +11,9 @@ body:has(.solo-maintenance-page) {
 }
 
 :where(.solo-maintenance-page) main {
-  min-height: 43.75rem;
-  margin-block-start: calc(2* var(--solo-px16));
   max-width: 800px;
+  min-height: 43.75rem;
+  margin-block-start: calc(2 * var(--solo-px16));
   margin-inline-start: auto;
   margin-inline-end: auto;
 }
@@ -21,8 +21,8 @@ body:has(.solo-maintenance-page) {
 :where(.solo-maintenance-page main) header,
 .solo-maintenance-page main header a {
   display: grid;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
   text-align: center;
 }
 

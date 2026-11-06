@@ -19,7 +19,7 @@ figcaption {
   margin-inline-end: auto;
 }
 
-@media (width >= 36rem) {
+@media (min-width: 36rem) {
   figcaption {
     padding: 1rem;
   }
@@ -37,31 +37,26 @@ figcaption {
     margin-block: 1rem;
     margin-inline-end: 1rem;
   }
-
 }
 
-@media (width >= 48rem) {
+@media (min-width: 48rem) {
   .align-right {
     float: inline-end;
     max-width: 50%;
     margin-block: 1rem;
     margin-inline-start: 1rem;
   }
-
 }
 
-@media (width >= 36rem) {
-
+@media (min-width: 36rem) {
   :where([dir="rtl"]) .align-right {
     float: inline-start;
     margin-inline-start: 0;
     margin-inline-end: 1rem;
   }
-
 }
 
-@media (width >= 48rem) {
-
+@media (min-width: 48rem) {
   :where([dir="rtl"]) .align-right {
     float: inline-start;
     margin-inline-start: 0;
@@ -74,27 +69,22 @@ figcaption {
     margin-block: 1rem;
     margin-inline-end: 1rem;
   }
-
 }
 
-@media (width >= 36rem) {
-
+@media (min-width: 36rem) {
   :where([dir="rtl"]) .align-left {
     float: inline-end;
-    margin-inline-end: 0;
     margin-inline-start: 1rem;
+    margin-inline-end: 0;
   }
-
 }
 
-@media (width >= 48rem) {
-
+@media (min-width: 48rem) {
   :where([dir="rtl"]) .align-left {
     float: inline-end;
-    margin-inline-end: 0;
     margin-inline-start: 1rem;
+    margin-inline-end: 0;
   }
-
 }
 
 :where(.align-center) img,

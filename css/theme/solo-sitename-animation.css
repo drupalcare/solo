@@ -1,3 +1,4 @@
+/* stylelint-disable-next-line keyframes-name-pattern -- shipped animation name, kept as released */
 @keyframes animateSiteName {
   0% {
     background-position: 0% 50%;
@@ -6,7 +7,6 @@
   100% {
     background-position: 200% 50%;
   }
-
 }
 
 :where(.solo-page) .animate-solo-electric-surge,
@@ -15,7 +15,7 @@
 #solo-page-wrapper.animate-title-electric-surge .solo-page-title__text span,
 :where(html.solo-preloader-enabled .solo-preloader.animate-site-electric-surge) .solo-preloader__text,
 :where(html.solo-preloader-enabled .solo-preloader.animate-site-electric-surge) .solo-preloader__hero-text {
-  background: linear-gradient(45deg, #f44336, #e91e63, #9c27b0, #673ab7, #3f51b5, #2196f3, #87ceeb, #00bcd4, #00ffff, #009688, #4caf50, #8bc34a, #8bc34a, #8bc34a, #8bc34a, #4caf50, #009688, #00ffff, #00bcd4, #87ceeb, #2196f3, #3f51b5, #673ab7, #9c27b0, #e91e63, #f44336);
+  background: linear-gradient(45deg, #f44336, #e91e63, #9c27b0, #673ab7, #3f51b5, #2196f3, #87ceeb, #00bcd4, #0ff, #009688, #4caf50, #8bc34a, #8bc34a, #8bc34a, #8bc34a, #4caf50, #009688, #0ff, #00bcd4, #87ceeb, #2196f3, #3f51b5, #673ab7, #9c27b0, #e91e63, #f44336);
 }
 
 :where(.solo-page) .animate-solo-aurora-wave,
@@ -159,7 +159,7 @@
 #solo-page-wrapper.animate-title-timeless-flip .solo-page-title__text span,
 :where(html.solo-preloader-enabled .solo-preloader.animate-site-timeless-flip) .solo-preloader__text,
 :where(html.solo-preloader-enabled .solo-preloader.animate-site-timeless-flip) .solo-preloader__hero-text {
-  background: linear-gradient(45deg, #aebcbf, #6e7774, #ffee00, #ccc, #444, #ccc, #ffee00, #6e7774, #aebcbf);
+  background: linear-gradient(45deg, #aebcbf, #6e7774, #fe0, #ccc, #444, #ccc, #fe0, #6e7774, #aebcbf);
 }
 
 :where(.solo-page) .animate-solo-cosmic-drift,
@@ -224,6 +224,8 @@
 :where(html.solo-preloader-enabled .solo-preloader.animate-site-zen-rotation) .solo-preloader__hero-text {
   background: linear-gradient(45deg, #30267a, #0085a1, #870074, #ce4676, #ce4676, #870074, #0085a1, #30267a);
 }
+
+/* stylelint-disable order/properties-order -- shorthand/longhand order is significant here (background-clip vs -webkit-background-clip); reordering would change the result */
 
 :where(.solo-page) .animate-solo-aurora-wave,
 :where(.solo-page) .animate-solo-dreamy-bloom,
@@ -376,6 +378,8 @@
   color: transparent !important;
 }
 
+/* stylelint-enable order/properties-order */
+
 /* Reduced motion: end states are kept, movement is not (WCAG 2.3.3). */
 @media (prefers-reduced-motion: reduce) {
   :where(:where(.solo-page) [class*="animate-solo-"]),
@@ -384,8 +388,22 @@
   :where(#solo-page-wrapper[class*="animate-title-"] .solo-page-title__text span),
   :where(:where(html.solo-preloader-enabled .solo-preloader[class*="animate-site-"]) .solo-preloader__text),
   :where(:where(html.solo-preloader-enabled .solo-preloader[class*="animate-site-"]) .solo-preloader__hero-text) {
+    transition-duration: 0.01ms !important;
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Forced colors: gradient text is painted with a transparent color and a
+   background image the system palette removes, so show it as plain system
+   text (WCAG 1.4.3 in forced-colors mode). Same 0,1,0 specificity as the
+   animated rules above, later in the file. */
+@media (forced-colors: active) {
+  :where(.solo-page) [class*="animate-solo-"],
+  :where(.solo-page[class*="animate-title-"]) .solo-page-title__text,
+  :where(html.solo-preloader-enabled .solo-preloader[class*="animate-site-"]) .solo-preloader__text,
+  :where(html.solo-preloader-enabled .solo-preloader[class*="animate-site-"]) .solo-preloader__hero-text {
+    color: CanvasText !important;
+    background: none;
   }
 }

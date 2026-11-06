@@ -77,7 +77,7 @@ Black Rock #010127, Neutral Black #0B0B0B, Black Denim #191C27 */
 }
 
 .solo-container--top .solo-region-box__inner--top {
-  --r-bg: linear-gradient(180deg, #f2f3f7, #ffffff);
+  --r-bg: linear-gradient(180deg, #f2f3f7, #fff);
 }
 
 header.solo-header,
@@ -149,8 +149,8 @@ div.solo-page-title.solo-container--single {
   --selectify-checkbox-checked-bg: color-mix(in srgb, #010127 16%, transparent);
   --selectify-checkbox-check-circle: #0404ac;
   --selectify-checkbox-checked-circle: #010127;
-  --selectify-checkbox-disabled-bg: color-mix(in srgb, currentColor 5%, transparent);
-  --selectify-checkbox-disabled-circle: color-mix(in srgb, currentColor 22%, transparent);
+  --selectify-checkbox-disabled-bg: color-mix(in sRGB, currentColor 5%, transparent);
+  --selectify-checkbox-disabled-circle: color-mix(in sRGB, currentColor 22%, transparent);
   --selectify-checkbox-border-color: #0404ac;
   --selectify-checkbox-hover-border-color: #010127;
   --selectify-checkbox-hover-bg: color-mix(in srgb, #010127 10%, transparent);
@@ -161,7 +161,7 @@ div.solo-page-title.solo-container--single {
 
 .solo-page .selectify-select,
 :where(.solo-page .selectify-select) * {
-  --selectify-select-bg: #ffffff;
+  --selectify-select-bg: #fff;
   --selectify-select-hover-bg: #f0f0f2;
   --selectify-select-color: var(--r-tx);
   --selectify-select-border-color: var(--r-br);
@@ -173,15 +173,91 @@ div.solo-page-title.solo-container--single {
   --selectify-option-active-bg: #dbdbe1;
 }
 
-/* Per-region text colours: a region setting still wins. */
-:where(.solo-page) .solo-header,
-:where(.solo-page) .solo-page-title { --r-sc-h1: #797979; --r-sc-lk: #6565fb; --r-sc-lk-h: #7373fb; }
-:where(.solo-page) .breadcrumb,
-:where(.solo-page) .solo-copyright { --r-sc-h1: #777777; --r-sc-lk-h: #6363fb; }
-:where(.solo-page) .solo-container--top { --r-sc-h1: #6f6f6f; }
-:where(.solo-page) .solo-container--bottom,
-:where(.solo-page) .solo-container--footer,
-:where(.solo-page) .solo-footer-nav { --r-sc-lk-h: #6767fb; }
-:where(.solo-page) .solo-fixed-search,
-:where(.solo-page) .solo-popup-login__inner { --r-sc-h1: #707070; }
-/* End per-region text colours */
+/* Region text colors: one block per region with its heading (--r-sc-h1), link
+   (--r-sc-lk) and link hover (--r-sc-lk-h) colors, and button hover text where the
+   scheme sets one. Backgrounds above are the scheme's own. Every color here reaches
+   WCAG AA (4.5:1) on the grounds named in its comment. A site's region colors still win. */
+/* Header: on #030303, #0b0b0b. */
+.solo-header {
+  --r-sc-h1: #797979;
+  --r-sc-lk: #6565fb;
+  --r-sc-lk-h: #7373fb;
+}
+
+/* Highlighted: on #fdfdfd. */
+.solo-highlighted {
+  --r-sc-lk: #0505bc;
+  --r-sc-lk-h: #2d2dfa;
+}
+
+/* Fixed search: on #f9f9f9, #f4f4ff. */
+.solo-fixed-search {
+  --r-sc-h1: #707070;
+  --r-sc-lk: #0505bc;
+  --r-sc-lk-h: #2d2dfa;
+}
+
+/* Popup login: on #f9f9f9, #f4f4ff. */
+.solo-popup-login__inner {
+  --r-sc-h1: #707070;
+  --r-sc-lk: #0505bc;
+  --r-sc-lk-h: #2d2dfa;
+}
+
+/* Welcome text: on #fdfdfd. */
+.solo-welcome-text {
+  --r-sc-lk: #0505bc;
+  --r-sc-lk-h: #2d2dfa;
+}
+
+/* Top: on #f2f3f7, #ffffff. */
+.solo-container--top {
+  --r-sc-h1: #6f6f6f;
+  --r-sc-lk: #0505bc;
+  --r-sc-lk-h: #2d2dfa;
+}
+
+/* Main: on #ffffff. */
+.solo-container--main {
+  --r-sc-lk: #0505bc;
+  --r-sc-lk-h: #2d2dfa;
+}
+
+/* Page title: on #030303, #0b0b0b. */
+.solo-page-title {
+  --r-sc-h1: #797979;
+  --r-sc-lk: #6565fb;
+  --r-sc-lk-h: #7373fb;
+}
+
+/* Breadcrumb: on #050608, #000006. */
+.breadcrumb {
+  --r-sc-h1: #777;
+  --r-sc-lk: #a8a6bb;
+  --r-sc-lk-h: #6363fb;
+}
+
+/* Bottom: on #0c0d12, #0b0b0b. */
+.solo-container--bottom {
+  --r-sc-lk: #a8a6bb;
+  --r-sc-lk-h: #6767fb;
+}
+
+/* Footer: on #0c0d12, #0b0b0b. */
+.solo-container--footer {
+  --r-sc-lk: #a8a6bb;
+  --r-sc-lk-h: #6767fb;
+}
+
+/* Footer menu: on #0c0d12, #010116. */
+.solo-footer-nav {
+  --r-sc-lk: #a8a6bb;
+  --r-sc-lk-h: #6767fb;
+}
+
+/* Copyright: on #050608, #000006. */
+.solo-copyright {
+  --r-sc-h1: #777;
+  --r-sc-lk: #a8a6bb;
+  --r-sc-lk-h: #6363fb;
+}

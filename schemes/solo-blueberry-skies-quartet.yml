@@ -3,6 +3,13 @@ id: solo-blueberry-skies-quartet
 name: "Blueberry Skies Quartet"
 category: berry_and_fruit_tones
 mode: mixed
+description: "Light content on white, a sky blue menu bar and a near-black footer."
+brand:
+  primary: "#0066b2"
+  secondary: "#4a3f35"
+  accent: "#0083e5"
+  ink_light: "#f6fbff"
+  ink_dark: "#2c261f"
 categories:
   - berry_and_fruit_tones
 css: css/predefined/solo-blueberry-skies-quartet.css

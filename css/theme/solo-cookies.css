@@ -2,24 +2,30 @@
 #solo-page-wrapper .cookiesjsr-layer div,
 #solo-page-wrapper .cookiesjsr-layer header,
 :where(.solo-page .cookiesjsr-layer) footer {
+  color: var(--r-tx);
   border-color: var(--r-br, var(--r-br-b));
   background: var(--r-bg);
-  color: var(--r-tx);
 }
 
 :where(.solo-page) .cookiesjsr-banner {
+  z-index: 5000;
   border-block-start: 3px solid var(--r-br);
   border-radius: var(--solo-px4);
-  z-index: 5000;
 }
+
+/* stylelint-disable order/properties-order -- shorthand/longhand order is significant here (animation-timing-function vs animation); reordering would change the result */
 
 #solo-page-wrapper .cookiesjsr-banner.active {
   animation-timing-function: cubic-bezier(0.1, 0.9, 1, 0.1);
+  /* stylelint-disable-next-line declaration-block-no-shorthand-property-overrides, no-unknown-animations -- existing order kept so rendering is unchanged; keyframes are defined in the vendored css/w3-css/w3.css */
   animation: animatebottom 0.6s;
 }
 
+/* stylelint-enable order/properties-order */
+
 :where(.solo-page) .cookiesjsr-layer,
 :where(.solo-page) .cookiesjsr-service-group--content {
+  /* stylelint-disable-next-line no-unknown-animations -- keyframes are defined in the vendored css/w3-css/w3.css */
   animation: opac 0.8s;
   animation-timing-function: cubic-bezier(0.25, 0.8, 0.25, 1);
 }
@@ -27,20 +33,20 @@
 #solo-page-wrapper #cookiesjsr button,
 :where(.solo-page) .cookiesjsr-service--always-on {
   text-align: center;
-  border-color: var(--r-br, var(--r-br-b));
   color: var(--r-tx-bt, var(--r-tx));
+  border-color: var(--r-br, var(--r-br-b));
   background: var(--r-bg-bt, var(--r-bg));
 }
 
 #solo-page-wrapper .cookiesjsr-layer--header button {
-  border-radius: 50%;
-  border: 1px solid var(--r-br);
   width: calc(2 * var(--solo-px24));
   height: calc(2 * var(--solo-px24));
   text-indent: initial;
+  text-transform: uppercase;
+  border: 1px solid var(--r-br);
+  border-radius: 50%;
   font-size: var(--solo-px12);
   line-height: var(--solo-px12);
-  text-transform: uppercase;
 }
 
 :where(.solo-page) .cookiesjsr-layer {
@@ -66,16 +72,15 @@
   list-style: none;
 }
 
-@media (width >= 36rem) {
+@media (min-width: 36rem) {
   :where([dir="rtl"]) .cookiesjsr-links.links--row {
     justify-content: start;
   }
-
 }
 
 :where(.solo-page) .cookiesjsr-service-group--tab {
-  text-align: start;
   width: 100%;
+  text-align: start;
 }
 
 #solo-page-wrapper .cookiesjsr-service-group button {
@@ -85,29 +90,27 @@
 #solo-page-wrapper .cookiesjsr-service-group.active button {
   text-decoration: underline !important;
   border-block-end: 4px solid var(--r-br);
-  box-shadow: inset  0 -40px 40px -40px var(--r-br);
+  box-shadow: inset 0 -40px 40px -40px var(--r-br);
 }
 
 #solo-page-wrapper .cookiesjsr-banner--links li a {
-  font-size: var(--solo-px14);
   text-decoration: underline;
+  font-size: var(--solo-px14);
 }
 
-@media (width >= 1200px) {
+@media (min-width: 1200px) {
   :where(.solo-page) .cookiesjsr-banner--action {
     padding-inline-end: var(--solo-px16);
   }
-
 }
 
-@media (width <= 1200px) {
+@media (max-width: 1200px) {
   :where(.solo-page) .cookiesjsr-banner--action {
     flex-direction: column-reverse;
   }
-
 }
 
-@media (width >= 768px) {
+@media (min-width: 768px) {
   #solo-page-wrapper li.cookiesjsr-service-group > div {
     border-inline-start: 1px solid var(--r-br);
   }
@@ -115,26 +118,24 @@
   :where(.solo-page) .cookiesjsr-service-group--tab {
     width: 30%;
   }
-
 }
 
-@media (width <= 20rem) {
+@media (max-width: 20rem) {
   :where(.solo-page) .cookiesjsr-service {
     flex-direction: column;
   }
 
   :where(.solo-page) .cookiesjsr-service--action,
   :where(.solo-page) .cookiesjsr-service--description {
-    flex-direction: column;
     display: flex;
-    width: 100%;
+    flex-direction: column;
     justify-content: start;
+    width: 100%;
   }
 
   :where(.solo-page) .cookiesjsr-service--action {
     align-items: end;
   }
-
 }
 
 /* Reduced motion: end states are kept, movement is not (WCAG 2.3.3). */
@@ -142,8 +143,8 @@
   :where(#solo-page-wrapper .cookiesjsr-banner.active),
   :where(:where(.solo-page) .cookiesjsr-layer),
   :where(:where(.solo-page) .cookiesjsr-service-group--content) {
+    transition-duration: 0.01ms !important;
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
   }
 }

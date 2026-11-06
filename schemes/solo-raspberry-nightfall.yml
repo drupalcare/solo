@@ -3,6 +3,13 @@ id: solo-raspberry-nightfall
 name: "Raspberry Nightfall"
 category: berry_and_fruit_tones
 mode: dark
+description: "Dark content on near-black, a deep pink menu bar and a near-black footer."
+brand:
+  primary: "#1e0409"
+  secondary: "#1f201f"
+  accent: "#7c817c"
+  ink_light: "#f8c2cd"
+  ink_dark: "#fdf0f2"
 categories:
   - berry_and_fruit_tones
 css: css/predefined/solo-raspberry-nightfall.css

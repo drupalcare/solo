@@ -3,6 +3,13 @@ id: solo-berry-blue-dreams
 name: "Berry Blue Dreams"
 category: berry_and_fruit_tones
 mode: mixed
+description: "Light content on white, a deep indigo menu bar and a white footer."
+brand:
+  primary: "#241571"
+  secondary: "#0492c2"
+  accent: "#03607f"
+  ink_light: "#f1effc"
+  ink_dark: "#1b1054"
 categories:
   - berry_and_fruit_tones
 css: css/predefined/solo-berry-blue-dreams.css

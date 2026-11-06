@@ -1,11 +1,11 @@
 /* For Primary Sidenav menu and any sidenav menu. */
 .solo-primary-sidebar-menu {
+  position: fixed !important;
   z-index: 5001;
   display: flex;
-  justify-content: space-between;
-  flex-direction: column;
-  position: fixed !important;
   overflow: auto;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .solo-primary-sidebar-menu h2.block__title {
@@ -30,8 +30,8 @@
 }
 
 :where(.solo-primary-sidebar-menu__inner) > * {
-  min-width: 0;
   width: 100%;
+  min-width: 0;
 }
 
 .solo-primary-sidebar-menu.solo-is-open {
@@ -41,15 +41,14 @@
 
 :where([dir="rtl"]) .solo-primary-sidebar-menu.solo-icons-left {
   right: 0;
-  transform: translateX(100%);
   visibility: hidden;
+  transform: translateX(100%);
 }
 
 :where([dir="rtl"]) .solo-primary-sidebar-menu.solo-icons-left.solo-is-open {
-  transform: translateX(0);
   visibility: visible;
+  transform: translateX(0);
 }
-
 
 [dir="rtl"] .solo-primary-sidebar-menu.solo-is-open:not([dir="rtl"] .solo-primary-sidebar-menu.solo-icons-left.solo-is-open) {
   transform: translateX(100%);
@@ -58,18 +57,18 @@
 .solo-inner div.solo-menu--sidebar {
   display: flex;
   flex: 1;
-  justify-content: start;
   flex-direction: column;
+  justify-content: start;
 }
 
 :where(.solo-inner .solo-menu--sidebar) .solo-menu-tree--sidebar,
 .solo-inner .solo-menu--sidebar .solo-menu-tree--sidebar ul.solo-menu-tree__submenu {
   display: flex;
-  justify-content: start;
-  align-items: stretch;
+  flex-wrap: wrap;
   flex-basis: 100%;
   flex-grow: 1;
-  flex-wrap: wrap;
+  align-items: stretch;
+  justify-content: start;
 }
 
 .solo-inner .solo-menu--sidebar .solo-menu-tree--sidebar li.solo-menu-tree__item--link-only > a,
@@ -99,8 +98,8 @@
 }
 
 .solo-inner .solo-menu--sidebar .solo-menu-tree--sidebar li.solo-menu-tree__item--has-submenu {
-  justify-content: space-between;
   flex-wrap: wrap;
+  justify-content: space-between;
 }
 
 .solo-inner .solo-menu--sidebar .solo-menu-tree--sidebar ul.solo-menu-tree__submenu {
@@ -112,13 +111,13 @@
 }
 
 :where(.solo-inner .solo-menu--sidebar-hover) .solo-menu-tree__toggler {
-  pointer-events: none;
   cursor: default;
+  pointer-events: none;
 }
 
 .solo-is-sliding-out {
-  animation-duration: var(--solo-sidebar-speed, 400ms);
   animation-name: slide-out;
+  animation-duration: var(--solo-sidebar-speed, 400ms);
 }
 
 /* Add borders to primary side menu. */
@@ -140,20 +139,20 @@
   border-block-end: 1px solid var(--r-br) !important;
 }
 
-/* Menu brandiong. */
+/* Menu branding. */
 :where(.solo-primary-sidebar-menu) .solo-sidebar-menu__close.solo-menu--has-branding {
   display: flex;
-  flex-wrap: nowrap;
   flex-direction: row-reverse;
+  flex-wrap: nowrap;
 }
 
 :where(.solo-primary-sidebar-menu .solo-sidebar-menu__close.solo-menu--has-branding) .solo-menu-branding {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   margin: 0;
   padding-block: var(--solo-px4);
   padding-inline: var(--solo-px12);
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
 
 @keyframes slide-out {
@@ -166,12 +165,11 @@
     transform: translateX(-100%);
     opacity: 0;
   }
-
 }
 
 .solo-is-sliding-in {
-  animation-duration: 400ms;
   animation-name: slide-in;
+  animation-duration: 400ms;
 }
 
 @keyframes slide-in {
@@ -184,7 +182,6 @@
     transform: translateX(0%);
     opacity: 1;
   }
-
 }
 
 /* Reduced motion: end states are kept, movement is not (WCAG 2.3.3). */
@@ -192,8 +189,8 @@
   :where(.solo-primary-sidebar-menu),
   :where(.solo-is-sliding-out),
   :where(.solo-is-sliding-in) {
+    transition-duration: 0.01ms !important;
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
   }
 }

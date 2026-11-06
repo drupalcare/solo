@@ -3,6 +3,13 @@ id: solo-metallic-nebula
 name: "Metallic Nebula"
 category: galactic_and_celestial
 mode: mixed
+description: "Light content on white, a charcoal menu bar and a charcoal footer."
+brand:
+  primary: "#262726"
+  secondary: "#31383a"
+  accent: "#675e6a"
+  ink_light: "#e4e2e5"
+  ink_dark: "#1a191a"
 categories:
   - galactic_and_celestial
 css: css/predefined/solo-metallic-nebula.css

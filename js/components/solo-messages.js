@@ -14,8 +14,6 @@
  */
 
 (function (Drupal, drupalSettings, once) {
-  'use strict';
-
   // Ensure namespace exists
   Drupal.solo = Drupal.solo || {};
 
@@ -31,11 +29,11 @@
       buttonWrapper: 'messages__button',
       closeButton: 'messages__close',
       hiddenClass: 'hidden',
-      visuallyHidden: 'visually-hidden'
+      visuallyHidden: 'visually-hidden',
     },
     animation: {
       hideDelay: 300, // milliseconds
-      removeDelay: 500 // milliseconds after hide animation
+      removeDelay: 500, // milliseconds after hide animation
     },
     aria: {
       label: Drupal.t('Close message'),
@@ -43,16 +41,16 @@
       // Template should set these based on message type
       defaults: {
         live: 'polite',
-        role: 'status'
+        role: 'status',
       },
       // Map message types to appropriate ARIA live values
       liveByType: {
         error: 'assertive',
         warning: 'assertive',
         status: 'polite',
-        info: 'polite'
-      }
-    }
+        info: 'polite',
+      },
+    },
   };
 
   /**
@@ -100,6 +98,24 @@
   };
 
   /**
+   * Cleans up event listeners and references for a message.
+   *
+   * @param {HTMLElement} message - The message element to clean up.
+   */
+  const cleanupMessage = (message) => {
+    const data = initializedMessages.get(message);
+    if (data && data.closeHandler) {
+      const closeBtn = message.querySelector(
+        `.${CONFIG.selectors.closeButton}`,
+      );
+      if (closeBtn) {
+        closeBtn.removeEventListener('click', data.closeHandler);
+      }
+    }
+    initializedMessages.delete(message);
+  };
+
+  /**
    * Handles the close button click event with animation and cleanup.
    *
    * @param {HTMLElement} message - The message element to close.
@@ -140,8 +156,8 @@
 
           // Trigger custom event for other scripts
           const removeEvent = new CustomEvent('solo:messageRemoved', {
-            detail: { message: message },
-            bubbles: true
+            detail: { message },
+            bubbles: true,
           });
           document.dispatchEvent(removeEvent);
 
@@ -149,28 +165,11 @@
           message.parentNode.removeChild(message);
         }
       }, CONFIG.animation.removeDelay);
-
     } catch (error) {
       if (window.console && console.error) {
         console.error('Solo Theme: Error closing message', error);
       }
     }
-  };
-
-  /**
-   * Cleans up event listeners and references for a message.
-   *
-   * @param {HTMLElement} message - The message element to clean up.
-   */
-  const cleanupMessage = (message) => {
-    const data = initializedMessages.get(message);
-    if (data && data.closeHandler) {
-      const closeBtn = message.querySelector(`.${CONFIG.selectors.closeButton}`);
-      if (closeBtn) {
-        closeBtn.removeEventListener('click', data.closeHandler);
-      }
-    }
-    initializedMessages.delete(message);
   };
 
   /**
@@ -186,10 +185,11 @@
 
     // Check for message type classes
     const messageTypes = ['error', 'warning', 'status', 'info'];
-    for (const type of messageTypes) {
-      if (message.classList.contains(`messages--${type}`)) {
-        return type;
-      }
+    const found = messageTypes.find((type) =>
+      message.classList.contains(`messages--${type}`),
+    );
+    if (found) {
+      return found;
     }
 
     return 'status'; // Default fallback
@@ -230,14 +230,18 @@
       if (!message.hasAttribute('role')) {
         // Try to determine message type from CSS classes
         const messageType = getMessageType(message);
-        const role = (messageType === 'error' || messageType === 'warning') ? 'alert' : 'status';
+        const role =
+          messageType === 'error' || messageType === 'warning'
+            ? 'alert'
+            : 'status';
         message.setAttribute('role', role);
       }
 
       if (!message.hasAttribute('aria-live')) {
         // Try to determine message type from CSS classes
         const messageType = getMessageType(message);
-        const ariaLive = CONFIG.aria.liveByType[messageType] || CONFIG.aria.defaults.live;
+        const ariaLive =
+          CONFIG.aria.liveByType[messageType] || CONFIG.aria.defaults.live;
         message.setAttribute('aria-live', ariaLive);
       }
 
@@ -255,7 +259,9 @@
       messageContainer.appendChild(closeBtnWrapper);
 
       // Get the button element for event handling
-      const closeBtn = closeBtnWrapper.querySelector(`.${CONFIG.selectors.closeButton}`);
+      const closeBtn = closeBtnWrapper.querySelector(
+        `.${CONFIG.selectors.closeButton}`,
+      );
       if (!closeBtn) {
         throw new Error('Close button not found after creation');
       }
@@ -267,19 +273,21 @@
       // Store reference for cleanup
       initializedMessages.set(message, {
         closeHandler: boundHandleClose,
-        closeButton: closeBtn
+        closeButton: closeBtn,
       });
 
       // Trigger custom event
       const initEvent = new CustomEvent('solo:messageInitialized', {
-        detail: { message: message },
-        bubbles: true
+        detail: { message },
+        bubbles: true,
       });
       message.dispatchEvent(initEvent);
-
     } catch (error) {
       if (window.console && console.error) {
-        console.error('Solo Theme: Failed to initialize message close button', error);
+        console.error(
+          'Solo Theme: Failed to initialize message close button',
+          error,
+        );
       }
     }
   };
@@ -295,7 +303,7 @@
    *   Removes close button functionality and cleans up event listeners.
    */
   Drupal.behaviors.soloMessages = {
-    attach: function (context, settings) {
+    attach(context, settings) {
       // Use once() to ensure single initialization per element
       const messages = once('solo-messages', CONFIG.selectors.message, context);
 
@@ -312,7 +320,7 @@
       }
     },
 
-    detach: function (context, settings, trigger) {
+    detach(context, settings, trigger) {
       // Only clean up if not doing a full page unload
       if (trigger !== 'unload') {
         // Find all messages in the context being detached
@@ -326,7 +334,9 @@
             cleanupMessage(message);
 
             // Remove the close button wrapper
-            const closeBtnWrapper = message.querySelector(`.${CONFIG.selectors.buttonWrapper}`);
+            const closeBtnWrapper = message.querySelector(
+              `.${CONFIG.selectors.buttonWrapper}`,
+            );
             if (closeBtnWrapper && closeBtnWrapper.parentNode) {
               closeBtnWrapper.parentNode.removeChild(closeBtnWrapper);
             }
@@ -345,7 +355,7 @@
           }
         }
       }
-    }
+    },
   };
 
   /**
@@ -360,14 +370,17 @@
      * @param {HTMLElement|string} messageOrId - Message element or ID.
      * @return {boolean} True if message was closed, false otherwise.
      */
-    close: function (messageOrId) {
+    close(messageOrId) {
       try {
-        const message = typeof messageOrId === 'string'
-          ? document.getElementById(messageOrId)
-          : messageOrId;
+        const message =
+          typeof messageOrId === 'string'
+            ? document.getElementById(messageOrId)
+            : messageOrId;
 
         if (message && message.classList) {
-          const closeBtn = message.querySelector(`.${CONFIG.selectors.closeButton}`);
+          const closeBtn = message.querySelector(
+            `.${CONFIG.selectors.closeButton}`,
+          );
           if (closeBtn) {
             closeBtn.click();
             return true;
@@ -387,7 +400,7 @@
      *
      * @return {number} Number of messages closed.
      */
-    closeAll: function () {
+    closeAll() {
       let count = 0;
       try {
         const messages = document.querySelectorAll(CONFIG.selectors.message);
@@ -409,13 +422,12 @@
      *
      * @return {Object} Configuration object.
      */
-    getConfig: function () {
+    getConfig() {
       // Return a frozen copy to prevent modifications
-      return Object.freeze(Object.assign({}, CONFIG));
-    }
+      return Object.freeze({ ...CONFIG });
+    },
   };
 
   // Legacy API support for backward compatibility
   Drupal.solo.closeMessage = closeMessage;
-
 })(Drupal, drupalSettings, once);

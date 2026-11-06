@@ -14,18 +14,22 @@
  */
 #}
 {% block content %}
+{# Only the fixed fallback "Home" is translated; the site's own logo_alt is printed as is. #}
+{% set logo_label = logo_alt == 'Home' ? 'Home'|t : logo_alt %}
 
 <div class="solo-branding">
   {% if site_logo %}
   <div class="solo-branding__first">
+  {# With the site name printed beside it, the logo link is the redundant twin of
+     the name link: one link remains for keyboard and screen readers. #}
   {% if site_logo and logo_default != 1 %}
-    <a class="site-logo" href="{{ path('<front>') }}" title="{{ logo_alt | t }}" rel="home">
-      <img src="{{ site_logo }}" class="solo-branding__logo-image" alt="{{ logo_alt | t }}" />
+    <a class="site-logo" href="{{ path('<front>') }}" rel="home"{% if site_name %} tabindex="-1" aria-hidden="true"{% endif %}>
+      <img src="{{ site_logo }}" class="solo-branding__logo-image" alt="{{ site_name ? '' : logo_label }}" />
     </a>
   {% endif %}
 
   {% if site_logo and logo_default == 1 %}
-    <a class="site-logo" href="{{ path('<front>') }}" title="{{ logo_alt | t }}" rel="home">
+    <a class="site-logo" href="{{ path('<front>') }}" rel="home"{% if site_name %} tabindex="-1" aria-hidden="true"{% else %} aria-label="{{ logo_label }}"{% endif %}>
       {% include '@solo/partials/svg/_svg-logo.html.twig' with { solo_path: solo_path } only %}
     </a>
   {% endif %}
@@ -36,7 +40,7 @@
   <div class="solo-branding__second{{ site_name ? ' solo-branding__second--has-name' : '' }}{{ site_slogan ? ' solo-branding__second--has-slogan' : '' }}">
     {% if site_name %}
       <div class="site-name">
-        <a class="solo-branding__site-name-link" href="{{ path('<front>') }}" title="{{ logo_alt | t }}" rel="home">
+        <a class="solo-branding__site-name-link" href="{{ path('<front>') }}" rel="home">
         {{ site_name }}
       </a>
       </div>

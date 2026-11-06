@@ -6,8 +6,6 @@
  * between different Solo menu components to prevent conflicts.
  */
 ((Drupal, drupalSettings) => {
-  'use strict';
-
   // Initialize Solo namespace if not exists
   Drupal.solo = Drupal.solo || {};
 
@@ -48,7 +46,7 @@
     screenSize: {
       width: 0,
       breakpoint: null,
-      isSmallScreen: false
+      isSmallScreen: false,
     },
 
     /**
@@ -110,10 +108,12 @@
      * Get current width (single source of truth)
      */
     getCurrentWidth() {
-      return window.innerWidth ||
-             document.documentElement.clientWidth ||
-             document.body.clientWidth ||
-             0;
+      return (
+        window.innerWidth ||
+        document.documentElement.clientWidth ||
+        document.body.clientWidth ||
+        0
+      );
     },
 
     /**
@@ -124,8 +124,14 @@
       if (!pageWrapper) return;
 
       this.screenSize.width = this.getCurrentWidth();
-      this.screenSize.breakpoint = Drupal.solo.getMyBreakpoints(pageWrapper, 'mn');
-      this.screenSize.isSmallScreen = this.screenSize.width <= this.screenSize.breakpoint;
+      this.screenSize.breakpoint = Drupal.solo.getMyBreakpoints(
+        pageWrapper,
+        'mn',
+      );
+      this.screenSize.isSmallScreen = !Drupal.solo.isLargeLayout(
+        this.screenSize.width,
+        this.screenSize.breakpoint,
+      );
     },
 
     /**
@@ -136,7 +142,9 @@
       // Check if ResizeObserver is available
       if (typeof ResizeObserver === 'undefined') {
         if (drupalSettings?.solo?.debug) {
-          console.debug('Solo Menu: ResizeObserver not available, using window resize events');
+          console.debug(
+            'Solo Menu: ResizeObserver not available, using window resize events',
+          );
         }
         return false;
       }
@@ -150,7 +158,7 @@
       }
 
       // Create ResizeObserver
-      this.resizeObserver = new ResizeObserver(entries => {
+      this.resizeObserver = new ResizeObserver((entries) => {
         clearTimeout(this.resizeTimeout);
         this.resizeTimeout = setTimeout(() => {
           this.updateScreenSize();
@@ -160,7 +168,10 @@
             try {
               handler(this.screenSize);
             } catch (error) {
-              console.error('Solo Menu: Error in ResizeObserver handler', error);
+              console.error(
+                'Solo Menu: Error in ResizeObserver handler',
+                error,
+              );
             }
           });
         }, 150);
@@ -202,18 +213,23 @@
       // Create new debounced global handler
       this.globalResizeHandler = () => {
         clearTimeout(this.resizeTimeout);
-        this.resizeTimeout = setTimeout(() => {
-          this.updateScreenSize();
+        this.resizeTimeout = setTimeout(
+          () => {
+            this.updateScreenSize();
 
-          // Call all registered handlers
-          this.resizeHandlers.forEach(({ handler }) => {
-            try {
-              handler(this.screenSize);
-            } catch (error) {
-              console.error('Solo Menu: Error in resize handler', error);
-            }
-          });
-        }, Math.max(...Array.from(this.resizeHandlers.values()).map(h => h.delay)));
+            // Call all registered handlers
+            this.resizeHandlers.forEach(({ handler }) => {
+              try {
+                handler(this.screenSize);
+              } catch (error) {
+                console.error('Solo Menu: Error in resize handler', error);
+              }
+            });
+          },
+          Math.max(
+            ...Array.from(this.resizeHandlers.values()).map((h) => h.delay),
+          ),
+        );
       };
 
       window.addEventListener('resize', this.globalResizeHandler);
@@ -226,7 +242,10 @@
     setAriaAttribute(element, attribute, value, componentName) {
       if (!element || !(element instanceof HTMLElement)) {
         if (drupalSettings?.solo?.debug) {
-          console.warn('Solo Menu: Invalid element in setAriaAttribute', { attribute, componentName });
+          console.warn('Solo Menu: Invalid element in setAriaAttribute', {
+            attribute,
+            componentName,
+          });
         }
         return;
       }
@@ -241,8 +260,14 @@
       const currentOwner = elementStates[attribute];
 
       // Log conflicts for debugging (only in dev mode)
-      if (currentOwner && currentOwner !== componentName && drupalSettings?.solo?.debug) {
-        console.debug(`Solo Menu: ARIA conflict - ${attribute} on element, current: ${currentOwner}, new: ${componentName}`);
+      if (
+        currentOwner &&
+        currentOwner !== componentName &&
+        drupalSettings?.solo?.debug
+      ) {
+        console.debug(
+          `Solo Menu: ARIA conflict - ${attribute} on element, current: ${currentOwner}, new: ${componentName}`,
+        );
       }
 
       // Set the attribute and track ownership
@@ -250,12 +275,12 @@
       elementStates[attribute] = componentName;
 
       // Track for validation (using unique key)
-      const key = `${attribute}_${element.id || 'elem_' + Date.now() + '_' + Math.random()}`;
+      const key = `${attribute}_${element.id || `elem_${Date.now()}_${Math.random()}`}`;
       this.ariaStateKeys.set(key, {
         element,
         attribute,
         component: componentName,
-        timestamp: Date.now()
+        timestamp: Date.now(),
       });
 
       // Notify other components of the change
@@ -266,14 +291,24 @@
      * Simplified ARIA expanded helper
      */
     setExpanded(element, isExpanded, componentName = 'unknown') {
-      this.setAriaAttribute(element, 'aria-expanded', isExpanded ? 'true' : 'false', componentName);
+      this.setAriaAttribute(
+        element,
+        'aria-expanded',
+        isExpanded ? 'true' : 'false',
+        componentName,
+      );
     },
 
     /**
      * Simplified ARIA hidden helper
      */
     setHidden(element, isHidden, componentName = 'unknown') {
-      this.setAriaAttribute(element, 'aria-hidden', isHidden ? 'true' : 'false', componentName);
+      this.setAriaAttribute(
+        element,
+        'aria-hidden',
+        isHidden ? 'true' : 'false',
+        componentName,
+      );
     },
 
     /**
@@ -283,20 +318,22 @@
     setTabindex(element, value, componentName) {
       if (!element || !(element instanceof HTMLElement)) {
         if (drupalSettings?.solo?.debug) {
-          console.warn('Solo Menu: Invalid element in setTabindex', { componentName });
+          console.warn('Solo Menu: Invalid element in setTabindex', {
+            componentName,
+          });
         }
         return;
       }
 
       // Get or create state object for this element
-      let elementState = this.tabindexStates.get(element);
+      const elementState = this.tabindexStates.get(element);
 
       // Priority rules
       const priorities = {
-        'keyboard': 3,  // Keyboard navigation has highest priority
-        'mobile': 2,
-        'sidebar': 2,
-        'default': 1
+        keyboard: 3, // Keyboard navigation has highest priority
+        mobile: 2,
+        sidebar: 2,
+        default: 1,
       };
 
       const newPriority = priorities[componentName] || 1;
@@ -307,7 +344,9 @@
         // Only update if new component has equal or higher priority
         if (newPriority < currentPriority) {
           if (drupalSettings?.solo?.debug) {
-            console.debug(`Solo Menu: Tabindex blocked - current priority ${currentPriority} (${elementState.component}) > new ${newPriority} (${componentName})`);
+            console.debug(
+              `Solo Menu: Tabindex blocked - current priority ${currentPriority} (${elementState.component}) > new ${newPriority} (${componentName})`,
+            );
           }
           return;
         }
@@ -317,8 +356,8 @@
       element.setAttribute('tabindex', value);
       this.tabindexStates.set(element, {
         component: componentName,
-        value: value,
-        timestamp: Date.now()
+        value,
+        timestamp: Date.now(),
       });
 
       // Track for validation
@@ -326,7 +365,7 @@
       this.tabindexStateKeys.set(key, {
         element,
         component: componentName,
-        timestamp: Date.now()
+        timestamp: Date.now(),
       });
     },
 
@@ -336,8 +375,10 @@
     updateMenuTabindex(container, isOpen, componentName = 'unknown') {
       if (!container) return;
 
-      const items = container.querySelectorAll(':scope > li > a, :scope > li > button');
-      items.forEach(item => {
+      const items = container.querySelectorAll(
+        ':scope > li > a, :scope > li > button',
+      );
+      items.forEach((item) => {
         this.setTabindex(item, isOpen ? '0' : '-1', componentName);
       });
     },
@@ -348,7 +389,11 @@
     hideSubmenu(subMenu, componentName = 'unknown') {
       if (!subMenu) return;
 
-      Drupal.solo.slideUp(subMenu, Drupal.solo.animations.slideUp, componentName);
+      Drupal.solo.slideUp(
+        subMenu,
+        Drupal.solo.animations.slideUp,
+        componentName,
+      );
       this.setHidden(subMenu, true, componentName);
 
       const toggler = subMenu.previousElementSibling;
@@ -362,10 +407,12 @@
      */
     notifyAriaChange(element, attribute, value, changedBy) {
       // Dispatch custom event for other components to listen to
-      element.dispatchEvent(new CustomEvent('solo-aria-change', {
-        detail: { attribute, value, changedBy },
-        bubbles: true
-      }));
+      element.dispatchEvent(
+        new CustomEvent('solo-aria-change', {
+          detail: { attribute, value, changedBy },
+          bubbles: true,
+        }),
+      );
     },
 
     /**
@@ -381,8 +428,18 @@
         if (drupalSettings?.solo?.debug) {
           console.debug('Solo Menu: Resolving state conflict for', menuElement);
         }
-        this.setAriaAttribute(menuElement, 'aria-expanded', isOpen ? 'true' : 'false', 'state-resolver');
-        this.setAriaAttribute(menuElement, 'aria-hidden', isOpen ? 'false' : 'true', 'state-resolver');
+        this.setAriaAttribute(
+          menuElement,
+          'aria-expanded',
+          isOpen ? 'true' : 'false',
+          'state-resolver',
+        );
+        this.setAriaAttribute(
+          menuElement,
+          'aria-hidden',
+          isOpen ? 'false' : 'true',
+          'state-resolver',
+        );
       }
 
       return { isOpen, ariaExpanded: isOpen, ariaHidden: !isOpen };
@@ -396,12 +453,12 @@
 
       // Priority rules (keyboard has highest priority when enabled)
       const priorities = {
-        'keyboard': 4,
-        'mobile': 3,
-        'sidebar': 2,
-        'scripts': 1,
-        'main': 1,
-        'repositions': 1
+        keyboard: 4,
+        mobile: 3,
+        sidebar: 2,
+        scripts: 1,
+        main: 1,
+        repositions: 1,
       };
 
       const currentPriority = priorities[activeOp.component] || 1;
@@ -415,9 +472,13 @@
      * Coordinate menu operations
      */
     coordinateMenuOperation(operation, menuElement, componentName) {
-      if (!this.shouldProceedWithOperation(menuElement, componentName, operation)) {
+      if (
+        !this.shouldProceedWithOperation(menuElement, componentName, operation)
+      ) {
         if (drupalSettings?.solo?.debug) {
-          console.debug(`Solo Menu: Operation ${operation} blocked for ${componentName}`);
+          console.debug(
+            `Solo Menu: Operation ${operation} blocked for ${componentName}`,
+          );
         }
         return; // Skip operation if lower priority
       }
@@ -425,25 +486,49 @@
       const menuId = menuElement.id || menuElement.className;
       this.activeOperations.set(menuId, {
         component: componentName,
-        operation: operation,
-        timestamp: Date.now()
+        operation,
+        timestamp: Date.now(),
       });
 
       const operations = {
-        'open': () => {
+        open: () => {
           menuElement.classList.add('solo-is-open');
-          this.setAriaAttribute(menuElement, 'aria-expanded', 'true', componentName);
-          this.setAriaAttribute(menuElement, 'aria-hidden', 'false', componentName);
+          this.setAriaAttribute(
+            menuElement,
+            'aria-expanded',
+            'true',
+            componentName,
+          );
+          this.setAriaAttribute(
+            menuElement,
+            'aria-hidden',
+            'false',
+            componentName,
+          );
         },
-        'close': () => {
+        close: () => {
           menuElement.classList.remove('solo-is-open');
-          this.setAriaAttribute(menuElement, 'aria-expanded', 'false', componentName);
-          this.setAriaAttribute(menuElement, 'aria-hidden', 'true', componentName);
+          this.setAriaAttribute(
+            menuElement,
+            'aria-expanded',
+            'false',
+            componentName,
+          );
+          this.setAriaAttribute(
+            menuElement,
+            'aria-hidden',
+            'true',
+            componentName,
+          );
         },
-        'toggle': () => {
+        toggle: () => {
           const { isOpen } = this.getMenuState(menuElement);
-          this.coordinateMenuOperation(isOpen ? 'close' : 'open', menuElement, componentName);
-        }
+          this.coordinateMenuOperation(
+            isOpen ? 'close' : 'open',
+            menuElement,
+            componentName,
+          );
+        },
       };
 
       if (operations[operation]) {
@@ -453,7 +538,10 @@
       // Clear operation after completion
       setTimeout(() => {
         const currentOp = this.activeOperations.get(menuId);
-        if (currentOp && currentOp.timestamp === this.activeOperations.get(menuId)?.timestamp) {
+        if (
+          currentOp &&
+          currentOp.timestamp === this.activeOperations.get(menuId)?.timestamp
+        ) {
           this.activeOperations.delete(menuId);
         }
       }, 50);
@@ -471,7 +559,9 @@
         const { element, attribute, component } = data;
 
         if (!element || !document.contains(element)) {
-          issues.push(`Orphaned ARIA state: ${attribute} (component: ${component})`);
+          issues.push(
+            `Orphaned ARIA state: ${attribute} (component: ${component})`,
+          );
           this.ariaStateKeys.delete(key);
         }
       });
@@ -494,13 +584,17 @@
         const age = Date.now() - operation.timestamp;
 
         if (age > 5000) {
-          issues.push(`Stale operation: ${operation.operation} on ${menuId} (age: ${Math.round(age / 1000)}s, component: ${operation.component})`);
+          issues.push(
+            `Stale operation: ${operation.operation} on ${menuId} (age: ${Math.round(age / 1000)}s, component: ${operation.component})`,
+          );
           this.activeOperations.delete(menuId);
         }
       });
 
       if (issues.length > 0 && drupalSettings?.solo?.debug) {
-        console.warn(`Solo Menu State Validation: ${issues.length} issues found`);
+        console.warn(
+          `Solo Menu State Validation: ${issues.length} issues found`,
+        );
         console.log(issues);
       }
 
@@ -546,11 +640,10 @@
         // WeakMaps auto-cleanup, but we can reset them
         this.ariaStates = new WeakMap();
         this.tabindexStates = new WeakMap();
-
       } catch (error) {
         // Silently fail during unload - DOM might be partially destroyed
       }
-    }
+    },
   };
 
   // Initialize screen size
@@ -565,7 +658,11 @@
     if (originalHideSubMenus) {
       originalHideSubMenus(submenu);
     }
-    Drupal.solo.menuState.coordinateMenuOperation('close', submenu, componentName);
+    Drupal.solo.menuState.coordinateMenuOperation(
+      'close',
+      submenu,
+      componentName,
+    );
   };
 
   // Listen for Drupal behaviors detach
@@ -587,7 +684,9 @@
     Drupal.solo.menuState._validationInterval = setInterval(() => {
       const isValid = Drupal.solo.menuState.validateState();
       if (!isValid && drupalSettings?.solo?.debug) {
-        console.log('Solo Menu: State validation completed with issues (see warnings above)');
+        console.log(
+          'Solo Menu: State validation completed with issues (see warnings above)',
+        );
       }
     }, 30000);
 
@@ -603,7 +702,8 @@
       return isValid;
     };
 
-    console.log('Solo Menu: State validation enabled. Run soloValidateState() in console to check manually.');
+    console.log(
+      'Solo Menu: State validation enabled. Run soloValidateState() in console to check manually.',
+    );
   }
-
 })(Drupal, drupalSettings);

@@ -3,6 +3,13 @@ id: solo-deep-sea-echo
 name: "Deep Sea Echo"
 category: ocean_and_deep_sea
 mode: light
+description: "Light content on white, a sky blue menu bar and a white footer."
+brand:
+  primary: "#0492c2"
+  secondary: "#241571"
+  accent: "#29187f"
+  ink_light: "#002437"
+  ink_dark: "#01212c"
 categories:
   - ocean_and_deep_sea
 css: css/predefined/solo-deep-sea-echo.css

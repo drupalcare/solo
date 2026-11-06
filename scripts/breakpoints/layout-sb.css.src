@@ -1,9 +1,8 @@
-@media (width >= {{MIN}}) {
-
-  /*  layout file*/
+@media (min-width: {{MIN}}) {
+  /*  layout file */
   .solo-col-1 {
-    grid-auto-flow: row;
     grid-template-rows: 1fr;
+    grid-auto-flow: row;
   }
 
   .solo-col-2 {
@@ -106,5 +105,28 @@
   .solo-col-1-4 {
     grid-template-columns: minmax(0, 1fr) minmax(0, 4fr);
   }
-
 }
+@@576,768,992|
+@@576,768,992|/* Between the page breakpoint and 1200px ({{MAX_1200}}, as in global-sb.css.src): three-region pages
+@@576,768,992|   use two columns, first sidebar beside the content and the second sidebar under the content. */
+@@576,768,992|@media (min-width: {{MIN}}) and (max-width: {{MAX_1200}}) {
+@@576,768,992|  .solo-container--main-active-3 > .solo-container__inner--main {
+@@576,768,992|    grid-template-areas:
+@@576,768,992|      "first main"
+@@576,768,992|      "first second";
+@@576,768,992|    grid-template-columns: minmax(0, 1fr) minmax(0, 3fr);
+@@576,768,992|    grid-auto-flow: row;
+@@576,768,992|  }
+@@576,768,992|
+@@576,768,992|  .solo-container--main-active-3 .solo-region-box--content {
+@@576,768,992|    grid-area: main;
+@@576,768,992|  }
+@@576,768,992|
+@@576,768,992|  .solo-container--main-active-3 .solo-region-box--sidebar-first {
+@@576,768,992|    grid-area: first;
+@@576,768,992|  }
+@@576,768,992|
+@@576,768,992|  .solo-container--main-active-3 .solo-region-box--sidebar-second {
+@@576,768,992|    grid-area: second;
+@@576,768,992|  }
+@@576,768,992|}

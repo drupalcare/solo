@@ -3,6 +3,13 @@ id: solo-cotton-candy-whispers
 name: "Cotton Candy Whispers"
 category: soft_and_subtle_hues
 mode: mixed
+description: "Light content on white, a pink menu bar and a deep pink footer."
+brand:
+  primary: "#e50d4a"
+  secondary: "#8f082e"
+  accent: "#cf3165"
+  ink_light: "#ffffff"
+  ink_dark: "#380d1b"
 categories:
   - soft_and_subtle_hues
 css: css/predefined/solo-cotton-candy-whispers.css

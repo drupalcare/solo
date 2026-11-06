@@ -42,28 +42,28 @@
 }
 
 .views-preview-wrapper {
-  border-color: var(--r-br, var(--r-br-b));
-  padding: var(--solo-px10);
   margin-block-start: 0;
-  margin-inline: var(--solo-px16);
   margin-block-end: var(--solo-px8);
+  padding: var(--solo-px10);
+  border-color: var(--r-br, var(--r-br-b));
+  margin-inline: var(--solo-px16);
 }
 
 .js .views-edit-view .dropbutton-wrapper .dropbutton .dropbutton-action input {
-  margin-block: var(--solo-px2) !important;
-  margin-inline: 0!important;
-  border: none !important;
   float: inline-end;
   width: 100%;
   text-align: var(--solo-text-align-start);
+  border: none !important;
+  margin-block: var(--solo-px2) !important;
+  margin-inline: 0 !important;
 }
 
 :where(.view-preview-form) > h2,
 :where(.view-preview-form) > .solo-section {
-  width: 100%;
+  position: static;
   display: block;
   clear: both;
-  position: static;
+  width: 100%;
 }
 
 .views-filterable-options-controls .form-item {
@@ -96,22 +96,22 @@
 }
 
 form.views-exposed-form.form--inline .form-actions {
-  flex-grow: unset;
   flex-basis: unset;
-  vertical-align: bottom;
+  flex-grow: unset;
   width: auto;
+  vertical-align: bottom;
 }
 
 form.views-exposed-form.form--inline .form-actions input {
-  vertical-align: bottom;
   margin: 0;
+  vertical-align: bottom;
 }
 
 :where(form.views-exposed-form .solo-exposed-form) > * {
-  margin-block-end: var(--solo-px12);
-  margin-inline-end: var(--solo-px12);
   margin-block-start: 0;
+  margin-block-end: var(--solo-px12);
   margin-inline-start: 0;
+  margin-inline-end: var(--solo-px12);
   padding: 0;
 }
 

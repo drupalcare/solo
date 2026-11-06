@@ -45,7 +45,7 @@ def parse(text):
     return blocks
 
 def colors(val, env, depth=0):
-    """All concrete colours in a value, resolving var()."""
+    """All concrete colors in a value, resolving var()."""
     if val is None or depth > 6:
         return []
     out = []

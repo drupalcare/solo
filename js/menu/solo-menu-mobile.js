@@ -7,8 +7,6 @@
  * Developer:    Alaa Haddad https://www.alaahaddad.com.
  */
 ((Drupal, drupalSettings, once) => {
-  'use strict';
-
   // Component name for state manager
   const COMPONENT_NAME = 'mobile';
 
@@ -20,7 +18,7 @@
   if (Drupal.solo.menuState) {
     Drupal.solo.menuState.registerComponent(COMPONENT_NAME, {
       name: 'Solo Mobile Menu',
-      version: '1.0'
+      version: '1.0',
     });
   }
 
@@ -32,7 +30,6 @@
    */
   const getCurrentWidth = () => Drupal.solo.menuState.getCurrentWidth();
 
-
   /**
    * Updates tabindex of first-level menu items using state manager
    * @param {HTMLElement} menuElement - The menu element
@@ -41,7 +38,11 @@
   const updateFirstLevelTabindex = (menuElement, tabindexValue) => {
     if (!menuElement) return;
     const isOpen = tabindexValue === '0';
-    Drupal.solo.menuState.updateMenuTabindex(menuElement.querySelector('ul.solo-menu-tree--responsive'), isOpen, COMPONENT_NAME);
+    Drupal.solo.menuState.updateMenuTabindex(
+      menuElement.querySelector('ul.solo-menu-tree--responsive'),
+      isOpen,
+      COMPONENT_NAME,
+    );
   };
 
   /**
@@ -56,8 +57,12 @@
 
     // IMPORTANT: Only set aria-hidden on mobile screens
     // On desktop, the menubar should always be accessible
-    if (currentWidth <= brNum) {
-      Drupal.solo.menuState.setHidden(menuElement, hiddenValue === 'true', COMPONENT_NAME);
+    if (!Drupal.solo.isLargeLayout(currentWidth, brNum)) {
+      Drupal.solo.menuState.setHidden(
+        menuElement,
+        hiddenValue === 'true',
+        COMPONENT_NAME,
+      );
     } else {
       // On desktop, ensure aria-hidden is removed
       Drupal.solo.menuState.setHidden(menuElement, false, COMPONENT_NAME);
@@ -68,15 +73,16 @@
    * Opens the mobile menu with coordinated state
    * @param {string} navTagId - The navigation element ID
    */
-  const openMobileMenu = navTagId => {
+  const openMobileMenu = (navTagId) => {
     const currentWidth = getCurrentWidth();
 
     // Only proceed if on mobile screen
-    if (currentWidth > brNum) {
+    if (Drupal.solo.isLargeLayout(currentWidth, brNum)) {
       return;
     }
 
-    const navigationMenubarClass = Drupal.solo.getNavigationMenubarClass(navTagId);
+    const navigationMenubarClass =
+      Drupal.solo.getNavigationMenubarClass(navTagId);
     const subMenuClasses = Drupal.solo.getSubMenuClasses(navTagId);
     const menuElement = document.getElementById(navTagId);
 
@@ -87,16 +93,29 @@
 
     // Use state manager for coordinated open if available
     if (Drupal.solo.menuState && navigationMenubarClass) {
-      Drupal.solo.menuState.coordinateMenuOperation('open', navigationMenubarClass, COMPONENT_NAME);
+      Drupal.solo.menuState.coordinateMenuOperation(
+        'open',
+        navigationMenubarClass,
+        COMPONENT_NAME,
+      );
     }
 
     // Start animation first
-    Drupal.solo.slideDown(navigationMenubarClass, animations.slideDown, 'block', COMPONENT_NAME);
+    Drupal.solo.slideDown(
+      navigationMenubarClass,
+      animations.slideDown,
+      'block',
+      COMPONENT_NAME,
+    );
 
     // Update ARIA AFTER animation starts (next frame)
     requestAnimationFrame(() => {
       if (navigationMenubarClass) {
-        Drupal.solo.menuState.setHidden(navigationMenubarClass, false, COMPONENT_NAME);
+        Drupal.solo.menuState.setHidden(
+          navigationMenubarClass,
+          false,
+          COMPONENT_NAME,
+        );
         Drupal.solo.setInert(navigationMenubarClass, false);
       }
 
@@ -110,20 +129,24 @@
    * Closes the mobile menu with coordinated state
    * @param {string} navTagId - The navigation element ID
    */
-  const closeMobileMenu = navTagId => {
+  const closeMobileMenu = (navTagId) => {
     const currentWidth = getCurrentWidth();
 
     // Only proceed if on mobile screen
-    if (currentWidth > brNum) {
+    if (Drupal.solo.isLargeLayout(currentWidth, brNum)) {
       return;
     }
 
-    const navigationMenubarClass = Drupal.solo.getNavigationMenubarClass(navTagId);
+    const navigationMenubarClass =
+      Drupal.solo.getNavigationMenubarClass(navTagId);
     const subMenuClasses = Drupal.solo.getSubMenuClasses(navTagId);
     const menuElement = document.getElementById(navTagId);
 
     // CRITICAL: Remove focus from any element inside menu BEFORE hiding
-    if (navigationMenubarClass && navigationMenubarClass.contains(document.activeElement)) {
+    if (
+      navigationMenubarClass &&
+      navigationMenubarClass.contains(document.activeElement)
+    ) {
       document.activeElement.blur();
 
       // Return focus to hamburger button
@@ -147,14 +170,26 @@
 
     // Use state manager for coordinated close if available
     if (Drupal.solo.menuState && navigationMenubarClass) {
-      Drupal.solo.menuState.coordinateMenuOperation('close', navigationMenubarClass, COMPONENT_NAME);
+      Drupal.solo.menuState.coordinateMenuOperation(
+        'close',
+        navigationMenubarClass,
+        COMPONENT_NAME,
+      );
     }
 
-    Drupal.solo.slideUp(navigationMenubarClass, animations.slideDown, COMPONENT_NAME);
+    Drupal.solo.slideUp(
+      navigationMenubarClass,
+      animations.slideDown,
+      COMPONENT_NAME,
+    );
 
     // Set aria-hidden AND inert on menubar ONLY (not on nav)
     if (navigationMenubarClass) {
-      Drupal.solo.menuState.setHidden(navigationMenubarClass, true, COMPONENT_NAME);
+      Drupal.solo.menuState.setHidden(
+        navigationMenubarClass,
+        true,
+        COMPONENT_NAME,
+      );
       Drupal.solo.setInert(navigationMenubarClass, true);
     }
 
@@ -162,7 +197,6 @@
       // Don't touch nav element - hamburger is inside it!
       updateFirstLevelTabindex(menuElement, '-1');
     }
-
   };
 
   /**
@@ -180,7 +214,9 @@
     const navElement = hamburgerIcon.closest('nav');
 
     if (!navElement) {
-      console.warn('Solo Menu Mobile: Navigation element not found for hamburger icon');
+      console.warn(
+        'Solo Menu Mobile: Navigation element not found for hamburger icon',
+      );
       return [hamburgerIconChild, null, null];
     }
 
@@ -194,7 +230,10 @@
     const menuElement = document.getElementById(navTagId);
 
     if (!menuElement) {
-      console.warn('Solo Menu Mobile: Menu element not found for ID:', navTagId);
+      console.warn(
+        'Solo Menu Mobile: Menu element not found for ID:',
+        navTagId,
+      );
     }
 
     return [hamburgerIconChild, navTagId, menuElement];
@@ -213,7 +252,7 @@
     const currentWidth = getCurrentWidth();
 
     // Only allow hamburger interaction on mobile screens
-    if (currentWidth > brNum) {
+    if (Drupal.solo.isLargeLayout(currentWidth, brNum)) {
       if (drupalSettings?.solo?.debug) {
         console.debug('Solo Menu Mobile: Hamburger click ignored on desktop');
       }
@@ -235,9 +274,14 @@
     }
 
     // Get menu state - prefer state manager if available
-    const navigationMenubar = document.querySelector(`#${escapedNavId} .solo-menu-tree__menubar`);
+    const navigationMenubar = document.querySelector(
+      `#${escapedNavId} .solo-menu-tree__menubar`,
+    );
     if (!navigationMenubar) {
-      console.warn('Solo Menu Mobile: Navigation menubar not found for', navTagId);
+      console.warn(
+        'Solo Menu Mobile: Navigation menubar not found for',
+        navTagId,
+      );
       return;
     }
 
@@ -252,14 +296,22 @@
     if (!isOpen) {
       // Update button state using state manager if available
       if (hamburgerIconChild) {
-        Drupal.solo.menuState.setExpanded(hamburgerIconChild, true, COMPONENT_NAME);
+        Drupal.solo.menuState.setExpanded(
+          hamburgerIconChild,
+          true,
+          COMPONENT_NAME,
+        );
       }
       hamburgerIcon.classList.add('solo-is-open');
       openMobileMenu(navTagId);
     } else {
       // Update button state using state manager if available
       if (hamburgerIconChild) {
-        Drupal.solo.menuState.setExpanded(hamburgerIconChild, false, COMPONENT_NAME);
+        Drupal.solo.menuState.setExpanded(
+          hamburgerIconChild,
+          false,
+          COMPONENT_NAME,
+        );
       }
       hamburgerIcon.classList.remove('solo-is-open');
       closeMobileMenu(navTagId);
@@ -272,28 +324,40 @@
    */
   const addAriaControlToButton = (hamburgerIcon) => {
     if (!hamburgerIcon) {
-      console.warn('Solo Menu Mobile: Invalid hamburger icon in addAriaControlToButton');
+      console.warn(
+        'Solo Menu Mobile: Invalid hamburger icon in addAriaControlToButton',
+      );
       return;
     }
 
     const [hamburgerIconChild, navTagId] = getMobileNavType(hamburgerIcon);
 
     if (!navTagId || !hamburgerIconChild) {
-      console.warn('Solo Menu Mobile: Missing required elements in addAriaControlToButton');
+      console.warn(
+        'Solo Menu Mobile: Missing required elements in addAriaControlToButton',
+      );
       return;
     }
 
     // Safely escape the ID
     const escapedNavId = Drupal.solo.escapeSelector(navTagId);
     if (!escapedNavId) {
-      console.error('Solo Menu Mobile: Invalid navigation ID in addAriaControlToButton', navTagId);
+      console.error(
+        'Solo Menu Mobile: Invalid navigation ID in addAriaControlToButton',
+        navTagId,
+      );
       return;
     }
 
-    const responsiveNav = document.querySelector(`#${escapedNavId} .solo-menu-tree--responsive`);
+    const responsiveNav = document.querySelector(
+      `#${escapedNavId} .solo-menu-tree--responsive`,
+    );
 
     if (!responsiveNav) {
-      console.warn('Solo Menu Mobile: Responsive navigation not found for', navTagId);
+      console.warn(
+        'Solo Menu Mobile: Responsive navigation not found for',
+        navTagId,
+      );
       return;
     }
 
@@ -302,9 +366,14 @@
     if (ariaControl) {
       const currentWidth = getCurrentWidth();
 
-      if (currentWidth <= brNum) {
+      if (!Drupal.solo.isLargeLayout(currentWidth, brNum)) {
         if (Drupal.solo.menuState) {
-          Drupal.solo.menuState.setAriaAttribute(hamburgerIconChild, 'aria-controls', ariaControl, COMPONENT_NAME);
+          Drupal.solo.menuState.setAriaAttribute(
+            hamburgerIconChild,
+            'aria-controls',
+            ariaControl,
+            COMPONENT_NAME,
+          );
         } else {
           hamburgerIconChild.setAttribute('aria-controls', ariaControl);
         }
@@ -312,7 +381,9 @@
         hamburgerIconChild.removeAttribute('aria-controls');
       }
     } else {
-      console.warn('Solo Menu Mobile: Responsive navigation missing ID attribute');
+      console.warn(
+        'Solo Menu Mobile: Responsive navigation missing ID attribute',
+      );
     }
   };
 
@@ -322,8 +393,12 @@
    */
   const updateHamburgerTabindex = (hamburgerIcons) => {
     const currentWidth = getCurrentWidth();
-    hamburgerIcons.forEach(button => {
-      Drupal.solo.menuState.setTabindex(button, currentWidth <= brNum ? '0' : '-1', COMPONENT_NAME);
+    hamburgerIcons.forEach((button) => {
+      Drupal.solo.menuState.setTabindex(
+        button,
+        !Drupal.solo.isLargeLayout(currentWidth, brNum) ? '0' : '-1',
+        COMPONENT_NAME,
+      );
     });
   };
   /**
@@ -332,22 +407,30 @@
   const updateTabindexForLargeScreens = () => {
     const currentWidth = getCurrentWidth();
 
-    if (currentWidth > brNum) {
+    if (Drupal.solo.isLargeLayout(currentWidth, brNum)) {
       // Every responsive menu bar, and the bar itself: closing the hamburger
       // set its first-level items to tabindex -1, and looking for the bar
       // inside itself left them there, so the desktop menu had no Tab stop.
-      document.querySelectorAll('ul.solo-menu-tree--responsive').forEach(menubar => {
-        Drupal.solo.menuState.updateMenuTabindex(menubar, true, COMPONENT_NAME);
-        updateAriaHidden(menubar, 'false');
+      document
+        .querySelectorAll('ul.solo-menu-tree--responsive')
+        .forEach((menubar) => {
+          Drupal.solo.menuState.updateMenuTabindex(
+            menubar,
+            true,
+            COMPONENT_NAME,
+          );
+          updateAriaHidden(menubar, 'false');
 
-        // Remove inert attribute on large screens
-        Drupal.solo.setInert(menubar, false);
+          // Remove inert attribute on large screens
+          Drupal.solo.setInert(menubar, false);
 
-        // Remove inert from all submenus
-        menubar.querySelectorAll('.solo-menu-tree__submenu').forEach(submenu => {
-          Drupal.solo.setInert(submenu, false);
+          // Remove inert from all submenus
+          menubar
+            .querySelectorAll('.solo-menu-tree__submenu')
+            .forEach((submenu) => {
+              Drupal.solo.setInert(submenu, false);
+            });
         });
-      });
     }
   };
 
@@ -361,7 +444,11 @@
     if (!navTagId) return;
 
     if (hamburgerIconChild) {
-      Drupal.solo.menuState.setExpanded(hamburgerIconChild, false, COMPONENT_NAME);
+      Drupal.solo.menuState.setExpanded(
+        hamburgerIconChild,
+        false,
+        COMPONENT_NAME,
+      );
     }
 
     hamburgerIcon.classList.remove('solo-is-open');
@@ -408,7 +495,9 @@
       currentLayout = Drupal.solo.getLayout();
 
       // Use screenInfo from state manager if available
-      const isSmallScreen = screenInfo ? screenInfo.isSmallScreen : (getCurrentWidth() <= brNum);
+      const isSmallScreen = screenInfo
+        ? screenInfo.isSmallScreen
+        : !Drupal.solo.isLargeLayout(getCurrentWidth(), brNum);
 
       if (isSmallScreen && previousLayout !== currentLayout) {
         resetMenusOnResize(hamburgerIcons);
@@ -420,9 +509,13 @@
 
       // If resizing to large screen, ensure inert is removed
       if (!isSmallScreen) {
-        document.querySelectorAll('.solo-menu-tree__menubar, .solo-menu-tree__submenu').forEach(element => {
-          Drupal.solo.setInert(element, false);
-        });
+        document
+          .querySelectorAll(
+            '.solo-menu-tree__menubar, .solo-menu-tree__submenu',
+          )
+          .forEach((element) => {
+            Drupal.solo.setInert(element, false);
+          });
       }
 
       updateMenuStates(hamburgerIcons);
@@ -451,7 +544,11 @@
     updateMenuStates(hamburgerIcons);
 
     if (Drupal.solo.menuState) {
-      Drupal.solo.menuState.addResizeHandler(COMPONENT_NAME, createResizeHandler(hamburgerIcons), 250);
+      Drupal.solo.menuState.addResizeHandler(
+        COMPONENT_NAME,
+        createResizeHandler(hamburgerIcons),
+        250,
+      );
     } else {
       let resizeTimer;
       const onResize = () => {
@@ -473,17 +570,24 @@
   }
 
   Drupal.behaviors.mobileMenu = {
-    attach: function(context) {
+    attach(context) {
       // Try once via Drupal context
-      const hamburgerIcons = once('soloHamburgerInit',
-        '.solo-mobile-nav button', context);
+      const hamburgerIcons = once(
+        'soloHamburgerInit',
+        '.solo-mobile-nav button',
+        context,
+      );
 
       if (hamburgerIcons.length > 0) {
         initHamburgerMenu(hamburgerIcons);
       } else {
         // Retry after full page load in case the menu was injected late (e.g. Admin Toolbar)
         window.addEventListener('load', () => {
-          const fallbackIcons = once('soloHamburgerLateInit', '.solo-mobile-nav button', document);
+          const fallbackIcons = once(
+            'soloHamburgerLateInit',
+            '.solo-mobile-nav button',
+            document,
+          );
           if (fallbackIcons.length > 0) {
             initHamburgerMenu(fallbackIcons);
           }
@@ -491,12 +595,15 @@
       }
     },
 
-    detach: function(context, settings, trigger) {
+    detach(context, settings, trigger) {
       if (trigger === 'unload') {
-        const hamburgerIcons = once.filter('soloHamburgerInit', '.solo-mobile-nav button', context)
-          .concat(once.filter('soloHamburgerLateInit', '.solo-mobile-nav button'));
+        const hamburgerIcons = once
+          .filter('soloHamburgerInit', '.solo-mobile-nav button', context)
+          .concat(
+            once.filter('soloHamburgerLateInit', '.solo-mobile-nav button'),
+          );
 
-        hamburgerIcons.forEach(icon => {
+        hamburgerIcons.forEach((icon) => {
           const handler = clickHandlers.get(icon);
           if (handler) {
             icon.removeEventListener('click', handler);
@@ -510,7 +617,10 @@
         }
 
         if (Drupal.solo._mobileResizeHandler) {
-          window.removeEventListener('resize', Drupal.solo._mobileResizeHandler);
+          window.removeEventListener(
+            'resize',
+            Drupal.solo._mobileResizeHandler,
+          );
           delete Drupal.solo._mobileResizeHandler;
         }
 
@@ -518,6 +628,6 @@
           Drupal.solo.menuState.unregisterComponent(COMPONENT_NAME);
         }
       }
-    }
+    },
   };
 })(Drupal, drupalSettings, once);

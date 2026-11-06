@@ -29,7 +29,6 @@
     {% include '@solo/partials/svg/_svg-menu-arrow.html.twig' %}
 {% endmacro %}
 <div class="solo-clear solo-menu solo-menu--responsive solo-menu--primary-responsive{{ click_hover ? ' ' ~ click_hover }}{{ remove_arrow ? ' ' ~ remove_arrow }}{{ menu_alignment ? ' ' ~ menu_alignment }}{{ expand_left ? ' ' ~ expand_left }}{{ primary_menu_branding ? ' ' ~ primary_menu_branding }}{{ keyboard_enabled ? ' solo-keyboard-enabled' }}"
-     aria-label="{{ 'Main navigation'|t }}"
      data-menu-name="{{ menu_name }}"
      data-interaction-type="{{ click_hover|default("click") }}">
     {% if primary_menu_branding %}
@@ -38,7 +37,6 @@
     <div class="solo-mobile-nav solo-hamburger solo-block">
         <button class="solo-button-menu solo-hamburger__button"
                 data-drupal-selector="solo-hamburger__button"
-                tabindex='0'
                 aria-label="{{ 'Toggle main menu'|t }}"
                 aria-expanded="false"
                 aria-controls="{{ menu_name ~'__menubar'|clean_unique_id }}"

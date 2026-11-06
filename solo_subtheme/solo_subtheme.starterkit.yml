@@ -1,0 +1,11 @@
+# Marks this theme as a core starterkit: `php core/scripts/drupal generate-theme
+# my_theme --starterkit solo_subtheme --path themes/custom` copies it and
+# renames it. The two files below are generator internals, not theme files.
+ignore:
+  - '/src/StarterKit.php'
+  - '/solo_subtheme.starterkit.yml'
+no_edit: []
+no_rename: []
+info:
+  core_version_requirement: '^11.3 || ^12'
+  version: 1.0.0

@@ -3,6 +3,13 @@ id: solo-gunmetal-echo
 name: "Gunmetal Echo"
 category: earthy_and_smokey_tones
 mode: mixed
+description: "Light content on white, a deep sky blue menu bar and a charcoal footer."
+brand:
+  primary: "#20262c"
+  secondary: "#5c737e"
+  accent: "#474243"
+  ink_light: "#f0f2f4"
+  ink_dark: "#14191c"
 categories:
   - earthy_and_smokey_tones
 css: css/predefined/solo-gunmetal-echo.css

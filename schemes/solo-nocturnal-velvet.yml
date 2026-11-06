@@ -3,6 +3,13 @@ id: solo-nocturnal-velvet
 name: "Nocturnal Velvet"
 category: bold_and_dramatic_colors
 mode: dark
+description: "Dark content on near-black, a deep violet menu bar and a near-black footer."
+brand:
+  primary: "#12001c"
+  secondary: "#1f201f"
+  accent: "#7c817c"
+  ink_light: "#f0d7ff"
+  ink_dark: "#fdf9ff"
 categories:
   - bold_and_dramatic_colors
 css: css/predefined/solo-nocturnal-velvet.css

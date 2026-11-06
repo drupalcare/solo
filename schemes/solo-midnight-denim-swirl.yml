@@ -3,6 +3,13 @@ id: solo-midnight-denim-swirl
 name: "Midnight Denim Swirl"
 category: midnight_and_twilight
 mode: dark
+description: "Dark content on deep indigo, a deep indigo menu bar and a deep indigo footer."
+brand:
+  primary: "#000006"
+  secondary: "#020248"
+  accent: "#b5b5b5"
+  ink_light: "#a1a1fd"
+  ink_dark: "#e4e4fe"
 categories:
   - midnight_and_twilight
   - denim_influences

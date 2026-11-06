@@ -51,7 +51,7 @@
 .solo-classes__swatch--w3-link-bg-aqua,
 .solo-classes__swatch--w3-link-hover-aqua,
 .solo-classes__swatch--w3-text-aqua {
-  --swatch: #00ffff;
+  --swatch: #0ff;
 }
 
 .solo-classes__swatch--w3-blue,
@@ -66,6 +66,7 @@
   --swatch: #2196f3;
 }
 
+/* cspell:disable -- W3.CSS class names spell "grey" as shipped. */
 .solo-classes__swatch--w3-button-dark-gray,
 .solo-classes__swatch--w3-button-dark-grey,
 .solo-classes__swatch--w3-button-hover-dark-gray,
@@ -229,7 +230,7 @@
 .solo-classes__swatch--w3-link-pale-green,
 .solo-classes__swatch--w3-pale-green,
 .solo-classes__swatch--w3-text-pale-green {
-  --swatch: #ddffdd;
+  --swatch: #dfd;
 }
 
 .solo-classes__swatch--w3-button-hover-pale-blue,
@@ -241,7 +242,7 @@
 .solo-classes__swatch--w3-link-pale-blue,
 .solo-classes__swatch--w3-pale-blue,
 .solo-classes__swatch--w3-text-pale-blue {
-  --swatch: #ddffff;
+  --swatch: #dff;
 }
 
 .solo-classes__swatch--w3-button-hover-pink,
@@ -271,6 +272,8 @@
 .solo-classes__swatch--w3-text-light-grey {
   --swatch: #f1f1f1;
 }
+
+/* cspell:enable */
 
 .solo-classes__swatch--w3-button-hover-red,
 .solo-classes__swatch--w3-button-red,
@@ -353,7 +356,7 @@
 .solo-classes__swatch--w3-link-pale-red,
 .solo-classes__swatch--w3-pale-red,
 .solo-classes__swatch--w3-text-pale-red {
-  --swatch: #ffdddd;
+  --swatch: #fdd;
 }
 
 .solo-classes__swatch--w3-button-hover-white,
@@ -377,5 +380,5 @@
 .solo-classes__swatch--w3-link-pale-yellow,
 .solo-classes__swatch--w3-pale-yellow,
 .solo-classes__swatch--w3-text-pale-yellow {
-  --swatch: #ffffcc;
+  --swatch: #ffc;
 }

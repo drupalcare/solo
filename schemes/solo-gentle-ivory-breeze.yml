@@ -3,6 +3,13 @@ id: solo-gentle-ivory-breeze
 name: "Gentle Ivory Breeze"
 category: elegant_whites_and_neutrals
 mode: light
+description: "Light content on white, a white menu bar and a white footer."
+brand:
+  primary: "#edf2f8"
+  secondary: "#576544"
+  accent: "#3d472f"
+  ink_light: "#1a2d44"
+  ink_dark: "#1a2d44"
 categories:
   - elegant_whites_and_neutrals
 css: css/predefined/solo-gentle-ivory-breeze.css

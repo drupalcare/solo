@@ -1,4 +1,4 @@
-/* Form controls and buttons draw their border in the scheme border colour. */
+/* Form controls and buttons draw their border in the scheme border color. */
 :where(.solo-page) .selectify,
 .solo-page .solo-select,
 .solo-page .solo-radio,

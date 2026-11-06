@@ -1,11 +1,5 @@
-:where(.messages) *:not(pre, pre.sf-dump *, pre.sf-dump *, pre.sf-dump .sf-dump-default)
-
-
-,
-:where(.webform-message .messages.messages--webform) *:not(pre, pre.sf-dump *, pre.sf-dump *, pre.sf-dump .sf-dump-default)
-
-
- {
+:where(.messages) *:not(pre, pre.sf-dump *, pre.sf-dump *, pre.sf-dump .sf-dump-default),
+:where(.webform-message .messages.messages--webform) *:not(pre, pre.sf-dump *, pre.sf-dump *, pre.sf-dump .sf-dump-default) {
   color: inherit !important;
 }
 
@@ -27,7 +21,6 @@
   margin-inline: 0 !important;
   outline: solid 1px transparent !important;
 }
-
 
 /* Additional specificity to override contrib modules. */
 :where(.webform-message) .messages.messages--webform .messages.messages-list__item {
@@ -76,7 +69,6 @@
   padding-block: 0;
 }
 
-
 .messages__button {
   flex-shrink: 0;
 }
@@ -88,10 +80,10 @@
   cursor: pointer;
   vertical-align: top;
   border: 0;
+  border-radius: 50%;
   background: none;
   -webkit-appearance: none;
   appearance: none;
-  border-radius: 50%;
 }
 
 .messages__close::before,
@@ -114,9 +106,9 @@
 }
 
 .messages__icon svg {
-  vertical-align: top;
   width: calc(2 * var(--solo-px20)) !important;
   height: calc(2 * var(--solo-px20)) !important;
+  vertical-align: top;
   border-style: dashed;
   border-radius: 50%;
 }
@@ -131,11 +123,9 @@
 }
 
 :where(.solo-system-messages) .messages__content,
-:where(.solo-system-messages .messages__content) > *:not(pre, pre.sf-dump *, pre.sf-dump *, pre.sf-dump .sf-dump-default)
-
-
- {
+:where(.solo-system-messages .messages__content) > *:not(pre, pre.sf-dump *, pre.sf-dump *, pre.sf-dump .sf-dump-default) {
   --r-bg: transparent;
+
   background-color: var(--r-bg) !important;
 }
 
@@ -182,42 +172,42 @@
 :where(.messages.messages--error) .messages__close:hover::before,
 :where(.messages.messages--error) .messages__close:hover::after {
   border-color: var(--solo-red) !important;
-  box-shadow: rgb(244 67 54 / 0.3) 0px 2px 8px 0px;
+  box-shadow: rgb(244, 67, 54, 0.3) 0 2px 8px 0;
 }
 
 :where(.messages.messages--warning) .messages__close,
 :where(.messages.messages--warning) .messages__close:hover::before,
 :where(.messages.messages--warning) .messages__close:hover::after {
   border-color: var(--solo-yellow) !important;
-  box-shadow: rgb(255 205 58 / 0.3) 0px 2px 8px 0px;
+  box-shadow: rgb(255, 205, 58, 0.3) 0 2px 8px 0;
 }
 
 :where(.messages.messages--status) .messages__close,
 :where(.messages.messages--status) .messages__close:hover::before,
 :where(.messages.messages--status) .messages__close:hover::after {
   border-color: var(--solo-green) !important;
-  box-shadow: rgb(76 175 80 / 0.3) 0px 2px 8px 0px;
+  box-shadow: rgb(76, 175, 80, 0.3) 0 2px 8px 0;
 }
 
 :where(.messages.messages--info) .messages__close,
 :where(.messages.messages--info) .messages__close:hover::before,
 :where(.messages.messages--info) .messages__close:hover::after {
   border-color: var(--solo-blue) !important;
-  box-shadow: rgb(33 150 243 / 0.3) 0px 2px 8px 0px;
+  box-shadow: rgb(33, 150, 243, 0.3) 0 2px 8px 0;
 }
 
 .messages.messages--error {
-  box-shadow: rgb(244 67 54 / 0.3) 0px 2px 8px 0px;
+  box-shadow: rgb(244, 67, 54, 0.3) 0 2px 8px 0;
 }
 
 .messages.messages--warning {
-  box-shadow: rgb(255 205 58 / 0.3) 0px 2px 8px 0px;
+  box-shadow: rgb(255, 205, 58, 0.3) 0 2px 8px 0;
 }
 
 .messages.messages--status {
-  box-shadow: rgb(76 175 80 / 0.3) 0px 2px 8px 0px;
+  box-shadow: rgb(76, 175, 80, 0.3) 0 2px 8px 0;
 }
 
 .messages.messages--info {
-  box-shadow: rgb(33 150 243 / 0.3) 0px 2px 8px 0px;
+  box-shadow: rgb(33, 150, 243, 0.3) 0 2px 8px 0;
 }

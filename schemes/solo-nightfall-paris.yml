@@ -3,6 +3,13 @@ id: solo-nightfall-paris
 name: "Nightfall in Paris"
 category: urban_and_modern_hues
 mode: dark
+description: "Dark content on near-black, a near-black menu bar and a near-black footer."
+brand:
+  primary: "#0b0b10"
+  secondary: "#166abe"
+  accent: "#1a7ee0"
+  ink_light: "#c8c8da"
+  ink_dark: "#bebed3"
 categories:
   - urban_and_modern_hues
 css: css/predefined/solo-nightfall-paris.css

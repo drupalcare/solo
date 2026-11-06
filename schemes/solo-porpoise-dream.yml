@@ -3,6 +3,13 @@ id: solo-porpoise-dream
 name: "Porpoise Dream"
 category: earthy_and_smokey_tones
 mode: mixed
+description: "Light content on white, a gray menu bar and a near-black footer."
+brand:
+  primary: "#757395"
+  secondary: "#1e1e24"
+  accent: "#3d3d49"
+  ink_light: "#ffffff"
+  ink_dark: "#231f24"
 categories:
   - earthy_and_smokey_tones
 css: css/predefined/solo-porpoise-dream.css

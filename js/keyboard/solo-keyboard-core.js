@@ -1,5 +1,4 @@
 ((Drupal, drupalSettings, once) => {
-  'use strict';
   Drupal.solo = Drupal.solo || {};
   Drupal.solo.keyboard = Drupal.solo.keyboard || {};
 
@@ -21,7 +20,9 @@
 
     init() {
       try {
-        this.breakpoint = Drupal.solo.getBreakpointNumber ? Drupal.solo.getBreakpointNumber('mn') : 992;
+        this.breakpoint = Drupal.solo.getBreakpointNumber
+          ? Drupal.solo.getBreakpointNumber('mn')
+          : 992;
         this.parseTemplate();
         if (!this.findMenuElements()) {
           console.warn('Solo Keyboard: No valid menu structure found');
@@ -46,8 +47,10 @@
         isMegamenu: wrapper.querySelector('.solo-menu-tree--megamenu') !== null,
         isResponsive: classList.contains('solo-menu--responsive'),
         isSidebar: classList.contains('solo-menu--sidebar'),
-        isPrimary: classList.contains('solo-menu--primary-responsive') || classList.contains('solo-menu--primary-sidebar'),
-        hasKeyboardEnabled: classList.contains('solo-keyboard-enabled')
+        isPrimary:
+          classList.contains('solo-menu--primary-responsive') ||
+          classList.contains('solo-menu--primary-sidebar'),
+        hasKeyboardEnabled: classList.contains('solo-keyboard-enabled'),
       };
     }
 
@@ -59,9 +62,11 @@
     }
 
     detectInteractionMode(wrapper) {
-      if (wrapper.querySelector('[data-hover-toggle]') ||
-          wrapper.classList.contains('solo-menu--responsive-hover') ||
-          wrapper.classList.contains('solo-menu--sidebar-hover')) {
+      if (
+        wrapper.querySelector('[data-hover-toggle]') ||
+        wrapper.classList.contains('solo-menu--responsive-hover') ||
+        wrapper.classList.contains('solo-menu--sidebar-hover')
+      ) {
         return 'hover';
       }
       return 'click';
@@ -76,16 +81,24 @@
       if (!this.menubar) return false;
 
       this.menuItems = this.menubar.querySelectorAll('a, button');
-      this.mobileNavButton = this.menuWrapper.querySelector('.solo-hamburger__button');
+      this.mobileNavButton = this.menuWrapper.querySelector(
+        '.solo-hamburger__button',
+      );
 
       return true;
     }
 
     loadModules() {
-      const modules = ['templateParser', 'aria', 'focus', 'navigation', 'utils'];
+      const modules = [
+        'templateParser',
+        'aria',
+        'focus',
+        'navigation',
+        'utils',
+      ];
       if (this.templateInfo.isMegamenu) modules.push('megamenu');
 
-      modules.forEach(name => {
+      modules.forEach((name) => {
         if (Drupal.solo.keyboard[name]) {
           this.modules.set(name, new Drupal.solo.keyboard[name](this));
         }
@@ -99,20 +112,27 @@
             module.init();
           }
         } catch (error) {
-          console.error(`Solo Keyboard: Error initializing module ${name}`, error);
+          console.error(
+            `Solo Keyboard: Error initializing module ${name}`,
+            error,
+          );
         }
       });
     }
 
     setupResizeHandler() {
       if (Drupal.solo.menuState) {
-        Drupal.solo.menuState.addResizeHandler(COMPONENT_NAME, (screenInfo) => {
-          this.modules.forEach((module) => {
-            if (typeof module.onResize === 'function') {
-              module.onResize(screenInfo);
-            }
-          });
-        }, 150);
+        Drupal.solo.menuState.addResizeHandler(
+          COMPONENT_NAME,
+          (screenInfo) => {
+            this.modules.forEach((module) => {
+              if (typeof module.onResize === 'function') {
+                module.onResize(screenInfo);
+              }
+            });
+          },
+          150,
+        );
       }
     }
 
@@ -121,8 +141,15 @@
     }
 
     isSmallScreen() {
-      const breakpoint = this.breakpoint || (Drupal.solo.getBreakpointNumber ? Drupal.solo.getBreakpointNumber('mn') : 992);
-      return window.innerWidth <= breakpoint;
+      const breakpoint =
+        this.breakpoint ||
+        (Drupal.solo.getBreakpointNumber
+          ? Drupal.solo.getBreakpointNumber('mn')
+          : 992);
+      // Same rule as Drupal.solo.isLargeLayout() in solo-utils.js.
+      return Drupal.solo.isLargeLayout
+        ? !Drupal.solo.isLargeLayout(window.innerWidth, breakpoint)
+        : window.innerWidth < breakpoint;
     }
 
     destroy() {
@@ -142,23 +169,27 @@
   Drupal.solo.keyboard.Core = KeyboardNavigationCore;
 
   Drupal.behaviors.soloKeyboardNavigation = {
-    attach: function(context, settings) {
+    attach(context, settings) {
       const menus = once('solo-keyboard', '.solo-keyboard-enabled', context);
-      menus.forEach(menu => {
+      menus.forEach((menu) => {
         menu._soloKeyboardInstance = new KeyboardNavigationCore(menu);
       });
     },
 
-    detach: function(context, settings, trigger) {
+    detach(context, settings, trigger) {
       if (trigger === 'unload') {
-        const menus = once.filter('solo-keyboard', '.solo-keyboard-enabled', context);
-        menus.forEach(menu => {
+        const menus = once.filter(
+          'solo-keyboard',
+          '.solo-keyboard-enabled',
+          context,
+        );
+        menus.forEach((menu) => {
           if (menu._soloKeyboardInstance) {
             menu._soloKeyboardInstance.destroy();
             delete menu._soloKeyboardInstance;
           }
         });
       }
-    }
+    },
   };
 })(Drupal, drupalSettings, once);

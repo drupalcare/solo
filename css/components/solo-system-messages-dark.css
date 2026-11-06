@@ -7,8 +7,8 @@
 .messages,
 :where(.webform-message) .messages.messages--webform {
   color: var(--solo-white) !important;
-  background-color: var(--solo-dark-gray) !important;
   border: var(--solo-px1) solid var(--solo-black) !important;
+  background-color: var(--solo-dark-gray) !important;
 }
 
 :where(.solo-page) .solo-system-messages {

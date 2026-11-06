@@ -3,6 +3,13 @@ id: solo-salmon-denim-fade
 name: "Salmon Denim Fade"
 category: denim_influences
 mode: mixed
+description: "Light content on white, a soft red menu bar and a deep red footer."
+brand:
+  primary: "#ff9999"
+  secondary: "#dd0000"
+  accent: "#cc0000"
+  ink_light: "#220000"
+  ink_dark: "#191c27"
 categories:
   - denim_influences
 css: css/predefined/solo-salmon-denim-fade.css

@@ -7,8 +7,6 @@
  * Developer: Alaa Haddad https://www.alaahaddad.com.
  */
 ((Drupal, drupalSettings, once) => {
-  'use strict';
-
   /**
    * Solo helper functions namespace.
    *
@@ -31,7 +29,7 @@
     }
 
     // Fallback for IE11 and edge cases
-    return str.replace(/[!"#$%&'()*+,.\/:;<=>?@[\\\]^`{|}~]/g, '\\$&');
+    return str.replace(/[!"#$%&'()*+,./:;<=>?@[\\\]^`{|}~]/g, '\\$&');
   };
 
   /**
@@ -71,7 +69,7 @@
     };
 
     const clearAll = () => {
-      cleanupHandlers.forEach(cleanup => cleanup());
+      cleanupHandlers.forEach((cleanup) => cleanup());
       queue.clear();
       cleanupHandlers.clear();
     };
@@ -91,7 +89,7 @@
           if (node.nodeType === 1 && node.querySelectorAll) {
             // Clean up event listeners on removed elements
             const buttons = node.querySelectorAll('.solo-menu-tree__toggler');
-            buttons.forEach(btn => {
+            buttons.forEach((btn) => {
               const handler = handlerMap.get(btn);
               if (handler) {
                 btn.removeEventListener('click', handler);
@@ -105,7 +103,7 @@
 
     observer.observe(document.body, {
       childList: true,
-      subtree: true
+      subtree: true,
     });
 
     return observer;
@@ -124,13 +122,15 @@
       element.setAttribute('aria-hidden', value ? 'true' : 'false');
 
       if (value) {
-        element.querySelectorAll('a, button, input, select, textarea, [tabindex]').forEach(el => {
-          const currentTabindex = el.getAttribute('tabindex');
-          el.setAttribute('data-original-tabindex', currentTabindex || '0');
-          el.setAttribute('tabindex', '-1');
-        });
+        element
+          .querySelectorAll('a, button, input, select, textarea, [tabindex]')
+          .forEach((el) => {
+            const currentTabindex = el.getAttribute('tabindex');
+            el.setAttribute('data-original-tabindex', currentTabindex || '0');
+            el.setAttribute('tabindex', '-1');
+          });
       } else {
-        element.querySelectorAll('[data-original-tabindex]').forEach(el => {
+        element.querySelectorAll('[data-original-tabindex]').forEach((el) => {
           const original = el.getAttribute('data-original-tabindex');
           if (original === '0' || original === null) {
             el.removeAttribute('tabindex');
@@ -148,18 +148,20 @@
     slideDown: drupalSettings.solo?.slideDownSpeed || 500,
     megaMenu: drupalSettings.solo?.megaMenuSpeed || 800,
     reset: drupalSettings.solo?.slideUpSpeed || 350,
-    clickDelay: 500
+    clickDelay: 500,
   };
 
   const animations = Drupal.solo.animations;
-  const prefersReducedMotion = () => window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const prefersReducedMotion = () =>
+    window.matchMedia &&
+    window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   const BREAKPOINTS = {
     XS: 576,
     SM: 768,
     MD: 992,
     LG: 1200,
-    XL: 1400
+    XL: 1400,
   };
 
   const SELECTORS = {
@@ -170,7 +172,7 @@
     FILE_INPUT: '.solo-file-native',
     FILE_NAME: '.solo-file-name',
     SEARCH_DETAILS: '.search-form details.search-advanced',
-    DETAILS_WRAPPER: '.details-wrapper'
+    DETAILS_WRAPPER: '.details-wrapper',
   };
 
   // Store active animations for cleanup (Map instead of WeakMap so cleanup() can iterate).
@@ -186,7 +188,7 @@
     paddingTop: '0',
     paddingBottom: '0',
     marginTop: '0',
-    marginBottom: '0'
+    marginBottom: '0',
   };
 
   /**
@@ -200,7 +202,20 @@
     }
 
     // Hyphenated property names for removeProperty(); transform for iOS compositor layer cleanup.
-    const props = ['height', 'padding-top', 'padding-bottom', 'margin-top', 'margin-bottom', 'overflow', 'transition-duration', 'transition-property', 'transition-timing-function', 'box-sizing', 'transform', '-webkit-transform'];
+    const props = [
+      'height',
+      'padding-top',
+      'padding-bottom',
+      'margin-top',
+      'margin-bottom',
+      'overflow',
+      'transition-duration',
+      'transition-property',
+      'transition-timing-function',
+      'box-sizing',
+      'transform',
+      '-webkit-transform',
+    ];
 
     try {
       props.forEach((p) => target.style.removeProperty(p));
@@ -227,8 +242,10 @@
         Drupal.solo.menuState.updateMenuTabindex(target, isOpen, componentName);
       } else {
         // Fallback for backward compatibility
-        const firstLevelItems = target.querySelectorAll(':scope > li > a, :scope > li > button');
-        firstLevelItems.forEach(item => {
+        const firstLevelItems = target.querySelectorAll(
+          ':scope > li > a, :scope > li > button',
+        );
+        firstLevelItems.forEach((item) => {
           item.setAttribute('tabindex', isOpen ? '0' : '-1');
         });
       }
@@ -264,7 +281,12 @@
    * @param {boolean} [announce=false] - Whether to announce state change to screen readers.
    * @returns {boolean} Success status.
    */
-  const slideUp = (target, duration = animations.slideUp, componentName = 'utils', announce = false) => {
+  const slideUp = (
+    target,
+    duration = animations.slideUp,
+    componentName = 'utils',
+    announce = false,
+  ) => {
     if (!target || !(target instanceof HTMLElement)) {
       console.warn('Solo: Invalid target element provided to slideUp');
       return false;
@@ -283,7 +305,7 @@
       updateTabindex(target, false, componentName);
       target.style.display = 'none';
       removeStyles(target);
-      
+
       // FIXED: Only announce if explicitly requested
       if (announce && Drupal.announce) {
         Drupal.announce(Drupal.t('Content collapsed'));
@@ -299,7 +321,7 @@
       target.style.height = `${target.offsetHeight}px`;
       target.style.webkitTransform = 'translateZ(0)';
       target.style.transform = 'translateZ(0)';
-      void target.offsetHeight;
+      target.getBoundingClientRect();
 
       target.classList.remove('solo-is-open');
       if (Drupal.solo.menuState) {
@@ -311,7 +333,7 @@
 
       // iOS Safari: apply collapse in next frame so "from" state is painted and transition runs.
       const applySlideUpEnd = () => {
-        Object.keys(cssStyles).forEach(style => {
+        Object.keys(cssStyles).forEach((style) => {
           target.style[style] = cssStyles[style];
         });
       };
@@ -348,7 +370,13 @@
    * @param {boolean} [announce=false] - Whether to announce state change to screen readers.
    * @returns {boolean} Success status.
    */
-  const slideDown = (target, duration = animations.slideDown, menuDisplay = 'block', componentName = 'utils', announce = false) => {
+  const slideDown = (
+    target,
+    duration = animations.slideDown,
+    menuDisplay = 'block',
+    componentName = 'utils',
+    announce = false,
+  ) => {
     if (!target || !(target instanceof HTMLElement)) {
       console.warn('Solo: Invalid target element provided to slideDown');
       return false;
@@ -361,13 +389,18 @@
       target.style.display = menuDisplay;
       target.classList.add('solo-is-open');
       if (Drupal.solo.menuState) {
-        Drupal.solo.menuState.setAriaAttribute(target, 'aria-hidden', 'false', componentName);
+        Drupal.solo.menuState.setAriaAttribute(
+          target,
+          'aria-hidden',
+          'false',
+          componentName,
+        );
       } else {
         target.setAttribute('aria-hidden', 'false');
       }
       updateTabindex(target, true, componentName);
       removeStyles(target);
-      
+
       // FIXED: Only announce if explicitly requested
       if (announce && Drupal.announce) {
         Drupal.announce(Drupal.t('Content expanded'));
@@ -388,13 +421,13 @@
       height = Math.round(height);
 
       // Apply collapsed "from" state without transition.
-      Object.keys(cssStyles).forEach(style => {
+      Object.keys(cssStyles).forEach((style) => {
         target.style[style] = cssStyles[style];
       });
       target.style.boxSizing = 'border-box';
 
       // Force reflow to paint the collapsed state before enabling transition.
-      void target.offsetHeight;
+      target.getBoundingClientRect();
 
       // Now enable transition and GPU layer promotion.
       target.style.transitionProperty = 'height, margin, padding';
@@ -409,12 +442,22 @@
         target.style.height = `${height}px`;
         target.classList.add('solo-is-open');
         if (Drupal.solo.menuState) {
-          Drupal.solo.menuState.setAriaAttribute(target, 'aria-hidden', 'false', componentName);
+          Drupal.solo.menuState.setAriaAttribute(
+            target,
+            'aria-hidden',
+            'false',
+            componentName,
+          );
         } else {
           target.setAttribute('aria-hidden', 'false');
         }
         updateTabindex(target, true, componentName);
-        ['padding-top', 'padding-bottom', 'margin-top', 'margin-bottom'].forEach(property => {
+        [
+          'padding-top',
+          'padding-bottom',
+          'margin-top',
+          'margin-bottom',
+        ].forEach((property) => {
           target.style.removeProperty(property);
         });
       };
@@ -422,8 +465,16 @@
 
       const timeoutId = setTimeout(() => {
         if (target && target.parentNode) {
-          ['height', 'overflow', 'transition-duration', 'transition-property', 'transition-timing-function', 'box-sizing', 'transform', '-webkit-transform'].forEach(property =>
-            target.style.removeProperty(property));
+          [
+            'height',
+            'overflow',
+            'transition-duration',
+            'transition-property',
+            'transition-timing-function',
+            'box-sizing',
+            'transform',
+            '-webkit-transform',
+          ].forEach((property) => target.style.removeProperty(property));
           activeAnimations.delete(target);
           if (announce && Drupal.announce) {
             Drupal.announce(Drupal.t('Content expanded'));
@@ -446,7 +497,11 @@
    * @param {string} [componentName='utils'] - The component making the change.
    * @returns {boolean} Success status.
    */
-  const slideToggle = (target, duration = animations.slideUp, componentName = 'utils') => {
+  const slideToggle = (
+    target,
+    duration = animations.slideUp,
+    componentName = 'utils',
+  ) => {
     if (!target || !(target instanceof HTMLElement)) {
       console.warn('Solo: Invalid target element provided to slideToggle');
       return false;
@@ -459,9 +514,8 @@
 
     if (!target.classList.contains('solo-is-open')) {
       return slideDown(target, duration, 'flex', componentName);
-    } else {
-      return slideUp(target, duration, componentName);
     }
+    return slideUp(target, duration, componentName);
   };
   Drupal.solo.slideToggle = slideToggle;
 
@@ -474,7 +528,12 @@
     if (Drupal.solo.menuState) {
       return Drupal.solo.menuState.getCurrentWidth();
     }
-    return window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth || 0;
+    return (
+      window.innerWidth ||
+      document.documentElement.clientWidth ||
+      document.body.clientWidth ||
+      0
+    );
   };
 
   /**
@@ -541,16 +600,16 @@
       `${mn}-${BREAKPOINTS.SM}`,
       `${mn}-${BREAKPOINTS.MD}`,
       `${mn}-${BREAKPOINTS.LG}`,
-      `${mn}-${BREAKPOINTS.XL}`
+      `${mn}-${BREAKPOINTS.XL}`,
     ];
 
     const classList = Array.from(element.classList);
-    const foundClass = classList.find(c => classes.includes(c));
+    const foundClass = classList.find((c) => classes.includes(c));
 
     if (foundClass) {
       const parts = foundClass.split('-');
       const value = parseInt(parts[parts.length - 1], 10);
-      return isNaN(value) ? BREAKPOINTS.MD : value;
+      return Number.isNaN(value) ? BREAKPOINTS.MD : value;
     }
 
     return BREAKPOINTS.MD;
@@ -577,6 +636,19 @@
   };
 
   /**
+   * The one breakpoint rule for every Solo menu script.
+   *
+   * A width at or above the menu breakpoint is the large layout. This matches
+   * the theme CSS, which uses (width >= bp) for large and (width <= bp - 0.02px)
+   * for small, so JS and CSS agree at exactly the breakpoint width.
+   *
+   * @param {number} width - The viewport width in pixels.
+   * @param {number} breakpoint - The breakpoint in pixels.
+   * @returns {boolean} TRUE for the large layout.
+   */
+  Drupal.solo.isLargeLayout = (width, breakpoint) => width >= breakpoint;
+
+  /**
    * Determines the current layout based on breakpoints.
    * @returns {string} 'large' if layout is large, 'small' otherwise.
    */
@@ -589,7 +661,7 @@
     const brNum = Drupal.solo.getMyBreakpoints(pageClass, 'mn');
     const currentWidth = getCurrentWidth();
 
-    return currentWidth > brNum ? 'large' : 'small';
+    return Drupal.solo.isLargeLayout(currentWidth, brNum) ? 'large' : 'small';
   };
   Drupal.solo.getLayout = getLayout;
 
@@ -600,7 +672,11 @@
     attach: (context, settings) => {
       try {
         // Option 1: Use the :not() selector (default)
-        const allMenus = once('soloMenuDepth', SELECTORS.SOLO_MENUS_ALL, context);
+        const allMenus = once(
+          'soloMenuDepth',
+          SELECTORS.SOLO_MENUS_ALL,
+          context,
+        );
         const menus = allMenus.filter((menu) => !menu.closest('.field'));
 
         menus.forEach((element) => {
@@ -614,17 +690,25 @@
     detach: (context, settings, trigger) => {
       if (trigger === 'unload') {
         try {
-          const allProcessed = once.filter('soloMenuDepth', SELECTORS.SOLO_MENUS_ALL, context);
-          const processedMenus = allProcessed.filter((menu) => !menu.closest('.field'));
+          const allProcessed = once.filter(
+            'soloMenuDepth',
+            SELECTORS.SOLO_MENUS_ALL,
+            context,
+          );
+          const processedMenus = allProcessed.filter(
+            (menu) => !menu.closest('.field'),
+          );
 
           processedMenus.forEach((element) => {
             Array.from(element.classList).forEach((cn) => {
-              if (/^solo-list-depth-\d+$/.test(cn)) element.classList.remove(cn);
+              if (/^solo-list-depth-\d+$/.test(cn))
+                element.classList.remove(cn);
             });
             Array.from(element.children).forEach((child) => {
               if (child instanceof HTMLElement) {
                 Array.from(child.classList).forEach((cn) => {
-                  if (/^solo-item-depth-\d+$/.test(cn)) child.classList.remove(cn);
+                  if (/^solo-item-depth-\d+$/.test(cn))
+                    child.classList.remove(cn);
                 });
               }
             });
@@ -635,8 +719,7 @@
           console.error('Solo: Error in soloMenuDepth detach', error);
         }
       }
-    }
-
+    },
   };
 
   /**
@@ -647,9 +730,13 @@
 
     attach(context) {
       try {
-        const wrappers = once('solo-file-upload', SELECTORS.FILE_UPLOAD_WRAPPER, context);
+        const wrappers = once(
+          'solo-file-upload',
+          SELECTORS.FILE_UPLOAD_WRAPPER,
+          context,
+        );
 
-        wrappers.forEach(wrapper => {
+        wrappers.forEach((wrapper) => {
           const input = wrapper.querySelector(SELECTORS.FILE_INPUT);
           const fileName = wrapper.querySelector(SELECTORS.FILE_NAME);
 
@@ -664,7 +751,11 @@
                 const file = input.files[0];
                 fileName.textContent = file.name;
                 // Announce file selection to screen readers
-                Drupal.announce(Drupal.t('File selected: @filename', {'@filename': file.name}));
+                Drupal.announce(
+                  Drupal.t('File selected: @filename', {
+                    '@filename': file.name,
+                  }),
+                );
               } else {
                 fileName.textContent = Drupal.t('No file chosen');
               }
@@ -686,9 +777,13 @@
     detach(context, settings, trigger) {
       if (trigger === 'unload') {
         try {
-          const wrappers = once.filter('solo-file-upload', SELECTORS.FILE_UPLOAD_WRAPPER, context);
+          const wrappers = once.filter(
+            'solo-file-upload',
+            SELECTORS.FILE_UPLOAD_WRAPPER,
+            context,
+          );
 
-          wrappers.forEach(wrapper => {
+          wrappers.forEach((wrapper) => {
             const input = wrapper.querySelector(SELECTORS.FILE_INPUT);
             if (input) {
               const handler = this.handlers.get(input);
@@ -699,12 +794,16 @@
             }
           });
 
-          once.remove('solo-file-upload', SELECTORS.FILE_UPLOAD_WRAPPER, context);
+          once.remove(
+            'solo-file-upload',
+            SELECTORS.FILE_UPLOAD_WRAPPER,
+            context,
+          );
         } catch (error) {
           console.error('Solo: Error in soloFileUpload detach', error);
         }
       }
-    }
+    },
   };
 
   /**
@@ -717,7 +816,11 @@
       const behavior = Drupal.behaviors.soloSearchAnimation; // capture
 
       try {
-        const detailsElements = once('soloDetailsAnimation', SELECTORS.SEARCH_DETAILS, context);
+        const detailsElements = once(
+          'soloDetailsAnimation',
+          SELECTORS.SEARCH_DETAILS,
+          context,
+        );
         detailsElements?.forEach((detail) => {
           const wrapper = detail.querySelector(SELECTORS.DETAILS_WRAPPER);
           if (!wrapper) {
@@ -726,7 +829,8 @@
           }
 
           // Always ensure transition is defined (whether open or closed initially)
-          wrapper.style.transition = 'height 0.3s ease-in-out, opacity 0.3s ease-in-out';
+          wrapper.style.transition =
+            'height 0.3s ease-in-out, opacity 0.3s ease-in-out';
 
           // Initial state
           if (!detail.open) {
@@ -749,7 +853,7 @@
           const toggleHandler = () => {
             try {
               if (detail.open) {
-                const contentHeight = wrapper.scrollHeight + 'px';
+                const contentHeight = `${wrapper.scrollHeight}px`;
                 // From 0 -> actual height
                 wrapper.style.height = contentHeight;
                 wrapper.style.opacity = '1';
@@ -757,10 +861,14 @@
                 setTimeout(() => {
                   Drupal.announce(Drupal.t('Search options expanded'));
                 }, 100);
-                wrapper.addEventListener('transitionend', transitionEndHandler, { once: true });
+                wrapper.addEventListener(
+                  'transitionend',
+                  transitionEndHandler,
+                  { once: true },
+                );
               } else {
                 // From current height -> 0
-                wrapper.style.height = wrapper.scrollHeight + 'px';
+                wrapper.style.height = `${wrapper.scrollHeight}px`;
                 requestAnimationFrame(() => {
                   wrapper.style.height = '0';
                   wrapper.style.opacity = '0';
@@ -776,7 +884,10 @@
           };
 
           // Store handlers for cleanup
-          behavior.handlers.set(detail, { toggleHandler, transitionEndHandler });
+          behavior.handlers.set(detail, {
+            toggleHandler,
+            transitionEndHandler,
+          });
           detail.addEventListener('toggle', toggleHandler);
         });
       } catch (error) {
@@ -789,24 +900,35 @@
         const behavior = Drupal.behaviors.soloSearchAnimation;
 
         try {
-          const detailsElements = once.filter('soloDetailsAnimation', SELECTORS.SEARCH_DETAILS, context);
+          const detailsElements = once.filter(
+            'soloDetailsAnimation',
+            SELECTORS.SEARCH_DETAILS,
+            context,
+          );
           detailsElements?.forEach((detail) => {
             const handlers = behavior.handlers.get(detail);
             if (handlers) {
               detail.removeEventListener('toggle', handlers.toggleHandler);
               const wrapper = detail.querySelector(SELECTORS.DETAILS_WRAPPER);
               if (wrapper) {
-                wrapper.removeEventListener('transitionend', handlers.transitionEndHandler);
+                wrapper.removeEventListener(
+                  'transitionend',
+                  handlers.transitionEndHandler,
+                );
               }
               behavior.handlers.delete(detail);
             }
           });
-          once.remove('soloDetailsAnimation', SELECTORS.SEARCH_DETAILS, context);
+          once.remove(
+            'soloDetailsAnimation',
+            SELECTORS.SEARCH_DETAILS,
+            context,
+          );
         } catch (error) {
           console.error('Solo: Error in soloSearchAnimation detach', error);
         }
       }
-    }
+    },
   };
 
   // Cleanup function for module unload
@@ -819,5 +941,4 @@
       activeAnimations.clear();
     };
   }
-
 })(Drupal, drupalSettings, once);

@@ -38,9 +38,9 @@
 :where(.text-align-center) video,
 :where(.text-align-center) object,
 :where(.text-align-center) embed {
+  float: none;
   margin-inline-start: auto;
   margin-inline-end: auto;
-  float: none;
 }
 
 .solo-text-right img,
@@ -56,9 +56,9 @@
 }
 
 :where(.solo-page) .node__header.header-is-empty {
-  margin-block-end: 0;
-  width: initial;
   display: initial;
+  width: initial;
+  margin-block-end: 0;
 }
 
 label,
@@ -85,7 +85,7 @@ label,
 
 :where(article.node.node--view-mode-full .node__header) .node__meta {
   display: flex;
-  justify-content: end;
+  justify-content: start;
 }
 
 :where(.path-node article.node.node--view-mode-full) .node__content {
@@ -150,8 +150,8 @@ label,
 }
 
 :where(.node__meta) .node__author-image {
-  margin-inline-end: var(--solo-px12);
   overflow: hidden;
+  margin-inline-end: var(--solo-px12);
 }
 
 :where(.node__meta) .solo-node__author-info {

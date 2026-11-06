@@ -3,6 +3,13 @@ id: solo-razzle-onyx-elegance
 name: "Razzle Onyx Elegance"
 category: bold_and_dramatic_colors
 mode: mixed
+description: "Light content on white, a pink menu bar and a deep violet footer."
+brand:
+  primary: "#e52b50"
+  secondary: "#e31c44"
+  accent: "#7d2aa7"
+  ink_light: "#19040b"
+  ink_dark: "#17081f"
 categories:
   - bold_and_dramatic_colors
 css: css/predefined/solo-razzle-onyx-elegance.css

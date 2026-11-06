@@ -2,13 +2,13 @@
 @keyframes animateregion {
   0% {
     transform: scale(1);
-}
+  }
   50% {
     transform: scale(1.01);
-}
+  }
   100% {
     transform: scale(1);
-}
+  }
 }
 
 :where(.solo-page .solo-outer.solo-container--animate-hover) .solo-region-box__inner:not(.solo-region-box__inner--main),
@@ -22,14 +22,14 @@
 }
 
 :where(.solo-page .solo-outer.solo-container--animate-border) .solo-region-box__inner:not(.solo-region-box__inner--main)::before {
-  content: '';
   position: absolute;
-  inset-block-start: 0;
-  inset-inline-start: 0;
   width: 0;
   height: 0;
-  background-color: transparent;
+  content: "";
   border: var(--solo-px4) solid transparent;
+  background-color: transparent;
+  inset-block-start: 0;
+  inset-inline-start: 0;
 }
 
 :where(.solo-page .solo-outer.solo-container--animate-border) .solo-region-box__inner:not(.solo-region-box__inner--main):hover::before {
@@ -37,14 +37,14 @@
 }
 
 :where(.solo-page .solo-outer.solo-container--animate-border) .solo-region-box__inner:not(.solo-region-box__inner--main)::after {
-  content: '';
   position: absolute;
-  inset-block-end: 0;
-  inset-inline-end: 0;
   width: 0;
   height: 0;
-  background-color: transparent;
+  content: "";
   border: var(--solo-px4) solid transparent;
+  background-color: transparent;
+  inset-block-end: 0;
+  inset-inline-end: 0;
 }
 
 :where(.solo-page .solo-outer.solo-container--animate-border) .solo-region-box__inner:not(.solo-region-box__inner--main):hover::after {
@@ -53,8 +53,8 @@
 
 /* Shadows */
 :where(.solo-page .solo-outer.solo-container--animate-border) .solo-region-box__inner:not(.solo-region-box__inner--main) {
-  transition: 0.4s !important;
   overflow: hidden !important;
+  transition: 0.4s !important;
 }
 
 /* Radios */
@@ -83,6 +83,7 @@
 }
 
 /* Border animation  */
+/* stylelint-disable-next-line keyframes-name-pattern -- shipped animation name, kept as released */
 @keyframes borderLeftColors {
   0% {
     width: 0;
@@ -119,9 +120,9 @@
     border-bottom-color: transparent;
     border-left-color: transparent;
   }
-
 }
 
+/* stylelint-disable-next-line keyframes-name-pattern -- shipped animation name, kept as released */
 @keyframes borderRightColors {
   0% {
     width: 0;
@@ -158,7 +159,6 @@
     border-bottom-color: transparent;
     border-left-color: transparent;
   }
-
 }
 
 /* Reduced motion: end states are kept, movement is not (WCAG 2.3.3). */
@@ -168,8 +168,8 @@
   :where(:where(.solo-page .solo-outer.solo-container--animate-hover) .solo-region-box__inner:not(.solo-region-box__inner--main):hover),
   :where(:where(.solo-page .solo-outer.solo-container--animate-border) .solo-region-box__inner:not(.solo-region-box__inner--main):hover)::before,
   :where(:where(.solo-page .solo-outer.solo-container--animate-border) .solo-region-box__inner:not(.solo-region-box__inner--main):hover)::after {
+    transition-duration: 0.01ms !important;
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
   }
 }

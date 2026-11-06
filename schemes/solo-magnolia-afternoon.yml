@@ -3,6 +3,13 @@ id: solo-magnolia-afternoon
 name: "Magnolia Afternoon"
 category: soft_and_subtle_hues
 mode: mixed
+description: "Light content on white, a near-black menu bar and a near-black footer."
+brand:
+  primary: "#120f10"
+  secondary: "#251e21"
+  accent: "#252d39"
+  ink_light: "#e8e2e5"
+  ink_dark: "#2f252a"
 categories:
   - soft_and_subtle_hues
 css: css/predefined/solo-magnolia-afternoon.css

@@ -1,19 +1,19 @@
-:where(form.search-form) input[type=textarea],
-:where(form.search-form) input[type=search],
-:where(form.search-form) input[type=textfield] {
+:where(form.search-form) input[type="textarea"],
+:where(form.search-form) input[type="search"],
+:where(form.search-form) input[type="textfield"] {
   width: 100% !important;
 }
 
 :where(form.search-form) > .form-wrapper:not(.search-advanced) {
   position: relative;
   display: grid;
-  grid-template-columns: minmax(250px, auto) minmax(50px, 160px);
-  grid-template-rows: 1fr;
-  gap: 0 0;
-  grid-auto-flow: row;
-  row-gap: var(--solo-px8);
   grid-template-areas: "form-item form-submit";
+  grid-template-rows: 1fr;
+  grid-template-columns: minmax(250px, auto) minmax(50px, 160px);
+  grid-auto-flow: row;
   align-items: self-end;
+  gap: 0 0;
+  row-gap: var(--solo-px8);
 }
 
 :where(form.search-form > .form-wrapper) > .form-item {
@@ -22,15 +22,15 @@
 
 form.search-form > .form-wrapper > .form-submit {
   grid-area: form-submit;
+  width: 100%;
+  margin-block-start: 0;
   margin-block-end: var(--solo-px8);
   margin-inline: 0;
-  margin-block-start: 0;
-  width: 100%;
 }
 
 :where(form.search-form .form-wrapper) > .button--primary {
-  padding-inline-end: var(--solo-px3) !important;
   padding-inline-start: var(--solo-px3) !important;
+  padding-inline-end: var(--solo-px3) !important;
 }
 
 :where(form.search-form) > * {
@@ -81,8 +81,10 @@ form.search-form > .form-wrapper > .form-submit {
 :where(form.search-form) details.search-advanced .details-wrapper {
   overflow: hidden;
   height: 0;
+  transition:
+    height 0.4s ease,
+    opacity 0.4s ease;
   opacity: 0;
-  transition: height 0.4s ease, opacity 0.4s ease;
 }
 
 :where(form.search-form) details.search-advanced[open] .details-wrapper {
@@ -122,7 +124,7 @@ form.search-form > .form-wrapper > .form-submit {
   flex-grow: 1;
 }
 
-@media (width >= 48rem) {
+@media (min-width: 48rem) {
   :where(form.search-form) .search-advanced fieldset[data-drupal-selector="edit-keywords-fieldset"] .fieldset-wrapper {
     display: flex;
     flex-wrap: wrap;
@@ -140,8 +142,8 @@ form.search-form > .form-wrapper > .form-submit {
 
   :where(form.search-form .search-advanced fieldset[data-drupal-selector="edit-types-fieldset"] .fieldset-wrapper .form-checkboxes) > *,
   :where(form.search-form .search-advanced fieldset[data-drupal-selector="edit-lang-fieldset"] .fieldset-wrapper .form-checkboxes) > * {
-    width: auto;
     flex-wrap: nowrap;
+    width: auto;
   }
 
   form.search-form .search-advanced fieldset[data-drupal-selector="edit-types-fieldset"] .fieldset-wrapper .form-checkboxes label,
@@ -149,10 +151,9 @@ form.search-form > .form-wrapper > .form-submit {
     flex-basis: max-content;
     white-space: nowrap;
   }
-
 }
 
-@media (48rem <= width <= 61.99875rem) {
+@media (min-width: 48rem) and (max-width: 61.99875rem) {
   :where(form.search-form .search-advanced fieldset[data-drupal-selector="edit-keywords-fieldset"] .fieldset-wrapper) > * {
     flex: 1 1 calc(50% - var(--solo-px12));
     max-width: calc(50% - var(--solo-px12));
@@ -162,10 +163,9 @@ form.search-form > .form-wrapper > .form-submit {
     flex: 1 1 100%;
     max-width: 100%;
   }
-
 }
 
-@media (width <= 26rem) {
+@media (max-width: 26rem) {
   :where(.path-search) #edit-basic {
     display: flex;
     flex-direction: column;
@@ -174,23 +174,23 @@ form.search-form > .form-wrapper > .form-submit {
   }
 
   :where(.path-search #edit-basic) > * {
-    margin: 0 0 12px 0;
     width: 100%;
+    margin: 0 0 12px 0;
   }
 
   :where(.path-search) #edit-basic::before,
   :where(.path-search) #edit-basic::after {
-    content: unset;
     display: none;
     clear: none;
+    content: unset;
   }
 }
 
 /* Reduced motion: end states are kept, movement is not (WCAG 2.3.3). */
 @media (prefers-reduced-motion: reduce) {
   :where(:where(form.search-form) details.search-advanced .details-wrapper) {
+    transition-duration: 0.01ms !important;
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
   }
 }

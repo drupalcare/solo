@@ -3,6 +3,13 @@ id: solo-pristine-porcelain-glow
 name: "Pristine Porcelain Glow"
 category: elegant_whites_and_neutrals
 mode: light
+description: "Light content on white, a white menu bar and a white footer."
+brand:
+  primary: "#edf1fe"
+  secondary: "#f4f5f0"
+  accent: "#04164f"
+  ink_light: "#02081e"
+  ink_dark: "#24272a"
 categories:
   - elegant_whites_and_neutrals
 css: css/predefined/solo-pristine-porcelain-glow.css

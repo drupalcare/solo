@@ -3,6 +3,13 @@ id: solo-ivory-whisper
 name: "Ivory Whisper"
 category: elegant_whites_and_neutrals
 mode: light
+description: "Light content on white, a pale amber menu bar and a white footer."
+brand:
+  primary: "#e9e5d6"
+  secondary: "#718458"
+  accent: "#1f3550"
+  ink_light: "#302b19"
+  ink_dark: "#252113"
 categories:
   - elegant_whites_and_neutrals
 css: css/predefined/solo-ivory-whisper.css

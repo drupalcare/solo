@@ -4,7 +4,7 @@ Black Denim #191C27, Salmon #FF9999 */
   --sc-head-tx: #5b668f;
   --sc-link-tx: #c00;
   --sc-link-hover-tx: #f00;
-  --sc-menu-bg: #ff9999;
+  --sc-menu-bg: #f99;
   --sc-menu-tx: #200;
   --sc-menu-hover-tx: #400;
   --sc-menu-hover-bg: #fbb;
@@ -69,7 +69,7 @@ Black Denim #191C27, Salmon #FF9999 */
 }
 
 :is(.solo-container--main, .solo-container--top, .solo-fixed-search, .solo-popup-login__inner):where(:not([style*="--r-br:"] *)) {
-  --r-br: #ffcccc;
+  --r-br: #fcc;
 }
 
 .solo-highlighted {
@@ -163,8 +163,8 @@ div.solo-page-title.solo-container--single h1 a,
   --selectify-checkbox-checked-bg: color-mix(in srgb, #ff5d5d 16%, transparent);
   --selectify-checkbox-check-circle: #700;
   --selectify-checkbox-checked-circle: #ff5d5d;
-  --selectify-checkbox-disabled-bg: color-mix(in srgb, currentColor 5%, transparent);
-  --selectify-checkbox-disabled-circle: color-mix(in srgb, currentColor 22%, transparent);
+  --selectify-checkbox-disabled-bg: color-mix(in sRGB, currentColor 5%, transparent);
+  --selectify-checkbox-disabled-circle: color-mix(in sRGB, currentColor 22%, transparent);
   --selectify-checkbox-border-color: #700;
   --selectify-checkbox-hover-border-color: #ff5d5d;
   --selectify-checkbox-hover-bg: color-mix(in srgb, #ff5d5d 10%, transparent);
@@ -175,7 +175,7 @@ div.solo-page-title.solo-container--single h1 a,
 
 .solo-page .selectify-select,
 :where(.solo-page .selectify-select) * {
-  --selectify-select-bg: #ffffff;
+  --selectify-select-bg: #fff;
   --selectify-select-hover-bg: #fff5f5;
   --selectify-select-color: var(--r-tx);
   --selectify-select-border-color: var(--r-br);
@@ -187,15 +187,89 @@ div.solo-page-title.solo-container--single h1 a,
   --selectify-option-active-bg: #ffe8e8;
 }
 
-/* Per-region text colours: a region setting still wins. */
-:where(.solo-page) .solo-header,
-:where(.solo-page) .solo-page-title { --r-sc-h1: #9199b9; --r-sc-lk: #ff6969; --r-sc-lk-h: #ff8080; }
-:where(.solo-page) .solo-highlighted { --r-sc-lk-h: #ec0000; }
-:where(.solo-page) .solo-welcome-text,
-:where(.solo-page) .solo-container--main { --r-sc-lk-h: #ee0000; }
-:where(.solo-page) .breadcrumb,
-:where(.solo-page) .solo-copyright { --r-sc-h1: #7883a9; --r-sc-lk-h: #ff2727; }
-:where(.solo-page) .solo-container--top { --r-sc-h1: #3f4663; --r-sc-lk: #950000; --r-sc-lk-h: #830000; }
-:where(.solo-page) .solo-fixed-search,
-:where(.solo-page) .solo-popup-login__inner { --r-sc-lk-h: #ba0000; }
-/* End per-region text colours */
+/* Region text colors: one block per region with its heading (--r-sc-h1), link
+   (--r-sc-lk) and link hover (--r-sc-lk-h) colors, and button hover text where the
+   scheme sets one. Backgrounds above are the scheme's own. Every color here reaches
+   WCAG AA (4.5:1) on the grounds named in its comment. A site's region colors still win. */
+/* Header: on #202331, #2d3246. */
+.solo-header {
+  --r-sc-h1: #9199b9;
+  --r-sc-lk: #ff6969;
+  --r-sc-lk-h: #ff8080;
+}
+
+/* Highlighted: on #fdfdfd. */
+.solo-highlighted {
+  --r-sc-lk: #c00;
+  --r-sc-lk-h: #ec0000;
+}
+
+/* Fixed search: on #fdfdfd, #f3e8e8. */
+.solo-fixed-search {
+  --r-sc-lk: #c00;
+  --r-sc-lk-h: #ba0000;
+}
+
+/* Popup login: on #fdfdfd, #f3e8e8. */
+.solo-popup-login__inner {
+  --r-sc-lk: #c00;
+  --r-sc-lk-h: #ba0000;
+}
+
+/* Welcome text: on #ffeeee. */
+.solo-welcome-text {
+  --r-sc-lk: #c00;
+  --r-sc-lk-h: #dc0000;
+}
+
+/* Top: on #ffeeee, #ff9999. */
+.solo-container--top {
+  --r-sc-h1: #3f4663;
+  --r-sc-lk: #950000;
+  --r-sc-lk-h: #830000;
+}
+
+/* Main: on #ffffff. */
+.solo-container--main {
+  --r-sc-lk: #c00;
+  --r-sc-lk-h: #e00;
+}
+
+/* Page title: on #202331, #2d3246. */
+.solo-page-title {
+  --r-sc-h1: #9199b9;
+  --r-sc-lk: #ff6969;
+  --r-sc-lk-h: #ff8080;
+}
+
+/* Breadcrumb: on #110000, #191c27. */
+.breadcrumb {
+  --r-sc-h1: #7883a9;
+  --r-sc-lk: #eef0f4;
+  --r-sc-lk-h: #ff2727;
+}
+
+/* Bottom: on #110000, #010000. */
+.solo-container--bottom {
+  --r-sc-lk: #eef0f4;
+  --r-sc-lk-h: #f00;
+}
+
+/* Footer: on #110000, #010000. */
+.solo-container--footer {
+  --r-sc-lk: #eef0f4;
+  --r-sc-lk-h: #f00;
+}
+
+/* Footer menu: on #110000, #0c0d12. */
+.solo-footer-nav {
+  --r-sc-lk: #eef0f4;
+  --r-sc-lk-h: #f00;
+}
+
+/* Copyright: on #110000, #191c27. */
+.solo-copyright {
+  --r-sc-h1: #7883a9;
+  --r-sc-lk: #eef0f4;
+  --r-sc-lk-h: #ff2727;
+}

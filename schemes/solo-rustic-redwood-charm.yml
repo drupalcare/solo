@@ -3,6 +3,13 @@ id: solo-rustic-redwood-charm
 name: "Rustic Redwood Charm"
 category: bold_and_dramatic_colors
 mode: dark
+description: "Dark content on near-black, a deep red menu bar and a near-black footer."
+brand:
+  primary: "#060101"
+  secondary: "#432616"
+  accent: "#daaa8f"
+  ink_light: "#fce8e7"
+  ink_dark: "#fef7f6"
 categories:
   - bold_and_dramatic_colors
 css: css/predefined/solo-rustic-redwood-charm.css

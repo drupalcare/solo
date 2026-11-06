@@ -3,6 +3,13 @@ id: solo-indigo-pulse
 name: "Indigo Pulse"
 category: denim_influences
 mode: mixed
+description: "Light content on white, a sky blue menu bar and a deep sky blue footer."
+brand:
+  primary: "#0f8ef4"
+  secondary: "#281e5d"
+  accent: "#332677"
+  ink_light: "#000204"
+  ink_dark: "#000204"
 categories:
   - denim_influences
 css: css/predefined/solo-indigo-pulse.css

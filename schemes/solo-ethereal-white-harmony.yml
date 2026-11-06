@@ -3,6 +3,13 @@ id: solo-ethereal-white-harmony
 name: "Ethereal White Harmony"
 category: elegant_whites_and_neutrals
 mode: light
+description: "Light content on white, a white menu bar and a white footer."
+brand:
+  primary: "#e9eaec"
+  secondary: "#838d97"
+  accent: "#3d472f"
+  ink_light: "#33383d"
+  ink_dark: "#1a2d44"
 categories:
   - elegant_whites_and_neutrals
 css: css/predefined/solo-ethereal-white-harmony.css

@@ -3,6 +3,13 @@ id: solo-monochrome-splash
 name: "Monochrome Splash"
 category: miscellaneous
 mode: mixed
+description: "Light content on white, a near-black menu bar and a near-black footer."
+brand:
+  primary: "#000000"
+  secondary: "#000000"
+  accent: "#ce103d"
+  ink_light: "#ffffff"
+  ink_dark: "#000000"
 categories:
   - miscellaneous
 css: css/predefined/solo-monochrome-splash.css

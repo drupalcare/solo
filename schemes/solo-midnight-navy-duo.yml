@@ -3,6 +3,13 @@ id: solo-midnight-navy-duo
 name: "Midnight Navy Duo"
 category: bold_and_dramatic_colors
 mode: mixed
+description: "Light content on white, a deep sky blue menu bar and a deep sky blue footer."
+brand:
+  primary: "#002d62"
+  secondary: "#1a356a"
+  accent: "#234994"
+  ink_light: "#fbfdff"
+  ink_dark: "#060c18"
 categories:
   - bold_and_dramatic_colors
 css: css/predefined/solo-midnight-navy-duo.css

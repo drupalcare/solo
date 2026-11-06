@@ -27,18 +27,18 @@ ul.admin-list {
   display: block;
   min-height: 0;
   padding-block-start: 10px;
-  padding-inline-end: 15px;
   padding-block-end: 14px;
   padding-inline-start: 25px;
+  padding-inline-end: 15px;
   background: url(../../images/icons/chevron-disc-right.svg) no-repeat 1px 17px;
 }
 
-/*Admin pages */
+/* Admin pages */
 :where(.ui-dialog-content) .solo-content,
 :where(.solo-body--admin-context .block-system-main-block) .solo-content {
-  max-width: 100%;
-  width: 100%;
   display: inline-block;
+  width: 100%;
+  max-width: 100%;
 }
 
 :where(.solo-body--admin-context .block-system-main-block .modules-tabs__menu) + form.system-modules {
@@ -64,11 +64,11 @@ ul.admin-list {
 
 .dropbutton input.solo-margin-bottom,
 .dropbutton input.solo-margin-top {
-  margin: 0 !important;
   width: 100% !important;
+  margin: 0 !important;
+  transition: 0.4s;
   text-align: var(--solo-text-align-start);
   border: none;
-  transition: 0.4s;
 }
 
 .paragraph-type-top.solo-row::before {
@@ -91,20 +91,20 @@ form .field--widget-entity-reference-paragraphs td.field-multiple-drag {
 }
 
 :where(.solo-body--admin-context) nav.action-links {
-  list-style: none;
   margin-inline-start: var(--solo-px1);
+  list-style: none;
 }
 
 .solo-body--admin-context nav.action-links li {
-  white-space: normal;
   display: inline-block;
-  vertical-align: middle;
   overflow: hidden;
+  cursor: pointer;
+  text-align: center;
+  vertical-align: middle;
+  white-space: normal;
   text-decoration: none;
   color: inherit;
   background-color: inherit;
-  text-align: center;
-  cursor: pointer;
 }
 
 .solo-body--admin-context .region-title__action a,
@@ -122,26 +122,26 @@ form .field--widget-entity-reference-paragraphs td.field-multiple-drag {
 
 .solo-body--admin-context form .form-actions button,
 .solo-body--admin-context form .form-actions input {
-  margin-block: var(--solo-px16);
-  margin-inline-end: var(--solo-px12);
   margin-inline-start: 0;
+  margin-inline-end: var(--solo-px12);
+  margin-block: var(--solo-px16);
 }
 
 /* admin pages  */
 :where(.solo-body--admin-context .block-system-main-block) .modules-tabs {
-  margin-inline-end: var(--solo-px16);
   margin-inline-start: var(--solo-px16);
+  margin-inline-end: var(--solo-px16);
   border-color: #eaeaea;
 }
 
 :where(.solo-body--admin-context) .modules-tabs__pane {
-  margin-block: 0;
+  width: auto;
   margin-inline-start: 240px;
+  border-inline-start: 1px solid #eaeaea;
+  background: #f8f8f8;
+  margin-block: 0;
   padding-block: var(--solo-px12);
   padding-inline: var(--solo-px16);
-  background: #f8f8f8;
-  border-inline-start: 1px solid #eaeaea;
-  width: auto;
 }
 
 .solo-body--admin-context .block-system-main-block .modules-tabs tr td {
@@ -213,17 +213,17 @@ form .field--widget-entity-reference-paragraphs td.field-multiple-drag {
  */
 .color-success {
   color: #325e1c;
-  background-color: #ddffdd !important;
+  background-color: #dfd !important;
 }
 
 .color-warning {
   color: #734c00;
-  background-color: #ffffcc !important;
+  background-color: #ffc !important;
 }
 
 .color-error {
   color: #a51b00;
-  background-color: #ffdddd !important;
+  background-color: #fdd !important;
 }
 
 /* CKE */
@@ -232,8 +232,8 @@ form .field--widget-entity-reference-paragraphs td.field-multiple-drag {
 @media (prefers-reduced-motion: reduce) {
   :where(.dropbutton input.solo-margin-bottom),
   :where(.dropbutton input.solo-margin-top) {
+    transition-duration: 0.01ms !important;
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
   }
 }

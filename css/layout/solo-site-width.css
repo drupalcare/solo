@@ -1,5 +1,3 @@
-
-
 /* Define CSS variables for different screen widths */
 .solo-page.sw-2560 {
   --solo-width: var(--solo-rem2560);
@@ -47,11 +45,9 @@
 }
 
 /* Apply max-width dynamically */
-:where(.solo-page > .solo-outer) > .solo-inner:not(.solo-primary-sidebar-menu__inner, .page-node-type-pb-content .solo-container__inner--main)
- {
+:where(.solo-page > .solo-outer, .solo-page > .solo-footer-landmark > .solo-outer) > .solo-inner:not(.solo-primary-sidebar-menu__inner, .page-node-type-pb-content .solo-container__inner--main) {
   max-width: var(--solo-width);
-}/* Default rule for sw-100 */
-:where(.solo-page.sw-100 > .solo-outer) > .solo-inner:not(.solo-primary-sidebar-menu__inner, .page-node-type-pb-content .solo-container__inner--main)
- {
+} /* Default rule for sw-100 */
+:where(.solo-page.sw-100 > .solo-outer, .solo-page.sw-100 > .solo-footer-landmark > .solo-outer) > .solo-inner:not(.solo-primary-sidebar-menu__inner, .page-node-type-pb-content .solo-container__inner--main) {
   max-width: 100%;
 }

@@ -1,5 +1,4 @@
 ((Drupal) => {
-  'use strict';
   Drupal.solo = Drupal.solo || {};
   Drupal.solo.keyboard = Drupal.solo.keyboard || {};
 
@@ -18,7 +17,7 @@
     }
 
     bindFocusEvents() {
-      this.core.menuItems.forEach(item => {
+      this.core.menuItems.forEach((item) => {
         item.addEventListener('focus', this.handleFocus);
         item.addEventListener('blur', this.handleBlur);
       });
@@ -39,7 +38,7 @@
     }
 
     destroy() {
-      this.core.menuItems.forEach(item => {
+      this.core.menuItems.forEach((item) => {
         item.removeEventListener('focus', this.handleFocus);
         item.removeEventListener('blur', this.handleBlur);
       });

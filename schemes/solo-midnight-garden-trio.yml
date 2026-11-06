@@ -3,6 +3,13 @@ id: solo-midnight-garden-trio
 name: "Midnight Garden Trio"
 category: midnight_and_twilight
 mode: mixed
+description: "Light content on white, a blue menu bar and a white footer."
+brand:
+  primary: "#3164ca"
+  secondary: "#56b045"
+  accent: "#494a45"
+  ink_light: "#fcfdfe"
+  ink_dark: "#060c18"
 categories:
   - midnight_and_twilight
 css: css/predefined/solo-midnight-garden-trio.css

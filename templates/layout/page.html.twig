@@ -145,18 +145,27 @@
   {% include '@solo/partials/_bottom-regions.html.twig' %}
   {% endif %}
 
-  {% if site_regions_footer_disable == 0 %}
-  {% include '@solo/partials/_footer-regions.html.twig' %}
-  {% endif %}
-  {% if site_regions_footer_disable == 1 and is_front %}
-  {% include '@solo/partials/_footer-regions.html.twig' %}
-  {% endif %}
-  {% if site_regions_footer_disable == 2 and not is_front %}
-  {% include '@solo/partials/_footer-regions.html.twig' %}
-  {% endif %}
+  {# One contentinfo landmark holds the footer regions, the footer menu and the
+     copyright band. It prints only when one of them has output. #}
+  {% set solo_footer_content %}
+    {% if site_regions_footer_disable == 0 %}
+    {% include '@solo/partials/_footer-regions.html.twig' %}
+    {% endif %}
+    {% if site_regions_footer_disable == 1 and is_front %}
+    {% include '@solo/partials/_footer-regions.html.twig' %}
+    {% endif %}
+    {% if site_regions_footer_disable == 2 and not is_front %}
+    {% include '@solo/partials/_footer-regions.html.twig' %}
+    {% endif %}
 
-  {% include '@solo/partials/_footer-menu.html.twig' %}
+    {% include '@solo/partials/_footer-menu.html.twig' %}
 
-  {% include '@solo/partials/_copyright.html.twig' %}
+    {% include '@solo/partials/_copyright.html.twig' %}
+  {% endset %}
+  {% if solo_footer_content|trim is not empty %}
+  <footer id="solo-footer-landmark" class="solo-footer-landmark">
+    {{ solo_footer_content }}
+  </footer>
+  {% endif %}
 </div>
 <!-- End: Page Wrapper -->

@@ -11,8 +11,8 @@
 }
 
 .solo-back-to-top-sentinel-wrapper {
-  height: 0;
   overflow: hidden;
+  height: 0;
   pointer-events: none;
 }
 
@@ -24,24 +24,28 @@
 
 .solo-back-to-top {
   --solo-z-back-to-top: 99999;
+
   position: fixed;
-  bottom: 1.5rem;
   z-index: var(--solo-z-back-to-top);
+  bottom: 1.5rem;
   display: inline-flex;
+  visibility: hidden;
   align-items: center;
   justify-content: center;
-  width: 2.75rem;  /* ~44px touch-friendly */
+  width: 2.75rem; /* ~44px touch-friendly */
   height: 2.75rem;
   padding: 0;
+  cursor: pointer;
+  transition:
+    opacity 0.2s ease,
+    visibility 0.2s ease,
+    transform 0.2s ease;
+  pointer-events: none;
+  opacity: 0;
+  color: var(--r-tx, #fff);
   border: 2px solid transparent;
   border-radius: 50%;
   background-color: var(--r-bg, #333);
-  color: var(--r-tx, #fff);
-  cursor: pointer;
-  opacity: 0;
-  visibility: hidden;
-  pointer-events: none;
-  transition: opacity 0.2s ease, visibility 0.2s ease, transform 0.2s ease;
 }
 
 .solo-back-to-top--bottom-right {
@@ -50,14 +54,14 @@
 }
 
 .solo-back-to-top--bottom-left {
-  left: 1.5rem;
   right: auto;
+  left: 1.5rem;
 }
 
 .solo-back-to-top--outline {
-  background-color: transparent;
-  border-color: var(--r-tx, #fff);
   color: var(--r-tx, #fff);
+  border-color: var(--r-tx, #fff);
+  background-color: transparent;
 }
 
 .solo-back-to-top--outline:hover,
@@ -65,29 +69,34 @@
   color: var(--r-tx, #fff);
 }
 
-@media (width <= 767px) {
+@media (max-width: 767px) {
   .solo-back-to-top.solo-back-to-top--hide-small {
     display: none !important;
   }
 }
 
 .solo-back-to-top.solo-is-visible {
-  opacity: 1;
   visibility: visible;
   pointer-events: auto;
+  opacity: 1;
+}
+
+/* The login popup is modal: keep the button out of sight and out of reach
+   while it is open (z-index 99999 would otherwise paint it above the dialog). */
+body.solo-login-popup-open .solo-back-to-top.solo-is-visible {
+  visibility: hidden;
+  pointer-events: none;
+  opacity: 0;
 }
 
 .solo-back-to-top:hover,
 .solo-back-to-top:focus {
-  color: var(--r-tx, #fff);
   transform: translateY(-2px);
+  color: var(--r-tx, #fff);
 }
 
-.solo-back-to-top:focus,
-.solo-back-to-top:focus-visible {
-  outline: 2px solid currentColor;
-  outline-offset: 2px;
-}
+/* Focus ring: the global two-color ring in solo-normalize.css (outline in
+   --r-tx, halo in --r-bg) applies here; no override, so it stays one rule. */
 
 .solo-back-to-top__icon {
   width: 1.25rem;

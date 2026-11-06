@@ -1,5 +1,4 @@
 ((Drupal) => {
-  'use strict';
   Drupal.solo = Drupal.solo || {};
   Drupal.solo.keyboard = Drupal.solo.keyboard || {};
 
@@ -19,14 +18,17 @@
     }
 
     bindEventListeners() {
-      this.core.menuItems.forEach(item => {
+      this.core.menuItems.forEach((item) => {
         item.addEventListener('keydown', this.handleKeydown);
       });
     }
 
     setupMobileNav() {
       if (this.core.mobileNavButton) {
-        this.core.mobileNavButton.addEventListener('click', this.handleMobileNavClick);
+        this.core.mobileNavButton.addEventListener(
+          'click',
+          this.handleMobileNavClick,
+        );
       }
     }
 
@@ -41,7 +43,9 @@
 
     handleMobileNavClick() {
       this.setTimeoutSafe(() => {
-        const isOpen = this.menubar.classList.contains('solo-is-open') || this.menubar.classList.contains('is-active');
+        const isOpen =
+          this.menubar.classList.contains('solo-is-open') ||
+          this.menubar.classList.contains('is-active');
         if (isOpen) {
           const firstItem = this.getFirstFocusableItem(this.menubar);
           if (firstItem) firstItem.focus();
@@ -84,7 +88,16 @@
       const itemStructure = parser.getItemStructure(target);
       const isSidebar = this.core.templateInfo.isSidebar;
 
-      if (['ArrowRight', 'ArrowLeft', 'ArrowDown', 'ArrowUp', 'Home', 'End'].includes(key)) {
+      if (
+        [
+          'ArrowRight',
+          'ArrowLeft',
+          'ArrowDown',
+          'ArrowUp',
+          'Home',
+          'End',
+        ].includes(key)
+      ) {
         event.preventDefault();
       }
 
@@ -101,7 +114,7 @@
             const clickEvent = new MouseEvent('click', {
               bubbles: true,
               cancelable: true,
-              view: window
+              view: window,
             });
             target.dispatchEvent(clickEvent);
           } else if (target.tagName === 'BUTTON') {
@@ -159,15 +172,18 @@
     }
 
     navigateTopLevel(current, forward) {
-      const topLevelItems = Array.from(this.menubar.querySelectorAll(':scope > li > a, :scope > li > button'))
-        .filter(item => item.offsetParent !== null);
+      const topLevelItems = Array.from(
+        this.menubar.querySelectorAll(':scope > li > a, :scope > li > button'),
+      ).filter((item) => item.offsetParent !== null);
 
       const currentIndex = topLevelItems.indexOf(current);
       let targetIndex;
 
       if (currentIndex === -1) {
         const parentLi = current.closest('li');
-        const topLevelFocus = this.getPrimaryFocusElement(parentLi?.closest('.solo-menu-tree__menubar-item') || parentLi);
+        const topLevelFocus = this.getPrimaryFocusElement(
+          parentLi?.closest('.solo-menu-tree__menubar-item') || parentLi,
+        );
         targetIndex = topLevelItems.indexOf(topLevelFocus);
       } else {
         targetIndex = currentIndex;
@@ -176,7 +192,8 @@
       if (forward) {
         targetIndex = (targetIndex + 1) % topLevelItems.length;
       } else {
-        targetIndex = (targetIndex - 1 + topLevelItems.length) % topLevelItems.length;
+        targetIndex =
+          (targetIndex - 1 + topLevelItems.length) % topLevelItems.length;
       }
 
       if (topLevelItems[targetIndex]) {
@@ -196,7 +213,9 @@
         const button = itemStructure.button || target;
 
         if (subMenu && button) {
-          const isMenubar = button.parentElement.classList.contains('solo-menu-tree__menubar-item');
+          const isMenubar = button.parentElement.classList.contains(
+            'solo-menu-tree__menubar-item',
+          );
           const isToggled = subMenu.classList.contains('solo-is-open');
 
           if (isToggled) {
@@ -205,12 +224,10 @@
             } else {
               Drupal.solo.menuOperations.closeSubMenu(button, subMenu);
             }
+          } else if (isMenubar) {
+            Drupal.solo.menuOperations.openMenubar(button, subMenu);
           } else {
-            if (isMenubar) {
-              Drupal.solo.menuOperations.openMenubar(button, subMenu);
-            } else {
-              Drupal.solo.menuOperations.openSubMenu(button, subMenu);
-            }
+            Drupal.solo.menuOperations.openSubMenu(button, subMenu);
           }
           return;
         }
@@ -226,27 +243,39 @@
 
     navigateHorizontal(current, direction) {
       if (!current || !document.contains(current)) {
-        console.warn('Solo Keyboard: Invalid current element in navigateHorizontal');
+        console.warn(
+          'Solo Keyboard: Invalid current element in navigateHorizontal',
+        );
         return;
       }
 
       const parser = this.core.getModule('templateParser');
 
       if (!parser) {
-        console.warn('Solo Keyboard: Parser not available in navigateHorizontal');
+        console.warn(
+          'Solo Keyboard: Parser not available in navigateHorizontal',
+        );
         return;
       }
 
       const itemStructure = parser.getItemStructure(current);
 
       if (itemStructure?.type === 'split') {
-        if (direction === 1 && current === itemStructure.link && itemStructure.button) {
+        if (
+          direction === 1 &&
+          current === itemStructure.link &&
+          itemStructure.button
+        ) {
           if (document.contains(itemStructure.button)) {
             itemStructure.button.focus();
           }
           return;
         }
-        if (direction === -1 && current === itemStructure.button && itemStructure.link) {
+        if (
+          direction === -1 &&
+          current === itemStructure.button &&
+          itemStructure.link
+        ) {
           if (document.contains(itemStructure.link)) {
             itemStructure.link.focus();
           }
@@ -262,29 +291,38 @@
         return;
       }
 
-      const items = Array.from(container.children).filter(li => li.tagName === 'LI');
+      const items = Array.from(container.children).filter(
+        (li) => li.tagName === 'LI',
+      );
       const currentIndex = items.indexOf(currentLi);
 
-      const nextIndex = direction === 1 ?
-        (currentIndex + 1) % items.length :
-        (currentIndex - 1 + items.length) % items.length;
+      const nextIndex =
+        direction === 1
+          ? (currentIndex + 1) % items.length
+          : (currentIndex - 1 + items.length) % items.length;
 
       const nextLi = items[nextIndex];
       if (nextLi) {
         const nextItemStructure = parser?.getItemStructure(nextLi);
-        const focusTarget = this.getPrimaryFocusElement(nextLi, nextItemStructure);
+        const focusTarget = this.getPrimaryFocusElement(
+          nextLi,
+          nextItemStructure,
+        );
         if (focusTarget) focusTarget.focus();
       }
     }
 
     getPrimaryFocusElement(li, itemStructure) {
       if (!itemStructure) {
-        itemStructure = this.core.getModule('templateParser')?.getItemStructure(li);
+        itemStructure = this.core
+          .getModule('templateParser')
+          ?.getItemStructure(li);
       }
 
       if (itemStructure?.link) {
         return itemStructure.link;
-      } else if (itemStructure?.button) {
+      }
+      if (itemStructure?.button) {
         return itemStructure.button;
       }
 
@@ -293,12 +331,16 @@
 
     navigateVertical(current, direction, itemStructure) {
       if (!current || !document.contains(current)) {
-        console.warn('Solo Keyboard: Invalid current element in navigateVertical');
+        console.warn(
+          'Solo Keyboard: Invalid current element in navigateVertical',
+        );
         return;
       }
 
       if (!this.menubar || !document.contains(this.menubar)) {
-        console.warn('Solo Keyboard: Menubar not available in navigateVertical');
+        console.warn(
+          'Solo Keyboard: Menubar not available in navigateVertical',
+        );
         return;
       }
 
@@ -321,7 +363,12 @@
         return;
       }
 
-      if (direction === 1 && itemStructure?.hasSubmenu && itemStructure.button && current === itemStructure.button) {
+      if (
+        direction === 1 &&
+        itemStructure?.hasSubmenu &&
+        itemStructure.button &&
+        current === itemStructure.button
+      ) {
         if (!itemStructure.submenu.classList.contains('solo-is-open')) {
           this.openSubmenu(current, itemStructure);
         } else {
@@ -331,16 +378,28 @@
         return;
       }
 
-      if (direction === 1 && itemStructure?.type === 'split' && current === itemStructure.link && itemStructure.button) {
+      if (
+        direction === 1 &&
+        itemStructure?.type === 'split' &&
+        current === itemStructure.link &&
+        itemStructure.button
+      ) {
         itemStructure.button.focus();
         return;
       }
 
-      const container = current.closest('.solo-menu-tree__menubar, ul.solo-menu-tree__submenu');
+      const container = current.closest(
+        '.solo-menu-tree__menubar, ul.solo-menu-tree__submenu',
+      );
       const items = this.getAllFocusableItems(container);
       const currentIndex = items.indexOf(current);
 
-      if (direction === -1 && currentIndex === 0 && this.core.mobileNavButton && this.core.isSmallScreen()) {
+      if (
+        direction === -1 &&
+        currentIndex === 0 &&
+        this.core.mobileNavButton &&
+        this.core.isSmallScreen()
+      ) {
         const parentMenu = container.closest('ul.solo-menu-tree__submenu');
         if (!parentMenu) {
           this.core.mobileNavButton.focus();
@@ -348,9 +407,10 @@
         }
       }
 
-      const newIndex = direction === 1 ?
-        (currentIndex + 1) % items.length :
-        (currentIndex - 1 + items.length) % items.length;
+      const newIndex =
+        direction === 1
+          ? (currentIndex + 1) % items.length
+          : (currentIndex - 1 + items.length) % items.length;
 
       if (items[newIndex]) {
         items[newIndex].focus();
@@ -375,12 +435,21 @@
           return;
         }
 
-        const isMenubar = itemStructure.button.parentElement?.classList.contains('solo-menu-tree__menubar-item');
+        const isMenubar =
+          itemStructure.button.parentElement?.classList.contains(
+            'solo-menu-tree__menubar-item',
+          );
 
         if (isMenubar) {
-          Drupal.solo.menuOperations.openMenubar(itemStructure.button, itemStructure.submenu);
+          Drupal.solo.menuOperations.openMenubar(
+            itemStructure.button,
+            itemStructure.submenu,
+          );
         } else {
-          Drupal.solo.menuOperations.openSubMenu(itemStructure.button, itemStructure.submenu);
+          Drupal.solo.menuOperations.openSubMenu(
+            itemStructure.button,
+            itemStructure.submenu,
+          );
         }
 
         // Focus handling after operation
@@ -431,7 +500,9 @@
       }
 
       const parentStructure = parser.getItemStructure(parentLi);
-      const parentButton = parentStructure?.button || parentLi.querySelector(':scope > button.solo-menu-tree__toggler');
+      const parentButton =
+        parentStructure?.button ||
+        parentLi.querySelector(':scope > button.solo-menu-tree__toggler');
 
       if (parentButton && document.contains(parentButton)) {
         parentButton.focus();
@@ -443,7 +514,10 @@
           }
         }
       } else {
-        const parentFocus = this.getPrimaryFocusElement(parentLi, parentStructure);
+        const parentFocus = this.getPrimaryFocusElement(
+          parentLi,
+          parentStructure,
+        );
         if (parentFocus && document.contains(parentFocus)) {
           parentFocus.focus();
         }
@@ -452,15 +526,25 @@
 
     handleEscape(current) {
       const submenu = current.closest('ul.solo-menu-tree__submenu');
-      const ownSubmenu = current.classList.contains('solo-menu-tree__toggler') ? current.nextElementSibling : null;
+      const ownSubmenu = current.classList.contains('solo-menu-tree__toggler')
+        ? current.nextElementSibling
+        : null;
       if (submenu && submenu !== this.menubar) {
         this.exitSubmenu(current);
         return true;
       }
-      if (ownSubmenu && ownSubmenu.classList.contains('solo-is-open') && Drupal.solo.menuOperations) {
+      if (
+        ownSubmenu &&
+        ownSubmenu.classList.contains('solo-is-open') &&
+        Drupal.solo.menuOperations
+      ) {
         // W3C APG disclosure: Escape closes the open dropdown; focus stays on
         // the button that controls it.
-        if (current.parentElement.classList.contains('solo-menu-tree__menubar-item')) {
+        if (
+          current.parentElement.classList.contains(
+            'solo-menu-tree__menubar-item',
+          )
+        ) {
           Drupal.solo.menuOperations.closeMenubar(current, ownSubmenu);
         } else {
           Drupal.solo.menuOperations.closeSubMenu(current, ownSubmenu);
@@ -478,7 +562,9 @@
     }
 
     navigateToEnd(current, toFirst) {
-      const container = current.closest('.solo-menu-tree__menubar, ul.solo-menu-tree__submenu');
+      const container = current.closest(
+        '.solo-menu-tree__menubar, ul.solo-menu-tree__submenu',
+      );
       const items = this.getAllFocusableItems(container);
       const target = toFirst ? items[0] : items[items.length - 1];
       if (target) target.focus();
@@ -486,13 +572,18 @@
 
     getAllFocusableItems(container) {
       if (!container || !document.contains(container)) {
-        console.warn('Solo Keyboard: Invalid container in getAllFocusableItems');
+        console.warn(
+          'Solo Keyboard: Invalid container in getAllFocusableItems',
+        );
         return [];
       }
 
       try {
-        return Array.from(container.querySelectorAll(':scope > li > a, :scope > li > button'))
-          .filter(item => item.offsetParent !== null && document.contains(item));
+        return Array.from(
+          container.querySelectorAll(':scope > li > a, :scope > li > button'),
+        ).filter(
+          (item) => item.offsetParent !== null && document.contains(item),
+        );
       } catch (error) {
         console.error('Solo Keyboard: Error in getAllFocusableItems', error);
         return [];
@@ -505,16 +596,18 @@
     }
 
     destroy() {
-      this.timeouts.forEach(timeoutId => clearTimeout(timeoutId));
+      this.timeouts.forEach((timeoutId) => clearTimeout(timeoutId));
       this.timeouts.clear();
-      this.core.menuItems.forEach(item => {
+      this.core.menuItems.forEach((item) => {
         item.removeEventListener('keydown', this.handleKeydown);
       });
       if (this.core.mobileNavButton) {
-        this.core.mobileNavButton.removeEventListener('click', this.handleMobileNavClick);
+        this.core.mobileNavButton.removeEventListener(
+          'click',
+          this.handleMobileNavClick,
+        );
       }
     }
-
   }
 
   Drupal.solo.keyboard.navigation = NavigationModule;

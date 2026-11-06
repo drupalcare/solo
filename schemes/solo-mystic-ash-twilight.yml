@@ -3,6 +3,13 @@ id: solo-mystic-ash-twilight
 name: "Mystic Ash Twilight"
 category: midnight_and_twilight
 mode: mixed
+description: "Light content on white, a charcoal menu bar and a white footer."
+brand:
+  primary: "#403f52"
+  secondary: "#322c2d"
+  accent: "#3b3435"
+  ink_light: "#e8e7ed"
+  ink_dark: "#22212c"
 categories:
   - midnight_and_twilight
 css: css/predefined/solo-mystic-ash-twilight.css

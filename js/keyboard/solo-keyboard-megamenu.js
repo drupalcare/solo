@@ -1,5 +1,4 @@
 ((Drupal) => {
-  'use strict';
   Drupal.solo = Drupal.solo || {};
   Drupal.solo.keyboard = Drupal.solo.keyboard || {};
 
@@ -16,16 +15,20 @@
     }
 
     enhanceMegamenuNavigation() {
-      const megaMenus = this.menubar.querySelectorAll('.solo-menu-tree__submenu--mega, .solo-menu-tree__submenu--mega, [class*="solo-menu-tree__submenu--mega"]');
-      megaMenus.forEach(megaMenu => {
-        megaMenu.querySelectorAll('a, button').forEach(item => {
+      const megaMenus = this.menubar.querySelectorAll(
+        '.solo-menu-tree__submenu--mega, .solo-menu-tree__submenu--mega, [class*="solo-menu-tree__submenu--mega"]',
+      );
+      megaMenus.forEach((megaMenu) => {
+        megaMenu.querySelectorAll('a, button').forEach((item) => {
           item.addEventListener('keydown', this.handleMegamenuKeydown);
         });
       });
     }
 
     handleMegamenuKeydown(event) {
-      const megaMenu = event.target.closest('.solo-menu-tree__submenu--mega, .solo-menu-tree__submenu--mega, [class*="solo-menu-tree__submenu--mega"]');
+      const megaMenu = event.target.closest(
+        '.solo-menu-tree__submenu--mega, .solo-menu-tree__submenu--mega, [class*="solo-menu-tree__submenu--mega"]',
+      );
       if (!megaMenu) return;
 
       const columns = this.getMegamenuColumns(megaMenu);
@@ -48,11 +51,14 @@
 
     getMegamenuColumns(megaMenu) {
       const columns = [];
-      const columnElements = megaMenu.querySelectorAll(':scope > li, .solo-menu-tree__megamenu-column');
+      const columnElements = megaMenu.querySelectorAll(
+        ':scope > li, .solo-menu-tree__megamenu-column',
+      );
 
-      columnElements.forEach(column => {
-        const items = Array.from(column.querySelectorAll('a, button'))
-          .filter(item => this.isVisible(item) && !item.closest('ul ul'));
+      columnElements.forEach((column) => {
+        const items = Array.from(column.querySelectorAll('a, button')).filter(
+          (item) => this.isVisible(item) && !item.closest('ul ul'),
+        );
         if (items.length > 0) {
           columns.push(items);
         }
@@ -92,15 +98,17 @@
 
     isVisible(element) {
       const utils = this.core.getModule('utils');
-      return utils ? utils.isVisible(element) : (element.offsetParent !== null);
+      return utils ? utils.isVisible(element) : element.offsetParent !== null;
     }
 
     destroy() {
       if (!this.core.templateInfo.isMegamenu) return;
 
-      const megaMenus = this.menubar.querySelectorAll('.solo-menu-tree__submenu--mega, .solo-menu-tree__submenu--mega, [class*="solo-menu-tree__submenu--mega"]');
-      megaMenus.forEach(megaMenu => {
-        megaMenu.querySelectorAll('a, button').forEach(item => {
+      const megaMenus = this.menubar.querySelectorAll(
+        '.solo-menu-tree__submenu--mega, .solo-menu-tree__submenu--mega, [class*="solo-menu-tree__submenu--mega"]',
+      );
+      megaMenus.forEach((megaMenu) => {
+        megaMenu.querySelectorAll('a, button').forEach((item) => {
           item.removeEventListener('keydown', this.handleMegamenuKeydown);
         });
       });

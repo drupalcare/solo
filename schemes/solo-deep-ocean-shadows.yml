@@ -3,6 +3,13 @@ id: solo-deep-ocean-shadows
 name: "Deep Ocean Shadows"
 category: ocean_and_deep_sea
 mode: mixed
+description: "Light content on white, a charcoal menu bar and a white footer."
+brand:
+  primary: "#3b444b"
+  secondary: "#1f456e"
+  accent: "#1f456e"
+  ink_light: "#fbfcf8"
+  ink_dark: "#3b444b"
 categories:
   - ocean_and_deep_sea
 css: css/predefined/solo-deep-ocean-shadows.css

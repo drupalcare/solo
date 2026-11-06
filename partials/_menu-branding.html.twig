@@ -1,20 +1,31 @@
+{#
+  Logo and site name share ONE link to the front page. With the name printed in
+  the link, the logo image has an empty alt and the link carries the site name
+  as its label (the name is hidden by CSS unless the menu has the show-sitename
+  class). Without a name, the logo keeps its real alt. A name without a logo
+  stays a link of its own, hidden and shown by the same CSS as before.
+#}
+{#
+  logo_alt is the site's own text (header.logo_alt) or the fallback "Home".
+  Only the fixed fallback is translated; site text is printed as is.
+#}
+{% set logo_label = logo_alt == 'Home' ? 'Home'|t : logo_alt %}
 <div class="solo-menu-branding">
 
-  {% if site_logo and logo_default != 1 %}
-    <a href="{{ path('<front>') }}" class="solo-menu-branding__logo" title="{{ logo_alt | t }}" rel="{{ logo_alt | t }}">
-      <img src="{{ site_logo }}" class="solo-branding__logo-image" alt="{{ logo_alt | t }}" />
+  {% if site_logo %}
+    <a href="{{ path('<front>') }}" class="solo-menu-branding__logo"{% if site_name %} aria-label="{{ site_name }}"{% elseif logo_default == 1 %} aria-label="{{ logo_label }}"{% endif %}>
+      {% if logo_default != 1 %}
+        <img src="{{ site_logo }}" class="solo-branding__logo-image" alt="{{ site_name ? '' : logo_label }}" />
+      {% else %}
+        {% include '@solo/partials/svg/_svg-logo.html.twig' with { solo_path: solo_path } only %}
+      {% endif %}
+      {% if site_name %}
+        <strong class="solo-menu-branding__site-name"><span>{{ site_name }}</span></strong>
+      {% endif %}
     </a>
-  {% endif %}
-
-  {% if site_logo and logo_default == 1 %}
-    <a href="{{ path('<front>') }}" class="solo-menu-branding__logo" title="{{ logo_alt | t }}" rel="{{ logo_alt | t }}">
-      {% include '@solo/partials/svg/_svg-logo.html.twig' with { solo_path: solo_path } only %}
-    </a>
-  {% endif %}
-
-  {% if site_name %}
-    <a href="{{ path('<front>') }}" class="solo-menu-branding__site-name" title="{{ logo_alt | t }}" rel="{{ logo_alt | t }}">
-      {% if site_name %}<span>{{ site_name }}</span>{% endif %}
+  {% elseif site_name %}
+    <a href="{{ path('<front>') }}" class="solo-menu-branding__site-name">
+      <span>{{ site_name }}</span>
     </a>
   {% endif %}
 

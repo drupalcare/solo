@@ -1,0 +1,9 @@
+# Font Awesome 4.7.0 is a vendored third-party stylesheet, shipped as
+# released upstream. It is not Solo's code, so Solo's lint rules do not apply
+# to it and it must not be reformatted.
+fonts/font-awesome.4.7.0.css
+
+# W3.CSS (w3.css and the w3css-* colour libraries) is vendored third-party CSS,
+# shipped as released upstream. It is not Solo's code, so Solo's lint rules do
+# not apply to it and it must not be reformatted.
+css/w3-css/

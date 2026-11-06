@@ -3,6 +3,13 @@ id: solo-porcelain-brilliance
 name: "Porcelain Brilliance"
 category: elegant_whites_and_neutrals
 mode: light
+description: "Light content on white, a pale lime menu bar and a white footer."
+brand:
+  primary: "#e5e7dc"
+  secondary: "#6e764e"
+  accent: "#397100"
+  ink_light: "#181a11"
+  ink_dark: "#222418"
 categories:
   - elegant_whites_and_neutrals
 css: css/predefined/solo-porcelain-brilliance.css

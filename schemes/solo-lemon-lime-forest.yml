@@ -3,6 +3,13 @@ id: solo-lemon-lime-forest
 name: "Lemon Lime Forest"
 category: berry_and_fruit_tones
 mode: dark
+description: "Dark content on near-black, a deep yellow menu bar and a near-black footer."
+brand:
+  primary: "#1b1a03"
+  secondary: "#2d4f37"
+  accent: "#589d6b"
+  ink_light: "#ebe643"
+  ink_dark: "#fbfadd"
 categories:
   - berry_and_fruit_tones
 css: css/predefined/solo-lemon-lime-forest.css

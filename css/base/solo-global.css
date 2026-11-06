@@ -1,12 +1,12 @@
 html,
 body {
   min-height: 100%;
-  overflow-wrap: break-word;
   font-family: var(--solo-font);
   font-size: var(--solo-px16);
-  line-height: var(--solo-px32);
   font-weight: normal;
   font-style: normal;
+  line-height: var(--solo-px32);
+  overflow-wrap: break-word;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -27,7 +27,7 @@ html {
  * Measured 2026-09-13 on sts.local, node/218, a title carrying a 60-character
  * unbroken word: h1.page-title-text was 1502px wide with a scrollWidth of
  * 1854px, inside a `display: grid` parent, with min-width already 0. The page
- * scrolled 336px horizontally -- confirmed as behaviour, not a computed-style
+ * scrolled 336px horizontally -- confirmed as behavior, not a computed-style
  * reading, because window.scrollTo(9999, 0) moved it. Applying this rule to
  * the headings alone took it to 0; `min-width: 0` changed nothing, and scoping
  * the fix to the content region changed nothing, because the page TITLE was
@@ -47,27 +47,27 @@ h6,
 
 /* HTML tags */
 h1 {
-  font-size: var(--solo-px36);/* 36px */
+  font-size: var(--solo-px36); /* 36px */
 }
 
 h2 {
-  font-size: var(--solo-px32);/* 32px */
+  font-size: var(--solo-px32); /* 32px */
 }
 
 h3 {
-  font-size: var(--solo-px24);/* 24px */
+  font-size: var(--solo-px24); /* 24px */
 }
 
 h4 {
-  font-size: var(--solo-px20);/* 20px */
+  font-size: var(--solo-px20); /* 20px */
 }
 
 h5 {
-  font-size: var(--solo-px18);/* 18px */
+  font-size: var(--solo-px18); /* 18px */
 }
 
 h6 {
-  font-size: var(--solo-px16);/* 16px */
+  font-size: var(--solo-px16); /* 16px */
 }
 
 h1,
@@ -75,8 +75,8 @@ h2,
 h3,
 .site-name,
 .site-slogan {
-  font-weight: 700;
   font-family: var(--solo-h1);
+  font-weight: 700;
   margin-block: var(--solo-px12);
   margin-inline: 0;
 }
@@ -91,13 +91,13 @@ h6 {
 
 :where([dir="rtl"]) ol,
 :where([dir="rtl"]) ul {
-  direction: rtl;
   text-align: var(--solo-text-align-start);
+  direction: rtl;
 }
 
 :where([dir="rtl"] .solo-breadcrumb__menu li) .solo-breadcrumb__separator {
-  direction: rtl;
   transform: scaleX(-1);
+  direction: rtl;
 }
 
 hr {
@@ -113,15 +113,15 @@ hr {
 }
 
 img {
-  vertical-align: middle;
   max-width: 100%;
   height: auto;
+  vertical-align: middle;
 }
 
 .solo-image--placeholder {
+  display: block;
   width: 100%;
   height: auto;
-  display: block;
   text-align: center;
   font-size: 14px;
 }
@@ -135,27 +135,27 @@ img {
 .solo-row::before,
 .solo-clear::after,
 .solo-clear::before {
-  content: "";
   display: table;
   clear: both;
+  content: "";
 }
 
 ::placeholder {
-  color: var(--r-tx);
   opacity: 0.7;
+  color: var(--r-tx);
   font-size: 90%;
 }
 
 ::-ms-input-placeholder {
-  color: var(--r-tx);
   opacity: 0.7;
+  color: var(--r-tx);
 }
 
-/*Unordered list */
+/* Unordered list */
 .solo-ul {
-  list-style-type: none;
-  padding: 0;
   margin: 0;
+  padding: 0;
+  list-style-type: none;
   line-height: inherit;
 }
 
@@ -169,21 +169,21 @@ img {
 .solo-button,
 .solo-file-button {
   display: inline-block;
-  padding: var(--solo-px8);
-  line-height: inherit;
-  vertical-align: middle;
   overflow: hidden;
-  text-decoration: none;
-  color: inherit;
-  background-color: inherit;
-  text-align: center;
+  padding: var(--solo-px8);
   cursor: pointer;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-  -webkit-touch-callout: none;
   -webkit-user-select: none;
   user-select: none;
+  text-align: center;
+  vertical-align: middle;
+  white-space: nowrap;
+  text-decoration: none;
+  text-overflow: ellipsis;
+  color: inherit;
   border-radius: 0.25rem;
+  background-color: inherit;
+  line-height: inherit;
+  -webkit-touch-callout: none;
 }
 
 .form-submit,
@@ -191,14 +191,14 @@ img {
 .solo-file-button,
 .solo-button.button--primary,
 .block-user-login-block form + .item-list ul li a {
+  float: none;
+  text-align: center;
   border-width: var(--solo-px1);
   border-style: solid;
   padding-block: var(--solo-px8);
   padding-inline: var(--solo-px24);
   margin-block: var(--solo-px6);
   margin-inline: auto;
-  float: none;
-  text-align: center;
 }
 
 .solo-button:disabled {
@@ -221,9 +221,9 @@ img {
 .solo-radio,
 [type="radio"],
 [type="checkbox"] {
+  position: relative;
   width: var(--solo-px24);
   height: var(--solo-px24);
-  position: relative;
   border: var(--solo-px1) solid var(--r-br, var(--r-br-b));
   line-height: inherit;
 }
@@ -234,31 +234,31 @@ textarea,
 input[type="text"],
 input[type="email"],
 input[type="password"] {
-  max-width: 100%;
-  padding: var(--solo-px8);
   display: block;
   width: 100%;
+  max-width: 100%;
+  padding: var(--solo-px8);
   border: var(--solo-px1) solid var(--r-br, var(--r-br-b));
   border-radius: 0.25rem;
-  line-height: inherit;
   background-color: var(--r-bg, transparent);
+  line-height: inherit;
 }
 
 select,
 .solo-select {
-  max-width: 100%;
   display: block;
-  line-height: inherit;
-  border: var(--solo-px1) solid var(--r-br, var(--r-br-b));
+  width: 100%;
+  max-width: 100%;
   padding: var(--solo-px8);
   padding-inline-end: var(--solo-px40);
-  width: 100%;
+  border: var(--solo-px1) solid var(--r-br, var(--r-br-b));
+  border-radius: 0.25rem;
   background-image: var(--solo-select-arrow-icon);
   background-repeat: no-repeat;
   background-position: var(--select-arrow, right var(--solo-px10)) center;
   font-family: inherit;
   font-size: inherit;
-  border-radius: 0.25rem;
+  line-height: inherit;
   -webkit-appearance: none;
   appearance: none;
 }
@@ -270,9 +270,9 @@ select,
 }
 
 .dropbutton-wrapper > div {
-  border: var(--solo-px1) solid var(--r-br, var(--r-br-b));
   padding-block-start: var(--solo-px6);
   padding-block-end: var(--solo-px6);
+  border: var(--solo-px1) solid var(--r-br, var(--r-br-b));
 }
 
 :where(.dropbutton-multiple.open) .dropbutton-arrow {
@@ -346,17 +346,17 @@ ol {
 }
 
 .solo-bar {
-  width: 100%;
   overflow: hidden;
+  width: 100%;
 }
 
 :where(.solo-bar) .solo-bar-item {
-  padding-block: var(--solo-px8);
-  padding-inline: var(--solo-px16);
+  display: block;
   float: inline-start;
   width: auto;
   border: none;
-  display: block;
+  padding-block: var(--solo-px8);
+  padding-inline: var(--solo-px16);
 }
 
 .solo-section {
@@ -381,8 +381,8 @@ ol {
 }
 
 :where(form) fieldset:not(td fieldset) {
-  border: 1px solid var(--r-br, var(--r-br-b)) !important;
   margin-block-start: var(--solo-px12);
+  border: 1px solid var(--r-br, var(--r-br-b)) !important;
 }
 
 /* Global Classes */
@@ -449,12 +449,12 @@ ol {
 
 .solo-visually-hidden {
   position: absolute !important;
-  width: 1px !important;
-  height: 1px !important;
-  padding: 0 !important;
-  margin: 0 !important;
   overflow: hidden !important;
   clip: rect(0, 0, 0, 0) !important;
+  width: 1px !important;
+  height: 1px !important;
+  margin: 0 !important;
+  padding: 0 !important;
   white-space: nowrap !important;
   border: 0 !important;
 }
@@ -464,13 +464,14 @@ ol {
 }
 
 .solo-break-word {
+  /* stylelint-disable-next-line declaration-property-value-keyword-no-deprecated -- break-word is not exactly overflow-wrap: anywhere; kept to preserve rendering */
   word-break: break-word !important;
 }
 
 .solo-truncate {
   overflow: hidden !important;
-  text-overflow: ellipsis !important;
   white-space: nowrap !important;
+  text-overflow: ellipsis !important;
 }
 
 .solo-align-left {
@@ -495,15 +496,15 @@ ol {
 }
 
 .solo-card {
-  box-shadow: 0 var(--solo-px1) var(--solo-px3) 0 rgb(0 0 0 / 0.12);
+  box-shadow: 0 var(--solo-px1) var(--solo-px3) 0 rgb(0, 0, 0, 0.12);
 }
 
 .visually-hidden {
   position: absolute !important;
-  height: 1px;
-  width: 1px;
   overflow: hidden;
   clip: rect(1px, 1px, 1px, 1px);
+  width: 1px;
+  height: 1px;
   white-space: nowrap;
   border: 0;
 }
@@ -528,7 +529,7 @@ ol {
   --solo-gap: var(--solo-px16);
 }
 
-@media (width >= 26rem) {
+@media (min-width: 26rem) {
   :where(html).gap-20,
   :where(html).gap-20 {
     --solo-gap: var(--solo-px20);
@@ -553,16 +554,15 @@ ol {
   :where(html).gap-64 {
     --solo-gap: var(--solo-px64);
   }
-
 }
 
 :where(.inline-radio-checkbox form) .form-wrapper.solo-clear::after,
 :where(.inline-radio-checkbox form) .form-wrapper.solo-clear::before,
 :where(.inline-radio-checkbox form) .form-wrapper .solo-clear::after,
 :where(.inline-radio-checkbox form) .form-wrapper .solo-clear::before {
-  content: none;
   display: none;
   clear: none;
+  content: none;
 }
 
 .inline-radio-checkbox :where(form) .form-radios,
@@ -575,8 +575,8 @@ ol {
 
 :where(.inline-radio-checkbox) form .form-radios .form-type-radio,
 .inline-radio-checkbox form .form-checkboxes .form-type-checkbox {
-  margin: 0;
   width: auto;
+  margin: 0;
 }
 
 .solo-image--placeholder {
@@ -585,19 +585,19 @@ ol {
   justify-content: center;
 }
 
-/* Responsvie Iframe */
+/* Responsive Iframe */
 .responsive-embed {
   position: relative;
-  width: 100%;
   overflow: hidden;
+  width: 100%;
   aspect-ratio: 4 / 3;
 }
 
 .responsive-embed iframe {
+  display: block;
   width: 100%;
   height: 100%;
   border: 0;
-  display: block;
 }
 
 .aspect-ratio-1-1 {
@@ -622,4 +622,39 @@ ol {
 
 .aspect-ratio-9-16 {
   aspect-ratio: 9 / 16;
+}
+
+/* Region cards end at their content; the page background shows below (no tall empty panel). */
+:where(.solo-outer) > .solo-region-box__inner {
+  align-self: start;
+}
+
+/* Heading scale: block titles are smaller than content titles. */
+:where(.solo-page) :where(.solo-block > .solo-block-title) {
+  font-size: var(--solo-px20);
+  font-weight: 600;
+}
+
+:where(.solo-page) :where(.node--view-mode-teaser .node__title) {
+  font-size: var(--solo-px28);
+}
+
+/* Recent-content style lists: readable line height and even gaps. */
+:where(.solo-page) :where(.solo-block .item-list li, .solo-block .views-row) {
+  margin-block-end: var(--solo-px12);
+  line-height: 1.4;
+}
+
+/* Node links (Read more, comments): 24px tall targets, left, under the teaser. */
+:where(.solo-page) :where(.node__links ul.links, .node__links ul.inline) {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  gap: var(--solo-px12);
+}
+
+:where(.solo-page) :where(.node__links ul.links a, .node__links ul.inline a) {
+  display: inline-flex;
+  align-items: center;
+  min-block-size: 24px;
 }

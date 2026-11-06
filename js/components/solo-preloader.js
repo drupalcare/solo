@@ -27,8 +27,6 @@
  */
 
 (function (Drupal, once) {
-  'use strict';
-
   const DEFAULT_MAX_DISPLAY_MS = 8000;
   const HIDDEN_TRANSITION_MS = 400;
   const FORCE_SHOW_TIMEOUT_MS = 30000;
@@ -72,7 +70,7 @@
     // picks up the real transition before we add --hidden. Without the reflow,
     // both class changes batch into one frame and the exit animation is skipped.
     el.classList.remove('solo-preloader--instant-show');
-    void el.offsetHeight;
+    el.getBoundingClientRect();
 
     el.classList.add('solo-preloader--hidden');
     el.setAttribute('aria-hidden', 'true');
@@ -91,13 +89,14 @@
     if (!link) return false;
 
     if (event.button !== 0) return false;
-    if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return false;
+    if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey)
+      return false;
 
     const href = link.getAttribute('href');
     if (!href) return false;
 
     if (href.startsWith('#')) return false;
-    if (href.startsWith('javascript:')) return false;
+    if (/^javascript:/.test(href)) return false;
     if (link.hasAttribute('download')) return false;
     if (link.target && link.target !== '_self') return false;
 
@@ -115,22 +114,32 @@
 
     // Use capture phase so the preloader shows before the link’s default action (navigation).
     // That way the overlay is painted immediately on click, then the page unloads.
-    document.addEventListener('click', function (event) {
-      const link = event.target.closest('a');
-      if (!isRealNavigationClick(event, link)) return;
+    document.addEventListener(
+      'click',
+      function (event) {
+        const link = event.target.closest('a');
+        if (!isRealNavigationClick(event, link)) return;
 
-      showPreloader(el);
-    }, true);
-
-    document.addEventListener('submit', function (event) {
-      if (event.target && !event.target.closest('#toolbar-bar')) {
         showPreloader(el);
-      }
-    }, true);
+      },
+      true,
+    );
+
+    document.addEventListener(
+      'submit',
+      function (event) {
+        if (event.target && !event.target.closest('#toolbar-bar')) {
+          showPreloader(el);
+        }
+      },
+      true,
+    );
   }
 
   function run() {
-    if (!document.documentElement.classList.contains('solo-preloader-enabled')) {
+    if (
+      !document.documentElement.classList.contains('solo-preloader-enabled')
+    ) {
       return;
     }
     const el = getPreloader();
@@ -141,15 +150,17 @@
     const hideOnAttr = el.getAttribute('data-hide-on');
     const hideOn = hideOnAttr === 'dom_ready' ? 'dom_ready' : 'load';
 
-    const prefersReducedMotion =
-      window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const prefersReducedMotion = window.matchMedia(
+      '(prefers-reduced-motion: reduce)',
+    ).matches;
 
     const transitionDelay = prefersReducedMotion ? 0 : HIDDEN_TRANSITION_MS;
 
     const maxDisplaySec = parseInt(el.getAttribute('data-max-display'), 10);
-    const maxDisplayMs = (Number.isNaN(maxDisplaySec) || maxDisplaySec < 3 || maxDisplaySec > 60)
-      ? DEFAULT_MAX_DISPLAY_MS
-      : maxDisplaySec * 1000;
+    const maxDisplayMs =
+      Number.isNaN(maxDisplaySec) || maxDisplaySec < 3 || maxDisplaySec > 60
+        ? DEFAULT_MAX_DISPLAY_MS
+        : maxDisplaySec * 1000;
 
     const forceShow = el.getAttribute('data-force-show') === 'true';
     let fallbackTimeoutId = null;
@@ -175,15 +186,15 @@
     }
 
     function setPercent(value) {
-      var v = Math.min(100, Math.round(value));
+      const v = Math.min(100, Math.round(value));
       if (percentEl) {
-        percentEl.textContent = v + '%';
+        percentEl.textContent = `${v}%`;
       }
       if (barFillEl) {
-        barFillEl.style.width = v + '%';
+        barFillEl.style.width = `${v}%`;
       }
       if (barPercentEl) {
-        barPercentEl.textContent = v + '%';
+        barPercentEl.textContent = `${v}%`;
       }
     }
 
@@ -216,7 +227,10 @@
       return;
     }
 
-    if (document.readyState === 'complete' || (hideOn === 'dom_ready' && document.readyState === 'interactive')) {
+    if (
+      document.readyState === 'complete' ||
+      (hideOn === 'dom_ready' && document.readyState === 'interactive')
+    ) {
       if (hasProgress) setPercent(0);
       hidePreloader(el, transitionDelay);
       return;
@@ -234,8 +248,7 @@
 
     if (hideOn === 'dom_ready') {
       document.addEventListener('DOMContentLoaded', doHide);
-    }
-    else {
+    } else {
       window.addEventListener('load', doHide);
     }
     fallbackTimeoutId = window.setTimeout(doHide, maxDisplayMs);

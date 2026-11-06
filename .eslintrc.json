@@ -1,0 +1,48 @@
+{
+  // ESLint configuration. drupal.org CI links core's .eslintrc.passing.json as
+  // the PARENT config, so this file adds to core's rules rather than replacing
+  // them (the same pattern as vvj_core).
+  //
+  // WHY THESE METHODS ARE EXEMPT. class-methods-use-this looks for methods
+  // that should be static. These are instance methods of classes Solo exposes
+  // as public extension points: Drupal.solo.keyboard.{Core, aria, focus,
+  // megamenu, navigation, templateParser, utils} and the window.soloDiagnostic
+  // debug object. Other code calls them as this.x() or instance.x(), and a
+  // sub-theme may subclass and override them; making them static would break
+  // both. exceptMethods is the rule's own mechanism for this case.
+  "rules": {
+    "class-methods-use-this": [
+      "error",
+      {
+        "exceptMethods": [
+          "announce",
+          "captureGlobalState",
+          "copyToClipboard",
+          "destroy",
+          "detectBrowser",
+          "detectInteractionMode",
+          "detectMenuType",
+          "findItemPosition",
+          "findMenuButton",
+          "formatFailedClicks",
+          "getAllFocusableItems",
+          "getClosestMenuItem",
+          "getItemStructure",
+          "getMenuLevel",
+          "getNextMenuItem",
+          "getPreviousMenuItem",
+          "handleBlur",
+          "handleButtonActivation",
+          "handleFocus",
+          "init",
+          "isInteractive",
+          "isMenuItem",
+          "isRTL",
+          "isVisible",
+          "normalizeKey",
+          "showInstructions"
+        ]
+      }
+    ]
+  }
+}

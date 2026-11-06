@@ -7,8 +7,6 @@
  * Developer:    Alaa Haddad https://www.alaahaddad.com.
  */
 ((Drupal, drupalSettings, once) => {
-  'use strict';
-
   // Component name for state manager
   const COMPONENT_NAME = 'repositions';
 
@@ -21,17 +19,17 @@
   if (Drupal.solo.menuState) {
     Drupal.solo.menuState.registerComponent(COMPONENT_NAME, {
       name: 'Solo Menu Repositions',
-      version: '1.0'
+      version: '1.0',
     });
   }
 
   Drupal.behaviors.soloMenuFix = {
-    attach: function(context) {
+    attach(context) {
       const breakpoint = Drupal.solo.getBreakpointNumber('mn');
       const windowWidth = window.innerWidth;
 
       // Quit if the screen is smaller than the breakpoint
-      if (windowWidth < breakpoint) {
+      if (!Drupal.solo.isLargeLayout(windowWidth, breakpoint)) {
         return;
       }
 
@@ -78,7 +76,7 @@
       // Function to reposition second-level submenus
       function adjustSecondLevelSubmenu(li) {
         const windowWidth = getWindowWidth();
-        if (windowWidth < breakpoint) return;
+        if (!Drupal.solo.isLargeLayout(windowWidth, breakpoint)) return;
         const submenu = li.querySelector(':scope > .solo-menu-tree__submenu');
         if (!submenu) return;
         submenu.style.visibility = 'hidden';
@@ -102,7 +100,7 @@
       // Function to reposition third-level submenus
       function adjustThirdLevelSubmenu(li) {
         const windowWidth = getWindowWidth();
-        if (windowWidth < breakpoint) return;
+        if (!Drupal.solo.isLargeLayout(windowWidth, breakpoint)) return;
         const submenu = li.querySelector(':scope > .solo-menu-tree__submenu');
         if (!submenu) return;
         const parentLi = li.closest('li.solo-menu-tree__item--has-submenu');
@@ -113,11 +111,14 @@
         const spaceLeft = getSpaceLeft(parentRect);
         const spaceRight = getSpaceRight(parentRect, windowWidth);
         // NEW: Dynamically get 4th-level submenu width (if present)
-        const fourthLevelLi = submenu.querySelector('li.solo-menu-tree__item--has-submenu');
+        const fourthLevelLi = submenu.querySelector(
+          'li.solo-menu-tree__item--has-submenu',
+        );
         let fourthLevelWidth = 0;
         if (fourthLevelLi) {
           const fourthSubmenu = fourthLevelLi.querySelector(
-            ':scope > .solo-menu-tree__submenu');
+            ':scope > .solo-menu-tree__submenu',
+          );
           if (fourthSubmenu) {
             const originalDisplay = fourthSubmenu.style.display;
             fourthSubmenu.style.visibility = 'hidden';
@@ -128,7 +129,8 @@
             fourthSubmenu.style.visibility = '';
           }
         }
-        const totalNeededWidth = submenuWidth + fourthLevelWidth + SUBMENU_BUFFER;
+        const totalNeededWidth =
+          submenuWidth + fourthLevelWidth + SUBMENU_BUFFER;
         if (totalNeededWidth > spaceRight && spaceLeft > spaceRight) {
           submenu.style.left = 'auto';
           submenu.style.right = '100%';
@@ -150,19 +152,20 @@
 
       function adjustFourthLevelSubmenu(li) {
         const windowWidth = getWindowWidth();
-        if (windowWidth < breakpoint) return;
+        if (!Drupal.solo.isLargeLayout(windowWidth, breakpoint)) return;
         const submenu = li.querySelector(':scope > .solo-menu-tree__submenu');
         if (!submenu) return;
-        const parentLi = li.closest('ul.solo-menu-tree__submenu').closest(
-          'li.solo-menu-tree__item--has-submenu');
+        const parentLi = li
+          .closest('ul.solo-menu-tree__submenu')
+          .closest('li.solo-menu-tree__item--has-submenu');
         if (!parentLi) return;
         const parentSubmenu = parentLi.querySelector(
-          ':scope > .solo-menu-tree__submenu');
+          ':scope > .solo-menu-tree__submenu',
+        );
         if (!parentSubmenu) return;
         submenu.style.visibility = 'hidden';
         // Determine if parent (3rd level) is flipped left
-        const isParentFlippedLeft = parentSubmenu.dataset.flipped ===
-          'left';
+        const isParentFlippedLeft = parentSubmenu.dataset.flipped === 'left';
         if (isParentFlippedLeft) {
           submenu.style.left = 'auto';
           submenu.style.right = '100%';
@@ -175,9 +178,14 @@
 
       // Function to apply submenu fix for both hover and click
       function applySubmenuFix(menuSelector, adjustFunction) {
-        once('soloMenuFix', document.querySelectorAll(menuSelector, context)).forEach((li) => {
+        once(
+          'soloMenuFix',
+          document.querySelectorAll(menuSelector, context),
+        ).forEach((li) => {
           // Simple ARIA initialization only - don't interfere with positioning
-          const button = li.querySelector(':scope > button.solo-menu-tree__toggler');
+          const button = li.querySelector(
+            ':scope > button.solo-menu-tree__toggler',
+          );
           const submenu = li.querySelector(':scope > .solo-menu-tree__submenu');
 
           if (button && submenu) {
@@ -192,8 +200,8 @@
           }
 
           // Keep the original event listeners EXACTLY as they are
-          ['mouseenter', 'click'].forEach(eventType => {
-            li.addEventListener(eventType, function() {
+          ['mouseenter', 'click'].forEach((eventType) => {
+            li.addEventListener(eventType, function () {
               adjustFunction(this);
             });
           });
@@ -202,7 +210,7 @@
           // Do not prevent default: Enter and Space must still fire the
           // button's click, which opens the submenu when keyboard
           // navigation is off for this menu.
-          li.addEventListener('keydown', function(event) {
+          li.addEventListener('keydown', function (event) {
             if (event.key === 'Enter' || event.key === ' ') {
               if (event.target === button) {
                 adjustFunction(this);
@@ -217,27 +225,33 @@
       // Apply fixes to second, third, and fourth-level submenus
       applySubmenuFix(
         '.solo-primary-menu .solo-menu-tree--primary > li.solo-menu-tree__item--has-submenu',
-        adjustSecondLevelSubmenu);
+        adjustSecondLevelSubmenu,
+      );
       applySubmenuFix(
         '.solo-primary-menu .solo-menu-tree--primary > li.solo-menu-tree__item--has-submenu > ul > li.solo-menu-tree__item--has-submenu',
-        adjustThirdLevelSubmenu);
+        adjustThirdLevelSubmenu,
+      );
       applySubmenuFix(
         '.solo-primary-menu .solo-menu-tree--primary > li.solo-menu-tree__item--has-submenu > ul > li.solo-menu-tree__item--has-submenu > ul > li.solo-menu-tree__item--has-submenu',
-        adjustFourthLevelSubmenu);
+        adjustFourthLevelSubmenu,
+      );
 
       // Function to reapply fixes on window resize
       // Function to reapply fixes on window resize
       function handleResize() {
-        if (window.innerWidth >= breakpoint) {
+        if (Drupal.solo.isLargeLayout(window.innerWidth, breakpoint)) {
           applySubmenuFix(
             '.solo-primary-menu .solo-menu-tree--primary > li.solo-menu-tree__item--has-submenu',
-            adjustSecondLevelSubmenu);
+            adjustSecondLevelSubmenu,
+          );
           applySubmenuFix(
             '.solo-primary-menu .solo-menu-tree--primary > li.solo-menu-tree__item--has-submenu > ul > li.solo-menu-tree__item--has-submenu',
-            adjustThirdLevelSubmenu);
+            adjustThirdLevelSubmenu,
+          );
           applySubmenuFix(
             '.solo-primary-menu .solo-menu-tree--primary > li.solo-menu-tree__item--has-submenu > ul > li.solo-menu-tree__item--has-submenu > ul > li.solo-menu-tree__item--has-submenu',
-            adjustFourthLevelSubmenu);
+            adjustFourthLevelSubmenu,
+          );
         }
       }
 
@@ -249,7 +263,7 @@
     },
 
     // Cleanup method for proper event removal
-    detach: function(context, settings, trigger) {
+    detach(context, settings, trigger) {
       if (trigger === 'unload') {
         // Unregister from state manager
         if (Drupal.solo.menuState) {
@@ -262,6 +276,6 @@
           resizeHandler = null;
         }
       }
-    }
+    },
   };
 })(Drupal, drupalSettings, once);

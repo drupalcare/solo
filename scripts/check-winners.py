@@ -11,7 +11,7 @@ differs before and after, that is a CHANGED WINNER and the script exits 1.
 Universe: every CSS file in the Solo library set (solo_libraries.py; schemes included, css/debug excluded); core
 modules, core/misc and modules/contrib of a Drupal docroot (symlinks followed, apex-named paths
 skipped); Claro only against solo-form-theme-settings; ThemeCssBuilder's generated region rules
-synthesised from solo_utilities. Order key: importance, layer (external @layer honoured; Solo is
+synthesized from solo_utilities. Order key: importance, layer (external @layer honoured; Solo is
 compared unlayered on both sides), specificity, load order.
 
 Usage (python3 -I):
@@ -338,7 +338,7 @@ def norm_media(ctx):
 
 
 def stable_key(d):
-    """Identity that survives a flatten rewrite and a reorder: library, media, normalised selector, property, value.
+    """Identity that survives a flatten rewrite and a reorder: library, media, normalized selector, property, value.
     !important is not part of the key, so removing it pairs with its baseline and is judged as a change."""
     return (d['lib'], tuple(norm_media(c) for c in d['ctx']), norm_sel(d['sel']), d['p'], d['v'])
 

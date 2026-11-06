@@ -19,12 +19,12 @@
 }
 
 .solo-inner .solo-menu-tree__menubar--account li {
+  display: inline-flex;
   float: inline-end;
   margin: 0;
   padding: 0;
-  display: inline-flex;
-  line-height: 1.5;
   font-size: var(--solo-px16);
+  line-height: 1.5;
 }
 
 :where(.solo-header__inner nav) .solo-menu-tree__menubar > li > button,

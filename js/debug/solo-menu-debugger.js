@@ -9,13 +9,14 @@
  * - Added verbosity control
  */
 ((Drupal) => {
-  'use strict';
-
   if (!drupalSettings?.solo?.debug) {
     return;
   }
 
-  console.log('%cSolo Menu Debugger: Enabled', 'color: green; font-weight: bold');
+  console.log(
+    '%cSolo Menu Debugger: Enabled',
+    'color: green; font-weight: bold',
+  );
 
   Drupal.solo = Drupal.solo || {};
   Drupal.solo.debugger = {
@@ -24,7 +25,7 @@
     performance: {
       resizeCount: 0,
       animationCount: 0,
-      stateChangeCount: 0
+      stateChangeCount: 0,
     },
 
     // FIX 1: Add component detection cache
@@ -50,17 +51,16 @@
           { regex: /solo-menu-scripts\.js/i, component: 'scripts' },
           { regex: /solo-keyboard/i, component: 'keyboard' },
           { regex: /solo-menu-repositions/i, component: 'repositions' },
-          { regex: /solo-menu-state-manager/i, component: 'state-manager' }
+          { regex: /solo-menu-state-manager/i, component: 'state-manager' },
         ];
 
-        for (const { regex, component } of patterns) {
-          if (regex.test(stack)) {
-            // Cache if element provided
-            if (element) {
-              this.componentCache.set(element, component);
-            }
-            return component;
+        const match = patterns.find(({ regex }) => regex.test(stack));
+        if (match) {
+          // Cache if element provided
+          if (element) {
+            this.componentCache.set(element, match.component);
           }
+          return match.component;
         }
 
         return 'system';
@@ -83,7 +83,7 @@
         action,
         element: element?.id || element?.className || 'unknown',
         details,
-        stackTrace: new Error().stack
+        stackTrace: new Error().stack,
       };
 
       this.stateLog.push(entry);
@@ -94,12 +94,13 @@
       const shouldLog =
         verbosity === 'verbose' ||
         (verbosity === 'normal' && component !== 'system') ||
-        (verbosity === 'minimal' && (action.includes('conflict') || action.includes('error')));
+        (verbosity === 'minimal' &&
+          (action.includes('conflict') || action.includes('error')));
 
       if (shouldLog) {
         console.groupCollapsed(
           `%c[${component}] ${action}`,
-          'color: white; font-weight: bold'
+          'color: white; font-weight: bold',
         );
         console.log('Element:', element);
         console.log('Details:', details);
@@ -114,14 +115,14 @@
         type,
         components,
         element: element?.id || element?.className || 'unknown',
-        details
+        details,
       };
 
       this.conflicts.push(conflict);
 
       console.groupCollapsed(
         `%c⚠️ CONFLICT: ${type}`,
-        'color: red; font-weight: bold; font-size: 14px'
+        'color: red; font-weight: bold; font-size: 14px',
       );
       console.warn('Components involved:', components);
       console.warn('Element:', element);
@@ -133,41 +134,46 @@
     monitorAria() {
       const observer = new MutationObserver((mutations) => {
         mutations.forEach((mutation) => {
-          if (mutation.type === 'attributes' &&
-              mutation.attributeName?.startsWith('aria-')) {
-
+          if (
+            mutation.type === 'attributes' &&
+            mutation.attributeName?.startsWith('aria-')
+          ) {
             const oldValue = mutation.oldValue;
-            const newValue = mutation.target.getAttribute(mutation.attributeName);
+            const newValue = mutation.target.getAttribute(
+              mutation.attributeName,
+            );
 
-            const recentChanges = this.stateLog.filter(log =>
-              log.element === (mutation.target.id || mutation.target.className) &&
-              log.action === 'aria-change' &&
-              Date.now() - new Date(log.timestamp).getTime() < 100
+            const recentChanges = this.stateLog.filter(
+              (log) =>
+                log.element ===
+                  (mutation.target.id || mutation.target.className) &&
+                log.action === 'aria-change' &&
+                Date.now() - new Date(log.timestamp).getTime() < 100,
             );
 
             if (recentChanges.length > 0) {
               this.logConflict(
                 'Rapid ARIA Change',
-                recentChanges.map(c => c.component),
+                recentChanges.map((c) => c.component),
                 mutation.target,
                 {
                   attribute: mutation.attributeName,
                   oldValue,
                   newValue,
-                  changeCount: recentChanges.length + 1
-                }
+                  changeCount: recentChanges.length + 1,
+                },
               );
             }
           }
         });
       });
 
-      document.querySelectorAll('.solo-menu').forEach(menu => {
+      document.querySelectorAll('.solo-menu').forEach((menu) => {
         observer.observe(menu, {
           attributes: true,
           attributeOldValue: true,
           subtree: true,
-          attributeFilter: ['aria-expanded', 'aria-hidden', 'aria-controls']
+          attributeFilter: ['aria-expanded', 'aria-hidden', 'aria-controls'],
         });
       });
     },
@@ -189,7 +195,7 @@
           // Many changes - just log summary
           console.log(
             `%c[${component}] tabindex-change x${tabindexQueue.length} (batch)`,
-            'color: #9E9E9E; font-size: 11px'
+            'color: #9E9E9E; font-size: 11px',
           );
 
           // Still log to stateLog as batch
@@ -198,19 +204,24 @@
             component,
             action: 'tabindex-change-batch',
             batchSize: tabindexQueue.length,
-            elements: tabindexQueue.map(item => ({
+            elements: tabindexQueue.map((item) => ({
               element: item.element?.className || 'unknown',
               oldValue: item.details.oldValue,
-              newValue: item.details.newValue
+              newValue: item.details.newValue,
             })),
-            stackTrace: new Error().stack
+            stackTrace: new Error().stack,
           });
 
           this.performance.stateChangeCount += tabindexQueue.length;
         } else {
           // Few changes - log individually
-          tabindexQueue.forEach(item => {
-            this.logStateChange(item.component, item.action, item.element, item.details);
+          tabindexQueue.forEach((item) => {
+            this.logStateChange(
+              item.component,
+              item.action,
+              item.element,
+              item.details,
+            );
           });
         }
 
@@ -219,9 +230,10 @@
 
       const observer = new MutationObserver((mutations) => {
         mutations.forEach((mutation) => {
-          if (mutation.type === 'attributes' &&
-              mutation.attributeName === 'tabindex') {
-
+          if (
+            mutation.type === 'attributes' &&
+            mutation.attributeName === 'tabindex'
+          ) {
             const component = this.detectComponent(mutation.target);
 
             // Add to queue instead of logging immediately
@@ -231,8 +243,8 @@
               element: mutation.target,
               details: {
                 oldValue: mutation.oldValue,
-                newValue: mutation.target.getAttribute('tabindex')
-              }
+                newValue: mutation.target.getAttribute('tabindex'),
+              },
             });
 
             // Debounce - flush after 50ms of no new changes
@@ -242,26 +254,28 @@
         });
       });
 
-      document.querySelectorAll('.solo-menu a, .solo-menu button').forEach(element => {
-        observer.observe(element, {
-          attributes: true,
-          attributeOldValue: true,
-          attributeFilter: ['tabindex']
+      document
+        .querySelectorAll('.solo-menu a, .solo-menu button')
+        .forEach((element) => {
+          observer.observe(element, {
+            attributes: true,
+            attributeOldValue: true,
+            attributeFilter: ['tabindex'],
+          });
         });
-      });
     },
 
     monitorResize() {
       let resizeCount = 0;
       const originalAddEventListener = window.addEventListener;
 
-      window.addEventListener = function(event, handler, options) {
+      window.addEventListener = function (event, handler, options) {
         if (event === 'resize') {
           resizeCount++;
           console.log(
             `%c🔍 Resize listener #${resizeCount} added`,
             'color: orange',
-            new Error().stack
+            new Error().stack,
           );
         }
         return originalAddEventListener.call(this, event, handler, options);
@@ -290,11 +304,11 @@
           component,
           action: `${action}-batch`,
           batchSize: animationQueue.length,
-          elements: animationQueue.map(item => ({
+          elements: animationQueue.map((item) => ({
             className: item.element?.className || 'unknown',
-            id: item.element?.id || null
+            id: item.element?.id || null,
           })),
-          stackTrace: new Error().stack
+          stackTrace: new Error().stack,
         };
 
         this.stateLog.push(batchEntry);
@@ -306,15 +320,17 @@
           console.log(
             `%c[${component}] ${action}`,
             'color: #FF9800; font-weight: bold',
-            animationQueue[0].element?.className || 'element'
+            animationQueue[0].element?.className || 'element',
           );
         } else {
           console.groupCollapsed(
             `%c[${component}] ${action} x${animationQueue.length} (batch)`,
-            'color: #FF9800; font-weight: bold'
+            'color: #FF9800; font-weight: bold',
           );
           animationQueue.forEach((item, index) => {
-            console.log(`${index + 1}. ${item.element?.className || 'element'}`);
+            console.log(
+              `${index + 1}. ${item.element?.className || 'element'}`,
+            );
           });
           console.groupEnd();
         }
@@ -329,7 +345,7 @@
           component,
           action: 'slideUp',
           element,
-          details: { args }
+          details: { args },
         });
 
         clearTimeout(animationTimer);
@@ -345,7 +361,7 @@
           component,
           action: 'slideDown',
           element,
-          details: { args }
+          details: { args },
         });
 
         clearTimeout(animationTimer);
@@ -356,7 +372,10 @@
     },
 
     generateReport() {
-      console.group('%c📊 Solo Menu Debug Report', 'color: green; font-size: 16px; font-weight: bold');
+      console.group(
+        '%c📊 Solo Menu Debug Report',
+        'color: green; font-size: 16px; font-weight: bold',
+      );
 
       console.group('Summary');
       console.log('Total state changes:', this.performance.stateChangeCount);
@@ -382,15 +401,19 @@
         console.groupEnd();
 
         console.group('Recent Conflicts (last 5)');
-        this.conflicts.slice(-5).forEach(conflict => {
+        this.conflicts.slice(-5).forEach((conflict) => {
           console.log(`${conflict.timestamp}: ${conflict.type}`, conflict);
         });
         console.groupEnd();
       }
 
       console.group('Performance Metrics');
-      console.log('State changes per minute:',
-        (this.performance.stateChangeCount / (Date.now() - this.startTime) * 60000).toFixed(2)
+      console.log(
+        'State changes per minute:',
+        (
+          (this.performance.stateChangeCount / (Date.now() - this.startTime)) *
+          60000
+        ).toFixed(2),
       );
       console.groupEnd();
 
@@ -430,18 +453,23 @@
 
       window.addEventListener('beforeunload', () => {
         if (this.conflicts.length > 0) {
-          console.warn('Solo Menu: Conflicts detected during session:', this.conflicts);
+          console.warn(
+            'Solo Menu: Conflicts detected during session:',
+            this.conflicts,
+          );
         }
         if (Drupal.solo.menuState) {
           Drupal.solo.menuState.validateState();
         }
       });
 
-      console.log('%cSolo Menu Debugger started. Type soloMenuReport() in console for report.',
-        'color: green; font-style: italic'
+      console.log(
+        '%cSolo Menu Debugger started. Type soloMenuReport() in console for report.',
+        'color: green; font-style: italic',
       );
-      console.log('%cValidation runs automatically on load/unload. Run soloValidateState() for manual check.',
-        'color: blue; font-style: italic'
+      console.log(
+        '%cValidation runs automatically on load/unload. Run soloValidateState() for manual check.',
+        'color: blue; font-style: italic',
       );
     },
 
@@ -456,7 +484,7 @@
         element.style.outline = originalOutline;
         element.removeAttribute('data-solo-conflict');
       }, 2000);
-    }
+    },
   };
 
   if (document.readyState === 'loading') {
@@ -486,18 +514,26 @@
       return byComponent;
     },
     filter: (component) => {
-      return Drupal.solo.debugger.stateLog.filter(log => log.component === component);
+      return Drupal.solo.debugger.stateLog.filter(
+        (log) => log.component === component,
+      );
     },
     animations: () => {
-      return Drupal.solo.debugger.stateLog.filter(log =>
-        log.action === 'slideUp' || log.action === 'slideDown' ||
-        log.action === 'slideUp-batch' || log.action === 'slideDown-batch'
+      return Drupal.solo.debugger.stateLog.filter(
+        (log) =>
+          log.action === 'slideUp' ||
+          log.action === 'slideDown' ||
+          log.action === 'slideUp-batch' ||
+          log.action === 'slideDown-batch',
       );
     },
     animationSummary: () => {
-      const animations = Drupal.solo.debugger.stateLog.filter(log =>
-        log.action === 'slideUp' || log.action === 'slideDown' ||
-        log.action === 'slideUp-batch' || log.action === 'slideDown-batch'
+      const animations = Drupal.solo.debugger.stateLog.filter(
+        (log) =>
+          log.action === 'slideUp' ||
+          log.action === 'slideDown' ||
+          log.action === 'slideUp-batch' ||
+          log.action === 'slideDown-batch',
       );
       const summary = animations.reduce((acc, log) => {
         const key = `${log.component}-${log.action}`;
@@ -506,7 +542,6 @@
       }, {});
       console.table(summary);
       return summary;
-    }
+    },
   };
-
 })(Drupal);

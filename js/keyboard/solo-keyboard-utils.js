@@ -1,5 +1,4 @@
 ((Drupal) => {
-  'use strict';
   Drupal.solo = Drupal.solo || {};
   Drupal.solo.keyboard = Drupal.solo.keyboard || {};
 
@@ -13,10 +12,12 @@
     isVisible(element) {
       if (!element) return false;
       const style = window.getComputedStyle(element);
-      return style.display !== 'none' &&
-             style.visibility !== 'hidden' &&
-             style.opacity !== '0' &&
-             element.offsetParent !== null;
+      return (
+        style.display !== 'none' &&
+        style.visibility !== 'hidden' &&
+        style.opacity !== '0' &&
+        element.offsetParent !== null
+      );
     }
 
     isInteractive(element) {
@@ -24,9 +25,18 @@
       const tagName = element.tagName.toLowerCase();
       if (tagName === 'li') return false;
 
-      const isInteractiveTag = ['a', 'button', 'input', 'select', 'textarea'].includes(tagName);
-      const hasTabindex = element.hasAttribute('tabindex') && element.getAttribute('tabindex') !== '-1';
-      const isContentEditable = element.getAttribute('contenteditable') === 'true';
+      const isInteractiveTag = [
+        'a',
+        'button',
+        'input',
+        'select',
+        'textarea',
+      ].includes(tagName);
+      const hasTabindex =
+        element.hasAttribute('tabindex') &&
+        element.getAttribute('tabindex') !== '-1';
+      const isContentEditable =
+        element.getAttribute('contenteditable') === 'true';
 
       return isInteractiveTag || hasTabindex || isContentEditable;
     }
@@ -42,8 +52,9 @@
     }
 
     getAllMenuItems(container = this.core.menubar) {
-      return Array.from(container.querySelectorAll('a, button'))
-        .filter(item => this.isVisible(item));
+      return Array.from(container.querySelectorAll('a, button')).filter(
+        (item) => this.isVisible(item),
+      );
     }
 
     getNextMenuItem(current, items) {
@@ -60,16 +71,17 @@
 
     getFirstItem(container) {
       if (!container) return null;
-      const items = container.querySelectorAll(':scope > li > a, :scope > li > button');
-      for (let item of items) {
-        if (this.isVisible(item)) return item;
-      }
-      return null;
+      const items = container.querySelectorAll(
+        ':scope > li > a, :scope > li > button',
+      );
+      return Array.from(items).find((item) => this.isVisible(item)) || null;
     }
 
     getLastItem(container) {
       if (!container) return null;
-      const items = Array.from(container.querySelectorAll(':scope > li > a, :scope > li > button'));
+      const items = Array.from(
+        container.querySelectorAll(':scope > li > a, :scope > li > button'),
+      );
       for (let i = items.length - 1; i >= 0; i--) {
         if (this.isVisible(items[i])) return items[i];
       }
@@ -81,7 +93,9 @@
     }
 
     isRTL() {
-      return document.documentElement.dir === 'rtl' || document.body.dir === 'rtl';
+      return (
+        document.documentElement.dir === 'rtl' || document.body.dir === 'rtl'
+      );
     }
 
     announce(message, priority = 'polite') {

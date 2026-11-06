@@ -3,6 +3,13 @@ id: solo-denim-twilight
 name: "Denim Twilight"
 category: denim_influences
 mode: mixed
+description: "Light content on soft sky blue, a deep blue menu bar and a near-black footer."
+brand:
+  primary: "#0c1224"
+  secondary: "#0d1113"
+  accent: "#614ec6"
+  ink_light: "#f0f2fa"
+  ink_dark: "#0d1113"
 categories:
   - denim_influences
 css: css/predefined/solo-denim-twilight.css

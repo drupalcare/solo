@@ -6,22 +6,22 @@ MAHOGANY #420C09, WALNUT #432616 */
   --sc-link-hover-tx: #b6673c;
   --sc-menu-bg: #060101;
   --sc-menu-tx: #fce8e7;
-  --sc-menu-hover-tx: #ffffff;
+  --sc-menu-hover-tx: #fff;
   --sc-menu-hover-bg: #ab1f17;
-  --sc-tab-hover-tx: #ffffff;
-  --sc-menu-open-tx: #ffffff;
+  --sc-tab-hover-tx: #fff;
+  --sc-menu-open-tx: #fff;
   --sc-menu-open-bg: #ab1f17;
   --sc-button-bg: #432616;
   --sc-button-tx: #fcf8f5;
   --sc-button-hover-tx: #030201;
   --sc-button-hover-bg: #c16f42;
-  --sc-main-container-bg: linear-gradient(45deg, #000000, #060101);
-  --sc-top-container-bg: linear-gradient(45deg, #000000, #060101);
-  --sc-fixed-search-block-bg: linear-gradient(45deg, #000000, #060101);
-  --sc-popup-login-block-inner-bg: linear-gradient(45deg, #000000, #060101);
-  --sc-bottom-container-bg: linear-gradient(45deg, #000000, #060101);
-  --sc-footer-container-bg: linear-gradient(45deg, #000000, #060101);
-  --sc-footer-menu-bg: linear-gradient(45deg, #000000, #060101);
+  --sc-main-container-bg: linear-gradient(45deg, #000, #060101);
+  --sc-top-container-bg: linear-gradient(45deg, #000, #060101);
+  --sc-fixed-search-block-bg: linear-gradient(45deg, #000, #060101);
+  --sc-popup-login-block-inner-bg: linear-gradient(45deg, #000, #060101);
+  --sc-bottom-container-bg: linear-gradient(45deg, #000, #060101);
+  --sc-footer-container-bg: linear-gradient(45deg, #000, #060101);
+  --sc-footer-menu-bg: linear-gradient(45deg, #000, #060101);
   --sc-copyright-bg: linear-gradient(180deg, #150403, #100905);
   --sc-social-fill: #8d1a13;
   --sc-control-br: #693c23;
@@ -35,9 +35,9 @@ MAHOGANY #420C09, WALNUT #432616 */
   --r-br: #60110d;
   --r-bg: #060101;
   --r-tx: #fef7f6;
-  --r-header-bg: linear-gradient(0deg, #000000, #240705);
+  --r-header-bg: linear-gradient(0deg, #000, #240705);
   --r-header-tx: #e43c33;
-  --r-menu-tx-h: #ffffff;
+  --r-menu-tx-h: #fff;
   --r-menu-bg-h: #ab1f17;
 }
 
@@ -57,13 +57,13 @@ MAHOGANY #420C09, WALNUT #432616 */
 
 header.solo-header,
 div.solo-page-title.solo-container--single {
-  --r-bg: linear-gradient(0deg, #000000, #240705);
+  --r-bg: linear-gradient(0deg, #000, #240705);
 }
 
 .solo-container--top .solo-region-box__inner--top,
 .solo-container--bottom .solo-region-box__inner--bottom,
 .solo-container--footer .solo-region-box__inner--footer {
-  --r-bg: linear-gradient(0deg, #000000, #150403);
+  --r-bg: linear-gradient(0deg, #000, #150403);
 }
 
 :where(.solo-page) .selectify:where(:not([style*="--r-br:"] *)),
@@ -94,8 +94,8 @@ div.solo-page-title.solo-container--single {
   --selectify-checkbox-checked-bg: color-mix(in srgb, #af2018 16%, transparent);
   --selectify-checkbox-check-circle: #693c23;
   --selectify-checkbox-checked-circle: #af2018;
-  --selectify-checkbox-disabled-bg: color-mix(in srgb, currentColor 5%, transparent);
-  --selectify-checkbox-disabled-circle: color-mix(in srgb, currentColor 22%, transparent);
+  --selectify-checkbox-disabled-bg: color-mix(in sRGB, currentColor 5%, transparent);
+  --selectify-checkbox-disabled-circle: color-mix(in sRGB, currentColor 22%, transparent);
   --selectify-checkbox-border-color: #693c23;
   --selectify-checkbox-hover-border-color: #af2018;
   --selectify-checkbox-hover-bg: color-mix(in srgb, #af2018 10%, transparent);
@@ -116,4 +116,86 @@ div.solo-page-title.solo-container--single {
   --selectify-dropdown-shadow: 0 10px 28px -12px color-mix(in srgb, #fef7f6 22%, transparent);
   --selectify-option-hover-bg: #140303;
   --selectify-option-active-bg: #1e0504;
+}
+
+/* Region text colors: one block per region with its heading (--r-sc-h1), link
+   (--r-sc-lk) and link hover (--r-sc-lk-h) colors, and button hover text where the
+   scheme sets one. Backgrounds above are the scheme's own. Every color here reaches
+   WCAG AA (4.5:1) on the grounds named in its comment. A site's region colors still win. */
+/* Header: on #000000, #240705. */
+.solo-header {
+  --r-sc-lk: #daaa8f;
+  --r-sc-lk-h: #b6673c;
+}
+
+/* Highlighted: on #060101. */
+.solo-highlighted {
+  --r-sc-lk: #daaa8f;
+  --r-sc-lk-h: #b6673c;
+}
+
+/* Fixed search: on #000000, #060101. */
+.solo-fixed-search {
+  --r-sc-lk: #daaa8f;
+  --r-sc-lk-h: #b6673c;
+}
+
+/* Popup login: on #000000, #060101. */
+.solo-popup-login__inner {
+  --r-sc-lk: #daaa8f;
+  --r-sc-lk-h: #b6673c;
+}
+
+/* Welcome text: on #060101. */
+.solo-welcome-text {
+  --r-sc-lk: #daaa8f;
+  --r-sc-lk-h: #b6673c;
+}
+
+/* Top: on #000000, #150403. */
+.solo-container--top {
+  --r-sc-lk: #daaa8f;
+  --r-sc-lk-h: #b6673c;
+}
+
+/* Main: on #000000. */
+.solo-container--main {
+  --r-sc-lk: #daaa8f;
+  --r-sc-lk-h: #b6673c;
+}
+
+/* Page title: on #000000, #240705. */
+.solo-page-title {
+  --r-sc-lk: #daaa8f;
+  --r-sc-lk-h: #b6673c;
+}
+
+/* Breadcrumb: on #060101. */
+.breadcrumb {
+  --r-sc-lk: #daaa8f;
+  --r-sc-lk-h: #b6673c;
+}
+
+/* Bottom: on #000000, #150403. */
+.solo-container--bottom {
+  --r-sc-lk: #daaa8f;
+  --r-sc-lk-h: #b6673c;
+}
+
+/* Footer: on #000000, #150403. */
+.solo-container--footer {
+  --r-sc-lk: #daaa8f;
+  --r-sc-lk-h: #b6673c;
+}
+
+/* Footer menu: on #000000, #060101. */
+.solo-footer-nav {
+  --r-sc-lk: #daaa8f;
+  --r-sc-lk-h: #b6673c;
+}
+
+/* Copyright: on #150403, #100905. */
+.solo-copyright {
+  --r-sc-lk: #daaa8f;
+  --r-sc-lk-h: #b6673c;
 }

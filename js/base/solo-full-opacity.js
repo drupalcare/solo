@@ -13,8 +13,6 @@
  */
 
 (function (Drupal, drupalSettings, once) {
-  'use strict';
-
   /**
    * Solo theme opacity animation behavior.
    *
@@ -37,14 +35,18 @@
      * @param {object} settings
      *   The drupalSettings object.
      */
-    attach: function (context, settings) {
+    attach(context, settings) {
       // Skip if in Layout Builder mode
       if (document.getElementById('layout-builder')) {
         return;
       }
 
       // Process each solo-fade-target container only once
-      const fadeContainers = once('solo-full-opacity', '.solo-fade-target', context);
+      const fadeContainers = once(
+        'solo-full-opacity',
+        '.solo-fade-target',
+        context,
+      );
 
       if (fadeContainers.length === 0) {
         return;
@@ -65,14 +67,17 @@
       }
 
       // Initialize the animation handler
-      const animationHandler = this.createAnimationHandler(fadeContainers, viewportCheck.breakpoint);
+      const animationHandler = this.createAnimationHandler(
+        fadeContainers,
+        viewportCheck.breakpoint,
+      );
 
       if (!animationHandler) {
         return;
       }
 
       // Store the handler instance for cleanup
-      fadeContainers.forEach(element => {
+      fadeContainers.forEach((element) => {
         this.instances.set(element, animationHandler);
       });
 
@@ -80,13 +85,25 @@
       animationHandler.calculateFade();
 
       // Attach event listeners
-      window.addEventListener('scroll', animationHandler.throttledFadeCalculation, { passive: true });
-      window.addEventListener('resize', animationHandler.debouncedRecalculate, { passive: true });
-      window.addEventListener('load', animationHandler.debouncedRecalculate, { passive: true });
+      window.addEventListener(
+        'scroll',
+        animationHandler.throttledFadeCalculation,
+        { passive: true },
+      );
+      window.addEventListener('resize', animationHandler.debouncedRecalculate, {
+        passive: true,
+      });
+      window.addEventListener('load', animationHandler.debouncedRecalculate, {
+        passive: true,
+      });
 
       // Add orientationchange for mobile devices
       if ('orientationchange' in window) {
-        window.addEventListener('orientationchange', animationHandler.debouncedRecalculate, { passive: true });
+        window.addEventListener(
+          'orientationchange',
+          animationHandler.debouncedRecalculate,
+          { passive: true },
+        );
       }
     },
 
@@ -100,21 +117,29 @@
      * @param {string} trigger
      *   The trigger for the detach ('unload', 'move', 'serialize').
      */
-    detach: function (context, settings, trigger) {
+    detach(context, settings, trigger) {
       if (trigger === 'unload') {
         // Find all processed elements and clean up
-        const processedElements = context.querySelectorAll('.solo-fade-target.solo-full-opacity-processed');
+        const processedElements = context.querySelectorAll(
+          '.solo-fade-target.solo-full-opacity-processed',
+        );
 
-        processedElements.forEach(element => {
+        processedElements.forEach((element) => {
           const handler = this.instances.get(element);
           if (handler) {
             // Remove all event listeners
-            window.removeEventListener('scroll', handler.throttledFadeCalculation);
+            window.removeEventListener(
+              'scroll',
+              handler.throttledFadeCalculation,
+            );
             window.removeEventListener('resize', handler.debouncedRecalculate);
             window.removeEventListener('load', handler.debouncedRecalculate);
 
             if ('orientationchange' in window) {
-              window.removeEventListener('orientationchange', handler.debouncedRecalculate);
+              window.removeEventListener(
+                'orientationchange',
+                handler.debouncedRecalculate,
+              );
             }
 
             // Cancel any pending animations
@@ -132,7 +157,10 @@
           }
 
           // Remove processed classes
-          element.classList.remove('solo-full-opacity-processed', 'solo-full-opacity-disabled');
+          element.classList.remove(
+            'solo-full-opacity-processed',
+            'solo-full-opacity-disabled',
+          );
         });
       }
     },
@@ -143,35 +171,43 @@
      * @return {object}
      *   Object containing shouldDisable flag and breakpoint value.
      */
-    checkViewportAndPreferences: function () {
+    checkViewportAndPreferences() {
       // Get breakpoint with safe fallback
       let breakpoint = 577; // default
 
       try {
-        if (Drupal && Drupal.solo && typeof Drupal.solo.getBreakpointNumber === 'function') {
+        if (
+          Drupal &&
+          Drupal.solo &&
+          typeof Drupal.solo.getBreakpointNumber === 'function'
+        ) {
           breakpoint = Drupal.solo.getBreakpointNumber('mn');
         }
       } catch (error) {
         // Use default if breakpoint helper fails
         if (typeof console !== 'undefined' && console.warn) {
-          console.warn('Solo theme: Could not get breakpoint, using default', error);
+          console.warn(
+            'Solo theme: Could not get breakpoint, using default',
+            error,
+          );
         }
       }
 
       // Check if viewport is narrow
       const isNarrow = window.matchMedia
         ? window.matchMedia(`(max-width: ${breakpoint - 1}px)`).matches
-        : (window.innerWidth < breakpoint);
+        : window.innerWidth < breakpoint;
 
       // Check for reduced motion preference
-      const prefersReducedMotion = window.matchMedia &&
+      const prefersReducedMotion =
+        window.matchMedia &&
         window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
       return {
         shouldDisable: isNarrow || prefersReducedMotion,
-        breakpoint: breakpoint,
-        isNarrow: isNarrow,
-        prefersReducedMotion: prefersReducedMotion
+        breakpoint,
+        isNarrow,
+        prefersReducedMotion,
       };
     },
 
@@ -186,16 +222,20 @@
      * @return {object|null}
      *   The animation handler object or null if creation fails.
      */
-    createAnimationHandler: function (elements, breakpoint) {
+    createAnimationHandler(elements, breakpoint) {
       try {
         // Configuration with sensible defaults
         const config = {
-          animationHeightRatio: drupalSettings.solo?.fullOpacity?.animationHeightRatio || 0.15,
-          fadeInDuration: drupalSettings.solo?.fullOpacity?.fadeInDuration || '1s',
-          fadeOutDuration: drupalSettings.solo?.fullOpacity?.fadeOutDuration || '0.5s',
+          animationHeightRatio:
+            drupalSettings.solo?.fullOpacity?.animationHeightRatio || 0.15,
+          fadeInDuration:
+            drupalSettings.solo?.fullOpacity?.fadeInDuration || '1s',
+          fadeOutDuration:
+            drupalSettings.solo?.fullOpacity?.fadeOutDuration || '0.5s',
           throttleDelay: drupalSettings.solo?.fullOpacity?.throttleDelay || 16, // ~60fps
           debounceDelay: drupalSettings.solo?.fullOpacity?.debounceDelay || 250,
-          useIntersectionObserver: drupalSettings.solo?.fullOpacity?.useIntersectionObserver !== false
+          useIntersectionObserver:
+            drupalSettings.solo?.fullOpacity?.useIntersectionObserver !== false,
         };
 
         // Calculate animation metrics
@@ -207,16 +247,16 @@
         const elementArray = Array.from(elements);
 
         // Cache element data for performance
-        const elementCache = elementArray.map(element => {
+        const elementCache = elementArray.map((element) => {
           // Set initial opacity
           element.style.opacity = '0';
           element.classList.add('solo-full-opacity-processed');
 
           return {
-            element: element,
+            element,
             height: element.offsetHeight,
             offset: 0,
-            isInViewport: false
+            isInViewport: false,
           };
         });
 
@@ -224,7 +264,7 @@
          * Updates cached offsets for all elements.
          */
         const updateOffsets = () => {
-          elementCache.forEach(item => {
+          elementCache.forEach((item) => {
             if (item.element.isConnected) {
               const rect = item.element.getBoundingClientRect();
               item.offset = rect.top + window.pageYOffset;
@@ -232,6 +272,8 @@
             }
           });
         };
+
+        let observer = null;
 
         /**
          * Calculates fade opacity for all elements.
@@ -247,10 +289,10 @@
 
             // Use requestAnimationFrame for smooth animations
             animationFrame = requestAnimationFrame(() => {
-              const workset = (observer)
-                ? elementCache.filter(i => i.isInViewport)
+              const workset = observer
+                ? elementCache.filter((i) => i.isInViewport)
                 : elementCache;
-              workset.forEach(item => {
+              workset.forEach((item) => {
                 if (!item.element.isConnected) {
                   return; // Skip if element is no longer in DOM
                 }
@@ -259,12 +301,13 @@
                   item.offset,
                   windowBottom,
                   animationHeight,
-                  ratio
+                  ratio,
                 );
 
-                const transition = opacity === 1
-                  ? `opacity ${config.fadeInDuration} linear`
-                  : `opacity ${config.fadeOutDuration} linear`;
+                const transition =
+                  opacity === 1
+                    ? `opacity ${config.fadeInDuration} linear`
+                    : `opacity ${config.fadeOutDuration} linear`;
 
                 // Only update if values have changed to avoid reflows
                 if (item.element.style.opacity !== String(opacity)) {
@@ -277,7 +320,10 @@
             });
           } catch (error) {
             if (typeof console !== 'undefined' && console.error) {
-              console.error('Solo theme: Error calculating fade opacity', error);
+              console.error(
+                'Solo theme: Error calculating fade opacity',
+                error,
+              );
             }
           }
         };
@@ -290,7 +336,7 @@
 
           if (viewportCheck.shouldDisable) {
             // Disable animations - set all elements to full opacity
-            elementCache.forEach(item => {
+            elementCache.forEach((item) => {
               if (item.element.isConnected) {
                 item.element.style.transition = 'opacity 0.3s ease';
                 item.element.style.opacity = '1';
@@ -298,15 +344,17 @@
               }
             });
             return false; // Animations disabled
-          } else {
-            // Re-enable animations if they were disabled
-            elementCache.forEach(item => {
-              if (item.element.isConnected && item.element.classList.contains('solo-full-opacity-disabled')) {
-                item.element.classList.remove('solo-full-opacity-disabled');
-              }
-            });
-            return true; // Animations enabled
           }
+          // Re-enable animations if they were disabled
+          elementCache.forEach((item) => {
+            if (
+              item.element.isConnected &&
+              item.element.classList.contains('solo-full-opacity-disabled')
+            ) {
+              item.element.classList.remove('solo-full-opacity-disabled');
+            }
+          });
+          return true; // Animations enabled
         };
 
         /**
@@ -325,33 +373,46 @@
         };
 
         // Create throttled and debounced versions
-        const throttledFadeCalculation = this.throttle(calculateFade, config.throttleDelay);
+        const throttledFadeCalculation = this.throttle(
+          calculateFade,
+          config.throttleDelay,
+        );
 
-        const debouncedRecalculate = this.debounce(recalculate, config.debounceDelay);
+        const debouncedRecalculate = this.debounce(
+          recalculate,
+          config.debounceDelay,
+        );
 
         // Initial setup
         updateOffsets();
 
         // Use IntersectionObserver if available and enabled
-        let observer = null;
-        if (config.useIntersectionObserver && 'IntersectionObserver' in window) {
+        if (
+          config.useIntersectionObserver &&
+          'IntersectionObserver' in window
+        ) {
           try {
-            observer = new IntersectionObserver((entries) => {
-              entries.forEach(entry => {
-                const cacheItem = elementCache.find(item => item.element === entry.target);
-                if (cacheItem) {
-                  cacheItem.isInViewport = entry.isIntersecting;
-                }
-              });
-              // Only calculate fade for visible elements
-              calculateFade();
-            }, {
-              rootMargin: `${animationHeight}px 0px ${animationHeight}px 0px`,
-              threshold: [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1]
-            });
+            observer = new IntersectionObserver(
+              (entries) => {
+                entries.forEach((entry) => {
+                  const cacheItem = elementCache.find(
+                    (item) => item.element === entry.target,
+                  );
+                  if (cacheItem) {
+                    cacheItem.isInViewport = entry.isIntersecting;
+                  }
+                });
+                // Only calculate fade for visible elements
+                calculateFade();
+              },
+              {
+                rootMargin: `${animationHeight}px 0px ${animationHeight}px 0px`,
+                threshold: [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1],
+              },
+            );
 
             // Observe all elements
-            elementCache.forEach(item => {
+            elementCache.forEach((item) => {
               observer.observe(item.element);
             });
           } catch (error) {
@@ -361,17 +422,19 @@
         }
 
         return {
-          calculateFade: calculateFade,
-          throttledFadeCalculation: throttledFadeCalculation,
-          debouncedRecalculate: debouncedRecalculate,
-          updateOffsets: updateOffsets,
-          animationFrame: animationFrame,
-          observer: observer
+          calculateFade,
+          throttledFadeCalculation,
+          debouncedRecalculate,
+          updateOffsets,
+          animationFrame,
+          observer,
         };
-
       } catch (error) {
         if (typeof console !== 'undefined' && console.error) {
-          console.error('Solo theme: Failed to create animation handler', error);
+          console.error(
+            'Solo theme: Failed to create animation handler',
+            error,
+          );
         }
         return null;
       }
@@ -386,7 +449,7 @@
      * @return {number}
      *   The calculated ratio.
      */
-    calculateRatio: function (animationHeight) {
+    calculateRatio(animationHeight) {
       // Prevent division by zero
       if (animationHeight <= 0) {
         return 0;
@@ -409,7 +472,7 @@
      * @return {number}
      *   The calculated opacity (0-1).
      */
-    calculateOpacity: function (objectTop, windowBottom, animationHeight, ratio) {
+    calculateOpacity(objectTop, windowBottom, animationHeight, ratio) {
       // Element is above the animation zone - fully visible
       if (objectTop < windowBottom - animationHeight) {
         return 1;
@@ -438,13 +501,12 @@
      * @return {Function}
      *   The throttled function.
      */
-    throttle: function (func, delay) {
+    throttle(func, delay) {
       let timeoutId;
       let lastExecTime = 0;
 
-      return function throttled() {
+      return function throttled(...args) {
         const context = this;
-        const args = arguments;
         const currentTime = Date.now();
 
         const execute = () => {
@@ -475,12 +537,11 @@
      * @return {Function}
      *   The debounced function.
      */
-    debounce: function (func, wait) {
+    debounce(func, wait) {
       let timeoutId;
 
-      return function debounced() {
+      return function debounced(...args) {
         const context = this;
-        const args = arguments;
 
         clearTimeout(timeoutId);
 
@@ -488,7 +549,6 @@
           func.apply(context, args);
         }, wait);
       };
-    }
+    },
   };
-
 })(Drupal, drupalSettings, once);

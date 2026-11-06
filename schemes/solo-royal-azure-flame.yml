@@ -3,6 +3,13 @@ id: solo-royal-azure-flame
 name: "Royal Azure Flame"
 category: bold_and_dramatic_colors
 mode: dark
+description: "Dark content on near-black, a deep blue menu bar and a near-black footer."
+brand:
+  primary: "#050619"
+  secondary: "#992f00"
+  accent: "#ffc4aa"
+  ink_light: "#d1d4f6"
+  ink_dark: "#dfe1f9"
 categories:
   - bold_and_dramatic_colors
 css: css/predefined/solo-royal-azure-flame.css

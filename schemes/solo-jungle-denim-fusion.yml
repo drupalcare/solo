@@ -3,6 +3,13 @@ id: solo-jungle-denim-fusion
 name: "Jungle Denim Fusion"
 category: forest_and_nature_tones
 mode: mixed
+description: "Light content on pale blue, a green menu bar and a near-black footer."
+brand:
+  primary: "#3b7a57"
+  secondary: "#2f4389"
+  accent: "#263770"
+  ink_light: "#e9f3ed"
+  ink_dark: "#0f1e16"
 categories:
   - forest_and_nature_tones
   - denim_influences

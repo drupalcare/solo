@@ -7,8 +7,6 @@
  * Developer:    Alaa Haddad https://www.alaahaddad.com.
  */
 (function (Drupal, drupalSettings, once) {
-  'use strict';
-
   // Store references for cleanup
   const eventListeners = new WeakMap();
 
@@ -87,9 +85,10 @@
             }
           } else {
             // Normalize hex for color inputs
-            inputToSync.value = (inputToSync.type === 'color')
-              ? toSixDigitHex(value)
-              : value.toUpperCase();
+            inputToSync.value =
+              inputToSync.type === 'color'
+                ? toSixDigitHex(value)
+                : value.toUpperCase();
           }
           updateEmptyState(changedInput, value);
 
@@ -126,7 +125,7 @@
         'form-color',
         'form-element',
         'form-element--type-color',
-        'form-element--api-color'
+        'form-element--api-color',
       );
 
       // Set initial value - normalize hex for color input
@@ -140,7 +139,8 @@
       // Don't set name attribute to avoid form submission side effects
       // Visual-only companion inputs typically don't need names
 
-      const customColor = textInput.getAttribute('data-solo-custom-color') || textValue || '';
+      const customColor =
+        textInput.getAttribute('data-solo-custom-color') || textValue || '';
       colorInput.setAttribute('data-solo-custom-color', customColor);
 
       return colorInput;
@@ -162,7 +162,9 @@
    */
   const createClearButton = (textInput, colorInput, label) => {
     const button = document.createElement('button');
-    const name = Drupal.t('Clear color: @label', { '@label': label.textContent.trim() });
+    const name = Drupal.t('Clear color: @label', {
+      '@label': label.textContent.trim(),
+    });
     button.type = 'button';
     button.className = 'solo-color__clear';
     button.title = name;
@@ -204,7 +206,9 @@
       if (!wrapper) {
         wrapper = document.createElement('div');
         wrapper.className = 'solo-color-picker-wrapper';
-        if (!textInput.parentNode) {return;}
+        if (!textInput.parentNode) {
+          return;
+        }
         textInput.parentNode.insertBefore(wrapper, textInput);
         wrapper.appendChild(colorInput);
         wrapper.appendChild(textInput);
@@ -222,7 +226,10 @@
       colorInput.setAttribute('aria-labelledby', label.id);
     } catch (error) {
       if (window.console && console.error) {
-        console.error('Solo Color Picker: Error updating label attributes', error);
+        console.error(
+          'Solo Color Picker: Error updating label attributes',
+          error,
+        );
       }
     }
   };
@@ -292,7 +299,10 @@
       eventListeners.delete(textInput);
     } catch (error) {
       if (window.console && console.error) {
-        console.error('Solo Color Picker: Error removing event listeners', error);
+        console.error(
+          'Solo Color Picker: Error removing event listeners',
+          error,
+        );
       }
     }
   };
@@ -323,10 +333,12 @@
 
       updateLabelAttributes(textInput, colorInput, context);
       addInputEventListener(textInput, colorInput);
-
     } catch (error) {
       if (window.console && console.error) {
-        console.error('Solo Color Picker: Error initializing color picker', error);
+        console.error(
+          'Solo Color Picker: Error initializing color picker',
+          error,
+        );
       }
     }
   };
@@ -341,12 +353,12 @@
    *   Cleans up color picker fields.
    */
   Drupal.behaviors.soloColorPicker = {
-    attach: function (context, settings) {
+    attach(context, settings) {
       // Use context for AJAX compatibility
       const colorTextInputs = once(
         'solo-color-picker',
         '[data-drupal-selector="solo-color-picker"] input[type="text"]',
-        context
+        context,
       );
 
       // Initialize each color picker with context
@@ -355,7 +367,7 @@
       });
     },
 
-    detach: function (context, settings, trigger) {
+    detach(context, settings, trigger) {
       // Keep widget intact when nodes are merely moved in the DOM.
       if (trigger === 'move') {
         return;
@@ -363,13 +375,15 @@
 
       if (trigger === 'unload') {
         const candidates = context.querySelectorAll(
-          '[data-drupal-selector="solo-color-picker"] input[type="text"]'
+          '[data-drupal-selector="solo-color-picker"] input[type="text"]',
         );
         const processedInputs = once.filter('solo-color-picker', candidates);
 
         processedInputs.forEach(function (textInput) {
           try {
-            const colorInputId = textInput.getAttribute('data-solo-color-input-id');
+            const colorInputId = textInput.getAttribute(
+              'data-solo-color-input-id',
+            );
             if (!colorInputId) return;
             const colorInput = document.getElementById(colorInputId);
             if (!colorInput) return;
@@ -391,8 +405,6 @@
         // Remove once marker only when unloading.
         once.remove('solo-color-picker', processedInputs);
       }
-    }
-
+    },
   };
-
 })(Drupal, drupalSettings, once);

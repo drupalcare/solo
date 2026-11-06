@@ -3,6 +3,13 @@ id: solo-parisian-skyline
 name: "Parisian Skyline"
 category: urban_and_modern_hues
 mode: dark
+description: "Dark content on near-black, a deep sky blue menu bar and a near-black footer."
+brand:
+  primary: "#030d16"
+  secondary: "#48486c"
+  accent: "#7979a5"
+  ink_light: "#d8eafb"
+  ink_dark: "#c9e1f9"
 categories:
   - urban_and_modern_hues
 css: css/predefined/solo-parisian-skyline.css

@@ -148,7 +148,7 @@ class SemanticTemplatesCharacterizationTest extends TestCase {
     $this->assertStringNotContainsString('role="complementary"', $src);
     // CHANGED ON PURPOSE: the skip target prints only with its skip link
     // ("a skip link ... shows only when its region has content", CHANGELOG).
-    $this->assertStringContainsString("{% if enabled_skip_links.skip_main_content %}\n          <a id=\"main-content\" tabindex=\"-1\"></a>\n          {% endif %}", $src);
+    $this->assertStringContainsString("{% if enabled_skip_links.skip_main_content %}\n          <a id=\"main-content\" tabindex=\"-1\" class=\"solo-skip-target\"></a>\n          {% endif %}", $src);
     // CHANGED ON PURPOSE: "the footer regions, footer menu and copyright band
     // sit in one <footer> landmark (#solo-footer-landmark); the copyright band
     // is now a <div> inside it" (CHANGELOG).

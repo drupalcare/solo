@@ -14,8 +14,8 @@ form.system-theme-settings {
   --s-sunk: #eef0ec;
   --s-ink: #1d2628;
   --s-muted: #505d62;
-  --s-accent: #0d5766;
-  --s-soft: #dff0f2;
+  --s-accent: #6957b5;
+  --s-soft: #f5f2fa;
   --s-error: #a8221a;
   --s-ctl: #7f8c91;
   --s-on-accent: #fff;
@@ -40,8 +40,8 @@ form.system-theme-settings {
   --s-sunk: #171c1e;
   --s-ink: #e7eced;
   --s-muted: #a9b6bb;
-  --s-accent: #7dd0df;
-  --s-soft: #1a3a42;
+  --s-accent: #b6a7e3;
+  --s-soft: #2b2540;
   --s-error: #ffb0a8;
   --s-ctl: #7c8a90;
   --s-on-accent: #0d2a30;
@@ -1082,4 +1082,26 @@ form.system-theme-settings .solo-reference :is(thead th, th[scope="rowgroup"]) {
   form.system-theme-settings .solo-deflist {
     grid-template-columns: minmax(0, 1fr);
   }
+}
+
+/* The Solo logo heads the section menu (the theme's own logo.svg). It is
+   sticky inside the menu, so the menu scrolls under it and the logo stays.
+   The negative offset and margins cancel the menu's padding (sticky is
+   measured inside it), so nothing shows above the logo;
+   the accent and soft colours above are the Solo palette. */
+form.system-theme-settings .solo-nav::before {
+  position: sticky;
+  z-index: 1;
+  inset-block-start: -0.75rem;
+  display: block;
+  block-size: 4rem;
+  margin-block: -0.75rem 0.75rem;
+  margin-inline: -1rem;
+  content: "";
+  border-block-end: 1px solid var(--s-line);
+  background: var(--s-surface) url("../../logo.svg") no-repeat 1rem center / auto 2.75rem;
+}
+
+[dir="rtl"] form.system-theme-settings .solo-nav::before {
+  background-position: right 1rem center;
 }

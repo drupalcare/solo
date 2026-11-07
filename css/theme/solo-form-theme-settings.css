@@ -1089,7 +1089,7 @@ form.system-theme-settings .solo-reference :is(thead th, th[scope="rowgroup"]) {
    The negative offset and margins cancel the menu's padding (sticky is
    measured inside it), so nothing shows above the logo;
    the accent and soft colours above are the Solo palette. */
-form.system-theme-settings .solo-nav::before {
+.solo-nav::before {
   position: sticky;
   z-index: 1;
   inset-block-start: -0.75rem;
@@ -1102,6 +1102,6 @@ form.system-theme-settings .solo-nav::before {
   background: var(--s-surface) url("../../logo.svg") no-repeat 1rem center / auto 2.75rem;
 }
 
-[dir="rtl"] form.system-theme-settings .solo-nav::before {
+:where([dir="rtl"]) .solo-nav::before {
   background-position: right 1rem center;
 }

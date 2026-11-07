@@ -24,3 +24,10 @@
   z-index: 1000;
   width: 100%;
 }
+
+/* The empty anchors a skip link jumps to sit inside .solo-col grids, where an
+   in-flow anchor takes a whole row (an empty band above the main menu). Out of
+   flow, the anchor takes no space and still receives focus. */
+.solo-skip-target {
+  position: absolute;
+}

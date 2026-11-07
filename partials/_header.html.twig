@@ -35,7 +35,7 @@
 
         {% if page.header %}
           {% if enabled_skip_links.skip_header_content %}
-          <a id="solo-header-content" tabindex="-1"></a>
+          <a id="solo-header-content" tabindex="-1" class="solo-skip-target"></a>
           {% endif %}
           {{ page.header }}
         {% endif %}

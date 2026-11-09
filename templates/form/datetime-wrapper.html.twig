@@ -28,5 +28,5 @@
   </div>
 {% endif %}
 {% if description %}
-  <div class="solo-clear solo-small description">{{ description }}</div>
+  <div{{ description_attributes.addClass(['solo-clear', 'solo-small', 'description']) }}>{{ description }}</div>
 {% endif %}

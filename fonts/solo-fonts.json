@@ -466,376 +466,323 @@
       "slug": "akronim",
       "category": "special",
       "query": "Akronim",
-      "local": false
+      "local": true
     },
     {
       "slug": "barriecito",
       "category": "special",
       "query": "Barriecito",
-      "local": false
+      "local": true
     },
     {
       "slug": "bungee-shade",
       "category": "special",
       "query": "Bungee+Shade",
-      "local": false
+      "local": true
     },
     {
       "slug": "ceviche-one",
       "category": "special",
       "query": "Ceviche+One",
-      "local": false
+      "local": true
     },
     {
       "slug": "creepster",
       "category": "special",
       "query": "Creepster",
-      "local": false
+      "local": true
     },
     {
       "slug": "faster-one",
       "category": "special",
       "query": "Faster+One",
-      "local": false
+      "local": true
     },
     {
       "slug": "finger-paint",
       "category": "special",
       "query": "Finger+Paint",
-      "local": false
+      "local": true
     },
     {
       "slug": "frijole",
       "category": "special",
       "query": "Frijole",
-      "local": false
+      "local": true
     },
     {
       "slug": "irish-grover",
       "category": "special",
       "query": "Irish+Grover",
-      "local": false
+      "local": true
     },
     {
       "slug": "kumar-one",
       "category": "special",
       "query": "Kumar+One",
-      "local": false
+      "local": true
     },
     {
       "slug": "londrina-outline",
       "category": "special",
       "query": "Londrina+Outline",
-      "local": false
+      "local": true
     },
     {
       "slug": "megrim",
       "category": "special",
       "query": "Megrim",
-      "local": false
+      "local": true
     },
     {
       "slug": "metal-mania",
       "category": "special",
       "query": "Metal+Mania",
-      "local": false
+      "local": true
     },
     {
       "slug": "monoton",
       "category": "special",
       "query": "Monoton",
-      "local": false
+      "local": true
     },
     {
       "slug": "moo-lah-lah",
       "category": "special",
       "query": "Moo+Lah+Lah",
-      "local": false
+      "local": true
     },
     {
       "slug": "new-rocker",
       "category": "special",
       "query": "New+Rocker",
-      "local": false
+      "local": true
     },
     {
       "slug": "nosifer",
       "category": "special",
       "query": "Nosifer",
-      "local": false
+      "local": true
     },
     {
       "slug": "pirata-one",
       "category": "special",
       "query": "Pirata+One",
-      "local": false
+      "local": true
     },
     {
       "slug": "ruslan-display",
       "category": "special",
       "query": "Ruslan+Display",
-      "local": false
+      "local": true
     },
     {
       "slug": "rye",
       "category": "special",
       "query": "Rye",
-      "local": false
+      "local": true
     },
     {
       "slug": "sancreek",
       "category": "special",
       "query": "Sancreek",
-      "local": false
+      "local": true
     },
     {
       "slug": "slackey",
       "category": "special",
       "query": "Slackey",
-      "local": false
+      "local": true
     },
     {
       "slug": "trade-winds",
       "category": "special",
       "query": "Trade+Winds",
-      "local": false
+      "local": true
     },
     {
       "slug": "train-one",
       "category": "special",
       "query": "Train+One",
-      "local": false
+      "local": true
     },
     {
       "slug": "unifrakturmaguntia",
       "category": "special",
       "query": "UnifrakturMaguntia",
-      "local": false
+      "local": true
     },
     {
       "slug": "acme",
       "category": "site-name",
       "query": "Acme",
-      "local": false
+      "local": true
     },
     {
       "slug": "audiowide",
       "category": "site-name",
       "query": "Audiowide",
-      "local": false
+      "local": true
     },
     {
       "slug": "berkshire-swash",
       "category": "site-name",
       "query": "Berkshire+Swash",
-      "local": false
+      "local": true
     },
     {
       "slug": "contrail-one",
       "category": "site-name",
       "query": "Contrail+One",
-      "local": false
+      "local": true
     },
     {
       "slug": "cookie",
       "category": "site-name",
       "query": "Cookie",
-      "local": false
+      "local": true
     },
     {
       "slug": "croissant-one",
       "category": "site-name",
       "query": "Croissant+One",
-      "local": false
+      "local": true
     },
     {
       "slug": "crushed",
       "category": "site-name",
       "query": "Crushed",
-      "local": false
+      "local": true
     },
     {
       "slug": "eagle-lake",
       "category": "site-name",
       "query": "Eagle+Lake",
-      "local": false
+      "local": true
     },
     {
       "slug": "fugaz-one",
       "category": "site-name",
       "query": "Fugaz+One",
-      "local": false
+      "local": true
     },
     {
       "slug": "gilda-display",
       "category": "site-name",
       "query": "Gilda+Display",
-      "local": false
+      "local": true
     },
     {
       "slug": "girassol",
       "category": "site-name",
       "query": "Girassol",
-      "local": false
+      "local": true
     },
     {
       "slug": "italiana",
       "category": "site-name",
       "query": "Italiana",
-      "local": false
+      "local": true
     },
     {
       "slug": "joan",
       "category": "site-name",
       "query": "Joan",
-      "local": false
+      "local": true
     },
     {
       "slug": "julius-sans-one",
       "category": "site-name",
       "query": "Julius+Sans+One",
-      "local": false
+      "local": true
     },
     {
       "slug": "katibeh",
       "category": "site-name",
       "query": "Katibeh",
-      "local": false
+      "local": true
     },
     {
       "slug": "kaushan-script",
       "category": "site-name",
       "query": "Kaushan+Script",
-      "local": false
+      "local": true
     },
     {
       "slug": "overlock-sc",
       "category": "site-name",
       "query": "Overlock+SC",
-      "local": false
+      "local": true
     },
     {
       "slug": "poiret-one",
       "category": "site-name",
       "query": "Poiret+One",
-      "local": false
+      "local": true
     },
     {
       "slug": "prata",
       "category": "site-name",
       "query": "Prata",
-      "local": false
+      "local": true
     },
     {
       "slug": "redressed",
       "category": "site-name",
       "query": "Redressed",
-      "local": false
+      "local": true
     },
     {
       "slug": "tapestry",
       "category": "site-name",
       "query": "Tapestry",
-      "local": false
+      "local": true
     },
     {
       "slug": "uncial-antiqua",
       "category": "site-name",
       "query": "Uncial+Antiqua",
-      "local": false
+      "local": true
     },
     {
       "slug": "unica-one",
       "category": "site-name",
       "query": "Unica+One",
-      "local": false
+      "local": true
     },
     {
       "slug": "yatra-one",
       "category": "site-name",
       "query": "Yatra+One",
-      "local": false
+      "local": true
     },
     {
       "slug": "yeseva-one",
       "category": "site-name",
       "query": "Yeseva+One",
-      "local": false
+      "local": true
     }
   ],
   "icons": [
     {
-      "id": "font-awesome-4-in",
-      "meta": { "Version": "4.7.0" },
-      "css": [{ "path": "fonts/font-awesome.4.7.0.css", "weight": -200 }]
+      "id": "font-awesome-7-in",
+      "meta": { "Version": "7.0.1" },
+      "css": [{ "path": "fonts/font-awesome-7.0.1.css", "weight": -200 }]
     },
     {
-      "id": "font-awesome-4-ex",
+      "id": "font-awesome-7-ex",
       "meta": {
         "remote": "https://github.com/FortAwesome/Font-Awesome",
-        "version": "4.7.0",
-        "license": { "name": "MIT", "url": "https://fontawesome.com/license/free", "gpl-compatible": true }
+        "version": "7.0.1",
+        "license": { "name": "CC BY 4.0", "url": "https://fontawesome.com/license/free", "gpl-compatible": true }
       },
       "css": [
         {
-          "path": "https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css",
+          "path": "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css",
           "type": "external",
           "minified": true,
+          "attributes": { "integrity": "sha384-rWj9FmWWt3OMqd9vBkWRhFavvVUYalYqGPoMdL1brs/qvvqz88gvLShYa4hKNyqb", "crossorigin": "anonymous" },
           "weight": -200
-        }
-      ]
-    },
-    {
-      "id": "font-awesome-5-ex",
-      "meta": {
-        "remote": "https://use.fontawesome.com/releases/v5.15.4/fontawesome-free-5.15.4-web.zip",
-        "license": { "name": "CC BY 4.0", "url": "https://fontawesome.com/license/free", "gpl-compatible": true },
-        "version": "5.15.4",
-        "header": true
-      },
-      "css": [
-        {
-          "path": "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css",
-          "type": "external",
-          "minified": true,
-          "weight": -200,
-          "attributes": { "defer": true }
-        }
-      ],
-      "js": [
-        {
-          "path": "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/js/all.min.js",
-          "type": "external",
-          "minified": true,
-          "weight": -200,
-          "attributes": { "defer": true }
-        }
-      ]
-    },
-    {
-      "id": "font-awesome-6-ex",
-      "meta": {
-        "remote": "https://use.fontawesome.com/releases/v6.1.1/fontawesome-free-6.1.1-web.zip",
-        "license": { "name": "CC BY 4.0", "url": "https://fontawesome.com/license/free", "gpl-compatible": true },
-        "version": "6.1.1",
-        "header": true
-      },
-      "css": [
-        {
-          "path": "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css",
-          "type": "external",
-          "minified": true,
-          "weight": -200,
-          "attributes": { "defer": true }
-        }
-      ],
-      "js": [
-        {
-          "path": "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/js/all.min.js",
-          "type": "external",
-          "minified": true,
-          "weight": -200,
-          "attributes": { "defer": true }
         }
       ]
     }

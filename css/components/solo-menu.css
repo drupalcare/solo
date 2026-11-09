@@ -47,7 +47,7 @@
 }
 
 :where(.solo-page .solo-inner .solo-menu) .solo-menu-tree__arrow {
-  transition: all 0.3s ease;
+  transition: transform 0.2s ease;
 }
 
 /* Base: all menus start equal */
@@ -177,7 +177,7 @@
 }
 
 :where(.solo-inner) .solo-menu-tree__menubar li.solo-menu-tree__item > .solo-menu-tree__toggler .solo-menu-tree__toggler-icon svg {
-  transition: 0.2s;
+  transition: transform 0.2s ease;
 }
 
 :where(.solo-inner .solo-menu-tree--megamenu > li.solo-menu-tree__item) > .solo-menu-tree__toggler,
@@ -279,15 +279,29 @@
 
 :where(.solo-inner .solo-menu-tree--default li:hover) > :where(ul).solo-menu-tree__submenu {
   display: flex !important;
+  animation: solo-submenu-in 0.2s ease-out;
+}
+
+/* A dropdown fades and settles 4px; display toggles, so a short keyframe does the reveal. */
+@keyframes solo-submenu-in {
+  from {
+    transform: translateY(-4px);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
 }
 
 :where(.solo-inner .solo-menu-tree--default > li.solo-menu-tree__item--has-submenu:hover) .solo-menu-tree__arrow {
-  transition: all 0.3s ease;
+  transition: transform 0.2s ease;
   transform: rotate(180deg);
 }
 
 :where(.solo-inner .solo-menu-tree--default > li > ul > li.solo-menu-tree__item--has-submenu:hover) .solo-menu-tree__arrow {
-  transition: all 0.3s ease;
+  transition: transform 0.2s ease;
   transform: rotate(-90deg);
 }
 

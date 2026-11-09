@@ -326,12 +326,14 @@
     flex-wrap: wrap;
   }
 
-  :where(.solo-menu--primary-responsive.solo-menu--align-right) .solo-menu-tree--primary {
+  /* No :where() on the two alignment rules: the auto margins must beat the menu bar's margin: 0 in
+     solo-menu.css (.solo-inner ul.solo-menu-tree__menubar, 0-2-1), or the menu stays at the left. */
+  .solo-menu--primary-responsive.solo-menu--align-right .solo-menu-tree--primary {
     float: right;
     margin-inline-start: auto;
   }
 
-  :where(.solo-menu--primary-responsive.solo-menu--align-center) .solo-menu-tree--responsive {
+  .solo-menu--primary-responsive.solo-menu--align-center .solo-menu-tree--responsive {
     justify-content: center;
     margin-inline: auto;
     margin-block: 0;

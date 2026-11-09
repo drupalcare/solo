@@ -2,6 +2,10 @@
 
 ## Next release
 
+- Fonts: every font can now load locally, from the same updated files APEX ships, each with its license. Local files carry Latin characters only, so a site in another script should keep loading from Google. Bitter, Cairo, Exo 2 and Work Sans stop at weight 800 when local. Irish Grover now shows Irish Grover; its CSS named a different font.
+- Social and interface icons follow the link or text color and its hover. A color set in the social icon settings still wins.
+- Font Awesome: the only choices are now Font Awesome 7 locally or from the CDN. Sites on the 5.x or 6.x CDN option use Font Awesome 7 from the CDN. Icons that exist only under Font Awesome 4 names may need renaming.
+- Templates: brought in line with Drupal 11 core (no redundant landmark roles, description ids on details, the description-before position and classes in form elements, `view_mode` for term titles).
 - Extend and Appearance pages: every module and theme description is a short, professional statement that begins with a verb; credits, links and version notes moved out of the info files.
 - New Solo logo: it is the theme's default logo (replace or turn it off in Appearance settings), and it sits at the top of the settings menu, which scrolls under it.
 

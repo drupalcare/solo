@@ -186,6 +186,13 @@
   z-index: 1300;
 }
 
+/* Gin's horizontal toolbar sets the whole toolbar to 502 on #toolbar-administration, so its open menus fell under
+   Solo's header and main menu (1005 and 1000). 1250 keeps them above Solo and under core's dialogs (1260). Body + id
+   beats Gin's .gin--horizontal-toolbar #toolbar-administration. */
+body.user-logged-in #toolbar-administration {
+  z-index: 1250;
+}
+
 :where(.solo-header__inner.header-sitename-center) .block-system-branding-block {
   justify-content: center;
   width: 100%;

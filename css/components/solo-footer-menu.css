@@ -21,8 +21,34 @@
   display: inline-flex;
 }
 
+/* Footer and copyright type: a step below the 16px body text, with a tight line height. */
+.solo-footer-nav__inner,
+.solo-copyright__inner {
+  font-size: var(--solo-px14);
+  line-height: 1.4;
+}
+
+.solo-footer-menu li a,
+.solo-menu-tree__menubar--footer li > a {
+  line-height: 1.4;
+}
+
 .solo-copyright__inner p {
   font-size: var(--solo-px14);
+  line-height: 1.4;
+}
+
+/*
+ * Footer menus show hover on the text only: the link keeps its resting
+ * background, the text is underlined. These selectors match the specificity of
+ * the generic menu hover rule in solo-variables-regions.css and load after it.
+ */
+.solo-page :where(.solo-footer-nav, .solo-copyright, .solo-container--footer) li.solo-menu-tree__item > a:hover,
+.solo-page :where(.solo-footer-nav, .solo-copyright, .solo-container--footer) li.solo-menu-tree__item > a:focus-visible,
+.solo-page :where(.solo-footer-nav, .solo-copyright, .solo-container--footer) li.solo-menu-tree__item > button:hover {
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+  background-color: var(--r-bg-lk, var(--r-bg));
 }
 
 .solo-copyright__inner.solo-col-1 p {
@@ -44,7 +70,7 @@
   display: inline-block;
   width: 1.875rem;
   height: 1.875rem;
-  transition: 0.4s ease;
+  transition: transform 0.2s ease;
   border: 1px solid transparent;
   border-radius: 50%;
   background-repeat: no-repeat;
@@ -71,79 +97,6 @@
 
 :where(.solo-social a) > span:hover {
   transform: scale(1.3);
-}
-
-:where(.solo-social a) > .fa-ext {
-  font-size: var(--solo-px16);
-  font-weight: normal;
-}
-
-.solo-social .solo-social__link--facebook svg {
-  fill: var(--solo-fb);
-}
-
-.solo-social .solo-social__link--twitter svg {
-  fill: var(--solo-tw);
-}
-
-.solo-social .solo-social__link--bluesky svg {
-  fill: var(--solo-bs);
-}
-
-.solo-social .solo-social__link--pinterest svg {
-  fill: var(--solo-pi);
-}
-
-.solo-social .solo-social__link--linkedin svg {
-  fill: var(--solo-in);
-}
-
-.solo-social .solo-social__link--instagram svg {
-  fill: var(--solo-st);
-}
-
-.solo-social .solo-social__link--youtube svg {
-  fill: var(--solo-tb);
-}
-
-.solo-social .drupal svg {
-  fill: var(--solo-dr);
-}
-
-.solo-social .solo-social__link--mastodon svg {
-  fill: var(--solo-md);
-}
-
-.solo-social .solo-social__link--rss svg {
-  fill: var(--solo-ss);
-}
-
-.solo-social .email svg {
-  fill: var(--solo-em);
-}
-
-.solo-social .solo-social__link--reddit svg {
-  fill: var(--solo-it);
-}
-
-.solo-social .solo-social__link--snapchat svg {
-  fill: var(--solo-sn);
-}
-
-.solo-social .solo-social__link--whatsapp svg {
-  fill: var(--solo-up);
-}
-
-.solo-social .solo-social__link--tiktok svg {
-  fill: var(--solo-tk);
-}
-
-.solo-social .solo-social__link--telegram svg {
-  fill: var(--solo-tl);
-}
-
-.solo-social .solo-social__link--threads svg {
-  fill: var(--solo-th);
 }
 
 /* Size for icons */

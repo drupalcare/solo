@@ -8,7 +8,7 @@ body {
   font-family: 'Hind Siliguri';
   font-style: normal;
   font-weight: 400;
-  src: url('../font-files/hind-siliguri/hind-siliguri-v12-latin_latin-ext-regular.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+  src: url('../font-files/hind-siliguri/hind-siliguri-v14-latin_latin-ext-regular.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
 }
 /* hind-siliguri-700 - latin_latin-ext */
 @font-face {
@@ -16,5 +16,6 @@ body {
   font-family: 'Hind Siliguri';
   font-style: normal;
   font-weight: 700;
-  src: url('../font-files/hind-siliguri/hind-siliguri-v12-latin_latin-ext-700.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+  src: url('../font-files/hind-siliguri/hind-siliguri-v14-latin_latin-ext-700.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
 }
+

@@ -24,7 +24,7 @@
      the name link: one link remains for keyboard and screen readers. #}
   {% if site_logo and logo_default != 1 %}
     <a class="site-logo" href="{{ path('<front>') }}" rel="home"{% if site_name %} tabindex="-1" aria-hidden="true"{% endif %}>
-      <img src="{{ site_logo }}" class="solo-branding__logo-image" alt="{{ site_name ? '' : logo_label }}" />
+      <img src="{{ site_logo }}" class="solo-branding__logo-image" alt="{{ site_name ? '' : logo_label }}" fetchpriority="high" />
     </a>
   {% endif %}
 

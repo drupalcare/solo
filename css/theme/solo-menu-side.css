@@ -19,8 +19,8 @@
   overflow: auto;
   height: 100%;
   transition:
-    transform var(--solo-sidebar-speed, 400ms) ease-in-out,
-    visibility var(--solo-sidebar-speed, 400ms) ease-in-out;
+    transform var(--solo-sidebar-speed, 250ms) ease-out,
+    visibility var(--solo-sidebar-speed, 250ms) ease-out;
 }
 
 .solo-primary-sidebar-menu__inner {
@@ -117,7 +117,7 @@
 
 .solo-is-sliding-out {
   animation-name: slide-out;
-  animation-duration: var(--solo-sidebar-speed, 400ms);
+  animation-duration: var(--solo-sidebar-speed, 250ms);
 }
 
 /* Add borders to primary side menu. */
@@ -169,7 +169,7 @@
 
 .solo-is-sliding-in {
   animation-name: slide-in;
-  animation-duration: 400ms;
+  animation-duration: 250ms;
 }
 
 @keyframes slide-in {

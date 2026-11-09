@@ -8,5 +8,14 @@ body {
   font-family: 'Yanone Kaffeesatz';
   font-style: normal;
   font-weight: 700;
-  src: url('../font-files/yanone-kaffeesatz/yanone-kaffeesatz-v24-latin_latin-ext-700.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+  src: url('../font-files/yanone-kaffeesatz/yanone-kaffeesatz-v34-latin_latin-ext-700.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+
+/* yanone-kaffeesatz-regular - latin_latin-ext */
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: 'Yanone Kaffeesatz';
+  font-style: normal;
+  font-weight: 400;
+  src: url('../font-files/yanone-kaffeesatz/yanone-kaffeesatz-v34-latin_latin-ext-regular.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
 }

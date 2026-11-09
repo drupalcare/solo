@@ -42,8 +42,26 @@
   text-decoration: underline;
 }
 
+/*
+ * The items also carry .solo-button (8px padding, overflow: hidden), which
+ * framed each link in a second box: the hover paint stopped 8px short of the
+ * item edge and the focus ring was cut off. The link carries the padding and
+ * the ring needs room, so the item gives both up.
+ */
+.pager__items > .pager__item.solo-button {
+  overflow: visible;
+  padding: 0;
+}
+
 .pager__item.solo-active-pager {
   cursor: default;
+}
+
+/* The current page reads as selected, painted like the hover state, not by weight alone. */
+.solo-page .pager__item.solo-active-pager a,
+.solo-page .pager__item.is-active a {
+  color: var(--r-header-tx);
+  background: var(--r-header-bg);
 }
 
 .pager__item.solo-active-pager a {

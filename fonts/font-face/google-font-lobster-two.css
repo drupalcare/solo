@@ -8,5 +8,14 @@ body {
   font-family: 'Lobster Two';
   font-style: normal;
   font-weight: 700;
-  src: url('../font-files/lobster-two/lobster-two-v18-latin-700.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+  src: url('../font-files/lobster-two/lobster-two-v22-latin-700.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+
+/* lobster-two-regular - latin */
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: 'Lobster Two';
+  font-style: normal;
+  font-weight: 400;
+  src: url('../font-files/lobster-two/lobster-two-v22-latin-regular.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
 }

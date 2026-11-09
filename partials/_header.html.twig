@@ -1,11 +1,10 @@
   {% if page.header or page.primary_sidebar_menu %}
     <!-- Start: Header -->
-    <header id="solo-header" class="solo-outer solo-container--single solo-header{{ site_header_colors ? ' ' ~ site_header_colors }}{{ site_name_animate_on ? ' ' ~ site_name_animate_on }}{{ site_name_google_font ? ' ' ~ site_name_google_font }}{{ name_size_s ? ' ' ~ name_size_s }}{{ name_size_l ? ' ' ~ name_size_l }}{{ classes_header ? ' ' ~ classes_header }}" role="banner" aria-label="{{ 'Site header'|t }}"{{ attributes_header }}>
+    <header id="solo-header" class="solo-outer solo-container--single solo-header{{ site_header_colors ? ' ' ~ site_header_colors }}{{ site_name_animate_on ? ' ' ~ site_name_animate_on }}{{ site_name_google_font ? ' ' ~ site_name_google_font }}{{ name_size_s ? ' ' ~ name_size_s }}{{ name_size_l ? ' ' ~ name_size_l }}{{ classes_header ? ' ' ~ classes_header }}" aria-label="{{ 'Site header'|t }}"{{ attributes_header }}>
       <div id="solo-header-inner" class="solo-inner solo-col solo-col-1 solo-header__inner{{ header_change_icons ? ' solo-icons-left' }}{{ header_sitename_center ? ' header-sitename-center' }}{{ header_sitename_center_small ? ' header-sitename-center-small' }}{{ header_sitename_center_default ? ' header-sitename-center-default' }}">
 
         {% if page.primary_sidebar_menu %}
           <div id="solo-sidebar-button-open" class="solo-hamburger solo-sidebar-menu__open">
-            {# <i class="fa fa-bars"></i> #}
             <button class="solo-btn-animate solo-button-menu solo-hamburger--sidebar"
             data-drupal-selector="solo-hamburger--sidebar"
             aria-label="{{ 'Open Sidebar Menu'|t }}"
@@ -20,7 +19,6 @@
 
         {% if page.fixed_search_block %}
           <div id="solo-search-button-open" class="solo-hamburger solo-fixed-search__open">
-            {# <i class="fa fa-bars"></i> #}
             <button class="solo-btn-animate solo-button-menu solo-hamburger--sidebar"
               data-drupal-selector="solo-hamburger--sidebar"
               aria-label="{{ 'Open Search Block'|t }}"

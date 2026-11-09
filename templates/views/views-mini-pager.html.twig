@@ -13,7 +13,7 @@
  */
 #}
 {% if items.previous or items.next %}
-  <nav class="pager" role="navigation" aria-labelledby="{{ heading_id }}">
+  <nav class="pager" aria-labelledby="{{ heading_id }}">
     {# See templates/navigation/pager.html.twig for why this is a heading
        rather than a span, and why the default is h4. #}
     {% set pager_heading = pagination_heading_level|default('h4') %}

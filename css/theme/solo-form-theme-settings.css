@@ -8,6 +8,16 @@
   container: solo-settings / inline-size;
 }
 
+/* The one rule on the page itself, only while the navigation is on. Sections
+   differ greatly in height, so the page scrollbar came and went on every
+   switch and shifted the page sideways; its space stays reserved. Scroll
+   anchoring is off too: when a switch changed the content inside the form,
+   the browser moved the page to keep an anchor node in place. */
+html:has(form.system-theme-settings.solo-nav-active) {
+  overflow-anchor: none;
+  scrollbar-gutter: stable;
+}
+
 form.system-theme-settings {
   --s-canvas: #f5f6f3;
   --s-surface: #fff;
@@ -20,10 +30,11 @@ form.system-theme-settings {
   --s-ctl: #7f8c91;
   --s-on-accent: #fff;
   --s-line: #d3d9d8;
+  --s-pad: clamp(0.75rem, 2.5vw, 2rem);
 
   display: flow-root;
   box-sizing: border-box;
-  padding: clamp(0.75rem, 2.5vw, 2rem);
+  padding: var(--s-pad);
   color: var(--s-ink);
   border-radius: 1rem;
   background: var(--s-canvas);
@@ -157,16 +168,19 @@ form.system-theme-settings .solo-nav__link {
   font-weight: 500;
 }
 
-form.system-theme-settings .solo-nav__link:hover {
+/* Links never move: no weight change on hover, focus or current. A bolder
+   current link re-wrapped its text in the narrow column and shook the menu.
+   Focus looks like hover. */
+form.system-theme-settings .solo-nav__link:hover,
+form.system-theme-settings .solo-nav__link:focus-visible {
   text-decoration: underline;
   background: var(--s-soft);
 }
 
-/* The current item: a filled pill, and weight as well as color. */
+/* The current item: a filled pill; color, not weight, marks it. */
 form.system-theme-settings .solo-nav__link[aria-current] {
   color: var(--s-on-accent);
   background: var(--s-accent);
-  font-weight: 600;
 }
 
 /* Their own colors are measured against the canvas, not against the pill. */
@@ -671,6 +685,39 @@ form.system-theme-settings > .form-actions {
     inset-block-start: 5rem;
     inline-size: 17rem;
     max-block-size: calc(100vh - 6rem);
+  }
+
+  /* An app shell, while the script runs the navigation: the form fits the
+     viewport below the admin theme's sticky header and is the one scroll
+     container. The menu and Save stick inside it and only the sections
+     scroll, so a section switch never changes the document's height and the
+     page never moves. The header is Gin's sticky bar under its toolbar, or
+     core's displaced toolbar, whichever is larger; both are 0 where the admin
+     theme has none. position: relative makes the form the containing block
+     of absolutely positioned descendants (core's .visually-hidden text in
+     every section), so its overflow clips them. Without it they sat at their
+     place deep in the scrolled sections, outside the form, and the document
+     grew and shrank with each section, which moved the page. */
+  form.system-theme-settings.solo-nav-active {
+    --s-shell-top: max(var(--drupal-displace-offset-top, 0px), calc(var(--gin-toolbar-y-offset, 0px) + var(--gin-height-sticky, 0px)));
+    --s-shell-height: calc(100dvh - var(--s-shell-top) - 0.75rem);
+
+    position: relative;
+    overflow: hidden auto;
+    block-size: var(--s-shell-height);
+    min-block-size: 0;
+    scrollbar-gutter: stable;
+  }
+
+  /* Sticky against the form now. The browser measures a sticky inset from
+     inside the scroll container's padding, so 0 is exactly where the nav
+     sits in flow (it is the form's first child, with no top margin). Any
+     larger inset pushed the nav down by the difference as soon as a section
+     was taller than the form. */
+  form.system-theme-settings.solo-nav-active .solo-nav {
+    inset-block-start: 0;
+    margin-block: 0;
+    max-block-size: calc(var(--s-shell-height) - 2 * var(--s-pad));
   }
 
   form.system-theme-settings > :not(.solo-nav) {

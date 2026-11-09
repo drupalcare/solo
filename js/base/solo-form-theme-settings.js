@@ -194,6 +194,45 @@
       }
     };
 
+    /**
+     * Brings an element into view without moving the page around the form.
+     *
+     * When the menu is a column, the form is the one scroll container (the
+     * stylesheet's app shell), so only the form scrolls and the document never
+     * does. Otherwise the document scrolls, as before.
+     *
+     * @param {HTMLElement} element
+     *   The element to show.
+     * @param {ScrollIntoViewOptions} [options]
+     *   Options for the document scroll when the menu is compact.
+     */
+    const reveal = (element, options) => {
+      if (compact) {
+        element.scrollIntoView(options);
+        return;
+      }
+      const offset =
+        element.getBoundingClientRect().top - form.getBoundingClientRect().top;
+      form.scrollTop += offset - form.clientHeight / 3;
+    };
+
+    /**
+     * Clicks a tab link without core's fragment handler seeing the click.
+     *
+     * Core's form.js listens on the document for clicks on any a[href*="#"]
+     * and, 300ms later, focuses the target without preventScroll, which moved
+     * the page. The tab's own handler on the link still runs.
+     *
+     * @param {HTMLAnchorElement} tabLink
+     *   A vertical tab's menu link.
+     */
+    const clickTab = (tabLink) => {
+      tabLink.addEventListener('click', (event) => event.stopPropagation(), {
+        once: true,
+      });
+      tabLink.click();
+    };
+
     let current = null;
     const select = (entry, moveFocus) => {
       current = entry;
@@ -207,9 +246,29 @@
       writeStored(entry.section.id);
       if (compact) {
         menu.open = false;
+      } else {
+        // The form is the scroll container here: only the sections column
+        // goes back to its top, and the document never scrolls.
+        form.scrollTop = 0;
       }
       if (moveFocus) {
-        entry.heading.focus();
+        // The browser's own focus scroll moved the page on every click; only
+        // the section side should change.
+        entry.heading.focus({ preventScroll: true });
+      }
+      if (moveFocus && compact) {
+        // The document scrolls in the compact layout: scroll once, and only
+        // when the section's top is out of view.
+        const { top } = entry.section.getBoundingClientRect();
+        if (top < 0 || top > window.innerHeight) {
+          const reduce = window.matchMedia(
+            '(prefers-reduced-motion: reduce)',
+          ).matches;
+          entry.section.scrollIntoView({
+            block: 'start',
+            behavior: reduce ? 'auto' : 'smooth',
+          });
+        }
       }
     };
 
@@ -236,7 +295,7 @@
     }
     select(initial, false);
     if (target && targetEntry === initial) {
-      target.scrollIntoView();
+      reveal(target);
     }
 
     // Links are handled here so history gets one entry and focus lands on the
@@ -257,6 +316,11 @@
         return;
       }
       event.preventDefault();
+      // Core's form.js listens on the document for clicks on any a[href*="#"]
+      // and, 300ms later, focuses the target without preventScroll, which
+      // scrolled the page. This handler does the whole job, so the click stops
+      // here; the href stays for use without this script.
+      event.stopPropagation();
       const hash = link.getAttribute('href');
       if (window.location.hash !== hash) {
         window.history.pushState(null, '', hash);
@@ -272,7 +336,7 @@
           '.vertical-tabs .vertical-tabs__menu-link',
         );
         if (firstLink && !firstLink.closest('.is-selected')) {
-          firstLink.click();
+          clickTab(firstLink);
         }
       }
       select(entry, true);
@@ -291,7 +355,7 @@
         select(entry, onSection);
       }
       if (!onSection) {
-        changed.scrollIntoView({ block: 'center' });
+        reveal(changed, { block: 'center' });
       }
     });
 
@@ -321,7 +385,9 @@
             `.vertical-tabs__menu-link[href="#${CSS.escape(pane.id)}"]`,
           );
           if (tabLink) {
-            tabLink.click();
+            // Stopped at the link, so core does not move focus off the
+            // invalid field 300ms later.
+            clickTab(tabLink);
           }
         }
       },
@@ -392,7 +458,7 @@
     }
     field.remove();
     if (active) {
-      active.focus();
+      active.focus({ preventScroll: true });
     }
     return copied;
   };

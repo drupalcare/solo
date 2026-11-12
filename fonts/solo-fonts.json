@@ -766,11 +766,13 @@
   "icons": [
     {
       "id": "font-awesome-7-in",
+      "was": "font-awesome-4-in",
       "meta": { "Version": "7.0.1" },
       "css": [{ "path": "fonts/font-awesome-7.0.1.css", "weight": -200 }]
     },
     {
       "id": "font-awesome-7-ex",
+      "was": ["font-awesome-4-ex", "font-awesome-5-ex", "font-awesome-6-ex"],
       "meta": {
         "remote": "https://github.com/FortAwesome/Font-Awesome",
         "version": "7.0.1",

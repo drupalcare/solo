@@ -1,0 +1,84 @@
+/**
+ * @file
+ * Solo color library: us-highway.
+ *
+ * Tokens: one background (--solo-<class>) and one text color (--solo-<class>-on) per class,
+ * in solo.tokens. Classes: solo.utilities; each class sets --r-background and --r-text from
+ * its tokens and paints from them, with no !important (the layer order does the job).
+ * Where two class names share a rule (gray and grey), the token is named from the first name.
+ * Layer order: solo-layers.css. Check: scripts/css-layers-check.py.
+ */
+
+@layer solo.tokens {
+
+:root {
+  --solo-highway-brown: #633517;
+  --solo-highway-brown-on: var(--solo-white);
+  --solo-highway-red: #a6001a;
+  --solo-highway-red-on: var(--solo-white);
+  --solo-highway-orange: #e06000;
+  --solo-highway-orange-on: var(--solo-white);
+  --solo-highway-schoolbus: #ee9600;
+  --solo-highway-schoolbus-on: var(--solo-white);
+  --solo-highway-yellow: #ffab00;
+  --solo-highway-yellow-on: var(--solo-white);
+  --solo-highway-green: #004d33;
+  --solo-highway-green-on: var(--solo-white);
+  --solo-highway-blue: #00477e;
+  --solo-highway-blue-on: var(--solo-white);
+}
+
+} /* end @layer solo.tokens */
+
+@layer solo.utilities {
+
+:where(.solo-page) .w3-highway-brown {
+  --r-text: var(--solo-highway-brown-on);
+  --r-background: var(--solo-highway-brown);
+  color: var(--r-text);
+  background-color: var(--r-background);
+}
+
+:where(.solo-page) .w3-highway-red {
+  --r-text: var(--solo-highway-red-on);
+  --r-background: var(--solo-highway-red);
+  color: var(--r-text);
+  background-color: var(--r-background);
+}
+
+:where(.solo-page) .w3-highway-orange {
+  --r-text: var(--solo-highway-orange-on);
+  --r-background: var(--solo-highway-orange);
+  color: var(--r-text);
+  background-color: var(--r-background);
+}
+
+:where(.solo-page) .w3-highway-schoolbus {
+  --r-text: var(--solo-highway-schoolbus-on);
+  --r-background: var(--solo-highway-schoolbus);
+  color: var(--r-text);
+  background-color: var(--r-background);
+}
+
+:where(.solo-page) .w3-highway-yellow {
+  --r-text: var(--solo-highway-yellow-on);
+  --r-background: var(--solo-highway-yellow);
+  color: var(--r-text);
+  background-color: var(--r-background);
+}
+
+:where(.solo-page) .w3-highway-green {
+  --r-text: var(--solo-highway-green-on);
+  --r-background: var(--solo-highway-green);
+  color: var(--r-text);
+  background-color: var(--r-background);
+}
+
+:where(.solo-page) .w3-highway-blue {
+  --r-text: var(--solo-highway-blue-on);
+  --r-background: var(--solo-highway-blue);
+  color: var(--r-text);
+  background-color: var(--r-background);
+}
+
+} /* end @layer solo.utilities */

@@ -10,8 +10,9 @@ dependencies:
 
 #Libraries
 libraries:
-  - solo/solo-global
-  - solo/solo-menu
+  - solo/base-layers
+  - solo/bundle-global
+  - solo/bundle-menu
 
 ckeditor_stylesheets:
   - css/theme/solo-ckeditor-iframe.css

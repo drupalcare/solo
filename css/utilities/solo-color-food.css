@@ -1,0 +1,381 @@
+/**
+ * @file
+ * Solo color library: food.
+ *
+ * Tokens: one background (--solo-<class>) and one text color (--solo-<class>-on) per class,
+ * in solo.tokens. Classes: solo.utilities; each class sets --r-background and --r-text from
+ * its tokens and paints from them, with no !important (the layer order does the job).
+ * Where two class names share a rule (gray and grey), the token is named from the first name.
+ * Layer order: solo-layers.css. Check: scripts/css-layers-check.py.
+ */
+
+@layer solo.tokens {
+
+:root {
+  --solo-food-apple: #76cd26;
+  --solo-food-apple-on: var(--solo-black);
+  --solo-food-aspargus: #77ab56;
+  --solo-food-aspargus-on: var(--solo-white);
+  --solo-food-apricot: #ffb16d;
+  --solo-food-apricot-on: var(--solo-white);
+  --solo-food-aubergine: #3d0734;
+  --solo-food-aubergine-on: var(--solo-white);
+  --solo-food-avocado: #87a922;
+  --solo-food-avocado-on: var(--solo-white);
+  --solo-food-banana: #fafe4b;
+  --solo-food-banana-on: var(--solo-black);
+  --solo-food-butter: #ffff81;
+  --solo-food-butter-on: var(--solo-black);
+  --solo-food-blueberry: #464196;
+  --solo-food-blueberry-on: var(--solo-white);
+  --solo-food-carrot: #e67e22;
+  --solo-food-carrot-on: var(--solo-white);
+  --solo-food-cherry: #cf0234;
+  --solo-food-cherry-on: var(--solo-white);
+  --solo-food-chocolate: #411900;
+  --solo-food-chocolate-on: var(--solo-white);
+  --solo-food-cranberry: #9e003a;
+  --solo-food-cranberry-on: var(--solo-white);
+  --solo-food-coffee: #a6814c;
+  --solo-food-coffee-on: var(--solo-white);
+  --solo-food-egg: #fffcc4;
+  --solo-food-egg-on: var(--solo-black);
+  --solo-food-grape: #6c3461;
+  --solo-food-grape-on: var(--solo-white);
+  --solo-food-kiwi: #8ee53f;
+  --solo-food-kiwi-on: var(--solo-black);
+  --solo-food-lemon: #fdff52;
+  --solo-food-lemon-on: var(--solo-black);
+  --solo-food-lime: #bffe28;
+  --solo-food-lime-on: var(--solo-black);
+  --solo-food-mango: #ffa62b;
+  --solo-food-mango-on: var(--solo-white);
+  --solo-food-mushroom: #ba9e88;
+  --solo-food-mushroom-on: var(--solo-white);
+  --solo-food-mustard: #ceb301;
+  --solo-food-mustard-on: var(--solo-white);
+  --solo-food-mint: #c0fa8b;
+  --solo-food-mint-on: var(--solo-black);
+  --solo-food-olive: #6e750e;
+  --solo-food-olive-on: var(--solo-white);
+  --solo-food-orange: #f97306;
+  --solo-food-orange-on: var(--solo-white);
+  --solo-food-pea: #a4bf20;
+  --solo-food-pea-on: var(--solo-white);
+  --solo-food-peach: #ffb07c;
+  --solo-food-peach-on: var(--solo-white);
+  --solo-food-pear: #cbf85f;
+  --solo-food-pear-on: var(--solo-black);
+  --solo-food-pistachio: #c0fa8b;
+  --solo-food-pistachio-on: var(--solo-black);
+  --solo-food-plum: #3f012c;
+  --solo-food-plum-on: var(--solo-white);
+  --solo-food-pomegranate: #c0392b;
+  --solo-food-pomegranate-on: var(--solo-white);
+  --solo-food-pumpkin: #d35400;
+  --solo-food-pumpkin-on: var(--solo-white);
+  --solo-food-raspberry: #b00149;
+  --solo-food-raspberry-on: var(--solo-white);
+  --solo-food-saffron: #feb209;
+  --solo-food-saffron-on: var(--solo-white);
+  --solo-food-salmon: #ff796c;
+  --solo-food-salmon-on: var(--solo-white);
+  --solo-food-spearmint: #1ef876;
+  --solo-food-spearmint-on: var(--solo-black);
+  --solo-food-squash: #f2ab15;
+  --solo-food-squash-on: var(--solo-white);
+  --solo-food-strawberry: #fb2943;
+  --solo-food-strawberry-on: var(--solo-white);
+  --solo-food-tomato: #ec2d01;
+  --solo-food-tomato-on: var(--solo-white);
+  --solo-food-wheat: #fbdd7e;
+  --solo-food-wheat-on: var(--solo-black);
+  --solo-food-wine: #80013f;
+  --solo-food-wine-on: var(--solo-white);
+}
+
+} /* end @layer solo.tokens */
+
+@layer solo.utilities {
+
+:where(.solo-page) .w3-food-apple {
+  --r-text: var(--solo-food-apple-on);
+  --r-background: var(--solo-food-apple);
+  color: var(--r-text);
+  background-color: var(--r-background);
+}
+
+:where(.solo-page) .w3-food-aspargus {
+  --r-text: var(--solo-food-aspargus-on);
+  --r-background: var(--solo-food-aspargus);
+  color: var(--r-text);
+  background-color: var(--r-background);
+}
+
+:where(.solo-page) .w3-food-apricot {
+  --r-text: var(--solo-food-apricot-on);
+  --r-background: var(--solo-food-apricot);
+  color: var(--r-text);
+  background-color: var(--r-background);
+}
+
+:where(.solo-page) .w3-food-aubergine {
+  --r-text: var(--solo-food-aubergine-on);
+  --r-background: var(--solo-food-aubergine);
+  color: var(--r-text);
+  background-color: var(--r-background);
+}
+
+:where(.solo-page) .w3-food-avocado {
+  --r-text: var(--solo-food-avocado-on);
+  --r-background: var(--solo-food-avocado);
+  color: var(--r-text);
+  background-color: var(--r-background);
+}
+
+:where(.solo-page) .w3-food-banana {
+  --r-text: var(--solo-food-banana-on);
+  --r-background: var(--solo-food-banana);
+  color: var(--r-text);
+  background-color: var(--r-background);
+}
+
+:where(.solo-page) .w3-food-butter {
+  --r-text: var(--solo-food-butter-on);
+  --r-background: var(--solo-food-butter);
+  color: var(--r-text);
+  background-color: var(--r-background);
+}
+
+:where(.solo-page) .w3-food-blueberry {
+  --r-text: var(--solo-food-blueberry-on);
+  --r-background: var(--solo-food-blueberry);
+  color: var(--r-text);
+  background-color: var(--r-background);
+}
+
+:where(.solo-page) .w3-food-carrot {
+  --r-text: var(--solo-food-carrot-on);
+  --r-background: var(--solo-food-carrot);
+  color: var(--r-text);
+  background-color: var(--r-background);
+}
+
+:where(.solo-page) .w3-food-cherry {
+  --r-text: var(--solo-food-cherry-on);
+  --r-background: var(--solo-food-cherry);
+  color: var(--r-text);
+  background-color: var(--r-background);
+}
+
+:where(.solo-page) .w3-food-chocolate {
+  --r-text: var(--solo-food-chocolate-on);
+  --r-background: var(--solo-food-chocolate);
+  color: var(--r-text);
+  background-color: var(--r-background);
+}
+
+:where(.solo-page) .w3-food-cranberry {
+  --r-text: var(--solo-food-cranberry-on);
+  --r-background: var(--solo-food-cranberry);
+  color: var(--r-text);
+  background-color: var(--r-background);
+}
+
+:where(.solo-page) .w3-food-coffee {
+  --r-text: var(--solo-food-coffee-on);
+  --r-background: var(--solo-food-coffee);
+  color: var(--r-text);
+  background-color: var(--r-background);
+}
+
+:where(.solo-page) .w3-food-egg {
+  --r-text: var(--solo-food-egg-on);
+  --r-background: var(--solo-food-egg);
+  color: var(--r-text);
+  background-color: var(--r-background);
+}
+
+:where(.solo-page) .w3-food-grape {
+  --r-text: var(--solo-food-grape-on);
+  --r-background: var(--solo-food-grape);
+  color: var(--r-text);
+  background-color: var(--r-background);
+}
+
+:where(.solo-page) .w3-food-kiwi {
+  --r-text: var(--solo-food-kiwi-on);
+  --r-background: var(--solo-food-kiwi);
+  color: var(--r-text);
+  background-color: var(--r-background);
+}
+
+:where(.solo-page) .w3-food-lemon {
+  --r-text: var(--solo-food-lemon-on);
+  --r-background: var(--solo-food-lemon);
+  color: var(--r-text);
+  background-color: var(--r-background);
+}
+
+:where(.solo-page) .w3-food-lime {
+  --r-text: var(--solo-food-lime-on);
+  --r-background: var(--solo-food-lime);
+  color: var(--r-text);
+  background-color: var(--r-background);
+}
+
+:where(.solo-page) .w3-food-mango {
+  --r-text: var(--solo-food-mango-on);
+  --r-background: var(--solo-food-mango);
+  color: var(--r-text);
+  background-color: var(--r-background);
+}
+
+:where(.solo-page) .w3-food-mushroom {
+  --r-text: var(--solo-food-mushroom-on);
+  --r-background: var(--solo-food-mushroom);
+  color: var(--r-text);
+  background-color: var(--r-background);
+}
+
+:where(.solo-page) .w3-food-mustard {
+  --r-text: var(--solo-food-mustard-on);
+  --r-background: var(--solo-food-mustard);
+  color: var(--r-text);
+  background-color: var(--r-background);
+}
+
+:where(.solo-page) .w3-food-mint {
+  --r-text: var(--solo-food-mint-on);
+  --r-background: var(--solo-food-mint);
+  color: var(--r-text);
+  background-color: var(--r-background);
+}
+
+:where(.solo-page) .w3-food-olive {
+  --r-text: var(--solo-food-olive-on);
+  --r-background: var(--solo-food-olive);
+  color: var(--r-text);
+  background-color: var(--r-background);
+}
+
+:where(.solo-page) .w3-food-orange {
+  --r-text: var(--solo-food-orange-on);
+  --r-background: var(--solo-food-orange);
+  color: var(--r-text);
+  background-color: var(--r-background);
+}
+
+:where(.solo-page) .w3-food-pea {
+  --r-text: var(--solo-food-pea-on);
+  --r-background: var(--solo-food-pea);
+  color: var(--r-text);
+  background-color: var(--r-background);
+}
+
+:where(.solo-page) .w3-food-peach {
+  --r-text: var(--solo-food-peach-on);
+  --r-background: var(--solo-food-peach);
+  color: var(--r-text);
+  background-color: var(--r-background);
+}
+
+:where(.solo-page) .w3-food-pear {
+  --r-text: var(--solo-food-pear-on);
+  --r-background: var(--solo-food-pear);
+  color: var(--r-text);
+  background-color: var(--r-background);
+}
+
+:where(.solo-page) .w3-food-pistachio {
+  --r-text: var(--solo-food-pistachio-on);
+  --r-background: var(--solo-food-pistachio);
+  color: var(--r-text);
+  background-color: var(--r-background);
+}
+
+:where(.solo-page) .w3-food-plum {
+  --r-text: var(--solo-food-plum-on);
+  --r-background: var(--solo-food-plum);
+  color: var(--r-text);
+  background-color: var(--r-background);
+}
+
+:where(.solo-page) .w3-food-pomegranate {
+  --r-text: var(--solo-food-pomegranate-on);
+  --r-background: var(--solo-food-pomegranate);
+  color: var(--r-text);
+  background-color: var(--r-background);
+}
+
+:where(.solo-page) .w3-food-pumpkin {
+  --r-text: var(--solo-food-pumpkin-on);
+  --r-background: var(--solo-food-pumpkin);
+  color: var(--r-text);
+  background-color: var(--r-background);
+}
+
+:where(.solo-page) .w3-food-raspberry {
+  --r-text: var(--solo-food-raspberry-on);
+  --r-background: var(--solo-food-raspberry);
+  color: var(--r-text);
+  background-color: var(--r-background);
+}
+
+:where(.solo-page) .w3-food-saffron {
+  --r-text: var(--solo-food-saffron-on);
+  --r-background: var(--solo-food-saffron);
+  color: var(--r-text);
+  background-color: var(--r-background);
+}
+
+:where(.solo-page) .w3-food-salmon {
+  --r-text: var(--solo-food-salmon-on);
+  --r-background: var(--solo-food-salmon);
+  color: var(--r-text);
+  background-color: var(--r-background);
+}
+
+:where(.solo-page) .w3-food-spearmint {
+  --r-text: var(--solo-food-spearmint-on);
+  --r-background: var(--solo-food-spearmint);
+  color: var(--r-text);
+  background-color: var(--r-background);
+}
+
+:where(.solo-page) .w3-food-squash {
+  --r-text: var(--solo-food-squash-on);
+  --r-background: var(--solo-food-squash);
+  color: var(--r-text);
+  background-color: var(--r-background);
+}
+
+:where(.solo-page) .w3-food-strawberry {
+  --r-text: var(--solo-food-strawberry-on);
+  --r-background: var(--solo-food-strawberry);
+  color: var(--r-text);
+  background-color: var(--r-background);
+}
+
+:where(.solo-page) .w3-food-tomato {
+  --r-text: var(--solo-food-tomato-on);
+  --r-background: var(--solo-food-tomato);
+  color: var(--r-text);
+  background-color: var(--r-background);
+}
+
+:where(.solo-page) .w3-food-wheat {
+  --r-text: var(--solo-food-wheat-on);
+  --r-background: var(--solo-food-wheat);
+  color: var(--r-text);
+  background-color: var(--r-background);
+}
+
+:where(.solo-page) .w3-food-wine {
+  --r-text: var(--solo-food-wine-on);
+  --r-background: var(--solo-food-wine);
+  color: var(--r-text);
+  background-color: var(--r-background);
+}
+
+} /* end @layer solo.utilities */

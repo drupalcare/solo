@@ -1,6 +1,12 @@
-#solo-page-wrapper .audiowide,
-#solo-header.solo-audiowide .solo-branding__site-name-link,
-#solo-page-wrapper.solo-audiowide .solo-page-title__text,
-html.solo-preloader-enabled #solo-preloader.solo-audiowide .solo-preloader__text {
+@layer solo.base {
+  #solo-header.solo-audiowide .solo-branding__site-name-link,
+  #solo-page-wrapper.solo-audiowide .solo-page-title__text,
+  html.solo-preloader-enabled #solo-preloader.solo-audiowide .solo-preloader__text {
+    font-family: "Audiowide", sans-serif;
+  }
+}
+
+/* Unlayered on purpose. Font classes beat unlayered element rules (PB w3-modern.css headings and buttons) as before; a layer would lose to them. */
+#solo-page-wrapper .audiowide {
   font-family: "Audiowide", sans-serif;
 }

@@ -1,0 +1,337 @@
+{
+  "_about": "Manifest for scripts/css-layers-check.py. Rules: docs/css-layers.md (to write). Entries marked 'pending: batch N' move into layers in that batch of planning/themes-layers-plan-solo-2026-11-10.md.",
+  "ladder": [
+    "solo.locked",
+    "solo.reset",
+    "solo.tokens",
+    "solo.base",
+    "solo.layout",
+    "solo.theme",
+    "solo.schemes",
+    "solo.utilities",
+    "solo.subtheme"
+  ],
+  "ladder_file": "css/base/solo-layers.css",
+  "libraries_file": "solo.libraries.yml",
+  "locked_layer": "solo.locked",
+  "tokens_layer": "solo.tokens",
+  "element_layers": [
+    "solo.reset",
+    "solo.base"
+  ],
+  "css_dirs": [
+    "css",
+    "fonts"
+  ],
+  "roots": [
+    ".solo-",
+    "#solo-",
+    ".w3-",
+    "solo-"
+  ],
+  "important_allow": {
+    ".solo-animate-input:focus": "kept unchanged in batch 3: removal needs a per-rule winner proof (plan section 4); owner decision pending",
+    ".dis-anim-link nav ul li": "kept unchanged in batch 3: removal needs a per-rule winner proof (plan section 4); owner decision pending",
+    ".dis-all-animations": "kept unchanged in batch 3: removal needs a per-rule winner proof (plan section 4); owner decision pending",
+    ".dis-anim-submit": "kept unchanged in batch 3: removal needs a per-rule winner proof (plan section 4); owner decision pending",
+    ":where(form) fieldset": "kept unchanged in batch 3: removal needs a per-rule winner proof (plan section 4); owner decision pending",
+    ".dis-box-shadow": "kept unchanged in batch 3: removal needs a per-rule winner proof (plan section 4); owner decision pending",
+    ".dis-border": "kept unchanged in batch 3: removal needs a per-rule winner proof (plan section 4); owner decision pending",
+    ".dis-margin": "kept unchanged in batch 3: removal needs a per-rule winner proof (plan section 4); owner decision pending",
+    ".dis-padding": "kept unchanged in batch 3: removal needs a per-rule winner proof (plan section 4); owner decision pending",
+    ".dis-opacity": "kept unchanged in batch 3: removal needs a per-rule winner proof (plan section 4); owner decision pending",
+    ".dis-text-transform": "kept unchanged in batch 3: removal needs a per-rule winner proof (plan section 4); owner decision pending",
+    ".solo-display-none": "a11y or show/hide helper kept by plan section 4",
+    ".solo-visually-hidden": "a11y or show/hide helper kept by plan section 4",
+    ".visually-hidden": "mirrors core hidden.module.css; plan section 4",
+    ".solo-no-wrap": "kept unchanged in batch 3: removal needs a per-rule winner proof (plan section 4); owner decision pending",
+    ".solo-break-word": "kept unchanged in batch 3: removal needs a per-rule winner proof (plan section 4); owner decision pending",
+    ".solo-truncate": "kept unchanged in batch 3: removal needs a per-rule winner proof (plan section 4); owner decision pending",
+    ".solo-align-": "kept unchanged in batch 3: removal needs a per-rule winner proof (plan section 4); owner decision pending",
+    ".solo-overflow-": "kept unchanged in batch 3: removal needs a per-rule winner proof (plan section 4); owner decision pending",
+    ".solo-svg-icon__path": "kept unchanged in batch 3: removal needs a per-rule winner proof (plan section 4); owner decision pending",
+    "svg.ext": "kept unchanged in batch 3: removal needs a per-rule winner proof (plan section 4); owner decision pending",
+    ".solo-region-box--content": "kept unchanged in batch 3: removal needs a per-rule winner proof (plan section 4); owner decision pending",
+    ".solo-inner:empty": "kept unchanged in batch 3: removal needs a per-rule winner proof (plan section 4); owner decision pending",
+    ".solo-back-to-top.solo-back-to-top--hide-small": "kept unchanged in batch 4: removal needs a per-rule winner proof (plan section 4); owner decision pending",
+    ".solo-back-to-top-sentinel-wrapper": "kept unchanged in batch 4: removal needs a per-rule winner proof (plan section 4); owner decision pending",
+    ".cke": "kept unchanged in batch 4: removal needs a per-rule winner proof (plan section 4); owner decision pending",
+    ".ck-editor__top": "kept unchanged in batch 4: removal needs a per-rule winner proof (plan section 4); owner decision pending",
+    ".cke_contents": "kept unchanged in batch 4: removal needs a per-rule winner proof (plan section 4); owner decision pending",
+    ".ck-editor__main": "kept unchanged in batch 4: removal needs a per-rule winner proof (plan section 4); owner decision pending",
+    ":where(.text-format-wrapper) > .solo-form__element-container": "kept unchanged in batch 4: removal needs a per-rule winner proof (plan section 4); owner decision pending",
+    ".cke_top": "kept unchanged in batch 4: removal needs a per-rule winner proof (plan section 4); owner decision pending",
+    ".ck-reset_all:not(.ck-reset_all-excluded *)": "kept unchanged in batch 4: removal needs a per-rule winner proof (plan section 4); owner decision pending",
+    ".solo-comment__permalink a": "kept unchanged in batch 4: removal needs a per-rule winner proof (plan section 4); owner decision pending",
+    ".new-comment.hidden": "kept unchanged in batch 4: removal needs a per-rule winner proof (plan section 4); owner decision pending",
+    ":where(.field--type-text-long > *) > p:first-child": "kept unchanged in batch 4: removal needs a per-rule winner proof (plan section 4); owner decision pending",
+    ":where(.node__content) ul.links li:last-child:not(.comment li)": "kept unchanged in batch 4: removal needs a per-rule winner proof (plan section 4); owner decision pending",
+    ":where(.js .views-edit-view .dropbutton-wrapper .dropbutton .dropbutton-action) > *": "kept unchanged in batch 4: removal needs a per-rule winner proof (plan section 4); owner decision pending",
+    ".js .views-edit-view .dropbutton-wrapper .dropbutton .dropbutton-action input": "kept unchanged in batch 4: removal needs a per-rule winner proof (plan section 4); owner decision pending",
+    ".views-align-left": "kept unchanged in batch 4: removal needs a per-rule winner proof (plan section 4); owner decision pending",
+    ".views-align-right": "kept unchanged in batch 4: removal needs a per-rule winner proof (plan section 4); owner decision pending",
+    ".views-align-center": "kept unchanged in batch 4: removal needs a per-rule winner proof (plan section 4); owner decision pending",
+    ".solo-fixed-search-block__inner .solo-search-block-form .form-item": "kept unchanged in batch 4: removal needs a per-rule winner proof (plan section 4); owner decision pending",
+    ".solo-fixed-search-block__inner .solo-fixed-search-block__close button": "kept unchanged in batch 4: removal needs a per-rule winner proof (plan section 4); owner decision pending",
+    ".form-radios .form-item": "kept unchanged in batch 4: removal needs a per-rule winner proof (plan section 4); owner decision pending",
+    ":where(.form-type-radio) label": "kept unchanged in batch 4: removal needs a per-rule winner proof (plan section 4); owner decision pending",
+    ":where(.dropbutton-wrapper.open) .solo-button": "kept unchanged in batch 4: removal needs a per-rule winner proof (plan section 4); owner decision pending",
+    ":where(.solo-header__inner nav.contextual-region) .contextual": "kept unchanged in batch 4: removal needs a per-rule winner proof (plan section 4); owner decision pending",
+    ":where(.solo-header__inner .contextual-region.block-system-branding-block) .contextual": "kept unchanged in batch 4: removal needs a per-rule winner proof (plan section 4); owner decision pending",
+    "#solo-fixed-search-block__open button span": "kept unchanged in batch 4: removal needs a per-rule winner proof (plan section 4); owner decision pending",
+    "#solo-menu-primary-sidebar__close button span": "kept unchanged in batch 4: removal needs a per-rule winner proof (plan section 4); owner decision pending",
+    "#solo-menu-primary-sidebar__open button span": "kept unchanged in batch 4: removal needs a per-rule winner proof (plan section 4); owner decision pending",
+    ":where(.solo-inner .solo-menu-tree--megamenu > li.solo-menu-tree__item) > .solo-menu-tree__toggler": "kept unchanged in batch 4: removal needs a per-rule winner proof (plan section 4); owner decision pending",
+    ":where(.solo-inner .solo-menu-tree--default li:hover) > :where(ul).solo-menu-tree__submenu": "kept unchanged in batch 4: removal needs a per-rule winner proof (plan section 4); owner decision pending",
+    ":where(.solo-page .solo-menu-tree--default li.solo-menu-tree__item--has-submenu:hover) > *": "kept unchanged in batch 4: removal needs a per-rule winner proof (plan section 4); owner decision pending",
+    ".pager__item.solo-active-pager a": "kept unchanged in batch 4: removal needs a per-rule winner proof (plan section 4); owner decision pending",
+    ".solo-popup-login-block.solo-popup-visible": "kept unchanged in batch 4: removal needs a per-rule winner proof (plan section 4); owner decision pending",
+    ".solo-popup-login-block__inner": "kept unchanged in batch 4: removal needs a per-rule winner proof (plan section 4); owner decision pending",
+    ".solo-popup-login-block__close button": "kept unchanged in batch 4: removal needs a per-rule winner proof (plan section 4); owner decision pending",
+    ".solo-popup-login-block": "kept unchanged in batch 4: removal needs a per-rule winner proof (plan section 4); owner decision pending",
+    ":where(html.solo-preloader-enabled) .solo-preloader.solo-preloader--removed": "kept unchanged in batch 4: removal needs a per-rule winner proof (plan section 4); owner decision pending",
+    ".solo-search-block-form .form-item": "kept unchanged in batch 4: removal needs a per-rule winner proof (plan section 4); owner decision pending",
+    ":where(input).solo-fixed-search-block__button-block": "kept unchanged in batch 4: removal needs a per-rule winner proof (plan section 4); owner decision pending",
+    ":where(.solo-page) :where(form.search-form .form-wrapper) > .button--primary": "kept unchanged in batch 4: removal needs a per-rule winner proof (plan section 4); owner decision pending",
+    ":where(.path-search .search-form .search-advanced) #edit-type--wrapper div.fieldset-wrapper": "kept unchanged in batch 4: removal needs a per-rule winner proof (plan section 4); owner decision pending",
+    ":where(.search-form) .search-advanced:hover": "kept unchanged in batch 4: removal needs a per-rule winner proof (plan section 4); owner decision pending",
+    ".skip-link.focusable:focus": "kept unchanged in batch 4: removal needs a per-rule winner proof (plan section 4); owner decision pending",
+    ".messages": "kept unchanged in batch 4: removal needs a per-rule winner proof (plan section 4); owner decision pending",
+    ":where(.solo-page) .solo-status-messages": "kept unchanged in batch 4: removal needs a per-rule winner proof (plan section 4); owner decision pending",
+    ":where(.messages) a": "kept unchanged in batch 4: removal needs a per-rule winner proof (plan section 4); owner decision pending",
+    ":where(.messages) *:not(pre, pre.sf-dump *, pre.sf-dump *, pre.sf-dump .sf-dump-default)": "kept unchanged in batch 4: removal needs a per-rule winner proof (plan section 4); owner decision pending",
+    ".messages-list": "kept unchanged in batch 4: removal needs a per-rule winner proof (plan section 4); owner decision pending",
+    ":where(.webform-message--close) :where(a).webform-message__link": "kept unchanged in batch 4: removal needs a per-rule winner proof (plan section 4); owner decision pending",
+    ":where(.messages:not(.hidden)) ~ .messages": "kept unchanged in batch 4: removal needs a per-rule winner proof (plan section 4); owner decision pending",
+    ".messages__close": "kept unchanged in batch 4: removal needs a per-rule winner proof (plan section 4); owner decision pending",
+    ".messages__close::before": "kept unchanged in batch 4: removal needs a per-rule winner proof (plan section 4); owner decision pending",
+    ".messages__close::after": "kept unchanged in batch 4: removal needs a per-rule winner proof (plan section 4); owner decision pending",
+    ".messages__icon svg": "kept unchanged in batch 4: removal needs a per-rule winner proof (plan section 4); owner decision pending",
+    ".js-form-managed-file .messages": "kept unchanged in batch 4: removal needs a per-rule winner proof (plan section 4); owner decision pending",
+    ":where(.solo-status-messages) .messages__content": "kept unchanged in batch 4: removal needs a per-rule winner proof (plan section 4); owner decision pending",
+    ":where(.messages--error .messages__icon) svg": "kept unchanged in batch 4: removal needs a per-rule winner proof (plan section 4); owner decision pending",
+    ":where(.messages--warning .messages__icon) svg": "kept unchanged in batch 4: removal needs a per-rule winner proof (plan section 4); owner decision pending",
+    ":where(.messages--status .messages__icon) svg": "kept unchanged in batch 4: removal needs a per-rule winner proof (plan section 4); owner decision pending",
+    ":where(.messages--info .messages__icon) svg": "kept unchanged in batch 4: removal needs a per-rule winner proof (plan section 4); owner decision pending",
+    ":where(.messages.messages--error) .messages__close": "kept unchanged in batch 4: removal needs a per-rule winner proof (plan section 4); owner decision pending",
+    ":where(.messages.messages--warning) .messages__close": "kept unchanged in batch 4: removal needs a per-rule winner proof (plan section 4); owner decision pending",
+    ":where(.messages.messages--status) .messages__close": "kept unchanged in batch 4: removal needs a per-rule winner proof (plan section 4); owner decision pending",
+    ":where(.messages.messages--info) .messages__close": "kept unchanged in batch 4: removal needs a per-rule winner proof (plan section 4); owner decision pending",
+    ":where(nav).tabs": "kept unchanged in batch 4: removal needs a per-rule winner proof (plan section 4); owner decision pending",
+    ":where(.solo-page) :where(ul.tabs) li": "kept unchanged in batch 4: removal needs a per-rule winner proof (plan section 4); owner decision pending",
+    ":where(.solo-page .region-title) td": "kept unchanged in batch 4: removal needs a per-rule winner proof (plan section 4); owner decision pending",
+    ":where(.solo-page table td) .form-type-radio": "kept unchanged in batch 4: removal needs a per-rule winner proof (plan section 4); owner decision pending",
+    ":where(.solo-table__wrapper) .tableresponsive-toggle": "kept unchanged in batch 4: removal needs a per-rule winner proof (plan section 4); owner decision pending",
+    ":where(.view) .node--view-mode-teaser .field--type-entity-reference .field__item:first-child a": "kept unchanged in batch 4: removal needs a per-rule winner proof (plan section 4); owner decision pending",
+    ":where(.solo-header__inner nav) .solo-menu-tree__menubar > li > button": "kept unchanged in batch 4: removal needs a per-rule winner proof (plan section 4); owner decision pending",
+    ".webform-submission-form fieldset": "kept unchanged in batch 4: removal needs a per-rule winner proof (plan section 4); owner decision pending",
+    ".webform-submission-form .form-actions > input": "kept unchanged in batch 4: removal needs a per-rule winner proof (plan section 4); owner decision pending",
+    ":where([dir=\"   \"] .form-type-checkbox) label": "kept unchanged in batch 4: removal needs a per-rule winner proof (plan section 4); owner decision pending",
+    ":where(.solo-page) :where(form.search-form) input[type=\"         \"]": "kept unchanged in batch 4: removal needs a per-rule winner proof (plan section 4); owner decision pending",
+    ":where(.solo-page) :where(form.search-form .search-advanced fieldset[data-drupal-selector=\"                      \"]) > .fieldset-wrapper fieldset": "kept unchanged in batch 4: removal needs a per-rule winner proof (plan section 4); owner decision pending",
+    ".solo-desktop-hide": "kept unchanged in batch 5: removal needs a per-rule winner proof (plan section 4); owner decision pending",
+    ".solo-mobile-hide": "kept unchanged in batch 5: removal needs a per-rule winner proof (plan section 4); owner decision pending",
+    ":where(.page-node-type-article) .field--type-text": "kept unchanged in batch 5: removal needs a per-rule winner proof (plan section 4); owner decision pending",
+    ".solo-menu-main--mobile > button": "kept unchanged in batch 5: removal needs a per-rule winner proof (plan section 4); owner decision pending",
+    ":where(.solo-page .solo-container--has-border .solo-primary-menu__inner) :where(ul).solo-is-open": "kept unchanged in batch 5: removal needs a per-rule winner proof (plan section 4); owner decision pending",
+    ":where(.solo-page .solo-container--has-border .solo-primary-menu__inner .solo-menu-tree--primary) li": "kept unchanged in batch 5: removal needs a per-rule winner proof (plan section 4); owner decision pending",
+    ":where(.solo-inner .solo-menu-tree--megamenu li.solo-menu-tree__item) .solo-menu-tree__toggler": "kept unchanged in batch 5: removal needs a per-rule winner proof (plan section 4); owner decision pending",
+    ".solo-menu-main--mobile": "kept unchanged in batch 5: removal needs a per-rule winner proof (plan section 4); owner decision pending",
+    ":where(.solo-inner) .solo-menu-tree--responsive": "kept unchanged in batch 5: removal needs a per-rule winner proof (plan section 4); owner decision pending",
+    ":where(.solo-inner .solo-menu--responsive-hover) .solo-menu-tree--responsive:not(.solo-menu-tree--megamenu) li:hover > ul.solo-menu-tree__submenu": "kept unchanged in batch 5: removal needs a per-rule winner proof (plan section 4); owner decision pending",
+    ":where(.solo-page) .solo-menu--responsive-hover .solo-menu-tree--responsive li.solo-menu-tree__item--has-submenu > a:hover": "kept unchanged in batch 5: removal needs a per-rule winner proof (plan section 4); owner decision pending",
+    ":where(.solo-page) .solo-menu--responsive-hover .solo-menu-tree--responsive li.solo-menu-tree__item--has-submenu:hover > a": "kept unchanged in batch 5: removal needs a per-rule winner proof (plan section 4); owner decision pending",
+    ":where(.solo-page .solo-container--has-border .solo-primary-menu__inner .solo-menu-tree--primary > li) > ul": "kept unchanged in batch 5: removal needs a per-rule winner proof (plan section 4); owner decision pending",
+    ":where(.solo-page .solo-container--has-border .solo-primary-menu__inner .solo-menu-tree--primary) > li": "kept unchanged in batch 5: removal needs a per-rule winner proof (plan section 4); owner decision pending",
+    ":where(.solo-page .solo-container--has-border .solo-primary-menu__inner .solo-menu-tree--primary:not(.solo-menu-tree--megamenu) > li) li": "kept unchanged in batch 5: removal needs a per-rule winner proof (plan section 4); owner decision pending",
+    ":where(.solo-inner .solo-menu--sidebar-hover .solo-menu-tree--sidebar) li:hover > ul.solo-menu-tree__submenu": "kept unchanged in batch 5: removal needs a per-rule winner proof (plan section 4); owner decision pending",
+    ":where(.solo-inner) .solo-menu--sidebar-hover .solo-menu-tree--sidebar li.solo-menu-tree__item--has-submenu > a:hover": "kept unchanged in batch 5: removal needs a per-rule winner proof (plan section 4); owner decision pending",
+    ":where(.solo-page) .solo-menu--sidebar-hover .solo-menu-tree--sidebar li.solo-menu-tree__item--has-submenu:hover > a": "kept unchanged in batch 5: removal needs a per-rule winner proof (plan section 4); owner decision pending",
+    ":where([dir=\"   \"] .solo-primary-menu ul.solo-menu-tree--primary:not(.solo-menu-tree--megamenu) li.solo-menu-tree__item--button-only > button) > :where(span).solo-menu-tree__toggler-icon": "kept unchanged in batch 5: removal needs a per-rule winner proof (plan section 4); owner decision pending",
+    ":where(.solo-primary-menu .solo-menu--expand-left ul.solo-menu-tree--primary:not(.solo-menu-tree--megamenu) > li.solo-menu-tree__item--button-only > button) > :where(span).solo-menu-tree__toggler-icon": "kept unchanged in batch 5: removal needs a per-rule winner proof (plan section 4); owner decision pending",
+    ":where(.solo-primary-menu .solo-menu--expand-left ul.solo-menu-tree--primary:not(.solo-menu-tree--megamenu) li li.solo-menu-tree__item--button-only > button) > :where(span).solo-menu-tree__toggler-icon": "kept unchanged in batch 5: removal needs a per-rule winner proof (plan section 4); owner decision pending",
+    ":where(.solo-primary-menu .solo-menu--expand-left ul.solo-menu-tree--primary:not(.solo-menu-tree--megamenu) > li ul > li > ul > li) a": "kept unchanged in batch 5: removal needs a per-rule winner proof (plan section 4); owner decision pending",
+    ".solo-inner .solo-menu-tree--megamenu > li > ul li": "kept unchanged in batch 5: removal needs a per-rule winner proof (plan section 4); owner decision pending",
+    ".solo-inner .solo-menu-tree--megamenu > li > ul > li": "kept unchanged in batch 5: removal needs a per-rule winner proof (plan section 4); owner decision pending",
+    ":where(.solo-inner .solo-menu-tree--megamenu ul) .solo-menu-tree__toggler-icon": "kept unchanged in batch 5: removal needs a per-rule winner proof (plan section 4); owner decision pending",
+    ".solo-inner .solo-menu-tree--megamenu > li li a": "kept unchanged in batch 5: removal needs a per-rule winner proof (plan section 4); owner decision pending",
+    ":where(.solo-page .solo-inner .solo-menu-tree--megamenu > li) :where(li):hover": "kept unchanged in batch 5: removal needs a per-rule winner proof (plan section 4); owner decision pending",
+    ":where(.solo-inner .solo-menu-tree--megamenu > li > ul.solo-menu-tree__submenu) .solo-menu-tree__toggler--link-disabled:hover": "kept unchanged in batch 5: removal needs a per-rule winner proof (plan section 4); owner decision pending",
+    ":where(.solo-inner .solo-menu--responsive-hover .solo-menu-tree--megamenu) > li:hover > ul.solo-menu-tree__submenu": "kept unchanged in batch 5: removal needs a per-rule winner proof (plan section 4); owner decision pending",
+    "#solo-primary-menu .solo-menu--responsive-hover.remove-arrow .solo-menu-tree__menubar > li > a + button": "kept unchanged in batch 5: removal needs a per-rule winner proof (plan section 4); owner decision pending",
+    ".image-auto a.solo-image--clickable > img.solo-image": "kept unchanged in batch 5: removal needs a per-rule winner proof (plan section 4); owner decision pending",
+    ":where(.solo-page) .cookiesjsr-links": "kept unchanged in batch 5: removal needs a per-rule winner proof (plan section 4); owner decision pending",
+    "#solo-page-wrapper .cookiesjsr-service-group.active button": "kept unchanged in batch 5: removal needs a per-rule winner proof (plan section 4); owner decision pending",
+    ".solo-primary-sidebar-menu": "kept unchanged in batch 5: removal needs a per-rule winner proof (plan section 4); owner decision pending",
+    ":where(.solo-page .solo-container--has-border .solo-primary-sidebar-menu__inner) :where(ul).solo-is-open": "kept unchanged in batch 5: removal needs a per-rule winner proof (plan section 4); owner decision pending",
+    ":where(.solo-page .solo-container--has-border .solo-primary-sidebar-menu__inner) .solo-primary-sidebar-menu__close": "kept unchanged in batch 5: removal needs a per-rule winner proof (plan section 4); owner decision pending",
+    ":where(.solo-page .solo-outer.solo-container--animate-border) .solo-region-box__inner:not(.solo-region-box__inner--main)": "kept unchanged in batch 5: removal needs a per-rule winner proof (plan section 4); owner decision pending",
+    ":where(.solo-page) .animate-solo-aurora-wave": "kept unchanged in batch 5: removal needs a per-rule winner proof (plan section 4); owner decision pending",
+    ":where(html.solo-preloader-enabled .solo-preloader[class*=\"             \"]) .solo-preloader__hero-text": "kept unchanged in batch 5: removal needs a per-rule winner proof (plan section 4); owner decision pending"
+  },
+  "files": {
+    "css/base/solo-layers.css": [
+      "solo.locked"
+    ],
+    "css/admin/*.css": "admin",
+    "css/debug/*.css": "ignored: debug helper, attached only when debugging",
+    "css/base/solo-host-overrides.css": "unlayered: declarations that beat unlayered core, contrib, PB or VVJ CSS before layering; a layer would lose them (head comment lists the rival groups)",
+    "css/base/solo-normalize.css": {
+      "layers": [
+        "solo.reset"
+      ],
+      "colors_ok": true,
+      "colors_note": "two var() fallbacks (#000, #fff) in the focus ring; to tokens in batch 7"
+    },
+    "css/base/solo-variables.css": [
+      "solo.tokens"
+    ],
+    "css/base/solo-region-properties.css": [
+      "solo.tokens"
+    ],
+    "css/base/solo-region-legacy.css": [
+      "solo.tokens"
+    ],
+    "css/base/solo-variables-regions.css": {
+      "layers": [
+        "solo.tokens",
+        "solo.base",
+        "solo.locked"
+      ],
+      "colors_ok": true,
+      "colors_note": "rgb(var(--s-b), a) shadows; to tokens in batch 7"
+    },
+    "css/base/solo-animation.css": {
+      "layers": [
+        "solo.base",
+        "solo.locked"
+      ],
+      "colors_ok": true,
+      "colors_note": "one rgb(var(--s-b), a) shadow; to tokens in batch 7"
+    },
+    "css/components/solo-menu-hamburger.css": [
+      "solo.base",
+      "solo.locked"
+    ],
+    "css/base/solo-quotation.css": [
+      "solo.base"
+    ],
+    "css/base/solo-global.css": {
+      "layers": [
+        "solo.base",
+        "solo.utilities"
+      ],
+      "colors_ok": true,
+      "colors_note": ".solo-card shadow rgb(0, 0, 0, 0.12); to tokens in batch 7"
+    },
+    "css/layout/solo-node-edit.css": "admin",
+    "css/layout/solo-user-login.css": {
+      "layers": [
+        "solo.layout"
+      ],
+      "colors_ok": true,
+      "colors_note": "rgb(var(--s-b), a) shadow stack; to tokens in batch 7"
+    },
+    "css/layout/*.css": [
+      "solo.layout"
+    ],
+    "css/components/solo-node-edit-form.css": "admin",
+    "css/components/solo-layout-builder.css": "admin",
+    "css/admin/solo-admin-system.css": "admin",
+    "css/components/solo-input-file.css": {"layers": ["solo.theme", "solo.locked"], "unlayered_tail": "declarations that must beat unlayered core, contrib, PB or VVJ rules; a layer would lose them (head comment of the tail block)", "colors_ok": true, "colors_note": "uses --r-border and --solo-border-default only; no literals"},
+    "css/components/*.css": {
+      "layers": [
+        "solo.theme",
+        "solo.locked",
+        "solo.base"
+      ],
+      "colors_ok": true,
+      "colors_note": "colour literals and rgb(var(--s-b), a) shadows kept as they were; to tokens in batch 7"
+    },
+    "css/breakpoints/*.css": {
+      "layers": [
+        "solo.theme",
+        "solo.locked",
+        "solo.base"
+      ],
+      "unlayered_tail": "declarations that must beat unlayered core, contrib, PB or VVJ rules; a layer would lose them (head comment of the tail block)",
+      "colors_ok": true,
+      "colors_note": "colors in breakpoint templates; to tokens in batch 7"
+    },
+    "css/theme/solo-ckeditor*.css": "admin",
+    "css/theme/solo-scheme-*.css": {
+      "layers": [
+        "solo.schemes",
+        "solo.locked"
+      ],
+      "unlayered_tail": "declarations that must beat unlayered core, contrib, PB or VVJ rules; a layer would lose them (head comment of the tail block)",
+      "colors_ok": true,
+      "colors_note": "scheme colors; custom-property values are allowed, literals in properties to tokens in batch 7"
+    },
+    "css/theme/*.css": {
+      "layers": [
+        "solo.theme",
+        "solo.locked",
+        "solo.base"
+      ],
+      "unlayered_tail": "declarations that must beat unlayered core, contrib, PB or VVJ rules; a layer would lose them (head comment of the tail block)",
+      "colors_ok": true,
+      "colors_note": "solo-sitename-animation.css carries most; to tokens in batch 7"
+    },
+    "css/predefined/*.css": {
+      "layers": [
+        "solo.schemes"
+      ],
+      "colors_ok": true,
+      "colors_note": "scheme palettes"
+    },
+    "css/w3-css/*.css": [
+      "solo.reset",
+      "solo.tokens",
+      "solo.base",
+      "solo.layout",
+      "solo.theme",
+      "solo.utilities",
+      "solo.locked"
+    ],
+    "css/utilities/*.css": [
+      "solo.tokens",
+      "solo.utilities"
+    ],
+    "fonts/font-awesome-7.0.1.css": "ignored: vendored Font Awesome, loaded unlayered on purpose so icon font-family keeps beating module CSS that resets font-family on i and span; never edited",
+    "fonts/css/global/*.css": {
+      "layers": ["solo.base"],
+      "unlayered_tail": "Headings and generic font classes beat unlayered module CSS (PB w3-modern.css h1-h6 and similar element rules) as before; a layer would lose to them. Selectors are unchanged from the pre-layer files, so specificity is the same."
+    },
+    "fonts/css/head/*.css": {
+      "layers": ["solo.base"],
+      "unlayered_tail": "Headings and generic font classes beat unlayered module CSS (PB w3-modern.css h1-h6 and similar element rules) as before; a layer would lose to them. Selectors are unchanged from the pre-layer files, so specificity is the same."
+    },
+    "fonts/css/site-name/*.css": {
+      "layers": ["solo.base"],
+      "unlayered_tail": "Generic site-name font classes beat unlayered element rules (PB w3-modern.css headings and buttons) as before; a layer would lose to them."
+    },
+    "fonts/css/special/*.css": {
+      "layers": ["solo.utilities"],
+      "unlayered_tail": "Font utility classes keep winning over unlayered element rules (PB w3-modern.css headings) by class specificity, replacing the removed !important; a layer would lose to them."
+    },
+    "fonts/font-face/*.css": ["solo.base"]
+  },
+  "admin_allow": {
+    ".visually-hidden": "Solo's screen-reader utility matches core's; front end only. Owner approved 2026-11-10.",
+    ".messages ul": "Front-end message list spacing. Owner approved 2026-11-10.",
+    ".solo-page ul.tabs": "Front-end local task tabs styling. Owner approved 2026-11-10.",
+    "nav.tabs > ul.tabs": "Login, register and password page tabs on the front end. Owner approved 2026-11-10.",
+    ".messages": "Front-end status, warning and error messages (incl. webform). Owner approved 2026-11-10.",
+    "nav.tabs": "Front-end local task tabs. Owner approved 2026-11-10.",
+    "ul.tabs": "Front-end local task tabs. Owner approved 2026-11-10.",
+    "form.search-form": "Front-end search page advanced fieldset; data-drupal-selector there is a form hook, not admin UI. Manager 2026-11-10.",
+    ":where(nav).tabs": "Front-end local task tabs. Owner approved 2026-11-10.",
+    ".ui-dialog": "Deliberate fix so the admin part works with the theme. Owner approved 2026-11-10 (keep).",
+    ".contextual": "Deliberate fix so the admin part works with the theme. Owner approved 2026-11-10 (keep).",
+    ".toolbar-bar": "Deliberate fix so the admin part works with the theme. Owner approved 2026-11-10 (keep).",
+    "#toolbar-administration": "Deliberate fix so the admin part works with the theme. Owner approved 2026-11-10 (keep).",
+    "#drupal-off-canvas": "Deliberate fix so the admin part works with the theme. Owner approved 2026-11-10 (keep).",
+    ".layout-builder": "Deliberate fix so the admin part works with the theme. Owner approved 2026-11-10 (keep)."
+  }
+}

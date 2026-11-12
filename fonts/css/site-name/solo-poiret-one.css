@@ -1,6 +1,12 @@
-#solo-page-wrapper .poiret-one,
-#solo-header.solo-poiret-one .solo-branding__site-name-link,
-#solo-page-wrapper.solo-poiret-one .solo-page-title__text,
-html.solo-preloader-enabled #solo-preloader.solo-poiret-one .solo-preloader__text {
+@layer solo.base {
+  #solo-header.solo-poiret-one .solo-branding__site-name-link,
+  #solo-page-wrapper.solo-poiret-one .solo-page-title__text,
+  html.solo-preloader-enabled #solo-preloader.solo-poiret-one .solo-preloader__text {
+    font-family: "Poiret One", sans-serif;
+  }
+}
+
+/* Unlayered on purpose. Font classes beat unlayered element rules (PB w3-modern.css headings and buttons) as before; a layer would lose to them. */
+#solo-page-wrapper .poiret-one {
   font-family: "Poiret One", sans-serif;
 }

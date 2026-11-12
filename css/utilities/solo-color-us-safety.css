@@ -1,0 +1,75 @@
+/**
+ * @file
+ * Solo color library: us-safety.
+ *
+ * Tokens: one background (--solo-<class>) and one text color (--solo-<class>-on) per class,
+ * in solo.tokens. Classes: solo.utilities; each class sets --r-background and --r-text from
+ * its tokens and paints from them, with no !important (the layer order does the job).
+ * Where two class names share a rule (gray and grey), the token is named from the first name.
+ * Layer order: solo-layers.css. Check: scripts/css-layers-check.py.
+ */
+
+@layer solo.tokens {
+
+:root {
+  --solo-safety-red: #bd1e24;
+  --solo-safety-red-on: var(--solo-white);
+  --solo-safety-orange: #e97600;
+  --solo-safety-orange-on: var(--solo-white);
+  --solo-safety-yellow: #f6c700;
+  --solo-safety-yellow-on: var(--solo-white);
+  --solo-safety-green: #007256;
+  --solo-safety-green-on: var(--solo-white);
+  --solo-safety-blue: #0067a7;
+  --solo-safety-blue-on: var(--solo-white);
+  --solo-safety-purple: #964f8e;
+  --solo-safety-purple-on: var(--solo-white);
+}
+
+} /* end @layer solo.tokens */
+
+@layer solo.utilities {
+
+:where(.solo-page) .w3-safety-red {
+  --r-text: var(--solo-safety-red-on);
+  --r-background: var(--solo-safety-red);
+  color: var(--r-text);
+  background-color: var(--r-background);
+}
+
+:where(.solo-page) .w3-safety-orange {
+  --r-text: var(--solo-safety-orange-on);
+  --r-background: var(--solo-safety-orange);
+  color: var(--r-text);
+  background-color: var(--r-background);
+}
+
+:where(.solo-page) .w3-safety-yellow {
+  --r-text: var(--solo-safety-yellow-on);
+  --r-background: var(--solo-safety-yellow);
+  color: var(--r-text);
+  background-color: var(--r-background);
+}
+
+:where(.solo-page) .w3-safety-green {
+  --r-text: var(--solo-safety-green-on);
+  --r-background: var(--solo-safety-green);
+  color: var(--r-text);
+  background-color: var(--r-background);
+}
+
+:where(.solo-page) .w3-safety-blue {
+  --r-text: var(--solo-safety-blue-on);
+  --r-background: var(--solo-safety-blue);
+  color: var(--r-text);
+  background-color: var(--r-background);
+}
+
+:where(.solo-page) .w3-safety-purple {
+  --r-text: var(--solo-safety-purple-on);
+  --r-background: var(--solo-safety-purple);
+  color: var(--r-text);
+  background-color: var(--r-background);
+}
+
+} /* end @layer solo.utilities */

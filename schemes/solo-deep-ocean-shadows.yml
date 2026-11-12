@@ -14,11 +14,11 @@ categories:
   - ocean_and_deep_sea
 css: css/predefined/solo-deep-ocean-shadows.css
 dependencies:
-  - solo/solo-scheme-shared
-  - solo/solo-scheme-region-rule
-  - solo/solo-scheme-region-paint-1
-  - solo/solo-scheme-region-paint-2
-  - solo/solo-scheme-region-paint-3
+  - solo/theme-scheme-shared
+  - solo/theme-scheme-region-rule
+  - solo/theme-scheme-region-paint-1
+  - solo/theme-scheme-region-paint-2
+  - solo/theme-scheme-region-paint-3
 thumbnail: images/schemes/solo-deep-ocean-shadows.webp
 palette:
   --sc-head-tx: "#3b444b"
@@ -50,11 +50,11 @@ palette:
   --sc-tab-hover-bg: "#070808"
   --sc-region-rule-br: "var(--solo-white)"
 page:
-  --r-br: "#798995"
-  --r-bg: "#f4f6f7"
-  --r-tx: "#3b444b"
-  --r-header-bg: "linear-gradient(to start top, #ffffff, #e1e5e8)"
-  --r-header-tx: "#3b444b"
-  --r-menu-bg-h: "#fbfcf8"
-  --r-menu-tx-h: "#070808"
-  --r-br-light: "#ccd5db"
+  --r-border: "#798995"
+  --r-background: "#f4f6f7"
+  --r-text: "#3b444b"
+  --solo-accent-background: "linear-gradient(to start top, #ffffff, #e1e5e8)"
+  --solo-accent-text: "#3b444b"
+  --r-menu-background-hover: "#fbfcf8"
+  --r-menu-text-hover: "#070808"
+  --solo-tone-border-light: "#ccd5db"

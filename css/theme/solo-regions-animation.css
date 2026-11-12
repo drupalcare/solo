@@ -1,3 +1,5 @@
+@layer solo.theme {
+
 /* Border animation  */
 @keyframes animateregion {
   0% {
@@ -88,7 +90,7 @@
   0% {
     width: 0;
     height: 0;
-    border-top-color: var(--r-br, var(--r-br-b));
+    border-top-color: var(--r-border, var(--solo-border-default));
     border-right-color: transparent;
     border-bottom-color: transparent;
     border-left-color: transparent;
@@ -97,8 +99,8 @@
   50% {
     width: 100%;
     height: 0;
-    border-top-color: var(--r-br, var(--r-br-b));
-    border-right-color: var(--r-br, var(--r-br-b));
+    border-top-color: var(--r-border, var(--solo-border-default));
+    border-right-color: var(--r-border, var(--solo-border-default));
     border-bottom-color: transparent;
     border-left-color: transparent;
   }
@@ -106,8 +108,8 @@
   99.9999% {
     width: 100%;
     height: 100%;
-    border-top-color: var(--r-br, var(--r-br-b));
-    border-right-color: var(--r-br, var(--r-br-b));
+    border-top-color: var(--r-border, var(--solo-border-default));
+    border-right-color: var(--r-border, var(--solo-border-default));
     border-bottom-color: transparent;
     border-left-color: transparent;
   }
@@ -129,7 +131,7 @@
     height: 0;
     border-top-color: transparent;
     border-right-color: transparent;
-    border-bottom-color: var(--r-br, var(--r-br-b));
+    border-bottom-color: var(--r-border, var(--solo-border-default));
     border-left-color: transparent;
   }
 
@@ -138,8 +140,8 @@
     height: 0;
     border-top-color: transparent;
     border-right-color: transparent;
-    border-bottom-color: var(--r-br, var(--r-br-b));
-    border-left-color: var(--r-br, var(--r-br-b));
+    border-bottom-color: var(--r-border, var(--solo-border-default));
+    border-left-color: var(--r-border, var(--solo-border-default));
   }
 
   99.9999% {
@@ -147,8 +149,8 @@
     height: 100%;
     border-top-color: transparent;
     border-right-color: transparent;
-    border-bottom-color: var(--r-br, var(--r-br-b));
-    border-left-color: var(--r-br, var(--r-br-b));
+    border-bottom-color: var(--r-border, var(--solo-border-default));
+    border-left-color: var(--r-border, var(--solo-border-default));
   }
 
   100% {
@@ -160,6 +162,10 @@
     border-left-color: transparent;
   }
 }
+
+} /* end @layer solo.theme */
+
+@layer solo.locked {
 
 /* Reduced motion: end states are kept, movement is not (WCAG 2.3.3). */
 @media (prefers-reduced-motion: reduce) {
@@ -173,3 +179,5 @@
     animation-iteration-count: 1 !important;
   }
 }
+
+} /* end @layer solo.locked */

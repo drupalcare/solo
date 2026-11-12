@@ -1,0 +1,330 @@
+:where(details).form-wrapper::after {
+  display: table;
+  clear: both;
+  content: "";
+}
+
+details.form-wrapper {
+  margin-block-end: var(--solo-px16) !important;
+  padding: 0 !important;
+  color: inherit;
+  box-shadow: 0 1px 4px var(--r-border, var(--solo-border-default));
+  line-height: inherit;
+  margin-inline: 0 !important;
+}
+
+details.form-wrapper > summary {
+  cursor: pointer;
+  padding-block: var(--solo-px8);
+  padding-inline: var(--solo-px16);
+}
+
+:where(form div.container-inline) > * {
+  margin-block-start: var(--solo-px8);
+  margin-block-end: var(--solo-px8);
+  margin-inline-start: 0;
+  margin-inline-end: var(--solo-px8);
+}
+
+form .fieldset-wrapper .form-item {
+  margin-block-start: var(--solo-px8);
+  margin-block-end: var(--solo-px8);
+}
+
+.details-wrapper {
+  display: grid;
+  margin: var(--solo-px16);
+}
+
+:where(.details-wrapper) > * {
+  min-width: 0;
+}
+
+:where(.modules-wrapper) details[open] {
+  padding-block: var(--solo-px8) !important;
+  padding-inline: var(--solo-px16) !important;
+}
+
+:where(.vertical-tabs) details[open] {
+  padding: 0 !important;
+}
+
+:where(form) .tableselect-sort th:first-child,
+form .tableselect-sort td:first-child {
+  width: 85px;
+}
+
+:where(form) tr.draggable td > a,
+:where(form) tr.draggable td > div.form-type-radio,
+:where(form) tr.draggable td > div.form-type-checkbox {
+  float: inline-start !important;
+  clear: none;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+:where(form) a.tabledrag-handle .handle {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+:where(form) .draggable a.tabledrag-handle {
+  width: 25px;
+  margin-block-start: 0 !important;
+  margin-block-end: -3px !important;
+  margin-inline-start: 0 !important;
+  margin-inline-end: 5px !important;
+}
+
+:where(form tr.draggable) .solo-check,
+:where(form tr.draggable) .solo-radio {
+  inset-block-start: 0;
+}
+
+:where(form) .field-multiple-drag {
+  width: 50px;
+}
+
+:where(form) div.form-type-datelist.solo-section.form-item {
+  clear: none;
+  width: auto;
+}
+
+.form-type-datelist > div {
+  padding-inline-start: 0;
+}
+
+:where(form) #edit-datelist,
+:where(form) #edit-datetime {
+  margin: 0;
+  padding: 0;
+}
+
+:where(form) #edit-datetime > div {
+  float: inline-start;
+  width: 50%;
+  margin: 0 !important;
+}
+
+:where(form) #edit-datetime > div input {
+  min-width: 165px;
+}
+
+:where(form) .form-type-date,
+:where(form) .form-type-datetime,
+:where(form) .form-type-webform-time {
+  width: 100%;
+  max-width: 20rem;
+}
+
+form .form-type-date input,
+form .form-type-datetime input,
+form .form-type-webform-time input {
+  width: calc(100% - 2px);
+}
+
+form .form-item-range > span.field-suffix,
+:where(form .form-item-range) .form-item-range__output {
+  display: block;
+  float: inline-start;
+  width: 100%;
+}
+
+form .form-item-range .form-item-range__output input {
+  display: inline-block;
+  clear: none;
+  width: 4em;
+}
+
+:where(form .form-item-datelist) #edit-datelist > div select {
+  padding-inline-start: 10px;
+  padding-inline-end: 10px;
+}
+
+form .table-sort-weight.form-select {
+  width: auto;
+}
+
+:where(form) select {
+  min-width: 75px;
+}
+
+.messages.messages--info {
+  background-position: var(--background-position-inline, 2px) 17px;
+}
+
+/* Adjust for RTL */
+:where([dir="rtl"]) .messages.messages--info {
+  --background-position-inline: calc(100% - 2px);
+}
+
+.js-filter-guidelines {
+  font-size: 85%;
+}
+
+.js-filter-guidelines li {
+  padding-block-end: 0;
+}
+
+:where(form) .form-item {
+  text-align: var(--solo-text-align-start);
+}
+
+fieldset.form-item > .fieldset-wrapper {
+  padding: var(--solo-px8);
+}
+
+:where(.field-ui-overview) .field-plugin-settings-edit {
+  width: auto !important;
+  max-width: 40px;
+}
+
+form .form-item label {
+  padding-inline-end: 10px;
+}
+
+:where(table) ul.dropbutton li.solo-left.dropbutton-action {
+  z-index: 1;
+  float: none !important;
+  margin-inline-end: 0 !important;
+  line-height: 26px;
+}
+
+:where(table) :where(ul).dropbutton,
+:where(.js .dropbutton-widget) .dropbutton {
+  padding: 0 !important;
+}
+
+.dropbutton li {
+  padding: 0;
+}
+
+.dropbutton li a {
+  font-size: 14px;
+  line-height: 26px;
+  padding-block: 6px;
+  padding-inline: 12px;
+}
+
+.dropbutton button {
+  border-inline-start: none;
+}
+
+.js td .dropbutton-wrapper {
+  min-height: 50px;
+}
+
+.dropbutton-widget {
+  transition: all 0.3s ease;
+}
+
+table ul.dropbutton li:first-child {
+  margin-inline-end: 10px !important;
+}
+
+.node-form table ul.dropbutton li:first-child {
+  margin-inline-end: 0 !important;
+}
+
+table ul.dropbutton li.dropbutton-toggle {
+  margin-inline-start: 10px;
+  margin-inline-end: 0 !important;
+}
+
+/* Node preview */
+.node-preview-container {
+  position: relative;
+  background-color: transparent;
+}
+
+:where(.node-preview-container) .node-preview-form-select {
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  width: auto;
+  height: 100%;
+  margin-block: 0;
+  margin-inline: auto;
+}
+
+.node-preview-container a.node-preview-backlink {
+  display: inline-flex;
+  align-items: center;
+  padding-block: 8px;
+  padding-inline: 12px;
+}
+
+.node-preview-container a.node-preview-backlink:hover {
+  text-decoration: underline;
+}
+
+:where(div.node-preview-container) .form-item-view-mode {
+  display: inline-flex;
+  align-items: center;
+}
+
+div.node-preview-container .form-item-view-mode label,
+div.node-preview-container .form-item-view-mode select {
+  display: inline-block;
+  width: auto;
+  border: none !important;
+}
+
+:where(div.node-preview-container) .form-item-view-mode select {
+  min-width: 130px;
+}
+
+.ui-dialog .ui-widget-content.ui-dialog-buttonpane .button {
+  margin-block: 10px;
+  margin-inline: auto;
+}
+
+.ui-dialog,
+:where(.ui-dialog) > div {
+  border-width: 0 !important;
+}
+
+/* Core's dialog level: above Solo's menu and Drupal's admin toolbar. */
+:where(body) .ui-dialog {
+  z-index: 1260;
+}
+
+:where(span.admin-link) button,
+:where(span.field-edit-link) button {
+  border: none !important;
+  background-color: transparent !important;
+}
+
+.fieldset-wrapper > .form-checkboxes {
+  display: grid;
+}
+
+:where(form) .form--inline {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: start;
+}
+
+:where(form) .form--inline .form-actions {
+  flex-basis: 100%;
+  flex-grow: 1;
+}
+
+:where(form) .pb-tab-display [data-drupal-selector="para-color-picker"] .form-color {
+  min-height: 54px;
+}
+
+.solo-page form [data-drupal-selector="para-color-picker"] .form-color {
+  min-height: 50px;
+}
+
+/* Reduced motion: end states are kept, movement is not (WCAG 2.3.3). */
+@media (prefers-reduced-motion: reduce) {
+  :where(.dropbutton-widget) {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+}

@@ -1,5 +1,7 @@
-body {
-  font-style: normal;
+@layer solo.base {
+  body {
+    font-style: normal;
+  }
 }
 
 /* alegreya-sans-sc-regular - latin_latin-ext */

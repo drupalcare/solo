@@ -1,3 +1,5 @@
+@layer solo.theme {
+
 @keyframes animateimg {
   0% {
     transform: scale(1);
@@ -11,28 +13,19 @@
 }
 
 a.solo-image--clickable {
-  display: block;
   overflow: hidden;
   min-width: 100%;
   height: 100%;
 }
 
-a.solo-image--clickable > img.solo-image,
-a.solo-image--clickable > picture > img.solo-image {
-  float: inline-start;
-  width: 100%;
-}
-
 .image-auto a.solo-image--clickable > img.solo-image,
 .image-auto a.solo-image--clickable > picture > img.solo-image {
-  float: none;
   width: auto !important;
 }
 
-a.solo-image--clickable:hover > img.solo-image,
-a.solo-image--clickable:hover > picture > img.solo-image {
-  animation: animateimg 5s;
-}
+} /* end @layer solo.theme */
+
+@layer solo.locked {
 
 /* Reduced motion: end states are kept, movement is not (WCAG 2.3.3). */
 @media (prefers-reduced-motion: reduce) {
@@ -43,3 +36,5 @@ a.solo-image--clickable:hover > picture > img.solo-image {
     animation-iteration-count: 1 !important;
   }
 }
+
+} /* end @layer solo.locked */

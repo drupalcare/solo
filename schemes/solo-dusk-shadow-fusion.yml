@@ -14,11 +14,11 @@ categories:
   - earthy_and_smokey_tones
 css: css/predefined/solo-dusk-shadow-fusion.css
 dependencies:
-  - solo/solo-scheme-shared
-  - solo/solo-scheme-multi-span
-  - solo/solo-scheme-region-paint-1
-  - solo/solo-scheme-region-paint-2
-  - solo/solo-scheme-region-paint-3
+  - solo/theme-scheme-shared
+  - solo/theme-scheme-multi-span
+  - solo/theme-scheme-region-paint-1
+  - solo/theme-scheme-region-paint-2
+  - solo/theme-scheme-region-paint-3
 thumbnail: images/schemes/solo-dusk-shadow-fusion.webp
 palette:
   --sc-head-tx: "#363635"
@@ -48,12 +48,12 @@ palette:
   --sc-fixed-search-block-shadow: "20, 20, 19"
   --sc-social-box-shadow: "89, 89, 86"
 page:
-  --r-br: "#b6b3b3"
-  --r-bg: "#f6f6f6"
-  --r-tx: "#2b2b2b"
-  --r-header-bg: "linear-gradient(0deg, #b6b6b4, #a5a5a3)"
-  --r-header-tx: "#363635"
-  --r-menu-tx-h: "#0b0b0b"
-  --r-menu-bg-h: "#b6b6b4"
-  --r-br-light: "#dbdbdb"
-  --r-br-dark: "#404040"
+  --r-border: "#b6b3b3"
+  --r-background: "#f6f6f6"
+  --r-text: "#2b2b2b"
+  --solo-accent-background: "linear-gradient(0deg, #b6b6b4, #a5a5a3)"
+  --solo-accent-text: "#363635"
+  --r-menu-text-hover: "#0b0b0b"
+  --r-menu-background-hover: "#b6b6b4"
+  --solo-tone-border-light: "#dbdbdb"
+  --solo-tone-border-dark: "#404040"

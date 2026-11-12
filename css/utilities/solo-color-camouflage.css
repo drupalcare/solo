@@ -1,0 +1,158 @@
+/**
+ * @file
+ * Solo color library: camouflage.
+ *
+ * Tokens: one background (--solo-<class>) and one text color (--solo-<class>-on) per class,
+ * in solo.tokens. Classes: solo.utilities; each class sets --r-background and --r-text from
+ * its tokens and paints from them, with no !important (the layer order does the job).
+ * Where two class names share a rule (gray and grey), the token is named from the first name.
+ * Layer order: solo-layers.css. Check: scripts/css-layers-check.py.
+ */
+
+@layer solo.tokens {
+
+:root {
+  --solo-camo-brown: #594d45;
+  --solo-camo-brown-on: var(--solo-white);
+  --solo-camo-red: #79533d;
+  --solo-camo-red-on: var(--solo-white);
+  --solo-camo-olive: #595142;
+  --solo-camo-olive-on: var(--solo-white);
+  --solo-camo-field: #745d46;
+  --solo-camo-field-on: var(--solo-white);
+  --solo-camo-earth: #ac7e54;
+  --solo-camo-earth-on: var(--solo-white);
+  --solo-camo-sand: #a9947b;
+  --solo-camo-sand-on: var(--solo-white);
+  --solo-camo-tan: #b49d80;
+  --solo-camo-tan-on: var(--solo-white);
+  --solo-camo-sandstone: #bcab90;
+  --solo-camo-sandstone-on: var(--solo-white);
+  --solo-camo-dark-green: #535640;
+  --solo-camo-dark-green-on: var(--solo-white);
+  --solo-camo-forest: #54504b;
+  --solo-camo-forest-on: var(--solo-white);
+  --solo-camo-light-green: #63613e;
+  --solo-camo-light-green-on: var(--solo-white);
+  --solo-camo-green: #4a5444;
+  --solo-camo-green-on: var(--solo-white);
+  --solo-camo-dark-gray: #5c5c5b;
+  --solo-camo-dark-gray-on: var(--solo-white);
+  --solo-camo-gray: #9495a5;
+  --solo-camo-gray-on: var(--solo-white);
+  --solo-camo-black: #373538;
+  --solo-camo-black-on: var(--solo-white);
+}
+
+} /* end @layer solo.tokens */
+
+@layer solo.utilities {
+
+:where(.solo-page) .w3-camo-brown {
+  --r-text: var(--solo-camo-brown-on);
+  --r-background: var(--solo-camo-brown);
+  color: var(--r-text);
+  background-color: var(--r-background);
+}
+
+:where(.solo-page) .w3-camo-red {
+  --r-text: var(--solo-camo-red-on);
+  --r-background: var(--solo-camo-red);
+  color: var(--r-text);
+  background-color: var(--r-background);
+}
+
+:where(.solo-page) .w3-camo-olive {
+  --r-text: var(--solo-camo-olive-on);
+  --r-background: var(--solo-camo-olive);
+  color: var(--r-text);
+  background-color: var(--r-background);
+}
+
+:where(.solo-page) .w3-camo-field {
+  --r-text: var(--solo-camo-field-on);
+  --r-background: var(--solo-camo-field);
+  color: var(--r-text);
+  background-color: var(--r-background);
+}
+
+:where(.solo-page) .w3-camo-earth {
+  --r-text: var(--solo-camo-earth-on);
+  --r-background: var(--solo-camo-earth);
+  color: var(--r-text);
+  background-color: var(--r-background);
+}
+
+:where(.solo-page) .w3-camo-sand {
+  --r-text: var(--solo-camo-sand-on);
+  --r-background: var(--solo-camo-sand);
+  color: var(--r-text);
+  background-color: var(--r-background);
+}
+
+:where(.solo-page) .w3-camo-tan {
+  --r-text: var(--solo-camo-tan-on);
+  --r-background: var(--solo-camo-tan);
+  color: var(--r-text);
+  background-color: var(--r-background);
+}
+
+:where(.solo-page) .w3-camo-sandstone {
+  --r-text: var(--solo-camo-sandstone-on);
+  --r-background: var(--solo-camo-sandstone);
+  color: var(--r-text);
+  background-color: var(--r-background);
+}
+
+:where(.solo-page) .w3-camo-dark-green {
+  --r-text: var(--solo-camo-dark-green-on);
+  --r-background: var(--solo-camo-dark-green);
+  color: var(--r-text);
+  background-color: var(--r-background);
+}
+
+:where(.solo-page) .w3-camo-forest {
+  --r-text: var(--solo-camo-forest-on);
+  --r-background: var(--solo-camo-forest);
+  color: var(--r-text);
+  background-color: var(--r-background);
+}
+
+:where(.solo-page) .w3-camo-light-green {
+  --r-text: var(--solo-camo-light-green-on);
+  --r-background: var(--solo-camo-light-green);
+  color: var(--r-text);
+  background-color: var(--r-background);
+}
+
+:where(.solo-page) .w3-camo-green {
+  --r-text: var(--solo-camo-green-on);
+  --r-background: var(--solo-camo-green);
+  color: var(--r-text);
+  background-color: var(--r-background);
+}
+
+:where(.solo-page) .w3-camo-dark-gray,
+:where(.solo-page) .w3-camo-dark-grey {
+  --r-text: var(--solo-camo-dark-gray-on);
+  --r-background: var(--solo-camo-dark-gray);
+  color: var(--r-text);
+  background-color: var(--r-background);
+}
+
+:where(.solo-page) .w3-camo-gray,
+:where(.solo-page) .w3-camo-grey {
+  --r-text: var(--solo-camo-gray-on);
+  --r-background: var(--solo-camo-gray);
+  color: var(--r-text);
+  background-color: var(--r-background);
+}
+
+:where(.solo-page) .w3-camo-black {
+  --r-text: var(--solo-camo-black-on);
+  --r-background: var(--solo-camo-black);
+  color: var(--r-text);
+  background-color: var(--r-background);
+}
+
+} /* end @layer solo.utilities */

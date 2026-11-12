@@ -14,11 +14,11 @@ categories:
   - urban_and_modern_hues
 css: css/predefined/solo-nightfall-paris.css
 dependencies:
-  - solo/solo-scheme-shared
-  - solo/solo-scheme-region-rule
-  - solo/solo-scheme-region-paint-1
-  - solo/solo-scheme-region-paint-2
-  - solo/solo-scheme-region-paint-3
+  - solo/theme-scheme-shared
+  - solo/theme-scheme-region-rule
+  - solo/theme-scheme-region-paint-1
+  - solo/theme-scheme-region-paint-2
+  - solo/theme-scheme-region-paint-3
 thumbnail: images/schemes/solo-nightfall-paris.webp
 palette:
   --sc-head-tx: "#7979a5"
@@ -50,10 +50,10 @@ palette:
   --sc-tab-hover-bg: "#3a3a58"
   --sc-region-rule-br: "var(--solo-black)"
 page:
-  --r-br: "#262639"
-  --r-bg: "#040406"
-  --r-tx: "#bebed3"
-  --r-header-bg: "linear-gradient(0deg, #000000, #12121a)"
-  --r-header-tx: "#7979a5"
-  --r-menu-tx-h: "#f1f1f5"
-  --r-menu-bg-h: "#3a3a58"
+  --r-border: "#262639"
+  --r-background: "#040406"
+  --r-text: "#bebed3"
+  --solo-accent-background: "linear-gradient(0deg, #000000, #12121a)"
+  --solo-accent-text: "#7979a5"
+  --r-menu-text-hover: "#f1f1f5"
+  --r-menu-background-hover: "#3a3a58"

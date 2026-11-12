@@ -35,10 +35,10 @@ sys.dont_write_bytecode = True
 sys.path.insert(0, HERE)
 import solo_libraries  # the full Solo library set: static yml plus the generated libraries
 CAT = {'base': -200, 'layout': -100, 'component': 0, 'state': 100, 'theme': 200}
-ADMIN_LIBS = {'solo-form-theme-settings', 'solo-node-edit-form', 'solo-debug'}
+ADMIN_LIBS = {'admin-form-theme-settings', 'layout-node-edit', 'debug-menu'}
 ADMIN_FILES = ('css/theme/solo-ckeditor', 'css/debug/', 'css/components/solo-layout-builder.css')
 SCHEME_FILES = ('css/predefined/', 'css/theme/solo-scheme-')
-COMPONENT_FOLDERS = ('css/base/', 'css/layout/', 'css/components/', 'css/w3-css/')
+COMPONENT_FOLDERS = ('css/base/', 'css/layout/', 'css/components/', 'css/w3-css/', 'css/utilities/')
 # Custom properties and the projects allowed to set them (one owner each;
 # Solo is the declared adapter for selectify's tokens).
 OWNERS = {'--r-': {'solo', 'generated'}, '--vvj-': {'vvj'}, '--pb-': {'paragraphs_bundles'},
@@ -53,8 +53,8 @@ LANE = VVJ + ['paragraphs_bundles', 'selectify', 'w3css_paragraphs', 'utilikit']
 EXCEPTION_TEMPLATES = {
     # Owner call: the "dark system messages" option forces its colors with
     # !important, so it beats the region colors set for system_messages.
-    'generated:system_messages:12 {system_messages} {{--r-bg}} | css/components/solo-system-messages-dark.css:14 :where(.solo-page) .solo-system-messages {{--r-bg}}',
-    'generated:system_messages:12 {system_messages} {{--r-tx}} | css/components/solo-system-messages-dark.css:14 :where(.solo-page) .solo-system-messages {{--r-tx}}',
+    'generated:system_messages:12 {system_messages} {{--r-background}} | css/components/solo-status-messages-dark.css:23 :where(.solo-page) .solo-status-messages {{--r-background}}',
+    'generated:system_messages:12 {system_messages} {{--r-text}} | css/components/solo-status-messages-dark.css:23 :where(.solo-page) .solo-status-messages {{--r-text}}',
 }
 EXCEPTIONS = {
     # The control border base rule (0,3,0) outranks the scheme rule (0,2,0).

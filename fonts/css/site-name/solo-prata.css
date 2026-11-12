@@ -1,6 +1,12 @@
-#solo-page-wrapper .prata,
-#solo-header.solo-prata .solo-branding__site-name-link,
-#solo-page-wrapper.solo-prata .solo-page-title__text,
-html.solo-preloader-enabled #solo-preloader.solo-prata .solo-preloader__text {
+@layer solo.base {
+  #solo-header.solo-prata .solo-branding__site-name-link,
+  #solo-page-wrapper.solo-prata .solo-page-title__text,
+  html.solo-preloader-enabled #solo-preloader.solo-prata .solo-preloader__text {
+    font-family: "Prata", serif;
+  }
+}
+
+/* Unlayered on purpose. Font classes beat unlayered element rules (PB w3-modern.css headings and buttons) as before; a layer would lose to them. */
+#solo-page-wrapper .prata {
   font-family: "Prata", serif;
 }

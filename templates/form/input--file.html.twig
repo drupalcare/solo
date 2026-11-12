@@ -22,12 +22,12 @@
 {% extends "input.html.twig" %}
 
 {% block input %}
-  <div class="solo-file-upload-wrapper">
-    <input{{ attributes.addClass('solo-file-native') }} />
+  <div class="solo-input-file__wrapper">
+    <input{{ attributes.addClass('solo-input-file__native') }} />
 
-    <label for="{{ attributes.id }}" class="solo-file-custom">
-      <span class="solo-file-button button solo-button solo-btn-animate">{{ 'Choose File'|t }}</span>
-      <span class="solo-file-name">{{ 'No file chosen'|t }}</span>
+    <label for="{{ attributes.id }}" class="solo-input-file__custom">
+      <span class="solo-input-file__button button solo-button solo-btn-animate">{{ 'Choose File'|t }}</span>
+      <span class="solo-input-file__name">{{ 'No file chosen'|t }}</span>
     </label>
   </div>
 {% endblock %}

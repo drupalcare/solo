@@ -4,7 +4,7 @@
       <div id="solo-header-inner" class="solo-inner solo-col solo-col-1 solo-header__inner{{ header_change_icons ? ' solo-icons-left' }}{{ header_sitename_center ? ' header-sitename-center' }}{{ header_sitename_center_small ? ' header-sitename-center-small' }}{{ header_sitename_center_default ? ' header-sitename-center-default' }}">
 
         {% if page.primary_sidebar_menu %}
-          <div id="solo-sidebar-button-open" class="solo-hamburger solo-sidebar-menu__open">
+          <div id="solo-menu-primary-sidebar__open" class="solo-hamburger solo-primary-sidebar-menu__open">
             <button class="solo-btn-animate solo-button-menu solo-hamburger--sidebar"
             data-drupal-selector="solo-hamburger--sidebar"
             aria-label="{{ 'Open Sidebar Menu'|t }}"
@@ -18,7 +18,7 @@
         {% endif %}
 
         {% if page.fixed_search_block %}
-          <div id="solo-search-button-open" class="solo-hamburger solo-fixed-search__open">
+          <div id="solo-fixed-search-block__open" class="solo-hamburger solo-fixed-search-block__open">
             <button class="solo-btn-animate solo-button-menu solo-hamburger--sidebar"
               data-drupal-selector="solo-hamburger--sidebar"
               aria-label="{{ 'Open Search Block'|t }}"

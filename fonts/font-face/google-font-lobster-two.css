@@ -1,5 +1,7 @@
-body {
-  font-style: normal;
+@layer solo.base {
+  body {
+    font-style: normal;
+  }
 }
 
 /* lobster-two-700 - latin */

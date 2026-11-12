@@ -1,11 +1,11 @@
   {% if page.footer_menu or sm_show_icons %}
     <!-- Start: Footer Menu -->
-    <div id="solo-footer-menu" class="solo-outer solo-container--single solo-footer-nav{{ classes_footer_menu ? ' ' ~ classes_footer_menu }}" {{ attributes_footer_menu }}>
-      <div id="solo-footer-menu-inner" class="solo-inner solo-col solo-col-1 solo-footer-nav__inner">
+    <div id="solo-footer-menu" class="solo-outer solo-container--single solo-footer-menu__nav{{ classes_footer_menu ? ' ' ~ classes_footer_menu }}" {{ attributes_footer_menu }}>
+      <div id="solo-footer-menu-inner" class="solo-inner solo-col solo-col-1 solo-footer-menu__nav__inner">
 
     {% if sm_show_icons %}
       <!-- Start: Social Media -->
-      <div class="solo-clear solo-fade-target solo-footer-nav__first solo-social{{ sm_icon_size ? ' ' ~ sm_icon_size }}" {% if sm_icon_colors %} style="fill: {{ sm_icon_colors }}" {% endif %}>
+      <div class="solo-clear solo-fade-target solo-footer-menu__nav__first solo-social{{ sm_icon_size ? ' ' ~ sm_icon_size }}" {% if sm_icon_colors %} style="fill: {{ sm_icon_colors }}" {% endif %}>
         {% set socials = {
         'facebook': {'url': sm_icon_facebook},
         'instagram': {'url': sm_icon_instagram},
@@ -46,7 +46,7 @@
 
         <!-- Start: Bottom Menu -->
         {% if page.footer_menu %}
-          <div class="solo-clear solo-footer-nav__second solo-fade-target">
+          <div class="solo-clear solo-footer-menu__nav__second solo-fade-target">
             {% if enabled_skip_links.skip_footer_content %}
               <a id="solo-footer-content" tabindex="-1" class="solo-skip-target"></a>
             {% endif %}

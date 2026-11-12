@@ -1,3 +1,14 @@
+/*
+ * Deprecated in 2.0, removed in the next major: the old names below stay as
+ * second selectors so sub-themes and content that print them keep working.
+ *   solo-search-button-open -> solo-fixed-search-block__open
+ *   solo-sidebar-button-close -> solo-menu-primary-sidebar__close
+ *   solo-sidebar-button-open -> solo-menu-primary-sidebar__open
+ *   solo-sidebar-menu__open -> solo-primary-sidebar-menu__open
+ */
+
+@layer solo.theme {
+
 :where(.solo-header__inner nav.contextual-region) .contextual {
   inset-block-start: 3.125rem !important;
 }
@@ -53,14 +64,8 @@
   max-height: 100%;
 }
 
-.solo-branding .site-name a {
-  display: flex;
-  flex-grow: 1;
-  align-items: center;
-  justify-content: start;
-  width: 100%;
-  height: 100%;
-}
+.solo-branding .site-name a {  flex-grow: 1;
+  align-items: center;  width: 100%;}
 
 .solo-branding {
   display: flex;
@@ -76,9 +81,7 @@
   min-width: 0;
 }
 
-.solo-branding .solo-branding__first a {
-  display: inline-flex;
-  align-items: center;
+.solo-branding .solo-branding__first a {  align-items: center;
   justify-content: center;
 }
 
@@ -96,61 +99,43 @@
 }
 
 /* header buttons (Menu, Search) */
+.solo-primary-sidebar-menu__open,
 .solo-sidebar-menu__open {
   z-index: 1;
   text-align: center;
 }
 
+#solo-menu-primary-sidebar__close button,
 #solo-sidebar-button-close button,
+#solo-menu-primary-sidebar__open button,
 #solo-sidebar-button-open button,
-#solo-search-button-open button {
-  display: flex;
-  justify-content: center;
+#solo-fixed-search-block__open button,
+#solo-search-button-open button {  justify-content: center;
 }
 
-#solo-sidebar-button-close button {
-  align-items: center;
-  justify-content: end;
-  width: 100%;
-}
-
+#solo-menu-primary-sidebar__close button span,
 #solo-sidebar-button-close button span,
+#solo-menu-primary-sidebar__open button span,
 #solo-sidebar-button-open button span,
-#solo-search-button-open button span {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  min-width: 5.625rem;
-}
+#solo-fixed-search-block__open button span,
+#solo-search-button-open button span {  align-items: center;
+  justify-content: center;}
 
+#solo-fixed-search-block__open button span,
 #solo-search-button-open button span {
   padding-block: var(--solo-px8) !important;
   padding-inline: var(--solo-px16) !important;
 }
 
+#solo-menu-primary-sidebar__close button span,
 #solo-sidebar-button-close button span {
   padding-block: var(--solo-px8) !important;
-  padding-inline: 0 !important;
-  min-width: initial;
-}
+  padding-inline: 0 !important;}
 
+#solo-menu-primary-sidebar__open button span,
 #solo-sidebar-button-open button span {
   padding-block: var(--solo-px4) !important;
   padding-inline: var(--solo-px16) !important;
-}
-
-#solo-sidebar-button-close svg,
-#solo-sidebar-button-open svg {
-  height: 2.125rem;
-}
-
-#solo-search-button-open svg {
-  width: var(--solo-px26);
-  height: var(--solo-px26);
-}
-
-[dir="rtl"] .solo-primary-sidebar-menu.solo-icons-left #solo-sidebar-button-close button {
-  justify-content: end;
 }
 
 /* Add class to switch the header icon and site name */
@@ -172,10 +157,6 @@
 .solo-primary-sidebar-menu.solo-icons-left.solo-is-open:not([dir="rtl"] .solo-primary-sidebar-menu.solo-icons-left.solo-is-open) {
   visibility: visible;
   transform: translateX(600px);
-}
-
-#solo-sidebar-button-close.solo-icons-left button:not([dir="rtl"] #solo-sidebar-button-close.solo-icons-left button) {
-  justify-content: end;
 }
 
 :where([dir="rtl"] .solo-header__inner.solo-icons-left) .block-system-branding-block {
@@ -215,9 +196,7 @@ body.user-logged-in #toolbar-administration {
 .solo-header__inner.header-sitename-center .solo-branding .site-name a,
 :where(.solo-header__inner.header-sitename-center .solo-branding) .site-slogan,
 :where(.solo-header__inner.header-sitename-center .solo-branding) .solo-branding__second {
-  justify-content: center;
-  text-align: center;
-}
+  justify-content: center;}
 
 :where(.solo-header__inner.header-sitename-center-default) .solo-branding {
   justify-content: center;
@@ -229,13 +208,9 @@ body.user-logged-in #toolbar-administration {
   margin-block: 0;
 }
 
-/* Fluid logo: 56px on phones, the full 100px from about 700px wide; uploaded logos are capped by height only */
-.solo-header .solo-branding__first svg.solo-logo {
-  width: clamp(3.5rem, 14vw, 6.25rem);
-  height: auto;
-}
-
 .solo-header .solo-branding__first .solo-branding__logo-image {
   width: auto;
   max-height: clamp(3.5rem, 14vw, 12.5rem);
 }
+
+} /* end @layer solo.theme */

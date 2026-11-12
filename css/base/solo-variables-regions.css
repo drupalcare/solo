@@ -1,37 +1,51 @@
+/*
+ * Deprecated in 2.0, removed in the next major: the old names below stay as
+ * second selectors so sub-themes and content that print them keep working.
+ *   solo-fixed-search -> solo-fixed-search-block
+ *   solo-fixed-search__inner -> solo-fixed-search-block__inner
+ *   solo-fixed-search__wrapper -> solo-fixed-search-block__wrapper
+ */
+
+@layer solo.tokens {
+
 /* Start Var tags */
 .solo-page {
-  --r-br-b: #94a2b8;
-  --r-br: #cbced7;
-  --r-bg: #f0f2f5;
-  --r-tx: #262d38;
+  --solo-border-default: #94a2b8;
+  --r-border: #cbced7;
+  --r-background: #f0f2f5;
+  --r-text: #262d38;
   --solo-odd-light: #f4f5f0;
   --solo-even-light: #e8e9e3;
   --solo-odd-dark: #222418;
   --solo-even-dark: #2e3025;
-  --r-bg-dark: #222418;
-  --r-tx-dark: #222418;
-  --r-br-dark: #4a4c3b;
-  --r-tx-light: #f4f5f0;
-  --r-bg-light: #f4f5f0;
-  --r-br-light: #d6dac7;
+  --solo-tone-background-dark: #222418;
+  --solo-tone-text-dark: #222418;
+  --solo-tone-border-dark: #4a4c3b;
+  --solo-tone-text-light: #f4f5f0;
+  --solo-tone-background-light: #f4f5f0;
+  --solo-tone-border-light: #d6dac7;
 }
+
+} /* end @layer solo.tokens */
+
+@layer solo.base {
 
 .solo-page,
 .solo-outer,
 .solo-region-box__inner {
-  color: var(--r-tx);
-  border-color: var(--r-br, var(--r-br-b));
-  background-color: var(--r-bg);
+  color: var(--r-text);
+  border-color: var(--r-border, var(--solo-border-default));
+  background-color: var(--r-background);
 }
 
 /* Specificity zeroed out to let structural paragraph builders pass down colors */
 :where(.solo-page) :where(img, code, pre, kbd, samp, p, hr, ul, ol, li, table, th, td, tr, blockquote) {
-  color: var(--r-tx, var(--r-tx-dark));
-  border-color: var(--r-br, var(--r-br-b));
+  color: var(--r-text, var(--solo-tone-text-dark));
+  border-color: var(--r-border, var(--solo-border-default));
 }
 
 :where(.solo-page) :where(hr, ul, ol, table, .dropbutton-widget) {
-  background-color: var(--r-bg);
+  background-color: var(--r-background);
 }
 
 :where(.solo-page) :where(.field hr, .views-field hr, .messages ul, .field ul, .views-field ul, .messages ul li, .field ul li, .views-field ul li, .messages ol, .field ol, .views-field ol, .messages ol li, .field ol li, .views-field ol li, .field table) {
@@ -43,93 +57,20 @@
   background-color: inherit;
 }
 
-.solo-page .solo-textarea,
-.solo-page input:not(.button, [type="submit"], [type="checkbox"], [type="radio"]),
-.solo-page .solo-select:not(.selectify-select),
-.solo-page .solo-radio:not(.selectify-radio),
-.solo-page .solo-check:not(.selectify-checkbox) {
-  color: var(--r-tx);
-  border-color: var(--r-br, var(--r-br-b));
-  background-color: var(--r-bg-fr, var(--r-bg));
-}
-
-/* --r-sc-* are the scheme's per-region text colors. They sit after the values a
-   site sets in region colors and before --r-tx, so a site's color always wins. */
-
-/* Link only — specificity (0,1,1): above solo-normalize.css (`a { all: unset }`,
-   `li a { color: inherit }`) so the region link color applies (#3629228), and
-   below a paragraph's own link rules (0,2,0)+, so section link colors win.
-   Only the .page-wrapper part is zeroed; zeroing the whole selector (1.0.35)
-   let normalize win and every link fell back to the text color. */
-:where(.solo-page) a:not(.solo-menu-tree__link, .button, .solo-branding__site-name-link, .site-logo, h1 a, h2 a, h3 a) {
-  color: var(--r-lk, var(--r-sc-lk, var(--r-tx)));
-}
-
-:where(.solo-page) a:not(.solo-menu-tree__link, .button, .solo-branding__site-name-link, .site-logo, h1 a, h2 a, h3 a):hover {
-  color: var(--r-lk-h, var(--r-sc-lk-h, var(--r-tx)));
-}
-
 :where(.solo-page) :where(h1, h2, h3, h1 a, h2 a, h3 a, h1 a span, h2 a span, h3 a span, .site-name, .site-slogan, .solo-branding__site-name-link) {
-  color: var(--r-h1, var(--r-sc-h1, var(--r-tx)));
-}
-
-/* These links paint their own background, so a region's link colors do not apply. */
-:where(.solo-page ul.tabs) a,
-:where(.solo-page .pager__item) a,
-:where(.solo-page .solo-social) a {
-  --r-sc-lk: initial;
-  --r-sc-lk-h: initial;
-}
-
-/* Button */
-.solo-page a.button,
-.solo-page input.button,
-.solo-page .solo-file-button,
-.solo-page .solo-fixed-search__close button {
-  color: var(--r-tx-bt, var(--r-sc-tx-bt, var(--r-tx)));
-  border-color: var(--r-br, var(--r-br-b));
-  background-color: var(--r-bg-bt, var(--r-bg));
-}
-
-.solo-page a.button:hover,
-.solo-page input.button:hover,
-:where(.solo-page) .solo-file-button:hover,
-.solo-page .solo-fixed-search__close button:hover {
-  color: var(--r-tx-bt-h, var(--r-sc-tx-bt-h, var(--r-tx)));
-  background-color: var(--r-bg-bt-h, var(--r-bg));
-  box-shadow: inset 0 0 var(--solo-px10) var(--r-br);
-}
-
-/* Menu Link */
-.solo-page li.solo-menu-tree__item > a,
-.solo-page li.solo-menu-tree__item > button,
-:where(.solo-page) .solo-popup-login__open,
-.solo-page .solo-hamburger button,
-.block-user-login-block form + .item-list ul li a {
-  color: var(--r-tx-lk, var(--r-tx));
-  border-color: var(--r-br, var(--r-br-b));
-  background-color: var(--r-bg-lk, var(--r-bg));
-}
-
-.solo-page li.solo-menu-tree__item > a:hover,
-.solo-page li.solo-menu-tree__item > button:hover,
-:where(.solo-page) .solo-popup-login__open:hover,
-.solo-page .solo-hamburger button:hover,
-.block-user-login-block form + .item-list ul li a:hover {
-  color: var(--r-tx-lk-h, var(--r-tx));
-  background-color: var(--r-bg-lk-h, var(--r-bg));
+  color: var(--r-heading, var(--r-text));
 }
 
 :where(.solo-page .solo-logo) .solo-svg-icon__path,
 :where(.solo-page .dis-icon-colors .solo-svg-icon) .solo-svg-icon__path {
-  color: var(--r-tx) !important;
-  fill: var(--r-tx);
+  color: var(--r-text) !important;
+  fill: var(--r-text);
 }
 
 :where(.solo-page svg.ext) path,
 :where(.solo-page svg.mailto) path {
-  color: var(--r-tx) !important;
-  stroke: var(--r-tx) !important;
+  color: var(--r-text) !important;
+  stroke: var(--r-text) !important;
 }
 
 :where(.solo-page) .ck-focused,
@@ -138,8 +79,8 @@
 .solo-page .solo-radio:focus,
 :where(.solo-page) .solo-input:focus,
 :where(.solo-page) .solo-textarea:focus {
-  border-color: var(--r-br);
-  box-shadow: inset 0 -40px 40px -40px var(--r-br);
+  border-color: var(--r-border);
+  box-shadow: inset 0 -40px 40px -40px var(--r-border);
 }
 
 :where(.solo-page) .solo-primary-menu.solo-sticky {
@@ -157,17 +98,17 @@
 }
 
 .solo-social a > span:hover {
-  z-index: 10000;
-  background-color: rgb(var(--s-b), 0.9);
-  box-shadow: 0 0 16px rgb(var(--s-b), 0.2);
+  z-index: 10000;  box-shadow: 0 0 16px rgb(var(--s-b), 0.2);
 }
 
+.solo-fixed-search-block,
 .solo-fixed-search {
   box-shadow:
     0 var(--solo-px2) var(--solo-px5) 0 rgb(var(--s-b), 0.16),
     0 var(--solo-px2) var(--solo-px10) 0 rgb(var(--s-b), 0.12);
 }
 
+:where(.solo-fixed-search-block__inner) .solo-fixed-search-block__wrapper,
 :where(.solo-fixed-search__inner) .solo-fixed-search__wrapper {
   box-shadow: 0 30px 90px rgb(var(--s-b), 0.4);
 }
@@ -176,12 +117,16 @@
 :where(.solo-page .solo-container--main.solo-container--has-border) .solo-region-box__inner,
 :where(.solo-page .solo-container--bottom.solo-container--has-border) .solo-region-box__inner,
 :where(.solo-page .solo-container--footer.solo-container--has-border) .solo-region-box__inner {
-  border: 1px solid var(--r-br);
+  border: 1px solid var(--r-border);
 }
 
 :where(.solo-page) .dropbutton {
   transition: color 0.2s ease, background-color 0.2s ease, border-color 0.2s ease;
 }
+
+} /* end @layer solo.base */
+
+@layer solo.locked {
 
 /* Reduced motion: end states are kept, movement is not (WCAG 2.3.3). */
 @media (prefers-reduced-motion: reduce) {
@@ -191,3 +136,5 @@
     animation-iteration-count: 1 !important;
   }
 }
+
+} /* end @layer solo.locked */

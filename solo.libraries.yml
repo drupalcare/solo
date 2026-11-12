@@ -1,59 +1,21 @@
-# Only solo-global and solo-menu are written here. Every other Solo library (fonts, schemes,
-# breakpoints, components, w3-css) is built by solo_utilities from shipped data; see libraries/README.md.
+# Only base-layers, bundle-global and bundle-menu are written here, each followed at the end of this file by
+# the deprecated alias of its previous id. Every other Solo library (fonts, schemes, breakpoints, components,
+# w3-css) and its alias is built by solo_utilities from shipped data; see libraries/README.md.
 
-solo-global:
+base-layers:
   css:
     base:
-      css/base/solo-normalize.css: { weight: -200 }
-      css/base/solo-variables.css: { weight: -200 }
-      css/base/solo-variables-regions.css: { weight: -200 }
-      css/base/solo-animation.css: { weight: -200 }
-      css/base/solo-hamburger.css: { weight: -200 }
-      css/base/solo-quotation.css: { weight: -200 }
-      css/base/solo-global.css: { weight: -200 }
-    layout:
-      css/layout/solo-layout.css: { weight: -100 }
-      css/layout/solo-site-width.css: { weight: -99 }
-    component:
-      css/components/solo-breadcrumb.css: { weight: 0 }
-      css/components/solo-ckeditor.css: { weight: 0 }
-      css/components/solo-comments.css: { weight: 0 }
-      css/components/solo-file.css: { weight: 0 }
-      css/components/solo-file-upload.css: { weight: 0 }
-      css/components/solo-embedded-media.css: { weight: 0 }
-      css/components/solo-default-node.css: { weight: 0 }
-      css/components/solo-default-views.css: { weight: 0 }
-      css/components/solo-forms.css: { weight: 0 }
-      css/components/solo-footer-menu.css: { weight: 0 }
-      css/components/solo-header.css: { weight: 0 }
-      css/components/solo-layout-builder.css: { weight: 0 }
-      css/components/solo-maintenance-page.css: { weight: 0 }
-      css/components/solo-node-form.css: { weight: 0 }
-      css/components/solo-page-title.css: { weight: 0 }
-      css/components/solo-pager.css: { weight: 0 }
-      css/components/solo-text-content.css: { weight: 0 }
-      css/components/solo-skip-link.css: { weight: 0 }
-      css/components/solo-system-admin.css: { weight: 0 }
-      css/components/solo-system-messages.css: { weight: 0 }
-      css/components/solo-system-tabs.css: { weight: 0 }
-      css/components/solo-tables.css: { weight: 0 }
-      css/components/solo-teaser-mode.css: { weight: 0 }
-      css/components/solo-user-login.css: { weight: 0 }
-      css/components/solo-user-profile.css: { weight: 0 }
-      css/components/solo-user-menu.css: { weight: 0 }
-      css/components/solo-webform.css: { weight: 0 }
-    theme:
-      css/theme/solo-regions-animation.css: { weight: 200 }
-      css/theme/solo-sitename-animation.css: { weight: 200 }
-      css/theme/solo-clickable-image.css: { weight: 200 }
-      css/breakpoints/solo-responsive.css: { weight: 200 }
-      css/theme/solo-global-settings.css: { weight: 200 }
-  js:
-    js/components/solo-utils.js: { }
-    js/components/solo-scripts.js: { }
-    js/components/solo-messages.js: { }
-    js/components/solo-comments.js: { }
+      css/base/solo-layers.css: { weight: -1000 }
+
+bundle-global:
   dependencies:
+    - solo/base-layers
+    # solo/base-region-properties stays unattached on purpose. The schemes no longer
+    # put gradients in --r-background and --r-sc-* is retired, but 106 rules still read
+    # `var(--r-<role>, fallback)` (the border, text, menu, button and form fallbacks);
+    # a registered property is never unset, so each would stop falling back. Attach it
+    # once those fallbacks are replaced.
+    - solo/base-region-legacy
     - core/drupal
     - core/once
     - core/drupalSettings
@@ -61,22 +23,88 @@ solo-global:
     - core/drupal.message
     - core/drupal.debounce
     - core/drupal.announce
+  css:
+    base:
+      css/base/solo-normalize.css: { weight: -200 }
+      css/base/solo-variables.css: { weight: -200 }
+      css/base/solo-variables-regions.css: { weight: -200 }
+      css/base/solo-animation.css: { weight: -200 }
+      css/components/solo-menu-hamburger.css: { weight: -200 }
+      css/base/solo-quotation.css: { weight: -200 }
+      css/base/solo-global.css: { weight: -200 }
+      css/base/solo-host-overrides.css: { weight: -199 }
+    layout:
+      css/layout/solo-layout.css: { weight: -100 }
+      css/layout/solo-site-width.css: { weight: -99 }
+    component:
+      css/components/solo-breadcrumb.css: { weight: 0 }
+      css/components/solo-ckeditor.css: { weight: 0 }
+      css/components/solo-comment.css: { weight: 0 }
+      css/components/solo-input-file.css: { weight: 0 }
+      css/components/solo-media.css: { weight: 0 }
+      css/components/solo-node.css: { weight: 0 }
+      css/components/solo-views-view.css: { weight: 0 }
+      css/components/solo-forms.css: { weight: 0 }
+      css/components/solo-footer-menu.css: { weight: 0 }
+      css/components/solo-header.css: { weight: 0 }
+      css/components/solo-layout-builder.css: { weight: 0 }
+      css/components/solo-maintenance-page.css: { weight: 0 }
+      css/components/solo-node-edit-form.css: { weight: 0 }
+      css/components/solo-page-title.css: { weight: 0 }
+      css/components/solo-pager.css: { weight: 0 }
+      css/components/solo-text-format.css: { weight: 0 }
+      css/components/solo-skip-link.css: { weight: 0 }
+      css/admin/solo-admin-system.css: { weight: 0 }
+      css/components/solo-status-messages.css: { weight: 0 }
+      css/components/solo-menu-local-tasks.css: { weight: 0 }
+      css/components/solo-table.css: { weight: 0 }
+      css/components/solo-node-teaser.css: { weight: 0 }
+      css/components/solo-form-user-login.css: { weight: 0 }
+      css/components/solo-user.css: { weight: 0 }
+      css/components/solo-menu-account.css: { weight: 0 }
+      css/components/solo-webform.css: { weight: 0 }
+    theme:
+      css/theme/solo-regions-animation.css: { weight: 200 }
+      css/theme/solo-sitename-animation.css: { weight: 200 }
+      css/theme/solo-clickable-image.css: { weight: 200 }
+      css/theme/solo-responsive.css: { weight: 200 }
+      css/theme/solo-global-settings.css: { weight: 200 }
+  js:
+    js/components/solo-utils.js: { }
+    js/components/solo-scripts.js: { }
+    js/components/solo-messages.js: { }
+    js/components/solo-comments.js: { }
 
-solo-menu:
+bundle-menu:
   css:
     component:
       css/components/solo-menu.css: { weight: 0 }
     theme:
-      css/theme/solo-menu-side.css: { weight: 300 }
+      css/theme/solo-menu-primary-sidebar.css: { weight: 300 }
   js:
-    js/menu/solo-menu-state-manager.js: {}
-    js/menu/solo-menu.js: { }
-    js/menu/solo-menu-mobile.js: { }
-    js/menu/solo-menu-side.js: { }
-    js/menu/solo-menu-repositions-submenus.js: { }
-    js/menu/solo-menu-scripts.js: { }
+    js/components/solo-menu-state-manager.js: {}
+    js/components/solo-menu.js: { }
+    js/components/solo-menu-mobile.js: { }
+    js/components/solo-menu-primary-sidebar.js: { }
+    js/components/solo-menu-submenu-position.js: { }
+    js/components/solo-menu-main.js: { }
   dependencies:
     - core/drupal
     - core/drupalSettings
     - core/once
-    - solo/solo-global
+    - solo/bundle-global
+
+solo-layers:
+  deprecated: "The %library_id% asset library is deprecated in solo 2.0.0 and is removed from solo 3.0.0. Use solo/base-layers instead."
+  dependencies:
+    - solo/base-layers
+
+solo-global:
+  deprecated: "The %library_id% asset library is deprecated in solo 2.0.0 and is removed from solo 3.0.0. Use solo/bundle-global instead."
+  dependencies:
+    - solo/bundle-global
+
+solo-menu:
+  deprecated: "The %library_id% asset library is deprecated in solo 2.0.0 and is removed from solo 3.0.0. Use solo/bundle-menu instead."
+  dependencies:
+    - solo/bundle-menu

@@ -1,0 +1,201 @@
+/**
+ * @file
+ * Solo color library: flat-ui.
+ *
+ * Tokens: one background (--solo-<class>) and one text color (--solo-<class>-on) per class,
+ * in solo.tokens. Classes: solo.utilities; each class sets --r-background and --r-text from
+ * its tokens and paints from them, with no !important (the layer order does the job).
+ * Where two class names share a rule (gray and grey), the token is named from the first name.
+ * Layer order: solo-layers.css. Check: scripts/css-layers-check.py.
+ */
+
+@layer solo.tokens {
+
+:root {
+  --solo-flat-turquoise: #1abc9c;
+  --solo-flat-turquoise-on: var(--solo-white);
+  --solo-flat-emerald: #2ecc71;
+  --solo-flat-emerald-on: var(--solo-white);
+  --solo-flat-peter-river: #3498db;
+  --solo-flat-peter-river-on: var(--solo-white);
+  --solo-flat-amethyst: #9b59b6;
+  --solo-flat-amethyst-on: var(--solo-white);
+  --solo-flat-wet-asphalt: #34495e;
+  --solo-flat-wet-asphalt-on: var(--solo-white);
+  --solo-flat-green-sea: #16a085;
+  --solo-flat-green-sea-on: var(--solo-white);
+  --solo-flat-nephritis: #27ae60;
+  --solo-flat-nephritis-on: var(--solo-white);
+  --solo-flat-belize-hole: #2980b9;
+  --solo-flat-belize-hole-on: var(--solo-white);
+  --solo-flat-wisteria: #8e44ad;
+  --solo-flat-wisteria-on: var(--solo-white);
+  --solo-flat-midnight-blue: #2c3e50;
+  --solo-flat-midnight-blue-on: var(--solo-white);
+  --solo-flat-sun-flower: #f1c40f;
+  --solo-flat-sun-flower-on: var(--solo-white);
+  --solo-flat-carrot: #e67e22;
+  --solo-flat-carrot-on: var(--solo-white);
+  --solo-flat-alizarin: #e74c3c;
+  --solo-flat-alizarin-on: var(--solo-white);
+  --solo-flat-clouds: #ecf0f1;
+  --solo-flat-clouds-on: var(--solo-black);
+  --solo-flat-concrete: #95a5a6;
+  --solo-flat-concrete-on: var(--solo-white);
+  --solo-flat-orange: #f39c12;
+  --solo-flat-orange-on: var(--solo-white);
+  --solo-flat-pumpkin: #d35400;
+  --solo-flat-pumpkin-on: var(--solo-white);
+  --solo-flat-pomegranate: #c0392b;
+  --solo-flat-pomegranate-on: var(--solo-white);
+  --solo-flat-silver: #bdc3c7;
+  --solo-flat-silver-on: var(--solo-black);
+  --solo-flat-asbestos: #7f8c8d;
+  --solo-flat-asbestos-on: var(--solo-white);
+}
+
+} /* end @layer solo.tokens */
+
+@layer solo.utilities {
+
+:where(.solo-page) .w3-flat-turquoise {
+  --r-text: var(--solo-flat-turquoise-on);
+  --r-background: var(--solo-flat-turquoise);
+  color: var(--r-text);
+  background-color: var(--r-background);
+}
+
+:where(.solo-page) .w3-flat-emerald {
+  --r-text: var(--solo-flat-emerald-on);
+  --r-background: var(--solo-flat-emerald);
+  color: var(--r-text);
+  background-color: var(--r-background);
+}
+
+:where(.solo-page) .w3-flat-peter-river {
+  --r-text: var(--solo-flat-peter-river-on);
+  --r-background: var(--solo-flat-peter-river);
+  color: var(--r-text);
+  background-color: var(--r-background);
+}
+
+:where(.solo-page) .w3-flat-amethyst {
+  --r-text: var(--solo-flat-amethyst-on);
+  --r-background: var(--solo-flat-amethyst);
+  color: var(--r-text);
+  background-color: var(--r-background);
+}
+
+:where(.solo-page) .w3-flat-wet-asphalt {
+  --r-text: var(--solo-flat-wet-asphalt-on);
+  --r-background: var(--solo-flat-wet-asphalt);
+  color: var(--r-text);
+  background-color: var(--r-background);
+}
+
+:where(.solo-page) .w3-flat-green-sea {
+  --r-text: var(--solo-flat-green-sea-on);
+  --r-background: var(--solo-flat-green-sea);
+  color: var(--r-text);
+  background-color: var(--r-background);
+}
+
+:where(.solo-page) .w3-flat-nephritis {
+  --r-text: var(--solo-flat-nephritis-on);
+  --r-background: var(--solo-flat-nephritis);
+  color: var(--r-text);
+  background-color: var(--r-background);
+}
+
+:where(.solo-page) .w3-flat-belize-hole {
+  --r-text: var(--solo-flat-belize-hole-on);
+  --r-background: var(--solo-flat-belize-hole);
+  color: var(--r-text);
+  background-color: var(--r-background);
+}
+
+:where(.solo-page) .w3-flat-wisteria {
+  --r-text: var(--solo-flat-wisteria-on);
+  --r-background: var(--solo-flat-wisteria);
+  color: var(--r-text);
+  background-color: var(--r-background);
+}
+
+:where(.solo-page) .w3-flat-midnight-blue {
+  --r-text: var(--solo-flat-midnight-blue-on);
+  --r-background: var(--solo-flat-midnight-blue);
+  color: var(--r-text);
+  background-color: var(--r-background);
+}
+
+:where(.solo-page) .w3-flat-sun-flower {
+  --r-text: var(--solo-flat-sun-flower-on);
+  --r-background: var(--solo-flat-sun-flower);
+  color: var(--r-text);
+  background-color: var(--r-background);
+}
+
+:where(.solo-page) .w3-flat-carrot {
+  --r-text: var(--solo-flat-carrot-on);
+  --r-background: var(--solo-flat-carrot);
+  color: var(--r-text);
+  background-color: var(--r-background);
+}
+
+:where(.solo-page) .w3-flat-alizarin {
+  --r-text: var(--solo-flat-alizarin-on);
+  --r-background: var(--solo-flat-alizarin);
+  color: var(--r-text);
+  background-color: var(--r-background);
+}
+
+:where(.solo-page) .w3-flat-clouds {
+  --r-text: var(--solo-flat-clouds-on);
+  --r-background: var(--solo-flat-clouds);
+  color: var(--r-text);
+  background-color: var(--r-background);
+}
+
+:where(.solo-page) .w3-flat-concrete {
+  --r-text: var(--solo-flat-concrete-on);
+  --r-background: var(--solo-flat-concrete);
+  color: var(--r-text);
+  background-color: var(--r-background);
+}
+
+:where(.solo-page) .w3-flat-orange {
+  --r-text: var(--solo-flat-orange-on);
+  --r-background: var(--solo-flat-orange);
+  color: var(--r-text);
+  background-color: var(--r-background);
+}
+
+:where(.solo-page) .w3-flat-pumpkin {
+  --r-text: var(--solo-flat-pumpkin-on);
+  --r-background: var(--solo-flat-pumpkin);
+  color: var(--r-text);
+  background-color: var(--r-background);
+}
+
+:where(.solo-page) .w3-flat-pomegranate {
+  --r-text: var(--solo-flat-pomegranate-on);
+  --r-background: var(--solo-flat-pomegranate);
+  color: var(--r-text);
+  background-color: var(--r-background);
+}
+
+:where(.solo-page) .w3-flat-silver {
+  --r-text: var(--solo-flat-silver-on);
+  --r-background: var(--solo-flat-silver);
+  color: var(--r-text);
+  background-color: var(--r-background);
+}
+
+:where(.solo-page) .w3-flat-asbestos {
+  --r-text: var(--solo-flat-asbestos-on);
+  --r-background: var(--solo-flat-asbestos);
+  color: var(--r-text);
+  background-color: var(--r-background);
+}
+
+} /* end @layer solo.utilities */

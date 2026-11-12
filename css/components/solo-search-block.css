@@ -1,3 +1,11 @@
+/*
+ * Deprecated in 2.0, removed in the next major: the old names below stay as
+ * second selectors so sub-themes and content that print them keep working.
+ *   solo-fixed-search__button-block -> solo-fixed-search-block__button-block
+ */
+
+@layer solo.theme {
+
 :where(form).solo-search-block-form {
   position: relative;
 }
@@ -42,18 +50,12 @@
   min-width: 0;
 }
 
-.solo-search-block-form .form-type-search input {
-  padding-inline-start: var(--solo-px34);
-  background-color: transparent;
-}
-
 .solo-search-block-form .form-item,
 .solo-search-block-form .form-actions {
   margin-block: var(--solo-px6) !important;
-  margin-inline: auto !important;
-  display: inline-block;
-}
+  margin-inline: auto !important;}
 
+:where(input).solo-fixed-search-block__button-block,
 :where(input).solo-fixed-search__button-block {
   margin: 0 !important;
   padding-inline-start: var(--solo-px3) !important;
@@ -67,7 +69,7 @@
   height: 24px;
   content: "";
   opacity: 0.5;
-  background-color: var(--r-tx);
+  background-color: var(--r-text);
   background-repeat: no-repeat;
   background-size: 24px 24px;
   font-size: 16px;
@@ -77,3 +79,5 @@
   -webkit-mask: var(--solo-search-icon);
   mask: var(--solo-search-icon);
 }
+
+} /* end @layer solo.theme */

@@ -1,3 +1,5 @@
+@layer solo.layout {
+
 /* Define CSS variables for different screen widths */
 .solo-page.sw-2560 {
   --solo-width: var(--solo-rem2560);
@@ -51,3 +53,5 @@
 :where(.solo-page.sw-100 > .solo-outer, .solo-page.sw-100 > .solo-footer-landmark > .solo-outer) > .solo-inner:not(.solo-primary-sidebar-menu__inner, .page-node-type-pb-content .solo-container__inner--main) {
   max-width: 100%;
 }
+
+} /* end @layer solo.layout */

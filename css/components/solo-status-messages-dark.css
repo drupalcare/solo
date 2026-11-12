@@ -1,0 +1,32 @@
+/*
+ * Deprecated in 2.0, removed in the next major: the old names below stay as
+ * second selectors so sub-themes and content that print them keep working.
+ *   solo-system-messages -> solo-status-messages
+ */
+
+@layer solo.theme {
+
+.messages__close,
+.messages__close::after,
+.messages__close::before {
+  border-color: var(--solo-gray);
+}
+
+.messages,
+:where(.webform-message) .messages.messages--webform {
+  color: var(--solo-white) !important;
+  border: var(--solo-px1) solid var(--solo-black) !important;
+  background-color: var(--solo-dark-gray) !important;
+}
+
+:where(.solo-page) .solo-status-messages,
+:where(.solo-page) .solo-system-messages {
+  --r-background: var(--solo-black) !important;
+  --r-text: var(--solo-white) !important;
+}
+
+:where(.messages) a {
+  color: var(--solo-white) !important;
+}
+
+} /* end @layer solo.theme */

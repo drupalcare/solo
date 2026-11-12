@@ -14,11 +14,11 @@ categories:
   - galactic_and_celestial
 css: css/predefined/solo-celestial-blue-depths.css
 dependencies:
-  - solo/solo-scheme-shared
-  - solo/solo-scheme-multi-span
-  - solo/solo-scheme-region-paint-1
-  - solo/solo-scheme-region-paint-2
-  - solo/solo-scheme-region-paint-3
+  - solo/theme-scheme-shared
+  - solo/theme-scheme-multi-span
+  - solo/theme-scheme-region-paint-1
+  - solo/theme-scheme-region-paint-2
+  - solo/theme-scheme-region-paint-3
 thumbnail: images/schemes/solo-celestial-blue-depths.webp
 palette:
   --sc-head-tx: "#7b6a58"
@@ -48,12 +48,12 @@ palette:
   --sc-fixed-search-block-shadow: "4, 13, 42"
   --sc-social-box-shadow: "22, 71, 228"
 page:
-  --r-br: "#bccbf9"
-  --r-bg: "#fafbff"
-  --r-tx: "#040d2a"
-  --r-header-bg: "linear-gradient(180deg, #1034a6, #0a2168)"
-  --r-header-tx: "#b8ab9c"
-  --r-menu-tx-h: "#fafbff"
-  --r-menu-bg-h: "#1034a6"
-  --r-br-dark: "#0a2580"
-  --r-br-light: "#c4cade"
+  --r-border: "#bccbf9"
+  --r-background: "#fafbff"
+  --r-text: "#040d2a"
+  --solo-accent-background: "linear-gradient(180deg, #1034a6, #0a2168)"
+  --solo-accent-text: "#b8ab9c"
+  --r-menu-text-hover: "#fafbff"
+  --r-menu-background-hover: "#1034a6"
+  --solo-tone-border-dark: "#0a2580"
+  --solo-tone-border-light: "#c4cade"

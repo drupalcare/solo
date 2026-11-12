@@ -1,6 +1,12 @@
-#solo-page-wrapper .eagle-lake,
-#solo-header.solo-eagle-lake .solo-branding__site-name-link,
-#solo-page-wrapper.solo-eagle-lake .solo-page-title__text,
-html.solo-preloader-enabled #solo-preloader.solo-eagle-lake .solo-preloader__text {
+@layer solo.base {
+  #solo-header.solo-eagle-lake .solo-branding__site-name-link,
+  #solo-page-wrapper.solo-eagle-lake .solo-page-title__text,
+  html.solo-preloader-enabled #solo-preloader.solo-eagle-lake .solo-preloader__text {
+    font-family: "Eagle Lake", serif;
+  }
+}
+
+/* Unlayered on purpose. Font classes beat unlayered element rules (PB w3-modern.css headings and buttons) as before; a layer would lose to them. */
+#solo-page-wrapper .eagle-lake {
   font-family: "Eagle Lake", serif;
 }

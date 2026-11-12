@@ -14,7 +14,7 @@ use PHPUnit\Framework\TestCase;
  * nothing. 64b41d0 wrapped the whole link rule in :where(), which gave it zero
  * specificity, so solo-normalize.css (`a { all: unset }`, `li a { color:
  * inherit }`) won and every link fell back to the text colour. Measured on
- * sts.local: links rendered rgb(0,0,0) with --r-lk set to #ce103d.
+ * sts.local: links rendered rgb(0,0,0) with --r-link set to #ce103d.
  *
  * The rule must keep the a:not(...) part OUTSIDE :where(), so it scores
  * (0,1,1): above normalize, and still below a paragraph's own link rules
@@ -45,7 +45,7 @@ class RegionLinkColourRuleTest extends TestCase {
    * The link and link-hover rules keep a:not(...) outside :where().
    */
   public function testLinkRulesOutrankNormalize(): void {
-    $found = ['--r-lk,' => 0, '--r-lk-h,' => 0];
+    $found = ['--r-link,' => 0, '--r-link-hover,' => 0];
     foreach ($this->rules() as [$selector, $body]) {
       foreach (array_keys($found) as $var) {
         if (!str_contains($body, 'color: var(' . $var)) {
@@ -58,8 +58,8 @@ class RegionLinkColourRuleTest extends TestCase {
           . 'solo-normalize.css wins (#3629228).');
       }
     }
-    $this->assertSame(1, $found['--r-lk,'], 'Expected exactly one link colour rule.');
-    $this->assertSame(1, $found['--r-lk-h,'], 'Expected exactly one link hover rule.');
+    $this->assertSame(1, $found['--r-link,'], 'Expected exactly one link colour rule.');
+    $this->assertSame(1, $found['--r-link-hover,'], 'Expected exactly one link hover rule.');
   }
 
 }

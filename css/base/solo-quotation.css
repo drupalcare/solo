@@ -1,10 +1,12 @@
+@layer solo.base {
+
 blockquote {
   margin: 0;
   padding: 0;
   padding-inline-start: var(--solo-px24);
   padding-inline-end: var(--solo-px16);
   border: none;
-  border-inline-start: 4px solid var(--r-br, var(--r-br-b));
+  border-inline-start: 4px solid var(--r-border, var(--solo-border-default));
   font-style: italic;
   margin-block: var(--solo-px24);
   padding-block: var(--solo-px16);
@@ -13,3 +15,5 @@ blockquote {
 :where(blockquote) p:last-child {
   margin-block-end: 0;
 }
+
+} /* end @layer solo.base */

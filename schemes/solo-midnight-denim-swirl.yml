@@ -15,11 +15,11 @@ categories:
   - denim_influences
 css: css/predefined/solo-midnight-denim-swirl.css
 dependencies:
-  - solo/solo-scheme-shared
-  - solo/solo-scheme-region-rule
-  - solo/solo-scheme-region-paint-1
-  - solo/solo-scheme-region-paint-2
-  - solo/solo-scheme-region-paint-3
+  - solo/theme-scheme-shared
+  - solo/theme-scheme-region-rule
+  - solo/theme-scheme-region-paint-1
+  - solo/theme-scheme-region-paint-2
+  - solo/theme-scheme-region-paint-3
 thumbnail: images/schemes/solo-midnight-denim-swirl.webp
 palette:
   --sc-head-tx: "#a1a1fd"
@@ -50,10 +50,10 @@ palette:
   --sc-social-box-shadow: "215, 215, 215"
   --sc-region-rule-br: "var(--solo-black)"
 page:
-  --r-br: "#030369"
-  --r-bg: "#000000"
-  --r-tx: "#e4e4fe"
-  --r-header-bg: "linear-gradient(0deg, #000006, #010116)"
-  --r-header-tx: "#a1a1fd"
-  --r-menu-tx-h: "#ffffff"
-  --r-menu-bg-h: "#010138"
+  --r-border: "#030369"
+  --r-background: "#000000"
+  --r-text: "#e4e4fe"
+  --solo-accent-background: "linear-gradient(0deg, #000006, #010116)"
+  --solo-accent-text: "#a1a1fd"
+  --r-menu-text-hover: "#ffffff"
+  --r-menu-background-hover: "#010138"

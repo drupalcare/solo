@@ -14,11 +14,11 @@ categories:
   - elegant_whites_and_neutrals
 css: css/predefined/solo-porcelain-brilliance.css
 dependencies:
-  - solo/solo-scheme-shared
-  - solo/solo-scheme-region-rule
-  - solo/solo-scheme-region-paint-1
-  - solo/solo-scheme-region-paint-2
-  - solo/solo-scheme-region-paint-3
+  - solo/theme-scheme-shared
+  - solo/theme-scheme-region-rule
+  - solo/theme-scheme-region-paint-1
+  - solo/theme-scheme-region-paint-2
+  - solo/theme-scheme-region-paint-3
 thumbnail: images/schemes/solo-porcelain-brilliance.webp
 palette:
   --sc-head-tx: "#172d00"
@@ -49,10 +49,10 @@ palette:
   --sc-social-box-shadow: "140, 166, 249"
   --sc-region-rule-br: "var(--solo-white)"
 page:
-  --r-br: "#d6dac7"
-  --r-bg: "#f4f5f0"
-  --r-tx: "#222418"
-  --r-header-bg: "linear-gradient(45deg, #fcfff9, #fbfcfa)"
-  --r-header-tx: "#172d00"
-  --r-menu-tx-h: "#0f100a"
-  --r-menu-bg-h: "#a9b18a"
+  --r-border: "#d6dac7"
+  --r-background: "#f4f5f0"
+  --r-text: "#222418"
+  --solo-accent-background: "linear-gradient(45deg, #fcfff9, #fbfcfa)"
+  --solo-accent-text: "#172d00"
+  --r-menu-text-hover: "#0f100a"
+  --r-menu-background-hover: "#a9b18a"

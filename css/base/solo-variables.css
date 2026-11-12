@@ -1,25 +1,27 @@
+@layer solo.tokens {
+
 :root {
   /* Font Variables */
   --solo-font: "Helvetica Neue", helvetica, arial, sans-serif;
   --solo-font-s: "Helvetica Neue", helvetica, arial, sans-serif;
   --solo-h1: "Helvetica Neue", helvetica, arial, sans-serif;
   /* Color Variables (initialize as required later) */
-  --r-bg: initial;
-  --r-tx: initial;
-  --r-h1: initial;
-  --r-lk: initial;
-  --r-lk-h: initial;
-  --r-br: initial;
-  --r-br-b: initial;
-  --r-bg-fr: initial;
-  --r-tx-lk: initial;
-  --r-tx-lk-h: initial;
-  --r-bg-lk: initial;
-  --r-bg-lk-h: initial;
-  --r-tx-bt: initial;
-  --r-tx-bt-h: initial;
-  --r-bg-bt: initial;
-  --r-bg-bt-h: initial;
+  --r-background: initial;
+  --r-text: initial;
+  --r-heading: initial;
+  --r-link: initial;
+  --r-link-hover: initial;
+  --r-border: initial;
+  --solo-border-default: initial;
+  --r-form-background: initial;
+  --r-menu-text: initial;
+  --r-menu-text-hover: initial;
+  --r-menu-background: initial;
+  --r-menu-background-hover: initial;
+  --r-button-text: initial;
+  --r-button-text-hover: initial;
+  --r-button-background: initial;
+  --r-button-background-hover: initial;
   --solo-thead: initial;
   --solo-odd: initial;
   --solo-even: initial;
@@ -27,16 +29,16 @@
   --solo-even-light: initial;
   --solo-odd-dark: initial;
   --solo-even-dark: initial;
-  --r-bg-dark: initial;
-  --r-tx-dark: initial;
-  --r-br-dark: initial;
-  --r-bg-light: initial;
-  --r-tx-light: initial;
-  --r-br-light: initial;
-  --r-header-bg: initial;
-  --r-header-tx: initial;
-  --r-menu-tx-h: initial;
-  --r-menu-bg-h: initial;
+  --solo-tone-background-dark: initial;
+  --solo-tone-text-dark: initial;
+  --solo-tone-border-dark: initial;
+  --solo-tone-background-light: initial;
+  --solo-tone-text-light: initial;
+  --solo-tone-border-light: initial;
+  --solo-accent-background: initial;
+  --solo-accent-text: initial;
+  --r-menu-text-hover: initial;
+  --r-menu-background-hover: initial;
   /* website width variables rem */
   --solo-rem2560: 160rem;
   --solo-rem1920: 120rem;
@@ -212,3 +214,5 @@
   --solo-text-align-start: right;
   --solo-text-align-end: left;
 }
+
+} /* end @layer solo.tokens */

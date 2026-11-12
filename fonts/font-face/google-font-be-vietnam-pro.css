@@ -1,5 +1,7 @@
-body {
-  font-style: normal;
+@layer solo.base {
+  body {
+    font-style: normal;
+  }
 }
 
 /* be-vietnam-pro-100 - latin_latin-ext */

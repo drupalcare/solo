@@ -4,9 +4,9 @@
 A media query cannot read var(), so each breakpoint value has to be written
 into the CSS. One source per family keeps the value in one place:
 
-  scripts/breakpoints/menu-mn.css.src    -> css/breakpoints/solo-menu-breakpoints-mn-<bp>.css
-  scripts/breakpoints/global-sb.css.src  -> css/breakpoints/solo-global-breakpoints-sb-<bp>.css
-  scripts/breakpoints/layout-sb.css.src  -> css/layout/solo-layout-breakpoints-sb-<bp>.css
+  scripts/breakpoints/menu-mn.css.src    -> css/breakpoints/solo-menu-mn-<bp>.css
+  scripts/breakpoints/global-sb.css.src  -> css/breakpoints/solo-page-sb-<bp>.css
+  scripts/breakpoints/layout-sb.css.src  -> css/layout/solo-page-sb-<bp>.css
 
 Source format: plain CSS, line by line.
   {{MIN}} / {{MAX}}   replaced by the breakpoint's min-width / max-width value.
@@ -60,9 +60,9 @@ def _named(match: re.Match) -> str:
 
 
 FAMILIES = {
-    "menu-mn.css.src": "css/breakpoints/solo-menu-breakpoints-mn-{bp}.css",
-    "global-sb.css.src": "css/breakpoints/solo-global-breakpoints-sb-{bp}.css",
-    "layout-sb.css.src": "css/layout/solo-layout-breakpoints-sb-{bp}.css",
+    "menu-mn.css.src": "css/breakpoints/solo-menu-mn-{bp}.css",
+    "global-sb.css.src": "css/breakpoints/solo-page-sb-{bp}.css",
+    "layout-sb.css.src": "css/layout/solo-page-sb-{bp}.css",
 }
 
 

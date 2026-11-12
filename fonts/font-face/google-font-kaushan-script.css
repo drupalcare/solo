@@ -1,5 +1,7 @@
-body {
-  font-style: normal;
+@layer solo.base {
+  body {
+    font-style: normal;
+  }
 }
 
 /* kaushan-script-regular - latin_latin-ext */

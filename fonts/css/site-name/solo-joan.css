@@ -1,6 +1,12 @@
-#solo-page-wrapper .joan,
-#solo-header.solo-joan .solo-branding__site-name-link,
-#solo-page-wrapper.solo-joan .solo-page-title__text,
-html.solo-preloader-enabled #solo-preloader.solo-joan .solo-preloader__text {
+@layer solo.base {
+  #solo-header.solo-joan .solo-branding__site-name-link,
+  #solo-page-wrapper.solo-joan .solo-page-title__text,
+  html.solo-preloader-enabled #solo-preloader.solo-joan .solo-preloader__text {
+    font-family: "Joan", sans-serif;
+  }
+}
+
+/* Unlayered on purpose. Font classes beat unlayered element rules (PB w3-modern.css headings and buttons) as before; a layer would lose to them. */
+#solo-page-wrapper .joan {
   font-family: "Joan", sans-serif;
 }

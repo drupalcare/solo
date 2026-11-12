@@ -14,11 +14,11 @@ categories:
   - earthy_and_smokey_tones
 css: css/predefined/solo-charcoal-gray.css
 dependencies:
-  - solo/solo-scheme-shared
-  - solo/solo-scheme-region-rule
-  - solo/solo-scheme-region-paint-1
-  - solo/solo-scheme-region-paint-2
-  - solo/solo-scheme-region-paint-3
+  - solo/theme-scheme-shared
+  - solo/theme-scheme-region-rule
+  - solo/theme-scheme-region-paint-1
+  - solo/theme-scheme-region-paint-2
+  - solo/theme-scheme-region-paint-3
 thumbnail: images/schemes/solo-charcoal-gray.webp
 palette:
   --sc-head-tx: "#234994"
@@ -50,10 +50,10 @@ palette:
   --sc-tab-hover-bg: "#2f2f2d"
   --sc-region-rule-br: "var(--solo-white)"
 page:
-  --r-br: "#d1d1d1"
-  --r-bg: "#f2f2f1"
-  --r-tx: "#545454"
-  --r-header-bg: "linear-gradient(to start top, #ffffff, #e1e1e0)"
-  --r-header-tx: "#234994"
-  --r-menu-tx-h: "#ffffff"
-  --r-menu-bg-h: "#2f2f2d"
+  --r-border: "#d1d1d1"
+  --r-background: "#f2f2f1"
+  --r-text: "#545454"
+  --solo-accent-background: "linear-gradient(to start top, #ffffff, #e1e1e0)"
+  --solo-accent-text: "#234994"
+  --r-menu-text-hover: "#ffffff"
+  --r-menu-background-hover: "#2f2f2d"

@@ -6,6 +6,12 @@
  * They provide visual feedback for developers and help identify issues.
  */
 
+/*
+ * Deprecated in 2.0, removed in the next major: the old names below stay as
+ * second selectors so sub-themes and content that print them keep working.
+ *   solo-mobile-nav -> solo-menu-main--mobile
+ */
+
 /* ============================================
    DEBUG MODE INDICATOR
    ============================================ */
@@ -182,10 +188,12 @@ body.solo-debug-mode::before {
    MOBILE NAV DEBUG
    ============================================ */
 
+.solo-debug-mode .solo-menu-main--mobile button::before,
 .solo-debug-mode .solo-mobile-nav button::before {
   content: "📱 ";
 }
 
+.solo-debug-mode .solo-menu-main--mobile button[aria-expanded="true"]::after,
 .solo-debug-mode .solo-mobile-nav button[aria-expanded="true"]::after {
   content: " [MENU OPEN]";
   color: #4caf50;

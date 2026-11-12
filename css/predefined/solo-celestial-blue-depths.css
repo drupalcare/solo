@@ -1,3 +1,18 @@
+/*
+ * Deprecated in 2.0, removed in the next major: the old names below stay as
+ * second selectors so sub-themes and content that print them keep working.
+ *   solo-fixed-search -> solo-fixed-search-block
+ *   solo-fixed-search__close -> solo-fixed-search-block__close
+ *   solo-fixed-search__inner -> solo-fixed-search-block__inner
+ *   solo-fixed-search__wrapper -> solo-fixed-search-block__wrapper
+ *   solo-footer-nav -> solo-footer-menu__nav
+ *   solo-main-nav -> solo-menu-main
+ *   solo-popup-login__inner -> solo-popup-login-block__inner
+ *   solo-popup-login__open -> solo-popup-login-block__open
+ */
+
+@layer solo.schemes {
+
 /* Page wrapper
 Egyptian Blue #1034A6, Yale Blue #00356B, Space Cadet #1D2951 */
 :root {
@@ -30,62 +45,74 @@ Egyptian Blue #1034A6, Yale Blue #00356B, Space Cadet #1D2951 */
 }
 
 .solo-page {
-  --r-br: #bccbf9;
-  --r-bg: #fafbff;
-  --r-tx: #040d2a;
-  --r-header-bg: linear-gradient(180deg, #1034a6, #0a2168);
-  --r-header-tx: #b8ab9c;
-  --r-menu-tx-h: #fafbff;
-  --r-menu-bg-h: #1034a6;
-  --r-br-dark: #0a2580;
-  --r-br-light: #c4cade;
+  --r-border: #bccbf9;
+  --r-background: #fafbff;
+  --r-text: #040d2a;
+  --solo-accent-background-image: linear-gradient(180deg, #1034a6, #0a2168);
+  --solo-accent-background: linear-gradient(180deg, #1034a6, #0a2168);
+  --solo-accent-text: #b8ab9c;
+  --r-menu-text-hover: #fafbff;
+  --r-menu-background-hover: #1034a6;
+  --solo-tone-border-dark: #0a2580;
+  --solo-tone-border-light: #c4cade;
 }
 
-:where(.solo-page) .solo-popup-login__open:where(:not([style*="--r-br:"] *)),
-:where(.solo-page .solo-hamburger) button:where(:not([style*="--r-br:"] *)),
-:where(.solo-page) .solo-main-nav:where(:not([style*="--r-br:"] *)),
-:where(.solo-page .solo-main-nav) ul:where(:not([style*="--r-br:"] *)),
-:where(.solo-page) .solo-main-nav li:where(:not([style*="--r-br:"] *)),
-:where(.solo-page) .solo-header li.solo-menu-tree__item > a:where(:not([style*="--r-br:"] *)),
-:where(.solo-page) .solo-main-nav li > a:where(:not([style*="--r-br:"] *)),
-:where(.solo-page .solo-header) li.solo-menu-tree__item > button:where(:not([style*="--r-br:"] *)),
-:where(.solo-page .solo-main-nav) li > button:where(:not([style*="--r-br:"] *)) {
-  --r-br: #091c58;
+:where(.solo-page) .solo-popup-login-block__open:where(:not([style*="--r-border:"] *)),
+:where(.solo-page) .solo-popup-login__open:where(:not([style*="--r-border:"] *)),
+:where(.solo-page .solo-hamburger) button:where(:not([style*="--r-border:"] *)),
+:where(.solo-page) .solo-menu-main:where(:not([style*="--r-border:"] *)),
+:where(.solo-page) .solo-main-nav:where(:not([style*="--r-border:"] *)),
+:where(.solo-page .solo-menu-main) ul:where(:not([style*="--r-border:"] *)),
+:where(.solo-page .solo-main-nav) ul:where(:not([style*="--r-border:"] *)),
+:where(.solo-page) .solo-menu-main li:where(:not([style*="--r-border:"] *)),
+:where(.solo-page) .solo-main-nav li:where(:not([style*="--r-border:"] *)),
+:where(.solo-page) .solo-header li.solo-menu-tree__item > a:where(:not([style*="--r-border:"] *)),
+:where(.solo-page) .solo-menu-main li > a:where(:not([style*="--r-border:"] *)),
+:where(.solo-page) .solo-main-nav li > a:where(:not([style*="--r-border:"] *)),
+:where(.solo-page .solo-header) li.solo-menu-tree__item > button:where(:not([style*="--r-border:"] *)),
+:where(.solo-page .solo-menu-main) li > button:where(:not([style*="--r-border:"] *)),
+:where(.solo-page .solo-main-nav) li > button:where(:not([style*="--r-border:"] *)) {
+  --r-border: #091c58;
 }
 
 .solo-page ul.tabs.secondary li a:hover,
 .solo-page ul.tabs.primary li a:hover {
-  --r-bg: #1034a6;
+  --r-background: #1034a6;
 }
 
 .solo-welcome-text,
 :where(.solo-container--main) .solo-region-box--main {
-  --r-bg: var(--solo-white);
+  --r-background: var(--solo-white);
 }
 
 .solo-container--main,
 .solo-container--top,
+.solo-fixed-search-block,
 .solo-fixed-search,
+.solo-popup-login-block__inner,
 .solo-popup-login__inner {
   --s-b: 20, 67, 213;
 }
 
-:is(.solo-container--main, .solo-container--top, .solo-fixed-search, .solo-popup-login__inner):where(:not([style*="--r-br:"] *)) {
-  --r-br: #7e9af3;
+:is(.solo-container--main, .solo-container--top, .solo-fixed-search-block, .solo-popup-login-block__inner):where(:not([style*="--r-border:"] *)),
+:is(.solo-container--main, .solo-container--top, .solo-fixed-search, .solo-popup-login__inner):where(:not([style*="--r-border:"] *)) {
+  --r-border: #7e9af3;
 }
 
 .solo-highlighted {
-  --r-bg: #f3f9ff;
+  --r-background: #f3f9ff;
 }
 
 .solo-container--top .solo-region-box__inner--top {
-  --r-bg: linear-gradient(180deg, #dfe4f4, #f3f9ff);
+  --r-background-image: linear-gradient(180deg, #dfe4f4, #f3f9ff);
+  --r-background: #dfe4f4;
 }
 
 header.solo-header,
 div.solo-page-title.solo-container--single {
-  --r-tx: #dfe4f4;
-  --r-bg: linear-gradient(180deg, #1034a6, #0a2168);
+  --r-text: #dfe4f4;
+  --r-background-image: linear-gradient(180deg, #1034a6, #0a2168);
+  --r-background: #1034a6;
 }
 
 div.solo-page-title.solo-container--single h1 a,
@@ -99,57 +126,65 @@ div.solo-page-title.solo-container--single h1 a,
 :where(header.solo-header h1 a) span,
 :where(header.solo-header h2 a) span,
 :where(header.solo-header h3 a) span {
-  --r-tx: #dfe4f4;
+  --r-text: #dfe4f4;
 }
 
 .breadcrumb {
-  --r-tx: #eaf4ff;
-  --r-bg: linear-gradient(0deg, #020306, #040d2a);
+  --r-text: #eaf4ff;
+  --r-background-image: linear-gradient(0deg, #020306, #040d2a);
+  --r-background: #020306;
 }
 
 .solo-copyright {
-  --r-tx: #eaf4ff;
+  --r-text: #eaf4ff;
 }
 
 .solo-container--bottom,
 .solo-container--footer,
+.solo-footer-menu__nav,
 .solo-footer-nav {
-  --r-tx: #dbe3fc;
+  --r-text: #dbe3fc;
 }
 
-:is(.solo-container--bottom, .solo-container--footer, .solo-footer-nav):where(:not([style*="--r-br:"] *)) {
-  --r-br: var(--r-br-dark);
+:is(.solo-container--bottom, .solo-container--footer, .solo-footer-menu__nav):where(:not([style*="--r-border:"] *)),
+:is(.solo-container--bottom, .solo-container--footer, .solo-footer-nav):where(:not([style*="--r-border:"] *)) {
+  --r-border: var(--solo-tone-border-dark);
 }
 
 .solo-container--bottom .solo-region-box__inner--bottom,
 .solo-container--footer .solo-region-box__inner--footer {
-  --r-bg: linear-gradient(180deg, #03081a, #000205);
+  --r-background-image: linear-gradient(180deg, #03081a, #000205);
+  --r-background: #03081a;
 }
 
+:where(.solo-page) :is(.solo-container--bottom a, .solo-container--footer a, .solo-footer-menu__nav a, .breadcrumb a, .solo-copyright a),
 :where(.solo-page) :is(.solo-container--bottom a, .solo-container--footer a, .solo-footer-nav a, .breadcrumb a, .solo-copyright a) {
-  --r-tx: #bac4e6;
+  --r-text: #bac4e6;
 }
 
+:where(.solo-page) :is(.solo-container--bottom h1, .solo-container--bottom h2, .solo-container--bottom h3, .solo-container--footer h1, .solo-container--footer h2, .solo-container--footer h3, .solo-footer-menu__nav h1, .solo-footer-menu__nav h2, .solo-footer-menu__nav h3),
 :where(.solo-page) :is(.solo-container--bottom h1, .solo-container--bottom h2, .solo-container--bottom h3, .solo-container--footer h1, .solo-container--footer h2, .solo-container--footer h3, .solo-footer-nav h1, .solo-footer-nav h2, .solo-footer-nav h3) {
-  --r-tx: #d7d0c8;
+  --r-text: #d7d0c8;
 }
 
-:where(.solo-page) .selectify:where(:not([style*="--r-br:"] *)),
-:where(.solo-page) .solo-select:where(:not([style*="--r-br:"] *)),
-:where(.solo-page) .solo-radio:where(:not([style*="--r-br:"] *)),
-:where(.solo-page) .solo-check:where(:not([style*="--r-br:"] *)),
-:where(.solo-page) .solo-input:where(:not([style*="--r-br:"] *)),
-:where(.solo-page) .solo-textarea:where(:not([style*="--r-br:"] *)),
-:where(.solo-page .solo-fixed-search__close) button:where(:not([style*="--r-br:"] *)) {
-  --r-br: #0a2168;
+:where(.solo-page) .selectify:where(:not([style*="--r-border:"] *)),
+:where(.solo-page) .solo-select:where(:not([style*="--r-border:"] *)),
+:where(.solo-page) .solo-radio:where(:not([style*="--r-border:"] *)),
+:where(.solo-page) .solo-check:where(:not([style*="--r-border:"] *)),
+:where(.solo-page) .solo-input:where(:not([style*="--r-border:"] *)),
+:where(.solo-page) .solo-textarea:where(:not([style*="--r-border:"] *)),
+:where(.solo-page .solo-fixed-search-block__close) button:where(:not([style*="--r-border:"] *)),
+:where(.solo-page .solo-fixed-search__close) button:where(:not([style*="--r-border:"] *)) {
+  --r-border: #0a2168;
 }
 
 :where(.solo-page) :is(.selectify *:hover, .solo-select:hover, .solo-check:hover, .solo-radio:hover, .solo-input:hover, .solo-textarea:hover, .selectify *:focus, .solo-select:focus, .solo-check:focus, .solo-radio:focus, .solo-input:focus, .solo-textarea:focus) {
-  --r-br: #1034a6;
+  --r-border: #1034a6;
 }
 
 .solo-primary-sidebar-menu,
 :where(.solo-inner) .solo-menu-tree--responsive,
+:where(.solo-fixed-search-block__inner) .solo-fixed-search-block__wrapper,
 :where(.solo-fixed-search__inner) .solo-fixed-search__wrapper,
 :where(.solo-page .solo-outer.solo-container--animate-hover) .solo-region-box__inner.solo-region-box__inner--top {
   --s-b: 4, 13, 42;
@@ -160,8 +195,8 @@ div.solo-page-title.solo-container--single h1 a,
   --s-b: 250, 251, 255;
 }
 
-:where(.solo-page) :is(.solo-container--top, .solo-container--top, .solo-container--main, .solo-container--main):where(:not([style*="--r-br:"] *)) {
-  --r-br: var(--r-br-light);
+:where(.solo-page) :is(.solo-container--top, .solo-container--top, .solo-container--main, .solo-container--main):where(:not([style*="--r-border:"] *)) {
+  --r-border: var(--solo-tone-border-light);
 }
 
 :where(.solo-page) :is(.selectify-radio, .selectify-checkbox, .selectify-radio *, .selectify-checkbox *) {
@@ -183,8 +218,8 @@ div.solo-page-title.solo-container--single h1 a,
 :where(.solo-page .selectify-select) * {
   --selectify-select-bg: #fff;
   --selectify-select-hover-bg: #f1f3fa;
-  --selectify-select-color: var(--r-tx);
-  --selectify-select-border-color: var(--r-br);
+  --selectify-select-color: var(--r-text);
+  --selectify-select-border-color: var(--r-border);
   --selectify-select-focus-border-color: #1034a6;
   --selectify-select-disabled-bg: #f2f3f4;
   --selectify-select-arrow-color: #1034a6;
@@ -193,91 +228,96 @@ div.solo-page-title.solo-container--single h1 a,
   --selectify-option-active-bg: #dee3f3;
 }
 
-/* Region text colors: one block per region with its heading (--r-sc-h1), link
-   (--r-sc-lk) and link hover (--r-sc-lk-h) colors, and button hover text where the
+/* Region text colors: one block per region with its heading (--r-heading), link
+   (--r-link) and link hover (--r-link-hover) colors, and button hover text where the
    scheme sets one. Backgrounds above are the scheme's own. Every color here reaches
    WCAG AA (4.5:1) on the grounds named in its comment. A site's region colors still win. */
 /* Header: on #1034a6, #0a2168. */
 .solo-header {
-  --r-sc-h1: #b8ab9c;
-  --r-sc-lk: #92aaf5;
-  --r-sc-lk-h: #a4b8f7;
+  --r-heading: #b8ab9c;
+  --r-link: #92aaf5;
+  --r-link-hover: #a4b8f7;
 }
 
 /* Highlighted: on #f3f9ff. */
 .solo-highlighted {
-  --r-sc-lk: #1443d5;
-  --r-sc-lk-h: #2151ea;
+  --r-link: #1443d5;
+  --r-link-hover: #2151ea;
 }
 
 /* Fixed search: on #ebeffd, #dfe4f4. */
+.solo-fixed-search-block,
 .solo-fixed-search {
-  --r-sc-h1: #736352;
-  --r-sc-lk: #1443d5;
-  --r-sc-lk-h: #2151ea;
+  --r-heading: #736352;
+  --r-link: #1443d5;
+  --r-link-hover: #2151ea;
 }
 
 /* Popup login: on #ebeffd, #dfe4f4. */
+.solo-popup-login-block__inner,
 .solo-popup-login__inner {
-  --r-sc-h1: #736352;
-  --r-sc-lk: #1443d5;
-  --r-sc-lk-h: #2151ea;
+  --r-heading: #736352;
+  --r-link: #1443d5;
+  --r-link-hover: #2151ea;
 }
 
 /* Welcome text: on #fafbff. */
 .solo-welcome-text {
-  --r-sc-lk: #1443d5;
-  --r-sc-lk-h: #2151ea;
+  --r-link: #1443d5;
+  --r-link-hover: #2151ea;
 }
 
 /* Top: on #dfe4f4, #f3f9ff. */
 .solo-container--top {
-  --r-sc-h1: #736352;
-  --r-sc-lk: #1443d5;
-  --r-sc-lk-h: #2151ea;
+  --r-heading: #736352;
+  --r-link: #1443d5;
+  --r-link-hover: #2151ea;
 }
 
 /* Main: on #ffffff. */
 .solo-container--main {
-  --r-sc-lk: #1443d5;
-  --r-sc-lk-h: #2151ea;
+  --r-link: #1443d5;
+  --r-link-hover: #2151ea;
 }
 
 /* Page title: on #1034a6, #0a2168. */
 .solo-page-title {
-  --r-sc-h1: #b8ab9c;
-  --r-sc-lk: #92aaf5;
-  --r-sc-lk-h: #a4b8f7;
+  --r-heading: #b8ab9c;
+  --r-link: #92aaf5;
+  --r-link-hover: #a4b8f7;
 }
 
 /* Breadcrumb: on #020306, #040d2a. */
 .breadcrumb {
-  --r-sc-h1: #8b7863;
-  --r-sc-lk: #bac4e6;
-  --r-sc-lk-h: #4b72ee;
+  --r-heading: #8b7863;
+  --r-link: #bac4e6;
+  --r-link-hover: #4b72ee;
 }
 
 /* Bottom: on #03081a, #000205. */
 .solo-container--bottom {
-  --r-sc-lk: #bac4e6;
-  --r-sc-lk-h: #476fee;
+  --r-link: #bac4e6;
+  --r-link-hover: #476fee;
 }
 
 /* Footer: on #03081a, #000205. */
 .solo-container--footer {
-  --r-sc-lk: #bac4e6;
-  --r-sc-lk-h: #476fee;
+  --r-link: #bac4e6;
+  --r-link-hover: #476fee;
 }
 
 /* Footer menu: on #020306, #040d2a. */
+.solo-footer-menu__nav,
 .solo-footer-nav {
-  --r-sc-lk: #bac4e6;
-  --r-sc-lk-h: #4b72ee;
+  --r-link: #bac4e6;
+  --r-link-hover: #4b72ee;
 }
 
 /* Copyright: on #020306, #040d2a. */
 .solo-copyright {
-  --r-sc-h1: #8b7863;
-  --r-sc-lk: #bac4e6;
-  --r-sc-lk-h: #4b72ee;
+  --r-heading: #8b7863;
+  --r-link: #bac4e6;
+  --r-link-hover: #4b72ee;
 }
+
+} /* end @layer solo.schemes */

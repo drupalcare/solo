@@ -90,7 +90,11 @@
       this.performance.stateChangeCount++;
 
       // FIX 2: Proper verbosity control
-      const verbosity = drupalSettings?.solo?.debug_verbosity || 'normal';
+      // Deprecated in 2.0, removed in the next major: debug_verbosity.
+      const verbosity =
+        drupalSettings?.solo?.debugVerbosity ||
+        drupalSettings?.solo?.debug_verbosity ||
+        'normal';
       const shouldLog =
         verbosity === 'verbose' ||
         (verbosity === 'normal' && component !== 'system') ||

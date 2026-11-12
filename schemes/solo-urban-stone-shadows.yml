@@ -14,11 +14,11 @@ categories:
   - urban_and_modern_hues
 css: css/predefined/solo-urban-stone-shadows.css
 dependencies:
-  - solo/solo-scheme-shared
-  - solo/solo-scheme-region-rule
-  - solo/solo-scheme-region-paint-1
-  - solo/solo-scheme-region-paint-2
-  - solo/solo-scheme-region-paint-3
+  - solo/theme-scheme-shared
+  - solo/theme-scheme-region-rule
+  - solo/theme-scheme-region-paint-1
+  - solo/theme-scheme-region-paint-2
+  - solo/theme-scheme-region-paint-3
 thumbnail: images/schemes/solo-urban-stone-shadows.webp
 palette:
   --sc-head-tx: "#495355"
@@ -50,10 +50,10 @@ palette:
   --sc-tab-hover-bg: "#55524b"
   --sc-region-rule-br: "var(--solo-white)"
 page:
-  --r-br: "#b2afa9"
-  --r-bg: "#f2f2f1"
-  --r-tx: "#1f1e1b"
-  --r-header-bg: "linear-gradient(to start top, #ffffff, #dad9d6)"
-  --r-header-tx: "#495355"
-  --r-menu-tx-h: "#ffffff"
-  --r-menu-bg-h: "#3a3833"
+  --r-border: "#b2afa9"
+  --r-background: "#f2f2f1"
+  --r-text: "#1f1e1b"
+  --solo-accent-background: "linear-gradient(to start top, #ffffff, #dad9d6)"
+  --solo-accent-text: "#495355"
+  --r-menu-text-hover: "#ffffff"
+  --r-menu-background-hover: "#3a3833"

@@ -14,11 +14,11 @@ categories:
   - bold_and_dramatic_colors
 css: css/predefined/solo-flaming-sapphire.css
 dependencies:
-  - solo/solo-scheme-shared
-  - solo/solo-scheme-region-rule
-  - solo/solo-scheme-region-paint-1
-  - solo/solo-scheme-region-paint-2
-  - solo/solo-scheme-region-paint-3
+  - solo/theme-scheme-shared
+  - solo/theme-scheme-region-rule
+  - solo/theme-scheme-region-paint-1
+  - solo/theme-scheme-region-paint-2
+  - solo/theme-scheme-region-paint-3
 thumbnail: images/schemes/solo-flaming-sapphire.webp
 palette:
   --sc-head-tx: "#eb4900"
@@ -50,10 +50,10 @@ palette:
   --sc-tab-hover-bg: "#993000"
   --sc-region-rule-br: "var(--solo-black)"
 page:
-  --r-br: "#662000"
-  --r-bg: "#110500"
-  --r-tx: "#fff3ee"
-  --r-header-bg: "linear-gradient(0deg, #000000, #331000)"
-  --r-header-tx: "#eb4900"
-  --r-menu-tx-h: "#fff3ee"
-  --r-menu-bg-h: "#bb3a00"
+  --r-border: "#662000"
+  --r-background: "#110500"
+  --r-text: "#fff3ee"
+  --solo-accent-background: "linear-gradient(0deg, #000000, #331000)"
+  --solo-accent-text: "#eb4900"
+  --r-menu-text-hover: "#fff3ee"
+  --r-menu-background-hover: "#bb3a00"

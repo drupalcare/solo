@@ -1,4 +1,9 @@
+@layer solo.schemes {
+
 /* Paint these regions, gradients included. Not used by: denim-twilight, midnight-whispers. */
 :where(.solo-container--top) .solo-region-box__inner--top {
-  background: var(--r-bg);
+  background-color: var(--r-background);
+  background-image: var(--r-background-image, var(--r-background)); /* a gradient in --r-background paints as an image; a plain color leaves it none */
 }
+
+} /* end @layer solo.schemes */

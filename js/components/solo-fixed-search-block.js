@@ -44,7 +44,7 @@
     attach(context, settings) {
       // Initialize search block functionality with once() to prevent duplicates
       once(
-        'solo-search-block-init',
+        'solo-fixed-search-block',
         '[id="solo-fixed-search-block"]',
         context,
       ).forEach((searchBlock) => {
@@ -57,8 +57,9 @@
 
       // Attach open button handlers
       once(
-        'solo-search-open-btn',
-        '.solo-fixed-search__open > button',
+        'solo-fixed-search-block-open',
+        // Deprecated in 2.0, removed in the next major: old class alias.
+        '.solo-fixed-search-block__open > button, .solo-fixed-search__open > button',
         context,
       ).forEach((button) => {
         this.attachOpenButtonHandler(button);
@@ -76,18 +77,20 @@
       if (trigger === 'unload') {
         // Clean up event listeners and animations
         once.remove(
-          'solo-search-block-init',
+          'solo-fixed-search-block',
           '[id="solo-fixed-search-block"]',
           context,
         );
         once.remove(
-          'solo-search-open-btn',
-          '.solo-fixed-search__open > button',
+          'solo-fixed-search-block-open',
+          // Deprecated in 2.0, removed in the next major: old class alias.
+          '.solo-fixed-search-block__open > button, .solo-fixed-search__open > button',
           context,
         );
         once.remove(
-          'solo-search-close-btn',
-          '.solo-fixed-search__close > button',
+          'solo-fixed-search-block-close',
+          // Deprecated in 2.0, removed in the next major: old class alias.
+          '.solo-fixed-search-block__close > button, .solo-fixed-search__close > button',
           context,
         );
         once.remove('solo-search-outside-click', 'body', document);
@@ -110,7 +113,8 @@
      */
     initializeSearchBlock(searchBlock, context) {
       const closeButton = searchBlock.querySelector(
-        '.solo-fixed-search__close > button',
+        // Deprecated in 2.0, removed in the next major: old class alias.
+        '.solo-fixed-search-block__close > button, .solo-fixed-search__close > button',
       );
 
       if (!searchBlock) {
@@ -129,7 +133,7 @@
 
       // Attach close button handler
       if (closeButton) {
-        once('solo-search-close-btn', closeButton).forEach((button) => {
+        once('solo-fixed-search-block-close', closeButton).forEach((button) => {
           this.attachCloseButtonHandler(button, searchBlock, cache);
         });
       }
@@ -161,10 +165,12 @@
     createElementCache(searchBlock) {
       return {
         openButtons: document.querySelectorAll(
-          '.solo-fixed-search__open > button',
+          // Deprecated in 2.0, removed in the next major: old class alias.
+          '.solo-fixed-search-block__open > button, .solo-fixed-search__open > button',
         ),
         closeButton: searchBlock.querySelector(
-          '.solo-fixed-search__close > button',
+          // Deprecated in 2.0, removed in the next major: old class alias.
+          '.solo-fixed-search-block__close > button, .solo-fixed-search__close > button',
         ),
         inputs: searchBlock.querySelectorAll('input'),
         focusableElements: searchBlock.querySelectorAll(
@@ -499,7 +505,8 @@
           // If we know who opened it, return focus there; otherwise focus the first opener.
           const opener =
             Drupal.solo.searchBlock.triggerElement ||
-            document.querySelector('.solo-fixed-search__open > button');
+            // Deprecated in 2.0, removed in the next major: old class alias.
+            document.querySelector('.solo-fixed-search-block__open > button, .solo-fixed-search__open > button');
           if (opener) {
             opener.focus();
           }
@@ -552,7 +559,8 @@
         event.preventDefault();
         const opener =
           state.triggerElement ||
-          document.querySelector('.solo-fixed-search__open > button');
+          // Deprecated in 2.0, removed in the next major: old class alias.
+          document.querySelector('.solo-fixed-search-block__open > button, .solo-fixed-search__open > button');
         if (typeof Drupal.solo.searchBlockToggle === 'function') {
           Drupal.solo.searchBlockToggle(false);
         }
@@ -650,7 +658,8 @@
           // Treat clicks as "outside" if they are neither inside the block nor on any open button.
           const isOutsideClick =
             !searchBlock.contains(target) &&
-            !(target.closest && target.closest('.solo-fixed-search__open'));
+            // Deprecated in 2.0, removed in the next major: old class alias.
+            !(target.closest && target.closest('.solo-fixed-search-block__open, .solo-fixed-search__open'));
 
           if (
             isOutsideClick &&

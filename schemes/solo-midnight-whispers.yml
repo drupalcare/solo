@@ -15,9 +15,9 @@ categories:
   - midnight_and_twilight
 css: css/predefined/solo-midnight-whispers.css
 dependencies:
-  - solo/solo-scheme-shared
-  - solo/solo-scheme-multi-span
-  - solo/solo-scheme-region-paint-1
+  - solo/theme-scheme-shared
+  - solo/theme-scheme-multi-span
+  - solo/theme-scheme-region-paint-1
 thumbnail: images/schemes/solo-midnight-whispers.webp
 palette:
   --sc-head-tx: "#60677f"
@@ -47,12 +47,12 @@ palette:
   --sc-fixed-search-block-shadow: "17, 21, 26"
   --sc-social-box-shadow: "230, 234, 238"
 page:
-  --r-br: "#a5aab9"
-  --r-bg: "#fbfbfc"
-  --r-tx: "#383c49"
-  --r-header-bg: "linear-gradient(0deg, #f5f5f6, #e6e9ee)"
-  --r-header-tx: "#62687f"
-  --r-menu-bg-h: "#394558"
-  --r-menu-tx-h: "#ffffff"
-  --r-br-dark: "#313845"
-  --r-br-light: "#e0e0e1"
+  --r-border: "#a5aab9"
+  --r-background: "#fbfbfc"
+  --r-text: "#383c49"
+  --solo-accent-background: "linear-gradient(0deg, #f5f5f6, #e6e9ee)"
+  --solo-accent-text: "#62687f"
+  --r-menu-background-hover: "#394558"
+  --r-menu-text-hover: "#ffffff"
+  --solo-tone-border-dark: "#313845"
+  --solo-tone-border-light: "#e0e0e1"

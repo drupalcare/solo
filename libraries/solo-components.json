@@ -1,33 +1,45 @@
 {
   "libraries": [
     {
-      "id": "solo-sitemap",
-      "css": ["css/components/solo-sitemap.css"],
-      "dependencies": ["solo/solo-global"]
+      "id": "base-region-properties",
+      "css": [{ "path": "css/base/solo-region-properties.css", "category": "base", "weight": -210 }],
+      "dependencies": ["solo/base-layers"]
     },
     {
-      "id": "solo-menu-keyboard",
-      "css": ["css/components/solo-menu-keyboard.css"],
+      "id": "base-region-legacy",
+      "css": [{ "path": "css/base/solo-region-legacy.css", "category": "base", "weight": -205 }],
+      "dependencies": ["solo/base-layers"]
+    },
+    {
+      "id": "component-sitemap",
+      "was": "solo-sitemap",
+      "css": ["css/components/solo-sitemap.css"],
+      "dependencies": ["solo/bundle-global"]
+    },
+    {
+      "id": "component-menu-keyboard",
+      "was": "solo-menu-keyboard",
       "js": [
-        "js/keyboard/solo-keyboard-template-parser.js",
-        "js/keyboard/solo-keyboard-utils.js",
-        "js/keyboard/solo-keyboard-aria.js",
-        "js/keyboard/solo-keyboard-focus.js",
-        "js/keyboard/solo-keyboard-navigation.js",
-        "js/keyboard/solo-keyboard-megamenu.js",
-        "js/keyboard/solo-keyboard-core.js"
+        "js/components/solo-menu-keyboard-template-parser.js",
+        "js/components/solo-menu-keyboard-utils.js",
+        "js/components/solo-menu-keyboard-aria.js",
+        "js/components/solo-menu-keyboard-focus.js",
+        "js/components/solo-menu-keyboard-navigation.js",
+        "js/components/solo-menu-keyboard-megamenu.js",
+        "js/components/solo-menu-keyboard-core.js"
       ],
       "dependencies": [
         "core/drupal",
         "core/drupalSettings",
         "core/once",
         "core/drupal.announce",
-        "solo/solo-global",
-        "solo/solo-menu"
+        "solo/bundle-global",
+        "solo/bundle-menu"
       ]
     },
     {
-      "id": "solo-debug",
+      "id": "debug-menu",
+      "was": "solo-debug",
       "css": [{ "path": "css/debug/solo-debug.css", "minified": false, "preprocess": false }],
       "js": [
         { "path": "js/debug/solo-menu-debugger.js", "minified": false, "preprocess": false },
@@ -35,10 +47,11 @@
         { "path": "js/debug/solo-menu-diagnostic.js", "minified": false, "preprocess": false },
         { "path": "js/debug/solo-keyboard-aria-cleanup.js", "minified": false, "preprocess": false }
       ],
-      "dependencies": ["solo/solo-menu", "solo/solo-menu-keyboard"]
+      "dependencies": ["solo/bundle-menu", "solo/component-menu-keyboard"]
     },
     {
-      "id": "solo-fixed-search-block",
+      "id": "component-fixed-search-block",
+      "was": "solo-fixed-search-block",
       "css": ["css/components/solo-fixed-search-block.css"],
       "js": ["js/components/solo-fixed-search-block.js"],
       "dependencies": [
@@ -46,11 +59,12 @@
         "core/drupalSettings",
         "core/once",
         "core/drupal.announce",
-        "solo/solo-global"
+        "solo/bundle-global"
       ]
     },
     {
-      "id": "solo-popup-login-block",
+      "id": "component-popup-login-block",
+      "was": "solo-popup-login-block",
       "css": ["css/components/solo-popup-login-block.css"],
       "js": ["js/components/solo-popup-login-block.js"],
       "dependencies": [
@@ -59,30 +73,39 @@
         "core/once",
         "core/drupal.debounce",
         "core/drupal.announce",
-        "solo/solo-global"
+        "solo/bundle-global"
       ]
     },
     {
-      "id": "solo-search",
-      "css": ["css/components/solo-search-block.css", "css/components/solo-search-page.css"],
-      "dependencies": ["solo/solo-global"]
+      "id": "component-search-block",
+      "was": "solo-search",
+      "css": ["css/components/solo-search-block.css"],
+      "dependencies": ["solo/bundle-global"]
     },
     {
-      "id": "solo-search-settings",
-      "js": ["js/components/solo-search-settings.js"],
-      "dependencies": ["core/drupal", "core/once", "core/drupalSettings", "solo/solo-global"]
+      "id": "component-search-page",
+      "was": "solo-search",
+      "css": ["css/components/solo-search-page.css"],
+      "dependencies": ["solo/bundle-global"]
     },
     {
-      "id": "solo-form-theme-settings",
+      "id": "component-search-settings",
+      "was": "solo-search-settings",
+      "js": ["js/components/solo-search-block.js"],
+      "dependencies": ["core/drupal", "core/once", "core/drupalSettings", "solo/bundle-global"]
+    },
+    {
+      "id": "admin-form-theme-settings",
+      "was": "solo-form-theme-settings",
       "css": [
-        "css/theme/solo-form-theme-settings.css",
-        { "path": "css/theme/solo-form-class-swatches.css", "weight": 201 },
-        { "path": "css/theme/solo-form-scheme-picker.css", "weight": 202 }
+        "css/admin/solo-form-theme-settings.css",
+        { "path": "css/admin/solo-form-class-swatches.css", "weight": 201 },
+        { "path": "css/admin/solo-form-scheme-picker.css", "weight": 202 }
       ],
       "js": [
-        "js/base/solo-form-theme-settings.js",
-        "js/base/solo-color-picker.js",
-        "js/base/solo-form-scheme-picker.js"
+        "js/admin/solo-form-theme-settings.js",
+        "js/admin/solo-color-picker.js",
+        "js/admin/solo-form-scheme-picker.js"
       ],
       "dependencies": [
         "core/drupal",
@@ -93,38 +116,64 @@
       ]
     },
     {
-      "id": "solo-preloader",
+      "id": "component-preloader",
+      "was": "solo-preloader",
       "css": ["css/components/solo-preloader.css"],
       "js": ["js/components/solo-preloader.js"],
       "dependencies": ["core/drupal", "core/once"]
     },
     {
-      "id": "solo-back-to-top",
+      "id": "component-back-to-top",
+      "was": "solo-back-to-top",
       "css": ["css/components/solo-back-to-top.css"],
       "js": ["js/components/solo-back-to-top.js"],
       "dependencies": ["core/drupal", "core/once"]
     },
     {
-      "id": "solo-full-opacity",
+      "id": "base-full-opacity",
+      "was": "solo-full-opacity",
       "meta": { "header": true },
       "js": ["js/base/solo-full-opacity.js"],
       "dependencies": ["core/drupal", "core/once"]
     },
-    { "id": "solo-system-messages-dark", "css": ["css/components/solo-system-messages-dark.css"] },
-    { "id": "solo-cookies", "css": ["css/theme/solo-cookies.css"] },
-    { "id": "solo-color-coded-system-tabs", "css": ["css/components/solo-color-coded-system-tabs.css"] },
-    { "id": "solo-user-login-custom", "css": ["css/layout/solo-layout-user-login.css"] },
-    { "id": "solo-node-edit-form", "css": ["css/layout/solo-layout-node-edit.css"] },
     {
-      "id": "solo-action-links",
-      "css": [{ "path": "css/components/solo-action-links.css", "category": "theme" }]
+      "id": "component-system-messages-dark",
+      "was": "solo-system-messages-dark",
+      "css": ["css/components/solo-status-messages-dark.css"]
     },
     {
-      "id": "solo-css-dynamic",
+      "id": "theme-cookies",
+      "was": "solo-cookies",
+      "css": ["css/theme/solo-cookies.css"]
+    },
+    {
+      "id": "component-menu-local-tasks-color-coded",
+      "was": "solo-color-coded-system-tabs",
+      "css": ["css/components/solo-menu-local-tasks-color-coded.css"]
+    },
+    {
+      "id": "layout-user-login",
+      "was": "solo-user-login-custom",
+      "css": ["css/layout/solo-user-login.css"]
+    },
+    {
+      "id": "layout-node-edit",
+      "was": "solo-node-edit-form",
+      "css": ["css/layout/solo-node-edit.css"]
+    },
+    {
+      "id": "component-menu-local-action",
+      "was": "solo-action-links",
+      "css": [{ "path": "css/components/solo-menu-local-action.css", "category": "theme" }]
+    },
+    {
+      "id": "theme-css-dynamic",
+      "was": "solo-css-dynamic",
       "css": [{ "path": "public://solo/css/solo-css-dynamic.css", "category": "theme", "weight": 999 }]
     },
     {
-      "id": "solo-js-dynamic",
+      "id": "theme-js-dynamic",
+      "was": "solo-js-dynamic",
       "dependencies": [
         "core/jquery",
         "core/drupal",
@@ -133,12 +182,9 @@
         "core/drupal.message",
         "core/once"
       ]
-    }
-  ],
-  "globs": [
-    { "pattern": "css/theme/solo-scheme-*.css", "category": "theme", "weight": -10 },
+    },
     {
-      "id": "w3-css",
+      "id": "base-w3-css",
       "meta": {
         "remote": "https://www.w3schools.com/w3css/",
         "version": 4.13,
@@ -148,10 +194,77 @@
           "gpl-compatible": true
         }
       },
-      "pattern": "css/w3-css/*.css",
-      "category": "base",
-      "weight": -201,
-      "first": { "css/w3-css/w3.css": -202, "css/w3-css/w3css-extended-classes.css": -201 }
+      "css": [{ "path": "css/w3-css/w3.css", "category": "base", "weight": -202 }]
+    },
+    {
+      "id": "utilities-extended-classes",
+      "css": [{ "path": "css/utilities/solo-extended-classes.css", "category": "base", "weight": -201 }]
+    },
+    {
+      "id": "utilities-color-camouflage",
+      "css": [{ "path": "css/utilities/solo-color-camouflage.css", "category": "base", "weight": -201 }]
+    },
+    {
+      "id": "utilities-color-european-signal",
+      "css": [{ "path": "css/utilities/solo-color-european-signal.css", "category": "base", "weight": -201 }]
+    },
+    {
+      "id": "utilities-color-fashion",
+      "css": [{ "path": "css/utilities/solo-color-fashion.css", "category": "base", "weight": -201 }]
+    },
+    {
+      "id": "utilities-color-flat-ui",
+      "css": [{ "path": "css/utilities/solo-color-flat-ui.css", "category": "base", "weight": -201 }]
+    },
+    {
+      "id": "utilities-color-food",
+      "css": [{ "path": "css/utilities/solo-color-food.css", "category": "base", "weight": -201 }]
+    },
+    {
+      "id": "utilities-color-ios",
+      "css": [{ "path": "css/utilities/solo-color-ios.css", "category": "base", "weight": -201 }]
+    },
+    {
+      "id": "utilities-color-metro-ui",
+      "css": [{ "path": "css/utilities/solo-color-metro-ui.css", "category": "base", "weight": -201 }]
+    },
+    {
+      "id": "utilities-color-us-highway",
+      "css": [{ "path": "css/utilities/solo-color-us-highway.css", "category": "base", "weight": -201 }]
+    },
+    {
+      "id": "utilities-color-us-safety",
+      "css": [{ "path": "css/utilities/solo-color-us-safety.css", "category": "base", "weight": -201 }]
+    },
+    {
+      "id": "utilities-color-vivid",
+      "css": [{ "path": "css/utilities/solo-color-vivid.css", "category": "base", "weight": -201 }]
+    },
+    {
+      "id": "utilities-color-win8",
+      "css": [{ "path": "css/utilities/solo-color-win8.css", "category": "base", "weight": -201 }]
+    },
+    {
+      "id": "bundle-w3-css",
+      "was": "w3-css",
+      "dependencies": [
+        "solo/base-w3-css",
+        "solo/utilities-extended-classes",
+        "solo/utilities-color-camouflage",
+        "solo/utilities-color-european-signal",
+        "solo/utilities-color-fashion",
+        "solo/utilities-color-flat-ui",
+        "solo/utilities-color-food",
+        "solo/utilities-color-ios",
+        "solo/utilities-color-metro-ui",
+        "solo/utilities-color-us-highway",
+        "solo/utilities-color-us-safety",
+        "solo/utilities-color-vivid",
+        "solo/utilities-color-win8"
+      ]
     }
+  ],
+  "globs": [
+    { "pattern": "css/theme/solo-scheme-*.css", "prefix": "theme-", "strip": "solo-", "category": "theme", "weight": -10 }
   ]
 }

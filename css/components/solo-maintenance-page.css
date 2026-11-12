@@ -1,3 +1,5 @@
+@layer solo.theme {
+
 .solo-clear::after,
 .solo-clear::before {
   display: table;
@@ -6,9 +8,7 @@
 }
 
 body:has(.solo-maintenance-page) {
-  color: var(--r-tx);
-  background-color: var(--r-bg);
-}
+  color: var(--r-text);}
 
 :where(.solo-maintenance-page) main {
   max-width: 800px;
@@ -19,12 +19,8 @@ body:has(.solo-maintenance-page) {
 }
 
 :where(.solo-maintenance-page main) header,
-.solo-maintenance-page main header a {
-  display: grid;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-}
+.solo-maintenance-page main header a {  align-items: center;
+  justify-content: center;}
 
 :where(.solo-maintenance-page main header) > * {
   width: 100%;
@@ -35,7 +31,7 @@ body:has(.solo-maintenance-page) {
   margin-inline: auto;
 }
 
-.solo-maintenance-page main h1 {
-  font-size: 46px;
-  line-height: 46px;
+.solo-maintenance-page main h1 {  line-height: 46px;
 }
+
+} /* end @layer solo.theme */

@@ -14,11 +14,11 @@ categories:
   - elegant_whites_and_neutrals
 css: css/predefined/solo-soft-silk-elegance.css
 dependencies:
-  - solo/solo-scheme-shared
-  - solo/solo-scheme-region-rule
-  - solo/solo-scheme-region-paint-1
-  - solo/solo-scheme-region-paint-2
-  - solo/solo-scheme-region-paint-3
+  - solo/theme-scheme-shared
+  - solo/theme-scheme-region-rule
+  - solo/theme-scheme-region-paint-1
+  - solo/theme-scheme-region-paint-2
+  - solo/theme-scheme-region-paint-3
 thumbnail: images/schemes/solo-soft-silk-elegance.webp
 palette:
   --sc-head-tx: "#455136"
@@ -49,10 +49,10 @@ palette:
   --sc-social-box-shadow: "147, 166, 122"
   --sc-region-rule-br: "var(--solo-white)"
 page:
-  --r-br: "#dde3d6"
-  --r-bg: "#fffffe"
-  --r-tx: "#2b3222"
-  --r-header-bg: "linear-gradient(0deg, #edf2f8, #eef1ea)"
-  --r-header-tx: "#455136"
-  --r-menu-tx-h: "#11140d"
-  --r-menu-bg-h: "#cdd6c1"
+  --r-border: "#dde3d6"
+  --r-background: "#fffffe"
+  --r-text: "#2b3222"
+  --solo-accent-background: "linear-gradient(0deg, #edf2f8, #eef1ea)"
+  --solo-accent-text: "#455136"
+  --r-menu-text-hover: "#11140d"
+  --r-menu-background-hover: "#cdd6c1"

@@ -1,0 +1,1126 @@
+/**
+ * @file
+ * Solo color library: fashion.
+ *
+ * Tokens: one background (--solo-<class>) and one text color (--solo-<class>-on) per class,
+ * in solo.tokens. Classes: solo.utilities; each class sets --r-background and --r-text from
+ * its tokens and paints from them, with no !important (the layer order does the job).
+ * Where two class names share a rule (gray and grey), the token is named from the first name.
+ * Layer order: solo-layers.css. Check: scripts/css-layers-check.py.
+ */
+
+@layer solo.tokens {
+
+:root {
+  --solo-2021-marigold: #fdac53;
+  --solo-2021-marigold-on: var(--solo-white);
+  --solo-2021-cerulean: #9bb7d4;
+  --solo-2021-cerulean-on: var(--solo-black);
+  --solo-2021-rust: #b55a30;
+  --solo-2021-rust-on: var(--solo-white);
+  --solo-2021-illuminating: #f5df4d;
+  --solo-2021-illuminating-on: var(--solo-black);
+  --solo-2021-french-blue: #0072b5;
+  --solo-2021-french-blue-on: var(--solo-white);
+  --solo-2021-green-ash: #a0daa9;
+  --solo-2021-green-ash-on: var(--solo-black);
+  --solo-2021-burnt-coral: #e9897e;
+  --solo-2021-burnt-coral-on: var(--solo-white);
+  --solo-2021-mint: #00a170;
+  --solo-2021-mint-on: var(--solo-white);
+  --solo-2021-amethyst-orchid: #926aa6;
+  --solo-2021-amethyst-orchid-on: var(--solo-white);
+  --solo-2021-raspberry-sorbet: #d2386c;
+  --solo-2021-raspberry-sorbet-on: var(--solo-white);
+  --solo-2021-inkwell: #363945;
+  --solo-2021-inkwell-on: var(--solo-white);
+  --solo-2021-ultimate-gray: #939597;
+  --solo-2021-ultimate-gray-on: var(--solo-white);
+  --solo-2021-buttercream: #efe1ce;
+  --solo-2021-buttercream-on: var(--solo-black);
+  --solo-2021-desert-mist: #e0b589;
+  --solo-2021-desert-mist-on: var(--solo-black);
+  --solo-2021-willow: #9a8b4f;
+  --solo-2021-willow-on: var(--solo-white);
+  --solo-2020-classic-blue: #34568b;
+  --solo-2020-classic-blue-on: var(--solo-white);
+  --solo-2020-flame-scarlet: #cd212a;
+  --solo-2020-flame-scarlet-on: var(--solo-white);
+  --solo-2020-saffron: #ffa500;
+  --solo-2020-saffron-on: var(--solo-black);
+  --solo-2020-biscay-green: #56c6a9;
+  --solo-2020-biscay-green-on: var(--solo-black);
+  --solo-2020-chive: #4b5335;
+  --solo-2020-chive-on: var(--solo-white);
+  --solo-2020-faded-denim: #798ea4;
+  --solo-2020-faded-denim-on: var(--solo-white);
+  --solo-2020-orange-peel: #fa7a35;
+  --solo-2020-orange-peel-on: var(--solo-white);
+  --solo-2020-mosaic-blue: #00758f;
+  --solo-2020-mosaic-blue-on: var(--solo-white);
+  --solo-2020-sunlight: #edd59e;
+  --solo-2020-sunlight-on: var(--solo-black);
+  --solo-2020-coral-pink: #e8a798;
+  --solo-2020-coral-pink-on: var(--solo-black);
+  --solo-2020-cinnamon-stick: #9c4722;
+  --solo-2020-cinnamon-stick-on: var(--solo-white);
+  --solo-2020-grape-compote: #6b5876;
+  --solo-2020-grape-compote-on: var(--solo-white);
+  --solo-2020-lark: #b89b72;
+  --solo-2020-lark-on: var(--solo-white);
+  --solo-2020-navy-blazer: #282d3c;
+  --solo-2020-navy-blazer-on: var(--solo-white);
+  --solo-2020-brilliant-white: #edf1ff;
+  --solo-2020-brilliant-white-on: var(--solo-black);
+  --solo-2020-ash: #a09998;
+  --solo-2020-ash-on: var(--solo-white);
+  --solo-2020-amberglow: #dc793e;
+  --solo-2020-amberglow-on: var(--solo-white);
+  --solo-2020-samba: #a2242f;
+  --solo-2020-samba-on: var(--solo-white);
+  --solo-2020-sandstone: #c48a69;
+  --solo-2020-sandstone-on: var(--solo-white);
+  --solo-2020-green-sheen: #d9ce52;
+  --solo-2020-green-sheen-on: var(--solo-black);
+  --solo-2020-rose-tan: #d19c97;
+  --solo-2020-rose-tan-on: var(--solo-black);
+  --solo-2020-ultramarine-green: #006b54;
+  --solo-2020-ultramarine-green-on: var(--solo-white);
+  --solo-2020-fired-brick: #6a2e2a;
+  --solo-2020-fired-brick-on: var(--solo-white);
+  --solo-2020-peach-nougat: #e6af91;
+  --solo-2020-peach-nougat-on: var(--solo-black);
+  --solo-2020-magenta-purple: #6c244c;
+  --solo-2020-magenta-purple-on: var(--solo-white);
+  --solo-2019-fiesta: #dd4132;
+  --solo-2019-fiesta-on: var(--solo-white);
+  --solo-2019-jester-red: #9e1030;
+  --solo-2019-jester-red-on: var(--solo-white);
+  --solo-2019-turmeric: #fe840e;
+  --solo-2019-turmeric-on: var(--solo-white);
+  --solo-2019-living-coral: #ff6f61;
+  --solo-2019-living-coral-on: var(--solo-white);
+  --solo-2019-pink-peacock: #c62168;
+  --solo-2019-pink-peacock-on: var(--solo-white);
+  --solo-2019-pepper-stem: #8d9440;
+  --solo-2019-pepper-stem-on: var(--solo-white);
+  --solo-2019-aspen-gold: #ffd662;
+  --solo-2019-aspen-gold-on: var(--solo-black);
+  --solo-2019-princess-blue: #00539c;
+  --solo-2019-princess-blue-on: var(--solo-white);
+  --solo-2019-toffee: #755139;
+  --solo-2019-toffee-on: var(--solo-white);
+  --solo-2019-mango-mojito: #d69c2f;
+  --solo-2019-mango-mojito-on: var(--solo-black);
+  --solo-2019-terrarium-moss: #616247;
+  --solo-2019-terrarium-moss-on: var(--solo-white);
+  --solo-2019-sweet-lilac: #e8b5ce;
+  --solo-2019-sweet-lilac-on: var(--solo-black);
+  --solo-2019-soybean: #d2c29d;
+  --solo-2019-soybean-on: var(--solo-black);
+  --solo-2019-eclipse: #343148;
+  --solo-2019-eclipse-on: var(--solo-white);
+  --solo-2019-sweet-corn: #f0ead6;
+  --solo-2019-sweet-corn-on: var(--solo-black);
+  --solo-2019-brown-granite: #615550;
+  --solo-2019-brown-granite-on: var(--solo-white);
+  --solo-2019-chili-pepper: #9b1b30;
+  --solo-2019-chili-pepper-on: var(--solo-white);
+  --solo-2019-biking-red: #77212e;
+  --solo-2019-biking-red-on: var(--solo-white);
+  --solo-2019-creme-de-peche: #f5d6c6;
+  --solo-2019-creme-de-peche-on: var(--solo-black);
+  --solo-2019-peach-pink: #fa9a85;
+  --solo-2019-peach-pink-on: var(--solo-white);
+  --solo-2019-rocky-road: #5a3e36;
+  --solo-2019-rocky-road-on: var(--solo-white);
+  --solo-2019-fruit-dove: #ce5b78;
+  --solo-2019-fruit-dove-on: var(--solo-white);
+  --solo-2019-sugar-almond: #935529;
+  --solo-2019-sugar-almond-on: var(--solo-white);
+  --solo-2019-dark-cheddar: #e08119;
+  --solo-2019-dark-cheddar-on: var(--solo-white);
+  --solo-2019-galaxy-blue: #2a4b7c;
+  --solo-2019-galaxy-blue-on: var(--solo-white);
+  --solo-2019-bluestone: #577284;
+  --solo-2019-bluestone-on: var(--solo-white);
+  --solo-2019-orange-tiger: #f96714;
+  --solo-2019-orange-tiger-on: var(--solo-white);
+  --solo-2019-eden: #264e36;
+  --solo-2019-eden-on: var(--solo-white);
+  --solo-2019-vanilla-custard: #f3e0be;
+  --solo-2019-vanilla-custard-on: var(--solo-black);
+  --solo-2019-evening-blue: #2a293e;
+  --solo-2019-evening-blue-on: var(--solo-white);
+  --solo-2019-paloma: #9f9c99;
+  --solo-2019-paloma-on: var(--solo-white);
+  --solo-2019-guacamole: #797b3a;
+  --solo-2019-guacamole-on: var(--solo-white);
+  --solo-2018-red-pear: #7f4145;
+  --solo-2018-red-pear-on: var(--solo-white);
+  --solo-2018-valiant-poppy: #bd3d3a;
+  --solo-2018-valiant-poppy-on: var(--solo-white);
+  --solo-2018-nebulas-blue: #3f69aa;
+  --solo-2018-nebulas-blue-on: var(--solo-white);
+  --solo-2018-ceylon-yellow: #d5ae41;
+  --solo-2018-ceylon-yellow-on: var(--solo-black);
+  --solo-2018-martini-olive: #766f57;
+  --solo-2018-martini-olive-on: var(--solo-white);
+  --solo-2018-russet-orange: #e47a2e;
+  --solo-2018-russet-orange-on: var(--solo-white);
+  --solo-2018-crocus-petal: #be9ec9;
+  --solo-2018-crocus-petal-on: var(--solo-black);
+  --solo-2018-limelight: #f1ea7f;
+  --solo-2018-limelight-on: var(--solo-black);
+  --solo-2018-quetzal-green: #006e6d;
+  --solo-2018-quetzal-green-on: var(--solo-white);
+  --solo-2018-sargasso-sea: #485167;
+  --solo-2018-sargasso-sea-on: var(--solo-white);
+  --solo-2018-tofu: #eae6da;
+  --solo-2018-tofu-on: var(--solo-black);
+  --solo-2018-almond-buff: #d1b894;
+  --solo-2018-almond-buff-on: var(--solo-black);
+  --solo-2018-quiet-gray: #bcbcbe;
+  --solo-2018-quiet-gray-on: var(--solo-black);
+  --solo-2018-meerkat: #95dee3;
+  --solo-2018-meerkat-on: var(--solo-black);
+  --solo-2018-meadowlark: #ecdb54;
+  --solo-2018-meadowlark-on: var(--solo-black);
+  --solo-2018-cherry-tomato: #e94b3c;
+  --solo-2018-cherry-tomato-on: var(--solo-white);
+  --solo-2018-little-boy-blue: #6f9fd8;
+  --solo-2018-little-boy-blue-on: var(--solo-black);
+  --solo-2018-chili-oil: #944743;
+  --solo-2018-chili-oil-on: var(--solo-white);
+  --solo-2018-pink-lavender: #dbb1cd;
+  --solo-2018-pink-lavender-on: var(--solo-black);
+  --solo-2018-blooming-dahlia: #ec9787;
+  --solo-2018-blooming-dahlia-on: var(--solo-black);
+  --solo-2018-arcadia: #00a591;
+  --solo-2018-arcadia-on: var(--solo-white);
+  --solo-2018-emperador: #6c4f3d;
+  --solo-2018-emperador-on: var(--solo-white);
+  --solo-2018-ultra-violet: #6b5b95;
+  --solo-2018-ultra-violet-on: var(--solo-white);
+  --solo-2018-almost-mauve: #eadedb;
+  --solo-2018-almost-mauve-on: var(--solo-black);
+  --solo-2018-spring-crocus: #bc70a4;
+  --solo-2018-spring-crocus-on: var(--solo-white);
+  --solo-2018-lime-punch: #bfd641;
+  --solo-2018-lime-punch-on: var(--solo-black);
+  --solo-2018-sailor-blue: #2e4a62;
+  --solo-2018-sailor-blue-on: var(--solo-white);
+  --solo-2018-harbor-mist: #b4b7ba;
+  --solo-2018-harbor-mist-on: var(--solo-black);
+  --solo-2018-warm-sand: #c0ab8e;
+  --solo-2018-warm-sand-on: var(--solo-black);
+  --solo-2018-coconut-milk: #f0ede5;
+  --solo-2018-coconut-milk-on: var(--solo-black);
+  --solo-2017-greenery: #92b558;
+  --solo-2017-greenery-on: var(--solo-white);
+  --solo-2017-grenadine: #dc4c46;
+  --solo-2017-grenadine-on: var(--solo-white);
+  --solo-2017-tawny-port: #672e3b;
+  --solo-2017-tawny-port-on: var(--solo-white);
+  --solo-2017-ballet-slipper: #f3d6e4;
+  --solo-2017-ballet-slipper-on: var(--solo-black);
+  --solo-2017-butterum: #c48f65;
+  --solo-2017-butterum-on: var(--solo-white);
+  --solo-2017-navy-peony: #223a5e;
+  --solo-2017-navy-peony-on: var(--solo-white);
+  --solo-2017-neutral-gray: #898e8c;
+  --solo-2017-neutral-gray-on: var(--solo-white);
+  --solo-2017-shaded-spruce: #005960;
+  --solo-2017-shaded-spruce-on: var(--solo-white);
+  --solo-2017-golden-lime: #9c9a40;
+  --solo-2017-golden-lime-on: var(--solo-white);
+  --solo-2017-marina: #4f84c4;
+  --solo-2017-marina-on: var(--solo-white);
+  --solo-2017-autumn-maple: #d2691e;
+  --solo-2017-autumn-maple-on: var(--solo-white);
+  --solo-2017-niagara: #578ca9;
+  --solo-2017-niagara-on: var(--solo-white);
+  --solo-2017-primrose-yellow: #f6d155;
+  --solo-2017-primrose-yellow-on: var(--solo-black);
+  --solo-2017-lapis-blue: #004b8d;
+  --solo-2017-lapis-blue-on: var(--solo-white);
+  --solo-2017-flame: #f2552c;
+  --solo-2017-flame-on: var(--solo-white);
+  --solo-2017-island-paradise: #95dee3;
+  --solo-2017-island-paradise-on: var(--solo-black);
+  --solo-2017-pale-dogwood: #edcdc2;
+  --solo-2017-pale-dogwood-on: var(--solo-black);
+  --solo-2017-pink-yarrow: #ce3175;
+  --solo-2017-pink-yarrow-on: var(--solo-white);
+  --solo-2017-kale: #5a7247;
+  --solo-2017-kale-on: var(--solo-white);
+  --solo-2017-hazelnut: #cfb095;
+  --solo-2017-hazelnut-on: var(--solo-black);
+}
+
+} /* end @layer solo.tokens */
+
+@layer solo.utilities {
+
+/* 2021 */
+:where(.solo-page) .w3-2021-marigold {
+  --r-text: var(--solo-2021-marigold-on);
+  --r-background: var(--solo-2021-marigold);
+  color: var(--r-text);
+  background-color: var(--r-background);
+}
+
+:where(.solo-page) .w3-2021-cerulean {
+  --r-text: var(--solo-2021-cerulean-on);
+  --r-background: var(--solo-2021-cerulean);
+  color: var(--r-text);
+  background-color: var(--r-background);
+}
+
+:where(.solo-page) .w3-2021-rust {
+  --r-text: var(--solo-2021-rust-on);
+  --r-background: var(--solo-2021-rust);
+  color: var(--r-text);
+  background-color: var(--r-background);
+}
+
+:where(.solo-page) .w3-2021-illuminating {
+  --r-text: var(--solo-2021-illuminating-on);
+  --r-background: var(--solo-2021-illuminating);
+  color: var(--r-text);
+  background-color: var(--r-background);
+}
+
+:where(.solo-page) .w3-2021-french-blue {
+  --r-text: var(--solo-2021-french-blue-on);
+  --r-background: var(--solo-2021-french-blue);
+  color: var(--r-text);
+  background-color: var(--r-background);
+}
+
+:where(.solo-page) .w3-2021-green-ash {
+  --r-text: var(--solo-2021-green-ash-on);
+  --r-background: var(--solo-2021-green-ash);
+  color: var(--r-text);
+  background-color: var(--r-background);
+}
+
+:where(.solo-page) .w3-2021-burnt-coral {
+  --r-text: var(--solo-2021-burnt-coral-on);
+  --r-background: var(--solo-2021-burnt-coral);
+  color: var(--r-text);
+  background-color: var(--r-background);
+}
+
+:where(.solo-page) .w3-2021-mint {
+  --r-text: var(--solo-2021-mint-on);
+  --r-background: var(--solo-2021-mint);
+  color: var(--r-text);
+  background-color: var(--r-background);
+}
+
+:where(.solo-page) .w3-2021-amethyst-orchid {
+  --r-text: var(--solo-2021-amethyst-orchid-on);
+  --r-background: var(--solo-2021-amethyst-orchid);
+  color: var(--r-text);
+  background-color: var(--r-background);
+}
+
+:where(.solo-page) .w3-2021-raspberry-sorbet {
+  --r-text: var(--solo-2021-raspberry-sorbet-on);
+  --r-background: var(--solo-2021-raspberry-sorbet);
+  color: var(--r-text);
+  background-color: var(--r-background);
+}
+
+:where(.solo-page) .w3-2021-inkwell {
+  --r-text: var(--solo-2021-inkwell-on);
+  --r-background: var(--solo-2021-inkwell);
+  color: var(--r-text);
+  background-color: var(--r-background);
+}
+
+:where(.solo-page) .w3-2021-ultimate-gray {
+  --r-text: var(--solo-2021-ultimate-gray-on);
+  --r-background: var(--solo-2021-ultimate-gray);
+  color: var(--r-text);
+  background-color: var(--r-background);
+}
+
+:where(.solo-page) .w3-2021-buttercream {
+  --r-text: var(--solo-2021-buttercream-on);
+  --r-background: var(--solo-2021-buttercream);
+  color: var(--r-text);
+  background-color: var(--r-background);
+}
+
+:where(.solo-page) .w3-2021-desert-mist {
+  --r-text: var(--solo-2021-desert-mist-on);
+  --r-background: var(--solo-2021-desert-mist);
+  color: var(--r-text);
+  background-color: var(--r-background);
+}
+
+:where(.solo-page) .w3-2021-willow {
+  --r-text: var(--solo-2021-willow-on);
+  --r-background: var(--solo-2021-willow);
+  color: var(--r-text);
+  background-color: var(--r-background);
+}
+
+/* 2020 */
+:where(.solo-page) .w3-2020-classic-blue {
+  --r-text: var(--solo-2020-classic-blue-on);
+  --r-background: var(--solo-2020-classic-blue);
+  color: var(--r-text);
+  background-color: var(--r-background);
+}
+
+:where(.solo-page) .w3-2020-flame-scarlet {
+  --r-text: var(--solo-2020-flame-scarlet-on);
+  --r-background: var(--solo-2020-flame-scarlet);
+  color: var(--r-text);
+  background-color: var(--r-background);
+}
+
+:where(.solo-page) .w3-2020-saffron {
+  --r-text: var(--solo-2020-saffron-on);
+  --r-background: var(--solo-2020-saffron);
+  color: var(--r-text);
+  background-color: var(--r-background);
+}
+
+:where(.solo-page) .w3-2020-biscay-green {
+  --r-text: var(--solo-2020-biscay-green-on);
+  --r-background: var(--solo-2020-biscay-green);
+  color: var(--r-text);
+  background-color: var(--r-background);
+}
+
+:where(.solo-page) .w3-2020-chive {
+  --r-text: var(--solo-2020-chive-on);
+  --r-background: var(--solo-2020-chive);
+  color: var(--r-text);
+  background-color: var(--r-background);
+}
+
+:where(.solo-page) .w3-2020-faded-denim {
+  --r-text: var(--solo-2020-faded-denim-on);
+  --r-background: var(--solo-2020-faded-denim);
+  color: var(--r-text);
+  background-color: var(--r-background);
+}
+
+:where(.solo-page) .w3-2020-orange-peel {
+  --r-text: var(--solo-2020-orange-peel-on);
+  --r-background: var(--solo-2020-orange-peel);
+  color: var(--r-text);
+  background-color: var(--r-background);
+}
+
+:where(.solo-page) .w3-2020-mosaic-blue {
+  --r-text: var(--solo-2020-mosaic-blue-on);
+  --r-background: var(--solo-2020-mosaic-blue);
+  color: var(--r-text);
+  background-color: var(--r-background);
+}
+
+:where(.solo-page) .w3-2020-sunlight {
+  --r-text: var(--solo-2020-sunlight-on);
+  --r-background: var(--solo-2020-sunlight);
+  color: var(--r-text);
+  background-color: var(--r-background);
+}
+
+:where(.solo-page) .w3-2020-coral-pink {
+  --r-text: var(--solo-2020-coral-pink-on);
+  --r-background: var(--solo-2020-coral-pink);
+  color: var(--r-text);
+  background-color: var(--r-background);
+}
+
+:where(.solo-page) .w3-2020-cinnamon-stick {
+  --r-text: var(--solo-2020-cinnamon-stick-on);
+  --r-background: var(--solo-2020-cinnamon-stick);
+  color: var(--r-text);
+  background-color: var(--r-background);
+}
+
+:where(.solo-page) .w3-2020-grape-compote {
+  --r-text: var(--solo-2020-grape-compote-on);
+  --r-background: var(--solo-2020-grape-compote);
+  color: var(--r-text);
+  background-color: var(--r-background);
+}
+
+:where(.solo-page) .w3-2020-lark {
+  --r-text: var(--solo-2020-lark-on);
+  --r-background: var(--solo-2020-lark);
+  color: var(--r-text);
+  background-color: var(--r-background);
+}
+
+:where(.solo-page) .w3-2020-navy-blazer {
+  --r-text: var(--solo-2020-navy-blazer-on);
+  --r-background: var(--solo-2020-navy-blazer);
+  color: var(--r-text);
+  background-color: var(--r-background);
+}
+
+:where(.solo-page) .w3-2020-brilliant-white {
+  --r-text: var(--solo-2020-brilliant-white-on);
+  --r-background: var(--solo-2020-brilliant-white);
+  color: var(--r-text);
+  background-color: var(--r-background);
+}
+
+:where(.solo-page) .w3-2020-ash {
+  --r-text: var(--solo-2020-ash-on);
+  --r-background: var(--solo-2020-ash);
+  color: var(--r-text);
+  background-color: var(--r-background);
+}
+
+:where(.solo-page) .w3-2020-amberglow {
+  --r-text: var(--solo-2020-amberglow-on);
+  --r-background: var(--solo-2020-amberglow);
+  color: var(--r-text);
+  background-color: var(--r-background);
+}
+
+:where(.solo-page) .w3-2020-samba {
+  --r-text: var(--solo-2020-samba-on);
+  --r-background: var(--solo-2020-samba);
+  color: var(--r-text);
+  background-color: var(--r-background);
+}
+
+:where(.solo-page) .w3-2020-sandstone {
+  --r-text: var(--solo-2020-sandstone-on);
+  --r-background: var(--solo-2020-sandstone);
+  color: var(--r-text);
+  background-color: var(--r-background);
+}
+
+:where(.solo-page) .w3-2020-green-sheen {
+  --r-text: var(--solo-2020-green-sheen-on);
+  --r-background: var(--solo-2020-green-sheen);
+  color: var(--r-text);
+  background-color: var(--r-background);
+}
+
+:where(.solo-page) .w3-2020-rose-tan {
+  --r-text: var(--solo-2020-rose-tan-on);
+  --r-background: var(--solo-2020-rose-tan);
+  color: var(--r-text);
+  background-color: var(--r-background);
+}
+
+:where(.solo-page) .w3-2020-ultramarine-green {
+  --r-text: var(--solo-2020-ultramarine-green-on);
+  --r-background: var(--solo-2020-ultramarine-green);
+  color: var(--r-text);
+  background-color: var(--r-background);
+}
+
+:where(.solo-page) .w3-2020-fired-brick {
+  --r-text: var(--solo-2020-fired-brick-on);
+  --r-background: var(--solo-2020-fired-brick);
+  color: var(--r-text);
+  background-color: var(--r-background);
+}
+
+:where(.solo-page) .w3-2020-peach-nougat {
+  --r-text: var(--solo-2020-peach-nougat-on);
+  --r-background: var(--solo-2020-peach-nougat);
+  color: var(--r-text);
+  background-color: var(--r-background);
+}
+
+:where(.solo-page) .w3-2020-magenta-purple {
+  --r-text: var(--solo-2020-magenta-purple-on);
+  --r-background: var(--solo-2020-magenta-purple);
+  color: var(--r-text);
+  background-color: var(--r-background);
+}
+
+/* 2019 */
+:where(.solo-page) .w3-2019-fiesta {
+  --r-text: var(--solo-2019-fiesta-on);
+  --r-background: var(--solo-2019-fiesta);
+  color: var(--r-text);
+  background-color: var(--r-background);
+}
+
+:where(.solo-page) .w3-2019-jester-red {
+  --r-text: var(--solo-2019-jester-red-on);
+  --r-background: var(--solo-2019-jester-red);
+  color: var(--r-text);
+  background-color: var(--r-background);
+}
+
+:where(.solo-page) .w3-2019-turmeric {
+  --r-text: var(--solo-2019-turmeric-on);
+  --r-background: var(--solo-2019-turmeric);
+  color: var(--r-text);
+  background-color: var(--r-background);
+}
+
+:where(.solo-page) .w3-2019-living-coral {
+  --r-text: var(--solo-2019-living-coral-on);
+  --r-background: var(--solo-2019-living-coral);
+  color: var(--r-text);
+  background-color: var(--r-background);
+}
+
+:where(.solo-page) .w3-2019-pink-peacock {
+  --r-text: var(--solo-2019-pink-peacock-on);
+  --r-background: var(--solo-2019-pink-peacock);
+  color: var(--r-text);
+  background-color: var(--r-background);
+}
+
+:where(.solo-page) .w3-2019-pepper-stem {
+  --r-text: var(--solo-2019-pepper-stem-on);
+  --r-background: var(--solo-2019-pepper-stem);
+  color: var(--r-text);
+  background-color: var(--r-background);
+}
+
+:where(.solo-page) .w3-2019-aspen-gold {
+  --r-text: var(--solo-2019-aspen-gold-on);
+  --r-background: var(--solo-2019-aspen-gold);
+  color: var(--r-text);
+  background-color: var(--r-background);
+}
+
+:where(.solo-page) .w3-2019-princess-blue {
+  --r-text: var(--solo-2019-princess-blue-on);
+  --r-background: var(--solo-2019-princess-blue);
+  color: var(--r-text);
+  background-color: var(--r-background);
+}
+
+:where(.solo-page) .w3-2019-toffee {
+  --r-text: var(--solo-2019-toffee-on);
+  --r-background: var(--solo-2019-toffee);
+  color: var(--r-text);
+  background-color: var(--r-background);
+}
+
+:where(.solo-page) .w3-2019-mango-mojito {
+  --r-text: var(--solo-2019-mango-mojito-on);
+  --r-background: var(--solo-2019-mango-mojito);
+  color: var(--r-text);
+  background-color: var(--r-background);
+}
+
+:where(.solo-page) .w3-2019-terrarium-moss {
+  --r-text: var(--solo-2019-terrarium-moss-on);
+  --r-background: var(--solo-2019-terrarium-moss);
+  color: var(--r-text);
+  background-color: var(--r-background);
+}
+
+:where(.solo-page) .w3-2019-sweet-lilac {
+  --r-text: var(--solo-2019-sweet-lilac-on);
+  --r-background: var(--solo-2019-sweet-lilac);
+  color: var(--r-text);
+  background-color: var(--r-background);
+}
+
+:where(.solo-page) .w3-2019-soybean {
+  --r-text: var(--solo-2019-soybean-on);
+  --r-background: var(--solo-2019-soybean);
+  color: var(--r-text);
+  background-color: var(--r-background);
+}
+
+:where(.solo-page) .w3-2019-eclipse {
+  --r-text: var(--solo-2019-eclipse-on);
+  --r-background: var(--solo-2019-eclipse);
+  color: var(--r-text);
+  background-color: var(--r-background);
+}
+
+:where(.solo-page) .w3-2019-sweet-corn {
+  --r-text: var(--solo-2019-sweet-corn-on);
+  --r-background: var(--solo-2019-sweet-corn);
+  color: var(--r-text);
+  background-color: var(--r-background);
+}
+
+:where(.solo-page) .w3-2019-brown-granite {
+  --r-text: var(--solo-2019-brown-granite-on);
+  --r-background: var(--solo-2019-brown-granite);
+  color: var(--r-text);
+  background-color: var(--r-background);
+}
+
+:where(.solo-page) .w3-2019-chili-pepper {
+  --r-text: var(--solo-2019-chili-pepper-on);
+  --r-background: var(--solo-2019-chili-pepper);
+  color: var(--r-text);
+  background-color: var(--r-background);
+}
+
+:where(.solo-page) .w3-2019-biking-red {
+  --r-text: var(--solo-2019-biking-red-on);
+  --r-background: var(--solo-2019-biking-red);
+  color: var(--r-text);
+  background-color: var(--r-background);
+}
+
+:where(.solo-page) .w3-2019-creme-de-peche {
+  --r-text: var(--solo-2019-creme-de-peche-on);
+  --r-background: var(--solo-2019-creme-de-peche);
+  color: var(--r-text);
+  background-color: var(--r-background);
+}
+
+:where(.solo-page) .w3-2019-peach-pink {
+  --r-text: var(--solo-2019-peach-pink-on);
+  --r-background: var(--solo-2019-peach-pink);
+  color: var(--r-text);
+  background-color: var(--r-background);
+}
+
+:where(.solo-page) .w3-2019-rocky-road {
+  --r-text: var(--solo-2019-rocky-road-on);
+  --r-background: var(--solo-2019-rocky-road);
+  color: var(--r-text);
+  background-color: var(--r-background);
+}
+
+:where(.solo-page) .w3-2019-fruit-dove {
+  --r-text: var(--solo-2019-fruit-dove-on);
+  --r-background: var(--solo-2019-fruit-dove);
+  color: var(--r-text);
+  background-color: var(--r-background);
+}
+
+:where(.solo-page) .w3-2019-sugar-almond {
+  --r-text: var(--solo-2019-sugar-almond-on);
+  --r-background: var(--solo-2019-sugar-almond);
+  color: var(--r-text);
+  background-color: var(--r-background);
+}
+
+:where(.solo-page) .w3-2019-dark-cheddar {
+  --r-text: var(--solo-2019-dark-cheddar-on);
+  --r-background: var(--solo-2019-dark-cheddar);
+  color: var(--r-text);
+  background-color: var(--r-background);
+}
+
+:where(.solo-page) .w3-2019-galaxy-blue {
+  --r-text: var(--solo-2019-galaxy-blue-on);
+  --r-background: var(--solo-2019-galaxy-blue);
+  color: var(--r-text);
+  background-color: var(--r-background);
+}
+
+:where(.solo-page) .w3-2019-bluestone {
+  --r-text: var(--solo-2019-bluestone-on);
+  --r-background: var(--solo-2019-bluestone);
+  color: var(--r-text);
+  background-color: var(--r-background);
+}
+
+:where(.solo-page) .w3-2019-orange-tiger {
+  --r-text: var(--solo-2019-orange-tiger-on);
+  --r-background: var(--solo-2019-orange-tiger);
+  color: var(--r-text);
+  background-color: var(--r-background);
+}
+
+:where(.solo-page) .w3-2019-eden {
+  --r-text: var(--solo-2019-eden-on);
+  --r-background: var(--solo-2019-eden);
+  color: var(--r-text);
+  background-color: var(--r-background);
+}
+
+:where(.solo-page) .w3-2019-vanilla-custard {
+  --r-text: var(--solo-2019-vanilla-custard-on);
+  --r-background: var(--solo-2019-vanilla-custard);
+  color: var(--r-text);
+  background-color: var(--r-background);
+}
+
+:where(.solo-page) .w3-2019-evening-blue {
+  --r-text: var(--solo-2019-evening-blue-on);
+  --r-background: var(--solo-2019-evening-blue);
+  color: var(--r-text);
+  background-color: var(--r-background);
+}
+
+:where(.solo-page) .w3-2019-paloma {
+  --r-text: var(--solo-2019-paloma-on);
+  --r-background: var(--solo-2019-paloma);
+  color: var(--r-text);
+  background-color: var(--r-background);
+}
+
+:where(.solo-page) .w3-2019-guacamole {
+  --r-text: var(--solo-2019-guacamole-on);
+  --r-background: var(--solo-2019-guacamole);
+  color: var(--r-text);
+  background-color: var(--r-background);
+}
+
+/* 2018 */
+:where(.solo-page) .w3-2018-red-pear {
+  --r-text: var(--solo-2018-red-pear-on);
+  --r-background: var(--solo-2018-red-pear);
+  color: var(--r-text);
+  background-color: var(--r-background);
+}
+
+:where(.solo-page) .w3-2018-valiant-poppy {
+  --r-text: var(--solo-2018-valiant-poppy-on);
+  --r-background: var(--solo-2018-valiant-poppy);
+  color: var(--r-text);
+  background-color: var(--r-background);
+}
+
+:where(.solo-page) .w3-2018-nebulas-blue {
+  --r-text: var(--solo-2018-nebulas-blue-on);
+  --r-background: var(--solo-2018-nebulas-blue);
+  color: var(--r-text);
+  background-color: var(--r-background);
+}
+
+:where(.solo-page) .w3-2018-ceylon-yellow {
+  --r-text: var(--solo-2018-ceylon-yellow-on);
+  --r-background: var(--solo-2018-ceylon-yellow);
+  color: var(--r-text);
+  background-color: var(--r-background);
+}
+
+:where(.solo-page) .w3-2018-martini-olive {
+  --r-text: var(--solo-2018-martini-olive-on);
+  --r-background: var(--solo-2018-martini-olive);
+  color: var(--r-text);
+  background-color: var(--r-background);
+}
+
+:where(.solo-page) .w3-2018-russet-orange {
+  --r-text: var(--solo-2018-russet-orange-on);
+  --r-background: var(--solo-2018-russet-orange);
+  color: var(--r-text);
+  background-color: var(--r-background);
+}
+
+:where(.solo-page) .w3-2018-crocus-petal {
+  --r-text: var(--solo-2018-crocus-petal-on);
+  --r-background: var(--solo-2018-crocus-petal);
+  color: var(--r-text);
+  background-color: var(--r-background);
+}
+
+:where(.solo-page) .w3-2018-limelight {
+  --r-text: var(--solo-2018-limelight-on);
+  --r-background: var(--solo-2018-limelight);
+  color: var(--r-text);
+  background-color: var(--r-background);
+}
+
+:where(.solo-page) .w3-2018-quetzal-green {
+  --r-text: var(--solo-2018-quetzal-green-on);
+  --r-background: var(--solo-2018-quetzal-green);
+  color: var(--r-text);
+  background-color: var(--r-background);
+}
+
+:where(.solo-page) .w3-2018-sargasso-sea {
+  --r-text: var(--solo-2018-sargasso-sea-on);
+  --r-background: var(--solo-2018-sargasso-sea);
+  color: var(--r-text);
+  background-color: var(--r-background);
+}
+
+:where(.solo-page) .w3-2018-tofu {
+  --r-text: var(--solo-2018-tofu-on);
+  --r-background: var(--solo-2018-tofu);
+  color: var(--r-text);
+  background-color: var(--r-background);
+}
+
+:where(.solo-page) .w3-2018-almond-buff {
+  --r-text: var(--solo-2018-almond-buff-on);
+  --r-background: var(--solo-2018-almond-buff);
+  color: var(--r-text);
+  background-color: var(--r-background);
+}
+
+:where(.solo-page) .w3-2018-quiet-gray,
+:where(.solo-page) .w3-2018-quiet-grey {
+  --r-text: var(--solo-2018-quiet-gray-on);
+  --r-background: var(--solo-2018-quiet-gray);
+  color: var(--r-text);
+  background-color: var(--r-background);
+}
+
+:where(.solo-page) .w3-2018-meerkat {
+  --r-text: var(--solo-2018-meerkat-on);
+  --r-background: var(--solo-2018-meerkat);
+  color: var(--r-text);
+  background-color: var(--r-background);
+}
+
+:where(.solo-page) .w3-2018-meadowlark {
+  --r-text: var(--solo-2018-meadowlark-on);
+  --r-background: var(--solo-2018-meadowlark);
+  color: var(--r-text);
+  background-color: var(--r-background);
+}
+
+:where(.solo-page) .w3-2018-cherry-tomato {
+  --r-text: var(--solo-2018-cherry-tomato-on);
+  --r-background: var(--solo-2018-cherry-tomato);
+  color: var(--r-text);
+  background-color: var(--r-background);
+}
+
+:where(.solo-page) .w3-2018-little-boy-blue {
+  --r-text: var(--solo-2018-little-boy-blue-on);
+  --r-background: var(--solo-2018-little-boy-blue);
+  color: var(--r-text);
+  background-color: var(--r-background);
+}
+
+:where(.solo-page) .w3-2018-chili-oil {
+  --r-text: var(--solo-2018-chili-oil-on);
+  --r-background: var(--solo-2018-chili-oil);
+  color: var(--r-text);
+  background-color: var(--r-background);
+}
+
+:where(.solo-page) .w3-2018-pink-lavender {
+  --r-text: var(--solo-2018-pink-lavender-on);
+  --r-background: var(--solo-2018-pink-lavender);
+  color: var(--r-text);
+  background-color: var(--r-background);
+}
+
+:where(.solo-page) .w3-2018-blooming-dahlia {
+  --r-text: var(--solo-2018-blooming-dahlia-on);
+  --r-background: var(--solo-2018-blooming-dahlia);
+  color: var(--r-text);
+  background-color: var(--r-background);
+}
+
+:where(.solo-page) .w3-2018-arcadia {
+  --r-text: var(--solo-2018-arcadia-on);
+  --r-background: var(--solo-2018-arcadia);
+  color: var(--r-text);
+  background-color: var(--r-background);
+}
+
+:where(.solo-page) .w3-2018-emperador {
+  --r-text: var(--solo-2018-emperador-on);
+  --r-background: var(--solo-2018-emperador);
+  color: var(--r-text);
+  background-color: var(--r-background);
+}
+
+:where(.solo-page) .w3-2018-ultra-violet {
+  --r-text: var(--solo-2018-ultra-violet-on);
+  --r-background: var(--solo-2018-ultra-violet);
+  color: var(--r-text);
+  background-color: var(--r-background);
+}
+
+:where(.solo-page) .w3-2018-almost-mauve {
+  --r-text: var(--solo-2018-almost-mauve-on);
+  --r-background: var(--solo-2018-almost-mauve);
+  color: var(--r-text);
+  background-color: var(--r-background);
+}
+
+:where(.solo-page) .w3-2018-spring-crocus {
+  --r-text: var(--solo-2018-spring-crocus-on);
+  --r-background: var(--solo-2018-spring-crocus);
+  color: var(--r-text);
+  background-color: var(--r-background);
+}
+
+:where(.solo-page) .w3-2018-lime-punch {
+  --r-text: var(--solo-2018-lime-punch-on);
+  --r-background: var(--solo-2018-lime-punch);
+  color: var(--r-text);
+  background-color: var(--r-background);
+}
+
+:where(.solo-page) .w3-2018-sailor-blue {
+  --r-text: var(--solo-2018-sailor-blue-on);
+  --r-background: var(--solo-2018-sailor-blue);
+  color: var(--r-text);
+  background-color: var(--r-background);
+}
+
+:where(.solo-page) .w3-2018-harbor-mist {
+  --r-text: var(--solo-2018-harbor-mist-on);
+  --r-background: var(--solo-2018-harbor-mist);
+  color: var(--r-text);
+  background-color: var(--r-background);
+}
+
+:where(.solo-page) .w3-2018-warm-sand {
+  --r-text: var(--solo-2018-warm-sand-on);
+  --r-background: var(--solo-2018-warm-sand);
+  color: var(--r-text);
+  background-color: var(--r-background);
+}
+
+:where(.solo-page) .w3-2018-coconut-milk {
+  --r-text: var(--solo-2018-coconut-milk-on);
+  --r-background: var(--solo-2018-coconut-milk);
+  color: var(--r-text);
+  background-color: var(--r-background);
+}
+
+/* 2017 */
+:where(.solo-page) .w3-2017-greenery {
+  --r-text: var(--solo-2017-greenery-on);
+  --r-background: var(--solo-2017-greenery);
+  color: var(--r-text);
+  background-color: var(--r-background);
+}
+
+:where(.solo-page) .w3-2017-grenadine {
+  --r-text: var(--solo-2017-grenadine-on);
+  --r-background: var(--solo-2017-grenadine);
+  color: var(--r-text);
+  background-color: var(--r-background);
+}
+
+:where(.solo-page) .w3-2017-tawny-port {
+  --r-text: var(--solo-2017-tawny-port-on);
+  --r-background: var(--solo-2017-tawny-port);
+  color: var(--r-text);
+  background-color: var(--r-background);
+}
+
+:where(.solo-page) .w3-2017-ballet-slipper {
+  --r-text: var(--solo-2017-ballet-slipper-on);
+  --r-background: var(--solo-2017-ballet-slipper);
+  color: var(--r-text);
+  background-color: var(--r-background);
+}
+
+:where(.solo-page) .w3-2017-butterum {
+  --r-text: var(--solo-2017-butterum-on);
+  --r-background: var(--solo-2017-butterum);
+  color: var(--r-text);
+  background-color: var(--r-background);
+}
+
+:where(.solo-page) .w3-2017-navy-peony {
+  --r-text: var(--solo-2017-navy-peony-on);
+  --r-background: var(--solo-2017-navy-peony);
+  color: var(--r-text);
+  background-color: var(--r-background);
+}
+
+:where(.solo-page) .w3-2017-neutral-gray,
+:where(.solo-page) .w3-2017-neutral-grey {
+  --r-text: var(--solo-2017-neutral-gray-on);
+  --r-background: var(--solo-2017-neutral-gray);
+  color: var(--r-text);
+  background-color: var(--r-background);
+}
+
+:where(.solo-page) .w3-2017-shaded-spruce {
+  --r-text: var(--solo-2017-shaded-spruce-on);
+  --r-background: var(--solo-2017-shaded-spruce);
+  color: var(--r-text);
+  background-color: var(--r-background);
+}
+
+:where(.solo-page) .w3-2017-golden-lime {
+  --r-text: var(--solo-2017-golden-lime-on);
+  --r-background: var(--solo-2017-golden-lime);
+  color: var(--r-text);
+  background-color: var(--r-background);
+}
+
+:where(.solo-page) .w3-2017-marina {
+  --r-text: var(--solo-2017-marina-on);
+  --r-background: var(--solo-2017-marina);
+  color: var(--r-text);
+  background-color: var(--r-background);
+}
+
+:where(.solo-page) .w3-2017-autumn-maple {
+  --r-text: var(--solo-2017-autumn-maple-on);
+  --r-background: var(--solo-2017-autumn-maple);
+  color: var(--r-text);
+  background-color: var(--r-background);
+}
+
+:where(.solo-page) .w3-2017-niagara {
+  --r-text: var(--solo-2017-niagara-on);
+  --r-background: var(--solo-2017-niagara);
+  color: var(--r-text);
+  background-color: var(--r-background);
+}
+
+:where(.solo-page) .w3-2017-primrose-yellow {
+  --r-text: var(--solo-2017-primrose-yellow-on);
+  --r-background: var(--solo-2017-primrose-yellow);
+  color: var(--r-text);
+  background-color: var(--r-background);
+}
+
+:where(.solo-page) .w3-2017-lapis-blue {
+  --r-text: var(--solo-2017-lapis-blue-on);
+  --r-background: var(--solo-2017-lapis-blue);
+  color: var(--r-text);
+  background-color: var(--r-background);
+}
+
+:where(.solo-page) .w3-2017-flame {
+  --r-text: var(--solo-2017-flame-on);
+  --r-background: var(--solo-2017-flame);
+  color: var(--r-text);
+  background-color: var(--r-background);
+}
+
+:where(.solo-page) .w3-2017-island-paradise {
+  --r-text: var(--solo-2017-island-paradise-on);
+  --r-background: var(--solo-2017-island-paradise);
+  color: var(--r-text);
+  background-color: var(--r-background);
+}
+
+:where(.solo-page) .w3-2017-pale-dogwood {
+  --r-text: var(--solo-2017-pale-dogwood-on);
+  --r-background: var(--solo-2017-pale-dogwood);
+  color: var(--r-text);
+  background-color: var(--r-background);
+}
+
+:where(.solo-page) .w3-2017-pink-yarrow {
+  --r-text: var(--solo-2017-pink-yarrow-on);
+  --r-background: var(--solo-2017-pink-yarrow);
+  color: var(--r-text);
+  background-color: var(--r-background);
+}
+
+:where(.solo-page) .w3-2017-kale {
+  --r-text: var(--solo-2017-kale-on);
+  --r-background: var(--solo-2017-kale);
+  color: var(--r-text);
+  background-color: var(--r-background);
+}
+
+:where(.solo-page) .w3-2017-hazelnut {
+  --r-text: var(--solo-2017-hazelnut-on);
+  --r-background: var(--solo-2017-hazelnut);
+  color: var(--r-text);
+  background-color: var(--r-background);
+}
+
+} /* end @layer solo.utilities */

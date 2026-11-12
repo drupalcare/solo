@@ -14,12 +14,12 @@ categories:
   - midnight_and_twilight
 css: css/predefined/solo-twilight-ash-mystique.css
 dependencies:
-  - solo/solo-scheme-shared
-  - solo/solo-scheme-region-rule
-  - solo/solo-scheme-control-border
-  - solo/solo-scheme-region-paint-1
-  - solo/solo-scheme-region-paint-2
-  - solo/solo-scheme-region-paint-3
+  - solo/theme-scheme-shared
+  - solo/theme-scheme-region-rule
+  - solo/theme-scheme-control-border
+  - solo/theme-scheme-region-paint-1
+  - solo/theme-scheme-region-paint-2
+  - solo/theme-scheme-region-paint-3
 thumbnail: images/schemes/solo-twilight-ash-mystique.webp
 palette:
   --sc-head-tx: "#3b3435"
@@ -51,10 +51,10 @@ palette:
   --sc-tab-hover-bg: "#201c1d"
   --sc-region-rule-br: "var(--solo-white)"
 page:
-  --r-br: "#aba1a2"
-  --r-bg: "#f3f2f2"
-  --r-tx: "#171414"
-  --r-header-bg: "linear-gradient(to start top, #ffffff, #ebe9e9)"
-  --r-header-tx: "#3b3435"
-  --r-menu-tx-h: "#fbfbfb"
-  --r-menu-bg-h: "#201c1d"
+  --r-border: "#aba1a2"
+  --r-background: "#f3f2f2"
+  --r-text: "#171414"
+  --solo-accent-background: "linear-gradient(to start top, #ffffff, #ebe9e9)"
+  --solo-accent-text: "#3b3435"
+  --r-menu-text-hover: "#fbfbfb"
+  --r-menu-background-hover: "#201c1d"

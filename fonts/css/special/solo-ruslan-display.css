@@ -1,4 +1,10 @@
+@layer solo.utilities {
+  .solo-page .ruslan-display {
+    --solo-font-s: 'Ruslan Display', cursive;
+  }
+}
+
+/* Unlayered on purpose. Font utility classes beat unlayered element rules (PB w3-modern.css headings) by class specificity, replacing the removed important flag; a layer would lose to them. */
 .solo-page .ruslan-display {
-  --solo-font-s: 'Ruslan Display', cursive;
-  font-family: var(--solo-font-s) !important;
+  font-family: var(--solo-font-s);
 }

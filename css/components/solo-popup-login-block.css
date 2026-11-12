@@ -6,7 +6,19 @@
  * adding necessary styles for functionality.
  */
 
+/*
+ * Deprecated in 2.0, removed in the next major: the old names below stay as
+ * second selectors so sub-themes and content that print them keep working.
+ *   solo-popup-login -> solo-popup-login-block
+ *   solo-popup-login__close -> solo-popup-login-block__close
+ *   solo-popup-login__inner -> solo-popup-login-block__inner
+ *   solo-popup-login__open -> solo-popup-login-block__open
+ */
+
+@layer solo.theme {
+
 /* Alternative selector for ID-based styling */
+.solo-popup-login-block,
 .solo-popup-login {
   position: fixed;
   z-index: var(--solo-popup-z-index, 10000);
@@ -24,58 +36,41 @@
 }
 
 /* When toggled open */
+.solo-popup-login-block.solo-is-open,
 .solo-popup-login.solo-is-open {
   opacity: 1;
 }
 
 /* Alternative class-based approach for better compatibility */
+.solo-popup-login-block.solo-popup-visible,
 .solo-popup-login.solo-popup-visible {
   display: block !important;
 }
 
 /* Inner container */
+.solo-popup-login-block__inner,
 .solo-popup-login__inner {
   max-width: 900px;
   height: auto !important;
   padding: calc(2 * var(--solo-px16));
   transition: transform var(--solo-popup-animation-duration, 0.3s) ease;
   transform: translateY(-20px);
-  color: var(--r-tx);
-  background-color: var(--r-bg);
+  color: var(--r-text);
+  background-color: var(--r-background);
   margin-inline: auto;
   margin-block: 0;
 }
 
 /* Animate inner container when parent is toggled */
+:where(.solo-popup-login-block.solo-is-open) .solo-popup-login-block__inner,
 :where(.solo-popup-login.solo-is-open) .solo-popup-login__inner {
   transform: translateY(0);
 }
 
 /* Close button styles */
+.solo-popup-login-block__close button,
 .solo-popup-login__close button {
-  padding: 0 !important;
-  color: var(--r-tx-bt);
-  background-color: var(--r-bg-bt);
-}
-
-/* Focus styles for all interactive elements */
-.solo-popup-login__close button:focus,
-.solo-popup-login__open button:focus,
-.solo-popup-login button:focus,
-.solo-popup-login input:focus,
-.solo-popup-login select:focus,
-.solo-popup-login textarea:focus,
-.solo-popup-login a:focus,
-.solo-popup-login__close button:focus-visible,
-.solo-popup-login__open button:focus-visible,
-.solo-popup-login button:focus-visible,
-.solo-popup-login input:focus-visible,
-.solo-popup-login select:focus-visible,
-.solo-popup-login textarea:focus-visible,
-.solo-popup-login a:focus-visible {
-  outline: 2px solid var(--r-br, currentColor);
-  outline-offset: 2px;
-}
+  padding: 0 !important;}
 
 /* Login block list styles */
 .block-user-login-block .item-list ul {
@@ -86,12 +81,8 @@
   width: 100%;
 }
 
-.block-user-login-block .item-list ul li {
-  margin-block: 5px;
-  margin-inline: auto;
-}
-
 /* Open button container */
+.solo-popup-login-block__open,
 .solo-popup-login__open {
   display: flex;
   float: inline-end;
@@ -99,31 +90,19 @@
 }
 
 /* Open button styles */
-.solo-popup-login__open button {
-  display: flex;
-  align-items: center;
+.solo-popup-login-block__open button,
+.solo-popup-login__open button {  align-items: center;
   justify-content: center;
-  min-width: 5.75rem;
-  color: var(--r-tx-bt);
-  background-color: var(--r-bg-bt);
-  font-size: var(--solo-px16);
-  line-height: 1.5;
-  padding-block: 0.563rem;
-  padding-inline: var(--solo-px16);
-}
+  min-width: 5.75rem;  line-height: 1.5;}
 
 /* Login popup trigger (from menu) */
-.solo-popup-login__trigger {
+.solo-popup-login-block__trigger {
   cursor: pointer;
   transition: outline-offset 0.2s ease;
 }
 
-/* Body class when popup is open */
-body.solo-login-popup-open {
-  overflow: hidden;
-}
-
 /* Focus trap visual indicator */
+.solo-popup-login-block:focus-within,
 .solo-popup-login:focus-within {
   outline: none;
 }
@@ -137,14 +116,9 @@ body.solo-login-popup-open {
   height: 1px;
 }
 
-/* Skip color styling for SVG icons - inherit from parent */
-.solo-popup-login__close svg,
-.solo-popup-login__open svg {
-  fill: currentColor;
-}
-
 /* Responsive adjustments */
 @media (max-width: 48rem) {
+  .solo-popup-login-block__inner,
   .solo-popup-login__inner {
     max-width: 95%;
     margin-inline: 2.5%;
@@ -152,62 +126,62 @@ body.solo-login-popup-open {
   }
 
   /* Ensure touch targets are at least 44x44px */
+  .solo-popup-login-block__close button,
   .solo-popup-login__close button,
+  .solo-popup-login-block__open button,
   .solo-popup-login__open button {
     min-width: 44px;
     min-height: 44px;
   }
 }
 
+} /* end @layer solo.theme */
+
+@layer solo.locked {
+
 /* High contrast mode support - no color changes, just ensure visibility */
-@media (prefers-contrast: more) {
-  .solo-popup-login__close button:focus,
-  .solo-popup-login__open button:focus,
-  .solo-popup-login button:focus,
-  .solo-popup-login input:focus,
-  .solo-popup-login select:focus,
-  .solo-popup-login textarea:focus,
-  .solo-popup-login a:focus,
-  .solo-popup-login__close button:focus-visible,
-  .solo-popup-login__open button:focus-visible,
-  .solo-popup-login button:focus-visible,
-  .solo-popup-login input:focus-visible,
-  .solo-popup-login select:focus-visible,
-  .solo-popup-login textarea:focus-visible,
-  .solo-popup-login a:focus-visible {
-    outline-width: 3px;
-  }
-}
 
 /* Reduced motion support */
 @media (prefers-reduced-motion: reduce) {
+  .solo-popup-login-block,
   .solo-popup-login,
+  .solo-popup-login-block__inner,
   .solo-popup-login__inner {
     transition-duration: 0.01ms !important;
   }
 }
 
+} /* end @layer solo.locked */
+
+@layer solo.theme {
+
 /* Print styles */
 @media print {
+  .solo-popup-login-block,
   .solo-popup-login,
+  .solo-popup-login-block__open,
   .solo-popup-login__open,
+  .solo-popup-login-block__close,
   .solo-popup-login__close {
     display: none !important;
   }
 }
 
 /* Ensure proper stacking context */
+.solo-popup-login-block__inner,
 .solo-popup-login__inner {
   position: relative;
   z-index: 1;
 }
 
 /* Keyboard navigation enhancement */
+:where(.solo-popup-login-block) [tabindex="-1"],
 :where(.solo-popup-login) [tabindex="-1"] {
   outline: none;
 }
 
 /* Loading state (optional) */
+:where(.solo-popup-login-block.loading) .solo-popup-login-block__inner::after,
 :where(.solo-popup-login.loading) .solo-popup-login__inner::after {
   position: absolute;
   top: 0;
@@ -219,3 +193,5 @@ body.solo-login-popup-open {
   opacity: 0.7;
   background-color: inherit;
 }
+
+} /* end @layer solo.theme */

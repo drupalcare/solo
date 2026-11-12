@@ -36,7 +36,7 @@
       // Attach click/keyboard handlers to standard triggers.
       once(
         'solo-login-trigger',
-        '[data-solo-login-popup-trigger], .solo-popup-login__trigger',
+        '[data-solo-login-popup-trigger], .solo-popup-login-block__trigger',
         context,
       ).forEach((trigger) => {
         trigger.addEventListener('click', Drupal.solo.handleLoginTriggerClick);
@@ -115,7 +115,7 @@
         once
           .remove(
             'solo-login-trigger',
-            '[data-solo-login-popup-trigger], .solo-popup-login__trigger',
+            '[data-solo-login-popup-trigger], .solo-popup-login-block__trigger',
             context,
           )
           .forEach((triggerEl) => {
@@ -240,13 +240,17 @@
   Drupal.solo.PopupLogin.prototype.init = function () {
     // Find buttons.
     this.openButton =
-      document.querySelector('.solo-popup-login__open > button') ||
-      document.querySelector('.solo-popup-login__open button') ||
+      // Deprecated in 2.0, removed in the next major: old class alias.
+      document.querySelector('.solo-popup-login-block__open > button, .solo-popup-login__open > button') ||
+      // Deprecated in 2.0, removed in the next major: old class alias.
+      document.querySelector('.solo-popup-login-block__open button, .solo-popup-login__open button') ||
       document.querySelector('[data-solo-login-popup-trigger]');
 
     this.closeButton =
-      this.loginBlock.querySelector('.solo-popup-login__close button') ||
-      this.loginBlock.querySelector('.solo-popup-login__close-inner');
+      // Deprecated in 2.0, removed in the next major: old class alias.
+      this.loginBlock.querySelector('.solo-popup-login-block__close button, .solo-popup-login__close button') ||
+      // Deprecated in 2.0, removed in the next major: old class alias.
+      this.loginBlock.querySelector('.solo-popup-login-block__close-inner, .solo-popup-login__close-inner');
 
     if (!this.closeButton) {
       if (window.console && console.warn) {
@@ -340,7 +344,8 @@
 
     // Mirror aria-controls on all known triggers.
     const allTriggers = document.querySelectorAll(
-      '[data-solo-login-popup-trigger], .solo-popup-login__trigger, .solo-popup-login__open button, .solo-popup-login__open > button',
+      // Deprecated in 2.0, removed in the next major: old class alias.
+      '[data-solo-login-popup-trigger], .solo-popup-login-block__trigger, .solo-popup-login-block__open button, .solo-popup-login__open button, .solo-popup-login-block__open > button, .solo-popup-login__open > button',
     );
     allTriggers.forEach((el) => {
       el.setAttribute('aria-controls', loginId);
@@ -403,16 +408,18 @@
 
         // Inner popup container.
         const popupInner = this.loginBlock.querySelector(
-          '.solo-popup-login__inner',
+          // Deprecated in 2.0, removed in the next major: old class alias.
+          '.solo-popup-login-block__inner, .solo-popup-login__inner',
         );
 
         // Fallback if inner container is missing.
         if (!popupInner) {
           if (
             !this.loginBlock.contains(e.target) &&
-            !e.target.closest('.solo-popup-login__open') &&
+            // Deprecated in 2.0, removed in the next major: old class alias.
+            !e.target.closest('.solo-popup-login-block__open, .solo-popup-login__open') &&
             !e.target.closest('[data-solo-login-popup-trigger]') &&
-            !e.target.closest('.solo-popup-login__trigger')
+            !e.target.closest('.solo-popup-login-block__trigger')
           ) {
             this.close();
           }
@@ -422,9 +429,10 @@
         // Close only if click is outside the inner popup and not on any trigger.
         if (
           !popupInner.contains(e.target) &&
-          !e.target.closest('.solo-popup-login__open') &&
+          // Deprecated in 2.0, removed in the next major: old class alias.
+          !e.target.closest('.solo-popup-login-block__open, .solo-popup-login__open') &&
           !e.target.closest('[data-solo-login-popup-trigger]') &&
-          !e.target.closest('.solo-popup-login__trigger')
+          !e.target.closest('.solo-popup-login-block__trigger')
         ) {
           this.close();
         }
@@ -650,7 +658,8 @@
 
     // Update aria-expanded on triggers (but NOT aria-hidden on dialog yet)
     const triggers = document.querySelectorAll(
-      '[data-solo-login-popup-trigger], .solo-popup-login__trigger, .solo-popup-login__open button, .solo-popup-login__open > button',
+      // Deprecated in 2.0, removed in the next major: old class alias.
+      '[data-solo-login-popup-trigger], .solo-popup-login-block__trigger, .solo-popup-login-block__open button, .solo-popup-login__open button, .solo-popup-login-block__open > button, .solo-popup-login__open > button',
     );
     triggers.forEach((el) => el.setAttribute('aria-expanded', 'false'));
 
@@ -737,7 +746,8 @@
   Drupal.solo.PopupLogin.prototype.updateAriaAttributes = function (isOpen) {
     // Keep all triggers in sync.
     const triggers = document.querySelectorAll(
-      '[data-solo-login-popup-trigger], .solo-popup-login__trigger, .solo-popup-login__open button, .solo-popup-login__open > button',
+      // Deprecated in 2.0, removed in the next major: old class alias.
+      '[data-solo-login-popup-trigger], .solo-popup-login-block__trigger, .solo-popup-login-block__open button, .solo-popup-login__open button, .solo-popup-login-block__open > button, .solo-popup-login__open > button',
     );
     triggers.forEach((el) => el.setAttribute('aria-expanded', String(isOpen)));
 
@@ -762,20 +772,20 @@
     );
     elements.forEach((element) => {
       if (isOpen) {
-        const original = element.getAttribute('data-original-tabindex');
+        const original = element.getAttribute('data-solo-original-tabindex');
         if (original) {
           if (original === 'none') {
             element.removeAttribute('tabindex');
           } else {
             element.setAttribute('tabindex', original);
           }
-          element.removeAttribute('data-original-tabindex');
+          element.removeAttribute('data-solo-original-tabindex');
         } else {
           element.removeAttribute('tabindex');
         }
       } else {
         const current = element.getAttribute('tabindex');
-        element.setAttribute('data-original-tabindex', current || 'none');
+        element.setAttribute('data-solo-original-tabindex', current || 'none');
         element.setAttribute('tabindex', '-1');
       }
     });

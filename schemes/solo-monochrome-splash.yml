@@ -14,11 +14,11 @@ categories:
   - miscellaneous
 css: css/predefined/solo-monochrome-splash.css
 dependencies:
-  - solo/solo-scheme-shared
-  - solo/solo-scheme-multi-span
-  - solo/solo-scheme-region-paint-1
-  - solo/solo-scheme-region-paint-2
-  - solo/solo-scheme-region-paint-3
+  - solo/theme-scheme-shared
+  - solo/theme-scheme-multi-span
+  - solo/theme-scheme-region-paint-1
+  - solo/theme-scheme-region-paint-2
+  - solo/theme-scheme-region-paint-3
 thumbnail: images/schemes/solo-monochrome-splash.webp
 palette:
   --sc-head-tx: "#21020a"
@@ -48,12 +48,12 @@ palette:
   --sc-fixed-search-block-shadow: "9, 9, 9"
   --sc-social-box-shadow: "102, 102, 102"
 page:
-  --r-br: "#a2a2a2"
-  --r-bg: "#ffffff"
-  --r-tx: "#000000"
-  --r-header-bg: "#d5d5d5"
-  --r-header-tx: "#21020a"
-  --r-menu-bg-h: "#1a1a1a"
-  --r-menu-tx-h: "#bbbbbb"
-  --r-br-dark: "#313845"
-  --r-br-light: "#e0e0e1"
+  --r-border: "#a2a2a2"
+  --r-background: "#ffffff"
+  --r-text: "#000000"
+  --solo-accent-background: "#d5d5d5"
+  --solo-accent-text: "#21020a"
+  --r-menu-background-hover: "#1a1a1a"
+  --r-menu-text-hover: "#bbbbbb"
+  --solo-tone-border-dark: "#313845"
+  --solo-tone-border-light: "#e0e0e1"

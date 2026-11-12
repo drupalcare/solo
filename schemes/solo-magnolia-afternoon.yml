@@ -14,11 +14,11 @@ categories:
   - soft_and_subtle_hues
 css: css/predefined/solo-magnolia-afternoon.css
 dependencies:
-  - solo/solo-scheme-shared
-  - solo/solo-scheme-multi-span
-  - solo/solo-scheme-region-paint-1
-  - solo/solo-scheme-region-paint-2
-  - solo/solo-scheme-region-paint-3
+  - solo/theme-scheme-shared
+  - solo/theme-scheme-multi-span
+  - solo/theme-scheme-region-paint-1
+  - solo/theme-scheme-region-paint-2
+  - solo/theme-scheme-region-paint-3
 thumbnail: images/schemes/solo-magnolia-afternoon.webp
 palette:
   --sc-head-tx: "#9c8490"
@@ -48,12 +48,12 @@ palette:
   --sc-fixed-search-block-shadow: "232, 226, 229"
   --sc-social-box-shadow: "105, 81, 93"
 page:
-  --r-br: "#ab97a1"
-  --r-bg: "#fffeff"
-  --r-tx: "#2f252a"
-  --r-header-bg: "linear-gradient(0deg, #1c1619, #090708)"
-  --r-header-tx: "#9c8490"
-  --r-menu-tx-h: "#fffeff"
-  --r-menu-bg-h: "#251e21"
-  --r-br-light: "#dcdbdb"
-  --r-br-dark: "#413539"
+  --r-border: "#ab97a1"
+  --r-background: "#fffeff"
+  --r-text: "#2f252a"
+  --solo-accent-background: "linear-gradient(0deg, #1c1619, #090708)"
+  --solo-accent-text: "#9c8490"
+  --r-menu-text-hover: "#fffeff"
+  --r-menu-background-hover: "#251e21"
+  --solo-tone-border-light: "#dcdbdb"
+  --solo-tone-border-dark: "#413539"

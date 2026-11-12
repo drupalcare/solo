@@ -1,4 +1,14 @@
+/*
+ * Deprecated in 2.0, removed in the next major: the old names below stay as
+ * second selectors so sub-themes and content that print them keep working.
+ *   solo-main-nav -> solo-menu-main
+ *   solo-mobile-nav -> solo-menu-main--mobile
+ */
+
+@layer solo.theme {
+
 @media (max-width: {{MAX}}) {
+  :where(.solo-page) .solo-menu-main,
   :where(.solo-page) .solo-main-nav {
     z-index: var(--z-primary-menu);
   }
@@ -22,53 +32,27 @@
     overflow: hidden;
   }
 
-  :where(.solo-inner) .solo-menu-tree--responsive > li.solo-menu-tree__item > ul.solo-menu-tree__submenu > li.solo-menu-tree__item > a:first-child,
-  :where(.solo-inner) .solo-menu-tree--responsive > li.solo-menu-tree__item > ul.solo-menu-tree__submenu > li.solo-menu-tree__item > span:first-child,
-  :where(.solo-inner .solo-menu-tree--responsive > li.solo-menu-tree__item) > ul.solo-menu-tree__submenu > li.solo-menu-tree__item > button:first-child {
-    padding-inline-start: 24px;
-  }
-
-  :where(.solo-inner .solo-menu-tree--responsive > li.solo-menu-tree__item) > ul.solo-menu-tree__submenu > li.solo-menu-tree__item > ul.solo-menu-tree__submenu > li.solo-menu-tree__item > a:first-child,
-  :where(.solo-inner .solo-menu-tree--responsive > li.solo-menu-tree__item) > ul.solo-menu-tree__submenu > li.solo-menu-tree__item > ul.solo-menu-tree__submenu > li.solo-menu-tree__item > span:first-child,
-  :where(.solo-inner .solo-menu-tree--responsive > li.solo-menu-tree__item > ul.solo-menu-tree__submenu) > li.solo-menu-tree__item > ul.solo-menu-tree__submenu > li.solo-menu-tree__item > button:first-child {
-    padding-inline-start: 32px;
-  }
-
-  :where(.solo-inner .solo-menu-tree--responsive > li.solo-menu-tree__item > ul.solo-menu-tree__submenu) > li.solo-menu-tree__item > ul.solo-menu-tree__submenu > li.solo-menu-tree__item > ul.solo-menu-tree__submenu > li.solo-menu-tree__item > a:first-child,
-  :where(.solo-inner .solo-menu-tree--responsive > li.solo-menu-tree__item > ul.solo-menu-tree__submenu > li.solo-menu-tree__item) > ul.solo-menu-tree__submenu > li.solo-menu-tree__item > ul.solo-menu-tree__submenu > li.solo-menu-tree__item > span:first-child,
-  :where(.solo-inner .solo-menu-tree--responsive > li.solo-menu-tree__item > ul.solo-menu-tree__submenu > li.solo-menu-tree__item > ul.solo-menu-tree__submenu) > li.solo-menu-tree__item > ul.solo-menu-tree__submenu > li.solo-menu-tree__item > button:first-child {
-    padding-inline-start: 40px;
-  }
-
   .solo-inner .solo-menu-tree--responsive li.solo-menu-tree__item--has-submenu {
     flex-wrap: wrap;
     justify-content: end;
   }
 
-  :where(.solo-inner) .solo-menu-tree--responsive,
-  :where(.solo-inner) .solo-menu-tree--responsive ul.solo-menu-tree__submenu {
-    display: none;
-  }
-
-  .solo-inner .solo-menu-tree--responsive li.solo-menu-tree__item--link-and-button > button {
-    margin-inline-start: auto;
-  }
-
+  .solo-menu-main--mobile > button,
   .solo-mobile-nav > button {
     padding-inline: var(--solo-px16) !important;
     padding-block: 0 !important;
   }
 
   :where(.solo-page .solo-container--has-border .solo-primary-menu__inner) :where(ul).solo-is-open {
-    border-block-start: 1px solid var(--r-br) !important;
+    border-block-start: 1px solid var(--r-border) !important;
   }
 
   :where(.solo-page .solo-container--has-border .solo-primary-menu__inner) .solo-menu-tree--primary.solo-is-open {
-    border-block-start: 1px solid var(--r-br);
+    border-block-start: 1px solid var(--r-border);
   }
 
   :where(.solo-page .solo-container--has-border .solo-primary-menu__inner .solo-menu-tree--primary) li {
-    border-block-end: 1px solid var(--r-br) !important;
+    border-block-end: 1px solid var(--r-border) !important;
   }
 
   .solo-primary-menu.solo-sticky {
@@ -83,23 +67,10 @@
 
   :where(.solo-inner .solo-menu-tree--megamenu) li.solo-menu-tree__item > button.solo-menu-tree__toggler--link-disabled > span.solo-menu-tree__title--disabled {
     flex-grow: 1;
-    margin-inline-end: var(--solo-px12);
-  }
-
-  .solo-inner .solo-menu-tree--megamenu li.solo-menu-tree__item > a,
-  .solo-inner .solo-menu-tree--megamenu li.solo-menu-tree__item > button {
-    padding: var(--solo-px12);
   }
 
   :where(.solo-inner .solo-menu-tree--megamenu li.solo-menu-tree__item) .solo-menu-tree__toggler {
     cursor: context-menu !important;
-  }
-
-  .solo-inner .solo-menu-tree--megamenu li.solo-menu-tree__item,
-  .solo-inner .solo-menu-tree--megamenu li.solo-menu-tree__item > a,
-  .solo-inner .solo-menu-tree--megamenu li.solo-menu-tree__item > span,
-  .solo-inner .solo-menu-tree--megamenu li.solo-menu-tree__item > button {
-    display: flex;
   }
 
   :where(.solo-inner) .solo-menu-tree--megamenu :where(li).solo-menu-tree__item--link-only {
@@ -108,44 +79,19 @@
   }
 
   .solo-inner .solo-menu-tree--megamenu li.solo-menu-tree__item--link-and-button > button {
-    position: relative;
     flex-basis: 50px;
     align-items: center;
     justify-content: center;
-    width: 50px;
-  }
-
-  .solo-inner .solo-menu-tree--megamenu li.solo-menu-tree__item--link-and-button > a {
-    position: relative;
-    flex-basis: calc(100% - 50px);
-    flex-grow: 1;
-    width: calc(100% - 50px);
   }
 
   :where(.solo-inner) .solo-menu-tree--megamenu li.solo-menu-tree__item--button-only > button > span.solo-menu-tree__title--disabled {
-    position: relative;
-    flex-basis: calc(100% - 24px);
     flex-grow: 1;
-  }
-
-  :where(.solo-inner) .solo-menu-tree--megamenu li.solo-menu-tree__item--button-only > button > span.solo-menu-tree__toggler-icon {
-    flex-basis: 24px;
-    margin-inline-start: var(--solo-px12);
   }
 
   .solo-inner .solo-menu-tree--megamenu li.solo-menu-tree__item--button-only > button > span.solo-menu-tree__toggler-icon,
   .solo-inner .solo-menu-tree--megamenu li.solo-menu-tree__item--link-and-button > button > span.solo-menu-tree__toggler-icon {
-    display: flex;
     align-items: center;
     justify-content: center;
-  }
-
-  :where(.solo-inner .solo-menu-tree--megamenu) li,
-  .solo-inner .solo-menu-tree--megamenu li.solo-menu-tree__item--link-only > a,
-  :where(.solo-inner) .solo-menu-tree--megamenu li.solo-menu-tree__item--no-link > span,
-  .solo-inner .solo-menu-tree--megamenu li.solo-menu-tree__item--button-only > button {
-    flex-basis: 100%;
-    flex-grow: 1;
   }
 
   /* For the menu branding */
@@ -154,13 +100,13 @@
     flex-wrap: wrap;
   }
 
+  :where(.solo-primary-menu .solo-menu--has-branding.solo-menu--primary-responsive) > .solo-menu-main--mobile,
   :where(.solo-primary-menu .solo-menu--has-branding.solo-menu--primary-responsive) > .solo-mobile-nav {
     flex: 1 1 auto;
     width: auto;
   }
 
   #solo-primary-menu .solo-menu--has-branding.solo-menu--primary-responsive > ul {
-    flex: 1 0 100%;
     width: 100%;
   }
 
@@ -200,21 +146,11 @@
     min-height: 0;
   }
 
-  /* Responsive images in mega menu */
-  .solo-inner ul.solo-menu-tree--megamenu img {
-    max-width: 100%;
-    height: auto;
-  }
-
   /* Allow text wrapping in mega menu at all nesting levels */
   .solo-inner .solo-menu-tree--megamenu li li a,
   .solo-inner .solo-menu-tree--megamenu li li span,
   .solo-inner .solo-menu-tree--megamenu li li button {
     flex-shrink: 1;
-    min-width: 0;
-    white-space: normal;
-    word-wrap: break-word;
-    overflow-wrap: break-word;
   }
 
   /* Single column */
@@ -283,6 +219,7 @@
   }
 
   /* The beginning of solo-menu-main.css */
+  .solo-menu-main--mobile,
   .solo-mobile-nav {
     display: none !important;
   }
@@ -340,7 +277,6 @@
   }
 
   .solo-inner .solo-menu-tree--responsive:not(.solo-menu-tree--megamenu) > li.solo-menu-tree__item ul.solo-menu-tree__submenu {
-    display: none;
     min-width: 200px;
   }
 
@@ -386,25 +322,21 @@
 
   :where(.solo-page) .solo-menu--responsive-hover .solo-menu-tree--responsive li.solo-menu-tree__item--has-submenu:hover > a,
   .solo-page .solo-menu--responsive-hover .solo-menu-tree--responsive li.solo-menu-tree__item--has-submenu:hover > button {
-    color: var(--r-tx-lk-h, var(--r-tx)) !important;
-    background-color: var(--r-bg-lk-h, var(--r-bg)) !important;
+    color: var(--r-menu-text-hover, var(--r-text)) !important;
+    background-color: var(--r-menu-background-hover, var(--r-background)) !important;
   }
 
   :where(.solo-page .solo-container--has-border .solo-primary-menu__inner .solo-menu-tree--primary > li) > ul,
   :where(.solo-page .solo-container--has-border .solo-primary-menu__inner .solo-menu-tree--primary:not(.solo-menu-tree--megamenu) > li > ul) ul {
-    border: 1px solid var(--r-br) !important;
-  }
-
-  :where(.solo-page) .solo-container--has-border .solo-primary-menu__inner .solo-menu-tree--primary > li:first-child {
-    border-inline-start: 1px solid var(--r-br);
+    border: 1px solid var(--r-border) !important;
   }
 
   :where(.solo-page .solo-container--has-border .solo-primary-menu__inner .solo-menu-tree--primary) > li {
-    border-inline-end: 1px solid var(--r-br) !important;
+    border-inline-end: 1px solid var(--r-border) !important;
   }
 
   :where(.solo-page .solo-container--has-border .solo-primary-menu__inner .solo-menu-tree--primary:not(.solo-menu-tree--megamenu) > li) li {
-    border-block-end: 1px solid var(--r-br) !important;
+    border-block-end: 1px solid var(--r-border) !important;
   }
 
   /* Justify menu items */
@@ -423,7 +355,6 @@
   :where(.solo-page) .solo-menu--primary-responsive.solo-menu--align-justify .solo-menu-tree--primary > li > button,
   :where(.solo-page .solo-menu--primary-responsive.solo-menu--align-justify) .solo-menu-tree--primary > li > button.solo-menu-tree__toggler--link-disabled > span {
     justify-content: center;
-    text-align: center;
   }
 
   /* Sidebar Menu Hover */
@@ -443,34 +374,14 @@
 
   :where(.solo-page) .solo-menu--sidebar-hover .solo-menu-tree--sidebar li.solo-menu-tree__item--has-submenu:hover > a,
   .solo-page .solo-menu--sidebar-hover .solo-menu-tree--sidebar li.solo-menu-tree__item--has-submenu:hover > button {
-    color: var(--r-tx-lk-h, var(--r-tx)) !important;
-    background-color: var(--r-bg-lk-h, var(--r-bg)) !important;
+    color: var(--r-menu-text-hover, var(--r-text)) !important;
+    background-color: var(--r-menu-background-hover, var(--r-background)) !important;
   }
 
   /* Primary Menu expand left */
   :where(.solo-primary-menu) .solo-menu--expand-left ul.solo-menu-tree--primary:not(.solo-menu-tree--megamenu) > li ul > li > button.solo-menu-tree__toggler--link-enabled,
   #solo-primary-menu .solo-menu--expand-left ul.solo-menu-tree--primary:not(.solo-menu-tree--megamenu) > li ul > li > button > span.solo-menu-tree__toggler-icon {
     order: -1;
-    text-align: var(--solo-text-align-end);
-  }
-
-  #solo-primary-menu .solo-menu--expand-left ul.solo-menu-tree--primary:not(.solo-menu-tree--megamenu) > li ul > li > a.solo-menu-tree__link--has-url,
-  #solo-primary-menu .solo-menu--expand-left ul.solo-menu-tree--primary:not(.solo-menu-tree--megamenu) > li ul > li > button > span.solo-menu-tree__title--disabled {
-    justify-content: end;
-    order: 1;
-    text-align: var(--solo-text-align-end);
-  }
-
-  #solo-primary-menu .solo-menu--expand-left ul.solo-menu-tree--primary:not(.solo-menu-tree--megamenu) > li ul > li > button > span.solo-menu-tree__title--disabled {
-    margin-inline-start: var(--solo-px12);
-    margin-inline-end: var(--solo-px0);
-    text-align: var(--solo-text-align-end);
-  }
-
-  [dir="rtl"] #solo-primary-menu .solo-menu--expand-left ul.solo-menu-tree--primary:not(.solo-menu-tree--megamenu) > li ul > li > a.solo-menu-tree__link--has-url,
-  [dir="rtl"] #solo-primary-menu .solo-menu--expand-left ul.solo-menu-tree--primary:not(.solo-menu-tree--megamenu) > li ul > li > button > span.solo-menu-tree__title--disabled,
-  [dir="rtl"] #solo-primary-menu .solo-menu--expand-left ul.solo-menu-tree--primary:not(.solo-menu-tree--megamenu) > li ul > li > button > span.solo-menu-tree__title--disabled {
-    text-align: var(--solo-text-align-start);
   }
 
   :where([dir="rtl"] .solo-primary-menu ul.solo-menu-tree--primary:not(.solo-menu-tree--megamenu) li.solo-menu-tree__item--button-only > button) > :where(span).solo-menu-tree__toggler-icon {
@@ -520,25 +431,13 @@
   :where(.solo-page .solo-inner .solo-menu-tree--megamenu ul li.solo-menu-tree__item) > a,
   :where(.solo-page .solo-inner .solo-menu-tree--megamenu ul li.solo-menu-tree__item) > span,
   :where(.solo-page .solo-inner .solo-menu-tree--megamenu ul li.solo-menu-tree__item) > button {
-    --r-bg-lk: transparent;
-    --r-bg-lk-h: transparent;
-  }
-
-  .solo-inner .solo-menu-tree--megamenu > li > ul.solo-menu-tree__submenu--header > li > a,
-  .solo-inner .solo-menu-tree--megamenu > li > ul.solo-menu-tree__submenu--header > li > span,
-  .solo-inner .solo-menu-tree--megamenu > li > ul.solo-menu-tree__submenu--header > li > button {
-    font-size: 110%;
-    font-weight: bold;
+    --r-menu-background: transparent;
+    --r-menu-background-hover: transparent;
   }
 
   .solo-inner .solo-menu-tree--megamenu > li > ul.solo-menu-tree__submenu {
-    display: none;
     overflow: unset;
     width: 100%;
-    margin-inline-start: auto;
-    margin-inline-end: auto;
-    padding-inline-start: var(--solo-px16);
-    padding-inline-end: var(--solo-px16);
     gap: var(--solo-px16);
   }
 
@@ -554,7 +453,6 @@
 
   :where(.solo-inner .solo-menu-tree--megamenu ul) .solo-menu-tree__toggler-icon,
   .solo-inner .solo-menu-tree--megamenu > li > ul > li.solo-menu-tree__item--link-and-button button {
-    display: none;
     width: 0 !important;
     height: 0 !important;
   }
@@ -563,7 +461,6 @@
   .solo-inner .solo-menu-tree--megamenu > li li span,
   .solo-inner .solo-menu-tree--megamenu > li li button {
     display: inline-flex !important;
-    width: auto;
     max-width: 100%;
   }
 
@@ -578,7 +475,7 @@
   }
 
   :where(.solo-inner .solo-menu-tree--megamenu > li > ul.solo-menu-tree__submenu) .solo-menu-tree__toggler--link-disabled:hover {
-    color: var(--r-tx) !important;
+    color: var(--r-text) !important;
   }
 
   :where(.solo-inner .solo-menu-tree--megamenu > li > ul.solo-menu-tree__submenu) .solo-menu-tree__toggler--link-disabled {
@@ -591,14 +488,6 @@
     height: initial !important;
   }
 
-  /* For the Mega menu */
-  .solo-inner .solo-menu-tree--megamenu > li.solo-menu-tree__item--link-only > a,
-  :where(.solo-inner) .solo-menu-tree--megamenu > li.solo-menu-tree__item--no-link > span,
-  .solo-inner .solo-menu-tree--megamenu > li.solo-menu-tree__item--button-only > button {
-    flex-basis: 100%;
-    flex-grow: 1;
-  }
-
   /* For the menu branding */
   :where(.solo-primary-menu) .solo-menu--has-branding.solo-menu--primary-responsive {
     flex-wrap: nowrap;
@@ -608,9 +497,6 @@
   #solo-primary-menu .solo-menu--responsive-hover.remove-arrow .solo-menu-tree__menubar > li > a + button,
   #solo-primary-menu .solo-menu--responsive-hover.remove-arrow .solo-menu-tree__menubar > li > button > span.solo-menu-tree__arrow {
     display: none !important;
-    margin: 0;
-    padding: 0;
-    border: none;
   }
 
   /* Hover arrow rotations */
@@ -752,5 +638,247 @@
   [dir="rtl"] #solo-primary-menu .solo-menu--responsive-hover .solo-menu-tree--primary ul li.solo-menu-tree__submenu--flipped-right:hover ul li:hover .solo-menu-tree__arrow,
   [dir="rtl"] #solo-primary-menu .solo-menu--responsive-hover.solo-menu--expand-left .solo-menu-tree--primary ul li.solo-menu-tree__submenu--flipped-right:hover ul li:hover .solo-menu-tree__arrow {
     transform: rotate(-90deg);
+  }
+}
+
+} /* end @layer solo.theme */
+
+/* ==== unlayered: answers unlayered core, contrib, Paragraphs Bundles and VVJ rules; in a layer these would lose (css-layers.json) ==== */
+
+@media (max-width: {{MAX}}) {
+  :where(.solo-inner) .solo-menu-tree--responsive > li.solo-menu-tree__item > ul.solo-menu-tree__submenu > li.solo-menu-tree__item > a:first-child,
+    :where(.solo-inner) .solo-menu-tree--responsive > li.solo-menu-tree__item > ul.solo-menu-tree__submenu > li.solo-menu-tree__item > span:first-child,
+    :where(.solo-inner .solo-menu-tree--responsive > li.solo-menu-tree__item) > ul.solo-menu-tree__submenu > li.solo-menu-tree__item > button:first-child {
+    padding-inline-start: 24px;
+  }
+}
+
+@media (max-width: {{MAX}}) {
+  :where(.solo-inner .solo-menu-tree--responsive > li.solo-menu-tree__item) > ul.solo-menu-tree__submenu > li.solo-menu-tree__item > ul.solo-menu-tree__submenu > li.solo-menu-tree__item > a:first-child,
+    :where(.solo-inner .solo-menu-tree--responsive > li.solo-menu-tree__item) > ul.solo-menu-tree__submenu > li.solo-menu-tree__item > ul.solo-menu-tree__submenu > li.solo-menu-tree__item > span:first-child,
+    :where(.solo-inner .solo-menu-tree--responsive > li.solo-menu-tree__item > ul.solo-menu-tree__submenu) > li.solo-menu-tree__item > ul.solo-menu-tree__submenu > li.solo-menu-tree__item > button:first-child {
+    padding-inline-start: 32px;
+  }
+}
+
+@media (max-width: {{MAX}}) {
+  :where(.solo-inner .solo-menu-tree--responsive > li.solo-menu-tree__item > ul.solo-menu-tree__submenu) > li.solo-menu-tree__item > ul.solo-menu-tree__submenu > li.solo-menu-tree__item > ul.solo-menu-tree__submenu > li.solo-menu-tree__item > a:first-child,
+    :where(.solo-inner .solo-menu-tree--responsive > li.solo-menu-tree__item > ul.solo-menu-tree__submenu > li.solo-menu-tree__item) > ul.solo-menu-tree__submenu > li.solo-menu-tree__item > ul.solo-menu-tree__submenu > li.solo-menu-tree__item > span:first-child,
+    :where(.solo-inner .solo-menu-tree--responsive > li.solo-menu-tree__item > ul.solo-menu-tree__submenu > li.solo-menu-tree__item > ul.solo-menu-tree__submenu) > li.solo-menu-tree__item > ul.solo-menu-tree__submenu > li.solo-menu-tree__item > button:first-child {
+    padding-inline-start: 40px;
+  }
+}
+
+@media (max-width: {{MAX}}) {
+  :where(.solo-inner) .solo-menu-tree--responsive,
+    :where(.solo-inner) .solo-menu-tree--responsive ul.solo-menu-tree__submenu {
+    display: none;
+  }
+}
+
+@media (max-width: {{MAX}}) {
+  .solo-inner .solo-menu-tree--responsive li.solo-menu-tree__item--link-and-button > button {
+    margin-inline-start: auto;
+  }
+}
+
+@media (max-width: {{MAX}}) {
+  :where(.solo-inner .solo-menu-tree--megamenu) li.solo-menu-tree__item > button.solo-menu-tree__toggler--link-disabled > span.solo-menu-tree__title--disabled {
+    margin-inline-end: var(--solo-px12);
+  }
+}
+
+@media (max-width: {{MAX}}) {
+  .solo-inner .solo-menu-tree--megamenu li.solo-menu-tree__item > a,
+    .solo-inner .solo-menu-tree--megamenu li.solo-menu-tree__item > button {
+    padding: var(--solo-px12);
+  }
+}
+
+@media (max-width: {{MAX}}) {
+  .solo-inner .solo-menu-tree--megamenu li.solo-menu-tree__item,
+    .solo-inner .solo-menu-tree--megamenu li.solo-menu-tree__item > a,
+    .solo-inner .solo-menu-tree--megamenu li.solo-menu-tree__item > span,
+    .solo-inner .solo-menu-tree--megamenu li.solo-menu-tree__item > button {
+    display: flex;
+  }
+}
+
+@media (max-width: {{MAX}}) {
+  .solo-inner .solo-menu-tree--megamenu li.solo-menu-tree__item--link-and-button > button {
+    position: relative;
+    width: 50px;
+  }
+}
+
+@media (max-width: {{MAX}}) {
+  .solo-inner .solo-menu-tree--megamenu li.solo-menu-tree__item--link-and-button > a {
+    position: relative;
+    flex-basis: calc(100% - 50px);
+    flex-grow: 1;
+    width: calc(100% - 50px);
+  }
+}
+
+@media (max-width: {{MAX}}) {
+  :where(.solo-inner) .solo-menu-tree--megamenu li.solo-menu-tree__item--button-only > button > span.solo-menu-tree__title--disabled {
+    position: relative;
+    flex-basis: calc(100% - 24px);
+  }
+}
+
+@media (max-width: {{MAX}}) {
+  :where(.solo-inner) .solo-menu-tree--megamenu li.solo-menu-tree__item--button-only > button > span.solo-menu-tree__toggler-icon {
+    flex-basis: 24px;
+    margin-inline-start: var(--solo-px12);
+  }
+}
+
+@media (max-width: {{MAX}}) {
+  .solo-inner .solo-menu-tree--megamenu li.solo-menu-tree__item--button-only > button > span.solo-menu-tree__toggler-icon,
+    .solo-inner .solo-menu-tree--megamenu li.solo-menu-tree__item--link-and-button > button > span.solo-menu-tree__toggler-icon {
+    display: flex;
+  }
+}
+
+@media (max-width: {{MAX}}) {
+  :where(.solo-inner .solo-menu-tree--megamenu) li,
+    .solo-inner .solo-menu-tree--megamenu li.solo-menu-tree__item--link-only > a,
+    :where(.solo-inner) .solo-menu-tree--megamenu li.solo-menu-tree__item--no-link > span,
+    .solo-inner .solo-menu-tree--megamenu li.solo-menu-tree__item--button-only > button {
+    flex-basis: 100%;
+    flex-grow: 1;
+  }
+}
+
+@media (max-width: {{MAX}}) {
+  #solo-primary-menu .solo-menu--has-branding.solo-menu--primary-responsive > ul {
+    flex: 1 0 100%;
+  }
+}
+
+/* Responsive images in mega menu */
+@media (min-width: {{MIN}}) {
+  .solo-inner ul.solo-menu-tree--megamenu img {
+    max-width: 100%;
+    height: auto;
+  }
+}
+
+@media (min-width: {{MIN}}) {
+  .solo-inner .solo-menu-tree--megamenu li li a,
+    .solo-inner .solo-menu-tree--megamenu li li span,
+    .solo-inner .solo-menu-tree--megamenu li li button {
+    min-width: 0;
+    white-space: normal;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+  }
+}
+
+@media (min-width: {{MIN}}) {
+  .solo-inner .solo-menu-tree--responsive:not(.solo-menu-tree--megamenu) > li.solo-menu-tree__item ul.solo-menu-tree__submenu {
+    display: none;
+  }
+}
+
+@media (min-width: {{MIN}}) {
+  :where(.solo-page) .solo-container--has-border .solo-primary-menu__inner .solo-menu-tree--primary > li:first-child {
+    border-inline-start: 1px solid var(--r-border);
+  }
+}
+
+@media (min-width: {{MIN}}) {
+  :where(.solo-page) .solo-menu--primary-responsive.solo-menu--align-justify .solo-menu-tree--primary > li > a,
+    :where(.solo-page) .solo-menu--primary-responsive.solo-menu--align-justify .solo-menu-tree--primary > li > span,
+    :where(.solo-page) .solo-menu--primary-responsive.solo-menu--align-justify .solo-menu-tree--primary > li > * > span,
+    :where(.solo-page) .solo-menu--primary-responsive.solo-menu--align-justify .solo-menu-tree--primary > li > button,
+    :where(.solo-page .solo-menu--primary-responsive.solo-menu--align-justify) .solo-menu-tree--primary > li > button.solo-menu-tree__toggler--link-disabled > span {
+    text-align: center;
+  }
+}
+
+@media (min-width: {{MIN}}) {
+  :where(.solo-primary-menu) .solo-menu--expand-left ul.solo-menu-tree--primary:not(.solo-menu-tree--megamenu) > li ul > li > button.solo-menu-tree__toggler--link-enabled,
+    #solo-primary-menu .solo-menu--expand-left ul.solo-menu-tree--primary:not(.solo-menu-tree--megamenu) > li ul > li > button > span.solo-menu-tree__toggler-icon {
+    text-align: var(--solo-text-align-end);
+  }
+}
+
+@media (min-width: {{MIN}}) {
+  #solo-primary-menu .solo-menu--expand-left ul.solo-menu-tree--primary:not(.solo-menu-tree--megamenu) > li ul > li > a.solo-menu-tree__link--has-url,
+    #solo-primary-menu .solo-menu--expand-left ul.solo-menu-tree--primary:not(.solo-menu-tree--megamenu) > li ul > li > button > span.solo-menu-tree__title--disabled {
+    justify-content: end;
+    order: 1;
+    text-align: var(--solo-text-align-end);
+  }
+}
+
+@media (min-width: {{MIN}}) {
+  #solo-primary-menu .solo-menu--expand-left ul.solo-menu-tree--primary:not(.solo-menu-tree--megamenu) > li ul > li > button > span.solo-menu-tree__title--disabled {
+    margin-inline-start: var(--solo-px12);
+    margin-inline-end: var(--solo-px0);
+    text-align: var(--solo-text-align-end);
+  }
+}
+
+@media (min-width: {{MIN}}) {
+  [dir="rtl"] #solo-primary-menu .solo-menu--expand-left ul.solo-menu-tree--primary:not(.solo-menu-tree--megamenu) > li ul > li > a.solo-menu-tree__link--has-url,
+    [dir="rtl"] #solo-primary-menu .solo-menu--expand-left ul.solo-menu-tree--primary:not(.solo-menu-tree--megamenu) > li ul > li > button > span.solo-menu-tree__title--disabled,
+    [dir="rtl"] #solo-primary-menu .solo-menu--expand-left ul.solo-menu-tree--primary:not(.solo-menu-tree--megamenu) > li ul > li > button > span.solo-menu-tree__title--disabled {
+    text-align: var(--solo-text-align-start);
+  }
+}
+
+@media (min-width: {{MIN}}) {
+  .solo-inner .solo-menu-tree--megamenu > li > ul.solo-menu-tree__submenu--header > li > a,
+    .solo-inner .solo-menu-tree--megamenu > li > ul.solo-menu-tree__submenu--header > li > span,
+    .solo-inner .solo-menu-tree--megamenu > li > ul.solo-menu-tree__submenu--header > li > button {
+    font-size: 110%;
+    font-weight: bold;
+  }
+}
+
+@media (min-width: {{MIN}}) {
+  .solo-inner .solo-menu-tree--megamenu > li > ul.solo-menu-tree__submenu {
+    display: none;
+    margin-inline-start: auto;
+    margin-inline-end: auto;
+    padding-inline-start: var(--solo-px16);
+    padding-inline-end: var(--solo-px16);
+  }
+}
+
+@media (min-width: {{MIN}}) {
+  :where(.solo-inner .solo-menu-tree--megamenu ul) .solo-menu-tree__toggler-icon,
+    .solo-inner .solo-menu-tree--megamenu > li > ul > li.solo-menu-tree__item--link-and-button button {
+    display: none;
+  }
+}
+
+@media (min-width: {{MIN}}) {
+  .solo-inner .solo-menu-tree--megamenu > li li a,
+    .solo-inner .solo-menu-tree--megamenu > li li span,
+    .solo-inner .solo-menu-tree--megamenu > li li button {
+    width: auto;
+  }
+}
+
+/* For the Mega menu */
+@media (min-width: {{MIN}}) {
+  .solo-inner .solo-menu-tree--megamenu > li.solo-menu-tree__item--link-only > a,
+    :where(.solo-inner) .solo-menu-tree--megamenu > li.solo-menu-tree__item--no-link > span,
+    .solo-inner .solo-menu-tree--megamenu > li.solo-menu-tree__item--button-only > button {
+    flex-basis: 100%;
+    flex-grow: 1;
+  }
+}
+
+@media (min-width: {{MIN}}) {
+  #solo-primary-menu .solo-menu--responsive-hover.remove-arrow .solo-menu-tree__menubar > li > a + button,
+    #solo-primary-menu .solo-menu--responsive-hover.remove-arrow .solo-menu-tree__menubar > li > button > span.solo-menu-tree__arrow {
+    margin: 0;
+    padding: 0;
+    border: none;
   }
 }

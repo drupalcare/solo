@@ -42,8 +42,8 @@
 {# Check if 'responsive' and 'sticky' classes are missing in attributes #}
 {% set class_list = attributes.class ?: [] %}
 {% set is_sticky = sticky or 'sticky-header' in class_list or 'sticky-enabled' in class_list %}
-<div class="{{ 'responsive-enabled' not in class_list and not is_sticky ? 'solo-responsive ' : '' }}{{ is_sticky ? 'solo-menu-wrapper--sticky ' : '' }}solo-table-wrapper">
-  <table{{ attributes.addClass('solo-table-all') }}>
+<div class="{{ 'responsive-enabled' not in class_list and not is_sticky ? 'solo-responsive ' : '' }}{{ is_sticky ? 'solo-table__menu-wrapper--sticky ' : '' }}solo-table__wrapper">
+  <table{{ attributes.addClass('solo-table--all') }}>
     {% if caption %}
       <caption>{{ caption }}</caption>
     {% endif %}

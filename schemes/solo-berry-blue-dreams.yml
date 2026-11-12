@@ -14,12 +14,12 @@ categories:
   - berry_and_fruit_tones
 css: css/predefined/solo-berry-blue-dreams.css
 dependencies:
-  - solo/solo-scheme-shared
-  - solo/solo-scheme-region-rule
-  - solo/solo-scheme-control-border
-  - solo/solo-scheme-region-paint-1
-  - solo/solo-scheme-region-paint-2
-  - solo/solo-scheme-region-paint-3
+  - solo/theme-scheme-shared
+  - solo/theme-scheme-region-rule
+  - solo/theme-scheme-control-border
+  - solo/theme-scheme-region-paint-1
+  - solo/theme-scheme-region-paint-2
+  - solo/theme-scheme-region-paint-3
 thumbnail: images/schemes/solo-berry-blue-dreams.webp
 palette:
   --sc-head-tx: "#2d1a8e"
@@ -51,12 +51,12 @@ palette:
   --sc-tab-hover-bg: "#d8d2f7"
   --sc-region-rule-br: "var(--solo-white)"
 page:
-  --r-br: "#7560e1"
-  --r-bg: "#f1effc"
-  --r-tx: "#1b1054"
-  --r-header-bg: "linear-gradient(to start top, #ffffff, #e5e1f9)"
-  --r-header-tx: "#2d1a8e"
-  --r-menu-tx-h: "#ffffff"
-  --r-menu-bg-h: "#4f35d9"
-  --r-br-dark: "#bfb6f1"
-  --r-br-light: "#e9e7f9"
+  --r-border: "#7560e1"
+  --r-background: "#f1effc"
+  --r-text: "#1b1054"
+  --solo-accent-background: "linear-gradient(to start top, #ffffff, #e5e1f9)"
+  --solo-accent-text: "#2d1a8e"
+  --r-menu-text-hover: "#ffffff"
+  --r-menu-background-hover: "#4f35d9"
+  --solo-tone-border-dark: "#bfb6f1"
+  --solo-tone-border-light: "#e9e7f9"

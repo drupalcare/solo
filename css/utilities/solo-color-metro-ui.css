@@ -1,0 +1,174 @@
+/**
+ * @file
+ * Solo color library: metro-ui.
+ *
+ * Tokens: one background (--solo-<class>) and one text color (--solo-<class>-on) per class,
+ * in solo.tokens. Classes: solo.utilities; each class sets --r-background and --r-text from
+ * its tokens and paints from them, with no !important (the layer order does the job).
+ * Where two class names share a rule (gray and grey), the token is named from the first name.
+ * Layer order: solo-layers.css. Check: scripts/css-layers-check.py.
+ */
+
+@layer solo.tokens {
+
+:root {
+  --solo-metro-light-green: #99b433;
+  --solo-metro-light-green-on: var(--solo-white);
+  --solo-metro-green: #00a300;
+  --solo-metro-green-on: var(--solo-white);
+  --solo-metro-dark-green: #1e7145;
+  --solo-metro-dark-green-on: var(--solo-white);
+  --solo-metro-magenta: #ff0097;
+  --solo-metro-magenta-on: var(--solo-white);
+  --solo-metro-light-purple: #9f00a7;
+  --solo-metro-light-purple-on: var(--solo-white);
+  --solo-metro-purple: #7e3878;
+  --solo-metro-purple-on: var(--solo-white);
+  --solo-metro-dark-purple: #603cba;
+  --solo-metro-dark-purple-on: var(--solo-white);
+  --solo-metro-darken: #1d1d1d;
+  --solo-metro-darken-on: var(--solo-white);
+  --solo-metro-teal: #00aba9;
+  --solo-metro-teal-on: var(--solo-white);
+  --solo-metro-light-blue: #eff4ff;
+  --solo-metro-light-blue-on: var(--solo-black);
+  --solo-metro-blue: #2d89ef;
+  --solo-metro-blue-on: var(--solo-white);
+  --solo-metro-dark-blue: #2b5797;
+  --solo-metro-dark-blue-on: var(--solo-white);
+  --solo-metro-yellow: #ffc40d;
+  --solo-metro-yellow-on: var(--solo-white);
+  --solo-metro-orange: #e3a21a;
+  --solo-metro-orange-on: var(--solo-white);
+  --solo-metro-dark-orange: #da532c;
+  --solo-metro-dark-orange-on: var(--solo-white);
+  --solo-metro-red: #ee1111;
+  --solo-metro-red-on: var(--solo-white);
+  --solo-metro-dark-red: #b91d47;
+  --solo-metro-dark-red-on: var(--solo-white);
+}
+
+} /* end @layer solo.tokens */
+
+@layer solo.utilities {
+
+:where(.solo-page) .w3-metro-light-green {
+  --r-text: var(--solo-metro-light-green-on);
+  --r-background: var(--solo-metro-light-green);
+  color: var(--r-text);
+  background-color: var(--r-background);
+}
+
+:where(.solo-page) .w3-metro-green {
+  --r-text: var(--solo-metro-green-on);
+  --r-background: var(--solo-metro-green);
+  color: var(--r-text);
+  background-color: var(--r-background);
+}
+
+:where(.solo-page) .w3-metro-dark-green {
+  --r-text: var(--solo-metro-dark-green-on);
+  --r-background: var(--solo-metro-dark-green);
+  color: var(--r-text);
+  background-color: var(--r-background);
+}
+
+:where(.solo-page) .w3-metro-magenta {
+  --r-text: var(--solo-metro-magenta-on);
+  --r-background: var(--solo-metro-magenta);
+  color: var(--r-text);
+  background-color: var(--r-background);
+}
+
+:where(.solo-page) .w3-metro-light-purple {
+  --r-text: var(--solo-metro-light-purple-on);
+  --r-background: var(--solo-metro-light-purple);
+  color: var(--r-text);
+  background-color: var(--r-background);
+}
+
+:where(.solo-page) .w3-metro-purple {
+  --r-text: var(--solo-metro-purple-on);
+  --r-background: var(--solo-metro-purple);
+  color: var(--r-text);
+  background-color: var(--r-background);
+}
+
+:where(.solo-page) .w3-metro-dark-purple {
+  --r-text: var(--solo-metro-dark-purple-on);
+  --r-background: var(--solo-metro-dark-purple);
+  color: var(--r-text);
+  background-color: var(--r-background);
+}
+
+:where(.solo-page) .w3-metro-darken {
+  --r-text: var(--solo-metro-darken-on);
+  --r-background: var(--solo-metro-darken);
+  color: var(--r-text);
+  background-color: var(--r-background);
+}
+
+:where(.solo-page) .w3-metro-teal {
+  --r-text: var(--solo-metro-teal-on);
+  --r-background: var(--solo-metro-teal);
+  color: var(--r-text);
+  background-color: var(--r-background);
+}
+
+:where(.solo-page) .w3-metro-light-blue {
+  --r-text: var(--solo-metro-light-blue-on);
+  --r-background: var(--solo-metro-light-blue);
+  color: var(--r-text);
+  background-color: var(--r-background);
+}
+
+:where(.solo-page) .w3-metro-blue {
+  --r-text: var(--solo-metro-blue-on);
+  --r-background: var(--solo-metro-blue);
+  color: var(--r-text);
+  background-color: var(--r-background);
+}
+
+:where(.solo-page) .w3-metro-dark-blue {
+  --r-text: var(--solo-metro-dark-blue-on);
+  --r-background: var(--solo-metro-dark-blue);
+  color: var(--r-text);
+  background-color: var(--r-background);
+}
+
+:where(.solo-page) .w3-metro-yellow {
+  --r-text: var(--solo-metro-yellow-on);
+  --r-background: var(--solo-metro-yellow);
+  color: var(--r-text);
+  background-color: var(--r-background);
+}
+
+:where(.solo-page) .w3-metro-orange {
+  --r-text: var(--solo-metro-orange-on);
+  --r-background: var(--solo-metro-orange);
+  color: var(--r-text);
+  background-color: var(--r-background);
+}
+
+:where(.solo-page) .w3-metro-dark-orange {
+  --r-text: var(--solo-metro-dark-orange-on);
+  --r-background: var(--solo-metro-dark-orange);
+  color: var(--r-text);
+  background-color: var(--r-background);
+}
+
+:where(.solo-page) .w3-metro-red {
+  --r-text: var(--solo-metro-red-on);
+  --r-background: var(--solo-metro-red);
+  color: var(--r-text);
+  background-color: var(--r-background);
+}
+
+:where(.solo-page) .w3-metro-dark-red {
+  --r-text: var(--solo-metro-dark-red-on);
+  --r-background: var(--solo-metro-dark-red);
+  color: var(--r-text);
+  background-color: var(--r-background);
+}
+
+} /* end @layer solo.utilities */

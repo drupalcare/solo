@@ -1,3 +1,5 @@
+@layer solo.layout {
+
 @media (min-width: {{MIN}}) {
   /*  layout file */
   .solo-col-1 {
@@ -130,3 +132,5 @@
 @@576,768,992|    grid-area: second;
 @@576,768,992|  }
 @@576,768,992|}
+
+} /* end @layer solo.layout */

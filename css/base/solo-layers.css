@@ -1,0 +1,19 @@
+/**
+ * @file
+ * Solo cascade layer order: the one place it is declared.
+ *
+ * Weakest first. This file holds nothing else and loads before any other
+ * Solo file (library solo/solo-layers, css base, weight -1000), so the order
+ * below is fixed before any layer is named elsewhere. To change the order,
+ * change this line only. Rules: docs/css-layers.md. Check:
+ * scripts/css-layers-check.py.
+ *
+ * solo.locked is first on purpose: inside layers !important runs backwards,
+ * so an !important here beats every other layer. It holds only values that
+ * must never change, each with its reason.
+ *
+ * A site's sub-theme beats Solo's utility classes (solo.subtheme last).
+ * Region colors set in theme settings stay outside layers, so they beat
+ * every scheme.
+ */
+@layer solo.locked, solo.reset, solo.tokens, solo.base, solo.layout, solo.theme, solo.schemes, solo.utilities, solo.subtheme;

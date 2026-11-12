@@ -1,6 +1,12 @@
-#solo-page-wrapper .berkshire-swash,
-#solo-header.solo-berkshire-swash .solo-branding__site-name-link,
-#solo-page-wrapper.solo-berkshire-swash .solo-page-title__text,
-html.solo-preloader-enabled #solo-preloader.solo-berkshire-swash .solo-preloader__text {
+@layer solo.base {
+  #solo-header.solo-berkshire-swash .solo-branding__site-name-link,
+  #solo-page-wrapper.solo-berkshire-swash .solo-page-title__text,
+  html.solo-preloader-enabled #solo-preloader.solo-berkshire-swash .solo-preloader__text {
+    font-family: "Berkshire Swash", serif;
+  }
+}
+
+/* Unlayered on purpose. Font classes beat unlayered element rules (PB w3-modern.css headings and buttons) as before; a layer would lose to them. */
+#solo-page-wrapper .berkshire-swash {
   font-family: "Berkshire Swash", serif;
 }

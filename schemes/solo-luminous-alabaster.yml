@@ -14,11 +14,11 @@ categories:
   - elegant_whites_and_neutrals
 css: css/predefined/solo-luminous-alabaster.css
 dependencies:
-  - solo/solo-scheme-shared
-  - solo/solo-scheme-region-rule
-  - solo/solo-scheme-region-paint-1
-  - solo/solo-scheme-region-paint-2
-  - solo/solo-scheme-region-paint-3
+  - solo/theme-scheme-shared
+  - solo/theme-scheme-region-rule
+  - solo/theme-scheme-region-paint-1
+  - solo/theme-scheme-region-paint-2
+  - solo/theme-scheme-region-paint-3
 thumbnail: images/schemes/solo-luminous-alabaster.webp
 palette:
   --sc-head-tx: "#306000"
@@ -49,10 +49,10 @@ palette:
   --sc-social-box-shadow: "192, 197, 169"
   --sc-region-rule-br: "var(--solo-white)"
 page:
-  --r-br: "#daffb5"
-  --r-bg: "#f4ffe8"
-  --r-tx: "#0e1c00"
-  --r-header-bg: "linear-gradient(45deg, #fdfeff, #fcfff9)"
-  --r-header-tx: "#306000"
-  --r-menu-tx-h: "#172d00"
-  --r-menu-bg-h: "#ffffff"
+  --r-border: "#daffb5"
+  --r-background: "#f4ffe8"
+  --r-text: "#0e1c00"
+  --solo-accent-background: "linear-gradient(45deg, #fdfeff, #fcfff9)"
+  --solo-accent-text: "#306000"
+  --r-menu-text-hover: "#172d00"
+  --r-menu-background-hover: "#ffffff"

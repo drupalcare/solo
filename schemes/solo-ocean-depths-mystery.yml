@@ -14,12 +14,12 @@ categories:
   - ocean_and_deep_sea
 css: css/predefined/solo-ocean-depths-mystery.css
 dependencies:
-  - solo/solo-scheme-shared
-  - solo/solo-scheme-region-rule
-  - solo/solo-scheme-control-border
-  - solo/solo-scheme-region-paint-1
-  - solo/solo-scheme-region-paint-2
-  - solo/solo-scheme-region-paint-3
+  - solo/theme-scheme-shared
+  - solo/theme-scheme-region-rule
+  - solo/theme-scheme-control-border
+  - solo/theme-scheme-region-paint-1
+  - solo/theme-scheme-region-paint-2
+  - solo/theme-scheme-region-paint-3
 thumbnail: images/schemes/solo-ocean-depths-mystery.webp
 palette:
   --sc-head-tx: "#1d2125"
@@ -51,10 +51,10 @@ palette:
   --sc-tab-hover-bg: "#e8f0f9"
   --sc-region-rule-br: "var(--solo-white)"
 page:
-  --r-br: "#e8f3ff"
-  --r-bg: "#e8f0f9"
-  --r-tx: "#0c1b2c"
-  --r-header-bg: "linear-gradient(to start top, #ffffff, #e8f0f9)"
-  --r-header-tx: "#1d2125"
-  --r-menu-tx-h: "#050b11"
-  --r-menu-bg-h: "#e8f0f9"
+  --r-border: "#e8f3ff"
+  --r-background: "#e8f0f9"
+  --r-text: "#0c1b2c"
+  --solo-accent-background: "linear-gradient(to start top, #ffffff, #e8f0f9)"
+  --solo-accent-text: "#1d2125"
+  --r-menu-text-hover: "#050b11"
+  --r-menu-background-hover: "#e8f0f9"

@@ -1,3 +1,5 @@
+@layer solo.theme {
+
 :where(.breadcrumb) > .solo-breadcrumb__inner {
   padding-block-start: 0;
   padding-block-end: 0;
@@ -22,38 +24,20 @@ ul.solo-breadcrumb__menu,
 }
 
 ul.solo-breadcrumb__menu li,
-ol.solo-breadcrumb__menu li {
-  display: flex;
-  align-items: center;
-  margin: 0;
-  padding: 0;
-  border-block-end: none;
+ol.solo-breadcrumb__menu li {  align-items: center;  border-block-end: none;
   font-size: var(--solo-px14);
 }
 
 ul.solo-breadcrumb__menu li > a,
-ol.solo-breadcrumb__menu li > a {
-  display: flex;
-  align-items: center;
-  min-height: 1.5rem;
-  padding-inline-start: var(--solo-px2);
-  padding-inline-end: var(--solo-px6);
-  padding-block: var(--solo-px8);
-}
+ol.solo-breadcrumb__menu li > a {  align-items: center;}
 
 ul.solo-breadcrumb__menu li > span,
-ol.solo-breadcrumb__menu li > span {
-  display: flex;
-  align-items: center;
-  padding-inline-start: var(--solo-px4);
-  padding-inline-end: var(--solo-px6);
-  padding-block: var(--solo-px8);
-}
+ol.solo-breadcrumb__menu li > span {  align-items: center;}
 
 :where(.solo-breadcrumb__menu li) .solo-breadcrumb__separator {
   display: flex;
   align-items: center;
-  fill: var(--r-tx);
+  fill: var(--r-text);
 }
 
 .solo-page--breadcrumb-scroll ul.solo-breadcrumb__menu,
@@ -71,3 +55,5 @@ ol.solo-breadcrumb__menu li > span {
 .solo-outer.breadcrumb > .solo-inner.solo-breadcrumb__inner {
   padding-block: var(--solo-px4);
 }
+
+} /* end @layer solo.theme */

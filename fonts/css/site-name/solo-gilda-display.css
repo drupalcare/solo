@@ -1,6 +1,12 @@
-#solo-page-wrapper .gilda-display,
-#solo-header.solo-gilda-display .solo-branding__site-name-link,
-#solo-page-wrapper.solo-gilda-display .solo-page-title__text,
-html.solo-preloader-enabled #solo-preloader.solo-gilda-display .solo-preloader__text {
+@layer solo.base {
+  #solo-header.solo-gilda-display .solo-branding__site-name-link,
+  #solo-page-wrapper.solo-gilda-display .solo-page-title__text,
+  html.solo-preloader-enabled #solo-preloader.solo-gilda-display .solo-preloader__text {
+    font-family: "Gilda Display", serif;
+  }
+}
+
+/* Unlayered on purpose. Font classes beat unlayered element rules (PB w3-modern.css headings and buttons) as before; a layer would lose to them. */
+#solo-page-wrapper .gilda-display {
   font-family: "Gilda Display", serif;
 }

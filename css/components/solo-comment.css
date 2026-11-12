@@ -1,0 +1,316 @@
+/**
+ * @file
+ * Comment layout styles for Solo theme.
+ * Clean stacked design with no background colors.
+ * Supports accessible heading-first display order.
+ */
+
+@layer solo.theme {
+
+/* Comment wrapper */
+.comment-wrapper {
+  display: grid;
+  margin-block: var(--solo-px24);
+}
+
+:where(.comment-wrapper) > * {
+  min-width: 0;
+}
+
+:where(.comment-wrapper) .indented {
+  display: grid;
+  margin-inline-start: clamp(12px, 2vw, 28px);
+  padding-inline-start: clamp(12px, 2vw, 20px);
+}
+
+:where(.comment-wrapper) .comment {
+  border-block-start: 1px solid var(--r-border);
+}
+
+:where(.comment-wrapper .indented) .comment {
+  border-block-start: 1px dashed var(--r-border);
+}
+
+:where(.comment-wrapper .add-comment) + .comment {
+  border-block-start: 0;
+}
+
+.field-node--comment {
+  font-size: var(--solo-px14);
+}
+
+.comments__title,
+:where(.comments__title) .solo-comments__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: start;
+  gap: var(--solo-px4);
+}
+
+/* Individual comment - stacked layout */
+.comment {
+  display: flex;
+  flex-direction: column;
+  margin-block-end: var(--solo-px24);
+  gap: var(--solo-px16);
+}
+
+:where([dir="rtl"]) .comment {
+  direction: rtl;
+}
+
+:where([dir="rtl"]) .solo-comment__header {
+  direction: rtl;
+}
+
+/* Comment Header - picture, author, time in one row */
+.solo-comment__header {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  gap: var(--solo-px12);
+}
+
+.solo-comment__header p,
+:where(.solo-comment__header) time {
+  margin: 0;}
+
+.comment__picture {
+  flex-shrink: 0;
+  width: var(--solo-px48);
+  height: var(--solo-px48);
+}
+
+.comment__picture img {  width: 100%;}
+
+.solo-comment__header-info {
+  flex-grow: 1;
+  min-width: 0;
+}
+
+.comment__author {
+  margin: 0 0 var(--solo-px4);
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+.comment__time {
+  display: block;
+  margin: 0;
+  opacity: 0.7;
+  font-size: var(--solo-px13);
+}
+
+/* Permalink icon */
+.solo-comment__permalink {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--solo-px48);
+  height: var(--solo-px48);
+  transition: all 0.2s ease;
+  opacity: 0.5;
+}
+
+:where(.comment:hover) .solo-comment__permalink,
+:where(.comment:focus-within) .solo-comment__permalink {
+  opacity: 1;
+}
+
+.solo-comment__permalink a {
+  position: absolute;
+  top: 0;  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  background-color: transparent !important;  inset-inline-end: 0;
+}
+
+.solo-comment__permalink a:hover,
+.solo-comment__permalink a:focus {
+  opacity: 1;}
+
+/* New comment indicator - semantic mark element */
+:where(.solo-page) .new-comment {
+  position: absolute;
+  top: 0;
+  display: inline-flex;
+  align-items: center;
+  width: var(--solo-px48);
+  height: var(--solo-px48);
+  padding: var(--solo-px4) var(--solo-px8);
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  color: #10b981;
+  border-radius: 0;
+  background-color: transparent;
+  font-size: var(--solo-px12);
+  font-weight: 600;
+  line-height: 1;
+  inset-inline-end: var(--solo-px48);
+  gap: var(--solo-px4);
+}
+
+/* Dot indicator before text */
+.new-comment__dot {
+  display: inline-block;
+  flex-shrink: 0;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+}
+
+/* Text wrapper */
+.new-comment__text {
+  display: inline-block;
+  white-space: nowrap;
+}
+
+/* Hide when Drupal's JS adds hidden class after viewing */
+.new-comment.hidden {
+  display: none !important;
+}
+
+/* Comment Body - no left padding, stacked below header */
+.solo-comment__body {
+  margin: 0;
+}
+
+/* Heading-first modifier - title appears before header */
+:where(.solo-comment--heading-first) .solo-comment__body {
+  order: -1;
+  margin-block-end: var(--solo-px8);
+}
+
+/* Comment content wrapper (used in heading-first mode) */
+.comment__content {
+  margin: 0;
+}
+
+:where(.comment__content) .field {
+  margin: 0;
+}
+
+.solo-comment__title {
+  margin: 0 0 var(--solo-px12);
+}
+
+:where(.solo-comment--heading-first) .solo-comment__title {
+  margin: 0;
+}
+
+:where(.solo-comment__body) .field {
+  margin: 0;
+}
+
+/* Comment Footer - stacked below body */
+.solo-comment__footer {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  padding-block-start: var(--solo-px12);
+  gap: var(--solo-px16);
+}
+
+.comment__links {
+  display: flex;
+  gap: var(--solo-px8);
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.comment__links ul {
+  display: flex;
+  justify-content: start;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  gap: var(--solo-px8);
+}
+
+button.solo-comment__replies-toggle:hover,
+.comment__links ul.links li a:hover {
+  transform: translateY(2px);}
+
+/* Replies toggle button */
+.solo-comment__replies-wrapper {
+  display: flex;
+  align-items: center;
+}
+
+button.solo-comment__replies-toggle {  align-items: center;
+  cursor: pointer;  line-height: 1;
+  gap: var(--solo-px8);
+}
+
+:where(.solo-comment__replies-toggle) .solo-comment__replies-text {
+  font-size: var(--solo-px13);
+}
+
+.solo-comment__replies-toggle:hover,
+.solo-comment__replies-toggle:focus {
+  border-color: var(--r-link);
+  background-color: var(--r-menu-background-hover);
+}
+
+.solo-comment__replies-toggle:active {
+  transform: scale(0.98);
+}
+
+.solo-comment__replies-icon {
+  display: inline-flex;
+  align-items: center;
+  width: 16px;
+  height: 16px;
+  transition: all 0.3s ease;
+}
+
+/* Toggle icon visibility */
+:where(.solo-comment__replies-toggle[aria-expanded="true"]) .solo-comment__replies-icon--close {
+  display: none;
+}
+
+:where(.solo-comment__replies-toggle[aria-expanded="false"]) .solo-comment__replies-icon--open {
+  display: none;
+}
+
+:where(.solo-comment__replies-toggle[aria-expanded="false"]) .solo-comment__replies-icon--close {
+  display: inline-flex;
+}
+
+/* Threaded comments indentation */
+:where(.comment) .indented {
+  margin-inline-start: var(--solo-px32);
+  padding-inline-start: var(--solo-px16);
+  border-inline-start: 2px solid var(--r-border);
+}
+
+/* Comment by node author */
+:where(.by-node-author) .comment__author {
+  color: var(--r-link);
+}
+
+/* Unpublished comment */
+.comment.unpublished {
+  opacity: 0.6;
+}
+
+/* Parent relationship (visually hidden) */
+.parent.visually-hidden {
+  position: absolute;  margin: -1px;
+  padding: 0;
+  white-space: nowrap;
+  border-width: 0;
+}
+
+/* Reduced motion */
+
+/* High contrast mode support */
+@media (forced-colors: active) {
+  .new-comment {
+    forced-color-adjust: none;
+  }
+}
+
+} /* end @layer solo.theme */

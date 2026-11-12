@@ -14,11 +14,11 @@ categories:
   - denim_influences
 css: css/predefined/solo-indigo-pulse.css
 dependencies:
-  - solo/solo-scheme-shared
-  - solo/solo-scheme-multi-span
-  - solo/solo-scheme-region-paint-1
-  - solo/solo-scheme-region-paint-2
-  - solo/solo-scheme-region-paint-3
+  - solo/theme-scheme-shared
+  - solo/theme-scheme-multi-span
+  - solo/theme-scheme-region-paint-1
+  - solo/theme-scheme-region-paint-2
+  - solo/theme-scheme-region-paint-3
 thumbnail: images/schemes/solo-indigo-pulse.webp
 palette:
   --sc-head-tx: "#042844"
@@ -48,12 +48,12 @@ palette:
   --sc-fixed-search-block-shadow: "17, 21, 26"
   --sc-social-box-shadow: "230, 234, 238"
 page:
-  --r-br: "#b2dbfb"
-  --r-bg: "#f3f9fe"
-  --r-tx: "#000204"
-  --r-header-bg: "#f3f9fe"
-  --r-header-tx: "#042844"
-  --r-menu-bg-h: "#0f8ef4"
-  --r-menu-tx-h: "#000204"
-  --r-br-light: "#d4e8f7"
-  --r-br-dark: "#053357"
+  --r-border: "#b2dbfb"
+  --r-background: "#f3f9fe"
+  --r-text: "#000204"
+  --solo-accent-background: "#f3f9fe"
+  --solo-accent-text: "#042844"
+  --r-menu-background-hover: "#0f8ef4"
+  --r-menu-text-hover: "#000204"
+  --solo-tone-border-light: "#d4e8f7"
+  --solo-tone-border-dark: "#053357"

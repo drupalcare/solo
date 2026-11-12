@@ -1,0 +1,111 @@
+/**
+ * @file
+ * Solo color library: european-signal.
+ *
+ * Tokens: one background (--solo-<class>) and one text color (--solo-<class>-on) per class,
+ * in solo.tokens. Classes: solo.utilities; each class sets --r-background and --r-text from
+ * its tokens and paints from them, with no !important (the layer order does the job).
+ * Where two class names share a rule (gray and grey), the token is named from the first name.
+ * Layer order: solo-layers.css. Check: scripts/css-layers-check.py.
+ */
+
+@layer solo.tokens {
+
+:root {
+  --solo-signal-yellow: #f7ba0b;
+  --solo-signal-yellow-on: var(--solo-white);
+  --solo-signal-orange: #d4652f;
+  --solo-signal-orange-on: var(--solo-white);
+  --solo-signal-red: #a02128;
+  --solo-signal-red-on: var(--solo-white);
+  --solo-signal-violet: #904684;
+  --solo-signal-violet-on: var(--solo-white);
+  --solo-signal-blue: #154889;
+  --solo-signal-blue-on: var(--solo-white);
+  --solo-signal-green: #317f43;
+  --solo-signal-green-on: var(--solo-white);
+  --solo-signal-grey: #9b9b9b;
+  --solo-signal-grey-on: var(--solo-white);
+  --solo-signal-brown: #7b5141;
+  --solo-signal-brown-on: var(--solo-white);
+  --solo-signal-white: #f4f4f4;
+  --solo-signal-white-on: var(--solo-black);
+  --solo-signal-black: #282828;
+  --solo-signal-black-on: var(--solo-white);
+}
+
+} /* end @layer solo.tokens */
+
+@layer solo.utilities {
+
+:where(.solo-page) .w3-signal-yellow {
+  --r-text: var(--solo-signal-yellow-on);
+  --r-background: var(--solo-signal-yellow);
+  color: var(--r-text);
+  background-color: var(--r-background);
+}
+
+:where(.solo-page) .w3-signal-orange {
+  --r-text: var(--solo-signal-orange-on);
+  --r-background: var(--solo-signal-orange);
+  color: var(--r-text);
+  background-color: var(--r-background);
+}
+
+:where(.solo-page) .w3-signal-red {
+  --r-text: var(--solo-signal-red-on);
+  --r-background: var(--solo-signal-red);
+  color: var(--r-text);
+  background-color: var(--r-background);
+}
+
+:where(.solo-page) .w3-signal-violet {
+  --r-text: var(--solo-signal-violet-on);
+  --r-background: var(--solo-signal-violet);
+  color: var(--r-text);
+  background-color: var(--r-background);
+}
+
+:where(.solo-page) .w3-signal-blue {
+  --r-text: var(--solo-signal-blue-on);
+  --r-background: var(--solo-signal-blue);
+  color: var(--r-text);
+  background-color: var(--r-background);
+}
+
+:where(.solo-page) .w3-signal-green {
+  --r-text: var(--solo-signal-green-on);
+  --r-background: var(--solo-signal-green);
+  color: var(--r-text);
+  background-color: var(--r-background);
+}
+
+:where(.solo-page) .w3-signal-grey {
+  --r-text: var(--solo-signal-grey-on);
+  --r-background: var(--solo-signal-grey);
+  color: var(--r-text);
+  background-color: var(--r-background);
+}
+
+:where(.solo-page) .w3-signal-brown {
+  --r-text: var(--solo-signal-brown-on);
+  --r-background: var(--solo-signal-brown);
+  color: var(--r-text);
+  background-color: var(--r-background);
+}
+
+:where(.solo-page) .w3-signal-white {
+  --r-text: var(--solo-signal-white-on);
+  --r-background: var(--solo-signal-white);
+  color: var(--r-text);
+  background-color: var(--r-background);
+}
+
+:where(.solo-page) .w3-signal-black {
+  --r-text: var(--solo-signal-black-on);
+  --r-background: var(--solo-signal-black);
+  color: var(--r-text);
+  background-color: var(--r-background);
+}
+
+} /* end @layer solo.utilities */

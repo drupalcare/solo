@@ -14,11 +14,11 @@ categories:
   - berry_and_fruit_tones
 css: css/predefined/solo-raspberry-nightfall.css
 dependencies:
-  - solo/solo-scheme-shared
-  - solo/solo-scheme-region-rule
-  - solo/solo-scheme-region-paint-1
-  - solo/solo-scheme-region-paint-2
-  - solo/solo-scheme-region-paint-3
+  - solo/theme-scheme-shared
+  - solo/theme-scheme-region-rule
+  - solo/theme-scheme-region-paint-1
+  - solo/theme-scheme-region-paint-2
+  - solo/theme-scheme-region-paint-3
 thumbnail: images/schemes/solo-raspberry-nightfall.webp
 palette:
   --sc-head-tx: "#f9d2da"
@@ -50,10 +50,10 @@ palette:
   --sc-tab-hover-bg: "#4c0917"
   --sc-region-rule-br: "var(--solo-black)"
 page:
-  --r-br: "#6a0d20"
-  --r-bg: "#0f0205"
-  --r-tx: "#fdf0f2"
-  --r-header-bg: "linear-gradient(0deg, #000000, #0f0205)"
-  --r-header-tx: "#f9d2da"
-  --r-menu-tx-h: "#fdf0f2"
-  --r-menu-bg-h: "#4c0917"
+  --r-border: "#6a0d20"
+  --r-background: "#0f0205"
+  --r-text: "#fdf0f2"
+  --solo-accent-background: "linear-gradient(0deg, #000000, #0f0205)"
+  --solo-accent-text: "#f9d2da"
+  --r-menu-text-hover: "#fdf0f2"
+  --r-menu-background-hover: "#4c0917"

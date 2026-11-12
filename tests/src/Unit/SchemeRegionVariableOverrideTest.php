@@ -11,10 +11,10 @@ use PHPUnit\Framework\TestCase;
  * Tests that a color scheme cannot cut a region's own color off its content.
  *
  * In Solo 1 a region's color settings were inline custom properties on the
- * region wrapper (style="--r-br:#hex"). Schemes then pinned --r-br on every
+ * region wrapper (style="--r-border:#hex"). Schemes then pinned --r-border on every
  * descendant ("<container> *"), which beat the inherited inline value, so a
  * region's "borders" setting colored only the wrapper (#3629228). The fix was
- * a guard on each descendant rule: :where(:not([style*="--r-br:"] *)).
+ * a guard on each descendant rule: :where(:not([style*="--r-border:"] *)).
  *
  * Solo 2 prints no inline style. Solo Utilities writes each region's colors as
  * a rule on the region element (ThemeCssBuilder::REGION_SELECTORS), and the
@@ -110,12 +110,12 @@ class SchemeRegionVariableOverrideTest extends TestCase {
    * The scan flags both shapes of a descendant pin and passes element rules.
    */
   public function testScanCatchesDescendantPins(): void {
-    $guard = ':where(:not([style*="--r-br:"] *))';
-    $this->assertCount(1, $this->descendantPins(":where(.solo-page .solo-container--main) $guard { --r-br: red; }"));
-    $this->assertCount(1, $this->descendantPins('.solo-page .solo-container--main * { --r-br: red; }'));
-    $this->assertSame([], $this->descendantPins(":where(.solo-page) .solo-container--main$guard { --r-br: red; }"));
-    $this->assertSame([], $this->descendantPins(":where(.solo-page) .solo-input$guard, .a :is(.b, .c) .d { --r-br: red; }"));
-    $this->assertSame([], $this->descendantPins(':where(.solo-page) :is(.solo-container--footer a, .solo-copyright a) { --r-tx: red; }'), 'Real elements in :is().');
+    $guard = ':where(:not([style*="--r-border:"] *))';
+    $this->assertCount(1, $this->descendantPins(":where(.solo-page .solo-container--main) $guard { --r-border: red; }"));
+    $this->assertCount(1, $this->descendantPins('.solo-page .solo-container--main * { --r-border: red; }'));
+    $this->assertSame([], $this->descendantPins(":where(.solo-page) .solo-container--main$guard { --r-border: red; }"));
+    $this->assertSame([], $this->descendantPins(":where(.solo-page) .solo-input$guard, .a :is(.b, .c) .d { --r-border: red; }"));
+    $this->assertSame([], $this->descendantPins(':where(.solo-page) :is(.solo-container--footer a, .solo-copyright a) { --r-text: red; }'), 'Real elements in :is().');
     $this->assertSame([], $this->descendantPins('.solo-page .x * { color: red; }'), 'Only region variables count.');
   }
 

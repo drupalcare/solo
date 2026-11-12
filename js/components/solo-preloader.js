@@ -10,7 +10,7 @@
  *    removed classes, set aria-hidden=false, lock scroll (solo-preloader-active
  *    on html). Uses capture phase so overlay appears before browser navigates.
  * 3. Hide when page is ready: DOMContentLoaded (dom_ready) or window.load,
- *    configurable via data-hide-on attribute. Runs percent animation, fallback
+ *    configurable via data-solo-preloader-hide-on attribute. Runs percent animation, fallback
  *    timeout, then transition out (fade, slide, zoom, blur per CSS class) and
  *    remove from layout; unlockPage() cleans up scroll lock after transition.
  *
@@ -20,7 +20,7 @@
  * disabled). Does not trigger on back/forward or programmatic redirects.
  *
  * No minimum display time: hide as soon as the configured event fires (depends
- * on page size). Max display is configurable (data-max-display seconds) as
+ * on page size). Max display is configurable (data-solo-preloader-max-display seconds) as
  * fallback if the event never fires.
  *
  * Also: force-show mode, reduced motion, once-binding, no duplicate listeners.
@@ -147,7 +147,13 @@
 
     attachNavigationListener(el);
 
-    const hideOnAttr = el.getAttribute('data-hide-on');
+    // Reads the new attribute first. Deprecated in 2.0, removed in the next major: 
+    // data-hide-on, data-max-display and data-force-show (old partials).
+    const attr = (name) =>
+      el.getAttribute(`data-solo-preloader-${name}`) ??
+      el.getAttribute(`data-${name}`);
+
+    const hideOnAttr = attr('hide-on');
     const hideOn = hideOnAttr === 'dom_ready' ? 'dom_ready' : 'load';
 
     const prefersReducedMotion = window.matchMedia(
@@ -156,13 +162,13 @@
 
     const transitionDelay = prefersReducedMotion ? 0 : HIDDEN_TRANSITION_MS;
 
-    const maxDisplaySec = parseInt(el.getAttribute('data-max-display'), 10);
+    const maxDisplaySec = parseInt(attr('max-display'), 10);
     const maxDisplayMs =
       Number.isNaN(maxDisplaySec) || maxDisplaySec < 3 || maxDisplaySec > 60
         ? DEFAULT_MAX_DISPLAY_MS
         : maxDisplaySec * 1000;
 
-    const forceShow = el.getAttribute('data-force-show') === 'true';
+    const forceShow = attr('force-show') === 'true';
     let fallbackTimeoutId = null;
 
     function clearFallback() {

@@ -1,5 +1,10 @@
+@layer solo.schemes {
+
 /* Paint these regions, gradients included. Not used by: ethereal-white-harmony, midnight-whispers. */
 :where(.solo-container--bottom) .solo-region-box__inner--bottom,
 :where(.solo-container--footer) .solo-region-box__inner--footer {
-  background: var(--r-bg);
+  background-color: var(--r-background);
+  background-image: var(--r-background-image, var(--r-background)); /* a gradient in --r-background paints as an image; a plain color leaves it none */
 }
+
+} /* end @layer solo.schemes */

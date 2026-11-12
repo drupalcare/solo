@@ -1,3 +1,13 @@
+
+
+/* ==== unlayered: answers unlayered core, contrib and Paragraphs Bundles rules; in a layer these would lose (css-layers.json) ==== */
+
+/*
+ * Deprecated in 2.0, removed in the next major: the old names below stay as
+ * second selectors so sub-themes and content that print them keep working.
+ *   solo-fixed-search__close -> solo-fixed-search-block__close
+ */
+
 /* Form controls and buttons draw their border in the scheme border color. */
 :where(.solo-page) .selectify,
 .solo-page .solo-select,
@@ -7,6 +17,7 @@
 .solo-page .solo-textarea,
 .solo-page a.button,
 .solo-page input.button,
+.solo-page .solo-fixed-search-block__close button,
 .solo-page .solo-fixed-search__close button {
-  border-color: var(--r-br);
+  border-color: var(--r-border);
 }

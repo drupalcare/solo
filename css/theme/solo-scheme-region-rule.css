@@ -1,6 +1,19 @@
+/*
+ * Deprecated in 2.0, removed in the next major: the old names below stay as
+ * second selectors so sub-themes and content that print them keep working.
+ *   solo-fixed-search -> solo-fixed-search-block
+ *   solo-popup-login -> solo-popup-login-block
+ *   solo-system-messages -> solo-status-messages
+ */
+
+@layer solo.schemes {
+
 /* A rule under each region, for the schemes that draw one. */
+:where(.solo-page) .solo-outer:not(.solo-fixed-search-block, .solo-popup-login-block, .solo-header, .solo-primary-sidebar-menu, .solo-primary-menu, .solo-status-messages, .solo-copyright),
 :where(.solo-page) .solo-outer:not(.solo-fixed-search, .solo-popup-login, .solo-header, .solo-primary-sidebar-menu, .solo-primary-menu, .solo-system-messages, .solo-copyright) {
   border-color: var(--sc-region-rule-br);
   border-block-end-width: var(--solo-px2);
   border-block-end-style: solid;
 }
+
+} /* end @layer solo.schemes */

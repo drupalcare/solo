@@ -1,0 +1,15 @@
+@layer solo.theme {
+
+:where(.solo-page) :where(form.user-register-form) .form-actions,
+:where(.solo-page) :where(form.user-login-form) .form-actions,
+:where(.solo-page) :where(form.user-pass) .form-actions {
+  text-align: center;
+}
+
+:where(form.user-register-form .form-actions) .solo-button,
+:where(form.user-login-form .form-actions) .solo-button,
+:where(form.user-pass .form-actions) .solo-button {
+  float: none;
+}
+
+} /* end @layer solo.theme */

@@ -1,7 +1,7 @@
   {% if page.system_messages %}
     <!-- Start: System Messages -->
-    <div id="solo-system-messages" role="region" aria-label="{{ 'System Messages'|t }}" class="solo-outer solo-container--single solo-system-messages{{ classes_system_messages ? ' ' ~ classes_system_messages }}" {{ attributes_system_messages }}>
-      <div id="solo-system-messages-inner" class="solo-inner solo-col solo-col-1 solo-system-messages__inner">
+    <div id="solo-status-messages" role="region" aria-label="{{ 'System Messages'|t }}" class="solo-outer solo-container--single solo-status-messages{{ classes_system_messages ? ' ' ~ classes_system_messages }}" {{ attributes_system_messages }}>
+      <div id="solo-system-messages-inner" class="solo-inner solo-col solo-col-1 solo-status-messages__inner">
         {{ page.system_messages }}
       </div>
     </div>

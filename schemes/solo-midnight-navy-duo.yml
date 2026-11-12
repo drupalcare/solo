@@ -14,11 +14,11 @@ categories:
   - bold_and_dramatic_colors
 css: css/predefined/solo-midnight-navy-duo.css
 dependencies:
-  - solo/solo-scheme-shared
-  - solo/solo-scheme-multi-span
-  - solo/solo-scheme-region-paint-1
-  - solo/solo-scheme-region-paint-2
-  - solo/solo-scheme-region-paint-3
+  - solo/theme-scheme-shared
+  - solo/theme-scheme-multi-span
+  - solo/theme-scheme-region-paint-1
+  - solo/theme-scheme-region-paint-2
+  - solo/theme-scheme-region-paint-3
 thumbnail: images/schemes/solo-midnight-navy-duo.webp
 palette:
   --sc-head-tx: "#2e75cc"
@@ -48,11 +48,11 @@ palette:
   --sc-fixed-search-block-shadow: "6, 12, 24"
   --sc-social-box-shadow: "252, 253, 254"
 page:
-  --r-br: "#84bcff"
-  --r-bg: "#eef2fb"
-  --r-tx: "#060c18"
-  --r-header-bg: "linear-gradient(0deg, #0c1934, #13274f)"
-  --r-header-tx: "#7ab6ff"
-  --r-menu-tx-h: "#d9eaff"
-  --r-menu-bg-h: "#00162f"
-  --r-br-light: "#b8daff"
+  --r-border: "#84bcff"
+  --r-background: "#eef2fb"
+  --r-text: "#060c18"
+  --solo-accent-background: "linear-gradient(0deg, #0c1934, #13274f)"
+  --solo-accent-text: "#7ab6ff"
+  --r-menu-text-hover: "#d9eaff"
+  --r-menu-background-hover: "#00162f"
+  --solo-tone-border-light: "#b8daff"

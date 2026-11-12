@@ -136,7 +136,7 @@ class RegionsCharacterizationTest extends SoloCharacterizationBase {
     // region element but one rule in the generated stylesheet; ThemeCssBuilder
     // class docblock and PagePreprocessor ("Region colors live in the
     // generated stylesheet"). The rule's variables and order are unchanged.
-    $rule = ThemeCssBuilder::REGION_SELECTORS['header'] . '{--r-bg:#112233;--r-tx-lk-h:#ffffff}';
+    $rule = ThemeCssBuilder::REGION_SELECTORS['header'] . '{--r-background:#112233;--r-menu-text-hover:#ffffff}';
     $this->assertStringContainsString($rule, $this->cssBuilder->build('solo')->settingsCss);
   }
 

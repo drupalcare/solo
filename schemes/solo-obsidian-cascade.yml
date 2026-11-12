@@ -14,11 +14,11 @@ categories:
   - earthy_and_smokey_tones
 css: css/predefined/solo-obsidian-cascade.css
 dependencies:
-  - solo/solo-scheme-shared
-  - solo/solo-scheme-multi-span
-  - solo/solo-scheme-region-paint-1
-  - solo/solo-scheme-region-paint-2
-  - solo/solo-scheme-region-paint-3
+  - solo/theme-scheme-shared
+  - solo/theme-scheme-multi-span
+  - solo/theme-scheme-region-paint-1
+  - solo/theme-scheme-region-paint-2
+  - solo/theme-scheme-region-paint-3
 thumbnail: images/schemes/solo-obsidian-cascade.webp
 palette:
   --sc-head-tx: "#717171"
@@ -48,10 +48,10 @@ palette:
   --sc-fixed-search-block-shadow: "2, 2, 38"
   --sc-social-box-shadow: "17, 17, 244"
 page:
-  --r-br: "#dde0ea"
-  --r-bg: "#fdfdfd"
-  --r-tx: "#202331"
-  --r-header-bg: "linear-gradient(180deg, #030303, #0b0b0b)"
-  --r-header-tx: "#919191"
-  --r-menu-tx-h: "#cfcfcf"
-  --r-menu-bg-h: "#0b0b0b"
+  --r-border: "#dde0ea"
+  --r-background: "#fdfdfd"
+  --r-text: "#202331"
+  --solo-accent-background: "linear-gradient(180deg, #030303, #0b0b0b)"
+  --solo-accent-text: "#919191"
+  --r-menu-text-hover: "#cfcfcf"
+  --r-menu-background-hover: "#0b0b0b"

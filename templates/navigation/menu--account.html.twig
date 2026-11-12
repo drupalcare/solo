@@ -31,15 +31,15 @@
      aria-label="{{ 'User account menu'|t }}"
      data-menu-name="{{ menu_name }}">
     {% if login_popup_block and current_path != '/user/login' %}
-        <div id="solo-login-button-open" class="solo-popup-login__open">
+        <div id="solo-login-button-open" class="solo-popup-login-block__open">
             <button class="solo-button-menu"
-                    data-drupal-selector="solo-popup-login__open-inner"
+                    data-drupal-selector="solo-popup-login-block__open-inner"
                     aria-label="{{ 'Open login dialog'|t }}"
                     aria-controls="solo-popup-login-block"
                     aria-expanded="false"
                     aria-haspopup="dialog"
                     type="button">
-                <span>{{ login_text|t }}</span>
+                <span>{{ login_text == 'Login' ? 'Login'|t : login_text }}</span>
                 <span class="visually-hidden">{{ 'Open login dialog'|t }}</span>
             </button>
         </div>

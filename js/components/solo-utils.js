@@ -126,18 +126,18 @@
           .querySelectorAll('a, button, input, select, textarea, [tabindex]')
           .forEach((el) => {
             const currentTabindex = el.getAttribute('tabindex');
-            el.setAttribute('data-original-tabindex', currentTabindex || '0');
+            el.setAttribute('data-solo-original-tabindex', currentTabindex || '0');
             el.setAttribute('tabindex', '-1');
           });
       } else {
-        element.querySelectorAll('[data-original-tabindex]').forEach((el) => {
-          const original = el.getAttribute('data-original-tabindex');
+        element.querySelectorAll('[data-solo-original-tabindex]').forEach((el) => {
+          const original = el.getAttribute('data-solo-original-tabindex');
           if (original === '0' || original === null) {
             el.removeAttribute('tabindex');
           } else {
             el.setAttribute('tabindex', original);
           }
-          el.removeAttribute('data-original-tabindex');
+          el.removeAttribute('data-solo-original-tabindex');
         });
       }
     }
@@ -168,9 +168,12 @@
     PAGE_WRAPPER: '.solo-page',
     SOLO_MENUS: '.solo-inner nav ul:not(.field ul)',
     SOLO_MENUS_ALL: '.solo-inner nav ul',
-    FILE_UPLOAD_WRAPPER: '.solo-file-upload-wrapper',
-    FILE_INPUT: '.solo-file-native',
-    FILE_NAME: '.solo-file-name',
+    // Deprecated in 2.0, removed in the next major: old class alias.
+    FILE_UPLOAD_WRAPPER: '.solo-input-file__wrapper, .solo-file-upload-wrapper',
+    // Deprecated in 2.0, removed in the next major: old class alias.
+    FILE_INPUT: '.solo-input-file__native, .solo-file-native',
+    // Deprecated in 2.0, removed in the next major: old class alias.
+    FILE_NAME: '.solo-input-file__name, .solo-file-name',
     SEARCH_DETAILS: '.search-form details.search-advanced',
     DETAILS_WRAPPER: '.details-wrapper',
   };
@@ -673,7 +676,7 @@
       try {
         // Option 1: Use the :not() selector (default)
         const allMenus = once(
-          'soloMenuDepth',
+          'solo-menu-depth',
           SELECTORS.SOLO_MENUS_ALL,
           context,
         );
@@ -691,7 +694,7 @@
       if (trigger === 'unload') {
         try {
           const allProcessed = once.filter(
-            'soloMenuDepth',
+            'solo-menu-depth',
             SELECTORS.SOLO_MENUS_ALL,
             context,
           );
@@ -714,7 +717,7 @@
             });
           });
 
-          once.remove('soloMenuDepth', SELECTORS.SOLO_MENUS_ALL, context);
+          once.remove('solo-menu-depth', SELECTORS.SOLO_MENUS_ALL, context);
         } catch (error) {
           console.error('Solo: Error in soloMenuDepth detach', error);
         }
@@ -722,10 +725,23 @@
     },
   };
 
+  // Deprecated in 2.0, removed in the next major: the old behavior name
+  // soloFileUpload reads and writes Drupal.behaviors.soloInputFile.
+  // It is not enumerable, so Drupal.attachBehaviors() runs it once.
+  if (!Object.prototype.hasOwnProperty.call(Drupal.behaviors, 'soloFileUpload')) {
+    Object.defineProperty(Drupal.behaviors, 'soloFileUpload', {
+      configurable: true,
+      get: () => Drupal.behaviors.soloInputFile,
+      set: (value) => {
+        Drupal.behaviors.soloInputFile = value;
+      },
+    });
+  }
+
   /**
    * Drupal behavior for file upload enhancement.
    */
-  Drupal.behaviors.soloFileUpload = {
+  Drupal.behaviors.soloInputFile = {
     handlers: new WeakMap(),
 
     attach(context) {
@@ -770,7 +786,7 @@
           input.addEventListener('change', handler);
         });
       } catch (error) {
-        console.error('Solo: Error in soloFileUpload behavior', error);
+        console.error('Solo: Error in soloInputFile behavior', error);
       }
     },
 
@@ -800,7 +816,7 @@
             context,
           );
         } catch (error) {
-          console.error('Solo: Error in soloFileUpload detach', error);
+          console.error('Solo: Error in soloInputFile detach', error);
         }
       }
     },
@@ -817,7 +833,7 @@
 
       try {
         const detailsElements = once(
-          'soloDetailsAnimation',
+          'solo-details-animation',
           SELECTORS.SEARCH_DETAILS,
           context,
         );
@@ -901,7 +917,7 @@
 
         try {
           const detailsElements = once.filter(
-            'soloDetailsAnimation',
+            'solo-details-animation',
             SELECTORS.SEARCH_DETAILS,
             context,
           );
@@ -920,7 +936,7 @@
             }
           });
           once.remove(
-            'soloDetailsAnimation',
+            'solo-details-animation',
             SELECTORS.SEARCH_DETAILS,
             context,
           );

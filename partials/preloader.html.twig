@@ -7,9 +7,9 @@
   class="solo-preloader solo-preloader--{{ preloader_config.style|default('spinner') }}{{ preloader_config.transition is defined and preloader_config.transition != 'fade' ? ' solo-preloader--transition-' ~ preloader_config.transition : '' }}{{ preloader_config.text_font ? ' ' ~ preloader_config.text_font : '' }}{{ preloader_config.text_animate_effect ? ' ' ~ preloader_config.text_animate_effect : '' }}"
   role="status"
   aria-live="polite"
-  data-force-show="{{ preloader_config.force_show ? 'true' : 'false' }}"
-  data-hide-on="{{ preloader_config.hide_on|default('dom_ready') }}"
-  data-max-display="{{ preloader_config.max_display_seconds|default(8) }}">
+  data-solo-preloader-force-show="{{ preloader_config.force_show ? 'true' : 'false' }}"
+  data-solo-preloader-hide-on="{{ preloader_config.hide_on|default('dom_ready') }}"
+  data-solo-preloader-max-display="{{ preloader_config.max_display_seconds|default(8) }}">
   <span class="visually-hidden">{{ 'Loading…'|t }}</span>
   <div class="solo-preloader__inner">
     {% if preloader_config.style == 'progress_bar' %}

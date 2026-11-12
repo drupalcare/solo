@@ -1,3 +1,13 @@
+/*
+ * Deprecated in 2.0, removed in the next major: the old names below stay as
+ * second selectors so sub-themes and content that print them keep working.
+ *   solo-fixed-search__inner -> solo-fixed-search-block__inner
+ *   solo-popup-login -> solo-popup-login-block
+ *   solo-system-messages__inner -> solo-status-messages__inner
+ */
+
+@layer solo.layout {
+
 .solo-page,
 .solo-outer {
   display: grid;
@@ -37,6 +47,7 @@
   min-height: 0;
 }
 
+:where(.solo-container--single) > .solo-col:not(.solo-header__inner, .solo-primary-menu__inner, .solo-fixed-search-block__inner),
 :where(.solo-container--single) > .solo-col:not(.solo-header__inner, .solo-primary-menu__inner, .solo-fixed-search__inner) {
   grid-auto-flow: row;
 }
@@ -49,6 +60,7 @@
   padding: 0 !important;
 }
 
+.solo-inner:not(.solo-primary-menu__inner, .solo-primary-sidebar-menu__inner, .solo-status-messages__inner, .solo-highlighted__inner, .solo-container--top-active-1 > .solo-inner, .solo-container--main-active-1 > .solo-inner, .solo-container--bottom-active-1 > .solo-inner, .solo-container--footer > .solo-inner, .solo-copyright__inner),
 .solo-inner:not(.solo-primary-menu__inner, .solo-primary-sidebar-menu__inner, .solo-system-messages__inner, .solo-highlighted__inner, .solo-container--top-active-1 > .solo-inner, .solo-container--main-active-1 > .solo-inner, .solo-container--bottom-active-1 > .solo-inner, .solo-container--footer > .solo-inner, .solo-copyright__inner) {
   padding: var(--solo-gap);
 }
@@ -69,14 +81,6 @@
 :where(.solo-container--bottom-active-1) > .solo-inner {
   padding-top: var(--solo-gap);
   padding-bottom: var(--solo-gap);
-}
-
-.solo-container--top-active-1 > .solo-inner > div,
-.solo-container--main-active-1 > .solo-inner > div,
-.solo-container--bottom-active-1 > .solo-inner > div,
-.solo-container--footer-active-1 > .solo-inner > div {
-  width: calc(100% - calc(2 * var(--solo-gap)));
-  margin: 0 auto;
 }
 
 :where(.solo-outer) .solo-region-box__inner {
@@ -109,6 +113,9 @@
   padding-block: clamp(var(--solo-px24), var(--solo-gap), var(--solo-px32));
 }
 
+.solo-popup-login-block,
 .solo-popup-login {
   display: none;
 }
+
+} /* end @layer solo.layout */

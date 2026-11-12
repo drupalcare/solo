@@ -78,6 +78,7 @@
   (site_breadcrumb_scroll ? ' solo-page--breadcrumb-scroll' : '') ~
   (site_regions_collapse_order ? ' solo__collapse-order' : '') ~
   (site_flip_header_menu ? ' solo-menu--flipped' : '') ~
+  (site_flip_breadcrumb_pagetitle ? ' solo-page--breadcrumb-flipped' : '') ~
   (site_inline_items_on ? ' solo-page--inline-items' : '')
 %}
 
@@ -129,9 +130,13 @@
 
   {% include '@solo/partials/_system-messages.html.twig' %}
 
-  {% include '@solo/partials/_page-title.html.twig' %}
-
+  {% if site_flip_breadcrumb_pagetitle %}
   {% include '@solo/partials/_breadcrumb.html.twig' %}
+  {% include '@solo/partials/_page-title.html.twig' %}
+  {% else %}
+  {% include '@solo/partials/_page-title.html.twig' %}
+  {% include '@solo/partials/_breadcrumb.html.twig' %}
+  {% endif %}
 
   {% include '@solo/partials/_main-regions.html.twig' %}
 

@@ -1,3 +1,16 @@
+/*
+ * Deprecated in 2.0, removed in the next major: the old names below stay as
+ * second selectors so sub-themes and content that print them keep working.
+ *   solo-fixed-search -> solo-fixed-search-block
+ *   solo-fixed-search__close -> solo-fixed-search-block__close
+ *   solo-fixed-search__inner -> solo-fixed-search-block__inner
+ *   solo-fixed-search__wrapper -> solo-fixed-search-block__wrapper
+ *   solo-footer-nav -> solo-footer-menu__nav
+ *   solo-popup-login__inner -> solo-popup-login-block__inner
+ */
+
+@layer solo.schemes {
+
 /* Page wrapper
 Black Rock #010127, Neutral Black #0B0B0B, Black Denim #191C27 */
 :root {
@@ -31,64 +44,70 @@ Black Rock #010127, Neutral Black #0B0B0B, Black Denim #191C27 */
 }
 
 .solo-page {
-  --r-br: #030369;
-  --r-bg: #000;
-  --r-tx: #e4e4fe;
-  --r-header-bg: linear-gradient(0deg, #000006, #010116);
-  --r-header-tx: #a1a1fd;
-  --r-menu-tx-h: #fff;
-  --r-menu-bg-h: #010138;
+  --r-border: #030369;
+  --r-background: #000;
+  --r-text: #e4e4fe;
+  --solo-accent-background-image: linear-gradient(0deg, #000006, #010116);
+  --solo-accent-background: linear-gradient(0deg, #000006, #010116);
+  --solo-accent-text: #a1a1fd;
+  --r-menu-text-hover: #fff;
+  --r-menu-background-hover: #010138;
 }
 
-:where(.solo-page) .solo-region-box__inner:where(:not([style*="--r-br:"] *)) {
-  --r-br: #030369;
+:where(.solo-page) .solo-region-box__inner:where(:not([style*="--r-border:"] *)) {
+  --r-border: #030369;
 }
 
 .solo-page ul.tabs.secondary li a:hover,
 .solo-page ul.tabs.primary li a:hover {
-  --r-bg: #010138;
+  --r-background: #010138;
 }
 
 .solo-welcome-text,
 :where(.solo-container--main) .solo-region-box--main {
-  --r-bg: var(--solo-black);
+  --r-background: var(--solo-black);
 }
 
 header.solo-header,
 div.solo-page-title.solo-container--single {
-  --r-bg: linear-gradient(0deg, #000006, #010116);
+  --r-background-image: linear-gradient(0deg, #000006, #010116);
+  --r-background: #000006;
 }
 
 .solo-container--top .solo-region-box__inner--top,
 .solo-container--bottom .solo-region-box__inner--bottom,
 .solo-container--footer .solo-region-box__inner--footer {
-  --r-bg: linear-gradient(0deg, #000, #000006);
+  --r-background-image: linear-gradient(0deg, #000, #000006);
+  --r-background: #000;
 }
 
-:is(.solo-container--top .solo-region-box__inner--top, .solo-container--bottom .solo-region-box__inner--bottom, .solo-container--footer .solo-region-box__inner--footer):where(:not([style*="--r-br:"] *)) {
-  --r-br: #0202a4;
+:is(.solo-container--top .solo-region-box__inner--top, .solo-container--bottom .solo-region-box__inner--bottom, .solo-container--footer .solo-region-box__inner--footer):where(:not([style*="--r-border:"] *)) {
+  --r-border: #0202a4;
 }
 
-:where(.solo-page) .selectify:where(:not([style*="--r-br:"] *)),
-:where(.solo-page) .solo-select:where(:not([style*="--r-br:"] *)),
-:where(.solo-page) .solo-radio:where(:not([style*="--r-br:"] *)),
-:where(.solo-page) .solo-check:where(:not([style*="--r-br:"] *)),
-:where(.solo-page) .solo-input:where(:not([style*="--r-br:"] *)),
-:where(.solo-page) .solo-textarea:where(:not([style*="--r-br:"] *)),
-:where(.solo-page .solo-fixed-search__close) button:where(:not([style*="--r-br:"] *)) {
-  --r-br: #5454ab;
+:where(.solo-page) .selectify:where(:not([style*="--r-border:"] *)),
+:where(.solo-page) .solo-select:where(:not([style*="--r-border:"] *)),
+:where(.solo-page) .solo-radio:where(:not([style*="--r-border:"] *)),
+:where(.solo-page) .solo-check:where(:not([style*="--r-border:"] *)),
+:where(.solo-page) .solo-input:where(:not([style*="--r-border:"] *)),
+:where(.solo-page) .solo-textarea:where(:not([style*="--r-border:"] *)),
+:where(.solo-page .solo-fixed-search-block__close) button:where(:not([style*="--r-border:"] *)),
+:where(.solo-page .solo-fixed-search__close) button:where(:not([style*="--r-border:"] *)) {
+  --r-border: #5454ab;
 }
 
 :where(.solo-page) :is(.selectify *:hover, .solo-select:hover, .solo-check:hover, .solo-radio:hover, .solo-input:hover, .solo-textarea:hover, .selectify *:focus, .solo-select:focus, .solo-check:focus, .solo-radio:focus, .solo-input:focus, .solo-textarea:focus) {
-  --r-br: #3535fb;
+  --r-border: #3535fb;
 }
 
 .breadcrumb {
-  --r-bg: linear-gradient(180deg, #000006, #000);
+  --r-background-image: linear-gradient(180deg, #000006, #000);
+  --r-background: #000006;
 }
 
 .solo-primary-sidebar-menu,
 :where(.solo-inner) .solo-menu-tree--responsive,
+:where(.solo-fixed-search-block__inner) .solo-fixed-search-block__wrapper,
 :where(.solo-fixed-search__inner) .solo-fixed-search__wrapper,
 :where(.solo-page .solo-outer.solo-container--animate-hover) .solo-region-box__inner.solo-region-box__inner--top,
 :where(.solo-page .solo-outer.solo-container--animate-hover) .solo-region-box__inner.solo-region-box__inner--bottom,
@@ -115,8 +134,8 @@ div.solo-page-title.solo-container--single {
 :where(.solo-page .selectify-select) * {
   --selectify-select-bg: #000;
   --selectify-select-hover-bg: #03030f;
-  --selectify-select-color: var(--r-tx);
-  --selectify-select-border-color: var(--r-br);
+  --selectify-select-color: var(--r-text);
+  --selectify-select-border-color: var(--r-border);
   --selectify-select-focus-border-color: #3535fb;
   --selectify-select-disabled-bg: #0b0b0d;
   --selectify-select-arrow-color: #3535fb;
@@ -125,84 +144,89 @@ div.solo-page-title.solo-container--single {
   --selectify-option-active-bg: #070723;
 }
 
-/* Region text colors: one block per region with its heading (--r-sc-h1), link
-   (--r-sc-lk) and link hover (--r-sc-lk-h) colors, and button hover text where the
+/* Region text colors: one block per region with its heading (--r-heading), link
+   (--r-link) and link hover (--r-link-hover) colors, and button hover text where the
    scheme sets one. Backgrounds above are the scheme's own. Every color here reaches
    WCAG AA (4.5:1) on the grounds named in its comment. A site's region colors still win. */
 /* Header: on #000006, #010116. */
 .solo-header {
-  --r-sc-lk: #b5b5b5;
-  --r-sc-lk-h: #c3c3fd;
+  --r-link: #b5b5b5;
+  --r-link-hover: #c3c3fd;
 }
 
 /* Highlighted: on #000000. */
 .solo-highlighted {
-  --r-sc-lk: #b5b5b5;
-  --r-sc-lk-h: #c3c3fd;
+  --r-link: #b5b5b5;
+  --r-link-hover: #c3c3fd;
 }
 
 /* Fixed search: on #000006, #0b0b0b. */
+.solo-fixed-search-block,
 .solo-fixed-search {
-  --r-sc-lk: #b5b5b5;
-  --r-sc-lk-h: #c3c3fd;
+  --r-link: #b5b5b5;
+  --r-link-hover: #c3c3fd;
 }
 
 /* Popup login: on #000006, #0b0b0b. */
+.solo-popup-login-block__inner,
 .solo-popup-login__inner {
-  --r-sc-lk: #b5b5b5;
-  --r-sc-lk-h: #c3c3fd;
+  --r-link: #b5b5b5;
+  --r-link-hover: #c3c3fd;
 }
 
 /* Welcome text: on #000000. */
 .solo-welcome-text {
-  --r-sc-lk: #b5b5b5;
-  --r-sc-lk-h: #c3c3fd;
+  --r-link: #b5b5b5;
+  --r-link-hover: #c3c3fd;
 }
 
 /* Top: on #000000, #000006. */
 .solo-container--top {
-  --r-sc-lk: #b5b5b5;
-  --r-sc-lk-h: #c3c3fd;
+  --r-link: #b5b5b5;
+  --r-link-hover: #c3c3fd;
 }
 
 /* Main: on #000000. */
 .solo-container--main {
-  --r-sc-lk: #b5b5b5;
-  --r-sc-lk-h: #c3c3fd;
+  --r-link: #b5b5b5;
+  --r-link-hover: #c3c3fd;
 }
 
 /* Page title: on #000006, #010116. */
 .solo-page-title {
-  --r-sc-lk: #b5b5b5;
-  --r-sc-lk-h: #c3c3fd;
+  --r-link: #b5b5b5;
+  --r-link-hover: #c3c3fd;
 }
 
 /* Breadcrumb: on #000006, #000000. */
 .breadcrumb {
-  --r-sc-lk: #b5b5b5;
-  --r-sc-lk-h: #c3c3fd;
+  --r-link: #b5b5b5;
+  --r-link-hover: #c3c3fd;
 }
 
 /* Bottom: on #000000, #000006. */
 .solo-container--bottom {
-  --r-sc-lk: #b5b5b5;
-  --r-sc-lk-h: #c3c3fd;
+  --r-link: #b5b5b5;
+  --r-link-hover: #c3c3fd;
 }
 
 /* Footer: on #000000, #000006. */
 .solo-container--footer {
-  --r-sc-lk: #b5b5b5;
-  --r-sc-lk-h: #c3c3fd;
+  --r-link: #b5b5b5;
+  --r-link-hover: #c3c3fd;
 }
 
 /* Footer menu: on #000006, #0b0b0b. */
+.solo-footer-menu__nav,
 .solo-footer-nav {
-  --r-sc-lk: #b5b5b5;
-  --r-sc-lk-h: #c3c3fd;
+  --r-link: #b5b5b5;
+  --r-link-hover: #c3c3fd;
 }
 
 /* Copyright: on #000006, #000000. */
 .solo-copyright {
-  --r-sc-lk: #b5b5b5;
-  --r-sc-lk-h: #c3c3fd;
+  --r-link: #b5b5b5;
+  --r-link-hover: #c3c3fd;
 }
+
+} /* end @layer solo.schemes */

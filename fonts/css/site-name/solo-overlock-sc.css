@@ -1,6 +1,12 @@
-#solo-page-wrapper .overlock-sc,
-#solo-header.solo-overlock-sc .solo-branding__site-name-link,
-#solo-page-wrapper.solo-overlock-sc .solo-page-title__text,
-html.solo-preloader-enabled #solo-preloader.solo-overlock-sc .solo-preloader__text {
+@layer solo.base {
+  #solo-header.solo-overlock-sc .solo-branding__site-name-link,
+  #solo-page-wrapper.solo-overlock-sc .solo-page-title__text,
+  html.solo-preloader-enabled #solo-preloader.solo-overlock-sc .solo-preloader__text {
+    font-family: "Overlock SC", sans-serif;
+  }
+}
+
+/* Unlayered on purpose. Font classes beat unlayered element rules (PB w3-modern.css headings and buttons) as before; a layer would lose to them. */
+#solo-page-wrapper .overlock-sc {
   font-family: "Overlock SC", sans-serif;
 }

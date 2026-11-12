@@ -1,27 +1,29 @@
-ul.sitemap {
+@layer solo.theme {
+
+:where(.solo-page) ul.sitemap {
   margin: 0;
   padding-inline-start: 0;
 }
 
 :where(ul).sitemap,
-:where(ul.sitemap) ul {
+:where(.solo-page) :where(ul.sitemap) ul {
   list-style: none;
 }
 
 /* --- Visual indicator for menu items --- */
-:where(ul.sitemap) .menu-item::before {
+:where(.solo-page) :where(ul.sitemap) .menu-item::before {
   margin-inline-end: 0.25em;
   content: "› ";
 }
 
 /* --- Non-clickable text-only menu items --- */
-:where(ul.sitemap) .menu-label {
+:where(.solo-page) :where(ul.sitemap) .menu-label {
   display: inline-block;
   cursor: default;
 }
 
 /* --- Dropdown indicator for parents with children --- */
-:where(ul.sitemap .menu-item.has-children) > .menu-label::after {
+:where(.solo-page) :where(ul.sitemap .menu-item.has-children) > .menu-label::after {
   margin-inline-start: 0.25em;
   content: " ▼";
   font-size: 0.75em;
@@ -57,3 +59,5 @@ ul.sitemap {
 :where(ul.sitemap .solo-menu-tree--level-5 > .menu-item) > .menu-label {
   font-weight: 400;
 }
+
+} /* end @layer solo.theme */

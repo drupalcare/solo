@@ -33,16 +33,16 @@
 #}
 {%
   set classes_wrapper = [
-    'solo-table-wrapper',
+    'solo-table__wrapper',
     not responsive and not sticky ? ' solo-responsive',
-    responsive ? ' solo-menu-wrapper--responsive',
-    sticky ? ' solo-menu-wrapper--sticky',
+    responsive ? ' solo-table__menu-wrapper--responsive',
+    sticky ? ' solo-table__menu-wrapper--sticky',
   ]
 %}
 
 {%
   set classes = [
-    'solo-table-all',
+    'solo-table--all',
     'views-table',
     'views-view-table',
     'cols-' ~ header|length,

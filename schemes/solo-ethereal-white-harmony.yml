@@ -14,10 +14,10 @@ categories:
   - elegant_whites_and_neutrals
 css: css/predefined/solo-ethereal-white-harmony.css
 dependencies:
-  - solo/solo-scheme-shared
-  - solo/solo-scheme-region-rule
-  - solo/solo-scheme-region-paint-1
-  - solo/solo-scheme-region-paint-2
+  - solo/theme-scheme-shared
+  - solo/theme-scheme-region-rule
+  - solo/theme-scheme-region-paint-1
+  - solo/theme-scheme-region-paint-2
 thumbnail: images/schemes/solo-ethereal-white-harmony.webp
 palette:
   --sc-head-tx: "#1f3550"
@@ -48,10 +48,10 @@ palette:
   --sc-social-box-shadow: "168, 152, 92"
   --sc-region-rule-br: "var(--solo-white)"
 page:
-  --r-br: "#e5e6e6"
-  --r-bg: "#fbfbfc"
-  --r-tx: "#1a2d44"
-  --r-header-bg: "linear-gradient(to start top, #ffffff, #f8f4ff)"
-  --r-header-tx: "#1f3550"
-  --r-menu-tx-h: "#0c0d0f"
-  --r-menu-bg-h: "#c4c8cd"
+  --r-border: "#e5e6e6"
+  --r-background: "#fbfbfc"
+  --r-text: "#1a2d44"
+  --solo-accent-background: "linear-gradient(to start top, #ffffff, #f8f4ff)"
+  --solo-accent-text: "#1f3550"
+  --r-menu-text-hover: "#0c0d0f"
+  --r-menu-background-hover: "#c4c8cd"

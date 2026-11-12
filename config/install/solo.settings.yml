@@ -21,6 +21,7 @@ layout:
     page: sb-992
     menu: mn-992
   regions_gap: '16'
+  flip_breadcrumb_page_title: false
 regions:
   highlighted:
     aria_landmark: false

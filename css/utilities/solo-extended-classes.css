@@ -1,0 +1,1381 @@
+/**
+ * @file
+ * Solo extended classes: hover rounds, text, link, background and border colors.
+ *
+ * Tokens: the text color on each background class (--solo-<name>-on) in solo.tokens; the
+ * backgrounds, text and border colors are the palette in solo-variables.css (--solo-<name>).
+ * Classes: solo.utilities. A class on the element sets --r-background, --r-text or --r-border and
+ * paints from it; hover and descendant rules (.w3-hover-*, .w3-link-*, .w3-button-* ... a, button)
+ * paint straight from tokens, because a descendant must not set a region variable. No !important.
+ * Layer order: solo-layers.css. Check: scripts/css-layers-check.py.
+ */
+
+@layer solo.tokens {
+
+:root {
+  --solo-amber-on: var(--solo-black);
+  --solo-aqua-on: var(--solo-black);
+  --solo-blue-on: var(--solo-white);
+  --solo-light-blue-on: var(--solo-black);
+  --solo-brown-on: var(--solo-white);
+  --solo-cyan-on: var(--solo-black);
+  --solo-blue-grey-on: var(--solo-white);
+  --solo-green-on: var(--solo-white);
+  --solo-light-green-on: var(--solo-black);
+  --solo-indigo-on: var(--solo-white);
+  --solo-khaki-on: var(--solo-black);
+  --solo-lime-on: var(--solo-black);
+  --solo-orange-on: var(--solo-black);
+  --solo-deep-orange-on: var(--solo-white);
+  --solo-pink-on: var(--solo-white);
+  --solo-purple-on: var(--solo-white);
+  --solo-deep-purple-on: var(--solo-white);
+  --solo-red-on: var(--solo-white);
+  --solo-sand-on: var(--solo-black);
+  --solo-teal-on: var(--solo-white);
+  --solo-yellow-on: var(--solo-black);
+  --solo-white-on: var(--solo-black);
+  --solo-black-on: var(--solo-white);
+  --solo-grey-on: var(--solo-black);
+  --solo-light-grey-on: var(--solo-black);
+  --solo-dark-grey-on: var(--solo-white);
+  --solo-pale-red-on: var(--solo-black);
+  --solo-pale-green-on: var(--solo-black);
+  --solo-pale-yellow-on: var(--solo-black);
+  --solo-pale-blue-on: var(--solo-black);
+}
+
+} /* end @layer solo.tokens */
+
+@layer solo.utilities {
+
+/* Round Hover Classes */
+:where(.solo-page) .w3-circle:hover {
+  border-radius: 50%;
+}
+
+:where(.solo-page) .w3-round-small:hover {
+  border-radius: 2px;
+}
+
+:where(.solo-page) .w3-round:hover,
+:where(.solo-page) .w3-round-medium:hover {
+  border-radius: 4px;
+}
+
+:where(.solo-page) .w3-round-large:hover {
+  border-radius: 8px;
+}
+
+:where(.solo-page) .w3-round-xlarge:hover {
+  border-radius: 16px;
+}
+
+:where(.solo-page) .w3-round-xxlarge:hover {
+  border-radius: 32px;
+}
+
+/* Default */
+:where(.solo-page) .w3-hover-over:hover,
+:where(.solo-page) .w3-button:hover {
+  color: var(--solo-black);
+  background-color: var(--solo-ccc);
+}
+
+:where(.solo-page) .w3-transparent {
+  --r-background: var(--solo-transparent);
+  background-color: var(--r-background);
+}
+
+:where(.solo-page) .w3-hover-none:hover {
+  background-color: var(--solo-transparent);
+}
+
+:where(.solo-page) .w3-hover-none:hover {
+  box-shadow: none;
+}
+
+/* Text Colors */
+:where(.solo-page) .w3-text-amber {
+  --r-text: var(--solo-amber);
+  color: var(--r-text);
+}
+
+:where(.solo-page) .w3-hover-text-amber:hover {
+  color: var(--solo-amber);
+}
+
+:where(.solo-page) .w3-text-aqua {
+  --r-text: var(--solo-aqua);
+  color: var(--r-text);
+}
+
+:where(.solo-page) .w3-hover-text-aqua:hover {
+  color: var(--solo-aqua);
+}
+
+:where(.solo-page) .w3-text-blue {
+  --r-text: var(--solo-blue);
+  color: var(--r-text);
+}
+
+:where(.solo-page) .w3-hover-text-blue:hover {
+  color: var(--solo-blue);
+}
+
+:where(.solo-page) .w3-text-light-blue {
+  --r-text: var(--solo-light-blue);
+  color: var(--r-text);
+}
+
+:where(.solo-page) .w3-hover-text-light-blue:hover {
+  color: var(--solo-light-blue);
+}
+
+:where(.solo-page) .w3-text-brown {
+  --r-text: var(--solo-brown);
+  color: var(--r-text);
+}
+
+:where(.solo-page) .w3-hover-text-brown:hover {
+  color: var(--solo-brown);
+}
+
+:where(.solo-page) .w3-text-cyan {
+  --r-text: var(--solo-cyan);
+  color: var(--r-text);
+}
+
+:where(.solo-page) .w3-hover-text-cyan:hover {
+  color: var(--solo-cyan);
+}
+
+:where(.solo-page) .w3-text-blue-grey,
+:where(.solo-page) .w3-text-blue-gray {
+  --r-text: var(--solo-blue-gray);
+  color: var(--r-text);
+}
+
+:where(.solo-page) .w3-hover-text-blue-grey:hover,
+:where(.solo-page) .w3-hover-text-blue-gray:hover {
+  color: var(--solo-blue-gray);
+}
+
+:where(.solo-page) .w3-text-green {
+  --r-text: var(--solo-green);
+  color: var(--r-text);
+}
+
+:where(.solo-page) .w3-hover-text-green:hover {
+  color: var(--solo-green);
+}
+
+:where(.solo-page) .w3-text-light-green {
+  --r-text: var(--solo-light-green);
+  color: var(--r-text);
+}
+
+:where(.solo-page) .w3-hover-text-light-green:hover {
+  color: var(--solo-light-green);
+}
+
+:where(.solo-page) .w3-text-indigo {
+  --r-text: var(--solo-indigo);
+  color: var(--r-text);
+}
+
+:where(.solo-page) .w3-hover-text-indigo:hover {
+  color: var(--solo-indigo);
+}
+
+:where(.solo-page) .w3-text-khaki {
+  --r-text: var(--solo-khaki);
+  color: var(--r-text);
+}
+
+:where(.solo-page) .w3-hover-text-khaki:hover {
+  color: var(--solo-khaki);
+}
+
+:where(.solo-page) .w3-text-lime {
+  --r-text: var(--solo-lime);
+  color: var(--r-text);
+}
+
+:where(.solo-page) .w3-hover-text-lime:hover {
+  color: var(--solo-lime);
+}
+
+:where(.solo-page) .w3-text-orange {
+  --r-text: var(--solo-orange);
+  color: var(--r-text);
+}
+
+:where(.solo-page) .w3-hover-text-orange:hover {
+  color: var(--solo-orange);
+}
+
+:where(.solo-page) .w3-text-deep-orange {
+  --r-text: var(--solo-deep-orange);
+  color: var(--r-text);
+}
+
+:where(.solo-page) .w3-hover-text-deep-orange:hover {
+  color: var(--solo-deep-orange);
+}
+
+:where(.solo-page) .w3-text-pink {
+  --r-text: var(--solo-pink);
+  color: var(--r-text);
+}
+
+:where(.solo-page) .w3-hover-text-pink:hover {
+  color: var(--solo-pink);
+}
+
+:where(.solo-page) .w3-text-purple {
+  --r-text: var(--solo-purple);
+  color: var(--r-text);
+}
+
+:where(.solo-page) .w3-hover-text-purple:hover {
+  color: var(--solo-purple);
+}
+
+:where(.solo-page) .w3-text-deep-purple {
+  --r-text: var(--solo-deep-purple);
+  color: var(--r-text);
+}
+
+:where(.solo-page) .w3-hover-text-deep-purple:hover {
+  color: var(--solo-deep-purple);
+}
+
+:where(.solo-page) .w3-text-red {
+  --r-text: var(--solo-red);
+  color: var(--r-text);
+}
+
+:where(.solo-page) .w3-hover-text-red:hover {
+  color: var(--solo-red);
+}
+
+:where(.solo-page) .w3-text-sand {
+  --r-text: var(--solo-sand);
+  color: var(--r-text);
+}
+
+:where(.solo-page) .w3-hover-text-sand:hover {
+  color: var(--solo-sand);
+}
+
+:where(.solo-page) .w3-text-teal {
+  --r-text: var(--solo-teal);
+  color: var(--r-text);
+}
+
+:where(.solo-page) .w3-hover-text-teal:hover {
+  color: var(--solo-teal);
+}
+
+:where(.solo-page) .w3-text-yellow {
+  --r-text: var(--solo-yellow);
+  color: var(--r-text);
+}
+
+:where(.solo-page) .w3-hover-text-yellow:hover {
+  color: var(--solo-yellow);
+}
+
+:where(.solo-page) .w3-text-white {
+  --r-text: var(--solo-white);
+  color: var(--r-text);
+}
+
+:where(.solo-page) .w3-hover-text-white:hover {
+  color: var(--solo-white);
+}
+
+:where(.solo-page) .w3-text-black {
+  --r-text: var(--solo-black);
+  color: var(--r-text);
+}
+
+:where(.solo-page) .w3-hover-text-black:hover {
+  color: var(--solo-black);
+}
+
+:where(.solo-page) .w3-text-grey,
+:where(.solo-page) .w3-text-gray {
+  --r-text: var(--solo-gray);
+  color: var(--r-text);
+}
+
+:where(.solo-page) .w3-hover-text-grey:hover,
+:where(.solo-page) .w3-hover-text-gray:hover {
+  color: var(--solo-gray);
+}
+
+:where(.solo-page) .w3-text-light-grey,
+:where(.solo-page) .w3-text-light-gray {
+  --r-text: var(--solo-light-gray);
+  color: var(--r-text);
+}
+
+:where(.solo-page) .w3-hover-text-light-grey:hover,
+:where(.solo-page) .w3-hover-text-light-gray:hover {
+  color: var(--solo-light-gray);
+}
+
+:where(.solo-page) .w3-text-dark-grey,
+:where(.solo-page) .w3-text-dark-gray {
+  --r-text: var(--solo-dark-gray);
+  color: var(--r-text);
+}
+
+:where(.solo-page) .w3-hover-text-dark-grey:hover,
+:where(.solo-page) .w3-hover-text-dark-gray:hover {
+  color: var(--solo-dark-gray);
+}
+
+:where(.solo-page) .w3-text-pale-red {
+  --r-text: var(--solo-pale-red);
+  color: var(--r-text);
+}
+
+:where(.solo-page) .w3-hover-text-pale-red:hover {
+  color: var(--solo-pale-red);
+}
+
+:where(.solo-page) .w3-text-pale-green {
+  --r-text: var(--solo-pale-green);
+  color: var(--r-text);
+}
+
+:where(.solo-page) .w3-hover-text-pale-green:hover {
+  color: var(--solo-pale-green);
+}
+
+:where(.solo-page) .w3-text-pale-yellow {
+  --r-text: var(--solo-pale-yellow);
+  color: var(--r-text);
+}
+
+:where(.solo-page) .w3-hover-text-pale-yellow:hover {
+  color: var(--solo-pale-yellow);
+}
+
+:where(.solo-page) .w3-text-pale-blue {
+  --r-text: var(--solo-pale-blue);
+  color: var(--r-text);
+}
+
+:where(.solo-page) .w3-hover-text-pale-blue:hover {
+  color: var(--solo-pale-blue);
+}
+
+/* Link Text Colors */
+#solo-page-wrapper .w3-link-amber a {
+  color: var(--solo-amber);
+}
+
+#solo-page-wrapper .w3-link-aqua a {
+  color: var(--solo-aqua);
+}
+
+#solo-page-wrapper .w3-link-blue a {
+  color: var(--solo-blue);
+}
+
+#solo-page-wrapper .w3-link-light-blue a {
+  color: var(--solo-light-blue);
+}
+
+#solo-page-wrapper .w3-link-brown a {
+  color: var(--solo-brown);
+}
+
+#solo-page-wrapper .w3-link-cyan a {
+  color: var(--solo-cyan);
+}
+
+#solo-page-wrapper .w3-link-blue-gray a,
+#solo-page-wrapper .w3-link-blue-grey a {
+  color: var(--solo-blue-gray);
+}
+
+#solo-page-wrapper .w3-link-green a {
+  color: var(--solo-green);
+}
+
+#solo-page-wrapper .w3-link-light-green a {
+  color: var(--solo-light-green);
+}
+
+#solo-page-wrapper .w3-link-indigo a {
+  color: var(--solo-indigo);
+}
+
+#solo-page-wrapper .w3-link-khaki a {
+  color: var(--solo-khaki);
+}
+
+#solo-page-wrapper .w3-link-lime a {
+  color: var(--solo-lime);
+}
+
+#solo-page-wrapper .w3-link-orange a {
+  color: var(--solo-orange);
+}
+
+#solo-page-wrapper .w3-link-deep-orange a {
+  color: var(--solo-deep-orange);
+}
+
+#solo-page-wrapper .w3-link-pink a {
+  color: var(--solo-pink);
+}
+
+#solo-page-wrapper .w3-link-purple a {
+  color: var(--solo-purple);
+}
+
+#solo-page-wrapper .w3-link-deep-purple a {
+  color: var(--solo-deep-purple);
+}
+
+#solo-page-wrapper .w3-link-red a {
+  color: var(--solo-red);
+}
+
+#solo-page-wrapper .w3-link-sand a {
+  color: var(--solo-sand);
+}
+
+#solo-page-wrapper .w3-link-teal a {
+  color: var(--solo-teal);
+}
+
+#solo-page-wrapper .w3-link-yellow a {
+  color: var(--solo-yellow);
+}
+
+#solo-page-wrapper .w3-link-white a {
+  color: var(--solo-white);
+}
+
+#solo-page-wrapper .w3-link-black a {
+  color: var(--solo-black);
+}
+
+#solo-page-wrapper .w3-link-gray a,
+#solo-page-wrapper .w3-link-grey a {
+  color: var(--solo-gray);
+}
+
+#solo-page-wrapper .w3-link-light-gray a,
+#solo-page-wrapper .w3-link-light-grey a {
+  color: var(--solo-light-gray);
+}
+
+#solo-page-wrapper .w3-link-dark-gray a,
+#solo-page-wrapper .w3-link-dark-grey a {
+  color: var(--solo-dark-gray);
+}
+
+#solo-page-wrapper .w3-link-pale-red a {
+  color: var(--solo-pale-red);
+}
+
+#solo-page-wrapper .w3-link-pale-green a {
+  color: var(--solo-pale-green);
+}
+
+#solo-page-wrapper .w3-link-pale-yellow a {
+  color: var(--solo-pale-yellow);
+}
+
+#solo-page-wrapper .w3-link-pale-blue a {
+  color: var(--solo-pale-blue);
+}
+
+/* Link Background Color Classes */
+#solo-page-wrapper .w3-link-bg-red a {
+  background-color: var(--solo-red);
+}
+
+#solo-page-wrapper .w3-link-bg-green a {
+  background-color: var(--solo-green);
+}
+
+#solo-page-wrapper .w3-link-bg-blue a {
+  background-color: var(--solo-blue);
+}
+
+#solo-page-wrapper .w3-link-bg-yellow a {
+  background-color: var(--solo-yellow);
+}
+
+#solo-page-wrapper .w3-link-bg-white a {
+  background-color: var(--solo-white);
+}
+
+#solo-page-wrapper .w3-link-bg-black a {
+  background-color: var(--solo-black);
+}
+
+#solo-page-wrapper .w3-link-bg-grey a,
+#solo-page-wrapper .w3-link-bg-gray a {
+  background-color: var(--solo-gray);
+}
+
+#solo-page-wrapper .w3-link-bg-amber a {
+  background-color: var(--solo-amber);
+}
+
+#solo-page-wrapper .w3-link-bg-aqua a {
+  background-color: var(--solo-aqua);
+}
+
+#solo-page-wrapper .w3-link-bg-light-blue a {
+  background-color: var(--solo-light-blue);
+}
+
+#solo-page-wrapper .w3-link-bg-brown a {
+  background-color: var(--solo-brown);
+}
+
+#solo-page-wrapper .w3-link-bg-cyan a {
+  background-color: var(--solo-cyan);
+}
+
+#solo-page-wrapper .w3-link-bg-blue-grey a,
+#solo-page-wrapper .w3-link-bg-blue-gray a {
+  background-color: var(--solo-blue-gray);
+}
+
+#solo-page-wrapper .w3-link-bg-light-green a {
+  background-color: var(--solo-light-green);
+}
+
+#solo-page-wrapper .w3-link-bg-indigo a {
+  background-color: var(--solo-indigo);
+}
+
+#solo-page-wrapper .w3-link-bg-khaki a {
+  background-color: var(--solo-khaki);
+}
+
+#solo-page-wrapper .w3-link-bg-lime a {
+  background-color: var(--solo-lime);
+}
+
+#solo-page-wrapper .w3-link-bg-orange a {
+  background-color: var(--solo-orange);
+}
+
+#solo-page-wrapper .w3-link-bg-deep-orange a {
+  background-color: var(--solo-deep-orange);
+}
+
+#solo-page-wrapper .w3-link-bg-pink a {
+  background-color: var(--solo-pink);
+}
+
+#solo-page-wrapper .w3-link-bg-purple a {
+  background-color: var(--solo-purple);
+}
+
+#solo-page-wrapper .w3-link-bg-deep-purple a {
+  background-color: var(--solo-deep-purple);
+}
+
+#solo-page-wrapper .w3-link-bg-sand a {
+  background-color: var(--solo-sand);
+}
+
+#solo-page-wrapper .w3-link-bg-teal a {
+  background-color: var(--solo-teal);
+}
+
+#solo-page-wrapper .w3-link-bg-light-gray a,
+#solo-page-wrapper .w3-link-bg-light-grey a {
+  background-color: var(--solo-light-gray);
+}
+
+#solo-page-wrapper .w3-link-bg-dark-gray a,
+#solo-page-wrapper .w3-link-bg-dark-grey a {
+  background-color: var(--solo-dark-gray);
+}
+
+#solo-page-wrapper .w3-link-bg-pale-red a {
+  background-color: var(--solo-pale-red);
+}
+
+#solo-page-wrapper .w3-link-bg-pale-green a {
+  background-color: var(--solo-pale-green);
+}
+
+#solo-page-wrapper .w3-link-bg-pale-yellow a {
+  background-color: var(--solo-pale-yellow);
+}
+
+#solo-page-wrapper .w3-link-bg-pale-blue a {
+  background-color: var(--solo-pale-blue);
+}
+
+/* Background Colors */
+:where(.solo-page) .w3-amber {
+  --r-text: var(--solo-amber-on);
+  --r-background: var(--solo-amber);
+  color: var(--r-text);
+  background-color: var(--r-background);
+}
+
+:where(.solo-page) .w3-hover-amber:hover,
+#solo-page-wrapper .w3-button-amber button,
+#solo-page-wrapper .w3-link-hover-amber a:hover,
+#solo-page-wrapper .w3-button-hover-amber button:hover {
+  color: var(--solo-amber-on);
+  background-color: var(--solo-amber);
+}
+
+:where(.solo-page) .w3-aqua {
+  --r-text: var(--solo-aqua-on);
+  --r-background: var(--solo-aqua);
+  color: var(--r-text);
+  background-color: var(--r-background);
+}
+
+:where(.solo-page) .w3-hover-aqua:hover,
+#solo-page-wrapper .w3-button-aqua button,
+#solo-page-wrapper .w3-link-hover-aqua a:hover,
+#solo-page-wrapper .w3-button-hover-aqua button:hover {
+  color: var(--solo-aqua-on);
+  background-color: var(--solo-aqua);
+}
+
+:where(.solo-page) .w3-blue {
+  --r-text: var(--solo-blue-on);
+  --r-background: var(--solo-blue);
+  color: var(--r-text);
+  background-color: var(--r-background);
+}
+
+:where(.solo-page) .w3-hover-blue:hover,
+#solo-page-wrapper .w3-button-blue button,
+#solo-page-wrapper .w3-link-hover-blue a:hover,
+#solo-page-wrapper .w3-button-hover-blue button:hover {
+  color: var(--solo-blue-on);
+  background-color: var(--solo-blue);
+}
+
+:where(.solo-page) .w3-light-blue {
+  --r-text: var(--solo-light-blue-on);
+  --r-background: var(--solo-light-blue);
+  color: var(--r-text);
+  background-color: var(--r-background);
+}
+
+:where(.solo-page) .w3-hover-light-blue:hover,
+#solo-page-wrapper .w3-button-light-blue button,
+#solo-page-wrapper .w3-link-hover-light-blue a:hover,
+#solo-page-wrapper .w3-button-hover-light-blue button:hover {
+  color: var(--solo-light-blue-on);
+  background-color: var(--solo-light-blue);
+}
+
+:where(.solo-page) .w3-brown {
+  --r-text: var(--solo-brown-on);
+  --r-background: var(--solo-brown);
+  color: var(--r-text);
+  background-color: var(--r-background);
+}
+
+:where(.solo-page) .w3-hover-brown:hover,
+#solo-page-wrapper .w3-button-brown button,
+#solo-page-wrapper .w3-link-hover-brown a:hover,
+#solo-page-wrapper .w3-button-hover-brown button:hover {
+  color: var(--solo-brown-on);
+  background-color: var(--solo-brown);
+}
+
+:where(.solo-page) .w3-cyan {
+  --r-text: var(--solo-cyan-on);
+  --r-background: var(--solo-cyan);
+  color: var(--r-text);
+  background-color: var(--r-background);
+}
+
+:where(.solo-page) .w3-hover-cyan:hover,
+#solo-page-wrapper .w3-button-cyan button,
+#solo-page-wrapper .w3-link-hover-cyan a:hover,
+#solo-page-wrapper .w3-button-hover-cyan button:hover {
+  color: var(--solo-cyan-on);
+  background-color: var(--solo-cyan);
+}
+
+:where(.solo-page) .w3-blue-grey,
+:where(.solo-page) .w3-blue-gray {
+  --r-text: var(--solo-blue-grey-on);
+  --r-background: var(--solo-blue-gray);
+  color: var(--r-text);
+  background-color: var(--r-background);
+}
+
+:where(.solo-page) .w3-hover-blue-grey:hover,
+:where(.solo-page) .w3-hover-blue-gray:hover,
+#solo-page-wrapper .w3-button-blue-gray button,
+#solo-page-wrapper .w3-button-blue-grey button,
+#solo-page-wrapper .w3-link-hover-blue-gray a:hover,
+#solo-page-wrapper .w3-link-hover-blue-grey a:hover,
+#solo-page-wrapper .w3-button-hover-blue-gray button:hover,
+#solo-page-wrapper .w3-button-hover-blue-grey button:hover {
+  color: var(--solo-blue-grey-on);
+  background-color: var(--solo-blue-gray);
+}
+
+:where(.solo-page) .w3-green {
+  --r-text: var(--solo-green-on);
+  --r-background: var(--solo-green);
+  color: var(--r-text);
+  background-color: var(--r-background);
+}
+
+:where(.solo-page) .w3-hover-green:hover,
+#solo-page-wrapper .w3-button-green button,
+#solo-page-wrapper .w3-link-hover-green a:hover,
+#solo-page-wrapper .w3-button-hover-green button:hover {
+  color: var(--solo-green-on);
+  background-color: var(--solo-green);
+}
+
+:where(.solo-page) .w3-light-green {
+  --r-text: var(--solo-light-green-on);
+  --r-background: var(--solo-light-green);
+  color: var(--r-text);
+  background-color: var(--r-background);
+}
+
+:where(.solo-page) .w3-hover-light-green:hover,
+#solo-page-wrapper .w3-button-light-green button,
+#solo-page-wrapper .w3-link-hover-light-green a:hover,
+#solo-page-wrapper .w3-button-hover-light-green button:hover {
+  color: var(--solo-light-green-on);
+  background-color: var(--solo-light-green);
+}
+
+:where(.solo-page) .w3-indigo {
+  --r-text: var(--solo-indigo-on);
+  --r-background: var(--solo-indigo);
+  color: var(--r-text);
+  background-color: var(--r-background);
+}
+
+:where(.solo-page) .w3-hover-indigo:hover,
+#solo-page-wrapper .w3-button-indigo button,
+#solo-page-wrapper .w3-link-hover-indigo a:hover,
+#solo-page-wrapper .w3-button-hover-indigo button:hover {
+  color: var(--solo-indigo-on);
+  background-color: var(--solo-indigo);
+}
+
+:where(.solo-page) .w3-khaki {
+  --r-text: var(--solo-khaki-on);
+  --r-background: var(--solo-khaki);
+  color: var(--r-text);
+  background-color: var(--r-background);
+}
+
+:where(.solo-page) .w3-hover-khaki:hover,
+#solo-page-wrapper .w3-button-khaki button,
+#solo-page-wrapper .w3-link-hover-khaki a:hover,
+#solo-page-wrapper .w3-button-hover-khaki button:hover {
+  color: var(--solo-khaki-on);
+  background-color: var(--solo-khaki);
+}
+
+:where(.solo-page) .w3-lime {
+  --r-text: var(--solo-lime-on);
+  --r-background: var(--solo-lime);
+  color: var(--r-text);
+  background-color: var(--r-background);
+}
+
+:where(.solo-page) .w3-hover-lime:hover,
+#solo-page-wrapper .w3-button-lime button,
+#solo-page-wrapper .w3-link-hover-lime a:hover,
+#solo-page-wrapper .w3-button-hover-lime button:hover {
+  color: var(--solo-lime-on);
+  background-color: var(--solo-lime);
+}
+
+:where(.solo-page) .w3-orange {
+  --r-text: var(--solo-orange-on);
+  --r-background: var(--solo-orange);
+  color: var(--r-text);
+  background-color: var(--r-background);
+}
+
+:where(.solo-page) .w3-hover-orange:hover,
+#solo-page-wrapper .w3-button-orange button,
+#solo-page-wrapper .w3-link-hover-orange a:hover,
+#solo-page-wrapper .w3-button-hover-orange button:hover {
+  color: var(--solo-orange-on);
+  background-color: var(--solo-orange);
+}
+
+:where(.solo-page) .w3-deep-orange {
+  --r-text: var(--solo-deep-orange-on);
+  --r-background: var(--solo-deep-orange);
+  color: var(--r-text);
+  background-color: var(--r-background);
+}
+
+:where(.solo-page) .w3-hover-deep-orange:hover,
+#solo-page-wrapper .w3-button-deep-orange button,
+#solo-page-wrapper .w3-link-hover-deep-orange a:hover,
+#solo-page-wrapper .w3-button-hover-deep-orange button:hover {
+  color: var(--solo-deep-orange-on);
+  background-color: var(--solo-deep-orange);
+}
+
+:where(.solo-page) .w3-pink {
+  --r-text: var(--solo-pink-on);
+  --r-background: var(--solo-pink);
+  color: var(--r-text);
+  background-color: var(--r-background);
+}
+
+:where(.solo-page) .w3-hover-pink:hover,
+#solo-page-wrapper .w3-button-pink button,
+#solo-page-wrapper .w3-link-hover-pink a:hover,
+#solo-page-wrapper .w3-button-hover-pink button:hover {
+  color: var(--solo-pink-on);
+  background-color: var(--solo-pink);
+}
+
+:where(.solo-page) .w3-purple {
+  --r-text: var(--solo-purple-on);
+  --r-background: var(--solo-purple);
+  color: var(--r-text);
+  background-color: var(--r-background);
+}
+
+:where(.solo-page) .w3-hover-purple:hover,
+#solo-page-wrapper .w3-button-purple button,
+#solo-page-wrapper .w3-link-hover-purple a:hover,
+#solo-page-wrapper .w3-button-hover-purple button:hover {
+  color: var(--solo-purple-on);
+  background-color: var(--solo-purple);
+}
+
+:where(.solo-page) .w3-deep-purple {
+  --r-text: var(--solo-deep-purple-on);
+  --r-background: var(--solo-deep-purple);
+  color: var(--r-text);
+  background-color: var(--r-background);
+}
+
+:where(.solo-page) .w3-hover-deep-purple:hover,
+#solo-page-wrapper .w3-button-deep-purple button,
+#solo-page-wrapper .w3-link-hover-deep-purple a:hover,
+#solo-page-wrapper .w3-button-hover-deep-purple button:hover {
+  color: var(--solo-deep-purple-on);
+  background-color: var(--solo-deep-purple);
+}
+
+:where(.solo-page) .w3-red {
+  --r-text: var(--solo-red-on);
+  --r-background: var(--solo-red);
+  color: var(--r-text);
+  background-color: var(--r-background);
+}
+
+:where(.solo-page) .w3-hover-red:hover,
+#solo-page-wrapper .w3-button-red button,
+#solo-page-wrapper .w3-link-hover-red a:hover,
+#solo-page-wrapper .w3-button-hover-red button:hover {
+  color: var(--solo-red-on);
+  background-color: var(--solo-red);
+}
+
+:where(.solo-page) .w3-sand {
+  --r-text: var(--solo-sand-on);
+  --r-background: var(--solo-sand);
+  color: var(--r-text);
+  background-color: var(--r-background);
+}
+
+:where(.solo-page) .w3-hover-sand:hover,
+#solo-page-wrapper .w3-button-sand button,
+#solo-page-wrapper .w3-link-hover-sand a:hover,
+#solo-page-wrapper .w3-button-hover-sand button:hover {
+  color: var(--solo-sand-on);
+  background-color: var(--solo-sand);
+}
+
+:where(.solo-page) .w3-teal {
+  --r-text: var(--solo-teal-on);
+  --r-background: var(--solo-teal);
+  color: var(--r-text);
+  background-color: var(--r-background);
+}
+
+:where(.solo-page) .w3-hover-teal:hover,
+#solo-page-wrapper .w3-button-teal button,
+#solo-page-wrapper .w3-link-hover-teal a:hover,
+#solo-page-wrapper .w3-button-hover-teal button:hover {
+  color: var(--solo-teal-on);
+  background-color: var(--solo-teal);
+}
+
+:where(.solo-page) .w3-yellow {
+  --r-text: var(--solo-yellow-on);
+  --r-background: var(--solo-yellow);
+  color: var(--r-text);
+  background-color: var(--r-background);
+}
+
+:where(.solo-page) .w3-hover-yellow:hover,
+#solo-page-wrapper .w3-button-yellow button,
+#solo-page-wrapper .w3-link-hover-yellow a:hover,
+#solo-page-wrapper .w3-button-hover-yellow button:hover {
+  color: var(--solo-yellow-on);
+  background-color: var(--solo-yellow);
+}
+
+:where(.solo-page) .w3-white {
+  --r-text: var(--solo-white-on);
+  --r-background: var(--solo-white);
+  color: var(--r-text);
+  background-color: var(--r-background);
+}
+
+:where(.solo-page) .w3-hover-white:hover,
+#solo-page-wrapper .w3-button-white button,
+#solo-page-wrapper .w3-link-hover-white a:hover,
+#solo-page-wrapper .w3-button-hover-white button:hover {
+  color: var(--solo-white-on);
+  background-color: var(--solo-white);
+}
+
+:where(.solo-page) .w3-black {
+  --r-text: var(--solo-black-on);
+  --r-background: var(--solo-black);
+  color: var(--r-text);
+  background-color: var(--r-background);
+}
+
+:where(.solo-page) .w3-hover-black:hover,
+#solo-page-wrapper .w3-button-black button,
+#solo-page-wrapper .w3-link-hover-black a:hover,
+#solo-page-wrapper .w3-button-hover-black button:hover {
+  color: var(--solo-black-on);
+  background-color: var(--solo-black);
+}
+
+:where(.solo-page) .w3-grey,
+:where(.solo-page) .w3-gray {
+  --r-text: var(--solo-grey-on);
+  --r-background: var(--solo-gray);
+  color: var(--r-text);
+  background-color: var(--r-background);
+}
+
+:where(.solo-page) .w3-hover-grey:hover,
+:where(.solo-page) .w3-hover-gray:hover,
+#solo-page-wrapper .w3-button-gray button,
+#solo-page-wrapper .w3-button-grey button,
+#solo-page-wrapper .w3-link-hover-gray a:hover,
+#solo-page-wrapper .w3-link-hover-grey a:hover,
+#solo-page-wrapper .w3-button-hover-gray button:hover,
+#solo-page-wrapper .w3-button-hover-grey button:hover {
+  color: var(--solo-grey-on);
+  background-color: var(--solo-gray);
+}
+
+:where(.solo-page) .w3-light-grey,
+:where(.solo-page) .w3-light-gray {
+  --r-text: var(--solo-light-grey-on);
+  --r-background: var(--solo-light-gray);
+  color: var(--r-text);
+  background-color: var(--r-background);
+}
+
+:where(.solo-page) .w3-hover-light-grey:hover,
+:where(.solo-page) .w3-hover-light-gray:hover,
+#solo-page-wrapper .w3-button-light-gray button,
+#solo-page-wrapper .w3-button-light-grey button,
+#solo-page-wrapper .w3-link-hover-light-gray a:hover,
+#solo-page-wrapper .w3-link-hover-light-grey a:hover,
+#solo-page-wrapper .w3-button-hover-light-gray button:hover,
+#solo-page-wrapper .w3-button-hover-light-grey button:hover {
+  color: var(--solo-light-grey-on);
+  background-color: var(--solo-light-gray);
+}
+
+:where(.solo-page) .w3-dark-grey,
+:where(.solo-page) .w3-dark-gray {
+  --r-text: var(--solo-dark-grey-on);
+  --r-background: var(--solo-dark-gray);
+  color: var(--r-text);
+  background-color: var(--r-background);
+}
+
+:where(.solo-page) .w3-hover-dark-grey:hover,
+:where(.solo-page) .w3-hover-dark-gray:hover,
+#solo-page-wrapper .w3-button-dark-gray button,
+#solo-page-wrapper .w3-button-dark-grey button,
+#solo-page-wrapper .w3-link-hover-dark-gray a:hover,
+#solo-page-wrapper .w3-link-hover-dark-grey a:hover,
+#solo-page-wrapper .w3-button-hover-dark-gray button:hover,
+#solo-page-wrapper .w3-button-hover-dark-grey button:hover {
+  color: var(--solo-dark-grey-on);
+  background-color: var(--solo-dark-gray);
+}
+
+:where(.solo-page) .w3-pale-red,
+:where(.solo-page) .w3-button-pale-red {
+  --r-text: var(--solo-pale-red-on);
+  --r-background: var(--solo-pale-red);
+  color: var(--r-text);
+  background-color: var(--r-background);
+}
+
+:where(.solo-page) .w3-hover-pale-red:hover,
+#solo-page-wrapper .w3-button-pale-red button,
+#solo-page-wrapper .w3-link-hover-pale-red a:hover,
+#solo-page-wrapper .w3-button-hover-pale-red button:hover {
+  color: var(--solo-pale-red-on);
+  background-color: var(--solo-pale-red);
+}
+
+:where(.solo-page) .w3-pale-green,
+:where(.solo-page) .w3-button-pale-green {
+  --r-text: var(--solo-pale-green-on);
+  --r-background: var(--solo-pale-green);
+  color: var(--r-text);
+  background-color: var(--r-background);
+}
+
+:where(.solo-page) .w3-hover-pale-green:hover,
+#solo-page-wrapper .w3-button-pale-green button,
+#solo-page-wrapper .w3-link-hover-pale-green a:hover,
+#solo-page-wrapper .w3-button-hover-pale-green button:hover {
+  color: var(--solo-pale-green-on);
+  background-color: var(--solo-pale-green);
+}
+
+:where(.solo-page) .w3-pale-yellow,
+:where(.solo-page) .w3-button-pale-yellow {
+  --r-text: var(--solo-pale-yellow-on);
+  --r-background: var(--solo-pale-yellow);
+  color: var(--r-text);
+  background-color: var(--r-background);
+}
+
+:where(.solo-page) .w3-hover-pale-yellow:hover,
+#solo-page-wrapper .w3-button-pale-yellow button,
+#solo-page-wrapper .w3-link-hover-pale-yellow a:hover,
+#solo-page-wrapper .w3-button-hover-pale-yellow button:hover {
+  color: var(--solo-pale-yellow-on);
+  background-color: var(--solo-pale-yellow);
+}
+
+:where(.solo-page) .w3-pale-blue,
+:where(.solo-page) .w3-button-pale-blue {
+  --r-text: var(--solo-pale-blue-on);
+  --r-background: var(--solo-pale-blue);
+  color: var(--r-text);
+  background-color: var(--r-background);
+}
+
+:where(.solo-page) .w3-hover-pale-blue:hover,
+#solo-page-wrapper .w3-button-pale-blue button,
+#solo-page-wrapper .w3-link-hover-pale-blue a:hover,
+#solo-page-wrapper .w3-button-hover-pale-blue button:hover {
+  color: var(--solo-pale-blue-on);
+  background-color: var(--solo-pale-blue);
+}
+
+/* Border Colors */
+:where(.solo-page) .w3-border-amber {
+  --r-border: var(--solo-amber);
+  border-color: var(--r-border);
+}
+
+:where(.solo-page) .w3-hover-border-amber:hover {
+  border-color: var(--solo-amber);
+}
+
+:where(.solo-page) .w3-border-aqua {
+  --r-border: var(--solo-aqua);
+  border-color: var(--r-border);
+}
+
+:where(.solo-page) .w3-hover-border-aqua:hover {
+  border-color: var(--solo-aqua);
+}
+
+:where(.solo-page) .w3-border-blue {
+  --r-border: var(--solo-blue);
+  border-color: var(--r-border);
+}
+
+:where(.solo-page) .w3-hover-border-blue:hover {
+  border-color: var(--solo-blue);
+}
+
+:where(.solo-page) .w3-border-light-blue {
+  --r-border: var(--solo-light-blue);
+  border-color: var(--r-border);
+}
+
+:where(.solo-page) .w3-hover-border-light-blue:hover {
+  border-color: var(--solo-light-blue);
+}
+
+:where(.solo-page) .w3-border-brown {
+  --r-border: var(--solo-brown);
+  border-color: var(--r-border);
+}
+
+:where(.solo-page) .w3-hover-border-brown:hover {
+  border-color: var(--solo-brown);
+}
+
+:where(.solo-page) .w3-border-cyan {
+  --r-border: var(--solo-cyan);
+  border-color: var(--r-border);
+}
+
+:where(.solo-page) .w3-hover-border-cyan:hover {
+  border-color: var(--solo-cyan);
+}
+
+:where(.solo-page) .w3-border-blue-grey,
+:where(.solo-page) .w3-border-blue-gray {
+  --r-border: var(--solo-blue-gray);
+  border-color: var(--r-border);
+}
+
+:where(.solo-page) .w3-hover-border-blue-grey:hover,
+:where(.solo-page) .w3-hover-border-blue-gray:hover {
+  border-color: var(--solo-blue-gray);
+}
+
+:where(.solo-page) .w3-border-green {
+  --r-border: var(--solo-green);
+  border-color: var(--r-border);
+}
+
+:where(.solo-page) .w3-hover-border-green:hover {
+  border-color: var(--solo-green);
+}
+
+:where(.solo-page) .w3-border-light-green {
+  --r-border: var(--solo-light-green);
+  border-color: var(--r-border);
+}
+
+:where(.solo-page) .w3-hover-border-light-green:hover {
+  border-color: var(--solo-light-green);
+}
+
+:where(.solo-page) .w3-border-indigo {
+  --r-border: var(--solo-indigo);
+  border-color: var(--r-border);
+}
+
+:where(.solo-page) .w3-hover-border-indigo:hover {
+  border-color: var(--solo-indigo);
+}
+
+:where(.solo-page) .w3-border-khaki {
+  --r-border: var(--solo-khaki);
+  border-color: var(--r-border);
+}
+
+:where(.solo-page) .w3-hover-border-khaki:hover {
+  border-color: var(--solo-khaki);
+}
+
+:where(.solo-page) .w3-border-lime {
+  --r-border: var(--solo-lime);
+  border-color: var(--r-border);
+}
+
+:where(.solo-page) .w3-hover-border-lime:hover {
+  border-color: var(--solo-lime);
+}
+
+:where(.solo-page) .w3-border-orange {
+  --r-border: var(--solo-orange);
+  border-color: var(--r-border);
+}
+
+:where(.solo-page) .w3-hover-border-orange:hover {
+  border-color: var(--solo-orange);
+}
+
+:where(.solo-page) .w3-border-deep-orange {
+  --r-border: var(--solo-deep-orange);
+  border-color: var(--r-border);
+}
+
+:where(.solo-page) .w3-hover-border-deep-orange:hover {
+  border-color: var(--solo-deep-orange);
+}
+
+:where(.solo-page) .w3-border-pink {
+  --r-border: var(--solo-pink);
+  border-color: var(--r-border);
+}
+
+:where(.solo-page) .w3-hover-border-pink:hover {
+  border-color: var(--solo-pink);
+}
+
+:where(.solo-page) .w3-border-purple {
+  --r-border: var(--solo-purple);
+  border-color: var(--r-border);
+}
+
+:where(.solo-page) .w3-hover-border-purple:hover {
+  border-color: var(--solo-purple);
+}
+
+:where(.solo-page) .w3-border-deep-purple {
+  --r-border: var(--solo-deep-purple);
+  border-color: var(--r-border);
+}
+
+:where(.solo-page) .w3-hover-border-deep-purple:hover {
+  border-color: var(--solo-deep-purple);
+}
+
+:where(.solo-page) .w3-border-red {
+  --r-border: var(--solo-red);
+  border-color: var(--r-border);
+}
+
+:where(.solo-page) .w3-hover-border-red:hover {
+  border-color: var(--solo-red);
+}
+
+:where(.solo-page) .w3-border-sand {
+  --r-border: var(--solo-sand);
+  border-color: var(--r-border);
+}
+
+:where(.solo-page) .w3-hover-border-sand:hover {
+  border-color: var(--solo-sand);
+}
+
+:where(.solo-page) .w3-border-teal {
+  --r-border: var(--solo-teal);
+  border-color: var(--r-border);
+}
+
+:where(.solo-page) .w3-hover-border-teal:hover {
+  border-color: var(--solo-teal);
+}
+
+:where(.solo-page) .w3-border-yellow {
+  --r-border: var(--solo-yellow);
+  border-color: var(--r-border);
+}
+
+:where(.solo-page) .w3-hover-border-yellow:hover {
+  border-color: var(--solo-yellow);
+}
+
+:where(.solo-page) .w3-border-white {
+  --r-border: var(--solo-white);
+  border-color: var(--r-border);
+}
+
+:where(.solo-page) .w3-hover-border-white:hover {
+  border-color: var(--solo-white);
+}
+
+:where(.solo-page) .w3-border-black {
+  --r-border: var(--solo-black);
+  border-color: var(--r-border);
+}
+
+:where(.solo-page) .w3-hover-border-black:hover {
+  border-color: var(--solo-black);
+}
+
+:where(.solo-page) .w3-border-grey,
+:where(.solo-page) .w3-border-gray {
+  --r-border: var(--solo-gray);
+  border-color: var(--r-border);
+}
+
+:where(.solo-page) .w3-hover-border-grey:hover,
+:where(.solo-page) .w3-hover-border-gray:hover {
+  border-color: var(--solo-gray);
+}
+
+:where(.solo-page) .w3-border-light-grey,
+:where(.solo-page) .w3-border-light-gray {
+  --r-border: var(--solo-light-gray);
+  border-color: var(--r-border);
+}
+
+:where(.solo-page) .w3-hover-border-light-grey:hover,
+:where(.solo-page) .w3-hover-border-light-gray:hover {
+  border-color: var(--solo-light-gray);
+}
+
+:where(.solo-page) .w3-border-dark-grey,
+:where(.solo-page) .w3-border-dark-gray {
+  --r-border: var(--solo-dark-gray);
+  border-color: var(--r-border);
+}
+
+:where(.solo-page) .w3-hover-border-dark-grey:hover,
+:where(.solo-page) .w3-hover-border-dark-gray:hover {
+  border-color: var(--solo-dark-gray);
+}
+
+:where(.solo-page) .w3-border-pale-red {
+  --r-border: var(--solo-pale-red);
+  border-color: var(--r-border);
+}
+
+:where(.solo-page) .w3-hover-border-pale-red:hover {
+  border-color: var(--solo-pale-red);
+}
+
+:where(.solo-page) .w3-border-pale-green {
+  --r-border: var(--solo-pale-green);
+  border-color: var(--r-border);
+}
+
+:where(.solo-page) .w3-hover-border-pale-green:hover {
+  border-color: var(--solo-pale-green);
+}
+
+:where(.solo-page) .w3-border-pale-yellow {
+  --r-border: var(--solo-pale-yellow);
+  border-color: var(--r-border);
+}
+
+:where(.solo-page) .w3-hover-border-pale-yellow:hover {
+  border-color: var(--solo-pale-yellow);
+}
+
+:where(.solo-page) .w3-border-pale-blue {
+  --r-border: var(--solo-pale-blue);
+  border-color: var(--r-border);
+}
+
+:where(.solo-page) .w3-hover-border-pale-blue:hover {
+  border-color: var(--solo-pale-blue);
+}
+
+} /* end @layer solo.utilities */

@@ -49,9 +49,13 @@
         'solo-comment__replies-toggle solo-button',
       );
       toggleButton.setAttribute('aria-expanded', 'true');
+      // Deprecated in 2.0, removed in the next major: data-comment-id.
+      const commentId =
+        parentComment.getAttribute('data-solo-comment-id') ??
+        parentComment.getAttribute('data-comment-id');
       toggleButton.setAttribute(
         'aria-controls',
-        `solo-comment-replies-${parentComment.getAttribute('data-comment-id')}`,
+        `solo-comment-replies-${commentId}`,
       );
 
       // Create icon wrapper for open state (minus icon)
@@ -61,7 +65,7 @@
         'solo-comment__replies-icon solo-comment__replies-icon--open',
       );
       iconOpen.innerHTML =
-        '<svg fill="var(--r-tx)" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px"><path d="M240-440v-80h480v80H240Z"/></svg>';
+        '<svg fill="var(--r-text)" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px"><path d="M240-440v-80h480v80H240Z"/></svg>';
 
       // Create icon wrapper for close state (plus icon)
       const iconClose = document.createElement('span');
@@ -71,7 +75,7 @@
       );
       iconClose.setAttribute('hidden', '');
       iconClose.innerHTML =
-        '<svg fill="var(--r-tx)" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px"><path d="M440-80v-340H120v-120h320v-340h80v340h320v120H520v340h-80Z"/></svg>';
+        '<svg fill="var(--r-text)" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px"><path d="M440-80v-340H120v-120h320v-340h80v340h320v120H520v340h-80Z"/></svg>';
 
       // Create text
       const text = document.createElement('span');
@@ -86,7 +90,7 @@
       footer.appendChild(toggleWrapper);
 
       // Set ID for aria-controls
-      commentGroup.id = `solo-comment-replies-${parentComment.getAttribute('data-comment-id')}`;
+      commentGroup.id = `solo-comment-replies-${commentId}`;
 
       // Add click event using Solo slideUp/slideDown
       toggleButton.addEventListener('click', function (e) {
@@ -116,15 +120,28 @@
     });
   }
 
+  // Deprecated in 2.0, removed in the next major: the old behavior name
+  // commentRepliesToggle reads and writes Drupal.behaviors.soloComments.
+  // It is not enumerable, so Drupal.attachBehaviors() runs it once.
+  if (!Object.prototype.hasOwnProperty.call(Drupal.behaviors, 'commentRepliesToggle')) {
+    Object.defineProperty(Drupal.behaviors, 'commentRepliesToggle', {
+      configurable: true,
+      get: () => Drupal.behaviors.soloComments,
+      set: (value) => {
+        Drupal.behaviors.soloComments = value;
+      },
+    });
+  }
+
   /**
    * Toggle threaded comment replies visibility.
    *
    * @type {Drupal~behavior}
    */
-  Drupal.behaviors.commentRepliesToggle = {
+  Drupal.behaviors.soloComments = {
     attach(context) {
       once(
-        'comment-replies-toggle',
+        'solo-comment-replies-toggle',
         '[data-drupal-selector="comments"]',
         context,
       ).forEach(init);

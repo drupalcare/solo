@@ -14,11 +14,11 @@ categories:
   - denim_influences
 css: css/predefined/solo-salmon-denim-fade.css
 dependencies:
-  - solo/solo-scheme-shared
-  - solo/solo-scheme-multi-span
-  - solo/solo-scheme-region-paint-1
-  - solo/solo-scheme-region-paint-2
-  - solo/solo-scheme-region-paint-3
+  - solo/theme-scheme-shared
+  - solo/theme-scheme-multi-span
+  - solo/theme-scheme-region-paint-1
+  - solo/theme-scheme-region-paint-2
+  - solo/theme-scheme-region-paint-3
 thumbnail: images/schemes/solo-salmon-denim-fade.webp
 palette:
   --sc-head-tx: "#5b668f"
@@ -48,10 +48,10 @@ palette:
   --sc-fixed-search-block-shadow: "34, 0, 0"
   --sc-social-box-shadow: "255, 0, 0"
 page:
-  --r-br: "#f99"
-  --r-bg: "#fee"
-  --r-tx: "#191c27"
-  --r-header-bg: "linear-gradient(0deg, #202331, #2d3246)"
-  --r-header-tx: "#9199b9"
-  --r-menu-tx-h: "#400"
-  --r-menu-bg-h: "#fbb"
+  --r-border: "#f99"
+  --r-background: "#fee"
+  --r-text: "#191c27"
+  --solo-accent-background: "linear-gradient(0deg, #202331, #2d3246)"
+  --solo-accent-text: "#9199b9"
+  --r-menu-text-hover: "#400"
+  --r-menu-background-hover: "#fbb"

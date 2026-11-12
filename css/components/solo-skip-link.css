@@ -1,3 +1,5 @@
+@layer solo.theme {
+
 .skip-link {
   display: block;
   width: 100%;
@@ -21,9 +23,7 @@
   padding-block: var(--solo-px12);
   padding-inline: var(--solo-px24);
   position: absolute !important;
-  z-index: 1000;
-  width: 100%;
-}
+  z-index: 1000;}
 
 /* The empty anchors a skip link jumps to sit inside .solo-col grids, where an
    in-flow anchor takes a whole row (an empty band above the main menu). Out of
@@ -31,3 +31,5 @@
 .solo-skip-target {
   position: absolute;
 }
+
+} /* end @layer solo.theme */

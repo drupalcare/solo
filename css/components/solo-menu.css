@@ -1,3 +1,13 @@
+/*
+ * Deprecated in 2.0, removed in the next major: the old names below stay as
+ * second selectors so sub-themes and content that print them keep working.
+ *   solo-fixed-search -> solo-fixed-search-block
+ *   solo-footer-nav__inner -> solo-footer-menu__nav__inner
+ *   solo-popup-login -> solo-popup-login-block
+ */
+
+@layer solo.theme {
+
 /* For all site menus */
 :where(.solo-inner) .solo-hamburger__button {
   display: flex;
@@ -12,19 +22,11 @@
 .solo-inner ul.solo-menu-tree__menubar ul.solo-menu-tree__submenu,
 .solo-inner ul.solo-menu-tree__menubar li.solo-menu-tree__item,
 .solo-inner ul.solo-menu-tree__menubar li > a.solo-menu-tree__link,
-.solo-inner ul.solo-menu-tree__menubar li > button.solo-menu-tree__button {
-  margin: 0;
-  padding: 0;
-  list-style: none;
-  white-space: nowrap;
-  border: none;
-}
+.solo-inner ul.solo-menu-tree__menubar li > button.solo-menu-tree__button {  white-space: nowrap;}
 
 /* stylelint-disable order/properties-order -- shorthand/longhand order is significant here (text-decoration vs -webkit-text-decoration); reordering would change the result */
 
-.solo-inner .solo-menu-tree__menubar li.solo-menu-tree__item > a {
-  text-decoration: none;
-  -webkit-text-decoration: none;
+.solo-inner .solo-menu-tree__menubar li.solo-menu-tree__item > a {  -webkit-text-decoration: none;
 }
 
 /* stylelint-enable order/properties-order */
@@ -34,26 +36,8 @@
   word-wrap: break-word;
 }
 
-.solo-inner ul.solo-menu-tree__submenu,
-.solo-inner li.solo-menu-tree__item,
-.solo-inner ul.solo-menu-tree__menubar {
-  background-color: inherit;
-}
-
-.solo-inner ul.solo-menu-tree__menubar li > a.is-active,
-.solo-inner ul.solo-menu-tree__menubar li.is-active > a,
-.solo-inner ul.solo-menu-tree__menubar li.is-active > button {
-  font-weight: bold;
-}
-
 :where(.solo-page .solo-inner .solo-menu) .solo-menu-tree__arrow {
   transition: transform 0.2s ease;
-}
-
-/* Base: all menus start equal */
-:where(.solo-page .solo-inner) .solo-menu,
-.solo-page .solo-inner .solo-menu ul.solo-menu-tree__menubar {
-  position: relative;
 }
 
 :where(.solo-page .solo-inner) .solo-menu,
@@ -110,90 +94,66 @@
 }
 
 /* Header region menus */
+:where(.solo-page .solo-popup-login-block) .solo-menu,
 :where(.solo-page .solo-popup-login) .solo-menu,
+:where(.solo-page .solo-fixed-search-block) .solo-menu,
 :where(.solo-page .solo-fixed-search) .solo-menu,
 :where(.solo-page:not(.solo-menu--flipped)) .solo-header__inner .solo-menu {
   z-index: var(--z-header);
 }
 
+:where(.solo-page .solo-popup-login-block) .solo-menu:hover,
 :where(.solo-page .solo-popup-login) .solo-menu:hover,
+:where(.solo-page .solo-popup-login-block) .solo-menu:focus-within,
 :where(.solo-page .solo-popup-login) .solo-menu:focus-within,
+:where(.solo-page .solo-fixed-search-block) .solo-menu:hover,
 :where(.solo-page .solo-fixed-search) .solo-menu:hover,
+:where(.solo-page .solo-fixed-search-block) .solo-menu:focus-within,
 :where(.solo-page .solo-fixed-search) .solo-menu:focus-within,
 :where(.solo-page:not(.solo-menu--flipped) .solo-header__inner) .solo-menu:hover,
 :where(.solo-page:not(.solo-menu--flipped) .solo-header__inner) .solo-menu:hover {
   z-index: calc(var(--z-header) + 1);
 }
 
+.solo-page .solo-popup-login-block .solo-menu ul.solo-menu-tree__menubar,
 .solo-page .solo-popup-login .solo-menu ul.solo-menu-tree__menubar,
+.solo-page .solo-fixed-search-block .solo-menu ul.solo-menu-tree__menubar,
 .solo-page .solo-fixed-search .solo-menu ul.solo-menu-tree__menubar,
 .solo-page:not(.solo-menu--flipped) .solo-header__inner .solo-menu ul.solo-menu-tree__menubar {
   z-index: calc(var(--z-header) + 10);
 }
 
+.solo-page .solo-popup-login-block .solo-menu ul.solo-menu-tree__menubar > li > ul,
 .solo-page .solo-popup-login .solo-menu ul.solo-menu-tree__menubar > li > ul,
+.solo-page .solo-fixed-search-block .solo-menu ul.solo-menu-tree__menubar > li > ul,
 .solo-page .solo-fixed-search .solo-menu ul.solo-menu-tree__menubar > li > ul,
 .solo-page:not(.solo-menu--flipped) .solo-header__inner .solo-menu ul.solo-menu-tree__menubar > li > ul {
   z-index: calc(var(--z-header) + 20);
 }
 
+.solo-page .solo-popup-login-block .solo-menu ul.solo-menu-tree__menubar > li > ul > li > ul,
 .solo-page .solo-popup-login .solo-menu ul.solo-menu-tree__menubar > li > ul > li > ul,
+.solo-page .solo-fixed-search-block .solo-menu ul.solo-menu-tree__menubar > li > ul > li > ul,
 .solo-page .solo-fixed-search .solo-menu ul.solo-menu-tree__menubar > li > ul > li > ul,
 .solo-page:not(.solo-menu--flipped) .solo-header__inner .solo-menu ul.solo-menu-tree__menubar > li > ul > li > ul {
   z-index: calc(var(--z-header) + 30);
 }
 
+.solo-page .solo-popup-login-block .solo-menu ul.solo-menu-tree__menubar > li > ul > li > ul > li > ul,
 .solo-page .solo-popup-login .solo-menu ul.solo-menu-tree__menubar > li > ul > li > ul > li > ul,
+.solo-page .solo-fixed-search-block .solo-menu ul.solo-menu-tree__menubar > li > ul > li > ul > li > ul,
 .solo-page .solo-fixed-search .solo-menu ul.solo-menu-tree__menubar > li > ul > li > ul > li > ul,
 .solo-page:not(.solo-menu--flipped) .solo-header__inner .solo-menu ul.solo-menu-tree__menubar > li > ul > li > ul > li > ul {
   z-index: calc(var(--z-header) + 40);
 }
 
-/* First level padding is bigger */
-.solo-inner ul.solo-menu-tree__menubar > li.solo-menu-tree__item > a,
-.solo-inner ul.solo-menu-tree__menubar > li.solo-menu-tree__item > span,
-.solo-inner ul.solo-menu-tree__menubar > li.solo-menu-tree__item > button {
-  padding: var(--solo-px10) var(--solo-px12);
-}
-
-/* 2,3,4 level padding is smaller */
-.solo-inner .solo-menu-tree__menubar:not(.solo-menu-tree--megamenu) li li.solo-menu-tree__item > a,
-:where(.solo-inner) .solo-menu-tree__menubar:not(.solo-menu-tree--megamenu) li li.solo-menu-tree__item > span,
-:where(.solo-inner) .solo-menu-tree__menubar:not(.solo-menu-tree--megamenu) li li.solo-menu-tree__item > button {
-  padding: var(--solo-px8) var(--solo-px12);
-}
-
-.solo-inner .solo-menu-tree__menubar:not(.solo-menu-tree--megamenu) li.solo-menu-tree__item--link-only > a,
-:where(.solo-inner) .solo-menu-tree__menubar:not(.solo-menu-tree--megamenu) li.solo-menu-tree__item--link-only > span,
-.solo-inner .solo-menu-tree__menubar:not(.solo-menu-tree--megamenu) li.solo-menu-tree__item--button-only > button {
-  flex-basis: 100%;
-  flex-grow: 1;
-}
-
 :where(.solo-inner .solo-menu-tree--megamenu) > li.solo-menu-tree__item > button.solo-menu-tree__toggler--link-disabled > span.solo-menu-tree__title--disabled,
 :where(.solo-inner .solo-menu-tree__menubar:not(.solo-menu-tree--megamenu)) li.solo-menu-tree__item > button.solo-menu-tree__toggler--link-disabled > span.solo-menu-tree__title--disabled {
-  flex-grow: 1;
-  margin-inline-end: var(--solo-px12);
-}
-
-:where(.solo-inner) .solo-menu-tree__menubar li.solo-menu-tree__item > .solo-menu-tree__toggler .solo-menu-tree__toggler-icon svg {
-  transition: transform 0.2s ease;
-}
+  flex-grow: 1;}
 
 :where(.solo-inner .solo-menu-tree--megamenu > li.solo-menu-tree__item) > .solo-menu-tree__toggler,
 :where(.solo-inner .solo-menu-tree__menubar:not(.solo-menu-tree--megamenu) li.solo-menu-tree__item) .solo-menu-tree__toggler {
   cursor: context-menu !important;
-}
-
-:where(.solo-inner) .solo-menu-tree__menubar,
-.solo-inner .solo-menu-tree--megamenu > li.solo-menu-tree__item,
-.solo-inner .solo-menu-tree--megamenu > li.solo-menu-tree__item > a,
-.solo-inner .solo-menu-tree--megamenu > li.solo-menu-tree__item > button,
-.solo-inner .solo-menu-tree__menubar:not(.solo-menu-tree--megamenu) ul.solo-menu-tree__submenu,
-.solo-inner .solo-menu-tree__menubar:not(.solo-menu-tree--megamenu) li.solo-menu-tree__item,
-.solo-inner .solo-menu-tree__menubar:not(.solo-menu-tree--megamenu) li.solo-menu-tree__item > a,
-.solo-inner .solo-menu-tree__menubar:not(.solo-menu-tree--megamenu) li.solo-menu-tree__item > button {
-  display: flex;
 }
 
 :where(.solo-inner) .solo-menu-tree__menubar:not(.solo-menu-tree--megamenu) li.solo-menu-tree__item--has-submenu {
@@ -207,41 +167,16 @@
 }
 
 .solo-inner .solo-menu-tree--megamenu > li.solo-menu-tree__item--link-and-button > button,
-.solo-inner .solo-menu-tree__menubar:not(.solo-menu-tree--megamenu) li.solo-menu-tree__item--link-and-button > button {
-  position: relative;
-  flex-basis: 50px;
-  align-items: center;
-  justify-content: center;
-  width: 50px;
-}
-
-.solo-inner .solo-menu-tree--megamenu > li.solo-menu-tree__item--link-and-button > a,
-.solo-inner .solo-menu-tree__menubar:not(.solo-menu-tree--megamenu) li.solo-menu-tree__item--link-and-button > a {
-  position: relative;
-  flex-basis: calc(100% - 50px);
-  flex-grow: 1;
-  width: calc(100% - 50px);
-}
+.solo-inner .solo-menu-tree__menubar:not(.solo-menu-tree--megamenu) li.solo-menu-tree__item--link-and-button > button {  justify-content: center;}
 
 :where(.solo-inner) .solo-menu-tree--megamenu > li.solo-menu-tree__item--button-only > button > span.solo-menu-tree__title--disabled,
-:where(.solo-inner) .solo-menu-tree__menubar:not(.solo-menu-tree--megamenu) li.solo-menu-tree__item--button-only > button > span.solo-menu-tree__title--disabled {
-  position: relative;
-  flex-basis: calc(100% - 24px);
-  flex-grow: 1;
-}
-
-:where(.solo-inner) .solo-menu-tree--megamenu > li.solo-menu-tree__item--button-only > button > span.solo-menu-tree__toggler-icon,
-:where(.solo-inner) .solo-menu-tree__menubar:not(.solo-menu-tree--megamenu) li.solo-menu-tree__item--button-only > button > span.solo-menu-tree__toggler-icon {
-  flex-basis: 24px;
-  margin-inline-start: var(--solo-px12);
+:where(.solo-inner) .solo-menu-tree__menubar:not(.solo-menu-tree--megamenu) li.solo-menu-tree__item--button-only > button > span.solo-menu-tree__title--disabled {  flex-grow: 1;
 }
 
 .solo-inner .solo-menu-tree--megamenu > li.solo-menu-tree__item--button-only > button > span.solo-menu-tree__toggler-icon,
 .solo-inner .solo-menu-tree--megamenu > li.solo-menu-tree__item--link-and-button > button > span.solo-menu-tree__toggler-icon,
 .solo-inner .solo-menu-tree__menubar:not(.solo-menu-tree--megamenu) li.solo-menu-tree__item--button-only > button > span.solo-menu-tree__toggler-icon,
-.solo-inner .solo-menu-tree__menubar:not(.solo-menu-tree--megamenu) li.solo-menu-tree__item--link-and-button > button > span.solo-menu-tree__toggler-icon {
-  display: flex;
-  align-items: center;
+.solo-inner .solo-menu-tree__menubar:not(.solo-menu-tree--megamenu) li.solo-menu-tree__item--link-and-button > button > span.solo-menu-tree__toggler-icon {  align-items: center;
   justify-content: center;
 }
 
@@ -251,9 +186,7 @@
   justify-content: center;
 }
 
-.solo-inner .solo-menu-tree--default > li.solo-menu-tree__item ul.solo-menu-tree__submenu {
-  display: none;
-  min-width: 12.5rem;
+.solo-inner .solo-menu-tree--default > li.solo-menu-tree__item ul.solo-menu-tree__submenu {  min-width: 12.5rem;
 }
 
 /* For the second tier */
@@ -307,14 +240,14 @@
 
 :where(.solo-page .solo-menu-tree--default li.solo-menu-tree__item--has-submenu:hover) > *,
 :where(.solo-page .solo-menu-tree--default li.solo-menu-tree__item--has-submenu) > *:hover {
-  color: var(--r-tx-lk-h, var(--r-tx-lk, var(--r-tx))) !important;
-  background-color: var(--r-bg-lk-h, var(--r-bg-lk, var(--r-bg))) !important;
+  color: var(--r-menu-text-hover, var(--r-menu-text, var(--r-text))) !important;
+  background-color: var(--r-menu-background-hover, var(--r-menu-background, var(--r-background))) !important;
 }
 
 /* Add borders to menu item */
 :where(.solo-page) .solo-container--has-border.solo-primary-menu {
-  border-block-start: 1px solid var(--r-br);
-  border-block-end: 1px solid var(--r-br);
+  border-block-start: 1px solid var(--r-border);
+  border-block-end: 1px solid var(--r-border);
 }
 
 /* Right left mens */
@@ -331,23 +264,12 @@
   justify-content: center;
 }
 
-.solo-footer-menu li {
-  display: inline-flex;
-  align-items: center;
+.solo-footer-menu li {  align-items: center;
 }
 
 .solo-footer-menu li a {
   margin-block: 0;
-  margin-inline: var(--solo-px4);
-  padding-block: var(--solo-px6);
-  padding-inline: var(--solo-px8);
-  display: inline-block;
-  max-width: 100%;
-}
-
-.solo-footer-menu li a.is-active,
-:where(.solo-footer-menu) :where(li).active-trail {
-  font-weight: bold;
+  margin-inline: var(--solo-px4);  max-width: 100%;
 }
 
 @media (max-width: 35.99875rem) {
@@ -361,7 +283,9 @@
 /* plain menu in sidebar and footer for devices smaller than 320px */
 :where(.solo-copyright__inner.solo-is-region-xs) .solo-side-menu,
 :where(.solo-copyright__inner.solo-is-region-xs) .solo-footer-menu,
+:where(.solo-footer-menu__nav__inner.solo-is-region-xs) .solo-side-menu,
 :where(.solo-footer-nav__inner.solo-is-region-xs) .solo-side-menu,
+:where(.solo-footer-menu__nav__inner.solo-is-region-xs) .solo-footer-menu,
 :where(.solo-footer-nav__inner.solo-is-region-xs) .solo-footer-menu,
 :where(.solo-region-box__inner.solo-is-region-xs) .solo-side-menu,
 :where(.solo-region-box__inner.solo-is-region-xs) .solo-footer-menu {
@@ -369,50 +293,16 @@
   justify-content: start;
 }
 
-.solo-copyright__inner.solo-is-region-xs .solo-side-menu li a,
-.solo-copyright__inner.solo-is-region-xs .solo-footer-menu li a,
-.solo-footer-nav__inner.solo-is-region-xs .solo-side-menu li a,
-.solo-footer-nav__inner.solo-is-region-xs .solo-footer-menu li a,
-.solo-region-box__inner.solo-is-region-xs .solo-side-menu li a,
-.solo-region-box__inner.solo-is-region-xs .solo-footer-menu li a {
-  justify-content: start;
-  padding-inline-start: 0;
-  padding-inline-end: 0;
-}
-
-/* Menu branding */
-#solo-primary-menu .solo-menu-branding a,
-:where(.solo-primary-menu) .solo-menu--has-branding.solo-menu--primary-responsive {
-  display: flex;
-}
-
 /* stylelint-disable order/properties-order -- shorthand/longhand order is significant here (all vs color); reordering would change the result */
 
 #solo-primary-menu .solo-menu-branding a,
 #solo-primary-sidebar-menu .solo-menu-branding a {
-  all: unset;
-  color: inherit;
-  text-decoration: none;
-  cursor: pointer;
-  display: flex;
-  justify-content: start;
-  align-items: center;
-  height: 100%;
-  width: auto;
-  min-width: 50px;
-  font-weight: bold;
-  float: inline-start;
-}
+  all: unset;}
 
 /* stylelint-enable order/properties-order */
 
-.solo-menu-branding a span {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  height: 100%;
-}
+.solo-menu-branding a span {  align-items: center;
+  justify-content: center;}
 
 .solo-menu-branding {
   display: flex;
@@ -427,14 +317,8 @@
 }
 
 .solo-menu-branding .solo-menu-branding__logo img,
-.solo-menu-branding .solo-menu-branding__logo svg {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: auto;
-  height: 100%;
-  max-height: 42px;
-}
+.solo-menu-branding .solo-menu-branding__logo svg {  align-items: center;
+  justify-content: center;}
 
 :where(.solo-primary-menu .solo-menu-branding) .solo-menu-branding__site-name,
 :where(.solo-primary-sidebar-menu .solo-menu-branding) .solo-menu-branding__site-name {
@@ -451,6 +335,10 @@
   margin-inline-start: var(--solo-px12);
 }
 
+} /* end @layer solo.theme */
+
+@layer solo.locked {
+
 /* Reduced motion: end states are kept, movement is not (WCAG 2.3.3). */
 @media (prefers-reduced-motion: reduce) {
   :where(:where(.solo-page .solo-inner .solo-menu) .solo-menu-tree__arrow),
@@ -462,3 +350,5 @@
     animation-iteration-count: 1 !important;
   }
 }
+
+} /* end @layer solo.locked */

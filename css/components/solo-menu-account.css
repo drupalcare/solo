@@ -1,0 +1,29 @@
+@layer solo.theme {
+
+:where(.solo-inner) .solo-menu-tree__menubar--account {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: end;
+  margin: 0;
+  padding: 0;
+}
+
+:where(.solo-header__inner nav) .solo-menu-tree__menubar {
+  justify-content: center;
+}
+
+.solo-inner .solo-menu-tree__menubar--account li {  font-size: var(--solo-px16);}
+
+:where(.solo-header__inner nav) .solo-menu-tree__menubar > li > button,
+.solo-header__inner nav .solo-menu-tree__menubar > li > a,
+.solo-inner .solo-menu-tree__menubar--account li a {
+  padding-block: 0.563rem !important;
+  padding-inline: var(--solo-px16) !important;
+  line-height: 1.5;
+}
+
+:where(.solo-header__inner nav) .solo-menu-tree__menubar > li > a {
+  min-width: 90px;
+}
+
+} /* end @layer solo.theme */

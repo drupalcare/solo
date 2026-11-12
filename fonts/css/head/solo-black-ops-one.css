@@ -1,8 +1,17 @@
+@layer solo.base {
+  .solo-page h1,
+  .solo-page h2,
+  .solo-page h3,
+  #solo-page-wrapper .black-ops-one {
+    --solo-h1: 'Black Ops One', cursive;
+    letter-spacing: var(--solo-px1);
+  }
+}
+
+/* Unlayered on purpose. Headings and font classes beat unlayered module CSS (PB w3-modern.css h1-h6) at the same specificity as before; a layer would lose to it. */
 .solo-page h1,
 .solo-page h2,
 .solo-page h3,
 #solo-page-wrapper .black-ops-one {
-  --solo-h1: 'Black Ops One', cursive;
   font-family: var(--solo-h1);
-  letter-spacing: var(--solo-px1);
 }

@@ -1,6 +1,12 @@
-#solo-page-wrapper .italiana,
-#solo-header.solo-italiana .solo-branding__site-name-link,
-#solo-page-wrapper.solo-italiana .solo-page-title__text,
-html.solo-preloader-enabled #solo-preloader.solo-italiana .solo-preloader__text {
+@layer solo.base {
+  #solo-header.solo-italiana .solo-branding__site-name-link,
+  #solo-page-wrapper.solo-italiana .solo-page-title__text,
+  html.solo-preloader-enabled #solo-preloader.solo-italiana .solo-preloader__text {
+    font-family: "Italiana", sans-serif;
+  }
+}
+
+/* Unlayered on purpose. Font classes beat unlayered element rules (PB w3-modern.css headings and buttons) as before; a layer would lose to them. */
+#solo-page-wrapper .italiana {
   font-family: "Italiana", sans-serif;
 }

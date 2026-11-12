@@ -1,0 +1,219 @@
+/**
+ * @file
+ * Solo color library: win8.
+ *
+ * Tokens: one background (--solo-<class>) and one text color (--solo-<class>-on) per class,
+ * in solo.tokens. Classes: solo.utilities; each class sets --r-background and --r-text from
+ * its tokens and paints from them, with no !important (the layer order does the job).
+ * Where two class names share a rule (gray and grey), the token is named from the first name.
+ * Layer order: solo-layers.css. Check: scripts/css-layers-check.py.
+ */
+
+@layer solo.tokens {
+
+:root {
+  --solo-win8-lime: #a4c400;
+  --solo-win8-lime-on: var(--solo-white);
+  --solo-win8-green: #60a917;
+  --solo-win8-green-on: var(--solo-white);
+  --solo-win8-emerald: #008a00;
+  --solo-win8-emerald-on: var(--solo-white);
+  --solo-win8-teal: #00aba9;
+  --solo-win8-teal-on: var(--solo-white);
+  --solo-win8-cyan: #1ba1e2;
+  --solo-win8-cyan-on: var(--solo-white);
+  --solo-win8-blue: #3e65ff;
+  --solo-win8-blue-on: var(--solo-white);
+  --solo-win8-cobalt: #0050ef;
+  --solo-win8-cobalt-on: var(--solo-white);
+  --solo-win8-indigo: #6a00ff;
+  --solo-win8-indigo-on: var(--solo-white);
+  --solo-win8-violet: #aa00ff;
+  --solo-win8-violet-on: var(--solo-white);
+  --solo-win8-pink: #f472d0;
+  --solo-win8-pink-on: var(--solo-white);
+  --solo-win8-magenta: #d80073;
+  --solo-win8-magenta-on: var(--solo-white);
+  --solo-win8-crimson: #a20025;
+  --solo-win8-crimson-on: var(--solo-white);
+  --solo-win8-red: #e51400;
+  --solo-win8-red-on: var(--solo-white);
+  --solo-win8-orange: #fa6800;
+  --solo-win8-orange-on: var(--solo-white);
+  --solo-win8-amber: #f0a30a;
+  --solo-win8-amber-on: var(--solo-white);
+  --solo-win8-yellow: #e3c800;
+  --solo-win8-yellow-on: var(--solo-white);
+  --solo-win8-brown: #825a2c;
+  --solo-win8-brown-on: var(--solo-white);
+  --solo-win8-olive: #6d8764;
+  --solo-win8-olive-on: var(--solo-white);
+  --solo-win8-steel: #647687;
+  --solo-win8-steel-on: var(--solo-white);
+  --solo-win8-mauve: #76608a;
+  --solo-win8-mauve-on: var(--solo-white);
+  --solo-win8-taupe: #87794e;
+  --solo-win8-taupe-on: var(--solo-white);
+  --solo-win8-sienna: #a0522d;
+  --solo-win8-sienna-on: var(--solo-white);
+}
+
+} /* end @layer solo.tokens */
+
+@layer solo.utilities {
+
+:where(.solo-page) .w3-win8-lime {
+  --r-text: var(--solo-win8-lime-on);
+  --r-background: var(--solo-win8-lime);
+  color: var(--r-text);
+  background-color: var(--r-background);
+}
+
+:where(.solo-page) .w3-win8-green {
+  --r-text: var(--solo-win8-green-on);
+  --r-background: var(--solo-win8-green);
+  color: var(--r-text);
+  background-color: var(--r-background);
+}
+
+:where(.solo-page) .w3-win8-emerald {
+  --r-text: var(--solo-win8-emerald-on);
+  --r-background: var(--solo-win8-emerald);
+  color: var(--r-text);
+  background-color: var(--r-background);
+}
+
+:where(.solo-page) .w3-win8-teal {
+  --r-text: var(--solo-win8-teal-on);
+  --r-background: var(--solo-win8-teal);
+  color: var(--r-text);
+  background-color: var(--r-background);
+}
+
+:where(.solo-page) .w3-win8-cyan {
+  --r-text: var(--solo-win8-cyan-on);
+  --r-background: var(--solo-win8-cyan);
+  color: var(--r-text);
+  background-color: var(--r-background);
+}
+
+:where(.solo-page) .w3-win8-blue {
+  --r-text: var(--solo-win8-blue-on);
+  --r-background: var(--solo-win8-blue);
+  color: var(--r-text);
+  background-color: var(--r-background);
+}
+
+:where(.solo-page) .w3-win8-cobalt {
+  --r-text: var(--solo-win8-cobalt-on);
+  --r-background: var(--solo-win8-cobalt);
+  color: var(--r-text);
+  background-color: var(--r-background);
+}
+
+:where(.solo-page) .w3-win8-indigo {
+  --r-text: var(--solo-win8-indigo-on);
+  --r-background: var(--solo-win8-indigo);
+  color: var(--r-text);
+  background-color: var(--r-background);
+}
+
+:where(.solo-page) .w3-win8-violet {
+  --r-text: var(--solo-win8-violet-on);
+  --r-background: var(--solo-win8-violet);
+  color: var(--r-text);
+  background-color: var(--r-background);
+}
+
+:where(.solo-page) .w3-win8-pink {
+  --r-text: var(--solo-win8-pink-on);
+  --r-background: var(--solo-win8-pink);
+  color: var(--r-text);
+  background-color: var(--r-background);
+}
+
+:where(.solo-page) .w3-win8-magenta {
+  --r-text: var(--solo-win8-magenta-on);
+  --r-background: var(--solo-win8-magenta);
+  color: var(--r-text);
+  background-color: var(--r-background);
+}
+
+:where(.solo-page) .w3-win8-crimson {
+  --r-text: var(--solo-win8-crimson-on);
+  --r-background: var(--solo-win8-crimson);
+  color: var(--r-text);
+  background-color: var(--r-background);
+}
+
+:where(.solo-page) .w3-win8-red {
+  --r-text: var(--solo-win8-red-on);
+  --r-background: var(--solo-win8-red);
+  color: var(--r-text);
+  background-color: var(--r-background);
+}
+
+:where(.solo-page) .w3-win8-orange {
+  --r-text: var(--solo-win8-orange-on);
+  --r-background: var(--solo-win8-orange);
+  color: var(--r-text);
+  background-color: var(--r-background);
+}
+
+:where(.solo-page) .w3-win8-amber {
+  --r-text: var(--solo-win8-amber-on);
+  --r-background: var(--solo-win8-amber);
+  color: var(--r-text);
+  background-color: var(--r-background);
+}
+
+:where(.solo-page) .w3-win8-yellow {
+  --r-text: var(--solo-win8-yellow-on);
+  --r-background: var(--solo-win8-yellow);
+  color: var(--r-text);
+  background-color: var(--r-background);
+}
+
+:where(.solo-page) .w3-win8-brown {
+  --r-text: var(--solo-win8-brown-on);
+  --r-background: var(--solo-win8-brown);
+  color: var(--r-text);
+  background-color: var(--r-background);
+}
+
+:where(.solo-page) .w3-win8-olive {
+  --r-text: var(--solo-win8-olive-on);
+  --r-background: var(--solo-win8-olive);
+  color: var(--r-text);
+  background-color: var(--r-background);
+}
+
+:where(.solo-page) .w3-win8-steel {
+  --r-text: var(--solo-win8-steel-on);
+  --r-background: var(--solo-win8-steel);
+  color: var(--r-text);
+  background-color: var(--r-background);
+}
+
+:where(.solo-page) .w3-win8-mauve {
+  --r-text: var(--solo-win8-mauve-on);
+  --r-background: var(--solo-win8-mauve);
+  color: var(--r-text);
+  background-color: var(--r-background);
+}
+
+:where(.solo-page) .w3-win8-taupe {
+  --r-text: var(--solo-win8-taupe-on);
+  --r-background: var(--solo-win8-taupe);
+  color: var(--r-text);
+  background-color: var(--r-background);
+}
+
+:where(.solo-page) .w3-win8-sienna {
+  --r-text: var(--solo-win8-sienna-on);
+  --r-background: var(--solo-win8-sienna);
+  color: var(--r-text);
+  background-color: var(--r-background);
+}
+
+} /* end @layer solo.utilities */

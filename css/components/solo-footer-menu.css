@@ -1,27 +1,31 @@
+/*
+ * Deprecated in 2.0, removed in the next major: the old names below stay as
+ * second selectors so sub-themes and content that print them keep working.
+ *   solo-footer-nav__first -> solo-footer-menu__nav__first
+ *   solo-footer-nav__inner -> solo-footer-menu__nav__inner
+ *   solo-footer-nav__second -> solo-footer-menu__nav__second
+ */
+
+@layer solo.theme {
+
 .solo-menu-tree__menubar--footer {
   justify-content: center;
 }
 
-.solo-menu-tree__menubar--footer li a {
-  padding-block: var(--solo-px6);
-  padding-inline: var(--solo-px12);
-}
-
+.solo-footer-menu__nav__first,
 .solo-footer-nav__first {
   margin-block: var(--solo-px16);
   margin-inline: auto;
 }
 
+:where(.solo-footer-menu__nav__second) > *,
 :where(.solo-footer-nav__second) > * {
   margin-block: var(--solo-px16);
   margin-inline: auto;
 }
 
-.solo-menu-tree__menubar--footer li {
-  display: inline-flex;
-}
-
 /* Footer and copyright type: a step below the 16px body text, with a tight line height. */
+.solo-footer-menu__nav__inner,
 .solo-footer-nav__inner,
 .solo-copyright__inner {
   font-size: var(--solo-px14);
@@ -34,47 +38,25 @@
 }
 
 .solo-copyright__inner p {
-  font-size: var(--solo-px14);
-  line-height: 1.4;
-}
-
-/*
- * Footer menus show hover on the text only: the link keeps its resting
- * background, the text is underlined. These selectors match the specificity of
- * the generic menu hover rule in solo-variables-regions.css and load after it.
- */
-.solo-page :where(.solo-footer-nav, .solo-copyright, .solo-container--footer) li.solo-menu-tree__item > a:hover,
-.solo-page :where(.solo-footer-nav, .solo-copyright, .solo-container--footer) li.solo-menu-tree__item > a:focus-visible,
-.solo-page :where(.solo-footer-nav, .solo-copyright, .solo-container--footer) li.solo-menu-tree__item > button:hover {
-  text-decoration: underline;
-  text-underline-offset: 0.2em;
-  background-color: var(--r-bg-lk, var(--r-bg));
-}
+  font-size: var(--solo-px14);}
 
 .solo-copyright__inner.solo-col-1 p {
   text-align: center;
 }
 
 /* label form in the footer */
+.solo-footer-menu__nav__inner form label,
 .solo-footer-nav__inner form label {
-  float: inline-start;
-  text-align: var(--solo-text-align-start);
-}
+  float: inline-start;}
 
 :where(.solo-social a > span) .solo-svg-icon {
   width: 100%;
   height: 100%;
 }
 
-.solo-social a > span {
-  display: inline-block;
-  width: 1.875rem;
-  height: 1.875rem;
-  transition: transform 0.2s ease;
+.solo-social a > span {  transition: transform 0.2s ease;
   border: 1px solid transparent;
-  border-radius: 50%;
-  background-repeat: no-repeat;
-  font-family: inherit;
+  border-radius: 50%;  font-family: inherit;
   margin-block: 0;
   margin-inline: var(--solo-px5);
 }
@@ -87,9 +69,7 @@
   justify-content: center;
 }
 
-.solo-social a {
-  display: flex;
-  flex-shrink: 0;
+.solo-social a {  flex-shrink: 0;
   align-items: center;
   justify-content: center;
   margin: var(--solo-px4);
@@ -100,19 +80,6 @@
 }
 
 /* Size for icons */
-@media (min-width: 26rem) {
-  .solo-social.sm-icons-medium a > span {
-    width: calc(2 * var(--solo-px20));
-    height: calc(2 * var(--solo-px20));
-    background-size: calc(2 * var(--solo-px20));
-  }
-
-  .solo-social.sm-icons-large a > span {
-    width: var(--solo-px64);
-    height: var(--solo-px64);
-    background-size: var(--solo-px64);
-  }
-}
 
 @media (max-width: 61.99875rem) {
   .solo-social.sm-icons-large a {
@@ -126,6 +93,10 @@
   }
 }
 
+} /* end @layer solo.theme */
+
+@layer solo.locked {
+
 /* Reduced motion: end states are kept, movement is not (WCAG 2.3.3). */
 @media (prefers-reduced-motion: reduce) {
   :where(.solo-social a > span) {
@@ -134,3 +105,5 @@
     animation-iteration-count: 1 !important;
   }
 }
+
+} /* end @layer solo.locked */

@@ -76,6 +76,9 @@ solo_theme_settings:
           constraints:
             Choice:
               choices: ['left_main_right', 'main_left_right', 'main_right_left', 'left_right_main', 'right_left_main']
+        flip_breadcrumb_page_title:
+          type: boolean
+          label: 'Flip breadcrumb and page title'
     regions:
       type: mapping
       label: 'Regions'
@@ -4913,7 +4916,7 @@ solo_theme_settings:
           type: boolean
           label: 'Popup login'
         link_text:
-          type: string
+          type: label
           label: 'Login links'
         use_inline_styles:
           type: boolean

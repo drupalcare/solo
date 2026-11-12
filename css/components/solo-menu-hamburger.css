@@ -1,0 +1,166 @@
+@layer solo.base {
+
+:where(.solo-inner) .solo-hamburger,
+.solo-inner .solo-hamburger > button > span {  justify-content: end;
+}
+
+.solo-inner .solo-hamburger span > svg {
+  min-width: 3.25rem;}
+
+:where(.solo-inner .solo-hamburger) #solo-svg-top,
+:where(.solo-inner .solo-hamburger) #solo-svg-bottom,
+:where(.solo-inner .solo-hamburger) #solo-svg-middle {
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+:where(.solo-inner .solo-hamburger) #solo-svg-top {
+  animation: rotate-line-top 0.7s ease-in both;
+}
+
+:where(.solo-inner .solo-hamburger) #solo-svg-bottom {
+  animation: rotate-line-bottom 0.7s ease-in both;
+}
+
+:where(.solo-inner .solo-hamburger) #solo-svg-middle {
+  animation: show-line 0.7s ease-in forwards;
+}
+
+:where(.solo-inner .solo-hamburger--close) #solo-svg-top,
+:where(.solo-inner .solo-hamburger.solo-is-open) #solo-svg-top {
+  animation: rotate-down 0.7s ease-out both;
+}
+
+:where(.solo-inner .solo-hamburger--close) #solo-svg-bottom,
+:where(.solo-inner .solo-hamburger.solo-is-open) #solo-svg-bottom {
+  animation: rotate-up 0.7s ease-out both;
+}
+
+:where(.solo-inner .solo-hamburger--close) #solo-svg-middle,
+:where(.solo-inner .solo-hamburger.solo-is-open) #solo-svg-middle {
+  animation: hide-line 0.7s ease-out both;
+}
+
+@keyframes rotate-up {
+  0% {
+    transform: translateY(0);
+    animation-timing-function: cubic-bezier(0.16, -0.88, 0.97, 0.53);
+  }
+
+  30% {
+    transform: translateY(-10px);
+    transform-origin: center;
+    animation-timing-function: cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+
+  100% {
+    transform: translateY(-10px) rotate(45deg) scale(0.9);
+    transform-origin: center;
+  }
+}
+
+@keyframes rotate-down {
+  0% {
+    transform: translateY(0);
+    animation-timing-function: cubic-bezier(0.16, -0.88, 0.97, 0.53);
+  }
+
+  30% {
+    transform: translateY(10px);
+    transform-origin: center;
+    animation-timing-function: cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+
+  100% {
+    transform: translateY(10px) rotate(-45deg) scale(0.9);
+    transform-origin: center;
+  }
+}
+
+@keyframes hide-line {
+  29% {
+    opacity: 1;
+  }
+
+  30% {
+    opacity: 0.3;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes rotate-line-top {
+  0% {
+    transform: translateY(0);
+    animation-timing-function: cubic-bezier(0.16, -0.88, 0.97, 0.53);
+  }
+
+  30% {
+    transform: translateY(25px);
+    transform-origin: center;
+    animation-timing-function: cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+
+  100% {
+    transform: translateY(22px) rotate(0deg);
+    transform-origin: center;
+  }
+}
+
+@keyframes rotate-line-bottom {
+  0% {
+    transform: translateY(0);
+    animation-timing-function: cubic-bezier(0.16, -0.88, 0.97, 0.53);
+  }
+
+  30% {
+    transform: translateY(-25px);
+    transform-origin: center;
+    animation-timing-function: cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+
+  100% {
+    transform: translateY(-22px) rotate(0deg);
+    transform-origin: center;
+  }
+}
+
+@keyframes show-line {
+  29% {
+    opacity: 0;
+  }
+
+  30% {
+    opacity: 0.3;
+  }
+
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+} /* end @layer solo.base */
+
+@layer solo.locked {
+
+/* Reduced motion: end states are kept, movement is not (WCAG 2.3.3). */
+@media (prefers-reduced-motion: reduce) {
+  :where(:where(.solo-inner .solo-hamburger) #solo-svg-top),
+  :where(:where(.solo-inner .solo-hamburger) #solo-svg-bottom),
+  :where(:where(.solo-inner .solo-hamburger) #solo-svg-middle),
+  :where(:where(.solo-inner .solo-hamburger--close) #solo-svg-top),
+  :where(:where(.solo-inner .solo-hamburger.solo-is-open) #solo-svg-top),
+  :where(:where(.solo-inner .solo-hamburger--close) #solo-svg-bottom),
+  :where(:where(.solo-inner .solo-hamburger.solo-is-open) #solo-svg-bottom),
+  :where(:where(.solo-inner .solo-hamburger--close) #solo-svg-middle),
+  :where(:where(.solo-inner .solo-hamburger.solo-is-open) #solo-svg-middle) {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+}
+
+} /* end @layer solo.locked */

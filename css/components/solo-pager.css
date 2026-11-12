@@ -1,3 +1,5 @@
+@layer solo.theme {
+
 /* General pager styles */
 .pager {
   display: flex;
@@ -25,23 +27,6 @@
   justify-content: center;
 }
 
-.pager__item a {
-  display: inline-block;
-  padding: var(--solo-px8) var(--solo-px16);
-  transition:
-    background-color 0.3s,
-    color 0.3s,
-    border-color 0.3s;
-  text-decoration: none;
-  border: 1px solid var(--r-br);
-  border-radius: var(--solo-px4);
-}
-
-.pager__item a:hover,
-.pager__item a:focus {
-  text-decoration: underline;
-}
-
 /*
  * The items also carry .solo-button (8px padding, overflow: hidden), which
  * framed each link in a second box: the hover paint stopped 8px short of the
@@ -57,19 +42,8 @@
   cursor: default;
 }
 
-/* The current page reads as selected, painted like the hover state, not by weight alone. */
-.solo-page .pager__item.solo-active-pager a,
-.solo-page .pager__item.is-active a {
-  color: var(--r-header-tx);
-  background: var(--r-header-bg);
-}
-
-.pager__item.solo-active-pager a {
-  cursor: default;
-  text-decoration: none !important;
-  pointer-events: none !important;
-  font-weight: bold;
-}
+.pager__item.solo-active-pager a {  text-decoration: none !important;
+  pointer-events: none !important;}
 
 .pager__item.pager__item--ellipsis {
   padding: var(--solo-px8) var(--solo-px16);
@@ -82,12 +56,11 @@
   .pager__items {
     gap: var(--solo-px4);
   }
-
-  .pager__item a {
-    padding: var(--solo-px5) var(--solo-px12);
-    font-size: var(--solo-px14);
-  }
 }
+
+} /* end @layer solo.theme */
+
+@layer solo.locked {
 
 /* Reduced motion: end states are kept, movement is not (WCAG 2.3.3). */
 @media (prefers-reduced-motion: reduce) {
@@ -97,3 +70,5 @@
     animation-iteration-count: 1 !important;
   }
 }
+
+} /* end @layer solo.locked */

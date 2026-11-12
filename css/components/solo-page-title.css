@@ -1,3 +1,5 @@
+@layer solo.theme {
+
 .block-page-title-block {
   display: grid;
 }
@@ -13,10 +15,6 @@
   min-width: 0;
 }
 
-h1.solo-page-title__text span {
-  display: inline-flex;
-}
-
 :where(h1).solo-page-title__text {
   font-size: calc(2 * var(--solo-px32));
   line-height: calc(2 * var(--solo-px38));
@@ -25,10 +23,7 @@ h1.solo-page-title__text span {
 :where(.solo-page.pt-center) :where(h1).solo-page-title__text,
 #solo-page-wrapper.pt-center h1.solo-page-title__text span {
   align-items: center;
-  justify-content: center;
-  width: 100%;
-  text-align: center;
-}
+  justify-content: center;}
 
 @media (max-width: 74.99875rem) {
   :where(h1).solo-page-title__text {
@@ -64,7 +59,9 @@ h1.solo-page-title__text span {
   }
 }
 
-/* The hero title takes the hero region's text color, not a scheme heading tint. */
+/* The hero title takes the hero region's text color, not a heading color. */
 :where(.solo-page) h1.solo-page-title__text {
-  --r-sc-h1: initial;
+  --r-heading: initial;
 }
+
+} /* end @layer solo.theme */

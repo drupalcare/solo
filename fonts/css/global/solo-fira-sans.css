@@ -1,24 +1,36 @@
-.solo-page,
-.solo-page table,
-.solo-page tr,
-.solo-page td,
-.solo-page th,
+@layer solo.base {
+  .solo-page,
+  .solo-page table,
+  .solo-page tr,
+  .solo-page td,
+  .solo-page th,
+  .solo-page p,
+  .solo-page li,
+  .solo-page ul,
+  .solo-page div:not(h1 div, h2 div, h3 div),
+  .solo-page span:not(h1 span, h2 span, h3 span) {
+    --solo-font: 'Fira Sans', sans-serif;
+    font-family: var(--solo-font);
+  }
+
+  .solo-page h1,
+  .solo-page h2,
+  .solo-page h3,
+  .solo-page h4,
+  .solo-page h5,
+  .solo-page h6,
+  #solo-page-wrapper .fira-sans {
+    --solo-font: 'Fira Sans', sans-serif;
+  }
+}
+
+/* Unlayered on purpose. Headings and font classes beat unlayered module CSS (PB w3-modern.css h1-h6) at the same specificity as before; a layer would lose to it. */
 .solo-page h1,
 .solo-page h2,
 .solo-page h3,
 .solo-page h4,
 .solo-page h5,
 .solo-page h6,
-.solo-page p,
-.solo-page li,
-.solo-page ul,
-.solo-page div:not(h1 div,
-h2 div,
-h3 div),
-.solo-page span:not(h1 span,
-h2 span,
-h3 span),
 #solo-page-wrapper .fira-sans {
-  --solo-font: 'Fira Sans', sans-serif;
   font-family: var(--solo-font);
 }

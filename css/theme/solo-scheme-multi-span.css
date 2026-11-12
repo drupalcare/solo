@@ -1,4 +1,8 @@
+@layer solo.schemes {
+
 /* Heading spans in multi-column regions take the heading color. */
 :where(.solo-page) :is(.solo-container--multi h1 span, .solo-container--multi h2 span, .solo-container--multi h3 span) {
   color: inherit;
 }
+
+} /* end @layer solo.schemes */

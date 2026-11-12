@@ -1,7 +1,7 @@
 """Contrast scan of Solo's predefined schemes (static, from the CSS files).
 
 Adopted from the d11 scratch scanner (solo_contrast.py) and kept here so it has one home.
-Models each region: its backgrounds (every --r-bg the scheme sets for it, gradient stops
+Models each region: its backgrounds (every --r-background and --r-background-image the scheme sets for it, gradient stops
 counted separately, worst one wins) against its body text, headings, links and link hover,
 plus menu, buttons, tab hover. Text needs 4.5:1. Control borders (selectify/inputs) need
 3:1 (WCAG 1.4.11) against the field and the main background.
@@ -76,10 +76,10 @@ REGIONS = {
     'main': ['.solo-container--main', 'region-box--main'],
     'bottom': ['.solo-container--bottom', '__inner--bottom'],
     'footer': ['.solo-container--footer', '__inner--footer'],
-    'footer menu': ['.solo-footer-nav'],
+    'footer menu': ['.solo-footer-menu__nav'],
     'copyright': ['.solo-copyright'],
-    'search popup': ['.solo-fixed-search'],
-    'login popup': ['.solo-popup-login__inner'],
+    'search popup': ['.solo-fixed-search-block'],
+    'login popup': ['.solo-popup-login-block__inner'],
 }
 SHARED_BG = {
     'main': '--sc-main-container-bg', 'top': '--sc-top-container-bg',
@@ -102,7 +102,7 @@ def scan(path):
     for sels, vs in blocks:
         if any(s in (':root', '.solo-page') for s in sels):
             env.update(vs)
-    page_tx = env.get('--r-tx')
+    page_tx = env.get('--r-text')
     rows = []
 
     def check(region, what, fg, bgs, need=4.5):
@@ -124,27 +124,29 @@ def scan(path):
                 hover = ':hover' in s
                 is_a = re.search(r'\ba\b', s) is not None
                 is_h = re.search(r'\bh[1-3]\b', s) is not None
-                if '--r-bg' in vs and not hover and not is_a:
-                    bg_vals.append(vs['--r-bg'])
-                if '--r-tx' in vs:
+                if '--r-background' in vs and not hover and not is_a:
+                    bg_vals.append(vs['--r-background'])
+                if '--r-background-image' in vs and not hover and not is_a:
+                    bg_vals.append(vs['--r-background-image'])
+                if '--r-text' in vs:
                     if is_a and hover:
-                        lkh = vs['--r-tx']
+                        lkh = vs['--r-text']
                     elif is_a:
-                        lk = vs['--r-tx']
+                        lk = vs['--r-text']
                     elif is_h:
-                        h1 = vs['--r-tx']
+                        h1 = vs['--r-text']
                     elif not hover:
-                        tx = vs['--r-tx']
-                if '--r-sc-lk' in vs and not hover:
-                    lk = lk or vs['--r-sc-lk']
-                if '--r-sc-lk-h' in vs:
-                    lkh = lkh or vs['--r-sc-lk-h']
-                if '--r-sc-h1' in vs:
-                    h1 = h1 or vs['--r-sc-h1']
+                        tx = vs['--r-text']
+                if '--r-link' in vs and not hover:
+                    lk = lk or vs['--r-link']
+                if '--r-link-hover' in vs:
+                    lkh = lkh or vs['--r-link-hover']
+                if '--r-heading' in vs:
+                    h1 = h1 or vs['--r-heading']
         if not bg_vals and region in SHARED_BG and SHARED_BG[region] in env:
             bg_vals = [env[SHARED_BG[region]]]
-        if region == 'header' and not bg_vals and '--r-header-bg' in env:
-            bg_vals = [env['--r-header-bg']]
+        if region == 'header' and not bg_vals and '--solo-accent-background' in env:
+            bg_vals = [env['--solo-accent-background']]
         bgs = [c for v in bg_vals for c in colors(v, env)]
         body = tx or page_tx
         check(region, 'text', body, bgs)
@@ -152,8 +154,8 @@ def scan(path):
             check(region, 'heading', h1 or (body if tx else env.get('--sc-head-tx')), bgs)
         check(region, 'link', lk or (tx if tx and region in ('bottom', 'footer', 'footer menu', 'copyright', 'breadcrumb', 'page title') else env.get('--sc-link-tx')), bgs)
         check(region, 'link hover', lkh or env.get('--sc-link-hover-tx'), bgs)
-        if region == 'header' and '--r-header-tx' in env:
-            check(region, 'header text', env['--r-header-tx'], bgs)
+        if region == 'header' and '--solo-accent-text' in env:
+            check(region, 'header text', env['--solo-accent-text'], bgs)
 
     def pair(region, what, fgk, bgk, need=4.5):
         if fgk in env and bgk in env:
@@ -165,13 +167,13 @@ def scan(path):
     pair('button', 'label', '--sc-button-tx', '--sc-button-bg')
     pair('button', 'hover label', '--sc-button-hover-tx', '--sc-button-hover-bg')
     pair('tabs', 'hover label', '--sc-tab-hover-tx', '--sc-tab-hover-bg')
-    pair('pager', 'hover label', '--r-header-tx', '--r-header-bg')
-    pair('dropdown', 'option hover', '--r-menu-tx-h', '--r-menu-bg-h')
+    pair('pager', 'hover label', '--solo-accent-text', '--solo-accent-background')
+    pair('dropdown', 'option hover', '--r-menu-text-hover', '--r-menu-background-hover')
     # Form control border against the main content background (non-text, 3:1).
     ctl = None
     for sels, vs in blocks:
-        if any('.selectify:where' in s for s in sels) and '--r-br' in vs:
-            ctl = vs['--r-br']
+        if any('.selectify:where' in s for s in sels) and '--r-border' in vs:
+            ctl = vs['--r-border']
     if ctl:
         check('form controls', 'border (3:1)', ctl, [hexrgb(WHITE)] + colors(env.get('--sc-main-container-bg'), env), 3.0)
     return rows
@@ -201,7 +203,7 @@ def control(path):
         css = open(src).read()
         bg = re.search(r'--sc-menu-bg:\s*([^;]+);', css).group(1)
         css = re.sub(r'(--sc-menu-tx:)\s*[^;]+;', r'\1 ' + bg + ';', css)
-        css += '\n.solo-container--main { --r-bg: #ffffff; --r-tx: #fefefe; }\n'
+        css += '\n.solo-container--main { --r-background: #ffffff; --r-text: #fefefe; }\n'
         open(os.path.join(d, 'solo-planted-bad.css'), 'w').write(css)
         text, _, lines = run(d)
         print('control: planted scheme text failures =', text)

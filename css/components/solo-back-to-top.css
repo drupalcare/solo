@@ -1,14 +1,20 @@
 /**
  * @file
- * Back to top: small circular button, bottom-right or bottom-left. Uses --r-bg, --r-tx.
+ * Back to top: small circular button, bottom-right or bottom-left. Uses --r-background, --r-text.
  * pointer-events: none when hidden. Respects prefers-reduced-motion. Hidden in print.
  */
+
+@layer solo.base {
 
 @media (prefers-reduced-motion: no-preference) {
   html {
     scroll-behavior: smooth;
   }
 }
+
+} /* end @layer solo.base */
+
+@layer solo.theme {
 
 .solo-back-to-top-sentinel-wrapper {
   overflow: hidden;
@@ -42,10 +48,10 @@
     transform 0.2s ease;
   pointer-events: none;
   opacity: 0;
-  color: var(--r-tx, #fff);
+  color: var(--r-text, #fff);
   border: 2px solid transparent;
   border-radius: 50%;
-  background-color: var(--r-bg, #333);
+  background-color: var(--r-background, #333);
 }
 
 .solo-back-to-top--bottom-right {
@@ -59,14 +65,14 @@
 }
 
 .solo-back-to-top--outline {
-  color: var(--r-tx, #fff);
-  border-color: var(--r-tx, #fff);
+  color: var(--r-text, #fff);
+  border-color: var(--r-text, #fff);
   background-color: transparent;
 }
 
 .solo-back-to-top--outline:hover,
 .solo-back-to-top--outline:focus {
-  color: var(--r-tx, #fff);
+  color: var(--r-text, #fff);
 }
 
 @media (max-width: 767px) {
@@ -92,11 +98,11 @@
 .solo-back-to-top:hover,
 .solo-back-to-top:focus {
   transform: translateY(-2px);
-  color: var(--r-tx, #fff);
+  color: var(--r-text, #fff);
 }
 
 /* Focus ring: the global two-color ring in solo-normalize.css (outline in
-   --r-tx, halo in --r-bg) applies here; no override, so it stays one rule. */
+   --r-text, halo in --r-background) applies here; no override, so it stays one rule. */
 
 .solo-back-to-top__icon {
   width: 1.25rem;
@@ -121,3 +127,5 @@
     display: none !important;
   }
 }
+
+} /* end @layer solo.theme */

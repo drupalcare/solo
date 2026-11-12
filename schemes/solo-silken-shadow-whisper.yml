@@ -14,11 +14,11 @@ categories:
   - elegant_whites_and_neutrals
 css: css/predefined/solo-silken-shadow-whisper.css
 dependencies:
-  - solo/solo-scheme-shared
-  - solo/solo-scheme-region-rule
-  - solo/solo-scheme-region-paint-1
-  - solo/solo-scheme-region-paint-2
-  - solo/solo-scheme-region-paint-3
+  - solo/theme-scheme-shared
+  - solo/theme-scheme-region-rule
+  - solo/theme-scheme-region-paint-1
+  - solo/theme-scheme-region-paint-2
+  - solo/theme-scheme-region-paint-3
 thumbnail: images/schemes/solo-silken-shadow-whisper.webp
 palette:
   --sc-head-tx: "#375d8c"
@@ -49,10 +49,10 @@ palette:
   --sc-social-box-shadow: "198, 187, 147"
   --sc-region-rule-br: "var(--solo-white)"
 page:
-  --r-br: "#ebe5d1"
-  --r-bg: "#efece1"
-  --r-tx: "#5a5130"
-  --r-header-bg: "linear-gradient(0deg, #dde3d6, #d5e0ee)"
-  --r-header-tx: "#375e8d"
-  --r-menu-tx-h: "#e3decb"
-  --r-menu-bg-h: "#51492b"
+  --r-border: "#ebe5d1"
+  --r-background: "#efece1"
+  --r-text: "#5a5130"
+  --solo-accent-background: "linear-gradient(0deg, #dde3d6, #d5e0ee)"
+  --solo-accent-text: "#375e8d"
+  --r-menu-text-hover: "#e3decb"
+  --r-menu-background-hover: "#51492b"

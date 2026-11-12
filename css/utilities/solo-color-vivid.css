@@ -1,0 +1,201 @@
+/**
+ * @file
+ * Solo color library: vivid.
+ *
+ * Tokens: one background (--solo-<class>) and one text color (--solo-<class>-on) per class,
+ * in solo.tokens. Classes: solo.utilities; each class sets --r-background and --r-text from
+ * its tokens and paints from them, with no !important (the layer order does the job).
+ * Where two class names share a rule (gray and grey), the token is named from the first name.
+ * Layer order: solo-layers.css. Check: scripts/css-layers-check.py.
+ */
+
+@layer solo.tokens {
+
+:root {
+  --solo-vivid-pink: #ffb5ba;
+  --solo-vivid-pink-on: var(--solo-white);
+  --solo-vivid-red: #be0032;
+  --solo-vivid-red-on: var(--solo-white);
+  --solo-vivid-orange: #f38400;
+  --solo-vivid-orange-on: var(--solo-white);
+  --solo-vivid-yellow: #f3c300;
+  --solo-vivid-yellow-on: var(--solo-white);
+  --solo-vivid-green: #008856;
+  --solo-vivid-green-on: var(--solo-white);
+  --solo-vivid-blue: #00a1c2;
+  --solo-vivid-blue-on: var(--solo-white);
+  --solo-vivid-black: var(--solo-black);
+  --solo-vivid-black-on: var(--solo-white);
+  --solo-vivid-white: var(--solo-white);
+  --solo-vivid-white-on: var(--solo-black);
+  --solo-vivid-purple: #9a4eae;
+  --solo-vivid-purple-on: var(--solo-white);
+  --solo-vivid-yellowish-pink: #ffb7a5;
+  --solo-vivid-yellowish-pink-on: var(--solo-white);
+  --solo-vivid-reddish-orange: #e25822;
+  --solo-vivid-reddish-orange-on: var(--solo-white);
+  --solo-vivid-orange-yellow: #f6a600;
+  --solo-vivid-orange-yellow-on: var(--solo-white);
+  --solo-vivid-greenish-yellow: #dcd300;
+  --solo-vivid-greenish-yellow-on: var(--solo-white);
+  --solo-vivid-yellow-green: #8db600;
+  --solo-vivid-yellow-green-on: var(--solo-white);
+  --solo-vivid-yellowish-green: #27a64c;
+  --solo-vivid-yellowish-green-on: var(--solo-white);
+  --solo-vivid-bluish-green: #008882;
+  --solo-vivid-bluish-green-on: var(--solo-white);
+  --solo-vivid-greenish-blue: #0085a1;
+  --solo-vivid-greenish-blue-on: var(--solo-white);
+  --solo-vivid-purplish-blue: #30267a;
+  --solo-vivid-purplish-blue-on: var(--solo-white);
+  --solo-vivid-reddish-purple: #870074;
+  --solo-vivid-reddish-purple-on: var(--solo-white);
+  --solo-vivid-purplish-red: #ce4676;
+  --solo-vivid-purplish-red-on: var(--solo-white);
+}
+
+} /* end @layer solo.tokens */
+
+@layer solo.utilities {
+
+:where(.solo-page) .w3-vivid-pink {
+  --r-text: var(--solo-vivid-pink-on);
+  --r-background: var(--solo-vivid-pink);
+  color: var(--r-text);
+  background-color: var(--r-background);
+}
+
+:where(.solo-page) .w3-vivid-red {
+  --r-text: var(--solo-vivid-red-on);
+  --r-background: var(--solo-vivid-red);
+  color: var(--r-text);
+  background-color: var(--r-background);
+}
+
+:where(.solo-page) .w3-vivid-orange {
+  --r-text: var(--solo-vivid-orange-on);
+  --r-background: var(--solo-vivid-orange);
+  color: var(--r-text);
+  background-color: var(--r-background);
+}
+
+:where(.solo-page) .w3-vivid-yellow {
+  --r-text: var(--solo-vivid-yellow-on);
+  --r-background: var(--solo-vivid-yellow);
+  color: var(--r-text);
+  background-color: var(--r-background);
+}
+
+:where(.solo-page) .w3-vivid-green {
+  --r-text: var(--solo-vivid-green-on);
+  --r-background: var(--solo-vivid-green);
+  color: var(--r-text);
+  background-color: var(--r-background);
+}
+
+:where(.solo-page) .w3-vivid-blue {
+  --r-text: var(--solo-vivid-blue-on);
+  --r-background: var(--solo-vivid-blue);
+  color: var(--r-text);
+  background-color: var(--r-background);
+}
+
+:where(.solo-page) .w3-vivid-black {
+  --r-text: var(--solo-vivid-black-on);
+  --r-background: var(--solo-vivid-black);
+  color: var(--r-text);
+  background-color: var(--r-background);
+}
+
+:where(.solo-page) .w3-vivid-white {
+  --r-text: var(--solo-vivid-white-on);
+  --r-background: var(--solo-vivid-white);
+  color: var(--r-text);
+  background-color: var(--r-background);
+}
+
+:where(.solo-page) .w3-vivid-purple {
+  --r-text: var(--solo-vivid-purple-on);
+  --r-background: var(--solo-vivid-purple);
+  color: var(--r-text);
+  background-color: var(--r-background);
+}
+
+:where(.solo-page) .w3-vivid-yellowish-pink {
+  --r-text: var(--solo-vivid-yellowish-pink-on);
+  --r-background: var(--solo-vivid-yellowish-pink);
+  color: var(--r-text);
+  background-color: var(--r-background);
+}
+
+:where(.solo-page) .w3-vivid-reddish-orange {
+  --r-text: var(--solo-vivid-reddish-orange-on);
+  --r-background: var(--solo-vivid-reddish-orange);
+  color: var(--r-text);
+  background-color: var(--r-background);
+}
+
+:where(.solo-page) .w3-vivid-orange-yellow {
+  --r-text: var(--solo-vivid-orange-yellow-on);
+  --r-background: var(--solo-vivid-orange-yellow);
+  color: var(--r-text);
+  background-color: var(--r-background);
+}
+
+:where(.solo-page) .w3-vivid-greenish-yellow {
+  --r-text: var(--solo-vivid-greenish-yellow-on);
+  --r-background: var(--solo-vivid-greenish-yellow);
+  color: var(--r-text);
+  background-color: var(--r-background);
+}
+
+:where(.solo-page) .w3-vivid-yellow-green {
+  --r-text: var(--solo-vivid-yellow-green-on);
+  --r-background: var(--solo-vivid-yellow-green);
+  color: var(--r-text);
+  background-color: var(--r-background);
+}
+
+:where(.solo-page) .w3-vivid-yellowish-green {
+  --r-text: var(--solo-vivid-yellowish-green-on);
+  --r-background: var(--solo-vivid-yellowish-green);
+  color: var(--r-text);
+  background-color: var(--r-background);
+}
+
+:where(.solo-page) .w3-vivid-bluish-green {
+  --r-text: var(--solo-vivid-bluish-green-on);
+  --r-background: var(--solo-vivid-bluish-green);
+  color: var(--r-text);
+  background-color: var(--r-background);
+}
+
+:where(.solo-page) .w3-vivid-greenish-blue {
+  --r-text: var(--solo-vivid-greenish-blue-on);
+  --r-background: var(--solo-vivid-greenish-blue);
+  color: var(--r-text);
+  background-color: var(--r-background);
+}
+
+:where(.solo-page) .w3-vivid-purplish-blue {
+  --r-text: var(--solo-vivid-purplish-blue-on);
+  --r-background: var(--solo-vivid-purplish-blue);
+  color: var(--r-text);
+  background-color: var(--r-background);
+}
+
+:where(.solo-page) .w3-vivid-reddish-purple {
+  --r-text: var(--solo-vivid-reddish-purple-on);
+  --r-background: var(--solo-vivid-reddish-purple);
+  color: var(--r-text);
+  background-color: var(--r-background);
+}
+
+:where(.solo-page) .w3-vivid-purplish-red {
+  --r-text: var(--solo-vivid-purplish-red-on);
+  --r-background: var(--solo-vivid-purplish-red);
+  color: var(--r-text);
+  background-color: var(--r-background);
+}
+
+} /* end @layer solo.utilities */

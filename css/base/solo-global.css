@@ -1,3 +1,11 @@
+/*
+ * Deprecated in 2.0, removed in the next major: the old names below stay as
+ * second selectors so sub-themes and content that print them keep working.
+ *   solo-file-button -> solo-input-file__button
+ */
+
+@layer solo.base {
+
 html,
 body {
   min-height: 100%;
@@ -45,50 +53,6 @@ h6,
   overflow-wrap: anywhere;
 }
 
-/* HTML tags */
-h1 {
-  font-size: var(--solo-px36); /* 36px */
-}
-
-h2 {
-  font-size: var(--solo-px32); /* 32px */
-}
-
-h3 {
-  font-size: var(--solo-px24); /* 24px */
-}
-
-h4 {
-  font-size: var(--solo-px20); /* 20px */
-}
-
-h5 {
-  font-size: var(--solo-px18); /* 18px */
-}
-
-h6 {
-  font-size: var(--solo-px16); /* 16px */
-}
-
-h1,
-h2,
-h3,
-.site-name,
-.site-slogan {
-  font-family: var(--solo-h1);
-  font-weight: 700;
-  margin-block: var(--solo-px12);
-  margin-inline: 0;
-}
-
-h4,
-h5,
-h6 {
-  font-weight: normal;
-  margin-block: var(--solo-px8);
-  margin-inline: 0;
-}
-
 :where([dir="rtl"]) ol,
 :where([dir="rtl"]) ul {
   text-align: var(--solo-text-align-start);
@@ -98,13 +62,6 @@ h6 {
 :where([dir="rtl"] .solo-breadcrumb__menu li) .solo-breadcrumb__separator {
   transform: scaleX(-1);
   direction: rtl;
-}
-
-hr {
-  border: 0;
-  border-block-start: var(--solo-px2) solid var(--r-br, var(--r-br-b));
-  margin-block: var(--solo-px20);
-  margin-inline: 0;
 }
 
 .solo-image {
@@ -123,7 +80,7 @@ img {
   width: 100%;
   height: auto;
   text-align: center;
-  font-size: 14px;
+  font-size: 0.875rem;
 }
 
 /* End Var tags */
@@ -142,13 +99,13 @@ img {
 
 ::placeholder {
   opacity: 0.7;
-  color: var(--r-tx);
+  color: var(--r-text);
   font-size: 90%;
 }
 
 ::-ms-input-placeholder {
   opacity: 0.7;
-  color: var(--r-tx);
+  color: var(--r-text);
 }
 
 /* Unordered list */
@@ -159,14 +116,10 @@ img {
   line-height: inherit;
 }
 
-.solo-ul li {
-  padding-block: var(--solo-px8);
-  padding-inline: var(--solo-px16);
-}
-
 /* Button */
 .button,
 .solo-button,
+.solo-input-file__button,
 .solo-file-button {
   display: inline-block;
   overflow: hidden;
@@ -188,16 +141,10 @@ img {
 
 .form-submit,
 [type="submit"],
+.solo-input-file__button,
 .solo-file-button,
 .solo-button.button--primary,
-.block-user-login-block form + .item-list ul li a {
-  float: none;
-  text-align: center;
-  border-width: var(--solo-px1);
-  border-style: solid;
-  padding-block: var(--solo-px8);
-  padding-inline: var(--solo-px24);
-  margin-block: var(--solo-px6);
+.block-user-login-block form + .item-list ul li a {  margin-block: var(--solo-px6);
   margin-inline: auto;
 }
 
@@ -224,7 +171,7 @@ img {
   position: relative;
   width: var(--solo-px24);
   height: var(--solo-px24);
-  border: var(--solo-px1) solid var(--r-br, var(--r-br-b));
+  border: var(--solo-px1) solid var(--r-border, var(--solo-border-default));
   line-height: inherit;
 }
 
@@ -237,11 +184,7 @@ input[type="password"] {
   display: block;
   width: 100%;
   max-width: 100%;
-  padding: var(--solo-px8);
-  border: var(--solo-px1) solid var(--r-br, var(--r-br-b));
-  border-radius: 0.25rem;
-  background-color: var(--r-bg, transparent);
-  line-height: inherit;
+  padding: var(--solo-px8);  border-radius: 0.25rem;  line-height: inherit;
 }
 
 select,
@@ -251,7 +194,7 @@ select,
   max-width: 100%;
   padding: var(--solo-px8);
   padding-inline-end: var(--solo-px40);
-  border: var(--solo-px1) solid var(--r-br, var(--r-br-b));
+  border: var(--solo-px1) solid var(--r-border, var(--solo-border-default));
   border-radius: 0.25rem;
   background-image: var(--solo-select-arrow-icon);
   background-repeat: no-repeat;
@@ -272,7 +215,7 @@ select,
 .dropbutton-wrapper > div {
   padding-block-start: var(--solo-px6);
   padding-block-end: var(--solo-px6);
-  border: var(--solo-px1) solid var(--r-br, var(--r-br-b));
+  border: var(--solo-px1) solid var(--r-border, var(--solo-border-default));
 }
 
 :where(.dropbutton-multiple.open) .dropbutton-arrow {
@@ -380,10 +323,12 @@ ol {
   font-size: var(--solo-px14);
 }
 
-:where(form) fieldset:not(td fieldset) {
-  margin-block-start: var(--solo-px12);
-  border: 1px solid var(--r-br, var(--r-br-b)) !important;
+:where(form) fieldset:not(td fieldset) {  border: 1px solid var(--r-border, var(--solo-border-default)) !important;
 }
+
+} /* end @layer solo.base */
+
+@layer solo.utilities {
 
 /* Global Classes */
 .solo-sticky {
@@ -509,6 +454,10 @@ ol {
   border: 0;
 }
 
+} /* end @layer solo.utilities */
+
+@layer solo.base {
+
 :where(html).gap-no,
 :where(html).gap-no {
   --solo-gap: var(--solo-px0);
@@ -566,9 +515,7 @@ ol {
 }
 
 .inline-radio-checkbox :where(form) .form-radios,
-.inline-radio-checkbox form .form-checkboxes {
-  display: inline-flex;
-  gap: 1rem;
+.inline-radio-checkbox form .form-checkboxes {  gap: 1rem;
   flex-wrap: wrap;
   align-items: center;
 }
@@ -594,11 +541,7 @@ ol {
 }
 
 .responsive-embed iframe {
-  display: block;
-  width: 100%;
-  height: 100%;
-  border: 0;
-}
+  display: block;}
 
 .aspect-ratio-1-1 {
   aspect-ratio: 1 / 1;
@@ -658,3 +601,5 @@ ol {
   align-items: center;
   min-block-size: 24px;
 }
+
+} /* end @layer solo.base */

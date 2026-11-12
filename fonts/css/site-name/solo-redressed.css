@@ -1,6 +1,12 @@
-#solo-page-wrapper .redressed,
-#solo-header.solo-redressed .solo-branding__site-name-link,
-#solo-page-wrapper.solo-redressed .solo-page-title__text,
-html.solo-preloader-enabled #solo-preloader.solo-redressed .solo-preloader__text {
+@layer solo.base {
+  #solo-header.solo-redressed .solo-branding__site-name-link,
+  #solo-page-wrapper.solo-redressed .solo-page-title__text,
+  html.solo-preloader-enabled #solo-preloader.solo-redressed .solo-preloader__text {
+    font-family: "Redressed", cursive;
+  }
+}
+
+/* Unlayered on purpose. Font classes beat unlayered element rules (PB w3-modern.css headings and buttons) as before; a layer would lose to them. */
+#solo-page-wrapper .redressed {
   font-family: "Redressed", cursive;
 }

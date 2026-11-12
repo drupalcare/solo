@@ -39,9 +39,9 @@ variables:
   # by Stylelint itself, recursively. Measured on a replica: 148 files checked.
   _STYLELINT_EXTRA: 'css'
   # Spelling: skip vendored or third-party text that is not ours to correct:
-  # fonts/ (Font Awesome and Google font CSS), css/w3-css/ (vendored W3.CSS)
+  # fonts/ (Font Awesome and Google font CSS), css/w3-css/ and css/utilities/ (vendored W3.CSS)
   # and translations/ (Vietnamese .po, which en-US cannot check).
-  _CSPELL_IGNORE_PATHS: 'fonts/**, css/w3-css/**, translations/**'
+  _CSPELL_IGNORE_PATHS: 'fonts/**, css/w3-css/**, css/utilities/**, translations/**'
 
 ################
 # Static CSS checks (no site, no browser).
@@ -56,6 +56,9 @@ variables:
 #   solo_libraries              the generated library data (fonts, schemes, breakpoints, libraries/) reads
 #                               without a problem; check-schemes and check-cascade read the same set
 #   build-breakpoints --check   the 15 generated breakpoint files match their sources
+#   build-region-legacy         the region color registrations, the archive of old names and the README table match
+#                               solo_utilities/config/map/solo-variable-map.yml (--self-test proves the check can fail)
+#   check-region-vars           no removed 1.x region variable name is used outside the archive (--self-test proves it can fail)
 #   contrast-scan --strict      every predefined scheme keeps its text/border contrast
 #   check-scheme-contrast       key pairs (site name, headings, links, menu, text) of all 50 schemes vs their region
 #                               background: 4.5:1 (3:1 large); fails on a NEW failure; known ones sit in
@@ -79,6 +82,10 @@ css-checks:
   script:
     - python3 -I scripts/solo_libraries.py
     - python3 -I scripts/build-breakpoints.py --check
+    - python3 -I scripts/build-region-legacy.py --self-test
+    - python3 -I scripts/build-region-legacy.py --check
+    - python3 -I scripts/check-region-vars.py --self-test
+    - python3 -I scripts/check-region-vars.py
     - python3 -I scripts/contrast-scan.py --strict
     - python3 -I scripts/check-scheme-contrast.py --self-test
     - python3 -I scripts/check-scheme-contrast.py

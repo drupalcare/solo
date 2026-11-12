@@ -25,7 +25,7 @@ import sys
 HERE = os.path.dirname(os.path.abspath(__file__))
 SOLO = os.path.dirname(HERE)
 BUDGET = os.path.join(HERE, 'css-budget.json')
-FOLDERS = ('base', 'layout', 'components', 'breakpoints', 'theme', 'predefined', 'w3-css')
+FOLDERS = ('base', 'layout', 'components', 'breakpoints', 'theme', 'predefined', 'w3-css', 'utilities')
 METRICS = ('over_020', 'with_id', 'important')
 
 
@@ -41,9 +41,9 @@ def measure(root):
     """Same universe as check-winners.py hist(); the folder is the first path part under css/."""
     cw = load_winners()
     files = sorted(glob.glob(root + '/css/components/*.css') + glob.glob(root + '/css/base/*.css') +
-                   glob.glob(root + '/css/layout/*.css') + glob.glob(root + '/css/breakpoints/solo-*-breakpoints-*.css') +
+                   glob.glob(root + '/css/layout/*.css') + glob.glob(root + '/css/breakpoints/solo-*-[sm][bn]-*.css') +
                    glob.glob(root + '/css/theme/*.css') + glob.glob(root + '/css/predefined/*.css') +
-                   glob.glob(root + '/css/w3-css/*.css'))
+                   glob.glob(root + '/css/w3-css/*.css') + glob.glob(root + '/css/utilities/*.css'))
     folders = {f: {'files': 0, 'declarations': 0, 'over_020': 0, 'with_id': 0, 'important': 0} for f in FOLDERS}
     for path in files:
         part = path.split('/css/')[1].split('/')[0]

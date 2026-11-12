@@ -1,0 +1,3540 @@
+/**
+ * @file
+ * Declarations that must stay OUTSIDE the solo.* cascade layers.
+ *
+ * An unlayered declaration beats every @layer at any specificity. Each rule
+ * below won against an unlayered core, contrib, Paragraphs Bundles or VVJ
+ * stylesheet before Solo was layered (listed by
+ * planning/solo-layer-losers-2026-11-10.md) and would lose to it once the
+ * rule sat in a layer. Each is moved here unchanged (same selector, same
+ * value), so the look stays the same. The comment above each rule names the
+ * Solo file it came from and the rival stylesheet:line it answers.
+ *
+ * A selector that was a bare element or class outside Solo's own names is
+ * prefixed with :where(.solo-page) here: zero added specificity, and it keeps
+ * the file scoped. Rules for html, body and :root stay in their layer.
+ *
+ * It wins by source order, as before: this file loads right after
+ * solo-global.css, after module CSS. Remove a rule only after the rival is
+ * proven not to load on a Solo page; then the rule can go back into its layer.
+ *
+ * Rival groups (admin-only stylesheets were not counted):
+ * core: dropbutton.css, vertical-tabs.css, item-list.module.css, hidden.module.css, align.module.css, filter.caption.css, drupalmedia.css, entity-link-suggestions.css, dblog.module.css, content_moderation.module.css, container-inline.module.css, print.css, system.diff.css, table.css, workspaces.overview.css, workspaces.overview.pcss.css, tree-child.module.css, announcements_feed.dialog.css, announcements_feed.dialog.pcss.css.
+ * Paragraphs Bundles (PB): w3-modern.css, paragraphs-bundles-base.css, w3css-paragraphs-base.css, w3css-paragraphs-image-overlay.css, w3css-paragraphs-hero.css, w3css-paragraphs-hero-full-width.css, paragraph-bundle-alert.css, paragraph-bundle-node-reference.css, pb-patterns-base.css, w3css-paragraphs-3d-carousel.css, w3css-paragraphs-accordion.css, paragraph-bundle-content-neutral.css, paragraph-bundle-image-overlay.css, paragraphs-bundles-custom.css, w3css-paragraphs-slideshow.css, pb-pattern-link-roll-call.css, pb-pattern-parallax-fieldbook.css, pb-pattern-parallax-horizon.css, pb-pattern-parallax-shoreline.css, pb-pattern-parallax-showroom.css, pb-pattern-3d-carousel-folio.css, pb-pattern-link-directory.css, pb-pattern-parallax-skyline.css, pb-svg.css, paragraph-bundle-video.css, pb-patterns-insert.css, pb-pattern-simple-action-band.css, w3css-paragraphs-swatches.css, paragraph-bundle-carousel.css, paragraphs-bundles-paragraphs-list.css, paragraph-bundle-accordion.css, w3css-paragraphs-card.css, paragraph-bundle-3d-carousel.css, pb-pattern-grid-plans.css, pb-pattern-image-grid-index.css, pb-pattern-image-grid-reel.css, pb-pattern-image-grid-sheet.css, pb-pattern-slideshow-ledger.css, pb-pattern-slideshow-marquee.css, pb-pattern-slideshow-shuffle.css, pb-pattern-slideshow-tide.css, pb-pattern-tabs-contents.css, pb-pattern-tabs-folder.css, pb-pattern-tabs-swatch.css, pb-pattern-tabs-dock.css, pb-pattern-tabs-glossary.css, paragraph-bundle-slideshow.css, pb-pattern-carousel-ledger.css, pb-pattern-carousel-nightstory.css, pb-pattern-hero-aperture.css, pb-pattern-slideshow-pillar.css, paragraph-bundle-image-grid.css, pb-pattern-3d-carousel-lantern.css, pb-pattern-3d-carousel-monolith.css, pb-pattern-3d-carousel-orbit-dock.css, pb-pattern-3d-carousel-portfolio.css, pb-pattern-carousel-dockrail.css, pb-pattern-carousel-swatch.css, pb-pattern-carousel-switchboard.css, pb-pattern-image-grid-mosaic.css, pb-pattern-image-grid-prints.css, paragraph-bundle-tabs.css, paragraph-bundle-icon.css, paragraph-bundle-layout-pb-1200.css, paragraph-bundle-layout-pb-1400.css, paragraph-bundle-layout-pb-576.css, paragraph-bundle-layout-pb-768.css, paragraph-bundle-layout-pb-992.css, pb-pattern-icon-inkfill.css, pb-pattern-simple-lead.css, pb-pattern-simple-pull-quote.css, paragraph-bundle-image-section.css, w3css-paragraphs-responsive-image.css, paragraph-bundle-hero.css, paragraph-bundle-content-solo.css, w3css-paragraphs-content-base.css, paragraph-bundle-text-section.css, pb-pattern-alert-docket.css, pb-pattern-alert-corner-notice.css, pb-pattern-alert-slimline.css.
+ * VVJ: vvjc.css, vvjs.css, vvjb-swatch.css, vvjr-pattern-base.css, vvjf-pattern-base.css, vvjp-style.css, vvjb-ledger.css, vvjh-pattern-base.css, vvjp-pattern-base.css, vvja-style.css, vvja-pattern-base.css, vvjc-pattern-base.css, vvjs-pattern-base.css, vvjt-pattern-base.css, vvjf-board.css, vvja.css, vvjb.css, vvjl.css, vvjt-style.css, vvjt.css, vvja-cards.css, vvja-spotlight.css, vvjb-pattern-base.css, vvjh-aperture.css, vvjh-panels.css, vvjh-stack.css, vvjp-fieldbook.css, vvjp-horizon.css, vvjp-shoreline.css, vvjp-showroom.css, vvjp-skyline.css, vvjs-deck.css, vvjs-nightfall.css, vvjb-nightstory.css, vvjh-bento.css, vvjr-nocturne.css, vvjs-filmstrip.css, vvjs-iris.css, vvjs-ledger.css, vvjt-contents.css, vvjt-dock.css, vvjt-folder.css, vvjb-dockrail.css, vvjb-switchboard.css, vvjc-index-split.css, vvjc-thumb-rail.css, vvj-patterns-base.css, vvjl-pattern-base.css, vvja-agenda.css, vvja-faq.css, vvjf-plans.css, vvjc-story-reel.css, vvjs-hero.css, vvjs-transitions.css, vvjt-glossary.css, vvja-stage.css, vvjr-index.css.
+ * contrib: theme.css, blazy.media.css, addtoany.css, horizontal-tabs.css, cookies.lib.css, slick.theme--fullscreen.css, datepicker.css, extlink.css, button.css, webform.element.help.css, paragraphs.actions.css, webform.element.counter.css, webform.form.css, selectify-base.css, webform.element.rating.css, webform.progress.bar.css, blazy.flybox.css, webform.element.color.css, webform.element.options.css, blazy.oembed.css, blazy.colorbox.css, blazy.css, blazy.ratio-modern.css, webform_options_custom.element.css, selectify-style.css, webform.element.multiple.css, webform.element.html_editor.css, slick.theme.css, suggestions.css, token.treetable.theme.css, devel.css, slick.thumbnail--grid.css, views-slideshow-pager-bullets.css, module-matrix.style.accent.css, module-matrix.style.css, blazy.mfp.css, blazy.flex.css, blazy.flexbox.css, blazy.nativegrid.masonry.css, module-matrix.settings.css, webform.element.image_file.css, webform.help.css, image_captcha.css, slick.theme--full.css, tabs.css, report.css, webform.form.tabs.css, selectify-settings-style.css, slick.theme--fullwidth.css, webform.element.likert.css, webform_entity_print.css, blazy.filter.css, paragraphs.list-builder.css, slick.thumbnail--hover.css, sitemap.theme.css, yoast_seo.css, module-matrix.details.css, module-matrix.package.css, webform.element.flexbox.css, webform.element.states.css, webform.element.table.css, webform_ui.module.css, webform.element.range.css, webform.composite.telephone.css, webform.element.managed_file.css, config_split_form.css, selectify-radio-checkbox.css, webform.element.scale.css, views_slideshow_cycle.css, webform.wizard.pages.css, webform.element.term_checkboxes.css, webform_share.page.css, taxonomy_manager.fancytree.css, dialog.css, config_inspector.css, selectify-dropdowns.css, selectify-dual.css, mailchimp_campaign.css, module-matrix.filter.css, webform.element.message.info.css, yoast_seo.message.css, webform.promotions.css, config_update_ui.report.css, token.css, webform.token.css, paragraphs.widget.css, webform.theme.bartik.css, webform.element.codemirror.css, paragraphs.modal.css, webform.element.tableselect.css, webform.element.tableselect_sort.css, webform.theme.olivero.css, blazy.blur.css, views_field_view.css, spinner.css.
+ */
+
+/*
+ * Deprecated in 2.0, removed in the next major: the old names below stay as
+ * second selectors so sub-themes and content that print them keep working.
+ *   solo-file-button -> solo-input-file__button
+ *   solo-fixed-search__close -> solo-fixed-search-block__close
+ *   solo-fixed-search__inner -> solo-fixed-search-block__inner
+ *   solo-footer-nav -> solo-footer-menu__nav
+ *   solo-footer-nav__inner -> solo-footer-menu__nav__inner
+ *   solo-local-task--core -> solo-menu-local-task--core
+ *   solo-mobile-nav -> solo-menu-main--mobile
+ *   solo-popup-login -> solo-popup-login-block
+ *   solo-popup-login__close -> solo-popup-login-block__close
+ *   solo-popup-login__open -> solo-popup-login-block__open
+ *   solo-search-button-open -> solo-fixed-search-block__open
+ *   solo-sidebar-button-close -> solo-menu-primary-sidebar__close
+ *   solo-sidebar-button-open -> solo-menu-primary-sidebar__open
+ *   solo-table-wrapper -> solo-table__wrapper
+ */
+
+/* ==== from css/base/solo-normalize.css ==== */
+
+/* solo-normalize.css:34, answers w3-modern.css:265, w3-modern.css:310 */
+:where(.solo-page) h1 {
+  font-size: 2em;
+  margin-block: 0.67em;
+  margin-inline: 0;
+}
+
+/* solo-normalize.css:46, answers w3-modern.css:164 */
+:where(.solo-page) pre {
+  font-family: monospace;
+}
+
+/* solo-normalize.css:56, answers w3-modern.css:114 */
+:where(.solo-page) abbr[title] {
+  text-decoration: underline;
+}
+
+/* solo-normalize.css:69, answers w3-modern.css:164 */
+:where(.solo-page) code,
+:where(.solo-page) kbd,
+:where(.solo-page) samp {
+  font-family: monospace;
+}
+
+/* solo-normalize.css:102, answers w3-modern.css:179 */
+:where(.solo-page) button,
+:where(.solo-page) input,
+:where(.solo-page) optgroup,
+:where(.solo-page) select,
+:where(.solo-page) textarea {
+  font-size: 100%;
+}
+
+/* solo-normalize.css:137, answers paragraphs-bundles-base.css:94 */
+:where(.solo-page) button:-moz-focusring,
+:where(.solo-page) [type="button"]:-moz-focusring,
+:where(.solo-page) [type="reset"]:-moz-focusring,
+:where(.solo-page) [type="submit"]:-moz-focusring {
+  outline: 1px dotted ButtonText;
+}
+
+/* solo-normalize.css:141, answers w3-modern.css:205 */
+:where(.solo-page) fieldset {
+  padding-block-start: 0.35em;
+  padding-inline: 0.75em;
+  padding-block-end: 0.625em;
+}
+
+/* solo-normalize.css:208, answers w3-modern.css:92, w3-modern.css:157 */
+:where(.solo-page) img,
+:where(.solo-page) video {
+  display: block;
+  border: 0;
+}
+
+/* solo-normalize.css:291, answers vvjp-style.css:21 */
+:where(.solo-page) a,
+:where(.solo-page) input,
+:where(.solo-page) button,
+:where(.solo-page) textarea,
+:where(.solo-page) a:visited,
+:where(.solo-page) input:visited,
+:where(.solo-page) button:visited,
+:where(.solo-page) textarea:visited,
+:where(.solo-page) a:hover,
+:where(.solo-page) input:hover,
+:where(.solo-page) button:hover,
+:where(.solo-page) textarea:hover,
+:where(.solo-page) a:active,
+:where(.solo-page) input:active,
+:where(.solo-page) button:active,
+:where(.solo-page) textarea:active,
+:where(.solo-page) a:focus-within,
+:where(.solo-page) input:focus-within,
+:where(.solo-page) button:focus-within,
+:where(.solo-page) textarea:focus-within,
+:where(.solo-page) a:focus,
+:where(.solo-page) input:focus,
+:where(.solo-page) button:focus,
+:where(.solo-page) textarea:focus {
+  text-decoration: none;
+}
+
+/* solo-normalize.css:330, answers paragraphs-bundles-base.css:94 */
+:where(.solo-page) a:focus-visible,
+:where(.solo-page) button:focus-visible,
+:where(.solo-page) :where(input, select, textarea, summary, [role="button"]):focus-visible {
+  outline: 2px solid var(--r-text, #000);
+  outline-offset: 2px;
+}
+
+/* ==== from css/base/solo-variables-regions.css ==== */
+
+/* solo-variables-regions.css:50, answers webform.form.css:138, button.css:79, webform.element.color.css:10 (+1 more) */
+.solo-page .solo-textarea,
+.solo-page input:not(.button, [type="submit"], [type="checkbox"], [type="radio"]),
+.solo-page .solo-select:not(.selectify-select),
+.solo-page .solo-radio:not(.selectify-radio),
+.solo-page .solo-check:not(.selectify-checkbox) {
+  color: var(--r-text);
+  border-color: var(--r-border, var(--solo-border-default));
+  background-color: var(--r-form-background, var(--r-background));
+}
+
+/* A scheme sets --r-heading, --r-link, --r-link-hover, --r-button-text and
+   --r-button-text-hover on each region (solo.schemes layer). A site's region
+   colors are written outside layers, so on the same element they win. */
+
+/* Link only — specificity (0,1,1): above solo-normalize.css (`a { all: unset }`,
+   `li a { color: inherit }`) so the region link color applies (#3629228), and
+   below a paragraph's own link rules (0,2,0)+, so section link colors win.
+   Only the .page-wrapper part is zeroed; zeroing the whole selector (1.0.35)
+   let normalize win and every link fell back to the text color.
+   Tab, pager and social links paint their own background, so a region's link
+   colors do not apply to them: they are left out here (the :where() keeps the
+   specificity at (0,1,1)) and take the text color. */
+/* solo-variables-regions.css:64, answers w3-modern.css:335, vvjb-swatch.css:23, cookies.lib.css:48 (+7 more) */
+:where(.solo-page) a:not(.solo-menu-tree__link, .button, .solo-branding__site-name-link, .site-logo, h1 a, h2 a, h3 a, :where(ul.tabs, .pager__item, .solo-social) a) {
+  color: var(--r-link, var(--r-text));
+}
+
+/* solo-variables-regions.css:68, answers w3-modern.css:335, vvjb-swatch.css:23, cookies.lib.css:48 (+10 more) */
+:where(.solo-page) a:not(.solo-menu-tree__link, .button, .solo-branding__site-name-link, .site-logo, h1 a, h2 a, h3 a, :where(ul.tabs, .pager__item, .solo-social) a):hover {
+  color: var(--r-link-hover, var(--r-text));
+}
+
+/* Button */
+/* solo-variables-regions.css:88, answers paragraphs-bundles-base.css:103, w3-modern.css:335, vvjb-swatch.css:23 (+27 more) */
+.solo-page a.button,
+.solo-page input.button,
+.solo-page .solo-input-file__button,
+.solo-page .solo-file-button,
+.solo-page .solo-fixed-search-block__close button,
+.solo-page .solo-fixed-search__close button {
+  color: var(--r-button-text, var(--r-text));
+  border-color: var(--r-border, var(--solo-border-default));
+  background-color: var(--r-button-background, var(--r-background));
+}
+
+/* solo-variables-regions.css:97, answers paragraphs-bundles-base.css:103, paragraph-bundle-node-reference.css:65, w3-modern.css:335 (+43 more) */
+.solo-page a.button:hover,
+.solo-page input.button:hover,
+:where(.solo-page) .solo-input-file__button:hover,
+:where(.solo-page) .solo-file-button:hover,
+.solo-page .solo-fixed-search-block__close button:hover,
+.solo-page .solo-fixed-search__close button:hover {
+  color: var(--r-button-text-hover, var(--r-text));
+  background-color: var(--r-button-background-hover, var(--r-background));
+  box-shadow: inset 0 0 var(--solo-px10) var(--r-border);
+}
+
+/* Menu Link */
+/* solo-variables-regions.css:108, answers w3-modern.css:335, vvjb-swatch.css:23, cookies.lib.css:48 (+23 more) */
+.solo-page li.solo-menu-tree__item > a,
+.solo-page li.solo-menu-tree__item > button,
+:where(.solo-page) .solo-popup-login-block__open,
+:where(.solo-page) .solo-popup-login__open,
+.solo-page .solo-hamburger button,
+:where(.solo-page) .block-user-login-block form + .item-list ul li a {
+  color: var(--r-menu-text, var(--r-text));
+  border-color: var(--r-border, var(--solo-border-default));
+  background-color: var(--r-menu-background, var(--r-background));
+}
+
+/* solo-variables-regions.css:118, answers paragraph-bundle-node-reference.css:65, paragraph-bundle-node-reference.css:122, w3-modern.css:335 (+42 more) */
+.solo-page li.solo-menu-tree__item > a:hover,
+.solo-page li.solo-menu-tree__item > button:hover,
+:where(.solo-page) .solo-popup-login-block__open:hover,
+:where(.solo-page) .solo-popup-login__open:hover,
+.solo-page .solo-hamburger button:hover,
+:where(.solo-page) .block-user-login-block form + .item-list ul li a:hover {
+  color: var(--r-menu-text-hover, var(--r-text));
+  background-color: var(--r-menu-background-hover, var(--r-background));
+}
+
+/* solo-variables-regions.css:159, answers extlink.css:6, extlink.css:14, extlink.css:22 */
+.solo-social a > span:hover {
+  background-color: rgb(var(--s-b), 0.9);
+}
+
+/* ==== from css/base/solo-animation.css ==== */
+
+/* solo-animation.css:7, answers w3-modern.css:189 */
+.solo-page nav ul li > a,
+.solo-page nav ul li > button {
+  overflow: hidden;
+}
+
+/* solo-animation.css:14, answers vvjc.css:161, w3css-paragraphs-image-overlay.css:21, dropbutton.css:125 (+7 more) */
+.solo-page nav ul li > a::after,
+.solo-page nav ul li > button::after {
+  width: 100%;
+  height: 2px;
+  transition: transform 0.2s ease;
+  background-color: var(--r-border, var(--solo-border-default));
+}
+
+/* solo-animation.css:45, answers paragraphs-bundles-base.css:121, w3css-paragraphs-base.css:305, vvjb-ledger.css:33 (+11 more) */
+.solo-page nav .solo-menu-tree--megamenu ul li > a::after,
+.solo-page nav .solo-menu-tree--megamenu ul li > button::after {
+  display: none;
+}
+
+/* Disable for other excluded areas */
+/* solo-animation.css:57, answers paragraphs-bundles-base.css:121, w3css-paragraphs-base.css:305, vvjb-ledger.css:33 (+11 more) */
+.solo-page .solo-header ul li > a::after,
+.solo-page .solo-header ul li > button::after,
+.solo-page .solo-ul li > a::after,
+.solo-page .solo-ul li > button::after,
+.solo-page .field ul li > a::after,
+.solo-page .field ul li > button::after,
+.solo-page .pager ul li > a::after,
+.solo-page .pager ul li > button::after {
+  display: none;
+}
+
+/* ============================================
+   MODERN BUTTON HOVER - SUBTLE LIFT
+   ============================================ */
+/* solo-animation.css:78, answers vvjc.css:201, paragraphs.actions.css:86 */
+.solo-page form input.button.form-submit:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 2px 4px rgb(var(--s-b, var(--s-w)), 0.1);
+}
+
+/* solo-animation.css:268, answers w3css-paragraphs-image-overlay.css:21, vvjc.css:161, dropbutton.css:125 (+7 more) */
+.solo-body--legacy-animations nav ul li > a::before,
+.solo-body--legacy-animations nav ul li > button::before {
+  width: 0;
+  height: 0;
+  border-block-end: 5px solid transparent;
+  background-color: transparent;
+}
+
+/* solo-animation.css:280, answers w3css-paragraphs-image-overlay.css:21, vvjc.css:161, dropbutton.css:125 (+10 more) */
+.solo-body--legacy-animations nav ul li > a::after,
+.solo-body--legacy-animations nav ul li > button::after {
+  width: 0;
+  height: 0;
+  transition: none;
+  border-block-end: 5px solid transparent;
+  background-color: transparent;
+}
+
+/* solo-animation.css:292, answers w3css-paragraphs-hero.css:36, w3css-paragraphs-hero-full-width.css:70, w3css-paragraphs-image-overlay.css:21 (+3 more) */
+.solo-body--legacy-animations nav ul li > a:hover::after,
+.solo-body--legacy-animations nav ul li > a:hover::before,
+.solo-body--legacy-animations nav ul li > button:hover::after,
+.solo-body--legacy-animations nav ul li > button:hover::before {
+  width: auto;
+}
+
+/* solo-animation.css:298, answers vvjc.css:201 */
+.solo-body--legacy-animations form input.button.form-submit:hover {
+  transform: none;
+}
+
+/* Disable legacy animations in mega menu nested items */
+/* solo-animation.css:313, answers paragraphs-bundles-base.css:121, w3css-paragraphs-base.css:305, vvjb-ledger.css:33 (+11 more) */
+.solo-body--legacy-animations nav .solo-menu-tree--megamenu ul li > a::before,
+.solo-body--legacy-animations nav .solo-menu-tree--megamenu ul li > button::before {
+  display: none;
+}
+
+/* ==== from css/components/solo-menu-hamburger.css ==== */
+
+/* solo-menu-hamburger.css:2, answers w3css-paragraphs-accordion.css:52, vvjf-board.css:21, addtoany.css:25 (+6 more) */
+:where(.solo-inner) .solo-hamburger,
+.solo-inner .solo-hamburger > button > span {
+  display: flex;
+  align-items: baseline;
+}
+
+/* solo-menu-hamburger.css:8, answers vvja.css:123, vvjb.css:263, vvjc.css:194 (+7 more) */
+.solo-inner .solo-hamburger span > svg {
+  height: 3.25rem;
+}
+
+/* ==== from css/base/solo-global.css ==== */
+
+/* HTML tags */
+/* solo-global.css:49, answers w3-modern.css:265 */
+:where(.solo-page) h1 {
+  font-size: var(--solo-px36); /* 36px */
+}
+
+/* solo-global.css:53, answers w3-modern.css:269 */
+:where(.solo-page) h2 {
+  font-size: var(--solo-px32); /* 32px */
+}
+
+/* solo-global.css:57, answers w3-modern.css:273 */
+:where(.solo-page) h3 {
+  font-size: var(--solo-px24); /* 24px */
+}
+
+/* solo-global.css:61, answers w3-modern.css:277 */
+:where(.solo-page) h4 {
+  font-size: var(--solo-px20); /* 20px */
+}
+
+/* solo-global.css:65, answers w3-modern.css:281 */
+:where(.solo-page) h5 {
+  font-size: var(--solo-px18); /* 18px */
+}
+
+/* solo-global.css:69, answers w3-modern.css:285 */
+:where(.solo-page) h6 {
+  font-size: var(--solo-px16); /* 16px */
+}
+
+/* solo-global.css:77, answers w3-modern.css:310 */
+:where(.solo-page) h1,
+:where(.solo-page) h2,
+:where(.solo-page) h3,
+:where(.solo-page) .site-name,
+:where(.solo-page) .site-slogan {
+  font-family: var(--solo-h1);
+  font-weight: 700;
+  margin-block: var(--solo-px12);
+  margin-inline: 0;
+}
+
+/* solo-global.css:86, answers w3-modern.css:310 */
+:where(.solo-page) h4,
+:where(.solo-page) h5,
+:where(.solo-page) h6 {
+  font-weight: normal;
+  margin-block: var(--solo-px8);
+  margin-inline: 0;
+}
+
+/* solo-global.css:103, answers w3-modern.css:320 */
+:where(.solo-page) hr {
+  border: 0;
+  border-block-start: var(--solo-px2) solid var(--r-border, var(--solo-border-default));
+  margin-block: var(--solo-px20);
+  margin-inline: 0;
+}
+
+/* solo-global.css:162, answers w3-modern.css:458, webform.progress.bar.css:21 */
+.solo-ul li {
+  padding-block: var(--solo-px8);
+  padding-inline: var(--solo-px16);
+}
+
+/* solo-global.css:193, answers w3css-paragraphs-hero.css:36, w3css-paragraphs-hero-full-width.css:70, w3css-paragraphs-image-overlay.css:21 (+6 more) */
+:where(.solo-page) .form-submit,
+:where(.solo-page) [type="submit"],
+.solo-input-file__button,
+.solo-file-button,
+.solo-button.button--primary,
+:where(.solo-page) .block-user-login-block form + .item-list ul li a {
+  float: none;
+  text-align: center;
+  border-width: var(--solo-px1);
+  border-style: solid;
+  padding-block: var(--solo-px8);
+  padding-inline: var(--solo-px24);
+}
+
+/* solo-global.css:236, answers webform.element.counter.css:9 */
+:where(.solo-page) textarea,
+.solo-input,
+.solo-textarea,
+:where(.solo-page) input[type="text"],
+:where(.solo-page) input[type="email"],
+:where(.solo-page) input[type="password"] {
+  border: var(--solo-px1) solid var(--r-border, var(--solo-border-default));
+  background-color: var(--r-background, transparent);
+}
+
+/* solo-global.css:383, answers w3-modern.css:205 */
+:where(.solo-page) :where(form) fieldset:not(td fieldset) {
+  margin-block-start: var(--solo-px12);
+}
+
+/* solo-global.css:569, answers webform.form.css:111 */
+:where(.solo-page) .inline-radio-checkbox :where(form) .form-radios,
+:where(.solo-page) .inline-radio-checkbox form .form-checkboxes {
+  display: inline-flex;
+}
+
+/* solo-global.css:596, answers blazy.flybox.css:76, blazy.oembed.css:11, blazy.flybox.css:24 (+1 more) */
+:where(.solo-page) .responsive-embed iframe {
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+/* ==== from css/layout/solo-layout.css ==== */
+
+/* solo-layout.css:77, answers w3css-paragraphs-3d-carousel.css:70, w3css-paragraphs-3d-carousel.css:365, w3css-paragraphs-hero.css:16 (+7 more) */
+.solo-container--top-active-1 > .solo-inner > div,
+.solo-container--main-active-1 > .solo-inner > div,
+.solo-container--bottom-active-1 > .solo-inner > div,
+.solo-container--footer-active-1 > .solo-inner > div {
+  width: calc(100% - calc(2 * var(--solo-gap)));
+  margin: 0 auto;
+}
+
+/* ==== from css/components/solo-menu-local-action.css ==== */
+
+/* solo-menu-local-action.css:11, answers item-list.module.css:7 */
+:where(.solo-page) .action-links li {
+  display: inline-block;
+}
+
+/* ==== from css/components/solo-breadcrumb.css ==== */
+
+/* solo-breadcrumb.css:25, answers slick.theme.css:224, webform.progress.bar.css:21, item-list.module.css:7 (+2 more) */
+ul.solo-breadcrumb__menu li,
+ol.solo-breadcrumb__menu li {
+  display: flex;
+  margin: 0;
+  padding: 0;
+}
+
+/* solo-breadcrumb.css:35, answers vvjb-ledger.css:33, vvjb-swatch.css:23, addtoany.css:13 (+2 more) */
+ul.solo-breadcrumb__menu li > a,
+ol.solo-breadcrumb__menu li > a {
+  display: flex;
+  min-height: 1.5rem;
+  padding-inline-start: var(--solo-px2);
+  padding-inline-end: var(--solo-px6);
+  padding-block: var(--solo-px8);
+}
+
+/* solo-breadcrumb.css:45, answers w3css-paragraphs-accordion.css:52, vvjf-board.css:21, addtoany.css:32 (+4 more) */
+ul.solo-breadcrumb__menu li > span,
+ol.solo-breadcrumb__menu li > span {
+  display: flex;
+  padding-inline-start: var(--solo-px4);
+  padding-inline-end: var(--solo-px6);
+  padding-block: var(--solo-px8);
+}
+
+/* ==== from css/components/solo-ckeditor.css ==== */
+
+/* solo-ckeditor.css:61, answers w3-modern.css:458 */
+:where(.solo-page) .filter-guidelines-item li {
+  padding-inline-start: 0;
+}
+
+/* ==== from css/components/solo-menu-local-tasks-color-coded.css ==== */
+
+/* solo-menu-local-tasks-color-coded.css:11, answers devel.css:21, slick.thumbnail--grid.css:12, slick.theme.css:224 (+4 more) */
+.solo-page ul.primary > li.solo-menu-local-task--core,
+.solo-page ul.primary > li.solo-local-task--core {
+  display: flex;
+}
+
+/* solo-menu-local-tasks-color-coded.css:27, answers paragraph-bundle-image-overlay.css:41, paragraphs-bundles-base.css:121, paragraphs-bundles-custom.css:259 (+42 more) */
+.solo-page ul.primary > li.solo-menu-local-task--core > a,
+.solo-page ul.primary > li.solo-local-task--core > a {
+  position: relative;
+  display: flex;
+  overflow: hidden;
+  flex-grow: 1;
+  padding-inline-start: var(--solo-px32);
+  transition:
+    color 0.3s ease,
+    box-shadow 0.3s ease,
+    transform 0.3s ease;
+  color: var(--r-link);
+}
+
+/* solo-menu-local-tasks-color-coded.css:43, answers horizontal-tabs.css:96, paragraphs-bundles-base.css:121, vvja-pattern-base.css:133 (+19 more) */
+.solo-page ul.primary > li.solo-menu-local-task--core > a::before,
+.solo-page ul.primary > li.solo-local-task--core > a::before {
+  position: absolute;
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.3s ease-out;
+  background-color: transparent;
+}
+
+/* solo-menu-local-tasks-color-coded.css:56, answers pb-pattern-link-roll-call.css:99, pb-pattern-link-roll-call.css:154, pb-pattern-parallax-fieldbook.css:138 (+35 more) */
+.solo-page ul.primary > li.solo-menu-local-task--core > a.view-link::before,
+.solo-page ul.primary > li.solo-local-task--core > a.view-link::before {
+  background-color: var(--solo-tab-view);
+}
+
+/* solo-menu-local-tasks-color-coded.css:60, answers pb-pattern-link-roll-call.css:99, pb-pattern-link-roll-call.css:154, pb-pattern-parallax-fieldbook.css:138 (+35 more) */
+.solo-page ul.primary > li.solo-menu-local-task--core > a.edit-link::before,
+.solo-page ul.primary > li.solo-local-task--core > a.edit-link::before {
+  background-color: var(--solo-tab-edit);
+}
+
+/* solo-menu-local-tasks-color-coded.css:64, answers pb-pattern-link-roll-call.css:99, pb-pattern-link-roll-call.css:154, pb-pattern-parallax-fieldbook.css:138 (+35 more) */
+.solo-page ul.primary > li.solo-menu-local-task--core > a.delete-link::before,
+.solo-page ul.primary > li.solo-local-task--core > a.delete-link::before {
+  background-color: var(--solo-tab-delete);
+}
+
+/* solo-menu-local-tasks-color-coded.css:68, answers pb-pattern-link-roll-call.css:99, pb-pattern-link-roll-call.css:154, pb-pattern-parallax-fieldbook.css:138 (+35 more) */
+.solo-page ul.primary > li.solo-menu-local-task--core > a.revisions-link::before,
+.solo-page ul.primary > li.solo-local-task--core > a.revisions-link::before {
+  background-color: var(--solo-tab-revisions);
+}
+
+/* solo-menu-local-tasks-color-coded.css:92, answers paragraph-bundle-node-reference.css:65, paragraph-bundle-node-reference.css:122, pb-pattern-3d-carousel-folio.css:91 (+90 more) */
+#solo-page-wrapper ul.primary > li.solo-menu-local-task--core > a:hover,
+#solo-page-wrapper ul.primary > li.solo-local-task--core > a:hover {
+  color: var(--solo-white);
+  background-color: transparent;
+}
+
+/* ==== from css/components/solo-comment.css ==== */
+
+/* solo-comment.css:36, answers w3-modern.css:310, blazy.mfp.css:16, blazy.flex.css:95 (+3 more) */
+:where(.solo-page) .comment-wrapper h2.comment-form__title {
+  margin-block-end: var(--solo-px24);
+}
+
+/* solo-comment.css:68, answers vvjb-ledger.css:33, vvjb-swatch.css:23, addtoany.css:13 (+1 more) */
+.solo-user-profile--compact a {
+  display: flex;
+}
+
+/* solo-comment.css:81, answers blazy.mfp.css:16 */
+.solo-comment__header p,
+:where(.solo-comment__header) time {
+  line-height: 1.6;
+}
+
+/* solo-comment.css:92, answers slick.theme.css:240, vvj-patterns-base.css:211, vvjl.css:43 (+6 more) */
+:where(.solo-page) .comment__picture img {
+  display: block;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+/* solo-comment.css:111, answers vvjp-style.css:21 */
+:where(.solo-page) .comment__author a {
+  text-decoration: none;
+}
+
+/* solo-comment.css:116, answers pb-patterns-base.css:88, cookies.lib.css:48, horizontal-tabs.css:57 (+15 more) */
+:where(.solo-page) .comment__author a:hover,
+:where(.solo-page) .comment__author a:focus {
+  text-decoration: underline;
+  color: var(--r-link-hover);
+}
+
+/* solo-comment.css:144, answers vvjs.css:108, addtoany.css:13, vertical-tabs.css:41 (+1 more) */
+.solo-comment__permalink a {
+  display: inline-flex;
+  font-size: 0;
+}
+
+/* solo-comment.css:158, answers w3-modern.css:110, theme.css:113 */
+.solo-comment__permalink a:hover,
+.solo-comment__permalink a:focus {
+  background-color: var(--r-menu-background-hover);
+}
+
+/* solo-comment.css:163, answers blazy.css:110, extlink.css:30, extlink.css:38 (+2 more) */
+.solo-comment__permalink svg {
+  width: 24px;
+  height: 24px;
+  fill: var(--r-text);
+}
+
+/* solo-comment.css:238, answers vvjp-style.css:21 */
+.solo-comment__title a {
+  text-decoration: none;
+}
+
+/* solo-comment.css:243, answers pb-patterns-base.css:88, cookies.lib.css:48, horizontal-tabs.css:57 (+15 more) */
+.solo-comment__title a:hover,
+.solo-comment__title a:focus {
+  text-decoration: underline;
+  color: var(--r-link-hover);
+}
+
+/* solo-comment.css:252, answers module-matrix.settings.css:134 */
+.solo-comment__body p:last-child {
+  margin-block-end: 0;
+}
+
+/* solo-comment.css:282, answers suggestions.css:10, slick.theme.css:224, w3-modern.css:458 (+1 more) */
+:where(.solo-page) .comment__links li {
+  margin: 0;
+  padding: var(--solo-px8);
+}
+
+/* solo-comment.css:287, answers tabs.css:19, report.css:114, views-slideshow-pager-bullets.css:5 (+3 more) */
+:where(.solo-page) .comment__links ul.links li:first-child {
+  margin-inline-start: 0;
+  padding-inline-start: 0;
+}
+
+/* solo-comment.css:292, answers vvjb-ledger.css:33, vvjb-swatch.css:23, vvjs.css:108 (+4 more) */
+:where(.solo-page) .comment__links a {
+  display: inline-block;
+  padding: var(--solo-px6) var(--solo-px12);
+  transition: all 0.2s ease;
+  text-decoration: none;
+  border: 1px solid var(--r-border);
+  border-radius: var(--solo-px4);
+  font-size: var(--solo-px13);
+}
+
+/* solo-comment.css:305, answers vvjc.css:161, vvjs.css:118, w3-modern.css:335 (+16 more) */
+button.solo-comment__replies-toggle:hover,
+button.solo-comment__replies-toggle:focus,
+:where(.solo-page) .comment__links a:hover,
+:where(.solo-page) .comment__links a:focus {
+  color: var(--r-link-hover);
+  background-color: var(--r-menu-background-hover);
+}
+
+/* solo-comment.css:311, answers pb-patterns-base.css:58, vvja-style.css:10, vvjc.css:161 (+17 more) */
+button.solo-comment__replies-toggle:hover,
+:where(.solo-page) .comment__links ul.links li a:hover {
+  border-color: var(--r-text);
+}
+
+/* solo-comment.css:322, answers vvjc.css:161, vvjs.css:108, dropbutton.css:125 (+6 more) */
+button.solo-comment__replies-toggle {
+  display: inline-flex;
+  transition: all 0.2s ease;
+  border: 1px solid var(--r-border);
+  border-radius: var(--solo-px4);
+  background: transparent;
+}
+
+/* solo-comment.css:338, answers pb-svg.css:17, extlink.css:30, extlink.css:38 */
+.solo-comment__replies-toggle svg {
+  fill: var(--r-text);
+}
+
+/* solo-comment.css:360, answers extlink.css:30, extlink.css:38, webform_options_custom.element.css:21 */
+.solo-comment__replies-icon svg {
+  width: 100%;
+  height: 100%;
+}
+
+/* Hide indented replies when toggled */
+/* solo-comment.css:386, answers webform.element.likert.css:110, webform.element.likert.css:114 */
+:where(.solo-page) .indented.hidden {
+  display: none;
+}
+
+/* solo-comment.css:401, answers webform.element.likert.css:98, hidden.module.css:26 */
+:where(.solo-page) .parent.visually-hidden {
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  width: 1px;
+  height: 1px;
+}
+
+/* solo-comment.css:418, answers vvjp-style.css:21, vvjs.css:108 */
+@media (prefers-reduced-motion: reduce) {
+  .solo-comment__permalink,
+  :where(.solo-page) .comment__links a,
+  .solo-comment__replies-toggle,
+  .solo-comment__replies-icon {
+    transition: none;
+  }
+}
+
+/* Focus visible */
+/* solo-comment.css:425, answers addtoany.css:13, cookies.lib.css:48, theme.css:113 (+12 more) */
+:where(.solo-page) .comment a:focus-visible,
+:where(.solo-page) .comment button:focus-visible {
+  border-radius: var(--solo-px2);
+  outline: 2px solid var(--r-link);
+  outline-offset: 2px;
+}
+
+/* solo-comment.css:438, answers pb-svg.css:17, extlink.css:30, extlink.css:38 */
+@media (forced-colors: active) {
+  .solo-comment__permalink svg,
+    .solo-comment__replies-toggle svg {
+    fill: CanvasText;
+  }
+}
+
+/* ==== from css/components/solo-node.css ==== */
+
+/* solo-node.css:6, answers align.module.css:6 */
+:where(.solo-page) .text-align-left {
+  text-align: var(--solo-text-align-start);
+}
+
+/* solo-node.css:10, answers align.module.css:9 */
+:where(.solo-page) .text-align-right {
+  text-align: var(--solo-text-align-end);
+}
+
+/* solo-node.css:29, answers image_captcha.css:33 */
+.solo-text-left img,
+:where(.solo-text-left) video,
+:where(.solo-text-left) object,
+:where(.solo-text-left) embed,
+:where(.solo-page) .text-align-left img,
+:where(.solo-page) :where(.text-align-left) video,
+:where(.solo-page) :where(.text-align-left) object,
+:where(.solo-page) :where(.text-align-left) embed {
+  margin: 0;
+}
+
+/* solo-node.css:65, answers webform_entity_print.css:33 */
+:where(.solo-page) label,
+:where(.solo-page) .field__label {
+  font-weight: 500;
+}
+
+/* solo-node.css:125, answers filter.caption.css:7 */
+:where(.solo-page) .node--view-mode-teaser .field:last-child {
+  margin-block-end: 0;
+}
+
+/* solo-node.css:161, answers pb-patterns-base.css:71, image_captcha.css:33, slick.thumbnail--grid.css:24 (+1 more) */
+:where(.solo-page) .node__meta .node__author-image img {
+  border-radius: 50%;
+}
+
+/* solo-node.css:171, answers w3css-paragraphs-image-overlay.css:13 */
+:where(.solo-page) .field--name-field-tags.field__items > .field__item,
+:where(.solo-page) .field--name-field-tags > .field__items > .field__item {
+  margin-inline-end: var(--solo-px16);
+}
+
+/* solo-node.css:187, answers paragraph-bundle-image-overlay.css:27, paragraph-bundle-video.css:87, pb-patterns-insert.css:171 (+20 more) */
+:where(.solo-page) .field--type-text-long img:not(.align-center, .media.align-center img),
+:where(.solo-page) :where(.field--type-text-long) video:not(.align-center, .media.align-center img),
+:where(.solo-page) :where(.field--type-text-long) embed:not(.align-center, .media.align-center img),
+:where(.solo-page) :where(.field--type-text-long) object:not(.align-center, .media.align-center img),
+:where(.solo-page) .field--type-text-with-summary img:not(.align-center, .media.align-center img),
+:where(.solo-page) :where(.field--type-text-with-summary) video:not(.align-center, .media.align-center img),
+:where(.solo-page) :where(.field--type-text-with-summary) embed:not(.align-center, .media.align-center img),
+:where(.solo-page) :where(.field--type-text-with-summary) object:not(.align-center, .media.align-center img) {
+  display: inline-block;
+}
+
+/* solo-node.css:199, answers paragraph-bundle-image-overlay.css:32, w3css-paragraphs-image-overlay.css:13 */
+:where(.solo-page--inline-items) .field.taxonomy-term-entity.field__items > .field__item,
+:where(.solo-page--inline-items) .field.taxonomy-term-entity > .field__items > .field__item {
+  margin-inline-end: var(--solo-px16);
+}
+
+/* solo-node.css:217, answers sitemap.theme.css:9, w3-modern.css:458, devel.css:21 (+4 more) */
+.solo-region-box__inner.solo-is-region-xs ul.tips,
+.solo-region-box__inner.solo-is-region-xs ul.tips li {
+  padding: 0;
+}
+
+/* ==== from css/components/solo-views-view.css ==== */
+
+/* solo-views-view.css:6, answers item-list.module.css:7, pb-patterns-insert.css:73, webform.progress.bar.css:21 */
+:where(.solo-page) .views-ui-view-displays ul li {
+  display: inline-block;
+  margin-inline-end: var(--solo-px16);
+}
+
+/* solo-views-view.css:11, answers module-matrix.settings.css:269, yoast_seo.css:355, webform_entity_print.css:9 */
+:where(.solo-page) .view-filters details.form-wrapper {
+  margin-block: var(--solo-px16);
+  padding: var(--solo-px8);
+  border: var(--solo-px1) solid var(--r-border, var(--solo-border-default));
+}
+
+/* solo-views-view.css:22, answers pb-patterns-base.css:58, pb-pattern-parallax-fieldbook.css:138, pb-pattern-parallax-horizon.css:129 (+33 more) */
+:where(.solo-page) #view-edit-form .dropbutton li a {
+  padding-block: var(--solo-px4);
+  padding-inline: var(--solo-px10);
+}
+
+/* solo-views-view.css:52, answers webform.element.color.css:24, webform.element.color.css:32, webform.element.color.css:39 (+18 more) */
+:where(.solo-page) .js .views-edit-view .dropbutton-wrapper .dropbutton .dropbutton-action input {
+  width: 100%;
+  text-align: var(--solo-text-align-start);
+}
+
+/* solo-views-view.css:69, answers webform.composite.telephone.css:19, webform.form.css:37 */
+:where(.solo-page) .views-filterable-options-controls .form-item {
+  float: inline-start;
+}
+
+/* solo-views-view.css:98, answers dblog.module.css:15 */
+:where(.solo-page) form.views-exposed-form.form--inline .form-actions {
+  vertical-align: bottom;
+}
+
+/* solo-views-view.css:105, answers w3css-paragraphs-swatches.css:28, module-matrix.settings.css:361, webform.element.color.css:10 (+7 more) */
+:where(.solo-page) form.views-exposed-form.form--inline .form-actions input {
+  margin: 0;
+  vertical-align: bottom;
+}
+
+/* ==== from css/components/solo-media.css ==== */
+
+/* solo-media.css:11, answers align.module.css:25, align.module.css:22 */
+:where(.solo-page) .align-right,
+:where(.solo-page) .align-left,
+:where(.solo-page) .align-center {
+  float: none;
+}
+
+/* solo-media.css:27, answers align.module.css:25 */
+@media (min-width: 36rem) {
+  :where(.solo-page) .align-right {
+    float: inline-end;
+  }
+}
+
+/* solo-media.css:34, answers align.module.css:22 */
+@media (min-width: 36rem) {
+  :where(.solo-page) .align-left {
+    float: inline-start;
+  }
+}
+
+/* solo-media.css:43, answers align.module.css:25 */
+@media (min-width: 48rem) {
+  :where(.solo-page) .align-right {
+    float: inline-end;
+  }
+}
+
+/* solo-media.css:52, answers align.module.css:25 */
+@media (min-width: 36rem) {
+  :where(.solo-page) :where([dir="rtl"]) .align-right {
+    float: inline-start;
+  }
+}
+
+/* solo-media.css:60, answers align.module.css:25 */
+@media (min-width: 48rem) {
+  :where(.solo-page) :where([dir="rtl"]) .align-right {
+    float: inline-start;
+  }
+}
+
+/* solo-media.css:66, answers align.module.css:22 */
+@media (min-width: 48rem) {
+  :where(.solo-page) .align-left {
+    float: inline-start;
+  }
+}
+
+/* solo-media.css:75, answers align.module.css:22 */
+@media (min-width: 36rem) {
+  :where(.solo-page) :where([dir="rtl"]) .align-left {
+    float: inline-end;
+  }
+}
+
+/* solo-media.css:83, answers align.module.css:22 */
+@media (min-width: 48rem) {
+  :where(.solo-page) :where([dir="rtl"]) .align-left {
+    float: inline-end;
+  }
+}
+
+/* ==== from css/components/solo-fixed-search-block.css ==== */
+
+/* solo-fixed-search-block.css:66, answers vvjc.css:161, vvjs.css:118, pb-patterns-base.css:58 (+7 more) */
+.solo-fixed-search-block__inner .solo-fixed-search-block__close button,
+.solo-fixed-search__inner .solo-fixed-search__close button {
+  color: var(--r-text);
+  border: 1px solid var(--r-border, var(--solo-border-default));
+  background-color: var(--r-background);
+  border-start-start-radius: var(--solo-px4);
+  border-start-end-radius: 0;
+  border-end-start-radius: var(--solo-px4);
+  border-end-end-radius: 0;
+}
+
+/* solo-fixed-search-block.css:79, answers paragraph-bundle-alert.css:100, paragraph-bundle-carousel.css:224, paragraph-bundle-carousel.css:360 (+11 more) */
+.solo-inner.solo-fixed-search-block__inner .solo-hamburger span > svg,
+.solo-inner.solo-fixed-search__inner .solo-hamburger span > svg {
+  width: 4.688rem;
+  height: 4.5rem;
+}
+
+/* ==== from css/components/solo-footer-menu.css ==== */
+
+/* solo-footer-menu.css:5, answers addtoany.css:13, datepicker.css:82, vertical-tabs.css:41 */
+.solo-menu-tree__menubar--footer li a {
+  padding-block: var(--solo-px6);
+  padding-inline: var(--solo-px12);
+}
+
+/* solo-footer-menu.css:20, answers slick.theme.css:224, webform.progress.bar.css:21, item-list.module.css:7 */
+.solo-menu-tree__menubar--footer li {
+  display: inline-flex;
+}
+
+/* solo-footer-menu.css:36, answers blazy.mfp.css:16 */
+.solo-copyright__inner p {
+  line-height: 1.4;
+}
+
+/*
+ * Footer menus show hover on the text only: the link keeps its resting
+ * background, the text is underlined. These selectors match the specificity of
+ * the generic menu hover rule in solo-variables-regions.css and load after it.
+ */
+/* solo-footer-menu.css:48, answers pb-patterns-base.css:88, vvja-pattern-base.css:133, vvjf-pattern-base.css:83 (+41 more) */
+.solo-page :where(.solo-footer-menu__nav, .solo-copyright, .solo-container--footer) li.solo-menu-tree__item > a:hover,
+.solo-page :where(.solo-footer-nav, .solo-copyright, .solo-container--footer) li.solo-menu-tree__item > a:hover,
+.solo-page :where(.solo-footer-menu__nav, .solo-copyright, .solo-container--footer) li.solo-menu-tree__item > a:focus-visible,
+.solo-page :where(.solo-footer-nav, .solo-copyright, .solo-container--footer) li.solo-menu-tree__item > a:focus-visible,
+.solo-page :where(.solo-footer-menu__nav, .solo-copyright, .solo-container--footer) li.solo-menu-tree__item > button:hover,
+.solo-page :where(.solo-footer-nav, .solo-copyright, .solo-container--footer) li.solo-menu-tree__item > button:hover {
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+  background-color: var(--r-menu-background, var(--r-background));
+}
+
+/* solo-footer-menu.css:59, answers webform.element.scale.css:35 */
+.solo-footer-menu__nav__inner form label,
+.solo-footer-nav__inner form label {
+  text-align: var(--solo-text-align-start);
+}
+
+/* solo-footer-menu.css:69, answers w3css-paragraphs-accordion.css:52, vvjf-board.css:21, extlink.css:68 (+5 more) */
+.solo-social a > span {
+  display: inline-block;
+  width: 1.875rem;
+  height: 1.875rem;
+  background-repeat: no-repeat;
+}
+
+/* solo-footer-menu.css:90, answers vvjb-ledger.css:33, vvjb-swatch.css:23, addtoany.css:13 (+1 more) */
+.solo-social a {
+  display: flex;
+}
+
+/* solo-footer-menu.css:104, answers addtoany.css:25, addtoany.css:36, extlink.css:6 (+4 more) */
+@media (min-width: 26rem) {
+  .solo-social.sm-icons-medium a > span {
+    width: calc(2 * var(--solo-px20));
+    height: calc(2 * var(--solo-px20));
+    background-size: calc(2 * var(--solo-px20));
+  }
+}
+
+/* solo-footer-menu.css:110, answers addtoany.css:25, addtoany.css:36, extlink.css:6 (+4 more) */
+@media (min-width: 26rem) {
+  .solo-social.sm-icons-large a > span {
+    width: var(--solo-px64);
+    height: var(--solo-px64);
+    background-size: var(--solo-px64);
+  }
+}
+
+/* ==== from css/components/solo-forms.css ==== */
+
+/* solo-forms.css:3, answers views_slideshow_cycle.css:16, webform.element.options.css:8, yoast_seo.css:408 (+1 more) */
+:where(.solo-page) div.action,
+:where(.solo-page) .form-actions {
+  display: flex;
+}
+
+/* solo-forms.css:34, answers webform.element.managed_file.css:14, webform.element.options.css:54, webform.element.scale.css:18 (+1 more) */
+:where(.solo-page) .form-radios .form-item,
+:where(.solo-page) .form-checkboxes .form-item {
+  display: flex;
+}
+
+/* solo-forms.css:47, answers w3-modern.css:179, webform.wizard.pages.css:17 */
+:where(.solo-page) input[type="radio"],
+:where(.solo-page) input[type="checkbox"] {
+  margin-block-start: -2px;
+  margin-inline-end: 8px;
+}
+
+/* solo-forms.css:58, answers w3-modern.css:179, webform.element.color.css:10, webform.element.managed_file.css:9 (+1 more) */
+:where(.solo-page) .form-type-boolean input[type="checkbox"] {
+  margin-block-start: 2px;
+}
+
+/* solo-forms.css:85, answers button.css:79, webform.element.color.css:10, webform.element.counter.css:9 (+1 more) */
+:where(.solo-page) input[type="checkbox"]:focus,
+:where(.solo-page) input[type="radio"]:focus,
+:where(.solo-page) input[type="checkbox"]:focus-visible,
+:where(.solo-page) input[type="radio"]:focus-visible {
+  border-width: 2px;
+  border-style: solid;
+  border-color: var(--solo-tx);
+}
+
+/* solo-forms.css:101, answers button.css:79, webform.element.color.css:10, webform.element.color.css:46 (+2 more) */
+:where(.solo-page) .form-item input.error,
+:where(.solo-page) .form-item textarea.error,
+:where(.solo-page) .form-item select.error {
+  border: var(--solo-px2) solid red;
+}
+
+/* solo-forms.css:154, answers paragraphs-bundles-paragraphs-list.css:48, w3css-paragraphs-swatches.css:33, selectify-settings-style.css:418 (+6 more) */
+:where(.solo-page) form.system-theme-settings .details-wrapper .form-type-textfield label {
+  display: block;
+}
+
+/* for default drupal field */
+/* solo-forms.css:191, answers w3-modern.css:205, module-matrix.settings.css:282, module-matrix.settings.css:631 (+1 more) */
+form.views-exposed-form .solo-exposed-form fieldset.solo-date-range {
+  padding-block-start: 0.35em;
+  padding-inline: 0.75em;
+  padding-block-end: 0.625em;
+}
+
+/* solo-forms.css:201, answers module-matrix.settings.css:318, module-matrix.settings.css:648, webform.form.css:103 (+1 more) */
+:where(.solo-page) :where(form) fieldset:has([name*="[min]"]):has([name*="[max]"]) .fieldset-wrapper {
+  display: flex;
+  padding: 0;
+}
+
+/* solo-forms.css:208, answers paragraph-bundle-accordion.css:27, paragraph-bundle-content-neutral.css:24, w3css-paragraphs-card.css:26 (+2 more) */
+:where(.solo-page) :where(form) fieldset:has([name*="[min]"]):has([name*="[max]"]) .fieldset-wrapper > div {
+  min-width: 170px;
+  margin: 0;
+}
+
+/* solo-forms.css:214, answers image_captcha.css:18, selectify-radio-checkbox.css:481, webform_ui.module.css:215 */
+:where(.solo-date-range) .form-type-date,
+:where(.solo-page) fieldset:has([name*="[min]"]):has([name*="[max]"]) .form-item {
+  flex: 1;
+  min-width: 170px;
+}
+
+/* ==== from css/components/solo-header.css ==== */
+
+/* solo-header.css:56, answers paragraphs-bundles-base.css:121, w3css-paragraphs-base.css:305, vvjb-ledger.css:33 (+9 more) */
+.solo-branding .site-name a {
+  display: flex;
+  justify-content: start;
+  height: 100%;
+}
+
+/* solo-header.css:79, answers paragraphs-bundles-base.css:121, w3css-paragraphs-base.css:305, vvjs.css:108 (+5 more) */
+.solo-branding .solo-branding__first a {
+  display: inline-flex;
+}
+
+/* solo-header.css:106, answers paragraph-bundle-3d-carousel.css:358, paragraph-bundle-alert.css:88, pb-pattern-grid-plans.css:40 (+19 more) */
+#solo-menu-primary-sidebar__close button,
+#solo-sidebar-button-close button,
+#solo-menu-primary-sidebar__open button,
+#solo-sidebar-button-open button,
+#solo-fixed-search-block__open button,
+#solo-search-button-open button {
+  display: flex;
+}
+
+/* solo-header.css:111, answers pb-pattern-tabs-contents.css:30, paragraph-bundle-alert.css:88, paragraph-bundle-alert.css:147 (+18 more) */
+#solo-menu-primary-sidebar__close button,
+#solo-sidebar-button-close button {
+  align-items: center;
+  justify-content: end;
+  width: 100%;
+}
+
+/* solo-header.css:119, answers paragraph-bundle-slideshow.css:328, pb-pattern-3d-carousel-folio.css:152, pb-pattern-carousel-ledger.css:85 (+24 more) */
+#solo-menu-primary-sidebar__close button span,
+#solo-sidebar-button-close button span,
+#solo-menu-primary-sidebar__open button span,
+#solo-sidebar-button-open button span,
+#solo-fixed-search-block__open button span,
+#solo-search-button-open button span {
+  display: flex;
+  min-width: 5.625rem;
+}
+
+/* solo-header.css:131, answers paragraph-bundle-slideshow.css:317, pb-pattern-slideshow-marquee.css:333, pb-pattern-slideshow-pillar.css:228 (+1 more) */
+#solo-menu-primary-sidebar__close button span,
+#solo-sidebar-button-close button span {
+  min-width: initial;
+}
+
+/* solo-header.css:143, answers paragraph-bundle-alert.css:100, paragraph-bundle-carousel.css:224, paragraph-bundle-carousel.css:360 (+51 more) */
+#solo-menu-primary-sidebar__close svg,
+#solo-sidebar-button-close svg,
+#solo-menu-primary-sidebar__open svg,
+#solo-sidebar-button-open svg {
+  height: 2.125rem;
+}
+
+/* solo-header.css:147, answers paragraph-bundle-alert.css:100, paragraph-bundle-carousel.css:224, paragraph-bundle-carousel.css:360 (+51 more) */
+#solo-fixed-search-block__open svg,
+#solo-search-button-open svg {
+  width: var(--solo-px26);
+  height: var(--solo-px26);
+}
+
+/* solo-header.css:152, answers paragraph-bundle-alert.css:88, paragraph-bundle-alert.css:147, pb-pattern-tabs-dock.css:117 (+7 more) */
+[dir="rtl"] .solo-primary-sidebar-menu.solo-icons-left #solo-menu-primary-sidebar__close button,
+[dir="rtl"] .solo-primary-sidebar-menu.solo-icons-left #solo-sidebar-button-close button {
+  justify-content: end;
+}
+
+/* solo-header.css:177, answers paragraph-bundle-alert.css:88, paragraph-bundle-alert.css:147, pb-pattern-tabs-dock.css:117 (+7 more) */
+#solo-menu-primary-sidebar__close.solo-icons-left button:not([dir="rtl"] #solo-menu-primary-sidebar__close.solo-icons-left button),
+#solo-sidebar-button-close.solo-icons-left button:not([dir="rtl"] #solo-sidebar-button-close.solo-icons-left button) {
+  justify-content: end;
+}
+
+/* solo-header.css:217, answers vvja-pattern-base.css:133, vvjb-pattern-base.css:211, vvjc-pattern-base.css:139 (+7 more) */
+:where(.solo-header__inner.header-sitename-center .solo-branding) .solo-branding__first,
+.solo-header__inner.header-sitename-center .solo-branding .solo-branding__first a,
+:where(.solo-header__inner.header-sitename-center .solo-branding) .site-name,
+.solo-header__inner.header-sitename-center .solo-branding .site-name a,
+:where(.solo-header__inner.header-sitename-center .solo-branding) .site-slogan,
+:where(.solo-header__inner.header-sitename-center .solo-branding) .solo-branding__second {
+  text-align: center;
+}
+
+/* Fluid logo: 56px on phones, the full 100px from about 700px wide; uploaded logos are capped by height only */
+/* solo-header.css:233, answers paragraph-bundle-alert.css:100, paragraph-bundle-carousel.css:360, vvja.css:123 (+9 more) */
+.solo-header .solo-branding__first svg.solo-logo {
+  width: clamp(3.5rem, 14vw, 6.25rem);
+  height: auto;
+}
+
+/* ==== from css/components/solo-maintenance-page.css ==== */
+
+/* solo-maintenance-page.css:8, answers webform_share.page.css:20, print.css:1 */
+body:has(.solo-maintenance-page) {
+  background-color: var(--r-background);
+}
+
+/* solo-maintenance-page.css:22, answers vvjb-ledger.css:33, vvjb-swatch.css:23, vvjs.css:108 (+3 more) */
+:where(.solo-maintenance-page main) header,
+.solo-maintenance-page main header a {
+  display: grid;
+  text-align: center;
+}
+
+/* solo-maintenance-page.css:38, answers w3-modern.css:265 */
+.solo-maintenance-page main h1 {
+  font-size: 46px;
+}
+
+/* ==== from css/components/solo-menu-keyboard.css ==== */
+
+/* currentColor, not the region border color: the border color measured
+   1.35:1 to 2.53:1 against the menu background (WCAG 1.4.11 wants 3:1).
+   The item's own text color is designed to contrast with that background. */
+/* solo-menu-keyboard.css:6, answers paragraphs-bundles-base.css:94, paragraph-bundle-alert.css:110, paragraph-bundle-alert.css:167 (+30 more) */
+.solo-inner .solo-keyboard-enabled .solo-menu-main--mobile button:focus-visible,
+.solo-inner .solo-keyboard-enabled .solo-mobile-nav button:focus-visible,
+.solo-inner .solo-keyboard-enabled .solo-menu-tree__menubar a:focus-visible,
+.solo-inner .solo-keyboard-enabled .solo-menu-tree__menubar button:focus-visible {
+  outline: 3px solid currentColor;
+}
+
+/* ==== from css/components/solo-menu.css ==== */
+
+/* solo-menu.css:15, answers webform.form.tabs.css:6, suggestions.css:10, tabs.css:19 (+55 more) */
+.solo-inner ul.solo-menu-tree__menubar,
+.solo-inner ul.solo-menu-tree__menubar ul.solo-menu-tree__submenu,
+.solo-inner ul.solo-menu-tree__menubar li.solo-menu-tree__item,
+.solo-inner ul.solo-menu-tree__menubar li > a.solo-menu-tree__link,
+.solo-inner ul.solo-menu-tree__menubar li > button.solo-menu-tree__button {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  border: none;
+}
+
+/* solo-menu.css:25, answers vvjp-style.css:21, vvjr-pattern-base.css:267, cookies.lib.css:54 (+1 more) */
+.solo-inner .solo-menu-tree__menubar li.solo-menu-tree__item > a {
+  text-decoration: none;
+}
+
+/* solo-menu.css:39, answers views-slideshow-pager-bullets.css:5, webform.progress.bar.css:21 */
+.solo-inner ul.solo-menu-tree__submenu,
+.solo-inner li.solo-menu-tree__item,
+.solo-inner ul.solo-menu-tree__menubar {
+  background-color: inherit;
+}
+
+/* solo-menu.css:45, answers vvja-pattern-base.css:133, vvjb-ledger.css:33, vvjb-swatch.css:23 (+13 more) */
+.solo-inner ul.solo-menu-tree__menubar li > a.is-active,
+.solo-inner ul.solo-menu-tree__menubar li.is-active > a,
+.solo-inner ul.solo-menu-tree__menubar li.is-active > button {
+  font-weight: bold;
+}
+
+/* Base: all menus start equal */
+/* solo-menu.css:55, answers config_inspector.css:25 */
+:where(.solo-page .solo-inner) .solo-menu,
+.solo-page .solo-inner .solo-menu ul.solo-menu-tree__menubar {
+  position: relative;
+}
+
+/* First level padding is bigger */
+/* solo-menu.css:155, answers pb-patterns-base.css:58, vvja-pattern-base.css:133, vvjf-pattern-base.css:83 (+32 more) */
+.solo-inner ul.solo-menu-tree__menubar > li.solo-menu-tree__item > a,
+.solo-inner ul.solo-menu-tree__menubar > li.solo-menu-tree__item > span,
+.solo-inner ul.solo-menu-tree__menubar > li.solo-menu-tree__item > button {
+  padding: var(--solo-px10) var(--solo-px12);
+}
+
+/* 2,3,4 level padding is smaller */
+/* solo-menu.css:162, answers pb-patterns-base.css:58, pb-pattern-parallax-fieldbook.css:138, pb-pattern-parallax-horizon.css:129 (+51 more) */
+.solo-inner .solo-menu-tree__menubar:not(.solo-menu-tree--megamenu) li li.solo-menu-tree__item > a,
+:where(.solo-inner) .solo-menu-tree__menubar:not(.solo-menu-tree--megamenu) li li.solo-menu-tree__item > span,
+:where(.solo-inner) .solo-menu-tree__menubar:not(.solo-menu-tree--megamenu) li li.solo-menu-tree__item > button {
+  padding: var(--solo-px8) var(--solo-px12);
+}
+
+/* solo-menu.css:168, answers vvjh-pattern-base.css:124, vvjp-skyline.css:47, vvjp-pattern-base.css:332 (+5 more) */
+.solo-inner .solo-menu-tree__menubar:not(.solo-menu-tree--megamenu) li.solo-menu-tree__item--link-only > a,
+:where(.solo-inner) .solo-menu-tree__menubar:not(.solo-menu-tree--megamenu) li.solo-menu-tree__item--link-only > span,
+.solo-inner .solo-menu-tree__menubar:not(.solo-menu-tree--megamenu) li.solo-menu-tree__item--button-only > button {
+  flex-basis: 100%;
+  flex-grow: 1;
+}
+
+/* solo-menu.css:174, answers module-matrix.settings.css:304 */
+:where(.solo-inner .solo-menu-tree--megamenu) > li.solo-menu-tree__item > button.solo-menu-tree__toggler--link-disabled > span.solo-menu-tree__title--disabled,
+:where(.solo-inner .solo-menu-tree__menubar:not(.solo-menu-tree--megamenu)) li.solo-menu-tree__item > button.solo-menu-tree__toggler--link-disabled > span.solo-menu-tree__title--disabled {
+  margin-inline-end: var(--solo-px12);
+}
+
+/* solo-menu.css:179, answers paragraph-bundle-3d-carousel.css:594, paragraph-bundle-3d-carousel.css:625, paragraph-bundle-alert.css:139 (+27 more) */
+:where(.solo-inner) .solo-menu-tree__menubar li.solo-menu-tree__item > .solo-menu-tree__toggler .solo-menu-tree__toggler-icon svg {
+  transition: transform 0.2s ease;
+}
+
+/* solo-menu.css:195, answers devel.css:21, slick.thumbnail--grid.css:12, slick.theme.css:224 (+55 more) */
+:where(.solo-inner) .solo-menu-tree__menubar,
+.solo-inner .solo-menu-tree--megamenu > li.solo-menu-tree__item,
+.solo-inner .solo-menu-tree--megamenu > li.solo-menu-tree__item > a,
+.solo-inner .solo-menu-tree--megamenu > li.solo-menu-tree__item > button,
+.solo-inner .solo-menu-tree__menubar:not(.solo-menu-tree--megamenu) ul.solo-menu-tree__submenu,
+.solo-inner .solo-menu-tree__menubar:not(.solo-menu-tree--megamenu) li.solo-menu-tree__item,
+.solo-inner .solo-menu-tree__menubar:not(.solo-menu-tree--megamenu) li.solo-menu-tree__item > a,
+.solo-inner .solo-menu-tree__menubar:not(.solo-menu-tree--megamenu) li.solo-menu-tree__item > button {
+  display: flex;
+}
+
+/* solo-menu.css:210, answers vvjc-pattern-base.css:171, slick.thumbnail--grid.css:19, webform.element.multiple.css:153 (+18 more) */
+.solo-inner .solo-menu-tree--megamenu > li.solo-menu-tree__item--link-and-button > button,
+.solo-inner .solo-menu-tree__menubar:not(.solo-menu-tree--megamenu) li.solo-menu-tree__item--link-and-button > button {
+  position: relative;
+  flex-basis: 50px;
+  align-items: center;
+  width: 50px;
+}
+
+/* solo-menu.css:219, answers paragraph-bundle-image-overlay.css:41, pb-pattern-parallax-shoreline.css:118, pb-pattern-parallax-shoreline.css:131 (+32 more) */
+.solo-inner .solo-menu-tree--megamenu > li.solo-menu-tree__item--link-and-button > a,
+.solo-inner .solo-menu-tree__menubar:not(.solo-menu-tree--megamenu) li.solo-menu-tree__item--link-and-button > a {
+  position: relative;
+  flex-basis: calc(100% - 50px);
+  flex-grow: 1;
+  width: calc(100% - 50px);
+}
+
+/* solo-menu.css:227, answers datepicker.css:44, webform.progress.bar.css:121, module-matrix.settings.css:734 */
+:where(.solo-inner) .solo-menu-tree--megamenu > li.solo-menu-tree__item--button-only > button > span.solo-menu-tree__title--disabled,
+:where(.solo-inner) .solo-menu-tree__menubar:not(.solo-menu-tree--megamenu) li.solo-menu-tree__item--button-only > button > span.solo-menu-tree__title--disabled {
+  position: relative;
+  flex-basis: calc(100% - 24px);
+}
+
+/* solo-menu.css:234, answers module-matrix.settings.css:734, module-matrix.settings.css:304 */
+:where(.solo-inner) .solo-menu-tree--megamenu > li.solo-menu-tree__item--button-only > button > span.solo-menu-tree__toggler-icon,
+:where(.solo-inner) .solo-menu-tree__menubar:not(.solo-menu-tree--megamenu) li.solo-menu-tree__item--button-only > button > span.solo-menu-tree__toggler-icon {
+  flex-basis: 24px;
+  margin-inline-start: var(--solo-px12);
+}
+
+/* solo-menu.css:242, answers w3-modern.css:1079, w3-modern.css:2127, w3-modern.css:2131 (+17 more) */
+.solo-inner .solo-menu-tree--megamenu > li.solo-menu-tree__item--button-only > button > span.solo-menu-tree__toggler-icon,
+.solo-inner .solo-menu-tree--megamenu > li.solo-menu-tree__item--link-and-button > button > span.solo-menu-tree__toggler-icon,
+.solo-inner .solo-menu-tree__menubar:not(.solo-menu-tree--megamenu) li.solo-menu-tree__item--button-only > button > span.solo-menu-tree__toggler-icon,
+.solo-inner .solo-menu-tree__menubar:not(.solo-menu-tree--megamenu) li.solo-menu-tree__item--link-and-button > button > span.solo-menu-tree__toggler-icon {
+  display: flex;
+}
+
+/* solo-menu.css:254, answers devel.css:14 */
+.solo-inner .solo-menu-tree--default > li.solo-menu-tree__item ul.solo-menu-tree__submenu {
+  display: none;
+}
+
+/* solo-menu.css:334, answers slick.theme.css:224, webform.progress.bar.css:21, item-list.module.css:7 */
+.solo-footer-menu li {
+  display: inline-flex;
+}
+
+/* solo-menu.css:339, answers addtoany.css:13, datepicker.css:82, vertical-tabs.css:41 (+3 more) */
+.solo-footer-menu li a {
+  padding-block: var(--solo-px6);
+  padding-inline: var(--solo-px8);
+  display: inline-block;
+}
+
+/* solo-menu.css:349, answers vvjb-ledger.css:33, vvjb-swatch.css:23, theme.css:113 */
+.solo-footer-menu li a.is-active,
+:where(.solo-footer-menu) :where(li).active-trail {
+  font-weight: bold;
+}
+
+/* solo-menu.css:377, answers paragraph-bundle-node-reference.css:65, vvjs.css:108, addtoany.css:13 (+3 more) */
+.solo-copyright__inner.solo-is-region-xs .solo-side-menu li a,
+.solo-copyright__inner.solo-is-region-xs .solo-footer-menu li a,
+.solo-footer-menu__nav__inner.solo-is-region-xs .solo-side-menu li a,
+.solo-footer-nav__inner.solo-is-region-xs .solo-side-menu li a,
+.solo-footer-menu__nav__inner.solo-is-region-xs .solo-footer-menu li a,
+.solo-footer-nav__inner.solo-is-region-xs .solo-footer-menu li a,
+.solo-region-box__inner.solo-is-region-xs .solo-side-menu li a,
+.solo-region-box__inner.solo-is-region-xs .solo-footer-menu li a {
+  justify-content: start;
+  padding-inline-start: 0;
+  padding-inline-end: 0;
+}
+
+/* Menu branding */
+/* solo-menu.css:385, answers paragraphs-bundles-base.css:121, paragraphs-bundles-custom.css:259, paragraph-bundle-node-reference.css:59 (+40 more) */
+#solo-primary-menu .solo-menu-branding a,
+:where(.solo-primary-menu) .solo-menu--has-branding.solo-menu--primary-responsive {
+  display: flex;
+}
+
+/* solo-menu.css:392, answers pb-pattern-3d-carousel-folio.css:91, pb-pattern-link-directory.css:56, pb-pattern-link-directory.css:68 (+116 more) */
+#solo-primary-menu .solo-menu-branding a,
+#solo-primary-sidebar-menu .solo-menu-branding a {
+  color: inherit;
+  text-decoration: none;
+  cursor: pointer;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  height: 100%;
+  width: auto;
+  min-width: 50px;
+  font-weight: bold;
+  float: inline-start;
+}
+
+/* solo-menu.css:409, answers w3css-paragraphs-accordion.css:52, vvjf-board.css:21, addtoany.css:32 (+6 more) */
+.solo-menu-branding a span {
+  display: flex;
+  width: 100%;
+  height: 100%;
+}
+
+/* solo-menu.css:430, answers pb-patterns-insert.css:171, vvj-patterns-base.css:211, blazy.css:93 (+27 more) */
+.solo-menu-branding .solo-menu-branding__logo img,
+.solo-menu-branding .solo-menu-branding__logo svg {
+  display: flex;
+  width: auto;
+  height: 100%;
+  max-height: 42px;
+}
+
+/* ==== from css/components/solo-page-title.css ==== */
+
+/* solo-page-title.css:16, answers w3css-paragraphs-accordion.css:52, addtoany.css:32, extlink.css:68 (+1 more) */
+h1.solo-page-title__text span {
+  display: inline-flex;
+}
+
+/* solo-page-title.css:26, answers paragraph-bundle-3d-carousel.css:323, paragraph-bundle-slideshow.css:344, pb-pattern-slideshow-tide.css:165 (+9 more) */
+:where(.solo-page.pt-center) :where(h1).solo-page-title__text,
+#solo-page-wrapper.pt-center h1.solo-page-title__text span {
+  width: 100%;
+  text-align: center;
+}
+
+/* ==== from css/components/solo-pager.css ==== */
+
+/* solo-pager.css:28, answers vvjb-ledger.css:33, vvjb-swatch.css:23, vvjs.css:108 (+4 more) */
+:where(.solo-page) .pager__item a {
+  display: inline-block;
+  padding: var(--solo-px8) var(--solo-px16);
+  transition:
+    background-color 0.3s,
+    color 0.3s,
+    border-color 0.3s;
+  text-decoration: none;
+  border: 1px solid var(--r-border);
+  border-radius: var(--solo-px4);
+}
+
+/* solo-pager.css:41, answers pb-patterns-base.css:88, cookies.lib.css:48, horizontal-tabs.css:57 (+7 more) */
+:where(.solo-page) .pager__item a:hover,
+:where(.solo-page) .pager__item a:focus {
+  text-decoration: underline;
+}
+
+/* The current page reads as selected, painted like the hover state, not by weight alone. */
+/* solo-pager.css:62, answers paragraph-bundle-node-reference.css:65, w3-modern.css:335, vvja-pattern-base.css:133 (+22 more) */
+.solo-page .pager__item.solo-active-pager a,
+.solo-page .pager__item.is-active a {
+  color: var(--solo-accent-text);
+  background: var(--solo-accent-background);
+}
+
+/* solo-pager.css:67, answers paragraphs-bundles-base.css:94, vvjs.css:108, slick.theme.css:57 (+3 more) */
+.pager__item.solo-active-pager a {
+  cursor: default;
+  font-weight: bold;
+}
+
+/* solo-pager.css:86, answers addtoany.css:13, vertical-tabs.css:41, cookies.lib.css:48 */
+@media (max-width: 47.99875rem) {
+  :where(.solo-page) .pager__item a {
+    padding: var(--solo-px5) var(--solo-px12);
+    font-size: var(--solo-px14);
+  }
+}
+
+/* ==== from css/components/solo-popup-login-block.css ==== */
+
+/* solo-popup-login-block.css:55, answers vvjc.css:161, blazy.media.css:49, blazy.media.css:54 (+1 more) */
+.solo-popup-login-block__close button,
+.solo-popup-login__close button {
+  color: var(--r-button-text);
+  background-color: var(--r-button-background);
+}
+
+/* Focus styles for all interactive elements */
+/* solo-popup-login-block.css:75, answers paragraphs-bundles-base.css:94, dropbutton.css:136, dropbutton.css:69 (+1 more) */
+.solo-popup-login-block__close button:focus,
+.solo-popup-login__close button:focus,
+.solo-popup-login-block__open button:focus,
+.solo-popup-login__open button:focus,
+.solo-popup-login-block button:focus,
+.solo-popup-login button:focus,
+.solo-popup-login-block input:focus,
+.solo-popup-login input:focus,
+.solo-popup-login-block select:focus,
+.solo-popup-login select:focus,
+.solo-popup-login-block textarea:focus,
+.solo-popup-login textarea:focus,
+.solo-popup-login-block a:focus,
+.solo-popup-login a:focus,
+.solo-popup-login-block__close button:focus-visible,
+.solo-popup-login__close button:focus-visible,
+.solo-popup-login-block__open button:focus-visible,
+.solo-popup-login__open button:focus-visible,
+.solo-popup-login-block button:focus-visible,
+.solo-popup-login button:focus-visible,
+.solo-popup-login-block input:focus-visible,
+.solo-popup-login input:focus-visible,
+.solo-popup-login-block select:focus-visible,
+.solo-popup-login select:focus-visible,
+.solo-popup-login-block textarea:focus-visible,
+.solo-popup-login textarea:focus-visible,
+.solo-popup-login-block a:focus-visible,
+.solo-popup-login a:focus-visible {
+  /* Text color, like every other Solo focus ring: a border token is not
+     guaranteed 3:1 on the popup ground (WCAG 2.4.11). */
+  outline: 2px solid var(--r-text, currentColor);
+  outline-offset: 2px;
+}
+
+/* solo-popup-login-block.css:89, answers pb-patterns-insert.css:73, tabs.css:19, report.css:114 (+5 more) */
+:where(.solo-page) .block-user-login-block .item-list ul li {
+  margin-block: 5px;
+  margin-inline: auto;
+}
+
+/* solo-popup-login-block.css:102, answers dropbutton.css:125, vvjc.css:161, blazy.media.css:49 (+4 more) */
+.solo-popup-login-block__open button,
+.solo-popup-login__open button {
+  display: flex;
+  color: var(--r-button-text);
+  background-color: var(--r-button-background);
+  font-size: var(--solo-px16);
+  padding-block: 0.563rem;
+  padding-inline: var(--solo-px16);
+}
+
+/* Body class when popup is open */
+/* solo-popup-login-block.css:122, answers blazy.flybox.css:6, slick.theme--fullscreen.css:145 */
+body.solo-login-popup-open {
+  overflow: hidden;
+}
+
+/* Skip color styling for SVG icons - inherit from parent */
+/* solo-popup-login-block.css:142, answers extlink.css:30, extlink.css:38 */
+.solo-popup-login-block__close svg,
+.solo-popup-login__close svg,
+.solo-popup-login-block__open svg,
+.solo-popup-login__open svg {
+  fill: currentColor;
+}
+
+/* solo-popup-login-block.css:177, answers paragraphs-bundles-base.css:94, dropbutton.css:136, dropbutton.css:69 (+1 more) */
+@media (prefers-contrast: more) {
+  .solo-popup-login-block__close button:focus,
+  .solo-popup-login__close button:focus,
+    .solo-popup-login-block__open button:focus,
+  .solo-popup-login__open button:focus,
+    .solo-popup-login-block button:focus,
+  .solo-popup-login button:focus,
+    .solo-popup-login-block input:focus,
+  .solo-popup-login input:focus,
+    .solo-popup-login-block select:focus,
+  .solo-popup-login select:focus,
+    .solo-popup-login-block textarea:focus,
+  .solo-popup-login textarea:focus,
+    .solo-popup-login-block a:focus,
+  .solo-popup-login a:focus,
+    .solo-popup-login-block__close button:focus-visible,
+  .solo-popup-login__close button:focus-visible,
+    .solo-popup-login-block__open button:focus-visible,
+  .solo-popup-login__open button:focus-visible,
+    .solo-popup-login-block button:focus-visible,
+  .solo-popup-login button:focus-visible,
+    .solo-popup-login-block input:focus-visible,
+  .solo-popup-login input:focus-visible,
+    .solo-popup-login-block select:focus-visible,
+  .solo-popup-login select:focus-visible,
+    .solo-popup-login-block textarea:focus-visible,
+  .solo-popup-login textarea:focus-visible,
+    .solo-popup-login-block a:focus-visible,
+  .solo-popup-login a:focus-visible {
+    outline-width: 3px;
+  }
+}
+
+/* ==== from css/components/solo-preloader.css ==== */
+
+/**
+ * @file
+ * Solo Preloader. Scoped under html.solo-preloader-enabled.
+ * Each style has a unique modifier: --spinner, --progress_bar, --text, --logo, --logo_text.
+ */
+
+/* Lock scroll when active (JS adds solo-preloader-active) */
+/* solo-preloader.css:8, answers blazy.flybox.css:6, slick.theme--fullscreen.css:145 */
+html.solo-preloader-enabled.solo-preloader-active body {
+  overflow: hidden;
+}
+
+/* ==== from css/components/solo-search-block.css ==== */
+
+/* solo-search-block.css:45, answers button.css:79, webform.element.color.css:10, webform.element.color.css:46 (+2 more) */
+.solo-search-block-form .form-type-search input {
+  padding-inline-start: var(--solo-px34);
+  background-color: transparent;
+}
+
+/* solo-search-block.css:51, answers webform.element.managed_file.css:14, webform.element.options.css:54, webform.element.scale.css:211 */
+.solo-search-block-form .form-item,
+.solo-search-block-form .form-actions {
+  display: inline-block;
+}
+
+/* ==== from css/components/solo-search-page.css ==== */
+
+/* solo-search-page.css:40, answers mailchimp_campaign.css:27, paragraph-bundle-image-grid.css:14, paragraph-bundle-hero.css:146 (+3 more) */
+.path-search .solo-row.item-list > h3 {
+  padding-block: 0;
+  padding-inline: var(--solo-px16);
+  font-size: var(--solo-px18);
+}
+
+/* solo-search-page.css:51, answers w3-modern.css:211, module-matrix.filter.css:78, module-matrix.style.css:130 */
+:where(.solo-page) .path-search .search-form .search-advanced #edit-type--wrapper > legend,
+:where(.solo-page) .path-search .search-form .search-advanced #edit-language--wrapper > legend {
+  display: none;
+}
+
+/* solo-search-page.css:69, answers w3-modern.css:211, module-matrix.style.css:130 */
+:where(.solo-page) .path-search .search-form .search-advanced #edit-lang-fieldset > legend,
+:where(.solo-page) .path-search .search-form .search-advanced #edit-types-fieldset > legend {
+  display: inline-block;
+}
+
+/* solo-search-page.css:81, answers devel.css:4 */
+:where(.solo-page) :where(form.search-form) details.search-advanced .details-wrapper {
+  overflow: hidden;
+}
+
+/* solo-search-page.css:109, answers webform.element.term_checkboxes.css:6 */
+:where(.solo-page) :where(form.search-form .search-advanced) fieldset[data-drupal-selector="edit-keywords-fieldset"] > .fieldset-wrapper,
+:where(.solo-page) :where(form.search-form .search-advanced) fieldset[data-drupal-selector="edit-types-fieldset"] > .fieldset-wrapper,
+:where(.solo-page) :where(form.search-form .search-advanced) fieldset[data-drupal-selector="edit-lang-fieldset"] > .fieldset-wrapper {
+  padding: 0;
+}
+
+/* solo-search-page.css:128, answers module-matrix.settings.css:318, module-matrix.settings.css:648, webform.form.css:103 */
+@media (min-width: 48rem) {
+  :where(.solo-page) :where(form.search-form) .search-advanced fieldset[data-drupal-selector="edit-keywords-fieldset"] .fieldset-wrapper {
+    display: flex;
+    gap: var(--solo-px12);
+  }
+}
+
+/* solo-search-page.css:136, answers webform.form.css:111 */
+@media (min-width: 48rem) {
+  :where(.solo-page) :where(form.search-form .search-advanced) fieldset[data-drupal-selector="edit-types-fieldset"] .fieldset-wrapper .form-checkboxes,
+  :where(.solo-page) :where(form.search-form .search-advanced) fieldset[data-drupal-selector="edit-lang-fieldset"] .fieldset-wrapper .form-checkboxes {
+    display: flex;
+  }
+}
+
+/* solo-search-page.css:150, answers selectify-settings-style.css:507, selectify-settings-style.css:524 */
+@media (min-width: 48rem) {
+  :where(.solo-page) form.search-form .search-advanced fieldset[data-drupal-selector="edit-types-fieldset"] .fieldset-wrapper .form-checkboxes label,
+  :where(.solo-page) form.search-form .search-advanced fieldset[data-drupal-selector="edit-lang-fieldset"] .fieldset-wrapper .form-checkboxes label {
+    flex-basis: max-content;
+  }
+}
+
+/* ==== from css/components/solo-skip-link.css ==== */
+
+/* solo-skip-link.css:20, answers hidden.module.css:40 */
+:where(.solo-page) .skip-link.focusable:focus {
+  width: 100%;
+}
+
+/* ==== from css/components/solo-status-messages-dark.css ==== */
+
+/* solo-status-messages-dark.css:23, answers webform.element.message.info.css:8 */
+:where(.solo-page) .messages.messages--error {
+  background: linear-gradient(135deg, #c42d37 0%, #090909 3%, #000 100%);
+}
+
+/* solo-status-messages-dark.css:27, answers webform.element.message.info.css:8 */
+:where(.solo-page) .messages.messages--warning {
+  background: linear-gradient(135deg, #ffcd3a 0%, #090909 3%, #000 100%);
+}
+
+/* solo-status-messages-dark.css:31, answers webform.element.message.info.css:8 */
+:where(.solo-page) .messages.messages--status {
+  background: linear-gradient(135deg, #4caf50 0%, #090909 3%, #000 100%);
+}
+
+/* solo-status-messages-dark.css:35, answers webform.element.message.info.css:8, yoast_seo.message.css:1 */
+:where(.solo-page) .messages.messages--info {
+  background: linear-gradient(135deg, #2196f3 0%, #090909 3%, #000 100%);
+}
+
+/* ==== from css/components/solo-status-messages.css ==== */
+
+/* Additional specificity to override contrib modules. */
+/* solo-status-messages.css:26, answers webform.element.message.info.css:8, webform.promotions.css:9 */
+:where(.solo-page) :where(.webform-message) .messages.messages--webform .messages.messages-list__item {
+  background-image: none;
+}
+
+/* solo-status-messages.css:108, answers selectify-base.css:203 */
+:where(.solo-page) .messages__icon svg {
+  vertical-align: top;
+}
+
+/* solo-status-messages.css:199, answers webform.element.message.info.css:8 */
+:where(.solo-page) .messages.messages--error {
+  box-shadow: rgb(244, 67, 54, 0.3) 0 2px 8px 0;
+}
+
+/* solo-status-messages.css:203, answers webform.element.message.info.css:8 */
+:where(.solo-page) .messages.messages--warning {
+  box-shadow: rgb(255, 205, 58, 0.3) 0 2px 8px 0;
+}
+
+/* solo-status-messages.css:207, answers webform.element.message.info.css:8 */
+:where(.solo-page) .messages.messages--status {
+  box-shadow: rgb(76, 175, 80, 0.3) 0 2px 8px 0;
+}
+
+/* solo-status-messages.css:211, answers webform.element.message.info.css:8, yoast_seo.message.css:1, yoast_seo.message.css:8 */
+:where(.solo-page) .messages.messages--info {
+  box-shadow: rgb(33, 150, 243, 0.3) 0 2px 8px 0;
+}
+
+/* ==== from css/components/solo-menu-local-tasks.css ==== */
+
+/* solo-menu-local-tasks.css:28, answers vvjb-ledger.css:33, vvjb-swatch.css:23, theme.css:113 */
+:where(.solo-page) ul.secondary li.is-active > a,
+:where(.solo-page) ul.primary li.is-active > a {
+  font-weight: bold;
+}
+
+/* solo-menu-local-tasks.css:32, answers paragraphs-bundles-custom.css:171, w3-modern.css:458, suggestions.css:10 */
+:where(.solo-page) ul.primary > li {
+  border: none;
+}
+
+/* solo-menu-local-tasks.css:35, answers vvjb-ledger.css:33, vvjb-swatch.css:23, addtoany.css:13 (+2 more) */
+:where(.solo-page) nav.action-links > li > a {
+  display: flex;
+  padding-block: var(--solo-px12);
+  padding-inline: var(--solo-px16);
+}
+
+/* solo-menu-local-tasks.css:42, answers vvjb-ledger.css:33, vvjb-swatch.css:23, addtoany.css:13 (+3 more) */
+:where(.solo-page) ul.primary > li > a {
+  display: flex;
+  border: 1px solid var(--r-border, var(--solo-border-default));
+  border-block-end: none;
+  padding-block: var(--solo-px6);
+  padding-inline: var(--solo-px16);
+  border-start-start-radius: var(--solo-px8);
+  border-start-end-radius: var(--solo-px8);
+}
+
+/* solo-menu-local-tasks.css:61, answers addtoany.css:13, datepicker.css:82, vertical-tabs.css:41 (+3 more) */
+:where(.solo-page) ul.secondary > li > a {
+  padding-block: var(--solo-px4);
+  padding-inline: var(--solo-px12);
+  display: block;
+}
+
+/* solo-menu-local-tasks.css:69, answers vvjb-ledger.css:33, vvjb-swatch.css:23, vvjs.css:108 (+11 more) */
+:where(.solo-page) ul.primary > li > a,
+:where(.solo-page) nav.action-links > li > a {
+  display: block;
+  text-align: center;
+  color: inherit;
+  padding-block: var(--solo-px8);
+  padding-inline: var(--solo-px16);
+}
+
+/* solo-menu-local-tasks.css:77, answers addtoany.css:13, datepicker.css:82, vertical-tabs.css:41 (+11 more) */
+:where(.solo-page) ul.secondary > li > a {
+  padding-block: var(--solo-px6);
+  padding-inline: var(--solo-px12);
+  display: block;
+  color: inherit;
+}
+
+/* ==== from css/components/solo-table.css ==== */
+
+/* solo-table.css:1, answers config_update_ui.report.css:6, datepicker.css:65, webform.element.multiple.css:14 (+1 more) */
+.solo-page table {
+  margin: 0 auto;
+  border-spacing: 0;
+}
+
+/* solo-table.css:14, answers datepicker.css:71, print.css:8, datepicker.css:77 (+3 more) */
+.solo-page table tr th,
+.solo-page table tr td {
+  border-bottom: var(--solo-px1) solid var(--r-border, var(--solo-border-default));
+}
+
+/* solo-table.css:18, answers datepicker.css:77, report.css:239, webform.element.likert.css:77 (+2 more) */
+.solo-page table tr:last-child td {
+  border-bottom: none;
+}
+
+/* solo-table.css:30, answers webform_ui.module.css:85, paragraphs-bundles-custom.css:171, w3-modern.css:360 (+7 more) */
+.solo-page tr.region-title {
+  color: var(--r-text);
+  background-color: var(--r-background);
+}
+
+/* solo-table.css:44, answers paragraphs-bundles-custom.css:171, w3-modern.css:356, w3-modern.css:360 (+12 more) */
+.solo-page table tr:nth-child(even) {
+  background-color: var(--solo-even, var(--r-background));
+}
+
+/* solo-table.css:48, answers paragraphs-bundles-custom.css:171, w3-modern.css:356, w3-modern.css:360 (+12 more) */
+.solo-page table tr:nth-child(odd) {
+  background-color: var(--solo-odd, var(--r-background));
+}
+
+/* solo-table.css:53, answers paragraphs-bundles-custom.css:171, w3-modern.css:356, w3-modern.css:360 (+12 more) */
+#solo-page-wrapper table tfoot tr,
+#solo-page-wrapper table thead tr {
+  background-color: var(--solo-thead, var(--r-background));
+}
+
+/* solo-table.css:58, answers webform.element.likert.css:77, webform.element.multiple.css:180, webform.element.multiple.css:189 (+17 more) */
+.solo-page table td,
+.solo-page table th {
+  display: table-cell;
+  padding: var(--solo-px8);
+  text-align: var(--solo-text-align-start);
+  vertical-align: middle;
+}
+
+/* solo-table.css:69, answers w3-modern.css:381, datepicker.css:71, report.css:143 (+13 more) */
+.solo-page table th:first-child,
+.solo-page table td:first-child {
+  padding-inline-start: var(--solo-px16);
+}
+
+/* solo-table.css:83, answers w3-modern.css:381, report.css:239, report.css:254 (+3 more) */
+:where(.solo-page) table th.hide-empty-column,
+.solo-page table td.hide-empty-column,
+:where(.solo-page) table th.priority-low,
+:where(.solo-page) table th.priority-medium,
+.solo-page table td.priority-low,
+.solo-page table td.priority-medium {
+  display: none;
+}
+
+/* solo-table.css:89, answers webform_ui.module.css:111, report.css:239, report.css:254 (+3 more) */
+@media (min-width: 36rem) {
+  .solo-page table th.priority-medium,
+    .solo-page table td.priority-medium {
+    display: table-cell;
+  }
+}
+
+/* solo-table.css:96, answers webform_ui.module.css:111, report.css:239, report.css:254 (+3 more) */
+@media (min-width: 62rem) {
+  .solo-page table th.priority-low,
+    .solo-page table td.priority-low {
+    display: table-cell;
+  }
+}
+
+/* solo-table.css:102, answers datepicker.css:65, datepicker.css:115 */
+.solo-page .tabledrag-toggle-weight-wrapper + table,
+:where(.solo-page) .tabledrag-toggle-weight-wrapper + .tableresponsive-toggle-columns + table {
+  margin-block-start: 0;
+}
+
+/* solo-table.css:143, answers webform.theme.bartik.css:17 */
+.solo-table__wrapper .tableresponsive-toggle-columns,
+.solo-table-wrapper .tableresponsive-toggle-columns {
+  display: flex;
+}
+
+/* ==== from css/components/solo-text-format.css ==== */
+
+/* solo-text-format.css:31, answers webform.element.codemirror.css:25 */
+:where(.solo-page) .field--type-text-long pre,
+:where(.solo-page) .field--type-text-with-summary pre,
+:where(.solo-page) .cke_editable pre,
+:where(.solo-page) .ck-content pre {
+  overflow-y: hidden;
+  border: 1px solid var(--r-border, var(--solo-border-default));
+}
+
+/* solo-text-format.css:45, answers selectify-settings-style.css:106 */
+:where(.solo-page) .field--type-text-long pre code,
+:where(.solo-page) .field--type-text-with-summary pre code,
+:where(.solo-page) .cke_editable pre code,
+:where(.solo-page) .ck-content pre code {
+  padding: var(--solo-px16);
+}
+
+/* ==== from css/components/solo-menu-account.css ==== */
+
+/* solo-menu-account.css:4, answers suggestions.css:10, tabs.css:19, report.css:114 (+7 more) */
+:where(.solo-header__inner nav) .solo-menu-tree__menubar,
+.solo-header__inner nav .solo-menu-tree__menubar > li,
+:where(.solo-inner) .solo-menu-tree__menubar--account,
+.solo-inner .solo-menu-tree__menubar--account li {
+  margin: 0;
+  padding: 0;
+}
+
+/* solo-menu-account.css:21, answers slick.thumbnail--grid.css:12, slick.theme.css:224, views-slideshow-pager-bullets.css:5 (+8 more) */
+.solo-inner .solo-menu-tree__menubar--account li {
+  display: inline-flex;
+  float: inline-end;
+  margin: 0;
+  padding: 0;
+  line-height: 1.5;
+}
+
+/* solo-menu-account.css:43, answers addtoany.css:25, addtoany.css:36, extlink.css:6 (+4 more) */
+.solo-header__inner nav .solo-menu-tree__menubar > li > a > span,
+.solo-inner .solo-menu-tree__menubar--account li a span {
+  width: 100%;
+}
+
+/* ==== from css/components/solo-webform.css ==== */
+
+/* solo-webform.css:2, answers w3-modern.css:205, webform.element.term_checkboxes.css:6, module-matrix.settings.css:269 (+2 more) */
+:where(.solo-page) .webform-submission-form fieldset,
+.webform-submission-form fieldset .fieldset-wrapper.solo-panel {
+  padding: 0;
+  border: none;
+  margin-inline: auto;
+  margin-block: 0;
+}
+
+/* solo-webform.css:19, answers webform.composite.telephone.css:19, webform.composite.telephone.css:25, webform.element.options.css:60 (+6 more) */
+:where(.solo-page) .webform-submission-form .form-type-webform-rating label {
+  float: inline-start;
+  height: calc(2 * var(--solo-px12));
+}
+
+/* solo-webform.css:24, answers button.css:79, selectify-style.css:61, webform.element.color.css:10 (+4 more) */
+:where(.solo-page) .webform-multiple-table td input[type="image"] {
+  border-color: var(--r-border, var(--solo-border-default));
+}
+
+/* solo-webform.css:32, answers selectify-base.css:360, webform.element.range.css:11, paragraphs.modal.css:21 (+9 more) */
+:where(.solo-page) .webform-multiple-add .form-type-number input {
+  display: inline-block;
+  width: 4em;
+  margin: 0;
+}
+
+/* solo-webform.css:38, answers mailchimp_campaign.css:12, webform.composite.telephone.css:6, webform.composite.telephone.css:12 (+14 more) */
+.webform-multiple-add div.solo-section.form-item {
+  clear: none;
+  width: auto;
+}
+
+/* solo-webform.css:44, answers w3-modern.css:179, webform.wizard.pages.css:17 */
+:where(.solo-page) :where(.webform-multiple-add) > div,
+:where(.solo-page) .webform-multiple-add > input {
+  margin-inline-end: var(--solo-px10);
+}
+
+/* solo-webform.css:53, answers webform.element.likert.css:48, webform.element.likert.css:88, webform.element.multiple.css:34 (+8 more) */
+:where(.solo-page) .webform-multiple-table td.webform-multiple-table--handle {
+  width: auto;
+}
+
+/* solo-webform.css:58, answers w3css-paragraphs-3d-carousel.css:412, views_slideshow_cycle.css:16, webform.composite.telephone.css:6 (+10 more) */
+:where(.solo-page) .webform-has-field-prefix span.field-prefix + div,
+:where(.solo-page) .webform-has-field-suffix > div + span.field-suffix {
+  display: inline-block;
+  clear: none;
+}
+
+/* solo-webform.css:63, answers w3-modern.css:179, module-matrix.settings.css:361, module-matrix.settings.css:664 (+12 more) */
+:where(.solo-page) .webform-multiple-table td input[type="image"] + input[type="image"] {
+  margin-block-start: var(--solo-px2);
+  margin-block-end: 0;
+  margin-inline-start: 0;
+  margin-inline-end: 0;
+}
+
+/* ==== from css/theme/solo-clickable-image.css ==== */
+
+/* solo-clickable-image.css:13, answers vvjb-ledger.css:33, vvjb-swatch.css:23, vvjs.css:108 (+1 more) */
+a.solo-image--clickable {
+  display: block;
+}
+
+/* solo-clickable-image.css:21, answers pb-patterns-base.css:71, addtoany.css:22, blazy.filter.css:44 (+4 more) */
+a.solo-image--clickable > img.solo-image,
+a.solo-image--clickable > picture > img.solo-image {
+  float: inline-start;
+  width: 100%;
+}
+
+/* solo-clickable-image.css:27, answers addtoany.css:22, blazy.filter.css:44, blazy.filter.css:49 */
+.image-auto a.solo-image--clickable > img.solo-image,
+.image-auto a.solo-image--clickable > picture > img.solo-image {
+  float: none;
+}
+
+/* solo-clickable-image.css:33, answers vvjh-aperture.css:52, vvjs-hero.css:30, vvjs-hero.css:46 (+18 more) */
+a.solo-image--clickable:hover > img.solo-image,
+a.solo-image--clickable:hover > picture > img.solo-image {
+  animation: animateimg 5s;
+}
+
+/* ==== from css/theme/solo-cookies.css ==== */
+
+/* solo-cookies.css:4, answers paragraph-bundle-node-reference.css:34, paragraph-bundle-node-reference.css:84, paragraph-bundle-accordion.css:66 (+14 more) */
+:where(.solo-page) .cookiesjsr-banner,
+#solo-page-wrapper .cookiesjsr-layer div,
+#solo-page-wrapper .cookiesjsr-layer header,
+:where(.solo-page .cookiesjsr-layer) footer {
+  border-color: var(--r-border, var(--solo-border-default));
+  background-color: var(--r-background);
+  background-image: var(--r-background-image, var(--r-background)); /* a gradient in --r-background paints as an image; a plain color leaves it none */
+}
+
+/* stylelint-disable order/properties-order -- shorthand/longhand order is significant here (animation-timing-function vs animation); reordering would change the result */
+/* solo-cookies.css:18, answers vvja-stage.css:22, vvjc.css:419, vvjc.css:485 (+5 more) */
+#solo-page-wrapper .cookiesjsr-banner.active {
+  animation-timing-function: cubic-bezier(0.1, 0.9, 1, 0.1);
+  animation: animatebottom 0.6s;
+}
+
+/* solo-cookies.css:34, answers pb-pattern-tabs-contents.css:30, w3css-paragraphs-accordion.css:15, paragraph-bundle-alert.css:88 (+69 more) */
+#solo-page-wrapper #cookiesjsr button,
+:where(.solo-page) .cookiesjsr-service--always-on {
+  text-align: center;
+  color: var(--r-button-text, var(--r-text));
+  border-color: var(--r-border, var(--solo-border-default));
+  background: var(--r-button-background, var(--r-background));
+}
+
+/* solo-cookies.css:41, answers pb-pattern-image-grid-reel.css:215, pb-pattern-image-grid-sheet.css:312, pb-pattern-slideshow-ledger.css:246 (+61 more) */
+#solo-page-wrapper .cookiesjsr-layer--header button {
+  width: calc(2 * var(--solo-px24));
+  height: calc(2 * var(--solo-px24));
+  text-transform: uppercase;
+  border: 1px solid var(--r-border);
+  border-radius: 50%;
+  font-size: var(--solo-px12);
+  line-height: var(--solo-px12);
+}
+
+/* solo-cookies.css:57, answers paragraph-bundle-alert.css:88, pb-pattern-grid-plans.css:40, pb-pattern-image-grid-index.css:376 (+62 more) */
+#solo-page-wrapper #cookiesjsr button:hover {
+  color: var(--r-button-text-hover, var(--r-text));
+  background: var(--r-button-background-hover, var(--r-background));
+  box-shadow: inset 0 0 var(--solo-px10) var(--r-border);
+}
+
+/* solo-cookies.css:86, answers paragraph-bundle-alert.css:88, paragraph-bundle-alert.css:147, pb-patterns-base.css:58 (+21 more) */
+#solo-page-wrapper .cookiesjsr-service-group button {
+  border-block-end: 1px solid var(--r-border);
+}
+
+/* solo-cookies.css:90, answers paragraph-bundle-alert.css:88, paragraph-bundle-alert.css:147, pb-patterns-base.css:58 (+27 more) */
+#solo-page-wrapper .cookiesjsr-service-group.active button {
+  border-block-end: 4px solid var(--r-border);
+  box-shadow: inset 0 -40px 40px -40px var(--r-border);
+}
+
+/* solo-cookies.css:96, answers pb-patterns-base.css:88, pb-pattern-link-directory.css:56, pb-pattern-link-directory.css:68 (+50 more) */
+#solo-page-wrapper .cookiesjsr-banner--links li a {
+  text-decoration: underline;
+  font-size: var(--solo-px14);
+}
+
+/* ==== from css/theme/solo-global-settings.css ==== */
+
+/* Font zie 12 & 14 */
+/* solo-global-settings.css:3, answers w3-modern.css:261 */
+:where(.solo-page) :where(html).fs-12,
+:where(.solo-page) :where(html.fs-12) body {
+  font-size: var(--solo-px12);
+}
+
+/* solo-global-settings.css:13, answers paragraph-bundle-image-grid.css:182, vvjl.css:151, blazy.colorbox.css:54 */
+html.fs-14 .solo-menu-branding .solo-menu-branding__logo img,
+html.fs-12 .solo-menu-branding .solo-menu-branding__logo img {
+  max-height: 30px;
+}
+
+/* solo-global-settings.css:37, answers paragraph-bundle-alert.css:88, pb-patterns-base.css:58, vvjr-pattern-base.css:204 (+8 more) */
+html.fs-12 .solo-inner .solo-popup-login-block__open > button,
+html.fs-12 .solo-inner .solo-popup-login__open > button,
+html.fs-12 .solo-inner .solo-menu-tree__menubar--account li a {
+  line-height: 1.5;
+}
+
+/* solo-global-settings.css:43, answers paragraph-bundle-alert.css:88, pb-patterns-base.css:58, vvjr-pattern-base.css:204 (+8 more) */
+html.fs-14 .solo-inner .solo-popup-login-block__open > button,
+html.fs-14 .solo-inner .solo-popup-login__open > button,
+html.fs-14 .solo-inner .solo-menu-tree__menubar--account li a {
+  line-height: 1.5;
+}
+
+/* Font zie 14 */
+/* solo-global-settings.css:50, answers w3-modern.css:261 */
+:where(.solo-page) :where(html).fs-14,
+:where(.solo-page) :where(html.fs-14) body {
+  font-size: var(--solo-px14);
+}
+
+/* Region gaps 12 */
+/* solo-global-settings.css:61, answers pb-patterns-base.css:58, pb-pattern-simple-action-band.css:53, vvja-cards.css:35 (+48 more) */
+html.gap-12 .solo-inner .solo-menu-tree__menubar li.solo-menu-tree__item > a,
+html.gap-12 .solo-inner .solo-menu-tree__menubar li.solo-menu-tree__item > button {
+  padding-block-start: var(--solo-px8);
+  padding-block-end: var(--solo-px8);
+}
+
+/* Region gaps 14 */
+/* solo-global-settings.css:68, answers pb-patterns-base.css:58, pb-pattern-simple-action-band.css:53, vvja-cards.css:35 (+48 more) */
+html.gap-14 .solo-inner .solo-menu-tree__menubar li.solo-menu-tree__item > a,
+html.gap-14 .solo-inner .solo-menu-tree__menubar li.solo-menu-tree__item > button {
+  padding-block-start: var(--solo-px10);
+  padding-block-end: var(--solo-px10);
+}
+
+/* Region gaps 20 */
+/* solo-global-settings.css:76, answers pb-patterns-base.css:58, pb-pattern-simple-action-band.css:53, vvja-cards.css:35 (+48 more) */
+@media (min-width: 26rem) {
+  html.gap-20 .solo-inner .solo-menu-tree__menubar li.solo-menu-tree__item > a,
+    html.gap-20 .solo-inner .solo-menu-tree__menubar li.solo-menu-tree__item > button {
+    padding-block-start: var(--solo-px14);
+    padding-block-end: var(--solo-px14);
+  }
+}
+
+/* Region gaps 24 */
+/* solo-global-settings.css:83, answers pb-patterns-base.css:58, pb-pattern-simple-action-band.css:53, vvja-cards.css:35 (+48 more) */
+@media (min-width: 26rem) {
+  html.gap-24 .solo-inner .solo-menu-tree__menubar li.solo-menu-tree__item > a,
+    html.gap-24 .solo-inner .solo-menu-tree__menubar li.solo-menu-tree__item > button {
+    padding-block-start: var(--solo-px18);
+    padding-block-end: var(--solo-px18);
+  }
+}
+
+/* Region gaps 36 */
+/* solo-global-settings.css:90, answers pb-patterns-base.css:58, pb-pattern-simple-action-band.css:53, vvja-cards.css:35 (+48 more) */
+@media (min-width: 26rem) {
+  html.gap-36 .solo-inner .solo-menu-tree__menubar li.solo-menu-tree__item > a,
+    html.gap-36 .solo-inner .solo-menu-tree__menubar li.solo-menu-tree__item > button {
+    padding-block-start: var(--solo-px20);
+    padding-block-end: var(--solo-px20);
+  }
+}
+
+/* Region gaps 48 */
+/* solo-global-settings.css:97, answers pb-patterns-base.css:58, pb-pattern-simple-action-band.css:53, vvja-cards.css:35 (+48 more) */
+@media (min-width: 26rem) {
+  html.gap-48 .solo-inner .solo-menu-tree__menubar li.solo-menu-tree__item > a,
+    html.gap-48 .solo-inner .solo-menu-tree__menubar li.solo-menu-tree__item > button {
+    padding-block-start: var(--solo-px24);
+    padding-block-end: var(--solo-px24);
+  }
+}
+
+/* Region gaps 64 */
+/* solo-global-settings.css:104, answers pb-patterns-base.css:58, pb-pattern-simple-action-band.css:53, vvja-cards.css:35 (+48 more) */
+@media (min-width: 26rem) {
+  html.gap-64 .solo-inner .solo-menu-tree__menubar li.solo-menu-tree__item > a,
+    html.gap-64 .solo-inner .solo-menu-tree__menubar li.solo-menu-tree__item > button {
+    padding-block-start: var(--solo-px32);
+    padding-block-end: var(--solo-px32);
+  }
+}
+
+/* solo-global-settings.css:110, answers w3-modern.css:261 */
+@media (min-width: 26rem) {
+  :where(.solo-page) :where(html).fs-18,
+  :where(.solo-page) :where(html.fs-18) body {
+    font-size: var(--solo-px18);
+  }
+}
+
+/* solo-global-settings.css:131, answers paragraph-bundle-alert.css:88, pb-patterns-base.css:58, vvjr-pattern-base.css:204 (+8 more) */
+@media (min-width: 26rem) {
+  html.fs-18 .solo-inner .solo-popup-login-block__open > button,
+  html.fs-18 .solo-inner .solo-popup-login__open > button,
+    html.fs-18 .solo-inner .solo-menu-tree__menubar--account li a {
+    line-height: 1.5;
+  }
+}
+
+/* Font zie 20 */
+/* solo-global-settings.css:138, answers w3-modern.css:261 */
+@media (min-width: 26rem) {
+  :where(.solo-page) :where(html).fs-20,
+  :where(.solo-page) :where(html.fs-20) body {
+    font-size: var(--solo-px20);
+  }
+}
+
+/* solo-global-settings.css:177, answers paragraph-bundle-alert.css:88, pb-patterns-base.css:58, vvjr-pattern-base.css:204 (+8 more) */
+@media (min-width: 26rem) {
+  html.fs-20 .solo-inner .solo-popup-login-block__open > button,
+  html.fs-20 .solo-inner .solo-popup-login__open > button,
+    html.fs-20 .solo-inner .solo-menu-tree__menubar--account li a {
+    line-height: 1.5;
+  }
+}
+
+/* ==== from css/theme/solo-menu-primary-sidebar.css ==== */
+
+/* solo-menu-primary-sidebar.css:11, answers module-matrix.settings.css:125 */
+.solo-primary-sidebar-menu h2.block__title {
+  padding: var(--solo-px16);
+}
+
+/* solo-menu-primary-sidebar.css:57, answers views_slideshow_cycle.css:16, webform.composite.telephone.css:6, webform.composite.telephone.css:12 (+5 more) */
+.solo-inner div.solo-menu--sidebar {
+  display: flex;
+  justify-content: start;
+}
+
+/* solo-menu-primary-sidebar.css:76, answers vvjh-pattern-base.css:124, vvjp-skyline.css:47, vvjp-pattern-base.css:332 (+4 more) */
+.solo-inner .solo-menu--sidebar .solo-menu-tree--sidebar li.solo-menu-tree__item--link-only > a,
+.solo-inner .solo-menu--sidebar .solo-menu-tree--sidebar li.solo-menu-tree__item--button-only > button,
+:where(.solo-inner .solo-menu--sidebar .solo-menu-tree--sidebar) :where(li).solo-menu-tree__item {
+  flex-basis: 100%;
+  flex-grow: 1;
+}
+
+/* solo-menu-primary-sidebar.css:86, answers pb-patterns-base.css:58, pb-pattern-parallax-showroom.css:128, pb-pattern-simple-action-band.css:53 (+40 more) */
+:where(.solo-inner .solo-menu--sidebar) .solo-menu-tree--sidebar > li.solo-menu-tree__item > ul.solo-menu-tree__submenu > li.solo-menu-tree__item > a:first-child,
+:where(.solo-inner .solo-menu--sidebar .solo-menu-tree--sidebar > li.solo-menu-tree__item) > ul.solo-menu-tree__submenu > li.solo-menu-tree__item > button:first-child {
+  padding-inline-start: 24px;
+}
+
+/* solo-menu-primary-sidebar.css:91, answers pb-patterns-base.css:58, pb-pattern-parallax-showroom.css:128, pb-pattern-simple-action-band.css:53 (+40 more) */
+:where(.solo-inner .solo-menu--sidebar .solo-menu-tree--sidebar > li.solo-menu-tree__item) > ul.solo-menu-tree__submenu > li.solo-menu-tree__item > ul.solo-menu-tree__submenu > li.solo-menu-tree__item > a:first-child,
+:where(.solo-inner .solo-menu--sidebar .solo-menu-tree--sidebar > li.solo-menu-tree__item > ul.solo-menu-tree__submenu > li.solo-menu-tree__item) > ul.solo-menu-tree__submenu > li.solo-menu-tree__item > button:first-child {
+  padding-inline-start: 32px;
+}
+
+/* solo-menu-primary-sidebar.css:96, answers pb-patterns-base.css:58, pb-pattern-parallax-showroom.css:128, pb-pattern-simple-action-band.css:53 (+51 more) */
+:where(.solo-inner .solo-menu--sidebar .solo-menu-tree--sidebar > li.solo-menu-tree__item > ul.solo-menu-tree__submenu > li.solo-menu-tree__item) > ul.solo-menu-tree__submenu > li.solo-menu-tree__item > ul.solo-menu-tree__submenu > li.solo-menu-tree__item > a:first-child,
+:where(.solo-inner .solo-menu--sidebar .solo-menu-tree--sidebar > li.solo-menu-tree__item > ul.solo-menu-tree__submenu > li.solo-menu-tree__item > ul.solo-menu-tree__submenu) > li.solo-menu-tree__item > ul.solo-menu-tree__submenu > li.solo-menu-tree__item > button:first-child {
+  padding-inline-start: 40px;
+}
+
+/* solo-menu-primary-sidebar.css:105, answers devel.css:14 */
+.solo-inner .solo-menu--sidebar .solo-menu-tree--sidebar ul.solo-menu-tree__submenu {
+  display: none;
+}
+
+/* solo-menu-primary-sidebar.css:109, answers paragraph-bundle-alert.css:147, pb-patterns-base.css:58, w3-modern.css:179 (+11 more) */
+.solo-inner .solo-menu--sidebar .solo-menu-tree--sidebar li.solo-menu-tree__item--link-and-button > button {
+  margin-inline-start: auto;
+}
+
+/* ==== from css/theme/solo-sitename-animation.css ==== */
+
+/* solo-sitename-animation.css:17, answers pb-pattern-link-roll-call.css:99, pb-pattern-link-roll-call.css:154, pb-pattern-parallax-fieldbook.css:138 (+66 more) */
+:where(.solo-page) .animate-solo-electric-surge,
+#solo-header.animate-site-electric-surge a.solo-branding__site-name-link,
+:where(.solo-page.animate-title-electric-surge) .solo-page-title__text,
+#solo-page-wrapper.animate-title-electric-surge .solo-page-title__text span,
+:where(html.solo-preloader-enabled .solo-preloader.animate-site-electric-surge) .solo-preloader__text,
+:where(html.solo-preloader-enabled .solo-preloader.animate-site-electric-surge) .solo-preloader__hero-text {
+  background: linear-gradient(45deg, #f44336, #e91e63, #9c27b0, #673ab7, #3f51b5, #2196f3, #87ceeb, #00bcd4, #0ff, #009688, #4caf50, #8bc34a, #8bc34a, #8bc34a, #8bc34a, #4caf50, #009688, #0ff, #00bcd4, #87ceeb, #2196f3, #3f51b5, #673ab7, #9c27b0, #e91e63, #f44336);
+}
+
+/* solo-sitename-animation.css:26, answers pb-pattern-link-roll-call.css:99, pb-pattern-link-roll-call.css:154, pb-pattern-parallax-fieldbook.css:138 (+66 more) */
+:where(.solo-page) .animate-solo-aurora-wave,
+#solo-header.animate-site-aurora-wave a.solo-branding__site-name-link,
+:where(.solo-page.animate-title-aurora-wave) .solo-page-title__text,
+#solo-page-wrapper.animate-title-aurora-wave .solo-page-title__text span,
+:where(html.solo-preloader-enabled .solo-preloader.animate-site-aurora-wave) .solo-preloader__text,
+:where(html.solo-preloader-enabled .solo-preloader.animate-site-aurora-wave) .solo-preloader__hero-text {
+  background: linear-gradient(45deg, #5f2879, #5f2879, #4c3c83, #00418d, #00418d, #0075a5, #00c2de, #00c2de, #16d1c8, #fad717, #fad717, #95e569, #00ba71, #00ba71, #4daa36, #fa8901, #fa8901, #fc614a, #f43545, #f43545, #d93658, #ccc, #ccc, #d93658, #f43545, #f43545, #fc614a, #fa8901, #fa8901, #4daa36, #00ba71, #00ba71, #95e569, #fad717, #fad717, #16d1c8, #00c2de, #00c2de, #0075a5, #00418d, #00418d, #4c3c83, #5f2879, #5f2879);
+}
+
+/* solo-sitename-animation.css:35, answers pb-pattern-link-roll-call.css:99, pb-pattern-link-roll-call.css:154, pb-pattern-parallax-fieldbook.css:138 (+66 more) */
+:where(.solo-page) .animate-solo-dreamy-bloom,
+#solo-header.animate-site-dreamy-bloom a.solo-branding__site-name-link,
+:where(.solo-page.animate-title-dreamy-bloom) .solo-page-title__text,
+#solo-page-wrapper.animate-title-dreamy-bloom .solo-page-title__text span,
+:where(html.solo-preloader-enabled .solo-preloader.animate-site-dreamy-bloom) .solo-preloader__text,
+:where(html.solo-preloader-enabled .solo-preloader.animate-site-dreamy-bloom) .solo-preloader__hero-text {
+  background: linear-gradient(45deg, #095fab, #25abe8, #57d75b, #ccc, #57d75b, #25abe8, #095fab);
+}
+
+/* solo-sitename-animation.css:44, answers pb-pattern-link-roll-call.css:99, pb-pattern-link-roll-call.css:154, pb-pattern-parallax-fieldbook.css:138 (+66 more) */
+:where(.solo-page) .animate-solo-echo-pulse,
+#solo-header.animate-site-echo-pulse a.solo-branding__site-name-link,
+:where(.solo-page.animate-title-echo-pulse) .solo-page-title__text,
+#solo-page-wrapper.animate-title-echo-pulse .solo-page-title__text span,
+:where(html.solo-preloader-enabled .solo-preloader.animate-site-echo-pulse) .solo-preloader__text,
+:where(html.solo-preloader-enabled .solo-preloader.animate-site-echo-pulse) .solo-preloader__hero-text {
+  background: linear-gradient(45deg, #d0e4f7, #73b1e7, #e2d40b, #539fe1, #87bcea, #539fe1, #e2d40b, #73b1e7, #d0e4f7);
+}
+
+/* solo-sitename-animation.css:53, answers pb-pattern-link-roll-call.css:99, pb-pattern-link-roll-call.css:154, pb-pattern-parallax-fieldbook.css:138 (+66 more) */
+:where(.solo-page) .animate-solo-gravity-defy,
+#solo-header.animate-site-gravity-defy a.solo-branding__site-name-link,
+:where(.solo-page.animate-title-gravity-defy) .solo-page-title__text,
+#solo-page-wrapper.animate-title-gravity-defy .solo-page-title__text span,
+:where(html.solo-preloader-enabled .solo-preloader.animate-site-gravity-defy) .solo-preloader__text,
+:where(html.solo-preloader-enabled .solo-preloader.animate-site-gravity-defy) .solo-preloader__hero-text {
+  background: linear-gradient(45deg, #009688, #2196f3, #ffeb3b, #ff9800, #f44336, #9c27b0, #9c27b0, #f44336, #ff9800, #ffeb3b, #2196f3, #009688);
+}
+
+/* solo-sitename-animation.css:62, answers pb-pattern-link-roll-call.css:99, pb-pattern-link-roll-call.css:154, pb-pattern-parallax-fieldbook.css:138 (+66 more) */
+:where(.solo-page) .animate-solo-gliding-letters,
+#solo-header.animate-site-gliding-letters a.solo-branding__site-name-link,
+:where(.solo-page.animate-title-gliding-letters) .solo-page-title__text,
+#solo-page-wrapper.animate-title-gliding-letters .solo-page-title__text span,
+:where(html.solo-preloader-enabled .solo-preloader.animate-site-gliding-letters) .solo-preloader__text,
+:where(html.solo-preloader-enabled .solo-preloader.animate-site-gliding-letters) .solo-preloader__hero-text {
+  background: linear-gradient(45deg, #f44336, #9c27b0, #2196f3, #4caf50, #ff9800, #ff9800, #4caf50, #2196f3, #9c27b0, #f44336);
+}
+
+/* solo-sitename-animation.css:71, answers pb-pattern-link-roll-call.css:99, pb-pattern-link-roll-call.css:154, pb-pattern-parallax-fieldbook.css:138 (+66 more) */
+:where(.solo-page) .animate-solo-holographic-spin,
+#solo-header.animate-site-holographic-spin a.solo-branding__site-name-link,
+:where(.solo-page.animate-title-holographic-spin) .solo-page-title__text,
+#solo-page-wrapper.animate-title-holographic-spin .solo-page-title__text span,
+:where(html.solo-preloader-enabled .solo-preloader.animate-site-holographic-spin) .solo-preloader__text,
+:where(html.solo-preloader-enabled .solo-preloader.animate-site-holographic-spin) .solo-preloader__hero-text {
+  background: linear-gradient(45deg, #ffb5ba, #ff796c, #ce4676, #87ceeb, #00bcd4, #2196f3, #00bcd4, #87ceeb, #ce4676, #ff796c, #ffb5ba);
+}
+
+/* solo-sitename-animation.css:80, answers pb-pattern-link-roll-call.css:99, pb-pattern-link-roll-call.css:154, pb-pattern-parallax-fieldbook.css:138 (+66 more) */
+:where(.solo-page) .animate-solo-moonlight-dance,
+#solo-header.animate-site-moonlight-dance a.solo-branding__site-name-link,
+:where(.solo-page.animate-title-moonlight-dance) .solo-page-title__text,
+#solo-page-wrapper.animate-title-moonlight-dance .solo-page-title__text span,
+:where(html.solo-preloader-enabled .solo-preloader.animate-site-moonlight-dance) .solo-preloader__text,
+:where(html.solo-preloader-enabled .solo-preloader.animate-site-moonlight-dance) .solo-preloader__hero-text {
+  background: linear-gradient(45deg, #8db600, #6bc026, #27a64c, #009688, #0085a1, #0077b3, #0085a1, #009688, #27a64c, #6bc026, #8db600);
+}
+
+/* solo-sitename-animation.css:89, answers pb-pattern-link-roll-call.css:99, pb-pattern-link-roll-call.css:154, pb-pattern-parallax-fieldbook.css:138 (+66 more) */
+:where(.solo-page) .animate-solo-mystic-fade,
+#solo-header.animate-site-mystic-fade a.solo-branding__site-name-link,
+:where(.solo-page.animate-title-mystic-fade) .solo-page-title__text,
+#solo-page-wrapper.animate-title-mystic-fade .solo-page-title__text span,
+:where(html.solo-preloader-enabled .solo-preloader.animate-site-mystic-fade) .solo-preloader__text,
+:where(html.solo-preloader-enabled .solo-preloader.animate-site-mystic-fade) .solo-preloader__hero-text {
+  background: linear-gradient(45deg, #ffb7a5, #e25822, #f6a600, #dcd300, #8c52ff, #34d2eb, #dcd300, #f6a600, #e25822, #ffb7a5);
+}
+
+/* solo-sitename-animation.css:98, answers pb-pattern-link-roll-call.css:99, pb-pattern-link-roll-call.css:154, pb-pattern-parallax-fieldbook.css:138 (+66 more) */
+:where(.solo-page) .animate-solo-phoenix-rise,
+#solo-header.animate-site-phoenix-rise a.solo-branding__site-name-link,
+:where(.solo-page.animate-title-phoenix-rise) .solo-page-title__text,
+#solo-page-wrapper.animate-title-phoenix-rise .solo-page-title__text span,
+:where(html.solo-preloader-enabled .solo-preloader.animate-site-phoenix-rise) .solo-preloader__text,
+:where(html.solo-preloader-enabled .solo-preloader.animate-site-phoenix-rise) .solo-preloader__hero-text {
+  background: linear-gradient(45deg, #008856, #00a1c2, #9065ca, #9a4eae, #9a4eae, #9065ca, #00a1c2, #008856);
+}
+
+/* solo-sitename-animation.css:107, answers pb-pattern-link-roll-call.css:99, pb-pattern-link-roll-call.css:154, pb-pattern-parallax-fieldbook.css:138 (+66 more) */
+:where(.solo-page) .animate-solo-quantum-leap,
+#solo-header.animate-site-quantum-leap a.solo-branding__site-name-link,
+:where(.solo-page.animate-title-quantum-leap) .solo-page-title__text,
+#solo-page-wrapper.animate-title-quantum-leap .solo-page-title__text span,
+:where(html.solo-preloader-enabled .solo-preloader.animate-site-quantum-leap) .solo-preloader__text,
+:where(html.solo-preloader-enabled .solo-preloader.animate-site-quantum-leap) .solo-preloader__hero-text {
+  background: linear-gradient(45deg, #ffb5ba, #be0032, #f38400, #f3c300, #f3c300, #f38400, #be0032, #ffb5ba);
+}
+
+/* solo-sitename-animation.css:116, answers pb-pattern-link-roll-call.css:99, pb-pattern-link-roll-call.css:154, pb-pattern-parallax-fieldbook.css:138 (+66 more) */
+:where(.solo-page) .animate-solo-serene-float,
+#solo-header.animate-site-serene-float a.solo-branding__site-name-link,
+:where(.solo-page.animate-title-serene-float) .solo-page-title__text,
+#solo-page-wrapper.animate-title-serene-float .solo-page-title__text span,
+:where(html.solo-preloader-enabled .solo-preloader.animate-site-serene-float) .solo-preloader__text,
+:where(html.solo-preloader-enabled .solo-preloader.animate-site-serene-float) .solo-preloader__hero-text {
+  background: linear-gradient(45deg, #bd1e24, #e97600, #f6c700, #007256, #0067a7, #964f8e, #964f8e, #0067a7, #007256, #f6c700, #e97600, #bd1e24);
+}
+
+/* solo-sitename-animation.css:125, answers pb-pattern-link-roll-call.css:99, pb-pattern-link-roll-call.css:154, pb-pattern-parallax-fieldbook.css:138 (+66 more) */
+:where(.solo-page) .animate-solo-shimmering-wave,
+#solo-header.animate-site-shimmering-wave a.solo-branding__site-name-link,
+:where(.solo-page.animate-title-shimmering-wave) .solo-page-title__text,
+#solo-page-wrapper.animate-title-shimmering-wave .solo-page-title__text span,
+:where(html.solo-preloader-enabled .solo-preloader.animate-site-shimmering-wave) .solo-preloader__text,
+:where(html.solo-preloader-enabled .solo-preloader.animate-site-shimmering-wave) .solo-preloader__hero-text {
+  background: linear-gradient(45deg, #5f2879, #00418d, #00c2de, #fad717, #00ba71, #fa8901, #f43545, #fa8901, #00ba71, #fad717, #00c2de, #00418d, #5f2879);
+}
+
+/* solo-sitename-animation.css:134, answers pb-pattern-link-roll-call.css:99, pb-pattern-link-roll-call.css:154, pb-pattern-parallax-fieldbook.css:138 (+66 more) */
+:where(.solo-page) .animate-solo-solar-flare,
+#solo-header.animate-site-solar-flare a.solo-branding__site-name-link,
+:where(.solo-page.animate-title-solar-flare) .solo-page-title__text,
+#solo-page-wrapper.animate-title-solar-flare .solo-page-title__text span,
+:where(html.solo-preloader-enabled .solo-preloader.animate-site-solar-flare) .solo-preloader__text,
+:where(html.solo-preloader-enabled .solo-preloader.animate-site-solar-flare) .solo-preloader__hero-text {
+  background: linear-gradient(45deg, #fad717, #fa8901, #f43545, #fa8901, #fad717);
+}
+
+/* solo-sitename-animation.css:143, answers pb-pattern-link-roll-call.css:99, pb-pattern-link-roll-call.css:154, pb-pattern-parallax-fieldbook.css:138 (+66 more) */
+:where(.solo-page) .animate-solo-starry-glide,
+#solo-header.animate-site-starry-glide a.solo-branding__site-name-link,
+:where(.solo-page.animate-title-starry-glide) .solo-page-title__text,
+#solo-page-wrapper.animate-title-starry-glide .solo-page-title__text span,
+:where(html.solo-preloader-enabled .solo-preloader.animate-site-starry-glide) .solo-preloader__text,
+:where(html.solo-preloader-enabled .solo-preloader.animate-site-starry-glide) .solo-preloader__hero-text {
+  background: linear-gradient(45deg, #aebcbf, #6e7774, #cefc00, #ccc, #444, #ccc, #cefc00, #6e7774, #aebcbf);
+}
+
+/* solo-sitename-animation.css:152, answers pb-pattern-link-roll-call.css:99, pb-pattern-link-roll-call.css:154, pb-pattern-parallax-fieldbook.css:138 (+66 more) */
+:where(.solo-page) .animate-solo-swirling-entrance,
+#solo-header.animate-site-swirling-entrance a.solo-branding__site-name-link,
+:where(.solo-page.animate-title-swirling-entrance) .solo-page-title__text,
+#solo-page-wrapper.animate-title-swirling-entrance .solo-page-title__text span,
+:where(html.solo-preloader-enabled .solo-preloader.animate-site-swirling-entrance) .solo-preloader__text,
+:where(html.solo-preloader-enabled .solo-preloader.animate-site-swirling-entrance) .solo-preloader__hero-text {
+  background: linear-gradient(45deg, #aebcbf, #6e7774, #ff6a00, #ccc, #444, #ccc, #ff6a00, #6e7774, #aebcbf);
+}
+
+/* solo-sitename-animation.css:161, answers pb-pattern-link-roll-call.css:99, pb-pattern-link-roll-call.css:154, pb-pattern-parallax-fieldbook.css:138 (+66 more) */
+:where(.solo-page) .animate-solo-timeless-flip,
+#solo-header.animate-site-timeless-flip a.solo-branding__site-name-link,
+:where(.solo-page.animate-title-timeless-flip) .solo-page-title__text,
+#solo-page-wrapper.animate-title-timeless-flip .solo-page-title__text span,
+:where(html.solo-preloader-enabled .solo-preloader.animate-site-timeless-flip) .solo-preloader__text,
+:where(html.solo-preloader-enabled .solo-preloader.animate-site-timeless-flip) .solo-preloader__hero-text {
+  background: linear-gradient(45deg, #aebcbf, #6e7774, #fe0, #ccc, #444, #ccc, #fe0, #6e7774, #aebcbf);
+}
+
+/* solo-sitename-animation.css:170, answers pb-pattern-link-roll-call.css:99, pb-pattern-link-roll-call.css:154, pb-pattern-parallax-fieldbook.css:138 (+66 more) */
+:where(.solo-page) .animate-solo-cosmic-drift,
+#solo-header.animate-site-cosmic-drift a.solo-branding__site-name-link,
+:where(.solo-page.animate-title-cosmic-drift) .solo-page-title__text,
+#solo-page-wrapper.animate-title-cosmic-drift .solo-page-title__text span,
+:where(html.solo-preloader-enabled .solo-preloader.animate-site-cosmic-drift) .solo-preloader__text,
+:where(html.solo-preloader-enabled .solo-preloader.animate-site-cosmic-drift) .solo-preloader__hero-text {
+  background: linear-gradient(45deg, #aebcbf, #6e7774, #46f900, #ccc, #444, #ccc, #46f900, #6e7774, #aebcbf);
+}
+
+/* solo-sitename-animation.css:179, answers pb-pattern-link-roll-call.css:99, pb-pattern-link-roll-call.css:154, pb-pattern-parallax-fieldbook.css:138 (+66 more) */
+:where(.solo-page) .animate-solo-velvet-slide,
+#solo-header.animate-site-velvet-slide a.solo-branding__site-name-link,
+:where(.solo-page.animate-title-velvet-slide) .solo-page-title__text,
+#solo-page-wrapper.animate-title-velvet-slide .solo-page-title__text span,
+:where(html.solo-preloader-enabled .solo-preloader.animate-site-velvet-slide) .solo-preloader__text,
+:where(html.solo-preloader-enabled .solo-preloader.animate-site-velvet-slide) .solo-preloader__hero-text {
+  background: linear-gradient(45deg, #aebcbf, #6e7774, #00fcde, #ccc, #444, #ccc, #00fcde, #6e7774, #aebcbf);
+}
+
+/* solo-sitename-animation.css:188, answers pb-pattern-link-roll-call.css:99, pb-pattern-link-roll-call.css:154, pb-pattern-parallax-fieldbook.css:138 (+66 more) */
+:where(.solo-page) .animate-solo-whispering-shadows,
+#solo-header.animate-site-whispering-shadows a.solo-branding__site-name-link,
+:where(.solo-page.animate-title-whispering-shadows) .solo-page-title__text,
+#solo-page-wrapper.animate-title-whispering-shadows .solo-page-title__text span,
+:where(html.solo-preloader-enabled .solo-preloader.animate-site-whispering-shadows) .solo-preloader__text,
+:where(html.solo-preloader-enabled .solo-preloader.animate-site-whispering-shadows) .solo-preloader__hero-text {
+  background: linear-gradient(45deg, #aebcbf, #6e7774, #00c9fc, #ccc, #444, #ccc, #00c9fc, #6e7774, #aebcbf);
+}
+
+/* solo-sitename-animation.css:197, answers pb-pattern-link-roll-call.css:99, pb-pattern-link-roll-call.css:154, pb-pattern-parallax-fieldbook.css:138 (+66 more) */
+:where(.solo-page) .animate-solo-whisper-fade,
+#solo-header.animate-site-whisper-fade a.solo-branding__site-name-link,
+:where(.solo-page.animate-title-whisper-fade) .solo-page-title__text,
+#solo-page-wrapper.animate-title-whisper-fade .solo-page-title__text span,
+:where(html.solo-preloader-enabled .solo-preloader.animate-site-whisper-fade) .solo-preloader__text,
+:where(html.solo-preloader-enabled .solo-preloader.animate-site-whisper-fade) .solo-preloader__hero-text {
+  background: linear-gradient(45deg, #aebcbf, #6e7774, #e000f4, #ccc, #444, #ccc, #e000f4, #6e7774, #aebcbf);
+}
+
+/* solo-sitename-animation.css:206, answers pb-pattern-link-roll-call.css:99, pb-pattern-link-roll-call.css:154, pb-pattern-parallax-fieldbook.css:138 (+66 more) */
+:where(.solo-page) .animate-solo-sapphire-zoom,
+#solo-header.animate-site-sapphire-zoom a.solo-branding__site-name-link,
+:where(.solo-page.animate-title-sapphire-zoom) .solo-page-title__text,
+#solo-page-wrapper.animate-title-sapphire-zoom .solo-page-title__text span,
+:where(html.solo-preloader-enabled .solo-preloader.animate-site-sapphire-zoom) .solo-preloader__text,
+:where(html.solo-preloader-enabled .solo-preloader.animate-site-sapphire-zoom) .solo-preloader__hero-text {
+  background: linear-gradient(45deg, #aebcbf, #6e7774, #f7001c, #0f52ba, #444, #3b4d57, #0f52ba, #f7001c, #6e7774, #aebcbf);
+}
+
+/* solo-sitename-animation.css:215, answers pb-pattern-link-roll-call.css:99, pb-pattern-link-roll-call.css:154, pb-pattern-parallax-fieldbook.css:138 (+66 more) */
+:where(.solo-page) .animate-solo-rhythmic-slide,
+#solo-header.animate-site-rhythmic-slide a.solo-branding__site-name-link,
+:where(.solo-page.animate-title-rhythmic-slide) .solo-page-title__text,
+#solo-page-wrapper.animate-title-rhythmic-slide .solo-page-title__text span,
+:where(html.solo-preloader-enabled .solo-preloader.animate-site-rhythmic-slide) .solo-preloader__text,
+:where(html.solo-preloader-enabled .solo-preloader.animate-site-rhythmic-slide) .solo-preloader__hero-text {
+  background: linear-gradient(45deg, #6a1b9a, #ab47bc, #ce93d8, #e1bee7, #f8bbd0, #f48fb1, #f06292, #ec407a, #ff80ab, #ff4081, #f50057, #c51162, #c51162, #f50057, #ff4081, #ff80ab, #ec407a, #f06292, #f48fb1, #f8bbd0, #e1bee7, #ce93d8, #ab47bc, #6a1b9a);
+}
+
+/* solo-sitename-animation.css:224, answers pb-pattern-link-roll-call.css:99, pb-pattern-link-roll-call.css:154, pb-pattern-parallax-fieldbook.css:138 (+66 more) */
+:where(.solo-page) .animate-solo-zen-rotation,
+#solo-header.animate-site-zen-rotation a.solo-branding__site-name-link,
+:where(.solo-page.animate-title-zen-rotation) .solo-page-title__text,
+#solo-page-wrapper.animate-title-zen-rotation .solo-page-title__text span,
+:where(html.solo-preloader-enabled .solo-preloader.animate-site-zen-rotation) .solo-preloader__text,
+:where(html.solo-preloader-enabled .solo-preloader.animate-site-zen-rotation) .solo-preloader__hero-text {
+  background: linear-gradient(45deg, #30267a, #0085a1, #870074, #ce4676, #ce4676, #870074, #0085a1, #30267a);
+}
+
+/* solo-sitename-animation.css:373, answers pb-pattern-link-roll-call.css:99, pb-pattern-link-roll-call.css:154, pb-pattern-parallax-fieldbook.css:138 (+67 more) */
+:where(.solo-page) .animate-solo-aurora-wave,
+:where(.solo-page) .animate-solo-dreamy-bloom,
+:where(.solo-page) .animate-solo-echo-pulse,
+:where(.solo-page) .animate-solo-electric-surge,
+:where(.solo-page) .animate-solo-gravity-defy,
+:where(.solo-page) .animate-solo-gliding-letters,
+:where(.solo-page) .animate-solo-holographic-spin,
+:where(.solo-page) .animate-solo-moonlight-dance,
+:where(.solo-page) .animate-solo-mystic-fade,
+:where(.solo-page) .animate-solo-phoenix-rise,
+:where(.solo-page) .animate-solo-quantum-leap,
+:where(.solo-page) .animate-solo-serene-float,
+:where(.solo-page) .animate-solo-shimmering-wave,
+:where(.solo-page) .animate-solo-solar-flare,
+:where(.solo-page) .animate-solo-starry-glide,
+:where(.solo-page) .animate-solo-swirling-entrance,
+:where(.solo-page) .animate-solo-timeless-flip,
+:where(.solo-page) .animate-solo-cosmic-drift,
+:where(.solo-page) .animate-solo-velvet-slide,
+:where(.solo-page) .animate-solo-whispering-shadows,
+:where(.solo-page) .animate-solo-whisper-fade,
+:where(.solo-page) .animate-solo-sapphire-zoom,
+:where(.solo-page) .animate-solo-rhythmic-slide,
+:where(.solo-page) .animate-solo-zen-rotation,
+#solo-header.animate-site-aurora-wave a.solo-branding__site-name-link,
+#solo-header.animate-site-dreamy-bloom a.solo-branding__site-name-link,
+#solo-header.animate-site-echo-pulse a.solo-branding__site-name-link,
+#solo-header.animate-site-electric-surge a.solo-branding__site-name-link,
+#solo-header.animate-site-gravity-defy a.solo-branding__site-name-link,
+#solo-header.animate-site-gliding-letters a.solo-branding__site-name-link,
+#solo-header.animate-site-holographic-spin a.solo-branding__site-name-link,
+#solo-header.animate-site-moonlight-dance a.solo-branding__site-name-link,
+#solo-header.animate-site-mystic-fade a.solo-branding__site-name-link,
+#solo-header.animate-site-phoenix-rise a.solo-branding__site-name-link,
+#solo-header.animate-site-quantum-leap a.solo-branding__site-name-link,
+#solo-header.animate-site-serene-float a.solo-branding__site-name-link,
+#solo-header.animate-site-shimmering-wave a.solo-branding__site-name-link,
+#solo-header.animate-site-solar-flare a.solo-branding__site-name-link,
+#solo-header.animate-site-starry-glide a.solo-branding__site-name-link,
+#solo-header.animate-site-swirling-entrance a.solo-branding__site-name-link,
+#solo-header.animate-site-timeless-flip a.solo-branding__site-name-link,
+#solo-header.animate-site-cosmic-drift a.solo-branding__site-name-link,
+#solo-header.animate-site-velvet-slide a.solo-branding__site-name-link,
+#solo-header.animate-site-whispering-shadows a.solo-branding__site-name-link,
+#solo-header.animate-site-whisper-fade a.solo-branding__site-name-link,
+#solo-header.animate-site-sapphire-zoom a.solo-branding__site-name-link,
+#solo-header.animate-site-rhythmic-slide a.solo-branding__site-name-link,
+#solo-header.animate-site-zen-rotation a.solo-branding__site-name-link,
+:where(.solo-page.animate-title-aurora-wave) .solo-page-title__text,
+:where(.solo-page.animate-title-dreamy-bloom) .solo-page-title__text,
+:where(.solo-page.animate-title-echo-pulse) .solo-page-title__text,
+:where(.solo-page.animate-title-electric-surge) .solo-page-title__text,
+:where(.solo-page.animate-title-gravity-defy) .solo-page-title__text,
+:where(.solo-page.animate-title-gliding-letters) .solo-page-title__text,
+:where(.solo-page.animate-title-holographic-spin) .solo-page-title__text,
+:where(.solo-page.animate-title-moonlight-dance) .solo-page-title__text,
+:where(.solo-page.animate-title-mystic-fade) .solo-page-title__text,
+:where(.solo-page.animate-title-phoenix-rise) .solo-page-title__text,
+:where(.solo-page.animate-title-quantum-leap) .solo-page-title__text,
+:where(.solo-page.animate-title-serene-float) .solo-page-title__text,
+:where(.solo-page.animate-title-shimmering-wave) .solo-page-title__text,
+:where(.solo-page.animate-title-solar-flare) .solo-page-title__text,
+:where(.solo-page.animate-title-starry-glide) .solo-page-title__text,
+:where(.solo-page.animate-title-swirling-entrance) .solo-page-title__text,
+:where(.solo-page.animate-title-timeless-flip) .solo-page-title__text,
+:where(.solo-page.animate-title-cosmic-drift) .solo-page-title__text,
+:where(.solo-page.animate-title-velvet-slide) .solo-page-title__text,
+:where(.solo-page.animate-title-whispering-shadows) .solo-page-title__text,
+:where(.solo-page.animate-title-whisper-fade) .solo-page-title__text,
+:where(.solo-page.animate-title-sapphire-zoom) .solo-page-title__text,
+:where(.solo-page.animate-title-rhythmic-slide) .solo-page-title__text,
+:where(.solo-page.animate-title-zen-rotation) .solo-page-title__text,
+#solo-page-wrapper.animate-title-aurora-wave .solo-page-title__text span,
+#solo-page-wrapper.animate-title-dreamy-bloom .solo-page-title__text span,
+#solo-page-wrapper.animate-title-echo-pulse .solo-page-title__text span,
+#solo-page-wrapper.animate-title-electric-surge .solo-page-title__text span,
+#solo-page-wrapper.animate-title-gravity-defy .solo-page-title__text span,
+#solo-page-wrapper.animate-title-gliding-letters .solo-page-title__text span,
+#solo-page-wrapper.animate-title-holographic-spin .solo-page-title__text span,
+#solo-page-wrapper.animate-title-moonlight-dance .solo-page-title__text span,
+#solo-page-wrapper.animate-title-mystic-fade .solo-page-title__text span,
+#solo-page-wrapper.animate-title-phoenix-rise .solo-page-title__text span,
+#solo-page-wrapper.animate-title-quantum-leap .solo-page-title__text span,
+#solo-page-wrapper.animate-title-serene-float .solo-page-title__text span,
+#solo-page-wrapper.animate-title-shimmering-wave .solo-page-title__text span,
+#solo-page-wrapper.animate-title-solar-flare .solo-page-title__text span,
+#solo-page-wrapper.animate-title-starry-glide .solo-page-title__text span,
+#solo-page-wrapper.animate-title-swirling-entrance .solo-page-title__text span,
+#solo-page-wrapper.animate-title-timeless-flip .solo-page-title__text span,
+#solo-page-wrapper.animate-title-cosmic-drift .solo-page-title__text span,
+#solo-page-wrapper.animate-title-velvet-slide .solo-page-title__text span,
+#solo-page-wrapper.animate-title-whispering-shadows .solo-page-title__text span,
+#solo-page-wrapper.animate-title-whisper-fade .solo-page-title__text span,
+#solo-page-wrapper.animate-title-sapphire-zoom .solo-page-title__text span,
+#solo-page-wrapper.animate-title-rhythmic-slide .solo-page-title__text span,
+#solo-page-wrapper.animate-title-zen-rotation .solo-page-title__text span,
+:where(html.solo-preloader-enabled .solo-preloader.animate-site-aurora-wave) .solo-preloader__text,
+:where(html.solo-preloader-enabled .solo-preloader.animate-site-aurora-wave) .solo-preloader__hero-text,
+:where(html.solo-preloader-enabled .solo-preloader.animate-site-cosmic-drift) .solo-preloader__text,
+:where(html.solo-preloader-enabled .solo-preloader.animate-site-cosmic-drift) .solo-preloader__hero-text,
+:where(html.solo-preloader-enabled .solo-preloader.animate-site-dreamy-bloom) .solo-preloader__text,
+:where(html.solo-preloader-enabled .solo-preloader.animate-site-dreamy-bloom) .solo-preloader__hero-text,
+:where(html.solo-preloader-enabled .solo-preloader.animate-site-echo-pulse) .solo-preloader__text,
+:where(html.solo-preloader-enabled .solo-preloader.animate-site-echo-pulse) .solo-preloader__hero-text,
+:where(html.solo-preloader-enabled .solo-preloader.animate-site-electric-surge) .solo-preloader__text,
+:where(html.solo-preloader-enabled .solo-preloader.animate-site-electric-surge) .solo-preloader__hero-text,
+:where(html.solo-preloader-enabled .solo-preloader.animate-site-gliding-letters) .solo-preloader__text,
+:where(html.solo-preloader-enabled .solo-preloader.animate-site-gliding-letters) .solo-preloader__hero-text,
+:where(html.solo-preloader-enabled .solo-preloader.animate-site-gravity-defy) .solo-preloader__text,
+:where(html.solo-preloader-enabled .solo-preloader.animate-site-gravity-defy) .solo-preloader__hero-text,
+:where(html.solo-preloader-enabled .solo-preloader.animate-site-holographic-spin) .solo-preloader__text,
+:where(html.solo-preloader-enabled .solo-preloader.animate-site-holographic-spin) .solo-preloader__hero-text,
+:where(html.solo-preloader-enabled .solo-preloader.animate-site-moonlight-dance) .solo-preloader__text,
+:where(html.solo-preloader-enabled .solo-preloader.animate-site-moonlight-dance) .solo-preloader__hero-text,
+:where(html.solo-preloader-enabled .solo-preloader.animate-site-mystic-fade) .solo-preloader__text,
+:where(html.solo-preloader-enabled .solo-preloader.animate-site-mystic-fade) .solo-preloader__hero-text,
+:where(html.solo-preloader-enabled .solo-preloader.animate-site-phoenix-rise) .solo-preloader__text,
+:where(html.solo-preloader-enabled .solo-preloader.animate-site-phoenix-rise) .solo-preloader__hero-text,
+:where(html.solo-preloader-enabled .solo-preloader.animate-site-quantum-leap) .solo-preloader__text,
+:where(html.solo-preloader-enabled .solo-preloader.animate-site-quantum-leap) .solo-preloader__hero-text,
+:where(html.solo-preloader-enabled .solo-preloader.animate-site-rhythmic-slide) .solo-preloader__text,
+:where(html.solo-preloader-enabled .solo-preloader.animate-site-rhythmic-slide) .solo-preloader__hero-text,
+:where(html.solo-preloader-enabled .solo-preloader.animate-site-sapphire-zoom) .solo-preloader__text,
+:where(html.solo-preloader-enabled .solo-preloader.animate-site-sapphire-zoom) .solo-preloader__hero-text,
+:where(html.solo-preloader-enabled .solo-preloader.animate-site-serene-float) .solo-preloader__text,
+:where(html.solo-preloader-enabled .solo-preloader.animate-site-serene-float) .solo-preloader__hero-text,
+:where(html.solo-preloader-enabled .solo-preloader.animate-site-shimmering-wave) .solo-preloader__text,
+:where(html.solo-preloader-enabled .solo-preloader.animate-site-shimmering-wave) .solo-preloader__hero-text,
+:where(html.solo-preloader-enabled .solo-preloader.animate-site-solar-flare) .solo-preloader__text,
+:where(html.solo-preloader-enabled .solo-preloader.animate-site-solar-flare) .solo-preloader__hero-text,
+:where(html.solo-preloader-enabled .solo-preloader.animate-site-starry-glide) .solo-preloader__text,
+:where(html.solo-preloader-enabled .solo-preloader.animate-site-starry-glide) .solo-preloader__hero-text,
+:where(html.solo-preloader-enabled .solo-preloader.animate-site-swirling-entrance) .solo-preloader__text,
+:where(html.solo-preloader-enabled .solo-preloader.animate-site-swirling-entrance) .solo-preloader__hero-text,
+:where(html.solo-preloader-enabled .solo-preloader.animate-site-timeless-flip) .solo-preloader__text,
+:where(html.solo-preloader-enabled .solo-preloader.animate-site-timeless-flip) .solo-preloader__hero-text,
+:where(html.solo-preloader-enabled .solo-preloader.animate-site-velvet-slide) .solo-preloader__text,
+:where(html.solo-preloader-enabled .solo-preloader.animate-site-velvet-slide) .solo-preloader__hero-text,
+:where(html.solo-preloader-enabled .solo-preloader.animate-site-whisper-fade) .solo-preloader__text,
+:where(html.solo-preloader-enabled .solo-preloader.animate-site-whisper-fade) .solo-preloader__hero-text,
+:where(html.solo-preloader-enabled .solo-preloader.animate-site-whispering-shadows) .solo-preloader__text,
+:where(html.solo-preloader-enabled .solo-preloader.animate-site-whispering-shadows) .solo-preloader__hero-text,
+:where(html.solo-preloader-enabled .solo-preloader.animate-site-zen-rotation) .solo-preloader__text,
+:where(html.solo-preloader-enabled .solo-preloader.animate-site-zen-rotation) .solo-preloader__hero-text {
+  background-size: 200% 200%;
+  animation: animateSiteName 10s linear infinite;
+  background-clip: text;
+}
+
+/* ==== from css/theme/solo-responsive.css ==== */
+
+/* solo-responsive.css:3, answers paragraphs-bundles-base.css:103, paragraphs.actions.css:75, webform_ui.module.css:39 */
+.solo-region-box__inner.solo-is-region-max-576 .button,
+:where(.solo-region-box__inner.solo-is-region-max-576) .solo-button,
+:where(.solo-region-box__inner.solo-is-region-max-576 nav li) *:not(.solo-page--breadcrumb-scroll :is(ul, ol).solo-breadcrumb__menu *) {
+  white-space: normal;
+}
+
+/* solo-responsive.css:17, answers w3css-paragraphs-hero.css:16, w3css-paragraphs-hero-full-width.css:17, paragraph-bundle-content-neutral.css:24 (+10 more) */
+#solo-page-wrapper .solo-region-box__inner.solo-is-region-max-576 .views-exposed-form .solo-exposed-form > div {
+  width: 100%;
+  margin: var(--solo-px8) auto;
+}
+
+/* solo-responsive.css:23, answers selectify-settings-style.css:774 */
+:where(.solo-page .solo-region-box__inner.solo-is-region-max-576 .views-exposed-form) .solo-exposed-form,
+:where(.solo-page) .solo-region-box__inner.solo-is-region-max-576 .views-exposed-form .solo-exposed-form .form-actions {
+  margin: 0;
+}
+
+/* solo-responsive.css:96, answers w3-modern.css:265 */
+@media (max-width: 61.99875rem) {
+  :where(.solo-page) h1 {
+    font-size: var(--solo-px26);
+  }
+}
+
+/* solo-responsive.css:100, answers w3-modern.css:269 */
+@media (max-width: 61.99875rem) {
+  :where(.solo-page) h2 {
+    font-size: var(--solo-px22);
+  }
+}
+
+/* solo-responsive.css:104, answers w3-modern.css:273 */
+@media (max-width: 61.99875rem) {
+  :where(.solo-page) h3 {
+    font-size: var(--solo-px20);
+  }
+}
+
+/* solo-responsive.css:108, answers w3-modern.css:277 */
+@media (max-width: 61.99875rem) {
+  :where(.solo-page) h4 {
+    font-size: var(--solo-px18);
+  }
+}
+
+/* solo-responsive.css:119, answers w3-modern.css:265 */
+@media (max-width: 47.99875rem) {
+  :where(.solo-page) h1 {
+    font-size: var(--solo-px22);
+  }
+}
+
+/* solo-responsive.css:123, answers w3-modern.css:269 */
+@media (max-width: 47.99875rem) {
+  :where(.solo-page) h2 {
+    font-size: var(--solo-px20);
+  }
+}
+
+/* solo-responsive.css:127, answers w3-modern.css:273 */
+@media (max-width: 47.99875rem) {
+  :where(.solo-page) h3 {
+    font-size: var(--solo-px18);
+  }
+}
+
+/* solo-responsive.css:131, answers w3-modern.css:277 */
+@media (max-width: 47.99875rem) {
+  :where(.solo-page) h4 {
+    font-size: var(--solo-px16);
+  }
+}
+
+/* solo-responsive.css:156, answers w3-modern.css:265 */
+@media (max-width: 35.99875rem) {
+  :where(.solo-page) h1 {
+    font-size: var(--solo-px20);
+  }
+}
+
+/* solo-responsive.css:160, answers w3-modern.css:269 */
+@media (max-width: 35.99875rem) {
+  :where(.solo-page) h2 {
+    font-size: var(--solo-px18);
+  }
+}
+
+/* solo-responsive.css:164, answers w3-modern.css:273 */
+@media (max-width: 35.99875rem) {
+  :where(.solo-page) h3 {
+    font-size: var(--solo-px16);
+  }
+}
+
+/* solo-responsive.css:170, answers blazy.mfp.css:16, webform.progress.bar.css:21 */
+@media (max-width: 35.99875rem) {
+  :where(.solo-page) .field p,
+  :where(.solo-page) .field li,
+  :where(.solo-page) :where(.field) span {
+    line-height: var(--solo-px28);
+  }
+}
+
+/* solo-responsive.css:182, answers paragraphs.modal.css:1, announcements_feed.dialog.css:23, announcements_feed.dialog.pcss.css:17 */
+@media (max-width: 35.99875rem) {
+  :where(.solo-page) :where(form) ol,
+  :where(.solo-page) :where(form) ul,
+  :where(.solo-page) .field ol,
+  :where(.solo-page) .field ul {
+    padding-inline-start: var(--solo-px16);
+  }
+}
+
+/* solo-responsive.css:193, answers paragraphs.modal.css:1, announcements_feed.dialog.css:23, announcements_feed.dialog.pcss.css:17 */
+@media (max-width: 35.99875rem) {
+  :where(.solo-page) :where(form ol) ul,
+  :where(.solo-page) :where(form ol) ol,
+  :where(.solo-page) :where(form ul) ul,
+  :where(.solo-page) :where(form ul) ol,
+  :where(.solo-page) .field ol ul,
+  :where(.solo-page) .field ol ol,
+  :where(.solo-page) .field ul ul,
+  :where(.solo-page) .field ul ol {
+    padding-inline-start: var(--solo-px8);
+  }
+}
+
+/* solo-responsive.css:202, answers w3-modern.css:458, selectify-settings-style.css:176, views-slideshow-pager-bullets.css:5 */
+@media (max-width: 35.99875rem) {
+  :where(.solo-page) .links.inline li:first-child {
+    padding-inline-start: 0;
+  }
+}
+
+/* solo-responsive.css:212, answers vvja-spotlight.css:34, vvjb-switchboard.css:31, vvjp-shoreline.css:33 (+41 more) */
+@media (max-width: 35.99875rem) {
+  #solo-page-wrapper nav.tabs ul li a {
+    margin: 0;
+    border: 1px solid var(--r-border);
+    border-radius: 0;
+  }
+}
+
+/* solo-responsive.css:232, answers paragraphs.modal.css:21 */
+@media (max-width: 20rem) {
+  :where(.solo-page) .form-actions input {
+    min-width: 80px;
+  }
+}
+
+/* ==== from css/w3-css/w3.css ==== */
+
+/* w3.css:51, answers blazy.flybox.css:24, blazy.flybox.css:76, w3-modern.css:92 */
+:where(.solo-page) audio:not([controls]) {
+  display: none;
+  height: 0;
+}
+
+/* w3.css:65, answers paragraphs-bundles-base.css:94 */
+:where(.solo-page) a:active,
+:where(.solo-page) a:hover {
+  outline-width: 0;
+}
+
+/* w3.css:70, answers messages.css:72, messages.pcss.css:65, tabledrag.css:46 */
+:where(.solo-page) abbr[title] {
+  text-decoration: underline;
+  text-decoration: underline dotted;
+}
+
+/* w3.css:85, answers w3-modern.css:128 */
+:where(.solo-page) mark {
+  background: var(--r-background);
+  color: var(--r-text);
+}
+
+/* w3.css:112, answers w3-modern.css:153 */
+:where(.solo-page) figure {
+  margin-block: 1em;
+  margin-inline: 40px;
+}
+
+/* w3.css:129, answers base.css:46, base.pcss.css:38 */
+:where(.solo-page) hr {
+  height: 0;
+}
+
+/* w3.css:135, answers admin_toolbar_search.css:95, form.css:90, form.pcss.css:83 */
+:where(.solo-page) input,
+:where(.solo-page) select,
+:where(.solo-page) textarea,
+:where(.solo-page) optgroup {
+  font: inherit;
+}
+
+/* w3.css:144, answers w3-modern.css:179 */
+:where(.solo-page) optgroup {
+  font-weight: bold;
+}
+
+/* w3.css:173, answers paragraphs-bundles-base.css:94 */
+:where(.solo-page) button:-moz-focusring {
+  outline: 1px dotted ButtonText;
+}
+
+/* w3.css:180, answers form.css:66, form.pcss.css:59, w3-modern.css:205 */
+:where(.solo-page) fieldset {
+  border: 1px solid var(--solo-w3-fieldset-border);
+  margin-block: 0;
+  margin-inline: 2px;
+  padding-block-start: .35em;
+  padding-inline: .625em;
+  padding-block-end: .75em;
+}
+
+/* w3.css:190, answers form.css:74, form.pcss.css:67 */
+:where(.solo-page) legend {
+  display: table;
+}
+
+/* w3.css:238, answers base.css:52, base.pcss.css:44, simple_sitemap.xsl.css:6 */
+:where(.solo-page) h1 {
+  font-size: 36px;
+}
+
+/* w3.css:242, answers base.css:58, base.pcss.css:50, w3-modern.css:269 */
+:where(.solo-page) h2 {
+  font-size: 30px;
+}
+
+/* w3.css:246, answers base.css:64, base.pcss.css:56, w3-modern.css:273 */
+:where(.solo-page) h3 {
+  font-size: 24px;
+}
+
+/* w3.css:250, answers base.css:70, base.pcss.css:62, w3-modern.css:277 */
+:where(.solo-page) h4 {
+  font-size: 20px;
+}
+
+/* w3.css:254, answers base.css:78, base.pcss.css:70, w3-modern.css:281 */
+:where(.solo-page) h5 {
+  font-size: 18px;
+}
+
+/* w3.css:258, answers base.css:78, base.pcss.css:70, w3-modern.css:285 */
+:where(.solo-page) h6 {
+  font-size: 16px;
+}
+
+/* w3.css:278, answers base.css:58, base.css:64, base.css:70 */
+:where(.solo-page) h1,
+:where(.solo-page) h2,
+:where(.solo-page) h3,
+:where(.solo-page) h4,
+:where(.solo-page) h5,
+:where(.solo-page) h6 {
+  margin-block: 10px;
+  margin-inline: 0;
+}
+
+/* w3.css:294, answers w3-modern.css:320 */
+:where(.solo-page) hr {
+  border: 0;
+  border-block-start: 1px solid var(--r-border);
+  margin-block: 20px;
+  margin-inline: auto;
+}
+
+/* w3.css:311, answers admin_toolbar_search.css:64, admin_toolbar_search.css:72, base.css:40 */
+:where(.solo-page) a {
+  color: inherit;
+}
+
+/* w3.css:315, answers w3-modern.css:347 */
+.w3-table-all {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* w3.css:323, answers w3-modern.css:340, w3-modern.css:347 */
+:where(.solo-page) .w3-table-all {
+  border: 1px solid var(--r-border);
+}
+
+/* w3.css:328, answers system.admin.css:79, webform.element.likert.css:72 */
+.solo-page .w3-bordered tr,
+.solo-page .w3-table-all tr {
+  border-block-end: 1px solid var(--r-border);
+}
+
+/* w3.css:334, answers image.admin.css:72, locale.admin.css:40, paragraphs-bundles-custom.css:171 */
+.solo-page .w3-table-all tr:nth-child(even),
+.solo-page .w3-striped tbody tr:nth-child(even) {
+  background-color: var(--r-background);
+}
+
+/* w3.css:340, answers image.admin.css:72, locale.admin.css:40, paragraphs-bundles-custom.css:171 */
+.solo-page .w3-table-all tr:nth-child(odd) {
+  background-color: var(--r-background);
+}
+
+/* w3.css:345, answers contextual.theme.css:87, horizontal-tabs.css:69, image.admin.css:72 */
+.solo-page .w3-hoverable tbody tr:hover,
+.solo-page .w3-ul.w3-hoverable li:hover {
+  background-color: var(--r-background);
+}
+
+/* w3.css:351, answers diff.double-column.css:11, diff.double-column.css:14, diff.double-column.css:25 */
+.w3-centered tr th,
+.w3-centered tr td {
+  text-align: center;
+}
+
+/* w3.css:356, answers datepicker.css:71, datepicker.css:77, diff.double-column.css:11 */
+.w3-table td,
+.w3-table th,
+.w3-table-all td,
+.w3-table-all th {
+  padding: 8px;
+  text-align: var(--solo-text-align-start);
+}
+
+/* w3.css:356, answers cloudflare-purge-form.css:306, diff.double-column.css:29, diff.single-column.css:29 */
+.w3-table td,
+.w3-table-all td {
+  display: table-cell;
+  vertical-align: top;
+}
+
+/* w3.css:366, answers datepicker.css:71, datepicker.css:77, diff.double-column.css:17 */
+.w3-table th:first-child,
+.w3-table td:first-child,
+.w3-table-all th:first-child,
+.w3-table-all td:first-child {
+  padding-inline-start: 16px;
+}
+
+/* w3.css:373, answers w3-modern.css:396 */
+.w3-btn,
+.w3-button {
+  padding-block: 8px;
+  padding-inline: 16px;
+}
+
+/* w3.css:403, answers w3-modern.css:396 */
+.w3-btn:disabled,
+.w3-button:disabled {
+  cursor: not-allowed;
+}
+
+/* w3.css:415, answers w3-modern.css:410 */
+.w3-btn.w3-disabled:hover,
+.w3-btn:disabled:hover {
+  box-shadow: none;
+}
+
+/* w3.css:420, answers w3-modern.css:439 */
+:where(.solo-page) .w3-badge,
+:where(.solo-page) .w3-tag {
+  background-color: var(--r-background);
+  color: var(--r-text);
+}
+
+/* w3.css:442, answers index.css:1, locale.admin.css:123, w3-modern.css:458 */
+.w3-ul li {
+  padding-block: 8px;
+  padding-inline: 16px;
+  border-block-end: 1px solid var(--r-border);
+}
+
+/* w3.css:449, answers index.css:1 */
+:where(.solo-page) :where(.w3-ul) li:last-child {
+  border-block-end: none;
+}
+
+/* w3.css:462, answers w3-modern.css:472 */
+.w3-tooltip:hover .w3-text {
+  display: inline-block;
+}
+
+/* w3.css:474, answers w3-modern.css:488 */
+:where(.solo-page) .w3-input {
+  padding: 8px;
+  border: none;
+  border-block-end: 1px solid var(--r-border);
+}
+
+/* w3.css:483, answers w3-modern.css:496 */
+:where(.solo-page) .w3-select {
+  padding-block: 9px;
+  padding-inline: 0;
+  border: none;
+  border-block-end: 1px solid var(--r-border);
+}
+
+/* w3.css:499, answers w3-modern.css:515 */
+:where(.solo-page) .w3-dropdown-hover:first-child,
+:where(.solo-page) .w3-dropdown-click:hover {
+  background-color: var(--r-background);
+  color: var(--r-text);
+}
+
+/* w3.css:507, answers w3-modern.css:2106, w3-modern.css:396, w3-modern.css:521 */
+.solo-page .w3-dropdown-hover:hover > .w3-button:first-child,
+.solo-page .w3-dropdown-click:hover > .w3-button:first-child {
+  background-color: var(--r-background);
+  color: var(--r-text);
+}
+
+/* w3.css:515, answers w3-modern.css:526 */
+:where(.solo-page) .w3-dropdown-content {
+  background-color: var(--r-background);
+  color: var(--r-text);
+}
+
+/* w3.css:529, answers w3-modern.css:526 */
+:where(.solo-page) :where(.w3-dropdown-hover:hover) .w3-dropdown-content {
+  display: block;
+}
+
+/* w3.css:541, answers w3-modern.css:546 */
+:where(.solo-page) .w3-sidebar {
+  background-color: var(--r-background);
+}
+
+/* w3.css:556, answers w3-modern.css:526 */
+:where(.solo-page) :where(.w3-bar-block .w3-dropdown-hover) .w3-dropdown-content,
+:where(.solo-page) :where(.w3-bar-block .w3-dropdown-click) .w3-dropdown-content {
+  min-width: 100%;
+}
+
+/* w3.css:561, answers w3-modern.css:396, w3-modern.css:566, w3css-paragraphs-slideshow.css:121 */
+.w3-bar-block .w3-dropdown-hover .w3-button,
+.w3-bar-block .w3-dropdown-click .w3-button {
+  text-align: var(--solo-text-align-start);
+  padding-block: 8px;
+  padding-inline: 16px;
+}
+
+/* w3.css:569, answers w3-modern.css:2149 */
+.w3-main,
+:where(.solo-page) #main {
+  transition: margin-left .4s;
+}
+
+/* w3.css:593, answers w3-modern.css:598, w3-modern.css:663 */
+.w3-center .w3-bar {
+  display: inline-block;
+  width: auto;
+}
+
+/* w3.css:598, answers w3-modern.css:608, w3-modern.css:626 */
+.w3-bar .w3-bar-item {
+  padding-block: 8px;
+  padding-inline: 16px;
+  float: inline-start;
+  width: auto;
+}
+
+/* w3.css:607, answers w3-modern.css:504, w3-modern.css:617 */
+.w3-bar .w3-dropdown-hover,
+.w3-bar .w3-dropdown-click {
+  position: static;
+  float: inline-start;
+}
+
+/* w3.css:613, answers w3-modern.css:396 */
+:where(.solo-page) :where(.w3-bar) .w3-button {
+  white-space: normal;
+}
+
+/* w3.css:617, answers w3-modern.css:608, w3-modern.css:626, w3-modern.css:924 */
+.w3-bar-block .w3-bar-item {
+  width: 100%;
+  padding-block: 8px;
+  padding-inline: 16px;
+  text-align: var(--solo-text-align-start);
+  float: none;
+}
+
+/* w3.css:628, answers w3-modern.css:626 */
+.w3-bar-block.w3-center .w3-bar-item {
+  text-align: center;
+}
+
+/* w3.css:661, answers w3-modern.css:674 */
+.w3-col,
+.w3-half,
+.w3-third,
+.w3-twothird,
+.w3-threequarter,
+.w3-quarter {
+  float: inline-start;
+}
+
+/* w3.css:661, answers w3-modern.css:737, w3-modern.css:742, w3-modern.css:751 */
+.w3-half,
+.w3-third,
+.w3-twothird,
+.w3-threequarter,
+.w3-quarter {
+  width: 100%;
+}
+
+/* w3.css:671, answers w3-modern.css:674, w3-modern.css:683, w3-modern.css:687 */
+.w3-col.s1 {
+  width: 8.33333%;
+}
+
+/* w3.css:675, answers w3-modern.css:674, w3-modern.css:679, w3-modern.css:687 */
+.w3-col.s2 {
+  width: 16.66666%;
+}
+
+/* w3.css:679, answers w3-modern.css:674, w3-modern.css:679, w3-modern.css:683 */
+.w3-col.s3 {
+  width: 24.99999%;
+}
+
+/* w3.css:683, answers w3-modern.css:674, w3-modern.css:679, w3-modern.css:683 */
+.w3-col.s4 {
+  width: 33.33333%;
+}
+
+/* w3.css:687, answers w3-modern.css:674, w3-modern.css:679, w3-modern.css:683 */
+.w3-col.s5 {
+  width: 41.66666%;
+}
+
+/* w3.css:691, answers w3-modern.css:674, w3-modern.css:679, w3-modern.css:683 */
+.w3-col.s6 {
+  width: 49.99999%;
+}
+
+/* w3.css:695, answers w3-modern.css:674, w3-modern.css:679, w3-modern.css:683 */
+.w3-col.s7 {
+  width: 58.33333%;
+}
+
+/* w3.css:699, answers w3-modern.css:674, w3-modern.css:679, w3-modern.css:683 */
+.w3-col.s8 {
+  width: 66.66666%;
+}
+
+/* w3.css:703, answers w3-modern.css:674, w3-modern.css:679, w3-modern.css:683 */
+.w3-col.s9 {
+  width: 74.99999%;
+}
+
+/* w3.css:707, answers w3-modern.css:674, w3-modern.css:679, w3-modern.css:683 */
+.w3-col.s10 {
+  width: 83.33333%;
+}
+
+/* w3.css:711, answers w3-modern.css:674, w3-modern.css:679, w3-modern.css:683 */
+.w3-col.s11 {
+  width: 91.66666%;
+}
+
+/* w3.css:715, answers w3-modern.css:674, w3-modern.css:679, w3-modern.css:683 */
+.w3-col.s12 {
+  width: 99.99999%;
+}
+
+/* w3.css:720, answers w3-modern.css:674, w3-modern.css:683, w3-modern.css:687 */
+@media (min-width:601px) {
+  .w3-col.m1 {
+    width: 8.33333%;
+  }
+}
+
+/* w3.css:724, answers w3-modern.css:674, w3-modern.css:679, w3-modern.css:687 */
+@media (min-width:601px) {
+  .w3-col.m2 {
+    width: 16.66666%;
+  }
+}
+
+/* w3.css:728, answers w3-modern.css:674, w3-modern.css:679, w3-modern.css:683 */
+@media (min-width:601px) {
+  .w3-col.m3,
+  .w3-quarter {
+    width: 24.99999%;
+  }
+}
+
+/* w3.css:733, answers w3-modern.css:674, w3-modern.css:679, w3-modern.css:683 */
+@media (min-width:601px) {
+  .w3-col.m4,
+  .w3-third {
+    width: 33.33333%;
+  }
+}
+
+/* w3.css:738, answers w3-modern.css:674, w3-modern.css:679, w3-modern.css:683 */
+@media (min-width:601px) {
+  .w3-col.m5 {
+    width: 41.66666%;
+  }
+}
+
+/* w3.css:742, answers w3-modern.css:674, w3-modern.css:679, w3-modern.css:683 */
+@media (min-width:601px) {
+  .w3-col.m6,
+  .w3-half {
+    width: 49.99999%;
+  }
+}
+
+/* w3.css:747, answers w3-modern.css:674, w3-modern.css:679, w3-modern.css:683 */
+@media (min-width:601px) {
+  .w3-col.m7 {
+    width: 58.33333%;
+  }
+}
+
+/* w3.css:751, answers w3-modern.css:674, w3-modern.css:679, w3-modern.css:683 */
+@media (min-width:601px) {
+  .w3-col.m8,
+  .w3-twothird {
+    width: 66.66666%;
+  }
+}
+
+/* w3.css:756, answers w3-modern.css:674, w3-modern.css:679, w3-modern.css:683 */
+@media (min-width:601px) {
+  .w3-col.m9,
+  .w3-threequarter {
+    width: 74.99999%;
+  }
+}
+
+/* w3.css:761, answers w3-modern.css:674, w3-modern.css:679, w3-modern.css:683 */
+@media (min-width:601px) {
+  .w3-col.m10 {
+    width: 83.33333%;
+  }
+}
+
+/* w3.css:765, answers w3-modern.css:674, w3-modern.css:679, w3-modern.css:683 */
+@media (min-width:601px) {
+  .w3-col.m11 {
+    width: 91.66666%;
+  }
+}
+
+/* w3.css:769, answers w3-modern.css:674, w3-modern.css:679, w3-modern.css:683 */
+@media (min-width:601px) {
+  .w3-col.m12 {
+    width: 99.99999%;
+  }
+}
+
+/* w3.css:776, answers w3-modern.css:674, w3-modern.css:683, w3-modern.css:687 */
+@media (min-width:62rem) {
+  .w3-col.l1 {
+    width: 8.33333%;
+  }
+}
+
+/* w3.css:780, answers w3-modern.css:674, w3-modern.css:679, w3-modern.css:687 */
+@media (min-width:62rem) {
+  .w3-col.l2 {
+    width: 16.66666%;
+  }
+}
+
+/* w3.css:784, answers w3-modern.css:674, w3-modern.css:679, w3-modern.css:683 */
+@media (min-width:62rem) {
+  .w3-col.l3 {
+    width: 24.99999%;
+  }
+}
+
+/* w3.css:788, answers w3-modern.css:674, w3-modern.css:679, w3-modern.css:683 */
+@media (min-width:62rem) {
+  .w3-col.l4 {
+    width: 33.33333%;
+  }
+}
+
+/* w3.css:792, answers w3-modern.css:674, w3-modern.css:679, w3-modern.css:683 */
+@media (min-width:62rem) {
+  .w3-col.l5 {
+    width: 41.66666%;
+  }
+}
+
+/* w3.css:796, answers w3-modern.css:674, w3-modern.css:679, w3-modern.css:683 */
+@media (min-width:62rem) {
+  .w3-col.l6 {
+    width: 49.99999%;
+  }
+}
+
+/* w3.css:800, answers w3-modern.css:674, w3-modern.css:679, w3-modern.css:683 */
+@media (min-width:62rem) {
+  .w3-col.l7 {
+    width: 58.33333%;
+  }
+}
+
+/* w3.css:804, answers w3-modern.css:674, w3-modern.css:679, w3-modern.css:683 */
+@media (min-width:62rem) {
+  .w3-col.l8 {
+    width: 66.66666%;
+  }
+}
+
+/* w3.css:808, answers w3-modern.css:674, w3-modern.css:679, w3-modern.css:683 */
+@media (min-width:62rem) {
+  .w3-col.l9 {
+    width: 74.99999%;
+  }
+}
+
+/* w3.css:812, answers w3-modern.css:674, w3-modern.css:679, w3-modern.css:683 */
+@media (min-width:62rem) {
+  .w3-col.l10 {
+    width: 83.33333%;
+  }
+}
+
+/* w3.css:816, answers w3-modern.css:674, w3-modern.css:679, w3-modern.css:683 */
+@media (min-width:62rem) {
+  .w3-col.l11 {
+    width: 91.66666%;
+  }
+}
+
+/* w3.css:820, answers w3-modern.css:674, w3-modern.css:679, w3-modern.css:683 */
+@media (min-width:62rem) {
+  .w3-col.l12 {
+    width: 99.99999%;
+  }
+}
+
+/* w3.css:845, answers w3-modern.css:892, w3-modern.css:982 */
+.w3-auto {
+  max-width: 1140px;
+}
+
+/* w3.css:884, answers w3-modern.css:853, w3-modern.css:982 */
+@media (max-width:1205px) {
+  .w3-auto {
+    max-width: 95%;
+  }
+}
+
+/* w3.css:891, answers w3-modern.css:590, w3-modern.css:899 */
+@media (max-width:600px) {
+  .w3-modal-content {
+    margin-block: 0;
+    margin-inline: 10px;
+  }
+}
+
+/* w3.css:901, answers w3-modern.css:526 */
+@media (max-width:600px) {
+  :where(.solo-page) :where(.w3-dropdown-hover.w3-mobile) .w3-dropdown-content,
+  :where(.solo-page) :where(.w3-dropdown-click.w3-mobile) .w3-dropdown-content {
+    position: relative;
+  }
+}
+
+/* w3.css:915, answers w3-modern.css:626 */
+@media (max-width:600px) {
+  .w3-bar-item.w3-mobile {
+    text-align: center;
+  }
+}
+
+/* w3.css:933, answers w3-modern.css:590, w3-modern.css:951 */
+@media (max-width:768px) {
+  .w3-modal-content {
+    width: 500px;
+  }
+}
+
+/* w3.css:944, answers w3-modern.css:590, w3-modern.css:940 */
+@media (min-width:62rem) {
+  .w3-modal-content {
+    width: 900px;
+  }
+}
+
+/* w3.css:950, answers w3-modern.css:590, w3-modern.css:899, w3-modern.css:940 */
+@media (min-width:601px) {
+  :where(.solo-page) .w3-modal-content {
+    margin: auto;
+    background-color: var(--r-background);
+    width: 600px;
+  }
+}
+
+/* w3.css:989, answers w3-modern.css:853, w3-modern.css:892 */
+@media (max-width:61.99875rem) {
+  .w3-auto {
+    max-width: 100%;
+  }
+}
+
+/* w3.css:1087, answers admin.toolbar.css:111, datepicker.css:44, datepicker.css:82 */
+.w3-display-container:hover span.w3-display-hover {
+  display: inline-block;
+}
+
+/* w3.css:1095, answers w3-modern.css:1083 */
+:where(.solo-page) :where(.w3-display-container:hover) .w3-display-hover {
+  display: block;
+}
+
+/* w3.css:1128, answers w3-modern.css:1122 */
+.w3-row-padding,
+.w3-row-padding > .w3-half,
+.w3-row-padding > .w3-third,
+.w3-row-padding > .w3-twothird,
+.w3-row-padding > .w3-threequarter,
+.w3-row-padding > .w3-quarter,
+.w3-row-padding > .w3-col {
+  padding-block: 0;
+  padding-inline: 8px;
+}
+
+/* w3.css:1139, answers w3-modern.css:1127 */
+.w3-container,
+.w3-panel {
+  padding-block: 0.01em;
+  padding-inline: 16px;
+}
+
+/* w3.css:1150, answers w3-modern.css:1150 */
+.w3-codespan {
+  font-size: 16px;
+}
+
+/* w3.css:1156, answers w3-modern.css:1142 */
+:where(.solo-page) .w3-code {
+  background-color: var(--r-background);
+  padding-block: 8px;
+  padding-inline: 12px;
+}
+
+/* w3.css:1167, answers w3-modern.css:1137, w3-modern.css:1150 */
+:where(.solo-page) .w3-codespan {
+  background-color: var(--r-background);
+  font-size: 110%;
+}
+
+/* w3.css:1186, answers w3-modern.css:2143 */
+.w3-spin {
+  animation: w3-spin 2s infinite linear;
+}
+
+/* w3.css:1201, answers w3-modern.css:2143 */
+.w3-animate-fading {
+  animation: fading 10s infinite;
+}
+
+/* w3.css:1220, answers w3-modern.css:2143 */
+.w3-animate-opacity {
+  animation: opac 0.8s;
+}
+
+/* w3.css:1235, answers w3-modern.css:2143 */
+.w3-animate-top {
+  animation: animatetop 0.4s;
+}
+
+/* w3.css:1253, answers w3-modern.css:2143 */
+.w3-animate-left {
+  animation: animateleft 0.4s;
+}
+
+/* w3.css:1271, answers w3-modern.css:2143 */
+.w3-animate-right {
+  animation: animateright 0.4s;
+}
+
+/* w3.css:1289, answers w3-modern.css:2143 */
+.w3-animate-bottom {
+  animation: animatebottom 0.4s;
+}
+
+/* w3.css:1307, answers w3-modern.css:2143 */
+.w3-animate-zoom {
+  animation: animatezoom 0.6s;
+}
+
+/* w3.css:1322, answers w3-modern.css:2149 */
+.w3-animate-input {
+  transition: width 0.4s ease-in-out;
+}

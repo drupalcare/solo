@@ -113,14 +113,17 @@ def main():
         m = re.fullmatch(r"css/predefined/[\w.-]+\.css", f)
         if m:
             libs[name] = f
+    # A scheme's library id is derived from its stored id (solo-<name> -> scheme-<name>).
+    by_library = {solo_libraries.scheme_library(i): i for i in recs}
     for id_, r in recs.items():
-        if id_ not in libs:
-            errs.append(f"{id_}: no library in the Solo library set")
-        elif libs[id_] != r.get("css"):
-            errs.append(f"{id_}: library CSS {libs[id_]} differs from record {r.get('css')}")
-    for id_ in libs:
-        if id_ not in recs:
-            errs.append(f"{id_}: library in the Solo library set has no record")
+        lib = solo_libraries.scheme_library(id_)
+        if lib not in libs:
+            errs.append(f"{id_}: no library {lib} in the Solo library set")
+        elif libs[lib] != r.get("css"):
+            errs.append(f"{id_}: library CSS {libs[lib]} differs from record {r.get('css')}")
+    for lib in libs:
+        if lib not in by_library:
+            errs.append(f"{lib}: library in the Solo library set has no record")
 
     # SettingsOptions::predefinedTheme().
     php = (util / "src/Form/SettingsOptions.php").read_text()

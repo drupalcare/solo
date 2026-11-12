@@ -1,0 +1,129 @@
+/**
+ * @file
+ * Solo color library: ios.
+ *
+ * Tokens: one background (--solo-<class>) and one text color (--solo-<class>-on) per class,
+ * in solo.tokens. Classes: solo.utilities; each class sets --r-background and --r-text from
+ * its tokens and paints from them, with no !important (the layer order does the job).
+ * Where two class names share a rule (gray and grey), the token is named from the first name.
+ * Layer order: solo-layers.css. Check: scripts/css-layers-check.py.
+ */
+
+@layer solo.tokens {
+
+:root {
+  --solo-ios-dark-blue: #5856d6;
+  --solo-ios-dark-blue-on: var(--solo-white);
+  --solo-ios-deep-blue: #007aff;
+  --solo-ios-deep-blue-on: var(--solo-white);
+  --solo-ios-blue: #34aadc;
+  --solo-ios-blue-on: var(--solo-white);
+  --solo-ios-light-blue: #5ac8fa;
+  --solo-ios-light-blue-on: var(--solo-white);
+  --solo-ios-green: #4cd964;
+  --solo-ios-green-on: var(--solo-black);
+  --solo-ios-pink: #ff2d55;
+  --solo-ios-pink-on: var(--solo-white);
+  --solo-ios-red: #ff3b30;
+  --solo-ios-red-on: var(--solo-white);
+  --solo-ios-orange: #ff9500;
+  --solo-ios-orange-on: var(--solo-white);
+  --solo-ios-yellow: #fc0;
+  --solo-ios-yellow-on: var(--solo-black);
+  --solo-ios-grey: #8e8e93;
+  --solo-ios-grey-on: var(--solo-white);
+  --solo-ios-light-grey: #ceced2;
+  --solo-ios-light-grey-on: var(--solo-black);
+  --solo-ios-background: #efeff4;
+  --solo-ios-background-on: var(--solo-black);
+}
+
+} /* end @layer solo.tokens */
+
+@layer solo.utilities {
+
+:where(.solo-page) .w3-ios-dark-blue {
+  --r-text: var(--solo-ios-dark-blue-on);
+  --r-background: var(--solo-ios-dark-blue);
+  color: var(--r-text);
+  background-color: var(--r-background);
+}
+
+:where(.solo-page) .w3-ios-deep-blue {
+  --r-text: var(--solo-ios-deep-blue-on);
+  --r-background: var(--solo-ios-deep-blue);
+  color: var(--r-text);
+  background-color: var(--r-background);
+}
+
+:where(.solo-page) .w3-ios-blue {
+  --r-text: var(--solo-ios-blue-on);
+  --r-background: var(--solo-ios-blue);
+  color: var(--r-text);
+  background-color: var(--r-background);
+}
+
+:where(.solo-page) .w3-ios-light-blue {
+  --r-text: var(--solo-ios-light-blue-on);
+  --r-background: var(--solo-ios-light-blue);
+  color: var(--r-text);
+  background-color: var(--r-background);
+}
+
+:where(.solo-page) .w3-ios-green {
+  --r-text: var(--solo-ios-green-on);
+  --r-background: var(--solo-ios-green);
+  color: var(--r-text);
+  background-color: var(--r-background);
+}
+
+:where(.solo-page) .w3-ios-pink {
+  --r-text: var(--solo-ios-pink-on);
+  --r-background: var(--solo-ios-pink);
+  color: var(--r-text);
+  background-color: var(--r-background);
+}
+
+:where(.solo-page) .w3-ios-red {
+  --r-text: var(--solo-ios-red-on);
+  --r-background: var(--solo-ios-red);
+  color: var(--r-text);
+  background-color: var(--r-background);
+}
+
+:where(.solo-page) .w3-ios-orange {
+  --r-text: var(--solo-ios-orange-on);
+  --r-background: var(--solo-ios-orange);
+  color: var(--r-text);
+  background-color: var(--r-background);
+}
+
+:where(.solo-page) .w3-ios-yellow {
+  --r-text: var(--solo-ios-yellow-on);
+  --r-background: var(--solo-ios-yellow);
+  color: var(--r-text);
+  background-color: var(--r-background);
+}
+
+:where(.solo-page) .w3-ios-grey {
+  --r-text: var(--solo-ios-grey-on);
+  --r-background: var(--solo-ios-grey);
+  color: var(--r-text);
+  background-color: var(--r-background);
+}
+
+:where(.solo-page) .w3-ios-light-grey {
+  --r-text: var(--solo-ios-light-grey-on);
+  --r-background: var(--solo-ios-light-grey);
+  color: var(--r-text);
+  background-color: var(--r-background);
+}
+
+:where(.solo-page) .w3-ios-background {
+  --r-text: var(--solo-ios-background-on);
+  --r-background: var(--solo-ios-background);
+  color: var(--r-text);
+  background-color: var(--r-background);
+}
+
+} /* end @layer solo.utilities */

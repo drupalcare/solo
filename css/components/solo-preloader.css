@@ -1,13 +1,4 @@
-/**
- * @file
- * Solo Preloader. Scoped under html.solo-preloader-enabled.
- * Each style has a unique modifier: --spinner, --progress_bar, --text, --logo, --logo_text.
- */
-
-/* Lock scroll when active (JS adds solo-preloader-active) */
-html.solo-preloader-enabled.solo-preloader-active body {
-  overflow: hidden;
-}
+@layer solo.theme {
 
 /* Base overlay (all styles) */
 :where(html.solo-preloader-enabled) .solo-preloader {
@@ -22,7 +13,7 @@ html.solo-preloader-enabled.solo-preloader-active body {
     visibility 0.4s ease;
   pointer-events: auto;
   opacity: 1;
-  color: var(--r-tx, #333);
+  color: var(--r-text, #333);
   background-color: var(--solo-preloader-bg, transparent);
   inset: 0;
   will-change: opacity;
@@ -71,7 +62,7 @@ html.solo-preloader-enabled.solo-preloader-active body {
   position: absolute;
   box-sizing: border-box;
   content: "";
-  border: 2px solid color-mix(in srgb, var(--r-tx, #333) 14%, transparent);
+  border: 2px solid color-mix(in srgb, var(--r-text, #333) 14%, transparent);
   border-radius: 50%;
   inset: 0;
 }
@@ -85,7 +76,7 @@ html.solo-preloader-enabled.solo-preloader-active body {
   transform: translateZ(0);
   animation: solo-preloader-spin 0.82s cubic-bezier(0.4, 0, 0.2, 1) infinite;
   border: 2px solid transparent;
-  border-top-color: var(--r-tx, #333);
+  border-top-color: var(--r-text, #333);
   border-radius: 50%;
   inset: 0;
   will-change: transform;
@@ -103,7 +94,7 @@ html.solo-preloader-enabled.solo-preloader-active body {
   z-index: 1;
   text-align: center;
   letter-spacing: 0.02em;
-  color: var(--r-tx, #333);
+  color: var(--r-text, #333);
   font-size: 0.625rem;
   font-weight: 600;
   line-height: 1;
@@ -118,7 +109,7 @@ html.solo-preloader-enabled.solo-preloader-active body {
 }
 
 :where(html.solo-preloader-enabled .solo-preloader--text) .solo-preloader__text {
-  color: var(--r-tx);
+  color: var(--r-text);
   font-size: var(--solo-preloader-text-font-size, 1.5rem);
   font-weight: 500;
   line-height: var(--solo-preloader-text-line-height, 1.2);
@@ -175,7 +166,7 @@ html.solo-preloader-enabled.solo-preloader-active body {
   text-align: center;
   /* stylelint-disable-next-line declaration-property-value-keyword-no-deprecated -- break-word is not exactly overflow-wrap: anywhere; kept to preserve rendering */
   word-break: break-word;
-  color: var(--r-tx);
+  color: var(--r-text);
   font-size: var(--solo-preloader-text-font-size, 1.5rem);
   font-weight: 600;
   line-height: var(--solo-preloader-text-line-height, 1.2);
@@ -200,7 +191,7 @@ html.solo-preloader-enabled.solo-preloader-active body {
   width: 100%;
   height: 6px;
   border-radius: 3px;
-  background-color: color-mix(in srgb, var(--r-tx, #333) 14%, transparent);
+  background-color: color-mix(in srgb, var(--r-text, #333) 14%, transparent);
 }
 
 :where(html.solo-preloader-enabled .solo-preloader--progress-bar) .solo-preloader__bar-fill {
@@ -210,7 +201,7 @@ html.solo-preloader-enabled.solo-preloader-active body {
   height: 100%;
   transition: width 0.15s linear;
   border-radius: 3px;
-  background-color: var(--r-tx, #333);
+  background-color: var(--r-text, #333);
   inset-inline-start: 0;
   will-change: width;
 }
@@ -218,7 +209,7 @@ html.solo-preloader-enabled.solo-preloader-active body {
 :where(html.solo-preloader-enabled .solo-preloader--progress-bar) .solo-preloader__bar-percent {
   text-align: center;
   letter-spacing: 0.02em;
-  color: var(--r-tx, #333);
+  color: var(--r-text, #333);
   font-size: 0.75rem;
   font-weight: 600;
 }
@@ -358,3 +349,5 @@ html.solo-preloader-enabled.solo-preloader-active body {
     transition: none;
   }
 }
+
+} /* end @layer solo.theme */

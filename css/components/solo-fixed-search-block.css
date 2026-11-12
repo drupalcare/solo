@@ -1,3 +1,15 @@
+/*
+ * Deprecated in 2.0, removed in the next major: the old names below stay as
+ * second selectors so sub-themes and content that print them keep working.
+ *   solo-fixed-search -> solo-fixed-search-block
+ *   solo-fixed-search__close -> solo-fixed-search-block__close
+ *   solo-fixed-search__inner -> solo-fixed-search-block__inner
+ *   solo-fixed-search__wrapper -> solo-fixed-search-block__wrapper
+ */
+
+@layer solo.theme {
+
+.solo-fixed-search-block,
 .solo-fixed-search {
   position: fixed;
   z-index: 5000;
@@ -7,17 +19,19 @@
   height: 0;
   max-height: 100dvh;
   transition: height 400ms cubic-bezier(0.25, 1, 0.5, 1);
-  background-color: var(--r-bg);
+  background-color: var(--r-background);
   inset-block-start: 0;
   inset-inline-start: 0;
 }
 
 /* An open panel taller than a short or zoomed viewport scrolls instead of
    clipping its input and button (WCAG 1.4.10). */
+.solo-fixed-search-block.solo-is-open,
 .solo-fixed-search.solo-is-open {
   overflow-y: auto;
 }
 
+:where(.solo-fixed-search-block) .solo-fixed-search-block__inner,
 :where(.solo-fixed-search) .solo-fixed-search__inner {
   position: relative;
   display: flex;
@@ -31,25 +45,31 @@
   row-gap: 0;
 }
 
+:where(.solo-fixed-search-block__inner) .solo-fixed-search-block__wrapper,
 :where(.solo-fixed-search__inner) .solo-fixed-search__wrapper {
   display: flex;
   border-radius: var(--solo-px16);
 }
 
+:where(.solo-fixed-search-block__inner form) .form-search,
 :where(.solo-fixed-search__inner form) .form-search,
+:where(.solo-fixed-search-block__inner form) .form-submit,
 :where(.solo-fixed-search__inner form) .form-submit {
   padding-block-start: var(--solo-px20);
   padding-block-end: var(--solo-px20);
 }
 
+:where(.solo-fixed-search-block__inner) .solo-search-block-form .form-type-search::before,
 :where(.solo-fixed-search__inner) .solo-search-block-form .form-type-search::before {
   inset-block-start: 26px;
 }
 
+:where(.solo-fixed-search-block__inner) .solo-fixed-search-block__close,
 :where(.solo-fixed-search__inner) .solo-fixed-search__close {
   flex-basis: 60px;
 }
 
+:where(.solo-fixed-search-block__inner form) .form-submit,
 :where(.solo-fixed-search__inner form) .form-submit {
   border-start-start-radius: 0;
   border-start-end-radius: var(--solo-px4);
@@ -57,44 +77,42 @@
   border-end-end-radius: var(--solo-px4);
 }
 
+.solo-fixed-search-block__inner .solo-search-block-form .form-item,
 .solo-fixed-search__inner .solo-search-block-form .form-item,
+.solo-fixed-search-block__inner .solo-search-block-form .form-actions,
 .solo-fixed-search__inner .solo-search-block-form .form-actions {
   margin-block: 0 !important;
   margin-inline: auto !important;
 }
 
+.solo-fixed-search-block__inner .solo-fixed-search-block__close button,
 .solo-fixed-search__inner .solo-fixed-search__close button {
-  min-width: 60px !important;
-  color: var(--r-tx);
-  border: 1px solid var(--r-br, var(--r-br-b));
-  background-color: var(--r-bg);
-  margin-block: 0 !important;
-  margin-inline: auto !important;
-  border-start-start-radius: var(--solo-px4);
-  border-start-end-radius: 0;
-  border-end-start-radius: var(--solo-px4);
-  border-end-end-radius: 0;
-}
+  min-width: 60px !important;  margin-block: 0 !important;
+  margin-inline: auto !important;}
 
-.solo-inner.solo-fixed-search__inner .solo-hamburger span > svg {
-  width: 4.688rem;
-  height: 4.5rem;
-}
-
+:where(.solo-fixed-search-block__inner) .solo-search-block-form,
 :where(.solo-fixed-search__inner) .solo-search-block-form {
   flex-basis: calc(100% - 65px);
   flex-grow: 1;
 }
 
+.solo-fixed-search-block__inner,
 .solo-fixed-search__inner {
   position: relative;
 }
 
+} /* end @layer solo.theme */
+
+@layer solo.locked {
+
 /* Reduced motion: end states are kept, movement is not (WCAG 2.3.3). */
 @media (prefers-reduced-motion: reduce) {
+  :where(.solo-fixed-search-block),
   :where(.solo-fixed-search) {
     transition-duration: 0.01ms !important;
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
   }
 }
+
+} /* end @layer solo.locked */

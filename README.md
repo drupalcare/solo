@@ -77,27 +77,27 @@ identity.
 Solo uses CSS custom properties for region-specific theming, providing granular
 control while keeping layouts consistent. These are the region variables:
 
-- `--r-bg`: Region background color. Sets the overall background color of the
+- `--r-background`: Region background color. Sets the overall background color of the
   region wrapper.
-- `--r-tx`: Region text color. Sets the default text color for all paragraph and
+- `--r-text`: Region text color. Sets the default text color for all paragraph and
   inline text within the region.
-- `--r-h1`: Region heading color. Controls the color of headings (h1, h2, h3)
+- `--r-heading`: Region heading color. Controls the color of headings (h1, h2, h3)
   within the region.
-- `--r-lk`: Region link color. Sets the color of links (`<a>`) in their normal,
+- `--r-link`: Region link color. Sets the color of links (`<a>`) in their normal,
   non-hover state.
-- `--r-lk-h`: Region link hover color. Sets the color of links when hovered or
+- `--r-link-hover`: Region link hover color. Sets the color of links when hovered or
   focused.
-- `--r-br`: Region border color. Sets the border color of the region.
-- `--r-bg-fr`: Form background color within the region. Targets backgrounds of
+- `--r-border`: Region border color. Sets the border color of the region.
+- `--r-form-background`: Form background color within the region. Targets backgrounds of
   forms such as login and search blocks.
-- `--r-tx-lk`: Menu link text color within the region.
-- `--r-tx-lk-h`: Menu link hover text color within the region.
-- `--r-bg-lk`: Menu link background color in the region (normal state).
-- `--r-bg-lk-h`: Menu link background hover color in the region.
-- `--r-tx-bt`: Button text color within the region (normal state).
-- `--r-tx-bt-h`: Button text hover color within the region.
-- `--r-bg-bt`: Button background color within the region (normal state).
-- `--r-bg-bt-h`: Button background hover color within the region.
+- `--r-menu-text`: Menu link text color within the region.
+- `--r-menu-text-hover`: Menu link hover text color within the region.
+- `--r-menu-background`: Menu link background color in the region (normal state).
+- `--r-menu-background-hover`: Menu link background hover color in the region.
+- `--r-button-text`: Button text color within the region (normal state).
+- `--r-button-text-hover`: Button text hover color within the region.
+- `--r-button-background`: Button background color within the region (normal state).
+- `--r-button-background-hover`: Button background hover color within the region.
 
 
 ### Customized Layout
@@ -309,7 +309,7 @@ your sub-theme's CSS, Twig and JavaScript break until you migrate them.** Run
 `drush solo:migrate-classes my_theme` first. It is a dry run and changes
 nothing. Read the list, then run it again with `--apply`. `drush updatedb` also
 rewrites the inline CSS saved in Solo's settings. The full list of old and new
-names is in `docs/CLASS-MIGRATION.md`.
+names is in `docs/CLASS-MIGRATION.md` (also `docs/class-migration.html`, which opens offline). The command also renames library ids (`--yml` for your `.info.yml` and `.libraries.yml`), JavaScript names and region color variables, and reports moved files.
 
 Solo 2 keeps templates, CSS, JavaScript and settings data in the theme and moves
 all PHP into the required Solo Utilities module. Setting names change, and the
@@ -377,7 +377,10 @@ working. `drush solo:preflight` lists them by file and line:
 
 Sub-theme code calling Solo 1's PHP helper functions or classes must change as
 well:
-they are gone. `theme_get_setting('old_name')` keeps working only while the
+they are gone, and `drush solo:preflight` lists each call and each use of the
+classes `Drupal\solo\SocialIconColor` and `Drupal\solo\SoloIncludes`.
+Font files under `fonts/font-files/` moved: a sub-theme `@font-face` pointing at
+them should attach the `solo/font-<name>-local` library instead. `theme_get_setting('old_name')` keeps working only while the
 optional
 `solo_utilities_compat` sub-module is on.
 
@@ -387,6 +390,133 @@ optional
 Everything you set in the theme settings is stored in your site's configuration,
 so updating Solo never overwrites it.
 
+
+
+#### Library ids renamed in Solo 2
+
+Every Solo library id now reads `<layer>-<name>`: `solo/solo-global` is `solo/bundle-global`, `solo/solo-menu` is `solo/bundle-menu`, `solo/solo-layers` is `solo/base-layers`, component libraries are `solo/component-...`, color schemes `solo/scheme-<name>`, fonts `solo/font-<slug>-external` and `solo/font-<slug>-local`, breakpoints `solo/breakpoint-page-sb-<px>` and `solo/breakpoint-menu-mn-<px>`. Each old id still works until Solo 3.0.0 as a deprecated alias that depends on the new library. A `libraries-override` or `libraries-extend` entry on an old id no longer changes any file, so switch it to the new id. `drush solo:preflight` lists those entries. Saved settings keep their values.
+
+#### Class and JavaScript names renamed in Solo 2
+
+Solo's own class names now follow the template that prints them. Until the next
+major release each old class still works as a second selector in Solo's CSS and
+JavaScript, so a sub-theme template or content that prints an old class keeps
+its look and behavior. Update to the new name when you can.
+
+| Old name | New name | Kind |
+| --- | --- | --- |
+| `solo-file-button` | `solo-input-file__button` | class |
+| `solo-file-custom` | `solo-input-file__custom` | class |
+| `solo-file-name` | `solo-input-file__name` | class |
+| `solo-file-native` | `solo-input-file__native` | class |
+| `solo-file-upload-wrapper` | `solo-input-file__wrapper` | class |
+| `solo-fixed-search` | `solo-fixed-search-block` | class |
+| `solo-fixed-search__button-block` | `solo-fixed-search-block__button-block` | class |
+| `solo-fixed-search__close` | `solo-fixed-search-block__close` | class |
+| `solo-fixed-search__close-inner` | `solo-fixed-search-block__close-inner` | class |
+| `solo-fixed-search__inner` | `solo-fixed-search-block__inner` | class |
+| `solo-fixed-search__open` | `solo-fixed-search-block__open` | class |
+| `solo-fixed-search__wrapper` | `solo-fixed-search-block__wrapper` | class |
+| `solo-footer-nav` | `solo-footer-menu__nav` | class |
+| `solo-footer-nav__first` | `solo-footer-menu__nav__first` | class |
+| `solo-footer-nav__inner` | `solo-footer-menu__nav__inner` | class |
+| `solo-footer-nav__second` | `solo-footer-menu__nav__second` | class |
+| `solo-local-task` | `solo-menu-local-task` | class |
+| `solo-local-task--core` | `solo-menu-local-task--core` | class |
+| `solo-local-task--delete` | `solo-menu-local-task--delete` | class |
+| `solo-local-task--revisions` | `solo-menu-local-task--revisions` | class |
+| `solo-local-task--view` | `solo-menu-local-task--view` | class |
+| `solo-local-task__icon` | `solo-menu-local-task__icon` | class |
+| `solo-main-nav` | `solo-menu-main` | class |
+| `solo-menu-wrapper--responsive` | `solo-table__menu-wrapper--responsive` | class |
+| `solo-menu-wrapper--sticky` | `solo-table__menu-wrapper--sticky` | class |
+| `solo-mobile-nav` | `solo-menu-main--mobile` | class |
+| `solo-popup-login` | `solo-popup-login-block` | class |
+| `solo-popup-login__close` | `solo-popup-login-block__close` | class |
+| `solo-popup-login__close-inner` | `solo-popup-login-block__close-inner` | class |
+| `solo-popup-login__inner` | `solo-popup-login-block__inner` | class |
+| `solo-popup-login__open` | `solo-popup-login-block__open` | class |
+| `solo-popup-login__open-inner` | `solo-popup-login-block__open-inner` | class |
+| `solo-search-button-close` | `solo-fixed-search-block__close` | id |
+| `solo-search-button-open` | `solo-fixed-search-block__open` | id |
+| `solo-sidebar-button-close` | `solo-menu-primary-sidebar__close` | id |
+| `solo-sidebar-button-open` | `solo-menu-primary-sidebar__open` | id |
+| `solo-sidebar-menu__close` | `solo-primary-sidebar-menu__close` | class |
+| `solo-sidebar-menu__open` | `solo-primary-sidebar-menu__open` | class |
+| `solo-system-messages` | `solo-status-messages` | class and id |
+| `solo-system-messages__inner` | `solo-status-messages__inner` | class |
+| `solo-table-all` | `solo-table--all` | class |
+| `solo-table-wrapper` | `solo-table__wrapper` | class |
+
+Public JavaScript names were renamed the same way. Each old behavior name stays
+as an alias of the new one, the old settings key and event are still sent, and
+the old data attributes are still read, all until the next major release.
+
+| Kind | Old name | New name |
+| --- | --- | --- |
+| Behavior | `Drupal.behaviors.commentRepliesToggle` | `Drupal.behaviors.soloComments` |
+| Behavior | `Drupal.behaviors.globalMenu` | `Drupal.behaviors.soloMenuMain` |
+| Behavior | `Drupal.behaviors.menuAction` | `Drupal.behaviors.soloMenu` |
+| Behavior | `Drupal.behaviors.mobileMenu` | `Drupal.behaviors.soloMenuMobile` |
+| Behavior | `Drupal.behaviors.soloPrimarySideMenu` | `Drupal.behaviors.soloMenuPrimarySidebar` |
+| Behavior | `Drupal.behaviors.soloMenuFix` | `Drupal.behaviors.soloMenuSubmenuPosition` |
+| Behavior | `Drupal.behaviors.soloFileUpload` | `Drupal.behaviors.soloInputFile` |
+| Behavior (Solo Utilities) | `Drupal.behaviors.ColorSchemesRules` | `Drupal.behaviors.soloUtilitiesColorSchemesRules` |
+| drupalSettings key | `drupalSettings.solo.debug_verbosity` | `drupalSettings.solo.debugVerbosity` |
+| Event | `solo-aria-change` | `solo:ariaChange` |
+| Data attribute | `data-comment-id` | `data-solo-comment-id` |
+| Data attribute | `data-force-show` | `data-solo-preloader-force-show` |
+| Data attribute | `data-hide-on` | `data-solo-preloader-hide-on` |
+| Data attribute | `data-max-display` | `data-solo-preloader-max-display` |
+| Data attribute | `data-hover-toggle` | `data-solo-hover-toggle` |
+| Data attribute (Solo Utilities form) | `data-default-value` | `data-solo-default-value` |
+
+`once()` ids and the internal `data-hover-added` and `data-original-tabindex`
+markers were renamed without an alias (`data-solo-hover-added`,
+`data-solo-original-tabindex`): JavaScript that selects
+`[data-once~="old-id"]` must use the new id.
+
+#### Region color variables renamed in Solo 2
+
+Region colors use the same 15 `--r-<role>` names in every theme: `--r-background`, `--r-text`, `--r-heading`, `--r-link`, `--r-link-hover`, `--r-border`, `--r-form-background`, `--r-menu-text`, `--r-menu-text-hover`, `--r-menu-background`, `--r-menu-background-hover`, `--r-button-text`, `--r-button-text-hover`, `--r-button-background` and `--r-button-background-hover`. Each is a typed color, so a value that is not a color is ignored. A gradient goes in `--r-background-image`; `--r-background` holds only a color. Until the next major release the old names below still work as readers: CSS that reads `var(--r-tx)` keeps its color. A rule that sets an old name changes nothing, so rewrite it to the new name. Saved settings keep their values.
+
+<!-- region-vars:start -->
+
+| Old name | New name |
+| --- | --- |
+| `--r-bg` | `--r-background` |
+| `--r-bg-bt` | `--r-button-background` |
+| `--r-bg-bt-h` | `--r-button-background-hover` |
+| `--r-bg-dark` | `--solo-tone-background-dark` |
+| `--r-bg-fr` | `--r-form-background` |
+| `--r-bg-light` | `--solo-tone-background-light` |
+| `--r-bg-lk` | `--r-menu-background` |
+| `--r-bg-lk-h` | `--r-menu-background-hover` |
+| `--r-br` | `--r-border` |
+| `--r-br-b` | `--solo-border-default` |
+| `--r-br-dark` | `--solo-tone-border-dark` |
+| `--r-br-light` | `--solo-tone-border-light` |
+| `--r-h1` | `--r-heading` |
+| `--r-header-bg` | `--solo-accent-background` |
+| `--r-header-tx` | `--solo-accent-text` |
+| `--r-lk` | `--r-link` |
+| `--r-lk-h` | `--r-link-hover` |
+| `--r-menu-bg-h` | `--r-menu-background-hover` |
+| `--r-menu-tx-h` | `--r-menu-text-hover` |
+| `--r-sc-h1` | `--r-heading` |
+| `--r-sc-lk` | `--r-link` |
+| `--r-sc-lk-h` | `--r-link-hover` |
+| `--r-sc-tx-bt` | `--r-button-text` |
+| `--r-sc-tx-bt-h` | `--r-button-text-hover` |
+| `--r-tx` | `--r-text` |
+| `--r-tx-bt` | `--r-button-text` |
+| `--r-tx-bt-h` | `--r-button-text-hover` |
+| `--r-tx-dark` | `--solo-tone-text-dark` |
+| `--r-tx-light` | `--solo-tone-text-light` |
+| `--r-tx-lk` | `--r-menu-text` |
+| `--r-tx-lk-h` | `--r-menu-text-hover` |
+
+<!-- region-vars:end -->
 
 ### Blueprint
 

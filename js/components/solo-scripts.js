@@ -101,7 +101,8 @@
    */
   const checkRegionsWidth = () => {
     const regions = document.querySelectorAll(
-      '.solo-region-box__inner, .solo-copyright__inner, .solo-footer-nav__inner',
+      // Deprecated in 2.0, removed in the next major: old class alias.
+      '.solo-region-box__inner, .solo-copyright__inner, .solo-footer-menu__nav__inner, .solo-footer-nav__inner',
     );
 
     regions.forEach((region) => {

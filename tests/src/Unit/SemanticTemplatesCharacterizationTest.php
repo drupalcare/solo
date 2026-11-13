@@ -124,7 +124,9 @@ class SemanticTemplatesCharacterizationTest extends TestCase {
     // Stylelint rules (CHANGELOG, CSS lint entry; weak citation).
     $this->assertStringContainsString('<ol class="solo-ul solo-medium solo-breadcrumb__menu">', $tpl);
     $this->assertStringNotContainsString('<ul', $tpl);
-    $css = $this->tpl('css/components/solo-breadcrumb.css');
+    // Leading indentation is dropped first: the rules sit inside an @layer
+    // block, and the formatter indents them; the selectors are what matter.
+    $css = preg_replace('/^[ \t]+/m', '', $this->tpl('css/components/solo-breadcrumb.css'));
     $this->assertStringContainsString("ul.solo-breadcrumb__menu,\n:where(ol).solo-breadcrumb__menu {", $css);
     $this->assertStringContainsString("ul.solo-breadcrumb__menu li > a,\nol.solo-breadcrumb__menu li > a {", $css);
     $this->assertStringContainsString("ul.solo-breadcrumb__menu li > span,\nol.solo-breadcrumb__menu li > span {", $css);

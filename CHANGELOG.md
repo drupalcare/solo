@@ -2,6 +2,7 @@
 
 ## Next release
 
+- The hamburger icon's three bars are classes (`solo-svg-top`, `solo-svg-middle`, `solo-svg-bottom`), not ids: the icon prints more than once per page, so the ids repeated. A sub-theme that styled `#svg-top` (1.x) or `#solo-svg-top` changes it to `.solo-svg-top`; the migrate-classes report lists them.
 - Accessibility: a dropdown opened by hovering in the hover menu now closes with Escape wherever focus is, without moving the pointer (WCAG 1.4.13).
 - Accessibility: the primary menu and sidebar menu regions no longer wrap the menu's own labelled nav in a second navigation landmark, and the menu wrappers drop an aria-label that a plain div cannot carry.
 - Font Awesome: a sub-theme that names the 1.x libraries `solo/font-awesome-4-in`, `-4-ex`, `-5-ex` or `-6-ex` keeps its icons; the old ids are deprecated aliases of `solo/font-awesome-7-in` and `solo/font-awesome-7-ex`.

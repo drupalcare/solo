@@ -60,6 +60,7 @@
   }
 
   /* The hero title takes the hero region's text color, not a heading color. */
+  /* stylelint-disable-next-line order/order -- this nested rule stays after the @media block; moving it changes which rule wins */
   :where(.solo-page) h1.solo-page-title__text {
     --r-heading: initial;
   }

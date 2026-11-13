@@ -8,11 +8,11 @@
 <p><label>Filter all tables <input id="q" type="search" placeholder="type part of a name"></label></p>
 <ul>
 <li><a href="#classes-1">Classes: Solo 1 to the current name</a> <span class="count">260</span></li>
-<li><a href="#ids-1">Ids: Solo 1 to the current name</a> <span class="count">60</span></li>
+<li><a href="#ids-1">Ids: Solo 1 to the current name</a> <span class="count">57</span></li>
 <li><a href="#state-1">State classes set by Solo JavaScript (chained to a Solo selector only)</a> <span class="count">19</span></li>
 <li><a href="#generic-1">Generic words (chained to a Solo selector only)</a> <span class="count">19</span></li>
 <li><a href="#context-1">Context-dependent classes (pick by hand)</a> <span class="count">2</span></li>
-<li><a href="#removed-1">Removed classes (no new element)</a> <span class="count">2</span></li>
+<li><a href="#removed-1">Removed classes (no new element)</a> <span class="count">5</span></li>
 <li><a href="#classes-2">Classes renamed again while 2.0 was in development</a> <span class="count">44</span></li>
 <li><a href="#libraries">Library ids</a> <span class="count">348</span></li>
 <li><a href="#files">Files moved, renamed, split or merged</a> <span class="count">74</span></li>
@@ -288,7 +288,7 @@
 <tr><td><code>wrapper-responsive</code></td><td><code>solo-table__menu-wrapper--responsive</code></td></tr>
 <tr><td><code>wrapper-sticky</code></td><td><code>solo-table__menu-wrapper--sticky</code></td></tr>
 </tbody></table></details>
-<details id="ids-1"><summary>Ids: Solo 1 to the current name <span class="count">(60)</span></summary>
+<details id="ids-1"><summary>Ids: Solo 1 to the current name <span class="count">(57)</span></summary>
 <table><thead><tr><th>Solo 1</th><th>Now</th></tr></thead><tbody>
 <tr><td><code>Layer_1</code></td><td><code>solo-svg-layer-1</code></td></tr>
 <tr><td><code>bottom-box-first</code></td><td><code>solo-bottom-box-first</code></td></tr>
@@ -338,9 +338,6 @@
 <tr><td><code>sidebar-box-second</code></td><td><code>solo-sidebar-box-second</code></td></tr>
 <tr><td><code>sidebar-button-close</code></td><td><code>solo-menu-primary-sidebar__close</code></td></tr>
 <tr><td><code>sidebar-button-open</code></td><td><code>solo-menu-primary-sidebar__open</code></td></tr>
-<tr><td><code>svg-bottom</code></td><td><code>solo-svg-bottom</code></td></tr>
-<tr><td><code>svg-middle</code></td><td><code>solo-svg-middle</code></td></tr>
-<tr><td><code>svg-top</code></td><td><code>solo-svg-top</code></td></tr>
 <tr><td><code>system-messages</code></td><td><code>solo-status-messages</code></td></tr>
 <tr><td><code>system-messages-inner</code></td><td><code>solo-system-messages-inner</code></td></tr>
 <tr><td><code>top-box-first</code></td><td><code>solo-top-box-first</code></td></tr>
@@ -400,10 +397,13 @@
 <tr><td><code>nolink</code></td><td><code>solo-menu-tree__item--no-link or solo-menu-tree__nolink - printed beside no-link and nav__menu-nolink in 9 menu templates; S1 decides per element (needs checking)</code></td></tr>
 <tr><td><code>section-*</code></td><td><code>solo-section--* - dynamic section- prefix printed once; origin needs checking in S1</code></td></tr>
 </tbody></table></details>
-<details id="removed-1"><summary>Removed classes (no new element) <span class="count">(2)</span></summary>
+<details id="removed-1"><summary>Removed classes (no new element) <span class="count">(5)</span></summary>
 <table><thead><tr><th>Solo 1</th><th>Why</th></tr></thead><tbody>
 <tr><td><code>discription</code></td><td><code>typo selector, printed nowhere (needs checking)</code></td></tr>
 <tr><td><code>node-from</code></td><td><code>typo selector, printed nowhere (needs checking)</code></td></tr>
+<tr><td><code>svg-bottom</code></td><td><code>now the class solo-svg-bottom (the icon prints more than once per page, so an id repeated); change #svg-bottom to .solo-svg-bottom by hand</code></td></tr>
+<tr><td><code>svg-middle</code></td><td><code>now the class solo-svg-middle (the icon prints more than once per page, so an id repeated); change #svg-middle to .solo-svg-middle by hand</code></td></tr>
+<tr><td><code>svg-top</code></td><td><code>now the class solo-svg-top (the icon prints more than once per page, so an id repeated); change #svg-top to .solo-svg-top by hand</code></td></tr>
 </tbody></table></details>
 <details id="classes-2"><summary>Classes renamed again while 2.0 was in development <span class="count">(44)</span></summary>
 <p class="note">A Solo 1 name above already points at the final name.</p>

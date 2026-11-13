@@ -17,93 +17,95 @@
  */
 
 @layer solo.tokens {
-  @property --r-background {
-    syntax: "<color>";
-    inherits: true;
-    initial-value: transparent;
-  }
 
-  @property --r-text {
-    syntax: "<color>";
-    inherits: true;
-    initial-value: currentColor;
-  }
+@property --r-background {
+  syntax: '<color>';
+  inherits: true;
+  initial-value: transparent;
+}
 
-  @property --r-heading {
-    syntax: "<color>";
-    inherits: true;
-    initial-value: currentColor;
-  }
+@property --r-text {
+  syntax: '<color>';
+  inherits: true;
+  initial-value: currentcolor;
+}
 
-  @property --r-link {
-    syntax: "<color>";
-    inherits: true;
-    initial-value: currentColor;
-  }
+@property --r-heading {
+  syntax: '<color>';
+  inherits: true;
+  initial-value: currentcolor;
+}
 
-  @property --r-link-hover {
-    syntax: "<color>";
-    inherits: true;
-    initial-value: currentColor;
-  }
+@property --r-link {
+  syntax: '<color>';
+  inherits: true;
+  initial-value: currentcolor;
+}
 
-  @property --r-border {
-    syntax: "<color>";
-    inherits: true;
-    initial-value: currentColor;
-  }
+@property --r-link-hover {
+  syntax: '<color>';
+  inherits: true;
+  initial-value: currentcolor;
+}
 
-  @property --r-form-background {
-    syntax: "<color>";
-    inherits: true;
-    initial-value: transparent;
-  }
+@property --r-border {
+  syntax: '<color>';
+  inherits: true;
+  initial-value: currentcolor;
+}
 
-  @property --r-menu-text {
-    syntax: "<color>";
-    inherits: true;
-    initial-value: currentColor;
-  }
+@property --r-form-background {
+  syntax: '<color>';
+  inherits: true;
+  initial-value: transparent;
+}
 
-  @property --r-menu-text-hover {
-    syntax: "<color>";
-    inherits: true;
-    initial-value: currentColor;
-  }
+@property --r-menu-text {
+  syntax: '<color>';
+  inherits: true;
+  initial-value: currentcolor;
+}
 
-  @property --r-menu-background {
-    syntax: "<color>";
-    inherits: true;
-    initial-value: transparent;
-  }
+@property --r-menu-text-hover {
+  syntax: '<color>';
+  inherits: true;
+  initial-value: currentcolor;
+}
 
-  @property --r-menu-background-hover {
-    syntax: "<color>";
-    inherits: true;
-    initial-value: transparent;
-  }
+@property --r-menu-background {
+  syntax: '<color>';
+  inherits: true;
+  initial-value: transparent;
+}
 
-  @property --r-button-text {
-    syntax: "<color>";
-    inherits: true;
-    initial-value: currentColor;
-  }
+@property --r-menu-background-hover {
+  syntax: '<color>';
+  inherits: true;
+  initial-value: transparent;
+}
 
-  @property --r-button-text-hover {
-    syntax: "<color>";
-    inherits: true;
-    initial-value: currentColor;
-  }
+@property --r-button-text {
+  syntax: '<color>';
+  inherits: true;
+  initial-value: currentcolor;
+}
 
-  @property --r-button-background {
-    syntax: "<color>";
-    inherits: true;
-    initial-value: transparent;
-  }
+@property --r-button-text-hover {
+  syntax: '<color>';
+  inherits: true;
+  initial-value: currentcolor;
+}
 
-  @property --r-button-background-hover {
-    syntax: "<color>";
-    inherits: true;
-    initial-value: transparent;
-  }
+@property --r-button-background {
+  syntax: '<color>';
+  inherits: true;
+  initial-value: transparent;
+}
+
+@property --r-button-background-hover {
+  syntax: '<color>';
+  inherits: true;
+  initial-value: transparent;
+}
+
 } /* end @layer solo.tokens */

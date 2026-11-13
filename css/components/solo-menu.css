@@ -236,6 +236,7 @@
     }
   }
 
+  /* stylelint-disable-next-line order/order -- this nested rule stays after the @media block; moving it changes which rule wins */
   :where(.solo-inner .solo-menu-tree--default > li.solo-menu-tree__item--has-submenu:hover) .solo-menu-tree__arrow {
     transition: transform 0.2s ease;
     transform: rotate(180deg);
@@ -291,6 +292,7 @@
   }
 
   /* plain menu in sidebar and footer for devices smaller than 320px */
+  /* stylelint-disable-next-line order/order -- this nested rule stays after the @media block; moving it changes which rule wins */
   :where(.solo-copyright__inner.solo-is-region-xs) .solo-side-menu,
   :where(.solo-copyright__inner.solo-is-region-xs) .solo-footer-menu,
   :where(.solo-footer-menu__nav__inner.solo-is-region-xs) .solo-side-menu,

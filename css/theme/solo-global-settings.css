@@ -106,6 +106,7 @@
     }
   }
 
+  /* stylelint-disable-next-line order/order -- this nested rule stays after the @media block; moving it changes which rule wins */
   :where(html.fs-12 .solo-fixed-search-block__inner) .solo-search-block-form .form-type-search::before,
   :where(html.fs-12 .solo-fixed-search__inner) .solo-search-block-form .form-type-search::before {
     inset-block-start: 16px;

@@ -1996,6 +1996,7 @@ a.solo-image--clickable > picture > img.solo-image {
 /* solo-clickable-image.css:33, answers vvjh-aperture.css:52, vvjs-hero.css:30, vvjs-hero.css:46 (+18 more) */
 a.solo-image--clickable:hover > img.solo-image,
 a.solo-image--clickable:hover > picture > img.solo-image {
+  /* stylelint-disable-next-line no-unknown-animations -- keyframes are defined in another stylesheet (shared keyframes, palette or W3.CSS), so this file cannot see them */
   animation: animateimg 5s;
 }
 
@@ -2011,10 +2012,9 @@ a.solo-image--clickable:hover > picture > img.solo-image {
   background-image: var(--r-background-image, var(--r-background)); /* a gradient in --r-background paints as an image; a plain color leaves it none */
 }
 
-/* stylelint-disable order/properties-order -- shorthand/longhand order is significant here (animation-timing-function vs animation); reordering would change the result */
 /* solo-cookies.css:18, answers vvja-stage.css:22, vvjc.css:419, vvjc.css:485 (+5 more) */
 #solo-page-wrapper .cookiesjsr-banner.active {
-  animation-timing-function: cubic-bezier(0.1, 0.9, 1, 0.1);
+  /* stylelint-disable-next-line no-unknown-animations -- keyframes are defined in another stylesheet (shared keyframes, palette or W3.CSS), so this file cannot see them */
   animation: animatebottom 0.6s;
 }
 
@@ -2636,6 +2636,7 @@ html.gap-14 .solo-inner .solo-menu-tree__menubar li.solo-menu-tree__item > butto
 :where(html.solo-preloader-enabled .solo-preloader.animate-site-zen-rotation) .solo-preloader__text,
 :where(html.solo-preloader-enabled .solo-preloader.animate-site-zen-rotation) .solo-preloader__hero-text {
   background-size: 200% 200%;
+  /* stylelint-disable-next-line no-unknown-animations, order/properties-order -- the keyframes live in another stylesheet, and this declaration order changes the result */
   animation: animateSiteName 10s linear infinite;
   background-clip: text;
 }
@@ -2817,6 +2818,7 @@ html.gap-14 .solo-inner .solo-menu-tree__menubar li.solo-menu-tree__item > butto
 /* w3.css:85, answers w3-modern.css:128 */
 :where(.solo-page) mark {
   background: var(--r-background);
+  /* stylelint-disable-next-line order/properties-order -- declaration order changes the result here (shorthand and longhand, all, or a physical and logical pair) */
   color: var(--r-text);
 }
 
@@ -2854,6 +2856,7 @@ html.gap-14 .solo-inner .solo-menu-tree__menubar li.solo-menu-tree__item > butto
   border: 1px solid var(--solo-w3-fieldset-border);
   margin-block: 0;
   margin-inline: 2px;
+  /* stylelint-disable-next-line order/properties-order -- declaration order changes the result here (shorthand and longhand, all, or a physical and logical pair) */
   padding-block-start: 0.35em;
   padding-inline: 0.625em;
   padding-block-end: 0.75em;
@@ -2921,6 +2924,7 @@ html.gap-14 .solo-inner .solo-menu-tree__menubar li.solo-menu-tree__item > butto
 /* w3.css:315, answers w3-modern.css:347 */
 .w3-table-all {
   border-collapse: collapse;
+  /* stylelint-disable-next-line order/properties-order -- declaration order changes the result here (shorthand and longhand, all, or a physical and logical pair) */
   border-spacing: 0;
 }
 
@@ -3005,6 +3009,7 @@ html.gap-14 .solo-inner .solo-menu-tree__menubar li.solo-menu-tree__item > butto
 :where(.solo-page) .w3-badge,
 :where(.solo-page) .w3-tag {
   background-color: var(--r-background);
+  /* stylelint-disable-next-line order/properties-order -- declaration order changes the result here (shorthand and longhand, all, or a physical and logical pair) */
   color: var(--r-text);
 }
 
@@ -3044,6 +3049,7 @@ html.gap-14 .solo-inner .solo-menu-tree__menubar li.solo-menu-tree__item > butto
 :where(.solo-page) .w3-dropdown-hover:first-child,
 :where(.solo-page) .w3-dropdown-click:hover {
   background-color: var(--r-background);
+  /* stylelint-disable-next-line order/properties-order -- declaration order changes the result here (shorthand and longhand, all, or a physical and logical pair) */
   color: var(--r-text);
 }
 
@@ -3051,12 +3057,14 @@ html.gap-14 .solo-inner .solo-menu-tree__menubar li.solo-menu-tree__item > butto
 .solo-page .w3-dropdown-hover:hover > .w3-button:first-child,
 .solo-page .w3-dropdown-click:hover > .w3-button:first-child {
   background-color: var(--r-background);
+  /* stylelint-disable-next-line order/properties-order -- declaration order changes the result here (shorthand and longhand, all, or a physical and logical pair) */
   color: var(--r-text);
 }
 
 /* w3.css:515, answers w3-modern.css:526 */
 :where(.solo-page) .w3-dropdown-content {
   background-color: var(--r-background);
+  /* stylelint-disable-next-line order/properties-order -- declaration order changes the result here (shorthand and longhand, all, or a physical and logical pair) */
   color: var(--r-text);
 }
 
@@ -3122,6 +3130,7 @@ html.gap-14 .solo-inner .solo-menu-tree__menubar li.solo-menu-tree__item > butto
   padding-block: 8px;
   padding-inline: 16px;
   text-align: var(--solo-text-align-start);
+  /* stylelint-disable-next-line order/properties-order -- declaration order changes the result here (shorthand and longhand, all, or a physical and logical pair) */
   float: none;
 }
 
@@ -3436,6 +3445,7 @@ html.gap-14 .solo-inner .solo-menu-tree__menubar li.solo-menu-tree__item > butto
   :where(.solo-page) .w3-modal-content {
     margin: auto;
     background-color: var(--r-background);
+    /* stylelint-disable-next-line order/properties-order -- declaration order changes the result here (shorthand and longhand, all, or a physical and logical pair) */
     width: 600px;
   }
 }
@@ -3496,41 +3506,49 @@ html.gap-14 .solo-inner .solo-menu-tree__menubar li.solo-menu-tree__item > butto
 
 /* w3.css:1186, answers w3-modern.css:2143 */
 .w3-spin {
+  /* stylelint-disable-next-line no-unknown-animations -- keyframes are defined in another stylesheet (shared keyframes, palette or W3.CSS), so this file cannot see them */
   animation: w3-spin 2s infinite linear;
 }
 
 /* w3.css:1201, answers w3-modern.css:2143 */
 .w3-animate-fading {
+  /* stylelint-disable-next-line no-unknown-animations -- keyframes are defined in another stylesheet (shared keyframes, palette or W3.CSS), so this file cannot see them */
   animation: fading 10s infinite;
 }
 
 /* w3.css:1220, answers w3-modern.css:2143 */
 .w3-animate-opacity {
+  /* stylelint-disable-next-line no-unknown-animations -- keyframes are defined in another stylesheet (shared keyframes, palette or W3.CSS), so this file cannot see them */
   animation: opac 0.8s;
 }
 
 /* w3.css:1235, answers w3-modern.css:2143 */
 .w3-animate-top {
+  /* stylelint-disable-next-line no-unknown-animations -- keyframes are defined in another stylesheet (shared keyframes, palette or W3.CSS), so this file cannot see them */
   animation: animatetop 0.4s;
 }
 
 /* w3.css:1253, answers w3-modern.css:2143 */
 .w3-animate-left {
+  /* stylelint-disable-next-line no-unknown-animations -- keyframes are defined in another stylesheet (shared keyframes, palette or W3.CSS), so this file cannot see them */
   animation: animateleft 0.4s;
 }
 
 /* w3.css:1271, answers w3-modern.css:2143 */
 .w3-animate-right {
+  /* stylelint-disable-next-line no-unknown-animations -- keyframes are defined in another stylesheet (shared keyframes, palette or W3.CSS), so this file cannot see them */
   animation: animateright 0.4s;
 }
 
 /* w3.css:1289, answers w3-modern.css:2143 */
 .w3-animate-bottom {
+  /* stylelint-disable-next-line no-unknown-animations -- keyframes are defined in another stylesheet (shared keyframes, palette or W3.CSS), so this file cannot see them */
   animation: animatebottom 0.4s;
 }
 
 /* w3.css:1307, answers w3-modern.css:2143 */
 .w3-animate-zoom {
+  /* stylelint-disable-next-line no-unknown-animations -- keyframes are defined in another stylesheet (shared keyframes, palette or W3.CSS), so this file cannot see them */
   animation: animatezoom 0.6s;
 }
 

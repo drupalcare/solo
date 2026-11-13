@@ -504,6 +504,7 @@
     }
   }
 
+  /* stylelint-disable-next-line order/order -- this nested rule stays after the @media block; moving it changes which rule wins */
   :where(.inline-radio-checkbox form) .form-wrapper.solo-clear::after,
   :where(.inline-radio-checkbox form) .form-wrapper.solo-clear::before,
   :where(.inline-radio-checkbox form) .form-wrapper .solo-clear::after,

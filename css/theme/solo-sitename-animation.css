@@ -12,6 +12,7 @@
 
   /* stylelint-disable order/properties-order -- shorthand/longhand order is significant here (background-clip vs -webkit-background-clip); reordering would change the result */
 
+  /* stylelint-disable-next-line order/order -- this nested rule stays after the @media block; moving it changes which rule wins */
   :where(.solo-page) .animate-solo-aurora-wave,
   :where(.solo-page) .animate-solo-dreamy-bloom,
   :where(.solo-page) .animate-solo-echo-pulse,

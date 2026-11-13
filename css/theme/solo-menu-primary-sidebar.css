@@ -141,6 +141,7 @@
     }
   }
 
+  /* stylelint-disable-next-line order/order -- this nested rule stays after the @media block; moving it changes which rule wins */
   .solo-is-sliding-in {
     animation-name: slide-in;
     animation-duration: 250ms;

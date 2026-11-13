@@ -167,6 +167,7 @@
   }
 
   /* Ensure proper stacking context */
+  /* stylelint-disable-next-line order/order -- this nested rule stays after the @media block; moving it changes which rule wins */
   .solo-popup-login-block__inner,
   .solo-popup-login__inner {
     position: relative;

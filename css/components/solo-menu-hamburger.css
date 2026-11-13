@@ -8,37 +8,37 @@
     min-width: 3.25rem;
   }
 
-  :where(.solo-inner .solo-hamburger) #solo-svg-top,
-  :where(.solo-inner .solo-hamburger) #solo-svg-bottom,
-  :where(.solo-inner .solo-hamburger) #solo-svg-middle {
+  :where(.solo-inner .solo-hamburger) .solo-svg-top,
+  :where(.solo-inner .solo-hamburger) .solo-svg-bottom,
+  :where(.solo-inner .solo-hamburger) .solo-svg-middle {
     transform-box: fill-box;
     transform-origin: center;
   }
 
-  :where(.solo-inner .solo-hamburger) #solo-svg-top {
+  :where(.solo-inner .solo-hamburger) .solo-svg-top {
     animation: rotate-line-top 0.7s ease-in both;
   }
 
-  :where(.solo-inner .solo-hamburger) #solo-svg-bottom {
+  :where(.solo-inner .solo-hamburger) .solo-svg-bottom {
     animation: rotate-line-bottom 0.7s ease-in both;
   }
 
-  :where(.solo-inner .solo-hamburger) #solo-svg-middle {
+  :where(.solo-inner .solo-hamburger) .solo-svg-middle {
     animation: show-line 0.7s ease-in forwards;
   }
 
-  :where(.solo-inner .solo-hamburger--close) #solo-svg-top,
-  :where(.solo-inner .solo-hamburger.solo-is-open) #solo-svg-top {
+  :where(.solo-inner .solo-hamburger--close) .solo-svg-top,
+  :where(.solo-inner .solo-hamburger.solo-is-open) .solo-svg-top {
     animation: rotate-down 0.7s ease-out both;
   }
 
-  :where(.solo-inner .solo-hamburger--close) #solo-svg-bottom,
-  :where(.solo-inner .solo-hamburger.solo-is-open) #solo-svg-bottom {
+  :where(.solo-inner .solo-hamburger--close) .solo-svg-bottom,
+  :where(.solo-inner .solo-hamburger.solo-is-open) .solo-svg-bottom {
     animation: rotate-up 0.7s ease-out both;
   }
 
-  :where(.solo-inner .solo-hamburger--close) #solo-svg-middle,
-  :where(.solo-inner .solo-hamburger.solo-is-open) #solo-svg-middle {
+  :where(.solo-inner .solo-hamburger--close) .solo-svg-middle,
+  :where(.solo-inner .solo-hamburger.solo-is-open) .solo-svg-middle {
     animation: hide-line 0.7s ease-out both;
   }
 
@@ -147,15 +147,15 @@
 @layer solo.locked {
   /* Reduced motion: end states are kept, movement is not (WCAG 2.3.3). */
   @media (prefers-reduced-motion: reduce) {
-    :where(:where(.solo-inner .solo-hamburger) #solo-svg-top),
-    :where(:where(.solo-inner .solo-hamburger) #solo-svg-bottom),
-    :where(:where(.solo-inner .solo-hamburger) #solo-svg-middle),
-    :where(:where(.solo-inner .solo-hamburger--close) #solo-svg-top),
-    :where(:where(.solo-inner .solo-hamburger.solo-is-open) #solo-svg-top),
-    :where(:where(.solo-inner .solo-hamburger--close) #solo-svg-bottom),
-    :where(:where(.solo-inner .solo-hamburger.solo-is-open) #solo-svg-bottom),
-    :where(:where(.solo-inner .solo-hamburger--close) #solo-svg-middle),
-    :where(:where(.solo-inner .solo-hamburger.solo-is-open) #solo-svg-middle) {
+    :where(:where(.solo-inner .solo-hamburger) .solo-svg-top),
+    :where(:where(.solo-inner .solo-hamburger) .solo-svg-bottom),
+    :where(:where(.solo-inner .solo-hamburger) .solo-svg-middle),
+    :where(:where(.solo-inner .solo-hamburger--close) .solo-svg-top),
+    :where(:where(.solo-inner .solo-hamburger.solo-is-open) .solo-svg-top),
+    :where(:where(.solo-inner .solo-hamburger--close) .solo-svg-bottom),
+    :where(:where(.solo-inner .solo-hamburger.solo-is-open) .solo-svg-bottom),
+    :where(:where(.solo-inner .solo-hamburger--close) .solo-svg-middle),
+    :where(:where(.solo-inner .solo-hamburger.solo-is-open) .solo-svg-middle) {
       transition-duration: 0.01ms !important;
       animation-duration: 0.01ms !important;
       animation-iteration-count: 1 !important;

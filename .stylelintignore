@@ -8,3 +8,11 @@ fonts/font-awesome-7.0.1.css
 # not apply to it and it must not be reformatted.
 css/w3-css/
 css/utilities/
+
+# Generated files: scripts/build-breakpoints.py and scripts/build-region-legacy.py
+# write them from their sources, and CI checks they match (--check). Edit the
+# source and rebuild; a formatter must not rewrite them.
+css/breakpoints/
+css/layout/solo-page-sb-*.css
+css/base/solo-region-properties.css
+css/base/solo-region-legacy.css

@@ -39,11 +39,11 @@ Report-only rules: a name that is one plain word, or is both a class and an id, 
 | Kind | Names |
 |---|---|
 | Classes: Solo 1 to the current name | 260 |
-| Ids: Solo 1 to the current name | 60 |
+| Ids: Solo 1 to the current name | 57 |
 | State classes set by Solo JavaScript (chained to a Solo selector only) | 19 |
 | Generic words (chained to a Solo selector only) | 19 |
 | Context-dependent classes (pick by hand) | 2 |
-| Removed classes (no new element) | 2 |
+| Removed classes (no new element) | 5 |
 | Classes renamed again while 2.0 was in development | 44 |
 | Library ids | 348 |
 | Files moved, renamed, split or merged | 74 |
@@ -322,7 +322,7 @@ A trailing `*` is a dynamic tail: the old prefix followed by any value becomes t
 | `wrapper-responsive` | `solo-table__menu-wrapper--responsive` |
 | `wrapper-sticky` | `solo-table__menu-wrapper--sticky` |
 
-## Ids: Solo 1 to the current name (60)
+## Ids: Solo 1 to the current name (57)
 
 | Solo 1 | Now |
 |---|---|
@@ -374,9 +374,6 @@ A trailing `*` is a dynamic tail: the old prefix followed by any value becomes t
 | `sidebar-box-second` | `solo-sidebar-box-second` |
 | `sidebar-button-close` | `solo-menu-primary-sidebar__close` |
 | `sidebar-button-open` | `solo-menu-primary-sidebar__open` |
-| `svg-bottom` | `solo-svg-bottom` |
-| `svg-middle` | `solo-svg-middle` |
-| `svg-top` | `solo-svg-top` |
 | `system-messages` | `solo-status-messages` |
 | `system-messages-inner` | `solo-system-messages-inner` |
 | `top-box-first` | `solo-top-box-first` |
@@ -442,12 +439,15 @@ A trailing `*` is a dynamic tail: the old prefix followed by any value becomes t
 | `nolink` | `solo-menu-tree__item--no-link or solo-menu-tree__nolink - printed beside no-link and nav__menu-nolink in 9 menu templates; S1 decides per element (needs checking)` |
 | `section-*` | `solo-section--* - dynamic section- prefix printed once; origin needs checking in S1` |
 
-## Removed classes (no new element) (2)
+## Removed classes (no new element) (5)
 
 | Solo 1 | Why |
 |---|---|
 | `discription` | `typo selector, printed nowhere (needs checking)` |
 | `node-from` | `typo selector, printed nowhere (needs checking)` |
+| `svg-bottom` | `now the class solo-svg-bottom (the icon prints more than once per page, so an id repeated); change #svg-bottom to .solo-svg-bottom by hand` |
+| `svg-middle` | `now the class solo-svg-middle (the icon prints more than once per page, so an id repeated); change #svg-middle to .solo-svg-middle by hand` |
+| `svg-top` | `now the class solo-svg-top (the icon prints more than once per page, so an id repeated); change #svg-top to .solo-svg-top by hand` |
 
 ## Classes renamed again while 2.0 was in development (44)
 

@@ -87,6 +87,7 @@
     }
   }
 
+  /* stylelint-disable-next-line order/order -- this nested rule stays after the @media block; moving it changes which rule wins */
   .solo-table__wrapper .tableresponsive-toggle-columns,
   .solo-table-wrapper .tableresponsive-toggle-columns {
     float: none;

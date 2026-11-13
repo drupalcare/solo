@@ -12,6 +12,7 @@
     }
   }
 
+  /* stylelint-disable-next-line order/order -- this nested rule stays after the @media block; moving it changes which rule wins */
   :where(.solo-page .solo-outer.solo-container--animate-hover) .solo-region-box__inner:not(.solo-region-box__inner--main),
   :where(.solo-page .solo-outer.solo-container--animate-border) .solo-region-box__inner:not(.solo-region-box__inner--main) {
     position: relative;

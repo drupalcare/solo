@@ -314,6 +314,12 @@
     visibility: visible !important;
   }
 
+  /* Escape closed this dropdown while the pointer is still over it (WCAG
+     1.4.13); solo-menu.js removes the class when the pointer leaves. */
+  .solo-inner .solo-menu--responsive-hover li.solo-menu-tree__item.solo-is-dismissed > ul.solo-menu-tree__submenu {
+    display: none !important;
+  }
+
   :where(.solo-page) .solo-menu--responsive-hover .solo-menu-tree--responsive li.solo-menu-tree__item--has-submenu > a:hover,
   .solo-page .solo-menu--responsive-hover .solo-menu-tree--responsive li.solo-menu-tree__item--has-submenu > button:hover {
     color: inherit !important;

@@ -28,7 +28,6 @@
     {% include '@solo/partials/svg/_svg-menu-arrow.html.twig' %}
 {% endmacro %}
 <div class="solo-clear solo-menu solo-menu--sidebar solo-menu--primary-sidebar{{ click_hover_sidebar ? ' ' ~ click_hover_sidebar }}{{ keyboard_enabled ? ' solo-keyboard-enabled' }}"
-     aria-label="{{ 'Primary sidebar navigation'|t }}"
      data-menu-name="{{ menu_name }}"
      data-interaction-type="{{ click_hover_sidebar|default("click") }}">
     {{ menus.menu_links(items, attributes, 0, menu_name, aria_id) }}

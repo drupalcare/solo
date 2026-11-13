@@ -22,6 +22,8 @@
  */
 #}
 {% import _self as menus %}
+{# One id for the menubar, shared by the hamburger's aria-controls and the ul. #}
+{% set menubar_id = (menu_name ~ '__menubar')|clean_unique_id %}
 {% set svg_bars %}
     {% include '@solo/partials/svg/_svg-bars.html.twig' %}
 {% endset %}
@@ -29,7 +31,6 @@
     {% include '@solo/partials/svg/_svg-menu-arrow.html.twig' %}
 {% endmacro %}
 <div class="solo-clear solo-menu solo-menu--responsive solo-menu--responsive-hover{{ keyboard_enabled ? ' solo-keyboard-enabled' }}"
-     aria-label="{{ 'Responsive navigation'|t }}"
      data-menu-name="{{ menu_name }}"
      data-interaction-type="hover">
     <div class="solo-menu-main--mobile solo-hamburger solo-block">
@@ -37,15 +38,15 @@
                 data-drupal-selector="solo-hamburger__button"
                 aria-label="{{ 'Toggle menu'|t }}"
                 aria-expanded="false"
-                aria-controls="{{ menu_name ~'__menubar'|clean_unique_id }}"
+                aria-controls="{{ menubar_id }}"
                 type="button">
             <span aria-hidden="true">{{ svg_bars|raw }}</span>
             <span class="visually-hidden">{{ 'Toggle menu'|t }}</span>
         </button>
     </div>
-    {{ menus.menu_links(items, attributes, 0, menu_name, aria_id) }}
+    {{ menus.menu_links(items, attributes, 0, menu_name, aria_id, menubar_id) }}
 </div>
-{% macro menu_links(items, attributes, menu_level, menu_name, aria_id) %}
+{% macro menu_links(items, attributes, menu_level, menu_name, aria_id, menubar_id = null) %}
     {% set menu_level = menu_level + 1 %}
     {% set menu_classes = [
             'solo-menu-tree__menubar',
@@ -57,7 +58,7 @@
     'solo-menu-tree__submenu solo-menu-tree__submenu--' ~ menu_name|clean_class,
 ] %}
 {% set menubar_attributes = create_attribute({
-    'id': menu_name ~'__menubar'|clean_unique_id,
+    'id': menubar_id ?? (menu_name ~ '__menubar')|clean_unique_id,
     'data-menu-level': menu_level,
 }) %}
 {% set submenu_attributes = create_attribute({

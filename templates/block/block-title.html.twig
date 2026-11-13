@@ -13,8 +13,9 @@
 {# Title rendering with support for Solo visibility mode and menu block IDs #}
 
 {% set title_mode = configuration.solo_block_title_visibility ?? 'visible' %}
-{% set show_title = title_mode != 'none' %}
-{% set is_hidden = title_mode == 'visually_hidden' %}
+{# A menu nav is labelled by heading_id, so in mode none the title still prints, visually hidden. #}
+{% set show_title = title_mode != 'none' or heading_id is defined %}
+{% set is_hidden = title_mode == 'visually_hidden' or (title_mode == 'none' and heading_id is defined) %}
 {% set block_label = configuration.label is defined ? configuration.label : label %}
 
 {# Always set title_attributes safely #}

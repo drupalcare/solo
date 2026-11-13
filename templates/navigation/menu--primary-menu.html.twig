@@ -22,6 +22,8 @@
  */
 #}
 {% import _self as menus %}
+{# One id for the menubar, shared by the hamburger's aria-controls and the ul. #}
+{% set menubar_id = (menu_name ~ '__menubar')|clean_unique_id %}
 {% set svg_bars %}
     {% include '@solo/partials/svg/_svg-bars.html.twig' %}
 {% endset %}
@@ -39,15 +41,15 @@
                 data-drupal-selector="solo-hamburger__button"
                 aria-label="{{ 'Toggle main menu'|t }}"
                 aria-expanded="false"
-                aria-controls="{{ menu_name ~'__menubar'|clean_unique_id }}"
+                aria-controls="{{ menubar_id }}"
                 type="button">
             <span aria-hidden="true">{{ svg_bars|raw }}</span>
             <span class="visually-hidden">{{ 'Toggle main menu'|t }}</span>
         </button>
     </div>
-    {{ menus.menu_links(items, attributes, 0, menu_name, aria_id, megamenu, megamenu_layout, sub_mega, sub_menu_header) }}
+    {{ menus.menu_links(items, attributes, 0, menu_name, aria_id, megamenu, megamenu_layout, sub_mega, sub_menu_header, menubar_id) }}
 </div>
-{% macro menu_links(items, attributes, menu_level, menu_name, aria_id, megamenu, megamenu_layout, sub_mega, sub_menu_header) %}
+{% macro menu_links(items, attributes, menu_level, menu_name, aria_id, megamenu, megamenu_layout, sub_mega, sub_menu_header, menubar_id = null) %}
     {% set menu_level = menu_level + 1 %}
     {% set menu_classes = [
             'solo-menu-tree__menubar',
@@ -63,7 +65,7 @@
     sub_menu_header|clean_class,
 ] %}
 {% set menubar_attributes = create_attribute({
-    'id': menu_name ~'__menubar'|clean_unique_id,
+    'id': menubar_id ?? (menu_name ~ '__menubar')|clean_unique_id,
     'data-menu-level': menu_level,
 }) %}
 {% set submenu_attributes = create_attribute({

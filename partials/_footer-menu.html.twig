@@ -27,16 +27,18 @@
         } %}
         {% for key, social in socials %}
           {% if social.url %}
+            {# Brand names stay as written; the word Email is translated. #}
+            {% set social_label = key == 'email' ? 'Email'|t : key|capitalize %}
             {% if key == 'email' %}
-              <a href="mailto:{{ social.url }}" title="{{ key|capitalize }}" class="solo-clear {{ key }}">
+              <a href="mailto:{{ social.url }}" title="{{ social_label }}" class="solo-clear {{ key }}">
             {% else %}
-              <a href="{{ social.url }}" title="{{ key|capitalize }}" class="solo-clear {{ key }}" target="_blank" rel="noopener noreferrer">
+              <a href="{{ social.url }}" title="{{ social_label }}" class="solo-clear {{ key }}" target="_blank" rel="noopener noreferrer">
             {% endif %}
                 <span class="solo-social__icon" aria-hidden="true">
                   {% set svg_icon = "@solo/partials/svg/_svg-" ~  key   ~ ".html.twig" %}
                   {% include svg_icon %}
                 </span>
-                <span class="visually-hidden">{{ key|capitalize }}{% if key != 'email' %} {{ '(opens in a new tab)'|t }}{% endif %}</span>
+                <span class="visually-hidden">{{ social_label }}{% if key != 'email' %} {{ '(opens in a new tab)'|t }}{% endif %}</span>
               </a>
           {% endif %}
         {% endfor %}

@@ -29,12 +29,11 @@
   {% import _self as menus %}
   {% if items %}
     {% set level_class = 'solo-menu-tree--level-' ~ menu_level %}
-    {% set aria_level = menu_level + 1 %}
 
     {% if menu_level == 0 %}
-      <ul{{ attributes.addClass('sitemap', level_class) }} role="tree" aria-level="{{ aria_level }}">
+      <ul{{ attributes.addClass('sitemap', level_class) }}>
     {% else %}
-      <ul class="{{ level_class }}" role="group" aria-level="{{ aria_level }}">
+      <ul class="{{ level_class }}">
     {% endif %}
 
     {% for item in items %}
@@ -43,11 +42,11 @@
       <li{{ item.attributes.addClass('menu-item', has_children ? 'has-children' : '') }}>
 
         {% if is_clickable %}
-          <a href="{{ item.url.toString() }}" class="solo-menu__link" role="treeitem" aria-level="{{ aria_level }}">
+          <a href="{{ item.url.toString() }}" class="solo-menu__link">
             {{ item.title }}
           </a>
         {% else %}
-          <span class="menu-label" role="treeitem" aria-level="{{ aria_level }}">
+          <span class="menu-label">
             {{ item.title }}
           </span>
         {% endif %}

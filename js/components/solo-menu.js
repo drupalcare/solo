@@ -66,6 +66,8 @@
     brNum: 0,
     animationQueue: new Map(),
     disclosureKeysAdded: false,
+    // Dropdowns open because the pointer is over them: {item, toggler, subMenu}.
+    hoverOpen: new Set(),
   };
 
   const getCurrentWidth = () => Drupal.solo.menuState.getCurrentWidth();
@@ -488,12 +490,17 @@
       const subMenu = item.querySelector(':scope > ul');
 
       if (toggler && subMenu) {
+        const hovered = { item, toggler, subMenu };
+
         item.addEventListener('mouseenter', () => {
           Drupal.solo.menuState.setExpanded(toggler, true, COMPONENT_NAME);
           Drupal.solo.menuState.setHidden(subMenu, false, COMPONENT_NAME);
+          state.hoverOpen.add(hovered);
         });
 
         item.addEventListener('mouseleave', () => {
+          state.hoverOpen.delete(hovered);
+          item.classList.remove('solo-is-dismissed');
           // A dropdown opened with Enter or Space stays open, and stays
           // announced as open, until the keyboard or a click closes it.
           if (subMenu.classList.contains('solo-is-open')) return;
@@ -556,6 +563,23 @@
     document.addEventListener('keydown', (event) => {
       if (event.defaultPrevented) return;
       const target = event.target;
+
+      // WCAG 1.4.13: a dropdown opened by hovering closes with Escape wherever
+      // focus is, without moving the pointer. One opened from the keyboard, or
+      // one holding focus, is left to the code below, which returns focus.
+      if (event.key === 'Escape') {
+        state.hoverOpen.forEach(({ item, toggler, subMenu }) => {
+          if (
+            subMenu.classList.contains('solo-is-open') ||
+            (target instanceof Node && item.contains(target))
+          )
+            return;
+          Drupal.solo.menuState.setExpanded(toggler, false, COMPONENT_NAME);
+          Drupal.solo.menuState.setHidden(subMenu, true, COMPONENT_NAME);
+          // The stylesheet also opens it on :hover; this class wins over that.
+          item.classList.add('solo-is-dismissed');
+        });
+      }
       if (
         !(target instanceof Element) ||
         !target.closest('.solo-inner .solo-menu .solo-menu-tree__menubar')

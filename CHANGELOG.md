@@ -2,12 +2,15 @@
 
 ## Next release
 
+- Accessibility: a dropdown opened by hovering in the hover menu now closes with Escape wherever focus is, without moving the pointer (WCAG 1.4.13).
+- Accessibility: the primary menu and sidebar menu regions no longer wrap the menu's own labelled nav in a second navigation landmark, and the menu wrappers drop an aria-label that a plain div cannot carry.
 - Font Awesome: a sub-theme that names the 1.x libraries `solo/font-awesome-4-in`, `-4-ex`, `-5-ex` or `-6-ex` keeps its icons; the old ids are deprecated aliases of `solo/font-awesome-7-in` and `solo/font-awesome-7-ex`.
 - Font Awesome from the CDN (settings 2, 3 and 4) loads again: the `solo/font-awesome-7-ex` library was dropped because its integrity and crossorigin attributes were rejected.
 - Font file paths under `fonts/font-files/` are internal and changed in 2.0; a sub-theme `@font-face` that points at them should attach the `solo/font-<name>-local` library instead.
 
 - New setting: show the breadcrumb before the page title (Global site settings, next to "Flip the main menu order"). Off by default; the page wrapper gets `solo-page--breadcrumb-flipped` when it is on.
 - System messages: the region takes no space when there is no message (the block always prints Drupal's hidden placeholder, so an empty, colored band showed under the header on every page).
+- Accessibility: the sitemap is a plain nested list (it claimed tree roles without tree keyboard support); a menu block whose title is set to none keeps a visually hidden label, so its navigation landmark has a name; the hamburger's aria-controls points at the real menubar id before JavaScript runs; the Email social link name is translatable.
 - Accessibility: the pager ellipsis no longer carries `role="presentation"`, so screen readers keep it inside the pager list.
 - Accessibility: the popup login focus ring uses the region text color (3:1 against its ground); `.w3-tiny` to `.w3-jumbo` font sizes and the clickable image caption are in rem, so text-only zoom resizes them.
 - Color schemes with gradient region grounds paint the gradient again on the header, page title, bottom, footer and copyright areas.

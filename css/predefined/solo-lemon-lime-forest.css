@@ -10,215 +10,213 @@
  */
 
 @layer solo.schemes {
-
-/* Page wrapper
+  /* Page wrapper
 Greenish Yellow #EEEA62, Hunter Green #3F704D */
-:root {
-  --sc-head-tx: #c4bf15;
-  --sc-link-tx: #589d6b;
-  --sc-link-hover-tx: #75b186;
-  --sc-menu-bg: #1b1a03;
-  --sc-menu-tx: #ebe643;
-  --sc-menu-hover-tx: #fbfadd;
-  --sc-menu-hover-bg: #68650b;
-  --sc-tab-hover-tx: #fbfadd;
-  --sc-menu-open-tx: #fbfadd;
-  --sc-menu-open-bg: #68650b;
-  --sc-button-bg: #2d4f37;
-  --sc-button-tx: #c1dcc9;
-  --sc-button-hover-tx: #2d4f37;
-  --sc-button-hover-bg: #c1dcc9;
-  --sc-main-container-bg: linear-gradient(45deg, #000, #0c0b01);
-  --sc-top-container-bg: linear-gradient(45deg, #000, #0c0b01);
-  --sc-fixed-search-block-bg: linear-gradient(45deg, #000, #0c0b01);
-  --sc-popup-login-block-inner-bg: linear-gradient(45deg, #000, #0c0b01);
-  --sc-bottom-container-bg: linear-gradient(45deg, #000, #0c0b01);
-  --sc-footer-container-bg: linear-gradient(45deg, #000, #0c0b01);
-  --sc-footer-menu-bg: linear-gradient(45deg, #000, #0c0b01);
-  --sc-copyright-bg: linear-gradient(180deg, #2a2905, #0e1911);
-  --sc-social-fill: #77740d;
-  --sc-control-br: #3f704d;
-  --sc-fixed-search-block-shadow: 171, 208, 182;
-  --sc-social-box-shadow: 171, 208, 182;
-  --sc-tab-hover-bg: #68650b;
-  --sc-region-rule-br: var(--solo-black);
-}
+  :root {
+    --sc-head-tx: #c4bf15;
+    --sc-link-tx: #589d6b;
+    --sc-link-hover-tx: #75b186;
+    --sc-menu-bg: #1b1a03;
+    --sc-menu-tx: #ebe643;
+    --sc-menu-hover-tx: #fbfadd;
+    --sc-menu-hover-bg: #68650b;
+    --sc-tab-hover-tx: #fbfadd;
+    --sc-menu-open-tx: #fbfadd;
+    --sc-menu-open-bg: #68650b;
+    --sc-button-bg: #2d4f37;
+    --sc-button-tx: #c1dcc9;
+    --sc-button-hover-tx: #2d4f37;
+    --sc-button-hover-bg: #c1dcc9;
+    --sc-main-container-bg: linear-gradient(45deg, #000, #0c0b01);
+    --sc-top-container-bg: linear-gradient(45deg, #000, #0c0b01);
+    --sc-fixed-search-block-bg: linear-gradient(45deg, #000, #0c0b01);
+    --sc-popup-login-block-inner-bg: linear-gradient(45deg, #000, #0c0b01);
+    --sc-bottom-container-bg: linear-gradient(45deg, #000, #0c0b01);
+    --sc-footer-container-bg: linear-gradient(45deg, #000, #0c0b01);
+    --sc-footer-menu-bg: linear-gradient(45deg, #000, #0c0b01);
+    --sc-copyright-bg: linear-gradient(180deg, #2a2905, #0e1911);
+    --sc-social-fill: #77740d;
+    --sc-control-br: #3f704d;
+    --sc-fixed-search-block-shadow: 171, 208, 182;
+    --sc-social-box-shadow: 171, 208, 182;
+    --sc-tab-hover-bg: #68650b;
+    --sc-region-rule-br: var(--solo-black);
+  }
 
-.solo-page {
-  --r-border: #77740d;
-  --r-background: #0c0b01;
-  --r-text: #fbfadd;
-  --solo-accent-background-image: linear-gradient(0deg, #000, #1b1a03);
-  --solo-accent-background: linear-gradient(0deg, #000, #1b1a03);
-  --solo-accent-text: #c4bf15;
-  --r-menu-text-hover: #fbfadd;
-  --r-menu-background-hover: #68650b;
-}
+  .solo-page {
+    --r-border: #77740d;
+    --r-background: #0c0b01;
+    --r-text: #fbfadd;
+    --solo-accent-background-image: linear-gradient(0deg, #000, #1b1a03);
+    --solo-accent-background: linear-gradient(0deg, #000, #1b1a03);
+    --solo-accent-text: #c4bf15;
+    --r-menu-text-hover: #fbfadd;
+    --r-menu-background-hover: #68650b;
+  }
 
-:where(.solo-page) .solo-region-box__inner:where(:not([style*="--r-border:"] *)) {
-  --r-border: #363405;
-}
+  :where(.solo-page) .solo-region-box__inner:where(:not([style*="--r-border:"] *)) {
+    --r-border: #363405;
+  }
 
-:where(.solo-page) .solo-primary-sidebar-menu:where(:not([style*="--r-border:"] *)),
-:where(.solo-page) .solo-primary-menu:where(:not([style*="--r-border:"] *)) {
-  --r-border: #3a3908;
-}
+  :where(.solo-page) .solo-primary-sidebar-menu:where(:not([style*="--r-border:"] *)),
+  :where(.solo-page) .solo-primary-menu:where(:not([style*="--r-border:"] *)) {
+    --r-border: #3a3908;
+  }
 
-.solo-welcome-text,
-:where(.solo-container--main) .solo-region-box--main {
-  --r-background: var(--solo-black);
-}
+  .solo-welcome-text,
+  :where(.solo-container--main) .solo-region-box--main {
+    --r-background: var(--solo-black);
+  }
 
-header.solo-header,
-div.solo-page-title.solo-container--single {
-  --r-background-image: linear-gradient(0deg, #000, #1b1a03);
-  --r-background: #000;
-}
+  header.solo-header,
+  div.solo-page-title.solo-container--single {
+    --r-background-image: linear-gradient(0deg, #000, #1b1a03);
+    --r-background: #000;
+  }
 
-.solo-container--top .solo-region-box__inner--top,
-.solo-container--bottom .solo-region-box__inner--bottom,
-.solo-container--footer .solo-region-box__inner--footer {
-  --r-background-image: linear-gradient(0deg, #000, #0c0b01);
-  --r-background: #000;
-}
+  .solo-container--top .solo-region-box__inner--top,
+  .solo-container--bottom .solo-region-box__inner--bottom,
+  .solo-container--footer .solo-region-box__inner--footer {
+    --r-background-image: linear-gradient(0deg, #000, #0c0b01);
+    --r-background: #000;
+  }
 
-:where(.solo-page) .selectify:where(:not([style*="--r-border:"] *)),
-:where(.solo-page) .solo-select:where(:not([style*="--r-border:"] *)),
-:where(.solo-page) .solo-radio:where(:not([style*="--r-border:"] *)),
-:where(.solo-page) .solo-check:where(:not([style*="--r-border:"] *)),
-:where(.solo-page) .solo-input:where(:not([style*="--r-border:"] *)),
-:where(.solo-page) .solo-textarea:where(:not([style*="--r-border:"] *)),
-:where(.solo-page .solo-fixed-search-block__close) button:where(:not([style*="--r-border:"] *)),
-:where(.solo-page .solo-fixed-search__close) button:where(:not([style*="--r-border:"] *)) {
-  --r-border: #3f704d;
-}
+  :where(.solo-page) .selectify:where(:not([style*="--r-border:"] *)),
+  :where(.solo-page) .solo-select:where(:not([style*="--r-border:"] *)),
+  :where(.solo-page) .solo-radio:where(:not([style*="--r-border:"] *)),
+  :where(.solo-page) .solo-check:where(:not([style*="--r-border:"] *)),
+  :where(.solo-page) .solo-input:where(:not([style*="--r-border:"] *)),
+  :where(.solo-page) .solo-textarea:where(:not([style*="--r-border:"] *)),
+  :where(.solo-page .solo-fixed-search-block__close) button:where(:not([style*="--r-border:"] *)),
+  :where(.solo-page .solo-fixed-search__close) button:where(:not([style*="--r-border:"] *)) {
+    --r-border: #3f704d;
+  }
 
-:where(.solo-page) :is(.selectify *:hover, .solo-select:hover, .solo-check:hover, .solo-radio:hover, .solo-input:hover, .solo-textarea:hover, .selectify *:focus, .solo-select:focus, .solo-check:focus, .solo-radio:focus, .solo-input:focus, .solo-textarea:focus) {
-  --r-border: #68650b;
-}
+  :where(.solo-page) :is(.selectify *:hover, .solo-select:hover, .solo-check:hover, .solo-radio:hover, .solo-input:hover, .solo-textarea:hover, .selectify *:focus, .solo-select:focus, .solo-check:focus, .solo-radio:focus, .solo-input:focus, .solo-textarea:focus) {
+    --r-border: #68650b;
+  }
 
-.solo-primary-sidebar-menu,
-:where(.solo-inner) .solo-menu-tree--responsive,
-:where(.solo-fixed-search-block__inner) .solo-fixed-search-block__wrapper,
-:where(.solo-fixed-search__inner) .solo-fixed-search__wrapper,
-:where(.solo-page .solo-outer.solo-container--animate-hover) .solo-region-box__inner.solo-region-box__inner--top,
-:where(.solo-page .solo-outer.solo-container--animate-hover) .solo-region-box__inner.solo-region-box__inner--bottom,
-:where(.solo-page .solo-outer.solo-container--animate-hover) .solo-region-box__inner.solo-region-box__inner--footer {
-  --s-b: 171, 208, 182;
-}
+  .solo-primary-sidebar-menu,
+  :where(.solo-inner) .solo-menu-tree--responsive,
+  :where(.solo-fixed-search-block__inner) .solo-fixed-search-block__wrapper,
+  :where(.solo-fixed-search__inner) .solo-fixed-search__wrapper,
+  :where(.solo-page .solo-outer.solo-container--animate-hover) .solo-region-box__inner.solo-region-box__inner--top,
+  :where(.solo-page .solo-outer.solo-container--animate-hover) .solo-region-box__inner.solo-region-box__inner--bottom,
+  :where(.solo-page .solo-outer.solo-container--animate-hover) .solo-region-box__inner.solo-region-box__inner--footer {
+    --s-b: 171, 208, 182;
+  }
 
-:where(.solo-page) :is(.selectify-radio, .selectify-checkbox, .selectify-radio *, .selectify-checkbox *) {
-  --selectify-checkbox-bg: color-mix(in srgb, #68650b 6%, transparent);
-  --selectify-checkbox-checked-bg: color-mix(in srgb, #68650b 16%, transparent);
-  --selectify-checkbox-check-circle: #3f704d;
-  --selectify-checkbox-checked-circle: #68650b;
-  --selectify-checkbox-disabled-bg: color-mix(in sRGB, currentColor 5%, transparent);
-  --selectify-checkbox-disabled-circle: color-mix(in sRGB, currentColor 22%, transparent);
-  --selectify-checkbox-border-color: #3f704d;
-  --selectify-checkbox-hover-border-color: #68650b;
-  --selectify-checkbox-hover-bg: color-mix(in srgb, #68650b 10%, transparent);
-  --selectify-checkbox-active-border-color: #68650b;
-  --selectify-checkbox-active-bg: color-mix(in srgb, #68650b 14%, transparent);
-  --selectify-checkbox-checked-border-color: #68650b;
-}
+  :where(.solo-page) :is(.selectify-radio, .selectify-checkbox, .selectify-radio *, .selectify-checkbox *) {
+    --selectify-checkbox-bg: color-mix(in srgb, #68650b 6%, transparent);
+    --selectify-checkbox-checked-bg: color-mix(in srgb, #68650b 16%, transparent);
+    --selectify-checkbox-check-circle: #3f704d;
+    --selectify-checkbox-checked-circle: #68650b;
+    --selectify-checkbox-disabled-bg: color-mix(in sRGB, currentColor 5%, transparent);
+    --selectify-checkbox-disabled-circle: color-mix(in sRGB, currentColor 22%, transparent);
+    --selectify-checkbox-border-color: #3f704d;
+    --selectify-checkbox-hover-border-color: #68650b;
+    --selectify-checkbox-hover-bg: color-mix(in srgb, #68650b 10%, transparent);
+    --selectify-checkbox-active-border-color: #68650b;
+    --selectify-checkbox-active-bg: color-mix(in srgb, #68650b 14%, transparent);
+    --selectify-checkbox-checked-border-color: #68650b;
+  }
 
-.solo-page .selectify-select,
-:where(.solo-page .selectify-select) * {
-  --selectify-select-bg: #0c0b01;
-  --selectify-select-hover-bg: #121002;
-  --selectify-select-color: var(--r-text);
-  --selectify-select-border-color: var(--r-border);
-  --selectify-select-focus-border-color: #68650b;
-  --selectify-select-disabled-bg: #18170c;
-  --selectify-select-arrow-color: #68650b;
-  --selectify-dropdown-shadow: 0 10px 28px -12px color-mix(in srgb, #fbfadd 22%, transparent);
-  --selectify-option-hover-bg: #131202;
-  --selectify-option-active-bg: #191802;
-}
+  .solo-page .selectify-select,
+  :where(.solo-page .selectify-select) * {
+    --selectify-select-bg: #0c0b01;
+    --selectify-select-hover-bg: #121002;
+    --selectify-select-color: var(--r-text);
+    --selectify-select-border-color: var(--r-border);
+    --selectify-select-focus-border-color: #68650b;
+    --selectify-select-disabled-bg: #18170c;
+    --selectify-select-arrow-color: #68650b;
+    --selectify-dropdown-shadow: 0 10px 28px -12px color-mix(in srgb, #fbfadd 22%, transparent);
+    --selectify-option-hover-bg: #131202;
+    --selectify-option-active-bg: #191802;
+  }
 
-/* Region text colors: one block per region with its heading (--r-heading), link
+  /* Region text colors: one block per region with its heading (--r-heading), link
    (--r-link) and link hover (--r-link-hover) colors, and button hover text where the
    scheme sets one. Backgrounds above are the scheme's own. Every color here reaches
    WCAG AA (4.5:1) on the grounds named in its comment. A site's region colors still win. */
-/* Header: on #000000, #1b1a03. */
-.solo-header {
-  --r-link: #589d6b;
-  --r-link-hover: #75b186;
-}
+  /* Header: on #000000, #1b1a03. */
+  .solo-header {
+    --r-link: #589d6b;
+    --r-link-hover: #75b186;
+  }
 
-/* Highlighted: on #0c0b01. */
-.solo-highlighted {
-  --r-link: #589d6b;
-  --r-link-hover: #75b186;
-}
+  /* Highlighted: on #0c0b01. */
+  .solo-highlighted {
+    --r-link: #589d6b;
+    --r-link-hover: #75b186;
+  }
 
-/* Fixed search: on #000000, #0c0b01. */
-.solo-fixed-search-block,
-.solo-fixed-search {
-  --r-link: #589d6b;
-  --r-link-hover: #75b186;
-}
+  /* Fixed search: on #000000, #0c0b01. */
+  .solo-fixed-search-block,
+  .solo-fixed-search {
+    --r-link: #589d6b;
+    --r-link-hover: #75b186;
+  }
 
-/* Popup login: on #000000, #0c0b01. */
-.solo-popup-login-block__inner,
-.solo-popup-login__inner {
-  --r-link: #589d6b;
-  --r-link-hover: #75b186;
-}
+  /* Popup login: on #000000, #0c0b01. */
+  .solo-popup-login-block__inner,
+  .solo-popup-login__inner {
+    --r-link: #589d6b;
+    --r-link-hover: #75b186;
+  }
 
-/* Welcome text: on #0c0b01. */
-.solo-welcome-text {
-  --r-link: #589d6b;
-  --r-link-hover: #75b186;
-}
+  /* Welcome text: on #0c0b01. */
+  .solo-welcome-text {
+    --r-link: #589d6b;
+    --r-link-hover: #75b186;
+  }
 
-/* Top: on #000000, #0c0b01. */
-.solo-container--top {
-  --r-link: #589d6b;
-  --r-link-hover: #75b186;
-}
+  /* Top: on #000000, #0c0b01. */
+  .solo-container--top {
+    --r-link: #589d6b;
+    --r-link-hover: #75b186;
+  }
 
-/* Main: on #000000. */
-.solo-container--main {
-  --r-link: #589d6b;
-  --r-link-hover: #75b186;
-}
+  /* Main: on #000000. */
+  .solo-container--main {
+    --r-link: #589d6b;
+    --r-link-hover: #75b186;
+  }
 
-/* Page title: on #000000, #1b1a03. */
-.solo-page-title {
-  --r-link: #589d6b;
-  --r-link-hover: #75b186;
-}
+  /* Page title: on #000000, #1b1a03. */
+  .solo-page-title {
+    --r-link: #589d6b;
+    --r-link-hover: #75b186;
+  }
 
-/* Breadcrumb: on #0c0b01. */
-.breadcrumb {
-  --r-link: #589d6b;
-  --r-link-hover: #75b186;
-}
+  /* Breadcrumb: on #0c0b01. */
+  .breadcrumb {
+    --r-link: #589d6b;
+    --r-link-hover: #75b186;
+  }
 
-/* Bottom: on #000000, #0c0b01. */
-.solo-container--bottom {
-  --r-link: #589d6b;
-  --r-link-hover: #75b186;
-}
+  /* Bottom: on #000000, #0c0b01. */
+  .solo-container--bottom {
+    --r-link: #589d6b;
+    --r-link-hover: #75b186;
+  }
 
-/* Footer: on #000000, #0c0b01. */
-.solo-container--footer {
-  --r-link: #589d6b;
-  --r-link-hover: #75b186;
-}
+  /* Footer: on #000000, #0c0b01. */
+  .solo-container--footer {
+    --r-link: #589d6b;
+    --r-link-hover: #75b186;
+  }
 
-/* Footer menu: on #000000, #0c0b01. */
-.solo-footer-menu__nav,
-.solo-footer-nav {
-  --r-link: #589d6b;
-  --r-link-hover: #75b186;
-}
+  /* Footer menu: on #000000, #0c0b01. */
+  .solo-footer-menu__nav,
+  .solo-footer-nav {
+    --r-link: #589d6b;
+    --r-link-hover: #75b186;
+  }
 
-/* Copyright: on #2a2905, #0e1911. */
-.solo-copyright {
-  --r-link: #589d6b;
-  --r-link-hover: #75b186;
-}
-
+  /* Copyright: on #2a2905, #0e1911. */
+  .solo-copyright {
+    --r-link: #589d6b;
+    --r-link-hover: #75b186;
+  }
 } /* end @layer solo.schemes */

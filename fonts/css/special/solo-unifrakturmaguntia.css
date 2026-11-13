@@ -1,6 +1,6 @@
 @layer solo.utilities {
   .solo-page .unifrakturmaguntia {
-    --solo-font-s: 'UnifrakturMaguntia', cursive;
+    --solo-font-s: "UnifrakturMaguntia", cursive;
   }
 }
 

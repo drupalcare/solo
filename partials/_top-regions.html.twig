@@ -10,19 +10,19 @@
 {% if top_first %}
   {% set top_regions = top_regions + 1 %}
   {% set top_first_outer_classes = 'solo-region-box solo-region-box--top solo-region-box--top-first' %}
-  {% set top_first_inner_classes = 'solo-region-box__inner solo-region-box__inner--top solo-region-box__inner--top-first solo-fade-target'  ~ (align_top_first ? ' ' ~ align_top_first) ~ (classes_top_first ? ' ' ~ classes_top_first) %}
+  {% set top_first_inner_classes = 'solo-region-box__inner solo-region-box__inner--top solo-region-box__inner--top-first solo-fade-target' ~ (align_top_first ? ' ' ~ align_top_first) ~ (classes_top_first ? ' ' ~ classes_top_first) %}
 {% endif %}
 
 {% if top_second %}
   {% set top_regions = top_regions + 1 %}
   {% set top_second_outer_classes = 'solo-region-box solo-region-box--top solo-region-box--top-second' %}
-  {% set top_second_inner_classes = 'solo-region-box__inner solo-region-box__inner--top solo-region-box__inner--top-second solo-fade-target'~ (align_top_second ? ' ' ~ align_top_second) ~ (classes_top_second ? ' ' ~ classes_top_second) %}
+  {% set top_second_inner_classes = 'solo-region-box__inner solo-region-box__inner--top solo-region-box__inner--top-second solo-fade-target' ~ (align_top_second ? ' ' ~ align_top_second) ~ (classes_top_second ? ' ' ~ classes_top_second) %}
 {% endif %}
 
 {% if top_third %}
   {% set top_regions = top_regions + 1 %}
   {% set top_third_outer_classes = 'solo-region-box solo-region-box--top solo-region-box--top-third' %}
-  {% set top_third_inner_classes = 'solo-region-box__inner solo-region-box__inner--top solo-region-box__inner--top-third solo-fade-target'  ~ (align_top_third ? ' ' ~ align_top_third) ~ (classes_top_third ? ' ' ~ classes_top_third) %}
+  {% set top_third_inner_classes = 'solo-region-box__inner solo-region-box__inner--top solo-region-box__inner--top-third solo-fade-target' ~ (align_top_third ? ' ' ~ align_top_third) ~ (classes_top_third ? ' ' ~ classes_top_third) %}
 {% endif %}
 
 {% set top_active = 'solo-container--top-active-' ~ top_regions %}

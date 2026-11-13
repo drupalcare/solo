@@ -1,6 +1,6 @@
 @layer solo.utilities {
   .solo-page .irish-grover {
-    --solo-font-s: 'Irish Grover', cursive;
+    --solo-font-s: "Irish Grover", cursive;
   }
 }
 

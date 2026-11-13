@@ -9,7 +9,8 @@
   .solo-page ul,
   .solo-page div:not(h1 div, h2 div, h3 div),
   .solo-page span:not(h1 span, h2 span, h3 span) {
-    --solo-font: 'Titillium Web', sans-serif;
+    --solo-font: "Titillium Web", sans-serif;
+
     font-family: var(--solo-font);
   }
 
@@ -20,7 +21,7 @@
   .solo-page h5,
   .solo-page h6,
   #solo-page-wrapper .titillium-web {
-    --solo-font: 'Titillium Web', sans-serif;
+    --solo-font: "Titillium Web", sans-serif;
   }
 }
 

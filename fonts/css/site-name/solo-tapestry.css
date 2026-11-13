@@ -2,11 +2,11 @@
   #solo-header.solo-tapestry .solo-branding__site-name-link,
   #solo-page-wrapper.solo-tapestry .solo-page-title__text,
   html.solo-preloader-enabled #solo-preloader.solo-tapestry .solo-preloader__text {
-    font-family: "Tapestry", serif;
+    font-family: Tapestry, serif;
   }
 }
 
 /* Unlayered on purpose. Font classes beat unlayered element rules (PB w3-modern.css headings and buttons) as before; a layer would lose to them. */
 #solo-page-wrapper .tapestry {
-  font-family: "Tapestry", serif;
+  font-family: Tapestry, serif;
 }

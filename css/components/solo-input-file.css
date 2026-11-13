@@ -14,399 +14,395 @@
  */
 
 @layer solo.theme {
-
-/* https://iconduck.com/sets/svg-file-type-icons */
-
-.field--type-file .field__items .field__item {
-  margin-block-end: var(--solo-px8);
-}
-
-.file:not(.imce-item) {
-  display: inline-block;
-  min-height: var(--solo-px24);
-  padding-inline-start: var(--solo-px32);
-  background-repeat: no-repeat;
-  background-position: var(--file-icon, left) center;
-  background-size: var(--solo-px32) var(--solo-px32);
-}
-
-/* Adjust for RTL */
-:where([dir="rtl"]) .file:not(.imce-item) {
-  --file-icon: right;
-}
-
-.file--general,
-.file--application-octet-stream {
-  background-image: url(../../images/icons/file/application-octet-stream.svg);
-}
-
-.file--package-x-generic {
-  background-image: url(../../images/icons/file/package-x-generic.svg);
-}
-
-.file--x-office-spreadsheet {
-  background-image: url(../../images/icons/file/x-office-spreadsheet.svg);
-}
-
-.file--x-office-document {
-  background-image: url(../../images/icons/file/x-office-document.svg);
-}
-
-.file--x-office-presentation {
-  background-image: url(../../images/icons/file/x-office-presentation.svg);
-}
-
-.file--text-x-script {
-  background-image: url(../../images/icons/file/text-x-script.svg);
-}
-
-.file--text-html {
-  background-image: url(../../images/icons/file/text-html.svg);
-}
-
-.file--text-plain {
-  background-image: url(../../images/icons/file/text-plain.svg);
-}
-
-.file--application-pdf {
-  background-image: url(../../images/icons/file/application-pdf.svg);
-}
-
-.file--application-x-executable {
-  background-image: url(../../images/icons/file/application-x-executable.svg);
-}
-
-.file--audio {
-  background-image: url(../../images/icons/file/audio-x-generic.svg);
-}
-
-.file--video {
-  background-image: url(../../images/icons/file/video-x-generic.svg);
-}
-
-.file--text {
-  background-image: url(../../images/icons/file/text-x-generic.svg);
-}
-
-.file--image {
-  background-image: url(../../images/icons/file/image-x-generic.svg);
-}
-
-/* Separate files */
-
-/* Document */
-.file--pdf {
-  background-image: url(../../images/icons/file/pdf.svg);
-}
-
-.file--text,
-.file--txt {
-  background-image: url(../../images/icons/file/txt.svg);
-}
-
-.file--docx {
-  background-image: url(../../images/icons/file/docx.svg);
-}
-
-.file--doc {
-  background-image: url(../../images/icons/file/doc.svg);
-}
-
-.file--odt {
-  background-image: url(../../images/icons/file/odt.svg);
-}
-
-.file--dot {
-  background-image: url(../../images/icons/file/dot.svg);
-}
-
-.file--ott {
-  background-image: url(../../images/icons/file/ott.svg);
-}
-
-/* Spreadsheet */
-.file--xls {
-  background-image: url(../../images/icons/file/xls.svg);
-}
-
-.file--xlsx {
-  background-image: url(../../images/icons/file/xlsx.svg);
-}
-
-.file--csv {
-  background-image: url(../../images/icons/file/csv.svg);
-}
-
-.file--csv {
-  background-image: url(../../images/icons/file/csv.svg);
-}
-
-.file--ods {
-  background-image: url(../../images/icons/file/ods.svg);
-}
-
-.file--ots {
-  background-image: url(../../images/icons/file/ots.svg);
-}
-
-/* Presentation */
-.file--ppt,
-.file--pptx {
-  background-image: url(../../images/icons/file/ppt.svg);
-}
-
-.file--odp {
-  background-image: url(../../images/icons/file/odp.svg);
-}
-
-.file--otp {
-  background-image: url(../../images/icons/file/otp.svg);
-}
-
-.file--odf {
-  background-image: url(../../images/icons/file/odf.svg);
-}
-
-.file--key {
-  background-image: url(../../images/icons/file/key.svg);
-}
-
-/* Movie */
-.file--mp4 {
-  background-image: url(../../images/icons/file/mp4.svg);
-}
-
-.file--mkv {
-  background-image: url(../../images/icons/file/mkv.svg);
-}
-
-.file--mpeg {
-  background-image: url(../../images/icons/file/mpeg.svg);
-}
-
-.file--mov {
-  background-image: url(../../images/icons/file/mov.svg);
-}
-
-.file--wmv {
-  background-image: url(../../images/icons/file/wmv.svg);
-}
-
-.file--avi {
-  background-image: url(../../images/icons/file/avi.svg);
-}
-
-.file--flv {
-  background-image: url(../../images/icons/file/flv.svg);
-}
-
-/* Audio */
-.file--aiff {
-  background-image: url(../../images/icons/file/aiff.svg);
-}
-
-.file--ogg {
-  background-image: url(../../images/icons/file/ogg.svg);
-}
-
-.file--wav {
-  background-image: url(../../images/icons/file/wav.svg);
-}
-
-.file--aac {
-  background-image: url(../../images/icons/file/aac.svg);
-}
-
-.file--wma {
-  background-image: url(../../images/icons/file/wma.svg);
-}
-
-.file--midi {
-  background-image: url(../../images/icons/file/midi.svg);
-}
-
-.file--mp3 {
-  background-image: url(../../images/icons/file/mp3.svg);
-}
-
-.file--m3u {
-  background-image: url(../../images/icons/file/m3u.svg);
-}
-
-/* Image */
-.file--tiff {
-  background-image: url(../../images/icons/file/tiff.svg);
-}
-
-.file--svg {
-  background-image: url(../../images/icons/file/svg.svg);
-}
-
-.file--gif {
-  background-image: url(../../images/icons/file/gif.svg);
-}
-
-.file--png {
-  background-image: url(../../images/icons/file/png.svg);
-}
-
-.file--bmp {
-  background-image: url(../../images/icons/file/bmp.svg);
-}
-
-.file--jpg,
-.file--jpeg {
-  background-image: url(../../images/icons/file/jpeg.svg);
-}
-
-/* Compressed files */
-.file--zip {
-  background-image: url(../../images/icons/file/zip.svg);
-}
-
-.file--7z {
-  background-image: url(../../images/icons/file/7z.svg);
-}
-
-.file--gz {
-  background-image: url(../../images/icons/file/gz.svg);
-}
-
-.file--rar {
-  background-image: url(../../images/icons/file/rar.svg);
-}
-
-.file--iso {
-  background-image: url(../../images/icons/file/iso.svg);
-}
-
-.file--tar {
-  background-image: url(../../images/icons/file/tar.svg);
-}
-
-.file--dmg {
-  background-image: url(../../images/icons/file/dmg.svg);
-}
-
-.file--bz2 {
-  background-image: url(../../images/icons/file/bz2.svg);
-}
-.file--bz {
-  background-image: url(../../images/icons/file/bz.svg);
-}
-
-/* Scripts */
-.file--css {
-  background-image: url(../../images/icons/file/css.svg);
-}
-
-.file--exe {
-  background-image: url(../../images/icons/file/exe.svg);
-}
-
-.file--dll {
-  background-image: url(../../images/icons/file/dll.svg);
-}
-
-.file--html {
-  background-image: url(../../images/icons/file/html.svg);
-}
-
-.file--mime-application-json {
-  background-image: url(../../images/icons/file/json.svg);
-}
-
-.file--rtf {
-  background-image: url(../../images/icons/file/rtf.svg);
-}
-
-.file--xml {
-  background-image: url(../../images/icons/file/xml.svg);
-}
-
-.file--pyz {
-  background-image: url(../../images/icons/file/pyz.svg);
-}
-
-.file--rb {
-  background-image: url(../../images/icons/file/rb.svg);
-}
-
-.file--yml {
-  background-image: url(../../images/icons/file/yml.svg);
-}
-
-.file--sql {
-  background-image: url(../../images/icons/file/sql.svg);
-}
-
-.file--bz2 {
-  background-image: url(../../images/icons/file/bz2.svg);
-}
-
-.file--pxm {
-  background-image: url(../../images/icons/file/pxm.svg);
-}
-
-.file--tga {
-  background-image: url(../../images/icons/file/tga.svg);
-}
-
-/* Upload widget, merged from solo-file-upload.css. */
-.solo-input-file__wrapper,
-.solo-file-upload-wrapper {
-  position: relative;
-  display: inline-block;
-  width: auto;
-}
-
-.solo-input-file__native,
-.solo-file-native {
-  position: absolute;
-  z-index: 2;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  cursor: pointer;
-  opacity: 0;
-}
-
-.solo-input-file__custom,
-.solo-file-custom {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  transition: 0.3s;
-  padding-block: 7px;
-  padding-inline: 0 7px;
-}
-
-.solo-input-file__name,
-.solo-file-name {
-  overflow: hidden;
-  flex-grow: 1;
-  padding-inline-start: 1rem;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-  opacity: 0.7;
-  font-size: 0.9rem;
-}
-
+  /* https://iconduck.com/sets/svg-file-type-icons */
+
+  .field--type-file .field__items .field__item {
+    margin-block-end: var(--solo-px8);
+  }
+
+  .file:not(.imce-item) {
+    display: inline-block;
+    min-height: var(--solo-px24);
+    padding-inline-start: var(--solo-px32);
+    background-repeat: no-repeat;
+    background-position: var(--file-icon, left) center;
+    background-size: var(--solo-px32) var(--solo-px32);
+  }
+
+  /* Adjust for RTL */
+  :where([dir="rtl"]) .file:not(.imce-item) {
+    --file-icon: right;
+  }
+
+  .file--general,
+  .file--application-octet-stream {
+    background-image: url(../../images/icons/file/application-octet-stream.svg);
+  }
+
+  .file--package-x-generic {
+    background-image: url(../../images/icons/file/package-x-generic.svg);
+  }
+
+  .file--x-office-spreadsheet {
+    background-image: url(../../images/icons/file/x-office-spreadsheet.svg);
+  }
+
+  .file--x-office-document {
+    background-image: url(../../images/icons/file/x-office-document.svg);
+  }
+
+  .file--x-office-presentation {
+    background-image: url(../../images/icons/file/x-office-presentation.svg);
+  }
+
+  .file--text-x-script {
+    background-image: url(../../images/icons/file/text-x-script.svg);
+  }
+
+  .file--text-html {
+    background-image: url(../../images/icons/file/text-html.svg);
+  }
+
+  .file--text-plain {
+    background-image: url(../../images/icons/file/text-plain.svg);
+  }
+
+  .file--application-pdf {
+    background-image: url(../../images/icons/file/application-pdf.svg);
+  }
+
+  .file--application-x-executable {
+    background-image: url(../../images/icons/file/application-x-executable.svg);
+  }
+
+  .file--audio {
+    background-image: url(../../images/icons/file/audio-x-generic.svg);
+  }
+
+  .file--video {
+    background-image: url(../../images/icons/file/video-x-generic.svg);
+  }
+
+  .file--text {
+    background-image: url(../../images/icons/file/text-x-generic.svg);
+  }
+
+  .file--image {
+    background-image: url(../../images/icons/file/image-x-generic.svg);
+  }
+
+  /* Separate files */
+
+  /* Document */
+  .file--pdf {
+    background-image: url(../../images/icons/file/pdf.svg);
+  }
+
+  .file--text,
+  .file--txt {
+    background-image: url(../../images/icons/file/txt.svg);
+  }
+
+  .file--docx {
+    background-image: url(../../images/icons/file/docx.svg);
+  }
+
+  .file--doc {
+    background-image: url(../../images/icons/file/doc.svg);
+  }
+
+  .file--odt {
+    background-image: url(../../images/icons/file/odt.svg);
+  }
+
+  .file--dot {
+    background-image: url(../../images/icons/file/dot.svg);
+  }
+
+  .file--ott {
+    background-image: url(../../images/icons/file/ott.svg);
+  }
+
+  /* Spreadsheet */
+  .file--xls {
+    background-image: url(../../images/icons/file/xls.svg);
+  }
+
+  .file--xlsx {
+    background-image: url(../../images/icons/file/xlsx.svg);
+  }
+
+  .file--csv {
+    background-image: url(../../images/icons/file/csv.svg);
+  }
+
+  .file--csv {
+    background-image: url(../../images/icons/file/csv.svg);
+  }
+
+  .file--ods {
+    background-image: url(../../images/icons/file/ods.svg);
+  }
+
+  .file--ots {
+    background-image: url(../../images/icons/file/ots.svg);
+  }
+
+  /* Presentation */
+  .file--ppt,
+  .file--pptx {
+    background-image: url(../../images/icons/file/ppt.svg);
+  }
+
+  .file--odp {
+    background-image: url(../../images/icons/file/odp.svg);
+  }
+
+  .file--otp {
+    background-image: url(../../images/icons/file/otp.svg);
+  }
+
+  .file--odf {
+    background-image: url(../../images/icons/file/odf.svg);
+  }
+
+  .file--key {
+    background-image: url(../../images/icons/file/key.svg);
+  }
+
+  /* Movie */
+  .file--mp4 {
+    background-image: url(../../images/icons/file/mp4.svg);
+  }
+
+  .file--mkv {
+    background-image: url(../../images/icons/file/mkv.svg);
+  }
+
+  .file--mpeg {
+    background-image: url(../../images/icons/file/mpeg.svg);
+  }
+
+  .file--mov {
+    background-image: url(../../images/icons/file/mov.svg);
+  }
+
+  .file--wmv {
+    background-image: url(../../images/icons/file/wmv.svg);
+  }
+
+  .file--avi {
+    background-image: url(../../images/icons/file/avi.svg);
+  }
+
+  .file--flv {
+    background-image: url(../../images/icons/file/flv.svg);
+  }
+
+  /* Audio */
+  .file--aiff {
+    background-image: url(../../images/icons/file/aiff.svg);
+  }
+
+  .file--ogg {
+    background-image: url(../../images/icons/file/ogg.svg);
+  }
+
+  .file--wav {
+    background-image: url(../../images/icons/file/wav.svg);
+  }
+
+  .file--aac {
+    background-image: url(../../images/icons/file/aac.svg);
+  }
+
+  .file--wma {
+    background-image: url(../../images/icons/file/wma.svg);
+  }
+
+  .file--midi {
+    background-image: url(../../images/icons/file/midi.svg);
+  }
+
+  .file--mp3 {
+    background-image: url(../../images/icons/file/mp3.svg);
+  }
+
+  .file--m3u {
+    background-image: url(../../images/icons/file/m3u.svg);
+  }
+
+  /* Image */
+  .file--tiff {
+    background-image: url(../../images/icons/file/tiff.svg);
+  }
+
+  .file--svg {
+    background-image: url(../../images/icons/file/svg.svg);
+  }
+
+  .file--gif {
+    background-image: url(../../images/icons/file/gif.svg);
+  }
+
+  .file--png {
+    background-image: url(../../images/icons/file/png.svg);
+  }
+
+  .file--bmp {
+    background-image: url(../../images/icons/file/bmp.svg);
+  }
+
+  .file--jpg,
+  .file--jpeg {
+    background-image: url(../../images/icons/file/jpeg.svg);
+  }
+
+  /* Compressed files */
+  .file--zip {
+    background-image: url(../../images/icons/file/zip.svg);
+  }
+
+  .file--7z {
+    background-image: url(../../images/icons/file/7z.svg);
+  }
+
+  .file--gz {
+    background-image: url(../../images/icons/file/gz.svg);
+  }
+
+  .file--rar {
+    background-image: url(../../images/icons/file/rar.svg);
+  }
+
+  .file--iso {
+    background-image: url(../../images/icons/file/iso.svg);
+  }
+
+  .file--tar {
+    background-image: url(../../images/icons/file/tar.svg);
+  }
+
+  .file--dmg {
+    background-image: url(../../images/icons/file/dmg.svg);
+  }
+
+  .file--bz2 {
+    background-image: url(../../images/icons/file/bz2.svg);
+  }
+  .file--bz {
+    background-image: url(../../images/icons/file/bz.svg);
+  }
+
+  /* Scripts */
+  .file--css {
+    background-image: url(../../images/icons/file/css.svg);
+  }
+
+  .file--exe {
+    background-image: url(../../images/icons/file/exe.svg);
+  }
+
+  .file--dll {
+    background-image: url(../../images/icons/file/dll.svg);
+  }
+
+  .file--html {
+    background-image: url(../../images/icons/file/html.svg);
+  }
+
+  .file--mime-application-json {
+    background-image: url(../../images/icons/file/json.svg);
+  }
+
+  .file--rtf {
+    background-image: url(../../images/icons/file/rtf.svg);
+  }
+
+  .file--xml {
+    background-image: url(../../images/icons/file/xml.svg);
+  }
+
+  .file--pyz {
+    background-image: url(../../images/icons/file/pyz.svg);
+  }
+
+  .file--rb {
+    background-image: url(../../images/icons/file/rb.svg);
+  }
+
+  .file--yml {
+    background-image: url(../../images/icons/file/yml.svg);
+  }
+
+  .file--sql {
+    background-image: url(../../images/icons/file/sql.svg);
+  }
+
+  .file--bz2 {
+    background-image: url(../../images/icons/file/bz2.svg);
+  }
+
+  .file--pxm {
+    background-image: url(../../images/icons/file/pxm.svg);
+  }
+
+  .file--tga {
+    background-image: url(../../images/icons/file/tga.svg);
+  }
+
+  /* Upload widget, merged from solo-file-upload.css. */
+  .solo-input-file__wrapper,
+  .solo-file-upload-wrapper {
+    position: relative;
+    display: inline-block;
+    width: auto;
+  }
+
+  .solo-input-file__native,
+  .solo-file-native {
+    position: absolute;
+    z-index: 2;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+    opacity: 0;
+  }
+
+  .solo-input-file__custom,
+  .solo-file-custom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    transition: 0.3s;
+    padding-block: 7px;
+    padding-inline: 0 7px;
+  }
+
+  .solo-input-file__name,
+  .solo-file-name {
+    overflow: hidden;
+    flex-grow: 1;
+    padding-inline-start: 1rem;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    opacity: 0.7;
+    font-size: 0.9rem;
+  }
 } /* end @layer solo.theme */
 
 @layer solo.locked {
-
-/* Reduced motion: end states are kept, movement is not (WCAG 2.3.3). */
-@media (prefers-reduced-motion: reduce) {
-  :where(.solo-input-file__custom),
-  :where(.solo-file-custom) {
-    transition-duration: 0.01ms !important;
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
+  /* Reduced motion: end states are kept, movement is not (WCAG 2.3.3). */
+  @media (prefers-reduced-motion: reduce) {
+    :where(.solo-input-file__custom),
+    :where(.solo-file-custom) {
+      transition-duration: 0.01ms !important;
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+    }
   }
-}
-
 } /* end @layer solo.locked */
 
 /*

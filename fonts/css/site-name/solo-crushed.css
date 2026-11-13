@@ -2,11 +2,11 @@
   #solo-header.solo-crushed .solo-branding__site-name-link,
   #solo-page-wrapper.solo-crushed .solo-page-title__text,
   html.solo-preloader-enabled #solo-preloader.solo-crushed .solo-preloader__text {
-    font-family: "Crushed", sans-serif;
+    font-family: Crushed, sans-serif;
   }
 }
 
 /* Unlayered on purpose. Font classes beat unlayered element rules (PB w3-modern.css headings and buttons) as before; a layer would lose to them. */
 #solo-page-wrapper .crushed {
-  font-family: "Crushed", sans-serif;
+  font-family: Crushed, sans-serif;
 }

@@ -1,59 +1,63 @@
 @layer solo.theme {
+  :where(.breadcrumb) > .solo-breadcrumb__inner {
+    padding-block-start: 0;
+    padding-block-end: 0;
+  }
 
-:where(.breadcrumb) > .solo-breadcrumb__inner {
-  padding-block-start: 0;
-  padding-block-end: 0;
-}
+  .solo-breadcrumb__nav {
+    display: grid;
+  }
 
-.solo-breadcrumb__nav {
-  display: grid;
-}
+  :where(.solo-breadcrumb__nav) > * {
+    min-width: 0;
+  }
 
-:where(.solo-breadcrumb__nav) > * {
-  min-width: 0;
-}
+  ul.solo-breadcrumb__menu,
+  :where(ol).solo-breadcrumb__menu {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
 
-ul.solo-breadcrumb__menu,
-:where(ol).solo-breadcrumb__menu {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
+  ul.solo-breadcrumb__menu li,
+  ol.solo-breadcrumb__menu li {
+    align-items: center;
+    border-block-end: none;
+    font-size: var(--solo-px14);
+  }
 
-ul.solo-breadcrumb__menu li,
-ol.solo-breadcrumb__menu li {  align-items: center;  border-block-end: none;
-  font-size: var(--solo-px14);
-}
+  ul.solo-breadcrumb__menu li > a,
+  ol.solo-breadcrumb__menu li > a {
+    align-items: center;
+  }
 
-ul.solo-breadcrumb__menu li > a,
-ol.solo-breadcrumb__menu li > a {  align-items: center;}
+  ul.solo-breadcrumb__menu li > span,
+  ol.solo-breadcrumb__menu li > span {
+    align-items: center;
+  }
 
-ul.solo-breadcrumb__menu li > span,
-ol.solo-breadcrumb__menu li > span {  align-items: center;}
+  :where(.solo-breadcrumb__menu li) .solo-breadcrumb__separator {
+    display: flex;
+    align-items: center;
+    fill: var(--r-text);
+  }
 
-:where(.solo-breadcrumb__menu li) .solo-breadcrumb__separator {
-  display: flex;
-  align-items: center;
-  fill: var(--r-text);
-}
+  .solo-page--breadcrumb-scroll ul.solo-breadcrumb__menu,
+  :where(.solo-page--breadcrumb-scroll) ol.solo-breadcrumb__menu {
+    overflow-x: auto;
+    flex-wrap: nowrap;
+    white-space: nowrap;
+  }
 
-.solo-page--breadcrumb-scroll ul.solo-breadcrumb__menu,
-:where(.solo-page--breadcrumb-scroll) ol.solo-breadcrumb__menu {
-  overflow-x: auto;
-  flex-wrap: nowrap;
-  white-space: nowrap;
-}
+  :where(.solo-breadcrumb__menu > li:first-child) > * {
+    padding-inline-start: 0;
+  }
 
-:where(.solo-breadcrumb__menu > li:first-child) > * {
-  padding-inline-start: 0;
-}
-
-/* The band sits directly under the page title as one slim line, not a second hero-sized band */
-.solo-outer.breadcrumb > .solo-inner.solo-breadcrumb__inner {
-  padding-block: var(--solo-px4);
-}
-
+  /* The band sits directly under the page title as one slim line, not a second hero-sized band */
+  .solo-outer.breadcrumb > .solo-inner.solo-breadcrumb__inner {
+    padding-block: var(--solo-px4);
+  }
 } /* end @layer solo.theme */

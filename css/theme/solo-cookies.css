@@ -1,116 +1,110 @@
 @layer solo.theme {
-
-:where(.solo-page) .cookiesjsr-banner,
-#solo-page-wrapper .cookiesjsr-layer div,
-#solo-page-wrapper .cookiesjsr-layer header,
-:where(.solo-page .cookiesjsr-layer) footer {
-  color: var(--r-text);
-}
-
-:where(.solo-page) .cookiesjsr-banner {
-  z-index: 5000;
-  border-block-start: 3px solid var(--r-border);
-  border-radius: var(--solo-px4);
-}
-
-/* stylelint-enable order/properties-order */
-
-:where(.solo-page) .cookiesjsr-layer,
-:where(.solo-page) .cookiesjsr-service-group--content {
-  /* stylelint-disable-next-line no-unknown-animations -- keyframes are defined in the vendored css/w3-css/w3.css */
-  animation: opac 0.8s;
-  animation-timing-function: cubic-bezier(0.25, 0.8, 0.25, 1);
-}
-
-#solo-page-wrapper .cookiesjsr-layer--header button {
-  text-indent: initial;
-}
-
-:where(.solo-page) .cookiesjsr-layer {
-  border: 1px solid var(--r-border);
-  border-radius: var(--solo-px4);
-}
-
-:where(.solo-page) .cookiesjsr-links,
-:where(.solo-page .cookiesjsr-links) div,
-#solo-page-wrapper .cookiesjsr-layer div span,
-:where(.solo-page .cookiesjsr-layer footer) div,
-:where(.solo-page .cookiesjsr-service-group--services) div {
-  background: transparent !important;
-}
-
-:where(.solo-page) .cookiesjsr-links {
-  list-style: none;
-}
-
-@media (min-width: 36rem) {
-  :where([dir="rtl"]) .cookiesjsr-links.links--row {
-    justify-content: start;
+  :where(.solo-page) .cookiesjsr-banner,
+  #solo-page-wrapper .cookiesjsr-layer div,
+  #solo-page-wrapper .cookiesjsr-layer header,
+  :where(.solo-page .cookiesjsr-layer) footer {
+    color: var(--r-text);
   }
-}
 
-:where(.solo-page) .cookiesjsr-service-group--tab {
-  width: 100%;
-  text-align: start;
-}
-
-#solo-page-wrapper .cookiesjsr-service-group.active button {
-  text-decoration: underline !important;
-}
-
-@media (min-width: 1200px) {
-  :where(.solo-page) .cookiesjsr-banner--action {
-    padding-inline-end: var(--solo-px16);
+  :where(.solo-page) .cookiesjsr-banner {
+    z-index: 5000;
+    border-block-start: 3px solid var(--r-border);
+    border-radius: var(--solo-px4);
   }
-}
 
-@media (max-width: 1200px) {
-  :where(.solo-page) .cookiesjsr-banner--action {
-    flex-direction: column-reverse;
+  :where(.solo-page) .cookiesjsr-layer,
+  :where(.solo-page) .cookiesjsr-service-group--content {
+    /* stylelint-disable-next-line no-unknown-animations -- keyframes are defined in the vendored css/w3-css/w3.css */
+    animation: opac 0.8s;
+    animation-timing-function: cubic-bezier(0.25, 0.8, 0.25, 1);
   }
-}
 
-@media (min-width: 768px) {
-  #solo-page-wrapper li.cookiesjsr-service-group > div {
-    border-inline-start: 1px solid var(--r-border);
+  #solo-page-wrapper .cookiesjsr-layer--header button {
+    text-indent: initial;
+  }
+
+  :where(.solo-page) .cookiesjsr-layer {
+    border: 1px solid var(--r-border);
+    border-radius: var(--solo-px4);
+  }
+
+  :where(.solo-page) .cookiesjsr-links,
+  :where(.solo-page .cookiesjsr-links) div,
+  #solo-page-wrapper .cookiesjsr-layer div span,
+  :where(.solo-page .cookiesjsr-layer footer) div,
+  :where(.solo-page .cookiesjsr-service-group--services) div {
+    background: transparent !important;
+  }
+
+  :where(.solo-page) .cookiesjsr-links {
+    list-style: none;
+  }
+
+  @media (min-width: 36rem) {
+    :where([dir="rtl"]) .cookiesjsr-links.links--row {
+      justify-content: start;
+    }
   }
 
   :where(.solo-page) .cookiesjsr-service-group--tab {
-    width: 30%;
-  }
-}
-
-@media (max-width: 20rem) {
-  :where(.solo-page) .cookiesjsr-service {
-    flex-direction: column;
-  }
-
-  :where(.solo-page) .cookiesjsr-service--action,
-  :where(.solo-page) .cookiesjsr-service--description {
-    display: flex;
-    flex-direction: column;
-    justify-content: start;
     width: 100%;
+    text-align: start;
   }
 
-  :where(.solo-page) .cookiesjsr-service--action {
-    align-items: end;
+  #solo-page-wrapper .cookiesjsr-service-group.active button {
+    text-decoration: underline !important;
   }
-}
 
+  @media (min-width: 1200px) {
+    :where(.solo-page) .cookiesjsr-banner--action {
+      padding-inline-end: var(--solo-px16);
+    }
+  }
+
+  @media (max-width: 1200px) {
+    :where(.solo-page) .cookiesjsr-banner--action {
+      flex-direction: column-reverse;
+    }
+  }
+
+  @media (min-width: 768px) {
+    #solo-page-wrapper li.cookiesjsr-service-group > div {
+      border-inline-start: 1px solid var(--r-border);
+    }
+
+    :where(.solo-page) .cookiesjsr-service-group--tab {
+      width: 30%;
+    }
+  }
+
+  @media (max-width: 20rem) {
+    :where(.solo-page) .cookiesjsr-service {
+      flex-direction: column;
+    }
+
+    :where(.solo-page) .cookiesjsr-service--action,
+    :where(.solo-page) .cookiesjsr-service--description {
+      display: flex;
+      flex-direction: column;
+      justify-content: start;
+      width: 100%;
+    }
+
+    :where(.solo-page) .cookiesjsr-service--action {
+      align-items: end;
+    }
+  }
 } /* end @layer solo.theme */
 
 @layer solo.locked {
-
-/* Reduced motion: end states are kept, movement is not (WCAG 2.3.3). */
-@media (prefers-reduced-motion: reduce) {
-  :where(#solo-page-wrapper .cookiesjsr-banner.active),
-  :where(:where(.solo-page) .cookiesjsr-layer),
-  :where(:where(.solo-page) .cookiesjsr-service-group--content) {
-    transition-duration: 0.01ms !important;
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
+  /* Reduced motion: end states are kept, movement is not (WCAG 2.3.3). */
+  @media (prefers-reduced-motion: reduce) {
+    :where(#solo-page-wrapper .cookiesjsr-banner.active),
+    :where(:where(.solo-page) .cookiesjsr-layer),
+    :where(:where(.solo-page) .cookiesjsr-service-group--content) {
+      transition-duration: 0.01ms !important;
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+    }
   }
-}
-
 } /* end @layer solo.locked */

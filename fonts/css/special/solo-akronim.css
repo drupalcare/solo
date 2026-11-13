@@ -1,6 +1,6 @@
 @layer solo.utilities {
   .solo-page .akronim {
-    --solo-font-s: 'Akronim', cursive;
+    --solo-font-s: "Akronim", cursive;
   }
 }
 

@@ -12,236 +12,234 @@
  */
 
 @layer solo.schemes {
-
-/* Page wrapper
+  /* Page wrapper
 Anti-Flash White #F2F3F4
 
 Brilliant White #EDF1FE blue
 Bright White #F4F5F0 green
 Ceramic #FCFFF9 green shiny */
-:root {
-  --sc-head-tx: #306000;
-  --sc-link-tx: #0b35bf;
-  --sc-link-hover-tx: #051a5f;
-  --sc-menu-bg: #ebffd7;
-  --sc-menu-tx: #060b00;
-  --sc-menu-hover-tx: #172d00;
-  --sc-menu-hover-bg: #fff;
-  --sc-tab-hover-tx: #172d00;
-  --sc-menu-open-tx: #172d00;
-  --sc-menu-open-bg: #fff;
-  --sc-button-bg: #8a9463;
-  --sc-button-tx: #232b1a;
-  --sc-button-hover-tx: #181a11;
-  --sc-button-hover-bg: #e5e7dc;
-  --sc-main-container-bg: linear-gradient(45deg, #fcfff9, #fdfeff);
-  --sc-top-container-bg: linear-gradient(45deg, #fcfff9, #fdfeff);
-  --sc-fixed-search-block-bg: linear-gradient(45deg, #fcfff9, #fdfeff);
-  --sc-popup-login-block-inner-bg: linear-gradient(45deg, #fcfff9, #fdfeff);
-  --sc-bottom-container-bg: linear-gradient(45deg, #fcfff9, #fdfeff);
-  --sc-footer-container-bg: linear-gradient(45deg, #fcfff9, #fdfeff);
-  --sc-footer-menu-bg: linear-gradient(45deg, #fcfff9, #fdfeff);
-  --sc-copyright-bg: linear-gradient(180deg, #fdfeff, #fcfff9);
-  --sc-social-fill: #6cd700;
-  --sc-control-br: #c0c5a9;
-  --sc-fixed-search-block-shadow: 62, 67, 44;
-  --sc-social-box-shadow: 192, 197, 169;
-  --sc-region-rule-br: var(--solo-white);
-}
+  :root {
+    --sc-head-tx: #306000;
+    --sc-link-tx: #0b35bf;
+    --sc-link-hover-tx: #051a5f;
+    --sc-menu-bg: #ebffd7;
+    --sc-menu-tx: #060b00;
+    --sc-menu-hover-tx: #172d00;
+    --sc-menu-hover-bg: #fff;
+    --sc-tab-hover-tx: #172d00;
+    --sc-menu-open-tx: #172d00;
+    --sc-menu-open-bg: #fff;
+    --sc-button-bg: #8a9463;
+    --sc-button-tx: #232b1a;
+    --sc-button-hover-tx: #181a11;
+    --sc-button-hover-bg: #e5e7dc;
+    --sc-main-container-bg: linear-gradient(45deg, #fcfff9, #fdfeff);
+    --sc-top-container-bg: linear-gradient(45deg, #fcfff9, #fdfeff);
+    --sc-fixed-search-block-bg: linear-gradient(45deg, #fcfff9, #fdfeff);
+    --sc-popup-login-block-inner-bg: linear-gradient(45deg, #fcfff9, #fdfeff);
+    --sc-bottom-container-bg: linear-gradient(45deg, #fcfff9, #fdfeff);
+    --sc-footer-container-bg: linear-gradient(45deg, #fcfff9, #fdfeff);
+    --sc-footer-menu-bg: linear-gradient(45deg, #fcfff9, #fdfeff);
+    --sc-copyright-bg: linear-gradient(180deg, #fdfeff, #fcfff9);
+    --sc-social-fill: #6cd700;
+    --sc-control-br: #c0c5a9;
+    --sc-fixed-search-block-shadow: 62, 67, 44;
+    --sc-social-box-shadow: 192, 197, 169;
+    --sc-region-rule-br: var(--solo-white);
+  }
 
-.solo-page {
-  --r-border: #daffb5;
-  --r-background: #f4ffe8;
-  --r-text: #0e1c00;
-  --solo-accent-background-image: linear-gradient(45deg, #fdfeff, #fcfff9);
-  --solo-accent-background: linear-gradient(45deg, #fdfeff, #fcfff9);
-  --solo-accent-text: #306000;
-  --r-menu-text-hover: #172d00;
-  --r-menu-background-hover: #fff;
-}
+  .solo-page {
+    --r-border: #daffb5;
+    --r-background: #f4ffe8;
+    --r-text: #0e1c00;
+    --solo-accent-background-image: linear-gradient(45deg, #fdfeff, #fcfff9);
+    --solo-accent-background: linear-gradient(45deg, #fdfeff, #fcfff9);
+    --solo-accent-text: #306000;
+    --r-menu-text-hover: #172d00;
+    --r-menu-background-hover: #fff;
+  }
 
-:where(.solo-page) .solo-region-box__inner:where(:not([style*="--r-border:"] *)) {
-  --r-border: #c1ff82;
-}
+  :where(.solo-page) .solo-region-box__inner:where(:not([style*="--r-border:"] *)) {
+    --r-border: #c1ff82;
+  }
 
-:where(.solo-page) .solo-popup-login-block__open:where(:not([style*="--r-border:"] *)),
-:where(.solo-page) .solo-popup-login__open:where(:not([style*="--r-border:"] *)),
-:where(.solo-page .solo-hamburger) button:where(:not([style*="--r-border:"] *)),
-:where(.solo-page) .solo-menu-main:where(:not([style*="--r-border:"] *)),
-:where(.solo-page) .solo-main-nav:where(:not([style*="--r-border:"] *)),
-:where(.solo-page .solo-menu-main) ul:where(:not([style*="--r-border:"] *)),
-:where(.solo-page .solo-main-nav) ul:where(:not([style*="--r-border:"] *)),
-:where(.solo-page) .solo-menu-main li:where(:not([style*="--r-border:"] *)),
-:where(.solo-page) .solo-main-nav li:where(:not([style*="--r-border:"] *)),
-:where(.solo-page) .solo-header li.solo-menu-tree__item > a:where(:not([style*="--r-border:"] *)),
-:where(.solo-page) .solo-menu-main li > a:where(:not([style*="--r-border:"] *)),
-:where(.solo-page) .solo-main-nav li > a:where(:not([style*="--r-border:"] *)),
-:where(.solo-page .solo-header) li.solo-menu-tree__item > button:where(:not([style*="--r-border:"] *)),
-:where(.solo-page .solo-menu-main) li > button:where(:not([style*="--r-border:"] *)),
-:where(.solo-page .solo-main-nav) li > button:where(:not([style*="--r-border:"] *)) {
-  --r-border: #c9ff93;
-}
+  :where(.solo-page) .solo-popup-login-block__open:where(:not([style*="--r-border:"] *)),
+  :where(.solo-page) .solo-popup-login__open:where(:not([style*="--r-border:"] *)),
+  :where(.solo-page .solo-hamburger) button:where(:not([style*="--r-border:"] *)),
+  :where(.solo-page) .solo-menu-main:where(:not([style*="--r-border:"] *)),
+  :where(.solo-page) .solo-main-nav:where(:not([style*="--r-border:"] *)),
+  :where(.solo-page .solo-menu-main) ul:where(:not([style*="--r-border:"] *)),
+  :where(.solo-page .solo-main-nav) ul:where(:not([style*="--r-border:"] *)),
+  :where(.solo-page) .solo-menu-main li:where(:not([style*="--r-border:"] *)),
+  :where(.solo-page) .solo-main-nav li:where(:not([style*="--r-border:"] *)),
+  :where(.solo-page) .solo-header li.solo-menu-tree__item > a:where(:not([style*="--r-border:"] *)),
+  :where(.solo-page) .solo-menu-main li > a:where(:not([style*="--r-border:"] *)),
+  :where(.solo-page) .solo-main-nav li > a:where(:not([style*="--r-border:"] *)),
+  :where(.solo-page .solo-header) li.solo-menu-tree__item > button:where(:not([style*="--r-border:"] *)),
+  :where(.solo-page .solo-menu-main) li > button:where(:not([style*="--r-border:"] *)),
+  :where(.solo-page .solo-main-nav) li > button:where(:not([style*="--r-border:"] *)) {
+    --r-border: #c9ff93;
+  }
 
-.solo-page ul.tabs.secondary li a:hover,
-.solo-page ul.tabs.primary li a:hover {
-  --r-background: #fff;
-}
+  .solo-page ul.tabs.secondary li a:hover,
+  .solo-page ul.tabs.primary li a:hover {
+    --r-background: #fff;
+  }
 
-.solo-welcome-text,
-:where(.solo-container--main) .solo-region-box--main {
-  --r-background: var(--solo-white);
-}
+  .solo-welcome-text,
+  :where(.solo-container--main) .solo-region-box--main {
+    --r-background: var(--solo-white);
+  }
 
-header.solo-header,
-div.solo-page-title.solo-container--single {
-  --r-background-image: linear-gradient(45deg, #fdfeff, #fcfff9);
-  --r-background: #fdfeff;
-}
+  header.solo-header,
+  div.solo-page-title.solo-container--single {
+    --r-background-image: linear-gradient(45deg, #fdfeff, #fcfff9);
+    --r-background: #fdfeff;
+  }
 
-.solo-container--top .solo-region-box__inner--top,
-.solo-container--bottom .solo-region-box__inner--bottom,
-.solo-container--footer .solo-region-box__inner--footer {
-  --r-background-image: linear-gradient(0deg, #fbfcfa, #fcfff9);
-  --r-background: #fbfcfa;
-}
+  .solo-container--top .solo-region-box__inner--top,
+  .solo-container--bottom .solo-region-box__inner--bottom,
+  .solo-container--footer .solo-region-box__inner--footer {
+    --r-background-image: linear-gradient(0deg, #fbfcfa, #fcfff9);
+    --r-background: #fbfcfa;
+  }
 
-:where(.solo-page) .selectify:where(:not([style*="--r-border:"] *)),
-:where(.solo-page) .solo-select:where(:not([style*="--r-border:"] *)),
-:where(.solo-page) .solo-radio:where(:not([style*="--r-border:"] *)),
-:where(.solo-page) .solo-check:where(:not([style*="--r-border:"] *)),
-:where(.solo-page) .solo-input:where(:not([style*="--r-border:"] *)),
-:where(.solo-page) .solo-textarea:where(:not([style*="--r-border:"] *)),
-:where(.solo-page .solo-fixed-search-block__close) button:where(:not([style*="--r-border:"] *)),
-:where(.solo-page .solo-fixed-search__close) button:where(:not([style*="--r-border:"] *)) {
-  --r-border: #8e967a;
-}
+  :where(.solo-page) .selectify:where(:not([style*="--r-border:"] *)),
+  :where(.solo-page) .solo-select:where(:not([style*="--r-border:"] *)),
+  :where(.solo-page) .solo-radio:where(:not([style*="--r-border:"] *)),
+  :where(.solo-page) .solo-check:where(:not([style*="--r-border:"] *)),
+  :where(.solo-page) .solo-input:where(:not([style*="--r-border:"] *)),
+  :where(.solo-page) .solo-textarea:where(:not([style*="--r-border:"] *)),
+  :where(.solo-page .solo-fixed-search-block__close) button:where(:not([style*="--r-border:"] *)),
+  :where(.solo-page .solo-fixed-search__close) button:where(:not([style*="--r-border:"] *)) {
+    --r-border: #8e967a;
+  }
 
-:where(.solo-page) :is(.selectify *:hover, .solo-select:hover, .solo-check:hover, .solo-radio:hover, .solo-input:hover, .solo-textarea:hover, .selectify *:focus, .solo-select:focus, .solo-check:focus, .solo-radio:focus, .solo-input:focus, .solo-textarea:focus) {
-  --r-border: #53a700;
-}
+  :where(.solo-page) :is(.selectify *:hover, .solo-select:hover, .solo-check:hover, .solo-radio:hover, .solo-input:hover, .solo-textarea:hover, .selectify *:focus, .solo-select:focus, .solo-check:focus, .solo-radio:focus, .solo-input:focus, .solo-textarea:focus) {
+    --r-border: #53a700;
+  }
 
-.solo-primary-sidebar-menu,
-:where(.solo-inner) .solo-menu-tree--responsive,
-:where(.solo-fixed-search-block__inner) .solo-fixed-search-block__wrapper,
-:where(.solo-fixed-search__inner) .solo-fixed-search__wrapper,
-:where(.solo-page .solo-outer.solo-container--animate-hover) .solo-region-box__inner.solo-region-box__inner--top,
-:where(.solo-page .solo-outer.solo-container--animate-hover) .solo-region-box__inner.solo-region-box__inner--bottom,
-:where(.solo-page .solo-outer.solo-container--animate-hover) .solo-region-box__inner.solo-region-box__inner--footer {
-  --s-b: 62, 67, 44;
-}
+  .solo-primary-sidebar-menu,
+  :where(.solo-inner) .solo-menu-tree--responsive,
+  :where(.solo-fixed-search-block__inner) .solo-fixed-search-block__wrapper,
+  :where(.solo-fixed-search__inner) .solo-fixed-search__wrapper,
+  :where(.solo-page .solo-outer.solo-container--animate-hover) .solo-region-box__inner.solo-region-box__inner--top,
+  :where(.solo-page .solo-outer.solo-container--animate-hover) .solo-region-box__inner.solo-region-box__inner--bottom,
+  :where(.solo-page .solo-outer.solo-container--animate-hover) .solo-region-box__inner.solo-region-box__inner--footer {
+    --s-b: 62, 67, 44;
+  }
 
-:where(.solo-page) :is(.selectify-radio, .selectify-checkbox, .selectify-radio *, .selectify-checkbox *) {
-  --selectify-checkbox-bg: color-mix(in srgb, #53a700 6%, transparent);
-  --selectify-checkbox-checked-bg: color-mix(in srgb, #53a700 16%, transparent);
-  --selectify-checkbox-check-circle: #c0c5a9;
-  --selectify-checkbox-checked-circle: #53a700;
-  --selectify-checkbox-disabled-bg: color-mix(in sRGB, currentColor 5%, transparent);
-  --selectify-checkbox-disabled-circle: color-mix(in sRGB, currentColor 22%, transparent);
-  --selectify-checkbox-border-color: #c0c5a9;
-  --selectify-checkbox-hover-border-color: #53a700;
-  --selectify-checkbox-hover-bg: color-mix(in srgb, #53a700 10%, transparent);
-  --selectify-checkbox-active-border-color: #53a700;
-  --selectify-checkbox-active-bg: color-mix(in srgb, #53a700 14%, transparent);
-  --selectify-checkbox-checked-border-color: #53a700;
-}
+  :where(.solo-page) :is(.selectify-radio, .selectify-checkbox, .selectify-radio *, .selectify-checkbox *) {
+    --selectify-checkbox-bg: color-mix(in srgb, #53a700 6%, transparent);
+    --selectify-checkbox-checked-bg: color-mix(in srgb, #53a700 16%, transparent);
+    --selectify-checkbox-check-circle: #c0c5a9;
+    --selectify-checkbox-checked-circle: #53a700;
+    --selectify-checkbox-disabled-bg: color-mix(in sRGB, currentColor 5%, transparent);
+    --selectify-checkbox-disabled-circle: color-mix(in sRGB, currentColor 22%, transparent);
+    --selectify-checkbox-border-color: #c0c5a9;
+    --selectify-checkbox-hover-border-color: #53a700;
+    --selectify-checkbox-hover-bg: color-mix(in srgb, #53a700 10%, transparent);
+    --selectify-checkbox-active-border-color: #53a700;
+    --selectify-checkbox-active-bg: color-mix(in srgb, #53a700 14%, transparent);
+    --selectify-checkbox-checked-border-color: #53a700;
+  }
 
-.solo-page .selectify-select,
-:where(.solo-page .selectify-select) * {
-  --selectify-select-bg: #fff;
-  --selectify-select-hover-bg: #f5faf0;
-  --selectify-select-color: var(--r-text);
-  --selectify-select-border-color: var(--r-border);
-  --selectify-select-focus-border-color: #53a700;
-  --selectify-select-disabled-bg: #f3f4f2;
-  --selectify-select-arrow-color: #53a700;
-  --selectify-dropdown-shadow: 0 10px 28px -12px color-mix(in srgb, #0e1c00 22%, transparent);
-  --selectify-option-hover-bg: #f1f8eb;
-  --selectify-option-active-bg: #e7f3db;
-}
+  .solo-page .selectify-select,
+  :where(.solo-page .selectify-select) * {
+    --selectify-select-bg: #fff;
+    --selectify-select-hover-bg: #f5faf0;
+    --selectify-select-color: var(--r-text);
+    --selectify-select-border-color: var(--r-border);
+    --selectify-select-focus-border-color: #53a700;
+    --selectify-select-disabled-bg: #f3f4f2;
+    --selectify-select-arrow-color: #53a700;
+    --selectify-dropdown-shadow: 0 10px 28px -12px color-mix(in srgb, #0e1c00 22%, transparent);
+    --selectify-option-hover-bg: #f1f8eb;
+    --selectify-option-active-bg: #e7f3db;
+  }
 
-/* Region text colors: one block per region with its heading (--r-heading), link
+  /* Region text colors: one block per region with its heading (--r-heading), link
    (--r-link) and link hover (--r-link-hover) colors, and button hover text where the
    scheme sets one. Backgrounds above are the scheme's own. Every color here reaches
    WCAG AA (4.5:1) on the grounds named in its comment. A site's region colors still win. */
-/* Header: on #fdfeff, #fcfff9. */
-.solo-header {
-  --r-link: #0b35bf;
-  --r-link-hover: #051a5f;
-}
+  /* Header: on #fdfeff, #fcfff9. */
+  .solo-header {
+    --r-link: #0b35bf;
+    --r-link-hover: #051a5f;
+  }
 
-/* Highlighted: on #f4ffe8. */
-.solo-highlighted {
-  --r-link: #0b35bf;
-  --r-link-hover: #051a5f;
-}
+  /* Highlighted: on #f4ffe8. */
+  .solo-highlighted {
+    --r-link: #0b35bf;
+    --r-link-hover: #051a5f;
+  }
 
-/* Fixed search: on #fcfff9, #fdfeff. */
-.solo-fixed-search-block,
-.solo-fixed-search {
-  --r-link: #0b35bf;
-  --r-link-hover: #051a5f;
-}
+  /* Fixed search: on #fcfff9, #fdfeff. */
+  .solo-fixed-search-block,
+  .solo-fixed-search {
+    --r-link: #0b35bf;
+    --r-link-hover: #051a5f;
+  }
 
-/* Popup login: on #fcfff9, #fdfeff. */
-.solo-popup-login-block__inner,
-.solo-popup-login__inner {
-  --r-link: #0b35bf;
-  --r-link-hover: #051a5f;
-}
+  /* Popup login: on #fcfff9, #fdfeff. */
+  .solo-popup-login-block__inner,
+  .solo-popup-login__inner {
+    --r-link: #0b35bf;
+    --r-link-hover: #051a5f;
+  }
 
-/* Welcome text: on #f4ffe8. */
-.solo-welcome-text {
-  --r-link: #0b35bf;
-  --r-link-hover: #051a5f;
-}
+  /* Welcome text: on #f4ffe8. */
+  .solo-welcome-text {
+    --r-link: #0b35bf;
+    --r-link-hover: #051a5f;
+  }
 
-/* Top: on #fbfcfa, #fcfff9. */
-.solo-container--top {
-  --r-link: #0b35bf;
-  --r-link-hover: #051a5f;
-}
+  /* Top: on #fbfcfa, #fcfff9. */
+  .solo-container--top {
+    --r-link: #0b35bf;
+    --r-link-hover: #051a5f;
+  }
 
-/* Main: on #ffffff. */
-.solo-container--main {
-  --r-link: #0b35bf;
-  --r-link-hover: #051a5f;
-}
+  /* Main: on #ffffff. */
+  .solo-container--main {
+    --r-link: #0b35bf;
+    --r-link-hover: #051a5f;
+  }
 
-/* Page title: on #fdfeff, #fcfff9. */
-.solo-page-title {
-  --r-link: #0b35bf;
-  --r-link-hover: #051a5f;
-}
+  /* Page title: on #fdfeff, #fcfff9. */
+  .solo-page-title {
+    --r-link: #0b35bf;
+    --r-link-hover: #051a5f;
+  }
 
-/* Breadcrumb: on #f4ffe8. */
-.breadcrumb {
-  --r-link: #0b35bf;
-  --r-link-hover: #051a5f;
-}
+  /* Breadcrumb: on #f4ffe8. */
+  .breadcrumb {
+    --r-link: #0b35bf;
+    --r-link-hover: #051a5f;
+  }
 
-/* Bottom: on #fbfcfa, #fcfff9. */
-.solo-container--bottom {
-  --r-link: #0b35bf;
-  --r-link-hover: #051a5f;
-}
+  /* Bottom: on #fbfcfa, #fcfff9. */
+  .solo-container--bottom {
+    --r-link: #0b35bf;
+    --r-link-hover: #051a5f;
+  }
 
-/* Footer: on #fbfcfa, #fcfff9. */
-.solo-container--footer {
-  --r-link: #0b35bf;
-  --r-link-hover: #051a5f;
-}
+  /* Footer: on #fbfcfa, #fcfff9. */
+  .solo-container--footer {
+    --r-link: #0b35bf;
+    --r-link-hover: #051a5f;
+  }
 
-/* Footer menu: on #fcfff9, #fdfeff. */
-.solo-footer-menu__nav,
-.solo-footer-nav {
-  --r-link: #0b35bf;
-  --r-link-hover: #051a5f;
-}
+  /* Footer menu: on #fcfff9, #fdfeff. */
+  .solo-footer-menu__nav,
+  .solo-footer-nav {
+    --r-link: #0b35bf;
+    --r-link-hover: #051a5f;
+  }
 
-/* Copyright: on #fdfeff, #fcfff9. */
-.solo-copyright {
-  --r-link: #0b35bf;
-  --r-link-hover: #051a5f;
-}
-
+  /* Copyright: on #fdfeff, #fcfff9. */
+  .solo-copyright {
+    --r-link: #0b35bf;
+    --r-link-hover: #051a5f;
+  }
 } /* end @layer solo.schemes */

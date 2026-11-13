@@ -62,7 +62,7 @@
   {% if not label_hidden and comment_count > 0 %}
     {{ title_prefix }}
     <h2{{ title_attributes.addClass('comments__title') }}>
-      <span class="solo-comments__icon">{% include '@solo/partials/svg/_comment.html.twig' %}</span>
+      <span class="solo-comments__icon">{{ include('@solo/partials/svg/_comment.html.twig') }}</span>
       <span class="solo-comments__label">{{ label }}</span>
       <span class="comments__count">({{ comment_count }})</span>
     </h2>

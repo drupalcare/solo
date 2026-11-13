@@ -57,10 +57,10 @@
  */
 #}
 {% set svg_bars %}
-{% include '@solo/partials/svg/_svg-bars.html.twig' %}
+{{ include('@solo/partials/svg/_svg-bars.html.twig') }}
 {% endset %}
 {% set svg_search %}
-{% include '@solo/partials/svg/_svg-search.html.twig' %}
+{{ include('@solo/partials/svg/_svg-search.html.twig') }}
 {% endset %}
 
 <!-- Start: Page Wrapper -->
@@ -85,87 +85,87 @@
 <div id="solo-page-wrapper" class="{{ page_wrapper_classes }}" {{ attributes_page_wrapper }}>
 
   {% if site_regions_highlighted_disable == 0 %}
-  {% include '@solo/partials/_highlighted.html.twig' %}
+  {{ include('@solo/partials/_highlighted.html.twig') }}
   {% endif %}
   {% if site_regions_highlighted_disable == 1 and is_front %}
-  {% include '@solo/partials/_highlighted.html.twig' %}
+  {{ include('@solo/partials/_highlighted.html.twig') }}
   {% endif %}
   {% if site_regions_highlighted_disable == 2 and not is_front %}
-  {% include '@solo/partials/_highlighted.html.twig' %}
+  {{ include('@solo/partials/_highlighted.html.twig') }}
   {% endif %}
 
-  {% include '@solo/partials/_primary-sidebar-menu.html.twig' %}
+  {{ include('@solo/partials/_primary-sidebar-menu.html.twig') }}
 
-  {% include '@solo/partials/_fixed-search-block.html.twig' %}
+  {{ include('@solo/partials/_fixed-search-block.html.twig') }}
 
-  {% include '@solo/partials/_popup-login-block.html.twig' %}
+  {{ include('@solo/partials/_popup-login-block.html.twig') }}
 
   {% if site_flip_header_menu %}
-  {% include '@solo/partials/_primary-menu.html.twig' %}
-  {% include '@solo/partials/_header.html.twig' %}
+  {{ include('@solo/partials/_primary-menu.html.twig') }}
+  {{ include('@solo/partials/_header.html.twig') }}
   {% else %}
-  {% include '@solo/partials/_header.html.twig' %}
-  {% include '@solo/partials/_primary-menu.html.twig' %}
+  {{ include('@solo/partials/_header.html.twig') }}
+  {{ include('@solo/partials/_primary-menu.html.twig') }}
   {% endif %}
 
   {% if site_regions_welcome_disable == 0 %}
-  {% include '@solo/partials/_welcome-text.html.twig' %}
+  {{ include('@solo/partials/_welcome-text.html.twig') }}
   {% endif %}
   {% if site_regions_welcome_disable == 1 and is_front %}
-  {% include '@solo/partials/_welcome-text.html.twig' %}
+  {{ include('@solo/partials/_welcome-text.html.twig') }}
   {% endif %}
   {% if site_regions_welcome_disable == 2 and not is_front %}
-  {% include '@solo/partials/_welcome-text.html.twig' %}
+  {{ include('@solo/partials/_welcome-text.html.twig') }}
   {% endif %}
 
   {% if site_regions_top_disable == 0 %}
-  {% include '@solo/partials/_top-regions.html.twig' %}
+  {{ include('@solo/partials/_top-regions.html.twig') }}
   {% endif %}
   {% if site_regions_top_disable == 1 and is_front %}
-  {% include '@solo/partials/_top-regions.html.twig' %}
+  {{ include('@solo/partials/_top-regions.html.twig') }}
   {% endif %}
   {% if site_regions_top_disable == 2 and not is_front %}
-  {% include '@solo/partials/_top-regions.html.twig' %}
+  {{ include('@solo/partials/_top-regions.html.twig') }}
   {% endif %}
 
-  {% include '@solo/partials/_system-messages.html.twig' %}
+  {{ include('@solo/partials/_system-messages.html.twig') }}
 
   {% if site_flip_breadcrumb_pagetitle %}
-  {% include '@solo/partials/_breadcrumb.html.twig' %}
-  {% include '@solo/partials/_page-title.html.twig' %}
+  {{ include('@solo/partials/_breadcrumb.html.twig') }}
+  {{ include('@solo/partials/_page-title.html.twig') }}
   {% else %}
-  {% include '@solo/partials/_page-title.html.twig' %}
-  {% include '@solo/partials/_breadcrumb.html.twig' %}
+  {{ include('@solo/partials/_page-title.html.twig') }}
+  {{ include('@solo/partials/_breadcrumb.html.twig') }}
   {% endif %}
 
-  {% include '@solo/partials/_main-regions.html.twig' %}
+  {{ include('@solo/partials/_main-regions.html.twig') }}
 
   {% if site_regions_bottom_disable == 0 %}
-  {% include '@solo/partials/_bottom-regions.html.twig' %}
+  {{ include('@solo/partials/_bottom-regions.html.twig') }}
   {% endif %}
   {% if site_regions_bottom_disable == 1 and is_front %}
-  {% include '@solo/partials/_bottom-regions.html.twig' %}
+  {{ include('@solo/partials/_bottom-regions.html.twig') }}
   {% endif %}
   {% if site_regions_bottom_disable == 2 and not is_front %}
-  {% include '@solo/partials/_bottom-regions.html.twig' %}
+  {{ include('@solo/partials/_bottom-regions.html.twig') }}
   {% endif %}
 
   {# One contentinfo landmark holds the footer regions, the footer menu and the
      copyright band. It prints only when one of them has output. #}
   {% set solo_footer_content %}
     {% if site_regions_footer_disable == 0 %}
-    {% include '@solo/partials/_footer-regions.html.twig' %}
+    {{ include('@solo/partials/_footer-regions.html.twig') }}
     {% endif %}
     {% if site_regions_footer_disable == 1 and is_front %}
-    {% include '@solo/partials/_footer-regions.html.twig' %}
+    {{ include('@solo/partials/_footer-regions.html.twig') }}
     {% endif %}
     {% if site_regions_footer_disable == 2 and not is_front %}
-    {% include '@solo/partials/_footer-regions.html.twig' %}
+    {{ include('@solo/partials/_footer-regions.html.twig') }}
     {% endif %}
 
-    {% include '@solo/partials/_footer-menu.html.twig' %}
+    {{ include('@solo/partials/_footer-menu.html.twig') }}
 
-    {% include '@solo/partials/_copyright.html.twig' %}
+    {{ include('@solo/partials/_copyright.html.twig') }}
   {% endset %}
   {% if solo_footer_content|trim is not empty %}
   <footer id="solo-footer-landmark" class="solo-footer-landmark">

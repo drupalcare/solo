@@ -1,85 +1,92 @@
 @layer solo.theme {
-
-:where(.solo-page) figcaption {
-  padding: 0.5rem;
-  font-family: serif;
-  font-size: 0.875rem;
-  font-style: italic;
-  line-height: 1.5rem;
-}
-
-.align-right,
-.align-left,
-.align-center {  max-width: 100%;
-  margin-block: 1rem;
-}
-
-.align-center {
-  margin-inline-start: auto;
-  margin-inline-end: auto;
-}
-
-@media (min-width: 36rem) {
   :where(.solo-page) figcaption {
-    padding: 1rem;
+    padding: 0.5rem;
+    font-family: serif;
+    font-size: 0.875rem;
+    font-style: italic;
+    line-height: 1.5rem;
   }
 
-  .align-right {    max-width: 74.99875%;
+  .align-right,
+  .align-left,
+  .align-center {
+    max-width: 100%;
     margin-block: 1rem;
-    margin-inline-start: 1rem;
   }
 
-  .align-left {    max-width: 74.99875%;
-    margin-block: 1rem;
-    margin-inline-end: 1rem;
-  }
-}
-
-@media (min-width: 48rem) {
-  .align-right {    max-width: 50%;
-    margin-block: 1rem;
-    margin-inline-start: 1rem;
-  }
-}
-
-@media (min-width: 36rem) {
-  :where([dir="rtl"]) .align-right {    margin-inline-start: 0;
-    margin-inline-end: 1rem;
-  }
-}
-
-@media (min-width: 48rem) {
-  :where([dir="rtl"]) .align-right {    margin-inline-start: 0;
-    margin-inline-end: 1rem;
+  .align-center {
+    margin-inline-start: auto;
+    margin-inline-end: auto;
   }
 
-  .align-left {    max-width: 50%;
-    margin-block: 1rem;
-    margin-inline-end: 1rem;
+  @media (min-width: 36rem) {
+    :where(.solo-page) figcaption {
+      padding: 1rem;
+    }
+
+    .align-right {
+      max-width: 74.99875%;
+      margin-block: 1rem;
+      margin-inline-start: 1rem;
+    }
+
+    .align-left {
+      max-width: 74.99875%;
+      margin-block: 1rem;
+      margin-inline-end: 1rem;
+    }
   }
-}
 
-@media (min-width: 36rem) {
-  :where([dir="rtl"]) .align-left {    margin-inline-start: 1rem;
-    margin-inline-end: 0;
+  @media (min-width: 48rem) {
+    .align-right {
+      max-width: 50%;
+      margin-block: 1rem;
+      margin-inline-start: 1rem;
+    }
   }
-}
 
-@media (min-width: 48rem) {
-  :where([dir="rtl"]) .align-left {    margin-inline-start: 1rem;
-    margin-inline-end: 0;
+  @media (min-width: 36rem) {
+    :where([dir="rtl"]) .align-right {
+      margin-inline-start: 0;
+      margin-inline-end: 1rem;
+    }
   }
-}
 
-:where(.align-center) img,
-:where(.align-center) video,
-:where(.align-center) audio {
-  margin-inline: auto;
-}
+  @media (min-width: 48rem) {
+    :where([dir="rtl"]) .align-right {
+      margin-inline-start: 0;
+      margin-inline-end: 1rem;
+    }
 
-.media-oembed-content {
-  display: block;
-  max-width: 100%;
-}
+    .align-left {
+      max-width: 50%;
+      margin-block: 1rem;
+      margin-inline-end: 1rem;
+    }
+  }
 
+  @media (min-width: 36rem) {
+    :where([dir="rtl"]) .align-left {
+      margin-inline-start: 1rem;
+      margin-inline-end: 0;
+    }
+  }
+
+  @media (min-width: 48rem) {
+    :where([dir="rtl"]) .align-left {
+      margin-inline-start: 1rem;
+      margin-inline-end: 0;
+    }
+  }
+
+  :where(.align-center) img,
+  :where(.align-center) video,
+  :where(.align-center) audio {
+    margin-inline: auto;
+  }
+
+  .media-oembed-content {
+    display: block;
+    max-width: 100%;
+  }
 } /* end @layer solo.theme */

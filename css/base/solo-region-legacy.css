@@ -23,39 +23,37 @@
  */
 
 @layer solo.tokens {
-
-:where(.solo-page, .solo-page *) {
-  --r-bg: var(--r-background);
-  --r-bg-bt: var(--r-button-background);
-  --r-bg-bt-h: var(--r-button-background-hover);
-  --r-bg-dark: var(--solo-tone-background-dark);
-  --r-bg-fr: var(--r-form-background);
-  --r-bg-light: var(--solo-tone-background-light);
-  --r-bg-lk: var(--r-menu-background);
-  --r-bg-lk-h: var(--r-menu-background-hover);
-  --r-br: var(--r-border);
-  --r-br-b: var(--solo-border-default);
-  --r-br-dark: var(--solo-tone-border-dark);
-  --r-br-light: var(--solo-tone-border-light);
-  --r-h1: var(--r-heading);
-  --r-header-bg: var(--solo-accent-background);
-  --r-header-tx: var(--solo-accent-text);
-  --r-lk: var(--r-link);
-  --r-lk-h: var(--r-link-hover);
-  --r-menu-bg-h: var(--r-menu-background-hover);
-  --r-menu-tx-h: var(--r-menu-text-hover);
-  --r-sc-h1: var(--r-heading);
-  --r-sc-lk: var(--r-link);
-  --r-sc-lk-h: var(--r-link-hover);
-  --r-sc-tx-bt: var(--r-button-text);
-  --r-sc-tx-bt-h: var(--r-button-text-hover);
-  --r-tx: var(--r-text);
-  --r-tx-bt: var(--r-button-text);
-  --r-tx-bt-h: var(--r-button-text-hover);
-  --r-tx-dark: var(--solo-tone-text-dark);
-  --r-tx-light: var(--solo-tone-text-light);
-  --r-tx-lk: var(--r-menu-text);
-  --r-tx-lk-h: var(--r-menu-text-hover);
-}
-
+  :where(.solo-page, .solo-page *) {
+    --r-bg: var(--r-background);
+    --r-bg-bt: var(--r-button-background);
+    --r-bg-bt-h: var(--r-button-background-hover);
+    --r-bg-dark: var(--solo-tone-background-dark);
+    --r-bg-fr: var(--r-form-background);
+    --r-bg-light: var(--solo-tone-background-light);
+    --r-bg-lk: var(--r-menu-background);
+    --r-bg-lk-h: var(--r-menu-background-hover);
+    --r-br: var(--r-border);
+    --r-br-b: var(--solo-border-default);
+    --r-br-dark: var(--solo-tone-border-dark);
+    --r-br-light: var(--solo-tone-border-light);
+    --r-h1: var(--r-heading);
+    --r-header-bg: var(--solo-accent-background);
+    --r-header-tx: var(--solo-accent-text);
+    --r-lk: var(--r-link);
+    --r-lk-h: var(--r-link-hover);
+    --r-menu-bg-h: var(--r-menu-background-hover);
+    --r-menu-tx-h: var(--r-menu-text-hover);
+    --r-sc-h1: var(--r-heading);
+    --r-sc-lk: var(--r-link);
+    --r-sc-lk-h: var(--r-link-hover);
+    --r-sc-tx-bt: var(--r-button-text);
+    --r-sc-tx-bt-h: var(--r-button-text-hover);
+    --r-tx: var(--r-text);
+    --r-tx-bt: var(--r-button-text);
+    --r-tx-bt-h: var(--r-button-text-hover);
+    --r-tx-dark: var(--solo-tone-text-dark);
+    --r-tx-light: var(--solo-tone-text-light);
+    --r-tx-lk: var(--r-menu-text);
+    --r-tx-lk-h: var(--r-menu-text-hover);
+  }
 } /* end @layer solo.tokens */

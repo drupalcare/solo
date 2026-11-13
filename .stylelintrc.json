@@ -1,8 +1,29 @@
 {
   "extends": "../../../core/.stylelintrc.json",
   "rules": {
-    "selector-max-id": [0, { "severity": "warning" }],
-    "declaration-no-important": [true, { "severity": "warning" }],
-    "selector-max-specificity": ["0,2,0", { "severity": "warning" }]
+    "selector-max-id": [
+      0,
+      {
+        "severity": "warning"
+      }
+    ],
+    "declaration-no-important": [
+      true,
+      {
+        "severity": "warning"
+      }
+    ],
+    "selector-max-specificity": [
+      "0,2,0",
+      {
+        "severity": "warning"
+      }
+    ],
+    "layer-name-pattern": [
+      "^[a-z][a-z0-9-]*(\\.[a-z][a-z0-9-]*)*$",
+      {
+        "message": "Expected a kebab-case layer name; a dot nests it under the theme's own layer"
+      }
+    ]
   }
 }

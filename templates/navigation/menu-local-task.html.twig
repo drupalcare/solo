@@ -44,6 +44,6 @@
 <li{{ attributes.addClass(classes) }}>
   {{ link }}
   {% if icon_include %}
-    {% include icon_include %}
+    {{ include(icon_include) }}
   {% endif %}
 </li>

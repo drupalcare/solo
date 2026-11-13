@@ -6,10 +6,9 @@
 
 /* londrina-outline-regular - latin */
 @font-face {
-  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
-  font-family: 'Londrina Outline';
-  font-style: normal;
+  font-family: "Londrina Outline";
+  src: url("../font-files/londrina-outline/londrina-outline-v29-latin-regular.woff2") format("woff2"); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
   font-weight: 400;
-  src: url('../font-files/londrina-outline/londrina-outline-v29-latin-regular.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+  font-style: normal;
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
 }
-

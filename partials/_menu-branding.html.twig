@@ -17,7 +17,7 @@
       {% if logo_default != 1 %}
         <img src="{{ site_logo }}" class="solo-branding__logo-image" alt="{{ site_name ? '' : logo_label }}" />
       {% else %}
-        {% include '@solo/partials/svg/_svg-logo.html.twig' with { solo_path: solo_path } only %}
+        {{ include('@solo/partials/svg/_svg-logo.html.twig', {solo_path: solo_path}, false) }}
       {% endif %}
       {% if site_name %}
         <strong class="solo-menu-branding__site-name"><span>{{ site_name }}</span></strong>

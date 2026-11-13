@@ -1,31 +1,32 @@
 @layer solo.theme {
+  .webform-submission-form fieldset,
+  .webform-submission-form fieldset .fieldset-wrapper.solo-panel {
+    background: transparent !important;
+  }
 
-.webform-submission-form fieldset,
-.webform-submission-form fieldset .fieldset-wrapper.solo-panel {  background: transparent !important;}
+  :where(.webform-submission-form) .form-actions {
+    text-align: center;
+  }
 
-:where(.webform-submission-form) .form-actions {
-  text-align: center;
-}
+  .webform-submission-form .form-actions > input {
+    margin-block: var(--solo-px16) !important;
+    margin-inline: var(--solo-px8) !important;
+  }
 
-.webform-submission-form .form-actions > input {
-  margin-block: var(--solo-px16) !important;
-  margin-inline: var(--solo-px8) !important;
-}
+  .webform-multiple-add {
+    text-align: center;
+  }
 
-.webform-multiple-add {
-  text-align: center;
-}
+  :where(.webform-multiple-add) > div,
+  .webform-multiple-add > input {
+    float: inline-start;
+  }
 
-:where(.webform-multiple-add) > div,
-.webform-multiple-add > input {
-  float: inline-start;}
-
-:where(.webform-multiple-add) .field-suffix {
-  font-size: 90%;
-}
-.webform-has-field-prefix,
-.webform-has-field-suffix {
-  display: inline-flex;
-}
-
+  :where(.webform-multiple-add) .field-suffix {
+    font-size: 90%;
+  }
+  .webform-has-field-prefix,
+  .webform-has-field-suffix {
+    display: inline-flex;
+  }
 } /* end @layer solo.theme */

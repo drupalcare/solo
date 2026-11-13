@@ -7,348 +7,360 @@
  */
 
 @layer solo.theme {
-
-/* For all site menus */
-:where(.solo-inner) .solo-hamburger__button {
-  display: flex;
-  flex-direction: column;
-  flex-basis: 100%;
-  flex-grow: 1;
-  align-items: end;
-  padding: var(--solo-px6);
-}
-
-.solo-inner ul.solo-menu-tree__menubar,
-.solo-inner ul.solo-menu-tree__menubar ul.solo-menu-tree__submenu,
-.solo-inner ul.solo-menu-tree__menubar li.solo-menu-tree__item,
-.solo-inner ul.solo-menu-tree__menubar li > a.solo-menu-tree__link,
-.solo-inner ul.solo-menu-tree__menubar li > button.solo-menu-tree__button {  white-space: nowrap;}
-
-/* stylelint-disable order/properties-order -- shorthand/longhand order is significant here (text-decoration vs -webkit-text-decoration); reordering would change the result */
-
-.solo-inner .solo-menu-tree__menubar li.solo-menu-tree__item > a {  -webkit-text-decoration: none;
-}
-
-/* stylelint-enable order/properties-order */
-
-:where(.solo-region-box__inner.solo-is-region-max-576 ul.solo-menu-tree__menubar li.solo-menu-tree__item) > * {
-  white-space: normal;
-  word-wrap: break-word;
-}
-
-:where(.solo-page .solo-inner .solo-menu) .solo-menu-tree__arrow {
-  transition: transform 0.2s ease;
-}
-
-:where(.solo-page .solo-inner) .solo-menu,
-.solo-page .solo-inner .solo-menu ul.solo-menu-tree__menubar {
-  z-index: var(--z-base);
-}
-
-/* Active menu (mouse OR keyboard) rises above stacked menus */
-:where(.solo-page .solo-inner) .solo-menu:hover,
-:where(.solo-page .solo-inner) .solo-menu:focus-within {
-  z-index: calc(var(--z-base) + 1);
-}
-
-.solo-page .solo-inner .solo-menu ul.solo-menu-tree__menubar {
-  z-index: calc(var(--z-base) + 10);
-}
-
-.solo-page .solo-inner .solo-menu ul.solo-menu-tree__menubar > li > ul {
-  z-index: calc(var(--z-base) + 20);
-}
-
-.solo-page .solo-inner .solo-menu ul.solo-menu-tree__menubar > li > ul > li > ul {
-  z-index: calc(var(--z-base) + 30);
-}
-
-.solo-page .solo-inner .solo-menu ul.solo-menu-tree__menubar > li > ul > li > ul > li > ul {
-  z-index: calc(var(--z-base) + 40);
-}
-
-/* Primary menu region menus */
-:where(.solo-page .solo-primary-menu__inner) .solo-menu {
-  z-index: var(--z-primary-menu);
-}
-
-:where(.solo-page .solo-primary-menu__inner) .solo-menu:hover,
-:where(.solo-page .solo-primary-menu__inner) .solo-menu:focus-within {
-  z-index: calc(var(--z-primary-menu) + 1);
-}
-
-.solo-page .solo-primary-menu__inner .solo-menu ul.solo-menu-tree__menubar {
-  z-index: calc(var(--z-primary-menu) + 10);
-}
-
-.solo-page .solo-primary-menu__inner .solo-menu ul.solo-menu-tree__menubar > li > ul {
-  z-index: calc(var(--z-primary-menu) + 20);
-}
-
-.solo-page .solo-primary-menu__inner .solo-menu ul.solo-menu-tree__menubar > li > ul > li > ul {
-  z-index: calc(var(--z-primary-menu) + 30);
-}
-
-.solo-page .solo-primary-menu__inner .solo-menu ul.solo-menu-tree__menubar > li > ul > li > ul > li > ul {
-  z-index: calc(var(--z-primary-menu) + 40);
-}
-
-/* Header region menus */
-:where(.solo-page .solo-popup-login-block) .solo-menu,
-:where(.solo-page .solo-popup-login) .solo-menu,
-:where(.solo-page .solo-fixed-search-block) .solo-menu,
-:where(.solo-page .solo-fixed-search) .solo-menu,
-:where(.solo-page:not(.solo-menu--flipped)) .solo-header__inner .solo-menu {
-  z-index: var(--z-header);
-}
-
-:where(.solo-page .solo-popup-login-block) .solo-menu:hover,
-:where(.solo-page .solo-popup-login) .solo-menu:hover,
-:where(.solo-page .solo-popup-login-block) .solo-menu:focus-within,
-:where(.solo-page .solo-popup-login) .solo-menu:focus-within,
-:where(.solo-page .solo-fixed-search-block) .solo-menu:hover,
-:where(.solo-page .solo-fixed-search) .solo-menu:hover,
-:where(.solo-page .solo-fixed-search-block) .solo-menu:focus-within,
-:where(.solo-page .solo-fixed-search) .solo-menu:focus-within,
-:where(.solo-page:not(.solo-menu--flipped) .solo-header__inner) .solo-menu:hover,
-:where(.solo-page:not(.solo-menu--flipped) .solo-header__inner) .solo-menu:hover {
-  z-index: calc(var(--z-header) + 1);
-}
-
-.solo-page .solo-popup-login-block .solo-menu ul.solo-menu-tree__menubar,
-.solo-page .solo-popup-login .solo-menu ul.solo-menu-tree__menubar,
-.solo-page .solo-fixed-search-block .solo-menu ul.solo-menu-tree__menubar,
-.solo-page .solo-fixed-search .solo-menu ul.solo-menu-tree__menubar,
-.solo-page:not(.solo-menu--flipped) .solo-header__inner .solo-menu ul.solo-menu-tree__menubar {
-  z-index: calc(var(--z-header) + 10);
-}
-
-.solo-page .solo-popup-login-block .solo-menu ul.solo-menu-tree__menubar > li > ul,
-.solo-page .solo-popup-login .solo-menu ul.solo-menu-tree__menubar > li > ul,
-.solo-page .solo-fixed-search-block .solo-menu ul.solo-menu-tree__menubar > li > ul,
-.solo-page .solo-fixed-search .solo-menu ul.solo-menu-tree__menubar > li > ul,
-.solo-page:not(.solo-menu--flipped) .solo-header__inner .solo-menu ul.solo-menu-tree__menubar > li > ul {
-  z-index: calc(var(--z-header) + 20);
-}
-
-.solo-page .solo-popup-login-block .solo-menu ul.solo-menu-tree__menubar > li > ul > li > ul,
-.solo-page .solo-popup-login .solo-menu ul.solo-menu-tree__menubar > li > ul > li > ul,
-.solo-page .solo-fixed-search-block .solo-menu ul.solo-menu-tree__menubar > li > ul > li > ul,
-.solo-page .solo-fixed-search .solo-menu ul.solo-menu-tree__menubar > li > ul > li > ul,
-.solo-page:not(.solo-menu--flipped) .solo-header__inner .solo-menu ul.solo-menu-tree__menubar > li > ul > li > ul {
-  z-index: calc(var(--z-header) + 30);
-}
-
-.solo-page .solo-popup-login-block .solo-menu ul.solo-menu-tree__menubar > li > ul > li > ul > li > ul,
-.solo-page .solo-popup-login .solo-menu ul.solo-menu-tree__menubar > li > ul > li > ul > li > ul,
-.solo-page .solo-fixed-search-block .solo-menu ul.solo-menu-tree__menubar > li > ul > li > ul > li > ul,
-.solo-page .solo-fixed-search .solo-menu ul.solo-menu-tree__menubar > li > ul > li > ul > li > ul,
-.solo-page:not(.solo-menu--flipped) .solo-header__inner .solo-menu ul.solo-menu-tree__menubar > li > ul > li > ul > li > ul {
-  z-index: calc(var(--z-header) + 40);
-}
-
-:where(.solo-inner .solo-menu-tree--megamenu) > li.solo-menu-tree__item > button.solo-menu-tree__toggler--link-disabled > span.solo-menu-tree__title--disabled,
-:where(.solo-inner .solo-menu-tree__menubar:not(.solo-menu-tree--megamenu)) li.solo-menu-tree__item > button.solo-menu-tree__toggler--link-disabled > span.solo-menu-tree__title--disabled {
-  flex-grow: 1;}
-
-:where(.solo-inner .solo-menu-tree--megamenu > li.solo-menu-tree__item) > .solo-menu-tree__toggler,
-:where(.solo-inner .solo-menu-tree__menubar:not(.solo-menu-tree--megamenu) li.solo-menu-tree__item) .solo-menu-tree__toggler {
-  cursor: context-menu !important;
-}
-
-:where(.solo-inner) .solo-menu-tree__menubar:not(.solo-menu-tree--megamenu) li.solo-menu-tree__item--has-submenu {
-  position: relative;
-}
-
-:where(.solo-inner) .solo-menu-tree__menubar:not(.solo-menu-tree--megamenu) ul.solo-menu-tree__submenu,
-:where(.solo-inner .solo-menu-tree__menubar:not(.solo-menu-tree--megamenu)) li.solo-menu-tree__item--link-only {
-  flex-direction: column;
-  flex-wrap: wrap;
-}
-
-.solo-inner .solo-menu-tree--megamenu > li.solo-menu-tree__item--link-and-button > button,
-.solo-inner .solo-menu-tree__menubar:not(.solo-menu-tree--megamenu) li.solo-menu-tree__item--link-and-button > button {  justify-content: center;}
-
-:where(.solo-inner) .solo-menu-tree--megamenu > li.solo-menu-tree__item--button-only > button > span.solo-menu-tree__title--disabled,
-:where(.solo-inner) .solo-menu-tree__menubar:not(.solo-menu-tree--megamenu) li.solo-menu-tree__item--button-only > button > span.solo-menu-tree__title--disabled {  flex-grow: 1;
-}
-
-.solo-inner .solo-menu-tree--megamenu > li.solo-menu-tree__item--button-only > button > span.solo-menu-tree__toggler-icon,
-.solo-inner .solo-menu-tree--megamenu > li.solo-menu-tree__item--link-and-button > button > span.solo-menu-tree__toggler-icon,
-.solo-inner .solo-menu-tree__menubar:not(.solo-menu-tree--megamenu) li.solo-menu-tree__item--button-only > button > span.solo-menu-tree__toggler-icon,
-.solo-inner .solo-menu-tree__menubar:not(.solo-menu-tree--megamenu) li.solo-menu-tree__item--link-and-button > button > span.solo-menu-tree__toggler-icon {  align-items: center;
-  justify-content: center;
-}
-
-/* For the default menu */
-:where(.solo-inner) .solo-menu-tree--default {
-  flex-wrap: wrap;
-  justify-content: center;
-}
-
-.solo-inner .solo-menu-tree--default > li.solo-menu-tree__item ul.solo-menu-tree__submenu {  min-width: 12.5rem;
-}
-
-/* For the second tier */
-:where(.solo-inner .solo-menu-tree--default > li) > :where(ul).solo-menu-tree__submenu {
-  position: absolute;
-  inset-inline-start: 0;
-  inset-block-start: 100%;
-}
-
-/* For the third tier */
-:where(.solo-inner .solo-menu-tree--default > li > ul > li) > ul.solo-menu-tree__submenu {
-  position: absolute;
-  inset-inline-start: 100%;
-  inset-block-start: 0;
-}
-
-/* For the fourth tier */
-:where(.solo-inner .solo-menu-tree--default > li > ul > li > ul > li) > ul.solo-menu-tree__submenu {
-  position: absolute;
-  inset-inline-start: 100%;
-  inset-block-start: 0;
-}
-
-:where(.solo-inner .solo-menu-tree--default li:hover) > :where(ul).solo-menu-tree__submenu {
-  display: flex !important;
-  animation: solo-submenu-in 0.2s ease-out;
-}
-
-/* A dropdown fades and settles 4px; display toggles, so a short keyframe does the reveal. */
-@keyframes solo-submenu-in {
-  from {
-    transform: translateY(-4px);
-    opacity: 0;
+  /* For all site menus */
+  :where(.solo-inner) .solo-hamburger__button {
+    display: flex;
+    flex-direction: column;
+    flex-basis: 100%;
+    flex-grow: 1;
+    align-items: end;
+    padding: var(--solo-px6);
   }
 
-  to {
-    transform: translateY(0);
-    opacity: 1;
+  .solo-inner ul.solo-menu-tree__menubar,
+  .solo-inner ul.solo-menu-tree__menubar ul.solo-menu-tree__submenu,
+  .solo-inner ul.solo-menu-tree__menubar li.solo-menu-tree__item,
+  .solo-inner ul.solo-menu-tree__menubar li > a.solo-menu-tree__link,
+  .solo-inner ul.solo-menu-tree__menubar li > button.solo-menu-tree__button {
+    white-space: nowrap;
   }
-}
 
-:where(.solo-inner .solo-menu-tree--default > li.solo-menu-tree__item--has-submenu:hover) .solo-menu-tree__arrow {
-  transition: transform 0.2s ease;
-  transform: rotate(180deg);
-}
+  /* stylelint-disable order/properties-order -- shorthand/longhand order is significant here (text-decoration vs -webkit-text-decoration); reordering would change the result */
 
-:where(.solo-inner .solo-menu-tree--default > li > ul > li.solo-menu-tree__item--has-submenu:hover) .solo-menu-tree__arrow {
-  transition: transform 0.2s ease;
-  transform: rotate(-90deg);
-}
+  .solo-inner .solo-menu-tree__menubar li.solo-menu-tree__item > a {
+    -webkit-text-decoration: none;
+  }
 
-:where(.solo-page .solo-menu-tree--default li.solo-menu-tree__item--has-submenu:hover) > *,
-:where(.solo-page .solo-menu-tree--default li.solo-menu-tree__item--has-submenu) > *:hover {
-  color: var(--r-menu-text-hover, var(--r-menu-text, var(--r-text))) !important;
-  background-color: var(--r-menu-background-hover, var(--r-menu-background, var(--r-background))) !important;
-}
+  /* stylelint-enable order/properties-order */
 
-/* Add borders to menu item */
-:where(.solo-page) .solo-container--has-border.solo-primary-menu {
-  border-block-start: 1px solid var(--r-border);
-  border-block-end: 1px solid var(--r-border);
-}
+  :where(.solo-region-box__inner.solo-is-region-max-576 ul.solo-menu-tree__menubar li.solo-menu-tree__item) > * {
+    white-space: normal;
+    word-wrap: break-word;
+  }
 
-/* Right left mens */
-.solo-footer-menu {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: start;
-  padding: 0;
-  list-style: none;
-}
+  :where(.solo-page .solo-inner .solo-menu) .solo-menu-tree__arrow {
+    transition: transform 0.2s ease;
+  }
 
-.solo-footer-menu {
-  justify-content: center;
-}
+  :where(.solo-page .solo-inner) .solo-menu,
+  .solo-page .solo-inner .solo-menu ul.solo-menu-tree__menubar {
+    z-index: var(--z-base);
+  }
 
-.solo-footer-menu li {  align-items: center;
-}
+  /* Active menu (mouse OR keyboard) rises above stacked menus */
+  :where(.solo-page .solo-inner) .solo-menu:hover,
+  :where(.solo-page .solo-inner) .solo-menu:focus-within {
+    z-index: calc(var(--z-base) + 1);
+  }
 
-.solo-footer-menu li a {
-  margin-block: 0;
-  margin-inline: var(--solo-px4);  max-width: 100%;
-}
+  .solo-page .solo-inner .solo-menu ul.solo-menu-tree__menubar {
+    z-index: calc(var(--z-base) + 10);
+  }
 
-@media (max-width: 35.99875rem) {
-  .pager__items,
+  .solo-page .solo-inner .solo-menu ul.solo-menu-tree__menubar > li > ul {
+    z-index: calc(var(--z-base) + 20);
+  }
+
+  .solo-page .solo-inner .solo-menu ul.solo-menu-tree__menubar > li > ul > li > ul {
+    z-index: calc(var(--z-base) + 30);
+  }
+
+  .solo-page .solo-inner .solo-menu ul.solo-menu-tree__menubar > li > ul > li > ul > li > ul {
+    z-index: calc(var(--z-base) + 40);
+  }
+
+  /* Primary menu region menus */
+  :where(.solo-page .solo-primary-menu__inner) .solo-menu {
+    z-index: var(--z-primary-menu);
+  }
+
+  :where(.solo-page .solo-primary-menu__inner) .solo-menu:hover,
+  :where(.solo-page .solo-primary-menu__inner) .solo-menu:focus-within {
+    z-index: calc(var(--z-primary-menu) + 1);
+  }
+
+  .solo-page .solo-primary-menu__inner .solo-menu ul.solo-menu-tree__menubar {
+    z-index: calc(var(--z-primary-menu) + 10);
+  }
+
+  .solo-page .solo-primary-menu__inner .solo-menu ul.solo-menu-tree__menubar > li > ul {
+    z-index: calc(var(--z-primary-menu) + 20);
+  }
+
+  .solo-page .solo-primary-menu__inner .solo-menu ul.solo-menu-tree__menubar > li > ul > li > ul {
+    z-index: calc(var(--z-primary-menu) + 30);
+  }
+
+  .solo-page .solo-primary-menu__inner .solo-menu ul.solo-menu-tree__menubar > li > ul > li > ul > li > ul {
+    z-index: calc(var(--z-primary-menu) + 40);
+  }
+
+  /* Header region menus */
+  :where(.solo-page .solo-popup-login-block) .solo-menu,
+  :where(.solo-page .solo-popup-login) .solo-menu,
+  :where(.solo-page .solo-fixed-search-block) .solo-menu,
+  :where(.solo-page .solo-fixed-search) .solo-menu,
+  :where(.solo-page:not(.solo-menu--flipped)) .solo-header__inner .solo-menu {
+    z-index: var(--z-header);
+  }
+
+  :where(.solo-page .solo-popup-login-block) .solo-menu:hover,
+  :where(.solo-page .solo-popup-login) .solo-menu:hover,
+  :where(.solo-page .solo-popup-login-block) .solo-menu:focus-within,
+  :where(.solo-page .solo-popup-login) .solo-menu:focus-within,
+  :where(.solo-page .solo-fixed-search-block) .solo-menu:hover,
+  :where(.solo-page .solo-fixed-search) .solo-menu:hover,
+  :where(.solo-page .solo-fixed-search-block) .solo-menu:focus-within,
+  :where(.solo-page .solo-fixed-search) .solo-menu:focus-within,
+  :where(.solo-page:not(.solo-menu--flipped) .solo-header__inner) .solo-menu:hover,
+  :where(.solo-page:not(.solo-menu--flipped) .solo-header__inner) .solo-menu:hover {
+    z-index: calc(var(--z-header) + 1);
+  }
+
+  .solo-page .solo-popup-login-block .solo-menu ul.solo-menu-tree__menubar,
+  .solo-page .solo-popup-login .solo-menu ul.solo-menu-tree__menubar,
+  .solo-page .solo-fixed-search-block .solo-menu ul.solo-menu-tree__menubar,
+  .solo-page .solo-fixed-search .solo-menu ul.solo-menu-tree__menubar,
+  .solo-page:not(.solo-menu--flipped) .solo-header__inner .solo-menu ul.solo-menu-tree__menubar {
+    z-index: calc(var(--z-header) + 10);
+  }
+
+  .solo-page .solo-popup-login-block .solo-menu ul.solo-menu-tree__menubar > li > ul,
+  .solo-page .solo-popup-login .solo-menu ul.solo-menu-tree__menubar > li > ul,
+  .solo-page .solo-fixed-search-block .solo-menu ul.solo-menu-tree__menubar > li > ul,
+  .solo-page .solo-fixed-search .solo-menu ul.solo-menu-tree__menubar > li > ul,
+  .solo-page:not(.solo-menu--flipped) .solo-header__inner .solo-menu ul.solo-menu-tree__menubar > li > ul {
+    z-index: calc(var(--z-header) + 20);
+  }
+
+  .solo-page .solo-popup-login-block .solo-menu ul.solo-menu-tree__menubar > li > ul > li > ul,
+  .solo-page .solo-popup-login .solo-menu ul.solo-menu-tree__menubar > li > ul > li > ul,
+  .solo-page .solo-fixed-search-block .solo-menu ul.solo-menu-tree__menubar > li > ul > li > ul,
+  .solo-page .solo-fixed-search .solo-menu ul.solo-menu-tree__menubar > li > ul > li > ul,
+  .solo-page:not(.solo-menu--flipped) .solo-header__inner .solo-menu ul.solo-menu-tree__menubar > li > ul > li > ul {
+    z-index: calc(var(--z-header) + 30);
+  }
+
+  .solo-page .solo-popup-login-block .solo-menu ul.solo-menu-tree__menubar > li > ul > li > ul > li > ul,
+  .solo-page .solo-popup-login .solo-menu ul.solo-menu-tree__menubar > li > ul > li > ul > li > ul,
+  .solo-page .solo-fixed-search-block .solo-menu ul.solo-menu-tree__menubar > li > ul > li > ul > li > ul,
+  .solo-page .solo-fixed-search .solo-menu ul.solo-menu-tree__menubar > li > ul > li > ul > li > ul,
+  .solo-page:not(.solo-menu--flipped) .solo-header__inner .solo-menu ul.solo-menu-tree__menubar > li > ul > li > ul > li > ul {
+    z-index: calc(var(--z-header) + 40);
+  }
+
+  :where(.solo-inner .solo-menu-tree--megamenu) > li.solo-menu-tree__item > button.solo-menu-tree__toggler--link-disabled > span.solo-menu-tree__title--disabled,
+  :where(.solo-inner .solo-menu-tree__menubar:not(.solo-menu-tree--megamenu)) li.solo-menu-tree__item > button.solo-menu-tree__toggler--link-disabled > span.solo-menu-tree__title--disabled {
+    flex-grow: 1;
+  }
+
+  :where(.solo-inner .solo-menu-tree--megamenu > li.solo-menu-tree__item) > .solo-menu-tree__toggler,
+  :where(.solo-inner .solo-menu-tree__menubar:not(.solo-menu-tree--megamenu) li.solo-menu-tree__item) .solo-menu-tree__toggler {
+    cursor: context-menu !important;
+  }
+
+  :where(.solo-inner) .solo-menu-tree__menubar:not(.solo-menu-tree--megamenu) li.solo-menu-tree__item--has-submenu {
+    position: relative;
+  }
+
+  :where(.solo-inner) .solo-menu-tree__menubar:not(.solo-menu-tree--megamenu) ul.solo-menu-tree__submenu,
+  :where(.solo-inner .solo-menu-tree__menubar:not(.solo-menu-tree--megamenu)) li.solo-menu-tree__item--link-only {
+    flex-direction: column;
+    flex-wrap: wrap;
+  }
+
+  .solo-inner .solo-menu-tree--megamenu > li.solo-menu-tree__item--link-and-button > button,
+  .solo-inner .solo-menu-tree__menubar:not(.solo-menu-tree--megamenu) li.solo-menu-tree__item--link-and-button > button {
+    justify-content: center;
+  }
+
+  :where(.solo-inner) .solo-menu-tree--megamenu > li.solo-menu-tree__item--button-only > button > span.solo-menu-tree__title--disabled,
+  :where(.solo-inner) .solo-menu-tree__menubar:not(.solo-menu-tree--megamenu) li.solo-menu-tree__item--button-only > button > span.solo-menu-tree__title--disabled {
+    flex-grow: 1;
+  }
+
+  .solo-inner .solo-menu-tree--megamenu > li.solo-menu-tree__item--button-only > button > span.solo-menu-tree__toggler-icon,
+  .solo-inner .solo-menu-tree--megamenu > li.solo-menu-tree__item--link-and-button > button > span.solo-menu-tree__toggler-icon,
+  .solo-inner .solo-menu-tree__menubar:not(.solo-menu-tree--megamenu) li.solo-menu-tree__item--button-only > button > span.solo-menu-tree__toggler-icon,
+  .solo-inner .solo-menu-tree__menubar:not(.solo-menu-tree--megamenu) li.solo-menu-tree__item--link-and-button > button > span.solo-menu-tree__toggler-icon {
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* For the default menu */
   :where(.solo-inner) .solo-menu-tree--default {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .solo-inner .solo-menu-tree--default > li.solo-menu-tree__item ul.solo-menu-tree__submenu {
+    min-width: 12.5rem;
+  }
+
+  /* For the second tier */
+  :where(.solo-inner .solo-menu-tree--default > li) > :where(ul).solo-menu-tree__submenu {
+    position: absolute;
+    inset-inline-start: 0;
+    inset-block-start: 100%;
+  }
+
+  /* For the third tier */
+  :where(.solo-inner .solo-menu-tree--default > li > ul > li) > ul.solo-menu-tree__submenu {
+    position: absolute;
+    inset-inline-start: 100%;
+    inset-block-start: 0;
+  }
+
+  /* For the fourth tier */
+  :where(.solo-inner .solo-menu-tree--default > li > ul > li > ul > li) > ul.solo-menu-tree__submenu {
+    position: absolute;
+    inset-inline-start: 100%;
+    inset-block-start: 0;
+  }
+
+  :where(.solo-inner .solo-menu-tree--default li:hover) > :where(ul).solo-menu-tree__submenu {
+    display: flex !important;
+    animation: solo-submenu-in 0.2s ease-out;
+  }
+
+  /* A dropdown fades and settles 4px; display toggles, so a short keyframe does the reveal. */
+  @keyframes solo-submenu-in {
+    from {
+      transform: translateY(-4px);
+      opacity: 0;
+    }
+
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+
+  :where(.solo-inner .solo-menu-tree--default > li.solo-menu-tree__item--has-submenu:hover) .solo-menu-tree__arrow {
+    transition: transform 0.2s ease;
+    transform: rotate(180deg);
+  }
+
+  :where(.solo-inner .solo-menu-tree--default > li > ul > li.solo-menu-tree__item--has-submenu:hover) .solo-menu-tree__arrow {
+    transition: transform 0.2s ease;
+    transform: rotate(-90deg);
+  }
+
+  :where(.solo-page .solo-menu-tree--default li.solo-menu-tree__item--has-submenu:hover) > *,
+  :where(.solo-page .solo-menu-tree--default li.solo-menu-tree__item--has-submenu) > *:hover {
+    color: var(--r-menu-text-hover, var(--r-menu-text, var(--r-text))) !important;
+    background-color: var(--r-menu-background-hover, var(--r-menu-background, var(--r-background))) !important;
+  }
+
+  /* Add borders to menu item */
+  :where(.solo-page) .solo-container--has-border.solo-primary-menu {
+    border-block-start: 1px solid var(--r-border);
+    border-block-end: 1px solid var(--r-border);
+  }
+
+  /* Right left mens */
+  .solo-footer-menu {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
     justify-content: start;
     padding: 0;
+    list-style: none;
   }
-}
 
-/* plain menu in sidebar and footer for devices smaller than 320px */
-:where(.solo-copyright__inner.solo-is-region-xs) .solo-side-menu,
-:where(.solo-copyright__inner.solo-is-region-xs) .solo-footer-menu,
-:where(.solo-footer-menu__nav__inner.solo-is-region-xs) .solo-side-menu,
-:where(.solo-footer-nav__inner.solo-is-region-xs) .solo-side-menu,
-:where(.solo-footer-menu__nav__inner.solo-is-region-xs) .solo-footer-menu,
-:where(.solo-footer-nav__inner.solo-is-region-xs) .solo-footer-menu,
-:where(.solo-region-box__inner.solo-is-region-xs) .solo-side-menu,
-:where(.solo-region-box__inner.solo-is-region-xs) .solo-footer-menu {
-  flex-direction: column;
-  justify-content: start;
-}
+  .solo-footer-menu {
+    justify-content: center;
+  }
 
-/* stylelint-disable order/properties-order -- shorthand/longhand order is significant here (all vs color); reordering would change the result */
+  .solo-footer-menu li {
+    align-items: center;
+  }
 
-#solo-primary-menu .solo-menu-branding a,
-#solo-primary-sidebar-menu .solo-menu-branding a {
-  all: unset;}
+  .solo-footer-menu li a {
+    margin-block: 0;
+    margin-inline: var(--solo-px4);
+    max-width: 100%;
+  }
 
-/* stylelint-enable order/properties-order */
+  @media (max-width: 35.99875rem) {
+    .pager__items,
+    :where(.solo-inner) .solo-menu-tree--default {
+      justify-content: start;
+      padding: 0;
+    }
+  }
 
-.solo-menu-branding a span {  align-items: center;
-  justify-content: center;}
+  /* plain menu in sidebar and footer for devices smaller than 320px */
+  :where(.solo-copyright__inner.solo-is-region-xs) .solo-side-menu,
+  :where(.solo-copyright__inner.solo-is-region-xs) .solo-footer-menu,
+  :where(.solo-footer-menu__nav__inner.solo-is-region-xs) .solo-side-menu,
+  :where(.solo-footer-nav__inner.solo-is-region-xs) .solo-side-menu,
+  :where(.solo-footer-menu__nav__inner.solo-is-region-xs) .solo-footer-menu,
+  :where(.solo-footer-nav__inner.solo-is-region-xs) .solo-footer-menu,
+  :where(.solo-region-box__inner.solo-is-region-xs) .solo-side-menu,
+  :where(.solo-region-box__inner.solo-is-region-xs) .solo-footer-menu {
+    flex-direction: column;
+    justify-content: start;
+  }
 
-.solo-menu-branding {
-  display: flex;
-  flex: 0 1 auto;
-  flex-direction: row;
-  flex-wrap: nowrap;
-  align-items: center;
-  justify-content: start;
-  margin: 0;
-  margin-inline-end: var(--solo-px12);
-  line-height: normal;
-}
+  /* stylelint-disable order/properties-order -- shorthand/longhand order is significant here (all vs color); reordering would change the result */
 
-.solo-menu-branding .solo-menu-branding__logo img,
-.solo-menu-branding .solo-menu-branding__logo svg {  align-items: center;
-  justify-content: center;}
+  #solo-primary-menu .solo-menu-branding a,
+  #solo-primary-sidebar-menu .solo-menu-branding a {
+    all: unset;
+  }
 
-:where(.solo-primary-menu .solo-menu-branding) .solo-menu-branding__site-name,
-:where(.solo-primary-sidebar-menu .solo-menu-branding) .solo-menu-branding__site-name {
-  display: none;
-  width: 0;
-  height: 0;
-}
+  /* stylelint-enable order/properties-order */
 
-#solo-primary-menu.show-sitename .solo-menu--has-branding .solo-menu-branding .solo-menu-branding__site-name,
-#solo-primary-sidebar-menu.show-sitename .solo-menu--has-branding .solo-menu-branding .solo-menu-branding__site-name {
-  display: flex;
-  width: auto;
-  height: 100%;
-  margin-inline-start: var(--solo-px12);
-}
+  .solo-menu-branding a span {
+    align-items: center;
+    justify-content: center;
+  }
 
+  .solo-menu-branding {
+    display: flex;
+    flex: 0 1 auto;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: start;
+    margin: 0;
+    margin-inline-end: var(--solo-px12);
+    line-height: normal;
+  }
+
+  .solo-menu-branding .solo-menu-branding__logo img,
+  .solo-menu-branding .solo-menu-branding__logo svg {
+    align-items: center;
+    justify-content: center;
+  }
+
+  :where(.solo-primary-menu .solo-menu-branding) .solo-menu-branding__site-name,
+  :where(.solo-primary-sidebar-menu .solo-menu-branding) .solo-menu-branding__site-name {
+    display: none;
+    width: 0;
+    height: 0;
+  }
+
+  #solo-primary-menu.show-sitename .solo-menu--has-branding .solo-menu-branding .solo-menu-branding__site-name,
+  #solo-primary-sidebar-menu.show-sitename .solo-menu--has-branding .solo-menu-branding .solo-menu-branding__site-name {
+    display: flex;
+    width: auto;
+    height: 100%;
+    margin-inline-start: var(--solo-px12);
+  }
 } /* end @layer solo.theme */
 
 @layer solo.locked {
-
-/* Reduced motion: end states are kept, movement is not (WCAG 2.3.3). */
-@media (prefers-reduced-motion: reduce) {
-  :where(:where(.solo-page .solo-inner .solo-menu) .solo-menu-tree__arrow),
-  :where(:where(.solo-inner) .solo-menu-tree__menubar li.solo-menu-tree__item > .solo-menu-tree__toggler .solo-menu-tree__toggler-icon svg),
-  :where(:where(.solo-inner .solo-menu-tree--default > li.solo-menu-tree__item--has-submenu:hover) .solo-menu-tree__arrow),
-  :where(:where(.solo-inner .solo-menu-tree--default > li > ul > li.solo-menu-tree__item--has-submenu:hover) .solo-menu-tree__arrow) {
-    transition-duration: 0.01ms !important;
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
+  /* Reduced motion: end states are kept, movement is not (WCAG 2.3.3). */
+  @media (prefers-reduced-motion: reduce) {
+    :where(:where(.solo-page .solo-inner .solo-menu) .solo-menu-tree__arrow),
+    :where(:where(.solo-inner) .solo-menu-tree__menubar li.solo-menu-tree__item > .solo-menu-tree__toggler .solo-menu-tree__toggler-icon svg),
+    :where(:where(.solo-inner .solo-menu-tree--default > li.solo-menu-tree__item--has-submenu:hover) .solo-menu-tree__arrow),
+    :where(:where(.solo-inner .solo-menu-tree--default > li > ul > li.solo-menu-tree__item--has-submenu:hover) .solo-menu-tree__arrow) {
+      transition-duration: 0.01ms !important;
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+    }
   }
-}
-
 } /* end @layer solo.locked */

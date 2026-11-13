@@ -1,74 +1,72 @@
 @layer solo.theme {
+  /* General pager styles */
+  .pager {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: var(--solo-px24) 0;
+    gap: var(--solo-px8);
+  }
 
-/* General pager styles */
-.pager {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: var(--solo-px24) 0;
-  gap: var(--solo-px8);
-}
+  .pager__items {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    font-size: var(--solo-px14);
+    line-height: var(--solo-px24);
+  }
 
-.pager__items {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: center;
-  margin: 0;
-  padding: 0;
-  list-style: none;
-  font-size: var(--solo-px14);
-  line-height: var(--solo-px24);
-}
+  .pager__item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 
-.pager__item {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-/*
+  /*
  * The items also carry .solo-button (8px padding, overflow: hidden), which
  * framed each link in a second box: the hover paint stopped 8px short of the
  * item edge and the focus ring was cut off. The link carries the padding and
  * the ring needs room, so the item gives both up.
  */
-.pager__items > .pager__item.solo-button {
-  overflow: visible;
-  padding: 0;
-}
-
-.pager__item.solo-active-pager {
-  cursor: default;
-}
-
-.pager__item.solo-active-pager a {  text-decoration: none !important;
-  pointer-events: none !important;}
-
-.pager__item.pager__item--ellipsis {
-  padding: var(--solo-px8) var(--solo-px16);
-  opacity: 0.7;
-  font-style: italic;
-}
-
-/* Responsive adjustments */
-@media (max-width: 47.99875rem) {
-  .pager__items {
-    gap: var(--solo-px4);
+  .pager__items > .pager__item.solo-button {
+    overflow: visible;
+    padding: 0;
   }
-}
 
+  .pager__item.solo-active-pager {
+    cursor: default;
+  }
+
+  .pager__item.solo-active-pager a {
+    text-decoration: none !important;
+    pointer-events: none !important;
+  }
+
+  .pager__item.pager__item--ellipsis {
+    padding: var(--solo-px8) var(--solo-px16);
+    opacity: 0.7;
+    font-style: italic;
+  }
+
+  /* Responsive adjustments */
+  @media (max-width: 47.99875rem) {
+    .pager__items {
+      gap: var(--solo-px4);
+    }
+  }
 } /* end @layer solo.theme */
 
 @layer solo.locked {
-
-/* Reduced motion: end states are kept, movement is not (WCAG 2.3.3). */
-@media (prefers-reduced-motion: reduce) {
-  :where(.pager__item a) {
-    transition-duration: 0.01ms !important;
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
+  /* Reduced motion: end states are kept, movement is not (WCAG 2.3.3). */
+  @media (prefers-reduced-motion: reduce) {
+    :where(.pager__item a) {
+      transition-duration: 0.01ms !important;
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+    }
   }
-}
-
 } /* end @layer solo.locked */

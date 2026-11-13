@@ -9,42 +9,43 @@
  */
 
 @layer solo.theme {
-
-/* -------------------------------------------------
+  /* -------------------------------------------------
    Inline code
 -------------------------------------------------- */
 
-.field--type-text-long code,
-.field--type-text-with-summary code,
-.cke_editable code,
-.ck-content code {
-  color: var(--r-text);
-  border: 1px solid var(--r-border, var(--solo-border-default));
-  background-color: var(--solo-odd-light, var(--r-background));
-}
+  .field--type-text-long code,
+  .field--type-text-with-summary code,
+  .cke_editable code,
+  .ck-content code {
+    color: var(--r-text);
+    border: 1px solid var(--r-border, var(--solo-border-default));
+    background-color: var(--solo-odd-light, var(--r-background));
+  }
 
-/* -------------------------------------------------
+  /* -------------------------------------------------
    Preformatted code blocks
 -------------------------------------------------- */
 
-.field--type-text-long pre,
-.field--type-text-with-summary pre,
-.cke_editable pre,
-.ck-content pre {
-  overflow-x: auto;  white-space: pre;
-  color: var(--r-text);  background-color: var(--r-background);
-  max-inline-size: 100%;
-  -webkit-overflow-scrolling: touch;
-}
+  .field--type-text-long pre,
+  .field--type-text-with-summary pre,
+  .cke_editable pre,
+  .ck-content pre {
+    overflow-x: auto;
+    white-space: pre;
+    color: var(--r-text);
+    background-color: var(--r-background);
+    max-inline-size: 100%;
+    -webkit-overflow-scrolling: touch;
+  }
 
-.field--type-text-long pre code,
-.field--type-text-with-summary pre code,
-.cke_editable pre code,
-.ck-content pre code {
-  display: inline-block;
-  overflow-x: auto;  white-space: pre;
-  background-color: transparent;
-  min-inline-size: 100%;
-}
-
+  .field--type-text-long pre code,
+  .field--type-text-with-summary pre code,
+  .cke_editable pre code,
+  .ck-content pre code {
+    display: inline-block;
+    overflow-x: auto;
+    white-space: pre;
+    background-color: transparent;
+    min-inline-size: 100%;
+  }
 } /* end @layer solo.theme */

@@ -1,172 +1,173 @@
 @layer solo.theme {
-
-:where(.solo-page) :where(form.search-form) input[type="textarea"],
-:where(.solo-page) :where(form.search-form) input[type="search"],
-:where(.solo-page) :where(form.search-form) input[type="textfield"] {
-  width: 100% !important;
-}
-
-:where(.solo-page) :where(form.search-form) > .form-wrapper:not(.search-advanced) {
-  position: relative;
-  display: grid;
-  grid-template-areas: "form-item form-submit";
-  grid-template-rows: 1fr;
-  grid-template-columns: minmax(250px, auto) minmax(50px, 160px);
-  grid-auto-flow: row;
-  align-items: self-end;
-  gap: 0 0;
-  row-gap: var(--solo-px8);
-}
-
-:where(.solo-page) :where(form.search-form > .form-wrapper) > .form-item {
-  grid-area: form-item;
-}
-
-:where(.solo-page) form.search-form > .form-wrapper > .form-submit {
-  grid-area: form-submit;
-  width: 100%;
-  margin-block-start: 0;
-  margin-block-end: var(--solo-px8);
-  margin-inline: 0;
-}
-
-:where(.solo-page) :where(form.search-form .form-wrapper) > .button--primary {
-  padding-inline-start: var(--solo-px3) !important;
-  padding-inline-end: var(--solo-px3) !important;
-}
-
-:where(.solo-page) :where(form.search-form) > * {
-  width: 100%;
-}
-
-:where(.path-search .search-form .search-advanced) :where(summary).solo-button {
-  box-sizing: border-box;
-}
-
-:where(.path-search .search-form .search-advanced) #edit-type--wrapper div.fieldset-wrapper,
-:where(.path-search .search-form .search-advanced #edit-keywords-fieldset) > .fieldset-wrapper,
-:where(.path-search .search-form .search-advanced) #edit-language--wrapper div.fieldset-wrapper,
-:where(.path-search .search-form .search-advanced) #edit-type--wrapper div.fieldset-wrapper div.form-checkboxes,
-:where(.path-search .search-form .search-advanced) #edit-language--wrapper div.fieldset-wrapper div.form-checkboxes {
-  margin: 0 !important;
-}
-
-:where(.path-search .search-form .search-advanced #edit-lang-fieldset) > .fieldset-wrapper,
-:where(.path-search .search-form .search-advanced #edit-types-fieldset) > .fieldset-wrapper {
-  margin-block-start: 0;
-}
-
-:where(.search-form) .search-advanced:hover {
-  background-color: transparent !important;
-}
-
-:where(.search-form) + h2 {
-  clear: both;
-}
-
-:where(.solo-page) :where(form.search-form) details.search-advanced .details-wrapper {  height: 0;
-  transition:
-    height 0.4s ease,
-    opacity 0.4s ease;
-  opacity: 0;
-}
-
-:where(.solo-page) :where(form.search-form) details.search-advanced[open] .details-wrapper {
-  height: auto;
-  opacity: 1;
-}
-
-:where(.solo-page) :where(form.search-form) details.search-advanced[open] .details-wrapper {
-  height: var(--details-wrapper-height);
-}
-
-:where(form.search-form .search-advanced) fieldset[data-drupal-selector="edit-keywords-fieldset"] .solo-clear::after,
-:where(form.search-form .search-advanced) fieldset[data-drupal-selector="edit-keywords-fieldset"] .solo-clear::before,
-:where(form.search-form .search-advanced) fieldset[data-drupal-selector="edit-types-fieldset"] .solo-clear::before,
-:where(form.search-form .search-advanced) fieldset[data-drupal-selector="edit-lang-fieldset"] .solo-clear::before {
-  display: inline;
-  content: none;
-}
-
-:where(.solo-page) :where(form.search-form .search-advanced fieldset[data-drupal-selector="edit-keywords-fieldset"]) > .fieldset-wrapper fieldset,
-:where(.solo-page) :where(form.search-form .search-advanced fieldset[data-drupal-selector="edit-types-fieldset"]) > .fieldset-wrapper fieldset,
-:where(.solo-page) :where(form.search-form .search-advanced fieldset[data-drupal-selector="edit-lang-fieldset"]) > .fieldset-wrapper fieldset {
-  border: none !important;
-}
-
-:where(.solo-page) :where(form.search-form) .search-advanced fieldset {
-  width: auto;
-}
-
-:where(.solo-page) :where(form.search-form .search-advanced fieldset[data-drupal-selector="edit-keywords-fieldset"] .fieldset-wrapper) > * {
-  flex-grow: 1;
-}
-
-@media (min-width: 48rem) {
-  :where(.solo-page) :where(form.search-form) .search-advanced fieldset[data-drupal-selector="edit-keywords-fieldset"] .fieldset-wrapper {    flex-wrap: wrap;
-    align-items: center;  }
-
-  :where(.solo-page) :where(form.search-form .search-advanced) fieldset[data-drupal-selector="edit-types-fieldset"] .fieldset-wrapper .form-checkboxes,
-:where(.solo-page) :where(form.search-form .search-advanced) fieldset[data-drupal-selector="edit-lang-fieldset"] .fieldset-wrapper .form-checkboxes {    flex-wrap: wrap;
-    align-items: center;
-    gap: var(--solo-px24);
+  :where(.solo-page) :where(form.search-form) input[type="textarea"],
+  :where(.solo-page) :where(form.search-form) input[type="search"],
+  :where(.solo-page) :where(form.search-form) input[type="textfield"] {
+    width: 100% !important;
   }
 
-  :where(.solo-page) :where(form.search-form .search-advanced fieldset[data-drupal-selector="edit-types-fieldset"] .fieldset-wrapper .form-checkboxes) > *,
-:where(.solo-page) :where(form.search-form .search-advanced fieldset[data-drupal-selector="edit-lang-fieldset"] .fieldset-wrapper .form-checkboxes) > * {
-    flex-wrap: nowrap;
+  :where(.solo-page) :where(form.search-form) > .form-wrapper:not(.search-advanced) {
+    position: relative;
+    display: grid;
+    grid-template-areas: "form-item form-submit";
+    grid-template-rows: 1fr;
+    grid-template-columns: minmax(250px, auto) minmax(50px, 160px);
+    grid-auto-flow: row;
+    align-items: self-end;
+    gap: 0 0;
+    row-gap: var(--solo-px8);
+  }
+
+  :where(.solo-page) :where(form.search-form > .form-wrapper) > .form-item {
+    grid-area: form-item;
+  }
+
+  :where(.solo-page) form.search-form > .form-wrapper > .form-submit {
+    grid-area: form-submit;
+    width: 100%;
+    margin-block-start: 0;
+    margin-block-end: var(--solo-px8);
+    margin-inline: 0;
+  }
+
+  :where(.solo-page) :where(form.search-form .form-wrapper) > .button--primary {
+    padding-inline-start: var(--solo-px3) !important;
+    padding-inline-end: var(--solo-px3) !important;
+  }
+
+  :where(.solo-page) :where(form.search-form) > * {
+    width: 100%;
+  }
+
+  :where(.path-search .search-form .search-advanced) :where(summary).solo-button {
+    box-sizing: border-box;
+  }
+
+  :where(.path-search .search-form .search-advanced) #edit-type--wrapper div.fieldset-wrapper,
+  :where(.path-search .search-form .search-advanced #edit-keywords-fieldset) > .fieldset-wrapper,
+  :where(.path-search .search-form .search-advanced) #edit-language--wrapper div.fieldset-wrapper,
+  :where(.path-search .search-form .search-advanced) #edit-type--wrapper div.fieldset-wrapper div.form-checkboxes,
+  :where(.path-search .search-form .search-advanced) #edit-language--wrapper div.fieldset-wrapper div.form-checkboxes {
+    margin: 0 !important;
+  }
+
+  :where(.path-search .search-form .search-advanced #edit-lang-fieldset) > .fieldset-wrapper,
+  :where(.path-search .search-form .search-advanced #edit-types-fieldset) > .fieldset-wrapper {
+    margin-block-start: 0;
+  }
+
+  :where(.search-form) .search-advanced:hover {
+    background-color: transparent !important;
+  }
+
+  :where(.search-form) + h2 {
+    clear: both;
+  }
+
+  :where(.solo-page) :where(form.search-form) details.search-advanced .details-wrapper {
+    height: 0;
+    transition:
+      height 0.4s ease,
+      opacity 0.4s ease;
+    opacity: 0;
+  }
+
+  :where(.solo-page) :where(form.search-form) details.search-advanced[open] .details-wrapper {
+    height: auto;
+    opacity: 1;
+  }
+
+  :where(.solo-page) :where(form.search-form) details.search-advanced[open] .details-wrapper {
+    height: var(--details-wrapper-height);
+  }
+
+  :where(form.search-form .search-advanced) fieldset[data-drupal-selector="edit-keywords-fieldset"] .solo-clear::after,
+  :where(form.search-form .search-advanced) fieldset[data-drupal-selector="edit-keywords-fieldset"] .solo-clear::before,
+  :where(form.search-form .search-advanced) fieldset[data-drupal-selector="edit-types-fieldset"] .solo-clear::before,
+  :where(form.search-form .search-advanced) fieldset[data-drupal-selector="edit-lang-fieldset"] .solo-clear::before {
+    display: inline;
+    content: none;
+  }
+
+  :where(.solo-page) :where(form.search-form .search-advanced fieldset[data-drupal-selector="edit-keywords-fieldset"]) > .fieldset-wrapper fieldset,
+  :where(.solo-page) :where(form.search-form .search-advanced fieldset[data-drupal-selector="edit-types-fieldset"]) > .fieldset-wrapper fieldset,
+  :where(.solo-page) :where(form.search-form .search-advanced fieldset[data-drupal-selector="edit-lang-fieldset"]) > .fieldset-wrapper fieldset {
+    border: none !important;
+  }
+
+  :where(.solo-page) :where(form.search-form) .search-advanced fieldset {
     width: auto;
   }
 
-  :where(.solo-page) form.search-form .search-advanced fieldset[data-drupal-selector="edit-types-fieldset"] .fieldset-wrapper .form-checkboxes label,
-:where(.solo-page) form.search-form .search-advanced fieldset[data-drupal-selector="edit-lang-fieldset"] .fieldset-wrapper .form-checkboxes label {    white-space: nowrap;
-  }
-}
-
-@media (min-width: 48rem) and (max-width: 61.99875rem) {
   :where(.solo-page) :where(form.search-form .search-advanced fieldset[data-drupal-selector="edit-keywords-fieldset"] .fieldset-wrapper) > * {
-    flex: 1 1 calc(50% - var(--solo-px12));
-    max-width: calc(50% - var(--solo-px12));
+    flex-grow: 1;
   }
 
-  :where(.solo-page) :where(form.search-form .search-advanced fieldset[data-drupal-selector="edit-keywords-fieldset"] .fieldset-wrapper) > *:nth-child(3) {
-    flex: 1 1 100%;
-    max-width: 100%;
-  }
-}
+  @media (min-width: 48rem) {
+    :where(.solo-page) :where(form.search-form) .search-advanced fieldset[data-drupal-selector="edit-keywords-fieldset"] .fieldset-wrapper {
+      flex-wrap: wrap;
+      align-items: center;
+    }
 
-@media (max-width: 26rem) {
-  :where(.path-search) #edit-basic {
-    display: flex;
-    flex-direction: column;
-    gap: 0;
-    align-items: start;
+    :where(.solo-page) :where(form.search-form .search-advanced) fieldset[data-drupal-selector="edit-types-fieldset"] .fieldset-wrapper .form-checkboxes,
+    :where(.solo-page) :where(form.search-form .search-advanced) fieldset[data-drupal-selector="edit-lang-fieldset"] .fieldset-wrapper .form-checkboxes {
+      flex-wrap: wrap;
+      align-items: center;
+      gap: var(--solo-px24);
+    }
+
+    :where(.solo-page) :where(form.search-form .search-advanced fieldset[data-drupal-selector="edit-types-fieldset"] .fieldset-wrapper .form-checkboxes) > *,
+    :where(.solo-page) :where(form.search-form .search-advanced fieldset[data-drupal-selector="edit-lang-fieldset"] .fieldset-wrapper .form-checkboxes) > * {
+      flex-wrap: nowrap;
+      width: auto;
+    }
+
+    :where(.solo-page) form.search-form .search-advanced fieldset[data-drupal-selector="edit-types-fieldset"] .fieldset-wrapper .form-checkboxes label,
+    :where(.solo-page) form.search-form .search-advanced fieldset[data-drupal-selector="edit-lang-fieldset"] .fieldset-wrapper .form-checkboxes label {
+      white-space: nowrap;
+    }
   }
 
-  :where(.path-search #edit-basic) > * {
-    width: 100%;
-    margin: 0 0 12px 0;
+  @media (min-width: 48rem) and (max-width: 61.99875rem) {
+    :where(.solo-page) :where(form.search-form .search-advanced fieldset[data-drupal-selector="edit-keywords-fieldset"] .fieldset-wrapper) > * {
+      flex: 1 1 calc(50% - var(--solo-px12));
+      max-width: calc(50% - var(--solo-px12));
+    }
+
+    :where(.solo-page) :where(form.search-form .search-advanced fieldset[data-drupal-selector="edit-keywords-fieldset"] .fieldset-wrapper) > *:nth-child(3) {
+      flex: 1 1 100%;
+      max-width: 100%;
+    }
   }
 
-  :where(.path-search) #edit-basic::before,
-  :where(.path-search) #edit-basic::after {
-    display: none;
-    clear: none;
-    content: unset;
-  }
-}
+  @media (max-width: 26rem) {
+    :where(.path-search) #edit-basic {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      align-items: start;
+    }
 
+    :where(.path-search #edit-basic) > * {
+      width: 100%;
+      margin: 0 0 12px 0;
+    }
+
+    :where(.path-search) #edit-basic::before,
+    :where(.path-search) #edit-basic::after {
+      display: none;
+      clear: none;
+      content: unset;
+    }
+  }
 } /* end @layer solo.theme */
 
 @layer solo.locked {
-
-/* Reduced motion: end states are kept, movement is not (WCAG 2.3.3). */
-@media (prefers-reduced-motion: reduce) {
-  :where(:where(form.search-form) details.search-advanced .details-wrapper) {
-    transition-duration: 0.01ms !important;
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
+  /* Reduced motion: end states are kept, movement is not (WCAG 2.3.3). */
+  @media (prefers-reduced-motion: reduce) {
+    :where(:where(form.search-form) details.search-advanced .details-wrapper) {
+      transition-duration: 0.01ms !important;
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+    }
   }
-}
-
 } /* end @layer solo.locked */

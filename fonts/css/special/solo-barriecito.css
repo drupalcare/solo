@@ -1,6 +1,6 @@
 @layer solo.utilities {
   .solo-page .barriecito {
-    --solo-font-s: 'Barriecito', cursive;
+    --solo-font-s: "Barriecito", cursive;
   }
 }
 

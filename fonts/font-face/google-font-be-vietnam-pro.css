@@ -6,74 +6,73 @@
 
 /* be-vietnam-pro-100 - latin_latin-ext */
 @font-face {
-  font-display: swap;
-  font-family: 'Be Vietnam Pro';
-  font-style: normal;
+  font-family: "Be Vietnam Pro";
+  src: url("../font-files/be-vietnam-pro/be-vietnam-pro-v12-latin_latin-ext-100.woff2") format("woff2");
   font-weight: 100;
-  src: url('../font-files/be-vietnam-pro/be-vietnam-pro-v12-latin_latin-ext-100.woff2') format('woff2');
+  font-style: normal;
+  font-display: swap;
 }
 /* be-vietnam-pro-200 - latin_latin-ext */
 @font-face {
-  font-display: swap;
-  font-family: 'Be Vietnam Pro';
-  font-style: normal;
+  font-family: "Be Vietnam Pro";
+  src: url("../font-files/be-vietnam-pro/be-vietnam-pro-v12-latin_latin-ext-200.woff2") format("woff2");
   font-weight: 200;
-  src: url('../font-files/be-vietnam-pro/be-vietnam-pro-v12-latin_latin-ext-200.woff2') format('woff2');
+  font-style: normal;
+  font-display: swap;
 }
 /* be-vietnam-pro-300 - latin_latin-ext */
 @font-face {
-  font-display: swap;
-  font-family: 'Be Vietnam Pro';
-  font-style: normal;
+  font-family: "Be Vietnam Pro";
+  src: url("../font-files/be-vietnam-pro/be-vietnam-pro-v12-latin_latin-ext-300.woff2") format("woff2");
   font-weight: 300;
-  src: url('../font-files/be-vietnam-pro/be-vietnam-pro-v12-latin_latin-ext-300.woff2') format('woff2');
+  font-style: normal;
+  font-display: swap;
 }
 /* be-vietnam-pro-regular - latin_latin-ext */
 @font-face {
-  font-display: swap;
-  font-family: 'Be Vietnam Pro';
-  font-style: normal;
+  font-family: "Be Vietnam Pro";
+  src: url("../font-files/be-vietnam-pro/be-vietnam-pro-v12-latin_latin-ext-regular.woff2") format("woff2");
   font-weight: 400;
-  src: url('../font-files/be-vietnam-pro/be-vietnam-pro-v12-latin_latin-ext-regular.woff2') format('woff2');
+  font-style: normal;
+  font-display: swap;
 }
 /* be-vietnam-pro-500 - latin_latin-ext */
 @font-face {
-  font-display: swap;
-  font-family: 'Be Vietnam Pro';
-  font-style: normal;
+  font-family: "Be Vietnam Pro";
+  src: url("../font-files/be-vietnam-pro/be-vietnam-pro-v12-latin_latin-ext-500.woff2") format("woff2");
   font-weight: 500;
-  src: url('../font-files/be-vietnam-pro/be-vietnam-pro-v12-latin_latin-ext-500.woff2') format('woff2');
+  font-style: normal;
+  font-display: swap;
 }
 /* be-vietnam-pro-600 - latin_latin-ext */
 @font-face {
-  font-display: swap;
-  font-family: 'Be Vietnam Pro';
-  font-style: normal;
+  font-family: "Be Vietnam Pro";
+  src: url("../font-files/be-vietnam-pro/be-vietnam-pro-v12-latin_latin-ext-600.woff2") format("woff2");
   font-weight: 600;
-  src: url('../font-files/be-vietnam-pro/be-vietnam-pro-v12-latin_latin-ext-600.woff2') format('woff2');
+  font-style: normal;
+  font-display: swap;
 }
 /* be-vietnam-pro-700 - latin_latin-ext */
 @font-face {
-  font-display: swap;
-  font-family: 'Be Vietnam Pro';
-  font-style: normal;
+  font-family: "Be Vietnam Pro";
+  src: url("../font-files/be-vietnam-pro/be-vietnam-pro-v12-latin_latin-ext-700.woff2") format("woff2");
   font-weight: 700;
-  src: url('../font-files/be-vietnam-pro/be-vietnam-pro-v12-latin_latin-ext-700.woff2') format('woff2');
+  font-style: normal;
+  font-display: swap;
 }
 /* be-vietnam-pro-800 - latin_latin-ext */
 @font-face {
-  font-display: swap;
-  font-family: 'Be Vietnam Pro';
-  font-style: normal;
+  font-family: "Be Vietnam Pro";
+  src: url("../font-files/be-vietnam-pro/be-vietnam-pro-v12-latin_latin-ext-800.woff2") format("woff2");
   font-weight: 800;
-  src: url('../font-files/be-vietnam-pro/be-vietnam-pro-v12-latin_latin-ext-800.woff2') format('woff2');
+  font-style: normal;
+  font-display: swap;
 }
 /* be-vietnam-pro-900 - latin_latin-ext */
 @font-face {
-  font-display: swap;
-  font-family: 'Be Vietnam Pro';
-  font-style: normal;
+  font-family: "Be Vietnam Pro";
+  src: url("../font-files/be-vietnam-pro/be-vietnam-pro-v12-latin_latin-ext-900.woff2") format("woff2");
   font-weight: 900;
-  src: url('../font-files/be-vietnam-pro/be-vietnam-pro-v12-latin_latin-ext-900.woff2') format('woff2');
+  font-style: normal;
+  font-display: swap;
 }
-

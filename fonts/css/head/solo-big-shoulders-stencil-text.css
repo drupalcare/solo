@@ -3,7 +3,8 @@
   .solo-page h2,
   .solo-page h3,
   #solo-page-wrapper .big-shoulders-stencil-text {
-    --solo-h1: 'Big Shoulders Stencil Text', cursive;
+    --solo-h1: "Big Shoulders Stencil Text", cursive;
+
     letter-spacing: var(--solo-px1);
   }
 }

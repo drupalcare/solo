@@ -3,7 +3,8 @@
   .solo-page h2,
   .solo-page h3,
   #solo-page-wrapper .fredoka {
-    --solo-h1: 'Fredoka', cursive;
+    --solo-h1: "Fredoka", cursive;
+
     letter-spacing: var(--solo-px1);
   }
 }

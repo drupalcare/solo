@@ -5,79 +5,78 @@
  */
 
 @layer solo.theme {
+  :where(form).solo-search-block-form {
+    position: relative;
+  }
 
-:where(form).solo-search-block-form {
-  position: relative;
-}
+  .solo-search-block-form input {
+    width: 100%;
+  }
 
-.solo-search-block-form input {
-  width: 100%;
-}
+  /* Default layout: two columns side-by-side */
+  .solo-search-block-form {
+    display: grid;
+    grid-template-areas: "form-item form-actions";
+    grid-template-columns: minmax(12.5rem, auto) minmax(4rem, 7rem);
+  }
 
-/* Default layout: two columns side-by-side */
-.solo-search-block-form {
-  display: grid;
-  grid-template-areas: "form-item form-actions";
-  grid-template-columns: minmax(12.5rem, auto) minmax(4rem, 7rem);
-}
+  /* Regions (no change here) */
+  :where(.solo-search-block-form) .form-item {
+    grid-area: form-item;
+  }
 
-/* Regions (no change here) */
-:where(.solo-search-block-form) .form-item {
-  grid-area: form-item;
-}
+  :where(.solo-search-block-form) .form-actions {
+    grid-area: form-actions;
+  }
 
-:where(.solo-search-block-form) .form-actions {
-  grid-area: form-actions;
-}
+  /* 260px – stack on two rows */
+  :where(.solo-region-box__inner.solo-is-region-max-260.solo-is-region-xxs) .solo-search-block-form {
+    grid-template-areas:
+      "form-item"
+      "form-actions";
+    grid-template-columns: 1fr;
+    grid-auto-flow: row;
+  }
 
-/* 260px – stack on two rows */
-:where(.solo-region-box__inner.solo-is-region-max-260.solo-is-region-xxs) .solo-search-block-form {
-  grid-template-areas:
-    "form-item"
-    "form-actions";
-  grid-template-columns: 1fr;
-  grid-auto-flow: row;
-}
+  /* 320px – 2 columns again */
+  :where(.solo-region-box__inner.solo-is-region-max-320.solo-is-region-xs) .solo-search-block-form {
+    grid-template-areas: "form-item form-actions";
+    grid-template-columns: minmax(70%, auto) minmax(22%, 30%);
+  }
 
-/* 320px – 2 columns again */
-:where(.solo-region-box__inner.solo-is-region-max-320.solo-is-region-xs) .solo-search-block-form {
-  grid-template-areas: "form-item form-actions";
-  grid-template-columns: minmax(70%, auto) minmax(22%, 30%);
-}
+  :where(.solo-search-block-form) > * {
+    width: 100%;
+    min-width: 0;
+  }
 
-:where(.solo-search-block-form) > * {
-  width: 100%;
-  min-width: 0;
-}
+  .solo-search-block-form .form-item,
+  .solo-search-block-form .form-actions {
+    margin-block: var(--solo-px6) !important;
+    margin-inline: auto !important;
+  }
 
-.solo-search-block-form .form-item,
-.solo-search-block-form .form-actions {
-  margin-block: var(--solo-px6) !important;
-  margin-inline: auto !important;}
+  :where(input).solo-fixed-search-block__button-block,
+  :where(input).solo-fixed-search__button-block {
+    margin: 0 !important;
+    padding-inline-start: var(--solo-px3) !important;
+    padding-inline-end: var(--solo-px3) !important;
+  }
 
-:where(input).solo-fixed-search-block__button-block,
-:where(input).solo-fixed-search__button-block {
-  margin: 0 !important;
-  padding-inline-start: var(--solo-px3) !important;
-  padding-inline-end: var(--solo-px3) !important;
-}
-
-:where(.solo-search-block-form) .form-type-search::before {
-  position: absolute;
-  display: inline-block;
-  width: 24px;
-  height: 24px;
-  content: "";
-  opacity: 0.5;
-  background-color: var(--r-text);
-  background-repeat: no-repeat;
-  background-size: 24px 24px;
-  font-size: 16px;
-  line-height: 16px;
-  inset-block-start: 20px;
-  inset-inline-start: 6px; /* This will be updated for RTL */
-  -webkit-mask: var(--solo-search-icon);
-  mask: var(--solo-search-icon);
-}
-
+  :where(.solo-search-block-form) .form-type-search::before {
+    position: absolute;
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    content: "";
+    opacity: 0.5;
+    background-color: var(--r-text);
+    background-repeat: no-repeat;
+    background-size: 24px 24px;
+    font-size: 16px;
+    line-height: 16px;
+    inset-block-start: 20px;
+    inset-inline-start: 6px; /* This will be updated for RTL */
+    -webkit-mask: var(--solo-search-icon);
+    mask: var(--solo-search-icon);
+  }
 } /* end @layer solo.theme */

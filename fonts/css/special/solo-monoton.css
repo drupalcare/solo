@@ -1,6 +1,6 @@
 @layer solo.utilities {
   .solo-page .monoton {
-    --solo-font-s: 'Monoton', cursive;
+    --solo-font-s: "Monoton", cursive;
   }
 }
 

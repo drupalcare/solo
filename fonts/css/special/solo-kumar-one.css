@@ -1,6 +1,6 @@
 @layer solo.utilities {
   .solo-page .kumar-one {
-    --solo-font-s: 'Kumar One', cursive;
+    --solo-font-s: "Kumar One", cursive;
   }
 }
 

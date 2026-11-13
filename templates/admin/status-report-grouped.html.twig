@@ -18,7 +18,6 @@
 #}
 {{ attach_library('core/drupal.collapse') }}
 
-
 <div class="system-status-report">
   {% for group in grouped_requirements %}
     <div class="system-status-report__requirements-group">
@@ -36,7 +35,7 @@
             ]
           %}
           <summary{{ create_attribute({class: summary_classes}) }} role="button">
-            {% if requirement.severity_title  %}
+            {% if requirement.severity_title %}
               <span class="visually-hidden">{{ requirement.severity_title }}</span>
             {% endif %}
             {{ requirement.title }}

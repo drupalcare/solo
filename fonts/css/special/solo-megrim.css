@@ -1,6 +1,6 @@
 @layer solo.utilities {
   .solo-page .megrim {
-    --solo-font-s: 'Megrim', cursive;
+    --solo-font-s: "Megrim", cursive;
   }
 }
 

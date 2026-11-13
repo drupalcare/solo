@@ -64,7 +64,9 @@
     detectInteractionMode(wrapper) {
       if (
         // Deprecated in 2.0, removed in the next major: [data-hover-toggle].
-        wrapper.querySelector('[data-solo-hover-toggle], [data-hover-toggle]') ||
+        wrapper.querySelector(
+          '[data-solo-hover-toggle], [data-hover-toggle]',
+        ) ||
         wrapper.classList.contains('solo-menu--responsive-hover') ||
         wrapper.classList.contains('solo-menu--sidebar-hover')
       ) {

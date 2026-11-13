@@ -6,7 +6,7 @@
 
 {% set footer_regions = 0 %}
 
-{% if footer_first%}
+{% if footer_first %}
   {% set footer_regions = footer_regions + 1 %}
   {% set footer_first_outer_classes = 'solo-region-box solo-region-box--footer solo-region-box--footer-first' %}
   {% set footer_first_inner_classes = 'solo-region-box__inner solo-region-box__inner--footer solo-region-box__inner--footer-first solo-fade-target' ~ (align_footer_first ? ' ' ~ align_footer_first) ~ (classes_footer_first ? ' ' ~ classes_footer_first) %}

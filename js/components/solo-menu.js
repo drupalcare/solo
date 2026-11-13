@@ -1,4 +1,7 @@
 /**
+ * @param Drupal
+ * @param drupalSettings
+ * @param once
  * @file
  * Solo Menu System - Refactored with State Manager
  *
@@ -976,7 +979,9 @@
           menuBar.classList.remove('solo-is-focus-within');
 
           // Remove data attributes used for hover tracking
-          const hoverItems = menuBar.querySelectorAll('[data-solo-hover-added]');
+          const hoverItems = menuBar.querySelectorAll(
+            '[data-solo-hover-added]',
+          );
           hoverItems.forEach((item) =>
             item.removeAttribute('data-solo-hover-added'),
           );

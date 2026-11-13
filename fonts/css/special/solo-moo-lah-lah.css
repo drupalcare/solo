@@ -1,6 +1,6 @@
 @layer solo.utilities {
   .solo-page .moo-lah-lah {
-    --solo-font-s: 'Moo Lah Lah', cursive;
+    --solo-font-s: "Moo Lah Lah", cursive;
   }
 }
 

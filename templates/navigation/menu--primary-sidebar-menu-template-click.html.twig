@@ -25,7 +25,7 @@
 #}
 {% import _self as menus %}
 {% macro svg_icon(icon_value) %}
-    {% include '@solo/partials/svg/_svg-menu-arrow.html.twig' %}
+    {{ include('@solo/partials/svg/_svg-menu-arrow.html.twig') }}
 {% endmacro %}
 <div class="solo-clear solo-menu solo-menu--sidebar solo-menu--sidebar-template solo-menu--sidebar-click{{ keyboard_enabled ? ' solo-keyboard-enabled' }}"
      data-menu-name="{{ menu_name }}"
@@ -42,12 +42,12 @@
     'solo-menu-tree__submenu solo-menu-tree__submenu--' ~ menu_name|clean_class,
 ] %}
 {% set menubar_attributes = create_attribute({
-    'id': menu_name ~'__menubar'|clean_unique_id,
+    id: menu_name ~ '__menubar'|clean_unique_id,
     'data-menu-level': menu_level,
 }) %}
 {% set submenu_attributes = create_attribute({
-    'id': menu_name ~'__submenu'|clean_unique_id,
-    'tabindex': '-1',
+    id: menu_name ~ '__submenu'|clean_unique_id,
+    tabindex: '-1',
     'data-menu-level': menu_level,
 }) %}
 {% if items %}
@@ -82,14 +82,14 @@
   {% set is_linkable = link_type != 'nolink' and url_string != '' %}
 
   {% import _self as macros %}
-  {% set aria_id = (menu_name ~ '-sub__menu-' ~ loop.index )|clean_unique_id %}
+  {% set aria_id = (menu_name ~ '-sub__menu-' ~ loop.index)|clean_unique_id %}
   {% set dropdown_toggler_class = (menu_level == 1) ? 'solo-menu-tree__toggler--parent' : 'solo-menu-tree__toggler--child' %}
   {% set rendered_url = item.url|render %}
 
   {% set item_classes = [
   'solo-btn-animate solo-menu-tree__item solo-menu-tree__item--' ~ menu_name|clean_class,
-  (item and menu_level == 1 ) ? 'solo-menu-tree__menubar-item',
-  (item and menu_level > 1 ) ? 'solo-menu-tree__submenu-item',
+  (item and menu_level == 1) ? 'solo-menu-tree__menubar-item',
+  (item and menu_level > 1) ? 'solo-menu-tree__submenu-item',
   item.is_expanded ? 'solo-menu-tree__item--has-submenu',
   item.is_expanded and is_linkable ? 'solo-menu-tree__item--link-and-button',
   item.is_expanded and not is_linkable ? 'solo-menu-tree__item--button-only',
@@ -105,7 +105,7 @@
     'data-drupal-selector': menu_name ~ '__level-' ~ (menu_level + 1),
     'aria-controls': aria_id,
     'aria-expanded': 'false',
-    'type': 'button',
+    type: 'button',
     'data-menu-item-id': loop.index,
   }) %}
 
@@ -145,7 +145,7 @@
           'solo-menu-tree__toggler',
           'solo-menu-tree__button',
           'solo-menu-tree__button--' ~ menu_name|clean_class,
-          dropdown_toggler_class
+          dropdown_toggler_class,
         ] %}
         {% if class_list %}
           {% set button_classes = button_classes|merge([class_list]) %}
@@ -202,7 +202,7 @@
               item.attributes.removeClass(item_classes).addClass(link_classes),
               item.attributes.setAttribute('data-drupal-link-system-path', system_path)
               .setAttribute(item.in_active_trail and item.url and item.url.toString() == path('<current>') ? 'aria-current' : 'data-inactive',
-              item.in_active_trail and item.url and item.url.toString() == path('<current>') ? 'page' : 'true')
+              item.in_active_trail and item.url and item.url.toString() == path('<current>') ? 'page' : 'true'),
               )
               }}
           {% endif %}

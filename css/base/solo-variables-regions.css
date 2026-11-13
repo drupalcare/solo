@@ -7,134 +7,132 @@
  */
 
 @layer solo.tokens {
-
-/* Start Var tags */
-.solo-page {
-  --solo-border-default: #94a2b8;
-  --r-border: #cbced7;
-  --r-background: #f0f2f5;
-  --r-text: #262d38;
-  --solo-odd-light: #f4f5f0;
-  --solo-even-light: #e8e9e3;
-  --solo-odd-dark: #222418;
-  --solo-even-dark: #2e3025;
-  --solo-tone-background-dark: #222418;
-  --solo-tone-text-dark: #222418;
-  --solo-tone-border-dark: #4a4c3b;
-  --solo-tone-text-light: #f4f5f0;
-  --solo-tone-background-light: #f4f5f0;
-  --solo-tone-border-light: #d6dac7;
-}
-
+  /* Start Var tags */
+  .solo-page {
+    --solo-border-default: #94a2b8;
+    --r-border: #cbced7;
+    --r-background: #f0f2f5;
+    --r-text: #262d38;
+    --solo-odd-light: #f4f5f0;
+    --solo-even-light: #e8e9e3;
+    --solo-odd-dark: #222418;
+    --solo-even-dark: #2e3025;
+    --solo-tone-background-dark: #222418;
+    --solo-tone-text-dark: #222418;
+    --solo-tone-border-dark: #4a4c3b;
+    --solo-tone-text-light: #f4f5f0;
+    --solo-tone-background-light: #f4f5f0;
+    --solo-tone-border-light: #d6dac7;
+  }
 } /* end @layer solo.tokens */
 
 @layer solo.base {
+  .solo-page,
+  .solo-outer,
+  .solo-region-box__inner {
+    color: var(--r-text);
+    border-color: var(--r-border, var(--solo-border-default));
+    background-color: var(--r-background);
+  }
 
-.solo-page,
-.solo-outer,
-.solo-region-box__inner {
-  color: var(--r-text);
-  border-color: var(--r-border, var(--solo-border-default));
-  background-color: var(--r-background);
-}
+  /* Specificity zeroed out to let structural paragraph builders pass down colors */
+  :where(.solo-page) :where(img, code, pre, kbd, samp, p, hr, ul, ol, li, table, th, td, tr, blockquote) {
+    color: var(--r-text, var(--solo-tone-text-dark));
+    border-color: var(--r-border, var(--solo-border-default));
+  }
 
-/* Specificity zeroed out to let structural paragraph builders pass down colors */
-:where(.solo-page) :where(img, code, pre, kbd, samp, p, hr, ul, ol, li, table, th, td, tr, blockquote) {
-  color: var(--r-text, var(--solo-tone-text-dark));
-  border-color: var(--r-border, var(--solo-border-default));
-}
+  :where(.solo-page) :where(hr, ul, ol, table, .dropbutton-widget) {
+    background-color: var(--r-background);
+  }
 
-:where(.solo-page) :where(hr, ul, ol, table, .dropbutton-widget) {
-  background-color: var(--r-background);
-}
+  :where(.solo-page) :where(.field hr, .views-field hr, .messages ul, .field ul, .views-field ul, .messages ul li, .field ul li, .views-field ul li, .messages ol, .field ol, .views-field ol, .messages ol li, .field ol li, .views-field ol li, .field table) {
+    background-color: initial;
+  }
 
-:where(.solo-page) :where(.field hr, .views-field hr, .messages ul, .field ul, .views-field ul, .messages ul li, .field ul li, .views-field ul li, .messages ol, .field ol, .views-field ol, .messages ol li, .field ol li, .views-field ol li, .field table) {
-  background-color: initial;
-}
+  :where(.solo-page) :where(mark, abbr) {
+    color: inherit;
+    background-color: inherit;
+  }
 
-:where(.solo-page) :where(mark, abbr) {
-  color: inherit;
-  background-color: inherit;
-}
+  :where(.solo-page) :where(h1, h2, h3, h1 a, h2 a, h3 a, h1 a span, h2 a span, h3 a span, .site-name, .site-slogan, .solo-branding__site-name-link) {
+    color: var(--r-heading, var(--r-text));
+  }
 
-:where(.solo-page) :where(h1, h2, h3, h1 a, h2 a, h3 a, h1 a span, h2 a span, h3 a span, .site-name, .site-slogan, .solo-branding__site-name-link) {
-  color: var(--r-heading, var(--r-text));
-}
+  :where(.solo-page .solo-logo) .solo-svg-icon__path,
+  :where(.solo-page .dis-icon-colors .solo-svg-icon) .solo-svg-icon__path {
+    color: var(--r-text) !important;
+    fill: var(--r-text);
+  }
 
-:where(.solo-page .solo-logo) .solo-svg-icon__path,
-:where(.solo-page .dis-icon-colors .solo-svg-icon) .solo-svg-icon__path {
-  color: var(--r-text) !important;
-  fill: var(--r-text);
-}
+  :where(.solo-page svg.ext) path,
+  :where(.solo-page svg.mailto) path {
+    color: var(--r-text) !important;
+    stroke: var(--r-text) !important;
+  }
 
-:where(.solo-page svg.ext) path,
-:where(.solo-page svg.mailto) path {
-  color: var(--r-text) !important;
-  stroke: var(--r-text) !important;
-}
+  :where(.solo-page) .ck-focused,
+  .solo-page .solo-select:focus,
+  .solo-page .solo-check:focus,
+  .solo-page .solo-radio:focus,
+  :where(.solo-page) .solo-input:focus,
+  :where(.solo-page) .solo-textarea:focus {
+    border-color: var(--r-border);
+    box-shadow: inset 0 -40px 40px -40px var(--r-border);
+  }
 
-:where(.solo-page) .ck-focused,
-.solo-page .solo-select:focus,
-.solo-page .solo-check:focus,
-.solo-page .solo-radio:focus,
-:where(.solo-page) .solo-input:focus,
-:where(.solo-page) .solo-textarea:focus {
-  border-color: var(--r-border);
-  box-shadow: inset 0 -40px 40px -40px var(--r-border);
-}
+  :where(.solo-page) .solo-primary-menu.solo-sticky {
+    z-index: var(--z-primary-menu);
+    box-shadow: -1px 0 5px 1px rgb(var(--s-b), 0.5);
+  }
 
-:where(.solo-page) .solo-primary-menu.solo-sticky {
-  z-index: var(--z-primary-menu);
-  box-shadow: -1px 0 5px 1px rgb(var(--s-b), 0.5);
-}
+  .solo-primary-sidebar-menu {
+    box-shadow: -50px 0 55px -30px rgb(var(--s-b), 0.2);
+  }
 
-.solo-primary-sidebar-menu {
-  box-shadow: -50px 0 55px -30px rgb(var(--s-b), 0.2);
-}
+  /* Inner regions borders */
+  :where(.solo-page .solo-outer.solo-container--animate-hover) :where(.solo-region-box__inner):not(.solo-region-box__inner--main):hover {
+    box-shadow: 0 25px 50px 0 rgb(var(--s-b), 0.35);
+  }
 
-/* Inner regions borders */
-:where(.solo-page .solo-outer.solo-container--animate-hover) :where(.solo-region-box__inner):not(.solo-region-box__inner--main):hover {
-  box-shadow: 0 25px 50px 0 rgb(var(--s-b), 0.35);
-}
+  .solo-social a > span:hover {
+    z-index: 10000;
+    box-shadow: 0 0 16px rgb(var(--s-b), 0.2);
+  }
 
-.solo-social a > span:hover {
-  z-index: 10000;  box-shadow: 0 0 16px rgb(var(--s-b), 0.2);
-}
+  .solo-fixed-search-block,
+  .solo-fixed-search {
+    box-shadow:
+      0 var(--solo-px2) var(--solo-px5) 0 rgb(var(--s-b), 0.16),
+      0 var(--solo-px2) var(--solo-px10) 0 rgb(var(--s-b), 0.12);
+  }
 
-.solo-fixed-search-block,
-.solo-fixed-search {
-  box-shadow:
-    0 var(--solo-px2) var(--solo-px5) 0 rgb(var(--s-b), 0.16),
-    0 var(--solo-px2) var(--solo-px10) 0 rgb(var(--s-b), 0.12);
-}
+  :where(.solo-fixed-search-block__inner) .solo-fixed-search-block__wrapper,
+  :where(.solo-fixed-search__inner) .solo-fixed-search__wrapper {
+    box-shadow: 0 30px 90px rgb(var(--s-b), 0.4);
+  }
 
-:where(.solo-fixed-search-block__inner) .solo-fixed-search-block__wrapper,
-:where(.solo-fixed-search__inner) .solo-fixed-search__wrapper {
-  box-shadow: 0 30px 90px rgb(var(--s-b), 0.4);
-}
+  :where(.solo-page .solo-container--top.solo-container--has-border) .solo-region-box__inner,
+  :where(.solo-page .solo-container--main.solo-container--has-border) .solo-region-box__inner,
+  :where(.solo-page .solo-container--bottom.solo-container--has-border) .solo-region-box__inner,
+  :where(.solo-page .solo-container--footer.solo-container--has-border) .solo-region-box__inner {
+    border: 1px solid var(--r-border);
+  }
 
-:where(.solo-page .solo-container--top.solo-container--has-border) .solo-region-box__inner,
-:where(.solo-page .solo-container--main.solo-container--has-border) .solo-region-box__inner,
-:where(.solo-page .solo-container--bottom.solo-container--has-border) .solo-region-box__inner,
-:where(.solo-page .solo-container--footer.solo-container--has-border) .solo-region-box__inner {
-  border: 1px solid var(--r-border);
-}
-
-:where(.solo-page) .dropbutton {
-  transition: color 0.2s ease, background-color 0.2s ease, border-color 0.2s ease;
-}
-
+  :where(.solo-page) .dropbutton {
+    transition:
+      color 0.2s ease,
+      background-color 0.2s ease,
+      border-color 0.2s ease;
+  }
 } /* end @layer solo.base */
 
 @layer solo.locked {
-
-/* Reduced motion: end states are kept, movement is not (WCAG 2.3.3). */
-@media (prefers-reduced-motion: reduce) {
-  :where(:where(.solo-page) .dropbutton) {
-    transition-duration: 0.01ms !important;
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
+  /* Reduced motion: end states are kept, movement is not (WCAG 2.3.3). */
+  @media (prefers-reduced-motion: reduce) {
+    :where(:where(.solo-page) .dropbutton) {
+      transition-duration: 0.01ms !important;
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+    }
   }
-}
-
 } /* end @layer solo.locked */

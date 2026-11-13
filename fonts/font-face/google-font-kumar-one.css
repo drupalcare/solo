@@ -6,10 +6,9 @@
 
 /* kumar-one-regular - latin_latin-ext */
 @font-face {
-  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
-  font-family: 'Kumar One';
-  font-style: normal;
+  font-family: "Kumar One";
+  src: url("../font-files/kumar-one/kumar-one-v25-latin_latin-ext-regular.woff2") format("woff2"); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
   font-weight: 400;
-  src: url('../font-files/kumar-one/kumar-one-v25-latin_latin-ext-regular.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+  font-style: normal;
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
 }
-

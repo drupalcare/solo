@@ -1,4 +1,7 @@
 /**
+ * @param Drupal
+ * @param drupalSettings
+ * @param once
  * @file
  * Solo Menu Side - Refactored with State Manager
  *
@@ -325,7 +328,9 @@
         verticalNav &&
         !verticalNav.contains(event.target) &&
         // Deprecated in 2.0, removed in the next major: old class alias.
-        !event.target.closest('.solo-primary-sidebar-menu__open, .solo-sidebar-menu__open')
+        !event.target.closest(
+          '.solo-primary-sidebar-menu__open, .solo-sidebar-menu__open',
+        )
       ) {
         sideMenubarToggleNav(false);
       }
@@ -449,7 +454,12 @@
     // Deprecated in 2.0, removed in the next major: the old behavior name
     // soloPrimarySideMenu reads and writes Drupal.behaviors.soloMenuPrimarySidebar.
     // It is not enumerable, so Drupal.attachBehaviors() runs it once.
-    if (!Object.prototype.hasOwnProperty.call(Drupal.behaviors, 'soloPrimarySideMenu')) {
+    if (
+      !Object.prototype.hasOwnProperty.call(
+        Drupal.behaviors,
+        'soloPrimarySideMenu',
+      )
+    ) {
       Object.defineProperty(Drupal.behaviors, 'soloPrimarySideMenu', {
         configurable: true,
         get: () => Drupal.behaviors.soloMenuPrimarySidebar,

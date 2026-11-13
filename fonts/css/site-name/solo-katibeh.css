@@ -2,11 +2,11 @@
   #solo-header.solo-katibeh .solo-branding__site-name-link,
   #solo-page-wrapper.solo-katibeh .solo-page-title__text,
   html.solo-preloader-enabled #solo-preloader.solo-katibeh .solo-preloader__text {
-    font-family: "Katibeh", serif;
+    font-family: Katibeh, serif;
   }
 }
 
 /* Unlayered on purpose. Font classes beat unlayered element rules (PB w3-modern.css headings and buttons) as before; a layer would lose to them. */
 #solo-page-wrapper .katibeh {
-  font-family: "Katibeh", serif;
+  font-family: Katibeh, serif;
 }

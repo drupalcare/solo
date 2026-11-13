@@ -1,4 +1,7 @@
 /**
+ * @param Drupal
+ * @param drupalSettings
+ * @param once
  * @file
  * Adds toggle functionality to a fixed search block with Drupal best practices.
  *
@@ -23,8 +26,8 @@
    * Search block toggle functionality.
    *
    * @type {Object}
-   * @property {boolean} isOpen - Current state of the search block
-   * @property {number} animationId - Current animation frame ID
+   * @prop {boolean} isOpen - Current state of the search block
+   * @prop {number} animationId - Current animation frame ID
    */
   Drupal.solo.searchBlock = {
     isOpen: false,
@@ -160,7 +163,7 @@
      * Create a cache of commonly accessed elements.
      *
      * @param {HTMLElement} searchBlock - The search block element
-     * @returns {Object} Cache object with element references
+     * @return {Object} Cache object with element references
      */
     createElementCache(searchBlock) {
       return {
@@ -185,7 +188,7 @@
      *
      * @param {HTMLElement} searchBlock - The search block element
      * @param {Object} cache - Cached element references
-     * @returns {Function} The toggle function
+     * @return {Function} The toggle function
      */
     createToggleFunction(searchBlock, cache) {
       const self = this;
@@ -367,7 +370,7 @@
      * Calculate the natural height of an element.
      *
      * @param {HTMLElement} element - The element to measure
-     * @returns {number} The natural height in pixels
+     * @return {number} The natural height in pixels
      */
     calculateHeight(element) {
       const originalHeight = element.style.height;
@@ -488,7 +491,7 @@
      * Create keyboard trap handler.
      *
      * @param {HTMLElement} searchBlock - The search block element
-     * @returns {Function} The keyboard trap handler
+     * @return {Function} The keyboard trap handler
      */
     createKeyboardTrapHandler(searchBlock) {
       return (event) => {
@@ -506,7 +509,9 @@
           const opener =
             Drupal.solo.searchBlock.triggerElement ||
             // Deprecated in 2.0, removed in the next major: old class alias.
-            document.querySelector('.solo-fixed-search-block__open > button, .solo-fixed-search__open > button');
+            document.querySelector(
+              '.solo-fixed-search-block__open > button, .solo-fixed-search__open > button',
+            );
           if (opener) {
             opener.focus();
           }
@@ -560,7 +565,9 @@
         const opener =
           state.triggerElement ||
           // Deprecated in 2.0, removed in the next major: old class alias.
-          document.querySelector('.solo-fixed-search-block__open > button, .solo-fixed-search__open > button');
+          document.querySelector(
+            '.solo-fixed-search-block__open > button, .solo-fixed-search__open > button',
+          );
         if (typeof Drupal.solo.searchBlockToggle === 'function') {
           Drupal.solo.searchBlockToggle(false);
         }
@@ -659,7 +666,12 @@
           const isOutsideClick =
             !searchBlock.contains(target) &&
             // Deprecated in 2.0, removed in the next major: old class alias.
-            !(target.closest && target.closest('.solo-fixed-search-block__open, .solo-fixed-search__open'));
+            !(
+              target.closest &&
+              target.closest(
+                '.solo-fixed-search-block__open, .solo-fixed-search__open',
+              )
+            );
 
           if (
             isOutsideClick &&
@@ -691,7 +703,7 @@
      *
      * @param {Function} func - The function to debounce
      * @param {number} wait - The debounce delay in milliseconds
-     * @returns {Function} The debounced function
+     * @return {Function} The debounced function
      */
     debounce(func, wait) {
       let timeout;

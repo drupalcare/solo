@@ -1,183 +1,179 @@
 @layer solo.theme {
-
-/* Border animation  */
-@keyframes animateregion {
-  0% {
-    transform: scale(1);
+  /* Border animation  */
+  @keyframes animateregion {
+    0% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.01);
+    }
+    100% {
+      transform: scale(1);
+    }
   }
-  50% {
-    transform: scale(1.01);
+
+  :where(.solo-page .solo-outer.solo-container--animate-hover) .solo-region-box__inner:not(.solo-region-box__inner--main),
+  :where(.solo-page .solo-outer.solo-container--animate-border) .solo-region-box__inner:not(.solo-region-box__inner--main) {
+    position: relative;
+    transition: all 0.3s ease;
   }
-  100% {
-    transform: scale(1);
+
+  :where(.solo-page .solo-outer.solo-container--animate-hover) .solo-region-box__inner:not(.solo-region-box__inner--main):hover {
+    animation: animateregion 2s;
   }
-}
 
-:where(.solo-page .solo-outer.solo-container--animate-hover) .solo-region-box__inner:not(.solo-region-box__inner--main),
-:where(.solo-page .solo-outer.solo-container--animate-border) .solo-region-box__inner:not(.solo-region-box__inner--main) {
-  position: relative;
-  transition: all 0.3s ease;
-}
-
-:where(.solo-page .solo-outer.solo-container--animate-hover) .solo-region-box__inner:not(.solo-region-box__inner--main):hover {
-  animation: animateregion 2s;
-}
-
-:where(.solo-page .solo-outer.solo-container--animate-border) .solo-region-box__inner:not(.solo-region-box__inner--main)::before {
-  position: absolute;
-  width: 0;
-  height: 0;
-  content: "";
-  border: var(--solo-px4) solid transparent;
-  background-color: transparent;
-  inset-block-start: 0;
-  inset-inline-start: 0;
-}
-
-:where(.solo-page .solo-outer.solo-container--animate-border) .solo-region-box__inner:not(.solo-region-box__inner--main):hover::before {
-  animation: borderLeftColors 1.5s linear forwards;
-}
-
-:where(.solo-page .solo-outer.solo-container--animate-border) .solo-region-box__inner:not(.solo-region-box__inner--main)::after {
-  position: absolute;
-  width: 0;
-  height: 0;
-  content: "";
-  border: var(--solo-px4) solid transparent;
-  background-color: transparent;
-  inset-block-end: 0;
-  inset-inline-end: 0;
-}
-
-:where(.solo-page .solo-outer.solo-container--animate-border) .solo-region-box__inner:not(.solo-region-box__inner--main):hover::after {
-  animation: borderRightColors 1.5s linear forwards;
-}
-
-/* Shadows */
-:where(.solo-page .solo-outer.solo-container--animate-border) .solo-region-box__inner:not(.solo-region-box__inner--main) {
-  overflow: hidden !important;
-  transition: 0.4s !important;
-}
-
-/* Radios */
-:where(.solo-page .solo-outer.radius-4) .solo-region-box__inner,
-:where(.solo-page .solo-outer.solo-container--animate-border.radius-4) .solo-region-box__inner:not(.solo-region-box__inner--main)::before,
-:where(.solo-page .solo-outer.solo-container--animate-border.radius-4) .solo-region-box__inner:not(.solo-region-box__inner--main)::after {
-  border-radius: var(--solo-px4);
-}
-
-:where(.solo-page .solo-outer.radius-8) .solo-region-box__inner,
-:where(.solo-page .solo-outer.solo-container--animate-border.radius-8) .solo-region-box__inner:not(.solo-region-box__inner--main)::before,
-:where(.solo-page .solo-outer.solo-container--animate-border.radius-8) .solo-region-box__inner:not(.solo-region-box__inner--main)::after {
-  border-radius: var(--solo-px8);
-}
-
-:where(.solo-page .solo-outer.radius-16) .solo-region-box__inner,
-:where(.solo-page .solo-outer.solo-container--animate-border.radius-16) .solo-region-box__inner:not(.solo-region-box__inner--main)::before,
-:where(.solo-page .solo-outer.solo-container--animate-border.radius-16) .solo-region-box__inner:not(.solo-region-box__inner--main)::after {
-  border-radius: var(--solo-px16);
-}
-
-:where(.solo-page .solo-outer.radius-24) .solo-region-box__inner,
-:where(.solo-page .solo-outer.solo-container--animate-border.radius-24) .solo-region-box__inner:not(.solo-region-box__inner--main)::before,
-:where(.solo-page .solo-outer.solo-container--animate-border.radius-24) .solo-region-box__inner:not(.solo-region-box__inner--main)::after {
-  border-radius: var(--solo-px24);
-}
-
-/* Border animation  */
-/* stylelint-disable-next-line keyframes-name-pattern -- shipped animation name, kept as released */
-@keyframes borderLeftColors {
-  0% {
+  :where(.solo-page .solo-outer.solo-container--animate-border) .solo-region-box__inner:not(.solo-region-box__inner--main)::before {
+    position: absolute;
     width: 0;
     height: 0;
-    border-top-color: var(--r-border, var(--solo-border-default));
-    border-right-color: transparent;
-    border-bottom-color: transparent;
-    border-left-color: transparent;
+    content: "";
+    border: var(--solo-px4) solid transparent;
+    background-color: transparent;
+    inset-block-start: 0;
+    inset-inline-start: 0;
   }
 
-  50% {
-    width: 100%;
-    height: 0;
-    border-top-color: var(--r-border, var(--solo-border-default));
-    border-right-color: var(--r-border, var(--solo-border-default));
-    border-bottom-color: transparent;
-    border-left-color: transparent;
+  :where(.solo-page .solo-outer.solo-container--animate-border) .solo-region-box__inner:not(.solo-region-box__inner--main):hover::before {
+    animation: borderLeftColors 1.5s linear forwards;
   }
 
-  99.9999% {
-    width: 100%;
-    height: 100%;
-    border-top-color: var(--r-border, var(--solo-border-default));
-    border-right-color: var(--r-border, var(--solo-border-default));
-    border-bottom-color: transparent;
-    border-left-color: transparent;
-  }
-
-  100% {
+  :where(.solo-page .solo-outer.solo-container--animate-border) .solo-region-box__inner:not(.solo-region-box__inner--main)::after {
+    position: absolute;
     width: 0;
     height: 0;
-    border-top-color: transparent;
-    border-right-color: transparent;
-    border-bottom-color: transparent;
-    border-left-color: transparent;
-  }
-}
-
-/* stylelint-disable-next-line keyframes-name-pattern -- shipped animation name, kept as released */
-@keyframes borderRightColors {
-  0% {
-    width: 0;
-    height: 0;
-    border-top-color: transparent;
-    border-right-color: transparent;
-    border-bottom-color: var(--r-border, var(--solo-border-default));
-    border-left-color: transparent;
+    content: "";
+    border: var(--solo-px4) solid transparent;
+    background-color: transparent;
+    inset-block-end: 0;
+    inset-inline-end: 0;
   }
 
-  50% {
-    width: 100%;
-    height: 0;
-    border-top-color: transparent;
-    border-right-color: transparent;
-    border-bottom-color: var(--r-border, var(--solo-border-default));
-    border-left-color: var(--r-border, var(--solo-border-default));
+  :where(.solo-page .solo-outer.solo-container--animate-border) .solo-region-box__inner:not(.solo-region-box__inner--main):hover::after {
+    animation: borderRightColors 1.5s linear forwards;
   }
 
-  99.9999% {
-    width: 100%;
-    height: 100%;
-    border-top-color: transparent;
-    border-right-color: transparent;
-    border-bottom-color: var(--r-border, var(--solo-border-default));
-    border-left-color: var(--r-border, var(--solo-border-default));
+  /* Shadows */
+  :where(.solo-page .solo-outer.solo-container--animate-border) .solo-region-box__inner:not(.solo-region-box__inner--main) {
+    overflow: hidden !important;
+    transition: 0.4s !important;
   }
 
-  100% {
-    width: 0;
-    height: 0;
-    border-top-color: transparent;
-    border-right-color: transparent;
-    border-bottom-color: transparent;
-    border-left-color: transparent;
+  /* Radios */
+  :where(.solo-page .solo-outer.radius-4) .solo-region-box__inner,
+  :where(.solo-page .solo-outer.solo-container--animate-border.radius-4) .solo-region-box__inner:not(.solo-region-box__inner--main)::before,
+  :where(.solo-page .solo-outer.solo-container--animate-border.radius-4) .solo-region-box__inner:not(.solo-region-box__inner--main)::after {
+    border-radius: var(--solo-px4);
   }
-}
 
+  :where(.solo-page .solo-outer.radius-8) .solo-region-box__inner,
+  :where(.solo-page .solo-outer.solo-container--animate-border.radius-8) .solo-region-box__inner:not(.solo-region-box__inner--main)::before,
+  :where(.solo-page .solo-outer.solo-container--animate-border.radius-8) .solo-region-box__inner:not(.solo-region-box__inner--main)::after {
+    border-radius: var(--solo-px8);
+  }
+
+  :where(.solo-page .solo-outer.radius-16) .solo-region-box__inner,
+  :where(.solo-page .solo-outer.solo-container--animate-border.radius-16) .solo-region-box__inner:not(.solo-region-box__inner--main)::before,
+  :where(.solo-page .solo-outer.solo-container--animate-border.radius-16) .solo-region-box__inner:not(.solo-region-box__inner--main)::after {
+    border-radius: var(--solo-px16);
+  }
+
+  :where(.solo-page .solo-outer.radius-24) .solo-region-box__inner,
+  :where(.solo-page .solo-outer.solo-container--animate-border.radius-24) .solo-region-box__inner:not(.solo-region-box__inner--main)::before,
+  :where(.solo-page .solo-outer.solo-container--animate-border.radius-24) .solo-region-box__inner:not(.solo-region-box__inner--main)::after {
+    border-radius: var(--solo-px24);
+  }
+
+  /* Border animation  */
+  /* stylelint-disable-next-line keyframes-name-pattern -- shipped animation name, kept as released */
+  @keyframes borderLeftColors {
+    0% {
+      width: 0;
+      height: 0;
+      border-top-color: var(--r-border, var(--solo-border-default));
+      border-right-color: transparent;
+      border-bottom-color: transparent;
+      border-left-color: transparent;
+    }
+
+    50% {
+      width: 100%;
+      height: 0;
+      border-top-color: var(--r-border, var(--solo-border-default));
+      border-right-color: var(--r-border, var(--solo-border-default));
+      border-bottom-color: transparent;
+      border-left-color: transparent;
+    }
+
+    99.9999% {
+      width: 100%;
+      height: 100%;
+      border-top-color: var(--r-border, var(--solo-border-default));
+      border-right-color: var(--r-border, var(--solo-border-default));
+      border-bottom-color: transparent;
+      border-left-color: transparent;
+    }
+
+    100% {
+      width: 0;
+      height: 0;
+      border-top-color: transparent;
+      border-right-color: transparent;
+      border-bottom-color: transparent;
+      border-left-color: transparent;
+    }
+  }
+
+  /* stylelint-disable-next-line keyframes-name-pattern -- shipped animation name, kept as released */
+  @keyframes borderRightColors {
+    0% {
+      width: 0;
+      height: 0;
+      border-top-color: transparent;
+      border-right-color: transparent;
+      border-bottom-color: var(--r-border, var(--solo-border-default));
+      border-left-color: transparent;
+    }
+
+    50% {
+      width: 100%;
+      height: 0;
+      border-top-color: transparent;
+      border-right-color: transparent;
+      border-bottom-color: var(--r-border, var(--solo-border-default));
+      border-left-color: var(--r-border, var(--solo-border-default));
+    }
+
+    99.9999% {
+      width: 100%;
+      height: 100%;
+      border-top-color: transparent;
+      border-right-color: transparent;
+      border-bottom-color: var(--r-border, var(--solo-border-default));
+      border-left-color: var(--r-border, var(--solo-border-default));
+    }
+
+    100% {
+      width: 0;
+      height: 0;
+      border-top-color: transparent;
+      border-right-color: transparent;
+      border-bottom-color: transparent;
+      border-left-color: transparent;
+    }
+  }
 } /* end @layer solo.theme */
 
 @layer solo.locked {
-
-/* Reduced motion: end states are kept, movement is not (WCAG 2.3.3). */
-@media (prefers-reduced-motion: reduce) {
-  :where(:where(.solo-page .solo-outer.solo-container--animate-hover) .solo-region-box__inner:not(.solo-region-box__inner--main)),
-  :where(:where(.solo-page .solo-outer.solo-container--animate-border) .solo-region-box__inner:not(.solo-region-box__inner--main)),
-  :where(:where(.solo-page .solo-outer.solo-container--animate-hover) .solo-region-box__inner:not(.solo-region-box__inner--main):hover),
-  :where(:where(.solo-page .solo-outer.solo-container--animate-border) .solo-region-box__inner:not(.solo-region-box__inner--main):hover)::before,
-  :where(:where(.solo-page .solo-outer.solo-container--animate-border) .solo-region-box__inner:not(.solo-region-box__inner--main):hover)::after {
-    transition-duration: 0.01ms !important;
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
+  /* Reduced motion: end states are kept, movement is not (WCAG 2.3.3). */
+  @media (prefers-reduced-motion: reduce) {
+    :where(:where(.solo-page .solo-outer.solo-container--animate-hover) .solo-region-box__inner:not(.solo-region-box__inner--main)),
+    :where(:where(.solo-page .solo-outer.solo-container--animate-border) .solo-region-box__inner:not(.solo-region-box__inner--main)),
+    :where(:where(.solo-page .solo-outer.solo-container--animate-hover) .solo-region-box__inner:not(.solo-region-box__inner--main):hover),
+    :where(:where(.solo-page .solo-outer.solo-container--animate-border) .solo-region-box__inner:not(.solo-region-box__inner--main):hover)::before,
+    :where(:where(.solo-page .solo-outer.solo-container--animate-border) .solo-region-box__inner:not(.solo-region-box__inner--main):hover)::after {
+      transition-duration: 0.01ms !important;
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+    }
   }
-}
-
 } /* end @layer solo.locked */

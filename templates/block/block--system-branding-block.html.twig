@@ -1,4 +1,4 @@
-{% extends "block.html.twig" %}
+{% extends 'block.html.twig' %}
 {#
 /**
  * @file
@@ -30,7 +30,7 @@
 
   {% if site_logo and logo_default == 1 %}
     <a class="site-logo" href="{{ path('<front>') }}" rel="home"{% if site_name %} tabindex="-1" aria-hidden="true"{% else %} aria-label="{{ logo_label }}"{% endif %}>
-      {% include '@solo/partials/svg/_svg-logo.html.twig' with { solo_path: solo_path } only %}
+      {{ include('@solo/partials/svg/_svg-logo.html.twig', {solo_path: solo_path}, false) }}
     </a>
   {% endif %}
   </div>

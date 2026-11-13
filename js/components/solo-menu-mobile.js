@@ -1,4 +1,7 @@
 /**
+ * @param Drupal
+ * @param drupalSettings
+ * @param once
  * @file
  * Solo Menu Mobile - Refactored with State Manager
  *
@@ -26,7 +29,7 @@
 
   /**
    * Gets the current window width using state manager
-   * @returns {number} Current window width
+   * @return {number} Current window width
    */
   const getCurrentWidth = () => Drupal.solo.menuState.getCurrentWidth();
 
@@ -151,7 +154,9 @@
 
       // Return focus to hamburger button
       // Deprecated in 2.0, removed in the next major: old class alias.
-      const hamburgerButton = document.querySelector('.solo-menu-main--mobile button, .solo-mobile-nav button');
+      const hamburgerButton = document.querySelector(
+        '.solo-menu-main--mobile button, .solo-mobile-nav button',
+      );
       if (hamburgerButton && document.contains(hamburgerButton)) {
         hamburgerButton.focus();
       }
@@ -203,7 +208,7 @@
   /**
    * Gets mobile navigation type information
    * @param {HTMLElement} hamburgerIcon - The hamburger icon element
-   * @returns {Array} Array containing [hamburgerIconChild, navTagId, menuElement]
+   * @return {Array} Array containing [hamburgerIconChild, navTagId, menuElement]
    */
   const getMobileNavType = (hamburgerIcon) => {
     if (!hamburgerIcon || !(hamburgerIcon instanceof HTMLElement)) {
@@ -489,7 +494,7 @@
   /**
    * Creates resize handler
    * @param {NodeList|Array} hamburgerIcons - Collection of hamburger icons
-   * @returns {Function} Resize handler
+   * @return {Function} Resize handler
    */
   function createResizeHandler(hamburgerIcons) {
     return (screenInfo) => {
@@ -615,10 +620,17 @@
       if (trigger === 'unload') {
         const hamburgerIcons = once
           // Deprecated in 2.0, removed in the next major: old class alias.
-          .filter('solo-menu-hamburger-init', '.solo-menu-main--mobile button, .solo-mobile-nav button', context)
+          .filter(
+            'solo-menu-hamburger-init',
+            '.solo-menu-main--mobile button, .solo-mobile-nav button',
+            context,
+          )
           .concat(
             // Deprecated in 2.0, removed in the next major: old class alias.
-            once.filter('solo-menu-hamburger-late-init', '.solo-menu-main--mobile button, .solo-mobile-nav button'),
+            once.filter(
+              'solo-menu-hamburger-late-init',
+              '.solo-menu-main--mobile button, .solo-mobile-nav button',
+            ),
           );
 
         hamburgerIcons.forEach((icon) => {

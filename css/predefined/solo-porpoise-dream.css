@@ -12,293 +12,291 @@
  */
 
 @layer solo.schemes {
-
-/* Page wrapper
+  /* Page wrapper
 PORPOISE #4D4C5C, FLINT #7F7D9C, DOVE #7C6E7F */
-:root {
-  --sc-head-tx: #9290ab;
-  --sc-link-tx: #3d3d49;
-  --sc-link-hover-tx: #9d91a0;
-  --sc-menu-bg: #757395;
-  --sc-menu-tx: #fff;
-  --sc-menu-hover-tx: #f1f1f4;
-  --sc-menu-hover-bg: #4d4c5c;
-  --sc-tab-hover-tx: #f1f1f4;
-  --sc-menu-open-tx: #f1f1f4;
-  --sc-menu-open-bg: #4d4c5c;
-  --sc-button-bg: #1e1e24;
-  --sc-button-tx: #dedee5;
-  --sc-button-hover-tx: #1e1e24;
-  --sc-button-hover-bg: #dedee5;
-  --sc-main-container-bg: linear-gradient(45deg, #e8e7ed, #ecebef);
-  --sc-top-container-bg: linear-gradient(45deg, #e8e7ed, #ecebef);
-  --sc-fixed-search-block-bg: linear-gradient(45deg, #e8e7ed, #ecebef);
-  --sc-popup-login-block-inner-bg: linear-gradient(45deg, #e8e7ed, #ecebef);
-  --sc-bottom-container-bg: linear-gradient(180deg, #131318, #1a171b);
-  --sc-footer-container-bg: linear-gradient(180deg, #131318, #1a171b);
-  --sc-footer-menu-bg: linear-gradient(180deg, #131318, #1a171b);
-  --sc-copyright-bg: linear-gradient(180deg, #080709, #16161b);
-  --sc-social-fill: #4d4c5c;
-  --sc-control-br: #9998aa;
-  --sc-fixed-search-block-shadow: 27, 26, 34;
-  --sc-social-box-shadow: 251, 250, 252;
-}
+  :root {
+    --sc-head-tx: #9290ab;
+    --sc-link-tx: #3d3d49;
+    --sc-link-hover-tx: #9d91a0;
+    --sc-menu-bg: #757395;
+    --sc-menu-tx: #fff;
+    --sc-menu-hover-tx: #f1f1f4;
+    --sc-menu-hover-bg: #4d4c5c;
+    --sc-tab-hover-tx: #f1f1f4;
+    --sc-menu-open-tx: #f1f1f4;
+    --sc-menu-open-bg: #4d4c5c;
+    --sc-button-bg: #1e1e24;
+    --sc-button-tx: #dedee5;
+    --sc-button-hover-tx: #1e1e24;
+    --sc-button-hover-bg: #dedee5;
+    --sc-main-container-bg: linear-gradient(45deg, #e8e7ed, #ecebef);
+    --sc-top-container-bg: linear-gradient(45deg, #e8e7ed, #ecebef);
+    --sc-fixed-search-block-bg: linear-gradient(45deg, #e8e7ed, #ecebef);
+    --sc-popup-login-block-inner-bg: linear-gradient(45deg, #e8e7ed, #ecebef);
+    --sc-bottom-container-bg: linear-gradient(180deg, #131318, #1a171b);
+    --sc-footer-container-bg: linear-gradient(180deg, #131318, #1a171b);
+    --sc-footer-menu-bg: linear-gradient(180deg, #131318, #1a171b);
+    --sc-copyright-bg: linear-gradient(180deg, #080709, #16161b);
+    --sc-social-fill: #4d4c5c;
+    --sc-control-br: #9998aa;
+    --sc-fixed-search-block-shadow: 27, 26, 34;
+    --sc-social-box-shadow: 251, 250, 252;
+  }
 
-.solo-page {
-  --r-border: #c6bfc7;
-  --r-background: #f6f5f7;
-  --r-text: #231f24;
-  --solo-accent-background-image: linear-gradient(0deg, #4d4c5c, #3d3d49);
-  --solo-accent-background: linear-gradient(0deg, #4d4c5c, #3d3d49);
-  --solo-accent-text: #bebdcd;
-  --r-menu-text-hover: #f1f1f4;
-  --r-menu-background-hover: #4d4c5c;
-}
+  .solo-page {
+    --r-border: #c6bfc7;
+    --r-background: #f6f5f7;
+    --r-text: #231f24;
+    --solo-accent-background-image: linear-gradient(0deg, #4d4c5c, #3d3d49);
+    --solo-accent-background: linear-gradient(0deg, #4d4c5c, #3d3d49);
+    --solo-accent-text: #bebdcd;
+    --r-menu-text-hover: #f1f1f4;
+    --r-menu-background-hover: #4d4c5c;
+  }
 
-:where(.solo-page) .solo-popup-login-block__open:where(:not([style*="--r-border:"] *)),
-:where(.solo-page) .solo-popup-login__open:where(:not([style*="--r-border:"] *)),
-:where(.solo-page .solo-hamburger) button:where(:not([style*="--r-border:"] *)),
-:where(.solo-page) .solo-menu-main:where(:not([style*="--r-border:"] *)),
-:where(.solo-page) .solo-main-nav:where(:not([style*="--r-border:"] *)),
-:where(.solo-page .solo-menu-main) ul:where(:not([style*="--r-border:"] *)),
-:where(.solo-page .solo-main-nav) ul:where(:not([style*="--r-border:"] *)),
-:where(.solo-page) .solo-menu-main li:where(:not([style*="--r-border:"] *)),
-:where(.solo-page) .solo-main-nav li:where(:not([style*="--r-border:"] *)),
-:where(.solo-page) .solo-header li.solo-menu-tree__item > a:where(:not([style*="--r-border:"] *)),
-:where(.solo-page) .solo-menu-main li > a:where(:not([style*="--r-border:"] *)),
-:where(.solo-page) .solo-main-nav li > a:where(:not([style*="--r-border:"] *)),
-:where(.solo-page .solo-header) li.solo-menu-tree__item > button:where(:not([style*="--r-border:"] *)),
-:where(.solo-page .solo-menu-main) li > button:where(:not([style*="--r-border:"] *)),
-:where(.solo-page .solo-main-nav) li > button:where(:not([style*="--r-border:"] *)) {
-  --r-border: #9c9ab2;
-}
+  :where(.solo-page) .solo-popup-login-block__open:where(:not([style*="--r-border:"] *)),
+  :where(.solo-page) .solo-popup-login__open:where(:not([style*="--r-border:"] *)),
+  :where(.solo-page .solo-hamburger) button:where(:not([style*="--r-border:"] *)),
+  :where(.solo-page) .solo-menu-main:where(:not([style*="--r-border:"] *)),
+  :where(.solo-page) .solo-main-nav:where(:not([style*="--r-border:"] *)),
+  :where(.solo-page .solo-menu-main) ul:where(:not([style*="--r-border:"] *)),
+  :where(.solo-page .solo-main-nav) ul:where(:not([style*="--r-border:"] *)),
+  :where(.solo-page) .solo-menu-main li:where(:not([style*="--r-border:"] *)),
+  :where(.solo-page) .solo-main-nav li:where(:not([style*="--r-border:"] *)),
+  :where(.solo-page) .solo-header li.solo-menu-tree__item > a:where(:not([style*="--r-border:"] *)),
+  :where(.solo-page) .solo-menu-main li > a:where(:not([style*="--r-border:"] *)),
+  :where(.solo-page) .solo-main-nav li > a:where(:not([style*="--r-border:"] *)),
+  :where(.solo-page .solo-header) li.solo-menu-tree__item > button:where(:not([style*="--r-border:"] *)),
+  :where(.solo-page .solo-menu-main) li > button:where(:not([style*="--r-border:"] *)),
+  :where(.solo-page .solo-main-nav) li > button:where(:not([style*="--r-border:"] *)) {
+    --r-border: #9c9ab2;
+  }
 
-.solo-page ul.tabs.secondary li a:hover,
-.solo-page ul.tabs.primary li a:hover {
-  --r-background: #4d4c5c;
-}
+  .solo-page ul.tabs.secondary li a:hover,
+  .solo-page ul.tabs.primary li a:hover {
+    --r-background: #4d4c5c;
+  }
 
-.solo-welcome-text,
-:where(.solo-container--main) .solo-region-box--main {
-  --r-background: var(--solo-white);
-}
+  .solo-welcome-text,
+  :where(.solo-container--main) .solo-region-box--main {
+    --r-background: var(--solo-white);
+  }
 
-.solo-container--main,
-.solo-container--top,
-.solo-fixed-search-block,
-.solo-fixed-search,
-.solo-popup-login-block__inner,
-.solo-popup-login__inner {
-  --s-b: 11, 11, 11;
-}
+  .solo-container--main,
+  .solo-container--top,
+  .solo-fixed-search-block,
+  .solo-fixed-search,
+  .solo-popup-login-block__inner,
+  .solo-popup-login__inner {
+    --s-b: 11, 11, 11;
+  }
 
-:is(.solo-container--main, .solo-container--top, .solo-fixed-search-block, .solo-popup-login-block__inner):where(:not([style*="--r-border:"] *)),
-:is(.solo-container--main, .solo-container--top, .solo-fixed-search, .solo-popup-login__inner):where(:not([style*="--r-border:"] *)) {
-  --r-border: #c7c6d0;
-}
+  :is(.solo-container--main, .solo-container--top, .solo-fixed-search-block, .solo-popup-login-block__inner):where(:not([style*="--r-border:"] *)),
+  :is(.solo-container--main, .solo-container--top, .solo-fixed-search, .solo-popup-login__inner):where(:not([style*="--r-border:"] *)) {
+    --r-border: #c7c6d0;
+  }
 
-.solo-highlighted {
-  --r-background: #fefefe;
-}
+  .solo-highlighted {
+    --r-background: #fefefe;
+  }
 
-.solo-container--top .solo-region-box__inner--top {
-  --r-background-image: linear-gradient(180deg, #e0e0df, #fff);
-  --r-background: #e0e0df;
-}
+  .solo-container--top .solo-region-box__inner--top {
+    --r-background-image: linear-gradient(180deg, #e0e0df, #fff);
+    --r-background: #e0e0df;
+  }
 
-header.solo-header,
-div.solo-page-title.solo-container--single {
-  --r-text: #f6f5f7;
-  --r-background-image: linear-gradient(0deg, #4d4c5c, #3d3d49);
-  --r-background: #4d4c5c;
-}
+  header.solo-header,
+  div.solo-page-title.solo-container--single {
+    --r-text: #f6f5f7;
+    --r-background-image: linear-gradient(0deg, #4d4c5c, #3d3d49);
+    --r-background: #4d4c5c;
+  }
 
-.breadcrumb {
-  --r-text: #fefefe;
-  --r-background-image: linear-gradient(180deg, #080709, #16161b);
-  --r-background: #080709;
-}
+  .breadcrumb {
+    --r-text: #fefefe;
+    --r-background-image: linear-gradient(180deg, #080709, #16161b);
+    --r-background: #080709;
+  }
 
-.solo-copyright {
-  --r-text: #fefefe;
-}
+  .solo-copyright {
+    --r-text: #fefefe;
+  }
 
-.solo-container--bottom,
-.solo-container--footer,
-.solo-footer-menu__nav,
-.solo-footer-nav {
-  --r-text: #fdfdfd;
-}
+  .solo-container--bottom,
+  .solo-container--footer,
+  .solo-footer-menu__nav,
+  .solo-footer-nav {
+    --r-text: #fdfdfd;
+  }
 
-:is(.solo-container--bottom, .solo-container--footer, .solo-footer-menu__nav):where(:not([style*="--r-border:"] *)),
-:is(.solo-container--bottom, .solo-container--footer, .solo-footer-nav):where(:not([style*="--r-border:"] *)) {
-  --r-border: #4f4d66;
-}
+  :is(.solo-container--bottom, .solo-container--footer, .solo-footer-menu__nav):where(:not([style*="--r-border:"] *)),
+  :is(.solo-container--bottom, .solo-container--footer, .solo-footer-nav):where(:not([style*="--r-border:"] *)) {
+    --r-border: #4f4d66;
+  }
 
-.solo-container--bottom .solo-region-box__inner--bottom,
-.solo-container--footer .solo-region-box__inner--footer {
-  --r-background-image: linear-gradient(180deg, #070708, #0b0b0f);
-  --r-background: #070708;
-}
+  .solo-container--bottom .solo-region-box__inner--bottom,
+  .solo-container--footer .solo-region-box__inner--footer {
+    --r-background-image: linear-gradient(180deg, #070708, #0b0b0f);
+    --r-background: #070708;
+  }
 
-:where(.solo-page) :is(.solo-container--bottom a, .solo-container--footer a, .solo-footer-menu__nav a, .breadcrumb a, .solo-copyright a),
-:where(.solo-page) :is(.solo-container--bottom a, .solo-container--footer a, .solo-footer-nav a, .breadcrumb a, .solo-copyright a) {
-  --r-text: #9c9ab2;
-}
+  :where(.solo-page) :is(.solo-container--bottom a, .solo-container--footer a, .solo-footer-menu__nav a, .breadcrumb a, .solo-copyright a),
+  :where(.solo-page) :is(.solo-container--bottom a, .solo-container--footer a, .solo-footer-nav a, .breadcrumb a, .solo-copyright a) {
+    --r-text: #9c9ab2;
+  }
 
-:where(.solo-page) :is(.solo-container--bottom h1, .solo-container--bottom h2, .solo-container--bottom h3, .solo-container--footer h1, .solo-container--footer h2, .solo-container--footer h3, .solo-footer-menu__nav h1, .solo-footer-menu__nav h2, .solo-footer-menu__nav h3),
-:where(.solo-page) :is(.solo-container--bottom h1, .solo-container--bottom h2, .solo-container--bottom h3, .solo-container--footer h1, .solo-container--footer h2, .solo-container--footer h3, .solo-footer-nav h1, .solo-footer-nav h2, .solo-footer-nav h3) {
-  --r-text: #8f8ea2;
-}
+  :where(.solo-page) :is(.solo-container--bottom h1, .solo-container--bottom h2, .solo-container--bottom h3, .solo-container--footer h1, .solo-container--footer h2, .solo-container--footer h3, .solo-footer-menu__nav h1, .solo-footer-menu__nav h2, .solo-footer-menu__nav h3),
+  :where(.solo-page) :is(.solo-container--bottom h1, .solo-container--bottom h2, .solo-container--bottom h3, .solo-container--footer h1, .solo-container--footer h2, .solo-container--footer h3, .solo-footer-nav h1, .solo-footer-nav h2, .solo-footer-nav h3) {
+    --r-text: #8f8ea2;
+  }
 
-:where(.solo-page) .selectify:where(:not([style*="--r-border:"] *)),
-:where(.solo-page) .solo-select:where(:not([style*="--r-border:"] *)),
-:where(.solo-page) .solo-radio:where(:not([style*="--r-border:"] *)),
-:where(.solo-page) .solo-check:where(:not([style*="--r-border:"] *)),
-:where(.solo-page) .solo-input:where(:not([style*="--r-border:"] *)),
-:where(.solo-page) .solo-textarea:where(:not([style*="--r-border:"] *)),
-:where(.solo-page .solo-fixed-search-block__close) button:where(:not([style*="--r-border:"] *)),
-:where(.solo-page .solo-fixed-search__close) button:where(:not([style*="--r-border:"] *)) {
-  --r-border: #848397;
-}
+  :where(.solo-page) .selectify:where(:not([style*="--r-border:"] *)),
+  :where(.solo-page) .solo-select:where(:not([style*="--r-border:"] *)),
+  :where(.solo-page) .solo-radio:where(:not([style*="--r-border:"] *)),
+  :where(.solo-page) .solo-check:where(:not([style*="--r-border:"] *)),
+  :where(.solo-page) .solo-input:where(:not([style*="--r-border:"] *)),
+  :where(.solo-page) .solo-textarea:where(:not([style*="--r-border:"] *)),
+  :where(.solo-page .solo-fixed-search-block__close) button:where(:not([style*="--r-border:"] *)),
+  :where(.solo-page .solo-fixed-search__close) button:where(:not([style*="--r-border:"] *)) {
+    --r-border: #848397;
+  }
 
-:where(.solo-page) :is(.selectify *:hover, .solo-select:hover, .solo-check:hover, .solo-radio:hover, .solo-input:hover, .solo-textarea:hover, .selectify *:focus, .solo-select:focus, .solo-check:focus, .solo-radio:focus, .solo-input:focus, .solo-textarea:focus) {
-  --r-border: #757395;
-}
+  :where(.solo-page) :is(.selectify *:hover, .solo-select:hover, .solo-check:hover, .solo-radio:hover, .solo-input:hover, .solo-textarea:hover, .selectify *:focus, .solo-select:focus, .solo-check:focus, .solo-radio:focus, .solo-input:focus, .solo-textarea:focus) {
+    --r-border: #757395;
+  }
 
-.solo-primary-sidebar-menu,
-:where(.solo-inner) .solo-menu-tree--responsive,
-:where(.solo-fixed-search-block__inner) .solo-fixed-search-block__wrapper,
-:where(.solo-fixed-search__inner) .solo-fixed-search__wrapper,
-:where(.solo-page .solo-outer.solo-container--animate-hover) .solo-region-box__inner.solo-region-box__inner--top {
-  --s-b: 27, 26, 34;
-}
+  .solo-primary-sidebar-menu,
+  :where(.solo-inner) .solo-menu-tree--responsive,
+  :where(.solo-fixed-search-block__inner) .solo-fixed-search-block__wrapper,
+  :where(.solo-fixed-search__inner) .solo-fixed-search__wrapper,
+  :where(.solo-page .solo-outer.solo-container--animate-hover) .solo-region-box__inner.solo-region-box__inner--top {
+    --s-b: 27, 26, 34;
+  }
 
-:where(.solo-page .solo-outer.solo-container--animate-hover) .solo-region-box__inner.solo-region-box__inner--bottom,
-:where(.solo-page .solo-outer.solo-container--animate-hover) .solo-region-box__inner.solo-region-box__inner--footer {
-  --s-b: 241, 241, 244;
-}
+  :where(.solo-page .solo-outer.solo-container--animate-hover) .solo-region-box__inner.solo-region-box__inner--bottom,
+  :where(.solo-page .solo-outer.solo-container--animate-hover) .solo-region-box__inner.solo-region-box__inner--footer {
+    --s-b: 241, 241, 244;
+  }
 
-:where(.solo-page) :is(.selectify-radio, .selectify-checkbox, .selectify-radio *, .selectify-checkbox *) {
-  --selectify-checkbox-bg: color-mix(in srgb, #757395 6%, transparent);
-  --selectify-checkbox-checked-bg: color-mix(in srgb, #757395 16%, transparent);
-  --selectify-checkbox-check-circle: #9998aa;
-  --selectify-checkbox-checked-circle: #757395;
-  --selectify-checkbox-disabled-bg: color-mix(in sRGB, currentColor 5%, transparent);
-  --selectify-checkbox-disabled-circle: color-mix(in sRGB, currentColor 22%, transparent);
-  --selectify-checkbox-border-color: #9998aa;
-  --selectify-checkbox-hover-border-color: #757395;
-  --selectify-checkbox-hover-bg: color-mix(in srgb, #757395 10%, transparent);
-  --selectify-checkbox-active-border-color: #757395;
-  --selectify-checkbox-active-bg: color-mix(in srgb, #757395 14%, transparent);
-  --selectify-checkbox-checked-border-color: #757395;
-}
+  :where(.solo-page) :is(.selectify-radio, .selectify-checkbox, .selectify-radio *, .selectify-checkbox *) {
+    --selectify-checkbox-bg: color-mix(in srgb, #757395 6%, transparent);
+    --selectify-checkbox-checked-bg: color-mix(in srgb, #757395 16%, transparent);
+    --selectify-checkbox-check-circle: #9998aa;
+    --selectify-checkbox-checked-circle: #757395;
+    --selectify-checkbox-disabled-bg: color-mix(in sRGB, currentColor 5%, transparent);
+    --selectify-checkbox-disabled-circle: color-mix(in sRGB, currentColor 22%, transparent);
+    --selectify-checkbox-border-color: #9998aa;
+    --selectify-checkbox-hover-border-color: #757395;
+    --selectify-checkbox-hover-bg: color-mix(in srgb, #757395 10%, transparent);
+    --selectify-checkbox-active-border-color: #757395;
+    --selectify-checkbox-active-bg: color-mix(in srgb, #757395 14%, transparent);
+    --selectify-checkbox-checked-border-color: #757395;
+  }
 
-.solo-page .selectify-select,
-:where(.solo-page .selectify-select) * {
-  --selectify-select-bg: #fff;
-  --selectify-select-hover-bg: #f7f7f9;
-  --selectify-select-color: var(--r-text);
-  --selectify-select-border-color: var(--r-border);
-  --selectify-select-focus-border-color: #757395;
-  --selectify-select-disabled-bg: #f4f4f4;
-  --selectify-select-arrow-color: #757395;
-  --selectify-dropdown-shadow: 0 10px 28px -12px color-mix(in srgb, #231f24 22%, transparent);
-  --selectify-option-hover-bg: #f4f4f7;
-  --selectify-option-active-bg: #ecebf0;
-}
+  .solo-page .selectify-select,
+  :where(.solo-page .selectify-select) * {
+    --selectify-select-bg: #fff;
+    --selectify-select-hover-bg: #f7f7f9;
+    --selectify-select-color: var(--r-text);
+    --selectify-select-border-color: var(--r-border);
+    --selectify-select-focus-border-color: #757395;
+    --selectify-select-disabled-bg: #f4f4f4;
+    --selectify-select-arrow-color: #757395;
+    --selectify-dropdown-shadow: 0 10px 28px -12px color-mix(in srgb, #231f24 22%, transparent);
+    --selectify-option-hover-bg: #f4f4f7;
+    --selectify-option-active-bg: #ecebf0;
+  }
 
-/* Region text colors: one block per region with its heading (--r-heading), link
+  /* Region text colors: one block per region with its heading (--r-heading), link
    (--r-link) and link hover (--r-link-hover) colors, and button hover text where the
    scheme sets one. Backgrounds above are the scheme's own. Every color here reaches
    WCAG AA (4.5:1) on the grounds named in its comment. A site's region colors still win. */
-/* Header: on #4d4c5c, #3d3d49. */
-.solo-header {
-  --r-heading: #bebdcd;
-  --r-link: #bdbdc7;
-  --r-link-hover: #cbcbd2;
-}
+  /* Header: on #4d4c5c, #3d3d49. */
+  .solo-header {
+    --r-heading: #bebdcd;
+    --r-link: #bdbdc7;
+    --r-link-hover: #cbcbd2;
+  }
 
-/* Highlighted: on #fefefe. */
-.solo-highlighted {
-  --r-heading: #757295;
-  --r-link: #3d3d49;
-  --r-link-hover: #807183;
-}
+  /* Highlighted: on #fefefe. */
+  .solo-highlighted {
+    --r-heading: #757295;
+    --r-link: #3d3d49;
+    --r-link-hover: #807183;
+  }
 
-/* Fixed search: on #e8e7ed, #ecebef. */
-.solo-fixed-search-block,
-.solo-fixed-search {
-  --r-heading: #686586;
-  --r-link: #3d3d49;
-  --r-link-hover: #716474;
-}
+  /* Fixed search: on #e8e7ed, #ecebef. */
+  .solo-fixed-search-block,
+  .solo-fixed-search {
+    --r-heading: #686586;
+    --r-link: #3d3d49;
+    --r-link-hover: #716474;
+  }
 
-/* Popup login: on #e8e7ed, #ecebef. */
-.solo-popup-login-block__inner,
-.solo-popup-login__inner {
-  --r-heading: #686586;
-  --r-link: #3d3d49;
-  --r-link-hover: #716474;
-}
+  /* Popup login: on #e8e7ed, #ecebef. */
+  .solo-popup-login-block__inner,
+  .solo-popup-login__inner {
+    --r-heading: #686586;
+    --r-link: #3d3d49;
+    --r-link-hover: #716474;
+  }
 
-/* Welcome text: on #f6f5f7. */
-.solo-welcome-text {
-  --r-heading: #6e6b8d;
-  --r-link: #3d3d49;
-  --r-link-hover: #786a7c;
-}
+  /* Welcome text: on #f6f5f7. */
+  .solo-welcome-text {
+    --r-heading: #6e6b8d;
+    --r-link: #3d3d49;
+    --r-link-hover: #786a7c;
+  }
 
-/* Top: on #e0e0df, #ffffff. */
-.solo-container--top {
-  --r-heading: #63607f;
-  --r-link: #3d3d49;
-  --r-link-hover: #6c5f6f;
-}
+  /* Top: on #e0e0df, #ffffff. */
+  .solo-container--top {
+    --r-heading: #63607f;
+    --r-link: #3d3d49;
+    --r-link-hover: #6c5f6f;
+  }
 
-/* Main: on #ffffff. */
-.solo-container--main {
-  --r-heading: #767395;
-  --r-link: #3d3d49;
-  --r-link-hover: #807284;
-}
+  /* Main: on #ffffff. */
+  .solo-container--main {
+    --r-heading: #767395;
+    --r-link: #3d3d49;
+    --r-link-hover: #807284;
+  }
 
-/* Page title: on #4d4c5c, #3d3d49. */
-.solo-page-title {
-  --r-heading: #bebdcd;
-  --r-link: #bdbdc7;
-  --r-link-hover: #cbcbd2;
-}
+  /* Page title: on #4d4c5c, #3d3d49. */
+  .solo-page-title {
+    --r-heading: #bebdcd;
+    --r-link: #bdbdc7;
+    --r-link-hover: #cbcbd2;
+  }
 
-/* Breadcrumb: on #080709, #16161b. */
-.breadcrumb {
-  --r-link: #9c9ab2;
-  --r-link-hover: #9d91a0;
-}
+  /* Breadcrumb: on #080709, #16161b. */
+  .breadcrumb {
+    --r-link: #9c9ab2;
+    --r-link-hover: #9d91a0;
+  }
 
-/* Bottom: on #070708, #0b0b0f. */
-.solo-container--bottom {
-  --r-link: #9c9ab2;
-  --r-link-hover: #9d91a0;
-}
+  /* Bottom: on #070708, #0b0b0f. */
+  .solo-container--bottom {
+    --r-link: #9c9ab2;
+    --r-link-hover: #9d91a0;
+  }
 
-/* Footer: on #070708, #0b0b0f. */
-.solo-container--footer {
-  --r-link: #9c9ab2;
-  --r-link-hover: #9d91a0;
-}
+  /* Footer: on #070708, #0b0b0f. */
+  .solo-container--footer {
+    --r-link: #9c9ab2;
+    --r-link-hover: #9d91a0;
+  }
 
-/* Footer menu: on #131318, #1a171b. */
-.solo-footer-menu__nav,
-.solo-footer-nav {
-  --r-link: #9c9ab2;
-  --r-link-hover: #9d91a0;
-}
+  /* Footer menu: on #131318, #1a171b. */
+  .solo-footer-menu__nav,
+  .solo-footer-nav {
+    --r-link: #9c9ab2;
+    --r-link-hover: #9d91a0;
+  }
 
-/* Copyright: on #080709, #16161b. */
-.solo-copyright {
-  --r-link: #9c9ab2;
-  --r-link-hover: #9d91a0;
-}
-
+  /* Copyright: on #080709, #16161b. */
+  .solo-copyright {
+    --r-link: #9c9ab2;
+    --r-link-hover: #9d91a0;
+  }
 } /* end @layer solo.schemes */

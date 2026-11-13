@@ -3,7 +3,8 @@
   .solo-page h2,
   .solo-page h3,
   #solo-page-wrapper .francois-one {
-    --solo-h1: 'Francois One', sans-serif;
+    --solo-h1: "Francois One", sans-serif;
+
     letter-spacing: var(--solo-px1);
   }
 }

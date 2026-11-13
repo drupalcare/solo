@@ -3,7 +3,8 @@
   .solo-page h2,
   .solo-page h3,
   #solo-page-wrapper .fjalla-one {
-    --solo-h1: 'Fjalla One', sans-serif;
+    --solo-h1: "Fjalla One", sans-serif;
+
     letter-spacing: var(--solo-px1);
   }
 }

@@ -723,7 +723,7 @@ button.solo-comment__replies-toggle {
 /* solo-comment.css:438, answers pb-svg.css:17, extlink.css:30, extlink.css:38 */
 @media (forced-colors: active) {
   .solo-comment__permalink svg,
-    .solo-comment__replies-toggle svg {
+  .solo-comment__replies-toggle svg {
     fill: CanvasText;
   }
 }
@@ -1373,17 +1373,17 @@ body:has(.solo-maintenance-page) {
 /* solo-menu.css:392, answers pb-pattern-3d-carousel-folio.css:91, pb-pattern-link-directory.css:56, pb-pattern-link-directory.css:68 (+116 more) */
 #solo-primary-menu .solo-menu-branding a,
 #solo-primary-sidebar-menu .solo-menu-branding a {
-  color: inherit;
-  text-decoration: none;
-  cursor: pointer;
   display: flex;
-  justify-content: start;
+  float: inline-start;
   align-items: center;
-  height: 100%;
+  justify-content: start;
   width: auto;
   min-width: 50px;
+  height: 100%;
+  cursor: pointer;
+  text-decoration: none;
+  color: inherit;
   font-weight: bold;
-  float: inline-start;
 }
 
 /* solo-menu.css:409, answers w3css-paragraphs-accordion.css:52, vvjf-board.css:21, addtoany.css:32 (+6 more) */
@@ -1540,31 +1540,31 @@ body.solo-login-popup-open {
 @media (prefers-contrast: more) {
   .solo-popup-login-block__close button:focus,
   .solo-popup-login__close button:focus,
-    .solo-popup-login-block__open button:focus,
+  .solo-popup-login-block__open button:focus,
   .solo-popup-login__open button:focus,
-    .solo-popup-login-block button:focus,
+  .solo-popup-login-block button:focus,
   .solo-popup-login button:focus,
-    .solo-popup-login-block input:focus,
+  .solo-popup-login-block input:focus,
   .solo-popup-login input:focus,
-    .solo-popup-login-block select:focus,
+  .solo-popup-login-block select:focus,
   .solo-popup-login select:focus,
-    .solo-popup-login-block textarea:focus,
+  .solo-popup-login-block textarea:focus,
   .solo-popup-login textarea:focus,
-    .solo-popup-login-block a:focus,
+  .solo-popup-login-block a:focus,
   .solo-popup-login a:focus,
-    .solo-popup-login-block__close button:focus-visible,
+  .solo-popup-login-block__close button:focus-visible,
   .solo-popup-login__close button:focus-visible,
-    .solo-popup-login-block__open button:focus-visible,
+  .solo-popup-login-block__open button:focus-visible,
   .solo-popup-login__open button:focus-visible,
-    .solo-popup-login-block button:focus-visible,
+  .solo-popup-login-block button:focus-visible,
   .solo-popup-login button:focus-visible,
-    .solo-popup-login-block input:focus-visible,
+  .solo-popup-login-block input:focus-visible,
   .solo-popup-login input:focus-visible,
-    .solo-popup-login-block select:focus-visible,
+  .solo-popup-login-block select:focus-visible,
   .solo-popup-login select:focus-visible,
-    .solo-popup-login-block textarea:focus-visible,
+  .solo-popup-login-block textarea:focus-visible,
   .solo-popup-login textarea:focus-visible,
-    .solo-popup-login-block a:focus-visible,
+  .solo-popup-login-block a:focus-visible,
   .solo-popup-login a:focus-visible {
     outline-width: 3px;
   }
@@ -1842,7 +1842,7 @@ html.solo-preloader-enabled.solo-preloader-active body {
 /* solo-table.css:89, answers webform_ui.module.css:111, report.css:239, report.css:254 (+3 more) */
 @media (min-width: 36rem) {
   .solo-page table th.priority-medium,
-    .solo-page table td.priority-medium {
+  .solo-page table td.priority-medium {
     display: table-cell;
   }
 }
@@ -1850,7 +1850,7 @@ html.solo-preloader-enabled.solo-preloader-active body {
 /* solo-table.css:96, answers webform_ui.module.css:111, report.css:239, report.css:254 (+3 more) */
 @media (min-width: 62rem) {
   .solo-page table th.priority-low,
-    .solo-page table td.priority-low {
+  .solo-page table td.priority-low {
     display: table-cell;
   }
 }
@@ -2118,7 +2118,7 @@ html.gap-14 .solo-inner .solo-menu-tree__menubar li.solo-menu-tree__item > butto
 /* solo-global-settings.css:76, answers pb-patterns-base.css:58, pb-pattern-simple-action-band.css:53, vvja-cards.css:35 (+48 more) */
 @media (min-width: 26rem) {
   html.gap-20 .solo-inner .solo-menu-tree__menubar li.solo-menu-tree__item > a,
-    html.gap-20 .solo-inner .solo-menu-tree__menubar li.solo-menu-tree__item > button {
+  html.gap-20 .solo-inner .solo-menu-tree__menubar li.solo-menu-tree__item > button {
     padding-block-start: var(--solo-px14);
     padding-block-end: var(--solo-px14);
   }
@@ -2128,7 +2128,7 @@ html.gap-14 .solo-inner .solo-menu-tree__menubar li.solo-menu-tree__item > butto
 /* solo-global-settings.css:83, answers pb-patterns-base.css:58, pb-pattern-simple-action-band.css:53, vvja-cards.css:35 (+48 more) */
 @media (min-width: 26rem) {
   html.gap-24 .solo-inner .solo-menu-tree__menubar li.solo-menu-tree__item > a,
-    html.gap-24 .solo-inner .solo-menu-tree__menubar li.solo-menu-tree__item > button {
+  html.gap-24 .solo-inner .solo-menu-tree__menubar li.solo-menu-tree__item > button {
     padding-block-start: var(--solo-px18);
     padding-block-end: var(--solo-px18);
   }
@@ -2138,7 +2138,7 @@ html.gap-14 .solo-inner .solo-menu-tree__menubar li.solo-menu-tree__item > butto
 /* solo-global-settings.css:90, answers pb-patterns-base.css:58, pb-pattern-simple-action-band.css:53, vvja-cards.css:35 (+48 more) */
 @media (min-width: 26rem) {
   html.gap-36 .solo-inner .solo-menu-tree__menubar li.solo-menu-tree__item > a,
-    html.gap-36 .solo-inner .solo-menu-tree__menubar li.solo-menu-tree__item > button {
+  html.gap-36 .solo-inner .solo-menu-tree__menubar li.solo-menu-tree__item > button {
     padding-block-start: var(--solo-px20);
     padding-block-end: var(--solo-px20);
   }
@@ -2148,7 +2148,7 @@ html.gap-14 .solo-inner .solo-menu-tree__menubar li.solo-menu-tree__item > butto
 /* solo-global-settings.css:97, answers pb-patterns-base.css:58, pb-pattern-simple-action-band.css:53, vvja-cards.css:35 (+48 more) */
 @media (min-width: 26rem) {
   html.gap-48 .solo-inner .solo-menu-tree__menubar li.solo-menu-tree__item > a,
-    html.gap-48 .solo-inner .solo-menu-tree__menubar li.solo-menu-tree__item > button {
+  html.gap-48 .solo-inner .solo-menu-tree__menubar li.solo-menu-tree__item > button {
     padding-block-start: var(--solo-px24);
     padding-block-end: var(--solo-px24);
   }
@@ -2158,7 +2158,7 @@ html.gap-14 .solo-inner .solo-menu-tree__menubar li.solo-menu-tree__item > butto
 /* solo-global-settings.css:104, answers pb-patterns-base.css:58, pb-pattern-simple-action-band.css:53, vvja-cards.css:35 (+48 more) */
 @media (min-width: 26rem) {
   html.gap-64 .solo-inner .solo-menu-tree__menubar li.solo-menu-tree__item > a,
-    html.gap-64 .solo-inner .solo-menu-tree__menubar li.solo-menu-tree__item > button {
+  html.gap-64 .solo-inner .solo-menu-tree__menubar li.solo-menu-tree__item > button {
     padding-block-start: var(--solo-px32);
     padding-block-end: var(--solo-px32);
   }
@@ -2176,7 +2176,7 @@ html.gap-14 .solo-inner .solo-menu-tree__menubar li.solo-menu-tree__item > butto
 @media (min-width: 26rem) {
   html.fs-18 .solo-inner .solo-popup-login-block__open > button,
   html.fs-18 .solo-inner .solo-popup-login__open > button,
-    html.fs-18 .solo-inner .solo-menu-tree__menubar--account li a {
+  html.fs-18 .solo-inner .solo-menu-tree__menubar--account li a {
     line-height: 1.5;
   }
 }
@@ -2194,7 +2194,7 @@ html.gap-14 .solo-inner .solo-menu-tree__menubar li.solo-menu-tree__item > butto
 @media (min-width: 26rem) {
   html.fs-20 .solo-inner .solo-popup-login-block__open > button,
   html.fs-20 .solo-inner .solo-popup-login__open > button,
-    html.fs-20 .solo-inner .solo-menu-tree__menubar--account li a {
+  html.fs-20 .solo-inner .solo-menu-tree__menubar--account li a {
     line-height: 1.5;
   }
 }
@@ -2854,9 +2854,9 @@ html.gap-14 .solo-inner .solo-menu-tree__menubar li.solo-menu-tree__item > butto
   border: 1px solid var(--solo-w3-fieldset-border);
   margin-block: 0;
   margin-inline: 2px;
-  padding-block-start: .35em;
-  padding-inline: .625em;
-  padding-block-end: .75em;
+  padding-block-start: 0.35em;
+  padding-inline: 0.625em;
+  padding-block-end: 0.75em;
 }
 
 /* w3.css:190, answers form.css:74, form.pcss.css:67 */
@@ -3087,7 +3087,7 @@ html.gap-14 .solo-inner .solo-menu-tree__menubar li.solo-menu-tree__item > butto
 /* w3.css:569, answers w3-modern.css:2149 */
 .w3-main,
 :where(.solo-page) #main {
-  transition: margin-left .4s;
+  transition: margin-left 0.4s;
 }
 
 /* w3.css:593, answers w3-modern.css:598, w3-modern.css:663 */
@@ -3210,21 +3210,21 @@ html.gap-14 .solo-inner .solo-menu-tree__menubar li.solo-menu-tree__item > butto
 }
 
 /* w3.css:720, answers w3-modern.css:674, w3-modern.css:683, w3-modern.css:687 */
-@media (min-width:601px) {
+@media (min-width: 601px) {
   .w3-col.m1 {
     width: 8.33333%;
   }
 }
 
 /* w3.css:724, answers w3-modern.css:674, w3-modern.css:679, w3-modern.css:687 */
-@media (min-width:601px) {
+@media (min-width: 601px) {
   .w3-col.m2 {
     width: 16.66666%;
   }
 }
 
 /* w3.css:728, answers w3-modern.css:674, w3-modern.css:679, w3-modern.css:683 */
-@media (min-width:601px) {
+@media (min-width: 601px) {
   .w3-col.m3,
   .w3-quarter {
     width: 24.99999%;
@@ -3232,7 +3232,7 @@ html.gap-14 .solo-inner .solo-menu-tree__menubar li.solo-menu-tree__item > butto
 }
 
 /* w3.css:733, answers w3-modern.css:674, w3-modern.css:679, w3-modern.css:683 */
-@media (min-width:601px) {
+@media (min-width: 601px) {
   .w3-col.m4,
   .w3-third {
     width: 33.33333%;
@@ -3240,14 +3240,14 @@ html.gap-14 .solo-inner .solo-menu-tree__menubar li.solo-menu-tree__item > butto
 }
 
 /* w3.css:738, answers w3-modern.css:674, w3-modern.css:679, w3-modern.css:683 */
-@media (min-width:601px) {
+@media (min-width: 601px) {
   .w3-col.m5 {
     width: 41.66666%;
   }
 }
 
 /* w3.css:742, answers w3-modern.css:674, w3-modern.css:679, w3-modern.css:683 */
-@media (min-width:601px) {
+@media (min-width: 601px) {
   .w3-col.m6,
   .w3-half {
     width: 49.99999%;
@@ -3255,14 +3255,14 @@ html.gap-14 .solo-inner .solo-menu-tree__menubar li.solo-menu-tree__item > butto
 }
 
 /* w3.css:747, answers w3-modern.css:674, w3-modern.css:679, w3-modern.css:683 */
-@media (min-width:601px) {
+@media (min-width: 601px) {
   .w3-col.m7 {
     width: 58.33333%;
   }
 }
 
 /* w3.css:751, answers w3-modern.css:674, w3-modern.css:679, w3-modern.css:683 */
-@media (min-width:601px) {
+@media (min-width: 601px) {
   .w3-col.m8,
   .w3-twothird {
     width: 66.66666%;
@@ -3270,7 +3270,7 @@ html.gap-14 .solo-inner .solo-menu-tree__menubar li.solo-menu-tree__item > butto
 }
 
 /* w3.css:756, answers w3-modern.css:674, w3-modern.css:679, w3-modern.css:683 */
-@media (min-width:601px) {
+@media (min-width: 601px) {
   .w3-col.m9,
   .w3-threequarter {
     width: 74.99999%;
@@ -3278,105 +3278,105 @@ html.gap-14 .solo-inner .solo-menu-tree__menubar li.solo-menu-tree__item > butto
 }
 
 /* w3.css:761, answers w3-modern.css:674, w3-modern.css:679, w3-modern.css:683 */
-@media (min-width:601px) {
+@media (min-width: 601px) {
   .w3-col.m10 {
     width: 83.33333%;
   }
 }
 
 /* w3.css:765, answers w3-modern.css:674, w3-modern.css:679, w3-modern.css:683 */
-@media (min-width:601px) {
+@media (min-width: 601px) {
   .w3-col.m11 {
     width: 91.66666%;
   }
 }
 
 /* w3.css:769, answers w3-modern.css:674, w3-modern.css:679, w3-modern.css:683 */
-@media (min-width:601px) {
+@media (min-width: 601px) {
   .w3-col.m12 {
     width: 99.99999%;
   }
 }
 
 /* w3.css:776, answers w3-modern.css:674, w3-modern.css:683, w3-modern.css:687 */
-@media (min-width:62rem) {
+@media (min-width: 62rem) {
   .w3-col.l1 {
     width: 8.33333%;
   }
 }
 
 /* w3.css:780, answers w3-modern.css:674, w3-modern.css:679, w3-modern.css:687 */
-@media (min-width:62rem) {
+@media (min-width: 62rem) {
   .w3-col.l2 {
     width: 16.66666%;
   }
 }
 
 /* w3.css:784, answers w3-modern.css:674, w3-modern.css:679, w3-modern.css:683 */
-@media (min-width:62rem) {
+@media (min-width: 62rem) {
   .w3-col.l3 {
     width: 24.99999%;
   }
 }
 
 /* w3.css:788, answers w3-modern.css:674, w3-modern.css:679, w3-modern.css:683 */
-@media (min-width:62rem) {
+@media (min-width: 62rem) {
   .w3-col.l4 {
     width: 33.33333%;
   }
 }
 
 /* w3.css:792, answers w3-modern.css:674, w3-modern.css:679, w3-modern.css:683 */
-@media (min-width:62rem) {
+@media (min-width: 62rem) {
   .w3-col.l5 {
     width: 41.66666%;
   }
 }
 
 /* w3.css:796, answers w3-modern.css:674, w3-modern.css:679, w3-modern.css:683 */
-@media (min-width:62rem) {
+@media (min-width: 62rem) {
   .w3-col.l6 {
     width: 49.99999%;
   }
 }
 
 /* w3.css:800, answers w3-modern.css:674, w3-modern.css:679, w3-modern.css:683 */
-@media (min-width:62rem) {
+@media (min-width: 62rem) {
   .w3-col.l7 {
     width: 58.33333%;
   }
 }
 
 /* w3.css:804, answers w3-modern.css:674, w3-modern.css:679, w3-modern.css:683 */
-@media (min-width:62rem) {
+@media (min-width: 62rem) {
   .w3-col.l8 {
     width: 66.66666%;
   }
 }
 
 /* w3.css:808, answers w3-modern.css:674, w3-modern.css:679, w3-modern.css:683 */
-@media (min-width:62rem) {
+@media (min-width: 62rem) {
   .w3-col.l9 {
     width: 74.99999%;
   }
 }
 
 /* w3.css:812, answers w3-modern.css:674, w3-modern.css:679, w3-modern.css:683 */
-@media (min-width:62rem) {
+@media (min-width: 62rem) {
   .w3-col.l10 {
     width: 83.33333%;
   }
 }
 
 /* w3.css:816, answers w3-modern.css:674, w3-modern.css:679, w3-modern.css:683 */
-@media (min-width:62rem) {
+@media (min-width: 62rem) {
   .w3-col.l11 {
     width: 91.66666%;
   }
 }
 
 /* w3.css:820, answers w3-modern.css:674, w3-modern.css:679, w3-modern.css:683 */
-@media (min-width:62rem) {
+@media (min-width: 62rem) {
   .w3-col.l12 {
     width: 99.99999%;
   }
@@ -3388,14 +3388,14 @@ html.gap-14 .solo-inner .solo-menu-tree__menubar li.solo-menu-tree__item > butto
 }
 
 /* w3.css:884, answers w3-modern.css:853, w3-modern.css:982 */
-@media (max-width:1205px) {
+@media (max-width: 1205px) {
   .w3-auto {
     max-width: 95%;
   }
 }
 
 /* w3.css:891, answers w3-modern.css:590, w3-modern.css:899 */
-@media (max-width:600px) {
+@media (max-width: 600px) {
   .w3-modal-content {
     margin-block: 0;
     margin-inline: 10px;
@@ -3403,7 +3403,7 @@ html.gap-14 .solo-inner .solo-menu-tree__menubar li.solo-menu-tree__item > butto
 }
 
 /* w3.css:901, answers w3-modern.css:526 */
-@media (max-width:600px) {
+@media (max-width: 600px) {
   :where(.solo-page) :where(.w3-dropdown-hover.w3-mobile) .w3-dropdown-content,
   :where(.solo-page) :where(.w3-dropdown-click.w3-mobile) .w3-dropdown-content {
     position: relative;
@@ -3411,28 +3411,28 @@ html.gap-14 .solo-inner .solo-menu-tree__menubar li.solo-menu-tree__item > butto
 }
 
 /* w3.css:915, answers w3-modern.css:626 */
-@media (max-width:600px) {
+@media (max-width: 600px) {
   .w3-bar-item.w3-mobile {
     text-align: center;
   }
 }
 
 /* w3.css:933, answers w3-modern.css:590, w3-modern.css:951 */
-@media (max-width:768px) {
+@media (max-width: 768px) {
   .w3-modal-content {
     width: 500px;
   }
 }
 
 /* w3.css:944, answers w3-modern.css:590, w3-modern.css:940 */
-@media (min-width:62rem) {
+@media (min-width: 62rem) {
   .w3-modal-content {
     width: 900px;
   }
 }
 
 /* w3.css:950, answers w3-modern.css:590, w3-modern.css:899, w3-modern.css:940 */
-@media (min-width:601px) {
+@media (min-width: 601px) {
   :where(.solo-page) .w3-modal-content {
     margin: auto;
     background-color: var(--r-background);
@@ -3441,7 +3441,7 @@ html.gap-14 .solo-inner .solo-menu-tree__menubar li.solo-menu-tree__item > butto
 }
 
 /* w3.css:989, answers w3-modern.css:853, w3-modern.css:892 */
-@media (max-width:61.99875rem) {
+@media (max-width: 61.99875rem) {
   .w3-auto {
     max-width: 100%;
   }

@@ -15,7 +15,7 @@
       {% if footer_copyright %}
       <!-- Start: Copyright -->
       <p class="solo-copyright__first">
-        {{ footer_copyright|replace({"%year%": "now"|date("Y")}) }}
+        {{ footer_copyright|replace({'%year%': 'now'|date('Y')}) }}
       </p>
       <!-- End: Copyright -->
       {% endif %}

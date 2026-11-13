@@ -1,4 +1,6 @@
 /**
+ * @param Drupal
+ * @param once
  * @file
  * Solo Preloader (Load + Navigation aware).
  *
@@ -147,7 +149,7 @@
 
     attachNavigationListener(el);
 
-    // Reads the new attribute first. Deprecated in 2.0, removed in the next major: 
+    // Reads the new attribute first. Deprecated in 2.0, removed in the next major:
     // data-hide-on, data-max-display and data-force-show (old partials).
     const attr = (name) =>
       el.getAttribute(`data-solo-preloader-${name}`) ??

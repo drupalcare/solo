@@ -1,17 +1,15 @@
 @layer solo.theme {
+  .action-links {
+    margin-block: 0;
+    margin-inline-start: 0;
+    margin-inline-end: 0;
+    padding-block: 0;
+    padding-inline-start: 0;
+    padding-inline-end: 0;
+    list-style: none;
+  }
 
-.action-links {
-  margin-block: 0;
-  margin-inline-start: 0;
-  margin-inline-end: 0;
-  padding-block: 0;
-  padding-inline-start: 0;
-  padding-inline-end: 0;
-  list-style: none;
-}
-
-.action-links-item {
-  display: inline-block;
-}
-
+  .action-links-item {
+    display: inline-block;
+  }
 } /* end @layer solo.theme */

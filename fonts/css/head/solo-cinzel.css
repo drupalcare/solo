@@ -3,7 +3,8 @@
   .solo-page h2,
   .solo-page h3,
   #solo-page-wrapper .cinzel {
-    --solo-h1: 'Cinzel', serif;
+    --solo-h1: "Cinzel", serif;
+
     letter-spacing: var(--solo-px1);
   }
 }

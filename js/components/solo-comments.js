@@ -1,4 +1,6 @@
 /**
+ * @param Drupal
+ * @param once
  * @file
  * Comment replies toggle behavior.
  */
@@ -123,7 +125,12 @@
   // Deprecated in 2.0, removed in the next major: the old behavior name
   // commentRepliesToggle reads and writes Drupal.behaviors.soloComments.
   // It is not enumerable, so Drupal.attachBehaviors() runs it once.
-  if (!Object.prototype.hasOwnProperty.call(Drupal.behaviors, 'commentRepliesToggle')) {
+  if (
+    !Object.prototype.hasOwnProperty.call(
+      Drupal.behaviors,
+      'commentRepliesToggle',
+    )
+  ) {
     Object.defineProperty(Drupal.behaviors, 'commentRepliesToggle', {
       configurable: true,
       get: () => Drupal.behaviors.soloComments,

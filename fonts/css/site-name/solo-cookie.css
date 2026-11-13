@@ -2,11 +2,11 @@
   #solo-header.solo-cookie .solo-branding__site-name-link,
   #solo-page-wrapper.solo-cookie .solo-page-title__text,
   html.solo-preloader-enabled #solo-preloader.solo-cookie .solo-preloader__text {
-    font-family: "Cookie", cursive;
+    font-family: Cookie, cursive;
   }
 }
 
 /* Unlayered on purpose. Font classes beat unlayered element rules (PB w3-modern.css headings and buttons) as before; a layer would lose to them. */
 #solo-page-wrapper .cookie {
-  font-family: "Cookie", cursive;
+  font-family: Cookie, cursive;
 }

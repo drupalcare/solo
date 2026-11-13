@@ -1,6 +1,6 @@
 @layer solo.utilities {
   .solo-page .sancreek {
-    --solo-font-s: 'Sancreek', cursive;
+    --solo-font-s: "Sancreek", cursive;
   }
 }
 

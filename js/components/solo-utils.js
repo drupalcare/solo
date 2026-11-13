@@ -1,4 +1,7 @@
 /**
+ * @param Drupal
+ * @param drupalSettings
+ * @param once
  * @file
  * Contains utility functions for Solo module.
  *
@@ -16,6 +19,7 @@
 
   /**
    * Safely escapes CSS selectors with IE11 fallback
+   * @param str
    */
   Drupal.solo.escapeSelector = (str) => {
     if (!str) return '';
@@ -79,6 +83,7 @@
 
   /**
    * Observes DOM mutations and cleans up orphaned event listeners
+   * @param handlerMap
    */
   Drupal.solo.setupListenerCleanup = (handlerMap) => {
     if (!handlerMap || typeof MutationObserver === 'undefined') return null;
@@ -111,6 +116,8 @@
 
   /**
    * Sets inert state with fallback for Safari < 15.5
+   * @param element
+   * @param value
    */
   Drupal.solo.setInert = (element, value) => {
     if (!element || !(element instanceof HTMLElement)) return;
@@ -126,19 +133,24 @@
           .querySelectorAll('a, button, input, select, textarea, [tabindex]')
           .forEach((el) => {
             const currentTabindex = el.getAttribute('tabindex');
-            el.setAttribute('data-solo-original-tabindex', currentTabindex || '0');
+            el.setAttribute(
+              'data-solo-original-tabindex',
+              currentTabindex || '0',
+            );
             el.setAttribute('tabindex', '-1');
           });
       } else {
-        element.querySelectorAll('[data-solo-original-tabindex]').forEach((el) => {
-          const original = el.getAttribute('data-solo-original-tabindex');
-          if (original === '0' || original === null) {
-            el.removeAttribute('tabindex');
-          } else {
-            el.setAttribute('tabindex', original);
-          }
-          el.removeAttribute('data-solo-original-tabindex');
-        });
+        element
+          .querySelectorAll('[data-solo-original-tabindex]')
+          .forEach((el) => {
+            const original = el.getAttribute('data-solo-original-tabindex');
+            if (original === '0' || original === null) {
+              el.removeAttribute('tabindex');
+            } else {
+              el.setAttribute('tabindex', original);
+            }
+            el.removeAttribute('data-solo-original-tabindex');
+          });
       }
     }
   };
@@ -183,7 +195,7 @@
 
   /**
    * CSS styles for collapsed state.
-   * @const {Object}
+   * @constant {Object}
    */
   const cssStyles = {
     overflow: 'hidden',
@@ -274,7 +286,7 @@
    * @param {HTMLElement} target - The target element to slide up.
    * @param {number} [duration=600] - Animation duration in milliseconds.
    * @param {string} [componentName='utils'] - The component making the change.
-   * @returns {boolean} Success status.
+   * @return {boolean} Success status.
    */
   /**
    * Slides up an element with animation.
@@ -282,7 +294,7 @@
    * @param {number} [duration=600] - Animation duration in milliseconds.
    * @param {string} [componentName='utils'] - The component making the change.
    * @param {boolean} [announce=false] - Whether to announce state change to screen readers.
-   * @returns {boolean} Success status.
+   * @return {boolean} Success status.
    */
   const slideUp = (
     target,
@@ -371,7 +383,7 @@
    * @param {string} [menuDisplay='block'] - Display value when shown.
    * @param {string} [componentName='utils'] - The component making the change.
    * @param {boolean} [announce=false] - Whether to announce state change to screen readers.
-   * @returns {boolean} Success status.
+   * @return {boolean} Success status.
    */
   const slideDown = (
     target,
@@ -498,7 +510,7 @@
    * @param {HTMLElement} target - The target element to toggle.
    * @param {number} [duration=500] - Animation duration in milliseconds.
    * @param {string} [componentName='utils'] - The component making the change.
-   * @returns {boolean} Success status.
+   * @return {boolean} Success status.
    */
   const slideToggle = (
     target,
@@ -525,7 +537,7 @@
   /**
    * Gets the current viewport width.
    * Uses state manager if available for consistency.
-   * @returns {number} Current width in pixels.
+   * @return {number} Current width in pixels.
    */
   const getCurrentWidth = () => {
     if (Drupal.solo.menuState) {
@@ -542,7 +554,7 @@
   /**
    * Calculates the depth of a menu element.
    * @param {HTMLElement} element - The menu element.
-   * @returns {number} The depth level (starts at 1).
+   * @return {number} The depth level (starts at 1).
    */
   const calculateDepth = (element) => {
     if (!element || !(element instanceof HTMLElement)) {
@@ -591,7 +603,7 @@
    * Gets breakpoint value from element classes.
    * @param {HTMLElement} element - The element to check.
    * @param {string} mn - The breakpoint prefix.
-   * @returns {number} The breakpoint value in pixels.
+   * @return {number} The breakpoint value in pixels.
    */
   const getMyBreakpoints = (element, mn) => {
     if (!element || !(element instanceof HTMLElement)) {
@@ -625,14 +637,14 @@
    * Ajax/modal responses can attach Solo libraries without rendering the full
    * page template, so the wrapper is optional in those contexts.
    *
-   * @returns {HTMLElement|null} The page wrapper element.
+   * @return {HTMLElement|null} The page wrapper element.
    */
   const getPageWrapper = () => document.querySelector(SELECTORS.PAGE_WRAPPER);
 
   /**
    * Get breakpoint number based on the specified class and breakpoint prefix.
    * @param {string} [breakpointPrefix='mn'] - The prefix for the breakpoint.
-   * @returns {number} The numeric breakpoint value.
+   * @return {number} The numeric breakpoint value.
    */
   Drupal.solo.getBreakpointNumber = (breakpointPrefix = 'mn') => {
     return Drupal.solo.getMyBreakpoints(getPageWrapper(), breakpointPrefix);
@@ -647,13 +659,13 @@
    *
    * @param {number} width - The viewport width in pixels.
    * @param {number} breakpoint - The breakpoint in pixels.
-   * @returns {boolean} TRUE for the large layout.
+   * @return {boolean} TRUE for the large layout.
    */
   Drupal.solo.isLargeLayout = (width, breakpoint) => width >= breakpoint;
 
   /**
    * Determines the current layout based on breakpoints.
-   * @returns {string} 'large' if layout is large, 'small' otherwise.
+   * @return {string} 'large' if layout is large, 'small' otherwise.
    */
   const getLayout = () => {
     const pageClass = getPageWrapper();
@@ -728,7 +740,9 @@
   // Deprecated in 2.0, removed in the next major: the old behavior name
   // soloFileUpload reads and writes Drupal.behaviors.soloInputFile.
   // It is not enumerable, so Drupal.attachBehaviors() runs it once.
-  if (!Object.prototype.hasOwnProperty.call(Drupal.behaviors, 'soloFileUpload')) {
+  if (
+    !Object.prototype.hasOwnProperty.call(Drupal.behaviors, 'soloFileUpload')
+  ) {
     Object.defineProperty(Drupal.behaviors, 'soloFileUpload', {
       configurable: true,
       get: () => Drupal.behaviors.soloInputFile,

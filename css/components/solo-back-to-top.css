@@ -5,127 +5,123 @@
  */
 
 @layer solo.base {
-
-@media (prefers-reduced-motion: no-preference) {
-  html {
-    scroll-behavior: smooth;
+  @media (prefers-reduced-motion: no-preference) {
+    html {
+      scroll-behavior: smooth;
+    }
   }
-}
-
 } /* end @layer solo.base */
 
 @layer solo.theme {
-
-.solo-back-to-top-sentinel-wrapper {
-  overflow: hidden;
-  height: 0;
-  pointer-events: none;
-}
-
-.solo-back-to-top-sentinel {
-  width: 1px;
-  height: var(--solo-back-to-top-sentinel-height, 400px);
-  pointer-events: none;
-}
-
-.solo-back-to-top {
-  --solo-z-back-to-top: 99999;
-
-  position: fixed;
-  z-index: var(--solo-z-back-to-top);
-  bottom: 1.5rem;
-  display: inline-flex;
-  visibility: hidden;
-  align-items: center;
-  justify-content: center;
-  width: 2.75rem; /* ~44px touch-friendly */
-  height: 2.75rem;
-  padding: 0;
-  cursor: pointer;
-  transition:
-    opacity 0.2s ease,
-    visibility 0.2s ease,
-    transform 0.2s ease;
-  pointer-events: none;
-  opacity: 0;
-  color: var(--r-text, #fff);
-  border: 2px solid transparent;
-  border-radius: 50%;
-  background-color: var(--r-background, #333);
-}
-
-.solo-back-to-top--bottom-right {
-  right: 1.5rem;
-  left: auto;
-}
-
-.solo-back-to-top--bottom-left {
-  right: auto;
-  left: 1.5rem;
-}
-
-.solo-back-to-top--outline {
-  color: var(--r-text, #fff);
-  border-color: var(--r-text, #fff);
-  background-color: transparent;
-}
-
-.solo-back-to-top--outline:hover,
-.solo-back-to-top--outline:focus {
-  color: var(--r-text, #fff);
-}
-
-@media (max-width: 767px) {
-  .solo-back-to-top.solo-back-to-top--hide-small {
-    display: none !important;
+  .solo-back-to-top-sentinel-wrapper {
+    overflow: hidden;
+    height: 0;
+    pointer-events: none;
   }
-}
 
-.solo-back-to-top.solo-is-visible {
-  visibility: visible;
-  pointer-events: auto;
-  opacity: 1;
-}
+  .solo-back-to-top-sentinel {
+    width: 1px;
+    height: var(--solo-back-to-top-sentinel-height, 400px);
+    pointer-events: none;
+  }
 
-/* The login popup is modal: keep the button out of sight and out of reach
-   while it is open (z-index 99999 would otherwise paint it above the dialog). */
-:where(body.solo-login-popup-open) .solo-back-to-top.solo-is-visible {
-  visibility: hidden;
-  pointer-events: none;
-  opacity: 0;
-}
-
-.solo-back-to-top:hover,
-.solo-back-to-top:focus {
-  transform: translateY(-2px);
-  color: var(--r-text, #fff);
-}
-
-/* Focus ring: the global two-color ring in solo-normalize.css (outline in
-   --r-text, halo in --r-background) applies here; no override, so it stays one rule. */
-
-.solo-back-to-top__icon {
-  width: 1.25rem;
-  height: 1.25rem;
-  fill: currentColor;
-}
-
-@media (prefers-reduced-motion: reduce) {
   .solo-back-to-top {
-    transition: none;
+    --solo-z-back-to-top: 99999;
+
+    position: fixed;
+    z-index: var(--solo-z-back-to-top);
+    bottom: 1.5rem;
+    display: inline-flex;
+    visibility: hidden;
+    align-items: center;
+    justify-content: center;
+    width: 2.75rem; /* ~44px touch-friendly */
+    height: 2.75rem;
+    padding: 0;
+    cursor: pointer;
+    transition:
+      opacity 0.2s ease,
+      visibility 0.2s ease,
+      transform 0.2s ease;
+    pointer-events: none;
+    opacity: 0;
+    color: var(--r-text, #fff);
+    border: 2px solid transparent;
+    border-radius: 50%;
+    background-color: var(--r-background, #333);
   }
+
+  .solo-back-to-top--bottom-right {
+    right: 1.5rem;
+    left: auto;
+  }
+
+  .solo-back-to-top--bottom-left {
+    right: auto;
+    left: 1.5rem;
+  }
+
+  .solo-back-to-top--outline {
+    color: var(--r-text, #fff);
+    border-color: var(--r-text, #fff);
+    background-color: transparent;
+  }
+
+  .solo-back-to-top--outline:hover,
+  .solo-back-to-top--outline:focus {
+    color: var(--r-text, #fff);
+  }
+
+  @media (max-width: 767px) {
+    .solo-back-to-top.solo-back-to-top--hide-small {
+      display: none !important;
+    }
+  }
+
+  .solo-back-to-top.solo-is-visible {
+    visibility: visible;
+    pointer-events: auto;
+    opacity: 1;
+  }
+
+  /* The login popup is modal: keep the button out of sight and out of reach
+   while it is open (z-index 99999 would otherwise paint it above the dialog). */
+  :where(body.solo-login-popup-open) .solo-back-to-top.solo-is-visible {
+    visibility: hidden;
+    pointer-events: none;
+    opacity: 0;
+  }
+
   .solo-back-to-top:hover,
   .solo-back-to-top:focus {
-    transform: none;
+    transform: translateY(-2px);
+    color: var(--r-text, #fff);
   }
-}
 
-@media print {
-  .solo-back-to-top-sentinel-wrapper,
-  .solo-back-to-top-sentinel,
-  .solo-back-to-top {
-    display: none !important;
+  /* Focus ring: the global two-color ring in solo-normalize.css (outline in
+   --r-text, halo in --r-background) applies here; no override, so it stays one rule. */
+
+  .solo-back-to-top__icon {
+    width: 1.25rem;
+    height: 1.25rem;
+    fill: currentColor;
   }
-}
 
+  @media (prefers-reduced-motion: reduce) {
+    .solo-back-to-top {
+      transition: none;
+    }
+    .solo-back-to-top:hover,
+    .solo-back-to-top:focus {
+      transform: none;
+    }
+  }
+
+  @media print {
+    .solo-back-to-top-sentinel-wrapper,
+    .solo-back-to-top-sentinel,
+    .solo-back-to-top {
+      display: none !important;
+    }
+  }
 } /* end @layer solo.theme */

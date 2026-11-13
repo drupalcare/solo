@@ -6,59 +6,59 @@
  */
 
 @layer solo.theme {
+  .solo-page table {
+    display: table;
+    width: 100%;
+    border-collapse: collapse;
+  }
 
-.solo-page table {
-  display: table;
-  width: 100%;  border-collapse: collapse;
-}
+  :where(.solo-page) .solo-table__wrapper,
+  :where(.solo-page) .solo-table-wrapper {
+    border: var(--solo-px1) solid var(--r-border, var(--solo-border-default));
+  }
 
-:where(.solo-page) .solo-table__wrapper,
-:where(.solo-page) .solo-table-wrapper {
-  border: var(--solo-px1) solid var(--r-border, var(--solo-border-default));
-}
+  .solo-page table td ul {
+    margin: 0;
+  }
 
-.solo-page table td ul {
-  margin: 0;
-}
+  :where(.solo-page table td) li {
+    list-style: none;
+  }
 
-:where(.solo-page table td) li {
-  list-style: none;
-}
+  :where(.solo-page .region-title) td {
+    text-transform: uppercase;
+    font-weight: bold !important;
+  }
 
-:where(.solo-page .region-title) td {
-  text-transform: uppercase;
-  font-weight: bold !important;
-}
+  :where(.solo-page .region-title td) a {
+    text-transform: capitalize;
+  }
 
-:where(.solo-page .region-title td) a {
-  text-transform: capitalize;
-}
+  .solo-page table td,
+  .solo-page table th {
+    box-sizing: border-box;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+  }
 
-.solo-page table td,
-.solo-page table th {  box-sizing: border-box;  word-wrap: break-word;
-  overflow-wrap: break-word;
-}
+  :where(.solo-page table td) .form-type-radio,
+  :where(.solo-page table td) .form-type-checkbox {
+    margin: 0 !important;
+  }
 
-:where(.solo-page table td) .form-type-radio,
-:where(.solo-page table td) .form-type-checkbox {
-  margin: 0 !important;
-}
+  .solo-table__wrapper,
+  .solo-table-wrapper {
+    display: flow-root;
+    max-width: 100%;
+    -webkit-overflow-scrolling: touch;
+  }
 
+  .solo-table__wrapper:not(.solo-table__menu-wrapper--sticky),
+  .solo-table-wrapper:not(.solo-menu-wrapper--sticky) {
+    overflow-x: auto;
+  }
 
-
-.solo-table__wrapper,
-.solo-table-wrapper {
-  display: flow-root;
-  max-width: 100%;
-  -webkit-overflow-scrolling: touch;
-}
-
-.solo-table__wrapper:not(.solo-table__menu-wrapper--sticky),
-.solo-table-wrapper:not(.solo-menu-wrapper--sticky) {
-  overflow-x: auto;
-}
-
-/**
+  /**
  * Sticky tables: reachable columns beat a sticky header on small screens.
  *
  * A sticky table's wrapper was excluded from overflow-x: auto above, because
@@ -75,39 +75,39 @@
  * stickiness; from 48rem up, where the table usually fits, the sticky header
  * is restored and behavior is exactly as before.
  */
-.solo-table__wrapper.solo-table__menu-wrapper--sticky,
-.solo-table-wrapper.solo-menu-wrapper--sticky {
-  overflow-x: auto;
-}
-
-@media (min-width: 48rem) {
   .solo-table__wrapper.solo-table__menu-wrapper--sticky,
   .solo-table-wrapper.solo-menu-wrapper--sticky {
-    overflow-x: visible;
+    overflow-x: auto;
   }
-}
 
-.solo-table__wrapper .tableresponsive-toggle-columns,
-.solo-table-wrapper .tableresponsive-toggle-columns {  float: none;
-  clear: both;
-  align-items: center;
-  justify-content: flex-end;
-}
+  @media (min-width: 48rem) {
+    .solo-table__wrapper.solo-table__menu-wrapper--sticky,
+    .solo-table-wrapper.solo-menu-wrapper--sticky {
+      overflow-x: visible;
+    }
+  }
 
-:where(.solo-table__wrapper) .tableresponsive-toggle,
-:where(.solo-table-wrapper) .tableresponsive-toggle {
-  display: inline-flex;
-  float: none;
-  align-items: center;
-  max-width: 100%;
-  margin: 0 !important;
-  white-space: nowrap;
-}
+  .solo-table__wrapper .tableresponsive-toggle-columns,
+  .solo-table-wrapper .tableresponsive-toggle-columns {
+    float: none;
+    clear: both;
+    align-items: center;
+    justify-content: flex-end;
+  }
 
-:where(.solo-table__wrapper) table,
-:where(.solo-table-wrapper) table {
-  max-width: 100%;
-  table-layout: auto;
-}
+  :where(.solo-table__wrapper) .tableresponsive-toggle,
+  :where(.solo-table-wrapper) .tableresponsive-toggle {
+    display: inline-flex;
+    float: none;
+    align-items: center;
+    max-width: 100%;
+    margin: 0 !important;
+    white-space: nowrap;
+  }
 
+  :where(.solo-table__wrapper) table,
+  :where(.solo-table-wrapper) table {
+    max-width: 100%;
+    table-layout: auto;
+  }
 } /* end @layer solo.theme */

@@ -1,63 +1,61 @@
 @layer solo.theme {
+  :where(.solo-page) ul.sitemap {
+    margin: 0;
+    padding-inline-start: 0;
+  }
 
-:where(.solo-page) ul.sitemap {
-  margin: 0;
-  padding-inline-start: 0;
-}
+  :where(ul).sitemap,
+  :where(.solo-page) :where(ul.sitemap) ul {
+    list-style: none;
+  }
 
-:where(ul).sitemap,
-:where(.solo-page) :where(ul.sitemap) ul {
-  list-style: none;
-}
+  /* --- Visual indicator for menu items --- */
+  :where(.solo-page) :where(ul.sitemap) .menu-item::before {
+    margin-inline-end: 0.25em;
+    content: "› ";
+  }
 
-/* --- Visual indicator for menu items --- */
-:where(.solo-page) :where(ul.sitemap) .menu-item::before {
-  margin-inline-end: 0.25em;
-  content: "› ";
-}
+  /* --- Non-clickable text-only menu items --- */
+  :where(.solo-page) :where(ul.sitemap) .menu-label {
+    display: inline-block;
+    cursor: default;
+  }
 
-/* --- Non-clickable text-only menu items --- */
-:where(.solo-page) :where(ul.sitemap) .menu-label {
-  display: inline-block;
-  cursor: default;
-}
+  /* --- Dropdown indicator for parents with children --- */
+  :where(.solo-page) :where(ul.sitemap .menu-item.has-children) > .menu-label::after {
+    margin-inline-start: 0.25em;
+    content: " ▼";
+    font-size: 0.75em;
+  }
 
-/* --- Dropdown indicator for parents with children --- */
-:where(.solo-page) :where(ul.sitemap .menu-item.has-children) > .menu-label::after {
-  margin-inline-start: 0.25em;
-  content: " ▼";
-  font-size: 0.75em;
-}
+  :where(ul.sitemap.solo-menu-tree--level-0) > .menu-item::before,
+  :where(ul.sitemap.solo-menu-tree--level-0 > .menu-item) > .solo-menu__link,
+  :where(ul.sitemap.solo-menu-tree--level-0 > .menu-item) > .menu-label,
+  :where(ul.sitemap.solo-menu-tree--level-0 > .menu-item.has-children) > .menu-label::after {
+    text-transform: uppercase;
+    font-weight: 700;
+  }
 
-:where(ul.sitemap.solo-menu-tree--level-0) > .menu-item::before,
-:where(ul.sitemap.solo-menu-tree--level-0 > .menu-item) > .solo-menu__link,
-:where(ul.sitemap.solo-menu-tree--level-0 > .menu-item) > .menu-label,
-:where(ul.sitemap.solo-menu-tree--level-0 > .menu-item.has-children) > .menu-label::after {
-  text-transform: uppercase;
-  font-weight: 700;
-}
+  :where(ul.sitemap .solo-menu-tree--level-1) > .menu-item::before,
+  :where(ul.sitemap .solo-menu-tree--level-1 > .menu-item) > .solo-menu__link,
+  :where(ul.sitemap .solo-menu-tree--level-1 > .menu-item) > .menu-label,
+  :where(ul.sitemap .solo-menu-tree--level-1 > .menu-item.has-children) > .menu-label::after {
+    font-weight: 600;
+  }
 
-:where(ul.sitemap .solo-menu-tree--level-1) > .menu-item::before,
-:where(ul.sitemap .solo-menu-tree--level-1 > .menu-item) > .solo-menu__link,
-:where(ul.sitemap .solo-menu-tree--level-1 > .menu-item) > .menu-label,
-:where(ul.sitemap .solo-menu-tree--level-1 > .menu-item.has-children) > .menu-label::after {
-  font-weight: 600;
-}
+  :where(ul.sitemap .solo-menu-tree--level-2) > .menu-item::before,
+  :where(ul.sitemap .solo-menu-tree--level-2 > .menu-item) > .solo-menu__link,
+  :where(ul.sitemap .solo-menu-tree--level-2 > .menu-item) > .menu-label,
+  :where(ul.sitemap .solo-menu-tree--level-2 > .menu-item.has-children) > .menu-label::after {
+    font-weight: 500;
+  }
 
-:where(ul.sitemap .solo-menu-tree--level-2) > .menu-item::before,
-:where(ul.sitemap .solo-menu-tree--level-2 > .menu-item) > .solo-menu__link,
-:where(ul.sitemap .solo-menu-tree--level-2 > .menu-item) > .menu-label,
-:where(ul.sitemap .solo-menu-tree--level-2 > .menu-item.has-children) > .menu-label::after {
-  font-weight: 500;
-}
-
-:where(ul.sitemap .solo-menu-tree--level-3 > .menu-item) > .solo-menu__link,
-:where(ul.sitemap .solo-menu-tree--level-4 > .menu-item) > .solo-menu__link,
-:where(ul.sitemap .solo-menu-tree--level-5 > .menu-item) > .solo-menu__link,
-:where(ul.sitemap .solo-menu-tree--level-3 > .menu-item) > .menu-label,
-:where(ul.sitemap .solo-menu-tree--level-4 > .menu-item) > .menu-label,
-:where(ul.sitemap .solo-menu-tree--level-5 > .menu-item) > .menu-label {
-  font-weight: 400;
-}
-
+  :where(ul.sitemap .solo-menu-tree--level-3 > .menu-item) > .solo-menu__link,
+  :where(ul.sitemap .solo-menu-tree--level-4 > .menu-item) > .solo-menu__link,
+  :where(ul.sitemap .solo-menu-tree--level-5 > .menu-item) > .solo-menu__link,
+  :where(ul.sitemap .solo-menu-tree--level-3 > .menu-item) > .menu-label,
+  :where(ul.sitemap .solo-menu-tree--level-4 > .menu-item) > .menu-label,
+  :where(ul.sitemap .solo-menu-tree--level-5 > .menu-item) > .menu-label {
+    font-weight: 400;
+  }
 } /* end @layer solo.theme */

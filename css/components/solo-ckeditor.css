@@ -1,80 +1,78 @@
 @layer solo.theme {
+  .cke,
+  .cke_inner,
+  .cke_top,
+  .cke_bottom,
+  .cke_contents {
+    border: none !important;
+    border-radius: 0;
+    background-color: var(--r-background);
+    box-shadow: none;
+  }
 
-.cke,
-.cke_inner,
-.cke_top,
-.cke_bottom,
-.cke_contents {
-  border: none !important;
-  border-radius: 0;
-  background-color: var(--r-background);
-  box-shadow: none;
-}
+  .cke {
+    width: auto !important;
+  }
 
-.cke {
-  width: auto !important;
-}
+  .ck-editor__top,
+  .cke_top {
+    border-start-start-radius: var(--solo-px6);
+    border-start-end-radius: var(--solo-px6);
+    border-end-start-radius: 0;
+    border-end-end-radius: 0;
+    border: var(--solo-px1) solid var(--r-border, var(--solo-border-default)) !important;
+  }
 
-.ck-editor__top,
-.cke_top {
-  border-start-start-radius: var(--solo-px6);
-  border-start-end-radius: var(--solo-px6);
-  border-end-start-radius: 0;
-  border-end-end-radius: 0;
-  border: var(--solo-px1) solid var(--r-border, var(--solo-border-default)) !important;
-}
+  .cke_contents {
+    border: var(--solo-px1) solid var(--r-border, var(--solo-border-default)) !important;
+  }
 
-.cke_contents {
-  border: var(--solo-px1) solid var(--r-border, var(--solo-border-default)) !important;
-}
+  .ck-editor__main,
+  .cke_bottom {
+    border-start-start-radius: 0;
+    border-start-end-radius: 0;
+    border-end-start-radius: var(--solo-px6);
+    border-end-end-radius: var(--solo-px6);
+    border: var(--solo-px1) solid var(--r-border, var(--solo-border-default)) !important;
+    border-block-start: none !important;
+  }
 
-.ck-editor__main,
-.cke_bottom {
-  border-start-start-radius: 0;
-  border-start-end-radius: 0;
-  border-end-start-radius: var(--solo-px6);
-  border-end-end-radius: var(--solo-px6);
-  border: var(--solo-px1) solid var(--r-border, var(--solo-border-default)) !important;
-  border-block-start: none !important;
-}
+  :where(.text-format-wrapper) > .solo-form__element-container {
+    border: var(--solo-px1) solid var(--r-border, var(--solo-border-default)) !important;
+    border-radius: var(--solo-px6);
+    background-color: var(--r-background) !important;
+    font-size: var(--solo-px14);
+    margin-block: var(--solo-px8) auto;
+    margin-inline: auto;
+    padding-block: var(--solo-px8);
+    padding-inline: var(--solo-px16);
+  }
 
-:where(.text-format-wrapper) > .solo-form__element-container {
-  border: var(--solo-px1) solid var(--r-border, var(--solo-border-default)) !important;
-  border-radius: var(--solo-px6);
-  background-color: var(--r-background) !important;
-  font-size: var(--solo-px14);
-  margin-block: var(--solo-px8) auto;
-  margin-inline: auto;
-  padding-block: var(--solo-px8);
-  padding-inline: var(--solo-px16);
-}
+  :where(.ck-rounded-corners .ck.ck-editor__top .ck-sticky-panel) .ck-toolbar,
+  :where(.ck.ck-editor__top .ck-sticky-panel) .ck-toolbar.ck-rounded-corners,
+  :where(.ck.ck-editor__main) > .ck-editor__editable.ck-rounded-corners,
+  :where(.ck-rounded-corners .ck.ck-editor__top .ck-sticky-panel) .ck-toolbar {
+    border: 0;
+  }
 
-:where(.ck-rounded-corners .ck.ck-editor__top .ck-sticky-panel) .ck-toolbar,
-:where(.ck.ck-editor__top .ck-sticky-panel) .ck-toolbar.ck-rounded-corners,
-:where(.ck.ck-editor__main) > .ck-editor__editable.ck-rounded-corners,
-:where(.ck-rounded-corners .ck.ck-editor__top .ck-sticky-panel) .ck-toolbar {
-  border: 0;
-}
+  .filter-guidelines-item {
+    font-size: var(--solo-px13);
+  }
 
-.filter-guidelines-item {
-  font-size: var(--solo-px13);
-}
+  .cke_top,
+  .cke_bottom,
+  .cke_contents,
+  :where(.text-format-wrapper) > .solo-form__element-container {
+    border-color: var(--r-border, var(--solo-border-default)) !important;
+  }
 
-.cke_top,
-.cke_bottom,
-.cke_contents,
-:where(.text-format-wrapper) > .solo-form__element-container {
-  border-color: var(--r-border, var(--solo-border-default)) !important;
-}
+  :where(.ck.ck-toolbar.ck-toolbar_grouping) > .ck-toolbar__items {
+    flex-wrap: wrap;
+  }
 
-:where(.ck.ck-toolbar.ck-toolbar_grouping) > .ck-toolbar__items {
-  flex-wrap: wrap;
-}
-
-.ck-reset_all:not(.ck-reset_all-excluded *),
-.ck.ck-reset_all {
-  color: var(--r-text) !important;
-  background-color: var(--r-background) !important;
-}
-
+  .ck-reset_all:not(.ck-reset_all-excluded *),
+  .ck.ck-reset_all {
+    color: var(--r-text) !important;
+    background-color: var(--r-background) !important;
+  }
 } /* end @layer solo.theme */

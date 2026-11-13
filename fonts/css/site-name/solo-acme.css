@@ -2,11 +2,11 @@
   #solo-header.solo-acme .solo-branding__site-name-link,
   #solo-page-wrapper.solo-acme .solo-page-title__text,
   html.solo-preloader-enabled #solo-preloader.solo-acme .solo-preloader__text {
-    font-family: "Acme", sans-serif;
+    font-family: Acme, sans-serif;
   }
 }
 
 /* Unlayered on purpose. Font classes beat unlayered element rules (PB w3-modern.css headings and buttons) as before; a layer would lose to them. */
 #solo-page-wrapper .acme {
-  font-family: "Acme", sans-serif;
+  font-family: Acme, sans-serif;
 }

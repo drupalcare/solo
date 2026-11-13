@@ -1,37 +1,39 @@
 @layer solo.theme {
+  .solo-clear::after,
+  .solo-clear::before {
+    display: table;
+    clear: both;
+    content: "";
+  }
 
-.solo-clear::after,
-.solo-clear::before {
-  display: table;
-  clear: both;
-  content: "";
-}
+  body:has(.solo-maintenance-page) {
+    color: var(--r-text);
+  }
 
-body:has(.solo-maintenance-page) {
-  color: var(--r-text);}
+  :where(.solo-maintenance-page) main {
+    max-width: 800px;
+    min-height: 43.75rem;
+    margin-block-start: calc(2 * var(--solo-px16));
+    margin-inline-start: auto;
+    margin-inline-end: auto;
+  }
 
-:where(.solo-maintenance-page) main {
-  max-width: 800px;
-  min-height: 43.75rem;
-  margin-block-start: calc(2 * var(--solo-px16));
-  margin-inline-start: auto;
-  margin-inline-end: auto;
-}
+  :where(.solo-maintenance-page main) header,
+  .solo-maintenance-page main header a {
+    align-items: center;
+    justify-content: center;
+  }
 
-:where(.solo-maintenance-page main) header,
-.solo-maintenance-page main header a {  align-items: center;
-  justify-content: center;}
+  :where(.solo-maintenance-page main header) > * {
+    width: 100%;
+  }
 
-:where(.solo-maintenance-page main header) > * {
-  width: 100%;
-}
+  .solo-branding__site-name {
+    margin-block: 20px;
+    margin-inline: auto;
+  }
 
-.solo-branding__site-name {
-  margin-block: 20px;
-  margin-inline: auto;
-}
-
-.solo-maintenance-page main h1 {  line-height: 46px;
-}
-
+  .solo-maintenance-page main h1 {
+    line-height: 46px;
+  }
 } /* end @layer solo.theme */

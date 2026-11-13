@@ -3,7 +3,8 @@
   .solo-page h2,
   .solo-page h3,
   #solo-page-wrapper .kalam {
-    --solo-h1: 'Kalam', cursive;
+    --solo-h1: "Kalam", cursive;
+
     letter-spacing: var(--solo-px1);
   }
 }

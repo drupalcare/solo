@@ -1,177 +1,182 @@
 @layer solo.theme {
+  /* Form API. */
+  :where(.solo-page) div.action,
+  .form-actions {
+    flex-wrap: wrap;
+    align-items: start;
+  }
 
-/* Form API. */
-:where(.solo-page) div.action,
-.form-actions {  flex-wrap: wrap;
-  align-items: start;
-}
+  :where(.solo-page) div.action,
+  :where(.solo-page) div.form-actions {
+    flex-grow: 1;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+  }
 
-:where(.solo-page) div.action,
-:where(.solo-page) div.form-actions {
-  flex-grow: 1;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-}
+  .form-radios,
+  .form-checkboxes {
+    display: grid;
+  }
 
-.form-radios,
-.form-checkboxes {
-  display: grid;
-}
+  .form-type-radio,
+  .form-type-checkbox {
+    display: inline-block;
+    width: 100%;
+  }
 
-.form-type-radio,
-.form-type-checkbox {
-  display: inline-block;
-  width: 100%;
-}
+  :where(.form-type-radio) .description,
+  :where(.form-type-checkbox) .description {
+    width: 100%;
+  }
 
-:where(.form-type-radio) .description,
-:where(.form-type-checkbox) .description {
-  width: 100%;
-}
+  .form-radios .form-item,
+  .form-checkboxes .form-item {
+    align-items: center;
+    justify-content: start;
+    margin-block-start: 0.4em !important;
+    margin-block-end: 0.4em !important;
+  }
 
-.form-radios .form-item,
-.form-checkboxes .form-item {  align-items: center;
-  justify-content: start;
-  margin-block-start: 0.4em !important;
-  margin-block-end: 0.4em !important;
-}
+  :where(.solo-page) fieldset {
+    width: 100%;
+  }
 
-:where(.solo-page) fieldset {
-  width: 100%;
-}
+  :where(.solo-page) input[type="radio"],
+  :where(.solo-page) input[type="checkbox"] {
+    display: inline-flex;
+    flex-wrap: wrap;
+    align-items: self-start;
+    justify-content: start;
+    margin-block-end: 0;
+    margin-inline-start: 0;
+  }
 
-:where(.solo-page) input[type="radio"],
-:where(.solo-page) input[type="checkbox"] {
-  display: inline-flex;
-  flex-wrap: wrap;
-  align-items: self-start;
-  justify-content: start;  margin-block-end: 0;
-  margin-inline-start: 0;}
+  :where(.form-type-boolean) > *:not(.discription) {
+    float: var(--solo-text-align-start);
+  }
 
-:where(.form-type-boolean) > *:not(.discription) {
-  float: var(--solo-text-align-start);
-}
+  :where(.form-type-radio) label,
+  :where(.form-type-checkbox) label {
+    float: none !important;
+    margin-inline-start: var(--solo-px4) !important;
+  }
 
-:where(.form-type-radio) label,
-:where(.form-type-checkbox) label {
-  float: none !important;
-  margin-inline-start: var(--solo-px4) !important;
-}
+  :where([dir="rtl"] .form-type-radio) label,
+  :where([dir="rtl"] .form-type-checkbox) label {
+    margin-inline-start: 0 !important;
+    margin-inline-end: var(--solo-px4) !important;
+  }
 
-:where([dir="rtl"] .form-type-radio) label,
-:where([dir="rtl"] .form-type-checkbox) label {
-  margin-inline-start: 0 !important;
-  margin-inline-end: var(--solo-px4) !important;
-}
+  .marker {
+    color: #e00;
+  }
 
-.marker {
-  color: #e00;
-}
+  :where(.solo-page) input[type="checkbox"]:focus,
+  :where(.solo-page) input[type="radio"]:focus,
+  :where(.solo-page) input[type="checkbox"]:focus-visible,
+  :where(.solo-page) input[type="radio"]:focus-visible {
+    outline-width: 4px;
+    outline-style: double;
+    outline-offset: -1px;
+  }
 
-:where(.solo-page) input[type="checkbox"]:focus,
-:where(.solo-page) input[type="radio"]:focus,
-:where(.solo-page) input[type="checkbox"]:focus-visible,
-:where(.solo-page) input[type="radio"]:focus-visible {  outline-width: 4px;
-  outline-style: double;
-  outline-offset: -1px;
-}
+  :where(abbr).tabledrag-changed,
+  :where(abbr).ajax-changed {
+    border-block-end: none;
+  }
 
-:where(abbr).tabledrag-changed,
-:where(abbr).ajax-changed {
-  border-block-end: none;
-}
+  :where(.form-wrapper .field-multiple-table) .label {
+    font-size: inherit;
+  }
 
-:where(.form-wrapper .field-multiple-table) .label {
-  font-size: inherit;
-}
+  .form-required::after {
+    display: inline-block;
+    width: var(--solo-px10);
+    height: var(--solo-px10);
+    margin-block: 0;
+    margin-inline: 0.3em;
+    content: "";
+    vertical-align: super;
+    background-image: url(../../images/icons/required.svg);
+    background-repeat: no-repeat;
+    background-size: var(--solo-px10) var(--solo-px10);
+  }
 
-.form-required::after {
-  display: inline-block;
-  width: var(--solo-px10);
-  height: var(--solo-px10);
-  margin-block: 0;
-  margin-inline: 0.3em;
-  content: "";
-  vertical-align: super;
-  background-image: url(../../images/icons/required.svg);
-  background-repeat: no-repeat;
-  background-size: var(--solo-px10) var(--solo-px10);
-}
+  /* Inline Error Message. */
+  .form-item--error-message::before {
+    display: inline-block;
+    width: var(--solo-px16);
+    height: var(--solo-px16);
+    margin-block: 0;
+    margin-inline: 0.3em;
+    content: "";
+    vertical-align: middle;
+    background-image: url(../../images/icons/error.svg);
+    background-repeat: no-repeat;
+    background-size: var(--solo-px16) var(--solo-px16);
+  }
 
-/* Inline Error Message. */
-.form-item--error-message::before {
-  display: inline-block;
-  width: var(--solo-px16);
-  height: var(--solo-px16);
-  margin-block: 0;
-  margin-inline: 0.3em;
-  content: "";
-  vertical-align: middle;
-  background-image: url(../../images/icons/error.svg);
-  background-repeat: no-repeat;
-  background-size: var(--solo-px16) var(--solo-px16);
-}
+  :where(.solo-page) input,
+  :where(.solo-page) textarea,
+  :where(.region-title__action) a,
+  .solo-body--admin-context form .form-actions > a,
+  .solo-body--admin-context .action-links li > a,
+  .view-filters details.form-wrapper {
+    box-shadow: inset 0 0 var(--solo-px5) rgb(51, 44, 51, 0.1);
+  }
 
-:where(.solo-page) input,
-:where(.solo-page) textarea,
-:where(.region-title__action) a,
-.solo-body--admin-context form .form-actions > a,
-.solo-body--admin-context .action-links li > a,
-.view-filters details.form-wrapper {
-  box-shadow: inset 0 0 var(--solo-px5) rgb(51, 44, 51, 0.1);
-}
+  :where(.solo-page) input[type="radio"],
+  :where(.solo-page) input[type="checkbox"] {
+    box-shadow: none;
+  }
 
-:where(.solo-page) input[type="radio"],
-:where(.solo-page) input[type="checkbox"] {
-  box-shadow: none;
-}
+  :where(.solo-page) form.system-theme-settings .details-wrapper {
+    display: block;
+  }
 
-:where(.solo-page) form.system-theme-settings .details-wrapper {
-  display: block;
-}
+  :where(.solo-page) :where(form.system-theme-settings .details-wrapper) .form-element--api-color {
+    min-height: 3.25rem;
+    border: 0;
+  }
 
-:where(.solo-page) :where(form.system-theme-settings .details-wrapper) .form-element--api-color {
-  min-height: 3.25rem;
-  border: 0;
-}
+  :where(form) .form-item__description {
+    padding-block: var(--solo-px8);
+    padding-inline: 0;
+  }
 
-:where(form) .form-item__description {
-  padding-block: var(--solo-px8);
-  padding-inline: 0;
-}
+  .form-wrapper {
+    align-items: start;
+  }
 
-.form-wrapper {
-  align-items: start;
-}
+  :where(.dropbutton-toggle) button {
+    all: unset;
+  }
 
-:where(.dropbutton-toggle) button {
-  all: unset;
-}
+  :where(.dropbutton-wrapper.open) .solo-button {
+    width: 100%;
+    margin: 0 !important;
+    border: 0 !important;
+  }
 
-:where(.dropbutton-wrapper.open) .solo-button {
-  width: 100%;
-  margin: 0 !important;
-  border: 0 !important;
-}
+  /* Detect date ranges by looking for min/max fields */
+  :where(.solo-page .views-exposed-form .solo-exposed-form) .solo-date-range {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    max-width: 412px;
+  }
 
-/* Detect date ranges by looking for min/max fields */
-:where(.solo-page .views-exposed-form .solo-exposed-form) .solo-date-range {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: flex-end;
-  max-width: 412px;
-}
+  form.views-exposed-form .solo-exposed-form fieldset.solo-date-range > div {
+    gap: 2px;
+  }
 
-form.views-exposed-form .solo-exposed-form fieldset.solo-date-range > div {
-  gap: 2px;
-}
+  :where(form) fieldset:has([name*="[min]"]):has([name*="[max]"]) .fieldset-wrapper {
+    flex-wrap: wrap;
+    align-items: flex-end;
+  }
 
-:where(form) fieldset:has([name*="[min]"]):has([name*="[max]"]) .fieldset-wrapper {  flex-wrap: wrap;
-  align-items: flex-end;}
-
-:where(.selectify-select-dropdowns) .selectify-selected-display {
-  --selectify-select-padding: var(--solo-px10);
-}
-
+  :where(.selectify-select-dropdowns) .selectify-selected-display {
+    --selectify-select-padding: var(--solo-px10);
+  }
 } /* end @layer solo.theme */

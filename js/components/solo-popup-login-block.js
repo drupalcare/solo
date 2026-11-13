@@ -1,4 +1,7 @@
 /**
+ * @param Drupal
+ * @param drupalSettings
+ * @param once
  * @file
  * Solo Popup Login Block functionality.
  *
@@ -164,6 +167,7 @@
 
   /**
    * Handle clicks on login popup triggers.
+   * @param event
    */
   Drupal.solo.handleLoginTriggerClick = function (event) {
     event.preventDefault();
@@ -176,6 +180,7 @@
 
   /**
    * Enable keyboard activation (Enter/Space) for non-button triggers.
+   * @param event
    */
   Drupal.solo.handleLoginTriggerKeydown = function (event) {
     const isSpace = event.key === ' ' || event.key === 'Spacebar';
@@ -188,6 +193,8 @@
 
   /**
    * Popup Login handler class.
+   * @param loginBlock
+   * @param context
    */
   Drupal.solo.PopupLogin = function (loginBlock, context) {
     this.loginBlock = loginBlock;
@@ -241,16 +248,24 @@
     // Find buttons.
     this.openButton =
       // Deprecated in 2.0, removed in the next major: old class alias.
-      document.querySelector('.solo-popup-login-block__open > button, .solo-popup-login__open > button') ||
+      document.querySelector(
+        '.solo-popup-login-block__open > button, .solo-popup-login__open > button',
+      ) ||
       // Deprecated in 2.0, removed in the next major: old class alias.
-      document.querySelector('.solo-popup-login-block__open button, .solo-popup-login__open button') ||
+      document.querySelector(
+        '.solo-popup-login-block__open button, .solo-popup-login__open button',
+      ) ||
       document.querySelector('[data-solo-login-popup-trigger]');
 
     this.closeButton =
       // Deprecated in 2.0, removed in the next major: old class alias.
-      this.loginBlock.querySelector('.solo-popup-login-block__close button, .solo-popup-login__close button') ||
+      this.loginBlock.querySelector(
+        '.solo-popup-login-block__close button, .solo-popup-login__close button',
+      ) ||
       // Deprecated in 2.0, removed in the next major: old class alias.
-      this.loginBlock.querySelector('.solo-popup-login-block__close-inner, .solo-popup-login__close-inner');
+      this.loginBlock.querySelector(
+        '.solo-popup-login-block__close-inner, .solo-popup-login__close-inner',
+      );
 
     if (!this.closeButton) {
       if (window.console && console.warn) {
@@ -369,6 +384,7 @@
 
   /**
    * Announce to screen readers.
+   * @param message
    */
   Drupal.solo.PopupLogin.prototype.announce = function (message) {
     if (this.liveRegion) {
@@ -417,7 +433,9 @@
           if (
             !this.loginBlock.contains(e.target) &&
             // Deprecated in 2.0, removed in the next major: old class alias.
-            !e.target.closest('.solo-popup-login-block__open, .solo-popup-login__open') &&
+            !e.target.closest(
+              '.solo-popup-login-block__open, .solo-popup-login__open',
+            ) &&
             !e.target.closest('[data-solo-login-popup-trigger]') &&
             !e.target.closest('.solo-popup-login-block__trigger')
           ) {
@@ -430,7 +448,9 @@
         if (
           !popupInner.contains(e.target) &&
           // Deprecated in 2.0, removed in the next major: old class alias.
-          !e.target.closest('.solo-popup-login-block__open, .solo-popup-login__open') &&
+          !e.target.closest(
+            '.solo-popup-login-block__open, .solo-popup-login__open',
+          ) &&
           !e.target.closest('[data-solo-login-popup-trigger]') &&
           !e.target.closest('.solo-popup-login-block__trigger')
         ) {
@@ -624,6 +644,7 @@
 
   /**
    * Close the login popup.
+   * @param announce
    */
   Drupal.solo.PopupLogin.prototype.close = function (announce = true) {
     if (!this.isOpen && !this.loginBlock.classList.contains('solo-is-open'))
@@ -742,6 +763,7 @@
   /**
    * Update ARIA attributes.
    * Note: aria-hidden on dialog is now managed separately to avoid focus conflicts.
+   * @param isOpen
    */
   Drupal.solo.PopupLogin.prototype.updateAriaAttributes = function (isOpen) {
     // Keep all triggers in sync.
@@ -765,6 +787,7 @@
 
   /**
    * Set tabindex on elements within the dialog.
+   * @param isOpen
    */
   Drupal.solo.PopupLogin.prototype.setElementsTabindex = function (isOpen) {
     const elements = this.loginBlock.querySelectorAll(

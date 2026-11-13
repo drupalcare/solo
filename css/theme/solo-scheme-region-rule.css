@@ -7,13 +7,11 @@
  */
 
 @layer solo.schemes {
-
-/* A rule under each region, for the schemes that draw one. */
-:where(.solo-page) .solo-outer:not(.solo-fixed-search-block, .solo-popup-login-block, .solo-header, .solo-primary-sidebar-menu, .solo-primary-menu, .solo-status-messages, .solo-copyright),
-:where(.solo-page) .solo-outer:not(.solo-fixed-search, .solo-popup-login, .solo-header, .solo-primary-sidebar-menu, .solo-primary-menu, .solo-system-messages, .solo-copyright) {
-  border-color: var(--sc-region-rule-br);
-  border-block-end-width: var(--solo-px2);
-  border-block-end-style: solid;
-}
-
+  /* A rule under each region, for the schemes that draw one. */
+  :where(.solo-page) .solo-outer:not(.solo-fixed-search-block, .solo-popup-login-block, .solo-header, .solo-primary-sidebar-menu, .solo-primary-menu, .solo-status-messages, .solo-copyright),
+  :where(.solo-page) .solo-outer:not(.solo-fixed-search, .solo-popup-login, .solo-header, .solo-primary-sidebar-menu, .solo-primary-menu, .solo-system-messages, .solo-copyright) {
+    border-color: var(--sc-region-rule-br);
+    border-block-end-width: var(--solo-px2);
+    border-block-end-style: solid;
+  }
 } /* end @layer solo.schemes */

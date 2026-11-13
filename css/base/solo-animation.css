@@ -1,293 +1,297 @@
 @layer solo.base {
-
-/* ============================================
+  /* ============================================
    MODERN MENU LINK ANIMATIONS
    ============================================ */
 
-/* Modern underline animation */
-.solo-page nav ul li > a,
-.solo-page nav ul li > button {
-  position: relative;}
+  /* Modern underline animation */
+  .solo-page nav ul li > a,
+  .solo-page nav ul li > button {
+    position: relative;
+  }
 
-/* Simple underline effect on hover */
-.solo-page nav ul li > a::after,
-.solo-page nav ul li > button::after {
-  position: absolute;  content: "";
-  transform: scaleX(0);
-  transform-origin: 0 50%;  inset-block-end: 0;
-  inset-inline-start: 0;
-}
+  /* Simple underline effect on hover */
+  .solo-page nav ul li > a::after,
+  .solo-page nav ul li > button::after {
+    position: absolute;
+    content: "";
+    transform: scaleX(0);
+    transform-origin: 0 50%;
+    inset-block-end: 0;
+    inset-inline-start: 0;
+  }
 
-/* Activate underline on hover */
-.solo-page nav ul li > a:hover::after,
-.solo-page nav ul li > button:hover::after {
-  transform: scaleX(1);
-}
+  /* Activate underline on hover */
+  .solo-page nav ul li > a:hover::after,
+  .solo-page nav ul li > button:hover::after {
+    transform: scaleX(1);
+  }
 
-[dir="rtl"] .solo-page nav ul li > a::after,
-[dir="rtl"] .solo-page nav ul li > button::after {
-  transform-origin: 100% 50%;
-}
+  [dir="rtl"] .solo-page nav ul li > a::after,
+  [dir="rtl"] .solo-page nav ul li > button::after {
+    transform-origin: 100% 50%;
+  }
 
-/* Disable animation for mega menu nested items (2nd, 3rd, 4th levels) */
-.solo-page nav .solo-menu-tree--megamenu ul li > a,
-.solo-page nav .solo-menu-tree--megamenu ul li > button {
-  overflow: visible;
-}
+  /* Disable animation for mega menu nested items (2nd, 3rd, 4th levels) */
+  .solo-page nav .solo-menu-tree--megamenu ul li > a,
+  .solo-page nav .solo-menu-tree--megamenu ul li > button {
+    overflow: visible;
+  }
 
-/* ============================================
+  /* ============================================
    GLOBAL TRANSITIONS
    ============================================ */
-a,
-button,
-:where(input).button {
-  transition:
-    color 0.2s ease,
-    background 0.2s ease,
-    border-color 0.2s ease,
-    transform 0.2s ease;
-}
+  a,
+  button,
+  :where(input).button {
+    transition:
+      color 0.2s ease,
+      background 0.2s ease,
+      border-color 0.2s ease,
+      transform 0.2s ease;
+  }
 
-/* ============================================
+  /* ============================================
    EXISTING ANIMATIONS - PRESERVED
    ============================================ */
-.solo-page--fade-in,
-.solo-animate-opacity {
-  animation: opac 0.8s;
-  animation-timing-function: cubic-bezier(0.25, 0.8, 0.25, 1);
-}
-
-@keyframes opac {
-  from {
-    opacity: 0;
+  .solo-page--fade-in,
+  .solo-animate-opacity {
+    animation: opac 0.8s;
+    animation-timing-function: cubic-bezier(0.25, 0.8, 0.25, 1);
   }
-  to {
-    opacity: 1;
+
+  @keyframes opac {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
   }
-}
 
-.solo-animate-top {
-  position: relative;
-  animation: animatetop 0.6s;
-  animation-timing-function: var(--solo-ease-in-out);
-}
-
-@keyframes animatetop {
-  from {
-    inset-block-start: -300px;
-    opacity: 0;
+  .solo-animate-top {
+    position: relative;
+    animation: animatetop 0.6s;
+    animation-timing-function: var(--solo-ease-in-out);
   }
-  to {
-    inset-block-start: 0;
-    opacity: 1;
+
+  @keyframes animatetop {
+    from {
+      inset-block-start: -300px;
+      opacity: 0;
+    }
+    to {
+      inset-block-start: 0;
+      opacity: 1;
+    }
   }
-}
 
-.solo-animate-left {
-  position: relative;
-  animation: animateleft 0.6s;
-  animation-timing-function: var(--solo-ease-in-out);
-}
-
-@keyframes animateleft {
-  from {
-    inset-inline-start: -300px;
-    opacity: 0;
+  .solo-animate-left {
+    position: relative;
+    animation: animateleft 0.6s;
+    animation-timing-function: var(--solo-ease-in-out);
   }
-  to {
-    inset-inline-start: 0;
-    opacity: 1;
+
+  @keyframes animateleft {
+    from {
+      inset-inline-start: -300px;
+      opacity: 0;
+    }
+    to {
+      inset-inline-start: 0;
+      opacity: 1;
+    }
   }
-}
 
-.solo-animate-right {
-  position: relative;
-  animation: animateright 0.6s;
-  animation-timing-function: var(--solo-ease-in-out);
-}
-
-@keyframes animateright {
-  from {
-    inset-inline-end: -300px;
-    opacity: 0;
+  .solo-animate-right {
+    position: relative;
+    animation: animateright 0.6s;
+    animation-timing-function: var(--solo-ease-in-out);
   }
-  to {
-    inset-inline-end: 0;
-    opacity: 1;
+
+  @keyframes animateright {
+    from {
+      inset-inline-end: -300px;
+      opacity: 0;
+    }
+    to {
+      inset-inline-end: 0;
+      opacity: 1;
+    }
   }
-}
 
-.solo-animate-bottom {
-  position: relative;
-  animation: animatebottom 0.6s;
-  animation-timing-function: var(--solo-ease-in-out);
-}
-
-@keyframes animatebottom {
-  from {
-    inset-block-end: -300px;
-    opacity: 0;
+  .solo-animate-bottom {
+    position: relative;
+    animation: animatebottom 0.6s;
+    animation-timing-function: var(--solo-ease-in-out);
   }
-  to {
-    inset-block-end: 0;
-    opacity: 1;
+
+  @keyframes animatebottom {
+    from {
+      inset-block-end: -300px;
+      opacity: 0;
+    }
+    to {
+      inset-block-end: 0;
+      opacity: 1;
+    }
   }
-}
 
-.solo-animate-zoom {
-  animation: animatezoom 0.6s;
-  animation-timing-function: var(--solo-ease-in-out);
-}
-
-@keyframes animatezoom {
-  from {
-    transform: scale(0);
+  .solo-animate-zoom {
+    animation: animatezoom 0.6s;
+    animation-timing-function: var(--solo-ease-in-out);
   }
-  to {
-    transform: scale(1);
+
+  @keyframes animatezoom {
+    from {
+      transform: scale(0);
+    }
+    to {
+      transform: scale(1);
+    }
   }
-}
 
-.solo-animate-input {
-  transition: width 0.4s ease-in-out;
-}
+  .solo-animate-input {
+    transition: width 0.4s ease-in-out;
+  }
 
-.solo-animate-input:focus {
-  width: 100% !important;
-}
+  .solo-animate-input:focus {
+    width: 100% !important;
+  }
 
-/* ============================================
+  /* ============================================
    DISABLE CLASSES - USER CONTROL
    ============================================ */
 
-/* Disable menu link animations */
-:where(.dis-anim-link nav ul li) > a::after,
-:where(.dis-anim-link nav ul li) > button::after {
-  display: none !important;
-}
+  /* Disable menu link animations */
+  :where(.dis-anim-link nav ul li) > a::after,
+  :where(.dis-anim-link nav ul li) > button::after {
+    display: none !important;
+  }
 
-:where(.dis-anim-link nav ul li) > a:hover::after,
-:where(.dis-anim-link nav ul li) > button:hover::after {
-  width: 0 !important;
-  animation: none !important;
-}
+  :where(.dis-anim-link nav ul li) > a:hover::after,
+  :where(.dis-anim-link nav ul li) > button:hover::after {
+    width: 0 !important;
+    animation: none !important;
+  }
 
-/* Disable ALL animations - accessibility option */
-:where(.dis-all-animations) *,
-:where(.dis-all-animations) *::before,
-:where(.dis-all-animations) *::after {
-  transition: none !important;
-  animation: none;
-}
+  /* Disable ALL animations - accessibility option */
+  :where(.dis-all-animations) *,
+  :where(.dis-all-animations) *::before,
+  :where(.dis-all-animations) *::after {
+    transition: none !important;
+    animation: none;
+  }
 
-/* ============================================
+  /* ============================================
    LEGACY ANIMATIONS - OPT-IN WITH CLASS
    Use .enable-legacy-animations on body/wrapper
    ============================================ */
 
-/* Old border sweep animation */
-/* stylelint-disable-next-line keyframes-name-pattern -- shipped animation name, kept as released */
-@keyframes btnBorderAnimation {
-  0% {
-    width: 0;
-    height: 0;
-    border-bottom-color: var(--r-border, var(--solo-border-default));
+  /* Old border sweep animation */
+  /* stylelint-disable-next-line keyframes-name-pattern -- shipped animation name, kept as released */
+  @keyframes btnBorderAnimation {
+    0% {
+      width: 0;
+      height: 0;
+      border-bottom-color: var(--r-border, var(--solo-border-default));
+    }
+    99.9999% {
+      width: 100%;
+      height: 100%;
+      border-bottom-color: var(--r-border, var(--solo-border-default));
+    }
+    100% {
+      width: 0;
+      height: 0;
+      border-bottom-color: transparent;
+    }
   }
-  99.9999% {
-    width: 100%;
-    height: 100%;
-    border-bottom-color: var(--r-border, var(--solo-border-default));
-  }
-  100% {
-    width: 0;
-    height: 0;
-    border-bottom-color: transparent;
-  }
-}
 
-/* Old wiggle animation */
-@keyframes wiggle {
-  0%,
-  100% {
-    transform: rotateZ(0deg) scale(1);
+  /* Old wiggle animation */
+  @keyframes wiggle {
+    0%,
+    100% {
+      transform: rotateZ(0deg) scale(1);
+    }
+    15% {
+      transform: rotateZ(-2.5deg) scale(1.01);
+    }
+    30% {
+      transform: rotateZ(2deg) scale(0.99);
+    }
+    45% {
+      transform: rotateZ(-1.5deg) scale(1.005);
+    }
+    60% {
+      transform: rotateZ(1deg) scale(0.995);
+    }
+    75% {
+      transform: rotateZ(-0.5deg) scale(1.0025);
+    }
+    90% {
+      transform: rotateZ(0.25deg) scale(1);
+    }
   }
-  15% {
-    transform: rotateZ(-2.5deg) scale(1.01);
-  }
-  30% {
-    transform: rotateZ(2deg) scale(0.99);
-  }
-  45% {
-    transform: rotateZ(-1.5deg) scale(1.005);
-  }
-  60% {
-    transform: rotateZ(1deg) scale(0.995);
-  }
-  75% {
-    transform: rotateZ(-0.5deg) scale(1.0025);
-  }
-  90% {
-    transform: rotateZ(0.25deg) scale(1);
-  }
-}
 
-/* Enable legacy border animation */
-.solo-body--legacy-animations nav ul li > a::before,
-.solo-body--legacy-animations nav ul li > button::before {
-  position: absolute;  content: "";  inset-block-end: 0;
-  inset-inline-start: 0;
-}
+  /* Enable legacy border animation */
+  .solo-body--legacy-animations nav ul li > a::before,
+  .solo-body--legacy-animations nav ul li > button::before {
+    position: absolute;
+    content: "";
+    inset-block-end: 0;
+    inset-inline-start: 0;
+  }
 
-.solo-body--legacy-animations nav ul li > a::after,
-.solo-body--legacy-animations nav ul li > button::after {  inset-inline-end: 0;
-}
+  .solo-body--legacy-animations nav ul li > a::after,
+  .solo-body--legacy-animations nav ul li > button::after {
+    inset-inline-end: 0;
+  }
 
-.solo-body--legacy-animations nav ul li > a:hover::after,
-.solo-body--legacy-animations nav ul li > a:hover::before,
-.solo-body--legacy-animations nav ul li > button:hover::after,
-.solo-body--legacy-animations nav ul li > button:hover::before {  animation: btnBorderAnimation 0.5s ease-out forwards;
-}
+  .solo-body--legacy-animations nav ul li > a:hover::after,
+  .solo-body--legacy-animations nav ul li > a:hover::before,
+  .solo-body--legacy-animations nav ul li > button:hover::after,
+  .solo-body--legacy-animations nav ul li > button:hover::before {
+    animation: btnBorderAnimation 0.5s ease-out forwards;
+  }
 
-/* Enable legacy wiggle animation */
-.solo-body--legacy-animations form input.button.form-submit:hover {  animation: wiggle 0.6s ease-out both;
-  box-shadow: none;
-}
+  /* Enable legacy wiggle animation */
+  .solo-body--legacy-animations form input.button.form-submit:hover {
+    animation: wiggle 0.6s ease-out both;
+    box-shadow: none;
+  }
 
-/* Disable submit button animations */
-.dis-anim-submit form input.button.form-submit:hover {
-  transform: none !important;
-  animation: none;
-  box-shadow: none !important;
-}
-
+  /* Disable submit button animations */
+  .dis-anim-submit form input.button.form-submit:hover {
+    transform: none !important;
+    animation: none;
+    box-shadow: none !important;
+  }
 } /* end @layer solo.base */
 
 @layer solo.locked {
-
-/* Reduced motion: end states are kept, movement is not (WCAG 2.3.3). */
-@media (prefers-reduced-motion: reduce) {
-  :where(.solo-page nav ul li > a)::after,
-  :where(.solo-page nav ul li > button)::after,
-  :where(a),
-  :where(button),
-  :where(:where(input).button),
-  :where(.solo-page--fade-in),
-  :where(.solo-animate-opacity),
-  :where(.solo-animate-top),
-  :where(.solo-animate-left),
-  :where(.solo-animate-right),
-  :where(.solo-animate-bottom),
-  :where(.solo-animate-zoom),
-  :where(.solo-animate-input),
-  :where(.solo-body--legacy-animations nav ul li > a:hover)::after,
-  :where(.solo-body--legacy-animations nav ul li > a:hover)::before,
-  :where(.solo-body--legacy-animations nav ul li > button:hover)::after,
-  :where(.solo-body--legacy-animations nav ul li > button:hover)::before,
-  :where(.solo-body--legacy-animations form input.button.form-submit:hover) {
-    transition-duration: 0.01ms !important;
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
+  /* Reduced motion: end states are kept, movement is not (WCAG 2.3.3). */
+  @media (prefers-reduced-motion: reduce) {
+    :where(.solo-page nav ul li > a)::after,
+    :where(.solo-page nav ul li > button)::after,
+    :where(a),
+    :where(button),
+    :where(:where(input).button),
+    :where(.solo-page--fade-in),
+    :where(.solo-animate-opacity),
+    :where(.solo-animate-top),
+    :where(.solo-animate-left),
+    :where(.solo-animate-right),
+    :where(.solo-animate-bottom),
+    :where(.solo-animate-zoom),
+    :where(.solo-animate-input),
+    :where(.solo-body--legacy-animations nav ul li > a:hover)::after,
+    :where(.solo-body--legacy-animations nav ul li > a:hover)::before,
+    :where(.solo-body--legacy-animations nav ul li > button:hover)::after,
+    :where(.solo-body--legacy-animations nav ul li > button:hover)::before,
+    :where(.solo-body--legacy-animations form input.button.form-submit:hover) {
+      transition-duration: 0.01ms !important;
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+    }
   }
-}
-
 } /* end @layer solo.locked */

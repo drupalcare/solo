@@ -44,7 +44,7 @@
 <nav {{ attributes.addClass(classes).setAttribute('aria-labelledby', heading_id) }}>
 
   {% if solo_block_title_visibility_enabled %}
-    {% include '@solo/templates/block/block-title.html.twig' %}
+    {{ include('@solo/templates/block/block-title.html.twig') }}
   {% else %}
     {% if not configuration.label_display %}
       {% set title_attributes = title_attributes.addClass('visually-hidden') %}

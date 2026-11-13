@@ -1,6 +1,6 @@
 @layer solo.utilities {
   .solo-page .nosifer {
-    --solo-font-s: 'Nosifer', cursive;
+    --solo-font-s: "Nosifer", cursive;
   }
 }
 

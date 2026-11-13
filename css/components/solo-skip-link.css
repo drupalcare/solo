@@ -1,35 +1,34 @@
 @layer solo.theme {
+  .skip-link {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    -webkit-text-decoration: none;
+    text-decoration: none;
+    color: var(--solo-white);
+    background-color: var(--solo-black);
+  }
 
-.skip-link {
-  display: block;
-  width: 100%;
-  max-width: 100%;
-  -webkit-text-decoration: none;
-  text-decoration: none;
-  color: var(--solo-white);
-  background-color: var(--solo-black);
-}
+  .skip-link:hover {
+    -webkit-text-decoration: underline;
+    text-decoration: underline;
+  }
 
-.skip-link:hover {
-  -webkit-text-decoration: underline;
-  text-decoration: underline;
-}
+  .skip-link::after {
+    content: "\0020\279C";
+  }
 
-.skip-link::after {
-  content: "\0020\279C";
-}
+  .skip-link.focusable:focus {
+    padding-block: var(--solo-px12);
+    padding-inline: var(--solo-px24);
+    position: absolute !important;
+    z-index: 1000;
+  }
 
-.skip-link.focusable:focus {
-  padding-block: var(--solo-px12);
-  padding-inline: var(--solo-px24);
-  position: absolute !important;
-  z-index: 1000;}
-
-/* The empty anchors a skip link jumps to sit inside .solo-col grids, where an
+  /* The empty anchors a skip link jumps to sit inside .solo-col grids, where an
    in-flow anchor takes a whole row (an empty band above the main menu). Out of
    flow, the anchor takes no space and still receives focus. */
-.solo-skip-target {
-  position: absolute;
-}
-
+  .solo-skip-target {
+    position: absolute;
+  }
 } /* end @layer solo.theme */

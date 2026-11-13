@@ -1,202 +1,196 @@
 @layer solo.theme {
+  /* stylelint-disable-next-line keyframes-name-pattern -- shipped animation name, kept as released */
+  @keyframes animateSiteName {
+    0% {
+      background-position: 0% 50%;
+    }
 
-/* stylelint-disable-next-line keyframes-name-pattern -- shipped animation name, kept as released */
-@keyframes animateSiteName {
-  0% {
-    background-position: 0% 50%;
+    100% {
+      background-position: 200% 50%;
+    }
   }
 
-  100% {
-    background-position: 200% 50%;
+  /* stylelint-disable order/properties-order -- shorthand/longhand order is significant here (background-clip vs -webkit-background-clip); reordering would change the result */
+
+  :where(.solo-page) .animate-solo-aurora-wave,
+  :where(.solo-page) .animate-solo-dreamy-bloom,
+  :where(.solo-page) .animate-solo-echo-pulse,
+  :where(.solo-page) .animate-solo-electric-surge,
+  :where(.solo-page) .animate-solo-gravity-defy,
+  :where(.solo-page) .animate-solo-gliding-letters,
+  :where(.solo-page) .animate-solo-holographic-spin,
+  :where(.solo-page) .animate-solo-moonlight-dance,
+  :where(.solo-page) .animate-solo-mystic-fade,
+  :where(.solo-page) .animate-solo-phoenix-rise,
+  :where(.solo-page) .animate-solo-quantum-leap,
+  :where(.solo-page) .animate-solo-serene-float,
+  :where(.solo-page) .animate-solo-shimmering-wave,
+  :where(.solo-page) .animate-solo-solar-flare,
+  :where(.solo-page) .animate-solo-starry-glide,
+  :where(.solo-page) .animate-solo-swirling-entrance,
+  :where(.solo-page) .animate-solo-timeless-flip,
+  :where(.solo-page) .animate-solo-cosmic-drift,
+  :where(.solo-page) .animate-solo-velvet-slide,
+  :where(.solo-page) .animate-solo-whispering-shadows,
+  :where(.solo-page) .animate-solo-whisper-fade,
+  :where(.solo-page) .animate-solo-sapphire-zoom,
+  :where(.solo-page) .animate-solo-rhythmic-slide,
+  :where(.solo-page) .animate-solo-zen-rotation,
+  #solo-header.animate-site-aurora-wave a.solo-branding__site-name-link,
+  #solo-header.animate-site-dreamy-bloom a.solo-branding__site-name-link,
+  #solo-header.animate-site-echo-pulse a.solo-branding__site-name-link,
+  #solo-header.animate-site-electric-surge a.solo-branding__site-name-link,
+  #solo-header.animate-site-gravity-defy a.solo-branding__site-name-link,
+  #solo-header.animate-site-gliding-letters a.solo-branding__site-name-link,
+  #solo-header.animate-site-holographic-spin a.solo-branding__site-name-link,
+  #solo-header.animate-site-moonlight-dance a.solo-branding__site-name-link,
+  #solo-header.animate-site-mystic-fade a.solo-branding__site-name-link,
+  #solo-header.animate-site-phoenix-rise a.solo-branding__site-name-link,
+  #solo-header.animate-site-quantum-leap a.solo-branding__site-name-link,
+  #solo-header.animate-site-serene-float a.solo-branding__site-name-link,
+  #solo-header.animate-site-shimmering-wave a.solo-branding__site-name-link,
+  #solo-header.animate-site-solar-flare a.solo-branding__site-name-link,
+  #solo-header.animate-site-starry-glide a.solo-branding__site-name-link,
+  #solo-header.animate-site-swirling-entrance a.solo-branding__site-name-link,
+  #solo-header.animate-site-timeless-flip a.solo-branding__site-name-link,
+  #solo-header.animate-site-cosmic-drift a.solo-branding__site-name-link,
+  #solo-header.animate-site-velvet-slide a.solo-branding__site-name-link,
+  #solo-header.animate-site-whispering-shadows a.solo-branding__site-name-link,
+  #solo-header.animate-site-whisper-fade a.solo-branding__site-name-link,
+  #solo-header.animate-site-sapphire-zoom a.solo-branding__site-name-link,
+  #solo-header.animate-site-rhythmic-slide a.solo-branding__site-name-link,
+  #solo-header.animate-site-zen-rotation a.solo-branding__site-name-link,
+  :where(.solo-page.animate-title-aurora-wave) .solo-page-title__text,
+  :where(.solo-page.animate-title-dreamy-bloom) .solo-page-title__text,
+  :where(.solo-page.animate-title-echo-pulse) .solo-page-title__text,
+  :where(.solo-page.animate-title-electric-surge) .solo-page-title__text,
+  :where(.solo-page.animate-title-gravity-defy) .solo-page-title__text,
+  :where(.solo-page.animate-title-gliding-letters) .solo-page-title__text,
+  :where(.solo-page.animate-title-holographic-spin) .solo-page-title__text,
+  :where(.solo-page.animate-title-moonlight-dance) .solo-page-title__text,
+  :where(.solo-page.animate-title-mystic-fade) .solo-page-title__text,
+  :where(.solo-page.animate-title-phoenix-rise) .solo-page-title__text,
+  :where(.solo-page.animate-title-quantum-leap) .solo-page-title__text,
+  :where(.solo-page.animate-title-serene-float) .solo-page-title__text,
+  :where(.solo-page.animate-title-shimmering-wave) .solo-page-title__text,
+  :where(.solo-page.animate-title-solar-flare) .solo-page-title__text,
+  :where(.solo-page.animate-title-starry-glide) .solo-page-title__text,
+  :where(.solo-page.animate-title-swirling-entrance) .solo-page-title__text,
+  :where(.solo-page.animate-title-timeless-flip) .solo-page-title__text,
+  :where(.solo-page.animate-title-cosmic-drift) .solo-page-title__text,
+  :where(.solo-page.animate-title-velvet-slide) .solo-page-title__text,
+  :where(.solo-page.animate-title-whispering-shadows) .solo-page-title__text,
+  :where(.solo-page.animate-title-whisper-fade) .solo-page-title__text,
+  :where(.solo-page.animate-title-sapphire-zoom) .solo-page-title__text,
+  :where(.solo-page.animate-title-rhythmic-slide) .solo-page-title__text,
+  :where(.solo-page.animate-title-zen-rotation) .solo-page-title__text,
+  #solo-page-wrapper.animate-title-aurora-wave .solo-page-title__text span,
+  #solo-page-wrapper.animate-title-dreamy-bloom .solo-page-title__text span,
+  #solo-page-wrapper.animate-title-echo-pulse .solo-page-title__text span,
+  #solo-page-wrapper.animate-title-electric-surge .solo-page-title__text span,
+  #solo-page-wrapper.animate-title-gravity-defy .solo-page-title__text span,
+  #solo-page-wrapper.animate-title-gliding-letters .solo-page-title__text span,
+  #solo-page-wrapper.animate-title-holographic-spin .solo-page-title__text span,
+  #solo-page-wrapper.animate-title-moonlight-dance .solo-page-title__text span,
+  #solo-page-wrapper.animate-title-mystic-fade .solo-page-title__text span,
+  #solo-page-wrapper.animate-title-phoenix-rise .solo-page-title__text span,
+  #solo-page-wrapper.animate-title-quantum-leap .solo-page-title__text span,
+  #solo-page-wrapper.animate-title-serene-float .solo-page-title__text span,
+  #solo-page-wrapper.animate-title-shimmering-wave .solo-page-title__text span,
+  #solo-page-wrapper.animate-title-solar-flare .solo-page-title__text span,
+  #solo-page-wrapper.animate-title-starry-glide .solo-page-title__text span,
+  #solo-page-wrapper.animate-title-swirling-entrance .solo-page-title__text span,
+  #solo-page-wrapper.animate-title-timeless-flip .solo-page-title__text span,
+  #solo-page-wrapper.animate-title-cosmic-drift .solo-page-title__text span,
+  #solo-page-wrapper.animate-title-velvet-slide .solo-page-title__text span,
+  #solo-page-wrapper.animate-title-whispering-shadows .solo-page-title__text span,
+  #solo-page-wrapper.animate-title-whisper-fade .solo-page-title__text span,
+  #solo-page-wrapper.animate-title-sapphire-zoom .solo-page-title__text span,
+  #solo-page-wrapper.animate-title-rhythmic-slide .solo-page-title__text span,
+  #solo-page-wrapper.animate-title-zen-rotation .solo-page-title__text span,
+  :where(html.solo-preloader-enabled .solo-preloader.animate-site-aurora-wave) .solo-preloader__text,
+  :where(html.solo-preloader-enabled .solo-preloader.animate-site-aurora-wave) .solo-preloader__hero-text,
+  :where(html.solo-preloader-enabled .solo-preloader.animate-site-cosmic-drift) .solo-preloader__text,
+  :where(html.solo-preloader-enabled .solo-preloader.animate-site-cosmic-drift) .solo-preloader__hero-text,
+  :where(html.solo-preloader-enabled .solo-preloader.animate-site-dreamy-bloom) .solo-preloader__text,
+  :where(html.solo-preloader-enabled .solo-preloader.animate-site-dreamy-bloom) .solo-preloader__hero-text,
+  :where(html.solo-preloader-enabled .solo-preloader.animate-site-echo-pulse) .solo-preloader__text,
+  :where(html.solo-preloader-enabled .solo-preloader.animate-site-echo-pulse) .solo-preloader__hero-text,
+  :where(html.solo-preloader-enabled .solo-preloader.animate-site-electric-surge) .solo-preloader__text,
+  :where(html.solo-preloader-enabled .solo-preloader.animate-site-electric-surge) .solo-preloader__hero-text,
+  :where(html.solo-preloader-enabled .solo-preloader.animate-site-gliding-letters) .solo-preloader__text,
+  :where(html.solo-preloader-enabled .solo-preloader.animate-site-gliding-letters) .solo-preloader__hero-text,
+  :where(html.solo-preloader-enabled .solo-preloader.animate-site-gravity-defy) .solo-preloader__text,
+  :where(html.solo-preloader-enabled .solo-preloader.animate-site-gravity-defy) .solo-preloader__hero-text,
+  :where(html.solo-preloader-enabled .solo-preloader.animate-site-holographic-spin) .solo-preloader__text,
+  :where(html.solo-preloader-enabled .solo-preloader.animate-site-holographic-spin) .solo-preloader__hero-text,
+  :where(html.solo-preloader-enabled .solo-preloader.animate-site-moonlight-dance) .solo-preloader__text,
+  :where(html.solo-preloader-enabled .solo-preloader.animate-site-moonlight-dance) .solo-preloader__hero-text,
+  :where(html.solo-preloader-enabled .solo-preloader.animate-site-mystic-fade) .solo-preloader__text,
+  :where(html.solo-preloader-enabled .solo-preloader.animate-site-mystic-fade) .solo-preloader__hero-text,
+  :where(html.solo-preloader-enabled .solo-preloader.animate-site-phoenix-rise) .solo-preloader__text,
+  :where(html.solo-preloader-enabled .solo-preloader.animate-site-phoenix-rise) .solo-preloader__hero-text,
+  :where(html.solo-preloader-enabled .solo-preloader.animate-site-quantum-leap) .solo-preloader__text,
+  :where(html.solo-preloader-enabled .solo-preloader.animate-site-quantum-leap) .solo-preloader__hero-text,
+  :where(html.solo-preloader-enabled .solo-preloader.animate-site-rhythmic-slide) .solo-preloader__text,
+  :where(html.solo-preloader-enabled .solo-preloader.animate-site-rhythmic-slide) .solo-preloader__hero-text,
+  :where(html.solo-preloader-enabled .solo-preloader.animate-site-sapphire-zoom) .solo-preloader__text,
+  :where(html.solo-preloader-enabled .solo-preloader.animate-site-sapphire-zoom) .solo-preloader__hero-text,
+  :where(html.solo-preloader-enabled .solo-preloader.animate-site-serene-float) .solo-preloader__text,
+  :where(html.solo-preloader-enabled .solo-preloader.animate-site-serene-float) .solo-preloader__hero-text,
+  :where(html.solo-preloader-enabled .solo-preloader.animate-site-shimmering-wave) .solo-preloader__text,
+  :where(html.solo-preloader-enabled .solo-preloader.animate-site-shimmering-wave) .solo-preloader__hero-text,
+  :where(html.solo-preloader-enabled .solo-preloader.animate-site-solar-flare) .solo-preloader__text,
+  :where(html.solo-preloader-enabled .solo-preloader.animate-site-solar-flare) .solo-preloader__hero-text,
+  :where(html.solo-preloader-enabled .solo-preloader.animate-site-starry-glide) .solo-preloader__text,
+  :where(html.solo-preloader-enabled .solo-preloader.animate-site-starry-glide) .solo-preloader__hero-text,
+  :where(html.solo-preloader-enabled .solo-preloader.animate-site-swirling-entrance) .solo-preloader__text,
+  :where(html.solo-preloader-enabled .solo-preloader.animate-site-swirling-entrance) .solo-preloader__hero-text,
+  :where(html.solo-preloader-enabled .solo-preloader.animate-site-timeless-flip) .solo-preloader__text,
+  :where(html.solo-preloader-enabled .solo-preloader.animate-site-timeless-flip) .solo-preloader__hero-text,
+  :where(html.solo-preloader-enabled .solo-preloader.animate-site-velvet-slide) .solo-preloader__text,
+  :where(html.solo-preloader-enabled .solo-preloader.animate-site-velvet-slide) .solo-preloader__hero-text,
+  :where(html.solo-preloader-enabled .solo-preloader.animate-site-whisper-fade) .solo-preloader__text,
+  :where(html.solo-preloader-enabled .solo-preloader.animate-site-whisper-fade) .solo-preloader__hero-text,
+  :where(html.solo-preloader-enabled .solo-preloader.animate-site-whispering-shadows) .solo-preloader__text,
+  :where(html.solo-preloader-enabled .solo-preloader.animate-site-whispering-shadows) .solo-preloader__hero-text,
+  :where(html.solo-preloader-enabled .solo-preloader.animate-site-zen-rotation) .solo-preloader__text,
+  :where(html.solo-preloader-enabled .solo-preloader.animate-site-zen-rotation) .solo-preloader__hero-text {
+    -webkit-background-clip: text;
+    color: transparent !important;
   }
-}
-
-/* stylelint-disable order/properties-order -- shorthand/longhand order is significant here (background-clip vs -webkit-background-clip); reordering would change the result */
-
-:where(.solo-page) .animate-solo-aurora-wave,
-:where(.solo-page) .animate-solo-dreamy-bloom,
-:where(.solo-page) .animate-solo-echo-pulse,
-:where(.solo-page) .animate-solo-electric-surge,
-:where(.solo-page) .animate-solo-gravity-defy,
-:where(.solo-page) .animate-solo-gliding-letters,
-:where(.solo-page) .animate-solo-holographic-spin,
-:where(.solo-page) .animate-solo-moonlight-dance,
-:where(.solo-page) .animate-solo-mystic-fade,
-:where(.solo-page) .animate-solo-phoenix-rise,
-:where(.solo-page) .animate-solo-quantum-leap,
-:where(.solo-page) .animate-solo-serene-float,
-:where(.solo-page) .animate-solo-shimmering-wave,
-:where(.solo-page) .animate-solo-solar-flare,
-:where(.solo-page) .animate-solo-starry-glide,
-:where(.solo-page) .animate-solo-swirling-entrance,
-:where(.solo-page) .animate-solo-timeless-flip,
-:where(.solo-page) .animate-solo-cosmic-drift,
-:where(.solo-page) .animate-solo-velvet-slide,
-:where(.solo-page) .animate-solo-whispering-shadows,
-:where(.solo-page) .animate-solo-whisper-fade,
-:where(.solo-page) .animate-solo-sapphire-zoom,
-:where(.solo-page) .animate-solo-rhythmic-slide,
-:where(.solo-page) .animate-solo-zen-rotation,
-#solo-header.animate-site-aurora-wave a.solo-branding__site-name-link,
-#solo-header.animate-site-dreamy-bloom a.solo-branding__site-name-link,
-#solo-header.animate-site-echo-pulse a.solo-branding__site-name-link,
-#solo-header.animate-site-electric-surge a.solo-branding__site-name-link,
-#solo-header.animate-site-gravity-defy a.solo-branding__site-name-link,
-#solo-header.animate-site-gliding-letters a.solo-branding__site-name-link,
-#solo-header.animate-site-holographic-spin a.solo-branding__site-name-link,
-#solo-header.animate-site-moonlight-dance a.solo-branding__site-name-link,
-#solo-header.animate-site-mystic-fade a.solo-branding__site-name-link,
-#solo-header.animate-site-phoenix-rise a.solo-branding__site-name-link,
-#solo-header.animate-site-quantum-leap a.solo-branding__site-name-link,
-#solo-header.animate-site-serene-float a.solo-branding__site-name-link,
-#solo-header.animate-site-shimmering-wave a.solo-branding__site-name-link,
-#solo-header.animate-site-solar-flare a.solo-branding__site-name-link,
-#solo-header.animate-site-starry-glide a.solo-branding__site-name-link,
-#solo-header.animate-site-swirling-entrance a.solo-branding__site-name-link,
-#solo-header.animate-site-timeless-flip a.solo-branding__site-name-link,
-#solo-header.animate-site-cosmic-drift a.solo-branding__site-name-link,
-#solo-header.animate-site-velvet-slide a.solo-branding__site-name-link,
-#solo-header.animate-site-whispering-shadows a.solo-branding__site-name-link,
-#solo-header.animate-site-whisper-fade a.solo-branding__site-name-link,
-#solo-header.animate-site-sapphire-zoom a.solo-branding__site-name-link,
-#solo-header.animate-site-rhythmic-slide a.solo-branding__site-name-link,
-#solo-header.animate-site-zen-rotation a.solo-branding__site-name-link,
-:where(.solo-page.animate-title-aurora-wave) .solo-page-title__text,
-:where(.solo-page.animate-title-dreamy-bloom) .solo-page-title__text,
-:where(.solo-page.animate-title-echo-pulse) .solo-page-title__text,
-:where(.solo-page.animate-title-electric-surge) .solo-page-title__text,
-:where(.solo-page.animate-title-gravity-defy) .solo-page-title__text,
-:where(.solo-page.animate-title-gliding-letters) .solo-page-title__text,
-:where(.solo-page.animate-title-holographic-spin) .solo-page-title__text,
-:where(.solo-page.animate-title-moonlight-dance) .solo-page-title__text,
-:where(.solo-page.animate-title-mystic-fade) .solo-page-title__text,
-:where(.solo-page.animate-title-phoenix-rise) .solo-page-title__text,
-:where(.solo-page.animate-title-quantum-leap) .solo-page-title__text,
-:where(.solo-page.animate-title-serene-float) .solo-page-title__text,
-:where(.solo-page.animate-title-shimmering-wave) .solo-page-title__text,
-:where(.solo-page.animate-title-solar-flare) .solo-page-title__text,
-:where(.solo-page.animate-title-starry-glide) .solo-page-title__text,
-:where(.solo-page.animate-title-swirling-entrance) .solo-page-title__text,
-:where(.solo-page.animate-title-timeless-flip) .solo-page-title__text,
-:where(.solo-page.animate-title-cosmic-drift) .solo-page-title__text,
-:where(.solo-page.animate-title-velvet-slide) .solo-page-title__text,
-:where(.solo-page.animate-title-whispering-shadows) .solo-page-title__text,
-:where(.solo-page.animate-title-whisper-fade) .solo-page-title__text,
-:where(.solo-page.animate-title-sapphire-zoom) .solo-page-title__text,
-:where(.solo-page.animate-title-rhythmic-slide) .solo-page-title__text,
-:where(.solo-page.animate-title-zen-rotation) .solo-page-title__text,
-#solo-page-wrapper.animate-title-aurora-wave .solo-page-title__text span,
-#solo-page-wrapper.animate-title-dreamy-bloom .solo-page-title__text span,
-#solo-page-wrapper.animate-title-echo-pulse .solo-page-title__text span,
-#solo-page-wrapper.animate-title-electric-surge .solo-page-title__text span,
-#solo-page-wrapper.animate-title-gravity-defy .solo-page-title__text span,
-#solo-page-wrapper.animate-title-gliding-letters .solo-page-title__text span,
-#solo-page-wrapper.animate-title-holographic-spin .solo-page-title__text span,
-#solo-page-wrapper.animate-title-moonlight-dance .solo-page-title__text span,
-#solo-page-wrapper.animate-title-mystic-fade .solo-page-title__text span,
-#solo-page-wrapper.animate-title-phoenix-rise .solo-page-title__text span,
-#solo-page-wrapper.animate-title-quantum-leap .solo-page-title__text span,
-#solo-page-wrapper.animate-title-serene-float .solo-page-title__text span,
-#solo-page-wrapper.animate-title-shimmering-wave .solo-page-title__text span,
-#solo-page-wrapper.animate-title-solar-flare .solo-page-title__text span,
-#solo-page-wrapper.animate-title-starry-glide .solo-page-title__text span,
-#solo-page-wrapper.animate-title-swirling-entrance .solo-page-title__text span,
-#solo-page-wrapper.animate-title-timeless-flip .solo-page-title__text span,
-#solo-page-wrapper.animate-title-cosmic-drift .solo-page-title__text span,
-#solo-page-wrapper.animate-title-velvet-slide .solo-page-title__text span,
-#solo-page-wrapper.animate-title-whispering-shadows .solo-page-title__text span,
-#solo-page-wrapper.animate-title-whisper-fade .solo-page-title__text span,
-#solo-page-wrapper.animate-title-sapphire-zoom .solo-page-title__text span,
-#solo-page-wrapper.animate-title-rhythmic-slide .solo-page-title__text span,
-#solo-page-wrapper.animate-title-zen-rotation .solo-page-title__text span,
-:where(html.solo-preloader-enabled .solo-preloader.animate-site-aurora-wave) .solo-preloader__text,
-:where(html.solo-preloader-enabled .solo-preloader.animate-site-aurora-wave) .solo-preloader__hero-text,
-:where(html.solo-preloader-enabled .solo-preloader.animate-site-cosmic-drift) .solo-preloader__text,
-:where(html.solo-preloader-enabled .solo-preloader.animate-site-cosmic-drift) .solo-preloader__hero-text,
-:where(html.solo-preloader-enabled .solo-preloader.animate-site-dreamy-bloom) .solo-preloader__text,
-:where(html.solo-preloader-enabled .solo-preloader.animate-site-dreamy-bloom) .solo-preloader__hero-text,
-:where(html.solo-preloader-enabled .solo-preloader.animate-site-echo-pulse) .solo-preloader__text,
-:where(html.solo-preloader-enabled .solo-preloader.animate-site-echo-pulse) .solo-preloader__hero-text,
-:where(html.solo-preloader-enabled .solo-preloader.animate-site-electric-surge) .solo-preloader__text,
-:where(html.solo-preloader-enabled .solo-preloader.animate-site-electric-surge) .solo-preloader__hero-text,
-:where(html.solo-preloader-enabled .solo-preloader.animate-site-gliding-letters) .solo-preloader__text,
-:where(html.solo-preloader-enabled .solo-preloader.animate-site-gliding-letters) .solo-preloader__hero-text,
-:where(html.solo-preloader-enabled .solo-preloader.animate-site-gravity-defy) .solo-preloader__text,
-:where(html.solo-preloader-enabled .solo-preloader.animate-site-gravity-defy) .solo-preloader__hero-text,
-:where(html.solo-preloader-enabled .solo-preloader.animate-site-holographic-spin) .solo-preloader__text,
-:where(html.solo-preloader-enabled .solo-preloader.animate-site-holographic-spin) .solo-preloader__hero-text,
-:where(html.solo-preloader-enabled .solo-preloader.animate-site-moonlight-dance) .solo-preloader__text,
-:where(html.solo-preloader-enabled .solo-preloader.animate-site-moonlight-dance) .solo-preloader__hero-text,
-:where(html.solo-preloader-enabled .solo-preloader.animate-site-mystic-fade) .solo-preloader__text,
-:where(html.solo-preloader-enabled .solo-preloader.animate-site-mystic-fade) .solo-preloader__hero-text,
-:where(html.solo-preloader-enabled .solo-preloader.animate-site-phoenix-rise) .solo-preloader__text,
-:where(html.solo-preloader-enabled .solo-preloader.animate-site-phoenix-rise) .solo-preloader__hero-text,
-:where(html.solo-preloader-enabled .solo-preloader.animate-site-quantum-leap) .solo-preloader__text,
-:where(html.solo-preloader-enabled .solo-preloader.animate-site-quantum-leap) .solo-preloader__hero-text,
-:where(html.solo-preloader-enabled .solo-preloader.animate-site-rhythmic-slide) .solo-preloader__text,
-:where(html.solo-preloader-enabled .solo-preloader.animate-site-rhythmic-slide) .solo-preloader__hero-text,
-:where(html.solo-preloader-enabled .solo-preloader.animate-site-sapphire-zoom) .solo-preloader__text,
-:where(html.solo-preloader-enabled .solo-preloader.animate-site-sapphire-zoom) .solo-preloader__hero-text,
-:where(html.solo-preloader-enabled .solo-preloader.animate-site-serene-float) .solo-preloader__text,
-:where(html.solo-preloader-enabled .solo-preloader.animate-site-serene-float) .solo-preloader__hero-text,
-:where(html.solo-preloader-enabled .solo-preloader.animate-site-shimmering-wave) .solo-preloader__text,
-:where(html.solo-preloader-enabled .solo-preloader.animate-site-shimmering-wave) .solo-preloader__hero-text,
-:where(html.solo-preloader-enabled .solo-preloader.animate-site-solar-flare) .solo-preloader__text,
-:where(html.solo-preloader-enabled .solo-preloader.animate-site-solar-flare) .solo-preloader__hero-text,
-:where(html.solo-preloader-enabled .solo-preloader.animate-site-starry-glide) .solo-preloader__text,
-:where(html.solo-preloader-enabled .solo-preloader.animate-site-starry-glide) .solo-preloader__hero-text,
-:where(html.solo-preloader-enabled .solo-preloader.animate-site-swirling-entrance) .solo-preloader__text,
-:where(html.solo-preloader-enabled .solo-preloader.animate-site-swirling-entrance) .solo-preloader__hero-text,
-:where(html.solo-preloader-enabled .solo-preloader.animate-site-timeless-flip) .solo-preloader__text,
-:where(html.solo-preloader-enabled .solo-preloader.animate-site-timeless-flip) .solo-preloader__hero-text,
-:where(html.solo-preloader-enabled .solo-preloader.animate-site-velvet-slide) .solo-preloader__text,
-:where(html.solo-preloader-enabled .solo-preloader.animate-site-velvet-slide) .solo-preloader__hero-text,
-:where(html.solo-preloader-enabled .solo-preloader.animate-site-whisper-fade) .solo-preloader__text,
-:where(html.solo-preloader-enabled .solo-preloader.animate-site-whisper-fade) .solo-preloader__hero-text,
-:where(html.solo-preloader-enabled .solo-preloader.animate-site-whispering-shadows) .solo-preloader__text,
-:where(html.solo-preloader-enabled .solo-preloader.animate-site-whispering-shadows) .solo-preloader__hero-text,
-:where(html.solo-preloader-enabled .solo-preloader.animate-site-zen-rotation) .solo-preloader__text,
-:where(html.solo-preloader-enabled .solo-preloader.animate-site-zen-rotation) .solo-preloader__hero-text {
-  -webkit-background-clip: text;
-  color: transparent !important;
-}
-
 } /* end @layer solo.theme */
 
 @layer solo.locked {
+  /* stylelint-enable order/properties-order */
 
-/* stylelint-enable order/properties-order */
-
-/* Reduced motion: end states are kept, movement is not (WCAG 2.3.3). */
-@media (prefers-reduced-motion: reduce) {
-  :where(:where(.solo-page) [class*="animate-solo-"]),
-  :where(#solo-header[class*="animate-site-"] a.solo-branding__site-name-link),
-  :where(:where(.solo-page[class*="animate-title-"]) .solo-page-title__text),
-  :where(#solo-page-wrapper[class*="animate-title-"] .solo-page-title__text span),
-  :where(:where(html.solo-preloader-enabled .solo-preloader[class*="animate-site-"]) .solo-preloader__text),
-  :where(:where(html.solo-preloader-enabled .solo-preloader[class*="animate-site-"]) .solo-preloader__hero-text) {
-    transition-duration: 0.01ms !important;
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
+  /* Reduced motion: end states are kept, movement is not (WCAG 2.3.3). */
+  @media (prefers-reduced-motion: reduce) {
+    :where(:where(.solo-page) [class*="animate-solo-"]),
+    :where(#solo-header[class*="animate-site-"] a.solo-branding__site-name-link),
+    :where(:where(.solo-page[class*="animate-title-"]) .solo-page-title__text),
+    :where(#solo-page-wrapper[class*="animate-title-"] .solo-page-title__text span),
+    :where(:where(html.solo-preloader-enabled .solo-preloader[class*="animate-site-"]) .solo-preloader__text),
+    :where(:where(html.solo-preloader-enabled .solo-preloader[class*="animate-site-"]) .solo-preloader__hero-text) {
+      transition-duration: 0.01ms !important;
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+    }
   }
-}
-
 } /* end @layer solo.locked */
 
 @layer solo.theme {
-
-/* Forced colors: gradient text is painted with a transparent color and a
+  /* Forced colors: gradient text is painted with a transparent color and a
    background image the system palette removes, so show it as plain system
    text (WCAG 1.4.3 in forced-colors mode). Same 0,1,0 specificity as the
    animated rules above, later in the file. */
-@media (forced-colors: active) {
-  :where(.solo-page) [class*="animate-solo-"],
-  :where(.solo-page[class*="animate-title-"]) .solo-page-title__text,
-  :where(html.solo-preloader-enabled .solo-preloader[class*="animate-site-"]) .solo-preloader__text,
-  :where(html.solo-preloader-enabled .solo-preloader[class*="animate-site-"]) .solo-preloader__hero-text {
-    color: CanvasText !important;
-    background: none;
+  @media (forced-colors: active) {
+    :where(.solo-page) [class*="animate-solo-"],
+    :where(.solo-page[class*="animate-title-"]) .solo-page-title__text,
+    :where(html.solo-preloader-enabled .solo-preloader[class*="animate-site-"]) .solo-preloader__text,
+    :where(html.solo-preloader-enabled .solo-preloader[class*="animate-site-"]) .solo-preloader__hero-text {
+      color: CanvasText !important;
+      background: none;
+    }
   }
-}
-
 } /* end @layer solo.theme */

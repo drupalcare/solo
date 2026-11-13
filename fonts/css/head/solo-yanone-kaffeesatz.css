@@ -3,7 +3,8 @@
   .solo-page h2,
   .solo-page h3,
   #solo-page-wrapper .yanone-kaffeesatz {
-    --solo-h1: 'Yanone Kaffeesatz', sans-serif;
+    --solo-h1: "Yanone Kaffeesatz", sans-serif;
+
     letter-spacing: var(--solo-px1);
   }
 }

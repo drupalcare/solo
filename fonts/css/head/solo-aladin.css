@@ -3,7 +3,8 @@
   .solo-page h2,
   .solo-page h3,
   #solo-page-wrapper .aladin {
-    --solo-h1: 'Aladin', cursive;
+    --solo-h1: "Aladin", cursive;
+
     letter-spacing: var(--solo-px1);
   }
 }

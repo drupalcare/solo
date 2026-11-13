@@ -150,7 +150,7 @@
     {% if show_permalink|default(true) %}
       <div class="solo-comment__permalink">
         {{ permalink }}
-        {% include '@solo/partials/svg/_svg-link.html.twig' %}
+        {{ include('@solo/partials/svg/_svg-link.html.twig') }}
       </div>
     {% endif %}
 

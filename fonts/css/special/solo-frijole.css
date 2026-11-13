@@ -1,6 +1,6 @@
 @layer solo.utilities {
   .solo-page .frijole {
-    --solo-font-s: 'Frijole', cursive;
+    --solo-font-s: "Frijole", cursive;
   }
 }
 

@@ -34,7 +34,7 @@ class RegionLinkColourRuleTest extends TestCase {
    *   One entry per rule.
    */
   protected function rules(): array {
-    $raw = file_get_contents(dirname(__DIR__, 3) . '/css/base/solo-variables-regions.css');
+    $raw = file_get_contents(dirname(__DIR__, 3) . '/css/base/solo-host-overrides.css');
     $this->assertIsString($raw);
     $css = (string) preg_replace('#/\*.*?\*/#s', '', $raw);
     preg_match_all('#([^{}]+)\{([^{}]*)\}#', $css, $m, PREG_SET_ORDER);

@@ -77,6 +77,7 @@ misc enable_aria_welcome
 misc enable_aria_highlighted
 misc enable_block_title_visibility
 misc disable_block_title_visibility
+misc site_flip_breadcrumb_pagetitle
 social sm_icon_size
 social sm_icon_colors
 social sm_show_icons

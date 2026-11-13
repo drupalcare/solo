@@ -54,7 +54,7 @@ class SemanticTemplatesCharacterizationTest extends TestCase {
     // solo-container--single, footer-menu to solo-footer-nav). The attribute
     // hooks are unchanged.
     $this->assertStringContainsString('<div id="solo-breadcrumb" class="solo-outer solo-container--single breadcrumb{{ classes_breadcrumb ? \' \' ~ classes_breadcrumb }}" {{ attributes_breadcrumb }}>', $this->tpl('partials/_breadcrumb.html.twig'));
-    $this->assertStringContainsString('<div id="solo-footer-menu" class="solo-outer solo-container--single solo-footer-nav{{ classes_footer_menu ? \' \' ~ classes_footer_menu }}" {{ attributes_footer_menu }}>', $this->tpl('partials/_footer-menu.html.twig'));
+    $this->assertStringContainsString('<div id="solo-footer-menu" class="solo-outer solo-container--single solo-footer-menu__nav{{ classes_footer_menu ? \' \' ~ classes_footer_menu }}" {{ attributes_footer_menu }}>', $this->tpl('partials/_footer-menu.html.twig'));
     $copyright = $this->tpl('partials/_copyright.html.twig');
     // CHANGED ON PURPOSE: "the copyright band is now a <div> inside [the
     // footer landmark]" (CHANGELOG), with the solo- names above.

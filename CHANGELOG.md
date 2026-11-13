@@ -8,6 +8,7 @@
 
 - New setting: show the breadcrumb before the page title (Global site settings, next to "Flip the main menu order"). Off by default; the page wrapper gets `solo-page--breadcrumb-flipped` when it is on.
 - System messages: the region takes no space when there is no message (the block always prints Drupal's hidden placeholder, so an empty, colored band showed under the header on every page).
+- Accessibility: the pager ellipsis no longer carries `role="presentation"`, so screen readers keep it inside the pager list.
 - Accessibility: the popup login focus ring uses the region text color (3:1 against its ground); `.w3-tiny` to `.w3-jumbo` font sizes and the clickable image caption are in rem, so text-only zoom resizes them.
 - Color schemes with gradient region grounds paint the gradient again on the header, page title, bottom, footer and copyright areas.
 - W3.CSS copy modernized like W3CSS Theme's: old-browser rules removed, slide and zoom animations no longer undo `.w3-display-*` centering, `.w3-top`/`.w3-bottom` pinned edge to edge, keyboard access to hover content, reduced motion, and 24 new layout classes, including `w3-flex`, `w3-flex-wrap`, `w3-grid`, `w3-grid-2/3/4`, `w3-grid-auto` and `w3-gap` with the same names and values as W3CSS Theme (`css/w3-css/SOURCE.md`).

@@ -210,7 +210,7 @@ class SoloHookRegistrationTest extends BrowserTestBase {
     $this->assertSession()->statusCodeEquals(200);
     $this->assertSession()->elementExists('css', '.solo-menu--primary-responsive.solo-menu--responsive-click');
     $this->assertSession()->elementExists('css', '.solo-menu--primary-sidebar.solo-menu--sidebar-click');
-    $this->assertSession()->elementExists('css', '.solo-account-menu .solo-popup-login__open');
+    $this->assertSession()->elementExists('css', '.solo-account-menu .solo-popup-login-block__open');
     $this->assertSession()->elementNotExists('css', '.solo-account-menu a[href$="/user/login"]');
 
     $registry = \Drupal::service('theme.registry')->getRuntime();

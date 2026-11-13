@@ -53,22 +53,22 @@ class RegionsCharacterizationTest extends SoloCharacterizationBase {
    * The 15 attribute keys (1.x names) and their English labels, in order.
    */
   private const ATTRIBUTES = [
-    '__r_bg' => 'Region background',
-    '__r_tx' => 'Region text',
-    '__r_h1' => 'Headings (H1-H3)',
-    '__r_lk' => 'Link text',
-    '__r_lk_h' => 'Link text (hover)',
+    '__r_background' => 'Region background',
+    '__r_text' => 'Region text',
+    '__r_heading' => 'Headings (H1-H3)',
+    '__r_link' => 'Link text',
+    '__r_link_hover' => 'Link text (hover)',
     // CHANGED ON PURPOSE: capitalized like every other label in the list.
-    '__r_br' => 'Borders',
-    '__r_bg_fr' => 'Form field background',
-    '__r_tx_lk' => 'Menu link text',
-    '__r_tx_lk_h' => 'Menu link text (hover)',
-    '__r_bg_lk' => 'Menu link background',
-    '__r_bg_lk_h' => 'Menu link background (hover)',
-    '__r_tx_bt' => 'Button text',
-    '__r_tx_bt_h' => 'Button text (hover)',
-    '__r_bg_bt' => 'Button background',
-    '__r_bg_bt_h' => 'Button background (hover)',
+    '__r_border' => 'Borders',
+    '__r_form_background' => 'Form field background',
+    '__r_menu_text' => 'Menu link text',
+    '__r_menu_text_hover' => 'Menu link text (hover)',
+    '__r_menu_background' => 'Menu link background',
+    '__r_menu_background_hover' => 'Menu link background (hover)',
+    '__r_button_text' => 'Button text',
+    '__r_button_text_hover' => 'Button text (hover)',
+    '__r_button_background' => 'Button background',
+    '__r_button_background_hover' => 'Button background (hover)',
   ];
 
   /**

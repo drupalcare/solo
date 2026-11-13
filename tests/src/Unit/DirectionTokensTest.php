@@ -172,12 +172,12 @@ class DirectionTokensTest extends TestCase {
   public function testFixedComponentsUseLogicalOffsets(): void {
     $files = [
       'css/components/solo-sitemap.css',
-      'css/components/solo-file-upload.css',
+      'css/components/solo-input-file.css',
       'css/components/solo-preloader.css',
     ];
     // .solo-file-native is width:100% height:100%, so it covers its wrapper
     // from either side; left: 0 there is not a direction bug.
-    $allowed = ['.solo-file-native'];
+    $allowed = ['.solo-file-native', '.solo-input-file__native'];
 
     $offenders = [];
     foreach ($files as $relative) {

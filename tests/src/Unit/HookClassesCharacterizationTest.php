@@ -186,7 +186,7 @@ class HookClassesCharacterizationTest extends SoloCharacterizationBase {
     $this->routeName = 'x';
     $this->assertArrayNotHasKey('library', $this->html()['#attached'] ?? []);
     $this->modules = ['cookies'];
-    $this->assertSame(['solo/solo-cookies'], $this->html()['#attached']['library']);
+    $this->assertSame(['solo/theme-cookies'], $this->html()['#attached']['library']);
   }
 
   /**
@@ -210,7 +210,7 @@ class HookClassesCharacterizationTest extends SoloCharacterizationBase {
     // routes; this request is anonymous on a non-admin route.
     $vars = $this->html();
     $this->assertTrue($vars['preloader_show']);
-    $this->assertContains('solo/solo-preloader', $vars['#attached']['library']);
+    $this->assertContains('solo/component-preloader', $vars['#attached']['library']);
     $this->assertStringContainsString('solo-preloader-enabled', (string) $vars['html_attributes']);
     $this->assertSame('solo_preloader_flag', $vars['#attached']['html_head'][0][1]);
     $this->assertContains('config:solo.settings', $vars['#cache']['tags']);
@@ -232,9 +232,9 @@ class HookClassesCharacterizationTest extends SoloCharacterizationBase {
     // CHANGED ON PURPOSE: the breakpoint settings answer their shipped
     // defaults too, so their libraries attach (same citation as above).
     $this->assertSame([
-      'solo/solo-global-breakpoints-sb-992',
-      'solo/solo-menu-breakpoints-mn-992',
-      'solo/solo-system-messages-dark',
+      'solo/breakpoint-page-sb-992',
+      'solo/breakpoint-menu-mn-992',
+      'solo/component-system-messages-dark',
     ], $vars['#attached']['library']);
     $this->assertArrayNotHasKey('keyboardMenus', $vars['#attached']['drupalSettings']['solo'] ?? []);
   }
@@ -326,7 +326,7 @@ class HookClassesCharacterizationTest extends SoloCharacterizationBase {
     ];
     $this->assertSame($expected, array_intersect_key($vars, $expected));
     $this->assertSame('pt-center', $vars['site_pagetitle_center']);
-    $this->assertSame(['solo/solo-global-breakpoints-md', 'solo/solo-menu-breakpoints-lg', 'solo/solo-menu-keyboard'], $vars['#attached']['library']);
+    $this->assertSame(['solo/breakpoint-page-md', 'solo/breakpoint-menu-lg', 'solo/component-menu-keyboard'], $vars['#attached']['library']);
     $this->assertSame(['main'], $vars['#attached']['drupalSettings']['solo']['keyboardMenus']);
   }
 
@@ -340,7 +340,7 @@ class HookClassesCharacterizationTest extends SoloCharacterizationBase {
     $vars = $this->page($page);
     $this->assertArrayNotHasKey('sidebar_first', $vars['page']);
     $this->assertArrayNotHasKey('sidebar_second', $vars['page']);
-    $this->assertContains('solo/solo-user-login-custom', $vars['#attached']['library']);
+    $this->assertContains('solo/layout-user-login', $vars['#attached']['library']);
     $this->path = '/user/login/extra';
     $this->assertArrayHasKey('sidebar_first', $this->page($page)['page']);
   }

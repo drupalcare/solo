@@ -12,6 +12,8 @@ Usage:
   build-region-legacy.py --check    exit 1 when an output differs from the map (drift); writes nothing
   build-region-legacy.py --self-test  prove the check goes red: a planted drift, a duplicate old name
                                       and a new name used as an old one must each fail
+  --utilities DIR                     read the map from DIR/config/map/ instead of the sibling
+                                      ../solo_utilities checkout (CI passes the Composer-installed copy)
 """
 
 import re
@@ -205,6 +207,16 @@ def self_test():
 
 
 def main(argv):
+    global MAP
+    if "--utilities" in argv:
+        i = argv.index("--utilities")
+        if i + 1 >= len(argv):
+            print("--utilities needs a directory")
+            return 2
+        MAP = Path(argv[i + 1]) / "config" / "map" / "solo-variable-map.yml"
+    if not MAP.is_file():
+        print("map not found: %s" % MAP)
+        return 2
     if "--self-test" in argv:
         return self_test()
     map_text = MAP.read_text(encoding="utf-8")

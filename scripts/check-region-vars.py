@@ -94,6 +94,18 @@ def self_test():
 
 
 def main(argv):
+    # --utilities DIR reads the map from DIR (CI passes the Composer-installed
+    # solo_utilities); without it the sibling ../solo_utilities checkout is used.
+    global MAP
+    if "--utilities" in argv:
+        i = argv.index("--utilities")
+        if i + 1 >= len(argv):
+            print("--utilities needs a directory")
+            return 2
+        MAP = Path(argv[i + 1]) / "config" / "map" / "solo-variable-map.yml"
+    if not MAP.is_file():
+        print("map not found: %s" % MAP)
+        return 2
     if "--self-test" in argv:
         return self_test()
     names = old_names(MAP.read_text())

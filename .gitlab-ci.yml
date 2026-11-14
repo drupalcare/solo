@@ -67,10 +67,12 @@ variables:
 #                               per folder, counts may fall and never rise
 #   check-schemes               scheme records vs libraries, options, thumbnails, CSS
 #   check-cascade               who wins between Solo, schemes and the generated region colors
-# check-schemes and check-cascade read solo_utilities, which solo's composer.json
+# build-region-legacy, check-region-vars, check-schemes and check-cascade read
+# solo_utilities (the first two only its map, passed with --utilities; the sibling
+# ../solo_utilities checkout they default to does not exist in CI), which solo's composer.json
 # requires (`drupal/solo_utilities: ^2.0`), so Composer is expected to have put it
 # under web/modules. If it is not there the job prints SKIPPED with the reason and
-# those two checks do not run; the log never shows a pass for a check that did not run.
+# those checks do not run; the log never shows a pass for a check that did not run.
 # check-winners.py is NOT run here: it needs a Drupal docroot of contrib modules.
 # Run it locally (see AGENTS.md).
 # Each script prints how many files or declarations it read; read that line.
@@ -82,10 +84,17 @@ css-checks:
   script:
     - python3 -I scripts/solo_libraries.py
     - python3 -I scripts/build-breakpoints.py --check
-    - python3 -I scripts/build-region-legacy.py --self-test
-    - python3 -I scripts/build-region-legacy.py --check
-    - python3 -I scripts/check-region-vars.py --self-test
-    - python3 -I scripts/check-region-vars.py
+    - |
+      UTIL=$(find -L web/modules -maxdepth 3 -type d -name solo_utilities -print -quit 2>/dev/null || true)
+      if [ -z "$UTIL" ] || [ ! -f "$UTIL/config/map/solo-variable-map.yml" ]; then
+        echo "SKIPPED build-region-legacy and check-region-vars: solo_utilities (with config/map/solo-variable-map.yml) not found under web/modules; Composer did not install it. These checks did NOT run."
+      else
+        echo "solo-variable-map.yml read from $UTIL"
+        python3 -I scripts/build-region-legacy.py --self-test --utilities "$UTIL"
+        python3 -I scripts/build-region-legacy.py --check --utilities "$UTIL"
+        python3 -I scripts/check-region-vars.py --self-test --utilities "$UTIL"
+        python3 -I scripts/check-region-vars.py --utilities "$UTIL"
+      fi
     - python3 -I scripts/contrast-scan.py --strict
     - python3 -I scripts/check-scheme-contrast.py --self-test
     - python3 -I scripts/check-scheme-contrast.py

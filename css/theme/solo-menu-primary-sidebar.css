@@ -7,7 +7,6 @@
 @layer solo.theme {
   /* For Primary Sidenav menu and any sidenav menu. */
   .solo-primary-sidebar-menu {
-    position: fixed !important;
     z-index: 5001;
     display: flex;
     overflow: auto;
@@ -101,16 +100,6 @@
     border-block-end: 1px solid var(--r-border);
   }
 
-  :where(.solo-page .solo-container--has-border .solo-primary-sidebar-menu__inner) :where(ul).solo-is-open {
-    border-block-start: 1px solid var(--r-border) !important;
-  }
-
-  :where(.solo-page .solo-container--has-border .solo-primary-sidebar-menu__inner) .solo-primary-sidebar-menu__close,
-  :where(.solo-page .solo-container--has-border .solo-primary-sidebar-menu__inner) .solo-sidebar-menu__close,
-  :where(.solo-page .solo-container--has-border .solo-primary-sidebar-menu__inner .solo-menu-tree__menubar) li {
-    border-block-end: 1px solid var(--r-border) !important;
-  }
-
   /* Menu branding. */
   :where(.solo-primary-sidebar-menu) .solo-primary-sidebar-menu__close.solo-menu--has-branding,
   :where(.solo-primary-sidebar-menu) .solo-sidebar-menu__close.solo-menu--has-branding {
@@ -159,6 +148,23 @@
     }
   }
 } /* end @layer solo.theme */
+
+/* unlayered: the !important declarations of @layer solo.theme above, moved unchanged. A layered !important
+   beats every unlayered one, so they stay unlayered and the site owner's typed !important keeps winning. */
+/* For Primary Sidenav menu and any sidenav menu. */
+.solo-primary-sidebar-menu {
+  position: fixed !important;
+}
+
+:where(.solo-page .solo-container--has-border .solo-primary-sidebar-menu__inner) :where(ul).solo-is-open {
+  border-block-start: 1px solid var(--r-border) !important;
+}
+
+:where(.solo-page .solo-container--has-border .solo-primary-sidebar-menu__inner) .solo-primary-sidebar-menu__close,
+:where(.solo-page .solo-container--has-border .solo-primary-sidebar-menu__inner) .solo-sidebar-menu__close,
+:where(.solo-page .solo-container--has-border .solo-primary-sidebar-menu__inner .solo-menu-tree__menubar) li {
+  border-block-end: 1px solid var(--r-border) !important;
+}
 
 @layer solo.locked {
   /* Reduced motion: end states are kept, movement is not (WCAG 2.3.3). */

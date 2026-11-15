@@ -76,21 +76,6 @@
     border-end-end-radius: var(--solo-px4);
   }
 
-  .solo-fixed-search-block__inner .solo-search-block-form .form-item,
-  .solo-fixed-search__inner .solo-search-block-form .form-item,
-  .solo-fixed-search-block__inner .solo-search-block-form .form-actions,
-  .solo-fixed-search__inner .solo-search-block-form .form-actions {
-    margin-block: 0 !important;
-    margin-inline: auto !important;
-  }
-
-  .solo-fixed-search-block__inner .solo-fixed-search-block__close button,
-  .solo-fixed-search__inner .solo-fixed-search__close button {
-    min-width: 60px !important;
-    margin-block: 0 !important;
-    margin-inline: auto !important;
-  }
-
   :where(.solo-fixed-search-block__inner) .solo-search-block-form,
   :where(.solo-fixed-search__inner) .solo-search-block-form {
     flex-basis: calc(100% - 65px);
@@ -102,6 +87,23 @@
     position: relative;
   }
 } /* end @layer solo.theme */
+
+/* unlayered: the !important declarations of @layer solo.theme above, moved unchanged. A layered !important
+   beats every unlayered one, so they stay unlayered and the site owner's typed !important keeps winning. */
+.solo-fixed-search-block__inner .solo-search-block-form .form-item,
+.solo-fixed-search__inner .solo-search-block-form .form-item,
+.solo-fixed-search-block__inner .solo-search-block-form .form-actions,
+.solo-fixed-search__inner .solo-search-block-form .form-actions {
+  margin-block: 0 !important;
+  margin-inline: auto !important;
+}
+
+.solo-fixed-search-block__inner .solo-fixed-search-block__close button,
+.solo-fixed-search__inner .solo-fixed-search__close button {
+  min-width: 60px !important;
+  margin-block: 0 !important;
+  margin-inline: auto !important;
+}
 
 @layer solo.locked {
   /* Reduced motion: end states are kept, movement is not (WCAG 2.3.3). */

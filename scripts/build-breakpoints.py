@@ -20,6 +20,11 @@ Source format: plain CSS, line by line.
 Generated files are written exactly as the source defines them; the variants
 that are not just a changed value are kept as they shipped in 2.0.
 
+Every !important in a family source sits inside its @layer block. render() hands the result to
+unlayer_important.split_important(), which moves those declarations, unchanged, into an unlayered block after the
+layer, so the site owner's typed !important keeps winning (a layered !important would beat it). The sources stay as
+they are; the generated files carry the split.
+
 Usage:
   build-breakpoints.py            write the 15 files (only the ones that differ)
   build-breakpoints.py --check    exit 1 when any generated file differs from
@@ -30,6 +35,10 @@ import json
 import re
 import sys
 from pathlib import Path
+
+sys.dont_write_bytecode = True
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+import unlayer_important  # noqa: E402
 
 ROOT = Path(__file__).resolve().parent.parent
 SRC = ROOT / "scripts" / "breakpoints"
@@ -79,7 +88,7 @@ def render(source: str, bp: str) -> str:
         if "{{" in line:
             raise SystemExit("build-breakpoints: unknown placeholder left in: " + line.strip())
         out.append(line)
-    return "\n".join(out) + "\n"
+    return unlayer_important.split_important("\n".join(out) + "\n")[0]
 
 
 def main() -> int:

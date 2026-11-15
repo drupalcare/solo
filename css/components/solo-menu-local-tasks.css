@@ -6,18 +6,11 @@
 
 @layer solo.theme {
   :where(nav).tabs {
-    margin-block: var(--solo-px10) !important;
-    margin-inline: 0 !important;
     display: grid;
   }
 
   :where(.solo-page) :where(nav.tabs) > * {
     min-width: 0;
-  }
-
-  :where(.solo-page) :where(ul.tabs) li,
-  :where(.action-links) > li {
-    padding: 0 !important;
   }
 
   :where(nav).action-links,
@@ -55,3 +48,15 @@
     display: none;
   }
 } /* end @layer solo.theme */
+
+/* unlayered: the !important declarations of @layer solo.theme above, moved unchanged. A layered !important
+   beats every unlayered one, so they stay unlayered and the site owner's typed !important keeps winning. */
+:where(nav).tabs {
+  margin-block: var(--solo-px10) !important;
+  margin-inline: 0 !important;
+}
+
+:where(.solo-page) :where(ul.tabs) li,
+:where(.action-links) > li {
+  padding: 0 !important;
+}

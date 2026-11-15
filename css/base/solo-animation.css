@@ -160,31 +160,10 @@
     transition: width 0.4s ease-in-out;
   }
 
-  .solo-animate-input:focus {
-    width: 100% !important;
-  }
-
-  /* ============================================
-   DISABLE CLASSES - USER CONTROL
-   ============================================ */
-
-  /* Disable menu link animations */
-  :where(.dis-anim-link nav ul li) > a::after,
-  :where(.dis-anim-link nav ul li) > button::after {
-    display: none !important;
-  }
-
-  :where(.dis-anim-link nav ul li) > a:hover::after,
-  :where(.dis-anim-link nav ul li) > button:hover::after {
-    width: 0 !important;
-    animation: none !important;
-  }
-
   /* Disable ALL animations - accessibility option */
   :where(.dis-all-animations) *,
   :where(.dis-all-animations) *::before,
   :where(.dis-all-animations) *::after {
-    transition: none !important;
     animation: none;
   }
 
@@ -269,11 +248,43 @@
 
   /* Disable submit button animations */
   .dis-anim-submit form input.button.form-submit:hover {
-    transform: none !important;
     animation: none;
-    box-shadow: none !important;
   }
 } /* end @layer solo.base */
+
+/* unlayered: the !important declarations of @layer solo.base above, moved unchanged. A layered !important
+   beats every unlayered one, so they stay unlayered and the site owner's typed !important keeps winning. */
+.solo-animate-input:focus {
+  width: 100% !important;
+}
+
+/* ============================================
+ DISABLE CLASSES - USER CONTROL
+ ============================================ */
+/* Disable menu link animations */
+:where(.dis-anim-link nav ul li) > a::after,
+:where(.dis-anim-link nav ul li) > button::after {
+  display: none !important;
+}
+
+:where(.dis-anim-link nav ul li) > a:hover::after,
+:where(.dis-anim-link nav ul li) > button:hover::after {
+  width: 0 !important;
+  animation: none !important;
+}
+
+/* Disable ALL animations - accessibility option */
+:where(.dis-all-animations) *,
+:where(.dis-all-animations) *::before,
+:where(.dis-all-animations) *::after {
+  transition: none !important;
+}
+
+/* Disable submit button animations */
+.dis-anim-submit form input.button.form-submit:hover {
+  transform: none !important;
+  box-shadow: none !important;
+}
 
 @layer solo.locked {
   /* Reduced motion: end states are kept, movement is not (WCAG 2.3.3). */

@@ -324,11 +324,13 @@
     justify-content: end;
     font-size: var(--solo-px14);
   }
-
-  :where(form) fieldset:not(td fieldset) {
-    border: 1px solid var(--r-border, var(--solo-border-default)) !important;
-  }
 } /* end @layer solo.base */
+
+/* unlayered: the !important declarations of @layer solo.base above, moved unchanged. A layered !important
+   beats every unlayered one, so they stay unlayered and the site owner's typed !important keeps winning. */
+:where(form) fieldset:not(td fieldset) {
+  border: 1px solid var(--r-border, var(--solo-border-default)) !important;
+}
 
 @layer solo.utilities {
   /* Global Classes */
@@ -349,34 +351,6 @@
     opacity: 0;
   }
 
-  .dis-box-shadow {
-    box-shadow: none !important;
-  }
-
-  .dis-border {
-    border: 0 !important;
-  }
-
-  .dis-border-radius {
-    border-radius: 0 !important;
-  }
-
-  .dis-margin {
-    margin: 0 !important;
-  }
-
-  .dis-padding {
-    padding: 0 !important;
-  }
-
-  .dis-opacity {
-    animation: none !important;
-  }
-
-  .dis-text-transform {
-    text-transform: none !important;
-  }
-
   :where(.solo-text-left) * {
     text-align: left;
   }
@@ -389,64 +363,11 @@
     text-align: right;
   }
 
-  .solo-display-none {
-    display: none !important;
-  }
-
-  .solo-visually-hidden {
-    position: absolute !important;
-    overflow: hidden !important;
-    clip: rect(0, 0, 0, 0) !important;
-    width: 1px !important;
-    height: 1px !important;
-    margin: 0 !important;
-    padding: 0 !important;
-    white-space: nowrap !important;
-    border: 0 !important;
-  }
-
-  .solo-no-wrap {
-    white-space: nowrap !important;
-  }
-
-  .solo-break-word {
-    /* stylelint-disable-next-line declaration-property-value-keyword-no-deprecated -- break-word is not exactly overflow-wrap: anywhere; kept to preserve rendering */
-    word-break: break-word !important;
-  }
-
-  .solo-truncate {
-    overflow: hidden !important;
-    white-space: nowrap !important;
-    text-overflow: ellipsis !important;
-  }
-
-  .solo-align-left {
-    margin-right: auto !important;
-  }
-
-  .solo-align-center {
-    margin-inline: auto !important;
-    display: block !important;
-  }
-
-  .solo-align-right {
-    margin-left: auto !important;
-  }
-
-  .solo-overflow-hidden {
-    overflow: hidden !important;
-  }
-
-  .solo-overflow-auto {
-    overflow: auto !important;
-  }
-
   .solo-card {
     box-shadow: 0 var(--solo-px1) var(--solo-px3) 0 rgb(0, 0, 0, 0.12);
   }
 
   .visually-hidden {
-    position: absolute !important;
     overflow: hidden;
     clip: rect(1px, 1px, 1px, 1px);
     width: 1px;
@@ -455,6 +376,92 @@
     border: 0;
   }
 } /* end @layer solo.utilities */
+
+/* unlayered: the !important declarations of @layer solo.utilities above, moved unchanged. A layered !important
+   beats every unlayered one, so they stay unlayered and the site owner's typed !important keeps winning. */
+.dis-box-shadow {
+  box-shadow: none !important;
+}
+
+.dis-border {
+  border: 0 !important;
+}
+
+.dis-border-radius {
+  border-radius: 0 !important;
+}
+
+.dis-margin {
+  margin: 0 !important;
+}
+
+.dis-padding {
+  padding: 0 !important;
+}
+
+.dis-opacity {
+  animation: none !important;
+}
+
+.dis-text-transform {
+  text-transform: none !important;
+}
+
+.solo-display-none {
+  display: none !important;
+}
+
+.solo-visually-hidden {
+  position: absolute !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  width: 1px !important;
+  height: 1px !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
+
+.solo-no-wrap {
+  white-space: nowrap !important;
+}
+
+.solo-break-word {
+  /* stylelint-disable-next-line declaration-property-value-keyword-no-deprecated -- break-word is not exactly overflow-wrap: anywhere; kept to preserve rendering */
+  word-break: break-word !important;
+}
+
+.solo-truncate {
+  overflow: hidden !important;
+  white-space: nowrap !important;
+  text-overflow: ellipsis !important;
+}
+
+.solo-align-left {
+  margin-right: auto !important;
+}
+
+.solo-align-center {
+  margin-inline: auto !important;
+  display: block !important;
+}
+
+.solo-align-right {
+  margin-left: auto !important;
+}
+
+.solo-overflow-hidden {
+  overflow: hidden !important;
+}
+
+.solo-overflow-auto {
+  overflow: auto !important;
+}
+
+.visually-hidden {
+  position: absolute !important;
+}
 
 @layer solo.base {
   :where(html).gap-no,

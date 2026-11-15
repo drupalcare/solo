@@ -34,10 +34,6 @@
     opacity: 0;
   }
 
-  :where(html.solo-preloader-enabled) .solo-preloader.solo-preloader--removed {
-    display: none !important;
-  }
-
   /* ========== Spinner style ========== */
   :where(html.solo-preloader-enabled .solo-preloader--spinner) .solo-preloader__inner {
     display: flex;
@@ -350,3 +346,9 @@
     }
   }
 } /* end @layer solo.theme */
+
+/* unlayered: the !important declarations of @layer solo.theme above, moved unchanged. A layered !important
+   beats every unlayered one, so they stay unlayered and the site owner's typed !important keeps winning. */
+:where(html.solo-preloader-enabled) .solo-preloader.solo-preloader--removed {
+  display: none !important;
+}

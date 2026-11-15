@@ -28,7 +28,8 @@ that is not in ABOVE_020.
 Usage: check-cascade.py [--solo DIR] [--lane DIR] [--list]
 Exit 0: every pair holds or is a recorded exception. Exit 1: a winner flipped.
 """
-import argparse, collections, os, re, sys
+import argparse
+import json, collections, os, re, sys
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 sys.dont_write_bytecode = True
@@ -53,14 +54,15 @@ LANE = VVJ + ['paragraphs_bundles', 'selectify', 'w3css_paragraphs', 'utilikit']
 EXCEPTION_TEMPLATES = {
     # Owner call: the "dark system messages" option forces its colors with
     # !important, so it beats the region colors set for system_messages.
-    'generated:system_messages:12 {system_messages} {{--r-background}} | css/components/solo-status-messages-dark.css:23 :where(.solo-page) .solo-status-messages {{--r-background}}',
-    'generated:system_messages:12 {system_messages} {{--r-text}} | css/components/solo-status-messages-dark.css:23 :where(.solo-page) .solo-status-messages {{--r-text}}',
+    'generated:system_messages:12 {system_messages} {{--r-background}} | css/components/solo-status-messages-dark.css:25 :where(.solo-page) .solo-status-messages {{--r-background}}',
+    'generated:system_messages:12 {system_messages} {{--r-text}} | css/components/solo-status-messages-dark.css:25 :where(.solo-page) .solo-status-messages {{--r-text}}',
 }
 EXCEPTIONS = {
-    # The control border base rule (0,3,0) outranks the scheme rule (0,2,0).
-    'css/theme/solo-scheme-control-border.css:10 .solo-page .solo-check {border-color} | css/base/solo-variables-regions.css:50 .solo-page .solo-check:not(.selectify-checkbox) {border-color}',
-    'css/theme/solo-scheme-control-border.css:10 .solo-page .solo-radio {border-color} | css/base/solo-variables-regions.css:50 .solo-page .solo-radio:not(.selectify-radio) {border-color}',
-    'css/theme/solo-scheme-control-border.css:10 .solo-page .solo-select {border-color} | css/base/solo-variables-regions.css:50 .solo-page .solo-select:not(.selectify-select) {border-color}',
+    # The control border base rule (0,3,0) outranks the scheme rule (0,2,0). Both
+    # files are unlayered; the base rule moved to solo-host-overrides.css in 2.0.
+    'css/theme/solo-scheme-control-border.css:19 .solo-page .solo-check {border-color} | css/base/solo-host-overrides.css:147 .solo-page .solo-check:not(.selectify-checkbox) {border-color}',
+    'css/theme/solo-scheme-control-border.css:19 .solo-page .solo-radio {border-color} | css/base/solo-host-overrides.css:147 .solo-page .solo-radio:not(.selectify-radio) {border-color}',
+    'css/theme/solo-scheme-control-border.css:19 .solo-page .solo-select {border-color} | css/base/solo-host-overrides.css:147 .solo-page .solo-select:not(.selectify-select) {border-color}',
 }
 
 # ---------------------------------------------------------------- parser
@@ -177,6 +179,7 @@ def solo_libraries_order(solo):
 def decl(src, f, ln, ctx, sel, p, v, imp, group, w, idx, lib):
     lay = [c for c in ctx if c.startswith('@layer ')]
     return dict(src=src, f=f, ln=ln, sel=sel, p=p, v=v, imp=imp, layered=bool(lay),
+                layer=lay[-1].split(None, 1)[1].strip() if lay else '',
                 media=tuple(c for c in ctx if not c.startswith('@layer ')),
                 sp=specificity(sel), o=(group, w, idx, ln), sj=subject(sel), lib=lib)
 
@@ -248,12 +251,25 @@ def region_form_check(lane):
             bad.append('%s %s is above 0,2,0 with no recorded rival' % (name, sel))
     return 'P7 region selectors: class only, <= 0,2,0', len(reg) - len(bad), bad
 
+LOCKED = ''  # set in main() from css-layers.json "locked_layer"
+
 def typed_check(name, targets, group, w, label='typed twin'):
     """Typed CSS twin of each target (same selector, property, importance,
     unlayered, loaded at weight w of the generated group) must win: the owner's
-    last word."""
+    last word.
+
+    Exception by design: the locked layer (css-layers.json "locked_layer",
+    solo.locked) holds the reduced-motion rules (WCAG 2.3.3). Its !important
+    must beat everything, typed CSS included (owner, 2026-11-14: "yes"), so its
+    declarations are not P6 targets. The same layer also holds the W3.CSS
+    show/hide helpers (.w3-hide*, .w3-show*, .w3-sidebar.w3-collapse, .w3-main
+    margins), locked by the layers plan and the 2.0 CHANGELOG; they are skipped
+    for the same reason. Anything else put in the locked layer is skipped too,
+    so add to it only what must beat the owner's typed CSS."""
     held = 0; lost = []
     for d in targets:
+        if LOCKED and d.get('layer') == LOCKED:
+            continue
         t = dict(d, src='typed', layered=False, o=(group, w, 0, d['ln']))
         if rank(t) > rank(d): held += 1
         else: lost.append('%s | %s' % (label, ident(d)))
@@ -319,6 +335,8 @@ def main():
     ap.add_argument('--lane', default=os.path.dirname(os.path.dirname(HERE)))
     ap.add_argument('--list', action='store_true', help='print every losing pair')
     a = ap.parse_args()
+    global LOCKED
+    LOCKED = json.load(open(os.path.join(a.solo, 'css-layers.json'))).get('locked_layer', '')
     group, settings_w, custom_w, inline_w = registrar_order(a.lane)
     EXCEPTIONS.update(x.format(**dict(region_selectors(a.lane)[0])) for x in EXCEPTION_TEMPLATES)
     solo = solo_decls(a.solo); gen = generated_decls(a.lane, group, settings_w)

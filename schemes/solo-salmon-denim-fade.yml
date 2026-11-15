@@ -52,6 +52,7 @@ page:
   --r-background: "#fee"
   --r-text: "#191c27"
   --solo-accent-background: "linear-gradient(0deg, #202331, #2d3246)"
+  --solo-accent-background-image: "linear-gradient(0deg, #202331, #2d3246)"
   --solo-accent-text: "#9199b9"
   --r-menu-text-hover: "#400"
   --r-menu-background-hover: "#fbb"

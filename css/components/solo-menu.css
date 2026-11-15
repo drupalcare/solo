@@ -154,11 +154,6 @@
     flex-grow: 1;
   }
 
-  :where(.solo-inner .solo-menu-tree--megamenu > li.solo-menu-tree__item) > .solo-menu-tree__toggler,
-  :where(.solo-inner .solo-menu-tree__menubar:not(.solo-menu-tree--megamenu) li.solo-menu-tree__item) .solo-menu-tree__toggler {
-    cursor: context-menu !important;
-  }
-
   :where(.solo-inner) .solo-menu-tree__menubar:not(.solo-menu-tree--megamenu) li.solo-menu-tree__item--has-submenu {
     position: relative;
   }
@@ -219,7 +214,6 @@
   }
 
   :where(.solo-inner .solo-menu-tree--default li:hover) > :where(ul).solo-menu-tree__submenu {
-    display: flex !important;
     animation: solo-submenu-in 0.2s ease-out;
   }
 
@@ -245,12 +239,6 @@
   :where(.solo-inner .solo-menu-tree--default > li > ul > li.solo-menu-tree__item--has-submenu:hover) .solo-menu-tree__arrow {
     transition: transform 0.2s ease;
     transform: rotate(-90deg);
-  }
-
-  :where(.solo-page .solo-menu-tree--default li.solo-menu-tree__item--has-submenu:hover) > *,
-  :where(.solo-page .solo-menu-tree--default li.solo-menu-tree__item--has-submenu) > *:hover {
-    color: var(--r-menu-text-hover, var(--r-menu-text, var(--r-text))) !important;
-    background-color: var(--r-menu-background-hover, var(--r-menu-background, var(--r-background))) !important;
   }
 
   /* Add borders to menu item */
@@ -352,6 +340,23 @@
     margin-inline-start: var(--solo-px12);
   }
 } /* end @layer solo.theme */
+
+/* unlayered: the !important declarations of @layer solo.theme above, moved unchanged. A layered !important
+   beats every unlayered one, so they stay unlayered and the site owner's typed !important keeps winning. */
+:where(.solo-inner .solo-menu-tree--megamenu > li.solo-menu-tree__item) > .solo-menu-tree__toggler,
+:where(.solo-inner .solo-menu-tree__menubar:not(.solo-menu-tree--megamenu) li.solo-menu-tree__item) .solo-menu-tree__toggler {
+  cursor: context-menu !important;
+}
+
+:where(.solo-inner .solo-menu-tree--default li:hover) > :where(ul).solo-menu-tree__submenu {
+  display: flex !important;
+}
+
+:where(.solo-page .solo-menu-tree--default li.solo-menu-tree__item--has-submenu:hover) > *,
+:where(.solo-page .solo-menu-tree--default li.solo-menu-tree__item--has-submenu) > *:hover {
+  color: var(--r-menu-text-hover, var(--r-menu-text, var(--r-text))) !important;
+  background-color: var(--r-menu-background-hover, var(--r-menu-background, var(--r-background))) !important;
+}
 
 @layer solo.locked {
   /* Reduced motion: end states are kept, movement is not (WCAG 2.3.3). */

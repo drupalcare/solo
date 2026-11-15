@@ -55,10 +55,6 @@
     height: 100%;
   }
 
-  .solo-inner:empty {
-    padding: 0 !important;
-  }
-
   .solo-inner:not(.solo-primary-menu__inner, .solo-primary-sidebar-menu__inner, .solo-status-messages__inner, .solo-highlighted__inner, .solo-container--top-active-1 > .solo-inner, .solo-container--main-active-1 > .solo-inner, .solo-container--bottom-active-1 > .solo-inner, .solo-container--footer > .solo-inner, .solo-copyright__inner),
   .solo-inner:not(.solo-primary-menu__inner, .solo-primary-sidebar-menu__inner, .solo-system-messages__inner, .solo-highlighted__inner, .solo-container--top-active-1 > .solo-inner, .solo-container--main-active-1 > .solo-inner, .solo-container--bottom-active-1 > .solo-inner, .solo-container--footer > .solo-inner, .solo-copyright__inner) {
     padding: var(--solo-gap);
@@ -117,3 +113,9 @@
     display: none;
   }
 } /* end @layer solo.layout */
+
+/* unlayered: the !important declarations of @layer solo.layout above, moved unchanged. A layered !important
+   beats every unlayered one, so they stay unlayered and the site owner's typed !important keeps winning. */
+.solo-inner:empty {
+  padding: 0 !important;
+}

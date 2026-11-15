@@ -21,14 +21,6 @@
     margin-inline: var(--solo-px12);
   }
 
-  :where(.js .views-edit-view .dropbutton-wrapper .dropbutton .dropbutton-action) > *,
-  .views-display-setting,
-  :where(.views-display-setting) input,
-  :where(.views-display-setting) .label,
-  :where(.views-display-extra-actions) a {
-    font-size: var(--solo-px14) !important;
-  }
-
   .views-preview-wrapper {
     margin-block-start: 0;
     margin-block-end: var(--solo-px8);
@@ -39,9 +31,6 @@
 
   .js .views-edit-view .dropbutton-wrapper .dropbutton .dropbutton-action input {
     float: inline-end;
-    border: none !important;
-    margin-block: var(--solo-px2) !important;
-    margin-inline: 0 !important;
   }
 
   :where(.view-preview-form) > h2,
@@ -59,18 +48,6 @@
 
   :where(.views-ui-display-tab-bucket) .dropbutton-wrapper {
     inset-block-start: var(--solo-px1);
-  }
-
-  .views-align-left {
-    text-align: start !important;
-  }
-
-  .views-align-right {
-    text-align: end !important;
-  }
-
-  .views-align-center {
-    text-align: center !important;
   }
 
   :where(.solo-page) :where(form.views-exposed-form) .form--inline {
@@ -95,3 +72,31 @@
     margin-inline-end: var(--solo-px0);
   }
 } /* end @layer solo.theme */
+
+/* unlayered: the !important declarations of @layer solo.theme above, moved unchanged. A layered !important
+   beats every unlayered one, so they stay unlayered and the site owner's typed !important keeps winning. */
+:where(.js .views-edit-view .dropbutton-wrapper .dropbutton .dropbutton-action) > *,
+.views-display-setting,
+:where(.views-display-setting) input,
+:where(.views-display-setting) .label,
+:where(.views-display-extra-actions) a {
+  font-size: var(--solo-px14) !important;
+}
+
+.js .views-edit-view .dropbutton-wrapper .dropbutton .dropbutton-action input {
+  border: none !important;
+  margin-block: var(--solo-px2) !important;
+  margin-inline: 0 !important;
+}
+
+.views-align-left {
+  text-align: start !important;
+}
+
+.views-align-right {
+  text-align: end !important;
+}
+
+.views-align-center {
+  text-align: center !important;
+}

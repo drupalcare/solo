@@ -40,17 +40,10 @@
     opacity: 1;
   }
 
-  /* Alternative class-based approach for better compatibility */
-  .solo-popup-login-block.solo-popup-visible,
-  .solo-popup-login.solo-popup-visible {
-    display: block !important;
-  }
-
   /* Inner container */
   .solo-popup-login-block__inner,
   .solo-popup-login__inner {
     max-width: 900px;
-    height: auto !important;
     padding: calc(2 * var(--solo-px16));
     transition: transform var(--solo-popup-animation-duration, 0.3s) ease;
     transform: translateY(-20px);
@@ -64,12 +57,6 @@
   :where(.solo-popup-login-block.solo-is-open) .solo-popup-login-block__inner,
   :where(.solo-popup-login.solo-is-open) .solo-popup-login__inner {
     transform: translateY(0);
-  }
-
-  /* Close button styles */
-  .solo-popup-login-block__close button,
-  .solo-popup-login__close button {
-    padding: 0 !important;
   }
 
   /* Login block list styles */
@@ -139,6 +126,26 @@
   }
 } /* end @layer solo.theme */
 
+/* unlayered: the !important declarations of @layer solo.theme above, moved unchanged. A layered !important
+   beats every unlayered one, so they stay unlayered and the site owner's typed !important keeps winning. */
+/* Alternative class-based approach for better compatibility */
+.solo-popup-login-block.solo-popup-visible,
+.solo-popup-login.solo-popup-visible {
+  display: block !important;
+}
+
+/* Inner container */
+.solo-popup-login-block__inner,
+.solo-popup-login__inner {
+  height: auto !important;
+}
+
+/* Close button styles */
+.solo-popup-login-block__close button,
+.solo-popup-login__close button {
+  padding: 0 !important;
+}
+
 @layer solo.locked {
   /* High contrast mode support - no color changes, just ensure visibility */
 
@@ -154,17 +161,6 @@
 } /* end @layer solo.locked */
 
 @layer solo.theme {
-  /* Print styles */
-  @media print {
-    .solo-popup-login-block,
-    .solo-popup-login,
-    .solo-popup-login-block__open,
-    .solo-popup-login__open,
-    .solo-popup-login-block__close,
-    .solo-popup-login__close {
-      display: none !important;
-    }
-  }
 
   /* Ensure proper stacking context */
   /* stylelint-disable-next-line order/order -- this nested rule stays after the @media block; moving it changes which rule wins */
@@ -194,3 +190,17 @@
     background-color: inherit;
   }
 } /* end @layer solo.theme */
+
+/* unlayered: the !important declarations of @layer solo.theme above, moved unchanged. A layered !important
+   beats every unlayered one, so they stay unlayered and the site owner's typed !important keeps winning. */
+/* Print styles */
+@media print {
+  .solo-popup-login-block,
+  .solo-popup-login,
+  .solo-popup-login-block__open,
+  .solo-popup-login__open,
+  .solo-popup-login-block__close,
+  .solo-popup-login__close {
+    display: none !important;
+  }
+}

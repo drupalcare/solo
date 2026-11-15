@@ -8,11 +8,7 @@
  */
 
 @layer solo.theme {
-  :where(.solo-header__inner nav.contextual-region) .contextual {
-    inset-block-start: 3.125rem !important;
-  }
   :where(.solo-header__inner .contextual-region.block-system-branding-block) .contextual {
-    inset-block-start: auto !important;
     inset-block-end: 0;
   }
 
@@ -127,24 +123,6 @@
     justify-content: center;
   }
 
-  #solo-fixed-search-block__open button span,
-  #solo-search-button-open button span {
-    padding-block: var(--solo-px8) !important;
-    padding-inline: var(--solo-px16) !important;
-  }
-
-  #solo-menu-primary-sidebar__close button span,
-  #solo-sidebar-button-close button span {
-    padding-block: var(--solo-px8) !important;
-    padding-inline: 0 !important;
-  }
-
-  #solo-menu-primary-sidebar__open button span,
-  #solo-sidebar-button-open button span {
-    padding-block: var(--solo-px4) !important;
-    padding-inline: var(--solo-px16) !important;
-  }
-
   /* Add class to switch the header icon and site name */
   .solo-header__inner.solo-icons-left {
     flex-direction: revert;
@@ -221,3 +199,31 @@
     max-height: clamp(3.5rem, 14vw, 12.5rem);
   }
 } /* end @layer solo.theme */
+
+/* unlayered: the !important declarations of @layer solo.theme above, moved unchanged. A layered !important
+   beats every unlayered one, so they stay unlayered and the site owner's typed !important keeps winning. */
+:where(.solo-header__inner nav.contextual-region) .contextual {
+  inset-block-start: 3.125rem !important;
+}
+
+:where(.solo-header__inner .contextual-region.block-system-branding-block) .contextual {
+  inset-block-start: auto !important;
+}
+
+#solo-fixed-search-block__open button span,
+#solo-search-button-open button span {
+  padding-block: var(--solo-px8) !important;
+  padding-inline: var(--solo-px16) !important;
+}
+
+#solo-menu-primary-sidebar__close button span,
+#solo-sidebar-button-close button span {
+  padding-block: var(--solo-px8) !important;
+  padding-inline: 0 !important;
+}
+
+#solo-menu-primary-sidebar__open button span,
+#solo-sidebar-button-open button span {
+  padding-block: var(--solo-px4) !important;
+  padding-inline: var(--solo-px16) !important;
+}

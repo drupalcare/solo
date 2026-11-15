@@ -52,6 +52,7 @@ page:
   --r-background: "#fbfbfc"
   --r-text: "#1a2d44"
   --solo-accent-background: "linear-gradient(to start top, #ffffff, #f8f4ff)"
+  --solo-accent-background-image: "linear-gradient(to start top, #ffffff, #f8f4ff)"
   --solo-accent-text: "#1f3550"
   --r-menu-text-hover: "#0c0d0f"
   --r-menu-background-hover: "#c4c8cd"

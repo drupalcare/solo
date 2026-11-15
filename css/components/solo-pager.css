@@ -41,11 +41,6 @@
     cursor: default;
   }
 
-  .pager__item.solo-active-pager a {
-    text-decoration: none !important;
-    pointer-events: none !important;
-  }
-
   .pager__item.pager__item--ellipsis {
     padding: var(--solo-px8) var(--solo-px16);
     opacity: 0.7;
@@ -59,6 +54,13 @@
     }
   }
 } /* end @layer solo.theme */
+
+/* unlayered: the !important declarations of @layer solo.theme above, moved unchanged. A layered !important
+   beats every unlayered one, so they stay unlayered and the site owner's typed !important keeps winning. */
+.pager__item.solo-active-pager a {
+  text-decoration: none !important;
+  pointer-events: none !important;
+}
 
 @layer solo.locked {
   /* Reduced motion: end states are kept, movement is not (WCAG 2.3.3). */

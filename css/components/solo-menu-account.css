@@ -18,8 +18,6 @@
   :where(.solo-header__inner nav) .solo-menu-tree__menubar > li > button,
   .solo-header__inner nav .solo-menu-tree__menubar > li > a,
   .solo-inner .solo-menu-tree__menubar--account li a {
-    padding-block: 0.563rem !important;
-    padding-inline: var(--solo-px16) !important;
     line-height: 1.5;
   }
 
@@ -27,3 +25,12 @@
     min-width: 90px;
   }
 } /* end @layer solo.theme */
+
+/* unlayered: the !important declarations of @layer solo.theme above, moved unchanged. A layered !important
+   beats every unlayered one, so they stay unlayered and the site owner's typed !important keeps winning. */
+:where(.solo-header__inner nav) .solo-menu-tree__menubar > li > button,
+.solo-header__inner nav .solo-menu-tree__menubar > li > a,
+.solo-inner .solo-menu-tree__menubar--account li a {
+  padding-block: 0.563rem !important;
+  padding-inline: var(--solo-px16) !important;
+}

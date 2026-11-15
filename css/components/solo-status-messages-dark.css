@@ -10,21 +10,23 @@
   .messages__close::before {
     border-color: var(--solo-gray);
   }
-
-  .messages,
-  :where(.webform-message) .messages.messages--webform {
-    color: var(--solo-white) !important;
-    border: var(--solo-px1) solid var(--solo-black) !important;
-    background-color: var(--solo-dark-gray) !important;
-  }
-
-  :where(.solo-page) .solo-status-messages,
-  :where(.solo-page) .solo-system-messages {
-    --r-background: var(--solo-black) !important;
-    --r-text: var(--solo-white) !important;
-  }
-
-  :where(.messages) a {
-    color: var(--solo-white) !important;
-  }
 } /* end @layer solo.theme */
+
+/* unlayered: the !important declarations of @layer solo.theme above, moved unchanged. A layered !important
+   beats every unlayered one, so they stay unlayered and the site owner's typed !important keeps winning. */
+.messages,
+:where(.webform-message) .messages.messages--webform {
+  color: var(--solo-white) !important;
+  border: var(--solo-px1) solid var(--solo-black) !important;
+  background-color: var(--solo-dark-gray) !important;
+}
+
+:where(.solo-page) .solo-status-messages,
+:where(.solo-page) .solo-system-messages {
+  --r-background: var(--solo-black) !important;
+  --r-text: var(--solo-white) !important;
+}
+
+:where(.messages) a {
+  color: var(--solo-white) !important;
+}

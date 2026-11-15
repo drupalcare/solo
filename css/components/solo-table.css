@@ -27,7 +27,6 @@
 
   :where(.solo-page .region-title) td {
     text-transform: uppercase;
-    font-weight: bold !important;
   }
 
   :where(.solo-page .region-title td) a {
@@ -39,11 +38,6 @@
     box-sizing: border-box;
     word-wrap: break-word;
     overflow-wrap: break-word;
-  }
-
-  :where(.solo-page table td) .form-type-radio,
-  :where(.solo-page table td) .form-type-checkbox {
-    margin: 0 !important;
   }
 
   .solo-table__wrapper,
@@ -102,7 +96,6 @@
     float: none;
     align-items: center;
     max-width: 100%;
-    margin: 0 !important;
     white-space: nowrap;
   }
 
@@ -112,3 +105,19 @@
     table-layout: auto;
   }
 } /* end @layer solo.theme */
+
+/* unlayered: the !important declarations of @layer solo.theme above, moved unchanged. A layered !important
+   beats every unlayered one, so they stay unlayered and the site owner's typed !important keeps winning. */
+:where(.solo-page .region-title) td {
+  font-weight: bold !important;
+}
+
+:where(.solo-page table td) .form-type-radio,
+:where(.solo-page table td) .form-type-checkbox {
+  margin: 0 !important;
+}
+
+:where(.solo-table__wrapper) .tableresponsive-toggle,
+:where(.solo-table-wrapper) .tableresponsive-toggle {
+  margin: 0 !important;
+}

@@ -10,7 +10,6 @@
   :where(.path-user-login .solo-container__inner--main) .solo-region-box--content {
     display: grid;
     float: none;
-    width: 100% !important;
     max-width: 1100px;
     margin-block: var(--solo-px16);
     margin-inline: auto;
@@ -49,3 +48,11 @@
     flex: 1;
   }
 } /* end @layer solo.layout */
+
+/* unlayered: the !important declarations of @layer solo.layout above, moved unchanged. A layered !important
+   beats every unlayered one, so they stay unlayered and the site owner's typed !important keeps winning. */
+:where(.path-user-register .solo-container__inner--main) .solo-region-box--content,
+:where(.path-user-password .solo-container__inner--main) .solo-region-box--content,
+:where(.path-user-login .solo-container__inner--main) .solo-region-box--content {
+  width: 100% !important;
+}

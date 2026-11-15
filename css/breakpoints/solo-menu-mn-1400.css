@@ -37,22 +37,8 @@
     justify-content: end;
   }
 
-  .solo-menu-main--mobile > button,
-  .solo-mobile-nav > button {
-    padding-inline: var(--solo-px16) !important;
-    padding-block: 0 !important;
-  }
-
-  :where(.solo-page .solo-container--has-border .solo-primary-menu__inner) :where(ul).solo-is-open {
-    border-block-start: 1px solid var(--r-border) !important;
-  }
-
   :where(.solo-page .solo-container--has-border .solo-primary-menu__inner) .solo-menu-tree--primary.solo-is-open {
     border-block-start: 1px solid var(--r-border);
-  }
-
-  :where(.solo-page .solo-container--has-border .solo-primary-menu__inner .solo-menu-tree--primary) li {
-    border-block-end: 1px solid var(--r-border) !important;
   }
 
   .solo-primary-menu.solo-sticky {
@@ -67,10 +53,6 @@
 
   :where(.solo-inner .solo-menu-tree--megamenu) li.solo-menu-tree__item > button.solo-menu-tree__toggler--link-disabled > span.solo-menu-tree__title--disabled {
     flex-grow: 1;
-  }
-
-  :where(.solo-inner .solo-menu-tree--megamenu li.solo-menu-tree__item) .solo-menu-tree__toggler {
-    cursor: context-menu !important;
   }
 
   :where(.solo-inner) .solo-menu-tree--megamenu :where(li).solo-menu-tree__item--link-only {
@@ -218,12 +200,6 @@
     grid-template-columns: minmax(0, 1fr) minmax(0, 2fr) minmax(0, 1fr) minmax(0, 2fr);
   }
 
-  /* The beginning of solo-menu-main.css */
-  .solo-menu-main--mobile,
-  .solo-mobile-nav {
-    display: none !important;
-  }
-
   :where(.solo-inner .solo-menu-tree--responsive > li) > ul {
     box-shadow:
       0 2.8px 2.2px rgb(var(--s-b), 0.034),
@@ -259,7 +235,6 @@
   }
 
   :where(.solo-inner) .solo-menu-tree--responsive {
-    display: flex !important;
     flex-wrap: wrap;
   }
 
@@ -306,39 +281,6 @@
     pointer-events: none;
   }
 
-  /* Hover only. Keyboard users open a dropdown with its button (Enter or
-     Space) and close it with Escape; opening on focus could not be dismissed
-     without moving focus (WCAG 1.4.13) and left aria-expanded false. */
-  :where(.solo-inner .solo-menu--responsive-hover) .solo-menu-tree--responsive:not(.solo-menu-tree--megamenu) li:hover > ul.solo-menu-tree__submenu {
-    display: flex !important;
-    visibility: visible !important;
-  }
-
-  :where(.solo-page) .solo-menu--responsive-hover .solo-menu-tree--responsive li.solo-menu-tree__item--has-submenu > a:hover,
-  .solo-page .solo-menu--responsive-hover .solo-menu-tree--responsive li.solo-menu-tree__item--has-submenu > button:hover {
-    color: inherit !important;
-    background-color: inherit !important;
-  }
-
-  :where(.solo-page) .solo-menu--responsive-hover .solo-menu-tree--responsive li.solo-menu-tree__item--has-submenu:hover > a,
-  .solo-page .solo-menu--responsive-hover .solo-menu-tree--responsive li.solo-menu-tree__item--has-submenu:hover > button {
-    color: var(--r-menu-text-hover, var(--r-text)) !important;
-    background-color: var(--r-menu-background-hover, var(--r-background)) !important;
-  }
-
-  :where(.solo-page .solo-container--has-border .solo-primary-menu__inner .solo-menu-tree--primary > li) > ul,
-  :where(.solo-page .solo-container--has-border .solo-primary-menu__inner .solo-menu-tree--primary:not(.solo-menu-tree--megamenu) > li > ul) ul {
-    border: 1px solid var(--r-border) !important;
-  }
-
-  :where(.solo-page .solo-container--has-border .solo-primary-menu__inner .solo-menu-tree--primary) > li {
-    border-inline-end: 1px solid var(--r-border) !important;
-  }
-
-  :where(.solo-page .solo-container--has-border .solo-primary-menu__inner .solo-menu-tree--primary:not(.solo-menu-tree--megamenu) > li) li {
-    border-block-end: 1px solid var(--r-border) !important;
-  }
-
   /* Justify menu items */
   :where(.solo-page .solo-menu--primary-responsive.solo-menu--align-justify) .solo-menu-tree--primary {
     flex-grow: 1;
@@ -357,46 +299,14 @@
     justify-content: center;
   }
 
-  /* Sidebar Menu Hover */
-  :where(.solo-inner .solo-menu--sidebar-hover .solo-menu-tree--sidebar) li:hover > ul.solo-menu-tree__submenu {
-    display: block !important;
-  }
-
   :where(.solo-inner .solo-menu--sidebar-hover .solo-menu-tree--sidebar li.solo-menu-tree__item--has-submenu:hover > *) > .solo-menu-tree__arrow {
     transform: rotate(180deg);
-  }
-
-  :where(.solo-inner) .solo-menu--sidebar-hover .solo-menu-tree--sidebar li.solo-menu-tree__item--has-submenu > a:hover,
-  .solo-inner .solo-menu--sidebar-hover .solo-menu-tree--sidebar li.solo-menu-tree__item--has-submenu > button:hover {
-    color: inherit !important;
-    background-color: inherit !important;
-  }
-
-  :where(.solo-page) .solo-menu--sidebar-hover .solo-menu-tree--sidebar li.solo-menu-tree__item--has-submenu:hover > a,
-  .solo-page .solo-menu--sidebar-hover .solo-menu-tree--sidebar li.solo-menu-tree__item--has-submenu:hover > button {
-    color: var(--r-menu-text-hover, var(--r-text)) !important;
-    background-color: var(--r-menu-background-hover, var(--r-background)) !important;
   }
 
   /* Primary Menu expand left */
   :where(.solo-primary-menu) .solo-menu--expand-left ul.solo-menu-tree--primary:not(.solo-menu-tree--megamenu) > li ul > li > button.solo-menu-tree__toggler--link-enabled,
   #solo-primary-menu .solo-menu--expand-left ul.solo-menu-tree--primary:not(.solo-menu-tree--megamenu) > li ul > li > button > span.solo-menu-tree__toggler-icon {
     order: -1;
-  }
-
-  :where([dir="rtl"] .solo-primary-menu ul.solo-menu-tree--primary:not(.solo-menu-tree--megamenu) li.solo-menu-tree__item--button-only > button) > :where(span).solo-menu-tree__toggler-icon {
-    margin-inline-start: var(--solo-px12) !important;
-    margin-inline-end: var(--solo-px0) !important;
-  }
-
-  :where(.solo-primary-menu .solo-menu--expand-left ul.solo-menu-tree--primary:not(.solo-menu-tree--megamenu) > li.solo-menu-tree__item--button-only > button) > :where(span).solo-menu-tree__toggler-icon {
-    margin-inline-start: var(--solo-px12) !important;
-    margin-inline-end: var(--solo-px0) !important;
-  }
-
-  :where(.solo-primary-menu .solo-menu--expand-left ul.solo-menu-tree--primary:not(.solo-menu-tree--megamenu) li li.solo-menu-tree__item--button-only > button) > :where(span).solo-menu-tree__toggler-icon {
-    margin-inline-start: var(--solo-px0) !important;
-    margin-inline-end: var(--solo-px12) !important;
   }
 
   :where(html) .solo-primary-menu .solo-menu--expand-left ul.solo-menu-tree--primary:not(.solo-menu-tree--megamenu) > li > ul.solo-menu-tree__submenu {
@@ -409,10 +319,6 @@
     inset-inline-start: initial;
   }
 
-  :where(.solo-primary-menu .solo-menu--expand-left ul.solo-menu-tree--primary:not(.solo-menu-tree--megamenu) > li ul > li > ul > li) a {
-    justify-content: end !important;
-  }
-
   /* The beginning of solo-megamenu.css */
   :where(.solo-inner) .solo-menu-tree--megamenu {
     position: relative;
@@ -420,11 +326,7 @@
 
   .solo-inner .solo-menu-tree--megamenu > li > ul li,
   :where(.solo-inner) .solo-menu-tree--megamenu > li > ul ul {
-    display: flex !important;
     flex-direction: column;
-    height: initial !important;
-    margin: initial !important;
-    padding: initial !important;
   }
 
   :where(.solo-page .solo-inner .solo-menu-tree--megamenu ul li.solo-menu-tree__item) > a,
@@ -440,41 +342,15 @@
     gap: var(--solo-px16);
   }
 
-  .solo-inner .solo-menu-tree--megamenu > li > ul > li {
-    margin-block-start: var(--solo-px16) !important;
-    margin-block-end: var(--solo-px16) !important;
-  }
-
   :where(.solo-inner .solo-menu-tree--megamenu > li > ul.solo-menu-tree__submenu) > * {
     width: 100%;
     height: 100%;
   }
 
-  :where(.solo-inner .solo-menu-tree--megamenu ul) .solo-menu-tree__toggler-icon,
-  .solo-inner .solo-menu-tree--megamenu > li > ul > li.solo-menu-tree__item--link-and-button button {
-    width: 0 !important;
-    height: 0 !important;
-  }
-
   .solo-inner .solo-menu-tree--megamenu > li li a,
   .solo-inner .solo-menu-tree--megamenu > li li span,
   .solo-inner .solo-menu-tree--megamenu > li li button {
-    display: inline-flex !important;
     max-width: 100%;
-  }
-
-  :where(.solo-page .solo-inner .solo-menu-tree--megamenu > li) :where(li):hover,
-  :where(.solo-page) .solo-inner .solo-menu-tree--megamenu > li li a:hover,
-  :where(.solo-page .solo-inner) .solo-menu-tree--megamenu > li li span:hover,
-  .solo-page .solo-inner .solo-menu-tree--megamenu > li li button:hover,
-  :where(.solo-page) .solo-menu--responsive-hover .solo-menu-tree--megamenu li li.solo-menu-tree__item--has-submenu:hover > a,
-  :where(.solo-page .solo-menu--responsive-hover .solo-menu-tree--megamenu li) li.solo-menu-tree__item--has-submenu:hover > span,
-  .solo-page .solo-menu--responsive-hover .solo-menu-tree--megamenu li li.solo-menu-tree__item--has-submenu:hover > button {
-    background-color: unset !important;
-  }
-
-  :where(.solo-inner .solo-menu-tree--megamenu > li > ul.solo-menu-tree__submenu) .solo-menu-tree__toggler--link-disabled:hover {
-    color: var(--r-text) !important;
   }
 
   :where(.solo-inner .solo-menu-tree--megamenu > li > ul.solo-menu-tree__submenu) .solo-menu-tree__toggler--link-disabled {
@@ -482,20 +358,9 @@
     pointer-events: none;
   }
 
-  :where(.solo-inner .solo-menu--responsive-hover .solo-menu-tree--megamenu) > li:hover > ul.solo-menu-tree__submenu {
-    display: grid !important;
-    height: initial !important;
-  }
-
   /* For the menu branding */
   :where(.solo-primary-menu) .solo-menu--has-branding.solo-menu--primary-responsive {
     flex-wrap: nowrap;
-  }
-
-  /* Remove the dropdown arrow when hover navigation is enabled */
-  #solo-primary-menu .solo-menu--responsive-hover.remove-arrow .solo-menu-tree__menubar > li > a + button,
-  #solo-primary-menu .solo-menu--responsive-hover.remove-arrow .solo-menu-tree__menubar > li > button > span.solo-menu-tree__arrow {
-    display: none !important;
   }
 
   /* Hover arrow rotations */
@@ -641,6 +506,159 @@
 }
 
 } /* end @layer solo.theme */
+
+/* unlayered: the !important declarations of @layer solo.theme above, moved unchanged. A layered !important
+   beats every unlayered one, so they stay unlayered and the site owner's typed !important keeps winning. */
+@media (max-width: 87.49875rem) {
+  .solo-menu-main--mobile > button,
+  .solo-mobile-nav > button {
+    padding-inline: var(--solo-px16) !important;
+    padding-block: 0 !important;
+  }
+
+  :where(.solo-page .solo-container--has-border .solo-primary-menu__inner) :where(ul).solo-is-open {
+    border-block-start: 1px solid var(--r-border) !important;
+  }
+
+  :where(.solo-page .solo-container--has-border .solo-primary-menu__inner .solo-menu-tree--primary) li {
+    border-block-end: 1px solid var(--r-border) !important;
+  }
+
+  :where(.solo-inner .solo-menu-tree--megamenu li.solo-menu-tree__item) .solo-menu-tree__toggler {
+    cursor: context-menu !important;
+  }
+}
+
+@media (min-width: 87.5rem) {
+  /* The beginning of solo-menu-main.css */
+  .solo-menu-main--mobile,
+  .solo-mobile-nav {
+    display: none !important;
+  }
+
+  :where(.solo-inner) .solo-menu-tree--responsive {
+    display: flex !important;
+  }
+
+  /* Hover only. Keyboard users open a dropdown with its button (Enter or
+     Space) and close it with Escape; opening on focus could not be dismissed
+     without moving focus (WCAG 1.4.13) and left aria-expanded false. */
+  :where(.solo-inner .solo-menu--responsive-hover) .solo-menu-tree--responsive:not(.solo-menu-tree--megamenu) li:hover > ul.solo-menu-tree__submenu {
+    display: flex !important;
+    visibility: visible !important;
+  }
+
+  :where(.solo-page) .solo-menu--responsive-hover .solo-menu-tree--responsive li.solo-menu-tree__item--has-submenu > a:hover,
+  .solo-page .solo-menu--responsive-hover .solo-menu-tree--responsive li.solo-menu-tree__item--has-submenu > button:hover {
+    color: inherit !important;
+    background-color: inherit !important;
+  }
+
+  :where(.solo-page) .solo-menu--responsive-hover .solo-menu-tree--responsive li.solo-menu-tree__item--has-submenu:hover > a,
+  .solo-page .solo-menu--responsive-hover .solo-menu-tree--responsive li.solo-menu-tree__item--has-submenu:hover > button {
+    color: var(--r-menu-text-hover, var(--r-text)) !important;
+    background-color: var(--r-menu-background-hover, var(--r-background)) !important;
+  }
+
+  :where(.solo-page .solo-container--has-border .solo-primary-menu__inner .solo-menu-tree--primary > li) > ul,
+  :where(.solo-page .solo-container--has-border .solo-primary-menu__inner .solo-menu-tree--primary:not(.solo-menu-tree--megamenu) > li > ul) ul {
+    border: 1px solid var(--r-border) !important;
+  }
+
+  :where(.solo-page .solo-container--has-border .solo-primary-menu__inner .solo-menu-tree--primary) > li {
+    border-inline-end: 1px solid var(--r-border) !important;
+  }
+
+  :where(.solo-page .solo-container--has-border .solo-primary-menu__inner .solo-menu-tree--primary:not(.solo-menu-tree--megamenu) > li) li {
+    border-block-end: 1px solid var(--r-border) !important;
+  }
+
+  /* Sidebar Menu Hover */
+  :where(.solo-inner .solo-menu--sidebar-hover .solo-menu-tree--sidebar) li:hover > ul.solo-menu-tree__submenu {
+    display: block !important;
+  }
+
+  :where(.solo-inner) .solo-menu--sidebar-hover .solo-menu-tree--sidebar li.solo-menu-tree__item--has-submenu > a:hover,
+  .solo-inner .solo-menu--sidebar-hover .solo-menu-tree--sidebar li.solo-menu-tree__item--has-submenu > button:hover {
+    color: inherit !important;
+    background-color: inherit !important;
+  }
+
+  :where(.solo-page) .solo-menu--sidebar-hover .solo-menu-tree--sidebar li.solo-menu-tree__item--has-submenu:hover > a,
+  .solo-page .solo-menu--sidebar-hover .solo-menu-tree--sidebar li.solo-menu-tree__item--has-submenu:hover > button {
+    color: var(--r-menu-text-hover, var(--r-text)) !important;
+    background-color: var(--r-menu-background-hover, var(--r-background)) !important;
+  }
+
+  :where([dir="rtl"] .solo-primary-menu ul.solo-menu-tree--primary:not(.solo-menu-tree--megamenu) li.solo-menu-tree__item--button-only > button) > :where(span).solo-menu-tree__toggler-icon {
+    margin-inline-start: var(--solo-px12) !important;
+    margin-inline-end: var(--solo-px0) !important;
+  }
+
+  :where(.solo-primary-menu .solo-menu--expand-left ul.solo-menu-tree--primary:not(.solo-menu-tree--megamenu) > li.solo-menu-tree__item--button-only > button) > :where(span).solo-menu-tree__toggler-icon {
+    margin-inline-start: var(--solo-px12) !important;
+    margin-inline-end: var(--solo-px0) !important;
+  }
+
+  :where(.solo-primary-menu .solo-menu--expand-left ul.solo-menu-tree--primary:not(.solo-menu-tree--megamenu) li li.solo-menu-tree__item--button-only > button) > :where(span).solo-menu-tree__toggler-icon {
+    margin-inline-start: var(--solo-px0) !important;
+    margin-inline-end: var(--solo-px12) !important;
+  }
+
+  :where(.solo-primary-menu .solo-menu--expand-left ul.solo-menu-tree--primary:not(.solo-menu-tree--megamenu) > li ul > li > ul > li) a {
+    justify-content: end !important;
+  }
+
+  .solo-inner .solo-menu-tree--megamenu > li > ul li,
+  :where(.solo-inner) .solo-menu-tree--megamenu > li > ul ul {
+    display: flex !important;
+    height: initial !important;
+    margin: initial !important;
+    padding: initial !important;
+  }
+
+  .solo-inner .solo-menu-tree--megamenu > li > ul > li {
+    margin-block-start: var(--solo-px16) !important;
+    margin-block-end: var(--solo-px16) !important;
+  }
+
+  :where(.solo-inner .solo-menu-tree--megamenu ul) .solo-menu-tree__toggler-icon,
+  .solo-inner .solo-menu-tree--megamenu > li > ul > li.solo-menu-tree__item--link-and-button button {
+    width: 0 !important;
+    height: 0 !important;
+  }
+
+  .solo-inner .solo-menu-tree--megamenu > li li a,
+  .solo-inner .solo-menu-tree--megamenu > li li span,
+  .solo-inner .solo-menu-tree--megamenu > li li button {
+    display: inline-flex !important;
+  }
+
+  :where(.solo-page .solo-inner .solo-menu-tree--megamenu > li) :where(li):hover,
+  :where(.solo-page) .solo-inner .solo-menu-tree--megamenu > li li a:hover,
+  :where(.solo-page .solo-inner) .solo-menu-tree--megamenu > li li span:hover,
+  .solo-page .solo-inner .solo-menu-tree--megamenu > li li button:hover,
+  :where(.solo-page) .solo-menu--responsive-hover .solo-menu-tree--megamenu li li.solo-menu-tree__item--has-submenu:hover > a,
+  :where(.solo-page .solo-menu--responsive-hover .solo-menu-tree--megamenu li) li.solo-menu-tree__item--has-submenu:hover > span,
+  .solo-page .solo-menu--responsive-hover .solo-menu-tree--megamenu li li.solo-menu-tree__item--has-submenu:hover > button {
+    background-color: unset !important;
+  }
+
+  :where(.solo-inner .solo-menu-tree--megamenu > li > ul.solo-menu-tree__submenu) .solo-menu-tree__toggler--link-disabled:hover {
+    color: var(--r-text) !important;
+  }
+
+  :where(.solo-inner .solo-menu--responsive-hover .solo-menu-tree--megamenu) > li:hover > ul.solo-menu-tree__submenu {
+    display: grid !important;
+    height: initial !important;
+  }
+
+  /* Remove the dropdown arrow when hover navigation is enabled */
+  #solo-primary-menu .solo-menu--responsive-hover.remove-arrow .solo-menu-tree__menubar > li > a + button,
+  #solo-primary-menu .solo-menu--responsive-hover.remove-arrow .solo-menu-tree__menubar > li > button > span.solo-menu-tree__arrow {
+    display: none !important;
+  }
+}
 
 /* ==== unlayered: answers unlayered core, contrib, Paragraphs Bundles and VVJ rules; in a layer these would lose (css-layers.json) ==== */
 

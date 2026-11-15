@@ -1,10 +1,6 @@
 @layer solo.theme {
 
 @media (min-width: 48rem) {
-  .solo-desktop-hide {
-    display: none !important;
-  }
-
   .solo-copyright__first {
     text-align: var(--solo-text-align-start);
   }
@@ -130,10 +126,6 @@
 }
 
 @media (max-width: 47.99875rem) {
-  .solo-mobile-hide {
-    display: none !important;
-  }
-
   :where([dir="rtl"]) .solo-copyright__first,
   :where([dir="rtl"]) .solo-copyright__second {
     text-align: center;
@@ -165,7 +157,6 @@
 
   :where(.page-node-type-article) .field--type-text,
   :where(.page-node-type-article) .field--type-text-with-summary {
-    display: block !important;
     clear: both;
   }
 
@@ -385,6 +376,25 @@
 }
 
 } /* end @layer solo.theme */
+
+/* unlayered: the !important declarations of @layer solo.theme above, moved unchanged. A layered !important
+   beats every unlayered one, so they stay unlayered and the site owner's typed !important keeps winning. */
+@media (min-width: 48rem) {
+  .solo-desktop-hide {
+    display: none !important;
+  }
+}
+
+@media (max-width: 47.99875rem) {
+  .solo-mobile-hide {
+    display: none !important;
+  }
+
+  :where(.page-node-type-article) .field--type-text,
+  :where(.page-node-type-article) .field--type-text-with-summary {
+    display: block !important;
+  }
+}
 
 /* ==== unlayered: answers unlayered core, contrib, Paragraphs Bundles and VVJ rules; in a layer these would lose (css-layers.json) ==== */
 

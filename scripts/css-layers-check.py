@@ -236,6 +236,7 @@ def check_css(rel: str, text: str, spec, manifest) -> list[str]:
         if kind == "layered" and not layers and not tail_ok:
             out.append(f"L3 {at} rule outside any @layer: {' '.join(head.split())[:60]}")
         sels = split_selectors(head)
+        tail_important = tail and any("!important" in v for _, v in declarations(body))
         for sel in sels:
             bare = without_not(sel)
             allowed_admin = any(a in " ".join(sel.split()) for a in (manifest.get("admin_allow") or {}))
@@ -244,7 +245,9 @@ def check_css(rel: str, text: str, spec, manifest) -> list[str]:
                     if re.search(pat, bare):
                         out.append(f"A2 {at} selector reaches admin UI: {sel[:70]}")
                         break
-            if (kind == "unlayered" or tail) and roots and not allowed_admin and sel.strip() not in ("html", "body") and not any(r in sel for r in roots):
+            if tail_important and any(a in head for a in imp_allow):
+                pass  # a layered !important moved out unchanged: its selector is on the important_allow list
+            elif (kind == "unlayered" or tail) and roots and not allowed_admin and sel.strip() not in ("html", "body") and not any(r in sel for r in roots):
                 out.append(f"A1 {at} selector not under a project root: {sel[:70]}")
             if kind == "layered" and not tail and not allowed_admin and ELEMENT_START.match(re.sub(r"^:where\(", "", sel).strip()) and layer_name not in base_layers and not any(r in sel for r in roots):
                 out.append(f"A1 {at} bare element selector outside the base layers: {sel[:70]}")
@@ -431,6 +434,10 @@ def self_test() -> int:
         ("a { color: red; }", {"layers": ["p.theme"], "unlayered_tail": "answers unlayered CSS"}, "A1"),
         (".mod .a { color: red; }", {"layers": ["p.theme"]}, "L3"),
         (".mod .a { color: #fff !important; }", {"layers": ["p.theme"], "unlayered_tail": "answers unlayered CSS"}, None),
+        (".p-hide { display: none !important; }", {"layers": ["p.theme"], "unlayered_tail": "moved !important"}, None),
+        (".p-hide { color: red; }", {"layers": ["p.theme"], "unlayered_tail": "moved !important"}, "A1"),
+        (".other { display: none !important; }", {"layers": ["p.theme"], "unlayered_tail": "moved !important"}, "A1"),
+        (".p-hide { display: none !important; }", "unlayered: module", "A1"),
         (".mod .p-login ul.tabs a { color: red; }", "unlayered: module", None),
         (".mod .p-other ul.tabs a { color: red; }", "unlayered: module", "A2"),
         ("@layer p.theme { body .p-login ul.tabs { margin: 0; } }", ["p.theme"], None),

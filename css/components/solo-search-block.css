@@ -49,19 +49,6 @@
     min-width: 0;
   }
 
-  .solo-search-block-form .form-item,
-  .solo-search-block-form .form-actions {
-    margin-block: var(--solo-px6) !important;
-    margin-inline: auto !important;
-  }
-
-  :where(input).solo-fixed-search-block__button-block,
-  :where(input).solo-fixed-search__button-block {
-    margin: 0 !important;
-    padding-inline-start: var(--solo-px3) !important;
-    padding-inline-end: var(--solo-px3) !important;
-  }
-
   :where(.solo-search-block-form) .form-type-search::before {
     position: absolute;
     display: inline-block;
@@ -80,3 +67,18 @@
     mask: var(--solo-search-icon);
   }
 } /* end @layer solo.theme */
+
+/* unlayered: the !important declarations of @layer solo.theme above, moved unchanged. A layered !important
+   beats every unlayered one, so they stay unlayered and the site owner's typed !important keeps winning. */
+.solo-search-block-form .form-item,
+.solo-search-block-form .form-actions {
+  margin-block: var(--solo-px6) !important;
+  margin-inline: auto !important;
+}
+
+:where(input).solo-fixed-search-block__button-block,
+:where(input).solo-fixed-search__button-block {
+  margin: 0 !important;
+  padding-inline-start: var(--solo-px3) !important;
+  padding-inline-end: var(--solo-px3) !important;
+}

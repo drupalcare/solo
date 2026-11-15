@@ -60,14 +60,7 @@
 
   :where(.solo-page .solo-logo) .solo-svg-icon__path,
   :where(.solo-page .dis-icon-colors .solo-svg-icon) .solo-svg-icon__path {
-    color: var(--r-text) !important;
     fill: var(--r-text);
-  }
-
-  :where(.solo-page svg.ext) path,
-  :where(.solo-page svg.mailto) path {
-    color: var(--r-text) !important;
-    stroke: var(--r-text) !important;
   }
 
   :where(.solo-page) .ck-focused,
@@ -125,6 +118,19 @@
       border-color 0.2s ease;
   }
 } /* end @layer solo.base */
+
+/* unlayered: the !important declarations of @layer solo.base above, moved unchanged. A layered !important
+   beats every unlayered one, so they stay unlayered and the site owner's typed !important keeps winning. */
+:where(.solo-page .solo-logo) .solo-svg-icon__path,
+:where(.solo-page .dis-icon-colors .solo-svg-icon) .solo-svg-icon__path {
+  color: var(--r-text) !important;
+}
+
+:where(.solo-page svg.ext) path,
+:where(.solo-page svg.mailto) path {
+  color: var(--r-text) !important;
+  stroke: var(--r-text) !important;
+}
 
 @layer solo.locked {
   /* Reduced motion: end states are kept, movement is not (WCAG 2.3.3). */

@@ -126,7 +126,6 @@
     justify-content: center;
     width: 100%;
     height: 100%;
-    background-color: transparent !important;
     inset-inline-end: 0;
   }
 
@@ -169,11 +168,6 @@
   .new-comment__text {
     display: inline-block;
     white-space: nowrap;
-  }
-
-  /* Hide when Drupal's JS adds hidden class after viewing */
-  .new-comment.hidden {
-    display: none !important;
   }
 
   /* Comment Body - no left padding, stacked below header */
@@ -322,3 +316,14 @@
     }
   }
 } /* end @layer solo.theme */
+
+/* unlayered: the !important declarations of @layer solo.theme above, moved unchanged. A layered !important
+   beats every unlayered one, so they stay unlayered and the site owner's typed !important keeps winning. */
+.solo-comment__permalink a {
+  background-color: transparent !important;
+}
+
+/* Hide when Drupal's JS adds hidden class after viewing */
+.new-comment.hidden {
+  display: none !important;
+}

@@ -34,8 +34,6 @@
   .form-checkboxes .form-item {
     align-items: center;
     justify-content: start;
-    margin-block-start: 0.4em !important;
-    margin-block-end: 0.4em !important;
   }
 
   :where(.solo-page) fieldset {
@@ -54,18 +52,6 @@
 
   :where(.form-type-boolean) > *:not(.discription) {
     float: var(--solo-text-align-start);
-  }
-
-  :where(.form-type-radio) label,
-  :where(.form-type-checkbox) label {
-    float: none !important;
-    margin-inline-start: var(--solo-px4) !important;
-  }
-
-  :where([dir="rtl"] .form-type-radio) label,
-  :where([dir="rtl"] .form-type-checkbox) label {
-    margin-inline-start: 0 !important;
-    margin-inline-end: var(--solo-px4) !important;
   }
 
   .marker {
@@ -155,8 +141,6 @@
 
   :where(.dropbutton-wrapper.open) .solo-button {
     width: 100%;
-    margin: 0 !important;
-    border: 0 !important;
   }
 
   /* Detect date ranges by looking for min/max fields */
@@ -180,3 +164,28 @@
     --selectify-select-padding: var(--solo-px10);
   }
 } /* end @layer solo.theme */
+
+/* unlayered: the !important declarations of @layer solo.theme above, moved unchanged. A layered !important
+   beats every unlayered one, so they stay unlayered and the site owner's typed !important keeps winning. */
+.form-radios .form-item,
+.form-checkboxes .form-item {
+  margin-block-start: 0.4em !important;
+  margin-block-end: 0.4em !important;
+}
+
+:where(.form-type-radio) label,
+:where(.form-type-checkbox) label {
+  float: none !important;
+  margin-inline-start: var(--solo-px4) !important;
+}
+
+:where([dir="rtl"] .form-type-radio) label,
+:where([dir="rtl"] .form-type-checkbox) label {
+  margin-inline-start: 0 !important;
+  margin-inline-end: var(--solo-px4) !important;
+}
+
+:where(.dropbutton-wrapper.open) .solo-button {
+  margin: 0 !important;
+  border: 0 !important;
+}

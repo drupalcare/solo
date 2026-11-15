@@ -30,6 +30,9 @@ ALLOW = {
     "scripts/check-region-vars.py",
 }
 ALLOW_DIRS = ("docs/",)
+# Top-level folders that are not Solo's own files: GitLab CI builds the Drupal
+# site (core, contrib, solo_utilities and its map) inside the project folder.
+SKIP_TOP = {"web"}
 
 
 def old_names(map_text):
@@ -57,7 +60,8 @@ def scan(root, names):
         if not path.is_file() or path.suffix not in SUFFIXES:
             continue
         rel = path.relative_to(root).as_posix()
-        if set(rel.split("/")) & SKIP_DIRS or rel in ALLOW or rel.startswith(ALLOW_DIRS):
+        parts = rel.split("/")
+        if parts[0] in SKIP_TOP or set(parts) & SKIP_DIRS or rel in ALLOW or rel.startswith(ALLOW_DIRS):
             continue
         for number, line in enumerate(path.read_text(errors="replace").splitlines(), 1):
             for m in pattern.finditer(line):

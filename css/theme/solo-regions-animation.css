@@ -53,12 +53,6 @@
     animation: borderRightColors 1.5s linear forwards;
   }
 
-  /* Shadows */
-  :where(.solo-page .solo-outer.solo-container--animate-border) .solo-region-box__inner:not(.solo-region-box__inner--main) {
-    overflow: hidden !important;
-    transition: 0.4s !important;
-  }
-
   /* Radios */
   :where(.solo-page .solo-outer.radius-4) .solo-region-box__inner,
   :where(.solo-page .solo-outer.solo-container--animate-border.radius-4) .solo-region-box__inner:not(.solo-region-box__inner--main)::before,
@@ -163,6 +157,14 @@
     }
   }
 } /* end @layer solo.theme */
+
+/* unlayered: the !important declarations of @layer solo.theme above, moved unchanged. A layered !important
+   beats every unlayered one, so they stay unlayered and the site owner's typed !important keeps winning. */
+/* Shadows */
+:where(.solo-page .solo-outer.solo-container--animate-border) .solo-region-box__inner:not(.solo-region-box__inner--main) {
+  overflow: hidden !important;
+  transition: 0.4s !important;
+}
 
 @layer solo.locked {
   /* Reduced motion: end states are kept, movement is not (WCAG 2.3.3). */

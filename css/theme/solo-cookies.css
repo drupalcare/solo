@@ -28,14 +28,6 @@
     border-radius: var(--solo-px4);
   }
 
-  :where(.solo-page) .cookiesjsr-links,
-  :where(.solo-page .cookiesjsr-links) div,
-  #solo-page-wrapper .cookiesjsr-layer div span,
-  :where(.solo-page .cookiesjsr-layer footer) div,
-  :where(.solo-page .cookiesjsr-service-group--services) div {
-    background: transparent !important;
-  }
-
   :where(.solo-page) .cookiesjsr-links {
     list-style: none;
   }
@@ -50,10 +42,6 @@
   :where(.solo-page) .cookiesjsr-service-group--tab {
     width: 100%;
     text-align: start;
-  }
-
-  #solo-page-wrapper .cookiesjsr-service-group.active button {
-    text-decoration: underline !important;
   }
 
   @media (min-width: 1200px) {
@@ -96,6 +84,20 @@
     }
   }
 } /* end @layer solo.theme */
+
+/* unlayered: the !important declarations of @layer solo.theme above, moved unchanged. A layered !important
+   beats every unlayered one, so they stay unlayered and the site owner's typed !important keeps winning. */
+:where(.solo-page) .cookiesjsr-links,
+:where(.solo-page .cookiesjsr-links) div,
+#solo-page-wrapper .cookiesjsr-layer div span,
+:where(.solo-page .cookiesjsr-layer footer) div,
+:where(.solo-page .cookiesjsr-service-group--services) div {
+  background: transparent !important;
+}
+
+#solo-page-wrapper .cookiesjsr-service-group.active button {
+  text-decoration: underline !important;
+}
 
 @layer solo.locked {
   /* Reduced motion: end states are kept, movement is not (WCAG 2.3.3). */

@@ -72,12 +72,6 @@
     color: var(--r-text, #fff);
   }
 
-  @media (max-width: 767px) {
-    .solo-back-to-top.solo-back-to-top--hide-small {
-      display: none !important;
-    }
-  }
-
   /* stylelint-disable-next-line order/order -- this nested rule stays after the @media block; moving it changes which rule wins */
   .solo-back-to-top.solo-is-visible {
     visibility: visible;
@@ -117,12 +111,20 @@
       transform: none;
     }
   }
-
-  @media print {
-    .solo-back-to-top-sentinel-wrapper,
-    .solo-back-to-top-sentinel,
-    .solo-back-to-top {
-      display: none !important;
-    }
-  }
 } /* end @layer solo.theme */
+
+/* unlayered: the !important declarations of @layer solo.theme above, moved unchanged. A layered !important
+   beats every unlayered one, so they stay unlayered and the site owner's typed !important keeps winning. */
+@media (max-width: 767px) {
+  .solo-back-to-top.solo-back-to-top--hide-small {
+    display: none !important;
+  }
+}
+
+@media print {
+  .solo-back-to-top-sentinel-wrapper,
+  .solo-back-to-top-sentinel,
+  .solo-back-to-top {
+    display: none !important;
+  }
+}

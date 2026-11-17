@@ -41,6 +41,19 @@
     margin-inline-end: 0;
   }
 
+  /* A long word in a message (a class name or file path in an error) wraps
+     inside the box, so a message never makes the page wider than the screen. */
+  .messages-list,
+  .messages-list .messages__container {
+    min-width: 0;
+    max-width: 100%;
+  }
+
+  .messages-list .messages__content {
+    min-width: 0;
+    overflow-wrap: anywhere;
+  }
+
   .messages__content {
     overflow: auto;
     flex: 1;

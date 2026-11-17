@@ -2,6 +2,7 @@
 
 ## Next release
 
+- System messages: a long word (a class name or file path in an error) wraps inside the message, so a message never makes the page wider than the screen.
 - The hamburger icon's three bars are classes (`solo-svg-top`, `solo-svg-middle`, `solo-svg-bottom`), not ids: the icon prints more than once per page, so the ids repeated. A sub-theme that styled `#svg-top` (1.x) or `#solo-svg-top` changes it to `.solo-svg-top`; the migrate-classes report lists them.
 - Accessibility: a dropdown opened by hovering in the hover menu now closes with Escape wherever focus is, without moving the pointer (WCAG 1.4.13).
 - Accessibility: the primary menu and sidebar menu regions no longer wrap the menu's own labelled nav in a second navigation landmark, and the menu wrappers drop an aria-label that a plain div cannot carry.

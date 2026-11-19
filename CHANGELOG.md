@@ -2,6 +2,8 @@
 
 ## Next release
 
+- Menu link hover: the line under menu links is revealed with a clip instead of a transform, and menu links no longer get `overflow: hidden`, so stacked menus (as in a sidebar) no longer flicker and focus outlines are not clipped. The line now also shows on keyboard focus. It stays on every menu as before, and `dis-anim-link` still turns it off.
+- Top search: no scroll bar flashes while the search panel opens or closes; it scrolls only once fully open (still scrollable on a short or zoomed screen, WCAG 1.4.10).
 - System messages: a long word (a class name or file path in an error) wraps inside the message, so a message never makes the page wider than the screen.
 - The hamburger icon's three bars are classes (`solo-svg-top`, `solo-svg-middle`, `solo-svg-bottom`), not ids: the icon prints more than once per page, so the ids repeated. A sub-theme that styled `#svg-top` (1.x) or `#solo-svg-top` changes it to `.solo-svg-top`; the migrate-classes report lists them.
 - Accessibility: a dropdown opened by hovering in the hover menu now closes with Escape wherever focus is, without moving the pointer (WCAG 1.4.13).

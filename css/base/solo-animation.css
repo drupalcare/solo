@@ -9,26 +9,34 @@
     position: relative;
   }
 
-  /* Simple underline effect on hover */
+  /* Underline on hover and keyboard focus: the line is revealed from the
+     start edge by clip-path. A clip needs no overflow: hidden on the link
+     (which cut focus outlines) and no transform, which gave every hovered
+     link its own compositing layer and made stacked menus flicker. */
   .solo-page nav ul li > a::after,
   .solo-page nav ul li > button::after {
     position: absolute;
     content: "";
-    transform: scaleX(0);
-    transform-origin: 0 50%;
+    clip-path: inset(0 100% 0 0);
+    pointer-events: none;
     inset-block-end: 0;
     inset-inline-start: 0;
   }
 
-  /* Activate underline on hover */
-  .solo-page nav ul li > a:hover::after,
-  .solo-page nav ul li > button:hover::after {
-    transform: scaleX(1);
+  /* Activate underline on hover and keyboard focus */
+  .solo-page nav ul li > a:is(:hover, :focus-visible)::after,
+  .solo-page nav ul li > button:is(:hover, :focus-visible)::after {
+    clip-path: inset(0);
   }
 
   [dir="rtl"] .solo-page nav ul li > a::after,
   [dir="rtl"] .solo-page nav ul li > button::after {
-    transform-origin: 100% 50%;
+    clip-path: inset(0 0 0 100%);
+  }
+
+  [dir="rtl"] .solo-page nav ul li > a:is(:hover, :focus-visible)::after,
+  [dir="rtl"] .solo-page nav ul li > button:is(:hover, :focus-visible)::after {
+    clip-path: inset(0);
   }
 
   /* Disable animation for mega menu nested items (2nd, 3rd, 4th levels) */

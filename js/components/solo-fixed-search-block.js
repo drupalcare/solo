@@ -253,7 +253,9 @@
      * @param {Object} cache - Cached element references
      */
     openSearchBlock(searchBlock, cache) {
-      searchBlock.classList.add('solo-is-open');
+      // While the height animates the panel keeps overflow hidden
+      // (solo-is-animating), so no scroll bar flashes before it is fully open.
+      searchBlock.classList.add('solo-is-open', 'solo-is-animating');
 
       // Prepare for animation
       const targetHeight = this.calculateHeight(searchBlock);
@@ -283,6 +285,10 @@
         openDone = true;
         clearTimeout(openTimer);
         searchBlock.removeEventListener('transitionend', onOpenEnd);
+        // A close that started before this open finished owns the class now.
+        if (searchBlock.getAttribute('aria-hidden') !== 'true') {
+          searchBlock.classList.remove('solo-is-animating');
+        }
         if (!searchBlock.classList.contains('solo-is-open')) return;
         searchBlock.style.height = 'auto';
 
@@ -316,6 +322,7 @@
      * @param {HTMLElement} searchBlock - The search block element
      */
     closeSearchBlock(searchBlock) {
+      searchBlock.classList.add('solo-is-animating');
       // Get current height before closing
       searchBlock.style.height = getComputedStyle(searchBlock).height;
 
@@ -353,6 +360,7 @@
         closeDone = true;
         clearTimeout(closeTimer);
         searchBlock.removeEventListener('transitionend', onCloseEnd);
+        searchBlock.classList.remove('solo-is-animating');
         if (searchBlock.getAttribute('aria-hidden') === 'false') return;
         searchBlock.classList.remove('solo-is-open');
         searchBlock.style.height = '';

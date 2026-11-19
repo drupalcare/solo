@@ -30,6 +30,13 @@
     overflow-y: auto;
   }
 
+  /* While the panel opens or closes its height is smaller than its content;
+   scrolling waits until it is fully open, so no scroll bar flashes. */
+  .solo-fixed-search-block.solo-is-open.solo-is-animating,
+  .solo-fixed-search.solo-is-open.solo-is-animating {
+    overflow-y: hidden;
+  }
+
   :where(.solo-fixed-search-block) .solo-fixed-search-block__inner,
   :where(.solo-fixed-search) .solo-fixed-search__inner {
     position: relative;

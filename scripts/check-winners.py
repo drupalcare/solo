@@ -52,7 +52,7 @@ import solo_libraries  # the full library set: static yml plus the generated lib
 
 SOLO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 UTIL = os.path.join(os.path.dirname(SOLO), 'solo_utilities', 'src', 'Css', 'ThemeCssBuilder.php')
-DOCROOT = '/Users/alaahaddad/Sites/demo/web'
+DOCROOT = '/Users/alaahaddad/Sites/workbench/demo/web'
 EXT_DIRS = ('core/modules', 'core/misc', 'modules/contrib', 'core/themes/claro')
 ADMIN_ONLY = {'solo-form-theme-settings'}
 CAT = {'base': -200, 'layout': -100, 'component': 0, 'state': 100, 'theme': 200}

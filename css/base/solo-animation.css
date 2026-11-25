@@ -29,14 +29,11 @@
     clip-path: inset(0);
   }
 
-  [dir="rtl"] .solo-page nav ul li > a::after,
-  [dir="rtl"] .solo-page nav ul li > button::after {
+  /* RTL starts the line from the right. :where() keeps this rule below the
+     hover rule above, so hover and focus reveal the line in RTL too. */
+  :where([dir="rtl"]) .solo-page nav ul li > a::after,
+  :where([dir="rtl"]) .solo-page nav ul li > button::after {
     clip-path: inset(0 0 0 100%);
-  }
-
-  [dir="rtl"] .solo-page nav ul li > a:is(:hover, :focus-visible)::after,
-  [dir="rtl"] .solo-page nav ul li > button:is(:hover, :focus-visible)::after {
-    clip-path: inset(0);
   }
 
   /* Disable animation for mega menu nested items (2nd, 3rd, 4th levels) */
